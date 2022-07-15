@@ -305,9 +305,7 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 		return reflect.ValueOf(float32(*((*C.float)(p)))).Convert(t)
 	case reflect.Float64:
 		return reflect.ValueOf(float64(*((*C.double)(p)))).Convert(t)
-	case reflect.Pointer:
-		return reflect.ValueOf(*(*unsafe.Pointer)(p)).Convert(t)
-	case reflect.UnsafePointer:
+	case reflect.Pointer, reflect.UnsafePointer:
 		return reflect.ValueOf(*(*unsafe.Pointer)(p)).Convert(t)
 	case reflect.String:
 		return reflect.ValueOf(ToGoString(*(*unsafe.Pointer)(p))).Convert(t)
@@ -380,18 +378,9 @@ func convertToObjcValue(v any) unsafe.Pointer {
 	case reflect.Float64:
 		cv := C.double(rv.Float())
 		return unsafe.Pointer(&cv)
-	case reflect.UnsafePointer:
+	case reflect.UnsafePointer, reflect.Pointer:
 		cv := rv.Pointer()
 		return unsafe.Pointer(&cv)
-	case reflect.Pointer:
-		switch pv := v.(type) {
-		case objc.Holder:
-			cv := pv.Ptr()
-			return unsafe.Pointer(&cv)
-		default:
-			cv := rv.Pointer()
-			return unsafe.Pointer(&cv)
-		}
 	case reflect.Interface:
 		switch pv := v.(type) {
 		case objc.Holder:

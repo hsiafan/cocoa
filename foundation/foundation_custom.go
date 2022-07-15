@@ -346,3 +346,41 @@ func ToGoError(err Error) error {
 		message: err.Description(),
 	}
 }
+
+// JSONSerialization begin
+type JSONReadingOptions uint
+
+const (
+	JSONReadingMutableContainers         JSONReadingOptions = 1 << 0
+	JSONReadingMutableLeaves             JSONReadingOptions = 1 << 1
+	JSONReadingFragmentsAllowed          JSONReadingOptions = 1 << 2
+	JSONReadingJSON5Allowed              JSONReadingOptions = 1 << 3
+	JSONReadingTopLevelDictionaryAssumed JSONReadingOptions = 1 << 4
+)
+
+type JSONWritingOptions uint
+
+const (
+	JSONWritingPrettyPrinted          JSONWritingOptions = 1 << 0
+	JSONWritingSortedKeys             JSONWritingOptions = 1 << 1
+	JSONWritingFragmentsAllowed       JSONWritingOptions = 1 << 2
+	JSONWritingWithoutEscapingSlashes JSONWritingOptions = 1 << 3
+)
+
+var _NSJSONSerializationClass = objc.GetClass("NSJSONSerialization")
+
+func JSONObjectWithData(data []byte, options JSONReadingOptions) (objc.Object, error) {
+	var err Error
+	r := ffi.CallMethod[objc.Object](_NSJSONSerializationClass, "JSONObjectWithData:options:error:", data, options, &err)
+	return r, ToGoError(err)
+}
+
+func DataWithJSONObject(o objc.IObject, options JSONWritingOptions) ([]byte, error) {
+	var err Error
+	r := ffi.CallMethod[[]byte](_NSJSONSerializationClass, "dataWithJSONObject:options:error:", o, options, &err)
+	return r, ToGoError(err)
+}
+
+func IsValidJSONObject(o objc.IObject) bool {
+	return ffi.CallMethod[bool](_NSJSONSerializationClass, "isValidJSONObject:", o)
+}
