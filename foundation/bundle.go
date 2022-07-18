@@ -209,7 +209,7 @@ func (bc _BundleClass) PreferredLocalizationsFromArray_ForPreferences(localizati
 }
 
 func (b_ Bundle) PreflightAndReturnError(error *Error) bool {
-	rv := ffi.CallMethod[bool](b_, "preflightAndReturnError:", error)
+	rv := ffi.CallMethod[bool](b_, "preflightAndReturnError:", unsafe.Pointer(error))
 	return rv
 }
 
@@ -219,7 +219,7 @@ func (b_ Bundle) Load() bool {
 }
 
 func (b_ Bundle) LoadAndReturnError(error *Error) bool {
-	rv := ffi.CallMethod[bool](b_, "loadAndReturnError:", error)
+	rv := ffi.CallMethod[bool](b_, "loadAndReturnError:", unsafe.Pointer(error))
 	return rv
 }
 

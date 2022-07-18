@@ -40,7 +40,7 @@ func MakeRegularExpression(ptr unsafe.Pointer) RegularExpression {
 }
 
 func (r_ RegularExpression) InitWithPattern_Options_Error(pattern string, options RegularExpressionOptions, error *Error) RegularExpression {
-	rv := ffi.CallMethod[RegularExpression](r_, "initWithPattern:options:error:", pattern, options, error)
+	rv := ffi.CallMethod[RegularExpression](r_, "initWithPattern:options:error:", pattern, options, unsafe.Pointer(error))
 	rv.Autorelease()
 	return rv
 }
@@ -67,7 +67,7 @@ func NewRegularExpression() RegularExpression {
 }
 
 func (rc _RegularExpressionClass) RegularExpressionWithPattern_Options_Error(pattern string, options RegularExpressionOptions, error *Error) RegularExpression {
-	rv := ffi.CallMethod[RegularExpression](rc, "regularExpressionWithPattern:options:error:", pattern, options, error)
+	rv := ffi.CallMethod[RegularExpression](rc, "regularExpressionWithPattern:options:error:", pattern, options, unsafe.Pointer(error))
 	return rv
 }
 

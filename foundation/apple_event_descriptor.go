@@ -197,7 +197,7 @@ func (ac _AppleEventDescriptorClass) DescriptorWithProcessIdentifier(processIden
 }
 
 func (a_ AppleEventDescriptor) SendEventWithOptions_Timeout_Error(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error *Error) AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](a_, "sendEventWithOptions:timeout:error:", sendOptions, timeoutInSeconds, error)
+	rv := ffi.CallMethod[AppleEventDescriptor](a_, "sendEventWithOptions:timeout:error:", sendOptions, timeoutInSeconds, unsafe.Pointer(error))
 	return rv
 }
 

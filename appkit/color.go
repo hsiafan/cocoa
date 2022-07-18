@@ -1063,7 +1063,7 @@ func (c_ ColorList) SetColor_ForKey(color IColor, key ColorName) {
 }
 
 func (c_ ColorList) WriteToURL_Error(url foundation.IURL, errPtr *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](c_, "writeToURL:error:", url, errPtr)
+	rv := ffi.CallMethod[bool](c_, "writeToURL:error:", url, unsafe.Pointer(errPtr))
 	return rv
 }
 

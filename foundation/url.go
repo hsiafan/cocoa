@@ -133,17 +133,17 @@ func (u_ URL) InitFileURLWithPath(path string) URL {
 }
 
 func (uc _URLClass) URLByResolvingAliasFileAtURL_Options_Error(url IURL, options URLBookmarkResolutionOptions, error *Error) URL {
-	rv := ffi.CallMethod[URL](uc, "URLByResolvingAliasFileAtURL:options:error:", url, options, error)
+	rv := ffi.CallMethod[URL](uc, "URLByResolvingAliasFileAtURL:options:error:", url, options, unsafe.Pointer(error))
 	return rv
 }
 
 func (uc _URLClass) URLByResolvingBookmarkData_Options_RelativeToURL_BookmarkDataIsStale_Error(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error *Error) URL {
-	rv := ffi.CallMethod[URL](uc, "URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:", bookmarkData, options, relativeURL, isStale, error)
+	rv := ffi.CallMethod[URL](uc, "URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:", bookmarkData, options, relativeURL, isStale, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) InitByResolvingBookmarkData_Options_RelativeToURL_BookmarkDataIsStale_Error(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error *Error) URL {
-	rv := ffi.CallMethod[URL](u_, "initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:", bookmarkData, options, relativeURL, isStale, error)
+	rv := ffi.CallMethod[URL](u_, "initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:", bookmarkData, options, relativeURL, isStale, unsafe.Pointer(error))
 	rv.Autorelease()
 	return rv
 }
@@ -239,7 +239,7 @@ func (uc _URLClass) URLWithDataRepresentation_RelativeToURL(data []byte, baseURL
 }
 
 func (u_ URL) CheckResourceIsReachableAndReturnError(error *Error) bool {
-	rv := ffi.CallMethod[bool](u_, "checkResourceIsReachableAndReturnError:", error)
+	rv := ffi.CallMethod[bool](u_, "checkResourceIsReachableAndReturnError:", unsafe.Pointer(error))
 	return rv
 }
 
@@ -249,17 +249,17 @@ func (u_ URL) IsFileReferenceURL() bool {
 }
 
 func (u_ URL) ResourceValuesForKeys_Error(keys []URLResourceKey, error *Error) map[URLResourceKey]objc.Object {
-	rv := ffi.CallMethod[map[URLResourceKey]objc.Object](u_, "resourceValuesForKeys:error:", keys, error)
+	rv := ffi.CallMethod[map[URLResourceKey]objc.Object](u_, "resourceValuesForKeys:error:", keys, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) SetResourceValue_ForKey_Error(value objc.IObject, key URLResourceKey, error *Error) bool {
-	rv := ffi.CallMethod[bool](u_, "setResourceValue:forKey:error:", value, key, error)
+	rv := ffi.CallMethod[bool](u_, "setResourceValue:forKey:error:", value, key, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) SetResourceValues_Error(keyedValues map[URLResourceKey]objc.IObject, error *Error) bool {
-	rv := ffi.CallMethod[bool](u_, "setResourceValues:error:", keyedValues, error)
+	rv := ffi.CallMethod[bool](u_, "setResourceValues:error:", keyedValues, unsafe.Pointer(error))
 	return rv
 }
 
@@ -296,12 +296,12 @@ func (u_ URL) URLByAppendingPathExtension(pathExtension string) URL {
 }
 
 func (uc _URLClass) BookmarkDataWithContentsOfURL_Error(bookmarkFileURL IURL, error *Error) []byte {
-	rv := ffi.CallMethod[[]byte](uc, "bookmarkDataWithContentsOfURL:error:", bookmarkFileURL, error)
+	rv := ffi.CallMethod[[]byte](uc, "bookmarkDataWithContentsOfURL:error:", bookmarkFileURL, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) BookmarkDataWithOptions_IncludingResourceValuesForKeys_RelativeToURL_Error(options URLBookmarkCreationOptions, keys []URLResourceKey, relativeURL IURL, error *Error) []byte {
-	rv := ffi.CallMethod[[]byte](u_, "bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:", options, keys, relativeURL, error)
+	rv := ffi.CallMethod[[]byte](u_, "bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:", options, keys, relativeURL, unsafe.Pointer(error))
 	return rv
 }
 
@@ -311,7 +311,7 @@ func (uc _URLClass) ResourceValuesForKeys_FromBookmarkData(keys []URLResourceKey
 }
 
 func (uc _URLClass) WriteBookmarkData_ToURL_Options_Error(bookmarkData []byte, bookmarkFileURL IURL, options URLBookmarkFileCreationOptions, error *Error) bool {
-	rv := ffi.CallMethod[bool](uc, "writeBookmarkData:toURL:options:error:", bookmarkData, bookmarkFileURL, options, error)
+	rv := ffi.CallMethod[bool](uc, "writeBookmarkData:toURL:options:error:", bookmarkData, bookmarkFileURL, options, unsafe.Pointer(error))
 	return rv
 }
 
@@ -325,17 +325,17 @@ func (u_ URL) StopAccessingSecurityScopedResource() {
 }
 
 func (u_ URL) CheckPromisedItemIsReachableAndReturnError(error *Error) bool {
-	rv := ffi.CallMethod[bool](u_, "checkPromisedItemIsReachableAndReturnError:", error)
+	rv := ffi.CallMethod[bool](u_, "checkPromisedItemIsReachableAndReturnError:", unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) GetPromisedItemResourceValue_ForKey_Error(value *objc.Object, key URLResourceKey, error *Error) bool {
-	rv := ffi.CallMethod[bool](u_, "getPromisedItemResourceValue:forKey:error:", value, key, error)
+	rv := ffi.CallMethod[bool](u_, "getPromisedItemResourceValue:forKey:error:", unsafe.Pointer(value), key, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) PromisedItemResourceValuesForKeys_Error(keys []URLResourceKey, error *Error) map[URLResourceKey]objc.Object {
-	rv := ffi.CallMethod[map[URLResourceKey]objc.Object](u_, "promisedItemResourceValuesForKeys:error:", keys, error)
+	rv := ffi.CallMethod[map[URLResourceKey]objc.Object](u_, "promisedItemResourceValuesForKeys:error:", keys, unsafe.Pointer(error))
 	return rv
 }
 

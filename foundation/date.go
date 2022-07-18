@@ -1529,7 +1529,7 @@ func (c_ Calendar) RangeOfUnit_InUnit_ForDate(smaller CalendarUnit, larger Calen
 }
 
 func (c_ Calendar) RangeOfUnit_StartDate_Interval_ForDate(unit CalendarUnit, datep *Date, tip *TimeInterval, date IDate) bool {
-	rv := ffi.CallMethod[bool](c_, "rangeOfUnit:startDate:interval:forDate:", unit, datep, tip, date)
+	rv := ffi.CallMethod[bool](c_, "rangeOfUnit:startDate:interval:forDate:", unit, unsafe.Pointer(datep), tip, date)
 	return rv
 }
 

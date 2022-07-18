@@ -34,7 +34,7 @@ func (e_ EditorWrapper) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(
 }
 
 func (e_ EditorWrapper) CommitEditingAndReturnError(error *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](e_, "commitEditingAndReturnError:", error)
+	rv := ffi.CallMethod[bool](e_, "commitEditingAndReturnError:", unsafe.Pointer(error))
 	return rv
 }
 

@@ -198,19 +198,19 @@ func (d_ Document) Init() Document {
 }
 
 func (d_ Document) InitWithContentsOfURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) Document {
-	rv := ffi.CallMethod[Document](d_, "initWithContentsOfURL:ofType:error:", url, typeName, outError)
+	rv := ffi.CallMethod[Document](d_, "initWithContentsOfURL:ofType:error:", url, typeName, unsafe.Pointer(outError))
 	rv.Autorelease()
 	return rv
 }
 
 func (d_ Document) InitForURL_WithContentsOfURL_OfType_Error(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError *foundation.Error) Document {
-	rv := ffi.CallMethod[Document](d_, "initForURL:withContentsOfURL:ofType:error:", urlOrNil, contentsURL, typeName, outError)
+	rv := ffi.CallMethod[Document](d_, "initForURL:withContentsOfURL:ofType:error:", urlOrNil, contentsURL, typeName, unsafe.Pointer(outError))
 	rv.Autorelease()
 	return rv
 }
 
 func (d_ Document) InitWithType_Error(typeName string, outError *foundation.Error) Document {
-	rv := ffi.CallMethod[Document](d_, "initWithType:error:", typeName, outError)
+	rv := ffi.CallMethod[Document](d_, "initWithType:error:", typeName, unsafe.Pointer(outError))
 	rv.Autorelease()
 	return rv
 }
@@ -236,17 +236,17 @@ func (dc _DocumentClass) CanConcurrentlyReadDocumentsOfType(typeName string) boo
 }
 
 func (d_ Document) ReadFromURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "readFromURL:ofType:error:", url, typeName, outError)
+	rv := ffi.CallMethod[bool](d_, "readFromURL:ofType:error:", url, typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) ReadFromFileWrapper_OfType_Error(fileWrapper foundation.IFileWrapper, typeName string, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "readFromFileWrapper:ofType:error:", fileWrapper, typeName, outError)
+	rv := ffi.CallMethod[bool](d_, "readFromFileWrapper:ofType:error:", fileWrapper, typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) ReadFromData_OfType_Error(data []byte, typeName string, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "readFromData:ofType:error:", data, typeName, outError)
+	rv := ffi.CallMethod[bool](d_, "readFromData:ofType:error:", data, typeName, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -260,27 +260,27 @@ func (d_ Document) UnblockUserInteraction() {
 }
 
 func (d_ Document) WriteToURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "writeToURL:ofType:error:", url, typeName, outError)
+	rv := ffi.CallMethod[bool](d_, "writeToURL:ofType:error:", url, typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) WriteSafelyToURL_OfType_ForSaveOperation_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "writeSafelyToURL:ofType:forSaveOperation:error:", url, typeName, saveOperation, outError)
+	rv := ffi.CallMethod[bool](d_, "writeSafelyToURL:ofType:forSaveOperation:error:", url, typeName, saveOperation, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) FileWrapperOfType_Error(typeName string, outError *foundation.Error) foundation.FileWrapper {
-	rv := ffi.CallMethod[foundation.FileWrapper](d_, "fileWrapperOfType:error:", typeName, outError)
+	rv := ffi.CallMethod[foundation.FileWrapper](d_, "fileWrapperOfType:error:", typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) DataOfType_Error(typeName string, outError *foundation.Error) []byte {
-	rv := ffi.CallMethod[[]byte](d_, "dataOfType:error:", typeName, outError)
+	rv := ffi.CallMethod[[]byte](d_, "dataOfType:error:", typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) WriteToURL_OfType_ForSaveOperation_OriginalContentsURL_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "writeToURL:ofType:forSaveOperation:originalContentsURL:error:", url, typeName, saveOperation, absoluteOriginalContentsURL, outError)
+	rv := ffi.CallMethod[bool](d_, "writeToURL:ofType:forSaveOperation:originalContentsURL:error:", url, typeName, saveOperation, absoluteOriginalContentsURL, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -293,7 +293,7 @@ func (d_ Document) SaveToURL_OfType_ForSaveOperation_CompletionHandler(url found
 }
 
 func (d_ Document) FileAttributesToWriteToURL_OfType_ForSaveOperation_OriginalContentsURL_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError *foundation.Error) map[string]objc.Object {
-	rv := ffi.CallMethod[map[string]objc.Object](d_, "fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:", url, typeName, saveOperation, absoluteOriginalContentsURL, outError)
+	rv := ffi.CallMethod[map[string]objc.Object](d_, "fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:", url, typeName, saveOperation, absoluteOriginalContentsURL, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -354,7 +354,7 @@ func (d_ Document) DefaultDraftName() string {
 }
 
 func (d_ Document) CheckAutosavingSafetyAndReturnError(outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "checkAutosavingSafetyAndReturnError:", outError)
+	rv := ffi.CallMethod[bool](d_, "checkAutosavingSafetyAndReturnError:", unsafe.Pointer(outError))
 	return rv
 }
 
@@ -468,12 +468,12 @@ func (d_ Document) Close() {
 }
 
 func (d_ Document) RevertToContentsOfURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "revertToContentsOfURL:ofType:error:", url, typeName, outError)
+	rv := ffi.CallMethod[bool](d_, "revertToContentsOfURL:ofType:error:", url, typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) DuplicateAndReturnError(outError *foundation.Error) Document {
-	rv := ffi.CallMethod[Document](d_, "duplicateAndReturnError:", outError)
+	rv := ffi.CallMethod[Document](d_, "duplicateAndReturnError:", unsafe.Pointer(outError))
 	return rv
 }
 
@@ -548,7 +548,7 @@ func (d_ Document) PrintDocumentWithSettings_ShowPrintPanel_Delegate_DidPrintSel
 }
 
 func (d_ Document) PrintOperationWithSettings_Error(printSettings map[PrintInfoAttributeKey]objc.IObject, outError *foundation.Error) PrintOperation {
-	rv := ffi.CallMethod[PrintOperation](d_, "printOperationWithSettings:error:", printSettings, outError)
+	rv := ffi.CallMethod[PrintOperation](d_, "printOperationWithSettings:error:", printSettings, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -683,7 +683,7 @@ func (d_ Document) SaveToFile_SaveOperation_Delegate_DidSaveSelector_ContextInfo
 
 // deprecated
 func (d_ Document) SaveToURL_OfType_ForSaveOperation_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](d_, "saveToURL:ofType:forSaveOperation:error:", url, typeName, saveOperation, outError)
+	rv := ffi.CallMethod[bool](d_, "saveToURL:ofType:forSaveOperation:error:", url, typeName, saveOperation, unsafe.Pointer(outError))
 	return rv
 }
 

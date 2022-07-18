@@ -488,5 +488,5 @@ func (d_ *DatePickerCellDelegateWrapper) ImplementsDatePickerCell_ValidatePropos
 }
 
 func (d_ DatePickerCellDelegateWrapper) DatePickerCell_ValidateProposedDateValue_TimeInterval(datePickerCell IDatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval) {
-	ffi.CallMethod[ffi.Void](d_, "datePickerCell:validateProposedDateValue:timeInterval:", datePickerCell, proposedDateValue, proposedTimeInterval)
+	ffi.CallMethod[ffi.Void](d_, "datePickerCell:validateProposedDateValue:timeInterval:", datePickerCell, unsafe.Pointer(proposedDateValue), proposedTimeInterval)
 }

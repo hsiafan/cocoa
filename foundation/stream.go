@@ -87,12 +87,12 @@ func (s_ Stream) RemoveFromRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode) 
 }
 
 func (sc _StreamClass) GetBoundStreamsWithBufferSize_InputStream_OutputStream(bufferSize uint, inputStream *InputStream, outputStream *OutputStream) {
-	ffi.CallMethod[ffi.Void](sc, "getBoundStreamsWithBufferSize:inputStream:outputStream:", bufferSize, inputStream, outputStream)
+	ffi.CallMethod[ffi.Void](sc, "getBoundStreamsWithBufferSize:inputStream:outputStream:", bufferSize, unsafe.Pointer(inputStream), unsafe.Pointer(outputStream))
 }
 
 // deprecated
 func (sc _StreamClass) GetStreamsToHostWithName_Port_InputStream_OutputStream(hostname string, port int, inputStream *InputStream, outputStream *OutputStream) {
-	ffi.CallMethod[ffi.Void](sc, "getStreamsToHostWithName:port:inputStream:outputStream:", hostname, port, inputStream, outputStream)
+	ffi.CallMethod[ffi.Void](sc, "getStreamsToHostWithName:port:inputStream:outputStream:", hostname, port, unsafe.Pointer(inputStream), unsafe.Pointer(outputStream))
 }
 
 func (s_ Stream) Delegate() StreamDelegateWrapper {

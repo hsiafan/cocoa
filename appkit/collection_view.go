@@ -1262,7 +1262,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_P
 func (c_ CollectionViewDelegateWrapper) CollectionView_ValidateDrop_ProposedIndexPath_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, proposedDropIndexPath *foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po := ffi.CreateProtocol(draggingInfo)
 	defer po.Release()
-	rv := ffi.CallMethod[DragOperation](c_, "collectionView:validateDrop:proposedIndexPath:dropOperation:", collectionView, po, proposedDropIndexPath, proposedDropOperation)
+	rv := ffi.CallMethod[DragOperation](c_, "collectionView:validateDrop:proposedIndexPath:dropOperation:", collectionView, po, unsafe.Pointer(proposedDropIndexPath), proposedDropOperation)
 	return rv
 }
 

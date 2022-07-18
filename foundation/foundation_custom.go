@@ -371,13 +371,13 @@ var _NSJSONSerializationClass = objc.GetClass("NSJSONSerialization")
 
 func JSONObjectWithData(data []byte, options JSONReadingOptions) (objc.Object, error) {
 	var err Error
-	r := ffi.CallMethod[objc.Object](_NSJSONSerializationClass, "JSONObjectWithData:options:error:", data, options, &err)
+	r := ffi.CallMethod[objc.Object](_NSJSONSerializationClass, "JSONObjectWithData:options:error:", data, options, unsafe.Pointer(&err))
 	return r, ToGoError(err)
 }
 
 func DataWithJSONObject(o objc.IObject, options JSONWritingOptions) ([]byte, error) {
 	var err Error
-	r := ffi.CallMethod[[]byte](_NSJSONSerializationClass, "dataWithJSONObject:options:error:", o, options, &err)
+	r := ffi.CallMethod[[]byte](_NSJSONSerializationClass, "dataWithJSONObject:options:error:", o, options, unsafe.Pointer(&err))
 	return r, ToGoError(err)
 }
 

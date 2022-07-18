@@ -65,7 +65,7 @@ func MakeFileWrapper(ptr unsafe.Pointer) FileWrapper {
 }
 
 func (f_ FileWrapper) InitWithURL_Options_Error(url IURL, options FileWrapperReadingOptions, outError *Error) FileWrapper {
-	rv := ffi.CallMethod[FileWrapper](f_, "initWithURL:options:error:", url, options, outError)
+	rv := ffi.CallMethod[FileWrapper](f_, "initWithURL:options:error:", url, options, unsafe.Pointer(outError))
 	rv.Autorelease()
 	return rv
 }
@@ -184,7 +184,7 @@ func (f_ FileWrapper) UpdateFromPath(path string) bool {
 }
 
 func (f_ FileWrapper) ReadFromURL_Options_Error(url IURL, options FileWrapperReadingOptions, outError *Error) bool {
-	rv := ffi.CallMethod[bool](f_, "readFromURL:options:error:", url, options, outError)
+	rv := ffi.CallMethod[bool](f_, "readFromURL:options:error:", url, options, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -195,7 +195,7 @@ func (f_ FileWrapper) WriteToFile_Atomically_UpdateFilenames(path string, atomic
 }
 
 func (f_ FileWrapper) WriteToURL_Options_OriginalContentsURL_Error(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError *Error) bool {
-	rv := ffi.CallMethod[bool](f_, "writeToURL:options:originalContentsURL:error:", url, options, originalContentsURL, outError)
+	rv := ffi.CallMethod[bool](f_, "writeToURL:options:originalContentsURL:error:", url, options, originalContentsURL, unsafe.Pointer(outError))
 	return rv
 }
 

@@ -178,7 +178,7 @@ func (w_ Workspace) SelectFile_InFileViewerRootedAtPath(fullPath string, rootFul
 
 // deprecated
 func (w_ Workspace) TypeOfFile_Error(absoluteFilePath string, outError *foundation.Error) string {
-	rv := ffi.CallMethod[string](w_, "typeOfFile:error:", absoluteFilePath, outError)
+	rv := ffi.CallMethod[string](w_, "typeOfFile:error:", absoluteFilePath, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -258,7 +258,7 @@ func (w_ Workspace) UnmountAndEjectDeviceAtPath(path string) bool {
 }
 
 func (w_ Workspace) UnmountAndEjectDeviceAtURL_Error(url foundation.IURL, error *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](w_, "unmountAndEjectDeviceAtURL:error:", url, error)
+	rv := ffi.CallMethod[bool](w_, "unmountAndEjectDeviceAtURL:error:", url, unsafe.Pointer(error))
 	return rv
 }
 
@@ -268,7 +268,7 @@ func (w_ Workspace) DesktopImageURLForScreen(screen IScreen) foundation.URL {
 }
 
 func (w_ Workspace) SetDesktopImageURL_ForScreen_Options_Error(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](w_, "setDesktopImageURL:forScreen:options:error:", url, screen, options, error)
+	rv := ffi.CallMethod[bool](w_, "setDesktopImageURL:forScreen:options:error:", url, screen, options, unsafe.Pointer(error))
 	return rv
 }
 
@@ -329,13 +329,13 @@ func (w_ Workspace) URLsForApplicationsWithBundleIdentifier(bundleIdentifier str
 
 // deprecated
 func (w_ Workspace) OpenURL_Options_Configuration_Error(url foundation.IURL, options WorkspaceLaunchOptions, configuration map[WorkspaceLaunchConfigurationKey]objc.IObject, error *foundation.Error) RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](w_, "openURL:options:configuration:error:", url, options, configuration, error)
+	rv := ffi.CallMethod[RunningApplication](w_, "openURL:options:configuration:error:", url, options, configuration, unsafe.Pointer(error))
 	return rv
 }
 
 // deprecated
 func (w_ Workspace) OpenURLs_WithApplicationAtURL_Options_Configuration_Error(urls []foundation.IURL, applicationURL foundation.IURL, options WorkspaceLaunchOptions, configuration map[WorkspaceLaunchConfigurationKey]objc.IObject, error *foundation.Error) RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](w_, "openURLs:withApplicationAtURL:options:configuration:error:", urls, applicationURL, options, configuration, error)
+	rv := ffi.CallMethod[RunningApplication](w_, "openURLs:withApplicationAtURL:options:configuration:error:", urls, applicationURL, options, configuration, unsafe.Pointer(error))
 	return rv
 }
 
@@ -377,7 +377,7 @@ func (w_ Workspace) LaunchApplication_ShowIcon_Autolaunch(appName string, showIc
 
 // deprecated
 func (w_ Workspace) LaunchApplicationAtURL_Options_Configuration_Error(url foundation.IURL, options WorkspaceLaunchOptions, configuration map[WorkspaceLaunchConfigurationKey]objc.IObject, error *foundation.Error) RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](w_, "launchApplicationAtURL:options:configuration:error:", url, options, configuration, error)
+	rv := ffi.CallMethod[RunningApplication](w_, "launchApplicationAtURL:options:configuration:error:", url, options, configuration, unsafe.Pointer(error))
 	return rv
 }
 
@@ -401,7 +401,7 @@ func (w_ Workspace) AbsolutePathForAppBundleWithIdentifier(bundleIdentifier stri
 
 // deprecated
 func (w_ Workspace) LaunchAppWithBundleIdentifier_Options_AdditionalEventParamDescriptor_LaunchIdentifier(bundleIdentifier string, options WorkspaceLaunchOptions, descriptor foundation.IAppleEventDescriptor, identifier *foundation.Number) bool {
-	rv := ffi.CallMethod[bool](w_, "launchAppWithBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifier:", bundleIdentifier, options, descriptor, identifier)
+	rv := ffi.CallMethod[bool](w_, "launchAppWithBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifier:", bundleIdentifier, options, descriptor, unsafe.Pointer(identifier))
 	return rv
 }
 

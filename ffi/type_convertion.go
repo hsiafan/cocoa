@@ -339,6 +339,12 @@ func convertToObjcValue(v any) unsafe.Pointer {
 		var p unsafe.Pointer = nil
 		return unsafe.Pointer(&p)
 	}
+
+	if pv, ok := v.(objc.Holder); ok {
+		cv := pv.Ptr()
+		return unsafe.Pointer(&cv)
+	}
+
 	rv := reflect.ValueOf(v)
 	rt := rv.Type()
 	switch rt.Kind() {
@@ -382,21 +388,9 @@ func convertToObjcValue(v any) unsafe.Pointer {
 		cv := rv.Pointer()
 		return unsafe.Pointer(&cv)
 	case reflect.Interface:
-		switch pv := v.(type) {
-		case objc.Holder:
-			cv := pv.Ptr()
-			return unsafe.Pointer(&cv)
-		default:
-			panic(fmt.Sprintf("not support type: %T", v))
-		}
+		panic(fmt.Sprintf("not support type: %T", v))
 	case reflect.Struct:
-		switch pv := v.(type) {
-		case objc.Holder:
-			cv := pv.Ptr()
-			return unsafe.Pointer(&cv)
-		default:
-			return getStructPointer(rv)
-		}
+		return getStructPointer(rv)
 	case reflect.String:
 		sp := ToNSString(rv.String())
 		return unsafe.Pointer(&sp)
