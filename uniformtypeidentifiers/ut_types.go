@@ -1,4 +1,4 @@
-package uti
+package uniformtypeidentifiers
 
 // #import <UniformTypeIdentifiers/UTCoreTypes.h>
 // #import <UniformTypeIdentifiers/UTType.h>

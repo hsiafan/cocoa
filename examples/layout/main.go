@@ -5,7 +5,8 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface"
+	"github.com/hsiafan/cocoa/coface/layout"
+	"github.com/hsiafan/cocoa/coface/widgets"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -19,25 +20,25 @@ func initAndRun() {
 	app := appkit.ApplicationClass.SharedApplication()
 	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
 	app.ActivateIgnoringOtherApps(true)
-	w := coface.NewWindow(600, 400)
+	w := appkit.NewWindowWithSize(600, 400)
 	w.SetTitle("Test Layout")
 
-	label := coface.NewLabel("label")
-	mdButton := coface.NewButton("modal dialog")
-	dButton := coface.NewButton("dialog")
+	label := appkit.NewLabel("label")
+	mdButton := appkit.NewButtonWithTitle("modal dialog")
+	dButton := appkit.NewButtonWithTitle("dialog")
 	textView := appkit.TextViewClass.ScrollableTextView()
 
 	objc.SetAction(mdButton, func(sender objc.IObject) {
-		d := coface.NewDialog(400, 300)
-		d.SetView(coface.NewLabel("test modal dialog"))
+		d := widgets.NewDialog(400, 300)
+		d.SetView(appkit.NewLabel("test modal dialog"))
 		if d.RunModal() == appkit.ModalResponseOK {
 			fmt.Println("ok!")
 		}
 	})
 
 	objc.SetAction(dButton, func(sender objc.IObject) {
-		d := coface.NewDialog(400, 300)
-		d.SetView(coface.NewLabel("test dialog"))
+		d := widgets.NewDialog(400, 300)
+		d.SetView(appkit.NewLabel("test dialog"))
 		d.Center()
 		d.Show(func() {
 			fmt.Println("ok!")
@@ -48,7 +49,7 @@ func initAndRun() {
 	for i := 0; i < 3; i++ {
 		var views []appkit.IView
 		for j := 0; j < 4; j++ {
-			label := coface.NewLabel(fmt.Sprintf("label-%v-%v", i, j))
+			label := appkit.NewLabel(fmt.Sprintf("label-%v-%v", i, j))
 			views = append(views, label)
 		}
 		gridView.AddRowWithViews(views)
@@ -64,7 +65,7 @@ func initAndRun() {
 	stackView.SetSpacing(10)
 
 	w.ContentView().AddSubview(stackView)
-	coface.SetMargin(w.ContentView(), stackView, 20, 10)
+	layout.SetMargin(w.ContentView(), stackView, 20, 10)
 
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()

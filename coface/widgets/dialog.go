@@ -1,4 +1,4 @@
-package coface
+package widgets
 
 import (
 	"github.com/hsiafan/cocoa/appkit"
@@ -22,8 +22,8 @@ func NewDialog(width, height float64) *Dialog {
 	contentView := panel.ContentView()
 	view := appkit.ViewClass.New()
 	view.SetTranslatesAutoresizingMaskIntoConstraints(false)
-	ok := NewButton("OK")
-	cancel := NewButton("Cancel")
+	ok := appkit.NewButtonWithTitle("OK")
+	cancel := appkit.NewButtonWithTitle("Cancel")
 	contentView.AddSubview(view)
 	contentView.AddSubview(ok)
 	contentView.AddSubview(cancel)

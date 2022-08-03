@@ -5,7 +5,6 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/hsiafan/cocoa/coface"
 	"github.com/hsiafan/cocoa/dispatch"
 
 	"github.com/hsiafan/cocoa/appkit"
@@ -20,7 +19,7 @@ func init() {
 
 func initAndRun() {
 	app := appkit.ApplicationClass.SharedApplication()
-	w := coface.NewWindow(600, 400)
+	w := appkit.NewWindowWithSize(600, 400)
 
 	w.SetTitle("Test widgets")
 
@@ -31,7 +30,7 @@ func initAndRun() {
 	filePathField.SetEditable(false)
 	w.ContentView().AddSubview(filePathField)
 
-	saveButton := coface.NewButton("Save...")
+	saveButton := appkit.NewButtonWithTitle("Save...")
 	saveButton.SetFrame(rectOf(250, 330, 80, 20))
 	objc.SetAction(saveButton, func(sender objc.IObject) {
 		savePanel := appkit.SavePanelClass.New()
@@ -75,11 +74,11 @@ func initAndRun() {
 	w.ContentView().AddSubview(datePicker)
 
 	// buttons
-	cb := coface.NewCheckBox("check box")
+	cb := appkit.NewCheckBox("check box")
 	cb.SetFrame(rectOf(10, 250, 80, 25))
 	w.ContentView().AddSubview(cb)
 
-	rb := coface.NewRadioButton("radio button")
+	rb := appkit.NewRadioButton("radio button")
 	rb.SetFrame(rectOf(150, 250, 120, 25))
 	w.ContentView().AddSubview(rb)
 
@@ -91,11 +90,11 @@ func initAndRun() {
 	li.SetDoubleValue(3)
 	w.ContentView().AddSubview(li)
 
-	btn := coface.NewButton("change color")
+	btn := appkit.NewButtonWithTitle("change color")
 	btn.SetFrame(rectOf(10, 160, 120, 25))
 	w.ContentView().AddSubview(btn)
 
-	quitBtn := coface.NewButton("Quit")
+	quitBtn := appkit.NewButtonWithTitle("Quit")
 	quitBtn.SetFrame(rectOf(10, 130, 80, 25))
 	objc.SetAction(quitBtn, func(sender objc.IObject) {
 		app.Terminate(nil)
@@ -103,12 +102,12 @@ func initAndRun() {
 	w.ContentView().AddSubview(quitBtn)
 
 	// text field
-	tf := coface.NewTextField()
+	tf := appkit.NewTextField()
 	w.ContentView().AddSubview(tf)
 	tf.SetFrame(rectOf(10, 100, 150, 25))
 
 	// label
-	label := coface.NewLabel("")
+	label := appkit.NewLabel("")
 	label.SetFrame(rectOf(170, 100, 150, 25))
 	w.ContentView().AddSubview(label)
 	tfd := &appkit.TextFieldDelegateImpl{}
@@ -123,7 +122,7 @@ func initAndRun() {
 	})
 
 	// password
-	stf := coface.NewSecureTextField()
+	stf := appkit.NewSecureTextField()
 	stf.SetFrame(rectOf(340, 100, 150, 25))
 	tfd2 := &appkit.TextFieldDelegateImpl{}
 	tfd2.SetControlTextDidChange(func(obj foundation.Notification) {

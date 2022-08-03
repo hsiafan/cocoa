@@ -30,7 +30,6 @@ type ITableView interface {
 	RemoveRowsAtIndexes_WithAnimation(indexes foundation.IIndexSet, animationOptions TableViewAnimationOptions)
 	RowForView(view IView) int
 	ColumnForView(view IView) int
-	RegisterNib_ForIdentifier(nib INib, identifier UserInterfaceItemIdentifier)
 	IndicatorImageInTableColumn(tableColumn ITableColumn) Image
 	SetIndicatorImage_InTableColumn(image IImage, tableColumn ITableColumn)
 	AddTableColumn(tableColumn ITableColumn)
@@ -119,7 +118,6 @@ type ITableView interface {
 	SetDataSource(value TableViewDataSource)
 	UsesStaticContents() bool
 	SetUsesStaticContents(value bool)
-	RegisteredNibsByIdentifier() map[UserInterfaceItemIdentifier]Nib
 	DoubleAction() objc.Selector
 	SetDoubleAction(value objc.Selector)
 	ClickedColumn() int
@@ -284,10 +282,6 @@ func (t_ TableView) RowForView(view IView) int {
 func (t_ TableView) ColumnForView(view IView) int {
 	rv := ffi.CallMethod[int](t_, "columnForView:", view)
 	return rv
-}
-
-func (t_ TableView) RegisterNib_ForIdentifier(nib INib, identifier UserInterfaceItemIdentifier) {
-	ffi.CallMethod[ffi.Void](t_, "registerNib:forIdentifier:", nib, identifier)
 }
 
 func (t_ TableView) IndicatorImageInTableColumn(tableColumn ITableColumn) Image {
@@ -608,11 +602,6 @@ func (t_ TableView) UsesStaticContents() bool {
 
 func (t_ TableView) SetUsesStaticContents(value bool) {
 	ffi.CallMethod[ffi.Void](t_, "setUsesStaticContents:", value)
-}
-
-func (t_ TableView) RegisteredNibsByIdentifier() map[UserInterfaceItemIdentifier]Nib {
-	rv := ffi.CallMethod[map[UserInterfaceItemIdentifier]Nib](t_, "registeredNibsByIdentifier")
-	return rv
 }
 
 func (t_ TableView) DoubleAction() objc.Selector {

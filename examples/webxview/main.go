@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 	"github.com/hsiafan/cocoa/webkit"
@@ -18,7 +17,7 @@ var assetsFS embed.FS
 
 func main() {
 	app := appkit.ApplicationClass.SharedApplication()
-	w := coface.NewWindow(600, 400)
+	w := appkit.NewWindowWithSize(600, 400)
 	w.SetTitle("Test FS WebView")
 
 	_fs, _ := fs.Sub(assetsFS, "assets")

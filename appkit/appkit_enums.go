@@ -886,6 +886,7 @@ const FontWeightBold FontWeight = 0.4000000059604645
 const FontWeightHeavy FontWeight = 0.5600000023841858
 const FontWeightBlack FontWeight = 0.6200000047683716
 
+type FontWidth float64
 type GestureRecognizerState int
 
 const GestureRecognizerStatePossible GestureRecognizerState = 0

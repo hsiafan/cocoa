@@ -20,6 +20,7 @@ type ITrackingArea interface {
 	Options() TrackingAreaOptions
 	Owner() objc.Object
 	Rect() foundation.Rect
+	UserInfo() foundation.Dictionary
 }
 
 type TrackingArea struct {
@@ -30,6 +31,12 @@ func MakeTrackingArea(ptr unsafe.Pointer) TrackingArea {
 	return TrackingArea{
 		Object: objc.MakeObject(ptr),
 	}
+}
+
+func (t_ TrackingArea) InitWithRect_Options_Owner_UserInfo(rect foundation.Rect, options TrackingAreaOptions, owner objc.IObject, userInfo foundation.IDictionary) TrackingArea {
+	rv := ffi.CallMethod[TrackingArea](t_, "initWithRect:options:owner:userInfo:", rect, options, owner, userInfo)
+	rv.Autorelease()
+	return rv
 }
 
 func (tc _TrackingAreaClass) Alloc() TrackingArea {
@@ -65,5 +72,10 @@ func (t_ TrackingArea) Owner() objc.Object {
 
 func (t_ TrackingArea) Rect() foundation.Rect {
 	rv := ffi.CallMethod[foundation.Rect](t_, "rect")
+	return rv
+}
+
+func (t_ TrackingArea) UserInfo() foundation.Dictionary {
+	rv := ffi.CallMethod[foundation.Dictionary](t_, "userInfo")
 	return rv
 }

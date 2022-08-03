@@ -5,7 +5,6 @@ import (
 	"strconv"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface"
 	"github.com/hsiafan/cocoa/foundation"
 )
 
@@ -16,7 +15,7 @@ func init() {
 
 func initAndRun() {
 	app := appkit.ApplicationClass.SharedApplication()
-	w := coface.NewWindow(720, 440)
+	w := appkit.NewWindowWithSize(720, 440)
 	w.SetTitle("Decoder")
 
 	tabView := appkit.TabViewClass.New()
@@ -49,7 +48,7 @@ func initAndRun() {
 func createNewView(idx int) appkit.ITabViewItem {
 	sv := appkit.StackViewClass.New()
 	sv.SetTranslatesAutoresizingMaskIntoConstraints(true)
-	sv.AddView_InGravity(coface.NewButton("button"), appkit.StackViewGravityTop)
+	sv.AddView_InGravity(appkit.NewButtonWithTitle("button"), appkit.StackViewGravityTop)
 	sv.AddView_InGravity(appkit.TextFieldClass.New(), appkit.StackViewGravityTop)
 	ti := appkit.TabViewItemClass.New()
 	ti.SetLabel("Tab" + strconv.Itoa(idx))

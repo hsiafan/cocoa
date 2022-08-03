@@ -7,7 +7,7 @@ import (
 	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
-	"github.com/hsiafan/cocoa/uti"
+	"github.com/hsiafan/cocoa/uniformtypeidentifiers"
 )
 
 var PanelClass = _PanelClass{objc.GetClass("NSPanel")}
@@ -153,8 +153,8 @@ type ISavePanel interface {
 	IsExtensionHidden() bool
 	SetExtensionHidden(value bool)
 	IsExpanded() bool
-	AllowedContentTypes() []uti.Type
-	SetAllowedContentTypes(value []uti.IType)
+	AllowedContentTypes() []uniformtypeidentifiers.Type
+	SetAllowedContentTypes(value []uniformtypeidentifiers.IType)
 	AllowsOtherFileTypes() bool
 	SetAllowsOtherFileTypes(value bool)
 	TreatsFilePackagesAsDirectories() bool
@@ -428,12 +428,12 @@ func (s_ SavePanel) IsExpanded() bool {
 	return rv
 }
 
-func (s_ SavePanel) AllowedContentTypes() []uti.Type {
-	rv := ffi.CallMethod[[]uti.Type](s_, "allowedContentTypes")
+func (s_ SavePanel) AllowedContentTypes() []uniformtypeidentifiers.Type {
+	rv := ffi.CallMethod[[]uniformtypeidentifiers.Type](s_, "allowedContentTypes")
 	return rv
 }
 
-func (s_ SavePanel) SetAllowedContentTypes(value []uti.IType) {
+func (s_ SavePanel) SetAllowedContentTypes(value []uniformtypeidentifiers.IType) {
 	ffi.CallMethod[ffi.Void](s_, "setAllowedContentTypes:", value)
 }
 

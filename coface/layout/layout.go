@@ -1,4 +1,4 @@
-package coface
+package layout
 
 import "github.com/hsiafan/cocoa/appkit"
 
@@ -39,12 +39,5 @@ func UseSameMaxWidth(controls ...appkit.IControl) {
 	}
 	for _, control := range controls {
 		control.WidthAnchor().ConstraintEqualToConstant(maxWidth).SetActive(true)
-	}
-}
-
-// DisableAutoresizingMaskTranslation SetTranslatesAutoresizingMaskIntoConstraints to NO for all views
-func DisableAutoresizingMaskTranslation(views ...appkit.View) {
-	for _, view := range views {
-		view.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	}
 }

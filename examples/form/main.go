@@ -4,7 +4,7 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface"
+	"github.com/hsiafan/cocoa/coface/widgets"
 	"github.com/hsiafan/cocoa/foundation"
 )
 
@@ -17,17 +17,17 @@ func initAndRun() {
 	app := appkit.ApplicationClass.SharedApplication()
 	app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
 	app.ActivateIgnoringOtherApps(true)
-	w := coface.NewWindow(600, 400)
+	w := appkit.NewWindowWithSize(600, 400)
 	w.SetTitle("Form")
 
-	fv := coface.NewFormView()
+	fv := widgets.NewFormView()
 	fv.SetLabelWidth(100)
-	fv.SetLabelAlignment(coface.LabelAlignmentTrailing)
+	fv.SetLabelAlignment(widgets.LabelAlignmentTrailing)
 	fv.SetLabelControlSpacing(10)
-	fv.AddRow("user", coface.NewTextField())
+	fv.AddRow("user", appkit.NewTextField())
 	fv.SetLabelFont(appkit.FontClass.UserFontOfSize(13))
-	fv.AddRow("password", coface.NewSecureTextField())
-	cb := coface.NewCheckBox("")
+	fv.AddRow("password", appkit.NewSecureTextField())
+	cb := appkit.NewCheckBox("")
 	fv.AddRow("males", cb)
 	fv.AddExpandRow()
 

@@ -1,5 +1,5 @@
 // auto-generated code, do not modify
-package uti
+package uniformtypeidentifiers
 
 import (
 	"unsafe"

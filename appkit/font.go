@@ -227,6 +227,11 @@ func (f_ Font) FontWithSize(fontSize float64) Font {
 	return rv
 }
 
+func (fc _FontClass) SystemFontOfSize_Weight_Width(fontSize float64, weight FontWeight, width FontWidth) Font {
+	rv := ffi.CallMethod[Font](fc, "systemFontOfSize:weight:width:", fontSize, weight, width)
+	return rv
+}
+
 func (f_ Font) BoundingRectForCGGlyph(glyph coregraphics.Glyph) foundation.Rect {
 	rv := ffi.CallMethod[foundation.Rect](f_, "boundingRectForCGGlyph:", glyph)
 	return rv

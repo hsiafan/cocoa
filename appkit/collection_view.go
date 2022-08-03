@@ -19,9 +19,7 @@ type _CollectionViewClass struct {
 type ICollectionView interface {
 	IView
 	MakeItemWithIdentifier_ForIndexPath(identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) CollectionViewItem
-	RegisterNib_ForItemWithIdentifier(nib INib, identifier UserInterfaceItemIdentifier)
 	MakeSupplementaryViewOfKind_WithIdentifier_ForIndexPath(elementKind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) View
-	RegisterNib_ForSupplementaryViewOfKind_WithIdentifier(nib INib, kind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier)
 	ReloadData()
 	ReloadSections(sections foundation.IIndexSet)
 	ReloadItemsAtIndexPaths(indexPaths foundation.ISet)
@@ -149,17 +147,9 @@ func (c_ CollectionView) MakeItemWithIdentifier_ForIndexPath(identifier UserInte
 	return rv
 }
 
-func (c_ CollectionView) RegisterNib_ForItemWithIdentifier(nib INib, identifier UserInterfaceItemIdentifier) {
-	ffi.CallMethod[ffi.Void](c_, "registerNib:forItemWithIdentifier:", nib, identifier)
-}
-
 func (c_ CollectionView) MakeSupplementaryViewOfKind_WithIdentifier_ForIndexPath(elementKind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) View {
 	rv := ffi.CallMethod[View](c_, "makeSupplementaryViewOfKind:withIdentifier:forIndexPath:", elementKind, identifier, indexPath)
 	return rv
-}
-
-func (c_ CollectionView) RegisterNib_ForSupplementaryViewOfKind_WithIdentifier(nib INib, kind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier) {
-	ffi.CallMethod[ffi.Void](c_, "registerNib:forSupplementaryViewOfKind:withIdentifier:", nib, kind, identifier)
 }
 
 func (c_ CollectionView) ReloadData() {
@@ -2154,7 +2144,6 @@ type ICollectionViewLayout interface {
 	InvalidationContextForPreferredLayoutAttributes_WithOriginalAttributes(preferredAttributes ICollectionViewLayoutAttributes, originalAttributes ICollectionViewLayoutAttributes) CollectionViewLayoutInvalidationContext
 	PrepareForAnimatedBoundsChange(oldBounds foundation.Rect)
 	FinalizeAnimatedBoundsChange()
-	RegisterNib_ForDecorationViewOfKind(nib INib, elementKind CollectionViewDecorationElementKind)
 	PrepareForTransitionFromLayout(oldLayout ICollectionViewLayout)
 	PrepareForTransitionToLayout(newLayout ICollectionViewLayout)
 	FinalizeLayoutTransition()
@@ -2332,10 +2321,6 @@ func (c_ CollectionViewLayout) PrepareForAnimatedBoundsChange(oldBounds foundati
 
 func (c_ CollectionViewLayout) FinalizeAnimatedBoundsChange() {
 	ffi.CallMethod[ffi.Void](c_, "finalizeAnimatedBoundsChange")
-}
-
-func (c_ CollectionViewLayout) RegisterNib_ForDecorationViewOfKind(nib INib, elementKind CollectionViewDecorationElementKind) {
-	ffi.CallMethod[ffi.Void](c_, "registerNib:forDecorationViewOfKind:", nib, elementKind)
 }
 
 func (c_ CollectionViewLayout) PrepareForTransitionFromLayout(oldLayout ICollectionViewLayout) {
@@ -3206,12 +3191,12 @@ type ICollectionLayoutSection interface {
 	SetInterGroupSpacing(value float64)
 	ContentInsets() DirectionalEdgeInsets
 	SetContentInsets(value DirectionalEdgeInsets)
-	SupplementariesFollowContentInsets() bool
-	SetSupplementariesFollowContentInsets(value bool)
 	BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem
 	SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem)
 	DecorationItems() []CollectionLayoutDecorationItem
 	SetDecorationItems(value []ICollectionLayoutDecorationItem)
+	SupplementariesFollowContentInsets() bool
+	SetSupplementariesFollowContentInsets(value bool)
 }
 
 type CollectionLayoutSection struct {
@@ -3277,15 +3262,6 @@ func (c_ CollectionLayoutSection) SetContentInsets(value DirectionalEdgeInsets) 
 	ffi.CallMethod[ffi.Void](c_, "setContentInsets:", value)
 }
 
-func (c_ CollectionLayoutSection) SupplementariesFollowContentInsets() bool {
-	rv := ffi.CallMethod[bool](c_, "supplementariesFollowContentInsets")
-	return rv
-}
-
-func (c_ CollectionLayoutSection) SetSupplementariesFollowContentInsets(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setSupplementariesFollowContentInsets:", value)
-}
-
 func (c_ CollectionLayoutSection) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
 	rv := ffi.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, "boundarySupplementaryItems")
 	return rv
@@ -3302,6 +3278,15 @@ func (c_ CollectionLayoutSection) DecorationItems() []CollectionLayoutDecoration
 
 func (c_ CollectionLayoutSection) SetDecorationItems(value []ICollectionLayoutDecorationItem) {
 	ffi.CallMethod[ffi.Void](c_, "setDecorationItems:", value)
+}
+
+func (c_ CollectionLayoutSection) SupplementariesFollowContentInsets() bool {
+	rv := ffi.CallMethod[bool](c_, "supplementariesFollowContentInsets")
+	return rv
+}
+
+func (c_ CollectionLayoutSection) SetSupplementariesFollowContentInsets(value bool) {
+	ffi.CallMethod[ffi.Void](c_, "setSupplementariesFollowContentInsets:", value)
 }
 
 var CollectionLayoutGroupCustomItemClass = _CollectionLayoutGroupCustomItemClass{objc.GetClass("NSCollectionLayoutGroupCustomItem")}
@@ -3786,13 +3771,13 @@ func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSize_Subitems(lay
 	return rv
 }
 
-func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSize_Subitem_Count(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	rv := ffi.CallMethod[CollectionLayoutGroup](cc, "horizontalGroupWithLayoutSize:subitem:count:", layoutSize, subitem, count)
+func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSize_Subitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
+	rv := ffi.CallMethod[CollectionLayoutGroup](cc, "verticalGroupWithLayoutSize:subitems:", layoutSize, subitems)
 	return rv
 }
 
-func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSize_Subitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := ffi.CallMethod[CollectionLayoutGroup](cc, "verticalGroupWithLayoutSize:subitems:", layoutSize, subitems)
+func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSize_Subitem_Count(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
+	rv := ffi.CallMethod[CollectionLayoutGroup](cc, "horizontalGroupWithLayoutSize:subitem:count:", layoutSize, subitem, count)
 	return rv
 }
 

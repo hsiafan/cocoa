@@ -1,4 +1,4 @@
-package coface
+package widgets
 
 import (
 	"github.com/hsiafan/cocoa/appkit"
@@ -96,7 +96,7 @@ func (f *FormView) SetLabelControlSpacing(spacing float64) {
 }
 
 func (f *FormView) newLabel(name string) appkit.ITextField {
-	label := NewLabel(name)
+	label := appkit.NewLabel(name)
 	label.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	if f.labelFont != nil && f.labelFont.Ptr() != nil {
 		label.SetFont(f.labelFont)

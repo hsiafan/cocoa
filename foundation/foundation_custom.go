@@ -199,6 +199,7 @@ func (s MutableSet) AddObject(o objc.IObject) {
 
 type IArray interface {
 	objc.IObject
+	ObjectAtIndex(index uint) objc.Object
 	Count() uint
 }
 
@@ -210,6 +211,10 @@ func MakeArray(ptr unsafe.Pointer) Array {
 	return Array{
 		Object: objc.MakeObject(ptr),
 	}
+}
+
+func (a Array) ObjectAtIndex(index uint) objc.Object {
+	return ffi.CallMethod[objc.Object](a, "objectAtIndex:", index)
 }
 
 func (a Array) Count() uint {
@@ -228,6 +233,9 @@ func ArrayToSlice[T any](a Array) []T {
 type IMutableArray interface {
 	IArray
 	AddObject(o objc.IObject)
+	InsertObject_AtIndex(o objc.IObject, index uint)
+	RemoveObjectAtIndex(index uint)
+	ReplaceObjectAtIndex_WithObject(index uint, o objc.IObject)
 }
 
 type MutableArray struct {
@@ -258,8 +266,23 @@ func (a MutableArray) AddObject(o objc.IObject) {
 	ffi.CallMethod[ffi.Void](a, "addObject:", o)
 }
 
+func (a MutableArray) InsertObject_AtIndex(o objc.IObject, index uint) {
+	ffi.CallMethod[ffi.Void](a, "insertObject:atIndex:", o, index)
+}
+
+func (a MutableArray) RemoveObjectAtIndex(index uint) {
+	ffi.CallMethod[ffi.Void](a, "removeObjectAtIndex:", index)
+}
+
+func (a MutableArray) ReplaceObjectAtIndex_WithObject(index uint, o objc.IObject) {
+	ffi.CallMethod[ffi.Void](a, "replaceObjectAtIndex:withObject:", index, o)
+}
+
 type IDictionary interface {
 	objc.IObject
+	ObjectForKey(key objc.IObject) objc.Object
+	AllKeys() Array
+	AllValues() Array
 	Count() uint
 }
 
@@ -271,6 +294,18 @@ func MakeDictionary(ptr unsafe.Pointer) Dictionary {
 	return Dictionary{
 		Object: objc.MakeObject(ptr),
 	}
+}
+
+func (d Dictionary) ObjectForKey(key objc.IObject) objc.Object {
+	return ffi.CallMethod[objc.Object](d, "objectForKey:", key)
+}
+
+func (d Dictionary) AllKeys() Array {
+	return ffi.CallMethod[Array](d, "allKeys")
+}
+
+func (d Dictionary) AllValues() Array {
+	return ffi.CallMethod[Array](d, "allValues")
 }
 
 func (d Dictionary) Count() uint {
@@ -288,6 +323,8 @@ func DictToMap[K comparable, V any](d Dictionary) map[K]V {
 
 type IMutableDictionary interface {
 	IDictionary
+	SetObject_ForKey(value objc.IObject, key objc.IObject)
+	RemoveObjectForKey(key objc.IObject)
 }
 
 type MutableDictionary struct {
@@ -310,8 +347,12 @@ func NewMutableDictionaryWithDictionary(dict IDictionary) MutableDictionary {
 	return ffi.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionaryWithDictionary:", dict)
 }
 
-func (d MutableDictionary) SetObject(k objc.IObject, v objc.IObject) {
-	ffi.CallMethod[ffi.Void](d, "setObject:forKey:", v, k)
+func (d MutableDictionary) SetObject_ForKey(value objc.IObject, key objc.IObject) {
+	ffi.CallMethod[ffi.Void](d, "setObject:forKey:", value, key)
+}
+
+func (d MutableDictionary) RemoveObjectForKey(key objc.IObject) {
+	ffi.CallMethod[ffi.Void](d, "removeObjectsForKeys:", key)
 }
 
 func ToNSError(code int, err error) Error {

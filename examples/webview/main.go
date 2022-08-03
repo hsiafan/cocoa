@@ -6,7 +6,6 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 	"github.com/hsiafan/cocoa/webkit"
@@ -22,10 +21,10 @@ func initAndRun() {
 	var url = "https://www.test.com"
 
 	app := appkit.ApplicationClass.SharedApplication()
-	w := coface.NewWindow(600, 400)
+	w := appkit.NewWindowWithSize(600, 400)
 	w.SetTitle("Test widgets")
 
-	sv := coface.NewVerticalStackView()
+	sv := appkit.NewVerticalStackView()
 	w.SetContentView(sv)
 
 	webView := webkit.WebViewClass.New()
@@ -33,9 +32,9 @@ func initAndRun() {
 	webView.LoadHTMLString_BaseURL(html, foundation.URLClass.URLWithString(url))
 	sv.AddView_InGravity(webView, appkit.StackViewGravityTop)
 
-	snapshotButton := coface.NewButton("capture")
+	snapshotButton := appkit.NewButtonWithTitle("capture")
 
-	snapshotWin := coface.NewWindow(0, 0)
+	snapshotWin := appkit.NewWindowWithSize(0, 0)
 	snapshotWin.SetTitle("Test widgets")
 
 	snapshotWebView := webkit.WebViewClass.New()

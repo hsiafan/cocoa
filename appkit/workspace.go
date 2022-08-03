@@ -7,7 +7,7 @@ import (
 	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
-	"github.com/hsiafan/cocoa/uti"
+	"github.com/hsiafan/cocoa/uniformtypeidentifiers"
 )
 
 var WorkspaceClass = _WorkspaceClass{objc.GetClass("NSWorkspace")}
@@ -20,6 +20,8 @@ type IWorkspace interface {
 	objc.IObject
 	OpenURL(url foundation.IURL) bool
 	HideOtherApplications()
+	DuplicateURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error))
+	RecycleURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error))
 	ActivateFileViewerSelectingURLs(fileURLs []foundation.IURL)
 	SelectFile_InFileViewerRootedAtPath(fullPath string, rootFullPath string) bool
 	// deprecated
@@ -40,7 +42,7 @@ type IWorkspace interface {
 	IsFilePackageAtPath(fullPath string) bool
 	IconForFile(fullPath string) Image
 	IconForFiles(fullPaths []string) Image
-	IconForContentType(contentType uti.IType) Image
+	IconForContentType(contentType uniformtypeidentifiers.IType) Image
 	SetIcon_ForFile_Options(image IImage, fullPath string, options WorkspaceIconCreationOptions) bool
 	UnmountAndEjectDeviceAtPath(path string) bool
 	UnmountAndEjectDeviceAtURL_Error(url foundation.IURL, error *foundation.Error) bool
@@ -50,12 +52,12 @@ type IWorkspace interface {
 	ShowSearchResultsForQueryString(queryString string) bool
 	NoteFileSystemChanged_(path string)
 	ExtendPowerOffBy(requested int) int
-	SetDefaultApplicationAtURL_ToOpenContentType_CompletionHandler(applicationURL foundation.IURL, contentType uti.IType, completionHandler func(error foundation.Error))
+	SetDefaultApplicationAtURL_ToOpenContentType_CompletionHandler(applicationURL foundation.IURL, contentType uniformtypeidentifiers.IType, completionHandler func(error foundation.Error))
 	SetDefaultApplicationAtURL_ToOpenContentTypeOfFileAtURL_CompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error))
 	SetDefaultApplicationAtURL_ToOpenFileAtURL_CompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error))
 	SetDefaultApplicationAtURL_ToOpenURLsWithScheme_CompletionHandler(applicationURL foundation.IURL, urlScheme string, completionHandler func(error foundation.Error))
-	URLForApplicationToOpenContentType(contentType uti.IType) foundation.URL
-	URLsForApplicationsToOpenContentType(contentType uti.IType) []foundation.URL
+	URLForApplicationToOpenContentType(contentType uniformtypeidentifiers.IType) foundation.URL
+	URLsForApplicationsToOpenContentType(contentType uniformtypeidentifiers.IType) []foundation.URL
 	URLsForApplicationsToOpenURL(url foundation.IURL) []foundation.URL
 	URLsForApplicationsWithBundleIdentifier(bundleIdentifier string) []foundation.URL
 	// deprecated
@@ -167,6 +169,14 @@ func (w_ Workspace) HideOtherApplications() {
 	ffi.CallMethod[ffi.Void](w_, "hideOtherApplications")
 }
 
+func (w_ Workspace) DuplicateURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error)) {
+	ffi.CallMethod[ffi.Void](w_, "duplicateURLs:completionHandler:", URLs, handler)
+}
+
+func (w_ Workspace) RecycleURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error)) {
+	ffi.CallMethod[ffi.Void](w_, "recycleURLs:completionHandler:", URLs, handler)
+}
+
 func (w_ Workspace) ActivateFileViewerSelectingURLs(fileURLs []foundation.IURL) {
 	ffi.CallMethod[ffi.Void](w_, "activateFileViewerSelectingURLs:", fileURLs)
 }
@@ -242,7 +252,7 @@ func (w_ Workspace) IconForFiles(fullPaths []string) Image {
 	return rv
 }
 
-func (w_ Workspace) IconForContentType(contentType uti.IType) Image {
+func (w_ Workspace) IconForContentType(contentType uniformtypeidentifiers.IType) Image {
 	rv := ffi.CallMethod[Image](w_, "iconForContentType:", contentType)
 	return rv
 }
@@ -291,7 +301,7 @@ func (w_ Workspace) ExtendPowerOffBy(requested int) int {
 	return rv
 }
 
-func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenContentType_CompletionHandler(applicationURL foundation.IURL, contentType uti.IType, completionHandler func(error foundation.Error)) {
+func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenContentType_CompletionHandler(applicationURL foundation.IURL, contentType uniformtypeidentifiers.IType, completionHandler func(error foundation.Error)) {
 	ffi.CallMethod[ffi.Void](w_, "setDefaultApplicationAtURL:toOpenContentType:completionHandler:", applicationURL, contentType, completionHandler)
 }
 
@@ -307,12 +317,12 @@ func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenURLsWithScheme_CompletionHa
 	ffi.CallMethod[ffi.Void](w_, "setDefaultApplicationAtURL:toOpenURLsWithScheme:completionHandler:", applicationURL, urlScheme, completionHandler)
 }
 
-func (w_ Workspace) URLForApplicationToOpenContentType(contentType uti.IType) foundation.URL {
+func (w_ Workspace) URLForApplicationToOpenContentType(contentType uniformtypeidentifiers.IType) foundation.URL {
 	rv := ffi.CallMethod[foundation.URL](w_, "URLForApplicationToOpenContentType:", contentType)
 	return rv
 }
 
-func (w_ Workspace) URLsForApplicationsToOpenContentType(contentType uti.IType) []foundation.URL {
+func (w_ Workspace) URLsForApplicationsToOpenContentType(contentType uniformtypeidentifiers.IType) []foundation.URL {
 	rv := ffi.CallMethod[[]foundation.URL](w_, "URLsForApplicationsToOpenContentType:", contentType)
 	return rv
 }
