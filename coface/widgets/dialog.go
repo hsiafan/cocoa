@@ -23,7 +23,9 @@ func NewDialog(width, height float64) *Dialog {
 	view := appkit.ViewClass.New()
 	view.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	ok := appkit.NewButtonWithTitle("OK")
+	ok.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	cancel := appkit.NewButtonWithTitle("Cancel")
+	cancel.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	contentView.AddSubview(view)
 	contentView.AddSubview(ok)
 	contentView.AddSubview(cancel)
@@ -48,6 +50,7 @@ func NewDialog(width, height float64) *Dialog {
 
 // SetView set inner content view for Dialog
 func (d *Dialog) SetView(view appkit.IView) {
+	view.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	d.content.AddSubview(view)
 	view.LeftAnchor().ConstraintEqualToAnchor(d.content.LeftAnchor()).SetActive(true)
 	view.TopAnchor().ConstraintEqualToAnchor(d.content.TopAnchor()).SetActive(true)

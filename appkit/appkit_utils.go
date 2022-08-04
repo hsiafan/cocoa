@@ -5,6 +5,11 @@ import (
 	"github.com/hsiafan/cocoa/objc"
 )
 
+func DisableAutoresizingTranslate[T IView](v T) T {
+	v.SetTranslatesAutoresizingMaskIntoConstraints(false)
+	return v
+}
+
 // NewMenuItem create a new menu item, with selector
 func NewMenuItemWithSelector(title string, charCode string, selector objc.Selector) MenuItem {
 	return MenuItemClass.Alloc().InitWithTitle_Action_KeyEquivalent(title, selector, charCode)

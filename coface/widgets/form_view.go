@@ -43,6 +43,7 @@ func (f *FormView) AddExpandRow() {
 // AddRow add a new form row
 func (f *FormView) AddRow(name string, control appkit.IControl) {
 	label := f.newLabel(name)
+	control.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	control.SetContentCompressionResistancePriority_ForOrientation(appkit.LayoutPriorityRequired, appkit.LayoutConstraintOrientationVertical)
 	f.AddRowWithViews([]appkit.IView{label, control})
 }
