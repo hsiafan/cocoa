@@ -9,6 +9,46 @@ func AliginAnchors(anchor appkit.ILayoutAnchor, targetAncor appkit.ILayoutAnchor
 	anchor.ConstraintEqualToAnchor(targetAncor).SetActive(true)
 }
 
+func AliginBottom(view appkit.IView, targetView appkit.IView) {
+	view.BottomAnchor().ConstraintEqualToAnchor(targetView.BottomAnchor()).SetActive(true)
+}
+
+func AliginLeft(view appkit.IView, targetView appkit.IView) {
+	view.LeftAnchor().ConstraintEqualToAnchor(targetView.LeftAnchor()).SetActive(true)
+}
+
+func AliginTop(view appkit.IView, targetView appkit.IView) {
+	view.TopAnchor().ConstraintEqualToAnchor(targetView.TopAnchor()).SetActive(true)
+}
+
+func AliginRight(view appkit.IView, targetView appkit.IView) {
+	view.RightAnchor().ConstraintEqualToAnchor(targetView.RightAnchor()).SetActive(true)
+}
+
+func AliginLeading(view appkit.IView, targetView appkit.IView) {
+	view.LeadingAnchor().ConstraintEqualToAnchor(targetView.LeadingAnchor()).SetActive(true)
+}
+
+func AliginTrailing(view appkit.IView, targetView appkit.IView) {
+	view.TrailingAnchor().ConstraintEqualToAnchor(targetView.TrailingAnchor()).SetActive(true)
+}
+
+func AliginFirstBaseline(view appkit.IView, targetView appkit.IView) {
+	view.FirstBaselineAnchor().ConstraintEqualToAnchor(targetView.FirstBaselineAnchor()).SetActive(true)
+}
+
+func AliginLastBaseline(view appkit.IView, targetView appkit.IView) {
+	view.LastBaselineAnchor().ConstraintEqualToAnchor(targetView.LastBaselineAnchor()).SetActive(true)
+}
+
+func AliginCenterX(view appkit.IView, targetView appkit.IView) {
+	view.CenterXAnchor().ConstraintEqualToAnchor(targetView.CenterXAnchor()).SetActive(true)
+}
+
+func AliginCenterY(view appkit.IView, targetView appkit.IView) {
+	view.CenterYAnchor().ConstraintEqualToAnchor(targetView.CenterYAnchor()).SetActive(true)
+}
+
 func PinAnchorTo(anchor appkit.ILayoutAnchor, targetAncor appkit.ILayoutAnchor, offset float64) {
 	anchor.ConstraintEqualToAnchor_Constant(targetAncor, offset).SetActive(true)
 }
@@ -49,11 +89,11 @@ func SetMinHeight(view appkit.IView, height float64) {
 	view.HeightAnchor().ConstraintGreaterThanOrEqualToConstant(height).SetActive(true)
 }
 
-func AlignWidthWith(view appkit.IView, targetView appkit.IView) {
+func AlignWidth(view appkit.IView, targetView appkit.IView) {
 	view.WidthAnchor().ConstraintEqualToAnchor(targetView.WidthAnchor()).SetActive(true)
 }
 
-func AlginHeightWith(view appkit.IView, targetView appkit.IView) {
+func AlginHeight(view appkit.IView, targetView appkit.IView) {
 	view.HeightAnchor().ConstraintEqualToAnchor(targetView.HeightAnchor()).SetActive(true)
 }
 

@@ -4,6 +4,7 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
+	"github.com/hsiafan/cocoa/coface/layout"
 	"github.com/hsiafan/cocoa/coface/widgets"
 	"github.com/hsiafan/cocoa/foundation"
 )
@@ -32,10 +33,7 @@ func initAndRun() {
 	fv.AddExpandRow()
 
 	w.ContentView().AddSubview(fv)
-	fv.LeftAnchor().ConstraintEqualToAnchor_Constant(w.ContentView().LeftAnchor(), 10).SetActive(true)
-	fv.TopAnchor().ConstraintEqualToAnchor_Constant(w.ContentView().TopAnchor(), 10).SetActive(true)
-	fv.RightAnchor().ConstraintEqualToAnchor_Constant(w.ContentView().RightAnchor(), -10).SetActive(true)
-	fv.BottomAnchor().ConstraintEqualToAnchor_Constant(w.ContentView().BottomAnchor(), -10).SetActive(true)
+	layout.PinEdgesToSuperView(fv, foundation.EdgeInsets{Top: 10, Left: 10, Bottom: 10, Right: 10})
 
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()

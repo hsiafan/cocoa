@@ -46,7 +46,7 @@ func NewDialogWithEdgeInsets(width, height float64, edgeInsets foundation.EdgeIn
 	layout.PinAnchorTo(ok.RightAnchor(), contentView.RightAnchor(), -edgeInsets.Right)
 	layout.PinAnchorTo(cancel.BottomAnchor(), contentView.BottomAnchor(), -edgeInsets.Bottom)
 	layout.PinAnchorTo(cancel.RightAnchor(), ok.LeftAnchor(), -10)
-	layout.AlignWidthWith(ok, cancel)
+	layout.AlignWidth(ok, cancel)
 	layout.PinAnchorTo(view.BottomAnchor(), ok.TopAnchor(), -10)
 	layout.PinAnchorTo(view.LeftAnchor(), contentView.LeftAnchor(), edgeInsets.Left)
 	layout.PinAnchorTo(view.TopAnchor(), contentView.TopAnchor(), edgeInsets.Top)
