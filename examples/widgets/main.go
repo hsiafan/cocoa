@@ -5,6 +5,7 @@ import (
 	"runtime"
 	"time"
 
+	"github.com/hsiafan/cocoa/coface/action"
 	"github.com/hsiafan/cocoa/dispatch"
 
 	"github.com/hsiafan/cocoa/appkit"
@@ -32,7 +33,7 @@ func initAndRun() {
 
 	saveButton := appkit.NewButtonWithTitle("Save...")
 	saveButton.SetFrame(rectOf(250, 330, 80, 20))
-	objc.SetAction(saveButton, func(sender objc.IObject) {
+	action.Set(saveButton, func(sender objc.IObject) {
 		savePanel := appkit.SavePanelClass.New()
 		// if savePanel.RunModal() == appkit.ModalResponseOK {
 		// 	filePathField.SetStringValue(savePanel.URL().Path())
@@ -64,7 +65,7 @@ func initAndRun() {
 	w.ContentView().AddSubview(comboBox)
 
 	slider := appkit.SliderClass.Alloc().InitWithFrame(rectOf(330, 290, 100, 25))
-	objc.SetAction(slider, func(sender objc.IObject) {
+	action.Set(slider, func(sender objc.IObject) {
 		presentationTF.SetDoubleValue(slider.DoubleValue())
 	})
 	slider.SetMaxValue(10)
@@ -96,7 +97,7 @@ func initAndRun() {
 
 	quitBtn := appkit.NewButtonWithTitle("Quit")
 	quitBtn.SetFrame(rectOf(10, 130, 80, 25))
-	objc.SetAction(quitBtn, func(sender objc.IObject) {
+	action.Set(quitBtn, func(sender objc.IObject) {
 		app.Terminate(nil)
 	})
 	w.ContentView().AddSubview(quitBtn)
@@ -117,7 +118,7 @@ func initAndRun() {
 		})
 	})
 	tf.SetDelegate(tfd)
-	objc.SetAction(btn, func(sender objc.IObject) {
+	action.Set(btn, func(sender objc.IObject) {
 		label.SetTextColor(appkit.ColorClass.RedColor())
 	})
 

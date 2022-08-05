@@ -5,6 +5,7 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
+	"github.com/hsiafan/cocoa/coface/action"
 	"github.com/hsiafan/cocoa/coface/layout"
 	"github.com/hsiafan/cocoa/coface/widgets"
 	"github.com/hsiafan/cocoa/foundation"
@@ -28,7 +29,7 @@ func initAndRun() {
 	dButton := appkit.NewButtonWithTitle("dialog")
 	textView := appkit.TextViewClass.ScrollableTextView()
 
-	objc.SetAction(mdButton, func(sender objc.IObject) {
+	action.Set(mdButton, func(sender objc.IObject) {
 		d := widgets.NewDialog(400, 300)
 		d.SetView(appkit.NewLabel("test modal dialog"))
 		if d.RunModal() == appkit.ModalResponseOK {
@@ -36,7 +37,7 @@ func initAndRun() {
 		}
 	})
 
-	objc.SetAction(dButton, func(sender objc.IObject) {
+	action.Set(dButton, func(sender objc.IObject) {
 		d := widgets.NewDialog(400, 300)
 		d.SetView(appkit.NewLabel("test dialog"))
 		d.Center()
@@ -65,7 +66,7 @@ func initAndRun() {
 	stackView.SetSpacing(10)
 
 	w.ContentView().AddSubview(stackView)
-	layout.SetMargin(w.ContentView(), stackView, 20, 10)
+	layout.PinEdgesToSuperView(stackView, foundation.EdgeInsets{Top: 10, Bottom: 10, Left: 20, Right: 20})
 
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()

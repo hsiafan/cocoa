@@ -1,6 +1,7 @@
 package appkit
 
 import (
+	"github.com/hsiafan/cocoa/coface/action"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -16,9 +17,9 @@ func NewMenuItemWithSelector(title string, charCode string, selector objc.Select
 }
 
 // NewMenuItemWithAction create a new menu item with action
-func NewMenuItemWithAction(title string, charCode string, handler objc.ActionHandler) MenuItem {
+func NewMenuItemWithAction(title string, charCode string, handler action.Handler) MenuItem {
 	item := MenuItemClass.Alloc().InitWithTitle_Action_KeyEquivalent(title, objc.Selector{}, charCode)
-	objc.SetAction(item, handler)
+	action.Set(item, handler)
 	return item
 }
 

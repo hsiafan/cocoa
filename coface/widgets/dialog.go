@@ -2,6 +2,8 @@ package widgets
 
 import (
 	"github.com/hsiafan/cocoa/appkit"
+	"github.com/hsiafan/cocoa/coface/action"
+	"github.com/hsiafan/cocoa/coface/layout"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -16,6 +18,16 @@ type Dialog struct {
 
 // NewDialog create new Dialog
 func NewDialog(width, height float64) *Dialog {
+	return NewDialogWithEdgeInsets(width, height, foundation.EdgeInsets{
+		Top:    10,
+		Left:   10,
+		Bottom: 10,
+		Right:  10,
+	})
+}
+
+// NewDialog create new Dialog
+func NewDialogWithEdgeInsets(width, height float64, edgeInsets foundation.EdgeInsets) *Dialog {
 	panel := appkit.PanelClass.New()
 	panel.SetFrame_Display(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
 
@@ -30,15 +42,15 @@ func NewDialog(width, height float64) *Dialog {
 	contentView.AddSubview(ok)
 	contentView.AddSubview(cancel)
 
-	ok.BottomAnchor().ConstraintEqualToAnchor_Constant(contentView.BottomAnchor(), -10).SetActive(true)
-	ok.RightAnchor().ConstraintEqualToAnchor_Constant(contentView.RightAnchor(), -15).SetActive(true)
-	cancel.BottomAnchor().ConstraintEqualToAnchor(ok.BottomAnchor()).SetActive(true)
-	cancel.RightAnchor().ConstraintEqualToAnchor_Constant(ok.LeftAnchor(), -10).SetActive(true)
-	ok.WidthAnchor().ConstraintEqualToAnchor(cancel.WidthAnchor()).SetActive(true)
-	view.BottomAnchor().ConstraintEqualToAnchor_Constant(ok.TopAnchor(), -10).SetActive(true)
-	view.LeftAnchor().ConstraintEqualToAnchor_Constant(contentView.LeftAnchor(), 10).SetActive(true)
-	view.TopAnchor().ConstraintEqualToAnchor_Constant(contentView.TopAnchor(), 10).SetActive(true)
-	view.RightAnchor().ConstraintEqualToAnchor_Constant(contentView.RightAnchor(), -10).SetActive(true)
+	layout.PinAnchorTo(ok.BottomAnchor(), contentView.BottomAnchor(), -edgeInsets.Bottom)
+	layout.PinAnchorTo(ok.RightAnchor(), contentView.RightAnchor(), -edgeInsets.Right)
+	layout.PinAnchorTo(cancel.BottomAnchor(), contentView.BottomAnchor(), -edgeInsets.Bottom)
+	layout.PinAnchorTo(cancel.RightAnchor(), ok.LeftAnchor(), -10)
+	layout.AlignWidthWith(ok, cancel)
+	layout.PinAnchorTo(view.BottomAnchor(), ok.TopAnchor(), -10)
+	layout.PinAnchorTo(view.LeftAnchor(), contentView.LeftAnchor(), edgeInsets.Left)
+	layout.PinAnchorTo(view.TopAnchor(), contentView.TopAnchor(), edgeInsets.Top)
+	layout.PinAnchorTo(view.RightAnchor(), contentView.RightAnchor(), -edgeInsets.Right)
 
 	return &Dialog{
 		Panel:   panel,
@@ -60,12 +72,12 @@ func (d *Dialog) SetView(view appkit.IView) {
 
 // Show display dialog in non-modal mode
 func (d *Dialog) Show(handle func()) {
-	objc.SetAction(d.ok, func(sender objc.IObject) {
+	action.Set(d.ok, func(sender objc.IObject) {
 		handle()
 		d.Close()
 	})
 
-	objc.SetAction(d.cancel, func(sender objc.IObject) {
+	action.Set(d.cancel, func(sender objc.IObject) {
 		d.Close()
 	})
 
@@ -76,12 +88,12 @@ func (d *Dialog) Show(handle func()) {
 func (d *Dialog) RunModal() appkit.ModalResponse {
 	app := appkit.ApplicationClass.SharedApplication()
 
-	objc.SetAction(d.ok, func(sender objc.IObject) {
+	action.Set(d.ok, func(sender objc.IObject) {
 		app.StopModalWithCode(appkit.ModalResponseOK)
 		d.Close()
 	})
 
-	objc.SetAction(d.cancel, func(sender objc.IObject) {
+	action.Set(d.cancel, func(sender objc.IObject) {
 		app.StopModalWithCode(appkit.ModalResponseCancel)
 		d.Close()
 	})

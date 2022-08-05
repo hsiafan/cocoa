@@ -34,16 +34,13 @@ func NewFormView() *FormView {
 // AddExpandRow add a row, expand to fill parent view height.
 func (f *FormView) AddExpandRow() {
 	v1 := appkit.NewView()
-	v1.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	v2 := appkit.NewView()
-	v2.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	f.AddRowWithViews([]appkit.IView{v1, v2})
 }
 
 // AddRow add a new form row
 func (f *FormView) AddRow(name string, control appkit.IControl) {
 	label := f.newLabel(name)
-	control.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	control.SetContentCompressionResistancePriority_ForOrientation(appkit.LayoutPriorityRequired, appkit.LayoutConstraintOrientationVertical)
 	f.AddRowWithViews([]appkit.IView{label, control})
 }
@@ -98,7 +95,6 @@ func (f *FormView) SetLabelControlSpacing(spacing float64) {
 
 func (f *FormView) newLabel(name string) appkit.ITextField {
 	label := appkit.NewLabel(name)
-	label.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	if f.labelFont != nil && f.labelFont.Ptr() != nil {
 		label.SetFont(f.labelFont)
 	}

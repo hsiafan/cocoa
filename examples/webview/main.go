@@ -6,6 +6,7 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
+	"github.com/hsiafan/cocoa/coface/action"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 	"github.com/hsiafan/cocoa/webkit"
@@ -60,7 +61,7 @@ func initAndRun() {
 	})
 	snapshotWebView.SetNavigationDelegate(ssnd)
 
-	objc.SetAction(snapshotButton, func(sender objc.IObject) {
+	action.Set(snapshotButton, func(sender objc.IObject) {
 		snapshotWebView.TakeSnapshotWithConfiguration_CompletionHandler(nil, func(image appkit.Image, err foundation.Error) {
 			imageRef := image.CGImageForProposedRect_Context_Hints(nil, nil, nil)
 			imageRepo := appkit.BitmapImageRepClass.Alloc().InitWithCGImage(imageRef)

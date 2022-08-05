@@ -1,34 +1,64 @@
 package layout
 
-import "github.com/hsiafan/cocoa/appkit"
+import (
+	"github.com/hsiafan/cocoa/appkit"
+	"github.com/hsiafan/cocoa/foundation"
+)
 
-// SetMargin add layout sub View with paddings.
-// The padding value sequences by top, right, bottom, left, the right/bottom/left values can be omitted.
-func SetMargin(parentView appkit.IView, view appkit.IView, top float64, values ...float64) {
-	if len(values) > 3 {
-		panic("too many values")
-	}
-
-	view.TopAnchor().ConstraintEqualToAnchor_Constant(parentView.TopAnchor(), top).SetActive(true)
-	var right, bottom, left = top, top, top
-	if len(values) >= 1 {
-		right = values[0]
-		left = right
-		if len(values) >= 2 {
-			bottom = values[1]
-		}
-		if len(values) >= 3 {
-			left = values[2]
-		}
-	}
-
-	view.RightAnchor().ConstraintEqualToAnchor_Constant(parentView.RightAnchor(), -right).SetActive(true)
-	view.BottomAnchor().ConstraintEqualToAnchor_Constant(parentView.BottomAnchor(), -bottom).SetActive(true)
-	view.LeftAnchor().ConstraintEqualToAnchor_Constant(parentView.LeftAnchor(), left).SetActive(true)
+func AliginAnchors(anchor appkit.ILayoutAnchor, targetAncor appkit.ILayoutAnchor) {
+	anchor.ConstraintEqualToAnchor(targetAncor).SetActive(true)
 }
 
-// UseSameMaxWidth set width anchor for multi controls, using the max width for all controls' width
-func UseSameMaxWidth(controls ...appkit.IControl) {
+func PinAnchorTo(anchor appkit.ILayoutAnchor, targetAncor appkit.ILayoutAnchor, offset float64) {
+	anchor.ConstraintEqualToAnchor_Constant(targetAncor, offset).SetActive(true)
+}
+
+// PinEdgesToSuperView set view's insets to it's super view.
+func PinEdgesToSuperView(view appkit.IView, edgeInsets foundation.EdgeInsets) {
+	superView := view.Superview()
+	if superView.IsNil() {
+		return
+	}
+	view.TopAnchor().ConstraintEqualToAnchor_Constant(superView.TopAnchor(), edgeInsets.Top).SetActive(true)
+	view.RightAnchor().ConstraintEqualToAnchor_Constant(superView.RightAnchor(), -edgeInsets.Right).SetActive(true)
+	view.BottomAnchor().ConstraintEqualToAnchor_Constant(superView.BottomAnchor(), -edgeInsets.Bottom).SetActive(true)
+	view.LeftAnchor().ConstraintEqualToAnchor_Constant(superView.LeftAnchor(), edgeInsets.Left).SetActive(true)
+}
+
+func SetWidth(view appkit.IView, width float64) {
+	view.WidthAnchor().ConstraintEqualToConstant(width).SetActive(true)
+}
+
+func SetHeight(view appkit.IView, height float64) {
+	view.HeightAnchor().ConstraintEqualToConstant(height).SetActive(true)
+}
+
+func SetMaxWidth(view appkit.IView, width float64) {
+	view.WidthAnchor().ConstraintLessThanOrEqualToConstant(width).SetActive(true)
+}
+
+func SetMaxHeight(view appkit.IView, height float64) {
+	view.HeightAnchor().ConstraintLessThanOrEqualToConstant(height).SetActive(true)
+}
+
+func SetMinWidth(view appkit.IView, width float64) {
+	view.WidthAnchor().Init().ConstraintGreaterThanOrEqualToConstant(width).SetActive(true)
+}
+
+func SetMinHeight(view appkit.IView, height float64) {
+	view.HeightAnchor().ConstraintGreaterThanOrEqualToConstant(height).SetActive(true)
+}
+
+func AlignWidthWith(view appkit.IView, targetView appkit.IView) {
+	view.WidthAnchor().ConstraintEqualToAnchor(targetView.WidthAnchor()).SetActive(true)
+}
+
+func AlginHeightWith(view appkit.IView, targetView appkit.IView) {
+	view.HeightAnchor().ConstraintEqualToAnchor(targetView.HeightAnchor()).SetActive(true)
+}
+
+// AutoAlignControlsWidth set width anchor for multi controls, using the max width for all controls' width
+func AutoAlignControlsWidth(controls ...appkit.IControl) {
 	var maxWidth float64
 	for _, control := range controls {
 		control.SizeToFit()
