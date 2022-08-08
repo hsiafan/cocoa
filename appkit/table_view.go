@@ -206,13 +206,11 @@ func MakeTableView(ptr unsafe.Pointer) TableView {
 
 func (t_ TableView) InitWithFrame(frameRect foundation.Rect) TableView {
 	rv := ffi.CallMethod[TableView](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TableView) Init() TableView {
 	rv := ffi.CallMethod[TableView](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1836,13 +1834,11 @@ func MakeTableCellView(ptr unsafe.Pointer) TableCellView {
 
 func (t_ TableCellView) InitWithFrame(frameRect foundation.Rect) TableCellView {
 	rv := ffi.CallMethod[TableCellView](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TableCellView) Init() TableCellView {
 	rv := ffi.CallMethod[TableCellView](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1935,19 +1931,16 @@ func MakeTableHeaderCell(ptr unsafe.Pointer) TableHeaderCell {
 
 func (t_ TableHeaderCell) InitTextCell(_string string) TableHeaderCell {
 	rv := ffi.CallMethod[TableHeaderCell](t_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TableHeaderCell) InitImageCell(image IImage) TableHeaderCell {
 	rv := ffi.CallMethod[TableHeaderCell](t_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TableHeaderCell) Init() TableHeaderCell {
 	rv := ffi.CallMethod[TableHeaderCell](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2032,7 +2025,6 @@ func MakeTableColumn(ptr unsafe.Pointer) TableColumn {
 
 func (t_ TableColumn) InitWithIdentifier(identifier UserInterfaceItemIdentifier) TableColumn {
 	rv := ffi.CallMethod[TableColumn](t_, "initWithIdentifier:", identifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -2043,7 +2035,6 @@ func (tc _TableColumnClass) Alloc() TableColumn {
 
 func (t_ TableColumn) Init() TableColumn {
 	rv := ffi.CallMethod[TableColumn](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2248,13 +2239,11 @@ func MakeTableRowView(ptr unsafe.Pointer) TableRowView {
 
 func (t_ TableRowView) InitWithFrame(frameRect foundation.Rect) TableRowView {
 	rv := ffi.CallMethod[TableRowView](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TableRowView) Init() TableRowView {
 	rv := ffi.CallMethod[TableRowView](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2432,13 +2421,11 @@ func MakeTableHeaderView(ptr unsafe.Pointer) TableHeaderView {
 
 func (t_ TableHeaderView) InitWithFrame(frameRect foundation.Rect) TableHeaderView {
 	rv := ffi.CallMethod[TableHeaderView](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TableHeaderView) Init() TableHeaderView {
 	rv := ffi.CallMethod[TableHeaderView](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2530,7 +2517,6 @@ func (tc _TableViewRowActionClass) Alloc() TableViewRowAction {
 
 func (t_ TableViewRowAction) Init() TableViewRowAction {
 	rv := ffi.CallMethod[TableViewRowAction](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

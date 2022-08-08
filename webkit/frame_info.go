@@ -40,7 +40,6 @@ func (fc _FrameInfoClass) Alloc() FrameInfo {
 
 func (f_ FrameInfo) Init() FrameInfo {
 	rv := ffi.CallMethod[FrameInfo](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -60,19 +60,16 @@ func MakeRulerView(ptr unsafe.Pointer) RulerView {
 
 func (r_ RulerView) InitWithScrollView_Orientation(scrollView IScrollView, orientation RulerOrientation) RulerView {
 	rv := ffi.CallMethod[RulerView](r_, "initWithScrollView:orientation:", scrollView, orientation)
-	rv.Autorelease()
 	return rv
 }
 
 func (r_ RulerView) InitWithFrame(frameRect foundation.Rect) RulerView {
 	rv := ffi.CallMethod[RulerView](r_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (r_ RulerView) Init() RulerView {
 	rv := ffi.CallMethod[RulerView](r_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -262,7 +259,6 @@ func MakeRulerMarker(ptr unsafe.Pointer) RulerMarker {
 
 func (r_ RulerMarker) InitWithRulerView_MarkerLocation_Image_ImageOrigin(ruler IRulerView, location float64, image IImage, imageOrigin foundation.Point) RulerMarker {
 	rv := ffi.CallMethod[RulerMarker](r_, "initWithRulerView:markerLocation:image:imageOrigin:", ruler, location, image, imageOrigin)
-	rv.Autorelease()
 	return rv
 }
 
@@ -273,7 +269,6 @@ func (rc _RulerMarkerClass) Alloc() RulerMarker {
 
 func (r_ RulerMarker) Init() RulerMarker {
 	rv := ffi.CallMethod[RulerMarker](r_, "init")
-	rv.Autorelease()
 	return rv
 }
 

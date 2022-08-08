@@ -53,19 +53,16 @@ func (cc _ColorPanelClass) WindowWithContentViewController(contentViewController
 
 func (c_ ColorPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) ColorPanel {
 	rv := ffi.CallMethod[ColorPanel](c_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ColorPanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) ColorPanel {
 	rv := ffi.CallMethod[ColorPanel](c_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ColorPanel) Init() ColorPanel {
 	rv := ffi.CallMethod[ColorPanel](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -40,7 +40,6 @@ func (fc _FormatterClass) Alloc() Formatter {
 
 func (f_ Formatter) Init() Formatter {
 	rv := ffi.CallMethod[Formatter](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -126,7 +125,6 @@ func (bc _ByteCountFormatterClass) Alloc() ByteCountFormatter {
 
 func (b_ ByteCountFormatter) Init() ByteCountFormatter {
 	rv := ffi.CallMethod[ByteCountFormatter](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 

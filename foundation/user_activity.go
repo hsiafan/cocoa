@@ -64,13 +64,11 @@ func MakeUserActivity(ptr unsafe.Pointer) UserActivity {
 
 func (u_ UserActivity) InitWithActivityType(activityType string) UserActivity {
 	rv := ffi.CallMethod[UserActivity](u_, "initWithActivityType:", activityType)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ UserActivity) Init() UserActivity {
 	rv := ffi.CallMethod[UserActivity](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 

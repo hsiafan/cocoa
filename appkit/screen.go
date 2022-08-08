@@ -61,7 +61,6 @@ func (sc _ScreenClass) Alloc() Screen {
 
 func (s_ Screen) Init() Screen {
 	rv := ffi.CallMethod[Screen](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

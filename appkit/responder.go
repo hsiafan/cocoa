@@ -102,7 +102,6 @@ func MakeResponder(ptr unsafe.Pointer) Responder {
 
 func (r_ Responder) Init() Responder {
 	rv := ffi.CallMethod[Responder](r_, "init")
-	rv.Autorelease()
 	return rv
 }
 

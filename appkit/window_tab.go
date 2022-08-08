@@ -44,7 +44,6 @@ func (wc _WindowTabClass) Alloc() WindowTab {
 
 func (w_ WindowTab) Init() WindowTab {
 	rv := ffi.CallMethod[WindowTab](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -131,7 +130,6 @@ func (wc _WindowTabGroupClass) Alloc() WindowTabGroup {
 
 func (w_ WindowTabGroup) Init() WindowTabGroup {
 	rv := ffi.CallMethod[WindowTabGroup](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -55,25 +55,21 @@ func MakeSound(ptr unsafe.Pointer) Sound {
 
 func (s_ Sound) InitWithContentsOfFile_ByReference(path string, byRef bool) Sound {
 	rv := ffi.CallMethod[Sound](s_, "initWithContentsOfFile:byReference:", path, byRef)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Sound) InitWithContentsOfURL_ByReference(url foundation.IURL, byRef bool) Sound {
 	rv := ffi.CallMethod[Sound](s_, "initWithContentsOfURL:byReference:", url, byRef)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Sound) InitWithData(data []byte) Sound {
 	rv := ffi.CallMethod[Sound](s_, "initWithData:", data)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Sound) InitWithPasteboard(pasteboard IPasteboard) Sound {
 	rv := ffi.CallMethod[Sound](s_, "initWithPasteboard:", pasteboard)
-	rv.Autorelease()
 	return rv
 }
 
@@ -84,7 +80,6 @@ func (sc _SoundClass) Alloc() Sound {
 
 func (s_ Sound) Init() Sound {
 	rv := ffi.CallMethod[Sound](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

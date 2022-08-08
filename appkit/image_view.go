@@ -54,13 +54,11 @@ func (ic _ImageViewClass) ImageViewWithImage(image IImage) ImageView {
 
 func (i_ ImageView) InitWithFrame(frameRect foundation.Rect) ImageView {
 	rv := ffi.CallMethod[ImageView](i_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ ImageView) Init() ImageView {
 	rv := ffi.CallMethod[ImageView](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 

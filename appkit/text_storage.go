@@ -57,19 +57,16 @@ func MakeTextStorage(ptr unsafe.Pointer) TextStorage {
 
 func (t_ TextStorage) InitWithString(str string) TextStorage {
 	rv := ffi.CallMethod[TextStorage](t_, "initWithString:", str)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextStorage) InitWithString_Attributes(str string, attrs map[foundation.AttributedStringKey]objc.IObject) TextStorage {
 	rv := ffi.CallMethod[TextStorage](t_, "initWithString:attributes:", str, attrs)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextStorage) InitWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
 	rv := ffi.CallMethod[TextStorage](t_, "initWithAttributedString:", attrStr)
-	rv.Autorelease()
 	return rv
 }
 
@@ -80,7 +77,6 @@ func (tc _TextStorageClass) Alloc() TextStorage {
 
 func (t_ TextStorage) Init() TextStorage {
 	rv := ffi.CallMethod[TextStorage](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -293,7 +289,6 @@ func MakeTextContentStorage(ptr unsafe.Pointer) TextContentStorage {
 
 func (t_ TextContentStorage) Init() TextContentStorage {
 	rv := ffi.CallMethod[TextContentStorage](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

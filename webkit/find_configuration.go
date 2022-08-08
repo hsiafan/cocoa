@@ -41,7 +41,6 @@ func (fc _FindConfigurationClass) Alloc() FindConfiguration {
 
 func (f_ FindConfiguration) Init() FindConfiguration {
 	rv := ffi.CallMethod[FindConfiguration](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 

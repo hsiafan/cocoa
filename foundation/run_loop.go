@@ -51,7 +51,6 @@ func (rc _RunLoopClass) Alloc() RunLoop {
 
 func (r_ RunLoop) Init() RunLoop {
 	rv := ffi.CallMethod[RunLoop](r_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -55,13 +55,11 @@ func (cc _ColorWellClass) ColorWellWithStyle(style ColorWellStyle) ColorWell {
 
 func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
 	rv := ffi.CallMethod[ColorWell](c_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ColorWell) Init() ColorWell {
 	rv := ffi.CallMethod[ColorWell](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

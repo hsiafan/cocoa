@@ -110,7 +110,6 @@ func MakeMenu(ptr unsafe.Pointer) Menu {
 
 func (m_ Menu) InitWithTitle(title string) Menu {
 	rv := ffi.CallMethod[Menu](m_, "initWithTitle:", title)
-	rv.Autorelease()
 	return rv
 }
 
@@ -121,7 +120,6 @@ func (mc _MenuClass) Alloc() Menu {
 
 func (m_ Menu) Init() Menu {
 	rv := ffi.CallMethod[Menu](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -720,7 +718,6 @@ func MakeMenuItem(ptr unsafe.Pointer) MenuItem {
 
 func (m_ MenuItem) InitWithTitle_Action_KeyEquivalent(_string string, selector objc.Selector, charCode string) MenuItem {
 	rv := ffi.CallMethod[MenuItem](m_, "initWithTitle:action:keyEquivalent:", _string, selector, charCode)
-	rv.Autorelease()
 	return rv
 }
 
@@ -731,7 +728,6 @@ func (mc _MenuItemClass) Alloc() MenuItem {
 
 func (m_ MenuItem) Init() MenuItem {
 	rv := ffi.CallMethod[MenuItem](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 

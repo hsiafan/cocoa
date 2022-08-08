@@ -33,13 +33,11 @@ func MakeUserScript(ptr unsafe.Pointer) UserScript {
 
 func (u_ UserScript) InitWithSource_InjectionTime_ForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
 	rv := ffi.CallMethod[UserScript](u_, "initWithSource:injectionTime:forMainFrameOnly:", source, injectionTime, forMainFrameOnly)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ UserScript) InitWithSource_InjectionTime_ForMainFrameOnly_InContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
 	rv := ffi.CallMethod[UserScript](u_, "initWithSource:injectionTime:forMainFrameOnly:inContentWorld:", source, injectionTime, forMainFrameOnly, contentWorld)
-	rv.Autorelease()
 	return rv
 }
 
@@ -50,7 +48,6 @@ func (uc _UserScriptClass) Alloc() UserScript {
 
 func (u_ UserScript) Init() UserScript {
 	rv := ffi.CallMethod[UserScript](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 

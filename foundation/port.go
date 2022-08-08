@@ -44,7 +44,6 @@ func (pc _PortClass) Alloc() Port {
 
 func (p_ Port) Init() Port {
 	rv := ffi.CallMethod[Port](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

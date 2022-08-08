@@ -38,7 +38,6 @@ func (pc _PDFConfigurationClass) Alloc() PDFConfiguration {
 
 func (p_ PDFConfiguration) Init() PDFConfiguration {
 	rv := ffi.CallMethod[PDFConfiguration](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

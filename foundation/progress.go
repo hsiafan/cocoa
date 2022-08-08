@@ -79,7 +79,6 @@ func MakeProgress(ptr unsafe.Pointer) Progress {
 
 func (p_ Progress) InitWithParent_UserInfo(parentProgressOrNil IProgress, userInfoOrNil map[ProgressUserInfoKey]objc.IObject) Progress {
 	rv := ffi.CallMethod[Progress](p_, "initWithParent:userInfo:", parentProgressOrNil, userInfoOrNil)
-	rv.Autorelease()
 	return rv
 }
 
@@ -90,7 +89,6 @@ func (pc _ProgressClass) Alloc() Progress {
 
 func (p_ Progress) Init() Progress {
 	rv := ffi.CallMethod[Progress](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

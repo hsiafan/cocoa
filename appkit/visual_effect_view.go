@@ -42,13 +42,11 @@ func MakeVisualEffectView(ptr unsafe.Pointer) VisualEffectView {
 
 func (v_ VisualEffectView) InitWithFrame(frameRect foundation.Rect) VisualEffectView {
 	rv := ffi.CallMethod[VisualEffectView](v_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (v_ VisualEffectView) Init() VisualEffectView {
 	rv := ffi.CallMethod[VisualEffectView](v_, "init")
-	rv.Autorelease()
 	return rv
 }
 

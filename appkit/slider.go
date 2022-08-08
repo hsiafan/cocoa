@@ -86,13 +86,11 @@ func (sc _SliderClass) SliderWithValue_MinValue_MaxValue_Target_Action(value flo
 
 func (s_ Slider) InitWithFrame(frameRect foundation.Rect) Slider {
 	rv := ffi.CallMethod[Slider](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Slider) Init() Slider {
 	rv := ffi.CallMethod[Slider](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

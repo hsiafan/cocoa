@@ -110,13 +110,11 @@ func MakeScrollView(ptr unsafe.Pointer) ScrollView {
 
 func (s_ ScrollView) InitWithFrame(frameRect foundation.Rect) ScrollView {
 	rv := ffi.CallMethod[ScrollView](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ ScrollView) Init() ScrollView {
 	rv := ffi.CallMethod[ScrollView](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

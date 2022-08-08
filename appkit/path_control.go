@@ -60,13 +60,11 @@ func MakePathControl(ptr unsafe.Pointer) PathControl {
 
 func (p_ PathControl) InitWithFrame(frameRect foundation.Rect) PathControl {
 	rv := ffi.CallMethod[PathControl](p_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PathControl) Init() PathControl {
 	rv := ffi.CallMethod[PathControl](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -406,19 +404,16 @@ func MakePathCell(ptr unsafe.Pointer) PathCell {
 
 func (p_ PathCell) InitImageCell(image IImage) PathCell {
 	rv := ffi.CallMethod[PathCell](p_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PathCell) InitTextCell(_string string) PathCell {
 	rv := ffi.CallMethod[PathCell](p_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PathCell) Init() PathCell {
 	rv := ffi.CallMethod[PathCell](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -625,19 +620,16 @@ func MakePathComponentCell(ptr unsafe.Pointer) PathComponentCell {
 
 func (p_ PathComponentCell) InitTextCell(_string string) PathComponentCell {
 	rv := ffi.CallMethod[PathComponentCell](p_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PathComponentCell) InitImageCell(image IImage) PathComponentCell {
 	rv := ffi.CallMethod[PathComponentCell](p_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PathComponentCell) Init() PathComponentCell {
 	rv := ffi.CallMethod[PathComponentCell](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -699,7 +691,6 @@ func (pc _PathControlItemClass) Alloc() PathControlItem {
 
 func (p_ PathControlItem) Init() PathControlItem {
 	rv := ffi.CallMethod[PathControlItem](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -32,7 +32,6 @@ func MakeNotification(ptr unsafe.Pointer) Notification {
 
 func (n_ Notification) Init() Notification {
 	rv := ffi.CallMethod[Notification](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -99,7 +98,6 @@ func (nc _NotificationCenterClass) Alloc() NotificationCenter {
 
 func (n_ NotificationCenter) Init() NotificationCenter {
 	rv := ffi.CallMethod[NotificationCenter](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 

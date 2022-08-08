@@ -44,7 +44,6 @@ func MakeCandidateListTouchBarItem(ptr unsafe.Pointer) CandidateListTouchBarItem
 
 func (c_ CandidateListTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifier) CandidateListTouchBarItem {
 	rv := ffi.CallMethod[CandidateListTouchBarItem](c_, "initWithIdentifier:", identifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -55,7 +54,6 @@ func (cc _CandidateListTouchBarItemClass) Alloc() CandidateListTouchBarItem {
 
 func (c_ CandidateListTouchBarItem) Init() CandidateListTouchBarItem {
 	rv := ffi.CallMethod[CandidateListTouchBarItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

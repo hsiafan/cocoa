@@ -9,6 +9,7 @@ import (
 	"github.com/hsiafan/cocoa/appkit"
 	"github.com/hsiafan/cocoa/coregraphics"
 	"github.com/hsiafan/cocoa/foundation"
+	"github.com/hsiafan/cocoa/quartzcore"
 )
 
 func Test_basicTypes(t *testing.T) {
@@ -40,6 +41,9 @@ func Test_structs(t *testing.T) {
 	compareStruct[Decimal, foundation.Decimal](t)
 
 	compareStruct[DirectionalEdgeInsets, appkit.DirectionalEdgeInsets](t)
+
+	compareStruct[Transform3D, quartzcore.Transform3D](t)
+	compareStruct[FrameRateRange, quartzcore.FrameRateRange](t)
 }
 
 func compareStruct[X any, Y any](t *testing.T) {

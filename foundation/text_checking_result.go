@@ -53,7 +53,6 @@ func (tc _TextCheckingResultClass) Alloc() TextCheckingResult {
 
 func (t_ TextCheckingResult) Init() TextCheckingResult {
 	rv := ffi.CallMethod[TextCheckingResult](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

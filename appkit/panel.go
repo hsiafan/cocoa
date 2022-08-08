@@ -41,19 +41,16 @@ func (pc _PanelClass) WindowWithContentViewController(contentViewController IVie
 
 func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Panel {
 	rv := ffi.CallMethod[Panel](p_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Panel {
 	rv := ffi.CallMethod[Panel](p_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ Panel) Init() Panel {
 	rv := ffi.CallMethod[Panel](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -182,19 +179,16 @@ func (sc _SavePanelClass) WindowWithContentViewController(contentViewController 
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) SavePanel {
 	rv := ffi.CallMethod[SavePanel](s_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) SavePanel {
 	rv := ffi.CallMethod[SavePanel](s_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SavePanel) Init() SavePanel {
 	rv := ffi.CallMethod[SavePanel](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -518,19 +512,16 @@ func (oc _OpenPanelClass) WindowWithContentViewController(contentViewController 
 
 func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) OpenPanel {
 	rv := ffi.CallMethod[OpenPanel](o_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
-	rv.Autorelease()
 	return rv
 }
 
 func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) OpenPanel {
 	rv := ffi.CallMethod[OpenPanel](o_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
-	rv.Autorelease()
 	return rv
 }
 
 func (o_ OpenPanel) Init() OpenPanel {
 	rv := ffi.CallMethod[OpenPanel](o_, "init")
-	rv.Autorelease()
 	return rv
 }
 

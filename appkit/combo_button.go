@@ -54,13 +54,11 @@ func (cc _ComboButtonClass) ComboButtonWithImage_Menu_Target_Action(image IImage
 
 func (c_ ComboButton) InitWithFrame(frameRect foundation.Rect) ComboButton {
 	rv := ffi.CallMethod[ComboButton](c_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ComboButton) Init() ComboButton {
 	rv := ffi.CallMethod[ComboButton](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

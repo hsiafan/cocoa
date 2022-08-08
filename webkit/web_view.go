@@ -123,19 +123,16 @@ func MakeWebView(ptr unsafe.Pointer) WebView {
 
 func (w_ WebView) InitWithFrame_Configuration(frame coregraphics.Rect, configuration IWebViewConfiguration) WebView {
 	rv := ffi.CallMethod[WebView](w_, "initWithFrame:configuration:", frame, configuration)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ WebView) InitWithFrame(frameRect foundation.Rect) WebView {
 	rv := ffi.CallMethod[WebView](w_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ WebView) Init() WebView {
 	rv := ffi.CallMethod[WebView](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

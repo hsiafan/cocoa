@@ -47,13 +47,11 @@ func MakeTextAttachment(ptr unsafe.Pointer) TextAttachment {
 
 func (t_ TextAttachment) InitWithFileWrapper(fileWrapper foundation.IFileWrapper) TextAttachment {
 	rv := ffi.CallMethod[TextAttachment](t_, "initWithFileWrapper:", fileWrapper)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextAttachment) InitWithData_OfType(contentData []byte, uti string) TextAttachment {
 	rv := ffi.CallMethod[TextAttachment](t_, "initWithData:ofType:", contentData, uti)
-	rv.Autorelease()
 	return rv
 }
 
@@ -64,7 +62,6 @@ func (tc _TextAttachmentClass) Alloc() TextAttachment {
 
 func (t_ TextAttachment) Init() TextAttachment {
 	rv := ffi.CallMethod[TextAttachment](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -180,7 +177,6 @@ func (tc _TextAttachmentViewProviderClass) Alloc() TextAttachmentViewProvider {
 
 func (t_ TextAttachmentViewProvider) Init() TextAttachmentViewProvider {
 	rv := ffi.CallMethod[TextAttachmentViewProvider](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

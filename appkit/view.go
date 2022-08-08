@@ -7,6 +7,7 @@ import (
 	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
+	"github.com/hsiafan/cocoa/quartzcore"
 )
 
 var ViewClass = _ViewClass{objc.GetClass("NSView")}
@@ -66,6 +67,7 @@ type IView interface {
 	DrawFocusRingMask()
 	NoteFocusRingMaskChanged()
 	SetKeyboardFocusRingNeedsDisplayInRect(rect foundation.Rect)
+	MakeBackingLayer() quartzcore.Layer
 	MenuForEvent(event IEvent) Menu
 	WillOpenMenu_WithEvent(menu IMenu, event IEvent)
 	DidCloseMenu_WithEvent(menu IMenu, event IEvent)
@@ -243,6 +245,8 @@ type IView interface {
 	WantsLayer() bool
 	SetWantsLayer(value bool)
 	WantsUpdateLayer() bool
+	Layer() quartzcore.Layer
+	SetLayer(value quartzcore.ILayer)
 	LayerContentsPlacement() ViewLayerContentsPlacement
 	SetLayerContentsPlacement(value ViewLayerContentsPlacement)
 	LayerContentsRedrawPolicy() ViewLayerContentsRedrawPolicy
@@ -368,13 +372,11 @@ func MakeView(ptr unsafe.Pointer) View {
 
 func (v_ View) InitWithFrame(frameRect foundation.Rect) View {
 	rv := ffi.CallMethod[View](v_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (v_ View) Init() View {
 	rv := ffi.CallMethod[View](v_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -610,6 +612,11 @@ func (v_ View) NoteFocusRingMaskChanged() {
 
 func (v_ View) SetKeyboardFocusRingNeedsDisplayInRect(rect foundation.Rect) {
 	ffi.CallMethod[ffi.Void](v_, "setKeyboardFocusRingNeedsDisplayInRect:", rect)
+}
+
+func (v_ View) MakeBackingLayer() quartzcore.Layer {
+	rv := ffi.CallMethod[quartzcore.Layer](v_, "makeBackingLayer")
+	return rv
 }
 
 func (v_ View) MenuForEvent(event IEvent) Menu {
@@ -1333,6 +1340,15 @@ func (v_ View) SetWantsLayer(value bool) {
 func (v_ View) WantsUpdateLayer() bool {
 	rv := ffi.CallMethod[bool](v_, "wantsUpdateLayer")
 	return rv
+}
+
+func (v_ View) Layer() quartzcore.Layer {
+	rv := ffi.CallMethod[quartzcore.Layer](v_, "layer")
+	return rv
+}
+
+func (v_ View) SetLayer(value quartzcore.ILayer) {
+	ffi.CallMethod[ffi.Void](v_, "setLayer:", value)
 }
 
 func (v_ View) LayerContentsPlacement() ViewLayerContentsPlacement {

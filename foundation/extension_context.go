@@ -39,7 +39,6 @@ func (ec _ExtensionContextClass) Alloc() ExtensionContext {
 
 func (e_ ExtensionContext) Init() ExtensionContext {
 	rv := ffi.CallMethod[ExtensionContext](e_, "init")
-	rv.Autorelease()
 	return rv
 }
 

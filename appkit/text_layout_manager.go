@@ -63,7 +63,6 @@ func MakeTextLayoutManager(ptr unsafe.Pointer) TextLayoutManager {
 
 func (t_ TextLayoutManager) Init() TextLayoutManager {
 	rv := ffi.CallMethod[TextLayoutManager](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -261,7 +260,6 @@ func MakeTextLayoutFragment(ptr unsafe.Pointer) TextLayoutFragment {
 
 func (t_ TextLayoutFragment) InitWithTextElement_Range(textElement ITextElement, rangeInElement ITextRange) TextLayoutFragment {
 	rv := ffi.CallMethod[TextLayoutFragment](t_, "initWithTextElement:range:", textElement, rangeInElement)
-	rv.Autorelease()
 	return rv
 }
 
@@ -272,7 +270,6 @@ func (tc _TextLayoutFragmentClass) Alloc() TextLayoutFragment {
 
 func (t_ TextLayoutFragment) Init() TextLayoutFragment {
 	rv := ffi.CallMethod[TextLayoutFragment](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -393,13 +390,11 @@ func MakeTextLineFragment(ptr unsafe.Pointer) TextLineFragment {
 
 func (t_ TextLineFragment) InitWithAttributedString_Range(attributedString foundation.IAttributedString, _range foundation.Range) TextLineFragment {
 	rv := ffi.CallMethod[TextLineFragment](t_, "initWithAttributedString:range:", attributedString, _range)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextLineFragment) InitWithString_Attributes_Range(_string string, attributes map[foundation.AttributedStringKey]objc.IObject, _range foundation.Range) TextLineFragment {
 	rv := ffi.CallMethod[TextLineFragment](t_, "initWithString:attributes:range:", _string, attributes, _range)
-	rv.Autorelease()
 	return rv
 }
 
@@ -410,7 +405,6 @@ func (tc _TextLineFragmentClass) Alloc() TextLineFragment {
 
 func (t_ TextLineFragment) Init() TextLineFragment {
 	rv := ffi.CallMethod[TextLineFragment](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -493,7 +487,6 @@ func MakeTextTable(ptr unsafe.Pointer) TextTable {
 
 func (t_ TextTable) Init() TextTable {
 	rv := ffi.CallMethod[TextTable](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -590,7 +583,6 @@ func MakeTextBlock(ptr unsafe.Pointer) TextBlock {
 
 func (t_ TextBlock) Init() TextBlock {
 	rv := ffi.CallMethod[TextBlock](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

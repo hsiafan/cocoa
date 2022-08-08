@@ -66,13 +66,11 @@ func MakeUserDefaults(ptr unsafe.Pointer) UserDefaults {
 
 func (u_ UserDefaults) Init() UserDefaults {
 	rv := ffi.CallMethod[UserDefaults](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ UserDefaults) InitWithSuiteName(suitename string) UserDefaults {
 	rv := ffi.CallMethod[UserDefaults](u_, "initWithSuiteName:", suitename)
-	rv.Autorelease()
 	return rv
 }
 
@@ -236,7 +234,6 @@ func (u_ UserDefaults) ObjectIsForcedForKey_InDomain(key string, domain string) 
 // deprecated
 func (u_ UserDefaults) InitWithUser(username string) objc.Object {
 	rv := ffi.CallMethod[objc.Object](u_, "initWithUser:", username)
-	rv.Autorelease()
 	return rv
 }
 

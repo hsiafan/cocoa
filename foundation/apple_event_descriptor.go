@@ -52,13 +52,11 @@ func MakeAppleEventDescriptor(ptr unsafe.Pointer) AppleEventDescriptor {
 
 func (a_ AppleEventDescriptor) InitListDescriptor() AppleEventDescriptor {
 	rv := ffi.CallMethod[AppleEventDescriptor](a_, "initListDescriptor")
-	rv.Autorelease()
 	return rv
 }
 
 func (a_ AppleEventDescriptor) InitRecordDescriptor() AppleEventDescriptor {
 	rv := ffi.CallMethod[AppleEventDescriptor](a_, "initRecordDescriptor")
-	rv.Autorelease()
 	return rv
 }
 
@@ -69,7 +67,6 @@ func (ac _AppleEventDescriptorClass) Alloc() AppleEventDescriptor {
 
 func (a_ AppleEventDescriptor) Init() AppleEventDescriptor {
 	rv := ffi.CallMethod[AppleEventDescriptor](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 

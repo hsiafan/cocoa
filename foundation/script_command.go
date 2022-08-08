@@ -53,7 +53,6 @@ func MakeScriptCommand(ptr unsafe.Pointer) ScriptCommand {
 
 func (s_ ScriptCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) ScriptCommand {
 	rv := ffi.CallMethod[ScriptCommand](s_, "initWithCommandDescription:", commandDef)
-	rv.Autorelease()
 	return rv
 }
 
@@ -64,7 +63,6 @@ func (sc _ScriptCommandClass) Alloc() ScriptCommand {
 
 func (s_ ScriptCommand) Init() ScriptCommand {
 	rv := ffi.CallMethod[ScriptCommand](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -228,7 +226,6 @@ func (sc _ScriptCommandDescriptionClass) Alloc() ScriptCommandDescription {
 
 func (s_ ScriptCommandDescription) Init() ScriptCommandDescription {
 	rv := ffi.CallMethod[ScriptCommandDescription](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -325,7 +322,6 @@ func MakeCloseCommand(ptr unsafe.Pointer) CloseCommand {
 
 func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
 	rv := ffi.CallMethod[CloseCommand](c_, "initWithCommandDescription:", commandDef)
-	rv.Autorelease()
 	return rv
 }
 
@@ -336,7 +332,6 @@ func (cc _CloseCommandClass) Alloc() CloseCommand {
 
 func (c_ CloseCommand) Init() CloseCommand {
 	rv := ffi.CallMethod[CloseCommand](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

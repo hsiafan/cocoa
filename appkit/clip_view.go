@@ -55,13 +55,11 @@ func MakeClipView(ptr unsafe.Pointer) ClipView {
 
 func (c_ ClipView) InitWithFrame(frameRect foundation.Rect) ClipView {
 	rv := ffi.CallMethod[ClipView](c_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ClipView) Init() ClipView {
 	rv := ffi.CallMethod[ClipView](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

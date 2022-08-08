@@ -45,7 +45,6 @@ func (tc _TouchClass) Alloc() Touch {
 
 func (t_ Touch) Init() Touch {
 	rv := ffi.CallMethod[Touch](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

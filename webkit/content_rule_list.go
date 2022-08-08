@@ -36,7 +36,6 @@ func (cc _ContentRuleListClass) Alloc() ContentRuleList {
 
 func (c_ ContentRuleList) Init() ContentRuleList {
 	rv := ffi.CallMethod[ContentRuleList](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

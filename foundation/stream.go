@@ -46,7 +46,6 @@ func (sc _StreamClass) Alloc() Stream {
 
 func (s_ Stream) Init() Stream {
 	rv := ffi.CallMethod[Stream](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -155,19 +154,16 @@ func (ic _InputStreamClass) InputStreamWithURL(url IURL) InputStream {
 
 func (i_ InputStream) InitWithData(data []byte) InputStream {
 	rv := ffi.CallMethod[InputStream](i_, "initWithData:", data)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
 	rv := ffi.CallMethod[InputStream](i_, "initWithFileAtPath:", path)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ InputStream) InitWithURL(url IURL) InputStream {
 	rv := ffi.CallMethod[InputStream](i_, "initWithURL:", url)
-	rv.Autorelease()
 	return rv
 }
 
@@ -178,7 +174,6 @@ func (ic _InputStreamClass) Alloc() InputStream {
 
 func (i_ InputStream) Init() InputStream {
 	rv := ffi.CallMethod[InputStream](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -235,19 +230,16 @@ func (oc _OutputStreamClass) OutputStreamWithURL_Append(url IURL, shouldAppend b
 
 func (o_ OutputStream) InitToMemory() OutputStream {
 	rv := ffi.CallMethod[OutputStream](o_, "initToMemory")
-	rv.Autorelease()
 	return rv
 }
 
 func (o_ OutputStream) InitToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
 	rv := ffi.CallMethod[OutputStream](o_, "initToFileAtPath:append:", path, shouldAppend)
-	rv.Autorelease()
 	return rv
 }
 
 func (o_ OutputStream) InitWithURL_Append(url IURL, shouldAppend bool) OutputStream {
 	rv := ffi.CallMethod[OutputStream](o_, "initWithURL:append:", url, shouldAppend)
-	rv.Autorelease()
 	return rv
 }
 
@@ -258,7 +250,6 @@ func (oc _OutputStreamClass) Alloc() OutputStream {
 
 func (o_ OutputStream) Init() OutputStream {
 	rv := ffi.CallMethod[OutputStream](o_, "init")
-	rv.Autorelease()
 	return rv
 }
 

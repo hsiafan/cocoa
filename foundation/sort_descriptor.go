@@ -42,7 +42,6 @@ func (sc _SortDescriptorClass) SortDescriptorWithKey_Ascending(key string, ascen
 
 func (s_ SortDescriptor) InitWithKey_Ascending(key string, ascending bool) SortDescriptor {
 	rv := ffi.CallMethod[SortDescriptor](s_, "initWithKey:ascending:", key, ascending)
-	rv.Autorelease()
 	return rv
 }
 
@@ -53,7 +52,6 @@ func (sc _SortDescriptorClass) SortDescriptorWithKey_Ascending_Selector(key stri
 
 func (s_ SortDescriptor) InitWithKey_Ascending_Selector(key string, ascending bool, selector objc.Selector) SortDescriptor {
 	rv := ffi.CallMethod[SortDescriptor](s_, "initWithKey:ascending:selector:", key, ascending, selector)
-	rv.Autorelease()
 	return rv
 }
 
@@ -64,7 +62,6 @@ func (sc _SortDescriptorClass) SortDescriptorWithKey_Ascending_Comparator(key st
 
 func (s_ SortDescriptor) InitWithKey_Ascending_Comparator(key string, ascending bool, cmptr func(obj1 objc.Object, obj2 objc.Object) ComparisonResult) SortDescriptor {
 	rv := ffi.CallMethod[SortDescriptor](s_, "initWithKey:ascending:comparator:", key, ascending, cmptr)
-	rv.Autorelease()
 	return rv
 }
 
@@ -75,7 +72,6 @@ func (sc _SortDescriptorClass) Alloc() SortDescriptor {
 
 func (s_ SortDescriptor) Init() SortDescriptor {
 	rv := ffi.CallMethod[SortDescriptor](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

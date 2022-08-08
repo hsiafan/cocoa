@@ -48,7 +48,6 @@ func (tc _TintConfigurationClass) Alloc() TintConfiguration {
 
 func (t_ TintConfiguration) Init() TintConfiguration {
 	rv := ffi.CallMethod[TintConfiguration](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

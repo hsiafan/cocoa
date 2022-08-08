@@ -44,7 +44,6 @@ func (wc _WindowFeaturesClass) Alloc() WindowFeatures {
 
 func (w_ WindowFeatures) Init() WindowFeatures {
 	rv := ffi.CallMethod[WindowFeatures](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -63,13 +63,11 @@ func MakeScroller(ptr unsafe.Pointer) Scroller {
 
 func (s_ Scroller) InitWithFrame(frameRect foundation.Rect) Scroller {
 	rv := ffi.CallMethod[Scroller](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Scroller) Init() Scroller {
 	rv := ffi.CallMethod[Scroller](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

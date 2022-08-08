@@ -71,19 +71,16 @@ func (ic _IndexSetClass) IndexSetWithIndexesInRange(_range Range) IndexSet {
 
 func (i_ IndexSet) InitWithIndex(value uint) IndexSet {
 	rv := ffi.CallMethod[IndexSet](i_, "initWithIndex:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ IndexSet) InitWithIndexesInRange(_range Range) IndexSet {
 	rv := ffi.CallMethod[IndexSet](i_, "initWithIndexesInRange:", _range)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ IndexSet) InitWithIndexSet(indexSet IIndexSet) IndexSet {
 	rv := ffi.CallMethod[IndexSet](i_, "initWithIndexSet:", indexSet)
-	rv.Autorelease()
 	return rv
 }
 
@@ -94,7 +91,6 @@ func (ic _IndexSetClass) Alloc() IndexSet {
 
 func (i_ IndexSet) Init() IndexSet {
 	rv := ffi.CallMethod[IndexSet](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 

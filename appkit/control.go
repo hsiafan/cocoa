@@ -126,13 +126,11 @@ func MakeControl(ptr unsafe.Pointer) Control {
 
 func (c_ Control) InitWithFrame(frameRect foundation.Rect) Control {
 	rv := ffi.CallMethod[Control](c_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ Control) Init() Control {
 	rv := ffi.CallMethod[Control](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

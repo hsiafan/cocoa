@@ -76,13 +76,11 @@ func (sc _SearchFieldClass) WrappingLabelWithString(stringValue string) SearchFi
 
 func (s_ SearchField) InitWithFrame(frameRect foundation.Rect) SearchField {
 	rv := ffi.CallMethod[SearchField](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SearchField) Init() SearchField {
 	rv := ffi.CallMethod[SearchField](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -242,19 +240,16 @@ func MakeSearchFieldCell(ptr unsafe.Pointer) SearchFieldCell {
 
 func (s_ SearchFieldCell) InitTextCell(_string string) SearchFieldCell {
 	rv := ffi.CallMethod[SearchFieldCell](s_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SearchFieldCell) InitImageCell(image IImage) SearchFieldCell {
 	rv := ffi.CallMethod[SearchFieldCell](s_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SearchFieldCell) Init() SearchFieldCell {
 	rv := ffi.CallMethod[SearchFieldCell](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

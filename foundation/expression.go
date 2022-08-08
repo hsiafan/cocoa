@@ -46,7 +46,6 @@ func MakeExpression(ptr unsafe.Pointer) Expression {
 
 func (e_ Expression) InitWithExpressionType(_type ExpressionType) Expression {
 	rv := ffi.CallMethod[Expression](e_, "initWithExpressionType:", _type)
-	rv.Autorelease()
 	return rv
 }
 
@@ -57,7 +56,6 @@ func (ec _ExpressionClass) Alloc() Expression {
 
 func (e_ Expression) Init() Expression {
 	rv := ffi.CallMethod[Expression](e_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -261,7 +259,6 @@ func (pc _PredicateClass) Alloc() Predicate {
 
 func (p_ Predicate) Init() Predicate {
 	rv := ffi.CallMethod[Predicate](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

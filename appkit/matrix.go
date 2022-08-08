@@ -118,19 +118,16 @@ func MakeMatrix(ptr unsafe.Pointer) Matrix {
 
 func (m_ Matrix) InitWithFrame(frameRect foundation.Rect) Matrix {
 	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (m_ Matrix) InitWithFrame_Mode_Prototype_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
 	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:mode:prototype:numberOfRows:numberOfColumns:", frameRect, mode, cell, rowsHigh, colsWide)
-	rv.Autorelease()
 	return rv
 }
 
 func (m_ Matrix) Init() Matrix {
 	rv := ffi.CallMethod[Matrix](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 

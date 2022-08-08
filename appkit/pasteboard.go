@@ -57,7 +57,6 @@ func (pc _PasteboardClass) Alloc() Pasteboard {
 
 func (p_ Pasteboard) Init() Pasteboard {
 	rv := ffi.CallMethod[Pasteboard](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -247,7 +246,6 @@ func (pc _PasteboardItemClass) Alloc() PasteboardItem {
 
 func (p_ PasteboardItem) Init() PasteboardItem {
 	rv := ffi.CallMethod[PasteboardItem](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

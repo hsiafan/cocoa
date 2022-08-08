@@ -36,7 +36,6 @@ func (fc _FindResultClass) Alloc() FindResult {
 
 func (f_ FindResult) Init() FindResult {
 	rv := ffi.CallMethod[FindResult](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 

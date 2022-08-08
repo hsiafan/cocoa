@@ -102,13 +102,11 @@ func MakeText(ptr unsafe.Pointer) Text {
 
 func (t_ Text) InitWithFrame(frameRect foundation.Rect) Text {
 	rv := ffi.CallMethod[Text](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ Text) Init() Text {
 	rv := ffi.CallMethod[Text](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -601,7 +599,6 @@ func (tc _TextInputContextClass) Alloc() TextInputContext {
 
 func (t_ TextInputContext) Init() TextInputContext {
 	rv := ffi.CallMethod[TextInputContext](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -730,13 +727,11 @@ func MakeTextContainer(ptr unsafe.Pointer) TextContainer {
 
 func (t_ TextContainer) InitWithSize(size foundation.Size) TextContainer {
 	rv := ffi.CallMethod[TextContainer](t_, "initWithSize:", size)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextContainer) InitWithContainerSize(aContainerSize foundation.Size) TextContainer {
 	rv := ffi.CallMethod[TextContainer](t_, "initWithContainerSize:", aContainerSize)
-	rv.Autorelease()
 	return rv
 }
 
@@ -747,7 +742,6 @@ func (tc _TextContainerClass) Alloc() TextContainer {
 
 func (t_ TextContainer) Init() TextContainer {
 	rv := ffi.CallMethod[TextContainer](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -925,7 +919,6 @@ func (tc _TextRangeClass) Alloc() TextRange {
 
 func (t_ TextRange) Init() TextRange {
 	rv := ffi.CallMethod[TextRange](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -988,7 +981,6 @@ func MakeTextElement(ptr unsafe.Pointer) TextElement {
 
 func (t_ TextElement) InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
 	rv := ffi.CallMethod[TextElement](t_, "initWithTextContentManager:", textContentManager)
-	rv.Autorelease()
 	return rv
 }
 
@@ -999,7 +991,6 @@ func (tc _TextElementClass) Alloc() TextElement {
 
 func (t_ TextElement) Init() TextElement {
 	rv := ffi.CallMethod[TextElement](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1079,13 +1070,11 @@ func MakeTextSelection(ptr unsafe.Pointer) TextSelection {
 
 func (t_ TextSelection) InitWithRange_Affinity_Granularity(_range ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
 	rv := ffi.CallMethod[TextSelection](t_, "initWithRange:affinity:granularity:", _range, affinity, granularity)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextSelection) InitWithRanges_Affinity_Granularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
 	rv := ffi.CallMethod[TextSelection](t_, "initWithRanges:affinity:granularity:", textRanges, affinity, granularity)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1096,7 +1085,6 @@ func (tc _TextSelectionClass) Alloc() TextSelection {
 
 func (t_ TextSelection) Init() TextSelection {
 	rv := ffi.CallMethod[TextSelection](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1197,7 +1185,6 @@ func (tc _TextSelectionNavigationClass) Alloc() TextSelectionNavigation {
 
 func (t_ TextSelectionNavigation) Init() TextSelectionNavigation {
 	rv := ffi.CallMethod[TextSelectionNavigation](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1284,7 +1271,6 @@ func MakeTextContentManager(ptr unsafe.Pointer) TextContentManager {
 
 func (t_ TextContentManager) Init() TextContentManager {
 	rv := ffi.CallMethod[TextContentManager](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

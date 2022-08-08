@@ -154,13 +154,11 @@ func MakeBrowser(ptr unsafe.Pointer) Browser {
 
 func (b_ Browser) InitWithFrame(frameRect foundation.Rect) Browser {
 	rv := ffi.CallMethod[Browser](b_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ Browser) Init() Browser {
 	rv := ffi.CallMethod[Browser](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1571,19 +1569,16 @@ func MakeBrowserCell(ptr unsafe.Pointer) BrowserCell {
 
 func (b_ BrowserCell) InitImageCell(image IImage) BrowserCell {
 	rv := ffi.CallMethod[BrowserCell](b_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ BrowserCell) InitTextCell(_string string) BrowserCell {
 	rv := ffi.CallMethod[BrowserCell](b_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ BrowserCell) Init() BrowserCell {
 	rv := ffi.CallMethod[BrowserCell](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -38,7 +38,6 @@ func MakeShadow(ptr unsafe.Pointer) Shadow {
 
 func (s_ Shadow) Init() Shadow {
 	rv := ffi.CallMethod[Shadow](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

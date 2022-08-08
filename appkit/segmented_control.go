@@ -83,13 +83,11 @@ func (sc _SegmentedControlClass) SegmentedControlWithLabels_TrackingMode_Target_
 
 func (s_ SegmentedControl) InitWithFrame(frameRect foundation.Rect) SegmentedControl {
 	rv := ffi.CallMethod[SegmentedControl](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SegmentedControl) Init() SegmentedControl {
 	rv := ffi.CallMethod[SegmentedControl](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -352,19 +350,16 @@ func MakeSegmentedCell(ptr unsafe.Pointer) SegmentedCell {
 
 func (s_ SegmentedCell) InitImageCell(image IImage) SegmentedCell {
 	rv := ffi.CallMethod[SegmentedCell](s_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SegmentedCell) InitTextCell(_string string) SegmentedCell {
 	rv := ffi.CallMethod[SegmentedCell](s_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SegmentedCell) Init() SegmentedCell {
 	rv := ffi.CallMethod[SegmentedCell](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

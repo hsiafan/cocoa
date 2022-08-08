@@ -42,7 +42,6 @@ func (oc _OrthographyClass) DefaultOrthographyForLanguage(language string) Ortho
 
 func (o_ Orthography) InitWithDominantScript_LanguageMap(script string, _map map[string][]string) Orthography {
 	rv := ffi.CallMethod[Orthography](o_, "initWithDominantScript:languageMap:", script, _map)
-	rv.Autorelease()
 	return rv
 }
 
@@ -58,7 +57,6 @@ func (oc _OrthographyClass) Alloc() Orthography {
 
 func (o_ Orthography) Init() Orthography {
 	rv := ffi.CallMethod[Orthography](o_, "init")
-	rv.Autorelease()
 	return rv
 }
 

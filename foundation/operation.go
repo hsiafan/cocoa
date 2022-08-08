@@ -60,7 +60,6 @@ func (oc _OperationClass) Alloc() Operation {
 
 func (o_ Operation) Init() Operation {
 	rv := ffi.CallMethod[Operation](o_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -226,7 +225,6 @@ func (oc _OperationQueueClass) Alloc() OperationQueue {
 
 func (o_ OperationQueue) Init() OperationQueue {
 	rv := ffi.CallMethod[OperationQueue](o_, "init")
-	rv.Autorelease()
 	return rv
 }
 

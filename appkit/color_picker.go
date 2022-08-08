@@ -40,7 +40,6 @@ func MakeColorPicker(ptr unsafe.Pointer) ColorPicker {
 
 func (c_ ColorPicker) InitWithPickerMask_ColorPanel(mask uint, owningColorPanel IColorPanel) ColorPicker {
 	rv := ffi.CallMethod[ColorPicker](c_, "initWithPickerMask:colorPanel:", mask, owningColorPanel)
-	rv.Autorelease()
 	return rv
 }
 
@@ -51,7 +50,6 @@ func (cc _ColorPickerClass) Alloc() ColorPicker {
 
 func (c_ ColorPicker) Init() ColorPicker {
 	rv := ffi.CallMethod[ColorPicker](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

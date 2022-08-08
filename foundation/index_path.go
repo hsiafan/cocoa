@@ -48,13 +48,11 @@ func (ic _IndexPathClass) IndexPathWithIndexes_Length(indexes *uint, length uint
 
 func (i_ IndexPath) InitWithIndex(index uint) IndexPath {
 	rv := ffi.CallMethod[IndexPath](i_, "initWithIndex:", index)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ IndexPath) InitWithIndexes_Length(indexes *uint, length uint) IndexPath {
 	rv := ffi.CallMethod[IndexPath](i_, "initWithIndexes:length:", indexes, length)
-	rv.Autorelease()
 	return rv
 }
 
@@ -65,7 +63,6 @@ func (ic _IndexPathClass) Alloc() IndexPath {
 
 func (i_ IndexPath) Init() IndexPath {
 	rv := ffi.CallMethod[IndexPath](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 

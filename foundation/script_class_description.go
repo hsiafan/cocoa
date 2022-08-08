@@ -55,7 +55,6 @@ func (sc _ScriptClassDescriptionClass) Alloc() ScriptClassDescription {
 
 func (s_ ScriptClassDescription) Init() ScriptClassDescription {
 	rv := ffi.CallMethod[ScriptClassDescription](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

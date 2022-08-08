@@ -82,13 +82,11 @@ func (bc _BundleClass) BundleWithPath(path string) Bundle {
 
 func (b_ Bundle) InitWithURL(url IURL) Bundle {
 	rv := ffi.CallMethod[Bundle](b_, "initWithURL:", url)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ Bundle) InitWithPath(path string) Bundle {
 	rv := ffi.CallMethod[Bundle](b_, "initWithPath:", path)
-	rv.Autorelease()
 	return rv
 }
 
@@ -99,7 +97,6 @@ func (bc _BundleClass) Alloc() Bundle {
 
 func (b_ Bundle) Init() Bundle {
 	rv := ffi.CallMethod[Bundle](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 

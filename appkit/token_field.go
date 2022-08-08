@@ -58,13 +58,11 @@ func (tc _TokenFieldClass) WrappingLabelWithString(stringValue string) TokenFiel
 
 func (t_ TokenField) InitWithFrame(frameRect foundation.Rect) TokenField {
 	rv := ffi.CallMethod[TokenField](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TokenField) Init() TokenField {
 	rv := ffi.CallMethod[TokenField](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -403,19 +401,16 @@ func MakeTokenFieldCell(ptr unsafe.Pointer) TokenFieldCell {
 
 func (t_ TokenFieldCell) InitTextCell(_string string) TokenFieldCell {
 	rv := ffi.CallMethod[TokenFieldCell](t_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TokenFieldCell) InitImageCell(image IImage) TokenFieldCell {
 	rv := ffi.CallMethod[TokenFieldCell](t_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TokenFieldCell) Init() TokenFieldCell {
 	rv := ffi.CallMethod[TokenFieldCell](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

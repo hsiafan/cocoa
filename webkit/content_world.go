@@ -36,7 +36,6 @@ func (cc _ContentWorldClass) Alloc() ContentWorld {
 
 func (c_ ContentWorld) Init() ContentWorld {
 	rv := ffi.CallMethod[ContentWorld](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

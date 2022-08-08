@@ -31,7 +31,6 @@ func MakeUnit(ptr unsafe.Pointer) Unit {
 
 func (u_ Unit) InitWithSymbol(symbol string) Unit {
 	rv := ffi.CallMethod[Unit](u_, "initWithSymbol:", symbol)
-	rv.Autorelease()
 	return rv
 }
 
@@ -42,7 +41,6 @@ func (uc _UnitClass) Alloc() Unit {
 
 func (u_ Unit) Init() Unit {
 	rv := ffi.CallMethod[Unit](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 

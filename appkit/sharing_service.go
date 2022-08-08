@@ -49,7 +49,6 @@ func MakeSharingService(ptr unsafe.Pointer) SharingService {
 
 func (s_ SharingService) InitWithTitle_Image_AlternateImage_Handler(title string, image IImage, alternateImage IImage, block func()) SharingService {
 	rv := ffi.CallMethod[SharingService](s_, "initWithTitle:image:alternateImage:handler:", title, image, alternateImage, block)
-	rv.Autorelease()
 	return rv
 }
 
@@ -60,7 +59,6 @@ func (sc _SharingServiceClass) Alloc() SharingService {
 
 func (s_ SharingService) Init() SharingService {
 	rv := ffi.CallMethod[SharingService](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -194,7 +192,6 @@ func MakeSharingServicePicker(ptr unsafe.Pointer) SharingServicePicker {
 
 func (s_ SharingServicePicker) InitWithItems(items []objc.IObject) SharingServicePicker {
 	rv := ffi.CallMethod[SharingServicePicker](s_, "initWithItems:", items)
-	rv.Autorelease()
 	return rv
 }
 
@@ -205,7 +202,6 @@ func (sc _SharingServicePickerClass) Alloc() SharingServicePicker {
 
 func (s_ SharingServicePicker) Init() SharingServicePicker {
 	rv := ffi.CallMethod[SharingServicePicker](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

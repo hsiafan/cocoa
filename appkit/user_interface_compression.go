@@ -68,19 +68,16 @@ func MakeUserInterfaceCompressionOptions(ptr unsafe.Pointer) UserInterfaceCompre
 
 func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions {
 	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
 	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "initWithCompressionOptions:", options)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithIdentifier(identifier string) UserInterfaceCompressionOptions {
 	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "initWithIdentifier:", identifier)
-	rv.Autorelease()
 	return rv
 }
 

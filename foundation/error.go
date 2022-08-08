@@ -47,7 +47,6 @@ func (ec _ErrorClass) ErrorWithDomain_Code_UserInfo(domain ErrorDomain, code int
 
 func (e_ Error) InitWithDomain_Code_UserInfo(domain ErrorDomain, code int, dict map[ErrorUserInfoKey]objc.IObject) Error {
 	rv := ffi.CallMethod[Error](e_, "initWithDomain:code:userInfo:", domain, code, dict)
-	rv.Autorelease()
 	return rv
 }
 
@@ -58,7 +57,6 @@ func (ec _ErrorClass) Alloc() Error {
 
 func (e_ Error) Init() Error {
 	rv := ffi.CallMethod[Error](e_, "init")
-	rv.Autorelease()
 	return rv
 }
 

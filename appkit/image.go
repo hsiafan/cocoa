@@ -142,55 +142,46 @@ func (ic _ImageClass) ImageWithSize_Flipped_DrawingHandler(size foundation.Size,
 
 func (i_ Image) InitByReferencingFile(fileName string) Image {
 	rv := ffi.CallMethod[Image](i_, "initByReferencingFile:", fileName)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitByReferencingURL(url foundation.IURL) Image {
 	rv := ffi.CallMethod[Image](i_, "initByReferencingURL:", url)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithContentsOfFile(fileName string) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithContentsOfFile:", fileName)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithContentsOfURL:", url)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithData(data []byte) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithData:", data)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithDataIgnoringOrientation(data []byte) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithDataIgnoringOrientation:", data)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithCGImage_Size(cgImage coregraphics.ImageRef, size foundation.Size) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithCGImage:size:", cgImage, size)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithPasteboard(pasteboard IPasteboard) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithPasteboard:", pasteboard)
-	rv.Autorelease()
 	return rv
 }
 
 func (i_ Image) InitWithSize(size foundation.Size) Image {
 	rv := ffi.CallMethod[Image](i_, "initWithSize:", size)
-	rv.Autorelease()
 	return rv
 }
 
@@ -201,7 +192,6 @@ func (ic _ImageClass) Alloc() Image {
 
 func (i_ Image) Init() Image {
 	rv := ffi.CallMethod[Image](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -672,7 +662,6 @@ func (ic _ImageSymbolConfigurationClass) Alloc() ImageSymbolConfiguration {
 
 func (i_ ImageSymbolConfiguration) Init() ImageSymbolConfiguration {
 	rv := ffi.CallMethod[ImageSymbolConfiguration](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -856,7 +845,6 @@ func MakeImageRep(ptr unsafe.Pointer) ImageRep {
 
 func (i_ ImageRep) Init() ImageRep {
 	rv := ffi.CallMethod[ImageRep](i_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1099,31 +1087,26 @@ func (bc _BitmapImageRepClass) ImageRepWithData(data []byte) BitmapImageRep {
 
 func (b_ BitmapImageRep) InitWithCGImage(cgImage coregraphics.ImageRef) BitmapImageRep {
 	rv := ffi.CallMethod[BitmapImageRep](b_, "initWithCGImage:", cgImage)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ BitmapImageRep) InitWithData(data []byte) BitmapImageRep {
 	rv := ffi.CallMethod[BitmapImageRep](b_, "initWithData:", data)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ BitmapImageRep) InitForIncrementalLoad() BitmapImageRep {
 	rv := ffi.CallMethod[BitmapImageRep](b_, "initForIncrementalLoad")
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ BitmapImageRep) InitWithFocusedViewRect(rect foundation.Rect) BitmapImageRep {
 	rv := ffi.CallMethod[BitmapImageRep](b_, "initWithFocusedViewRect:", rect)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ BitmapImageRep) Init() BitmapImageRep {
 	rv := ffi.CallMethod[BitmapImageRep](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 

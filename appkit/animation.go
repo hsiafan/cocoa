@@ -57,7 +57,6 @@ func MakeAnimation(ptr unsafe.Pointer) Animation {
 
 func (a_ Animation) InitWithDuration_AnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) Animation {
 	rv := ffi.CallMethod[Animation](a_, "initWithDuration:animationCurve:", duration, animationCurve)
-	rv.Autorelease()
 	return rv
 }
 
@@ -68,7 +67,6 @@ func (ac _AnimationClass) Alloc() Animation {
 
 func (a_ Animation) Init() Animation {
 	rv := ffi.CallMethod[Animation](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -219,13 +217,11 @@ func MakeViewAnimation(ptr unsafe.Pointer) ViewAnimation {
 
 func (v_ ViewAnimation) InitWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
 	rv := ffi.CallMethod[ViewAnimation](v_, "initWithViewAnimations:", viewAnimations)
-	rv.Autorelease()
 	return rv
 }
 
 func (v_ ViewAnimation) InitWithDuration_AnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
 	rv := ffi.CallMethod[ViewAnimation](v_, "initWithDuration:animationCurve:", duration, animationCurve)
-	rv.Autorelease()
 	return rv
 }
 
@@ -236,7 +232,6 @@ func (vc _ViewAnimationClass) Alloc() ViewAnimation {
 
 func (v_ ViewAnimation) Init() ViewAnimation {
 	rv := ffi.CallMethod[ViewAnimation](v_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -420,7 +415,6 @@ func (ac _AnimationContextClass) Alloc() AnimationContext {
 
 func (a_ AnimationContext) Init() AnimationContext {
 	rv := ffi.CallMethod[AnimationContext](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -60,13 +60,11 @@ func MakeSplitView(ptr unsafe.Pointer) SplitView {
 
 func (s_ SplitView) InitWithFrame(frameRect foundation.Rect) SplitView {
 	rv := ffi.CallMethod[SplitView](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SplitView) Init() SplitView {
 	rv := ffi.CallMethod[SplitView](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

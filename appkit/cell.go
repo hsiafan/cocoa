@@ -187,19 +187,16 @@ func MakeCell(ptr unsafe.Pointer) Cell {
 
 func (c_ Cell) InitImageCell(image IImage) Cell {
 	rv := ffi.CallMethod[Cell](c_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ Cell) InitTextCell(_string string) Cell {
 	rv := ffi.CallMethod[Cell](c_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ Cell) Init() Cell {
 	rv := ffi.CallMethod[Cell](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -925,19 +922,16 @@ func MakeActionCell(ptr unsafe.Pointer) ActionCell {
 
 func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
 	rv := ffi.CallMethod[ActionCell](a_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (a_ ActionCell) InitTextCell(_string string) ActionCell {
 	rv := ffi.CallMethod[ActionCell](a_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (a_ ActionCell) Init() ActionCell {
 	rv := ffi.CallMethod[ActionCell](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 

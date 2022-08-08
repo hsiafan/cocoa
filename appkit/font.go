@@ -87,7 +87,6 @@ func (fc _FontClass) Alloc() Font {
 
 func (f_ Font) Init() Font {
 	rv := ffi.CallMethod[Font](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -474,7 +473,6 @@ func MakeFontDescriptor(ptr unsafe.Pointer) FontDescriptor {
 
 func (f_ FontDescriptor) InitWithFontAttributes(attributes map[FontDescriptorAttributeName]objc.IObject) FontDescriptor {
 	rv := ffi.CallMethod[FontDescriptor](f_, "initWithFontAttributes:", attributes)
-	rv.Autorelease()
 	return rv
 }
 
@@ -490,7 +488,6 @@ func (fc _FontDescriptorClass) Alloc() FontDescriptor {
 
 func (f_ FontDescriptor) Init() FontDescriptor {
 	rv := ffi.CallMethod[FontDescriptor](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -687,7 +684,6 @@ func (fc _FontManagerClass) Alloc() FontManager {
 
 func (f_ FontManager) Init() FontManager {
 	rv := ffi.CallMethod[FontManager](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 

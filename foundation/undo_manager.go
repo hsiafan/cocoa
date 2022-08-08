@@ -69,7 +69,6 @@ func (uc _UndoManagerClass) Alloc() UndoManager {
 
 func (u_ UndoManager) Init() UndoManager {
 	rv := ffi.CallMethod[UndoManager](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 

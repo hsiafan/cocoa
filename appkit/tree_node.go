@@ -44,7 +44,6 @@ func (tc _TreeNodeClass) TreeNodeWithRepresentedObject(modelObject objc.IObject)
 
 func (t_ TreeNode) InitWithRepresentedObject(modelObject objc.IObject) TreeNode {
 	rv := ffi.CallMethod[TreeNode](t_, "initWithRepresentedObject:", modelObject)
-	rv.Autorelease()
 	return rv
 }
 
@@ -55,7 +54,6 @@ func (tc _TreeNodeClass) Alloc() TreeNode {
 
 func (t_ TreeNode) Init() TreeNode {
 	rv := ffi.CallMethod[TreeNode](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

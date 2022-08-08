@@ -377,19 +377,16 @@ func (wc _WindowClass) WindowWithContentViewController(contentViewController IVi
 
 func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
 	rv := ffi.CallMethod[Window](w_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Window {
 	rv := ffi.CallMethod[Window](w_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ Window) Init() Window {
 	rv := ffi.CallMethod[Window](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1018,7 +1015,6 @@ func (w_ Window) UserSpaceScaleFactor() float64 {
 
 func (w_ Window) InitWithWindowRef(windowRef unsafe.Pointer) Window {
 	rv := ffi.CallMethod[Window](w_, "initWithWindowRef:", windowRef)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1576,7 +1572,6 @@ func (w_ Window) CurrentEvent() Event {
 
 func (w_ Window) InitialFirstResponder() View {
 	rv := ffi.CallMethod[View](w_, "initialFirstResponder")
-	rv.Autorelease()
 	return rv
 }
 

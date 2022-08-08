@@ -40,7 +40,6 @@ func (ec _ExceptionClass) Alloc() Exception {
 
 func (e_ Exception) Init() Exception {
 	rv := ffi.CallMethod[Exception](e_, "init")
-	rv.Autorelease()
 	return rv
 }
 

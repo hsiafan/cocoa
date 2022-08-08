@@ -63,7 +63,6 @@ func MakePopUpButton(ptr unsafe.Pointer) PopUpButton {
 
 func (p_ PopUpButton) InitWithFrame_PullsDown(buttonFrame foundation.Rect, flag bool) PopUpButton {
 	rv := ffi.CallMethod[PopUpButton](p_, "initWithFrame:pullsDown:", buttonFrame, flag)
-	rv.Autorelease()
 	return rv
 }
 
@@ -94,13 +93,11 @@ func (pc _PopUpButtonClass) ButtonWithTitle_Target_Action(title string, target o
 
 func (p_ PopUpButton) InitWithFrame(frameRect foundation.Rect) PopUpButton {
 	rv := ffi.CallMethod[PopUpButton](p_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PopUpButton) Init() PopUpButton {
 	rv := ffi.CallMethod[PopUpButton](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

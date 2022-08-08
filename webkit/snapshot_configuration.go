@@ -43,7 +43,6 @@ func (sc _SnapshotConfigurationClass) Alloc() SnapshotConfiguration {
 
 func (s_ SnapshotConfiguration) Init() SnapshotConfiguration {
 	rv := ffi.CallMethod[SnapshotConfiguration](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

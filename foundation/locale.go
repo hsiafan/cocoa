@@ -64,7 +64,6 @@ func (lc _LocaleClass) LocaleWithLocaleIdentifier(ident string) Locale {
 
 func (l_ Locale) InitWithLocaleIdentifier(_string string) Locale {
 	rv := ffi.CallMethod[Locale](l_, "initWithLocaleIdentifier:", _string)
-	rv.Autorelease()
 	return rv
 }
 
@@ -75,7 +74,6 @@ func (lc _LocaleClass) Alloc() Locale {
 
 func (l_ Locale) Init() Locale {
 	rv := ffi.CallMethod[Locale](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 

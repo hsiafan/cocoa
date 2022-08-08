@@ -146,7 +146,6 @@ func (wc _WorkspaceClass) Alloc() Workspace {
 
 func (w_ Workspace) Init() Workspace {
 	rv := ffi.CallMethod[Workspace](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

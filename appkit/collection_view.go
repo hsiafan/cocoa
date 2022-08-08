@@ -117,13 +117,11 @@ func MakeCollectionView(ptr unsafe.Pointer) CollectionView {
 
 func (c_ CollectionView) InitWithFrame(frameRect foundation.Rect) CollectionView {
 	rv := ffi.CallMethod[CollectionView](c_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ CollectionView) Init() CollectionView {
 	rv := ffi.CallMethod[CollectionView](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -530,13 +528,11 @@ func MakeCollectionViewItem(ptr unsafe.Pointer) CollectionViewItem {
 
 func (c_ CollectionViewItem) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
 	rv := ffi.CallMethod[CollectionViewItem](c_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ CollectionViewItem) Init() CollectionViewItem {
 	rv := ffi.CallMethod[CollectionViewItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1372,7 +1368,6 @@ func MakeCollectionViewDiffableDataSource(ptr unsafe.Pointer) CollectionViewDiff
 
 func (c_ CollectionViewDiffableDataSource) InitWithCollectionView_ItemProvider(collectionView ICollectionView, itemProvider func(param1 CollectionView, param2 foundation.IndexPath, param3 objc.Object) ICollectionViewItem) CollectionViewDiffableDataSource {
 	rv := ffi.CallMethod[CollectionViewDiffableDataSource](c_, "initWithCollectionView:itemProvider:", collectionView, itemProvider)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1383,7 +1378,6 @@ func (cc _CollectionViewDiffableDataSourceClass) Alloc() CollectionViewDiffableD
 
 func (c_ CollectionViewDiffableDataSource) Init() CollectionViewDiffableDataSource {
 	rv := ffi.CallMethod[CollectionViewDiffableDataSource](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1597,7 +1591,6 @@ func (dc _DiffableDataSourceSnapshotClass) Alloc() DiffableDataSourceSnapshot {
 
 func (d_ DiffableDataSourceSnapshot) Init() DiffableDataSourceSnapshot {
 	rv := ffi.CallMethod[DiffableDataSourceSnapshot](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1770,7 +1763,6 @@ func (cc _CollectionViewFlowLayoutClass) Alloc() CollectionViewFlowLayout {
 
 func (c_ CollectionViewFlowLayout) Init() CollectionViewFlowLayout {
 	rv := ffi.CallMethod[CollectionViewFlowLayout](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1918,7 +1910,6 @@ func (cc _CollectionViewFlowLayoutInvalidationContextClass) Alloc() CollectionVi
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) Init() CollectionViewFlowLayoutInvalidationContext {
 	rv := ffi.CallMethod[CollectionViewFlowLayoutInvalidationContext](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2168,7 +2159,6 @@ func (cc _CollectionViewLayoutClass) Alloc() CollectionViewLayout {
 
 func (c_ CollectionViewLayout) Init() CollectionViewLayout {
 	rv := ffi.CallMethod[CollectionViewLayout](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2246,19 +2236,16 @@ func (c_ CollectionViewLayout) IndexPathsToInsertForDecorationViewOfKind(element
 
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
 	rv := ffi.CallMethod[CollectionViewLayoutAttributes](c_, "initialLayoutAttributesForAppearingItemAtIndexPath:", itemIndexPath)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingSupplementaryElementOfKind_AtIndexPath(elementKind CollectionViewSupplementaryElementKind, elementIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
 	rv := ffi.CallMethod[CollectionViewLayoutAttributes](c_, "initialLayoutAttributesForAppearingSupplementaryElementOfKind:atIndexPath:", elementKind, elementIndexPath)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingDecorationElementOfKind_AtIndexPath(elementKind CollectionViewDecorationElementKind, decorationIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
 	rv := ffi.CallMethod[CollectionViewLayoutAttributes](c_, "initialLayoutAttributesForAppearingDecorationElementOfKind:atIndexPath:", elementKind, decorationIndexPath)
-	rv.Autorelease()
 	return rv
 }
 
@@ -2406,7 +2393,6 @@ func (cc _CollectionViewLayoutAttributesClass) Alloc() CollectionViewLayoutAttri
 
 func (c_ CollectionViewLayoutAttributes) Init() CollectionViewLayoutAttributes {
 	rv := ffi.CallMethod[CollectionViewLayoutAttributes](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2527,7 +2513,6 @@ func (cc _CollectionViewGridLayoutClass) Alloc() CollectionViewGridLayout {
 
 func (c_ CollectionViewGridLayout) Init() CollectionViewGridLayout {
 	rv := ffi.CallMethod[CollectionViewGridLayout](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2652,7 +2637,6 @@ func (cc _CollectionViewLayoutInvalidationContextClass) Alloc() CollectionViewLa
 
 func (c_ CollectionViewLayoutInvalidationContext) Init() CollectionViewLayoutInvalidationContext {
 	rv := ffi.CallMethod[CollectionViewLayoutInvalidationContext](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2751,7 +2735,6 @@ func (cc _CollectionViewUpdateItemClass) Alloc() CollectionViewUpdateItem {
 
 func (c_ CollectionViewUpdateItem) Init() CollectionViewUpdateItem {
 	rv := ffi.CallMethod[CollectionViewUpdateItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2804,13 +2787,11 @@ func MakeCollectionViewCompositionalLayout(ptr unsafe.Pointer) CollectionViewCom
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
 	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:", section)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection_Configuration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
 	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:configuration:", section, configuration)
-	rv.Autorelease()
 	return rv
 }
 
@@ -2821,7 +2802,6 @@ func (cc _CollectionViewCompositionalLayoutClass) Alloc() CollectionViewComposit
 
 func (c_ CollectionViewCompositionalLayout) Init() CollectionViewCompositionalLayout {
 	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2877,7 +2857,6 @@ func (cc _CollectionViewCompositionalLayoutConfigurationClass) Alloc() Collectio
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) Init() CollectionViewCompositionalLayoutConfiguration {
 	rv := ffi.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -2961,7 +2940,6 @@ func (cc _CollectionLayoutItemClass) Alloc() CollectionLayoutItem {
 
 func (c_ CollectionLayoutItem) Init() CollectionLayoutItem {
 	rv := ffi.CallMethod[CollectionLayoutItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3066,7 +3044,6 @@ func (cc _CollectionLayoutBoundarySupplementaryItemClass) Alloc() CollectionLayo
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) Init() CollectionLayoutBoundarySupplementaryItem {
 	rv := ffi.CallMethod[CollectionLayoutBoundarySupplementaryItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3148,7 +3125,6 @@ func (cc _CollectionLayoutSpacingClass) Alloc() CollectionLayoutSpacing {
 
 func (c_ CollectionLayoutSpacing) Init() CollectionLayoutSpacing {
 	rv := ffi.CallMethod[CollectionLayoutSpacing](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3221,7 +3197,6 @@ func (cc _CollectionLayoutSectionClass) Alloc() CollectionLayoutSection {
 
 func (c_ CollectionLayoutSection) Init() CollectionLayoutSection {
 	rv := ffi.CallMethod[CollectionLayoutSection](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3328,7 +3303,6 @@ func (cc _CollectionLayoutGroupCustomItemClass) Alloc() CollectionLayoutGroupCus
 
 func (c_ CollectionLayoutGroupCustomItem) Init() CollectionLayoutGroupCustomItem {
 	rv := ffi.CallMethod[CollectionLayoutGroupCustomItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3404,7 +3378,6 @@ func (cc _CollectionLayoutSupplementaryItemClass) Alloc() CollectionLayoutSupple
 
 func (c_ CollectionLayoutSupplementaryItem) Init() CollectionLayoutSupplementaryItem {
 	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3476,7 +3449,6 @@ func (cc _CollectionLayoutSizeClass) Alloc() CollectionLayoutSize {
 
 func (c_ CollectionLayoutSize) Init() CollectionLayoutSize {
 	rv := ffi.CallMethod[CollectionLayoutSize](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3536,7 +3508,6 @@ func (cc _CollectionLayoutEdgeSpacingClass) Alloc() CollectionLayoutEdgeSpacing 
 
 func (c_ CollectionLayoutEdgeSpacing) Init() CollectionLayoutEdgeSpacing {
 	rv := ffi.CallMethod[CollectionLayoutEdgeSpacing](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3616,7 +3587,6 @@ func (cc _CollectionLayoutAnchorClass) Alloc() CollectionLayoutAnchor {
 
 func (c_ CollectionLayoutAnchor) Init() CollectionLayoutAnchor {
 	rv := ffi.CallMethod[CollectionLayoutAnchor](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3702,7 +3672,6 @@ func (cc _CollectionLayoutDimensionClass) Alloc() CollectionLayoutDimension {
 
 func (c_ CollectionLayoutDimension) Init() CollectionLayoutDimension {
 	rv := ffi.CallMethod[CollectionLayoutDimension](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3803,7 +3772,6 @@ func (cc _CollectionLayoutGroupClass) Alloc() CollectionLayoutGroup {
 
 func (c_ CollectionLayoutGroup) Init() CollectionLayoutGroup {
 	rv := ffi.CallMethod[CollectionLayoutGroup](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -3885,7 +3853,6 @@ func (cc _CollectionLayoutDecorationItemClass) Alloc() CollectionLayoutDecoratio
 
 func (c_ CollectionLayoutDecorationItem) Init() CollectionLayoutDecorationItem {
 	rv := ffi.CallMethod[CollectionLayoutDecorationItem](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

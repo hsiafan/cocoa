@@ -433,7 +433,6 @@ func (d_ DraggingItem) InitWithPasteboardWriter(pasteboardWriter PasteboardWriti
 	po := ffi.CreateProtocol(pasteboardWriter)
 	defer po.Release()
 	rv := ffi.CallMethod[DraggingItem](d_, "initWithPasteboardWriter:", po)
-	rv.Autorelease()
 	return rv
 }
 
@@ -444,7 +443,6 @@ func (dc _DraggingItemClass) Alloc() DraggingItem {
 
 func (d_ DraggingItem) Init() DraggingItem {
 	rv := ffi.CallMethod[DraggingItem](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -518,7 +516,6 @@ func MakeDraggingImageComponent(ptr unsafe.Pointer) DraggingImageComponent {
 
 func (d_ DraggingImageComponent) InitWithKey(key DraggingImageComponentKey) DraggingImageComponent {
 	rv := ffi.CallMethod[DraggingImageComponent](d_, "initWithKey:", key)
-	rv.Autorelease()
 	return rv
 }
 
@@ -529,7 +526,6 @@ func (dc _DraggingImageComponentClass) Alloc() DraggingImageComponent {
 
 func (d_ DraggingImageComponent) Init() DraggingImageComponent {
 	rv := ffi.CallMethod[DraggingImageComponent](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -611,7 +607,6 @@ func (dc _DraggingSessionClass) Alloc() DraggingSession {
 
 func (d_ DraggingSession) Init() DraggingSession {
 	rv := ffi.CallMethod[DraggingSession](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 

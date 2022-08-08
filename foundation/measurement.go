@@ -40,7 +40,6 @@ func (mc _MeasurementClass) Alloc() Measurement {
 
 func (m_ Measurement) Init() Measurement {
 	rv := ffi.CallMethod[Measurement](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -116,7 +115,6 @@ func (mc _MeasurementFormatterClass) Alloc() MeasurementFormatter {
 
 func (m_ MeasurementFormatter) Init() MeasurementFormatter {
 	rv := ffi.CallMethod[MeasurementFormatter](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 

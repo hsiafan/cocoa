@@ -33,13 +33,11 @@ func MakeSwitch(ptr unsafe.Pointer) Switch {
 
 func (s_ Switch) InitWithFrame(frameRect foundation.Rect) Switch {
 	rv := ffi.CallMethod[Switch](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Switch) Init() Switch {
 	rv := ffi.CallMethod[Switch](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

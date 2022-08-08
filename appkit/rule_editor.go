@@ -72,13 +72,11 @@ func MakeRuleEditor(ptr unsafe.Pointer) RuleEditor {
 
 func (r_ RuleEditor) InitWithFrame(frameRect foundation.Rect) RuleEditor {
 	rv := ffi.CallMethod[RuleEditor](r_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (r_ RuleEditor) Init() RuleEditor {
 	rv := ffi.CallMethod[RuleEditor](r_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -416,13 +414,11 @@ func MakePredicateEditor(ptr unsafe.Pointer) PredicateEditor {
 
 func (p_ PredicateEditor) InitWithFrame(frameRect foundation.Rect) PredicateEditor {
 	rv := ffi.CallMethod[PredicateEditor](p_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PredicateEditor) Init() PredicateEditor {
 	rv := ffi.CallMethod[PredicateEditor](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -483,13 +479,11 @@ func MakePredicateEditorRowTemplate(ptr unsafe.Pointer) PredicateEditorRowTempla
 
 func (p_ PredicateEditorRowTemplate) InitWithLeftExpressions_RightExpressions_Modifier_Operators_Options(leftExpressions []foundation.IExpression, rightExpressions []foundation.IExpression, modifier foundation.ComparisonPredicateModifier, operators []foundation.INumber, options uint) PredicateEditorRowTemplate {
 	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "initWithLeftExpressions:rightExpressions:modifier:operators:options:", leftExpressions, rightExpressions, modifier, operators, options)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) InitWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
 	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "initWithCompoundTypes:", compoundTypes)
-	rv.Autorelease()
 	return rv
 }
 
@@ -500,7 +494,6 @@ func (pc _PredicateEditorRowTemplateClass) Alloc() PredicateEditorRowTemplate {
 
 func (p_ PredicateEditorRowTemplate) Init() PredicateEditorRowTemplate {
 	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

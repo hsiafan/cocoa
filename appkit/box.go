@@ -64,13 +64,11 @@ func MakeBox(ptr unsafe.Pointer) Box {
 
 func (b_ Box) InitWithFrame(frameRect foundation.Rect) Box {
 	rv := ffi.CallMethod[Box](b_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ Box) Init() Box {
 	rv := ffi.CallMethod[Box](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 

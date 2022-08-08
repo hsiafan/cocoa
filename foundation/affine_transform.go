@@ -42,13 +42,11 @@ func MakeAffineTransform(ptr unsafe.Pointer) AffineTransform {
 
 func (a_ AffineTransform) Init() AffineTransform {
 	rv := ffi.CallMethod[AffineTransform](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 
 func (a_ AffineTransform) InitWithTransform(transform IAffineTransform) AffineTransform {
 	rv := ffi.CallMethod[AffineTransform](a_, "initWithTransform:", transform)
-	rv.Autorelease()
 	return rv
 }
 

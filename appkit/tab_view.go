@@ -73,13 +73,11 @@ func MakeTabView(ptr unsafe.Pointer) TabView {
 
 func (t_ TabView) InitWithFrame(frameRect foundation.Rect) TabView {
 	rv := ffi.CallMethod[TabView](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TabView) Init() TabView {
 	rv := ffi.CallMethod[TabView](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -423,7 +421,6 @@ func MakeTabViewItem(ptr unsafe.Pointer) TabViewItem {
 
 func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
 	rv := ffi.CallMethod[TabViewItem](t_, "initWithIdentifier:", identifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -439,7 +436,6 @@ func (tc _TabViewItemClass) Alloc() TabViewItem {
 
 func (t_ TabViewItem) Init() TabViewItem {
 	rv := ffi.CallMethod[TabViewItem](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -505,7 +501,6 @@ func (t_ TabViewItem) SetView(value IView) {
 
 func (t_ TabViewItem) InitialFirstResponder() View {
 	rv := ffi.CallMethod[View](t_, "initialFirstResponder")
-	rv.Autorelease()
 	return rv
 }
 

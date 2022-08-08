@@ -76,7 +76,6 @@ func MakeColor(ptr unsafe.Pointer) Color {
 
 func (c_ Color) Init() Color {
 	rv := ffi.CallMethod[Color](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -844,19 +843,16 @@ func MakeColorSpace(ptr unsafe.Pointer) ColorSpace {
 
 func (c_ ColorSpace) InitWithCGColorSpace(cgColorSpace coregraphics.ColorSpaceRef) ColorSpace {
 	rv := ffi.CallMethod[ColorSpace](c_, "initWithCGColorSpace:", cgColorSpace)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ColorSpace) InitWithColorSyncProfile(prof unsafe.Pointer) ColorSpace {
 	rv := ffi.CallMethod[ColorSpace](c_, "initWithColorSyncProfile:", prof)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ColorSpace) InitWithICCProfileData(iccData []byte) ColorSpace {
 	rv := ffi.CallMethod[ColorSpace](c_, "initWithICCProfileData:", iccData)
-	rv.Autorelease()
 	return rv
 }
 
@@ -867,7 +863,6 @@ func (cc _ColorSpaceClass) Alloc() ColorSpace {
 
 func (c_ ColorSpace) Init() ColorSpace {
 	rv := ffi.CallMethod[ColorSpace](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1009,13 +1004,11 @@ func MakeColorList(ptr unsafe.Pointer) ColorList {
 
 func (c_ ColorList) InitWithName(name ColorListName) ColorList {
 	rv := ffi.CallMethod[ColorList](c_, "initWithName:", name)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ColorList) InitWithName_FromFile(name ColorListName, path string) ColorList {
 	rv := ffi.CallMethod[ColorList](c_, "initWithName:fromFile:", name, path)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1026,7 +1019,6 @@ func (cc _ColorListClass) Alloc() ColorList {
 
 func (c_ ColorList) Init() ColorList {
 	rv := ffi.CallMethod[ColorList](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

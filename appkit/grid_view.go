@@ -68,13 +68,11 @@ func (gc _GridViewClass) GridViewWithViews(rows [][]IView) GridView {
 
 func (g_ GridView) InitWithFrame(frameRect foundation.Rect) GridView {
 	rv := ffi.CallMethod[GridView](g_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (g_ GridView) Init() GridView {
 	rv := ffi.CallMethod[GridView](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -257,7 +255,6 @@ func (gc _GridCellClass) Alloc() GridCell {
 
 func (g_ GridCell) Init() GridCell {
 	rv := ffi.CallMethod[GridCell](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -372,7 +369,6 @@ func (gc _GridColumnClass) Alloc() GridColumn {
 
 func (g_ GridColumn) Init() GridColumn {
 	rv := ffi.CallMethod[GridColumn](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -493,7 +489,6 @@ func (gc _GridRowClass) Alloc() GridRow {
 
 func (g_ GridRow) Init() GridRow {
 	rv := ffi.CallMethod[GridRow](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -56,31 +56,26 @@ func MakeWindowController(ptr unsafe.Pointer) WindowController {
 
 func (w_ WindowController) InitWithWindow(window IWindow) WindowController {
 	rv := ffi.CallMethod[WindowController](w_, "initWithWindow:", window)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibName(windowNibName NibName) WindowController {
 	rv := ffi.CallMethod[WindowController](w_, "initWithWindowNibName:", windowNibName)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibName_Owner(windowNibName NibName, owner objc.IObject) WindowController {
 	rv := ffi.CallMethod[WindowController](w_, "initWithWindowNibName:owner:", windowNibName, owner)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibPath_Owner(windowNibPath string, owner objc.IObject) WindowController {
 	rv := ffi.CallMethod[WindowController](w_, "initWithWindowNibPath:owner:", windowNibPath, owner)
-	rv.Autorelease()
 	return rv
 }
 
 func (w_ WindowController) Init() WindowController {
 	rv := ffi.CallMethod[WindowController](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

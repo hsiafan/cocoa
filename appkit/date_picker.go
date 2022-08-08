@@ -66,13 +66,11 @@ func MakeDatePicker(ptr unsafe.Pointer) DatePicker {
 
 func (d_ DatePicker) InitWithFrame(frameRect foundation.Rect) DatePicker {
 	rv := ffi.CallMethod[DatePicker](d_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DatePicker) Init() DatePicker {
 	rv := ffi.CallMethod[DatePicker](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -297,19 +295,16 @@ func MakeDatePickerCell(ptr unsafe.Pointer) DatePickerCell {
 
 func (d_ DatePickerCell) InitTextCell(_string string) DatePickerCell {
 	rv := ffi.CallMethod[DatePickerCell](d_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DatePickerCell) InitImageCell(image IImage) DatePickerCell {
 	rv := ffi.CallMethod[DatePickerCell](d_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DatePickerCell) Init() DatePickerCell {
 	rv := ffi.CallMethod[DatePickerCell](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 

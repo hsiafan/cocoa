@@ -61,13 +61,11 @@ func MakeProgressIndicator(ptr unsafe.Pointer) ProgressIndicator {
 
 func (p_ ProgressIndicator) InitWithFrame(frameRect foundation.Rect) ProgressIndicator {
 	rv := ffi.CallMethod[ProgressIndicator](p_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ ProgressIndicator) Init() ProgressIndicator {
 	rv := ffi.CallMethod[ProgressIndicator](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

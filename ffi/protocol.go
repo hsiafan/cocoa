@@ -140,6 +140,8 @@ func getProtocolName[T any]() string {
 		prefix = "WK"
 	case "coregraphics":
 		prefix = "CG"
+	case "quartzcore":
+		prefix = "CA"
 	default:
 		prefix = "NS"
 	}

@@ -80,13 +80,11 @@ func MakeToolbar(ptr unsafe.Pointer) Toolbar {
 
 func (t_ Toolbar) InitWithIdentifier(identifier ToolbarIdentifier) Toolbar {
 	rv := ffi.CallMethod[Toolbar](t_, "initWithIdentifier:", identifier)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ Toolbar) Init() Toolbar {
 	rv := ffi.CallMethod[Toolbar](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -557,7 +555,6 @@ func MakeToolbarItem(ptr unsafe.Pointer) ToolbarItem {
 
 func (t_ ToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItem {
 	rv := ffi.CallMethod[ToolbarItem](t_, "initWithItemIdentifier:", itemIdentifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -568,7 +565,6 @@ func (tc _ToolbarItemClass) Alloc() ToolbarItem {
 
 func (t_ ToolbarItem) Init() ToolbarItem {
 	rv := ffi.CallMethod[ToolbarItem](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -828,7 +824,6 @@ func (tc _ToolbarItemGroupClass) GroupWithItemIdentifier_Titles_SelectionMode_La
 
 func (t_ ToolbarItemGroup) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItemGroup {
 	rv := ffi.CallMethod[ToolbarItemGroup](t_, "initWithItemIdentifier:", itemIdentifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -839,7 +834,6 @@ func (tc _ToolbarItemGroupClass) Alloc() ToolbarItemGroup {
 
 func (t_ ToolbarItemGroup) Init() ToolbarItemGroup {
 	rv := ffi.CallMethod[ToolbarItemGroup](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -924,7 +918,6 @@ func MakeMenuToolbarItem(ptr unsafe.Pointer) MenuToolbarItem {
 
 func (m_ MenuToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
 	rv := ffi.CallMethod[MenuToolbarItem](m_, "initWithItemIdentifier:", itemIdentifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -935,7 +928,6 @@ func (mc _MenuToolbarItemClass) Alloc() MenuToolbarItem {
 
 func (m_ MenuToolbarItem) Init() MenuToolbarItem {
 	rv := ffi.CallMethod[MenuToolbarItem](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -997,7 +989,6 @@ func MakeSearchToolbarItem(ptr unsafe.Pointer) SearchToolbarItem {
 
 func (s_ SearchToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SearchToolbarItem {
 	rv := ffi.CallMethod[SearchToolbarItem](s_, "initWithItemIdentifier:", itemIdentifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1008,7 +999,6 @@ func (sc _SearchToolbarItemClass) Alloc() SearchToolbarItem {
 
 func (s_ SearchToolbarItem) Init() SearchToolbarItem {
 	rv := ffi.CallMethod[SearchToolbarItem](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1088,7 +1078,6 @@ func (tc _TrackingSeparatorToolbarItemClass) TrackingSeparatorToolbarItemWithIde
 
 func (t_ TrackingSeparatorToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) TrackingSeparatorToolbarItem {
 	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](t_, "initWithItemIdentifier:", itemIdentifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1099,7 +1088,6 @@ func (tc _TrackingSeparatorToolbarItemClass) Alloc() TrackingSeparatorToolbarIte
 
 func (t_ TrackingSeparatorToolbarItem) Init() TrackingSeparatorToolbarItem {
 	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

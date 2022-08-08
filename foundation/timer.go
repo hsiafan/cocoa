@@ -39,13 +39,11 @@ func MakeTimer(ptr unsafe.Pointer) Timer {
 
 func (t_ Timer) InitWithFireDate_Interval_Repeats_Block(date IDate, interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
 	rv := ffi.CallMethod[Timer](t_, "initWithFireDate:interval:repeats:block:", date, interval, repeats, block)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ Timer) InitWithFireDate_Interval_Target_Selector_UserInfo_Repeats(date IDate, ti TimeInterval, t objc.IObject, s objc.Selector, ui objc.IObject, rep bool) Timer {
 	rv := ffi.CallMethod[Timer](t_, "initWithFireDate:interval:target:selector:userInfo:repeats:", date, ti, t, s, ui, rep)
-	rv.Autorelease()
 	return rv
 }
 
@@ -56,7 +54,6 @@ func (tc _TimerClass) Alloc() Timer {
 
 func (t_ Timer) Init() Timer {
 	rv := ffi.CallMethod[Timer](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

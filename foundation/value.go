@@ -42,7 +42,6 @@ func MakeValue(ptr unsafe.Pointer) Value {
 
 func (v_ Value) InitWithBytes_ObjCType(value unsafe.Pointer, _type *byte) Value {
 	rv := ffi.CallMethod[Value](v_, "initWithBytes:objCType:", value, _type)
-	rv.Autorelease()
 	return rv
 }
 
@@ -53,7 +52,6 @@ func (vc _ValueClass) Alloc() Value {
 
 func (v_ Value) Init() Value {
 	rv := ffi.CallMethod[Value](v_, "init")
-	rv.Autorelease()
 	return rv
 }
 

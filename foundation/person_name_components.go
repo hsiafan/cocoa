@@ -49,7 +49,6 @@ func (pc _PersonNameComponentsClass) Alloc() PersonNameComponents {
 
 func (p_ PersonNameComponents) Init() PersonNameComponents {
 	rv := ffi.CallMethod[PersonNameComponents](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -162,7 +161,6 @@ func (pc _PersonNameComponentsFormatterClass) Alloc() PersonNameComponentsFormat
 
 func (p_ PersonNameComponentsFormatter) Init() PersonNameComponentsFormatter {
 	rv := ffi.CallMethod[PersonNameComponentsFormatter](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

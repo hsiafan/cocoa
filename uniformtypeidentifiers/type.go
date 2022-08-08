@@ -80,7 +80,6 @@ func (tc _TypeClass) Alloc() Type {
 
 func (t_ Type) Init() Type {
 	rv := ffi.CallMethod[Type](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -149,7 +149,6 @@ func MakeApplication(ptr unsafe.Pointer) Application {
 
 func (a_ Application) Init() Application {
 	rv := ffi.CallMethod[Application](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 

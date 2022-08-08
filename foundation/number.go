@@ -65,7 +65,6 @@ func MakeNumber(ptr unsafe.Pointer) Number {
 
 func (n_ Number) InitWithBytes_ObjCType(value unsafe.Pointer, _type *byte) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithBytes:objCType:", value, _type)
-	rv.Autorelease()
 	return rv
 }
 
@@ -76,7 +75,6 @@ func (nc _NumberClass) Alloc() Number {
 
 func (n_ Number) Init() Number {
 	rv := ffi.CallMethod[Number](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -167,91 +165,76 @@ func (nc _NumberClass) NumberWithUnsignedShort(value uint16) Number {
 
 func (n_ Number) InitWithBool(value bool) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithBool:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithChar(value byte) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithChar:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithDouble(value float64) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithDouble:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithFloat(value float32) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithFloat:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithInt(value int32) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithInt:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithInteger(value int) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithInteger:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithLong(value int64) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithLong:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithLongLong(value int64) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithLongLong:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithShort(value int16) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithShort:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedChar(value byte) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithUnsignedChar:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedInt(value uint32) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithUnsignedInt:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedInteger(value uint) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithUnsignedInteger:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedLong(value uint64) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithUnsignedLong:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedLongLong(value uint64) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithUnsignedLongLong:", value)
-	rv.Autorelease()
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedShort(value uint16) Number {
 	rv := ffi.CallMethod[Number](n_, "initWithUnsignedShort:", value)
-	rv.Autorelease()
 	return rv
 }
 
@@ -514,7 +497,6 @@ func (nc _NumberFormatterClass) Alloc() NumberFormatter {
 
 func (n_ NumberFormatter) Init() NumberFormatter {
 	rv := ffi.CallMethod[NumberFormatter](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1165,31 +1147,26 @@ func MakeDecimalNumber(ptr unsafe.Pointer) DecimalNumber {
 
 func (d_ DecimalNumber) InitWithDecimal(dcm Decimal) DecimalNumber {
 	rv := ffi.CallMethod[DecimalNumber](d_, "initWithDecimal:", dcm)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DecimalNumber) InitWithMantissa_Exponent_IsNegative(mantissa uint64, exponent int16, flag bool) DecimalNumber {
 	rv := ffi.CallMethod[DecimalNumber](d_, "initWithMantissa:exponent:isNegative:", mantissa, exponent, flag)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DecimalNumber) InitWithString(numberValue string) DecimalNumber {
 	rv := ffi.CallMethod[DecimalNumber](d_, "initWithString:", numberValue)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DecimalNumber) InitWithString_Locale(numberValue string, locale objc.IObject) DecimalNumber {
 	rv := ffi.CallMethod[DecimalNumber](d_, "initWithString:locale:", numberValue, locale)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DecimalNumber) InitWithBytes_ObjCType(value unsafe.Pointer, _type *byte) DecimalNumber {
 	rv := ffi.CallMethod[DecimalNumber](d_, "initWithBytes:objCType:", value, _type)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1200,7 +1177,6 @@ func (dc _DecimalNumberClass) Alloc() DecimalNumber {
 
 func (d_ DecimalNumber) Init() DecimalNumber {
 	rv := ffi.CallMethod[DecimalNumber](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1316,7 +1292,6 @@ func (dc _DecimalNumberHandlerClass) DecimalNumberHandlerWithRoundingMode_Scale_
 
 func (d_ DecimalNumberHandler) InitWithRoundingMode_Scale_RaiseOnExactness_RaiseOnOverflow_RaiseOnUnderflow_RaiseOnDivideByZero(roundingMode RoundingMode, scale int16, exact bool, overflow bool, underflow bool, divideByZero bool) DecimalNumberHandler {
 	rv := ffi.CallMethod[DecimalNumberHandler](d_, "initWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:", roundingMode, scale, exact, overflow, underflow, divideByZero)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1327,7 +1302,6 @@ func (dc _DecimalNumberHandlerClass) Alloc() DecimalNumberHandler {
 
 func (d_ DecimalNumberHandler) Init() DecimalNumberHandler {
 	rv := ffi.CallMethod[DecimalNumberHandler](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 

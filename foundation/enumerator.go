@@ -37,7 +37,6 @@ func (ec _EnumeratorClass) Alloc() Enumerator {
 
 func (e_ Enumerator) Init() Enumerator {
 	rv := ffi.CallMethod[Enumerator](e_, "init")
-	rv.Autorelease()
 	return rv
 }
 

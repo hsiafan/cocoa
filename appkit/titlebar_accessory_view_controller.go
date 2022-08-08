@@ -39,13 +39,11 @@ func MakeTitlebarAccessoryViewController(ptr unsafe.Pointer) TitlebarAccessoryVi
 
 func (t_ TitlebarAccessoryViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
 	rv := ffi.CallMethod[TitlebarAccessoryViewController](t_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) Init() TitlebarAccessoryViewController {
 	rv := ffi.CallMethod[TitlebarAccessoryViewController](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

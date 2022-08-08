@@ -98,13 +98,11 @@ func (tc _TextFieldClass) WrappingLabelWithString(stringValue string) TextField 
 
 func (t_ TextField) InitWithFrame(frameRect foundation.Rect) TextField {
 	rv := ffi.CallMethod[TextField](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextField) Init() TextField {
 	rv := ffi.CallMethod[TextField](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -370,13 +368,11 @@ func (sc _SecureTextFieldClass) WrappingLabelWithString(stringValue string) Secu
 
 func (s_ SecureTextField) InitWithFrame(frameRect foundation.Rect) SecureTextField {
 	rv := ffi.CallMethod[SecureTextField](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ SecureTextField) Init() SecureTextField {
 	rv := ffi.CallMethod[SecureTextField](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -517,19 +513,16 @@ func MakeTextFieldCell(ptr unsafe.Pointer) TextFieldCell {
 
 func (t_ TextFieldCell) InitTextCell(_string string) TextFieldCell {
 	rv := ffi.CallMethod[TextFieldCell](t_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextFieldCell) InitImageCell(image IImage) TextFieldCell {
 	rv := ffi.CallMethod[TextFieldCell](t_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextFieldCell) Init() TextFieldCell {
 	rv := ffi.CallMethod[TextFieldCell](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

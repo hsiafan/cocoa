@@ -38,7 +38,6 @@ func (sc _SecurityOriginClass) Alloc() SecurityOrigin {
 
 func (s_ SecurityOrigin) Init() SecurityOrigin {
 	rv := ffi.CallMethod[SecurityOrigin](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -97,7 +97,6 @@ func (tc _TypesetterClass) Alloc() Typesetter {
 
 func (t_ Typesetter) Init() Typesetter {
 	rv := ffi.CallMethod[Typesetter](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

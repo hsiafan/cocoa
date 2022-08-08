@@ -65,13 +65,11 @@ func MakeLevelIndicator(ptr unsafe.Pointer) LevelIndicator {
 
 func (l_ LevelIndicator) InitWithFrame(frameRect foundation.Rect) LevelIndicator {
 	rv := ffi.CallMethod[LevelIndicator](l_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (l_ LevelIndicator) Init() LevelIndicator {
 	rv := ffi.CallMethod[LevelIndicator](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 

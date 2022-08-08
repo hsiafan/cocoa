@@ -206,7 +206,6 @@ func MakeLayoutManager(ptr unsafe.Pointer) LayoutManager {
 
 func (l_ LayoutManager) Init() LayoutManager {
 	rv := ffi.CallMethod[LayoutManager](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1263,7 +1262,6 @@ func (lc _LayoutGuideClass) Alloc() LayoutGuide {
 
 func (l_ LayoutGuide) Init() LayoutGuide {
 	rv := ffi.CallMethod[LayoutGuide](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1410,7 +1408,6 @@ func (lc _LayoutConstraintClass) Alloc() LayoutConstraint {
 
 func (l_ LayoutConstraint) Init() LayoutConstraint {
 	rv := ffi.CallMethod[LayoutConstraint](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1559,7 +1556,6 @@ func (lc _LayoutAnchorClass) Alloc() LayoutAnchor {
 
 func (l_ LayoutAnchor) Init() LayoutAnchor {
 	rv := ffi.CallMethod[LayoutAnchor](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1659,7 +1655,6 @@ func (lc _LayoutDimensionClass) Alloc() LayoutDimension {
 
 func (l_ LayoutDimension) Init() LayoutDimension {
 	rv := ffi.CallMethod[LayoutDimension](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1749,7 +1744,6 @@ func (lc _LayoutXAxisAnchorClass) Alloc() LayoutXAxisAnchor {
 
 func (l_ LayoutXAxisAnchor) Init() LayoutXAxisAnchor {
 	rv := ffi.CallMethod[LayoutXAxisAnchor](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1814,7 +1808,6 @@ func (lc _LayoutYAxisAnchorClass) Alloc() LayoutYAxisAnchor {
 
 func (l_ LayoutYAxisAnchor) Init() LayoutYAxisAnchor {
 	rv := ffi.CallMethod[LayoutYAxisAnchor](l_, "init")
-	rv.Autorelease()
 	return rv
 }
 

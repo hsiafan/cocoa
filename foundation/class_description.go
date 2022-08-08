@@ -39,7 +39,6 @@ func (cc _ClassDescriptionClass) Alloc() ClassDescription {
 
 func (c_ ClassDescription) Init() ClassDescription {
 	rv := ffi.CallMethod[ClassDescription](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

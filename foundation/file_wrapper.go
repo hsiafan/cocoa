@@ -66,31 +66,26 @@ func MakeFileWrapper(ptr unsafe.Pointer) FileWrapper {
 
 func (f_ FileWrapper) InitWithURL_Options_Error(url IURL, options FileWrapperReadingOptions, outError *Error) FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](f_, "initWithURL:options:error:", url, options, unsafe.Pointer(outError))
-	rv.Autorelease()
 	return rv
 }
 
 func (f_ FileWrapper) InitDirectoryWithFileWrappers(childrenByPreferredName map[string]IFileWrapper) FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](f_, "initDirectoryWithFileWrappers:", childrenByPreferredName)
-	rv.Autorelease()
 	return rv
 }
 
 func (f_ FileWrapper) InitRegularFileWithContents(contents []byte) FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](f_, "initRegularFileWithContents:", contents)
-	rv.Autorelease()
 	return rv
 }
 
 func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](f_, "initSymbolicLinkWithDestinationURL:", url)
-	rv.Autorelease()
 	return rv
 }
 
 func (f_ FileWrapper) InitWithSerializedRepresentation(serializeRepresentation []byte) FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](f_, "initWithSerializedRepresentation:", serializeRepresentation)
-	rv.Autorelease()
 	return rv
 }
 
@@ -101,7 +96,6 @@ func (fc _FileWrapperClass) Alloc() FileWrapper {
 
 func (f_ FileWrapper) Init() FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](f_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -118,14 +112,12 @@ func NewFileWrapper() FileWrapper {
 // deprecated
 func (f_ FileWrapper) InitWithPath(path string) objc.Object {
 	rv := ffi.CallMethod[objc.Object](f_, "initWithPath:", path)
-	rv.Autorelease()
 	return rv
 }
 
 // deprecated
 func (f_ FileWrapper) InitSymbolicLinkWithDestination(path string) objc.Object {
 	rv := ffi.CallMethod[objc.Object](f_, "initSymbolicLinkWithDestination:", path)
-	rv.Autorelease()
 	return rv
 }
 

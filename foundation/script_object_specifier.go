@@ -50,13 +50,11 @@ func MakeScriptObjectSpecifier(ptr unsafe.Pointer) ScriptObjectSpecifier {
 
 func (s_ ScriptObjectSpecifier) InitWithContainerClassDescription_ContainerSpecifier_Key(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
 	rv := ffi.CallMethod[ScriptObjectSpecifier](s_, "initWithContainerClassDescription:containerSpecifier:key:", classDesc, container, property)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ ScriptObjectSpecifier) InitWithContainerSpecifier_Key(container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
 	rv := ffi.CallMethod[ScriptObjectSpecifier](s_, "initWithContainerSpecifier:key:", container, property)
-	rv.Autorelease()
 	return rv
 }
 
@@ -67,7 +65,6 @@ func (sc _ScriptObjectSpecifierClass) Alloc() ScriptObjectSpecifier {
 
 func (s_ ScriptObjectSpecifier) Init() ScriptObjectSpecifier {
 	rv := ffi.CallMethod[ScriptObjectSpecifier](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -32,7 +32,6 @@ func MakePressureConfiguration(ptr unsafe.Pointer) PressureConfiguration {
 
 func (p_ PressureConfiguration) InitWithPressureBehavior(pressureBehavior PressureBehavior) PressureConfiguration {
 	rv := ffi.CallMethod[PressureConfiguration](p_, "initWithPressureBehavior:", pressureBehavior)
-	rv.Autorelease()
 	return rv
 }
 
@@ -43,7 +42,6 @@ func (pc _PressureConfigurationClass) Alloc() PressureConfiguration {
 
 func (p_ PressureConfiguration) Init() PressureConfiguration {
 	rv := ffi.CallMethod[PressureConfiguration](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

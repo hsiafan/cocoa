@@ -42,7 +42,6 @@ func (bc _BackForwardListClass) Alloc() BackForwardList {
 
 func (b_ BackForwardList) Init() BackForwardList {
 	rv := ffi.CallMethod[BackForwardList](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -116,7 +115,6 @@ func (bc _BackForwardListItemClass) Alloc() BackForwardListItem {
 
 func (b_ BackForwardListItem) Init() BackForwardListItem {
 	rv := ffi.CallMethod[BackForwardListItem](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -142,6 +140,5 @@ func (b_ BackForwardListItem) URL() foundation.URL {
 
 func (b_ BackForwardListItem) InitialURL() foundation.URL {
 	rv := ffi.CallMethod[foundation.URL](b_, "initialURL")
-	rv.Autorelease()
 	return rv
 }

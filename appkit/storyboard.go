@@ -43,7 +43,6 @@ func (sc _StoryboardClass) Alloc() Storyboard {
 
 func (s_ Storyboard) Init() Storyboard {
 	rv := ffi.CallMethod[Storyboard](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

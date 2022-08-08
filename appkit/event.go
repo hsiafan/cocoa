@@ -100,7 +100,6 @@ func (ec _EventClass) Alloc() Event {
 
 func (e_ Event) Init() Event {
 	rv := ffi.CallMethod[Event](e_, "init")
-	rv.Autorelease()
 	return rv
 }
 

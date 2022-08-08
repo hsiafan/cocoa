@@ -61,7 +61,6 @@ func (pc _PreferencesClass) Alloc() Preferences {
 
 func (p_ Preferences) Init() Preferences {
 	rv := ffi.CallMethod[Preferences](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -204,7 +203,6 @@ func (wc _WebpagePreferencesClass) Alloc() WebpagePreferences {
 
 func (w_ WebpagePreferences) Init() WebpagePreferences {
 	rv := ffi.CallMethod[WebpagePreferences](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

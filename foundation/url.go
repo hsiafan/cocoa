@@ -93,7 +93,6 @@ func (uc _URLClass) URLWithString(URLString string) URL {
 
 func (u_ URL) InitWithString(URLString string) URL {
 	rv := ffi.CallMethod[URL](u_, "initWithString:", URLString)
-	rv.Autorelease()
 	return rv
 }
 
@@ -104,31 +103,26 @@ func (uc _URLClass) URLWithString_RelativeToURL(URLString string, baseURL IURL) 
 
 func (u_ URL) InitWithString_RelativeToURL(URLString string, baseURL IURL) URL {
 	rv := ffi.CallMethod[URL](u_, "initWithString:relativeToURL:", URLString, baseURL)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitFileURLWithPath_IsDirectory(path string, isDir bool) URL {
 	rv := ffi.CallMethod[URL](u_, "initFileURLWithPath:isDirectory:", path, isDir)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitFileURLWithPath_RelativeToURL(path string, baseURL IURL) URL {
 	rv := ffi.CallMethod[URL](u_, "initFileURLWithPath:relativeToURL:", path, baseURL)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitFileURLWithPath_IsDirectory_RelativeToURL(path string, isDir bool, baseURL IURL) URL {
 	rv := ffi.CallMethod[URL](u_, "initFileURLWithPath:isDirectory:relativeToURL:", path, isDir, baseURL)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitFileURLWithPath(path string) URL {
 	rv := ffi.CallMethod[URL](u_, "initFileURLWithPath:", path)
-	rv.Autorelease()
 	return rv
 }
 
@@ -144,31 +138,26 @@ func (uc _URLClass) URLByResolvingBookmarkData_Options_RelativeToURL_BookmarkDat
 
 func (u_ URL) InitByResolvingBookmarkData_Options_RelativeToURL_BookmarkDataIsStale_Error(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error *Error) URL {
 	rv := ffi.CallMethod[URL](u_, "initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:", bookmarkData, options, relativeURL, isStale, unsafe.Pointer(error))
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitFileURLWithFileSystemRepresentation_IsDirectory_RelativeToURL(path *byte, isDir bool, baseURL IURL) URL {
 	rv := ffi.CallMethod[URL](u_, "initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:", path, isDir, baseURL)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitAbsoluteURLWithDataRepresentation_RelativeToURL(data []byte, baseURL IURL) URL {
 	rv := ffi.CallMethod[URL](u_, "initAbsoluteURLWithDataRepresentation:relativeToURL:", data, baseURL)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitWithDataRepresentation_RelativeToURL(data []byte, baseURL IURL) URL {
 	rv := ffi.CallMethod[URL](u_, "initWithDataRepresentation:relativeToURL:", data, baseURL)
-	rv.Autorelease()
 	return rv
 }
 
 func (u_ URL) InitWithScheme_Host_Path(scheme string, host string, path string) URL {
 	rv := ffi.CallMethod[URL](u_, "initWithScheme:host:path:", scheme, host, path)
-	rv.Autorelease()
 	return rv
 }
 
@@ -179,7 +168,6 @@ func (uc _URLClass) Alloc() URL {
 
 func (u_ URL) Init() URL {
 	rv := ffi.CallMethod[URL](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -553,7 +541,6 @@ func (uc _URLRequestClass) RequestWithURL(URL IURL) URLRequest {
 
 func (u_ URLRequest) InitWithURL(URL IURL) URLRequest {
 	rv := ffi.CallMethod[URLRequest](u_, "initWithURL:", URL)
-	rv.Autorelease()
 	return rv
 }
 
@@ -564,7 +551,6 @@ func (uc _URLRequestClass) RequestWithURL_CachePolicy_TimeoutInterval(URL IURL, 
 
 func (u_ URLRequest) InitWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
 	rv := ffi.CallMethod[URLRequest](u_, "initWithURL:cachePolicy:timeoutInterval:", URL, cachePolicy, timeoutInterval)
-	rv.Autorelease()
 	return rv
 }
 
@@ -575,7 +561,6 @@ func (uc _URLRequestClass) Alloc() URLRequest {
 
 func (u_ URLRequest) Init() URLRequest {
 	rv := ffi.CallMethod[URLRequest](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -726,7 +711,6 @@ func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
 
 func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
 	rv := ffi.CallMethod[MutableURLRequest](m_, "initWithURL:", URL)
-	rv.Autorelease()
 	return rv
 }
 
@@ -737,7 +721,6 @@ func (mc _MutableURLRequestClass) RequestWithURL_CachePolicy_TimeoutInterval(URL
 
 func (m_ MutableURLRequest) InitWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
 	rv := ffi.CallMethod[MutableURLRequest](m_, "initWithURL:cachePolicy:timeoutInterval:", URL, cachePolicy, timeoutInterval)
-	rv.Autorelease()
 	return rv
 }
 
@@ -748,7 +731,6 @@ func (mc _MutableURLRequestClass) Alloc() MutableURLRequest {
 
 func (m_ MutableURLRequest) Init() MutableURLRequest {
 	rv := ffi.CallMethod[MutableURLRequest](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -870,7 +852,6 @@ func MakeURLResponse(ptr unsafe.Pointer) URLResponse {
 
 func (u_ URLResponse) InitWithURL_MIMEType_ExpectedContentLength_TextEncodingName(URL IURL, MIMEType string, length int, name string) URLResponse {
 	rv := ffi.CallMethod[URLResponse](u_, "initWithURL:MIMEType:expectedContentLength:textEncodingName:", URL, MIMEType, length, name)
-	rv.Autorelease()
 	return rv
 }
 
@@ -881,7 +862,6 @@ func (uc _URLResponseClass) Alloc() URLResponse {
 
 func (u_ URLResponse) Init() URLResponse {
 	rv := ffi.CallMethod[URLResponse](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -944,13 +924,11 @@ func MakeHTTPURLResponse(ptr unsafe.Pointer) HTTPURLResponse {
 
 func (h_ HTTPURLResponse) InitWithURL_StatusCode_HTTPVersion_HeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
 	rv := ffi.CallMethod[HTTPURLResponse](h_, "initWithURL:statusCode:HTTPVersion:headerFields:", url, statusCode, HTTPVersion, headerFields)
-	rv.Autorelease()
 	return rv
 }
 
 func (h_ HTTPURLResponse) InitWithURL_MIMEType_ExpectedContentLength_TextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
 	rv := ffi.CallMethod[HTTPURLResponse](h_, "initWithURL:MIMEType:expectedContentLength:textEncodingName:", URL, MIMEType, length, name)
-	rv.Autorelease()
 	return rv
 }
 
@@ -961,7 +939,6 @@ func (hc _HTTPURLResponseClass) Alloc() HTTPURLResponse {
 
 func (h_ HTTPURLResponse) Init() HTTPURLResponse {
 	rv := ffi.CallMethod[HTTPURLResponse](h_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1026,7 +1003,6 @@ func MakeHTTPCookie(ptr unsafe.Pointer) HTTPCookie {
 
 func (h_ HTTPCookie) InitWithProperties(properties map[HTTPCookiePropertyKey]objc.IObject) HTTPCookie {
 	rv := ffi.CallMethod[HTTPCookie](h_, "initWithProperties:", properties)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1037,7 +1013,6 @@ func (hc _HTTPCookieClass) Alloc() HTTPCookie {
 
 func (h_ HTTPCookie) Init() HTTPCookie {
 	rv := ffi.CallMethod[HTTPCookie](h_, "init")
-	rv.Autorelease()
 	return rv
 }
 

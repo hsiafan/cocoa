@@ -35,7 +35,6 @@ func MakeAppearance(ptr unsafe.Pointer) Appearance {
 
 func (a_ Appearance) InitWithAppearanceNamed_Bundle(name AppearanceName, bundle foundation.IBundle) Appearance {
 	rv := ffi.CallMethod[Appearance](a_, "initWithAppearanceNamed:bundle:", name, bundle)
-	rv.Autorelease()
 	return rv
 }
 
@@ -46,7 +45,6 @@ func (ac _AppearanceClass) Alloc() Appearance {
 
 func (a_ Appearance) Init() Appearance {
 	rv := ffi.CallMethod[Appearance](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 

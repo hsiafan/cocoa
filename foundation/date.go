@@ -71,31 +71,26 @@ func (dc _DateClass) DateWithTimeIntervalSince1970(secs TimeInterval) Date {
 
 func (d_ Date) Init() Date {
 	rv := ffi.CallMethod[Date](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Date) InitWithTimeIntervalSinceNow(secs TimeInterval) Date {
 	rv := ffi.CallMethod[Date](d_, "initWithTimeIntervalSinceNow:", secs)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Date) InitWithTimeInterval_SinceDate(secsToBeAdded TimeInterval, date IDate) Date {
 	rv := ffi.CallMethod[Date](d_, "initWithTimeInterval:sinceDate:", secsToBeAdded, date)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Date) InitWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
 	rv := ffi.CallMethod[Date](d_, "initWithTimeIntervalSinceReferenceDate:", ti)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Date) InitWithTimeIntervalSince1970(secs TimeInterval) Date {
 	rv := ffi.CallMethod[Date](d_, "initWithTimeIntervalSince1970:", secs)
-	rv.Autorelease()
 	return rv
 }
 
@@ -170,7 +165,6 @@ func (dc _DateClass) DateWithString(aString string) objc.Object {
 // deprecated
 func (d_ Date) InitWithString(description string) objc.Object {
 	rv := ffi.CallMethod[objc.Object](d_, "initWithString:", description)
-	rv.Autorelease()
 	return rv
 }
 
@@ -323,7 +317,6 @@ func (dc _DateFormatterClass) Alloc() DateFormatter {
 
 func (d_ DateFormatter) Init() DateFormatter {
 	rv := ffi.CallMethod[DateFormatter](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -370,7 +363,6 @@ func (d_ DateFormatter) AllowsNaturalLanguage() bool {
 // deprecated
 func (d_ DateFormatter) InitWithDateFormat_AllowNaturalLanguage(format string, flag bool) objc.Object {
 	rv := ffi.CallMethod[objc.Object](d_, "initWithDateFormat:allowNaturalLanguage:", format, flag)
-	rv.Autorelease()
 	return rv
 }
 
@@ -759,7 +751,6 @@ func (dc _DateComponentsClass) Alloc() DateComponents {
 
 func (d_ DateComponents) Init() DateComponents {
 	rv := ffi.CallMethod[DateComponents](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1013,7 +1004,6 @@ func (dc _DateComponentsFormatterClass) Alloc() DateComponentsFormatter {
 
 func (d_ DateComponentsFormatter) Init() DateComponentsFormatter {
 	rv := ffi.CallMethod[DateComponentsFormatter](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1176,19 +1166,16 @@ func MakeDateInterval(ptr unsafe.Pointer) DateInterval {
 
 func (d_ DateInterval) Init() DateInterval {
 	rv := ffi.CallMethod[DateInterval](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DateInterval) InitWithStartDate_Duration(startDate IDate, duration TimeInterval) DateInterval {
 	rv := ffi.CallMethod[DateInterval](d_, "initWithStartDate:duration:", startDate, duration)
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ DateInterval) InitWithStartDate_EndDate(startDate IDate, endDate IDate) DateInterval {
 	rv := ffi.CallMethod[DateInterval](d_, "initWithStartDate:endDate:", startDate, endDate)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1288,7 +1275,6 @@ func (dc _DateIntervalFormatterClass) Alloc() DateIntervalFormatter {
 
 func (d_ DateIntervalFormatter) Init() DateIntervalFormatter {
 	rv := ffi.CallMethod[DateIntervalFormatter](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1453,7 +1439,6 @@ func (cc _CalendarClass) Alloc() Calendar {
 
 func (c_ Calendar) Init() Calendar {
 	rv := ffi.CallMethod[Calendar](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1474,7 +1459,6 @@ func (cc _CalendarClass) CalendarWithIdentifier(calendarIdentifierConstant Calen
 
 func (c_ Calendar) InitWithCalendarIdentifier(ident CalendarIdentifier) objc.Object {
 	rv := ffi.CallMethod[objc.Object](c_, "initWithCalendarIdentifier:", ident)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1825,13 +1809,11 @@ func (tc _TimeZoneClass) TimeZoneWithName_Data(tzName string, aData []byte) Time
 
 func (t_ TimeZone) InitWithName(tzName string) TimeZone {
 	rv := ffi.CallMethod[TimeZone](t_, "initWithName:", tzName)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TimeZone) InitWithName_Data(tzName string, aData []byte) TimeZone {
 	rv := ffi.CallMethod[TimeZone](t_, "initWithName:data:", tzName, aData)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1852,7 +1834,6 @@ func (tc _TimeZoneClass) Alloc() TimeZone {
 
 func (t_ TimeZone) Init() TimeZone {
 	rv := ffi.CallMethod[TimeZone](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

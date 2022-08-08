@@ -52,7 +52,6 @@ func MakePopover(ptr unsafe.Pointer) Popover {
 
 func (p_ Popover) Init() Popover {
 	rv := ffi.CallMethod[Popover](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

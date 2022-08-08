@@ -45,7 +45,6 @@ func (dc _DockTileClass) Alloc() DockTile {
 
 func (d_ DockTile) Init() DockTile {
 	rv := ffi.CallMethod[DockTile](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 

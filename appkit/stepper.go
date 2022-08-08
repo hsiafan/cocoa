@@ -41,13 +41,11 @@ func MakeStepper(ptr unsafe.Pointer) Stepper {
 
 func (s_ Stepper) InitWithFrame(frameRect foundation.Rect) Stepper {
 	rv := ffi.CallMethod[Stepper](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ Stepper) Init() Stepper {
 	rv := ffi.CallMethod[Stepper](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

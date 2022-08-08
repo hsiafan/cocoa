@@ -38,7 +38,6 @@ func (nc _NavigationClass) Alloc() Navigation {
 
 func (n_ Navigation) Init() Navigation {
 	rv := ffi.CallMethod[Navigation](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -378,7 +377,6 @@ func (nc _NavigationActionClass) Alloc() NavigationAction {
 
 func (n_ NavigationAction) Init() NavigationAction {
 	rv := ffi.CallMethod[NavigationAction](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -457,7 +455,6 @@ func (nc _NavigationResponseClass) Alloc() NavigationResponse {
 
 func (n_ NavigationResponse) Init() NavigationResponse {
 	rv := ffi.CallMethod[NavigationResponse](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 

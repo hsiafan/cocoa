@@ -65,13 +65,11 @@ func MakeOutlineView(ptr unsafe.Pointer) OutlineView {
 
 func (o_ OutlineView) InitWithFrame(frameRect foundation.Rect) OutlineView {
 	rv := ffi.CallMethod[OutlineView](o_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (o_ OutlineView) Init() OutlineView {
 	rv := ffi.CallMethod[OutlineView](o_, "init")
-	rv.Autorelease()
 	return rv
 }
 

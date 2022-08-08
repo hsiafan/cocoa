@@ -87,13 +87,11 @@ func (cc _ComboBoxClass) WrappingLabelWithString(stringValue string) ComboBox {
 
 func (c_ ComboBox) InitWithFrame(frameRect foundation.Rect) ComboBox {
 	rv := ffi.CallMethod[ComboBox](c_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ ComboBox) Init() ComboBox {
 	rv := ffi.CallMethod[ComboBox](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

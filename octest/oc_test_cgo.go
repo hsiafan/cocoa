@@ -8,6 +8,8 @@ package octest
 // #import <Foundation/NSAffineTransform.h>
 // #import <Foundation/NSDecimal.h>
 // #import <AppKit/NSCollectionViewCompositionalLayout.h>
+// #import <QuartzCore/CATransform3D.h>
+// #import <QuartzCore/CAFrameRateRange.h>
 import "C"
 
 type CInt C.int
@@ -26,3 +28,5 @@ type Range C.NSRange
 type AffineTransformStruct C.NSAffineTransformStruct
 type Decimal C.NSDecimal
 type DirectionalEdgeInsets C.NSDirectionalEdgeInsets
+type Transform3D C.CATransform3D
+type FrameRateRange C.CAFrameRateRange

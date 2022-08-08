@@ -40,7 +40,6 @@ func (sc _StatusBarClass) Alloc() StatusBar {
 
 func (s_ StatusBar) Init() StatusBar {
 	rv := ffi.CallMethod[StatusBar](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -127,13 +126,11 @@ func (sc _StatusBarButtonClass) ButtonWithTitle_Target_Action(title string, targ
 
 func (s_ StatusBarButton) InitWithFrame(frameRect foundation.Rect) StatusBarButton {
 	rv := ffi.CallMethod[StatusBarButton](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ StatusBarButton) Init() StatusBarButton {
 	rv := ffi.CallMethod[StatusBarButton](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -250,7 +247,6 @@ func (sc _StatusItemClass) Alloc() StatusItem {
 
 func (s_ StatusItem) Init() StatusItem {
 	rv := ffi.CallMethod[StatusItem](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

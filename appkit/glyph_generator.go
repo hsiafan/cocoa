@@ -35,7 +35,6 @@ func (gc _GlyphGeneratorClass) Alloc() GlyphGenerator {
 
 func (g_ GlyphGenerator) Init() GlyphGenerator {
 	rv := ffi.CallMethod[GlyphGenerator](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -71,13 +71,11 @@ func (sc _StackViewClass) StackViewWithViews(views []IView) StackView {
 
 func (s_ StackView) InitWithFrame(frameRect foundation.Rect) StackView {
 	rv := ffi.CallMethod[StackView](s_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (s_ StackView) Init() StackView {
 	rv := ffi.CallMethod[StackView](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 

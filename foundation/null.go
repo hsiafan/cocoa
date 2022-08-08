@@ -35,7 +35,6 @@ func (nc _NullClass) Alloc() Null {
 
 func (n_ Null) Init() Null {
 	rv := ffi.CallMethod[Null](n_, "init")
-	rv.Autorelease()
 	return rv
 }
 

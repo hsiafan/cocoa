@@ -64,7 +64,6 @@ func (ac _AlertClass) Alloc() Alert {
 
 func (a_ Alert) Init() Alert {
 	rv := ffi.CallMethod[Alert](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 

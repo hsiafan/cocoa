@@ -51,7 +51,6 @@ func MakeTouchBar(ptr unsafe.Pointer) TouchBar {
 
 func (t_ TouchBar) Init() TouchBar {
 	rv := ffi.CallMethod[TouchBar](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -233,7 +232,6 @@ func MakeTouchBarItem(ptr unsafe.Pointer) TouchBarItem {
 
 func (t_ TouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifier) TouchBarItem {
 	rv := ffi.CallMethod[TouchBarItem](t_, "initWithIdentifier:", identifier)
-	rv.Autorelease()
 	return rv
 }
 
@@ -244,7 +242,6 @@ func (tc _TouchBarItemClass) Alloc() TouchBarItem {
 
 func (t_ TouchBarItem) Init() TouchBarItem {
 	rv := ffi.CallMethod[TouchBarItem](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

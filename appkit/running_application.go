@@ -60,7 +60,6 @@ func (rc _RunningApplicationClass) Alloc() RunningApplication {
 
 func (r_ RunningApplication) Init() RunningApplication {
 	rv := ffi.CallMethod[RunningApplication](r_, "init")
-	rv.Autorelease()
 	return rv
 }
 

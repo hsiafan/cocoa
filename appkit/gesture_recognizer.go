@@ -84,7 +84,6 @@ func MakeGestureRecognizer(ptr unsafe.Pointer) GestureRecognizer {
 
 func (g_ GestureRecognizer) InitWithTarget_Action(target objc.IObject, action objc.Selector) GestureRecognizer {
 	rv := ffi.CallMethod[GestureRecognizer](g_, "initWithTarget:action:", target, action)
-	rv.Autorelease()
 	return rv
 }
 
@@ -95,7 +94,6 @@ func (gc _GestureRecognizerClass) Alloc() GestureRecognizer {
 
 func (g_ GestureRecognizer) Init() GestureRecognizer {
 	rv := ffi.CallMethod[GestureRecognizer](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 

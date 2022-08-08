@@ -48,7 +48,6 @@ func (uc _UserContentControllerClass) Alloc() UserContentController {
 
 func (u_ UserContentController) Init() UserContentController {
 	rv := ffi.CallMethod[UserContentController](u_, "init")
-	rv.Autorelease()
 	return rv
 }
 

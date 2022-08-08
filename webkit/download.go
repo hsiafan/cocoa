@@ -39,7 +39,6 @@ func (dc _DownloadClass) Alloc() Download {
 
 func (d_ Download) Init() Download {
 	rv := ffi.CallMethod[Download](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -61,7 +61,6 @@ func (wc _WebViewConfigurationClass) Alloc() WebViewConfiguration {
 
 func (w_ WebViewConfiguration) Init() WebViewConfiguration {
 	rv := ffi.CallMethod[WebViewConfiguration](w_, "init")
-	rv.Autorelease()
 	return rv
 }
 

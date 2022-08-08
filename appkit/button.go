@@ -114,13 +114,11 @@ func (bc _ButtonClass) ButtonWithTitle_Target_Action(title string, target objc.I
 
 func (b_ Button) InitWithFrame(frameRect foundation.Rect) Button {
 	rv := ffi.CallMethod[Button](b_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ Button) Init() Button {
 	rv := ffi.CallMethod[Button](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -472,19 +470,16 @@ func MakeButtonCell(ptr unsafe.Pointer) ButtonCell {
 
 func (b_ ButtonCell) InitImageCell(image IImage) ButtonCell {
 	rv := ffi.CallMethod[ButtonCell](b_, "initImageCell:", image)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ ButtonCell) InitTextCell(_string string) ButtonCell {
 	rv := ffi.CallMethod[ButtonCell](b_, "initTextCell:", _string)
-	rv.Autorelease()
 	return rv
 }
 
 func (b_ ButtonCell) Init() ButtonCell {
 	rv := ffi.CallMethod[ButtonCell](b_, "init")
-	rv.Autorelease()
 	return rv
 }
 

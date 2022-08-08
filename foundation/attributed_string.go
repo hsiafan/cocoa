@@ -41,19 +41,16 @@ func MakeAttributedString(ptr unsafe.Pointer) AttributedString {
 
 func (a_ AttributedString) InitWithString(str string) AttributedString {
 	rv := ffi.CallMethod[AttributedString](a_, "initWithString:", str)
-	rv.Autorelease()
 	return rv
 }
 
 func (a_ AttributedString) InitWithString_Attributes(str string, attrs map[AttributedStringKey]objc.IObject) AttributedString {
 	rv := ffi.CallMethod[AttributedString](a_, "initWithString:attributes:", str, attrs)
-	rv.Autorelease()
 	return rv
 }
 
 func (a_ AttributedString) InitWithAttributedString(attrStr IAttributedString) AttributedString {
 	rv := ffi.CallMethod[AttributedString](a_, "initWithAttributedString:", attrStr)
-	rv.Autorelease()
 	return rv
 }
 
@@ -64,7 +61,6 @@ func (ac _AttributedStringClass) Alloc() AttributedString {
 
 func (a_ AttributedString) Init() AttributedString {
 	rv := ffi.CallMethod[AttributedString](a_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -166,19 +162,16 @@ func MakeMutableAttributedString(ptr unsafe.Pointer) MutableAttributedString {
 
 func (m_ MutableAttributedString) InitWithString(str string) MutableAttributedString {
 	rv := ffi.CallMethod[MutableAttributedString](m_, "initWithString:", str)
-	rv.Autorelease()
 	return rv
 }
 
 func (m_ MutableAttributedString) InitWithString_Attributes(str string, attrs map[AttributedStringKey]objc.IObject) MutableAttributedString {
 	rv := ffi.CallMethod[MutableAttributedString](m_, "initWithString:attributes:", str, attrs)
-	rv.Autorelease()
 	return rv
 }
 
 func (m_ MutableAttributedString) InitWithAttributedString(attrStr IAttributedString) MutableAttributedString {
 	rv := ffi.CallMethod[MutableAttributedString](m_, "initWithAttributedString:", attrStr)
-	rv.Autorelease()
 	return rv
 }
 
@@ -189,7 +182,6 @@ func (mc _MutableAttributedStringClass) Alloc() MutableAttributedString {
 
 func (m_ MutableAttributedString) Init() MutableAttributedString {
 	rv := ffi.CallMethod[MutableAttributedString](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 

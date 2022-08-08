@@ -75,7 +75,6 @@ func (pc _PrinterClass) Alloc() Printer {
 
 func (p_ Printer) Init() Printer {
 	rv := ffi.CallMethod[Printer](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -292,7 +291,6 @@ func (pc _PrintPanelClass) Alloc() PrintPanel {
 
 func (p_ PrintPanel) Init() PrintPanel {
 	rv := ffi.CallMethod[PrintPanel](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -438,7 +436,6 @@ func (pc _PDFInfoClass) Alloc() PDFInfo {
 
 func (p_ PDFInfo) Init() PDFInfo {
 	rv := ffi.CallMethod[PDFInfo](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -536,7 +533,6 @@ func (pc _PDFPanelClass) Alloc() PDFPanel {
 
 func (p_ PDFPanel) Init() PDFPanel {
 	rv := ffi.CallMethod[PDFPanel](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -649,13 +645,11 @@ func MakePrintInfo(ptr unsafe.Pointer) PrintInfo {
 
 func (p_ PrintInfo) InitWithDictionary(attributes map[PrintInfoAttributeKey]objc.IObject) PrintInfo {
 	rv := ffi.CallMethod[PrintInfo](p_, "initWithDictionary:", attributes)
-	rv.Autorelease()
 	return rv
 }
 
 func (p_ PrintInfo) Init() PrintInfo {
 	rv := ffi.CallMethod[PrintInfo](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -952,7 +946,6 @@ func (pc _PrintOperationClass) Alloc() PrintOperation {
 
 func (p_ PrintOperation) Init() PrintOperation {
 	rv := ffi.CallMethod[PrintOperation](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1219,7 +1212,6 @@ func (pc _PageLayoutClass) Alloc() PageLayout {
 
 func (p_ PageLayout) Init() PageLayout {
 	rv := ffi.CallMethod[PageLayout](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 

@@ -40,7 +40,6 @@ func (cc _CharacterSetClass) Alloc() CharacterSet {
 
 func (c_ CharacterSet) Init() CharacterSet {
 	rv := ffi.CallMethod[CharacterSet](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

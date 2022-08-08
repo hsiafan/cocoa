@@ -58,7 +58,6 @@ func (pc _ParagraphStyleClass) Alloc() ParagraphStyle {
 
 func (p_ ParagraphStyle) Init() ParagraphStyle {
 	rv := ffi.CallMethod[ParagraphStyle](p_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -244,7 +243,6 @@ func (mc _MutableParagraphStyleClass) Alloc() MutableParagraphStyle {
 
 func (m_ MutableParagraphStyle) Init() MutableParagraphStyle {
 	rv := ffi.CallMethod[MutableParagraphStyle](m_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -385,13 +383,11 @@ func MakeTextTab(ptr unsafe.Pointer) TextTab {
 
 func (t_ TextTab) InitWithTextAlignment_Location_Options(alignment TextAlignment, loc float64, options map[TextTabOptionKey]objc.IObject) TextTab {
 	rv := ffi.CallMethod[TextTab](t_, "initWithTextAlignment:location:options:", alignment, loc, options)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextTab) InitWithType_Location(_type TextTabType, loc float64) TextTab {
 	rv := ffi.CallMethod[TextTab](t_, "initWithType:location:", _type, loc)
-	rv.Autorelease()
 	return rv
 }
 
@@ -402,7 +398,6 @@ func (tc _TextTabClass) Alloc() TextTab {
 
 func (t_ TextTab) Init() TextTab {
 	rv := ffi.CallMethod[TextTab](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -470,13 +465,11 @@ func MakeTextList(ptr unsafe.Pointer) TextList {
 
 func (t_ TextList) InitWithMarkerFormat_Options(markerFormat TextListMarkerFormat, options uint) TextList {
 	rv := ffi.CallMethod[TextList](t_, "initWithMarkerFormat:options:", markerFormat, options)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextList) InitWithMarkerFormat_Options_StartingItemNumber(markerFormat TextListMarkerFormat, options TextListOptions, startingItemNumber int) TextList {
 	rv := ffi.CallMethod[TextList](t_, "initWithMarkerFormat:options:startingItemNumber:", markerFormat, options, startingItemNumber)
-	rv.Autorelease()
 	return rv
 }
 
@@ -487,7 +480,6 @@ func (tc _TextListClass) Alloc() TextList {
 
 func (t_ TextList) Init() TextList {
 	rv := ffi.CallMethod[TextList](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

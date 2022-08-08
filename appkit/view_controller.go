@@ -80,13 +80,11 @@ func MakeViewController(ptr unsafe.Pointer) ViewController {
 
 func (v_ ViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) ViewController {
 	rv := ffi.CallMethod[ViewController](v_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
-	rv.Autorelease()
 	return rv
 }
 
 func (v_ ViewController) Init() ViewController {
 	rv := ffi.CallMethod[ViewController](v_, "init")
-	rv.Autorelease()
 	return rv
 }
 

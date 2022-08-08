@@ -193,25 +193,21 @@ func MakeDocument(ptr unsafe.Pointer) Document {
 
 func (d_ Document) Init() Document {
 	rv := ffi.CallMethod[Document](d_, "init")
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Document) InitWithContentsOfURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) Document {
 	rv := ffi.CallMethod[Document](d_, "initWithContentsOfURL:ofType:error:", url, typeName, unsafe.Pointer(outError))
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Document) InitForURL_WithContentsOfURL_OfType_Error(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError *foundation.Error) Document {
 	rv := ffi.CallMethod[Document](d_, "initForURL:withContentsOfURL:ofType:error:", urlOrNil, contentsURL, typeName, unsafe.Pointer(outError))
-	rv.Autorelease()
 	return rv
 }
 
 func (d_ Document) InitWithType_Error(typeName string, outError *foundation.Error) Document {
 	rv := ffi.CallMethod[Document](d_, "initWithType:error:", typeName, unsafe.Pointer(outError))
-	rv.Autorelease()
 	return rv
 }
 
@@ -618,14 +614,12 @@ func (d_ Document) FileWrapperRepresentationOfType(_type string) foundation.File
 // deprecated
 func (d_ Document) InitWithContentsOfFile_OfType(absolutePath string, typeName string) objc.Object {
 	rv := ffi.CallMethod[objc.Object](d_, "initWithContentsOfFile:ofType:", absolutePath, typeName)
-	rv.Autorelease()
 	return rv
 }
 
 // deprecated
 func (d_ Document) InitWithContentsOfURL_OfType(url foundation.IURL, typeName string) objc.Object {
 	rv := ffi.CallMethod[objc.Object](d_, "initWithContentsOfURL:ofType:", url, typeName)
-	rv.Autorelease()
 	return rv
 }
 

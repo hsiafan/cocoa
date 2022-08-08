@@ -214,13 +214,11 @@ func MakeTextView(ptr unsafe.Pointer) TextView {
 
 func (t_ TextView) InitWithFrame_TextContainer(frameRect foundation.Rect, container ITextContainer) TextView {
 	rv := ffi.CallMethod[TextView](t_, "initWithFrame:textContainer:", frameRect, container)
-	rv.Autorelease()
 	return rv
 }
 
 func (t_ TextView) InitWithFrame(frameRect foundation.Rect) TextView {
 	rv := ffi.CallMethod[TextView](t_, "initWithFrame:", frameRect)
-	rv.Autorelease()
 	return rv
 }
 
@@ -231,7 +229,6 @@ func (tc _TextViewClass) FieldEditor() TextView {
 
 func (t_ TextView) Init() TextView {
 	rv := ffi.CallMethod[TextView](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 
@@ -1660,7 +1657,6 @@ func MakeTextViewportLayoutController(ptr unsafe.Pointer) TextViewportLayoutCont
 
 func (t_ TextViewportLayoutController) InitWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
 	rv := ffi.CallMethod[TextViewportLayoutController](t_, "initWithTextLayoutManager:", textLayoutManager)
-	rv.Autorelease()
 	return rv
 }
 
@@ -1671,7 +1667,6 @@ func (tc _TextViewportLayoutControllerClass) Alloc() TextViewportLayoutControlle
 
 func (t_ TextViewportLayoutController) Init() TextViewportLayoutController {
 	rv := ffi.CallMethod[TextViewportLayoutController](t_, "init")
-	rv.Autorelease()
 	return rv
 }
 

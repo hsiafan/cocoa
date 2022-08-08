@@ -47,13 +47,11 @@ func MakeCursor(ptr unsafe.Pointer) Cursor {
 
 func (c_ Cursor) InitWithImage_HotSpot(newImage IImage, point foundation.Point) Cursor {
 	rv := ffi.CallMethod[Cursor](c_, "initWithImage:hotSpot:", newImage, point)
-	rv.Autorelease()
 	return rv
 }
 
 func (c_ Cursor) InitWithImage_ForegroundColorHint_BackgroundColorHint_HotSpot(newImage IImage, fg IColor, bg IColor, hotSpot foundation.Point) Cursor {
 	rv := ffi.CallMethod[Cursor](c_, "initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:", newImage, fg, bg, hotSpot)
-	rv.Autorelease()
 	return rv
 }
 
@@ -64,7 +62,6 @@ func (cc _CursorClass) Alloc() Cursor {
 
 func (c_ Cursor) Init() Cursor {
 	rv := ffi.CallMethod[Cursor](c_, "init")
-	rv.Autorelease()
 	return rv
 }
 

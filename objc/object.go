@@ -24,7 +24,6 @@ package objc
 // const char* Object_Description(void* ptr);
 import "C"
 import (
-	"fmt"
 	"unsafe"
 )
 
@@ -37,7 +36,6 @@ type Holder interface {
 // IObject is interface for all objc Object type
 type IObject interface {
 	Holder
-	fmt.Stringer
 	IsNil() bool
 
 	GetClass() Class
@@ -167,8 +165,4 @@ func (o Object) Dealloc() {
 
 func (o Object) Description() string {
 	return C.GoString(C.Object_Description(o.Ptr()))
-}
-
-func (o Object) String() string {
-	return o.Description()
 }

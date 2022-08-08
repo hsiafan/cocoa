@@ -29,7 +29,7 @@ func main() {
 
 	view := webkit.WebViewClass.Alloc().InitWithFrame_Configuration(foundation.Rect{}, configuration)
 	webkit.AddScriptMessageHandlerWithReply(view, "greet", func(message objc.Object) (objc.IObject, error) {
-		param := message.String()
+		param := message.Description()
 		return foundation.NewString("hello: " + param), nil
 	})
 	w.SetContentView(view)

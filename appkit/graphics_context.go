@@ -58,7 +58,6 @@ func (gc _GraphicsContextClass) Alloc() GraphicsContext {
 
 func (g_ GraphicsContext) Init() GraphicsContext {
 	rv := ffi.CallMethod[GraphicsContext](g_, "init")
-	rv.Autorelease()
 	return rv
 }
 

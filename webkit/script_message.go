@@ -40,7 +40,6 @@ func (sc _ScriptMessageClass) Alloc() ScriptMessage {
 
 func (s_ ScriptMessage) Init() ScriptMessage {
 	rv := ffi.CallMethod[ScriptMessage](s_, "init")
-	rv.Autorelease()
 	return rv
 }
 
