@@ -8,7 +8,6 @@ import "C"
 import (
 	"reflect"
 	"runtime/cgo"
-	"strings"
 	"sync"
 	"unsafe"
 
@@ -128,24 +127,11 @@ func CreateProtocol[T any](d T) objc.Object {
 }
 
 func getProtocolName[T any]() string {
-	dt := reflect.TypeOf((*T)(nil)).Elem()
-	var prefix string
-	pkgPath := dt.PkgPath()
-	idx := strings.LastIndexByte(pkgPath, '/')
-	if idx < 0 {
-		panic("unknown package path:" + pkgPath)
+	pi, ok := GetProtocolInfo[T]()
+	if !ok || len(pi.Name) == 0 {
+		panic("protocol meta not found")
 	}
-	switch pkgPath[idx+1:] {
-	case "webkit":
-		prefix = "WK"
-	case "coregraphics":
-		prefix = "CG"
-	case "quartzcore":
-		prefix = "CA"
-	default:
-		prefix = "NS"
-	}
-	return prefix + dt.Name()
+	return pi.Name
 }
 
 //export respondsTo
