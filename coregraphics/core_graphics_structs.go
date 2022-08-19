@@ -1,5 +1,9 @@
 package coregraphics
 
+// #import <CoreGraphics/CGGeometry.h>
+import "C"
+import "github.com/hsiafan/cocoa/internal"
+
 // struct def should be sync with struct in <CoreGraphics/CGGeometry.h> <CoreGraphics/CGAffineTransform.h>
 
 type Float = float64
@@ -27,3 +31,6 @@ type Size struct {
 	Width  Float
 	Height Float
 }
+
+var RectNull = internal.ForceCast[C.CGRect, Rect](C.CGRectNull)
+var RectInfinite = internal.ForceCast[C.CGRect, Rect](C.CGRectInfinite)
