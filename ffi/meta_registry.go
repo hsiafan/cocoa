@@ -1,7 +1,6 @@
 package ffi
 
 import (
-	"reflect"
 	"sync"
 )
 
@@ -11,36 +10,34 @@ type ProtocolInfo struct {
 }
 
 var _protocolRegistry = protocolRegistry{
-	data: map[reflect.Type]ProtocolInfo{},
+	typeMap: map[string]ProtocolInfo{},
 }
 
 // protocolRegistry register protocol meta data
 type protocolRegistry struct {
-	data map[reflect.Type]ProtocolInfo // go protocol interface type to ProtocolInfo
-	lock sync.RWMutex
+	typeMap map[string]ProtocolInfo // go protocol interface type name to ProtocolInfo
+	lock    sync.RWMutex
 }
 
-func (p *protocolRegistry) register(pt reflect.Type, pi ProtocolInfo) {
+func (p *protocolRegistry) register(goTypeName string, pi ProtocolInfo) {
 	p.lock.Lock()
 	defer p.lock.Unlock()
-	p.data[pt] = pi
+	p.typeMap[goTypeName] = pi
 }
 
-func (p *protocolRegistry) get(pt reflect.Type) (pi ProtocolInfo, ok bool) {
+func (p *protocolRegistry) get(goTypeName string) (pi ProtocolInfo, ok bool) {
 	p.lock.RLock()
 	defer p.lock.RUnlock()
-	pi, ok = p.data[pt]
+	pi, ok = p.typeMap[goTypeName]
 	return
 }
 
 // RegisterProtocol registers a protocol meta data
-func RegisterProtocol[T any](pi ProtocolInfo) {
-	t := reflect.TypeOf((*T)(nil)).Elem()
-	_protocolRegistry.register(t, pi)
+func RegisterProtocol(goTypeName string, pi ProtocolInfo) {
+	_protocolRegistry.register(goTypeName, pi)
 }
 
 // GetProtocolInfo return a protocol meta data
-func GetProtocolInfo[T any]() (pi ProtocolInfo, ok bool) {
-	t := reflect.TypeOf((*T)(nil)).Elem()
-	return _protocolRegistry.get(t)
+func GetProtocolInfo(goTypeName string) (pi ProtocolInfo, ok bool) {
+	return _protocolRegistry.get(goTypeName)
 }

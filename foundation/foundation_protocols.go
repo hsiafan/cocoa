@@ -4,7 +4,7 @@ package foundation
 import "github.com/hsiafan/cocoa/ffi"
 
 func init() {
-	ffi.RegisterProtocol[PortDelegate](ffi.ProtocolInfo{Name: "NSPortDelegate"})
-	ffi.RegisterProtocol[StreamDelegate](ffi.ProtocolInfo{Name: "NSStreamDelegate"})
-	ffi.RegisterProtocol[UserActivityDelegate](ffi.ProtocolInfo{Name: "NSUserActivityDelegate"})
+	ffi.RegisterProtocol("foundation.PortDelegate", ffi.ProtocolInfo{Name: "NSPortDelegate"})
+	ffi.RegisterProtocol("foundation.StreamDelegate", ffi.ProtocolInfo{Name: "NSStreamDelegate"})
+	ffi.RegisterProtocol("foundation.UserActivityDelegate", ffi.ProtocolInfo{Name: "NSUserActivityDelegate"})
 }

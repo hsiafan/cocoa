@@ -8,6 +8,7 @@ import "C"
 import (
 	"reflect"
 	"runtime/cgo"
+	"strings"
 	"sync"
 	"unsafe"
 
@@ -127,7 +128,14 @@ func CreateProtocol[T any](d T) objc.Object {
 }
 
 func getProtocolName[T any]() string {
-	pi, ok := GetProtocolInfo[T]()
+	t := reflect.TypeOf((*T)(nil)).Elem()
+	pkgName := t.PkgPath()
+	idx := strings.LastIndexByte(pkgName, '/')
+	if idx > 0 {
+		pkgName = pkgName[idx+1:]
+	}
+
+	pi, ok := GetProtocolInfo(pkgName + "." + t.Name())
 	if !ok || len(pi.Name) == 0 {
 		panic("protocol meta not found")
 	}
