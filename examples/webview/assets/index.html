@@ -11,7 +11,7 @@
         const div = document.getElementById('info');
         div.textContent = "begin to post message...";
         try {
-            window.webkit.messageHandlers.greet.postMessage("wails").then((info) => {
+            window.webkit.messageHandlers.greet.postMessage("from web backend").then((info) => {
                 div.textContent = info;
             }, (err) => {
                 div.textContent = "error:" + err.message;

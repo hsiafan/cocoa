@@ -11,7 +11,7 @@ example:
 	@go build -o dist/ ./examples/tabview
 	@go build -o dist/ ./examples/webview
 	@go build -o dist/ ./examples/widgets
-	@go build -o dist/ ./examples/webxview
+	@go build -o dist/ ./examples/webshot
 
 lint:
 	@go fmt ./
