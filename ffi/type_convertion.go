@@ -3,15 +3,15 @@ package ffi
 // #import <stdint.h>
 // #include "type_convertion.h"
 // void* to_ns_string(const char* str);
-// const char* to_go_string(void* ptr);
+// const char* to_c_string(void* ptr);
 //
 // void* to_ns_data(data);
-// data to_go_bytes(void* ptr);
+// data to_c_bytes(void* ptr);
 //
 // void* to_ns_array(array array);
-// array to_go_slice(void* ptr);
+// array to_c_array(void* ptr);
 //
-// dict to_go_map(void* ptr);
+// dict to_c_items(void* ptr);
 // void* to_ns_dict(dict cDict);
 import "C"
 
@@ -73,7 +73,7 @@ func ToGoString(p unsafe.Pointer) string {
 	if p == nil {
 		return ""
 	}
-	return C.GoString(C.to_go_string(p))
+	return C.GoString(C.to_c_string(p))
 }
 
 func ToNSData(bytes []byte) unsafe.Pointer {
@@ -98,7 +98,7 @@ func ToGoBytes(p unsafe.Pointer) []byte {
 	if p == nil {
 		return nil
 	}
-	d := C.to_go_bytes(p)
+	d := C.to_c_bytes(p)
 	size := int(d.len)
 	if size <= 0 {
 		return nil
@@ -184,7 +184,7 @@ func ToGoSlice(ptr unsafe.Pointer, sliceType reflect.Type) reflect.Value {
 	if ptr == nil {
 		return reflect.New(sliceType).Elem()
 	}
-	ca := C.to_go_slice(ptr)
+	ca := C.to_c_array(ptr)
 	if ca.len > 0 {
 		defer C.free(ca.data)
 	}
@@ -220,7 +220,7 @@ func ToGoMap(ptr unsafe.Pointer, mapType reflect.Type) reflect.Value {
 	if ptr == nil {
 		return reflect.New(mapType).Elem()
 	}
-	cDict := C.to_go_map(ptr)
+	cDict := C.to_c_items(ptr)
 	if cDict.len > 0 {
 		defer C.free(cDict.key_data)
 		defer C.free(cDict.value_data)

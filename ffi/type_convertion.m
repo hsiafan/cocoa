@@ -8,7 +8,7 @@ void* to_ns_string(const char* str) {
     return [NSString stringWithUTF8String:str];
 }
 
-const char* to_go_string(void* ptr) {
+const char* to_c_string(void* ptr) {
     return [((NSString*)ptr) UTF8String];
 }
 
@@ -19,7 +19,7 @@ void* to_ns_data(data d) {
     return [NSData dataWithBytes:(Byte *)d.data length:d.len];
 }
 
-data to_go_bytes(void* ptr) {
+data to_c_bytes(void* ptr) {
     NSData* nsData = (NSData*)ptr;
     data array = {
         .data = [nsData bytes],
@@ -31,16 +31,16 @@ data to_go_bytes(void* ptr) {
 void* to_ns_array(array array) {
     NSMutableArray* nsArray = [NSMutableArray arrayWithCapacity:array.len];
     if (array.len > 0) {
-    	void** arrayData = (void**)array.data;
-    	for (int i = 0; i < array.len; i++) {
-    		void* p = arrayData[i];
-    		[nsArray addObject:(NSObject*)p];
-    	}
+        void** arrayData = (void**)array.data;
+        for (int i = 0; i < array.len; i++) {
+            void* p = arrayData[i];
+            [nsArray addObject:(NSObject*)p];
+        }
     }
     return nsArray;
 }
 
-array to_go_slice(void* ptr) {
+array to_c_array(void* ptr) {
     NSArray* result_ = (NSArray*)ptr;
     array result_Array;
     int result_count = [result_ count];
@@ -56,23 +56,23 @@ array to_go_slice(void* ptr) {
     return result_Array;
 }
 
-dict to_go_map(void* ptr) {
+dict to_c_items(void* ptr) {
     NSDictionary* result_ = (NSDictionary*)ptr;
     dict c_dict;
     NSArray * keys = [result_ allKeys];
     int size = [keys count];
     if (size > 0) {
-    	void** key_data = malloc(size * sizeof(void*));
-    	void** value_data = malloc(size * sizeof(void*));
-    	for (int i = 0; i < size; i++) {
-    		NSString* kp = [keys objectAtIndex:i];
-    		id vp = result_[kp];
-    		key_data[i] = kp;
-    		value_data[i] = vp;
-    	}
-    	c_dict.key_data = key_data;
-    	c_dict.value_data = value_data;
-    	c_dict.len = size;
+        void** key_data = malloc(size * sizeof(void*));
+        void** value_data = malloc(size * sizeof(void*));
+        for (int i = 0; i < size; i++) {
+            NSString* kp = [keys objectAtIndex:i];
+            id vp = result_[kp];
+            key_data[i] = kp;
+            value_data[i] = vp;
+        }
+        c_dict.key_data = key_data;
+        c_dict.value_data = value_data;
+        c_dict.len = size;
     }
     return c_dict;
 }
@@ -80,16 +80,13 @@ dict to_go_map(void* ptr) {
 void* to_ns_dict(dict cDict) {
     NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithCapacity:cDict.len];
     if (cDict.len > 0) {
-    	void** key_data = (void**)cDict.key_data;
-    	void** value_data = (void**)cDict.value_data;
-    	for (int i = 0; i < cDict.len; i++) {
-    		void* kp = key_data[i];
-    		void* vp = value_data[i];
-    		[dict setObject:(id)vp forKey:(id<NSCopying>)(NSString*)kp];
-    	}
+        void** key_data = (void**)cDict.key_data;
+        void** value_data = (void**)cDict.value_data;
+        for (int i = 0; i < cDict.len; i++) {
+            void* kp = key_data[i];
+            void* vp = value_data[i];
+            [dict setObject:(id)vp forKey:(id<NSCopying>)(NSString*)kp];
+        }
     }
     return dict;
 }
-
-
-
