@@ -1,4 +1,4 @@
-package octest
+package test
 
 import (
 	"reflect"

@@ -5,10 +5,10 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface/action"
-	"github.com/hsiafan/cocoa/coface/layout"
-	"github.com/hsiafan/cocoa/coface/widgets"
 	"github.com/hsiafan/cocoa/foundation"
+	"github.com/hsiafan/cocoa/helper/action"
+	"github.com/hsiafan/cocoa/helper/layout"
+	"github.com/hsiafan/cocoa/helper/widgets"
 	"github.com/hsiafan/cocoa/objc"
 )
 

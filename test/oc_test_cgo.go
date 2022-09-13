@@ -1,4 +1,4 @@
-package octest
+package test
 
 // #cgo CFLAGS: -x objective-c
 // #cgo LDFLAGS: -framework CoreGraphics -framework Foundation -framework AppKit

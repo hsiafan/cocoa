@@ -5,8 +5,8 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/hsiafan/cocoa/coface/action"
 	"github.com/hsiafan/cocoa/dispatch"
+	"github.com/hsiafan/cocoa/helper/action"
 
 	"github.com/hsiafan/cocoa/appkit"
 	"github.com/hsiafan/cocoa/foundation"

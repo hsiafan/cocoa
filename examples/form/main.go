@@ -4,9 +4,9 @@ import (
 	"runtime"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/coface/layout"
-	"github.com/hsiafan/cocoa/coface/widgets"
 	"github.com/hsiafan/cocoa/foundation"
+	"github.com/hsiafan/cocoa/helper/layout"
+	"github.com/hsiafan/cocoa/helper/widgets"
 )
 
 // Arrange that main.main runs on main thread.
