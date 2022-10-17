@@ -2254,18 +2254,6 @@ const ViewAnimationEndFrameKey ViewAnimationKey = "NSViewAnimationEndFrameKey"
 const ViewAnimationStartFrameKey ViewAnimationKey = "NSViewAnimationStartFrameKey"
 const ViewAnimationTargetKey ViewAnimationKey = "NSViewAnimationTargetKey"
 
-type ViewControllerTransitionOptions uint
-
-const ViewControllerTransitionNone ViewControllerTransitionOptions = 0
-const ViewControllerTransitionCrossfade ViewControllerTransitionOptions = 1
-const ViewControllerTransitionSlideUp ViewControllerTransitionOptions = 16
-const ViewControllerTransitionSlideDown ViewControllerTransitionOptions = 32
-const ViewControllerTransitionSlideLeft ViewControllerTransitionOptions = 64
-const ViewControllerTransitionSlideRight ViewControllerTransitionOptions = 128
-const ViewControllerTransitionSlideForward ViewControllerTransitionOptions = 320
-const ViewControllerTransitionSlideBackward ViewControllerTransitionOptions = 384
-const ViewControllerTransitionAllowUserInteraction ViewControllerTransitionOptions = 4096
-
 type ViewFullScreenModeOptionKey string
 
 const FullScreenModeAllScreens ViewFullScreenModeOptionKey = "NSFullScreenModeAllScreens"

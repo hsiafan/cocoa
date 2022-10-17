@@ -159,8 +159,8 @@ func (t_ TouchBar) SetCustomizationRequiredItemIdentifiers(value []TouchBarItemI
 	ffi.CallMethod[ffi.Void](t_, "setCustomizationRequiredItemIdentifiers:", value)
 }
 
-func (tc _TouchBarClass) IsAutomaticCustomizeTouchBarMenuItemEnabled() bool {
-	rv := ffi.CallMethod[bool](tc, "isAutomaticCustomizeTouchBarMenuItemEnabled")
+func (tc _TouchBarClass) AutomaticCustomizeTouchBarMenuItemEnabled() bool {
+	rv := ffi.CallMethod[bool](tc, "automaticCustomizeTouchBarMenuItemEnabled")
 	return rv
 }
 
@@ -216,7 +216,6 @@ type ITouchBarItem interface {
 	SetVisibilityPriority(value TouchBarItemPriority)
 	IsVisible() bool
 	CustomizationLabel() string
-	ViewController() ViewController
 	View() View
 }
 
@@ -276,11 +275,6 @@ func (t_ TouchBarItem) IsVisible() bool {
 
 func (t_ TouchBarItem) CustomizationLabel() string {
 	rv := ffi.CallMethod[string](t_, "customizationLabel")
-	return rv
-}
-
-func (t_ TouchBarItem) ViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](t_, "viewController")
 	return rv
 }
 

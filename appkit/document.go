@@ -33,11 +33,6 @@ type IDocument interface {
 	WritableTypesForSaveOperation(saveOperation SaveOperationType) []string
 	FileNameExtensionForType_SaveOperation(typeName string, saveOperation SaveOperationType) string
 	MakeWindowControllers()
-	AddWindowController(windowController IWindowController)
-	RemoveWindowController(windowController IWindowController)
-	WindowControllerDidLoadNib(windowController IWindowController)
-	WindowControllerWillLoadNib(windowController IWindowController)
-	ShouldCloseWindowController_Delegate_ShouldCloseSelector_ContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer)
 	ShowWindows()
 	SetWindow(window IWindow)
 	SetDisplayName(displayNameOrNil string)
@@ -151,7 +146,6 @@ type IDocument interface {
 	SetFileType(value string)
 	IsDocumentEdited() bool
 	IsInViewingMode() bool
-	WindowControllers() []WindowController
 	WindowNibName() NibName
 	WindowForSheet() Window
 	DisplayName() string
@@ -310,26 +304,6 @@ func (d_ Document) FileNameExtensionForType_SaveOperation(typeName string, saveO
 
 func (d_ Document) MakeWindowControllers() {
 	ffi.CallMethod[ffi.Void](d_, "makeWindowControllers")
-}
-
-func (d_ Document) AddWindowController(windowController IWindowController) {
-	ffi.CallMethod[ffi.Void](d_, "addWindowController:", windowController)
-}
-
-func (d_ Document) RemoveWindowController(windowController IWindowController) {
-	ffi.CallMethod[ffi.Void](d_, "removeWindowController:", windowController)
-}
-
-func (d_ Document) WindowControllerDidLoadNib(windowController IWindowController) {
-	ffi.CallMethod[ffi.Void](d_, "windowControllerDidLoadNib:", windowController)
-}
-
-func (d_ Document) WindowControllerWillLoadNib(windowController IWindowController) {
-	ffi.CallMethod[ffi.Void](d_, "windowControllerWillLoadNib:", windowController)
-}
-
-func (d_ Document) ShouldCloseWindowController_Delegate_ShouldCloseSelector_ContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](d_, "shouldCloseWindowController:delegate:shouldCloseSelector:contextInfo:", windowController, delegate, shouldCloseSelector, contextInfo)
 }
 
 func (d_ Document) ShowWindows() {
@@ -773,11 +747,6 @@ func (dc _DocumentClass) ReadableTypes() []string {
 
 func (dc _DocumentClass) WritableTypes() []string {
 	rv := ffi.CallMethod[[]string](dc, "writableTypes")
-	return rv
-}
-
-func (d_ Document) WindowControllers() []WindowController {
-	rv := ffi.CallMethod[[]WindowController](d_, "windowControllers")
 	return rv
 }
 

@@ -251,8 +251,6 @@ type IPrintPanel interface {
 	objc.IObject
 	DefaultButtonTitle() string
 	SetDefaultButtonTitle(defaultButtonTitle string)
-	AddAccessoryController(accessoryController IViewController)
-	RemoveAccessoryController(accessoryController IViewController)
 	BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
 	RunModal() int
 	RunModalWithPrintInfo(printInfo IPrintInfo) int
@@ -270,7 +268,6 @@ type IPrintPanel interface {
 	SetOptions(value PrintPanelOptions)
 	HelpAnchor() HelpAnchorName
 	SetHelpAnchor(value HelpAnchorName)
-	AccessoryControllers() []ViewController
 	PrintInfo() PrintInfo
 }
 
@@ -316,14 +313,6 @@ func (p_ PrintPanel) DefaultButtonTitle() string {
 
 func (p_ PrintPanel) SetDefaultButtonTitle(defaultButtonTitle string) {
 	ffi.CallMethod[ffi.Void](p_, "setDefaultButtonTitle:", defaultButtonTitle)
-}
-
-func (p_ PrintPanel) AddAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "addAccessoryController:", accessoryController)
-}
-
-func (p_ PrintPanel) RemoveAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "removeAccessoryController:", accessoryController)
 }
 
 func (p_ PrintPanel) BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
@@ -386,11 +375,6 @@ func (p_ PrintPanel) HelpAnchor() HelpAnchorName {
 
 func (p_ PrintPanel) SetHelpAnchor(value HelpAnchorName) {
 	ffi.CallMethod[ffi.Void](p_, "setHelpAnchor:", value)
-}
-
-func (p_ PrintPanel) AccessoryControllers() []ViewController {
-	rv := ffi.CallMethod[[]ViewController](p_, "accessoryControllers")
-	return rv
 }
 
 func (p_ PrintPanel) PrintInfo() PrintInfo {
@@ -508,8 +492,6 @@ type _PDFPanelClass struct {
 type IPDFPanel interface {
 	objc.IObject
 	BeginSheetWithPDFInfo_ModalForWindow_CompletionHandler(pdfInfo IPDFInfo, docWindow IWindow, completionHandler func(param1 int))
-	AccessoryController() ViewController
-	SetAccessoryController(value IViewController)
 	Options() PDFPanelOptions
 	SetOptions(value PDFPanelOptions)
 	DefaultFileName() string
@@ -553,15 +535,6 @@ func (pc _PDFPanelClass) Panel() PDFPanel {
 
 func (p_ PDFPanel) BeginSheetWithPDFInfo_ModalForWindow_CompletionHandler(pdfInfo IPDFInfo, docWindow IWindow, completionHandler func(param1 int)) {
 	ffi.CallMethod[ffi.Void](p_, "beginSheetWithPDFInfo:modalForWindow:completionHandler:", pdfInfo, docWindow, completionHandler)
-}
-
-func (p_ PDFPanel) AccessoryController() ViewController {
-	rv := ffi.CallMethod[ViewController](p_, "accessoryController")
-	return rv
-}
-
-func (p_ PDFPanel) SetAccessoryController(value IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "setAccessoryController:", value)
 }
 
 func (p_ PDFPanel) Options() PDFPanelOptions {
@@ -1181,8 +1154,6 @@ type IPageLayout interface {
 	BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer)
 	RunModal() int
 	RunModalWithPrintInfo(printInfo IPrintInfo) int
-	AddAccessoryController(accessoryController IViewController)
-	RemoveAccessoryController(accessoryController IViewController)
 	// deprecated
 	AccessoryView() View
 	// deprecated
@@ -1191,7 +1162,6 @@ type IPageLayout interface {
 	ReadPrintInfo()
 	// deprecated
 	WritePrintInfo()
-	AccessoryControllers() []ViewController
 	PrintInfo() PrintInfo
 }
 
@@ -1244,14 +1214,6 @@ func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
 	return rv
 }
 
-func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "addAccessoryController:", accessoryController)
-}
-
-func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "removeAccessoryController:", accessoryController)
-}
-
 // deprecated
 func (p_ PageLayout) AccessoryView() View {
 	rv := ffi.CallMethod[View](p_, "accessoryView")
@@ -1271,11 +1233,6 @@ func (p_ PageLayout) ReadPrintInfo() {
 // deprecated
 func (p_ PageLayout) WritePrintInfo() {
 	ffi.CallMethod[ffi.Void](p_, "writePrintInfo")
-}
-
-func (p_ PageLayout) AccessoryControllers() []ViewController {
-	rv := ffi.CallMethod[[]ViewController](p_, "accessoryControllers")
-	return rv
 }
 
 func (p_ PageLayout) PrintInfo() PrintInfo {

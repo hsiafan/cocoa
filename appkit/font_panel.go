@@ -36,11 +36,6 @@ func MakeFontPanel(ptr unsafe.Pointer) FontPanel {
 	}
 }
 
-func (fc _FontPanelClass) WindowWithContentViewController(contentViewController IViewController) FontPanel {
-	rv := ffi.CallMethod[FontPanel](fc, "windowWithContentViewController:", contentViewController)
-	return rv
-}
-
 func (f_ FontPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) FontPanel {
 	rv := ffi.CallMethod[FontPanel](f_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
 	return rv

@@ -218,7 +218,7 @@ func (s_ Scroller) KnobProportion() float64 {
 	return rv
 }
 
-func (sc _ScrollerClass) IsCompatibleWithOverlayScrollers() bool {
-	rv := ffi.CallMethod[bool](sc, "isCompatibleWithOverlayScrollers")
+func (sc _ScrollerClass) CompatibleWithOverlayScrollers() bool {
+	rv := ffi.CallMethod[bool](sc, "compatibleWithOverlayScrollers")
 	return rv
 }

@@ -58,7 +58,6 @@ func init() {
 	ffi.RegisterProtocol("appkit.UserInterfaceCompression", ffi.ProtocolInfo{Name: "NSUserInterfaceCompression"})
 	ffi.RegisterProtocol("appkit.UserInterfaceItemIdentification", ffi.ProtocolInfo{Name: "NSUserInterfaceItemIdentification"})
 	ffi.RegisterProtocol("appkit.ValidatedUserInterfaceItem", ffi.ProtocolInfo{Name: "NSValidatedUserInterfaceItem"})
-	ffi.RegisterProtocol("appkit.ViewControllerPresentationAnimator", ffi.ProtocolInfo{Name: "NSViewControllerPresentationAnimator"})
 	ffi.RegisterProtocol("appkit.ViewToolTipOwner", ffi.ProtocolInfo{Name: "NSViewToolTipOwner"})
 	ffi.RegisterProtocol("appkit.WindowDelegate", ffi.ProtocolInfo{Name: "NSWindowDelegate"})
 }

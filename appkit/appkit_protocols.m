@@ -57,7 +57,6 @@ void importAppKitProtocols() {
     o = @protocol(NSUserInterfaceCompression);
     o = @protocol(NSUserInterfaceItemIdentification);
     o = @protocol(NSValidatedUserInterfaceItem);
-    o = @protocol(NSViewControllerPresentationAnimator);
     o = @protocol(NSViewToolTipOwner);
     o = @protocol(NSWindowDelegate);
 }

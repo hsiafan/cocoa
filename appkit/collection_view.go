@@ -18,7 +18,6 @@ type _CollectionViewClass struct {
 
 type ICollectionView interface {
 	IView
-	MakeItemWithIdentifier_ForIndexPath(identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) CollectionViewItem
 	MakeSupplementaryViewOfKind_WithIdentifier_ForIndexPath(elementKind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) View
 	ReloadData()
 	ReloadSections(sections foundation.IIndexSet)
@@ -35,22 +34,16 @@ type ICollectionView interface {
 	DeselectAll(sender objc.IObject)
 	SelectItemsAtIndexPaths_ScrollPosition(indexPaths foundation.ISet, scrollPosition CollectionViewScrollPosition)
 	DeselectItemsAtIndexPaths(indexPaths foundation.ISet)
-	VisibleItems() []CollectionViewItem
 	IndexPathsForVisibleItems() foundation.Set
 	VisibleSupplementaryViewsOfKind(elementKind CollectionViewSupplementaryElementKind) []View
 	IndexPathsForVisibleSupplementaryElementsOfKind(elementKind CollectionViewSupplementaryElementKind) foundation.Set
-	IndexPathForItem(item ICollectionViewItem) foundation.IndexPath
 	IndexPathForItemAtPoint(point foundation.Point) foundation.IndexPath
-	ItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewItem
 	SupplementaryViewForElementKind_AtIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) View
 	ScrollToItemsAtIndexPaths_ScrollPosition(indexPaths foundation.ISet, scrollPosition CollectionViewScrollPosition)
 	LayoutAttributesForItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes
 	LayoutAttributesForSupplementaryElementOfKind_AtIndexPath(kind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes
 	PerformBatchUpdates_CompletionHandler(updates func(), completionHandler func(finished bool))
 	DraggingImageForItemsAtIndexPaths_WithEvent_Offset(indexPaths foundation.ISet, event IEvent, dragImageOffset *foundation.Point) Image
-	// deprecated
-	NewItemForRepresentedObject(object objc.IObject) CollectionViewItem
-	ItemAtIndex(index uint) CollectionViewItem
 	FrameForItemAtIndex(index uint) foundation.Rect
 	FrameForItemAtIndex_WithNumberOfItems(index uint, numberOfItems uint) foundation.Rect
 	DraggingImageForItemsAtIndexes_WithEvent_Offset(indexes foundation.IIndexSet, event IEvent, dragImageOffset *foundation.Point) Image
@@ -81,10 +74,6 @@ type ICollectionView interface {
 	SelectionIndexPaths() foundation.Set
 	SetSelectionIndexPaths(value foundation.ISet)
 	IsFirstResponder() bool
-	// deprecated
-	ItemPrototype() CollectionViewItem
-	// deprecated
-	SetItemPrototype(value ICollectionViewItem)
 	SelectionIndexes() foundation.IndexSet
 	SetSelectionIndexes(value foundation.IIndexSet)
 	// deprecated
@@ -138,11 +127,6 @@ func (cc _CollectionViewClass) New() CollectionView {
 
 func NewCollectionView() CollectionView {
 	return CollectionViewClass.New()
-}
-
-func (c_ CollectionView) MakeItemWithIdentifier_ForIndexPath(identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "makeItemWithIdentifier:forIndexPath:", identifier, indexPath)
-	return rv
 }
 
 func (c_ CollectionView) MakeSupplementaryViewOfKind_WithIdentifier_ForIndexPath(elementKind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) View {
@@ -211,11 +195,6 @@ func (c_ CollectionView) DeselectItemsAtIndexPaths(indexPaths foundation.ISet) {
 	ffi.CallMethod[ffi.Void](c_, "deselectItemsAtIndexPaths:", indexPaths)
 }
 
-func (c_ CollectionView) VisibleItems() []CollectionViewItem {
-	rv := ffi.CallMethod[[]CollectionViewItem](c_, "visibleItems")
-	return rv
-}
-
 func (c_ CollectionView) IndexPathsForVisibleItems() foundation.Set {
 	rv := ffi.CallMethod[foundation.Set](c_, "indexPathsForVisibleItems")
 	return rv
@@ -231,18 +210,8 @@ func (c_ CollectionView) IndexPathsForVisibleSupplementaryElementsOfKind(element
 	return rv
 }
 
-func (c_ CollectionView) IndexPathForItem(item ICollectionViewItem) foundation.IndexPath {
-	rv := ffi.CallMethod[foundation.IndexPath](c_, "indexPathForItem:", item)
-	return rv
-}
-
 func (c_ CollectionView) IndexPathForItemAtPoint(point foundation.Point) foundation.IndexPath {
 	rv := ffi.CallMethod[foundation.IndexPath](c_, "indexPathForItemAtPoint:", point)
-	return rv
-}
-
-func (c_ CollectionView) ItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "itemAtIndexPath:", indexPath)
 	return rv
 }
 
@@ -271,18 +240,6 @@ func (c_ CollectionView) PerformBatchUpdates_CompletionHandler(updates func(), c
 
 func (c_ CollectionView) DraggingImageForItemsAtIndexPaths_WithEvent_Offset(indexPaths foundation.ISet, event IEvent, dragImageOffset *foundation.Point) Image {
 	rv := ffi.CallMethod[Image](c_, "draggingImageForItemsAtIndexPaths:withEvent:offset:", indexPaths, event, dragImageOffset)
-	return rv
-}
-
-// deprecated
-func (c_ CollectionView) NewItemForRepresentedObject(object objc.IObject) CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "newItemForRepresentedObject:", object)
-	rv.Autorelease()
-	return rv
-}
-
-func (c_ CollectionView) ItemAtIndex(index uint) CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "itemAtIndex:", index)
 	return rv
 }
 
@@ -432,17 +389,6 @@ func (c_ CollectionView) IsFirstResponder() bool {
 	return rv
 }
 
-// deprecated
-func (c_ CollectionView) ItemPrototype() CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "itemPrototype")
-	return rv
-}
-
-// deprecated
-func (c_ CollectionView) SetItemPrototype(value ICollectionViewItem) {
-	ffi.CallMethod[ffi.Void](c_, "setItemPrototype:", value)
-}
-
 func (c_ CollectionView) SelectionIndexes() foundation.IndexSet {
 	rv := ffi.CallMethod[foundation.IndexSet](c_, "selectionIndexes")
 	return rv
@@ -496,115 +442,12 @@ func (c_ CollectionView) SetMaxItemSize(value foundation.Size) {
 	ffi.CallMethod[ffi.Void](c_, "setMaxItemSize:", value)
 }
 
-var CollectionViewItemClass = _CollectionViewItemClass{objc.GetClass("NSCollectionViewItem")}
-
-type _CollectionViewItemClass struct {
-	objc.Class
-}
-
-type ICollectionViewItem interface {
-	IViewController
-	ImageView() ImageView
-	SetImageView(value IImageView)
-	TextField() TextField
-	SetTextField(value ITextField)
-	IsSelected() bool
-	SetSelected(value bool)
-	HighlightState() CollectionViewItemHighlightState
-	SetHighlightState(value CollectionViewItemHighlightState)
-	CollectionView() CollectionView
-	DraggingImageComponents() []DraggingImageComponent
-}
-
-type CollectionViewItem struct {
-	ViewController
-}
-
-func MakeCollectionViewItem(ptr unsafe.Pointer) CollectionViewItem {
-	return CollectionViewItem{
-		ViewController: MakeViewController(ptr),
-	}
-}
-
-func (c_ CollectionViewItem) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
-	return rv
-}
-
-func (c_ CollectionViewItem) Init() CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "init")
-	return rv
-}
-
-func (cc _CollectionViewItemClass) Alloc() CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](cc, "alloc")
-	return rv
-}
-
-func (cc _CollectionViewItemClass) New() CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](cc, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewCollectionViewItem() CollectionViewItem {
-	return CollectionViewItemClass.New()
-}
-
-func (c_ CollectionViewItem) ImageView() ImageView {
-	rv := ffi.CallMethod[ImageView](c_, "imageView")
-	return rv
-}
-
-func (c_ CollectionViewItem) SetImageView(value IImageView) {
-	ffi.CallMethod[ffi.Void](c_, "setImageView:", value)
-}
-
-func (c_ CollectionViewItem) TextField() TextField {
-	rv := ffi.CallMethod[TextField](c_, "textField")
-	return rv
-}
-
-func (c_ CollectionViewItem) SetTextField(value ITextField) {
-	ffi.CallMethod[ffi.Void](c_, "setTextField:", value)
-}
-
-func (c_ CollectionViewItem) IsSelected() bool {
-	rv := ffi.CallMethod[bool](c_, "isSelected")
-	return rv
-}
-
-func (c_ CollectionViewItem) SetSelected(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setSelected:", value)
-}
-
-func (c_ CollectionViewItem) HighlightState() CollectionViewItemHighlightState {
-	rv := ffi.CallMethod[CollectionViewItemHighlightState](c_, "highlightState")
-	return rv
-}
-
-func (c_ CollectionViewItem) SetHighlightState(value CollectionViewItemHighlightState) {
-	ffi.CallMethod[ffi.Void](c_, "setHighlightState:", value)
-}
-
-func (c_ CollectionViewItem) CollectionView() CollectionView {
-	rv := ffi.CallMethod[CollectionView](c_, "collectionView")
-	return rv
-}
-
-func (c_ CollectionViewItem) DraggingImageComponents() []DraggingImageComponent {
-	rv := ffi.CallMethod[[]DraggingImageComponent](c_, "draggingImageComponents")
-	return rv
-}
-
 type CollectionViewDataSource interface {
 	ImplementsNumberOfSectionsInCollectionView() bool
 	// optional
 	NumberOfSectionsInCollectionView(collectionView CollectionView) int
 	// required
 	CollectionView_NumberOfItemsInSection(collectionView CollectionView, section int) int
-	// required
-	CollectionView_ItemForRepresentedObjectAtIndexPath(collectionView CollectionView, indexPath foundation.IndexPath) ICollectionViewItem
 	ImplementsCollectionView_ViewForSupplementaryElementOfKind_AtIndexPath() bool
 	// optional
 	CollectionView_ViewForSupplementaryElementOfKind_AtIndexPath(collectionView CollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) IView
@@ -625,11 +468,6 @@ func (c_ CollectionViewDataSourceWrapper) NumberOfSectionsInCollectionView(colle
 
 func (c_ CollectionViewDataSourceWrapper) CollectionView_NumberOfItemsInSection(collectionView ICollectionView, section int) int {
 	rv := ffi.CallMethod[int](c_, "collectionView:numberOfItemsInSection:", collectionView, section)
-	return rv
-}
-
-func (c_ CollectionViewDataSourceWrapper) CollectionView_ItemForRepresentedObjectAtIndexPath(collectionView ICollectionView, indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := ffi.CallMethod[CollectionViewItem](c_, "collectionView:itemForRepresentedObjectAtIndexPath:", collectionView, indexPath)
 	return rv
 }
 
@@ -661,12 +499,6 @@ type CollectionViewDelegate interface {
 	ImplementsCollectionView_DidChangeItemsAtIndexPaths_ToHighlightState() bool
 	// optional
 	CollectionView_DidChangeItemsAtIndexPaths_ToHighlightState(collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState)
-	ImplementsCollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath() bool
-	// optional
-	CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)
-	ImplementsCollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath() bool
-	// optional
-	CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)
 	ImplementsCollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath() bool
 	// optional
 	CollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath(collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath)
@@ -740,8 +572,6 @@ type CollectionViewDelegateImpl struct {
 	_CollectionView_DidDeselectItemsAtIndexPaths                                         func(collectionView CollectionView, indexPaths foundation.Set)
 	_CollectionView_ShouldChangeItemsAtIndexPaths_ToHighlightState                       func(collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState) foundation.ISet
 	_CollectionView_DidChangeItemsAtIndexPaths_ToHighlightState                          func(collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState)
-	_CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath                      func(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)
-	_CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath                 func(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)
 	_CollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath              func(collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath)
 	_CollectionView_DidEndDisplayingSupplementaryView_ForElementOfKind_AtIndexPath       func(collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath)
 	_CollectionView_CanDragItemsAtIndexPaths_WithEvent                                   func(collectionView CollectionView, indexPaths foundation.Set, event Event) bool
@@ -829,28 +659,6 @@ func (di *CollectionViewDelegateImpl) SetCollectionView_DidChangeItemsAtIndexPat
 
 func (di *CollectionViewDelegateImpl) CollectionView_DidChangeItemsAtIndexPaths_ToHighlightState(collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState) {
 	di._CollectionView_DidChangeItemsAtIndexPaths_ToHighlightState(collectionView, indexPaths, highlightState)
-}
-func (di *CollectionViewDelegateImpl) ImplementsCollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath() bool {
-	return di._CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath != nil
-}
-
-func (di *CollectionViewDelegateImpl) SetCollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(f func(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)) {
-	di._CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath = f
-}
-
-func (di *CollectionViewDelegateImpl) CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath) {
-	di._CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(collectionView, item, indexPath)
-}
-func (di *CollectionViewDelegateImpl) ImplementsCollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath() bool {
-	return di._CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath != nil
-}
-
-func (di *CollectionViewDelegateImpl) SetCollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(f func(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)) {
-	di._CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath = f
-}
-
-func (di *CollectionViewDelegateImpl) CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath) {
-	di._CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(collectionView, item, indexPath)
 }
 func (di *CollectionViewDelegateImpl) ImplementsCollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath() bool {
 	return di._CollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath != nil
@@ -1136,22 +944,6 @@ func (c_ CollectionViewDelegateWrapper) CollectionView_DidChangeItemsAtIndexPath
 	ffi.CallMethod[ffi.Void](c_, "collectionView:didChangeItemsAtIndexPaths:toHighlightState:", collectionView, indexPaths, highlightState)
 }
 
-func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath() bool {
-	return c_.RespondsToSelector(objc.GetSelector("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"))
-}
-
-func (c_ CollectionViewDelegateWrapper) CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(collectionView ICollectionView, item ICollectionViewItem, indexPath foundation.IIndexPath) {
-	ffi.CallMethod[ffi.Void](c_, "collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:", collectionView, item, indexPath)
-}
-
-func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath() bool {
-	return c_.RespondsToSelector(objc.GetSelector("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"))
-}
-
-func (c_ CollectionViewDelegateWrapper) CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(collectionView ICollectionView, item ICollectionViewItem, indexPath foundation.IIndexPath) {
-	ffi.CallMethod[ffi.Void](c_, "collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:", collectionView, item, indexPath)
-}
-
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath() bool {
 	return c_.RespondsToSelector(objc.GetSelector("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"))
 }
@@ -1364,11 +1156,6 @@ func MakeCollectionViewDiffableDataSource(ptr unsafe.Pointer) CollectionViewDiff
 	return CollectionViewDiffableDataSource{
 		Object: objc.MakeObject(ptr),
 	}
-}
-
-func (c_ CollectionViewDiffableDataSource) InitWithCollectionView_ItemProvider(collectionView ICollectionView, itemProvider func(param1 CollectionView, param2 foundation.IndexPath, param3 objc.Object) ICollectionViewItem) CollectionViewDiffableDataSource {
-	rv := ffi.CallMethod[CollectionViewDiffableDataSource](c_, "initWithCollectionView:itemProvider:", collectionView, itemProvider)
-	return rv
 }
 
 func (cc _CollectionViewDiffableDataSourceClass) Alloc() CollectionViewDiffableDataSource {

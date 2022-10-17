@@ -72,8 +72,6 @@ type IWindow interface {
 	InvalidateCursorRectsForView(view IView)
 	ResetCursorRects()
 	StandardWindowButton(b WindowButton) Button
-	AddTitlebarAccessoryViewController(childViewController ITitlebarAccessoryViewController)
-	InsertTitlebarAccessoryViewController_AtIndex(childViewController ITitlebarAccessoryViewController, index int)
 	RemoveTitlebarAccessoryViewControllerAtIndex(index int)
 	AddTabbedWindow_Ordered(window IWindow, ordered WindowOrderingMode)
 	MergeAllWindows(sender objc.IObject)
@@ -164,8 +162,6 @@ type IWindow interface {
 	InitWithWindowRef(windowRef unsafe.Pointer) Window
 	Delegate() WindowDelegateWrapper
 	SetDelegate(value WindowDelegate)
-	ContentViewController() ViewController
-	SetContentViewController(value IViewController)
 	ContentView() View
 	SetContentView(value IView)
 	StyleMask() WindowStyleMask
@@ -201,8 +197,6 @@ type IWindow interface {
 	SetSharingType(value WindowSharingType)
 	BackingType() BackingStoreType
 	SetBackingType(value BackingStoreType)
-	WindowController() WindowController
-	SetWindowController(value IWindowController)
 	AttachedSheet() Window
 	IsSheet() bool
 	SheetParent() Window
@@ -266,8 +260,6 @@ type IWindow interface {
 	TitlebarSeparatorStyle() TitlebarSeparatorStyle
 	SetTitlebarSeparatorStyle(value TitlebarSeparatorStyle)
 	WindowTitlebarLayoutDirection() UserInterfaceLayoutDirection
-	TitlebarAccessoryViewControllers() []TitlebarAccessoryViewController
-	SetTitlebarAccessoryViewControllers(value []ITitlebarAccessoryViewController)
 	Tab() WindowTab
 	TabbingIdentifier() WindowTabbingIdentifier
 	SetTabbingIdentifier(value WindowTabbingIdentifier)
@@ -368,11 +360,6 @@ func MakeWindow(ptr unsafe.Pointer) Window {
 	return Window{
 		Responder: MakeResponder(ptr),
 	}
-}
-
-func (wc _WindowClass) WindowWithContentViewController(contentViewController IViewController) Window {
-	rv := ffi.CallMethod[Window](wc, "windowWithContentViewController:", contentViewController)
-	return rv
 }
 
 func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
@@ -660,14 +647,6 @@ func (wc _WindowClass) StandardWindowButton_ForStyleMask(b WindowButton, styleMa
 func (w_ Window) StandardWindowButton(b WindowButton) Button {
 	rv := ffi.CallMethod[Button](w_, "standardWindowButton:", b)
 	return rv
-}
-
-func (w_ Window) AddTitlebarAccessoryViewController(childViewController ITitlebarAccessoryViewController) {
-	ffi.CallMethod[ffi.Void](w_, "addTitlebarAccessoryViewController:", childViewController)
-}
-
-func (w_ Window) InsertTitlebarAccessoryViewController_AtIndex(childViewController ITitlebarAccessoryViewController, index int) {
-	ffi.CallMethod[ffi.Void](w_, "insertTitlebarAccessoryViewController:atIndex:", childViewController, index)
 }
 
 func (w_ Window) RemoveTitlebarAccessoryViewControllerAtIndex(index int) {
@@ -1030,15 +1009,6 @@ func (w_ Window) SetDelegate(value WindowDelegate) {
 	ffi.CallMethod[ffi.Void](w_, "setDelegate:", po)
 }
 
-func (w_ Window) ContentViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](w_, "contentViewController")
-	return rv
-}
-
-func (w_ Window) SetContentViewController(value IViewController) {
-	ffi.CallMethod[ffi.Void](w_, "setContentViewController:", value)
-}
-
 func (w_ Window) ContentView() View {
 	rv := ffi.CallMethod[View](w_, "contentView")
 	return rv
@@ -1202,15 +1172,6 @@ func (w_ Window) BackingType() BackingStoreType {
 
 func (w_ Window) SetBackingType(value BackingStoreType) {
 	ffi.CallMethod[ffi.Void](w_, "setBackingType:", value)
-}
-
-func (w_ Window) WindowController() WindowController {
-	rv := ffi.CallMethod[WindowController](w_, "windowController")
-	return rv
-}
-
-func (w_ Window) SetWindowController(value IWindowController) {
-	ffi.CallMethod[ffi.Void](w_, "setWindowController:", value)
 }
 
 func (w_ Window) AttachedSheet() Window {
@@ -1498,15 +1459,6 @@ func (w_ Window) SetTitlebarSeparatorStyle(value TitlebarSeparatorStyle) {
 func (w_ Window) WindowTitlebarLayoutDirection() UserInterfaceLayoutDirection {
 	rv := ffi.CallMethod[UserInterfaceLayoutDirection](w_, "windowTitlebarLayoutDirection")
 	return rv
-}
-
-func (w_ Window) TitlebarAccessoryViewControllers() []TitlebarAccessoryViewController {
-	rv := ffi.CallMethod[[]TitlebarAccessoryViewController](w_, "titlebarAccessoryViewControllers")
-	return rv
-}
-
-func (w_ Window) SetTitlebarAccessoryViewControllers(value []ITitlebarAccessoryViewController) {
-	ffi.CallMethod[ffi.Void](w_, "setTitlebarAccessoryViewControllers:", value)
 }
 
 func (wc _WindowClass) AllowsAutomaticWindowTabbing() bool {

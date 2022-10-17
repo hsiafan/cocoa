@@ -759,12 +759,6 @@ type BrowserDelegate interface {
 	ImplementsRootItemForBrowser() bool
 	// optional
 	RootItemForBrowser(browser Browser) objc.IObject
-	ImplementsBrowser_PreviewViewControllerForLeafItem() bool
-	// optional
-	Browser_PreviewViewControllerForLeafItem(browser Browser, item objc.Object) IViewController
-	ImplementsBrowser_HeaderViewControllerForItem() bool
-	// optional
-	Browser_HeaderViewControllerForItem(browser Browser, item objc.Object) IViewController
 	ImplementsBrowser_CreateRowsForColumn_InMatrix() bool
 	// optional
 	Browser_CreateRowsForColumn_InMatrix(sender Browser, column int, matrix Matrix)
@@ -833,8 +827,6 @@ type BrowserDelegateImpl struct {
 	_Browser_ObjectValueForItem                                                          func(browser Browser, item objc.Object) objc.IObject
 	_Browser_SetObjectValue_ForItem                                                      func(browser Browser, object objc.Object, item objc.Object)
 	_RootItemForBrowser                                                                  func(browser Browser) objc.IObject
-	_Browser_PreviewViewControllerForLeafItem                                            func(browser Browser, item objc.Object) IViewController
-	_Browser_HeaderViewControllerForItem                                                 func(browser Browser, item objc.Object) IViewController
 	_Browser_CreateRowsForColumn_InMatrix                                                func(sender Browser, column int, matrix Matrix)
 	_Browser_WillDisplayCell_AtRow_Column                                                func(sender Browser, cell objc.Object, row int, column int)
 	_Browser_DidChangeLastColumn_ToColumn                                                func(browser Browser, oldLastColumn int, column int)
@@ -1028,28 +1020,6 @@ func (di *BrowserDelegateImpl) SetRootItemForBrowser(f func(browser Browser) obj
 
 func (di *BrowserDelegateImpl) RootItemForBrowser(browser Browser) objc.IObject {
 	return di._RootItemForBrowser(browser)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_PreviewViewControllerForLeafItem() bool {
-	return di._Browser_PreviewViewControllerForLeafItem != nil
-}
-
-func (di *BrowserDelegateImpl) SetBrowser_PreviewViewControllerForLeafItem(f func(browser Browser, item objc.Object) IViewController) {
-	di._Browser_PreviewViewControllerForLeafItem = f
-}
-
-func (di *BrowserDelegateImpl) Browser_PreviewViewControllerForLeafItem(browser Browser, item objc.Object) IViewController {
-	return di._Browser_PreviewViewControllerForLeafItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_HeaderViewControllerForItem() bool {
-	return di._Browser_HeaderViewControllerForItem != nil
-}
-
-func (di *BrowserDelegateImpl) SetBrowser_HeaderViewControllerForItem(f func(browser Browser, item objc.Object) IViewController) {
-	di._Browser_HeaderViewControllerForItem = f
-}
-
-func (di *BrowserDelegateImpl) Browser_HeaderViewControllerForItem(browser Browser, item objc.Object) IViewController {
-	return di._Browser_HeaderViewControllerForItem(browser, item)
 }
 func (di *BrowserDelegateImpl) ImplementsBrowser_CreateRowsForColumn_InMatrix() bool {
 	return di._Browser_CreateRowsForColumn_InMatrix != nil
@@ -1374,24 +1344,6 @@ func (b_ *BrowserDelegateWrapper) ImplementsRootItemForBrowser() bool {
 
 func (b_ BrowserDelegateWrapper) RootItemForBrowser(browser IBrowser) objc.Object {
 	rv := ffi.CallMethod[objc.Object](b_, "rootItemForBrowser:", browser)
-	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_PreviewViewControllerForLeafItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:previewViewControllerForLeafItem:"))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_PreviewViewControllerForLeafItem(browser IBrowser, item objc.IObject) ViewController {
-	rv := ffi.CallMethod[ViewController](b_, "browser:previewViewControllerForLeafItem:", browser, item)
-	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_HeaderViewControllerForItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:headerViewControllerForItem:"))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_HeaderViewControllerForItem(browser IBrowser, item objc.IObject) ViewController {
-	rv := ffi.CallMethod[ViewController](b_, "browser:headerViewControllerForItem:", browser, item)
 	return rv
 }
 

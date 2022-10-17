@@ -405,8 +405,6 @@ type ITabViewItem interface {
 	SetToolTip(value string)
 	Image() Image
 	SetImage(value IImage)
-	ViewController() ViewController
-	SetViewController(value IViewController)
 }
 
 type TabViewItem struct {
@@ -421,11 +419,6 @@ func MakeTabViewItem(ptr unsafe.Pointer) TabViewItem {
 
 func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
 	rv := ffi.CallMethod[TabViewItem](t_, "initWithIdentifier:", identifier)
-	return rv
-}
-
-func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](tc, "tabViewItemWithViewController:", viewController)
 	return rv
 }
 
@@ -529,13 +522,4 @@ func (t_ TabViewItem) Image() Image {
 
 func (t_ TabViewItem) SetImage(value IImage) {
 	ffi.CallMethod[ffi.Void](t_, "setImage:", value)
-}
-
-func (t_ TabViewItem) ViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](t_, "viewController")
-	return rv
-}
-
-func (t_ TabViewItem) SetViewController(value IViewController) {
-	ffi.CallMethod[ffi.Void](t_, "setViewController:", value)
 }

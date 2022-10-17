@@ -1812,8 +1812,8 @@ func (v_ View) SetPreparedContentRect(value foundation.Rect) {
 	ffi.CallMethod[ffi.Void](v_, "setPreparedContentRect:", value)
 }
 
-func (vc _ViewClass) IsCompatibleWithResponsiveScrolling() bool {
-	rv := ffi.CallMethod[bool](vc, "isCompatibleWithResponsiveScrolling")
+func (vc _ViewClass) CompatibleWithResponsiveScrolling() bool {
+	rv := ffi.CallMethod[bool](vc, "compatibleWithResponsiveScrolling")
 	return rv
 }
 

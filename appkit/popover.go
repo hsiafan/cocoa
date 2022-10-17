@@ -21,8 +21,6 @@ type IPopover interface {
 	ShowRelativeToRect_OfView_PreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge)
 	PerformClose(sender objc.IObject)
 	Close()
-	ContentViewController() ViewController
-	SetContentViewController(value IViewController)
 	Behavior() PopoverBehavior
 	SetBehavior(value PopoverBehavior)
 	PositioningRect() foundation.Rect
@@ -80,15 +78,6 @@ func (p_ Popover) PerformClose(sender objc.IObject) {
 
 func (p_ Popover) Close() {
 	ffi.CallMethod[ffi.Void](p_, "close")
-}
-
-func (p_ Popover) ContentViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](p_, "contentViewController")
-	return rv
-}
-
-func (p_ Popover) SetContentViewController(value IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "setContentViewController:", value)
 }
 
 func (p_ Popover) Behavior() PopoverBehavior {

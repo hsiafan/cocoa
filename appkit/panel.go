@@ -34,11 +34,6 @@ func MakePanel(ptr unsafe.Pointer) Panel {
 	}
 }
 
-func (pc _PanelClass) WindowWithContentViewController(contentViewController IViewController) Panel {
-	rv := ffi.CallMethod[Panel](pc, "windowWithContentViewController:", contentViewController)
-	return rv
-}
-
 func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Panel {
 	rv := ffi.CallMethod[Panel](p_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
 	return rv
@@ -170,11 +165,6 @@ func MakeSavePanel(ptr unsafe.Pointer) SavePanel {
 	return SavePanel{
 		Panel: MakePanel(ptr),
 	}
-}
-
-func (sc _SavePanelClass) WindowWithContentViewController(contentViewController IViewController) SavePanel {
-	rv := ffi.CallMethod[SavePanel](sc, "windowWithContentViewController:", contentViewController)
-	return rv
 }
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) SavePanel {
@@ -503,11 +493,6 @@ func MakeOpenPanel(ptr unsafe.Pointer) OpenPanel {
 	return OpenPanel{
 		SavePanel: MakeSavePanel(ptr),
 	}
-}
-
-func (oc _OpenPanelClass) WindowWithContentViewController(contentViewController IViewController) OpenPanel {
-	rv := ffi.CallMethod[OpenPanel](oc, "windowWithContentViewController:", contentViewController)
-	return rv
 }
 
 func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) OpenPanel {

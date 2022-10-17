@@ -339,8 +339,8 @@ func (e_ Event) IsDirectionInvertedFromDevice() bool {
 	return rv
 }
 
-func (ec _EventClass) IsSwipeTrackingFromScrollEventsEnabled() bool {
-	rv := ffi.CallMethod[bool](ec, "isSwipeTrackingFromScrollEventsEnabled")
+func (ec _EventClass) SwipeTrackingFromScrollEventsEnabled() bool {
+	rv := ffi.CallMethod[bool](ec, "swipeTrackingFromScrollEventsEnabled")
 	return rv
 }
 
@@ -354,8 +354,8 @@ func (e_ Event) Magnification() float64 {
 	return rv
 }
 
-func (ec _EventClass) IsMouseCoalescingEnabled() bool {
-	rv := ffi.CallMethod[bool](ec, "isMouseCoalescingEnabled")
+func (ec _EventClass) MouseCoalescingEnabled() bool {
+	rv := ffi.CallMethod[bool](ec, "mouseCoalescingEnabled")
 	return rv
 }
 
