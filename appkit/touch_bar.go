@@ -159,8 +159,8 @@ func (t_ TouchBar) SetCustomizationRequiredItemIdentifiers(value []TouchBarItemI
 	ffi.CallMethod[ffi.Void](t_, "setCustomizationRequiredItemIdentifiers:", value)
 }
 
-func (tc _TouchBarClass) AutomaticCustomizeTouchBarMenuItemEnabled() bool {
-	rv := ffi.CallMethod[bool](tc, "automaticCustomizeTouchBarMenuItemEnabled")
+func (tc _TouchBarClass) IsAutomaticCustomizeTouchBarMenuItemEnabled() bool {
+	rv := ffi.CallMethod[bool](tc, "isAutomaticCustomizeTouchBarMenuItemEnabled")
 	return rv
 }
 
