@@ -7,9 +7,9 @@ import (
 type LabelAlignment int
 
 const (
-	LabelAlignmentLeading  = 0
-	LabelAlignmentTrailing = 1
-	LabelAlignmentCenter   = 2
+	LabelAlignmentLeading  LabelAlignment = 0
+	LabelAlignmentTrailing LabelAlignment = 1
+	LabelAlignmentCenter   LabelAlignment = 2
 )
 
 // FormView ia an appkit.View that arrange form field name and controls.

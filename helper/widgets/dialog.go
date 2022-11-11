@@ -26,7 +26,7 @@ func NewDialog(width, height float64) *Dialog {
 	})
 }
 
-// NewDialog create new Dialog
+// NewDialogWithEdgeInsets create new Dialog width edgeInsets
 func NewDialogWithEdgeInsets(width, height float64, edgeInsets foundation.EdgeInsets) *Dialog {
 	panel := appkit.PanelClass.New()
 	panel.SetFrame_Display(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
