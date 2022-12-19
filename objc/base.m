@@ -72,7 +72,11 @@ void* Class_GetMethodImplementation(void* cls, void* sel) {
 }
 
 void* Class_GetMethodImplementationStret(void* cls, void* sel) {
+#ifndef __arm64__
     return class_getMethodImplementation_stret((Class)cls, (SEL)sel);
+#else
+    return class_getMethodImplementation((Class)cls, (SEL)sel);
+#endif
 }
 
 void* Class_GetInstanceMethod(void* cls, void* sel) {
