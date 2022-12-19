@@ -4,6 +4,7 @@ package objc
 // void* C_NewDeallocListener(uintptr_t id);
 import "C"
 import (
+	"runtime"
 	"runtime/cgo"
 
 	"github.com/hsiafan/cocoa/internal"
@@ -39,4 +40,16 @@ func TryRelease(objects ...IObject) {
 			o.Release()
 		}
 	}
+}
+
+// PossessObject accept a objc object wrapper struct, and return a pointer to the struct.
+// It retain the objc object, and release when the returned go wrapper pointer is gced.
+// param T: the type of struct that hold a objc pointer
+func PossessObject[T IObject](v T) *T {
+	vp := &v
+	(*vp).Retain()
+	runtime.SetFinalizer(vp, func(p *T) {
+		(*p).Release()
+	})
+	return vp
 }

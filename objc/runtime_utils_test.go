@@ -1,7 +1,9 @@
 package objc
 
 import (
-	"testing"
+    "runtime"
+    "testing"
+    "time"
 )
 
 func TestSetDeallocListener(t *testing.T) {
@@ -14,4 +16,18 @@ func TestSetDeallocListener(t *testing.T) {
 	if !notified {
 		t.Fail()
 	}
+}
+
+
+
+func TestPossessObject(t *testing.T) {
+    o := NewObject()
+    op := PossessObject(o)
+    op.Description()
+
+    runtime.GC()
+    time.Sleep(time.Microsecond*10)
+    if o.RetainCount() != 1 {
+        t.Fail()
+    }
 }
