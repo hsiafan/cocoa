@@ -52,11 +52,6 @@ func (tc _TimerClass) Alloc() Timer {
 	return rv
 }
 
-func (t_ Timer) Init() Timer {
-	rv := ffi.CallMethod[Timer](t_, "init")
-	return rv
-}
-
 func (tc _TimerClass) New() Timer {
 	rv := ffi.CallMethod[Timer](tc, "new")
 	rv.Autorelease()
@@ -65,6 +60,11 @@ func (tc _TimerClass) New() Timer {
 
 func NewTimer() Timer {
 	return TimerClass.New()
+}
+
+func (t_ Timer) Init() Timer {
+	rv := ffi.CallMethod[Timer](t_, "init")
+	return rv
 }
 
 func (tc _TimerClass) ScheduledTimerWithTimeInterval_Repeats_Block(interval TimeInterval, repeats bool, block func(timer Timer)) Timer {

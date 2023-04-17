@@ -39,11 +39,6 @@ func (vc _ValueFunctionClass) Alloc() ValueFunction {
 	return rv
 }
 
-func (v_ ValueFunction) Init() ValueFunction {
-	rv := ffi.CallMethod[ValueFunction](v_, "init")
-	return rv
-}
-
 func (vc _ValueFunctionClass) New() ValueFunction {
 	rv := ffi.CallMethod[ValueFunction](vc, "new")
 	rv.Autorelease()
@@ -52,6 +47,11 @@ func (vc _ValueFunctionClass) New() ValueFunction {
 
 func NewValueFunction() ValueFunction {
 	return ValueFunctionClass.New()
+}
+
+func (v_ ValueFunction) Init() ValueFunction {
+	rv := ffi.CallMethod[ValueFunction](v_, "init")
+	return rv
 }
 
 func (v_ ValueFunction) Name() ValueFunctionName {

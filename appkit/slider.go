@@ -36,7 +36,7 @@ type ISlider interface {
 	// deprecated
 	TitleFont() Font
 	// deprecated
-	SetTitle(_string string)
+	SetTitle(string_ string)
 	// deprecated
 	SetTitleCell(cell ICell)
 	// deprecated
@@ -170,8 +170,8 @@ func (s_ Slider) TitleFont() Font {
 }
 
 // deprecated
-func (s_ Slider) SetTitle(_string string) {
-	ffi.CallMethod[ffi.Void](s_, "setTitle:", _string)
+func (s_ Slider) SetTitle(string_ string) {
+	ffi.CallMethod[ffi.Void](s_, "setTitle:", string_)
 }
 
 // deprecated

@@ -55,11 +55,6 @@ func (ec _ErrorClass) Alloc() Error {
 	return rv
 }
 
-func (e_ Error) Init() Error {
-	rv := ffi.CallMethod[Error](e_, "init")
-	return rv
-}
-
 func (ec _ErrorClass) New() Error {
 	rv := ffi.CallMethod[Error](ec, "new")
 	rv.Autorelease()
@@ -68,6 +63,11 @@ func (ec _ErrorClass) New() Error {
 
 func NewError() Error {
 	return ErrorClass.New()
+}
+
+func (e_ Error) Init() Error {
+	rv := ffi.CallMethod[Error](e_, "init")
+	return rv
 }
 
 func (ec _ErrorClass) SetUserInfoValueProviderForDomain_Provider(errorDomain ErrorDomain, provider func(err Error, userInfoKey ErrorUserInfoKey) objc.IObject) {

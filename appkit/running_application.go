@@ -33,7 +33,6 @@ type IRunningApplication interface {
 	ExecutableURL() foundation.URL
 	LaunchDate() foundation.Date
 	IsFinishedLaunching() bool
-	ProcessIdentifier() int32
 	OwnsMenuBar() bool
 	IsTerminated() bool
 }
@@ -48,18 +47,8 @@ func MakeRunningApplication(ptr unsafe.Pointer) RunningApplication {
 	}
 }
 
-func (rc _RunningApplicationClass) RunningApplicationWithProcessIdentifier(pid int32) RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](rc, "runningApplicationWithProcessIdentifier:", pid)
-	return rv
-}
-
 func (rc _RunningApplicationClass) Alloc() RunningApplication {
 	rv := ffi.CallMethod[RunningApplication](rc, "alloc")
-	return rv
-}
-
-func (r_ RunningApplication) Init() RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](r_, "init")
 	return rv
 }
 
@@ -71,6 +60,11 @@ func (rc _RunningApplicationClass) New() RunningApplication {
 
 func NewRunningApplication() RunningApplication {
 	return RunningApplicationClass.New()
+}
+
+func (r_ RunningApplication) Init() RunningApplication {
+	rv := ffi.CallMethod[RunningApplication](r_, "init")
+	return rv
 }
 
 func (rc _RunningApplicationClass) RunningApplicationsWithBundleIdentifier(bundleIdentifier string) []RunningApplication {
@@ -164,11 +158,6 @@ func (r_ RunningApplication) LaunchDate() foundation.Date {
 
 func (r_ RunningApplication) IsFinishedLaunching() bool {
 	rv := ffi.CallMethod[bool](r_, "isFinishedLaunching")
-	return rv
-}
-
-func (r_ RunningApplication) ProcessIdentifier() int32 {
-	rv := ffi.CallMethod[int32](r_, "processIdentifier")
 	return rv
 }
 

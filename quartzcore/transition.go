@@ -48,11 +48,6 @@ func (tc _TransitionClass) Alloc() Transition {
 	return rv
 }
 
-func (t_ Transition) Init() Transition {
-	rv := ffi.CallMethod[Transition](t_, "init")
-	return rv
-}
-
 func (tc _TransitionClass) New() Transition {
 	rv := ffi.CallMethod[Transition](tc, "new")
 	rv.Autorelease()
@@ -61,6 +56,11 @@ func (tc _TransitionClass) New() Transition {
 
 func NewTransition() Transition {
 	return TransitionClass.New()
+}
+
+func (t_ Transition) Init() Transition {
+	rv := ffi.CallMethod[Transition](t_, "init")
+	return rv
 }
 
 func (t_ Transition) StartProgress() float32 {

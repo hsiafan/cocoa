@@ -19,15 +19,6 @@ type IAppleEventDescriptor interface {
 	DescriptorAtIndex(index int) AppleEventDescriptor
 	InsertDescriptor_AtIndex(descriptor IAppleEventDescriptor, index int)
 	RemoveDescriptorAtIndex(index int)
-	DescriptorForKeyword(keyword uint32) AppleEventDescriptor
-	KeywordForDescriptorAtIndex(index int) uint32
-	RemoveDescriptorWithKeyword(keyword uint32)
-	SetDescriptor_ForKeyword(descriptor IAppleEventDescriptor, keyword uint32)
-	AttributeDescriptorForKeyword(keyword uint32) AppleEventDescriptor
-	ParamDescriptorForKeyword(keyword uint32) AppleEventDescriptor
-	RemoveParamDescriptorWithKeyword(keyword uint32)
-	SetAttributeDescriptor_ForKeyword(descriptor IAppleEventDescriptor, keyword uint32)
-	SetParamDescriptor_ForKeyword(descriptor IAppleEventDescriptor, keyword uint32)
 	SendEventWithOptions_Timeout_Error(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error *Error) AppleEventDescriptor
 	BooleanValue() bool
 	Data() []byte
@@ -65,11 +56,6 @@ func (ac _AppleEventDescriptorClass) Alloc() AppleEventDescriptor {
 	return rv
 }
 
-func (a_ AppleEventDescriptor) Init() AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](a_, "init")
-	return rv
-}
-
 func (ac _AppleEventDescriptorClass) New() AppleEventDescriptor {
 	rv := ffi.CallMethod[AppleEventDescriptor](ac, "new")
 	rv.Autorelease()
@@ -78,6 +64,11 @@ func (ac _AppleEventDescriptorClass) New() AppleEventDescriptor {
 
 func NewAppleEventDescriptor() AppleEventDescriptor {
 	return AppleEventDescriptorClass.New()
+}
+
+func (a_ AppleEventDescriptor) Init() AppleEventDescriptor {
+	rv := ffi.CallMethod[AppleEventDescriptor](a_, "init")
+	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithBoolean(boolean bool) AppleEventDescriptor {
@@ -90,8 +81,8 @@ func (ac _AppleEventDescriptorClass) DescriptorWithInt32(signedInt int32) AppleE
 	return rv
 }
 
-func (ac _AppleEventDescriptorClass) DescriptorWithString(_string string) AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](ac, "descriptorWithString:", _string)
+func (ac _AppleEventDescriptorClass) DescriptorWithString(string_ string) AppleEventDescriptor {
+	rv := ffi.CallMethod[AppleEventDescriptor](ac, "descriptorWithString:", string_)
 	return rv
 }
 
@@ -123,46 +114,6 @@ func (a_ AppleEventDescriptor) RemoveDescriptorAtIndex(index int) {
 	ffi.CallMethod[ffi.Void](a_, "removeDescriptorAtIndex:", index)
 }
 
-func (a_ AppleEventDescriptor) DescriptorForKeyword(keyword uint32) AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](a_, "descriptorForKeyword:", keyword)
-	return rv
-}
-
-func (a_ AppleEventDescriptor) KeywordForDescriptorAtIndex(index int) uint32 {
-	rv := ffi.CallMethod[uint32](a_, "keywordForDescriptorAtIndex:", index)
-	return rv
-}
-
-func (a_ AppleEventDescriptor) RemoveDescriptorWithKeyword(keyword uint32) {
-	ffi.CallMethod[ffi.Void](a_, "removeDescriptorWithKeyword:", keyword)
-}
-
-func (a_ AppleEventDescriptor) SetDescriptor_ForKeyword(descriptor IAppleEventDescriptor, keyword uint32) {
-	ffi.CallMethod[ffi.Void](a_, "setDescriptor:forKeyword:", descriptor, keyword)
-}
-
-func (a_ AppleEventDescriptor) AttributeDescriptorForKeyword(keyword uint32) AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](a_, "attributeDescriptorForKeyword:", keyword)
-	return rv
-}
-
-func (a_ AppleEventDescriptor) ParamDescriptorForKeyword(keyword uint32) AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](a_, "paramDescriptorForKeyword:", keyword)
-	return rv
-}
-
-func (a_ AppleEventDescriptor) RemoveParamDescriptorWithKeyword(keyword uint32) {
-	ffi.CallMethod[ffi.Void](a_, "removeParamDescriptorWithKeyword:", keyword)
-}
-
-func (a_ AppleEventDescriptor) SetAttributeDescriptor_ForKeyword(descriptor IAppleEventDescriptor, keyword uint32) {
-	ffi.CallMethod[ffi.Void](a_, "setAttributeDescriptor:forKeyword:", descriptor, keyword)
-}
-
-func (a_ AppleEventDescriptor) SetParamDescriptor_ForKeyword(descriptor IAppleEventDescriptor, keyword uint32) {
-	ffi.CallMethod[ffi.Void](a_, "setParamDescriptor:forKeyword:", descriptor, keyword)
-}
-
 func (ac _AppleEventDescriptorClass) DescriptorWithApplicationURL(applicationURL IURL) AppleEventDescriptor {
 	rv := ffi.CallMethod[AppleEventDescriptor](ac, "descriptorWithApplicationURL:", applicationURL)
 	return rv
@@ -185,11 +136,6 @@ func (ac _AppleEventDescriptorClass) DescriptorWithDouble(doubleValue float64) A
 
 func (ac _AppleEventDescriptorClass) DescriptorWithFileURL(fileURL IURL) AppleEventDescriptor {
 	rv := ffi.CallMethod[AppleEventDescriptor](ac, "descriptorWithFileURL:", fileURL)
-	return rv
-}
-
-func (ac _AppleEventDescriptorClass) DescriptorWithProcessIdentifier(processIdentifier int32) AppleEventDescriptor {
-	rv := ffi.CallMethod[AppleEventDescriptor](ac, "descriptorWithProcessIdentifier:", processIdentifier)
 	return rv
 }
 

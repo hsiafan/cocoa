@@ -39,11 +39,6 @@ func (fc _FindConfigurationClass) Alloc() FindConfiguration {
 	return rv
 }
 
-func (f_ FindConfiguration) Init() FindConfiguration {
-	rv := ffi.CallMethod[FindConfiguration](f_, "init")
-	return rv
-}
-
 func (fc _FindConfigurationClass) New() FindConfiguration {
 	rv := ffi.CallMethod[FindConfiguration](fc, "new")
 	rv.Autorelease()
@@ -52,6 +47,11 @@ func (fc _FindConfigurationClass) New() FindConfiguration {
 
 func NewFindConfiguration() FindConfiguration {
 	return FindConfigurationClass.New()
+}
+
+func (f_ FindConfiguration) Init() FindConfiguration {
+	rv := ffi.CallMethod[FindConfiguration](f_, "init")
+	return rv
 }
 
 func (f_ FindConfiguration) Backwards() bool {

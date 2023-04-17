@@ -48,11 +48,6 @@ func (cc _ColorPickerClass) Alloc() ColorPicker {
 	return rv
 }
 
-func (c_ ColorPicker) Init() ColorPicker {
-	rv := ffi.CallMethod[ColorPicker](c_, "init")
-	return rv
-}
-
 func (cc _ColorPickerClass) New() ColorPicker {
 	rv := ffi.CallMethod[ColorPicker](cc, "new")
 	rv.Autorelease()
@@ -61,6 +56,11 @@ func (cc _ColorPickerClass) New() ColorPicker {
 
 func NewColorPicker() ColorPicker {
 	return ColorPickerClass.New()
+}
+
+func (c_ ColorPicker) Init() ColorPicker {
+	rv := ffi.CallMethod[ColorPicker](c_, "init")
+	return rv
 }
 
 func (c_ ColorPicker) InsertNewButtonImage_In(newButtonImage IImage, buttonCell IButtonCell) {

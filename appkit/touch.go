@@ -20,7 +20,6 @@ type ITouch interface {
 	LocationInView(view IView) foundation.Point
 	PreviousLocationInView(view IView) foundation.Point
 	Type() TouchType
-	Identity() objc.Object
 	Phase() TouchPhase
 	NormalizedPosition() foundation.Point
 	IsResting() bool
@@ -43,11 +42,6 @@ func (tc _TouchClass) Alloc() Touch {
 	return rv
 }
 
-func (t_ Touch) Init() Touch {
-	rv := ffi.CallMethod[Touch](t_, "init")
-	return rv
-}
-
 func (tc _TouchClass) New() Touch {
 	rv := ffi.CallMethod[Touch](tc, "new")
 	rv.Autorelease()
@@ -56,6 +50,11 @@ func (tc _TouchClass) New() Touch {
 
 func NewTouch() Touch {
 	return TouchClass.New()
+}
+
+func (t_ Touch) Init() Touch {
+	rv := ffi.CallMethod[Touch](t_, "init")
+	return rv
 }
 
 func (t_ Touch) LocationInView(view IView) foundation.Point {
@@ -70,11 +69,6 @@ func (t_ Touch) PreviousLocationInView(view IView) foundation.Point {
 
 func (t_ Touch) Type() TouchType {
 	rv := ffi.CallMethod[TouchType](t_, "type")
-	return rv
-}
-
-func (t_ Touch) Identity() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "identity")
 	return rv
 }
 

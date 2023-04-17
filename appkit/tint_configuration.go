@@ -46,11 +46,6 @@ func (tc _TintConfigurationClass) Alloc() TintConfiguration {
 	return rv
 }
 
-func (t_ TintConfiguration) Init() TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](t_, "init")
-	return rv
-}
-
 func (tc _TintConfigurationClass) New() TintConfiguration {
 	rv := ffi.CallMethod[TintConfiguration](tc, "new")
 	rv.Autorelease()
@@ -59,6 +54,11 @@ func (tc _TintConfigurationClass) New() TintConfiguration {
 
 func NewTintConfiguration() TintConfiguration {
 	return TintConfigurationClass.New()
+}
+
+func (t_ TintConfiguration) Init() TintConfiguration {
+	rv := ffi.CallMethod[TintConfiguration](t_, "init")
+	return rv
 }
 
 func (t_ TintConfiguration) AdaptsToUserAccentColor() bool {

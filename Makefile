@@ -1,4 +1,4 @@
-.PHONY: build example lint test clean help
+.PHONY: build example lint test clean help gen
 
 build:
 	@go build ./...
@@ -12,6 +12,11 @@ example:
 	@go build -o dist/ ./examples/webview
 	@go build -o dist/ ./examples/widgets
 	@go build -o dist/ ./examples/webshot
+
+gen:
+	@mkdir -p dist
+	@go build -o dist/gen ./generate
+	dist/gen ./
 
 lint:
 	@go fmt ./

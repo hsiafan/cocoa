@@ -62,18 +62,13 @@ func (lc _LocaleClass) LocaleWithLocaleIdentifier(ident string) Locale {
 	return rv
 }
 
-func (l_ Locale) InitWithLocaleIdentifier(_string string) Locale {
-	rv := ffi.CallMethod[Locale](l_, "initWithLocaleIdentifier:", _string)
+func (l_ Locale) InitWithLocaleIdentifier(string_ string) Locale {
+	rv := ffi.CallMethod[Locale](l_, "initWithLocaleIdentifier:", string_)
 	return rv
 }
 
 func (lc _LocaleClass) Alloc() Locale {
 	rv := ffi.CallMethod[Locale](lc, "alloc")
-	return rv
-}
-
-func (l_ Locale) Init() Locale {
-	rv := ffi.CallMethod[Locale](l_, "init")
 	return rv
 }
 
@@ -87,13 +82,18 @@ func NewLocale() Locale {
 	return LocaleClass.New()
 }
 
-func (lc _LocaleClass) CanonicalLocaleIdentifierFromString(_string string) string {
-	rv := ffi.CallMethod[string](lc, "canonicalLocaleIdentifierFromString:", _string)
+func (l_ Locale) Init() Locale {
+	rv := ffi.CallMethod[Locale](l_, "init")
 	return rv
 }
 
-func (lc _LocaleClass) ComponentsFromLocaleIdentifier(_string string) map[string]string {
-	rv := ffi.CallMethod[map[string]string](lc, "componentsFromLocaleIdentifier:", _string)
+func (lc _LocaleClass) CanonicalLocaleIdentifierFromString(string_ string) string {
+	rv := ffi.CallMethod[string](lc, "canonicalLocaleIdentifierFromString:", string_)
+	return rv
+}
+
+func (lc _LocaleClass) ComponentsFromLocaleIdentifier(string_ string) map[string]string {
+	rv := ffi.CallMethod[map[string]string](lc, "componentsFromLocaleIdentifier:", string_)
 	return rv
 }
 
@@ -102,8 +102,8 @@ func (lc _LocaleClass) LocaleIdentifierFromComponents(dict map[string]string) st
 	return rv
 }
 
-func (lc _LocaleClass) CanonicalLanguageIdentifierFromString(_string string) string {
-	rv := ffi.CallMethod[string](lc, "canonicalLanguageIdentifierFromString:", _string)
+func (lc _LocaleClass) CanonicalLanguageIdentifierFromString(string_ string) string {
+	rv := ffi.CallMethod[string](lc, "canonicalLanguageIdentifierFromString:", string_)
 	return rv
 }
 

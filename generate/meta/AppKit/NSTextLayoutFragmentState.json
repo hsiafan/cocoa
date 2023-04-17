@@ -1,0 +1,24 @@
+{
+    "kind": "alias",
+    "name": "NSTextLayoutFragmentState",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextLayoutFragmentStateCalculatedUsageBounds",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentStateEstimatedUsageBounds",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentStateLayoutAvailable",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentStateNone",
+            "module": "AppKit"
+        }
+    ]
+}

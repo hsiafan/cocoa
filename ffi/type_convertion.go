@@ -406,7 +406,7 @@ func convertToObjcValue(v any) unsafe.Pointer {
 		dp := ToNSDict(rv)
 		return unsafe.Pointer(&dp)
 	case reflect.Func:
-		fp := wrapBlock(rv.Interface())
+		fp := WrapBlock(rv.Interface())
 		return unsafe.Pointer(&fp)
 	default:
 		panic(fmt.Sprintf("not support type: %T, kind: %v", v, rv.Kind()))

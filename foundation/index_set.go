@@ -18,27 +18,27 @@ type IIndexSet interface {
 	objc.IObject
 	ContainsIndex(value uint) bool
 	ContainsIndexes(indexSet IIndexSet) bool
-	ContainsIndexesInRange(_range Range) bool
-	IntersectsIndexesInRange(_range Range) bool
-	CountOfIndexesInRange(_range Range) uint
+	ContainsIndexesInRange(range_ Range) bool
+	IntersectsIndexesInRange(range_ Range) bool
+	CountOfIndexesInRange(range_ Range) uint
 	IndexPassingTest(predicate func(idx uint, stop *bool) bool) uint
 	IndexesPassingTest(predicate func(idx uint, stop *bool) bool) IndexSet
 	IndexWithOptions_PassingTest(opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) uint
 	IndexesWithOptions_PassingTest(opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) IndexSet
-	IndexInRange_Options_PassingTest(_range Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) uint
-	IndexesInRange_Options_PassingTest(_range Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) IndexSet
-	EnumerateRangesInRange_Options_UsingBlock(_range Range, opts EnumerationOptions, block func(_range Range, stop *bool))
-	EnumerateRangesUsingBlock(block func(_range Range, stop *bool))
-	EnumerateRangesWithOptions_UsingBlock(opts EnumerationOptions, block func(_range Range, stop *bool))
+	IndexInRange_Options_PassingTest(range_ Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) uint
+	IndexesInRange_Options_PassingTest(range_ Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) IndexSet
+	EnumerateRangesInRange_Options_UsingBlock(range_ Range, opts EnumerationOptions, block func(range_ Range, stop *bool))
+	EnumerateRangesUsingBlock(block func(range_ Range, stop *bool))
+	EnumerateRangesWithOptions_UsingBlock(opts EnumerationOptions, block func(range_ Range, stop *bool))
 	IsEqualToIndexSet(indexSet IIndexSet) bool
 	IndexLessThanIndex(value uint) uint
 	IndexLessThanOrEqualToIndex(value uint) uint
 	IndexGreaterThanOrEqualToIndex(value uint) uint
 	IndexGreaterThanIndex(value uint) uint
-	GetIndexes_MaxCount_InIndexRange(indexBuffer *uint, bufferSize uint, _range *Range) uint
+	GetIndexes_MaxCount_InIndexRange(indexBuffer *uint, bufferSize uint, range_ *Range) uint
 	EnumerateIndexesUsingBlock(block func(idx uint, stop *bool))
 	EnumerateIndexesWithOptions_UsingBlock(opts EnumerationOptions, block func(idx uint, stop *bool))
-	EnumerateIndexesInRange_Options_UsingBlock(_range Range, opts EnumerationOptions, block func(idx uint, stop *bool))
+	EnumerateIndexesInRange_Options_UsingBlock(range_ Range, opts EnumerationOptions, block func(idx uint, stop *bool))
 	Count() uint
 	FirstIndex() uint
 	LastIndex() uint
@@ -64,8 +64,8 @@ func (ic _IndexSetClass) IndexSetWithIndex(value uint) IndexSet {
 	return rv
 }
 
-func (ic _IndexSetClass) IndexSetWithIndexesInRange(_range Range) IndexSet {
-	rv := ffi.CallMethod[IndexSet](ic, "indexSetWithIndexesInRange:", _range)
+func (ic _IndexSetClass) IndexSetWithIndexesInRange(range_ Range) IndexSet {
+	rv := ffi.CallMethod[IndexSet](ic, "indexSetWithIndexesInRange:", range_)
 	return rv
 }
 
@@ -74,8 +74,8 @@ func (i_ IndexSet) InitWithIndex(value uint) IndexSet {
 	return rv
 }
 
-func (i_ IndexSet) InitWithIndexesInRange(_range Range) IndexSet {
-	rv := ffi.CallMethod[IndexSet](i_, "initWithIndexesInRange:", _range)
+func (i_ IndexSet) InitWithIndexesInRange(range_ Range) IndexSet {
+	rv := ffi.CallMethod[IndexSet](i_, "initWithIndexesInRange:", range_)
 	return rv
 }
 
@@ -89,11 +89,6 @@ func (ic _IndexSetClass) Alloc() IndexSet {
 	return rv
 }
 
-func (i_ IndexSet) Init() IndexSet {
-	rv := ffi.CallMethod[IndexSet](i_, "init")
-	return rv
-}
-
 func (ic _IndexSetClass) New() IndexSet {
 	rv := ffi.CallMethod[IndexSet](ic, "new")
 	rv.Autorelease()
@@ -102,6 +97,11 @@ func (ic _IndexSetClass) New() IndexSet {
 
 func NewIndexSet() IndexSet {
 	return IndexSetClass.New()
+}
+
+func (i_ IndexSet) Init() IndexSet {
+	rv := ffi.CallMethod[IndexSet](i_, "init")
+	return rv
 }
 
 func (i_ IndexSet) ContainsIndex(value uint) bool {
@@ -114,18 +114,18 @@ func (i_ IndexSet) ContainsIndexes(indexSet IIndexSet) bool {
 	return rv
 }
 
-func (i_ IndexSet) ContainsIndexesInRange(_range Range) bool {
-	rv := ffi.CallMethod[bool](i_, "containsIndexesInRange:", _range)
+func (i_ IndexSet) ContainsIndexesInRange(range_ Range) bool {
+	rv := ffi.CallMethod[bool](i_, "containsIndexesInRange:", range_)
 	return rv
 }
 
-func (i_ IndexSet) IntersectsIndexesInRange(_range Range) bool {
-	rv := ffi.CallMethod[bool](i_, "intersectsIndexesInRange:", _range)
+func (i_ IndexSet) IntersectsIndexesInRange(range_ Range) bool {
+	rv := ffi.CallMethod[bool](i_, "intersectsIndexesInRange:", range_)
 	return rv
 }
 
-func (i_ IndexSet) CountOfIndexesInRange(_range Range) uint {
-	rv := ffi.CallMethod[uint](i_, "countOfIndexesInRange:", _range)
+func (i_ IndexSet) CountOfIndexesInRange(range_ Range) uint {
+	rv := ffi.CallMethod[uint](i_, "countOfIndexesInRange:", range_)
 	return rv
 }
 
@@ -149,25 +149,25 @@ func (i_ IndexSet) IndexesWithOptions_PassingTest(opts EnumerationOptions, predi
 	return rv
 }
 
-func (i_ IndexSet) IndexInRange_Options_PassingTest(_range Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) uint {
-	rv := ffi.CallMethod[uint](i_, "indexInRange:options:passingTest:", _range, opts, predicate)
+func (i_ IndexSet) IndexInRange_Options_PassingTest(range_ Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) uint {
+	rv := ffi.CallMethod[uint](i_, "indexInRange:options:passingTest:", range_, opts, predicate)
 	return rv
 }
 
-func (i_ IndexSet) IndexesInRange_Options_PassingTest(_range Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) IndexSet {
-	rv := ffi.CallMethod[IndexSet](i_, "indexesInRange:options:passingTest:", _range, opts, predicate)
+func (i_ IndexSet) IndexesInRange_Options_PassingTest(range_ Range, opts EnumerationOptions, predicate func(idx uint, stop *bool) bool) IndexSet {
+	rv := ffi.CallMethod[IndexSet](i_, "indexesInRange:options:passingTest:", range_, opts, predicate)
 	return rv
 }
 
-func (i_ IndexSet) EnumerateRangesInRange_Options_UsingBlock(_range Range, opts EnumerationOptions, block func(_range Range, stop *bool)) {
-	ffi.CallMethod[ffi.Void](i_, "enumerateRangesInRange:options:usingBlock:", _range, opts, block)
+func (i_ IndexSet) EnumerateRangesInRange_Options_UsingBlock(range_ Range, opts EnumerationOptions, block func(range_ Range, stop *bool)) {
+	ffi.CallMethod[ffi.Void](i_, "enumerateRangesInRange:options:usingBlock:", range_, opts, block)
 }
 
-func (i_ IndexSet) EnumerateRangesUsingBlock(block func(_range Range, stop *bool)) {
+func (i_ IndexSet) EnumerateRangesUsingBlock(block func(range_ Range, stop *bool)) {
 	ffi.CallMethod[ffi.Void](i_, "enumerateRangesUsingBlock:", block)
 }
 
-func (i_ IndexSet) EnumerateRangesWithOptions_UsingBlock(opts EnumerationOptions, block func(_range Range, stop *bool)) {
+func (i_ IndexSet) EnumerateRangesWithOptions_UsingBlock(opts EnumerationOptions, block func(range_ Range, stop *bool)) {
 	ffi.CallMethod[ffi.Void](i_, "enumerateRangesWithOptions:usingBlock:", opts, block)
 }
 
@@ -196,8 +196,8 @@ func (i_ IndexSet) IndexGreaterThanIndex(value uint) uint {
 	return rv
 }
 
-func (i_ IndexSet) GetIndexes_MaxCount_InIndexRange(indexBuffer *uint, bufferSize uint, _range *Range) uint {
-	rv := ffi.CallMethod[uint](i_, "getIndexes:maxCount:inIndexRange:", indexBuffer, bufferSize, _range)
+func (i_ IndexSet) GetIndexes_MaxCount_InIndexRange(indexBuffer *uint, bufferSize uint, range_ *Range) uint {
+	rv := ffi.CallMethod[uint](i_, "getIndexes:maxCount:inIndexRange:", indexBuffer, bufferSize, range_)
 	return rv
 }
 
@@ -209,8 +209,8 @@ func (i_ IndexSet) EnumerateIndexesWithOptions_UsingBlock(opts EnumerationOption
 	ffi.CallMethod[ffi.Void](i_, "enumerateIndexesWithOptions:usingBlock:", opts, block)
 }
 
-func (i_ IndexSet) EnumerateIndexesInRange_Options_UsingBlock(_range Range, opts EnumerationOptions, block func(idx uint, stop *bool)) {
-	ffi.CallMethod[ffi.Void](i_, "enumerateIndexesInRange:options:usingBlock:", _range, opts, block)
+func (i_ IndexSet) EnumerateIndexesInRange_Options_UsingBlock(range_ Range, opts EnumerationOptions, block func(idx uint, stop *bool)) {
+	ffi.CallMethod[ffi.Void](i_, "enumerateIndexesInRange:options:usingBlock:", range_, opts, block)
 }
 
 func (i_ IndexSet) Count() uint {

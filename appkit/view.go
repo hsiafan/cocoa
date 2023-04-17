@@ -145,7 +145,7 @@ type IView interface {
 	DrawSheetBorderWithSize(borderSize foundation.Size)
 	AdjustPageWidthNew_Left_Right_Limit(newRight *float64, oldLeft float64, oldRight float64, rightLimit float64)
 	AdjustPageHeightNew_Top_Bottom_Limit(newBottom *float64, oldTop float64, oldBottom float64, bottomLimit float64)
-	KnowsPageRange(_range *foundation.Range) bool
+	KnowsPageRange(range_ *foundation.Range) bool
 	RectForPage(page int) foundation.Rect
 	LocationOfPrintRect(rect foundation.Rect) foundation.Point
 	BeginDocument()
@@ -312,7 +312,7 @@ type IView interface {
 	WantsDefaultClipping() bool
 	IsInFullScreenMode() bool
 	NeedsDisplay() bool
-	SetNeedsDisplay_(value bool)
+	SetNeedsDisplay(value bool)
 	IsOpaque() bool
 	InLiveResize() bool
 	PreservesContentDuringLiveResize() bool
@@ -943,8 +943,8 @@ func (v_ View) AdjustPageHeightNew_Top_Bottom_Limit(newBottom *float64, oldTop f
 	ffi.CallMethod[ffi.Void](v_, "adjustPageHeightNew:top:bottom:limit:", newBottom, oldTop, oldBottom, bottomLimit)
 }
 
-func (v_ View) KnowsPageRange(_range *foundation.Range) bool {
-	rv := ffi.CallMethod[bool](v_, "knowsPageRange:", _range)
+func (v_ View) KnowsPageRange(range_ *foundation.Range) bool {
+	rv := ffi.CallMethod[bool](v_, "knowsPageRange:", range_)
 	return rv
 }
 
@@ -1059,7 +1059,7 @@ func (v_ View) UnregisterDraggedTypes() {
 }
 
 func (v_ View) BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source DraggingSource) DraggingSession {
-	po := ffi.CreateProtocol(source)
+	po := ffi.CreateProtocol("NSDraggingSource", source)
 	defer po.Release()
 	rv := ffi.CallMethod[DraggingSession](v_, "beginDraggingSessionWithItems:event:source:", items, event, po)
 	return rv
@@ -1673,7 +1673,7 @@ func (v_ View) NeedsDisplay() bool {
 	return rv
 }
 
-func (v_ View) SetNeedsDisplay_(value bool) {
+func (v_ View) SetNeedsDisplay(value bool) {
 	ffi.CallMethod[ffi.Void](v_, "setNeedsDisplay:", value)
 }
 

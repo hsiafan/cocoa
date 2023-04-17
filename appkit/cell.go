@@ -57,11 +57,11 @@ type ICell interface {
 	ExpansionFrameWithFrame_InView(cellFrame foundation.Rect, view IView) foundation.Rect
 	DrawWithExpansionFrame_InView(cellFrame foundation.Rect, view IView)
 	// deprecated
-	SetEntryType(_type int)
+	SetEntryType(type_ int)
 	// deprecated
 	EntryType() int
 	// deprecated
-	IsEntryAcceptable(_string string) bool
+	IsEntryAcceptable(string_ string) bool
 	// deprecated
 	SetFloatingPointFormat_Left_Right(autoRange bool, leftDigits uint, rightDigits uint)
 	// deprecated
@@ -190,8 +190,8 @@ func (c_ Cell) InitImageCell(image IImage) Cell {
 	return rv
 }
 
-func (c_ Cell) InitTextCell(_string string) Cell {
-	rv := ffi.CallMethod[Cell](c_, "initTextCell:", _string)
+func (c_ Cell) InitTextCell(string_ string) Cell {
+	rv := ffi.CallMethod[Cell](c_, "initTextCell:", string_)
 	return rv
 }
 
@@ -390,8 +390,8 @@ func (c_ Cell) DrawWithExpansionFrame_InView(cellFrame foundation.Rect, view IVi
 }
 
 // deprecated
-func (c_ Cell) SetEntryType(_type int) {
-	ffi.CallMethod[ffi.Void](c_, "setEntryType:", _type)
+func (c_ Cell) SetEntryType(type_ int) {
+	ffi.CallMethod[ffi.Void](c_, "setEntryType:", type_)
 }
 
 // deprecated
@@ -401,8 +401,8 @@ func (c_ Cell) EntryType() int {
 }
 
 // deprecated
-func (c_ Cell) IsEntryAcceptable(_string string) bool {
-	rv := ffi.CallMethod[bool](c_, "isEntryAcceptable:", _string)
+func (c_ Cell) IsEntryAcceptable(string_ string) bool {
+	rv := ffi.CallMethod[bool](c_, "isEntryAcceptable:", string_)
 	return rv
 }
 
@@ -898,54 +898,4 @@ func (c_ Cell) UserInterfaceLayoutDirection() UserInterfaceLayoutDirection {
 
 func (c_ Cell) SetUserInterfaceLayoutDirection(value UserInterfaceLayoutDirection) {
 	ffi.CallMethod[ffi.Void](c_, "setUserInterfaceLayoutDirection:", value)
-}
-
-var ActionCellClass = _ActionCellClass{objc.GetClass("NSActionCell")}
-
-type _ActionCellClass struct {
-	objc.Class
-}
-
-type IActionCell interface {
-	ICell
-}
-
-type ActionCell struct {
-	Cell
-}
-
-func MakeActionCell(ptr unsafe.Pointer) ActionCell {
-	return ActionCell{
-		Cell: MakeCell(ptr),
-	}
-}
-
-func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
-	rv := ffi.CallMethod[ActionCell](a_, "initImageCell:", image)
-	return rv
-}
-
-func (a_ ActionCell) InitTextCell(_string string) ActionCell {
-	rv := ffi.CallMethod[ActionCell](a_, "initTextCell:", _string)
-	return rv
-}
-
-func (a_ ActionCell) Init() ActionCell {
-	rv := ffi.CallMethod[ActionCell](a_, "init")
-	return rv
-}
-
-func (ac _ActionCellClass) Alloc() ActionCell {
-	rv := ffi.CallMethod[ActionCell](ac, "alloc")
-	return rv
-}
-
-func (ac _ActionCellClass) New() ActionCell {
-	rv := ffi.CallMethod[ActionCell](ac, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewActionCell() ActionCell {
-	return ActionCellClass.New()
 }

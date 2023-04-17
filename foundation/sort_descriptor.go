@@ -70,11 +70,6 @@ func (sc _SortDescriptorClass) Alloc() SortDescriptor {
 	return rv
 }
 
-func (s_ SortDescriptor) Init() SortDescriptor {
-	rv := ffi.CallMethod[SortDescriptor](s_, "init")
-	return rv
-}
-
 func (sc _SortDescriptorClass) New() SortDescriptor {
 	rv := ffi.CallMethod[SortDescriptor](sc, "new")
 	rv.Autorelease()
@@ -83,6 +78,11 @@ func (sc _SortDescriptorClass) New() SortDescriptor {
 
 func NewSortDescriptor() SortDescriptor {
 	return SortDescriptorClass.New()
+}
+
+func (s_ SortDescriptor) Init() SortDescriptor {
+	rv := ffi.CallMethod[SortDescriptor](s_, "init")
+	return rv
 }
 
 func (s_ SortDescriptor) CompareObject_ToObject(object1 objc.IObject, object2 objc.IObject) ComparisonResult {

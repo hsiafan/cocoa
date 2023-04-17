@@ -63,11 +63,6 @@ func (sc _ScriptObjectSpecifierClass) Alloc() ScriptObjectSpecifier {
 	return rv
 }
 
-func (s_ ScriptObjectSpecifier) Init() ScriptObjectSpecifier {
-	rv := ffi.CallMethod[ScriptObjectSpecifier](s_, "init")
-	return rv
-}
-
 func (sc _ScriptObjectSpecifierClass) New() ScriptObjectSpecifier {
 	rv := ffi.CallMethod[ScriptObjectSpecifier](sc, "new")
 	rv.Autorelease()
@@ -76,6 +71,11 @@ func (sc _ScriptObjectSpecifierClass) New() ScriptObjectSpecifier {
 
 func NewScriptObjectSpecifier() ScriptObjectSpecifier {
 	return ScriptObjectSpecifierClass.New()
+}
+
+func (s_ ScriptObjectSpecifier) Init() ScriptObjectSpecifier {
+	rv := ffi.CallMethod[ScriptObjectSpecifier](s_, "init")
+	return rv
 }
 
 func (sc _ScriptObjectSpecifierClass) ObjectSpecifierWithDescriptor(descriptor IAppleEventDescriptor) ScriptObjectSpecifier {

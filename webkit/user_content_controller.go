@@ -46,11 +46,6 @@ func (uc _UserContentControllerClass) Alloc() UserContentController {
 	return rv
 }
 
-func (u_ UserContentController) Init() UserContentController {
-	rv := ffi.CallMethod[UserContentController](u_, "init")
-	return rv
-}
-
 func (uc _UserContentControllerClass) New() UserContentController {
 	rv := ffi.CallMethod[UserContentController](uc, "new")
 	rv.Autorelease()
@@ -59,6 +54,11 @@ func (uc _UserContentControllerClass) New() UserContentController {
 
 func NewUserContentController() UserContentController {
 	return UserContentControllerClass.New()
+}
+
+func (u_ UserContentController) Init() UserContentController {
+	rv := ffi.CallMethod[UserContentController](u_, "init")
+	return rv
 }
 
 func (u_ UserContentController) AddUserScript(userScript IUserScript) {
@@ -70,19 +70,19 @@ func (u_ UserContentController) RemoveAllUserScripts() {
 }
 
 func (u_ UserContentController) AddScriptMessageHandler_Name(scriptMessageHandler ScriptMessageHandler, name string) {
-	po := ffi.CreateProtocol(scriptMessageHandler)
+	po := ffi.CreateProtocol("WKScriptMessageHandler", scriptMessageHandler)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandler:name:", po, name)
 }
 
 func (u_ UserContentController) AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string) {
-	po := ffi.CreateProtocol(scriptMessageHandler)
+	po := ffi.CreateProtocol("WKScriptMessageHandler", scriptMessageHandler)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandler:contentWorld:name:", po, world, name)
 }
 
 func (u_ UserContentController) AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string) {
-	po := ffi.CreateProtocol(scriptMessageHandlerWithReply)
+	po := ffi.CreateProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandlerWithReply:contentWorld:name:", po, contentWorld, name)
 }

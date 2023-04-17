@@ -67,11 +67,6 @@ func (uc _UndoManagerClass) Alloc() UndoManager {
 	return rv
 }
 
-func (u_ UndoManager) Init() UndoManager {
-	rv := ffi.CallMethod[UndoManager](u_, "init")
-	return rv
-}
-
 func (uc _UndoManagerClass) New() UndoManager {
 	rv := ffi.CallMethod[UndoManager](uc, "new")
 	rv.Autorelease()
@@ -80,6 +75,11 @@ func (uc _UndoManagerClass) New() UndoManager {
 
 func NewUndoManager() UndoManager {
 	return UndoManagerClass.New()
+}
+
+func (u_ UndoManager) Init() UndoManager {
+	rv := ffi.CallMethod[UndoManager](u_, "init")
+	return rv
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Handler(target objc.IObject, undoHandler func(target objc.Object)) {

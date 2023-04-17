@@ -1,0 +1,24 @@
+{
+    "kind": "alias",
+    "name": "NSFontWidth",
+    "module": "AppKit",
+    "target_type": "double",
+    "values": [
+        {
+            "name": "NSFontWidthCompressed",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWidthCondensed",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWidthExpanded",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSFontWidthStandard",
+            "module": "AppKit"
+        }
+    ]
+}

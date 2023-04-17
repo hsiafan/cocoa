@@ -1,0 +1,16 @@
+{
+    "kind": "alias",
+    "name": "NSURLRequestAttribution",
+    "module": "Foundation",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSURLRequestAttributionDeveloper",
+            "module": "Foundation"
+        },
+        {
+            "name": "NSURLRequestAttributionUser",
+            "module": "Foundation"
+        }
+    ]
+}

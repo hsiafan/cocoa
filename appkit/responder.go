@@ -37,7 +37,7 @@ type IResponder interface {
 	InterpretKeyEvents(eventArray []IEvent)
 	PerformKeyEquivalent(event IEvent) bool
 	// deprecated
-	PerformMnemonic(_string string) bool
+	PerformMnemonic(string_ string) bool
 	FlushBufferedKeyEvents()
 	PressureChangeWithEvent(event IEvent)
 	CursorUpdate(event IEvent)
@@ -49,6 +49,9 @@ type IResponder interface {
 	QuickLookWithEvent(event IEvent)
 	ChangeModeWithEvent(event IEvent)
 	SupplementalTargetForAction_Sender(action objc.Selector, sender objc.IObject) objc.Object
+	EncodeRestorableStateWithCoder(coder foundation.ICoder)
+	EncodeRestorableStateWithCoder_BackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue)
+	RestoreStateWithCoder(coder foundation.ICoder)
 	InvalidateRestorableState()
 	UpdateUserActivityState(userActivity foundation.IUserActivity)
 	PresentError(error foundation.IError) bool
@@ -201,8 +204,8 @@ func (r_ Responder) PerformKeyEquivalent(event IEvent) bool {
 }
 
 // deprecated
-func (r_ Responder) PerformMnemonic(_string string) bool {
-	rv := ffi.CallMethod[bool](r_, "performMnemonic:", _string)
+func (r_ Responder) PerformMnemonic(string_ string) bool {
+	rv := ffi.CallMethod[bool](r_, "performMnemonic:", string_)
 	return rv
 }
 
@@ -249,6 +252,23 @@ func (r_ Responder) ChangeModeWithEvent(event IEvent) {
 func (r_ Responder) SupplementalTargetForAction_Sender(action objc.Selector, sender objc.IObject) objc.Object {
 	rv := ffi.CallMethod[objc.Object](r_, "supplementalTargetForAction:sender:", action, sender)
 	return rv
+}
+
+func (rc _ResponderClass) AllowedClassesForRestorableStateKeyPath(keyPath string) []objc.Class {
+	rv := ffi.CallMethod[[]objc.Class](rc, "allowedClassesForRestorableStateKeyPath:", keyPath)
+	return rv
+}
+
+func (r_ Responder) EncodeRestorableStateWithCoder(coder foundation.ICoder) {
+	ffi.CallMethod[ffi.Void](r_, "encodeRestorableStateWithCoder:", coder)
+}
+
+func (r_ Responder) EncodeRestorableStateWithCoder_BackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue) {
+	ffi.CallMethod[ffi.Void](r_, "encodeRestorableStateWithCoder:backgroundQueue:", coder, queue)
+}
+
+func (r_ Responder) RestoreStateWithCoder(coder foundation.ICoder) {
+	ffi.CallMethod[ffi.Void](r_, "restoreStateWithCoder:", coder)
 }
 
 func (r_ Responder) InvalidateRestorableState() {

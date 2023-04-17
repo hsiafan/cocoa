@@ -82,7 +82,7 @@ func SetMaxHeight(view appkit.IView, height float64) {
 }
 
 func SetMinWidth(view appkit.IView, width float64) {
-	view.WidthAnchor().Init().ConstraintGreaterThanOrEqualToConstant(width).SetActive(true)
+	view.WidthAnchor().ConstraintGreaterThanOrEqualToConstant(width).SetActive(true)
 }
 
 func SetMinHeight(view appkit.IView, height float64) {

@@ -18,7 +18,7 @@ type _SoundClass struct {
 
 type ISound interface {
 	objc.IObject
-	SetName(_string SoundName) bool
+	SetName(string_ SoundName) bool
 	Pause() bool
 	Play() bool
 	Resume() bool
@@ -78,11 +78,6 @@ func (sc _SoundClass) Alloc() Sound {
 	return rv
 }
 
-func (s_ Sound) Init() Sound {
-	rv := ffi.CallMethod[Sound](s_, "init")
-	return rv
-}
-
 func (sc _SoundClass) New() Sound {
 	rv := ffi.CallMethod[Sound](sc, "new")
 	rv.Autorelease()
@@ -93,13 +88,18 @@ func NewSound() Sound {
 	return SoundClass.New()
 }
 
+func (s_ Sound) Init() Sound {
+	rv := ffi.CallMethod[Sound](s_, "init")
+	return rv
+}
+
 func (sc _SoundClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
 	rv := ffi.CallMethod[bool](sc, "canInitWithPasteboard:", pasteboard)
 	return rv
 }
 
-func (s_ Sound) SetName(_string SoundName) bool {
-	rv := ffi.CallMethod[bool](s_, "setName:", _string)
+func (s_ Sound) SetName(string_ SoundName) bool {
+	rv := ffi.CallMethod[bool](s_, "setName:", string_)
 	return rv
 }
 
@@ -161,7 +161,7 @@ func (s_ Sound) Delegate() SoundDelegateWrapper {
 }
 
 func (s_ Sound) SetDelegate(value SoundDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("NSSoundDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
@@ -221,38 +221,4 @@ func (s_ Sound) Duration() foundation.TimeInterval {
 func (s_ Sound) IsPlaying() bool {
 	rv := ffi.CallMethod[bool](s_, "isPlaying")
 	return rv
-}
-
-type SoundDelegate interface {
-	ImplementsSound_DidFinishPlaying() bool
-	// optional
-	Sound_DidFinishPlaying(sound Sound, flag bool)
-}
-
-type SoundDelegateImpl struct {
-	_Sound_DidFinishPlaying func(sound Sound, flag bool)
-}
-
-func (di *SoundDelegateImpl) ImplementsSound_DidFinishPlaying() bool {
-	return di._Sound_DidFinishPlaying != nil
-}
-
-func (di *SoundDelegateImpl) SetSound_DidFinishPlaying(f func(sound Sound, flag bool)) {
-	di._Sound_DidFinishPlaying = f
-}
-
-func (di *SoundDelegateImpl) Sound_DidFinishPlaying(sound Sound, flag bool) {
-	di._Sound_DidFinishPlaying(sound, flag)
-}
-
-type SoundDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ *SoundDelegateWrapper) ImplementsSound_DidFinishPlaying() bool {
-	return s_.RespondsToSelector(objc.GetSelector("sound:didFinishPlaying:"))
-}
-
-func (s_ SoundDelegateWrapper) Sound_DidFinishPlaying(sound ISound, flag bool) {
-	ffi.CallMethod[ffi.Void](s_, "sound:didFinishPlaying:", sound, flag)
 }

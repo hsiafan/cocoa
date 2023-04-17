@@ -1,0 +1,16 @@
+{
+    "kind": "alias",
+    "name": "NSTextSelectionAffinity",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextSelectionAffinityDownstream",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionAffinityUpstream",
+            "module": "AppKit"
+        }
+    ]
+}

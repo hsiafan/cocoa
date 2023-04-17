@@ -39,11 +39,6 @@ func (wc _WebsiteDataStoreClass) Alloc() WebsiteDataStore {
 	return rv
 }
 
-func (w_ WebsiteDataStore) Init() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](w_, "init")
-	return rv
-}
-
 func (wc _WebsiteDataStoreClass) New() WebsiteDataStore {
 	rv := ffi.CallMethod[WebsiteDataStore](wc, "new")
 	rv.Autorelease()
@@ -52,6 +47,11 @@ func (wc _WebsiteDataStoreClass) New() WebsiteDataStore {
 
 func NewWebsiteDataStore() WebsiteDataStore {
 	return WebsiteDataStoreClass.New()
+}
+
+func (w_ WebsiteDataStore) Init() WebsiteDataStore {
+	rv := ffi.CallMethod[WebsiteDataStore](w_, "init")
+	return rv
 }
 
 func (wc _WebsiteDataStoreClass) DefaultDataStore() WebsiteDataStore {

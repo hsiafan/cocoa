@@ -87,11 +87,6 @@ func (pc _ProgressClass) Alloc() Progress {
 	return rv
 }
 
-func (p_ Progress) Init() Progress {
-	rv := ffi.CallMethod[Progress](p_, "init")
-	return rv
-}
-
 func (pc _ProgressClass) New() Progress {
 	rv := ffi.CallMethod[Progress](pc, "new")
 	rv.Autorelease()
@@ -100,6 +95,11 @@ func (pc _ProgressClass) New() Progress {
 
 func NewProgress() Progress {
 	return ProgressClass.New()
+}
+
+func (p_ Progress) Init() Progress {
+	rv := ffi.CallMethod[Progress](p_, "init")
+	return rv
 }
 
 func (pc _ProgressClass) DiscreteProgressWithTotalUnitCount(unitCount int64) Progress {

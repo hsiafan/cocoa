@@ -1,9 +1,9 @@
 package objc
 
 import (
-    "runtime"
-    "testing"
-    "time"
+	"runtime"
+	"testing"
+	"time"
 )
 
 func TestSetDeallocListener(t *testing.T) {
@@ -18,16 +18,14 @@ func TestSetDeallocListener(t *testing.T) {
 	}
 }
 
-
-
 func TestPossessObject(t *testing.T) {
-    o := NewObject()
-    op := PossessObject(o)
-    op.Description()
+	o := NewObject()
+	op := PossessObject(o)
+	op.Description()
 
-    runtime.GC()
-    time.Sleep(time.Microsecond*10)
-    if o.RetainCount() != 1 {
-        t.Fail()
-    }
+	runtime.GC()
+	time.Sleep(time.Microsecond * 10)
+	if o.RetainCount() != 1 {
+		t.Fail()
+	}
 }

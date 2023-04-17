@@ -33,11 +33,6 @@ func (pc _ProcessPoolClass) Alloc() ProcessPool {
 	return rv
 }
 
-func (p_ ProcessPool) Init() ProcessPool {
-	rv := ffi.CallMethod[ProcessPool](p_, "init")
-	return rv
-}
-
 func (pc _ProcessPoolClass) New() ProcessPool {
 	rv := ffi.CallMethod[ProcessPool](pc, "new")
 	rv.Autorelease()
@@ -46,4 +41,9 @@ func (pc _ProcessPoolClass) New() ProcessPool {
 
 func NewProcessPool() ProcessPool {
 	return ProcessPoolClass.New()
+}
+
+func (p_ ProcessPool) Init() ProcessPool {
+	rv := ffi.CallMethod[ProcessPool](p_, "init")
+	return rv
 }

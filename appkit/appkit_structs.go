@@ -1,8 +1,6 @@
 package appkit
 
 import (
-	"unsafe"
-
 	"github.com/hsiafan/cocoa/coregraphics"
 )
 
@@ -14,5 +12,3 @@ type DirectionalEdgeInsets struct {
 	Bottom   coregraphics.Float
 	Trailing coregraphics.Float
 }
-
-type ModalSession unsafe.Pointer

@@ -40,18 +40,13 @@ func MakeValue(ptr unsafe.Pointer) Value {
 	}
 }
 
-func (v_ Value) InitWithBytes_ObjCType(value unsafe.Pointer, _type *byte) Value {
-	rv := ffi.CallMethod[Value](v_, "initWithBytes:objCType:", value, _type)
+func (v_ Value) InitWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Value {
+	rv := ffi.CallMethod[Value](v_, "initWithBytes:objCType:", value, type_)
 	return rv
 }
 
 func (vc _ValueClass) Alloc() Value {
 	rv := ffi.CallMethod[Value](vc, "alloc")
-	return rv
-}
-
-func (v_ Value) Init() Value {
-	rv := ffi.CallMethod[Value](v_, "init")
 	return rv
 }
 
@@ -65,13 +60,18 @@ func NewValue() Value {
 	return ValueClass.New()
 }
 
-func (vc _ValueClass) ValueWithBytes_ObjCType(value unsafe.Pointer, _type *byte) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithBytes:objCType:", value, _type)
+func (v_ Value) Init() Value {
+	rv := ffi.CallMethod[Value](v_, "init")
 	return rv
 }
 
-func (vc _ValueClass) Value_WithObjCType(value unsafe.Pointer, _type *byte) Value {
-	rv := ffi.CallMethod[Value](vc, "value:withObjCType:", value, _type)
+func (vc _ValueClass) ValueWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Value {
+	rv := ffi.CallMethod[Value](vc, "valueWithBytes:objCType:", value, type_)
+	return rv
+}
+
+func (vc _ValueClass) Value_WithObjCType(value unsafe.Pointer, type_ *byte) Value {
+	rv := ffi.CallMethod[Value](vc, "value:withObjCType:", value, type_)
 	return rv
 }
 
@@ -90,8 +90,8 @@ func (vc _ValueClass) ValueWithNonretainedObject(anObject objc.IObject) Value {
 	return rv
 }
 
-func (vc _ValueClass) ValueWithRange(_range Range) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithRange:", _range)
+func (vc _ValueClass) ValueWithRange(range_ Range) Value {
+	rv := ffi.CallMethod[Value](vc, "valueWithRange:", range_)
 	return rv
 }
 

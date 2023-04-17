@@ -133,6 +133,16 @@ func NewScrollView() ScrollView {
 	return ScrollViewClass.New()
 }
 
+func (sc _ScrollViewClass) FrameSizeForContentSize_HorizontalScrollerClass_VerticalScrollerClass_BorderType_ControlSize_ScrollerStyle(cSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
+	rv := ffi.CallMethod[foundation.Size](sc, "frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:", cSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
+	return rv
+}
+
+func (sc _ScrollViewClass) ContentSizeForFrameSize_HorizontalScrollerClass_VerticalScrollerClass_BorderType_ControlSize_ScrollerStyle(fSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
+	rv := ffi.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:", fSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
+	return rv
+}
+
 func (s_ ScrollView) AddFloatingSubview_ForAxis(view IView, axis EventGestureAxis) {
 	ffi.CallMethod[ffi.Void](s_, "addFloatingSubview:forAxis:", view, axis)
 }
@@ -154,14 +164,14 @@ func (s_ ScrollView) SetMagnification_CenteredAtPoint(magnification float64, poi
 }
 
 // deprecated
-func (sc _ScrollViewClass) FrameSizeForContentSize_HasHorizontalScroller_HasVerticalScroller_BorderType(cSize foundation.Size, hFlag bool, vFlag bool, _type BorderType) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](sc, "frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:", cSize, hFlag, vFlag, _type)
+func (sc _ScrollViewClass) FrameSizeForContentSize_HasHorizontalScroller_HasVerticalScroller_BorderType(cSize foundation.Size, hFlag bool, vFlag bool, type_ BorderType) foundation.Size {
+	rv := ffi.CallMethod[foundation.Size](sc, "frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:", cSize, hFlag, vFlag, type_)
 	return rv
 }
 
 // deprecated
-func (sc _ScrollViewClass) ContentSizeForFrameSize_HasHorizontalScroller_HasVerticalScroller_BorderType(fSize foundation.Size, hFlag bool, vFlag bool, _type BorderType) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:", fSize, hFlag, vFlag, _type)
+func (sc _ScrollViewClass) ContentSizeForFrameSize_HasHorizontalScroller_HasVerticalScroller_BorderType(fSize foundation.Size, hFlag bool, vFlag bool, type_ BorderType) foundation.Size {
+	rv := ffi.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:", fSize, hFlag, vFlag, type_)
 	return rv
 }
 
@@ -272,6 +282,15 @@ func (s_ ScrollView) AutohidesScrollers() bool {
 
 func (s_ ScrollView) SetAutohidesScrollers(value bool) {
 	ffi.CallMethod[ffi.Void](s_, "setAutohidesScrollers:", value)
+}
+
+func (sc _ScrollViewClass) RulerViewClass() objc.Class {
+	rv := ffi.CallMethod[objc.Class](sc, "rulerViewClass")
+	return rv
+}
+
+func (sc _ScrollViewClass) SetRulerViewClass(value objc.IClass) {
+	ffi.CallMethod[ffi.Void](sc, "setRulerViewClass:", value)
 }
 
 func (s_ ScrollView) HasHorizontalRuler() bool {

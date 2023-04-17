@@ -46,11 +46,6 @@ func (uc _UserScriptClass) Alloc() UserScript {
 	return rv
 }
 
-func (u_ UserScript) Init() UserScript {
-	rv := ffi.CallMethod[UserScript](u_, "init")
-	return rv
-}
-
 func (uc _UserScriptClass) New() UserScript {
 	rv := ffi.CallMethod[UserScript](uc, "new")
 	rv.Autorelease()
@@ -59,6 +54,11 @@ func (uc _UserScriptClass) New() UserScript {
 
 func NewUserScript() UserScript {
 	return UserScriptClass.New()
+}
+
+func (u_ UserScript) Init() UserScript {
+	rv := ffi.CallMethod[UserScript](u_, "init")
+	return rv
 }
 
 func (u_ UserScript) Source() string {

@@ -10,6 +10,20 @@ import (
 	"github.com/hsiafan/cocoa/objc"
 )
 
+type IObject interface {
+	objc.IObject
+}
+
+type Object struct {
+	objc.Object
+}
+
+func MakeObject(ptr unsafe.Pointer) Object {
+	return Object{
+		Object: objc.MakeObject(ptr),
+	}
+}
+
 type IString interface {
 	objc.IObject
 	String() string

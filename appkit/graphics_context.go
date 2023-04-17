@@ -56,11 +56,6 @@ func (gc _GraphicsContextClass) Alloc() GraphicsContext {
 	return rv
 }
 
-func (g_ GraphicsContext) Init() GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](g_, "init")
-	return rv
-}
-
 func (gc _GraphicsContextClass) New() GraphicsContext {
 	rv := ffi.CallMethod[GraphicsContext](gc, "new")
 	rv.Autorelease()
@@ -69,6 +64,11 @@ func (gc _GraphicsContextClass) New() GraphicsContext {
 
 func NewGraphicsContext() GraphicsContext {
 	return GraphicsContextClass.New()
+}
+
+func (g_ GraphicsContext) Init() GraphicsContext {
+	rv := ffi.CallMethod[GraphicsContext](g_, "init")
+	return rv
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithAttributes(attributes map[GraphicsContextAttributeKey]objc.IObject) GraphicsContext {

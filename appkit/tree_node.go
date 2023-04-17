@@ -23,7 +23,6 @@ type ITreeNode interface {
 	IndexPath() foundation.IndexPath
 	IsLeaf() bool
 	ChildNodes() []TreeNode
-	MutableChildNodes() foundation.MutableArray
 	ParentNode() TreeNode
 }
 
@@ -52,11 +51,6 @@ func (tc _TreeNodeClass) Alloc() TreeNode {
 	return rv
 }
 
-func (t_ TreeNode) Init() TreeNode {
-	rv := ffi.CallMethod[TreeNode](t_, "init")
-	return rv
-}
-
 func (tc _TreeNodeClass) New() TreeNode {
 	rv := ffi.CallMethod[TreeNode](tc, "new")
 	rv.Autorelease()
@@ -65,6 +59,11 @@ func (tc _TreeNodeClass) New() TreeNode {
 
 func NewTreeNode() TreeNode {
 	return TreeNodeClass.New()
+}
+
+func (t_ TreeNode) Init() TreeNode {
+	rv := ffi.CallMethod[TreeNode](t_, "init")
+	return rv
 }
 
 func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode {
@@ -93,11 +92,6 @@ func (t_ TreeNode) IsLeaf() bool {
 
 func (t_ TreeNode) ChildNodes() []TreeNode {
 	rv := ffi.CallMethod[[]TreeNode](t_, "childNodes")
-	return rv
-}
-
-func (t_ TreeNode) MutableChildNodes() foundation.MutableArray {
-	rv := ffi.CallMethod[foundation.MutableArray](t_, "mutableChildNodes")
 	return rv
 }
 

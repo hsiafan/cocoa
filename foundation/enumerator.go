@@ -35,11 +35,6 @@ func (ec _EnumeratorClass) Alloc() Enumerator {
 	return rv
 }
 
-func (e_ Enumerator) Init() Enumerator {
-	rv := ffi.CallMethod[Enumerator](e_, "init")
-	return rv
-}
-
 func (ec _EnumeratorClass) New() Enumerator {
 	rv := ffi.CallMethod[Enumerator](ec, "new")
 	rv.Autorelease()
@@ -48,6 +43,11 @@ func (ec _EnumeratorClass) New() Enumerator {
 
 func NewEnumerator() Enumerator {
 	return EnumeratorClass.New()
+}
+
+func (e_ Enumerator) Init() Enumerator {
+	rv := ffi.CallMethod[Enumerator](e_, "init")
+	return rv
 }
 
 func (e_ Enumerator) NextObject() objc.Object {

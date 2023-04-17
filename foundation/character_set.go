@@ -38,11 +38,6 @@ func (cc _CharacterSetClass) Alloc() CharacterSet {
 	return rv
 }
 
-func (c_ CharacterSet) Init() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](c_, "init")
-	return rv
-}
-
 func (cc _CharacterSetClass) New() CharacterSet {
 	rv := ffi.CallMethod[CharacterSet](cc, "new")
 	rv.Autorelease()
@@ -51,6 +46,11 @@ func (cc _CharacterSetClass) New() CharacterSet {
 
 func NewCharacterSet() CharacterSet {
 	return CharacterSetClass.New()
+}
+
+func (c_ CharacterSet) Init() CharacterSet {
+	rv := ffi.CallMethod[CharacterSet](c_, "init")
+	return rv
 }
 
 func (cc _CharacterSetClass) CharacterSetWithCharactersInString(aString string) CharacterSet {

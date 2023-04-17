@@ -61,11 +61,6 @@ func (ic _IndexPathClass) Alloc() IndexPath {
 	return rv
 }
 
-func (i_ IndexPath) Init() IndexPath {
-	rv := ffi.CallMethod[IndexPath](i_, "init")
-	return rv
-}
-
 func (ic _IndexPathClass) New() IndexPath {
 	rv := ffi.CallMethod[IndexPath](ic, "new")
 	rv.Autorelease()
@@ -74,6 +69,11 @@ func (ic _IndexPathClass) New() IndexPath {
 
 func NewIndexPath() IndexPath {
 	return IndexPathClass.New()
+}
+
+func (i_ IndexPath) Init() IndexPath {
+	rv := ffi.CallMethod[IndexPath](i_, "init")
+	return rv
 }
 
 func (i_ IndexPath) IndexPathByAddingIndex(index uint) IndexPath {

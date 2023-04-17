@@ -34,11 +34,6 @@ func (fc _FindResultClass) Alloc() FindResult {
 	return rv
 }
 
-func (f_ FindResult) Init() FindResult {
-	rv := ffi.CallMethod[FindResult](f_, "init")
-	return rv
-}
-
 func (fc _FindResultClass) New() FindResult {
 	rv := ffi.CallMethod[FindResult](fc, "new")
 	rv.Autorelease()
@@ -47,6 +42,11 @@ func (fc _FindResultClass) New() FindResult {
 
 func NewFindResult() FindResult {
 	return FindResultClass.New()
+}
+
+func (f_ FindResult) Init() FindResult {
+	rv := ffi.CallMethod[FindResult](f_, "init")
+	return rv
 }
 
 func (f_ FindResult) MatchFound() bool {

@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSTextLayoutFragmentEnumerationOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentEnumerationOptionsEnsuresLayout",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentEnumerationOptionsEstimatesSize",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentEnumerationOptionsReverse",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutFragmentEnumerationOptionsNone",
+            "module": "AppKit"
+        }
+    ]
+}

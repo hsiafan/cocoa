@@ -43,11 +43,6 @@ func (ac _AppearanceClass) Alloc() Appearance {
 	return rv
 }
 
-func (a_ Appearance) Init() Appearance {
-	rv := ffi.CallMethod[Appearance](a_, "init")
-	return rv
-}
-
 func (ac _AppearanceClass) New() Appearance {
 	rv := ffi.CallMethod[Appearance](ac, "new")
 	rv.Autorelease()
@@ -56,6 +51,11 @@ func (ac _AppearanceClass) New() Appearance {
 
 func NewAppearance() Appearance {
 	return AppearanceClass.New()
+}
+
+func (a_ Appearance) Init() Appearance {
+	rv := ffi.CallMethod[Appearance](a_, "init")
+	return rv
 }
 
 func (ac _AppearanceClass) AppearanceNamed(name AppearanceName) Appearance {
@@ -95,47 +95,5 @@ func (ac _AppearanceClass) SetCurrentAppearance(value IAppearance) {
 
 func (a_ Appearance) AllowsVibrancy() bool {
 	rv := ffi.CallMethod[bool](a_, "allowsVibrancy")
-	return rv
-}
-
-type AppearanceCustomization interface {
-	ImplementsSetAppearance() bool
-	// optional
-	SetAppearance(value Appearance)
-	ImplementsAppearance() bool
-	// optional
-	Appearance() IAppearance
-	ImplementsEffectiveAppearance() bool
-	// optional
-	EffectiveAppearance() IAppearance
-}
-
-type AppearanceCustomizationWrapper struct {
-	objc.Object
-}
-
-func (a_ *AppearanceCustomizationWrapper) ImplementsSetAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("setAppearance:"))
-}
-
-func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
-	ffi.CallMethod[ffi.Void](a_, "setAppearance:", value)
-}
-
-func (a_ *AppearanceCustomizationWrapper) ImplementsAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("appearance"))
-}
-
-func (a_ AppearanceCustomizationWrapper) Appearance() Appearance {
-	rv := ffi.CallMethod[Appearance](a_, "appearance")
-	return rv
-}
-
-func (a_ *AppearanceCustomizationWrapper) ImplementsEffectiveAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("effectiveAppearance"))
-}
-
-func (a_ AppearanceCustomizationWrapper) EffectiveAppearance() Appearance {
-	rv := ffi.CallMethod[Appearance](a_, "effectiveAppearance")
 	return rv
 }

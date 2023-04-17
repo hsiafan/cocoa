@@ -95,11 +95,6 @@ func (tc _TypesetterClass) Alloc() Typesetter {
 	return rv
 }
 
-func (t_ Typesetter) Init() Typesetter {
-	rv := ffi.CallMethod[Typesetter](t_, "init")
-	return rv
-}
-
 func (tc _TypesetterClass) New() Typesetter {
 	rv := ffi.CallMethod[Typesetter](tc, "new")
 	rv.Autorelease()
@@ -108,6 +103,11 @@ func (tc _TypesetterClass) New() Typesetter {
 
 func NewTypesetter() Typesetter {
 	return TypesetterClass.New()
+}
+
+func (t_ Typesetter) Init() Typesetter {
+	rv := ffi.CallMethod[Typesetter](t_, "init")
+	return rv
 }
 
 func (tc _TypesetterClass) SharedSystemTypesetterForBehavior(behavior TypesetterBehavior) objc.Object {

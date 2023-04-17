@@ -37,11 +37,6 @@ func (cc _ClassDescriptionClass) Alloc() ClassDescription {
 	return rv
 }
 
-func (c_ ClassDescription) Init() ClassDescription {
-	rv := ffi.CallMethod[ClassDescription](c_, "init")
-	return rv
-}
-
 func (cc _ClassDescriptionClass) New() ClassDescription {
 	rv := ffi.CallMethod[ClassDescription](cc, "new")
 	rv.Autorelease()
@@ -52,8 +47,22 @@ func NewClassDescription() ClassDescription {
 	return ClassDescriptionClass.New()
 }
 
+func (c_ ClassDescription) Init() ClassDescription {
+	rv := ffi.CallMethod[ClassDescription](c_, "init")
+	return rv
+}
+
+func (cc _ClassDescriptionClass) ClassDescriptionForClass(aClass objc.IClass) ClassDescription {
+	rv := ffi.CallMethod[ClassDescription](cc, "classDescriptionForClass:", aClass)
+	return rv
+}
+
 func (cc _ClassDescriptionClass) InvalidateClassDescriptionCache() {
 	ffi.CallMethod[ffi.Void](cc, "invalidateClassDescriptionCache")
+}
+
+func (cc _ClassDescriptionClass) RegisterClassDescription_ForClass(description IClassDescription, aClass objc.IClass) {
+	ffi.CallMethod[ffi.Void](cc, "registerClassDescription:forClass:", description, aClass)
 }
 
 func (c_ ClassDescription) InverseForRelationshipKey(relationshipKey string) string {

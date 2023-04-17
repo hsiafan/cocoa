@@ -33,10 +33,16 @@ type IDocument interface {
 	WritableTypesForSaveOperation(saveOperation SaveOperationType) []string
 	FileNameExtensionForType_SaveOperation(typeName string, saveOperation SaveOperationType) string
 	MakeWindowControllers()
+	AddWindowController(windowController IWindowController)
+	RemoveWindowController(windowController IWindowController)
+	WindowControllerDidLoadNib(windowController IWindowController)
+	WindowControllerWillLoadNib(windowController IWindowController)
+	ShouldCloseWindowController_Delegate_ShouldCloseSelector_ContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer)
 	ShowWindows()
 	SetWindow(window IWindow)
 	SetDisplayName(displayNameOrNil string)
 	DefaultDraftName() string
+	EncodeRestorableStateWithCoder_BackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue)
 	CheckAutosavingSafetyAndReturnError(outError *foundation.Error) bool
 	ScheduleAutosaving()
 	AutosaveDocumentWithDelegate_DidAutosaveSelector_ContextInfo(delegate objc.IObject, didAutosaveSelector objc.Selector, contextInfo unsafe.Pointer)
@@ -47,12 +53,17 @@ type IDocument interface {
 	UpdateChangeCountWithToken_ForSaveOperation(changeCountToken objc.IObject, saveOperation SaveOperationType)
 	UpdateChangeCount(change DocumentChangeType)
 	ChangeCountTokenForSaveOperation(saveOperation SaveOperationType) objc.Object
+	EncodeRestorableStateWithCoder(coder foundation.ICoder)
+	RestoreStateWithCoder(coder foundation.ICoder)
 	InvalidateRestorableState()
+	RestoreDocumentWindowWithIdentifier_State_CompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(param1 Window, param2 foundation.Error))
 	RunModalSavePanelForSaveOperation_Delegate_DidSaveSelector_ContextInfo(saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer)
 	PrepareSavePanel(savePanel ISavePanel) bool
 	UpdateUserActivityState(activity foundation.IUserActivity)
 	ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool
 	PerformSynchronousFileAccessUsingBlock(block func())
+	PerformAsynchronousFileAccessUsingBlock(block func(param1 func()))
+	PerformActivityWithSynchronousWaiting_UsingBlock(waitSynchronously bool, block func(param1 func()))
 	ContinueActivityUsingBlock(block func())
 	ContinueAsynchronousWorkOnMainThreadUsingBlock(block func())
 	PrintDocument(sender objc.IObject)
@@ -95,29 +106,29 @@ type IDocument interface {
 	WillPresentError(error foundation.IError) foundation.Error
 	WillNotPresentError(error foundation.IError)
 	// deprecated
-	DataRepresentationOfType(_type string) []byte
+	DataRepresentationOfType(type_ string) []byte
 	// deprecated
 	FileName() string
 	// deprecated
-	FileWrapperRepresentationOfType(_type string) foundation.FileWrapper
+	FileWrapperRepresentationOfType(type_ string) foundation.FileWrapper
 	// deprecated
 	InitWithContentsOfFile_OfType(absolutePath string, typeName string) objc.Object
 	// deprecated
 	InitWithContentsOfURL_OfType(url foundation.IURL, typeName string) objc.Object
 	// deprecated
-	LoadDataRepresentation_OfType(data []byte, _type string) bool
+	LoadDataRepresentation_OfType(data []byte, type_ string) bool
 	// deprecated
-	LoadFileWrapperRepresentation_OfType(wrapper foundation.IFileWrapper, _type string) bool
+	LoadFileWrapperRepresentation_OfType(wrapper foundation.IFileWrapper, type_ string) bool
 	// deprecated
 	PrintShowingPrintPanel(flag bool)
 	// deprecated
-	ReadFromFile_OfType(fileName string, _type string) bool
+	ReadFromFile_OfType(fileName string, type_ string) bool
 	// deprecated
-	ReadFromURL_OfType(url foundation.IURL, _type string) bool
+	ReadFromURL_OfType(url foundation.IURL, type_ string) bool
 	// deprecated
-	RevertToSavedFromFile_OfType(fileName string, _type string) bool
+	RevertToSavedFromFile_OfType(fileName string, type_ string) bool
 	// deprecated
-	RevertToSavedFromURL_OfType(url foundation.IURL, _type string) bool
+	RevertToSavedFromURL_OfType(url foundation.IURL, type_ string) bool
 	// deprecated
 	RunModalPageLayoutWithPrintInfo(printInfo IPrintInfo) int
 	// deprecated
@@ -127,11 +138,11 @@ type IDocument interface {
 	// deprecated
 	SetFileName(fileName string)
 	// deprecated
-	WriteToFile_OfType(fileName string, _type string) bool
+	WriteToFile_OfType(fileName string, type_ string) bool
 	// deprecated
 	WriteToFile_OfType_OriginalFile_SaveOperation(fullDocumentPath string, documentTypeName string, fullOriginalDocumentPath string, saveOperationType SaveOperationType) bool
 	// deprecated
-	WriteToURL_OfType(url foundation.IURL, _type string) bool
+	WriteToURL_OfType(url foundation.IURL, type_ string) bool
 	// deprecated
 	WriteWithBackupToFile_OfType_SaveOperation(fullDocumentPath string, documentTypeName string, saveOperationType SaveOperationType) bool
 	FileURL() foundation.URL
@@ -146,6 +157,7 @@ type IDocument interface {
 	SetFileType(value string)
 	IsDocumentEdited() bool
 	IsInViewingMode() bool
+	WindowControllers() []WindowController
 	WindowNibName() NibName
 	WindowForSheet() Window
 	DisplayName() string
@@ -287,8 +299,8 @@ func (d_ Document) FileAttributesToWriteToURL_OfType_ForSaveOperation_OriginalCo
 	return rv
 }
 
-func (dc _DocumentClass) IsNativeType(_type string) bool {
-	rv := ffi.CallMethod[bool](dc, "isNativeType:", _type)
+func (dc _DocumentClass) IsNativeType(type_ string) bool {
+	rv := ffi.CallMethod[bool](dc, "isNativeType:", type_)
 	return rv
 }
 
@@ -306,6 +318,26 @@ func (d_ Document) MakeWindowControllers() {
 	ffi.CallMethod[ffi.Void](d_, "makeWindowControllers")
 }
 
+func (d_ Document) AddWindowController(windowController IWindowController) {
+	ffi.CallMethod[ffi.Void](d_, "addWindowController:", windowController)
+}
+
+func (d_ Document) RemoveWindowController(windowController IWindowController) {
+	ffi.CallMethod[ffi.Void](d_, "removeWindowController:", windowController)
+}
+
+func (d_ Document) WindowControllerDidLoadNib(windowController IWindowController) {
+	ffi.CallMethod[ffi.Void](d_, "windowControllerDidLoadNib:", windowController)
+}
+
+func (d_ Document) WindowControllerWillLoadNib(windowController IWindowController) {
+	ffi.CallMethod[ffi.Void](d_, "windowControllerWillLoadNib:", windowController)
+}
+
+func (d_ Document) ShouldCloseWindowController_Delegate_ShouldCloseSelector_ContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer) {
+	ffi.CallMethod[ffi.Void](d_, "shouldCloseWindowController:delegate:shouldCloseSelector:contextInfo:", windowController, delegate, shouldCloseSelector, contextInfo)
+}
+
 func (d_ Document) ShowWindows() {
 	ffi.CallMethod[ffi.Void](d_, "showWindows")
 }
@@ -321,6 +353,10 @@ func (d_ Document) SetDisplayName(displayNameOrNil string) {
 func (d_ Document) DefaultDraftName() string {
 	rv := ffi.CallMethod[string](d_, "defaultDraftName")
 	return rv
+}
+
+func (d_ Document) EncodeRestorableStateWithCoder_BackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue) {
+	ffi.CallMethod[ffi.Void](d_, "encodeRestorableStateWithCoder:backgroundQueue:", coder, queue)
 }
 
 func (d_ Document) CheckAutosavingSafetyAndReturnError(outError *foundation.Error) bool {
@@ -365,8 +401,25 @@ func (d_ Document) ChangeCountTokenForSaveOperation(saveOperation SaveOperationT
 	return rv
 }
 
+func (dc _DocumentClass) AllowedClassesForRestorableStateKeyPath(keyPath string) []objc.Class {
+	rv := ffi.CallMethod[[]objc.Class](dc, "allowedClassesForRestorableStateKeyPath:", keyPath)
+	return rv
+}
+
+func (d_ Document) EncodeRestorableStateWithCoder(coder foundation.ICoder) {
+	ffi.CallMethod[ffi.Void](d_, "encodeRestorableStateWithCoder:", coder)
+}
+
+func (d_ Document) RestoreStateWithCoder(coder foundation.ICoder) {
+	ffi.CallMethod[ffi.Void](d_, "restoreStateWithCoder:", coder)
+}
+
 func (d_ Document) InvalidateRestorableState() {
 	ffi.CallMethod[ffi.Void](d_, "invalidateRestorableState")
+}
+
+func (d_ Document) RestoreDocumentWindowWithIdentifier_State_CompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(param1 Window, param2 foundation.Error)) {
+	ffi.CallMethod[ffi.Void](d_, "restoreDocumentWindowWithIdentifier:state:completionHandler:", identifier, state, completionHandler)
 }
 
 func (d_ Document) RunModalSavePanelForSaveOperation_Delegate_DidSaveSelector_ContextInfo(saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer) {
@@ -383,7 +436,7 @@ func (d_ Document) UpdateUserActivityState(activity foundation.IUserActivity) {
 }
 
 func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool {
-	po := ffi.CreateProtocol(item)
+	po := ffi.CreateProtocol("NSValidatedUserInterfaceItem", item)
 	defer po.Release()
 	rv := ffi.CallMethod[bool](d_, "validateUserInterfaceItem:", po)
 	return rv
@@ -391,6 +444,14 @@ func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bo
 
 func (d_ Document) PerformSynchronousFileAccessUsingBlock(block func()) {
 	ffi.CallMethod[ffi.Void](d_, "performSynchronousFileAccessUsingBlock:", block)
+}
+
+func (d_ Document) PerformAsynchronousFileAccessUsingBlock(block func(param1 func())) {
+	ffi.CallMethod[ffi.Void](d_, "performAsynchronousFileAccessUsingBlock:", block)
+}
+
+func (d_ Document) PerformActivityWithSynchronousWaiting_UsingBlock(waitSynchronously bool, block func(param1 func())) {
+	ffi.CallMethod[ffi.Void](d_, "performActivityWithSynchronousWaiting:usingBlock:", waitSynchronously, block)
 }
 
 func (d_ Document) ContinueActivityUsingBlock(block func()) {
@@ -568,8 +629,8 @@ func (d_ Document) WillNotPresentError(error foundation.IError) {
 }
 
 // deprecated
-func (d_ Document) DataRepresentationOfType(_type string) []byte {
-	rv := ffi.CallMethod[[]byte](d_, "dataRepresentationOfType:", _type)
+func (d_ Document) DataRepresentationOfType(type_ string) []byte {
+	rv := ffi.CallMethod[[]byte](d_, "dataRepresentationOfType:", type_)
 	return rv
 }
 
@@ -580,8 +641,8 @@ func (d_ Document) FileName() string {
 }
 
 // deprecated
-func (d_ Document) FileWrapperRepresentationOfType(_type string) foundation.FileWrapper {
-	rv := ffi.CallMethod[foundation.FileWrapper](d_, "fileWrapperRepresentationOfType:", _type)
+func (d_ Document) FileWrapperRepresentationOfType(type_ string) foundation.FileWrapper {
+	rv := ffi.CallMethod[foundation.FileWrapper](d_, "fileWrapperRepresentationOfType:", type_)
 	return rv
 }
 
@@ -598,14 +659,14 @@ func (d_ Document) InitWithContentsOfURL_OfType(url foundation.IURL, typeName st
 }
 
 // deprecated
-func (d_ Document) LoadDataRepresentation_OfType(data []byte, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "loadDataRepresentation:ofType:", data, _type)
+func (d_ Document) LoadDataRepresentation_OfType(data []byte, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "loadDataRepresentation:ofType:", data, type_)
 	return rv
 }
 
 // deprecated
-func (d_ Document) LoadFileWrapperRepresentation_OfType(wrapper foundation.IFileWrapper, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "loadFileWrapperRepresentation:ofType:", wrapper, _type)
+func (d_ Document) LoadFileWrapperRepresentation_OfType(wrapper foundation.IFileWrapper, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "loadFileWrapperRepresentation:ofType:", wrapper, type_)
 	return rv
 }
 
@@ -615,26 +676,26 @@ func (d_ Document) PrintShowingPrintPanel(flag bool) {
 }
 
 // deprecated
-func (d_ Document) ReadFromFile_OfType(fileName string, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "readFromFile:ofType:", fileName, _type)
+func (d_ Document) ReadFromFile_OfType(fileName string, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "readFromFile:ofType:", fileName, type_)
 	return rv
 }
 
 // deprecated
-func (d_ Document) ReadFromURL_OfType(url foundation.IURL, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "readFromURL:ofType:", url, _type)
+func (d_ Document) ReadFromURL_OfType(url foundation.IURL, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "readFromURL:ofType:", url, type_)
 	return rv
 }
 
 // deprecated
-func (d_ Document) RevertToSavedFromFile_OfType(fileName string, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "revertToSavedFromFile:ofType:", fileName, _type)
+func (d_ Document) RevertToSavedFromFile_OfType(fileName string, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "revertToSavedFromFile:ofType:", fileName, type_)
 	return rv
 }
 
 // deprecated
-func (d_ Document) RevertToSavedFromURL_OfType(url foundation.IURL, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "revertToSavedFromURL:ofType:", url, _type)
+func (d_ Document) RevertToSavedFromURL_OfType(url foundation.IURL, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "revertToSavedFromURL:ofType:", url, type_)
 	return rv
 }
 
@@ -661,8 +722,8 @@ func (d_ Document) SetFileName(fileName string) {
 }
 
 // deprecated
-func (d_ Document) WriteToFile_OfType(fileName string, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "writeToFile:ofType:", fileName, _type)
+func (d_ Document) WriteToFile_OfType(fileName string, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "writeToFile:ofType:", fileName, type_)
 	return rv
 }
 
@@ -673,8 +734,8 @@ func (d_ Document) WriteToFile_OfType_OriginalFile_SaveOperation(fullDocumentPat
 }
 
 // deprecated
-func (d_ Document) WriteToURL_OfType(url foundation.IURL, _type string) bool {
-	rv := ffi.CallMethod[bool](d_, "writeToURL:ofType:", url, _type)
+func (d_ Document) WriteToURL_OfType(url foundation.IURL, type_ string) bool {
+	rv := ffi.CallMethod[bool](d_, "writeToURL:ofType:", url, type_)
 	return rv
 }
 
@@ -747,6 +808,11 @@ func (dc _DocumentClass) ReadableTypes() []string {
 
 func (dc _DocumentClass) WritableTypes() []string {
 	rv := ffi.CallMethod[[]string](dc, "writableTypes")
+	return rv
+}
+
+func (d_ Document) WindowControllers() []WindowController {
+	rv := ffi.CallMethod[[]WindowController](d_, "windowControllers")
 	return rv
 }
 

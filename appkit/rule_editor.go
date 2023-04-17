@@ -50,6 +50,8 @@ type IRuleEditor interface {
 	NumberOfRows() int
 	SelectedRowIndexes() foundation.IndexSet
 	Predicate() foundation.Predicate
+	RowClass() objc.Class
+	SetRowClass(value objc.IClass)
 	RowTypeKeyPath() string
 	SetRowTypeKeyPath(value string)
 	SubrowsKeyPath() string
@@ -168,7 +170,7 @@ func (r_ RuleEditor) Delegate() RuleEditorDelegateWrapper {
 }
 
 func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("NSRuleEditorDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(r_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](r_, "setDelegate:", po)
@@ -243,6 +245,15 @@ func (r_ RuleEditor) Predicate() foundation.Predicate {
 	return rv
 }
 
+func (r_ RuleEditor) RowClass() objc.Class {
+	rv := ffi.CallMethod[objc.Class](r_, "rowClass")
+	return rv
+}
+
+func (r_ RuleEditor) SetRowClass(value objc.IClass) {
+	ffi.CallMethod[ffi.Void](r_, "setRowClass:", value)
+}
+
 func (r_ RuleEditor) RowTypeKeyPath() string {
 	rv := ffi.CallMethod[string](r_, "rowTypeKeyPath")
 	return rv
@@ -277,286 +288,4 @@ func (r_ RuleEditor) DisplayValuesKeyPath() string {
 
 func (r_ RuleEditor) SetDisplayValuesKeyPath(value string) {
 	ffi.CallMethod[ffi.Void](r_, "setDisplayValuesKeyPath:", value)
-}
-
-type RuleEditorDelegate interface {
-	// required
-	RuleEditor_Child_ForCriterion_WithRowType(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject
-	// required
-	RuleEditor_DisplayValueForCriterion_InRow(editor RuleEditor, criterion objc.Object, row int) objc.IObject
-	// required
-	RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int
-	ImplementsRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow() bool
-	// optional
-	RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject
-	ImplementsRuleEditorRowsDidChange() bool
-	// optional
-	RuleEditorRowsDidChange(notification foundation.Notification)
-}
-
-type RuleEditorDelegateImpl struct {
-	_RuleEditor_Child_ForCriterion_WithRowType                    func(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject
-	_RuleEditor_DisplayValueForCriterion_InRow                    func(editor RuleEditor, criterion objc.Object, row int) objc.IObject
-	_RuleEditor_NumberOfChildrenForCriterion_WithRowType          func(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int
-	_RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow func(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject
-	_RuleEditorRowsDidChange                                      func(notification foundation.Notification)
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditor_Child_ForCriterion_WithRowType(f func(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject) {
-	di._RuleEditor_Child_ForCriterion_WithRowType = f
-}
-
-// required
-
-func (di *RuleEditorDelegateImpl) RuleEditor_Child_ForCriterion_WithRowType(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject {
-	return di._RuleEditor_Child_ForCriterion_WithRowType(editor, index, criterion, rowType)
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditor_DisplayValueForCriterion_InRow(f func(editor RuleEditor, criterion objc.Object, row int) objc.IObject) {
-	di._RuleEditor_DisplayValueForCriterion_InRow = f
-}
-
-// required
-
-func (di *RuleEditorDelegateImpl) RuleEditor_DisplayValueForCriterion_InRow(editor RuleEditor, criterion objc.Object, row int) objc.IObject {
-	return di._RuleEditor_DisplayValueForCriterion_InRow(editor, criterion, row)
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditor_NumberOfChildrenForCriterion_WithRowType(f func(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int) {
-	di._RuleEditor_NumberOfChildrenForCriterion_WithRowType = f
-}
-
-// required
-
-func (di *RuleEditorDelegateImpl) RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int {
-	return di._RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor, criterion, rowType)
-}
-func (di *RuleEditorDelegateImpl) ImplementsRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow() bool {
-	return di._RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow != nil
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(f func(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject) {
-	di._RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow = f
-}
-
-func (di *RuleEditorDelegateImpl) RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject {
-	return di._RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor, criterion, value, row)
-}
-func (di *RuleEditorDelegateImpl) ImplementsRuleEditorRowsDidChange() bool {
-	return di._RuleEditorRowsDidChange != nil
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditorRowsDidChange(f func(notification foundation.Notification)) {
-	di._RuleEditorRowsDidChange = f
-}
-
-func (di *RuleEditorDelegateImpl) RuleEditorRowsDidChange(notification foundation.Notification) {
-	di._RuleEditorRowsDidChange(notification)
-}
-
-type RuleEditorDelegateWrapper struct {
-	objc.Object
-}
-
-func (r_ RuleEditorDelegateWrapper) RuleEditor_Child_ForCriterion_WithRowType(editor IRuleEditor, index int, criterion objc.IObject, rowType RuleEditorRowType) objc.Object {
-	rv := ffi.CallMethod[objc.Object](r_, "ruleEditor:child:forCriterion:withRowType:", editor, index, criterion, rowType)
-	return rv
-}
-
-func (r_ RuleEditorDelegateWrapper) RuleEditor_DisplayValueForCriterion_InRow(editor IRuleEditor, criterion objc.IObject, row int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](r_, "ruleEditor:displayValueForCriterion:inRow:", editor, criterion, row)
-	return rv
-}
-
-func (r_ RuleEditorDelegateWrapper) RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor IRuleEditor, criterion objc.IObject, rowType RuleEditorRowType) int {
-	rv := ffi.CallMethod[int](r_, "ruleEditor:numberOfChildrenForCriterion:withRowType:", editor, criterion, rowType)
-	return rv
-}
-
-func (r_ *RuleEditorDelegateWrapper) ImplementsRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow() bool {
-	return r_.RespondsToSelector(objc.GetSelector("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"))
-}
-
-func (r_ RuleEditorDelegateWrapper) RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor IRuleEditor, criterion objc.IObject, value objc.IObject, row int) map[RuleEditorPredicatePartKey]objc.Object {
-	rv := ffi.CallMethod[map[RuleEditorPredicatePartKey]objc.Object](r_, "ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:", editor, criterion, value, row)
-	return rv
-}
-
-func (r_ *RuleEditorDelegateWrapper) ImplementsRuleEditorRowsDidChange() bool {
-	return r_.RespondsToSelector(objc.GetSelector("ruleEditorRowsDidChange:"))
-}
-
-func (r_ RuleEditorDelegateWrapper) RuleEditorRowsDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](r_, "ruleEditorRowsDidChange:", notification)
-}
-
-var PredicateEditorClass = _PredicateEditorClass{objc.GetClass("NSPredicateEditor")}
-
-type _PredicateEditorClass struct {
-	objc.Class
-}
-
-type IPredicateEditor interface {
-	IRuleEditor
-	RowTemplates() []PredicateEditorRowTemplate
-	SetRowTemplates(value []IPredicateEditorRowTemplate)
-}
-
-type PredicateEditor struct {
-	RuleEditor
-}
-
-func MakePredicateEditor(ptr unsafe.Pointer) PredicateEditor {
-	return PredicateEditor{
-		RuleEditor: MakeRuleEditor(ptr),
-	}
-}
-
-func (p_ PredicateEditor) InitWithFrame(frameRect foundation.Rect) PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](p_, "initWithFrame:", frameRect)
-	return rv
-}
-
-func (p_ PredicateEditor) Init() PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](p_, "init")
-	return rv
-}
-
-func (pc _PredicateEditorClass) Alloc() PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](pc, "alloc")
-	return rv
-}
-
-func (pc _PredicateEditorClass) New() PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](pc, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewPredicateEditor() PredicateEditor {
-	return PredicateEditorClass.New()
-}
-
-func (p_ PredicateEditor) RowTemplates() []PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[[]PredicateEditorRowTemplate](p_, "rowTemplates")
-	return rv
-}
-
-func (p_ PredicateEditor) SetRowTemplates(value []IPredicateEditorRowTemplate) {
-	ffi.CallMethod[ffi.Void](p_, "setRowTemplates:", value)
-}
-
-var PredicateEditorRowTemplateClass = _PredicateEditorRowTemplateClass{objc.GetClass("NSPredicateEditorRowTemplate")}
-
-type _PredicateEditorRowTemplateClass struct {
-	objc.Class
-}
-
-type IPredicateEditorRowTemplate interface {
-	objc.IObject
-	MatchForPredicate(predicate foundation.IPredicate) float64
-	SetPredicate(predicate foundation.IPredicate)
-	DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate
-	PredicateWithSubpredicates(subpredicates []foundation.IPredicate) foundation.Predicate
-	TemplateViews() []View
-	LeftExpressions() []foundation.Expression
-	RightExpressions() []foundation.Expression
-	CompoundTypes() []foundation.Number
-	Modifier() foundation.ComparisonPredicateModifier
-	Operators() []foundation.Number
-	Options() uint
-}
-
-type PredicateEditorRowTemplate struct {
-	objc.Object
-}
-
-func MakePredicateEditorRowTemplate(ptr unsafe.Pointer) PredicateEditorRowTemplate {
-	return PredicateEditorRowTemplate{
-		Object: objc.MakeObject(ptr),
-	}
-}
-
-func (p_ PredicateEditorRowTemplate) InitWithLeftExpressions_RightExpressions_Modifier_Operators_Options(leftExpressions []foundation.IExpression, rightExpressions []foundation.IExpression, modifier foundation.ComparisonPredicateModifier, operators []foundation.INumber, options uint) PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "initWithLeftExpressions:rightExpressions:modifier:operators:options:", leftExpressions, rightExpressions, modifier, operators, options)
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) InitWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "initWithCompoundTypes:", compoundTypes)
-	return rv
-}
-
-func (pc _PredicateEditorRowTemplateClass) Alloc() PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](pc, "alloc")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) Init() PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "init")
-	return rv
-}
-
-func (pc _PredicateEditorRowTemplateClass) New() PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](pc, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewPredicateEditorRowTemplate() PredicateEditorRowTemplate {
-	return PredicateEditorRowTemplateClass.New()
-}
-
-func (p_ PredicateEditorRowTemplate) MatchForPredicate(predicate foundation.IPredicate) float64 {
-	rv := ffi.CallMethod[float64](p_, "matchForPredicate:", predicate)
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) SetPredicate(predicate foundation.IPredicate) {
-	ffi.CallMethod[ffi.Void](p_, "setPredicate:", predicate)
-}
-
-func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate {
-	rv := ffi.CallMethod[[]foundation.Predicate](p_, "displayableSubpredicatesOfPredicate:", predicate)
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) PredicateWithSubpredicates(subpredicates []foundation.IPredicate) foundation.Predicate {
-	rv := ffi.CallMethod[foundation.Predicate](p_, "predicateWithSubpredicates:", subpredicates)
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) TemplateViews() []View {
-	rv := ffi.CallMethod[[]View](p_, "templateViews")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) LeftExpressions() []foundation.Expression {
-	rv := ffi.CallMethod[[]foundation.Expression](p_, "leftExpressions")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) RightExpressions() []foundation.Expression {
-	rv := ffi.CallMethod[[]foundation.Expression](p_, "rightExpressions")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) CompoundTypes() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](p_, "compoundTypes")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) Modifier() foundation.ComparisonPredicateModifier {
-	rv := ffi.CallMethod[foundation.ComparisonPredicateModifier](p_, "modifier")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) Operators() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](p_, "operators")
-	return rv
-}
-
-func (p_ PredicateEditorRowTemplate) Options() uint {
-	rv := ffi.CallMethod[uint](p_, "options")
-	return rv
 }

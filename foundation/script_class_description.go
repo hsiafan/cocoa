@@ -18,15 +18,12 @@ type IScriptClassDescription interface {
 	IClassDescription
 	ClassDescriptionForKey(key string) ScriptClassDescription
 	IsLocationRequiredToCreateForKey(toManyRelationshipKey string) bool
-	AppleEventCodeForKey(key string) uint32
-	MatchesAppleEventCode(appleEventCode uint32) bool
 	HasOrderedToManyRelationshipForKey(key string) bool
 	HasPropertyForKey(key string) bool
 	HasReadablePropertyForKey(key string) bool
 	HasWritablePropertyForKey(key string) bool
 	// deprecated
 	IsReadOnlyKey(key string) bool
-	KeyWithAppleEventCode(appleEventCode uint32) string
 	TypeForKey(key string) string
 	SelectorForCommand(commandDescription IScriptCommandDescription) objc.Selector
 	SupportsCommand(commandDescription IScriptCommandDescription) bool
@@ -35,7 +32,6 @@ type IScriptClassDescription interface {
 	DefaultSubcontainerAttributeKey() string
 	ImplementationClassName() string
 	SuiteName() string
-	AppleEventCode() uint32
 }
 
 type ScriptClassDescription struct {
@@ -53,11 +49,6 @@ func (sc _ScriptClassDescriptionClass) Alloc() ScriptClassDescription {
 	return rv
 }
 
-func (s_ ScriptClassDescription) Init() ScriptClassDescription {
-	rv := ffi.CallMethod[ScriptClassDescription](s_, "init")
-	return rv
-}
-
 func (sc _ScriptClassDescriptionClass) New() ScriptClassDescription {
 	rv := ffi.CallMethod[ScriptClassDescription](sc, "new")
 	rv.Autorelease()
@@ -68,6 +59,11 @@ func NewScriptClassDescription() ScriptClassDescription {
 	return ScriptClassDescriptionClass.New()
 }
 
+func (s_ ScriptClassDescription) Init() ScriptClassDescription {
+	rv := ffi.CallMethod[ScriptClassDescription](s_, "init")
+	return rv
+}
+
 func (s_ ScriptClassDescription) ClassDescriptionForKey(key string) ScriptClassDescription {
 	rv := ffi.CallMethod[ScriptClassDescription](s_, "classDescriptionForKey:", key)
 	return rv
@@ -75,16 +71,6 @@ func (s_ ScriptClassDescription) ClassDescriptionForKey(key string) ScriptClassD
 
 func (s_ ScriptClassDescription) IsLocationRequiredToCreateForKey(toManyRelationshipKey string) bool {
 	rv := ffi.CallMethod[bool](s_, "isLocationRequiredToCreateForKey:", toManyRelationshipKey)
-	return rv
-}
-
-func (s_ ScriptClassDescription) AppleEventCodeForKey(key string) uint32 {
-	rv := ffi.CallMethod[uint32](s_, "appleEventCodeForKey:", key)
-	return rv
-}
-
-func (s_ ScriptClassDescription) MatchesAppleEventCode(appleEventCode uint32) bool {
-	rv := ffi.CallMethod[bool](s_, "matchesAppleEventCode:", appleEventCode)
 	return rv
 }
 
@@ -111,11 +97,6 @@ func (s_ ScriptClassDescription) HasWritablePropertyForKey(key string) bool {
 // deprecated
 func (s_ ScriptClassDescription) IsReadOnlyKey(key string) bool {
 	rv := ffi.CallMethod[bool](s_, "isReadOnlyKey:", key)
-	return rv
-}
-
-func (s_ ScriptClassDescription) KeyWithAppleEventCode(appleEventCode uint32) string {
-	rv := ffi.CallMethod[string](s_, "keyWithAppleEventCode:", appleEventCode)
 	return rv
 }
 
@@ -156,10 +137,5 @@ func (s_ ScriptClassDescription) ImplementationClassName() string {
 
 func (s_ ScriptClassDescription) SuiteName() string {
 	rv := ffi.CallMethod[string](s_, "suiteName")
-	return rv
-}
-
-func (s_ ScriptClassDescription) AppleEventCode() uint32 {
-	rv := ffi.CallMethod[uint32](s_, "appleEventCode")
 	return rv
 }

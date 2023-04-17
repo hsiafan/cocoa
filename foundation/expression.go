@@ -44,18 +44,13 @@ func MakeExpression(ptr unsafe.Pointer) Expression {
 	}
 }
 
-func (e_ Expression) InitWithExpressionType(_type ExpressionType) Expression {
-	rv := ffi.CallMethod[Expression](e_, "initWithExpressionType:", _type)
+func (e_ Expression) InitWithExpressionType(type_ ExpressionType) Expression {
+	rv := ffi.CallMethod[Expression](e_, "initWithExpressionType:", type_)
 	return rv
 }
 
 func (ec _ExpressionClass) Alloc() Expression {
 	rv := ffi.CallMethod[Expression](ec, "alloc")
-	return rv
-}
-
-func (e_ Expression) Init() Expression {
-	rv := ffi.CallMethod[Expression](e_, "init")
 	return rv
 }
 
@@ -67,6 +62,11 @@ func (ec _ExpressionClass) New() Expression {
 
 func NewExpression() Expression {
 	return ExpressionClass.New()
+}
+
+func (e_ Expression) Init() Expression {
+	rv := ffi.CallMethod[Expression](e_, "init")
+	return rv
 }
 
 func (ec _ExpressionClass) ExpressionWithFormat_ArgumentArray(expressionFormat string, arguments []objc.IObject) Expression {
@@ -89,8 +89,8 @@ func (ec _ExpressionClass) ExpressionForKeyPath(keyPath string) Expression {
 	return rv
 }
 
-func (ec _ExpressionClass) ExpressionForVariable(_string string) Expression {
-	rv := ffi.CallMethod[Expression](ec, "expressionForVariable:", _string)
+func (ec _ExpressionClass) ExpressionForVariable(string_ string) Expression {
+	rv := ffi.CallMethod[Expression](ec, "expressionForVariable:", string_)
 	return rv
 }
 
@@ -220,93 +220,5 @@ func (e_ Expression) TrueExpression() Expression {
 
 func (e_ Expression) ExpressionBlock() func(param1 objc.IObject, param2 []IExpression, param3 IMutableDictionary) objc.Object {
 	rv := ffi.CallMethod[func(param1 objc.IObject, param2 []IExpression, param3 IMutableDictionary) objc.Object](e_, "expressionBlock")
-	return rv
-}
-
-var PredicateClass = _PredicateClass{objc.GetClass("NSPredicate")}
-
-type _PredicateClass struct {
-	objc.Class
-}
-
-type IPredicate interface {
-	objc.IObject
-	EvaluateWithObject(object objc.IObject) bool
-	EvaluateWithObject_SubstitutionVariables(object objc.IObject, bindings map[string]objc.IObject) bool
-	AllowEvaluation()
-	PredicateFormat() string
-}
-
-type Predicate struct {
-	objc.Object
-}
-
-func MakePredicate(ptr unsafe.Pointer) Predicate {
-	return Predicate{
-		Object: objc.MakeObject(ptr),
-	}
-}
-
-func (p_ Predicate) PredicateWithSubstitutionVariables(variables map[string]objc.IObject) Predicate {
-	rv := ffi.CallMethod[Predicate](p_, "predicateWithSubstitutionVariables:", variables)
-	return rv
-}
-
-func (pc _PredicateClass) Alloc() Predicate {
-	rv := ffi.CallMethod[Predicate](pc, "alloc")
-	return rv
-}
-
-func (p_ Predicate) Init() Predicate {
-	rv := ffi.CallMethod[Predicate](p_, "init")
-	return rv
-}
-
-func (pc _PredicateClass) New() Predicate {
-	rv := ffi.CallMethod[Predicate](pc, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewPredicate() Predicate {
-	return PredicateClass.New()
-}
-
-func (pc _PredicateClass) PredicateWithFormat_ArgumentArray(predicateFormat string, arguments []objc.IObject) Predicate {
-	rv := ffi.CallMethod[Predicate](pc, "predicateWithFormat:argumentArray:", predicateFormat, arguments)
-	return rv
-}
-
-func (pc _PredicateClass) PredicateWithValue(value bool) Predicate {
-	rv := ffi.CallMethod[Predicate](pc, "predicateWithValue:", value)
-	return rv
-}
-
-func (pc _PredicateClass) PredicateWithBlock(block func(evaluatedObject objc.Object, bindings map[string]objc.Object) bool) Predicate {
-	rv := ffi.CallMethod[Predicate](pc, "predicateWithBlock:", block)
-	return rv
-}
-
-func (pc _PredicateClass) PredicateFromMetadataQueryString(queryString string) Predicate {
-	rv := ffi.CallMethod[Predicate](pc, "predicateFromMetadataQueryString:", queryString)
-	return rv
-}
-
-func (p_ Predicate) EvaluateWithObject(object objc.IObject) bool {
-	rv := ffi.CallMethod[bool](p_, "evaluateWithObject:", object)
-	return rv
-}
-
-func (p_ Predicate) EvaluateWithObject_SubstitutionVariables(object objc.IObject, bindings map[string]objc.IObject) bool {
-	rv := ffi.CallMethod[bool](p_, "evaluateWithObject:substitutionVariables:", object, bindings)
-	return rv
-}
-
-func (p_ Predicate) AllowEvaluation() {
-	ffi.CallMethod[ffi.Void](p_, "allowEvaluation")
-}
-
-func (p_ Predicate) PredicateFormat() string {
-	rv := ffi.CallMethod[string](p_, "predicateFormat")
 	return rv
 }

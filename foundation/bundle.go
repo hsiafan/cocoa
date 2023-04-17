@@ -30,6 +30,7 @@ type IBundle interface {
 	URLForAuxiliaryExecutable(executableName string) URL
 	PathForAuxiliaryExecutable(executableName string) string
 	ObjectForInfoDictionaryKey(key string) objc.Object
+	ClassNamed(className string) objc.Class
 	PreflightAndReturnError(error *Error) bool
 	Load() bool
 	LoadAndReturnError(error *Error) bool
@@ -56,6 +57,7 @@ type IBundle interface {
 	PreferredLocalizations() []string
 	DevelopmentLocalization() string
 	LocalizedInfoDictionary() map[string]objc.Object
+	PrincipalClass() objc.Class
 	ExecutableArchitectures() []Number
 	IsLoaded() bool
 }
@@ -95,11 +97,6 @@ func (bc _BundleClass) Alloc() Bundle {
 	return rv
 }
 
-func (b_ Bundle) Init() Bundle {
-	rv := ffi.CallMethod[Bundle](b_, "init")
-	return rv
-}
-
 func (bc _BundleClass) New() Bundle {
 	rv := ffi.CallMethod[Bundle](bc, "new")
 	rv.Autorelease()
@@ -108,6 +105,16 @@ func (bc _BundleClass) New() Bundle {
 
 func NewBundle() Bundle {
 	return BundleClass.New()
+}
+
+func (b_ Bundle) Init() Bundle {
+	rv := ffi.CallMethod[Bundle](b_, "init")
+	return rv
+}
+
+func (bc _BundleClass) BundleForClass(aClass objc.IClass) Bundle {
+	rv := ffi.CallMethod[Bundle](bc, "bundleForClass:", aClass)
+	return rv
 }
 
 func (bc _BundleClass) BundleWithIdentifier(identifier string) Bundle {
@@ -202,6 +209,11 @@ func (bc _BundleClass) PreferredLocalizationsFromArray(localizationsArray []stri
 
 func (bc _BundleClass) PreferredLocalizationsFromArray_ForPreferences(localizationsArray []string, preferencesArray []string) []string {
 	rv := ffi.CallMethod[[]string](bc, "preferredLocalizationsFromArray:forPreferences:", localizationsArray, preferencesArray)
+	return rv
+}
+
+func (b_ Bundle) ClassNamed(className string) objc.Class {
+	rv := ffi.CallMethod[objc.Class](b_, "classNamed:", className)
 	return rv
 }
 
@@ -347,6 +359,11 @@ func (b_ Bundle) DevelopmentLocalization() string {
 
 func (b_ Bundle) LocalizedInfoDictionary() map[string]objc.Object {
 	rv := ffi.CallMethod[map[string]objc.Object](b_, "localizedInfoDictionary")
+	return rv
+}
+
+func (b_ Bundle) PrincipalClass() objc.Class {
+	rv := ffi.CallMethod[objc.Class](b_, "principalClass")
 	return rv
 }
 

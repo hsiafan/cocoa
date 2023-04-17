@@ -38,11 +38,6 @@ func (sc _ScriptMessageClass) Alloc() ScriptMessage {
 	return rv
 }
 
-func (s_ ScriptMessage) Init() ScriptMessage {
-	rv := ffi.CallMethod[ScriptMessage](s_, "init")
-	return rv
-}
-
 func (sc _ScriptMessageClass) New() ScriptMessage {
 	rv := ffi.CallMethod[ScriptMessage](sc, "new")
 	rv.Autorelease()
@@ -51,6 +46,11 @@ func (sc _ScriptMessageClass) New() ScriptMessage {
 
 func NewScriptMessage() ScriptMessage {
 	return ScriptMessageClass.New()
+}
+
+func (s_ ScriptMessage) Init() ScriptMessage {
+	rv := ffi.CallMethod[ScriptMessage](s_, "init")
+	return rv
 }
 
 func (s_ ScriptMessage) Body() objc.Object {
@@ -76,30 +76,4 @@ func (s_ ScriptMessage) World() ContentWorld {
 func (s_ ScriptMessage) Name() string {
 	rv := ffi.CallMethod[string](s_, "name")
 	return rv
-}
-
-type ScriptMessageHandler interface {
-	// required
-	UserContentController_DidReceiveScriptMessage(userContentController UserContentController, message ScriptMessage)
-}
-
-type ScriptMessageHandlerWrapper struct {
-	objc.Object
-}
-
-func (s_ ScriptMessageHandlerWrapper) UserContentController_DidReceiveScriptMessage(userContentController IUserContentController, message IScriptMessage) {
-	ffi.CallMethod[ffi.Void](s_, "userContentController:didReceiveScriptMessage:", userContentController, message)
-}
-
-type ScriptMessageHandlerWithReply interface {
-	// required
-	UserContentController_DidReceiveScriptMessage_ReplyHandler(userContentController UserContentController, message ScriptMessage, replyHandler func(reply objc.IObject, errorMessage string))
-}
-
-type ScriptMessageHandlerWithReplyWrapper struct {
-	objc.Object
-}
-
-func (s_ ScriptMessageHandlerWithReplyWrapper) UserContentController_DidReceiveScriptMessage_ReplyHandler(userContentController IUserContentController, message IScriptMessage, replyHandler func(reply objc.Object, errorMessage string)) {
-	ffi.CallMethod[ffi.Void](s_, "userContentController:didReceiveScriptMessage:replyHandler:", userContentController, message, replyHandler)
 }

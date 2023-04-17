@@ -40,11 +40,6 @@ func (pc _PressureConfigurationClass) Alloc() PressureConfiguration {
 	return rv
 }
 
-func (p_ PressureConfiguration) Init() PressureConfiguration {
-	rv := ffi.CallMethod[PressureConfiguration](p_, "init")
-	return rv
-}
-
 func (pc _PressureConfigurationClass) New() PressureConfiguration {
 	rv := ffi.CallMethod[PressureConfiguration](pc, "new")
 	rv.Autorelease()
@@ -53,6 +48,11 @@ func (pc _PressureConfigurationClass) New() PressureConfiguration {
 
 func NewPressureConfiguration() PressureConfiguration {
 	return PressureConfigurationClass.New()
+}
+
+func (p_ PressureConfiguration) Init() PressureConfiguration {
+	rv := ffi.CallMethod[PressureConfiguration](p_, "init")
+	return rv
 }
 
 func (p_ PressureConfiguration) Set() {

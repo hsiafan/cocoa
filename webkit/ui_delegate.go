@@ -24,7 +24,7 @@ type UIDelegate interface {
 	WebView_RunJavaScriptTextInputPanelWithPrompt_DefaultText_InitiatedByFrame_CompletionHandler(webView WebView, prompt string, defaultText string, frame FrameInfo, completionHandler func(result string))
 	ImplementsWebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler() bool
 	// optional
-	WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView WebView, origin SecurityOrigin, frame FrameInfo, _type MediaCaptureType, decisionHandler func(decision PermissionDecision))
+	WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision))
 }
 
 type UIDelegateImpl struct {
@@ -33,7 +33,7 @@ type UIDelegateImpl struct {
 	_WebView_RunJavaScriptAlertPanelWithMessage_InitiatedByFrame_CompletionHandler                func(webView WebView, message string, frame FrameInfo, completionHandler func())
 	_WebView_RunJavaScriptConfirmPanelWithMessage_InitiatedByFrame_CompletionHandler              func(webView WebView, message string, frame FrameInfo, completionHandler func(result bool))
 	_WebView_RunJavaScriptTextInputPanelWithPrompt_DefaultText_InitiatedByFrame_CompletionHandler func(webView WebView, prompt string, defaultText string, frame FrameInfo, completionHandler func(result string))
-	_WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler         func(webView WebView, origin SecurityOrigin, frame FrameInfo, _type MediaCaptureType, decisionHandler func(decision PermissionDecision))
+	_WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler         func(webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision))
 }
 
 func (di *UIDelegateImpl) ImplementsWebView_CreateWebViewWithConfiguration_ForNavigationAction_WindowFeatures() bool {
@@ -95,12 +95,12 @@ func (di *UIDelegateImpl) ImplementsWebView_RequestMediaCapturePermissionForOrig
 	return di._WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler != nil
 }
 
-func (di *UIDelegateImpl) SetWebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(f func(webView WebView, origin SecurityOrigin, frame FrameInfo, _type MediaCaptureType, decisionHandler func(decision PermissionDecision))) {
+func (di *UIDelegateImpl) SetWebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(f func(webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision))) {
 	di._WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler = f
 }
 
-func (di *UIDelegateImpl) WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView WebView, origin SecurityOrigin, frame FrameInfo, _type MediaCaptureType, decisionHandler func(decision PermissionDecision)) {
-	di._WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView, origin, frame, _type, decisionHandler)
+func (di *UIDelegateImpl) WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision)) {
+	di._WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView, origin, frame, type_, decisionHandler)
 }
 
 type UIDelegateWrapper struct {
@@ -152,6 +152,6 @@ func (u_ *UIDelegateWrapper) ImplementsWebView_RequestMediaCapturePermissionForO
 	return u_.RespondsToSelector(objc.GetSelector("webView:requestMediaCapturePermissionForOrigin:initiatedByFrame:type:decisionHandler:"))
 }
 
-func (u_ UIDelegateWrapper) WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView IWebView, origin ISecurityOrigin, frame IFrameInfo, _type MediaCaptureType, decisionHandler func(decision PermissionDecision)) {
-	ffi.CallMethod[ffi.Void](u_, "webView:requestMediaCapturePermissionForOrigin:initiatedByFrame:type:decisionHandler:", webView, origin, frame, _type, decisionHandler)
+func (u_ UIDelegateWrapper) WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView IWebView, origin ISecurityOrigin, frame IFrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision)) {
+	ffi.CallMethod[ffi.Void](u_, "webView:requestMediaCapturePermissionForOrigin:initiatedByFrame:type:decisionHandler:", webView, origin, frame, type_, decisionHandler)
 }

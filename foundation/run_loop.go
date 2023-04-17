@@ -49,11 +49,6 @@ func (rc _RunLoopClass) Alloc() RunLoop {
 	return rv
 }
 
-func (r_ RunLoop) Init() RunLoop {
-	rv := ffi.CallMethod[RunLoop](r_, "init")
-	return rv
-}
-
 func (rc _RunLoopClass) New() RunLoop {
 	rv := ffi.CallMethod[RunLoop](rc, "new")
 	rv.Autorelease()
@@ -62,6 +57,11 @@ func (rc _RunLoopClass) New() RunLoop {
 
 func NewRunLoop() RunLoop {
 	return RunLoopClass.New()
+}
+
+func (r_ RunLoop) Init() RunLoop {
+	rv := ffi.CallMethod[RunLoop](r_, "init")
+	return rv
 }
 
 func (r_ RunLoop) LimitDateForMode(mode RunLoopMode) Date {

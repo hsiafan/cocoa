@@ -16,6 +16,7 @@ type _GlyphGeneratorClass struct {
 
 type IGlyphGenerator interface {
 	objc.IObject
+	GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage GlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint)
 }
 
 type GlyphGenerator struct {
@@ -33,11 +34,6 @@ func (gc _GlyphGeneratorClass) Alloc() GlyphGenerator {
 	return rv
 }
 
-func (g_ GlyphGenerator) Init() GlyphGenerator {
-	rv := ffi.CallMethod[GlyphGenerator](g_, "init")
-	return rv
-}
-
 func (gc _GlyphGeneratorClass) New() GlyphGenerator {
 	rv := ffi.CallMethod[GlyphGenerator](gc, "new")
 	rv.Autorelease()
@@ -46,6 +42,17 @@ func (gc _GlyphGeneratorClass) New() GlyphGenerator {
 
 func NewGlyphGenerator() GlyphGenerator {
 	return GlyphGeneratorClass.New()
+}
+
+func (g_ GlyphGenerator) Init() GlyphGenerator {
+	rv := ffi.CallMethod[GlyphGenerator](g_, "init")
+	return rv
+}
+
+func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage GlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint) {
+	po := ffi.CreateProtocol("NSGlyphStorage", glyphStorage)
+	defer po.Release()
+	ffi.CallMethod[ffi.Void](g_, "generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:", po, nChars, glyphIndex, charIndex)
 }
 
 func (gc _GlyphGeneratorClass) SharedGlyphGenerator() GlyphGenerator {

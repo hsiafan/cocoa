@@ -93,11 +93,6 @@ func (bc _BezierPathClass) Alloc() BezierPath {
 	return rv
 }
 
-func (b_ BezierPath) Init() BezierPath {
-	rv := ffi.CallMethod[BezierPath](b_, "init")
-	return rv
-}
-
 func (bc _BezierPathClass) New() BezierPath {
 	rv := ffi.CallMethod[BezierPath](bc, "new")
 	rv.Autorelease()
@@ -106,6 +101,11 @@ func (bc _BezierPathClass) New() BezierPath {
 
 func NewBezierPath() BezierPath {
 	return BezierPathClass.New()
+}
+
+func (b_ BezierPath) Init() BezierPath {
+	rv := ffi.CallMethod[BezierPath](b_, "init")
+	return rv
 }
 
 func (bc _BezierPathClass) BezierPath() BezierPath {

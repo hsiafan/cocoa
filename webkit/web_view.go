@@ -22,17 +22,17 @@ type IWebView interface {
 	appkit.IView
 	LoadRequest(request foundation.IURLRequest) Navigation
 	LoadData_MIMEType_CharacterEncodingName_BaseURL(data []byte, MIMEType string, characterEncodingName string, baseURL foundation.IURL) Navigation
-	LoadHTMLString_BaseURL(_string string, baseURL foundation.IURL) Navigation
+	LoadHTMLString_BaseURL(string_ string, baseURL foundation.IURL) Navigation
 	LoadFileRequest_AllowingReadAccessToURL(request foundation.IURLRequest, readAccessURL foundation.IURL) Navigation
 	LoadFileURL_AllowingReadAccessToURL(URL foundation.IURL, readAccessURL foundation.IURL) Navigation
 	LoadSimulatedRequest_Response_ResponseData(request foundation.IURLRequest, response foundation.IURLResponse, data []byte) Navigation
-	LoadSimulatedRequest_ResponseHTMLString(request foundation.IURLRequest, _string string) Navigation
+	LoadSimulatedRequest_ResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation
 	Reload() Navigation
-	Reload_(sender objc.IObject)
+	Reload1(sender objc.IObject)
 	ReloadFromOrigin() Navigation
-	ReloadFromOrigin_(sender objc.IObject)
+	ReloadFromOrigin1(sender objc.IObject)
 	StopLoading()
-	StopLoading_(sender objc.IObject)
+	StopLoading1(sender objc.IObject)
 	StartDownloadUsingRequest_CompletionHandler(request foundation.IURLRequest, completionHandler func(param1 Download))
 	ResumeDownloadFromResumeData_CompletionHandler(resumeData []byte, completionHandler func(param1 Download))
 	SetMagnification_CenteredAtPoint(magnification float64, point coregraphics.Point)
@@ -50,10 +50,10 @@ type IWebView interface {
 	CloseAllMediaPresentationsWithCompletionHandler(completionHandler func())
 	SetCameraCaptureState_CompletionHandler(state MediaCaptureState, completionHandler func())
 	SetMicrophoneCaptureState_CompletionHandler(state MediaCaptureState, completionHandler func())
-	FindString_WithConfiguration_CompletionHandler(_string string, configuration IFindConfiguration, completionHandler func(result FindResult))
-	GoBack_(sender objc.IObject)
+	FindString_WithConfiguration_CompletionHandler(string_ string, configuration IFindConfiguration, completionHandler func(result FindResult))
+	GoBack1(sender objc.IObject)
 	GoBack() Navigation
-	GoForward_(sender objc.IObject)
+	GoForward1(sender objc.IObject)
 	GoForward() Navigation
 	GoToBackForwardListItem(item IBackForwardListItem) Navigation
 	EvaluateJavaScript_CompletionHandler(javaScriptString string, completionHandler func(param1 objc.Object, error foundation.Error))
@@ -69,7 +69,7 @@ type IWebView interface {
 	// deprecated
 	LoadSimulatedRequest_WithResponse_ResponseData(request foundation.IURLRequest, response foundation.IURLResponse, data []byte) Navigation
 	// deprecated
-	LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, _string string) Navigation
+	LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation
 	Configuration() WebViewConfiguration
 	UIDelegate() UIDelegateWrapper
 	SetUIDelegate(value UIDelegate)
@@ -166,8 +166,8 @@ func (w_ WebView) LoadData_MIMEType_CharacterEncodingName_BaseURL(data []byte, M
 	return rv
 }
 
-func (w_ WebView) LoadHTMLString_BaseURL(_string string, baseURL foundation.IURL) Navigation {
-	rv := ffi.CallMethod[Navigation](w_, "loadHTMLString:baseURL:", _string, baseURL)
+func (w_ WebView) LoadHTMLString_BaseURL(string_ string, baseURL foundation.IURL) Navigation {
+	rv := ffi.CallMethod[Navigation](w_, "loadHTMLString:baseURL:", string_, baseURL)
 	return rv
 }
 
@@ -186,8 +186,8 @@ func (w_ WebView) LoadSimulatedRequest_Response_ResponseData(request foundation.
 	return rv
 }
 
-func (w_ WebView) LoadSimulatedRequest_ResponseHTMLString(request foundation.IURLRequest, _string string) Navigation {
-	rv := ffi.CallMethod[Navigation](w_, "loadSimulatedRequest:responseHTMLString:", request, _string)
+func (w_ WebView) LoadSimulatedRequest_ResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation {
+	rv := ffi.CallMethod[Navigation](w_, "loadSimulatedRequest:responseHTMLString:", request, string_)
 	return rv
 }
 
@@ -196,7 +196,7 @@ func (w_ WebView) Reload() Navigation {
 	return rv
 }
 
-func (w_ WebView) Reload_(sender objc.IObject) {
+func (w_ WebView) Reload1(sender objc.IObject) {
 	ffi.CallMethod[ffi.Void](w_, "reload:", sender)
 }
 
@@ -205,7 +205,7 @@ func (w_ WebView) ReloadFromOrigin() Navigation {
 	return rv
 }
 
-func (w_ WebView) ReloadFromOrigin_(sender objc.IObject) {
+func (w_ WebView) ReloadFromOrigin1(sender objc.IObject) {
 	ffi.CallMethod[ffi.Void](w_, "reloadFromOrigin:", sender)
 }
 
@@ -213,7 +213,7 @@ func (w_ WebView) StopLoading() {
 	ffi.CallMethod[ffi.Void](w_, "stopLoading")
 }
 
-func (w_ WebView) StopLoading_(sender objc.IObject) {
+func (w_ WebView) StopLoading1(sender objc.IObject) {
 	ffi.CallMethod[ffi.Void](w_, "stopLoading:", sender)
 }
 
@@ -273,11 +273,11 @@ func (w_ WebView) SetMicrophoneCaptureState_CompletionHandler(state MediaCapture
 	ffi.CallMethod[ffi.Void](w_, "setMicrophoneCaptureState:completionHandler:", state, completionHandler)
 }
 
-func (w_ WebView) FindString_WithConfiguration_CompletionHandler(_string string, configuration IFindConfiguration, completionHandler func(result FindResult)) {
-	ffi.CallMethod[ffi.Void](w_, "findString:withConfiguration:completionHandler:", _string, configuration, completionHandler)
+func (w_ WebView) FindString_WithConfiguration_CompletionHandler(string_ string, configuration IFindConfiguration, completionHandler func(result FindResult)) {
+	ffi.CallMethod[ffi.Void](w_, "findString:withConfiguration:completionHandler:", string_, configuration, completionHandler)
 }
 
-func (w_ WebView) GoBack_(sender objc.IObject) {
+func (w_ WebView) GoBack1(sender objc.IObject) {
 	ffi.CallMethod[ffi.Void](w_, "goBack:", sender)
 }
 
@@ -286,7 +286,7 @@ func (w_ WebView) GoBack() Navigation {
 	return rv
 }
 
-func (w_ WebView) GoForward_(sender objc.IObject) {
+func (w_ WebView) GoForward1(sender objc.IObject) {
 	ffi.CallMethod[ffi.Void](w_, "goForward:", sender)
 }
 
@@ -345,8 +345,8 @@ func (w_ WebView) LoadSimulatedRequest_WithResponse_ResponseData(request foundat
 }
 
 // deprecated
-func (w_ WebView) LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, _string string) Navigation {
-	rv := ffi.CallMethod[Navigation](w_, "loadSimulatedRequest:withResponseHTMLString:", request, _string)
+func (w_ WebView) LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation {
+	rv := ffi.CallMethod[Navigation](w_, "loadSimulatedRequest:withResponseHTMLString:", request, string_)
 	return rv
 }
 
@@ -361,7 +361,7 @@ func (w_ WebView) UIDelegate() UIDelegateWrapper {
 }
 
 func (w_ WebView) SetUIDelegate(value UIDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("WKUIDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setUIDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](w_, "setUIDelegate:", po)
@@ -373,7 +373,7 @@ func (w_ WebView) NavigationDelegate() NavigationDelegateWrapper {
 }
 
 func (w_ WebView) SetNavigationDelegate(value NavigationDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("WKNavigationDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setNavigationDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](w_, "setNavigationDelegate:", po)

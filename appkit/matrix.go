@@ -121,6 +121,11 @@ func (m_ Matrix) InitWithFrame(frameRect foundation.Rect) Matrix {
 	return rv
 }
 
+func (m_ Matrix) InitWithFrame_Mode_CellClass_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Matrix {
+	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:", frameRect, mode, factoryId, rowsHigh, colsWide)
+	return rv
+}
+
 func (m_ Matrix) InitWithFrame_Mode_Prototype_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
 	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:mode:prototype:numberOfRows:numberOfColumns:", frameRect, mode, cell, rowsHigh, colsWide)
 	return rv
@@ -491,7 +496,7 @@ func (m_ Matrix) Delegate() MatrixDelegateWrapper {
 }
 
 func (m_ Matrix) SetDelegate(value MatrixDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("NSMatrixDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](m_, "setDelegate:", po)
@@ -527,16 +532,4 @@ func (m_ Matrix) SetDoubleAction(value objc.Selector) {
 func (m_ Matrix) MouseDownFlags() int {
 	rv := ffi.CallMethod[int](m_, "mouseDownFlags")
 	return rv
-}
-
-type MatrixDelegate interface {
-	ControlTextEditingDelegate
-}
-
-type MatrixDelegateImpl struct {
-	ControlTextEditingDelegateImpl
-}
-
-type MatrixDelegateWrapper struct {
-	ControlTextEditingDelegateWrapper
 }

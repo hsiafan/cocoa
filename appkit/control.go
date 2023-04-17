@@ -44,7 +44,7 @@ type IControl interface {
 	// deprecated
 	SelectedTag() int
 	// deprecated
-	SetNeedsDisplay()
+	SetNeedsDisplay0()
 	// deprecated
 	CalcSize()
 	// deprecated
@@ -253,7 +253,7 @@ func (c_ Control) SelectedTag() int {
 }
 
 // deprecated
-func (c_ Control) SetNeedsDisplay() {
+func (c_ Control) SetNeedsDisplay0() {
 	ffi.CallMethod[ffi.Void](c_, "setNeedsDisplay")
 }
 
@@ -515,249 +515,13 @@ func (c_ Control) SetCell(value ICell) {
 	ffi.CallMethod[ffi.Void](c_, "setCell:", value)
 }
 
-type ControlTextEditingDelegate interface {
-	ImplementsControl_IsValidObject() bool
-	// optional
-	Control_IsValidObject(control Control, obj objc.Object) bool
-	ImplementsControl_DidFailToValidatePartialString_ErrorDescription() bool
-	// optional
-	Control_DidFailToValidatePartialString_ErrorDescription(control Control, _string string, error string)
-	ImplementsControl_DidFailToFormatString_ErrorDescription() bool
-	// optional
-	Control_DidFailToFormatString_ErrorDescription(control Control, _string string, error string) bool
-	ImplementsControl_TextShouldBeginEditing() bool
-	// optional
-	Control_TextShouldBeginEditing(control Control, fieldEditor Text) bool
-	ImplementsControl_TextShouldEndEditing() bool
-	// optional
-	Control_TextShouldEndEditing(control Control, fieldEditor Text) bool
-	ImplementsControl_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem() bool
-	// optional
-	Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(control Control, textView TextView, words []string, charRange foundation.Range, index *int) []string
-	ImplementsControl_TextView_DoCommandBySelector() bool
-	// optional
-	Control_TextView_DoCommandBySelector(control Control, textView TextView, commandSelector objc.Selector) bool
-	ImplementsControlTextDidBeginEditing() bool
-	// optional
-	ControlTextDidBeginEditing(obj foundation.Notification)
-	ImplementsControlTextDidChange() bool
-	// optional
-	ControlTextDidChange(obj foundation.Notification)
-	ImplementsControlTextDidEndEditing() bool
-	// optional
-	ControlTextDidEndEditing(obj foundation.Notification)
-}
-
-type ControlTextEditingDelegateImpl struct {
-	_Control_IsValidObject                                                func(control Control, obj objc.Object) bool
-	_Control_DidFailToValidatePartialString_ErrorDescription              func(control Control, _string string, error string)
-	_Control_DidFailToFormatString_ErrorDescription                       func(control Control, _string string, error string) bool
-	_Control_TextShouldBeginEditing                                       func(control Control, fieldEditor Text) bool
-	_Control_TextShouldEndEditing                                         func(control Control, fieldEditor Text) bool
-	_Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem func(control Control, textView TextView, words []string, charRange foundation.Range, index *int) []string
-	_Control_TextView_DoCommandBySelector                                 func(control Control, textView TextView, commandSelector objc.Selector) bool
-	_ControlTextDidBeginEditing                                           func(obj foundation.Notification)
-	_ControlTextDidChange                                                 func(obj foundation.Notification)
-	_ControlTextDidEndEditing                                             func(obj foundation.Notification)
-}
-
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_IsValidObject() bool {
-	return di._Control_IsValidObject != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_IsValidObject(f func(control Control, obj objc.Object) bool) {
-	di._Control_IsValidObject = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_IsValidObject(control Control, obj objc.Object) bool {
-	return di._Control_IsValidObject(control, obj)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_DidFailToValidatePartialString_ErrorDescription() bool {
-	return di._Control_DidFailToValidatePartialString_ErrorDescription != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_DidFailToValidatePartialString_ErrorDescription(f func(control Control, _string string, error string)) {
-	di._Control_DidFailToValidatePartialString_ErrorDescription = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_DidFailToValidatePartialString_ErrorDescription(control Control, _string string, error string) {
-	di._Control_DidFailToValidatePartialString_ErrorDescription(control, _string, error)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_DidFailToFormatString_ErrorDescription() bool {
-	return di._Control_DidFailToFormatString_ErrorDescription != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_DidFailToFormatString_ErrorDescription(f func(control Control, _string string, error string) bool) {
-	di._Control_DidFailToFormatString_ErrorDescription = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_DidFailToFormatString_ErrorDescription(control Control, _string string, error string) bool {
-	return di._Control_DidFailToFormatString_ErrorDescription(control, _string, error)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_TextShouldBeginEditing() bool {
-	return di._Control_TextShouldBeginEditing != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_TextShouldBeginEditing(f func(control Control, fieldEditor Text) bool) {
-	di._Control_TextShouldBeginEditing = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_TextShouldBeginEditing(control Control, fieldEditor Text) bool {
-	return di._Control_TextShouldBeginEditing(control, fieldEditor)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_TextShouldEndEditing() bool {
-	return di._Control_TextShouldEndEditing != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_TextShouldEndEditing(f func(control Control, fieldEditor Text) bool) {
-	di._Control_TextShouldEndEditing = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_TextShouldEndEditing(control Control, fieldEditor Text) bool {
-	return di._Control_TextShouldEndEditing(control, fieldEditor)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem() bool {
-	return di._Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(f func(control Control, textView TextView, words []string, charRange foundation.Range, index *int) []string) {
-	di._Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(control Control, textView TextView, words []string, charRange foundation.Range, index *int) []string {
-	return di._Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(control, textView, words, charRange, index)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControl_TextView_DoCommandBySelector() bool {
-	return di._Control_TextView_DoCommandBySelector != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControl_TextView_DoCommandBySelector(f func(control Control, textView TextView, commandSelector objc.Selector) bool) {
-	di._Control_TextView_DoCommandBySelector = f
-}
-
-func (di *ControlTextEditingDelegateImpl) Control_TextView_DoCommandBySelector(control Control, textView TextView, commandSelector objc.Selector) bool {
-	return di._Control_TextView_DoCommandBySelector(control, textView, commandSelector)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControlTextDidBeginEditing() bool {
-	return di._ControlTextDidBeginEditing != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControlTextDidBeginEditing(f func(obj foundation.Notification)) {
-	di._ControlTextDidBeginEditing = f
-}
-
-func (di *ControlTextEditingDelegateImpl) ControlTextDidBeginEditing(obj foundation.Notification) {
-	di._ControlTextDidBeginEditing(obj)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControlTextDidChange() bool {
-	return di._ControlTextDidChange != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControlTextDidChange(f func(obj foundation.Notification)) {
-	di._ControlTextDidChange = f
-}
-
-func (di *ControlTextEditingDelegateImpl) ControlTextDidChange(obj foundation.Notification) {
-	di._ControlTextDidChange(obj)
-}
-func (di *ControlTextEditingDelegateImpl) ImplementsControlTextDidEndEditing() bool {
-	return di._ControlTextDidEndEditing != nil
-}
-
-func (di *ControlTextEditingDelegateImpl) SetControlTextDidEndEditing(f func(obj foundation.Notification)) {
-	di._ControlTextDidEndEditing = f
-}
-
-func (di *ControlTextEditingDelegateImpl) ControlTextDidEndEditing(obj foundation.Notification) {
-	di._ControlTextDidEndEditing(obj)
-}
-
-type ControlTextEditingDelegateWrapper struct {
-	objc.Object
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_IsValidObject() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:isValidObject:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_IsValidObject(control IControl, obj objc.IObject) bool {
-	rv := ffi.CallMethod[bool](c_, "control:isValidObject:", control, obj)
+// deprecated
+func (cc _ControlClass) CellClass() objc.Class {
+	rv := ffi.CallMethod[objc.Class](cc, "cellClass")
 	return rv
 }
 
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_DidFailToValidatePartialString_ErrorDescription() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:didFailToValidatePartialString:errorDescription:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_DidFailToValidatePartialString_ErrorDescription(control IControl, _string string, error string) {
-	ffi.CallMethod[ffi.Void](c_, "control:didFailToValidatePartialString:errorDescription:", control, _string, error)
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_DidFailToFormatString_ErrorDescription() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:didFailToFormatString:errorDescription:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_DidFailToFormatString_ErrorDescription(control IControl, _string string, error string) bool {
-	rv := ffi.CallMethod[bool](c_, "control:didFailToFormatString:errorDescription:", control, _string, error)
-	return rv
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextShouldBeginEditing() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:textShouldBeginEditing:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_TextShouldBeginEditing(control IControl, fieldEditor IText) bool {
-	rv := ffi.CallMethod[bool](c_, "control:textShouldBeginEditing:", control, fieldEditor)
-	return rv
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextShouldEndEditing() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:textShouldEndEditing:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_TextShouldEndEditing(control IControl, fieldEditor IText) bool {
-	rv := ffi.CallMethod[bool](c_, "control:textShouldEndEditing:", control, fieldEditor)
-	return rv
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(control IControl, textView ITextView, words []string, charRange foundation.Range, index *int) []string {
-	rv := ffi.CallMethod[[]string](c_, "control:textView:completions:forPartialWordRange:indexOfSelectedItem:", control, textView, words, charRange, index)
-	return rv
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextView_DoCommandBySelector() bool {
-	return c_.RespondsToSelector(objc.GetSelector("control:textView:doCommandBySelector:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) Control_TextView_DoCommandBySelector(control IControl, textView ITextView, commandSelector objc.Selector) bool {
-	rv := ffi.CallMethod[bool](c_, "control:textView:doCommandBySelector:", control, textView, commandSelector)
-	return rv
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidBeginEditing() bool {
-	return c_.RespondsToSelector(objc.GetSelector("controlTextDidBeginEditing:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) ControlTextDidBeginEditing(obj foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "controlTextDidBeginEditing:", obj)
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidChange() bool {
-	return c_.RespondsToSelector(objc.GetSelector("controlTextDidChange:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) ControlTextDidChange(obj foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "controlTextDidChange:", obj)
-}
-
-func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidEndEditing() bool {
-	return c_.RespondsToSelector(objc.GetSelector("controlTextDidEndEditing:"))
-}
-
-func (c_ ControlTextEditingDelegateWrapper) ControlTextDidEndEditing(obj foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "controlTextDidEndEditing:", obj)
+// deprecated
+func (cc _ControlClass) SetCellClass(value objc.IClass) {
+	ffi.CallMethod[ffi.Void](cc, "setCellClass:", value)
 }

@@ -37,11 +37,6 @@ func (hc _HTTPCookieStoreClass) Alloc() HTTPCookieStore {
 	return rv
 }
 
-func (h_ HTTPCookieStore) Init() HTTPCookieStore {
-	rv := ffi.CallMethod[HTTPCookieStore](h_, "init")
-	return rv
-}
-
 func (hc _HTTPCookieStoreClass) New() HTTPCookieStore {
 	rv := ffi.CallMethod[HTTPCookieStore](hc, "new")
 	rv.Autorelease()
@@ -50,6 +45,11 @@ func (hc _HTTPCookieStoreClass) New() HTTPCookieStore {
 
 func NewHTTPCookieStore() HTTPCookieStore {
 	return HTTPCookieStoreClass.New()
+}
+
+func (h_ HTTPCookieStore) Init() HTTPCookieStore {
+	rv := ffi.CallMethod[HTTPCookieStore](h_, "init")
+	return rv
 }
 
 func (h_ HTTPCookieStore) GetAllCookies(completionHandler func(param1 []foundation.HTTPCookie)) {

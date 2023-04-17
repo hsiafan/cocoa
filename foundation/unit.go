@@ -39,11 +39,6 @@ func (uc _UnitClass) Alloc() Unit {
 	return rv
 }
 
-func (u_ Unit) Init() Unit {
-	rv := ffi.CallMethod[Unit](u_, "init")
-	return rv
-}
-
 func (uc _UnitClass) New() Unit {
 	rv := ffi.CallMethod[Unit](uc, "new")
 	rv.Autorelease()
@@ -52,6 +47,11 @@ func (uc _UnitClass) New() Unit {
 
 func NewUnit() Unit {
 	return UnitClass.New()
+}
+
+func (u_ Unit) Init() Unit {
+	rv := ffi.CallMethod[Unit](u_, "init")
+	return rv
 }
 
 func (u_ Unit) Symbol() string {

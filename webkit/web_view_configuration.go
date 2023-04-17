@@ -59,11 +59,6 @@ func (wc _WebViewConfigurationClass) Alloc() WebViewConfiguration {
 	return rv
 }
 
-func (w_ WebViewConfiguration) Init() WebViewConfiguration {
-	rv := ffi.CallMethod[WebViewConfiguration](w_, "init")
-	return rv
-}
-
 func (wc _WebViewConfigurationClass) New() WebViewConfiguration {
 	rv := ffi.CallMethod[WebViewConfiguration](wc, "new")
 	rv.Autorelease()
@@ -74,8 +69,13 @@ func NewWebViewConfiguration() WebViewConfiguration {
 	return WebViewConfigurationClass.New()
 }
 
+func (w_ WebViewConfiguration) Init() WebViewConfiguration {
+	rv := ffi.CallMethod[WebViewConfiguration](w_, "init")
+	return rv
+}
+
 func (w_ WebViewConfiguration) SetURLSchemeHandler_ForURLScheme(urlSchemeHandler URLSchemeHandler, urlScheme string) {
-	po := ffi.CreateProtocol(urlSchemeHandler)
+	po := ffi.CreateProtocol("WKURLSchemeHandler", urlSchemeHandler)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](w_, "setURLSchemeHandler:forURLScheme:", po, urlScheme)
 }

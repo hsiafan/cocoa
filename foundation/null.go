@@ -33,11 +33,6 @@ func (nc _NullClass) Alloc() Null {
 	return rv
 }
 
-func (n_ Null) Init() Null {
-	rv := ffi.CallMethod[Null](n_, "init")
-	return rv
-}
-
 func (nc _NullClass) New() Null {
 	rv := ffi.CallMethod[Null](nc, "new")
 	rv.Autorelease()
@@ -46,6 +41,11 @@ func (nc _NullClass) New() Null {
 
 func NewNull() Null {
 	return NullClass.New()
+}
+
+func (n_ Null) Init() Null {
+	rv := ffi.CallMethod[Null](n_, "init")
+	return rv
 }
 
 func (nc _NullClass) Null() Null {

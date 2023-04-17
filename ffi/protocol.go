@@ -8,7 +8,6 @@ import "C"
 import (
 	"reflect"
 	"runtime/cgo"
-	"strings"
 	"sync"
 	"unsafe"
 
@@ -114,9 +113,8 @@ type instanceInfo struct {
 
 // param protocolName: the delegate go interface name
 // param d: the delegate go implementaion
-func CreateProtocol[T any](d T) objc.Object {
+func CreateProtocol[T any](protocolName string, d T) objc.Object {
 	dv := reflect.ValueOf(d)
-	protocolName := getProtocolName[T]()
 	ci := createClass(dv.Type(), protocolName)
 	ii := &instanceInfo{
 		classInfo:    ci,
@@ -125,21 +123,6 @@ func CreateProtocol[T any](d T) objc.Object {
 	}
 	h := cgo.NewHandle(ii)
 	return objc.MakeObject(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
-}
-
-func getProtocolName[T any]() string {
-	t := reflect.TypeOf((*T)(nil)).Elem()
-	pkgName := t.PkgPath()
-	idx := strings.LastIndexByte(pkgName, '/')
-	if idx > 0 {
-		pkgName = pkgName[idx+1:]
-	}
-
-	pi, ok := GetProtocolInfo(pkgName + "." + t.Name())
-	if !ok || len(pi.Name) == 0 {
-		panic("protocol meta not found")
-	}
-	return pi.Name
 }
 
 //export respondsTo

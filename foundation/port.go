@@ -19,8 +19,6 @@ type IPort interface {
 	Invalidate()
 	SetDelegate(anObject PortDelegate)
 	Delegate() PortDelegateWrapper
-	SendBeforeDate_Components_From_Reserved(limitDate IDate, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool
-	SendBeforeDate_Msgid_Components_From_Reserved(limitDate IDate, msgID uint, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool
 	RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
 	ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
 	IsValid() bool
@@ -42,11 +40,6 @@ func (pc _PortClass) Alloc() Port {
 	return rv
 }
 
-func (p_ Port) Init() Port {
-	rv := ffi.CallMethod[Port](p_, "init")
-	return rv
-}
-
 func (pc _PortClass) New() Port {
 	rv := ffi.CallMethod[Port](pc, "new")
 	rv.Autorelease()
@@ -55,6 +48,11 @@ func (pc _PortClass) New() Port {
 
 func NewPort() Port {
 	return PortClass.New()
+}
+
+func (p_ Port) Init() Port {
+	rv := ffi.CallMethod[Port](p_, "init")
+	return rv
 }
 
 func (pc _PortClass) Port() Port {
@@ -67,23 +65,13 @@ func (p_ Port) Invalidate() {
 }
 
 func (p_ Port) SetDelegate(anObject PortDelegate) {
-	po := ffi.CreateProtocol(anObject)
+	po := ffi.CreateProtocol("NSPortDelegate", anObject)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
 }
 
 func (p_ Port) Delegate() PortDelegateWrapper {
 	rv := ffi.CallMethod[PortDelegateWrapper](p_, "delegate")
-	return rv
-}
-
-func (p_ Port) SendBeforeDate_Components_From_Reserved(limitDate IDate, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool {
-	rv := ffi.CallMethod[bool](p_, "sendBeforeDate:components:from:reserved:", limitDate, components, receivePort, headerSpaceReserved)
-	return rv
-}
-
-func (p_ Port) SendBeforeDate_Msgid_Components_From_Reserved(limitDate IDate, msgID uint, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool {
-	rv := ffi.CallMethod[bool](p_, "sendBeforeDate:msgid:components:from:reserved:", limitDate, msgID, components, receivePort, headerSpaceReserved)
 	return rv
 }
 
@@ -103,14 +91,4 @@ func (p_ Port) IsValid() bool {
 func (p_ Port) ReservedSpaceLength() uint {
 	rv := ffi.CallMethod[uint](p_, "reservedSpaceLength")
 	return rv
-}
-
-type PortDelegate interface {
-}
-
-type PortDelegateImpl struct {
-}
-
-type PortDelegateWrapper struct {
-	objc.Object
 }

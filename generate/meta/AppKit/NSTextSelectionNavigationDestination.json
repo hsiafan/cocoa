@@ -1,0 +1,36 @@
+{
+    "kind": "alias",
+    "name": "NSTextSelectionNavigationDestination",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextSelectionNavigationDestinationCharacter",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionNavigationDestinationWord",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionNavigationDestinationLine",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionNavigationDestinationSentence",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionNavigationDestinationParagraph",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionNavigationDestinationContainer",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionNavigationDestinationDocument",
+            "module": "AppKit"
+        }
+    ]
+}

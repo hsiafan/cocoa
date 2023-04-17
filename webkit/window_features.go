@@ -42,11 +42,6 @@ func (wc _WindowFeaturesClass) Alloc() WindowFeatures {
 	return rv
 }
 
-func (w_ WindowFeatures) Init() WindowFeatures {
-	rv := ffi.CallMethod[WindowFeatures](w_, "init")
-	return rv
-}
-
 func (wc _WindowFeaturesClass) New() WindowFeatures {
 	rv := ffi.CallMethod[WindowFeatures](wc, "new")
 	rv.Autorelease()
@@ -55,6 +50,11 @@ func (wc _WindowFeaturesClass) New() WindowFeatures {
 
 func NewWindowFeatures() WindowFeatures {
 	return WindowFeaturesClass.New()
+}
+
+func (w_ WindowFeatures) Init() WindowFeatures {
+	rv := ffi.CallMethod[WindowFeatures](w_, "init")
+	return rv
 }
 
 func (w_ WindowFeatures) AllowsResizing() foundation.Number {

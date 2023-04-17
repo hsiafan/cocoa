@@ -43,11 +43,6 @@ func (tc _TrackingAreaClass) Alloc() TrackingArea {
 	return rv
 }
 
-func (t_ TrackingArea) Init() TrackingArea {
-	rv := ffi.CallMethod[TrackingArea](t_, "init")
-	return rv
-}
-
 func (tc _TrackingAreaClass) New() TrackingArea {
 	rv := ffi.CallMethod[TrackingArea](tc, "new")
 	rv.Autorelease()
@@ -56,6 +51,11 @@ func (tc _TrackingAreaClass) New() TrackingArea {
 
 func NewTrackingArea() TrackingArea {
 	return TrackingAreaClass.New()
+}
+
+func (t_ TrackingArea) Init() TrackingArea {
+	rv := ffi.CallMethod[TrackingArea](t_, "init")
+	return rv
 }
 
 func (t_ TrackingArea) Options() TrackingAreaOptions {

@@ -19,6 +19,8 @@ type IStoryboard interface {
 	objc.IObject
 	InstantiateInitialController() objc.Object
 	InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object
+	InstantiateControllerWithIdentifier_Creator(identifier StoryboardSceneIdentifier, block func(coder foundation.Coder) objc.IObject) objc.Object
+	InstantiateInitialControllerWithCreator(block func(coder foundation.Coder) objc.IObject) objc.Object
 }
 
 type Storyboard struct {
@@ -41,11 +43,6 @@ func (sc _StoryboardClass) Alloc() Storyboard {
 	return rv
 }
 
-func (s_ Storyboard) Init() Storyboard {
-	rv := ffi.CallMethod[Storyboard](s_, "init")
-	return rv
-}
-
 func (sc _StoryboardClass) New() Storyboard {
 	rv := ffi.CallMethod[Storyboard](sc, "new")
 	rv.Autorelease()
@@ -56,6 +53,11 @@ func NewStoryboard() Storyboard {
 	return StoryboardClass.New()
 }
 
+func (s_ Storyboard) Init() Storyboard {
+	rv := ffi.CallMethod[Storyboard](s_, "init")
+	return rv
+}
+
 func (s_ Storyboard) InstantiateInitialController() objc.Object {
 	rv := ffi.CallMethod[objc.Object](s_, "instantiateInitialController")
 	return rv
@@ -63,6 +65,16 @@ func (s_ Storyboard) InstantiateInitialController() objc.Object {
 
 func (s_ Storyboard) InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object {
 	rv := ffi.CallMethod[objc.Object](s_, "instantiateControllerWithIdentifier:", identifier)
+	return rv
+}
+
+func (s_ Storyboard) InstantiateControllerWithIdentifier_Creator(identifier StoryboardSceneIdentifier, block func(coder foundation.Coder) objc.IObject) objc.Object {
+	rv := ffi.CallMethod[objc.Object](s_, "instantiateControllerWithIdentifier:creator:", identifier, block)
+	return rv
+}
+
+func (s_ Storyboard) InstantiateInitialControllerWithCreator(block func(coder foundation.Coder) objc.IObject) objc.Object {
+	rv := ffi.CallMethod[objc.Object](s_, "instantiateInitialControllerWithCreator:", block)
 	return rv
 }
 

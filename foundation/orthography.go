@@ -40,23 +40,18 @@ func (oc _OrthographyClass) DefaultOrthographyForLanguage(language string) Ortho
 	return rv
 }
 
-func (o_ Orthography) InitWithDominantScript_LanguageMap(script string, _map map[string][]string) Orthography {
-	rv := ffi.CallMethod[Orthography](o_, "initWithDominantScript:languageMap:", script, _map)
+func (o_ Orthography) InitWithDominantScript_LanguageMap(script string, map_ map[string][]string) Orthography {
+	rv := ffi.CallMethod[Orthography](o_, "initWithDominantScript:languageMap:", script, map_)
 	return rv
 }
 
-func (oc _OrthographyClass) OrthographyWithDominantScript_LanguageMap(script string, _map map[string][]string) Orthography {
-	rv := ffi.CallMethod[Orthography](oc, "orthographyWithDominantScript:languageMap:", script, _map)
+func (oc _OrthographyClass) OrthographyWithDominantScript_LanguageMap(script string, map_ map[string][]string) Orthography {
+	rv := ffi.CallMethod[Orthography](oc, "orthographyWithDominantScript:languageMap:", script, map_)
 	return rv
 }
 
 func (oc _OrthographyClass) Alloc() Orthography {
 	rv := ffi.CallMethod[Orthography](oc, "alloc")
-	return rv
-}
-
-func (o_ Orthography) Init() Orthography {
-	rv := ffi.CallMethod[Orthography](o_, "init")
 	return rv
 }
 
@@ -68,6 +63,11 @@ func (oc _OrthographyClass) New() Orthography {
 
 func NewOrthography() Orthography {
 	return OrthographyClass.New()
+}
+
+func (o_ Orthography) Init() Orthography {
+	rv := ffi.CallMethod[Orthography](o_, "init")
+	return rv
 }
 
 func (o_ Orthography) DominantLanguageForScript(script string) string {

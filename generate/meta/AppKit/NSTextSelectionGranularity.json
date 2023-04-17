@@ -1,0 +1,28 @@
+{
+    "kind": "alias",
+    "name": "NSTextSelectionGranularity",
+    "module": "AppKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "NSTextSelectionGranularityCharacter",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionGranularityWord",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionGranularityParagraph",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionGranularityLine",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextSelectionGranularitySentence",
+            "module": "AppKit"
+        }
+    ]
+}

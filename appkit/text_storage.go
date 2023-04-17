@@ -22,8 +22,8 @@ type ITextStorage interface {
 	RemoveLayoutManager(aLayoutManager ILayoutManager)
 	Edited_Range_ChangeInLength(editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
 	ProcessEditing()
-	InvalidateAttributesInRange(_range foundation.Range)
-	EnsureAttributesAreFixedInRange(_range foundation.Range)
+	InvalidateAttributesInRange(range_ foundation.Range)
+	EnsureAttributesAreFixedInRange(range_ foundation.Range)
 	Delegate() TextStorageDelegateWrapper
 	SetDelegate(value TextStorageDelegate)
 	LayoutManagers() []LayoutManager
@@ -75,11 +75,6 @@ func (tc _TextStorageClass) Alloc() TextStorage {
 	return rv
 }
 
-func (t_ TextStorage) Init() TextStorage {
-	rv := ffi.CallMethod[TextStorage](t_, "init")
-	return rv
-}
-
 func (tc _TextStorageClass) New() TextStorage {
 	rv := ffi.CallMethod[TextStorage](tc, "new")
 	rv.Autorelease()
@@ -88,6 +83,11 @@ func (tc _TextStorageClass) New() TextStorage {
 
 func NewTextStorage() TextStorage {
 	return TextStorageClass.New()
+}
+
+func (t_ TextStorage) Init() TextStorage {
+	rv := ffi.CallMethod[TextStorage](t_, "init")
+	return rv
 }
 
 func (t_ TextStorage) AddLayoutManager(aLayoutManager ILayoutManager) {
@@ -106,12 +106,12 @@ func (t_ TextStorage) ProcessEditing() {
 	ffi.CallMethod[ffi.Void](t_, "processEditing")
 }
 
-func (t_ TextStorage) InvalidateAttributesInRange(_range foundation.Range) {
-	ffi.CallMethod[ffi.Void](t_, "invalidateAttributesInRange:", _range)
+func (t_ TextStorage) InvalidateAttributesInRange(range_ foundation.Range) {
+	ffi.CallMethod[ffi.Void](t_, "invalidateAttributesInRange:", range_)
 }
 
-func (t_ TextStorage) EnsureAttributesAreFixedInRange(_range foundation.Range) {
-	ffi.CallMethod[ffi.Void](t_, "ensureAttributesAreFixedInRange:", _range)
+func (t_ TextStorage) EnsureAttributesAreFixedInRange(range_ foundation.Range) {
+	ffi.CallMethod[ffi.Void](t_, "ensureAttributesAreFixedInRange:", range_)
 }
 
 func (t_ TextStorage) Delegate() TextStorageDelegateWrapper {
@@ -120,7 +120,7 @@ func (t_ TextStorage) Delegate() TextStorageDelegateWrapper {
 }
 
 func (t_ TextStorage) SetDelegate(value TextStorageDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("NSTextStorageDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
@@ -203,130 +203,4 @@ func (t_ TextStorage) ForegroundColor() Color {
 
 func (t_ TextStorage) SetForegroundColor(value IColor) {
 	ffi.CallMethod[ffi.Void](t_, "setForegroundColor:", value)
-}
-
-type TextStorageDelegate interface {
-	ImplementsTextStorage_WillProcessEditing_Range_ChangeInLength() bool
-	// optional
-	TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
-	ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool
-	// optional
-	TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
-}
-
-type TextStorageDelegateImpl struct {
-	_TextStorage_WillProcessEditing_Range_ChangeInLength func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
-	_TextStorage_DidProcessEditing_Range_ChangeInLength  func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
-}
-
-func (di *TextStorageDelegateImpl) ImplementsTextStorage_WillProcessEditing_Range_ChangeInLength() bool {
-	return di._TextStorage_WillProcessEditing_Range_ChangeInLength != nil
-}
-
-func (di *TextStorageDelegateImpl) SetTextStorage_WillProcessEditing_Range_ChangeInLength(f func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
-	di._TextStorage_WillProcessEditing_Range_ChangeInLength = f
-}
-
-func (di *TextStorageDelegateImpl) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	di._TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage, editedMask, editedRange, delta)
-}
-func (di *TextStorageDelegateImpl) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
-	return di._TextStorage_DidProcessEditing_Range_ChangeInLength != nil
-}
-
-func (di *TextStorageDelegateImpl) SetTextStorage_DidProcessEditing_Range_ChangeInLength(f func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
-	di._TextStorage_DidProcessEditing_Range_ChangeInLength = f
-}
-
-func (di *TextStorageDelegateImpl) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	di._TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage, editedMask, editedRange, delta)
-}
-
-type TextStorageDelegateWrapper struct {
-	objc.Object
-}
-
-func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_WillProcessEditing_Range_ChangeInLength() bool {
-	return t_.RespondsToSelector(objc.GetSelector("textStorage:willProcessEditing:range:changeInLength:"))
-}
-
-func (t_ TextStorageDelegateWrapper) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	ffi.CallMethod[ffi.Void](t_, "textStorage:willProcessEditing:range:changeInLength:", textStorage, editedMask, editedRange, delta)
-}
-
-func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
-	return t_.RespondsToSelector(objc.GetSelector("textStorage:didProcessEditing:range:changeInLength:"))
-}
-
-func (t_ TextStorageDelegateWrapper) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	ffi.CallMethod[ffi.Void](t_, "textStorage:didProcessEditing:range:changeInLength:", textStorage, editedMask, editedRange, delta)
-}
-
-var TextContentStorageClass = _TextContentStorageClass{objc.GetClass("NSTextContentStorage")}
-
-type _TextContentStorageClass struct {
-	objc.Class
-}
-
-type ITextContentStorage interface {
-	ITextContentManager
-	AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString
-	TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement
-	AdjustedRangeFromRange_ForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange
-	AttributedString() foundation.AttributedString
-	SetAttributedString(value foundation.IAttributedString)
-}
-
-type TextContentStorage struct {
-	TextContentManager
-}
-
-func MakeTextContentStorage(ptr unsafe.Pointer) TextContentStorage {
-	return TextContentStorage{
-		TextContentManager: MakeTextContentManager(ptr),
-	}
-}
-
-func (t_ TextContentStorage) Init() TextContentStorage {
-	rv := ffi.CallMethod[TextContentStorage](t_, "init")
-	return rv
-}
-
-func (tc _TextContentStorageClass) Alloc() TextContentStorage {
-	rv := ffi.CallMethod[TextContentStorage](tc, "alloc")
-	return rv
-}
-
-func (tc _TextContentStorageClass) New() TextContentStorage {
-	rv := ffi.CallMethod[TextContentStorage](tc, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewTextContentStorage() TextContentStorage {
-	return TextContentStorageClass.New()
-}
-
-func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](t_, "attributedStringForTextElement:", textElement)
-	return rv
-}
-
-func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
-	rv := ffi.CallMethod[TextElement](t_, "textElementForAttributedString:", attributedString)
-	return rv
-}
-
-func (t_ TextContentStorage) AdjustedRangeFromRange_ForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
-	rv := ffi.CallMethod[TextRange](t_, "adjustedRangeFromRange:forEditingTextSelection:", textRange, forEditingTextSelection)
-	return rv
-}
-
-func (t_ TextContentStorage) AttributedString() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](t_, "attributedString")
-	return rv
-}
-
-func (t_ TextContentStorage) SetAttributedString(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](t_, "setAttributedString:", value)
 }

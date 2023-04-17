@@ -36,11 +36,6 @@ func (wc _WebsiteDataRecordClass) Alloc() WebsiteDataRecord {
 	return rv
 }
 
-func (w_ WebsiteDataRecord) Init() WebsiteDataRecord {
-	rv := ffi.CallMethod[WebsiteDataRecord](w_, "init")
-	return rv
-}
-
 func (wc _WebsiteDataRecordClass) New() WebsiteDataRecord {
 	rv := ffi.CallMethod[WebsiteDataRecord](wc, "new")
 	rv.Autorelease()
@@ -49,6 +44,11 @@ func (wc _WebsiteDataRecordClass) New() WebsiteDataRecord {
 
 func NewWebsiteDataRecord() WebsiteDataRecord {
 	return WebsiteDataRecordClass.New()
+}
+
+func (w_ WebsiteDataRecord) Init() WebsiteDataRecord {
+	rv := ffi.CallMethod[WebsiteDataRecord](w_, "init")
+	return rv
 }
 
 func (w_ WebsiteDataRecord) DisplayName() string {

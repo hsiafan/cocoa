@@ -46,6 +46,11 @@ func MakeColorPanel(ptr unsafe.Pointer) ColorPanel {
 	}
 }
 
+func (cc _ColorPanelClass) WindowWithContentViewController(contentViewController IViewController) ColorPanel {
+	rv := ffi.CallMethod[ColorPanel](cc, "windowWithContentViewController:", contentViewController)
+	return rv
+}
+
 func (c_ ColorPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) ColorPanel {
 	rv := ffi.CallMethod[ColorPanel](c_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
 	return rv

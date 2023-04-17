@@ -59,11 +59,6 @@ func (sc _ScreenClass) Alloc() Screen {
 	return rv
 }
 
-func (s_ Screen) Init() Screen {
-	rv := ffi.CallMethod[Screen](s_, "init")
-	return rv
-}
-
 func (sc _ScreenClass) New() Screen {
 	rv := ffi.CallMethod[Screen](sc, "new")
 	rv.Autorelease()
@@ -72,6 +67,11 @@ func (sc _ScreenClass) New() Screen {
 
 func NewScreen() Screen {
 	return ScreenClass.New()
+}
+
+func (s_ Screen) Init() Screen {
+	rv := ffi.CallMethod[Screen](s_, "init")
+	return rv
 }
 
 // deprecated

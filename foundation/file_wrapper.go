@@ -94,11 +94,6 @@ func (fc _FileWrapperClass) Alloc() FileWrapper {
 	return rv
 }
 
-func (f_ FileWrapper) Init() FileWrapper {
-	rv := ffi.CallMethod[FileWrapper](f_, "init")
-	return rv
-}
-
 func (fc _FileWrapperClass) New() FileWrapper {
 	rv := ffi.CallMethod[FileWrapper](fc, "new")
 	rv.Autorelease()
@@ -107,6 +102,11 @@ func (fc _FileWrapperClass) New() FileWrapper {
 
 func NewFileWrapper() FileWrapper {
 	return FileWrapperClass.New()
+}
+
+func (f_ FileWrapper) Init() FileWrapper {
+	rv := ffi.CallMethod[FileWrapper](f_, "init")
+	return rv
 }
 
 // deprecated

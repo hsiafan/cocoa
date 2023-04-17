@@ -38,11 +38,6 @@ func (fc _FrameInfoClass) Alloc() FrameInfo {
 	return rv
 }
 
-func (f_ FrameInfo) Init() FrameInfo {
-	rv := ffi.CallMethod[FrameInfo](f_, "init")
-	return rv
-}
-
 func (fc _FrameInfoClass) New() FrameInfo {
 	rv := ffi.CallMethod[FrameInfo](fc, "new")
 	rv.Autorelease()
@@ -51,6 +46,11 @@ func (fc _FrameInfoClass) New() FrameInfo {
 
 func NewFrameInfo() FrameInfo {
 	return FrameInfoClass.New()
+}
+
+func (f_ FrameInfo) Init() FrameInfo {
+	rv := ffi.CallMethod[FrameInfo](f_, "init")
+	return rv
 }
 
 func (f_ FrameInfo) IsMainFrame() bool {

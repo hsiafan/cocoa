@@ -62,11 +62,6 @@ func (ac _AlertClass) Alloc() Alert {
 	return rv
 }
 
-func (a_ Alert) Init() Alert {
-	rv := ffi.CallMethod[Alert](a_, "init")
-	return rv
-}
-
 func (ac _AlertClass) New() Alert {
 	rv := ffi.CallMethod[Alert](ac, "new")
 	rv.Autorelease()
@@ -75,6 +70,11 @@ func (ac _AlertClass) New() Alert {
 
 func NewAlert() Alert {
 	return AlertClass.New()
+}
+
+func (a_ Alert) Init() Alert {
+	rv := ffi.CallMethod[Alert](a_, "init")
+	return rv
 }
 
 func (ac _AlertClass) AlertWithError(error foundation.IError) Alert {
@@ -147,7 +147,7 @@ func (a_ Alert) Delegate() AlertDelegateWrapper {
 }
 
 func (a_ Alert) SetDelegate(value AlertDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("NSAlertDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
@@ -201,40 +201,5 @@ func (a_ Alert) Buttons() []Button {
 
 func (a_ Alert) Window() Window {
 	rv := ffi.CallMethod[Window](a_, "window")
-	return rv
-}
-
-type AlertDelegate interface {
-	ImplementsAlertShowHelp() bool
-	// optional
-	AlertShowHelp(alert Alert) bool
-}
-
-type AlertDelegateImpl struct {
-	_AlertShowHelp func(alert Alert) bool
-}
-
-func (di *AlertDelegateImpl) ImplementsAlertShowHelp() bool {
-	return di._AlertShowHelp != nil
-}
-
-func (di *AlertDelegateImpl) SetAlertShowHelp(f func(alert Alert) bool) {
-	di._AlertShowHelp = f
-}
-
-func (di *AlertDelegateImpl) AlertShowHelp(alert Alert) bool {
-	return di._AlertShowHelp(alert)
-}
-
-type AlertDelegateWrapper struct {
-	objc.Object
-}
-
-func (a_ *AlertDelegateWrapper) ImplementsAlertShowHelp() bool {
-	return a_.RespondsToSelector(objc.GetSelector("alertShowHelp:"))
-}
-
-func (a_ AlertDelegateWrapper) AlertShowHelp(alert IAlert) bool {
-	rv := ffi.CallMethod[bool](a_, "alertShowHelp:", alert)
 	return rv
 }

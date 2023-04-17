@@ -44,11 +44,6 @@ func (sc _StreamClass) Alloc() Stream {
 	return rv
 }
 
-func (s_ Stream) Init() Stream {
-	rv := ffi.CallMethod[Stream](s_, "init")
-	return rv
-}
-
 func (sc _StreamClass) New() Stream {
 	rv := ffi.CallMethod[Stream](sc, "new")
 	rv.Autorelease()
@@ -57,6 +52,11 @@ func (sc _StreamClass) New() Stream {
 
 func NewStream() Stream {
 	return StreamClass.New()
+}
+
+func (s_ Stream) Init() Stream {
+	rv := ffi.CallMethod[Stream](s_, "init")
+	return rv
 }
 
 func (s_ Stream) PropertyForKey(key StreamPropertyKey) objc.Object {
@@ -100,7 +100,7 @@ func (s_ Stream) Delegate() StreamDelegateWrapper {
 }
 
 func (s_ Stream) SetDelegate(value StreamDelegate) {
-	po := ffi.CreateProtocol(value)
+	po := ffi.CreateProtocol("NSStreamDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
@@ -114,190 +114,4 @@ func (s_ Stream) StreamStatus() StreamStatus {
 func (s_ Stream) StreamError() Error {
 	rv := ffi.CallMethod[Error](s_, "streamError")
 	return rv
-}
-
-var InputStreamClass = _InputStreamClass{objc.GetClass("NSInputStream")}
-
-type _InputStreamClass struct {
-	objc.Class
-}
-
-type IInputStream interface {
-	IStream
-	HasBytesAvailable() bool
-}
-
-type InputStream struct {
-	Stream
-}
-
-func MakeInputStream(ptr unsafe.Pointer) InputStream {
-	return InputStream{
-		Stream: MakeStream(ptr),
-	}
-}
-
-func (ic _InputStreamClass) InputStreamWithData(data []byte) InputStream {
-	rv := ffi.CallMethod[InputStream](ic, "inputStreamWithData:", data)
-	return rv
-}
-
-func (ic _InputStreamClass) InputStreamWithFileAtPath(path string) InputStream {
-	rv := ffi.CallMethod[InputStream](ic, "inputStreamWithFileAtPath:", path)
-	return rv
-}
-
-func (ic _InputStreamClass) InputStreamWithURL(url IURL) InputStream {
-	rv := ffi.CallMethod[InputStream](ic, "inputStreamWithURL:", url)
-	return rv
-}
-
-func (i_ InputStream) InitWithData(data []byte) InputStream {
-	rv := ffi.CallMethod[InputStream](i_, "initWithData:", data)
-	return rv
-}
-
-func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
-	rv := ffi.CallMethod[InputStream](i_, "initWithFileAtPath:", path)
-	return rv
-}
-
-func (i_ InputStream) InitWithURL(url IURL) InputStream {
-	rv := ffi.CallMethod[InputStream](i_, "initWithURL:", url)
-	return rv
-}
-
-func (ic _InputStreamClass) Alloc() InputStream {
-	rv := ffi.CallMethod[InputStream](ic, "alloc")
-	return rv
-}
-
-func (i_ InputStream) Init() InputStream {
-	rv := ffi.CallMethod[InputStream](i_, "init")
-	return rv
-}
-
-func (ic _InputStreamClass) New() InputStream {
-	rv := ffi.CallMethod[InputStream](ic, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewInputStream() InputStream {
-	return InputStreamClass.New()
-}
-
-func (i_ InputStream) HasBytesAvailable() bool {
-	rv := ffi.CallMethod[bool](i_, "hasBytesAvailable")
-	return rv
-}
-
-var OutputStreamClass = _OutputStreamClass{objc.GetClass("NSOutputStream")}
-
-type _OutputStreamClass struct {
-	objc.Class
-}
-
-type IOutputStream interface {
-	IStream
-	HasSpaceAvailable() bool
-}
-
-type OutputStream struct {
-	Stream
-}
-
-func MakeOutputStream(ptr unsafe.Pointer) OutputStream {
-	return OutputStream{
-		Stream: MakeStream(ptr),
-	}
-}
-
-func (oc _OutputStreamClass) OutputStreamToMemory() OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "outputStreamToMemory")
-	return rv
-}
-
-func (oc _OutputStreamClass) OutputStreamToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "outputStreamToFileAtPath:append:", path, shouldAppend)
-	return rv
-}
-
-func (oc _OutputStreamClass) OutputStreamWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "outputStreamWithURL:append:", url, shouldAppend)
-	return rv
-}
-
-func (o_ OutputStream) InitToMemory() OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "initToMemory")
-	return rv
-}
-
-func (o_ OutputStream) InitToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "initToFileAtPath:append:", path, shouldAppend)
-	return rv
-}
-
-func (o_ OutputStream) InitWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "initWithURL:append:", url, shouldAppend)
-	return rv
-}
-
-func (oc _OutputStreamClass) Alloc() OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "alloc")
-	return rv
-}
-
-func (o_ OutputStream) Init() OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "init")
-	return rv
-}
-
-func (oc _OutputStreamClass) New() OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "new")
-	rv.Autorelease()
-	return rv
-}
-
-func NewOutputStream() OutputStream {
-	return OutputStreamClass.New()
-}
-
-func (o_ OutputStream) HasSpaceAvailable() bool {
-	rv := ffi.CallMethod[bool](o_, "hasSpaceAvailable")
-	return rv
-}
-
-type StreamDelegate interface {
-	ImplementsStream_HandleEvent() bool
-	// optional
-	Stream_HandleEvent(aStream Stream, eventCode StreamEvent)
-}
-
-type StreamDelegateImpl struct {
-	_Stream_HandleEvent func(aStream Stream, eventCode StreamEvent)
-}
-
-func (di *StreamDelegateImpl) ImplementsStream_HandleEvent() bool {
-	return di._Stream_HandleEvent != nil
-}
-
-func (di *StreamDelegateImpl) SetStream_HandleEvent(f func(aStream Stream, eventCode StreamEvent)) {
-	di._Stream_HandleEvent = f
-}
-
-func (di *StreamDelegateImpl) Stream_HandleEvent(aStream Stream, eventCode StreamEvent) {
-	di._Stream_HandleEvent(aStream, eventCode)
-}
-
-type StreamDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ *StreamDelegateWrapper) ImplementsStream_HandleEvent() bool {
-	return s_.RespondsToSelector(objc.GetSelector("stream:handleEvent:"))
-}
-
-func (s_ StreamDelegateWrapper) Stream_HandleEvent(aStream IStream, eventCode StreamEvent) {
-	ffi.CallMethod[ffi.Void](s_, "stream:handleEvent:", aStream, eventCode)
 }

@@ -1,14 +1,6 @@
 // auto-generated code, do not modify
 package webkit
 
-import "github.com/hsiafan/cocoa/foundation"
-
-const WebViewDidBeginEditingNotification foundation.NotificationName = "WebViewDidBeginEditingNotification"
-const WebViewDidChangeNotification foundation.NotificationName = "WebViewDidChangeNotification"
-const WebViewDidChangeSelectionNotification foundation.NotificationName = "WebViewDidChangeSelectionNotification"
-const WebViewDidChangeTypingStyleNotification foundation.NotificationName = "WebViewDidChangeTypingStyleNotification"
-const WebViewDidEndEditingNotification foundation.NotificationName = "WebViewDidEndEditingNotification"
-
 type AudiovisualMediaTypes uint
 
 const AudiovisualMediaTypeNone AudiovisualMediaTypes = 0

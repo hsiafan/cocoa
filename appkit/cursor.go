@@ -60,11 +60,6 @@ func (cc _CursorClass) Alloc() Cursor {
 	return rv
 }
 
-func (c_ Cursor) Init() Cursor {
-	rv := ffi.CallMethod[Cursor](c_, "init")
-	return rv
-}
-
 func (cc _CursorClass) New() Cursor {
 	rv := ffi.CallMethod[Cursor](cc, "new")
 	rv.Autorelease()
@@ -73,6 +68,11 @@ func (cc _CursorClass) New() Cursor {
 
 func NewCursor() Cursor {
 	return CursorClass.New()
+}
+
+func (c_ Cursor) Init() Cursor {
+	rv := ffi.CallMethod[Cursor](c_, "init")
+	return rv
 }
 
 func (cc _CursorClass) Hide() {

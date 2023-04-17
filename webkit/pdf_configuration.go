@@ -36,11 +36,6 @@ func (pc _PDFConfigurationClass) Alloc() PDFConfiguration {
 	return rv
 }
 
-func (p_ PDFConfiguration) Init() PDFConfiguration {
-	rv := ffi.CallMethod[PDFConfiguration](p_, "init")
-	return rv
-}
-
 func (pc _PDFConfigurationClass) New() PDFConfiguration {
 	rv := ffi.CallMethod[PDFConfiguration](pc, "new")
 	rv.Autorelease()
@@ -49,6 +44,11 @@ func (pc _PDFConfigurationClass) New() PDFConfiguration {
 
 func NewPDFConfiguration() PDFConfiguration {
 	return PDFConfigurationClass.New()
+}
+
+func (p_ PDFConfiguration) Init() PDFConfiguration {
+	rv := ffi.CallMethod[PDFConfiguration](p_, "init")
+	return rv
 }
 
 func (p_ PDFConfiguration) Rect() coregraphics.Rect {

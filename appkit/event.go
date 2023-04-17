@@ -98,11 +98,6 @@ func (ec _EventClass) Alloc() Event {
 	return rv
 }
 
-func (e_ Event) Init() Event {
-	rv := ffi.CallMethod[Event](e_, "init")
-	return rv
-}
-
 func (ec _EventClass) New() Event {
 	rv := ffi.CallMethod[Event](ec, "new")
 	rv.Autorelease()
@@ -113,23 +108,28 @@ func NewEvent() Event {
 	return EventClass.New()
 }
 
-func (ec _EventClass) KeyEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_Characters_CharactersIgnoringModifiers_IsARepeat_KeyCode(_type EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, keys string, ukeys string, flag bool, code uint16) Event {
-	rv := ffi.CallMethod[Event](ec, "keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:", _type, location, flags, time, wNum, unusedPassNil, keys, ukeys, flag, code)
+func (e_ Event) Init() Event {
+	rv := ffi.CallMethod[Event](e_, "init")
 	return rv
 }
 
-func (ec _EventClass) MouseEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_EventNumber_ClickCount_Pressure(_type EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, eNum int, cNum int, pressure float32) Event {
-	rv := ffi.CallMethod[Event](ec, "mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:", _type, location, flags, time, wNum, unusedPassNil, eNum, cNum, pressure)
+func (ec _EventClass) KeyEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_Characters_CharactersIgnoringModifiers_IsARepeat_KeyCode(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, keys string, ukeys string, flag bool, code uint16) Event {
+	rv := ffi.CallMethod[Event](ec, "keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:", type_, location, flags, time, wNum, unusedPassNil, keys, ukeys, flag, code)
 	return rv
 }
 
-func (ec _EventClass) EnterExitEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_EventNumber_TrackingNumber_UserData(_type EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, eNum int, tNum int, data unsafe.Pointer) Event {
-	rv := ffi.CallMethod[Event](ec, "enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:", _type, location, flags, time, wNum, unusedPassNil, eNum, tNum, data)
+func (ec _EventClass) MouseEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_EventNumber_ClickCount_Pressure(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, eNum int, cNum int, pressure float32) Event {
+	rv := ffi.CallMethod[Event](ec, "mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:", type_, location, flags, time, wNum, unusedPassNil, eNum, cNum, pressure)
 	return rv
 }
 
-func (ec _EventClass) OtherEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_Subtype_Data1_Data2(_type EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, subtype int16, d1 int, d2 int) Event {
-	rv := ffi.CallMethod[Event](ec, "otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:", _type, location, flags, time, wNum, unusedPassNil, subtype, d1, d2)
+func (ec _EventClass) EnterExitEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_EventNumber_TrackingNumber_UserData(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, eNum int, tNum int, data unsafe.Pointer) Event {
+	rv := ffi.CallMethod[Event](ec, "enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:", type_, location, flags, time, wNum, unusedPassNil, eNum, tNum, data)
+	return rv
+}
+
+func (ec _EventClass) OtherEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_Subtype_Data1_Data2(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, subtype int16, d1 int, d2 int) Event {
+	rv := ffi.CallMethod[Event](ec, "otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:", type_, location, flags, time, wNum, unusedPassNil, subtype, d1, d2)
 	return rv
 }
 

@@ -36,11 +36,6 @@ func (sc _SecurityOriginClass) Alloc() SecurityOrigin {
 	return rv
 }
 
-func (s_ SecurityOrigin) Init() SecurityOrigin {
-	rv := ffi.CallMethod[SecurityOrigin](s_, "init")
-	return rv
-}
-
 func (sc _SecurityOriginClass) New() SecurityOrigin {
 	rv := ffi.CallMethod[SecurityOrigin](sc, "new")
 	rv.Autorelease()
@@ -49,6 +44,11 @@ func (sc _SecurityOriginClass) New() SecurityOrigin {
 
 func NewSecurityOrigin() SecurityOrigin {
 	return SecurityOriginClass.New()
+}
+
+func (s_ SecurityOrigin) Init() SecurityOrigin {
+	rv := ffi.CallMethod[SecurityOrigin](s_, "init")
+	return rv
 }
 
 func (s_ SecurityOrigin) Host() string {

@@ -20,8 +20,6 @@ type IWorkspace interface {
 	objc.IObject
 	OpenURL(url foundation.IURL) bool
 	HideOtherApplications()
-	DuplicateURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error))
-	RecycleURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error))
 	ActivateFileViewerSelectingURLs(fileURLs []foundation.IURL)
 	SelectFile_InFileViewerRootedAtPath(fullPath string, rootFullPath string) bool
 	// deprecated
@@ -36,7 +34,7 @@ type IWorkspace interface {
 	Type_ConformsToType(firstTypeName string, secondTypeName string) bool
 	URLForApplicationWithBundleIdentifier(bundleIdentifier string) foundation.URL
 	// deprecated
-	GetInfoForFile_Application_Type(fullPath string, appName *foundation.String, _type *foundation.String) bool
+	GetInfoForFile_Application_Type(fullPath string, appName *foundation.String, type_ *foundation.String) bool
 	URLForApplicationToOpenURL(url foundation.IURL) foundation.URL
 	GetFileSystemInfoForPath_IsRemovable_IsWritable_IsUnmountable_Description_Type(fullPath string, removableFlag *bool, writableFlag *bool, unmountableFlag *bool, description *foundation.String, fileSystemType *foundation.String) bool
 	IsFilePackageAtPath(fullPath string) bool
@@ -50,7 +48,7 @@ type IWorkspace interface {
 	SetDesktopImageURL_ForScreen_Options_Error(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error *foundation.Error) bool
 	DesktopImageOptionsForScreen(screen IScreen) map[WorkspaceDesktopImageOptionKey]objc.Object
 	ShowSearchResultsForQueryString(queryString string) bool
-	NoteFileSystemChanged_(path string)
+	NoteFileSystemChanged1(path string)
 	ExtendPowerOffBy(requested int) int
 	SetDefaultApplicationAtURL_ToOpenContentType_CompletionHandler(applicationURL foundation.IURL, contentType uniformtypeidentifiers.IType, completionHandler func(error foundation.Error))
 	SetDefaultApplicationAtURL_ToOpenContentTypeOfFileAtURL_CompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error))
@@ -144,11 +142,6 @@ func (wc _WorkspaceClass) Alloc() Workspace {
 	return rv
 }
 
-func (w_ Workspace) Init() Workspace {
-	rv := ffi.CallMethod[Workspace](w_, "init")
-	return rv
-}
-
 func (wc _WorkspaceClass) New() Workspace {
 	rv := ffi.CallMethod[Workspace](wc, "new")
 	rv.Autorelease()
@@ -159,6 +152,11 @@ func NewWorkspace() Workspace {
 	return WorkspaceClass.New()
 }
 
+func (w_ Workspace) Init() Workspace {
+	rv := ffi.CallMethod[Workspace](w_, "init")
+	return rv
+}
+
 func (w_ Workspace) OpenURL(url foundation.IURL) bool {
 	rv := ffi.CallMethod[bool](w_, "openURL:", url)
 	return rv
@@ -166,14 +164,6 @@ func (w_ Workspace) OpenURL(url foundation.IURL) bool {
 
 func (w_ Workspace) HideOtherApplications() {
 	ffi.CallMethod[ffi.Void](w_, "hideOtherApplications")
-}
-
-func (w_ Workspace) DuplicateURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error)) {
-	ffi.CallMethod[ffi.Void](w_, "duplicateURLs:completionHandler:", URLs, handler)
-}
-
-func (w_ Workspace) RecycleURLs_CompletionHandler(URLs []foundation.IURL, handler func(newURLs foundation.Dictionary, error foundation.Error)) {
-	ffi.CallMethod[ffi.Void](w_, "recycleURLs:completionHandler:", URLs, handler)
 }
 
 func (w_ Workspace) ActivateFileViewerSelectingURLs(fileURLs []foundation.IURL) {
@@ -221,8 +211,8 @@ func (w_ Workspace) URLForApplicationWithBundleIdentifier(bundleIdentifier strin
 }
 
 // deprecated
-func (w_ Workspace) GetInfoForFile_Application_Type(fullPath string, appName *foundation.String, _type *foundation.String) bool {
-	rv := ffi.CallMethod[bool](w_, "getInfoForFile:application:type:", fullPath, appName, _type)
+func (w_ Workspace) GetInfoForFile_Application_Type(fullPath string, appName *foundation.String, type_ *foundation.String) bool {
+	rv := ffi.CallMethod[bool](w_, "getInfoForFile:application:type:", fullPath, appName, type_)
 	return rv
 }
 
@@ -291,7 +281,7 @@ func (w_ Workspace) ShowSearchResultsForQueryString(queryString string) bool {
 	return rv
 }
 
-func (w_ Workspace) NoteFileSystemChanged_(path string) {
+func (w_ Workspace) NoteFileSystemChanged1(path string) {
 	ffi.CallMethod[ffi.Void](w_, "noteFileSystemChanged:", path)
 }
 

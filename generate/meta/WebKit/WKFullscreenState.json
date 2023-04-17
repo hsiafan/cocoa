@@ -1,0 +1,24 @@
+{
+    "kind": "alias",
+    "name": "WKFullscreenState",
+    "module": "WebKit",
+    "target_type": "NSInteger",
+    "values": [
+        {
+            "name": "WKFullscreenStateEnteringFullscreen",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKFullscreenStateExitingFullscreen",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKFullscreenStateInFullscreen",
+            "module": "WebKit"
+        },
+        {
+            "name": "WKFullscreenStateNotInFullscreen",
+            "module": "WebKit"
+        }
+    ]
+}

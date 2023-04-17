@@ -41,11 +41,6 @@ func (sc _SnapshotConfigurationClass) Alloc() SnapshotConfiguration {
 	return rv
 }
 
-func (s_ SnapshotConfiguration) Init() SnapshotConfiguration {
-	rv := ffi.CallMethod[SnapshotConfiguration](s_, "init")
-	return rv
-}
-
 func (sc _SnapshotConfigurationClass) New() SnapshotConfiguration {
 	rv := ffi.CallMethod[SnapshotConfiguration](sc, "new")
 	rv.Autorelease()
@@ -54,6 +49,11 @@ func (sc _SnapshotConfigurationClass) New() SnapshotConfiguration {
 
 func NewSnapshotConfiguration() SnapshotConfiguration {
 	return SnapshotConfigurationClass.New()
+}
+
+func (s_ SnapshotConfiguration) Init() SnapshotConfiguration {
+	rv := ffi.CallMethod[SnapshotConfiguration](s_, "init")
+	return rv
 }
 
 func (s_ SnapshotConfiguration) Rect() coregraphics.Rect {

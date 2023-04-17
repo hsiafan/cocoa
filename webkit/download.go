@@ -37,11 +37,6 @@ func (dc _DownloadClass) Alloc() Download {
 	return rv
 }
 
-func (d_ Download) Init() Download {
-	rv := ffi.CallMethod[Download](d_, "init")
-	return rv
-}
-
 func (dc _DownloadClass) New() Download {
 	rv := ffi.CallMethod[Download](dc, "new")
 	rv.Autorelease()
@@ -50,6 +45,11 @@ func (dc _DownloadClass) New() Download {
 
 func NewDownload() Download {
 	return DownloadClass.New()
+}
+
+func (d_ Download) Init() Download {
+	rv := ffi.CallMethod[Download](d_, "init")
+	return rv
 }
 
 func (d_ Download) Cancel(completionHandler func(resumeData []byte)) {

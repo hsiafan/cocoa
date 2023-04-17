@@ -9,6 +9,8 @@ void importAppKitProtocols() {
     o = @protocol(NSApplicationDelegate);
     o = @protocol(NSBrowserDelegate);
     o = @protocol(NSCandidateListTouchBarItemDelegate);
+    o = @protocol(NSCollectionLayoutContainer);
+    o = @protocol(NSCollectionLayoutEnvironment);
     o = @protocol(NSCollectionViewDataSource);
     o = @protocol(NSCollectionViewDelegate);
     o = @protocol(NSCollectionViewDelegateFlowLayout);
@@ -22,13 +24,16 @@ void importAppKitProtocols() {
     o = @protocol(NSDraggingDestination);
     o = @protocol(NSDraggingInfo);
     o = @protocol(NSDraggingSource);
+    o = @protocol(NSDrawerDelegate);
     o = @protocol(NSEditor);
     o = @protocol(NSFontChanging);
     o = @protocol(NSGestureRecognizerDelegate);
+    o = @protocol(NSGlyphStorage);
     o = @protocol(NSImageDelegate);
     o = @protocol(NSLayoutManagerDelegate);
     o = @protocol(NSMatrixDelegate);
     o = @protocol(NSMenuDelegate);
+    o = @protocol(NSOpenSavePanelDelegate);
     o = @protocol(NSOutlineViewDataSource);
     o = @protocol(NSOutlineViewDelegate);
     o = @protocol(NSPasteboardItemDataProvider);
@@ -42,6 +47,7 @@ void importAppKitProtocols() {
     o = @protocol(NSSharingServicePickerDelegate);
     o = @protocol(NSSoundDelegate);
     o = @protocol(NSSplitViewDelegate);
+    o = @protocol(NSStackViewDelegate);
     o = @protocol(NSTabViewDelegate);
     o = @protocol(NSTableViewDataSource);
     o = @protocol(NSTableViewDelegate);
@@ -56,7 +62,9 @@ void importAppKitProtocols() {
     o = @protocol(NSTouchBarDelegate);
     o = @protocol(NSUserInterfaceCompression);
     o = @protocol(NSUserInterfaceItemIdentification);
+    o = @protocol(NSUserInterfaceItemSearching);
     o = @protocol(NSValidatedUserInterfaceItem);
+    o = @protocol(NSViewControllerPresentationAnimator);
     o = @protocol(NSViewToolTipOwner);
     o = @protocol(NSWindowDelegate);
 }

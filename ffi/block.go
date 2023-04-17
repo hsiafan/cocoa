@@ -72,8 +72,8 @@ func callBlock(b objc.Block, params []reflect.Value, retType reflect.Type) []ref
 	}
 }
 
-// f is the fun to wrap as a objc block
-func wrapBlock(f any) objc.Block {
+// f is the go function to wrap as a objc block
+func WrapBlock(f any) objc.Block {
 	ft := reflect.TypeOf(f)
 	if ft.Kind() != reflect.Func {
 		panic("not func type")

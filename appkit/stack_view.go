@@ -6,6 +6,7 @@ import (
 
 	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
+	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,6 +34,8 @@ type IStackView interface {
 	SetVisibilityPriority_ForView(priority StackViewVisibilityPriority, view IView)
 	SetClippingResistancePriority_ForOrientation(clippingResistancePriority LayoutPriority, orientation LayoutConstraintOrientation)
 	SetHuggingPriority_ForOrientation(huggingPriority LayoutPriority, orientation LayoutConstraintOrientation)
+	Delegate() StackViewDelegateWrapper
+	SetDelegate(value StackViewDelegate)
 	ArrangedSubviews() []View
 	Views() []View
 	DetachedViews() []View
@@ -161,6 +164,18 @@ func (s_ StackView) SetClippingResistancePriority_ForOrientation(clippingResista
 
 func (s_ StackView) SetHuggingPriority_ForOrientation(huggingPriority LayoutPriority, orientation LayoutConstraintOrientation) {
 	ffi.CallMethod[ffi.Void](s_, "setHuggingPriority:forOrientation:", huggingPriority, orientation)
+}
+
+func (s_ StackView) Delegate() StackViewDelegateWrapper {
+	rv := ffi.CallMethod[StackViewDelegateWrapper](s_, "delegate")
+	return rv
+}
+
+func (s_ StackView) SetDelegate(value StackViewDelegate) {
+	po := ffi.CreateProtocol("NSStackViewDelegate", value)
+	defer po.Release()
+	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
 }
 
 func (s_ StackView) ArrangedSubviews() []View {

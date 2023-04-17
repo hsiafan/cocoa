@@ -34,11 +34,6 @@ func (cc _ContentWorldClass) Alloc() ContentWorld {
 	return rv
 }
 
-func (c_ ContentWorld) Init() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](c_, "init")
-	return rv
-}
-
 func (cc _ContentWorldClass) New() ContentWorld {
 	rv := ffi.CallMethod[ContentWorld](cc, "new")
 	rv.Autorelease()
@@ -47,6 +42,11 @@ func (cc _ContentWorldClass) New() ContentWorld {
 
 func NewContentWorld() ContentWorld {
 	return ContentWorldClass.New()
+}
+
+func (c_ ContentWorld) Init() ContentWorld {
+	rv := ffi.CallMethod[ContentWorld](c_, "init")
+	return rv
 }
 
 func (cc _ContentWorldClass) WorldWithName(name string) ContentWorld {

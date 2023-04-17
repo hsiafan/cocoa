@@ -1,0 +1,32 @@
+{
+    "kind": "alias",
+    "name": "NSTextLayoutManagerSegmentOptions",
+    "module": "AppKit",
+    "target_type": "NSUInteger",
+    "values": [
+        {
+            "name": "NSTextLayoutManagerSegmentOptionsHeadSegmentExtended",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutManagerSegmentOptionsMiddleFragmentsExcluded",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutManagerSegmentOptionsRangeNotRequired",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutManagerSegmentOptionsTailSegmentExtended",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutManagerSegmentOptionsUpstreamAffinity",
+            "module": "AppKit"
+        },
+        {
+            "name": "NSTextLayoutManagerSegmentOptionsNone",
+            "module": "AppKit"
+        }
+    ]
+}

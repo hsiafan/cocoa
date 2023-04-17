@@ -38,11 +38,6 @@ func (ec _ExceptionClass) Alloc() Exception {
 	return rv
 }
 
-func (e_ Exception) Init() Exception {
-	rv := ffi.CallMethod[Exception](e_, "init")
-	return rv
-}
-
 func (ec _ExceptionClass) New() Exception {
 	rv := ffi.CallMethod[Exception](ec, "new")
 	rv.Autorelease()
@@ -51,6 +46,11 @@ func (ec _ExceptionClass) New() Exception {
 
 func NewException() Exception {
 	return ExceptionClass.New()
+}
+
+func (e_ Exception) Init() Exception {
+	rv := ffi.CallMethod[Exception](e_, "init")
+	return rv
 }
 
 func (e_ Exception) Raise() {

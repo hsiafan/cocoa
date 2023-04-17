@@ -3,6 +3,7 @@
 
 void importFoundationProtocols() {
     id o;
+    o = @protocol(NSCopying);
     o = @protocol(NSPortDelegate);
     o = @protocol(NSStreamDelegate);
     o = @protocol(NSUserActivityDelegate);
