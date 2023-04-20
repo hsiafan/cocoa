@@ -61,8 +61,10 @@ type ICollectionView interface {
 	SetDraggingSourceOperationMask_ForLocal(dragOperationMask DragOperation, localDestination bool)
 	DataSource() CollectionViewDataSourceWrapper
 	SetDataSource(value CollectionViewDataSource)
+	SetDataSource0(value objc.IObject)
 	Delegate() CollectionViewDelegateWrapper
 	SetDelegate(value CollectionViewDelegate)
+	SetDelegate0(value objc.IObject)
 	Content() []objc.Object
 	SetContent(value []objc.IObject)
 	BackgroundView() View
@@ -75,6 +77,7 @@ type ICollectionView interface {
 	SetCollectionViewLayout(value ICollectionViewLayout)
 	PrefetchDataSource() CollectionViewPrefetchingWrapper
 	SetPrefetchDataSource(value CollectionViewPrefetching)
+	SetPrefetchDataSource0(value objc.IObject)
 	NumberOfSections() int
 	IsSelectable() bool
 	SetSelectable(value bool)
@@ -337,6 +340,10 @@ func (c_ CollectionView) SetDataSource(value CollectionViewDataSource) {
 	ffi.CallMethod[ffi.Void](c_, "setDataSource:", po)
 }
 
+func (c_ CollectionView) SetDataSource0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](c_, "setDataSource:", value)
+}
+
 func (c_ CollectionView) Delegate() CollectionViewDelegateWrapper {
 	rv := ffi.CallMethod[CollectionViewDelegateWrapper](c_, "delegate")
 	return rv
@@ -347,6 +354,10 @@ func (c_ CollectionView) SetDelegate(value CollectionViewDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](c_, "setDelegate:", po)
+}
+
+func (c_ CollectionView) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](c_, "setDelegate:", value)
 }
 
 func (c_ CollectionView) Content() []objc.Object {
@@ -404,6 +415,10 @@ func (c_ CollectionView) SetPrefetchDataSource(value CollectionViewPrefetching) 
 	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setPrefetchDataSource"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](c_, "setPrefetchDataSource:", po)
+}
+
+func (c_ CollectionView) SetPrefetchDataSource0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](c_, "setPrefetchDataSource:", value)
 }
 
 func (c_ CollectionView) NumberOfSections() int {

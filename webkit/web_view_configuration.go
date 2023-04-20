@@ -17,6 +17,7 @@ type _WebViewConfigurationClass struct {
 type IWebViewConfiguration interface {
 	objc.IObject
 	SetURLSchemeHandler_ForURLScheme(urlSchemeHandler URLSchemeHandler, urlScheme string)
+	SetURLSchemeHandler0_ForURLScheme(urlSchemeHandler objc.IObject, urlScheme string)
 	UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerWrapper
 	WebsiteDataStore() WebsiteDataStore
 	SetWebsiteDataStore(value IWebsiteDataStore)
@@ -78,6 +79,10 @@ func (w_ WebViewConfiguration) SetURLSchemeHandler_ForURLScheme(urlSchemeHandler
 	po := ffi.CreateProtocol("WKURLSchemeHandler", urlSchemeHandler)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](w_, "setURLSchemeHandler:forURLScheme:", po, urlScheme)
+}
+
+func (w_ WebViewConfiguration) SetURLSchemeHandler0_ForURLScheme(urlSchemeHandler objc.IObject, urlScheme string) {
+	ffi.CallMethod[ffi.Void](w_, "setURLSchemeHandler:forURLScheme:", urlSchemeHandler, urlScheme)
 }
 
 func (w_ WebViewConfiguration) UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerWrapper {

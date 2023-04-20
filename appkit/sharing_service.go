@@ -22,6 +22,7 @@ type ISharingService interface {
 	PerformWithItems(items []objc.IObject)
 	Delegate() SharingServiceDelegateWrapper
 	SetDelegate(value SharingServiceDelegate)
+	SetDelegate0(value objc.IObject)
 	AccountName() string
 	AlternateImage() Image
 	Image() Image
@@ -102,6 +103,10 @@ func (s_ SharingService) SetDelegate(value SharingServiceDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+}
+
+func (s_ SharingService) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
 }
 
 func (s_ SharingService) AccountName() string {

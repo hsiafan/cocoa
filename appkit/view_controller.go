@@ -37,6 +37,7 @@ type IViewController interface {
 	RemoveFromParentViewController()
 	PreferredContentSizeDidChangeForViewController(viewController IViewController)
 	PresentViewController_Animator(viewController IViewController, animator ViewControllerPresentationAnimator)
+	PresentViewController0_Animator(viewController IViewController, animator objc.IObject)
 	DismissViewController(viewController IViewController)
 	PresentViewController_AsPopoverRelativeToRect_OfView_PreferredEdge_Behavior(viewController IViewController, positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge, behavior PopoverBehavior)
 	PresentViewControllerAsModalWindow(viewController IViewController)
@@ -184,6 +185,10 @@ func (v_ ViewController) PresentViewController_Animator(viewController IViewCont
 	po := ffi.CreateProtocol("NSViewControllerPresentationAnimator", animator)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](v_, "presentViewController:animator:", viewController, po)
+}
+
+func (v_ ViewController) PresentViewController0_Animator(viewController IViewController, animator objc.IObject) {
+	ffi.CallMethod[ffi.Void](v_, "presentViewController:animator:", viewController, animator)
 }
 
 func (v_ ViewController) DismissViewController(viewController IViewController) {

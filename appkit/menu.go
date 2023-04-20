@@ -96,6 +96,7 @@ type IMenu interface {
 	SetUserInterfaceLayoutDirection(value UserInterfaceLayoutDirection)
 	Delegate() MenuDelegateWrapper
 	SetDelegate(value MenuDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type Menu struct {
@@ -457,4 +458,8 @@ func (m_ Menu) SetDelegate(value MenuDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](m_, "setDelegate:", po)
+}
+
+func (m_ Menu) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](m_, "setDelegate:", value)
 }

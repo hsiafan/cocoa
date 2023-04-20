@@ -26,6 +26,7 @@ type ITokenFieldCell interface {
 	SetCompletionDelay(value foundation.TimeInterval)
 	Delegate() TokenFieldCellDelegateWrapper
 	SetDelegate(value TokenFieldCellDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type TokenFieldCell struct {
@@ -115,4 +116,8 @@ func (t_ TokenFieldCell) SetDelegate(value TokenFieldCellDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ TokenFieldCell) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }

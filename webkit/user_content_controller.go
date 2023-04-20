@@ -19,8 +19,11 @@ type IUserContentController interface {
 	AddUserScript(userScript IUserScript)
 	RemoveAllUserScripts()
 	AddScriptMessageHandler_Name(scriptMessageHandler ScriptMessageHandler, name string)
+	AddScriptMessageHandler0_Name(scriptMessageHandler objc.IObject, name string)
 	AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string)
+	AddScriptMessageHandler0_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string)
 	AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string)
+	AddScriptMessageHandlerWithReply0_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string)
 	RemoveScriptMessageHandlerForName(name string)
 	RemoveScriptMessageHandlerForName_ContentWorld(name string, contentWorld IContentWorld)
 	RemoveAllScriptMessageHandlersFromContentWorld(contentWorld IContentWorld)
@@ -75,16 +78,28 @@ func (u_ UserContentController) AddScriptMessageHandler_Name(scriptMessageHandle
 	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandler:name:", po, name)
 }
 
+func (u_ UserContentController) AddScriptMessageHandler0_Name(scriptMessageHandler objc.IObject, name string) {
+	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandler:name:", scriptMessageHandler, name)
+}
+
 func (u_ UserContentController) AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string) {
 	po := ffi.CreateProtocol("WKScriptMessageHandler", scriptMessageHandler)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandler:contentWorld:name:", po, world, name)
 }
 
+func (u_ UserContentController) AddScriptMessageHandler0_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string) {
+	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandler:contentWorld:name:", scriptMessageHandler, world, name)
+}
+
 func (u_ UserContentController) AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string) {
 	po := ffi.CreateProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandlerWithReply:contentWorld:name:", po, contentWorld, name)
+}
+
+func (u_ UserContentController) AddScriptMessageHandlerWithReply0_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string) {
+	ffi.CallMethod[ffi.Void](u_, "addScriptMessageHandlerWithReply:contentWorld:name:", scriptMessageHandlerWithReply, contentWorld, name)
 }
 
 func (u_ UserContentController) RemoveScriptMessageHandlerForName(name string) {

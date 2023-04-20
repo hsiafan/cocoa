@@ -35,6 +35,7 @@ type ITabView interface {
 	TabViewItemAtPoint(point foundation.Point) TabViewItem
 	Delegate() TabViewDelegateWrapper
 	SetDelegate(value TabViewDelegate)
+	SetDelegate0(value objc.IObject)
 	NumberOfTabViewItems() int
 	TabViewItems() []TabViewItem
 	SetTabViewItems(value []ITabViewItem)
@@ -170,6 +171,10 @@ func (t_ TabView) SetDelegate(value TabViewDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ TabView) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }
 
 func (t_ TabView) NumberOfTabViewItems() int {

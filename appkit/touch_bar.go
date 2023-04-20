@@ -21,6 +21,7 @@ type ITouchBar interface {
 	ItemForIdentifier(identifier TouchBarItemIdentifier) TouchBarItem
 	Delegate() TouchBarDelegateWrapper
 	SetDelegate(value TouchBarDelegate)
+	SetDelegate0(value objc.IObject)
 	TemplateItems() foundation.Set
 	SetTemplateItems(value foundation.ISet)
 	DefaultItemIdentifiers() []TouchBarItemIdentifier
@@ -84,6 +85,10 @@ func (t_ TouchBar) SetDelegate(value TouchBarDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ TouchBar) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }
 
 func (t_ TouchBar) TemplateItems() foundation.Set {

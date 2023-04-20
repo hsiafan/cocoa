@@ -66,6 +66,7 @@ type IGestureRecognizer interface {
 	SetDelaysRotationEvents(value bool)
 	Delegate() GestureRecognizerDelegateWrapper
 	SetDelegate(value GestureRecognizerDelegate)
+	SetDelegate0(value objc.IObject)
 	PressureConfiguration() PressureConfiguration
 	SetPressureConfiguration(value IPressureConfiguration)
 	AllowedTouchTypes() TouchTypeMask
@@ -317,6 +318,10 @@ func (g_ GestureRecognizer) SetDelegate(value GestureRecognizerDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(g_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](g_, "setDelegate:", po)
+}
+
+func (g_ GestureRecognizer) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](g_, "setDelegate:", value)
 }
 
 func (g_ GestureRecognizer) PressureConfiguration() PressureConfiguration {

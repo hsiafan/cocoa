@@ -44,6 +44,7 @@ type IUserActivity interface {
 	SetExpirationDate(value IDate)
 	Delegate() UserActivityDelegateWrapper
 	SetDelegate(value UserActivityDelegate)
+	SetDelegate0(value objc.IObject)
 	SupportsContinuationStreams() bool
 	SetSupportsContinuationStreams(value bool)
 	WebpageURL() URL
@@ -216,6 +217,10 @@ func (u_ UserActivity) SetDelegate(value UserActivityDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(u_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](u_, "setDelegate:", po)
+}
+
+func (u_ UserActivity) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](u_, "setDelegate:", value)
 }
 
 func (u_ UserActivity) SupportsContinuationStreams() bool {

@@ -18,6 +18,7 @@ type IPort interface {
 	objc.IObject
 	Invalidate()
 	SetDelegate(anObject PortDelegate)
+	SetDelegate0(anObject objc.IObject)
 	Delegate() PortDelegateWrapper
 	RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
 	ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
@@ -68,6 +69,10 @@ func (p_ Port) SetDelegate(anObject PortDelegate) {
 	po := ffi.CreateProtocol("NSPortDelegate", anObject)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
+}
+
+func (p_ Port) SetDelegate0(anObject objc.IObject) {
+	ffi.CallMethod[ffi.Void](p_, "setDelegate:", anObject)
 }
 
 func (p_ Port) Delegate() PortDelegateWrapper {

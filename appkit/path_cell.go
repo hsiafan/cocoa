@@ -41,6 +41,7 @@ type IPathCell interface {
 	SetURL(value foundation.IURL)
 	Delegate() PathCellDelegateWrapper
 	SetDelegate(value PathCellDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type PathCell struct {
@@ -193,4 +194,8 @@ func (p_ PathCell) SetDelegate(value PathCellDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
+}
+
+func (p_ PathCell) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](p_, "setDelegate:", value)
 }

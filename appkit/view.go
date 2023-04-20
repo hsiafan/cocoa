@@ -172,6 +172,7 @@ type IView interface {
 	RegisterForDraggedTypes(newTypes []PasteboardType)
 	UnregisterDraggedTypes()
 	BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source DraggingSource) DraggingSession
+	BeginDraggingSessionWithItems0_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession
 	ShouldDelayWindowOrderingForEvent(event IEvent) bool
 	// deprecated
 	LockFocus()
@@ -1062,6 +1063,11 @@ func (v_ View) BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem,
 	po := ffi.CreateProtocol("NSDraggingSource", source)
 	defer po.Release()
 	rv := ffi.CallMethod[DraggingSession](v_, "beginDraggingSessionWithItems:event:source:", items, event, po)
+	return rv
+}
+
+func (v_ View) BeginDraggingSessionWithItems0_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession {
+	rv := ffi.CallMethod[DraggingSession](v_, "beginDraggingSessionWithItems:event:source:", items, event, source)
 	return rv
 }
 

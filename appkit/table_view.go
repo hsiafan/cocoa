@@ -117,6 +117,7 @@ type ITableView interface {
 	TextDidEndEditing(notification foundation.INotification)
 	DataSource() TableViewDataSourceWrapper
 	SetDataSource(value TableViewDataSource)
+	SetDataSource0(value objc.IObject)
 	UsesStaticContents() bool
 	SetUsesStaticContents(value bool)
 	RegisteredNibsByIdentifier() map[UserInterfaceItemIdentifier]Nib
@@ -183,6 +184,7 @@ type ITableView interface {
 	SetAutosaveName(value TableViewAutosaveName)
 	Delegate() TableViewDelegateWrapper
 	SetDelegate(value TableViewDelegate)
+	SetDelegate0(value objc.IObject)
 	HighlightedTableColumn() TableColumn
 	SetHighlightedTableColumn(value ITableColumn)
 	VerticalMotionCanBeginDrag() bool
@@ -599,6 +601,10 @@ func (t_ TableView) SetDataSource(value TableViewDataSource) {
 	ffi.CallMethod[ffi.Void](t_, "setDataSource:", po)
 }
 
+func (t_ TableView) SetDataSource0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDataSource:", value)
+}
+
 func (t_ TableView) UsesStaticContents() bool {
 	rv := ffi.CallMethod[bool](t_, "usesStaticContents")
 	return rv
@@ -905,6 +911,10 @@ func (t_ TableView) SetDelegate(value TableViewDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ TableView) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }
 
 func (t_ TableView) HighlightedTableColumn() TableColumn {

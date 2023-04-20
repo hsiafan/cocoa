@@ -35,6 +35,7 @@ type IPathControl interface {
 	SetURL(value foundation.IURL)
 	Delegate() PathControlDelegateWrapper
 	SetDelegate(value PathControlDelegate)
+	SetDelegate0(value objc.IObject)
 	AllowedTypes() []string
 	SetAllowedTypes(value []string)
 	ClickedPathItem() PathControlItem
@@ -150,6 +151,10 @@ func (p_ PathControl) SetDelegate(value PathControlDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
+}
+
+func (p_ PathControl) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](p_, "setDelegate:", value)
 }
 
 func (p_ PathControl) AllowedTypes() []string {

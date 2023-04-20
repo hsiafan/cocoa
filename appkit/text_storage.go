@@ -26,6 +26,7 @@ type ITextStorage interface {
 	EnsureAttributesAreFixedInRange(range_ foundation.Range)
 	Delegate() TextStorageDelegateWrapper
 	SetDelegate(value TextStorageDelegate)
+	SetDelegate0(value objc.IObject)
 	LayoutManagers() []LayoutManager
 	FixesAttributesLazily() bool
 	EditedMask() TextStorageEditActions
@@ -124,6 +125,10 @@ func (t_ TextStorage) SetDelegate(value TextStorageDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ TextStorage) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }
 
 func (t_ TextStorage) LayoutManagers() []LayoutManager {

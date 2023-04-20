@@ -34,6 +34,7 @@ type IAlert interface {
 	SetHelpAnchor(value HelpAnchorName)
 	Delegate() AlertDelegateWrapper
 	SetDelegate(value AlertDelegate)
+	SetDelegate0(value objc.IObject)
 	SuppressionButton() Button
 	ShowsSuppressionButton() bool
 	SetShowsSuppressionButton(value bool)
@@ -151,6 +152,10 @@ func (a_ Alert) SetDelegate(value AlertDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+}
+
+func (a_ Alert) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Alert) SuppressionButton() Button {

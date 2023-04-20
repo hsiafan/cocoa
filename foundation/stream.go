@@ -25,6 +25,7 @@ type IStream interface {
 	RemoveFromRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode)
 	Delegate() StreamDelegateWrapper
 	SetDelegate(value StreamDelegate)
+	SetDelegate0(value objc.IObject)
 	StreamStatus() StreamStatus
 	StreamError() Error
 }
@@ -104,6 +105,10 @@ func (s_ Stream) SetDelegate(value StreamDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+}
+
+func (s_ Stream) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
 }
 
 func (s_ Stream) StreamStatus() StreamStatus {

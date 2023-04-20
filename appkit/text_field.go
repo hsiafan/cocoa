@@ -64,6 +64,7 @@ type ITextField interface {
 	SetAutomaticTextCompletionEnabled(value bool)
 	Delegate() TextFieldDelegateWrapper
 	SetDelegate(value TextFieldDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type TextField struct {
@@ -324,4 +325,8 @@ func (t_ TextField) SetDelegate(value TextFieldDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ TextField) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }

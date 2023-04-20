@@ -35,6 +35,7 @@ type ISplitView interface {
 	SetIsPaneSplitter(flag bool)
 	Delegate() SplitViewDelegateWrapper
 	SetDelegate(value SplitViewDelegate)
+	SetDelegate0(value objc.IObject)
 	ArrangesAllSubviews() bool
 	SetArrangesAllSubviews(value bool)
 	ArrangedSubviews() []View
@@ -152,6 +153,10 @@ func (s_ SplitView) SetDelegate(value SplitViewDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+}
+
+func (s_ SplitView) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
 }
 
 func (s_ SplitView) ArrangesAllSubviews() bool {

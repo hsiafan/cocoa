@@ -34,6 +34,7 @@ type IDatePicker interface {
 	SetPresentsCalendarOverlay(value bool)
 	Delegate() DatePickerCellDelegateWrapper
 	SetDelegate(value DatePickerCellDelegate)
+	SetDelegate0(value objc.IObject)
 	DatePickerElements() DatePickerElementFlags
 	SetDatePickerElements(value DatePickerElementFlags)
 	Calendar() foundation.Calendar
@@ -162,6 +163,10 @@ func (d_ DatePicker) SetDelegate(value DatePickerCellDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](d_, "setDelegate:", po)
+}
+
+func (d_ DatePicker) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](d_, "setDelegate:", value)
 }
 
 func (d_ DatePicker) DatePickerElements() DatePickerElementFlags {

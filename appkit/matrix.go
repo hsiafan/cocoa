@@ -97,6 +97,7 @@ type IMatrix interface {
 	SetTabKeyTraversesCells(value bool)
 	Delegate() MatrixDelegateWrapper
 	SetDelegate(value MatrixDelegate)
+	SetDelegate0(value objc.IObject)
 	AutosizesCells() bool
 	SetAutosizesCells(value bool)
 	IsAutoscroll() bool
@@ -500,6 +501,10 @@ func (m_ Matrix) SetDelegate(value MatrixDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](m_, "setDelegate:", po)
+}
+
+func (m_ Matrix) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](m_, "setDelegate:", value)
 }
 
 func (m_ Matrix) AutosizesCells() bool {

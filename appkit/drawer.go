@@ -35,6 +35,8 @@ type IDrawer interface {
 	// deprecated
 	SetDelegate(value DrawerDelegate)
 	// deprecated
+	SetDelegate0(value objc.IObject)
+	// deprecated
 	State() int
 	// deprecated
 	ContentSize() foundation.Size
@@ -149,6 +151,11 @@ func (d_ Drawer) SetDelegate(value DrawerDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](d_, "setDelegate:", po)
+}
+
+// deprecated
+func (d_ Drawer) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](d_, "setDelegate:", value)
 }
 
 // deprecated

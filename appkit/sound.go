@@ -30,6 +30,7 @@ type ISound interface {
 	SetChannelMapping(channelMapping []objc.IObject)
 	Delegate() SoundDelegateWrapper
 	SetDelegate(value SoundDelegate)
+	SetDelegate0(value objc.IObject)
 	Name() SoundName
 	Volume() float32
 	SetVolume(value float32)
@@ -165,6 +166,10 @@ func (s_ Sound) SetDelegate(value SoundDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+}
+
+func (s_ Sound) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
 }
 
 func (s_ Sound) Name() SoundName {

@@ -19,15 +19,11 @@ type Method struct {
 	ClassMethod  bool // true if is class method
 	WeakProperty bool // if is a weak property setter
 	Deprecated   bool // if has been deprecated
+	Required     bool // If this method is required. only for protocol method.
 	InitMethod   bool // method that return instancetype
 
 	goFuncName string
 	identifier string
-
-	_canUseMessageSend     bool
-	_canUseMessageSendInit bool
-
-	Required bool // If this method is required. only for protocol method.
 }
 
 func (m *Method) needRelease() bool {
@@ -220,4 +216,40 @@ func (m *Method) GoImports() set.Set[string] {
 	}
 	imports.AddSet(m.ReturnType.GoImports())
 	return imports
+}
+
+func (m *Method) HasProtocolParam() bool {
+	for _, p := range m.Params {
+		switch p.Type.(type) {
+		case *typing.ProtocolType:
+			return true
+		}
+	}
+	return false
+}
+
+func (m *Method) ToProtocolParamAsObjectMethod() *Method {
+	var newParams = make([]*Param, len(m.Params))
+	for i, p := range m.Params {
+		switch p.Type.(type) {
+		case *typing.ProtocolType:
+			newParams[i] = &Param{
+				Name:      p.Name,
+				Type:      typing.Object,
+				FieldName: p.FieldName,
+			}
+		default:
+			newParams[i] = p
+		}
+	}
+	return &Method{
+		Name:         m.Name,
+		GoName:       m.GoName + "0",
+		Params:       newParams,
+		ReturnType:   m.ReturnType,
+		ClassMethod:  m.ClassMethod,
+		WeakProperty: m.WeakProperty,
+		Deprecated:   m.Deprecated,
+		Required:     m.Required,
+	}
 }

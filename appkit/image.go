@@ -81,6 +81,7 @@ type IImage interface {
 	SymbolConfiguration() ImageSymbolConfiguration
 	Delegate() ImageDelegateWrapper
 	SetDelegate(value ImageDelegate)
+	SetDelegate0(value objc.IObject)
 	Size() foundation.Size
 	SetSize(value foundation.Size)
 	IsTemplate() bool
@@ -445,6 +446,10 @@ func (i_ Image) SetDelegate(value ImageDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(i_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](i_, "setDelegate:", po)
+}
+
+func (i_ Image) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](i_, "setDelegate:", value)
 }
 
 func (i_ Image) Size() foundation.Size {

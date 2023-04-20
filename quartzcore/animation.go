@@ -23,6 +23,7 @@ type IAnimation interface {
 	SetTimingFunction(value IMediaTimingFunction)
 	Delegate() AnimationDelegateWrapper
 	SetDelegate(value AnimationDelegate)
+	SetDelegate0(value objc.IObject)
 	PreferredFrameRateRange() FrameRateRange
 	SetPreferredFrameRateRange(value FrameRateRange)
 }
@@ -99,6 +100,10 @@ func (a_ Animation) SetDelegate(value AnimationDelegate) {
 	po := ffi.CreateProtocol("CAAnimationDelegate", value)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+}
+
+func (a_ Animation) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Animation) PreferredFrameRateRange() FrameRateRange {

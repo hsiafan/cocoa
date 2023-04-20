@@ -37,6 +37,7 @@ type IAnimation interface {
 	SetFrameRate(value float32)
 	Delegate() AnimationDelegateWrapper
 	SetDelegate(value AnimationDelegate)
+	SetDelegate0(value objc.IObject)
 	IsAnimating() bool
 	CurrentProgress() AnimationProgress
 	SetCurrentProgress(value AnimationProgress)
@@ -163,6 +164,10 @@ func (a_ Animation) SetDelegate(value AnimationDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+}
+
+func (a_ Animation) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Animation) IsAnimating() bool {

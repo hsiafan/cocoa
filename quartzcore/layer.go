@@ -60,6 +60,7 @@ type ILayer interface {
 	ShouldArchiveValueForKey(key string) bool
 	Delegate() LayerDelegateWrapper
 	SetDelegate(value LayerDelegate)
+	SetDelegate0(value objc.IObject)
 	Contents() objc.Object
 	SetContents(value objc.IObject)
 	ContentsRect() coregraphics.Rect
@@ -153,6 +154,7 @@ type ILayer interface {
 	SetNeedsDisplayOnBoundsChange(value bool)
 	LayoutManager() LayoutManagerWrapper
 	SetLayoutManager(value LayoutManager)
+	SetLayoutManager0(value objc.IObject)
 	AutoresizingMask() AutoresizingMask
 	SetAutoresizingMask(value AutoresizingMask)
 	Constraints() []Constraint
@@ -422,6 +424,10 @@ func (l_ Layer) SetDelegate(value LayerDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(l_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](l_, "setDelegate:", po)
+}
+
+func (l_ Layer) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](l_, "setDelegate:", value)
 }
 
 func (l_ Layer) Contents() objc.Object {
@@ -843,6 +849,10 @@ func (l_ Layer) SetLayoutManager(value LayoutManager) {
 	po := ffi.CreateProtocol("CALayoutManager", value)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](l_, "setLayoutManager:", po)
+}
+
+func (l_ Layer) SetLayoutManager0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](l_, "setLayoutManager:", value)
 }
 
 func (l_ Layer) AutoresizingMask() AutoresizingMask {

@@ -164,6 +164,7 @@ type IWindow interface {
 	InitWithWindowRef(windowRef unsafe.Pointer) Window
 	Delegate() WindowDelegateWrapper
 	SetDelegate(value WindowDelegate)
+	SetDelegate0(value objc.IObject)
 	ContentViewController() ViewController
 	SetContentViewController(value IViewController)
 	ContentView() View
@@ -1030,6 +1031,10 @@ func (w_ Window) SetDelegate(value WindowDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](w_, "setDelegate:", po)
+}
+
+func (w_ Window) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](w_, "setDelegate:", value)
 }
 
 func (w_ Window) ContentViewController() ViewController {

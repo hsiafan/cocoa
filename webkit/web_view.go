@@ -73,8 +73,10 @@ type IWebView interface {
 	Configuration() WebViewConfiguration
 	UIDelegate() UIDelegateWrapper
 	SetUIDelegate(value UIDelegate)
+	SetUIDelegate0(value objc.IObject)
 	NavigationDelegate() NavigationDelegateWrapper
 	SetNavigationDelegate(value NavigationDelegate)
+	SetNavigationDelegate0(value objc.IObject)
 	IsLoading() bool
 	EstimatedProgress() float64
 	Title() string
@@ -367,6 +369,10 @@ func (w_ WebView) SetUIDelegate(value UIDelegate) {
 	ffi.CallMethod[ffi.Void](w_, "setUIDelegate:", po)
 }
 
+func (w_ WebView) SetUIDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](w_, "setUIDelegate:", value)
+}
+
 func (w_ WebView) NavigationDelegate() NavigationDelegateWrapper {
 	rv := ffi.CallMethod[NavigationDelegateWrapper](w_, "navigationDelegate")
 	return rv
@@ -377,6 +383,10 @@ func (w_ WebView) SetNavigationDelegate(value NavigationDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setNavigationDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](w_, "setNavigationDelegate:", po)
+}
+
+func (w_ WebView) SetNavigationDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](w_, "setNavigationDelegate:", value)
 }
 
 func (w_ WebView) IsLoading() bool {

@@ -45,6 +45,7 @@ type IComboBox interface {
 	SetNumberOfVisibleItems(value int)
 	DataSource() ComboBoxDataSourceWrapper
 	SetDataSource(value ComboBoxDataSource)
+	SetDataSource0(value objc.IObject)
 	UsesDataSource() bool
 	SetUsesDataSource(value bool)
 	ObjectValues() []objc.Object
@@ -227,6 +228,10 @@ func (c_ ComboBox) SetDataSource(value ComboBoxDataSource) {
 	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](c_, "setDataSource:", po)
+}
+
+func (c_ ComboBox) SetDataSource0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](c_, "setDataSource:", value)
 }
 
 func (c_ ComboBox) UsesDataSource() bool {

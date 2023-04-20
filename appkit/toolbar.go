@@ -25,6 +25,7 @@ type IToolbar interface {
 	ValidateVisibleItems()
 	Delegate() ToolbarDelegateWrapper
 	SetDelegate(value ToolbarDelegate)
+	SetDelegate0(value objc.IObject)
 	Identifier() ToolbarIdentifier
 	IsVisible() bool
 	SetVisible(value bool)
@@ -133,6 +134,10 @@ func (t_ Toolbar) SetDelegate(value ToolbarDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ Toolbar) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }
 
 func (t_ Toolbar) Identifier() ToolbarIdentifier {

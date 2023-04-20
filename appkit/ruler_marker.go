@@ -34,6 +34,7 @@ type IRulerMarker interface {
 	SetMarkerLocation(value float64)
 	RepresentedObject() CopyingWrapper
 	SetRepresentedObject(value Copying)
+	SetRepresentedObject0(value objc.IObject)
 	IsDragging() bool
 }
 
@@ -150,6 +151,10 @@ func (r_ RulerMarker) SetRepresentedObject(value Copying) {
 	po := ffi.CreateProtocol("NSCopying", value)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](r_, "setRepresentedObject:", po)
+}
+
+func (r_ RulerMarker) SetRepresentedObject0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](r_, "setRepresentedObject:", value)
 }
 
 func (r_ RulerMarker) IsDragging() bool {

@@ -88,6 +88,7 @@ type IText interface {
 	SetHorizontallyResizable(value bool)
 	Delegate() TextDelegateWrapper
 	SetDelegate(value TextDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type Text struct {
@@ -430,4 +431,8 @@ func (t_ Text) SetDelegate(value TextDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+}
+
+func (t_ Text) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
 }

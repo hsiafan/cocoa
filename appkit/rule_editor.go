@@ -35,6 +35,7 @@ type IRuleEditor interface {
 	PredicateForRow(row int) foundation.Predicate
 	Delegate() RuleEditorDelegateWrapper
 	SetDelegate(value RuleEditorDelegate)
+	SetDelegate0(value objc.IObject)
 	IsEditable() bool
 	SetEditable(value bool)
 	NestingMode() RuleEditorNestingMode
@@ -174,6 +175,10 @@ func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(r_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](r_, "setDelegate:", po)
+}
+
+func (r_ RuleEditor) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](r_, "setDelegate:", value)
 }
 
 func (r_ RuleEditor) IsEditable() bool {

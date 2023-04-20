@@ -61,6 +61,7 @@ type IDocument interface {
 	PrepareSavePanel(savePanel ISavePanel) bool
 	UpdateUserActivityState(activity foundation.IUserActivity)
 	ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool
+	ValidateUserInterfaceItem0(item objc.IObject) bool
 	PerformSynchronousFileAccessUsingBlock(block func())
 	PerformAsynchronousFileAccessUsingBlock(block func(param1 func()))
 	PerformActivityWithSynchronousWaiting_UsingBlock(waitSynchronously bool, block func(param1 func()))
@@ -439,6 +440,11 @@ func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bo
 	po := ffi.CreateProtocol("NSValidatedUserInterfaceItem", item)
 	defer po.Release()
 	rv := ffi.CallMethod[bool](d_, "validateUserInterfaceItem:", po)
+	return rv
+}
+
+func (d_ Document) ValidateUserInterfaceItem0(item objc.IObject) bool {
+	rv := ffi.CallMethod[bool](d_, "validateUserInterfaceItem:", item)
 	return rv
 }
 

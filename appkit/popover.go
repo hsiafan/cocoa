@@ -38,6 +38,7 @@ type IPopover interface {
 	IsDetached() bool
 	Delegate() PopoverDelegateWrapper
 	SetDelegate(value PopoverDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type Popover struct {
@@ -161,4 +162,8 @@ func (p_ Popover) SetDelegate(value PopoverDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
+}
+
+func (p_ Popover) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](p_, "setDelegate:", value)
 }

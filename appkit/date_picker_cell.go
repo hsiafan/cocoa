@@ -46,6 +46,7 @@ type IDatePickerCell interface {
 	SetMaxDate(value foundation.IDate)
 	Delegate() DatePickerCellDelegateWrapper
 	SetDelegate(value DatePickerCellDelegate)
+	SetDelegate0(value objc.IObject)
 }
 
 type DatePickerCell struct {
@@ -215,4 +216,8 @@ func (d_ DatePickerCell) SetDelegate(value DatePickerCellDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](d_, "setDelegate:", po)
+}
+
+func (d_ DatePickerCell) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](d_, "setDelegate:", value)
 }

@@ -21,6 +21,7 @@ type ISharingServicePicker interface {
 	ShowRelativeToRect_OfView_PreferredEdge(rect foundation.Rect, view IView, preferredEdge foundation.RectEdge)
 	Delegate() SharingServicePickerDelegateWrapper
 	SetDelegate(value SharingServicePickerDelegate)
+	SetDelegate0(value objc.IObject)
 	StandardShareMenuItem() MenuItem
 }
 
@@ -73,6 +74,10 @@ func (s_ SharingServicePicker) SetDelegate(value SharingServicePickerDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+}
+
+func (s_ SharingServicePicker) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
 }
 
 func (s_ SharingServicePicker) StandardShareMenuItem() MenuItem {

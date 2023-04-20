@@ -22,6 +22,7 @@ type ICandidateListTouchBarItem interface {
 	SetClient(value IView)
 	Delegate() CandidateListTouchBarItemDelegateWrapper
 	SetDelegate(value CandidateListTouchBarItemDelegate)
+	SetDelegate0(value objc.IObject)
 	AllowsTextInputContextCandidates() bool
 	SetAllowsTextInputContextCandidates(value bool)
 	AllowsCollapsing() bool
@@ -90,6 +91,10 @@ func (c_ CandidateListTouchBarItem) SetDelegate(value CandidateListTouchBarItemD
 	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](c_, "setDelegate:", po)
+}
+
+func (c_ CandidateListTouchBarItem) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](c_, "setDelegate:", value)
 }
 
 func (c_ CandidateListTouchBarItem) AllowsTextInputContextCandidates() bool {

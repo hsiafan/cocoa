@@ -36,6 +36,7 @@ type IStackView interface {
 	SetHuggingPriority_ForOrientation(huggingPriority LayoutPriority, orientation LayoutConstraintOrientation)
 	Delegate() StackViewDelegateWrapper
 	SetDelegate(value StackViewDelegate)
+	SetDelegate0(value objc.IObject)
 	ArrangedSubviews() []View
 	Views() []View
 	DetachedViews() []View
@@ -176,6 +177,10 @@ func (s_ StackView) SetDelegate(value StackViewDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+}
+
+func (s_ StackView) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
 }
 
 func (s_ StackView) ArrangedSubviews() []View {

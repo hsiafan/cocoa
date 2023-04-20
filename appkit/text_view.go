@@ -82,6 +82,7 @@ type ITextView interface {
 	OrderFrontSharingServicePicker(sender objc.IObject)
 	DragImageForSelectionWithEvent_Origin(event IEvent, origin *foundation.Point) Image
 	DragOperationForDraggingInfo_Type(dragInfo DraggingInfo, type_ PasteboardType) DragOperation
+	DragOperationForDraggingInfo0_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation
 	DragSelectionWithEvent_Offset_SlideBack(event IEvent, mouseOffset foundation.Size, slideBack bool) bool
 	StartSpeaking(sender objc.IObject)
 	StopSpeaking(sender objc.IObject)
@@ -529,6 +530,11 @@ func (t_ TextView) DragOperationForDraggingInfo_Type(dragInfo DraggingInfo, type
 	po := ffi.CreateProtocol("NSDraggingInfo", dragInfo)
 	defer po.Release()
 	rv := ffi.CallMethod[DragOperation](t_, "dragOperationForDraggingInfo:type:", po, type_)
+	return rv
+}
+
+func (t_ TextView) DragOperationForDraggingInfo0_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation {
+	rv := ffi.CallMethod[DragOperation](t_, "dragOperationForDraggingInfo:type:", dragInfo, type_)
 	return rv
 }
 

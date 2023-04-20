@@ -101,6 +101,7 @@ type IBrowser interface {
 	SetTakesTitleFromPreviousColumn(value bool)
 	Delegate() BrowserDelegateWrapper
 	SetDelegate(value BrowserDelegate)
+	SetDelegate0(value objc.IObject)
 	CellPrototype() objc.Object
 	SetCellPrototype(value objc.IObject)
 	AllowsBranchSelection() bool
@@ -525,6 +526,10 @@ func (b_ Browser) SetDelegate(value BrowserDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(b_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](b_, "setDelegate:", po)
+}
+
+func (b_ Browser) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](b_, "setDelegate:", value)
 }
 
 func (b_ Browser) CellPrototype() objc.Object {

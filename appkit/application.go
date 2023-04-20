@@ -42,8 +42,10 @@ type IApplication interface {
 	CancelUserAttentionRequest(request int)
 	ReplyToOpenOrPrint(reply ApplicationDelegateReply)
 	RegisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching)
+	RegisterUserInterfaceItemSearchHandler0(handler objc.IObject)
 	SearchString_InUserInterfaceItemString_SearchRange_FoundRange(searchString string, stringToSearch string, searchRange foundation.Range, foundRange *foundation.Range) bool
 	UnregisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching)
+	UnregisterUserInterfaceItemSearchHandler0(handler objc.IObject)
 	ShowHelp(sender objc.IObject)
 	ActivateContextHelpMode(sender objc.IObject)
 	HideOtherApplications(sender objc.IObject)
@@ -99,6 +101,7 @@ type IApplication interface {
 	Application_DelegateHandlesKey(sender IApplication, key string) bool
 	Delegate() ApplicationDelegateWrapper
 	SetDelegate(value ApplicationDelegate)
+	SetDelegate0(value objc.IObject)
 	CurrentEvent() Event
 	IsRunning() bool
 	IsActive() bool
@@ -273,6 +276,10 @@ func (a_ Application) RegisterUserInterfaceItemSearchHandler(handler UserInterfa
 	ffi.CallMethod[ffi.Void](a_, "registerUserInterfaceItemSearchHandler:", po)
 }
 
+func (a_ Application) RegisterUserInterfaceItemSearchHandler0(handler objc.IObject) {
+	ffi.CallMethod[ffi.Void](a_, "registerUserInterfaceItemSearchHandler:", handler)
+}
+
 func (a_ Application) SearchString_InUserInterfaceItemString_SearchRange_FoundRange(searchString string, stringToSearch string, searchRange foundation.Range, foundRange *foundation.Range) bool {
 	rv := ffi.CallMethod[bool](a_, "searchString:inUserInterfaceItemString:searchRange:foundRange:", searchString, stringToSearch, searchRange, foundRange)
 	return rv
@@ -282,6 +289,10 @@ func (a_ Application) UnregisterUserInterfaceItemSearchHandler(handler UserInter
 	po := ffi.CreateProtocol("NSUserInterfaceItemSearching", handler)
 	defer po.Release()
 	ffi.CallMethod[ffi.Void](a_, "unregisterUserInterfaceItemSearchHandler:", po)
+}
+
+func (a_ Application) UnregisterUserInterfaceItemSearchHandler0(handler objc.IObject) {
+	ffi.CallMethod[ffi.Void](a_, "unregisterUserInterfaceItemSearchHandler:", handler)
 }
 
 func (a_ Application) ShowHelp(sender objc.IObject) {
@@ -502,6 +513,10 @@ func (a_ Application) SetDelegate(value ApplicationDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+}
+
+func (a_ Application) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Application) CurrentEvent() Event {

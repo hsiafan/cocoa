@@ -152,6 +152,7 @@ type ILayoutManager interface {
 	ShowPackedGlyphs_Length_GlyphRange_AtPoint_Font_Color_PrintingAdjustment(glyphs *byte, glyphLen uint, glyphRange foundation.Range, point foundation.Point, font IFont, color IColor, printingAdjustment foundation.Size)
 	Delegate() LayoutManagerDelegateWrapper
 	SetDelegate(value LayoutManagerDelegate)
+	SetDelegate0(value objc.IObject)
 	TextStorage() TextStorage
 	SetTextStorage(value ITextStorage)
 	AllowsNonContiguousLayout() bool
@@ -750,6 +751,10 @@ func (l_ LayoutManager) SetDelegate(value LayoutManagerDelegate) {
 	defer po.Release()
 	objc.SetAssociatedObject(l_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	ffi.CallMethod[ffi.Void](l_, "setDelegate:", po)
+}
+
+func (l_ LayoutManager) SetDelegate0(value objc.IObject) {
+	ffi.CallMethod[ffi.Void](l_, "setDelegate:", value)
 }
 
 func (l_ LayoutManager) TextStorage() TextStorage {
