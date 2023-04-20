@@ -6,27 +6,33 @@
     "values": [
         {
             "name": "NSTextLayoutManagerSegmentOptionsHeadSegmentExtended",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "4"
         },
         {
             "name": "NSTextLayoutManagerSegmentOptionsMiddleFragmentsExcluded",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         },
         {
             "name": "NSTextLayoutManagerSegmentOptionsRangeNotRequired",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextLayoutManagerSegmentOptionsTailSegmentExtended",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "8"
         },
         {
             "name": "NSTextLayoutManagerSegmentOptionsUpstreamAffinity",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "16"
         },
         {
             "name": "NSTextLayoutManagerSegmentOptionsNone",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         }
     ]
 }

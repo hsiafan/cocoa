@@ -6,23 +6,28 @@
     "values": [
         {
             "name": "NSTextSelectionGranularityCharacter",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         },
         {
             "name": "NSTextSelectionGranularityWord",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextSelectionGranularityParagraph",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         },
         {
             "name": "NSTextSelectionGranularityLine",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "3"
         },
         {
             "name": "NSTextSelectionGranularitySentence",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "4"
         }
     ]
 }

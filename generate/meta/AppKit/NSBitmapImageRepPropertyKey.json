@@ -76,6 +76,7 @@
         },
         {
             "name": "NSImageIPTCData",
+            "value": "NSImageIPTCData",
             "module": "AppKit"
         }
     ]

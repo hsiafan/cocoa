@@ -6,11 +6,13 @@
     "values": [
         {
             "name": "NSTextSelectionNavigationWritingDirectionLeftToRight",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         },
         {
             "name": "NSTextSelectionNavigationWritingDirectionRightToLeft",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         }
     ]
 }

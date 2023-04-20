@@ -6,14 +6,17 @@
     "values": [
         {
             "name": "WKPermissionDecisionDeny",
+            "value": "2",
             "module": "WebKit"
         },
         {
             "name": "WKPermissionDecisionGrant",
+            "value": "1",
             "module": "WebKit"
         },
         {
             "name": "WKPermissionDecisionPrompt",
+            "value": "0",
             "module": "WebKit"
         }
     ]

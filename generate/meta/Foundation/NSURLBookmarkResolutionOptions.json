@@ -21,6 +21,7 @@
         },
         {
             "name": "NSURLBookmarkResolutionWithoutImplicitStartAccessing",
+            "value": "32768",
             "module": "Foundation"
         }
     ]

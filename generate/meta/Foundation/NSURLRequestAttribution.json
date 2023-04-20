@@ -6,10 +6,12 @@
     "values": [
         {
             "name": "NSURLRequestAttributionDeveloper",
+            "value": "0",
             "module": "Foundation"
         },
         {
             "name": "NSURLRequestAttributionUser",
+            "value": "1",
             "module": "Foundation"
         }
     ]

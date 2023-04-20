@@ -6,31 +6,38 @@
     "values": [
         {
             "name": "NSTextSelectionNavigationDestinationCharacter",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         },
         {
             "name": "NSTextSelectionNavigationDestinationWord",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextSelectionNavigationDestinationLine",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         },
         {
             "name": "NSTextSelectionNavigationDestinationSentence",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "3"
         },
         {
             "name": "NSTextSelectionNavigationDestinationParagraph",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "4"
         },
         {
             "name": "NSTextSelectionNavigationDestinationContainer",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "5"
         },
         {
             "name": "NSTextSelectionNavigationDestinationDocument",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "6"
         }
     ]
 }

@@ -15,8 +15,24 @@ const ContentModeDesktop ContentMode = 2
 const ContentModeMobile ContentMode = 1
 
 type FullscreenState int
+
+const FullscreenStateEnteringFullscreen FullscreenState = 1
+const FullscreenStateExitingFullscreen FullscreenState = 3
+const FullscreenStateInFullscreen FullscreenState = 2
+const FullscreenStateNotInFullscreen FullscreenState = 0
+
 type MediaCaptureState int
+
+const MediaCaptureStateActive MediaCaptureState = 1
+const MediaCaptureStateMuted MediaCaptureState = 2
+const MediaCaptureStateNone MediaCaptureState = 0
+
 type MediaCaptureType int
+
+const MediaCaptureTypeCamera MediaCaptureType = 0
+const MediaCaptureTypeCameraAndMicrophone MediaCaptureType = 2
+const MediaCaptureTypeMicrophone MediaCaptureType = 1
+
 type MediaPlaybackState int
 
 const MediaPlaybackStateNone MediaPlaybackState = 0
@@ -46,6 +62,11 @@ const NavigationTypeFormResubmitted NavigationType = 4
 const NavigationTypeOther NavigationType = -1
 
 type PermissionDecision int
+
+const PermissionDecisionDeny PermissionDecision = 2
+const PermissionDecisionGrant PermissionDecision = 1
+const PermissionDecisionPrompt PermissionDecision = 0
+
 type UserInterfaceDirectionPolicy int
 
 const UserInterfaceDirectionPolicyContent UserInterfaceDirectionPolicy = 0

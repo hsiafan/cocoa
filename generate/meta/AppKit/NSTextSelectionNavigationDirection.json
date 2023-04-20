@@ -6,27 +6,33 @@
     "values": [
         {
             "name": "NSTextSelectionNavigationDirectionForward",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         },
         {
             "name": "NSTextSelectionNavigationDirectionBackward",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextSelectionNavigationDirectionLeft",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "3"
         },
         {
             "name": "NSTextSelectionNavigationDirectionRight",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         },
         {
             "name": "NSTextSelectionNavigationDirectionUp",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "4"
         },
         {
             "name": "NSTextSelectionNavigationDirectionDown",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "5"
         }
     ]
 }

@@ -6,15 +6,18 @@
     "values": [
         {
             "name": "NSColorWellStyleDefault",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         },
         {
             "name": "NSColorWellStyleMinimal",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSColorWellStyleExpanded",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         }
     ]
 }

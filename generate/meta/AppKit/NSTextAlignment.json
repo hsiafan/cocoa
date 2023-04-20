@@ -12,11 +12,13 @@
         {
             "name": "NSTextAlignmentRight",
             "value": "1",
+            "arm64_value": "2",
             "module": "AppKit"
         },
         {
             "name": "NSTextAlignmentCenter",
             "value": "2",
+            "arm64_value": "1",
             "module": "AppKit"
         },
         {

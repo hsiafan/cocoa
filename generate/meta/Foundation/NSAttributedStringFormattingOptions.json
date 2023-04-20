@@ -6,10 +6,12 @@
     "values": [
         {
             "name": "NSAttributedStringFormattingApplyReplacementIndexAttribute",
+            "value": "2",
             "module": "Foundation"
         },
         {
             "name": "NSAttributedStringFormattingInsertArgumentAttributesWithoutMerging",
+            "value": "1",
             "module": "Foundation"
         }
     ]

@@ -152,10 +152,11 @@ func getEnumInfo(ai *data.Alias) *gen.EnumInfo {
 	var enumValues []*gen.EnumValue
 	for _, ev := range ai.Values {
 		enumValues = append(enumValues, &gen.EnumValue{
-			Name:   ev.Name,
-			GoName: toGoSymbolName(ev.Name),
-			Value:  ev.Value,
-			Module: typing.FindModule(ev.Module),
+			Name:       ev.Name,
+			GoName:     toGoSymbolName(ev.Name),
+			Value:      ev.Value,
+			Arm64Value: ev.Arm64Value,
+			Module:     typing.FindModule(ev.Module),
 		})
 	}
 	ei := &gen.EnumInfo{

@@ -46,7 +46,23 @@ const AttributedStringEnumerationReverse AttributedStringEnumerationOptions = 2
 const AttributedStringEnumerationLongestEffectiveRangeNotRequired AttributedStringEnumerationOptions = 1048576
 
 type AttributedStringFormattingOptions uint
+
+const AttributedStringFormattingApplyReplacementIndexAttribute AttributedStringFormattingOptions = 2
+const AttributedStringFormattingInsertArgumentAttributesWithoutMerging AttributedStringFormattingOptions = 1
+
 type AttributedStringKey string
+
+const MarkdownSourcePositionAttributeName AttributedStringKey = "NSMarkdownSourcePosition"
+const AlternateDescriptionAttributeName AttributedStringKey = "NSAlternateDescription"
+const ImageURLAttributeName AttributedStringKey = "NSImageURL"
+const InflectionAlternativeAttributeName AttributedStringKey = "NSInflectionAlternative"
+const InflectionRuleAttributeName AttributedStringKey = "NSInflect"
+const InlinePresentationIntentAttributeName AttributedStringKey = "NSInlinePresentationIntent"
+const LanguageIdentifierAttributeName AttributedStringKey = "NSLanguage"
+const MorphologyAttributeName AttributedStringKey = "NSMorphology"
+const PresentationIntentAttributeName AttributedStringKey = "NSPresentationIntent"
+const ReplacementIndexAttributeName AttributedStringKey = "NSReplacementIndex"
+
 type ByteCountFormatterCountStyle int
 
 const ByteCountFormatterCountStyleFile ByteCountFormatterCountStyle = 0
@@ -436,6 +452,7 @@ const ProgressFileOperationKindDecompressingAfterDownloading ProgressFileOperati
 const ProgressFileOperationKindDownloading ProgressFileOperationKind = "NSProgressFileOperationKindDownloading"
 const ProgressFileOperationKindUploading ProgressFileOperationKind = "NSProgressFileOperationKindUploading"
 const ProgressFileOperationKindReceiving ProgressFileOperationKind = "NSProgressFileOperationKindReceiving"
+const ProgressFileOperationKindDuplicating ProgressFileOperationKind = "NSProgressFileOperationKindDuplicating"
 
 type ProgressKind string
 
@@ -607,6 +624,7 @@ const URLBookmarkCreationMinimalBookmark URLBookmarkCreationOptions = 512
 const URLBookmarkCreationSuitableForBookmarkFile URLBookmarkCreationOptions = 1024
 const URLBookmarkCreationWithSecurityScope URLBookmarkCreationOptions = 2048
 const URLBookmarkCreationSecurityScopeAllowOnlyReadAccess URLBookmarkCreationOptions = 4096
+const URLBookmarkCreationWithoutImplicitSecurityScope URLBookmarkCreationOptions = 536870912
 
 type URLBookmarkFileCreationOptions uint
 type URLBookmarkResolutionOptions uint
@@ -614,8 +632,13 @@ type URLBookmarkResolutionOptions uint
 const URLBookmarkResolutionWithoutUI URLBookmarkResolutionOptions = 256
 const URLBookmarkResolutionWithoutMounting URLBookmarkResolutionOptions = 512
 const URLBookmarkResolutionWithSecurityScope URLBookmarkResolutionOptions = 1024
+const URLBookmarkResolutionWithoutImplicitStartAccessing URLBookmarkResolutionOptions = 32768
 
 type URLRequestAttribution uint
+
+const URLRequestAttributionDeveloper URLRequestAttribution = 0
+const URLRequestAttributionUser URLRequestAttribution = 1
+
 type URLRequestCachePolicy uint
 
 const URLRequestUseProtocolCachePolicy URLRequestCachePolicy = 0

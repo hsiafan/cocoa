@@ -105,9 +105,10 @@ func (a *Alias) FullName() string {
 
 // EnumValue the enum name and value
 type EnumValue struct {
-	Name   string `json:"name,omitempty"`   // the objc enum name
-	Value  string `json:"value,omitempty"`  // the enum value
-	Module string `json:"module,omitempty"` // the module enum value defined in
+	Name       string `json:"name,omitempty"`        // the objc enum name
+	Value      string `json:"value,omitempty"`       // the enum value. if has different values in different arch, this value is for amd64.
+	Arm64Value string `json:"arm64_value,omitempty"` // some may have different enum value in arm64
+	Module     string `json:"module,omitempty"`      // the module enum value defined in
 }
 
 type Property struct {

@@ -6,11 +6,13 @@
     "values": [
         {
             "name": "NSComboButtonStyleSplit",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         },
         {
             "name": "NSComboButtonStyleUnified",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         }
     ]
 }

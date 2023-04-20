@@ -6,18 +6,22 @@
     "values": [
         {
             "name": "WKFullscreenStateEnteringFullscreen",
+            "value": "1",
             "module": "WebKit"
         },
         {
             "name": "WKFullscreenStateExitingFullscreen",
+            "value": "3",
             "module": "WebKit"
         },
         {
             "name": "WKFullscreenStateInFullscreen",
+            "value": "2",
             "module": "WebKit"
         },
         {
             "name": "WKFullscreenStateNotInFullscreen",
+            "value": "0",
             "module": "WebKit"
         }
     ]

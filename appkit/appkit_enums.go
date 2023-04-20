@@ -172,6 +172,7 @@ const ImageInterlaced BitmapImageRepPropertyKey = "NSImageInterlaced"
 const ImageLoopCount BitmapImageRepPropertyKey = "NSImageLoopCount"
 const ImageProgressive BitmapImageRepPropertyKey = "NSImageProgressive"
 const ImageRGBColorTable BitmapImageRepPropertyKey = "NSImageRGBColorTable"
+const ImageIPTCData BitmapImageRepPropertyKey = "NSImageIPTCData"
 
 type BorderType uint
 
@@ -393,7 +394,16 @@ const ColorTypePattern ColorType = 1
 const ColorTypeCatalog ColorType = 2
 
 type ColorWellStyle int
+
+const ColorWellStyleDefault ColorWellStyle = 0
+const ColorWellStyleMinimal ColorWellStyle = 1
+const ColorWellStyleExpanded ColorWellStyle = 2
+
 type ComboButtonStyle int
+
+const ComboButtonStyleSplit ComboButtonStyle = 0
+const ComboButtonStyleUnified ComboButtonStyle = 1
+
 type CompositingOperation uint
 
 const CompositingOperationClear CompositingOperation = 0
@@ -802,6 +812,12 @@ const FontWeightHeavy FontWeight = 0.5600000023841858
 const FontWeightBlack FontWeight = 0.6200000047683716
 
 type FontWidth float64
+
+const FontWidthCompressed FontWidth = -0.3
+const FontWidthCondensed FontWidth = -0.2
+const FontWidthExpanded FontWidth = 0.2
+const FontWidthStandard FontWidth = 0.0
+
 type GestureRecognizerState int
 
 const GestureRecognizerStatePossible GestureRecognizerState = 0
@@ -1043,10 +1059,6 @@ const ImageNameUserGroup ImageName = "NSUserGroup"
 const ImageNameUserGuest ImageName = "NSUserGuest"
 
 type ImageResizingMode int
-
-const ImageResizingModeTile ImageResizingMode = 1
-const ImageResizingModeStretch ImageResizingMode = 0
-
 type ImageScaling uint
 
 const ImageScaleProportionallyDown ImageScaling = 0
@@ -1699,8 +1711,6 @@ const TableViewStylePlain TableViewStyle = 4
 type TextAlignment int
 
 const TextAlignmentLeft TextAlignment = 0
-const TextAlignmentRight TextAlignment = 1
-const TextAlignmentCenter TextAlignment = 2
 const TextAlignmentJustified TextAlignment = 3
 const TextAlignmentNatural TextAlignment = 4
 
@@ -1751,9 +1761,35 @@ const TextFieldRoundedBezel TextFieldBezelStyle = 1
 
 type TextInputSourceIdentifier string
 type TextLayoutFragmentEnumerationOptions uint
+
+const TextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment TextLayoutFragmentEnumerationOptions = 8
+const TextLayoutFragmentEnumerationOptionsEnsuresLayout TextLayoutFragmentEnumerationOptions = 4
+const TextLayoutFragmentEnumerationOptionsEstimatesSize TextLayoutFragmentEnumerationOptions = 2
+const TextLayoutFragmentEnumerationOptionsReverse TextLayoutFragmentEnumerationOptions = 1
+const TextLayoutFragmentEnumerationOptionsNone TextLayoutFragmentEnumerationOptions = 0
+
 type TextLayoutFragmentState uint
+
+const TextLayoutFragmentStateCalculatedUsageBounds TextLayoutFragmentState = 2
+const TextLayoutFragmentStateEstimatedUsageBounds TextLayoutFragmentState = 1
+const TextLayoutFragmentStateLayoutAvailable TextLayoutFragmentState = 3
+const TextLayoutFragmentStateNone TextLayoutFragmentState = 0
+
 type TextLayoutManagerSegmentOptions uint
+
+const TextLayoutManagerSegmentOptionsHeadSegmentExtended TextLayoutManagerSegmentOptions = 4
+const TextLayoutManagerSegmentOptionsMiddleFragmentsExcluded TextLayoutManagerSegmentOptions = 2
+const TextLayoutManagerSegmentOptionsRangeNotRequired TextLayoutManagerSegmentOptions = 1
+const TextLayoutManagerSegmentOptionsTailSegmentExtended TextLayoutManagerSegmentOptions = 8
+const TextLayoutManagerSegmentOptionsUpstreamAffinity TextLayoutManagerSegmentOptions = 16
+const TextLayoutManagerSegmentOptionsNone TextLayoutManagerSegmentOptions = 0
+
 type TextLayoutManagerSegmentType int
+
+const TextLayoutManagerSegmentTypeHighlight TextLayoutManagerSegmentType = 2
+const TextLayoutManagerSegmentTypeSelection TextLayoutManagerSegmentType = 1
+const TextLayoutManagerSegmentTypeStandard TextLayoutManagerSegmentType = 0
+
 type TextLayoutOrientation int
 
 const TextLayoutOrientationHorizontal TextLayoutOrientation = 0
@@ -1784,11 +1820,48 @@ type TextListOptions uint
 const TextListPrependEnclosingMarker TextListOptions = 1
 
 type TextSelectionAffinity int
+
+const TextSelectionAffinityDownstream TextSelectionAffinity = 1
+const TextSelectionAffinityUpstream TextSelectionAffinity = 0
+
 type TextSelectionGranularity int
+
+const TextSelectionGranularityCharacter TextSelectionGranularity = 0
+const TextSelectionGranularityWord TextSelectionGranularity = 1
+const TextSelectionGranularityParagraph TextSelectionGranularity = 2
+const TextSelectionGranularityLine TextSelectionGranularity = 3
+const TextSelectionGranularitySentence TextSelectionGranularity = 4
+
 type TextSelectionNavigationDestination int
+
+const TextSelectionNavigationDestinationCharacter TextSelectionNavigationDestination = 0
+const TextSelectionNavigationDestinationWord TextSelectionNavigationDestination = 1
+const TextSelectionNavigationDestinationLine TextSelectionNavigationDestination = 2
+const TextSelectionNavigationDestinationSentence TextSelectionNavigationDestination = 3
+const TextSelectionNavigationDestinationParagraph TextSelectionNavigationDestination = 4
+const TextSelectionNavigationDestinationContainer TextSelectionNavigationDestination = 5
+const TextSelectionNavigationDestinationDocument TextSelectionNavigationDestination = 6
+
 type TextSelectionNavigationDirection int
+
+const TextSelectionNavigationDirectionForward TextSelectionNavigationDirection = 0
+const TextSelectionNavigationDirectionBackward TextSelectionNavigationDirection = 1
+const TextSelectionNavigationDirectionLeft TextSelectionNavigationDirection = 3
+const TextSelectionNavigationDirectionRight TextSelectionNavigationDirection = 2
+const TextSelectionNavigationDirectionUp TextSelectionNavigationDirection = 4
+const TextSelectionNavigationDirectionDown TextSelectionNavigationDirection = 5
+
 type TextSelectionNavigationModifier uint
+
+const TextSelectionNavigationModifierExtend TextSelectionNavigationModifier = 1
+const TextSelectionNavigationModifierMultiple TextSelectionNavigationModifier = 4
+const TextSelectionNavigationModifierVisual TextSelectionNavigationModifier = 2
+
 type TextSelectionNavigationWritingDirection int
+
+const TextSelectionNavigationWritingDirectionLeftToRight TextSelectionNavigationWritingDirection = 0
+const TextSelectionNavigationWritingDirectionRightToLeft TextSelectionNavigationWritingDirection = 1
+
 type TextStorageEditActions uint
 
 const TextStorageEditedAttributes TextStorageEditActions = 1

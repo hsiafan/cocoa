@@ -6,19 +6,23 @@
     "values": [
         {
             "name": "NSTextLayoutFragmentStateCalculatedUsageBounds",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         },
         {
             "name": "NSTextLayoutFragmentStateEstimatedUsageBounds",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextLayoutFragmentStateLayoutAvailable",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "3"
         },
         {
             "name": "NSTextLayoutFragmentStateNone",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         }
     ]
 }

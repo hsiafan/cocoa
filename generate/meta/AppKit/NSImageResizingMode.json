@@ -7,11 +7,13 @@
         {
             "name": "NSImageResizingModeTile",
             "value": "1",
+            "arm64_value": "0",
             "module": "AppKit"
         },
         {
             "name": "NSImageResizingModeStretch",
             "value": "0",
+            "arm64_value": "1",
             "module": "AppKit"
         }
     ]

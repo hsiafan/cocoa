@@ -6,11 +6,13 @@
     "values": [
         {
             "name": "NSTextSelectionAffinityDownstream",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextSelectionAffinityUpstream",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         }
     ]
 }

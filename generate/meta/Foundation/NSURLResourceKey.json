@@ -35,10 +35,6 @@
             "module": "Foundation"
         },
         {
-            "name": "NSURLFileProtectionType",
-            "module": "Foundation"
-        },
-        {
             "name": "NSURLFileContentIdentifierKey",
             "value": "NSURLFileContentIdentifierKey",
             "module": "Foundation"
@@ -51,10 +47,6 @@
         {
             "name": "NSURLFileResourceTypeKey",
             "value": "NSURLFileResourceTypeKey",
-            "module": "Foundation"
-        },
-        {
-            "name": "NSURLFileResourceType",
             "module": "Foundation"
         },
         {
@@ -378,10 +370,6 @@
             "module": "Foundation"
         },
         {
-            "name": "NSURLUbiquitousItemDownloadingStatus",
-            "module": "Foundation"
-        },
-        {
             "name": "NSURLUbiquitousItemIsExcludedFromSyncKey",
             "value": "NSURLUbiquitousItemIsExcludedFromSyncKey",
             "module": "Foundation"
@@ -429,18 +417,6 @@
         {
             "name": "NSURLUbiquitousItemIsSharedKey",
             "value": "NSURLUbiquitousItemIsSharedKey",
-            "module": "Foundation"
-        },
-        {
-            "name": "NSURLUbiquitousSharedItemRole",
-            "module": "Foundation"
-        },
-        {
-            "name": "NSURLUbiquitousSharedItemPermissions",
-            "module": "Foundation"
-        },
-        {
-            "name": "NSURLThumbnailDictionaryItem",
             "module": "Foundation"
         },
         {

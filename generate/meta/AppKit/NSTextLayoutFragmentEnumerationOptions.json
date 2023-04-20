@@ -6,23 +6,28 @@
     "values": [
         {
             "name": "NSTextLayoutFragmentEnumerationOptionsEnsuresExtraLineFragment",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "8"
         },
         {
             "name": "NSTextLayoutFragmentEnumerationOptionsEnsuresLayout",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "4"
         },
         {
             "name": "NSTextLayoutFragmentEnumerationOptionsEstimatesSize",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "2"
         },
         {
             "name": "NSTextLayoutFragmentEnumerationOptionsReverse",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "1"
         },
         {
             "name": "NSTextLayoutFragmentEnumerationOptionsNone",
-            "module": "AppKit"
+            "module": "AppKit",
+            "value": "0"
         }
     ]
 }
