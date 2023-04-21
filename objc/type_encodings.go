@@ -6,6 +6,31 @@ import (
 	"strings"
 )
 
+func getMethodTypeEncoding(ft reflect.Type, classMethod bool) string {
+	if ft.Kind() != reflect.Func {
+		panic("not func type")
+	}
+	if ft.NumOut() > 1 {
+		panic("to many return values")
+	}
+	var sb strings.Builder
+	if ft.NumOut() == 0 {
+		sb.WriteByte('v')
+	} else {
+		sb.WriteString(getTypeEncoding(ft.Out(0)))
+	}
+	if classMethod {
+		sb.WriteString("#") // class self as first parameter
+	} else {
+		sb.WriteString("@") // instance self as first parameter
+	}
+	sb.WriteString(":") // selector
+	for i := 0; i < ft.NumIn(); i++ {
+		sb.WriteString(getTypeEncoding(ft.In(i)))
+	}
+	return sb.String()
+}
+
 func getBlockTypeEncoding(ft reflect.Type) string {
 	if ft.Kind() != reflect.Func {
 		panic("not func type")
@@ -51,10 +76,15 @@ func getTypeEncoding(t reflect.Type) string {
 	case reflect.Float64:
 		return "d"
 	case reflect.UnsafePointer:
-		panic("unsupported type") // shoudl use Class/Selector/Oject...
+		return "^v"
 	case reflect.Pointer:
-		//TODO: * for char*
-		return "^" + getTypeEncoding(t.Elem())
+		switch t.Elem().Kind() {
+		case reflect.Uint8, reflect.Int8:
+			return "*"
+		default:
+			return "^" + getTypeEncoding(t.Elem())
+		}
+
 	case reflect.String, reflect.Slice, reflect.Map:
 		return "@"
 	case reflect.Array:
