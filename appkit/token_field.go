@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -36,42 +35,42 @@ func MakeTokenField(ptr unsafe.Pointer) TokenField {
 }
 
 func (tc _TokenFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TokenField {
-	rv := ffi.CallMethod[TokenField](tc, "labelWithAttributedString:", attributedStringValue)
+	rv := objc.CallMethod[TokenField](tc, "labelWithAttributedString:", attributedStringValue)
 	return rv
 }
 
 func (tc _TokenFieldClass) LabelWithString(stringValue string) TokenField {
-	rv := ffi.CallMethod[TokenField](tc, "labelWithString:", stringValue)
+	rv := objc.CallMethod[TokenField](tc, "labelWithString:", stringValue)
 	return rv
 }
 
 func (tc _TokenFieldClass) TextFieldWithString(stringValue string) TokenField {
-	rv := ffi.CallMethod[TokenField](tc, "textFieldWithString:", stringValue)
+	rv := objc.CallMethod[TokenField](tc, "textFieldWithString:", stringValue)
 	return rv
 }
 
 func (tc _TokenFieldClass) WrappingLabelWithString(stringValue string) TokenField {
-	rv := ffi.CallMethod[TokenField](tc, "wrappingLabelWithString:", stringValue)
+	rv := objc.CallMethod[TokenField](tc, "wrappingLabelWithString:", stringValue)
 	return rv
 }
 
 func (t_ TokenField) InitWithFrame(frameRect foundation.Rect) TokenField {
-	rv := ffi.CallMethod[TokenField](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TokenField](t_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (t_ TokenField) Init() TokenField {
-	rv := ffi.CallMethod[TokenField](t_, "init")
+	rv := objc.CallMethod[TokenField](t_, "init")
 	return rv
 }
 
 func (tc _TokenFieldClass) Alloc() TokenField {
-	rv := ffi.CallMethod[TokenField](tc, "alloc")
+	rv := objc.CallMethod[TokenField](tc, "alloc")
 	return rv
 }
 
 func (tc _TokenFieldClass) New() TokenField {
-	rv := ffi.CallMethod[TokenField](tc, "new")
+	rv := objc.CallMethod[TokenField](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -81,38 +80,38 @@ func NewTokenField() TokenField {
 }
 
 func (t_ TokenField) TokenStyle() TokenStyle {
-	rv := ffi.CallMethod[TokenStyle](t_, "tokenStyle")
+	rv := objc.CallMethod[TokenStyle](t_, "tokenStyle")
 	return rv
 }
 
 func (t_ TokenField) SetTokenStyle(value TokenStyle) {
-	ffi.CallMethod[ffi.Void](t_, "setTokenStyle:", value)
+	objc.CallMethod[objc.Void](t_, "setTokenStyle:", value)
 }
 
 func (t_ TokenField) TokenizingCharacterSet() foundation.CharacterSet {
-	rv := ffi.CallMethod[foundation.CharacterSet](t_, "tokenizingCharacterSet")
+	rv := objc.CallMethod[foundation.CharacterSet](t_, "tokenizingCharacterSet")
 	return rv
 }
 
 func (t_ TokenField) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
-	ffi.CallMethod[ffi.Void](t_, "setTokenizingCharacterSet:", value)
+	objc.CallMethod[objc.Void](t_, "setTokenizingCharacterSet:", value)
 }
 
 func (tc _TokenFieldClass) DefaultTokenizingCharacterSet() foundation.CharacterSet {
-	rv := ffi.CallMethod[foundation.CharacterSet](tc, "defaultTokenizingCharacterSet")
+	rv := objc.CallMethod[foundation.CharacterSet](tc, "defaultTokenizingCharacterSet")
 	return rv
 }
 
 func (t_ TokenField) CompletionDelay() foundation.TimeInterval {
-	rv := ffi.CallMethod[foundation.TimeInterval](t_, "completionDelay")
+	rv := objc.CallMethod[foundation.TimeInterval](t_, "completionDelay")
 	return rv
 }
 
 func (t_ TokenField) SetCompletionDelay(value foundation.TimeInterval) {
-	ffi.CallMethod[ffi.Void](t_, "setCompletionDelay:", value)
+	objc.CallMethod[objc.Void](t_, "setCompletionDelay:", value)
 }
 
 func (tc _TokenFieldClass) DefaultCompletionDelay() foundation.TimeInterval {
-	rv := ffi.CallMethod[foundation.TimeInterval](tc, "defaultCompletionDelay")
+	rv := objc.CallMethod[foundation.TimeInterval](tc, "defaultCompletionDelay")
 	return rv
 }

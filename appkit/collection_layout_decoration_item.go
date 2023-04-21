@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,27 +31,27 @@ func MakeCollectionLayoutDecorationItem(ptr unsafe.Pointer) CollectionLayoutDeco
 }
 
 func (cc _CollectionLayoutDecorationItemClass) BackgroundDecorationItemWithElementKind(elementKind string) CollectionLayoutDecorationItem {
-	rv := ffi.CallMethod[CollectionLayoutDecorationItem](cc, "backgroundDecorationItemWithElementKind:", elementKind)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "backgroundDecorationItemWithElementKind:", elementKind)
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutDecorationItem {
-	rv := ffi.CallMethod[CollectionLayoutDecorationItem](cc, "itemWithLayoutSize:", layoutSize)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "itemWithLayoutSize:", layoutSize)
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutDecorationItem {
-	rv := ffi.CallMethod[CollectionLayoutDecorationItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) Alloc() CollectionLayoutDecorationItem {
-	rv := ffi.CallMethod[CollectionLayoutDecorationItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) New() CollectionLayoutDecorationItem {
-	rv := ffi.CallMethod[CollectionLayoutDecorationItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -62,20 +61,20 @@ func NewCollectionLayoutDecorationItem() CollectionLayoutDecorationItem {
 }
 
 func (c_ CollectionLayoutDecorationItem) Init() CollectionLayoutDecorationItem {
-	rv := ffi.CallMethod[CollectionLayoutDecorationItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutDecorationItem) ElementKind() string {
-	rv := ffi.CallMethod[string](c_, "elementKind")
+	rv := objc.CallMethod[string](c_, "elementKind")
 	return rv
 }
 
 func (c_ CollectionLayoutDecorationItem) ZIndex() int {
-	rv := ffi.CallMethod[int](c_, "zIndex")
+	rv := objc.CallMethod[int](c_, "zIndex")
 	return rv
 }
 
 func (c_ CollectionLayoutDecorationItem) SetZIndex(value int) {
-	ffi.CallMethod[ffi.Void](c_, "setZIndex:", value)
+	objc.CallMethod[objc.Void](c_, "setZIndex:", value)
 }

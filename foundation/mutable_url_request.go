@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -49,32 +48,32 @@ func MakeMutableURLRequest(ptr unsafe.Pointer) MutableURLRequest {
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](mc, "requestWithURL:", URL)
+	rv := objc.CallMethod[MutableURLRequest](mc, "requestWithURL:", URL)
 	return rv
 }
 
 func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](m_, "initWithURL:", URL)
+	rv := objc.CallMethod[MutableURLRequest](m_, "initWithURL:", URL)
 	return rv
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](mc, "requestWithURL:cachePolicy:timeoutInterval:", URL, cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[MutableURLRequest](mc, "requestWithURL:cachePolicy:timeoutInterval:", URL, cachePolicy, timeoutInterval)
 	return rv
 }
 
 func (m_ MutableURLRequest) InitWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](m_, "initWithURL:cachePolicy:timeoutInterval:", URL, cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[MutableURLRequest](m_, "initWithURL:cachePolicy:timeoutInterval:", URL, cachePolicy, timeoutInterval)
 	return rv
 }
 
 func (mc _MutableURLRequestClass) Alloc() MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](mc, "alloc")
+	rv := objc.CallMethod[MutableURLRequest](mc, "alloc")
 	return rv
 }
 
 func (mc _MutableURLRequestClass) New() MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](mc, "new")
+	rv := objc.CallMethod[MutableURLRequest](mc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -84,87 +83,87 @@ func NewMutableURLRequest() MutableURLRequest {
 }
 
 func (m_ MutableURLRequest) Init() MutableURLRequest {
-	rv := ffi.CallMethod[MutableURLRequest](m_, "init")
+	rv := objc.CallMethod[MutableURLRequest](m_, "init")
 	return rv
 }
 
 func (m_ MutableURLRequest) AddValue_ForHTTPHeaderField(value string, field string) {
-	ffi.CallMethod[ffi.Void](m_, "addValue:forHTTPHeaderField:", value, field)
+	objc.CallMethod[objc.Void](m_, "addValue:forHTTPHeaderField:", value, field)
 }
 
 func (m_ MutableURLRequest) SetValue_ForHTTPHeaderField(value string, field string) {
-	ffi.CallMethod[ffi.Void](m_, "setValue:forHTTPHeaderField:", value, field)
+	objc.CallMethod[objc.Void](m_, "setValue:forHTTPHeaderField:", value, field)
 }
 
 func (m_ MutableURLRequest) SetCachePolicy(value URLRequestCachePolicy) {
-	ffi.CallMethod[ffi.Void](m_, "setCachePolicy:", value)
+	objc.CallMethod[objc.Void](m_, "setCachePolicy:", value)
 }
 
 func (m_ MutableURLRequest) SetHTTPMethod(value string) {
-	ffi.CallMethod[ffi.Void](m_, "setHTTPMethod:", value)
+	objc.CallMethod[objc.Void](m_, "setHTTPMethod:", value)
 }
 
 func (m_ MutableURLRequest) SetURL(value IURL) {
-	ffi.CallMethod[ffi.Void](m_, "setURL:", value)
+	objc.CallMethod[objc.Void](m_, "setURL:", value)
 }
 
 func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
-	ffi.CallMethod[ffi.Void](m_, "setHTTPBody:", value)
+	objc.CallMethod[objc.Void](m_, "setHTTPBody:", value)
 }
 
 func (m_ MutableURLRequest) SetHTTPBodyStream(value IInputStream) {
-	ffi.CallMethod[ffi.Void](m_, "setHTTPBodyStream:", value)
+	objc.CallMethod[objc.Void](m_, "setHTTPBodyStream:", value)
 }
 
 func (m_ MutableURLRequest) SetMainDocumentURL(value IURL) {
-	ffi.CallMethod[ffi.Void](m_, "setMainDocumentURL:", value)
+	objc.CallMethod[objc.Void](m_, "setMainDocumentURL:", value)
 }
 
 func (m_ MutableURLRequest) SetAllHTTPHeaderFields(value map[string]string) {
-	ffi.CallMethod[ffi.Void](m_, "setAllHTTPHeaderFields:", value)
+	objc.CallMethod[objc.Void](m_, "setAllHTTPHeaderFields:", value)
 }
 
 func (m_ MutableURLRequest) SetTimeoutInterval(value TimeInterval) {
-	ffi.CallMethod[ffi.Void](m_, "setTimeoutInterval:", value)
+	objc.CallMethod[objc.Void](m_, "setTimeoutInterval:", value)
 }
 
 func (m_ MutableURLRequest) SetHTTPShouldHandleCookies(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setHTTPShouldHandleCookies:", value)
+	objc.CallMethod[objc.Void](m_, "setHTTPShouldHandleCookies:", value)
 }
 
 func (m_ MutableURLRequest) SetHTTPShouldUsePipelining(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setHTTPShouldUsePipelining:", value)
+	objc.CallMethod[objc.Void](m_, "setHTTPShouldUsePipelining:", value)
 }
 
 func (m_ MutableURLRequest) SetAllowsCellularAccess(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAllowsCellularAccess:", value)
+	objc.CallMethod[objc.Void](m_, "setAllowsCellularAccess:", value)
 }
 
 func (m_ MutableURLRequest) SetAllowsConstrainedNetworkAccess(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAllowsConstrainedNetworkAccess:", value)
+	objc.CallMethod[objc.Void](m_, "setAllowsConstrainedNetworkAccess:", value)
 }
 
 func (m_ MutableURLRequest) SetAllowsExpensiveNetworkAccess(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAllowsExpensiveNetworkAccess:", value)
+	objc.CallMethod[objc.Void](m_, "setAllowsExpensiveNetworkAccess:", value)
 }
 
 func (m_ MutableURLRequest) SetNetworkServiceType(value URLRequestNetworkServiceType) {
-	ffi.CallMethod[ffi.Void](m_, "setNetworkServiceType:", value)
+	objc.CallMethod[objc.Void](m_, "setNetworkServiceType:", value)
 }
 
 func (m_ MutableURLRequest) SetAttribution(value URLRequestAttribution) {
-	ffi.CallMethod[ffi.Void](m_, "setAttribution:", value)
+	objc.CallMethod[objc.Void](m_, "setAttribution:", value)
 }
 
 func (m_ MutableURLRequest) SetAssumesHTTP3Capable(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAssumesHTTP3Capable:", value)
+	objc.CallMethod[objc.Void](m_, "setAssumesHTTP3Capable:", value)
 }
 
 func (m_ MutableURLRequest) RequiresDNSSECValidation() bool {
-	rv := ffi.CallMethod[bool](m_, "requiresDNSSECValidation")
+	rv := objc.CallMethod[bool](m_, "requiresDNSSECValidation")
 	return rv
 }
 
 func (m_ MutableURLRequest) SetRequiresDNSSECValidation(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setRequiresDNSSECValidation:", value)
+	objc.CallMethod[objc.Void](m_, "setRequiresDNSSECValidation:", value)
 }

@@ -1,4 +1,4 @@
-package ffi
+package objc
 
 //#import <stdlib.h>
 //#import <stdint.h>
@@ -12,8 +12,6 @@ import (
 	"runtime"
 	"runtime/cgo"
 	"unsafe"
-
-	"github.com/hsiafan/cocoa/objc"
 )
 
 func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
@@ -24,7 +22,7 @@ func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
 		panic("too many return values")
 	}
 
-	b := objc.MakeBlock(bp)
+	b := MakeBlock(bp)
 	b = b.Copy()
 	var sentinel = new(int)
 	fv := reflect.MakeFunc(funcType, func(args []reflect.Value) (results []reflect.Value) {
@@ -43,7 +41,7 @@ func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
 	return fv
 }
 
-func callBlock(b objc.Block, params []reflect.Value, retType reflect.Type) []reflect.Value {
+func callBlock(b Block, params []reflect.Value, retType reflect.Type) []reflect.Value {
 	argc := len(params)
 
 	var argsPtr C.uintptr_t
@@ -73,7 +71,7 @@ func callBlock(b objc.Block, params []reflect.Value, retType reflect.Type) []ref
 }
 
 // f is the go function to wrap as a objc block
-func WrapBlock(f any) objc.Block {
+func WrapBlock(f any) Block {
 	ft := reflect.TypeOf(f)
 	if ft.Kind() != reflect.Func {
 		panic("not func type")
@@ -84,7 +82,7 @@ func WrapBlock(f any) objc.Block {
 	defer C.free(unsafe.Pointer(cte))
 	goId := cgo.NewHandle(f)
 	r := C.wrap_block(C.uintptr_t(goId), cte)
-	return objc.MakeBlock(r)
+	return MakeBlock(r)
 }
 
 //export handleBlockInvocation

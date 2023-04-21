@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/hsiafan/cocoa/dispatch"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -69,7 +68,7 @@ func (h *scriptMessageHandlerWithReply) UserContentController_DidReceiveScriptMe
 	go func() {
 		defer message.Release()
 		reply, err := h.handler(message.Body())
-		var errMsg = ffi.MagicNilString
+		var errMsg = objc.MagicNilString
 		if err != nil {
 			errMsg = err.Error()
 		}

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -32,22 +31,22 @@ func MakeViewAnimation(ptr unsafe.Pointer) ViewAnimation {
 }
 
 func (v_ ViewAnimation) InitWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
-	rv := ffi.CallMethod[ViewAnimation](v_, "initWithViewAnimations:", viewAnimations)
+	rv := objc.CallMethod[ViewAnimation](v_, "initWithViewAnimations:", viewAnimations)
 	return rv
 }
 
 func (v_ ViewAnimation) InitWithDuration_AnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
-	rv := ffi.CallMethod[ViewAnimation](v_, "initWithDuration:animationCurve:", duration, animationCurve)
+	rv := objc.CallMethod[ViewAnimation](v_, "initWithDuration:animationCurve:", duration, animationCurve)
 	return rv
 }
 
 func (vc _ViewAnimationClass) Alloc() ViewAnimation {
-	rv := ffi.CallMethod[ViewAnimation](vc, "alloc")
+	rv := objc.CallMethod[ViewAnimation](vc, "alloc")
 	return rv
 }
 
 func (vc _ViewAnimationClass) New() ViewAnimation {
-	rv := ffi.CallMethod[ViewAnimation](vc, "new")
+	rv := objc.CallMethod[ViewAnimation](vc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,15 +56,15 @@ func NewViewAnimation() ViewAnimation {
 }
 
 func (v_ ViewAnimation) Init() ViewAnimation {
-	rv := ffi.CallMethod[ViewAnimation](v_, "init")
+	rv := objc.CallMethod[ViewAnimation](v_, "init")
 	return rv
 }
 
 func (v_ ViewAnimation) ViewAnimations() []map[ViewAnimationKey]objc.Object {
-	rv := ffi.CallMethod[[]map[ViewAnimationKey]objc.Object](v_, "viewAnimations")
+	rv := objc.CallMethod[[]map[ViewAnimationKey]objc.Object](v_, "viewAnimations")
 	return rv
 }
 
 func (v_ ViewAnimation) SetViewAnimations(value []map[ViewAnimationKey]objc.IObject) {
-	ffi.CallMethod[ffi.Void](v_, "setViewAnimations:", value)
+	objc.CallMethod[objc.Void](v_, "setViewAnimations:", value)
 }

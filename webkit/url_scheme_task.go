@@ -2,7 +2,6 @@
 package webkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -26,19 +25,19 @@ type URLSchemeTaskWrapper struct {
 }
 
 func (u_ URLSchemeTaskWrapper) DidReceiveResponse(response foundation.IURLResponse) {
-	ffi.CallMethod[ffi.Void](u_, "didReceiveResponse:", response)
+	objc.CallMethod[objc.Void](u_, "didReceiveResponse:", response)
 }
 
 func (u_ URLSchemeTaskWrapper) DidReceiveData(data []byte) {
-	ffi.CallMethod[ffi.Void](u_, "didReceiveData:", data)
+	objc.CallMethod[objc.Void](u_, "didReceiveData:", data)
 }
 
 func (u_ URLSchemeTaskWrapper) DidFinish() {
-	ffi.CallMethod[ffi.Void](u_, "didFinish")
+	objc.CallMethod[objc.Void](u_, "didFinish")
 }
 
 func (u_ URLSchemeTaskWrapper) DidFailWithError(error foundation.IError) {
-	ffi.CallMethod[ffi.Void](u_, "didFailWithError:", error)
+	objc.CallMethod[objc.Void](u_, "didFailWithError:", error)
 }
 
 func (u_ *URLSchemeTaskWrapper) ImplementsRequest() bool {
@@ -46,6 +45,6 @@ func (u_ *URLSchemeTaskWrapper) ImplementsRequest() bool {
 }
 
 func (u_ URLSchemeTaskWrapper) Request() foundation.URLRequest {
-	rv := ffi.CallMethod[foundation.URLRequest](u_, "request")
+	rv := objc.CallMethod[foundation.URLRequest](u_, "request")
 	return rv
 }

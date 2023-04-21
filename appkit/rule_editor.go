@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -74,22 +73,22 @@ func MakeRuleEditor(ptr unsafe.Pointer) RuleEditor {
 }
 
 func (r_ RuleEditor) InitWithFrame(frameRect foundation.Rect) RuleEditor {
-	rv := ffi.CallMethod[RuleEditor](r_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[RuleEditor](r_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (r_ RuleEditor) Init() RuleEditor {
-	rv := ffi.CallMethod[RuleEditor](r_, "init")
+	rv := objc.CallMethod[RuleEditor](r_, "init")
 	return rv
 }
 
 func (rc _RuleEditorClass) Alloc() RuleEditor {
-	rv := ffi.CallMethod[RuleEditor](rc, "alloc")
+	rv := objc.CallMethod[RuleEditor](rc, "alloc")
 	return rv
 }
 
 func (rc _RuleEditorClass) New() RuleEditor {
-	rv := ffi.CallMethod[RuleEditor](rc, "new")
+	rv := objc.CallMethod[RuleEditor](rc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -99,198 +98,198 @@ func NewRuleEditor() RuleEditor {
 }
 
 func (r_ RuleEditor) ReloadCriteria() {
-	ffi.CallMethod[ffi.Void](r_, "reloadCriteria")
+	objc.CallMethod[objc.Void](r_, "reloadCriteria")
 }
 
 func (r_ RuleEditor) SetCriteria_AndDisplayValues_ForRowAtIndex(criteria []objc.IObject, values []objc.IObject, rowIndex int) {
-	ffi.CallMethod[ffi.Void](r_, "setCriteria:andDisplayValues:forRowAtIndex:", criteria, values, rowIndex)
+	objc.CallMethod[objc.Void](r_, "setCriteria:andDisplayValues:forRowAtIndex:", criteria, values, rowIndex)
 }
 
 func (r_ RuleEditor) CriteriaForRow(row int) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](r_, "criteriaForRow:", row)
+	rv := objc.CallMethod[[]objc.Object](r_, "criteriaForRow:", row)
 	return rv
 }
 
 func (r_ RuleEditor) DisplayValuesForRow(row int) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](r_, "displayValuesForRow:", row)
+	rv := objc.CallMethod[[]objc.Object](r_, "displayValuesForRow:", row)
 	return rv
 }
 
 func (r_ RuleEditor) ParentRowForRow(rowIndex int) int {
-	rv := ffi.CallMethod[int](r_, "parentRowForRow:", rowIndex)
+	rv := objc.CallMethod[int](r_, "parentRowForRow:", rowIndex)
 	return rv
 }
 
 func (r_ RuleEditor) RowForDisplayValue(displayValue objc.IObject) int {
-	rv := ffi.CallMethod[int](r_, "rowForDisplayValue:", displayValue)
+	rv := objc.CallMethod[int](r_, "rowForDisplayValue:", displayValue)
 	return rv
 }
 
 func (r_ RuleEditor) RowTypeForRow(rowIndex int) RuleEditorRowType {
-	rv := ffi.CallMethod[RuleEditorRowType](r_, "rowTypeForRow:", rowIndex)
+	rv := objc.CallMethod[RuleEditorRowType](r_, "rowTypeForRow:", rowIndex)
 	return rv
 }
 
 func (r_ RuleEditor) SubrowIndexesForRow(rowIndex int) foundation.IndexSet {
-	rv := ffi.CallMethod[foundation.IndexSet](r_, "subrowIndexesForRow:", rowIndex)
+	rv := objc.CallMethod[foundation.IndexSet](r_, "subrowIndexesForRow:", rowIndex)
 	return rv
 }
 
 func (r_ RuleEditor) SelectRowIndexes_ByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	ffi.CallMethod[ffi.Void](r_, "selectRowIndexes:byExtendingSelection:", indexes, extend)
+	objc.CallMethod[objc.Void](r_, "selectRowIndexes:byExtendingSelection:", indexes, extend)
 }
 
 func (r_ RuleEditor) AddRow(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](r_, "addRow:", sender)
+	objc.CallMethod[objc.Void](r_, "addRow:", sender)
 }
 
 func (r_ RuleEditor) InsertRowAtIndex_WithType_AsSubrowOfRow_Animate(rowIndex int, rowType RuleEditorRowType, parentRow int, shouldAnimate bool) {
-	ffi.CallMethod[ffi.Void](r_, "insertRowAtIndex:withType:asSubrowOfRow:animate:", rowIndex, rowType, parentRow, shouldAnimate)
+	objc.CallMethod[objc.Void](r_, "insertRowAtIndex:withType:asSubrowOfRow:animate:", rowIndex, rowType, parentRow, shouldAnimate)
 }
 
 func (r_ RuleEditor) RemoveRowAtIndex(rowIndex int) {
-	ffi.CallMethod[ffi.Void](r_, "removeRowAtIndex:", rowIndex)
+	objc.CallMethod[objc.Void](r_, "removeRowAtIndex:", rowIndex)
 }
 
 func (r_ RuleEditor) RemoveRowsAtIndexes_IncludeSubrows(rowIndexes foundation.IIndexSet, includeSubrows bool) {
-	ffi.CallMethod[ffi.Void](r_, "removeRowsAtIndexes:includeSubrows:", rowIndexes, includeSubrows)
+	objc.CallMethod[objc.Void](r_, "removeRowsAtIndexes:includeSubrows:", rowIndexes, includeSubrows)
 }
 
 func (r_ RuleEditor) ReloadPredicate() {
-	ffi.CallMethod[ffi.Void](r_, "reloadPredicate")
+	objc.CallMethod[objc.Void](r_, "reloadPredicate")
 }
 
 func (r_ RuleEditor) PredicateForRow(row int) foundation.Predicate {
-	rv := ffi.CallMethod[foundation.Predicate](r_, "predicateForRow:", row)
+	rv := objc.CallMethod[foundation.Predicate](r_, "predicateForRow:", row)
 	return rv
 }
 
 func (r_ RuleEditor) Delegate() RuleEditorDelegateWrapper {
-	rv := ffi.CallMethod[RuleEditorDelegateWrapper](r_, "delegate")
+	rv := objc.CallMethod[RuleEditorDelegateWrapper](r_, "delegate")
 	return rv
 }
 
 func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
-	po := ffi.CreateProtocol("NSRuleEditorDelegate", value)
+	po := objc.CreateProtocol("NSRuleEditorDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(r_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](r_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](r_, "setDelegate:", po)
 }
 
 func (r_ RuleEditor) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](r_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](r_, "setDelegate:", value)
 }
 
 func (r_ RuleEditor) IsEditable() bool {
-	rv := ffi.CallMethod[bool](r_, "isEditable")
+	rv := objc.CallMethod[bool](r_, "isEditable")
 	return rv
 }
 
 func (r_ RuleEditor) SetEditable(value bool) {
-	ffi.CallMethod[ffi.Void](r_, "setEditable:", value)
+	objc.CallMethod[objc.Void](r_, "setEditable:", value)
 }
 
 func (r_ RuleEditor) NestingMode() RuleEditorNestingMode {
-	rv := ffi.CallMethod[RuleEditorNestingMode](r_, "nestingMode")
+	rv := objc.CallMethod[RuleEditorNestingMode](r_, "nestingMode")
 	return rv
 }
 
 func (r_ RuleEditor) SetNestingMode(value RuleEditorNestingMode) {
-	ffi.CallMethod[ffi.Void](r_, "setNestingMode:", value)
+	objc.CallMethod[objc.Void](r_, "setNestingMode:", value)
 }
 
 func (r_ RuleEditor) CanRemoveAllRows() bool {
-	rv := ffi.CallMethod[bool](r_, "canRemoveAllRows")
+	rv := objc.CallMethod[bool](r_, "canRemoveAllRows")
 	return rv
 }
 
 func (r_ RuleEditor) SetCanRemoveAllRows(value bool) {
-	ffi.CallMethod[ffi.Void](r_, "setCanRemoveAllRows:", value)
+	objc.CallMethod[objc.Void](r_, "setCanRemoveAllRows:", value)
 }
 
 func (r_ RuleEditor) RowHeight() float64 {
-	rv := ffi.CallMethod[float64](r_, "rowHeight")
+	rv := objc.CallMethod[float64](r_, "rowHeight")
 	return rv
 }
 
 func (r_ RuleEditor) SetRowHeight(value float64) {
-	ffi.CallMethod[ffi.Void](r_, "setRowHeight:", value)
+	objc.CallMethod[objc.Void](r_, "setRowHeight:", value)
 }
 
 func (r_ RuleEditor) FormattingDictionary() map[string]string {
-	rv := ffi.CallMethod[map[string]string](r_, "formattingDictionary")
+	rv := objc.CallMethod[map[string]string](r_, "formattingDictionary")
 	return rv
 }
 
 func (r_ RuleEditor) SetFormattingDictionary(value map[string]string) {
-	ffi.CallMethod[ffi.Void](r_, "setFormattingDictionary:", value)
+	objc.CallMethod[objc.Void](r_, "setFormattingDictionary:", value)
 }
 
 func (r_ RuleEditor) FormattingStringsFilename() string {
-	rv := ffi.CallMethod[string](r_, "formattingStringsFilename")
+	rv := objc.CallMethod[string](r_, "formattingStringsFilename")
 	return rv
 }
 
 func (r_ RuleEditor) SetFormattingStringsFilename(value string) {
-	ffi.CallMethod[ffi.Void](r_, "setFormattingStringsFilename:", value)
+	objc.CallMethod[objc.Void](r_, "setFormattingStringsFilename:", value)
 }
 
 func (r_ RuleEditor) NumberOfRows() int {
-	rv := ffi.CallMethod[int](r_, "numberOfRows")
+	rv := objc.CallMethod[int](r_, "numberOfRows")
 	return rv
 }
 
 func (r_ RuleEditor) SelectedRowIndexes() foundation.IndexSet {
-	rv := ffi.CallMethod[foundation.IndexSet](r_, "selectedRowIndexes")
+	rv := objc.CallMethod[foundation.IndexSet](r_, "selectedRowIndexes")
 	return rv
 }
 
 func (r_ RuleEditor) Predicate() foundation.Predicate {
-	rv := ffi.CallMethod[foundation.Predicate](r_, "predicate")
+	rv := objc.CallMethod[foundation.Predicate](r_, "predicate")
 	return rv
 }
 
 func (r_ RuleEditor) RowClass() objc.Class {
-	rv := ffi.CallMethod[objc.Class](r_, "rowClass")
+	rv := objc.CallMethod[objc.Class](r_, "rowClass")
 	return rv
 }
 
 func (r_ RuleEditor) SetRowClass(value objc.IClass) {
-	ffi.CallMethod[ffi.Void](r_, "setRowClass:", value)
+	objc.CallMethod[objc.Void](r_, "setRowClass:", value)
 }
 
 func (r_ RuleEditor) RowTypeKeyPath() string {
-	rv := ffi.CallMethod[string](r_, "rowTypeKeyPath")
+	rv := objc.CallMethod[string](r_, "rowTypeKeyPath")
 	return rv
 }
 
 func (r_ RuleEditor) SetRowTypeKeyPath(value string) {
-	ffi.CallMethod[ffi.Void](r_, "setRowTypeKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, "setRowTypeKeyPath:", value)
 }
 
 func (r_ RuleEditor) SubrowsKeyPath() string {
-	rv := ffi.CallMethod[string](r_, "subrowsKeyPath")
+	rv := objc.CallMethod[string](r_, "subrowsKeyPath")
 	return rv
 }
 
 func (r_ RuleEditor) SetSubrowsKeyPath(value string) {
-	ffi.CallMethod[ffi.Void](r_, "setSubrowsKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, "setSubrowsKeyPath:", value)
 }
 
 func (r_ RuleEditor) CriteriaKeyPath() string {
-	rv := ffi.CallMethod[string](r_, "criteriaKeyPath")
+	rv := objc.CallMethod[string](r_, "criteriaKeyPath")
 	return rv
 }
 
 func (r_ RuleEditor) SetCriteriaKeyPath(value string) {
-	ffi.CallMethod[ffi.Void](r_, "setCriteriaKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, "setCriteriaKeyPath:", value)
 }
 
 func (r_ RuleEditor) DisplayValuesKeyPath() string {
-	rv := ffi.CallMethod[string](r_, "displayValuesKeyPath")
+	rv := objc.CallMethod[string](r_, "displayValuesKeyPath")
 	return rv
 }
 
 func (r_ RuleEditor) SetDisplayValuesKeyPath(value string) {
-	ffi.CallMethod[ffi.Void](r_, "setDisplayValuesKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, "setDisplayValuesKeyPath:", value)
 }

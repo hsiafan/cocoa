@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -29,17 +28,17 @@ func MakeConstraintLayoutManager(ptr unsafe.Pointer) ConstraintLayoutManager {
 }
 
 func (cc _ConstraintLayoutManagerClass) LayoutManager() ConstraintLayoutManager {
-	rv := ffi.CallMethod[ConstraintLayoutManager](cc, "layoutManager")
+	rv := objc.CallMethod[ConstraintLayoutManager](cc, "layoutManager")
 	return rv
 }
 
 func (cc _ConstraintLayoutManagerClass) Alloc() ConstraintLayoutManager {
-	rv := ffi.CallMethod[ConstraintLayoutManager](cc, "alloc")
+	rv := objc.CallMethod[ConstraintLayoutManager](cc, "alloc")
 	return rv
 }
 
 func (cc _ConstraintLayoutManagerClass) New() ConstraintLayoutManager {
-	rv := ffi.CallMethod[ConstraintLayoutManager](cc, "new")
+	rv := objc.CallMethod[ConstraintLayoutManager](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -49,6 +48,6 @@ func NewConstraintLayoutManager() ConstraintLayoutManager {
 }
 
 func (c_ ConstraintLayoutManager) Init() ConstraintLayoutManager {
-	rv := ffi.CallMethod[ConstraintLayoutManager](c_, "init")
+	rv := objc.CallMethod[ConstraintLayoutManager](c_, "init")
 	return rv
 }

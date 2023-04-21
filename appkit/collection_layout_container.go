@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -31,7 +30,7 @@ func (c_ *CollectionLayoutContainerWrapper) ImplementsContentSize() bool {
 }
 
 func (c_ CollectionLayoutContainerWrapper) ContentSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](c_, "contentSize")
+	rv := objc.CallMethod[foundation.Size](c_, "contentSize")
 	return rv
 }
 
@@ -40,7 +39,7 @@ func (c_ *CollectionLayoutContainerWrapper) ImplementsEffectiveContentSize() boo
 }
 
 func (c_ CollectionLayoutContainerWrapper) EffectiveContentSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](c_, "effectiveContentSize")
+	rv := objc.CallMethod[foundation.Size](c_, "effectiveContentSize")
 	return rv
 }
 
@@ -49,7 +48,7 @@ func (c_ *CollectionLayoutContainerWrapper) ImplementsContentInsets() bool {
 }
 
 func (c_ CollectionLayoutContainerWrapper) ContentInsets() DirectionalEdgeInsets {
-	rv := ffi.CallMethod[DirectionalEdgeInsets](c_, "contentInsets")
+	rv := objc.CallMethod[DirectionalEdgeInsets](c_, "contentInsets")
 	return rv
 }
 
@@ -58,6 +57,6 @@ func (c_ *CollectionLayoutContainerWrapper) ImplementsEffectiveContentInsets() b
 }
 
 func (c_ CollectionLayoutContainerWrapper) EffectiveContentInsets() DirectionalEdgeInsets {
-	rv := ffi.CallMethod[DirectionalEdgeInsets](c_, "effectiveContentInsets")
+	rv := objc.CallMethod[DirectionalEdgeInsets](c_, "effectiveContentInsets")
 	return rv
 }

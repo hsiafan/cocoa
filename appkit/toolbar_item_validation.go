@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -16,6 +15,6 @@ type ToolbarItemValidationWrapper struct {
 }
 
 func (t_ ToolbarItemValidationWrapper) ValidateToolbarItem(item IToolbarItem) bool {
-	rv := ffi.CallMethod[bool](t_, "validateToolbarItem:", item)
+	rv := objc.CallMethod[bool](t_, "validateToolbarItem:", item)
 	return rv
 }

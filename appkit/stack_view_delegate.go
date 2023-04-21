@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -52,7 +51,7 @@ func (s_ *StackViewDelegateWrapper) ImplementsStackView_DidReattachViews() bool 
 }
 
 func (s_ StackViewDelegateWrapper) StackView_DidReattachViews(stackView IStackView, views []IView) {
-	ffi.CallMethod[ffi.Void](s_, "stackView:didReattachViews:", stackView, views)
+	objc.CallMethod[objc.Void](s_, "stackView:didReattachViews:", stackView, views)
 }
 
 func (s_ *StackViewDelegateWrapper) ImplementsStackView_WillDetachViews() bool {
@@ -60,5 +59,5 @@ func (s_ *StackViewDelegateWrapper) ImplementsStackView_WillDetachViews() bool {
 }
 
 func (s_ StackViewDelegateWrapper) StackView_WillDetachViews(stackView IStackView, views []IView) {
-	ffi.CallMethod[ffi.Void](s_, "stackView:willDetachViews:", stackView, views)
+	objc.CallMethod[objc.Void](s_, "stackView:willDetachViews:", stackView, views)
 }

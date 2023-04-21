@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -49,17 +48,17 @@ func MakeSharingService(ptr unsafe.Pointer) SharingService {
 }
 
 func (s_ SharingService) InitWithTitle_Image_AlternateImage_Handler(title string, image IImage, alternateImage IImage, block func()) SharingService {
-	rv := ffi.CallMethod[SharingService](s_, "initWithTitle:image:alternateImage:handler:", title, image, alternateImage, block)
+	rv := objc.CallMethod[SharingService](s_, "initWithTitle:image:alternateImage:handler:", title, image, alternateImage, block)
 	return rv
 }
 
 func (sc _SharingServiceClass) Alloc() SharingService {
-	rv := ffi.CallMethod[SharingService](sc, "alloc")
+	rv := objc.CallMethod[SharingService](sc, "alloc")
 	return rv
 }
 
 func (sc _SharingServiceClass) New() SharingService {
-	rv := ffi.CallMethod[SharingService](sc, "new")
+	rv := objc.CallMethod[SharingService](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -69,104 +68,104 @@ func NewSharingService() SharingService {
 }
 
 func (s_ SharingService) Init() SharingService {
-	rv := ffi.CallMethod[SharingService](s_, "init")
+	rv := objc.CallMethod[SharingService](s_, "init")
 	return rv
 }
 
 func (sc _SharingServiceClass) SharingServiceNamed(serviceName SharingServiceName) SharingService {
-	rv := ffi.CallMethod[SharingService](sc, "sharingServiceNamed:", serviceName)
+	rv := objc.CallMethod[SharingService](sc, "sharingServiceNamed:", serviceName)
 	return rv
 }
 
 // deprecated
 func (sc _SharingServiceClass) SharingServicesForItems(items []objc.IObject) []SharingService {
-	rv := ffi.CallMethod[[]SharingService](sc, "sharingServicesForItems:", items)
+	rv := objc.CallMethod[[]SharingService](sc, "sharingServicesForItems:", items)
 	return rv
 }
 
 func (s_ SharingService) CanPerformWithItems(items []objc.IObject) bool {
-	rv := ffi.CallMethod[bool](s_, "canPerformWithItems:", items)
+	rv := objc.CallMethod[bool](s_, "canPerformWithItems:", items)
 	return rv
 }
 
 func (s_ SharingService) PerformWithItems(items []objc.IObject) {
-	ffi.CallMethod[ffi.Void](s_, "performWithItems:", items)
+	objc.CallMethod[objc.Void](s_, "performWithItems:", items)
 }
 
 func (s_ SharingService) Delegate() SharingServiceDelegateWrapper {
-	rv := ffi.CallMethod[SharingServiceDelegateWrapper](s_, "delegate")
+	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, "delegate")
 	return rv
 }
 
 func (s_ SharingService) SetDelegate(value SharingServiceDelegate) {
-	po := ffi.CreateProtocol("NSSharingServiceDelegate", value)
+	po := objc.CreateProtocol("NSSharingServiceDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](s_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](s_, "setDelegate:", po)
 }
 
 func (s_ SharingService) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](s_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](s_, "setDelegate:", value)
 }
 
 func (s_ SharingService) AccountName() string {
-	rv := ffi.CallMethod[string](s_, "accountName")
+	rv := objc.CallMethod[string](s_, "accountName")
 	return rv
 }
 
 func (s_ SharingService) AlternateImage() Image {
-	rv := ffi.CallMethod[Image](s_, "alternateImage")
+	rv := objc.CallMethod[Image](s_, "alternateImage")
 	return rv
 }
 
 func (s_ SharingService) Image() Image {
-	rv := ffi.CallMethod[Image](s_, "image")
+	rv := objc.CallMethod[Image](s_, "image")
 	return rv
 }
 
 func (s_ SharingService) Title() string {
-	rv := ffi.CallMethod[string](s_, "title")
+	rv := objc.CallMethod[string](s_, "title")
 	return rv
 }
 
 func (s_ SharingService) MenuItemTitle() string {
-	rv := ffi.CallMethod[string](s_, "menuItemTitle")
+	rv := objc.CallMethod[string](s_, "menuItemTitle")
 	return rv
 }
 
 func (s_ SharingService) SetMenuItemTitle(value string) {
-	ffi.CallMethod[ffi.Void](s_, "setMenuItemTitle:", value)
+	objc.CallMethod[objc.Void](s_, "setMenuItemTitle:", value)
 }
 
 func (s_ SharingService) Recipients() []string {
-	rv := ffi.CallMethod[[]string](s_, "recipients")
+	rv := objc.CallMethod[[]string](s_, "recipients")
 	return rv
 }
 
 func (s_ SharingService) SetRecipients(value []string) {
-	ffi.CallMethod[ffi.Void](s_, "setRecipients:", value)
+	objc.CallMethod[objc.Void](s_, "setRecipients:", value)
 }
 
 func (s_ SharingService) Subject() string {
-	rv := ffi.CallMethod[string](s_, "subject")
+	rv := objc.CallMethod[string](s_, "subject")
 	return rv
 }
 
 func (s_ SharingService) SetSubject(value string) {
-	ffi.CallMethod[ffi.Void](s_, "setSubject:", value)
+	objc.CallMethod[objc.Void](s_, "setSubject:", value)
 }
 
 func (s_ SharingService) AttachmentFileURLs() []foundation.URL {
-	rv := ffi.CallMethod[[]foundation.URL](s_, "attachmentFileURLs")
+	rv := objc.CallMethod[[]foundation.URL](s_, "attachmentFileURLs")
 	return rv
 }
 
 func (s_ SharingService) MessageBody() string {
-	rv := ffi.CallMethod[string](s_, "messageBody")
+	rv := objc.CallMethod[string](s_, "messageBody")
 	return rv
 }
 
 func (s_ SharingService) PermanentLink() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](s_, "permanentLink")
+	rv := objc.CallMethod[foundation.URL](s_, "permanentLink")
 	return rv
 }

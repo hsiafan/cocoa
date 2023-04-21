@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -22,11 +21,11 @@ type UserInterfaceCompressionWrapper struct {
 }
 
 func (u_ UserInterfaceCompressionWrapper) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	ffi.CallMethod[ffi.Void](u_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
+	objc.CallMethod[objc.Void](u_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
 }
 
 func (u_ UserInterfaceCompressionWrapper) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](u_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
+	rv := objc.CallMethod[foundation.Size](u_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
 	return rv
 }
 
@@ -35,6 +34,6 @@ func (u_ *UserInterfaceCompressionWrapper) ImplementsActiveCompressionOptions() 
 }
 
 func (u_ UserInterfaceCompressionWrapper) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "activeCompressionOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "activeCompressionOptions")
 	return rv
 }

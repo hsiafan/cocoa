@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -67,42 +66,42 @@ func MakeComboBox(ptr unsafe.Pointer) ComboBox {
 }
 
 func (cc _ComboBoxClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) ComboBox {
-	rv := ffi.CallMethod[ComboBox](cc, "labelWithAttributedString:", attributedStringValue)
+	rv := objc.CallMethod[ComboBox](cc, "labelWithAttributedString:", attributedStringValue)
 	return rv
 }
 
 func (cc _ComboBoxClass) LabelWithString(stringValue string) ComboBox {
-	rv := ffi.CallMethod[ComboBox](cc, "labelWithString:", stringValue)
+	rv := objc.CallMethod[ComboBox](cc, "labelWithString:", stringValue)
 	return rv
 }
 
 func (cc _ComboBoxClass) TextFieldWithString(stringValue string) ComboBox {
-	rv := ffi.CallMethod[ComboBox](cc, "textFieldWithString:", stringValue)
+	rv := objc.CallMethod[ComboBox](cc, "textFieldWithString:", stringValue)
 	return rv
 }
 
 func (cc _ComboBoxClass) WrappingLabelWithString(stringValue string) ComboBox {
-	rv := ffi.CallMethod[ComboBox](cc, "wrappingLabelWithString:", stringValue)
+	rv := objc.CallMethod[ComboBox](cc, "wrappingLabelWithString:", stringValue)
 	return rv
 }
 
 func (c_ ComboBox) InitWithFrame(frameRect foundation.Rect) ComboBox {
-	rv := ffi.CallMethod[ComboBox](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ComboBox](c_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (c_ ComboBox) Init() ComboBox {
-	rv := ffi.CallMethod[ComboBox](c_, "init")
+	rv := objc.CallMethod[ComboBox](c_, "init")
 	return rv
 }
 
 func (cc _ComboBoxClass) Alloc() ComboBox {
-	rv := ffi.CallMethod[ComboBox](cc, "alloc")
+	rv := objc.CallMethod[ComboBox](cc, "alloc")
 	return rv
 }
 
 func (cc _ComboBoxClass) New() ComboBox {
-	rv := ffi.CallMethod[ComboBox](cc, "new")
+	rv := objc.CallMethod[ComboBox](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -112,162 +111,162 @@ func NewComboBox() ComboBox {
 }
 
 func (c_ ComboBox) AddItemsWithObjectValues(objects []objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "addItemsWithObjectValues:", objects)
+	objc.CallMethod[objc.Void](c_, "addItemsWithObjectValues:", objects)
 }
 
 func (c_ ComboBox) AddItemWithObjectValue(object objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "addItemWithObjectValue:", object)
+	objc.CallMethod[objc.Void](c_, "addItemWithObjectValue:", object)
 }
 
 func (c_ ComboBox) InsertItemWithObjectValue_AtIndex(object objc.IObject, index int) {
-	ffi.CallMethod[ffi.Void](c_, "insertItemWithObjectValue:atIndex:", object, index)
+	objc.CallMethod[objc.Void](c_, "insertItemWithObjectValue:atIndex:", object, index)
 }
 
 func (c_ ComboBox) RemoveAllItems() {
-	ffi.CallMethod[ffi.Void](c_, "removeAllItems")
+	objc.CallMethod[objc.Void](c_, "removeAllItems")
 }
 
 func (c_ ComboBox) RemoveItemAtIndex(index int) {
-	ffi.CallMethod[ffi.Void](c_, "removeItemAtIndex:", index)
+	objc.CallMethod[objc.Void](c_, "removeItemAtIndex:", index)
 }
 
 func (c_ ComboBox) RemoveItemWithObjectValue(object objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "removeItemWithObjectValue:", object)
+	objc.CallMethod[objc.Void](c_, "removeItemWithObjectValue:", object)
 }
 
 func (c_ ComboBox) IndexOfItemWithObjectValue(object objc.IObject) int {
-	rv := ffi.CallMethod[int](c_, "indexOfItemWithObjectValue:", object)
+	rv := objc.CallMethod[int](c_, "indexOfItemWithObjectValue:", object)
 	return rv
 }
 
 func (c_ ComboBox) ItemObjectValueAtIndex(index int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](c_, "itemObjectValueAtIndex:", index)
+	rv := objc.CallMethod[objc.Object](c_, "itemObjectValueAtIndex:", index)
 	return rv
 }
 
 func (c_ ComboBox) NoteNumberOfItemsChanged() {
-	ffi.CallMethod[ffi.Void](c_, "noteNumberOfItemsChanged")
+	objc.CallMethod[objc.Void](c_, "noteNumberOfItemsChanged")
 }
 
 func (c_ ComboBox) ReloadData() {
-	ffi.CallMethod[ffi.Void](c_, "reloadData")
+	objc.CallMethod[objc.Void](c_, "reloadData")
 }
 
 func (c_ ComboBox) ScrollItemAtIndexToTop(index int) {
-	ffi.CallMethod[ffi.Void](c_, "scrollItemAtIndexToTop:", index)
+	objc.CallMethod[objc.Void](c_, "scrollItemAtIndexToTop:", index)
 }
 
 func (c_ ComboBox) ScrollItemAtIndexToVisible(index int) {
-	ffi.CallMethod[ffi.Void](c_, "scrollItemAtIndexToVisible:", index)
+	objc.CallMethod[objc.Void](c_, "scrollItemAtIndexToVisible:", index)
 }
 
 func (c_ ComboBox) DeselectItemAtIndex(index int) {
-	ffi.CallMethod[ffi.Void](c_, "deselectItemAtIndex:", index)
+	objc.CallMethod[objc.Void](c_, "deselectItemAtIndex:", index)
 }
 
 func (c_ ComboBox) SelectItemAtIndex(index int) {
-	ffi.CallMethod[ffi.Void](c_, "selectItemAtIndex:", index)
+	objc.CallMethod[objc.Void](c_, "selectItemAtIndex:", index)
 }
 
 func (c_ ComboBox) SelectItemWithObjectValue(object objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "selectItemWithObjectValue:", object)
+	objc.CallMethod[objc.Void](c_, "selectItemWithObjectValue:", object)
 }
 
 func (c_ ComboBox) HasVerticalScroller() bool {
-	rv := ffi.CallMethod[bool](c_, "hasVerticalScroller")
+	rv := objc.CallMethod[bool](c_, "hasVerticalScroller")
 	return rv
 }
 
 func (c_ ComboBox) SetHasVerticalScroller(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setHasVerticalScroller:", value)
+	objc.CallMethod[objc.Void](c_, "setHasVerticalScroller:", value)
 }
 
 func (c_ ComboBox) IntercellSpacing() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](c_, "intercellSpacing")
+	rv := objc.CallMethod[foundation.Size](c_, "intercellSpacing")
 	return rv
 }
 
 func (c_ ComboBox) SetIntercellSpacing(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](c_, "setIntercellSpacing:", value)
+	objc.CallMethod[objc.Void](c_, "setIntercellSpacing:", value)
 }
 
 func (c_ ComboBox) IsButtonBordered() bool {
-	rv := ffi.CallMethod[bool](c_, "isButtonBordered")
+	rv := objc.CallMethod[bool](c_, "isButtonBordered")
 	return rv
 }
 
 func (c_ ComboBox) SetButtonBordered(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setButtonBordered:", value)
+	objc.CallMethod[objc.Void](c_, "setButtonBordered:", value)
 }
 
 func (c_ ComboBox) ItemHeight() float64 {
-	rv := ffi.CallMethod[float64](c_, "itemHeight")
+	rv := objc.CallMethod[float64](c_, "itemHeight")
 	return rv
 }
 
 func (c_ ComboBox) SetItemHeight(value float64) {
-	ffi.CallMethod[ffi.Void](c_, "setItemHeight:", value)
+	objc.CallMethod[objc.Void](c_, "setItemHeight:", value)
 }
 
 func (c_ ComboBox) NumberOfVisibleItems() int {
-	rv := ffi.CallMethod[int](c_, "numberOfVisibleItems")
+	rv := objc.CallMethod[int](c_, "numberOfVisibleItems")
 	return rv
 }
 
 func (c_ ComboBox) SetNumberOfVisibleItems(value int) {
-	ffi.CallMethod[ffi.Void](c_, "setNumberOfVisibleItems:", value)
+	objc.CallMethod[objc.Void](c_, "setNumberOfVisibleItems:", value)
 }
 
 func (c_ ComboBox) DataSource() ComboBoxDataSourceWrapper {
-	rv := ffi.CallMethod[ComboBoxDataSourceWrapper](c_, "dataSource")
+	rv := objc.CallMethod[ComboBoxDataSourceWrapper](c_, "dataSource")
 	return rv
 }
 
 func (c_ ComboBox) SetDataSource(value ComboBoxDataSource) {
-	po := ffi.CreateProtocol("NSComboBoxDataSource", value)
+	po := objc.CreateProtocol("NSComboBoxDataSource", value)
 	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](c_, "setDataSource:", po)
+	objc.CallMethod[objc.Void](c_, "setDataSource:", po)
 }
 
 func (c_ ComboBox) SetDataSource0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "setDataSource:", value)
+	objc.CallMethod[objc.Void](c_, "setDataSource:", value)
 }
 
 func (c_ ComboBox) UsesDataSource() bool {
-	rv := ffi.CallMethod[bool](c_, "usesDataSource")
+	rv := objc.CallMethod[bool](c_, "usesDataSource")
 	return rv
 }
 
 func (c_ ComboBox) SetUsesDataSource(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setUsesDataSource:", value)
+	objc.CallMethod[objc.Void](c_, "setUsesDataSource:", value)
 }
 
 func (c_ ComboBox) ObjectValues() []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](c_, "objectValues")
+	rv := objc.CallMethod[[]objc.Object](c_, "objectValues")
 	return rv
 }
 
 func (c_ ComboBox) NumberOfItems() int {
-	rv := ffi.CallMethod[int](c_, "numberOfItems")
+	rv := objc.CallMethod[int](c_, "numberOfItems")
 	return rv
 }
 
 func (c_ ComboBox) IndexOfSelectedItem() int {
-	rv := ffi.CallMethod[int](c_, "indexOfSelectedItem")
+	rv := objc.CallMethod[int](c_, "indexOfSelectedItem")
 	return rv
 }
 
 func (c_ ComboBox) ObjectValueOfSelectedItem() objc.Object {
-	rv := ffi.CallMethod[objc.Object](c_, "objectValueOfSelectedItem")
+	rv := objc.CallMethod[objc.Object](c_, "objectValueOfSelectedItem")
 	return rv
 }
 
 func (c_ ComboBox) Completes() bool {
-	rv := ffi.CallMethod[bool](c_, "completes")
+	rv := objc.CallMethod[bool](c_, "completes")
 	return rv
 }
 
 func (c_ ComboBox) SetCompletes(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setCompletes:", value)
+	objc.CallMethod[objc.Void](c_, "setCompletes:", value)
 }

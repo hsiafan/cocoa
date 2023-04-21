@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -19,7 +18,7 @@ type PasteboardItemDataProviderWrapper struct {
 }
 
 func (p_ PasteboardItemDataProviderWrapper) Pasteboard_Item_ProvideDataForType(pasteboard IPasteboard, item IPasteboardItem, type_ PasteboardType) {
-	ffi.CallMethod[ffi.Void](p_, "pasteboard:item:provideDataForType:", pasteboard, item, type_)
+	objc.CallMethod[objc.Void](p_, "pasteboard:item:provideDataForType:", pasteboard, item, type_)
 }
 
 func (p_ *PasteboardItemDataProviderWrapper) ImplementsPasteboardFinishedWithDataProvider() bool {
@@ -27,5 +26,5 @@ func (p_ *PasteboardItemDataProviderWrapper) ImplementsPasteboardFinishedWithDat
 }
 
 func (p_ PasteboardItemDataProviderWrapper) PasteboardFinishedWithDataProvider(pasteboard IPasteboard) {
-	ffi.CallMethod[ffi.Void](p_, "pasteboardFinishedWithDataProvider:", pasteboard)
+	objc.CallMethod[objc.Void](p_, "pasteboardFinishedWithDataProvider:", pasteboard)
 }

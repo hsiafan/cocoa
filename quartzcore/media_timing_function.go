@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -29,12 +28,12 @@ func MakeMediaTimingFunction(ptr unsafe.Pointer) MediaTimingFunction {
 }
 
 func (mc _MediaTimingFunctionClass) Alloc() MediaTimingFunction {
-	rv := ffi.CallMethod[MediaTimingFunction](mc, "alloc")
+	rv := objc.CallMethod[MediaTimingFunction](mc, "alloc")
 	return rv
 }
 
 func (mc _MediaTimingFunctionClass) New() MediaTimingFunction {
-	rv := ffi.CallMethod[MediaTimingFunction](mc, "new")
+	rv := objc.CallMethod[MediaTimingFunction](mc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -44,6 +43,6 @@ func NewMediaTimingFunction() MediaTimingFunction {
 }
 
 func (m_ MediaTimingFunction) Init() MediaTimingFunction {
-	rv := ffi.CallMethod[MediaTimingFunction](m_, "init")
+	rv := objc.CallMethod[MediaTimingFunction](m_, "init")
 	return rv
 }

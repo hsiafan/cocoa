@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,32 +33,32 @@ func MakeCollectionLayoutDimension(ptr unsafe.Pointer) CollectionLayoutDimension
 }
 
 func (cc _CollectionLayoutDimensionClass) AbsoluteDimension(absoluteDimension float64) CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](cc, "absoluteDimension:", absoluteDimension)
+	rv := objc.CallMethod[CollectionLayoutDimension](cc, "absoluteDimension:", absoluteDimension)
 	return rv
 }
 
 func (cc _CollectionLayoutDimensionClass) EstimatedDimension(estimatedDimension float64) CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](cc, "estimatedDimension:", estimatedDimension)
+	rv := objc.CallMethod[CollectionLayoutDimension](cc, "estimatedDimension:", estimatedDimension)
 	return rv
 }
 
 func (cc _CollectionLayoutDimensionClass) FractionalHeightDimension(fractionalHeight float64) CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](cc, "fractionalHeightDimension:", fractionalHeight)
+	rv := objc.CallMethod[CollectionLayoutDimension](cc, "fractionalHeightDimension:", fractionalHeight)
 	return rv
 }
 
 func (cc _CollectionLayoutDimensionClass) FractionalWidthDimension(fractionalWidth float64) CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](cc, "fractionalWidthDimension:", fractionalWidth)
+	rv := objc.CallMethod[CollectionLayoutDimension](cc, "fractionalWidthDimension:", fractionalWidth)
 	return rv
 }
 
 func (cc _CollectionLayoutDimensionClass) Alloc() CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutDimension](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutDimensionClass) New() CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutDimension](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -69,31 +68,31 @@ func NewCollectionLayoutDimension() CollectionLayoutDimension {
 }
 
 func (c_ CollectionLayoutDimension) Init() CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutDimension](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutDimension) Dimension() float64 {
-	rv := ffi.CallMethod[float64](c_, "dimension")
+	rv := objc.CallMethod[float64](c_, "dimension")
 	return rv
 }
 
 func (c_ CollectionLayoutDimension) IsAbsolute() bool {
-	rv := ffi.CallMethod[bool](c_, "isAbsolute")
+	rv := objc.CallMethod[bool](c_, "isAbsolute")
 	return rv
 }
 
 func (c_ CollectionLayoutDimension) IsEstimated() bool {
-	rv := ffi.CallMethod[bool](c_, "isEstimated")
+	rv := objc.CallMethod[bool](c_, "isEstimated")
 	return rv
 }
 
 func (c_ CollectionLayoutDimension) IsFractionalHeight() bool {
-	rv := ffi.CallMethod[bool](c_, "isFractionalHeight")
+	rv := objc.CallMethod[bool](c_, "isFractionalHeight")
 	return rv
 }
 
 func (c_ CollectionLayoutDimension) IsFractionalWidth() bool {
-	rv := ffi.CallMethod[bool](c_, "isFractionalWidth")
+	rv := objc.CallMethod[bool](c_, "isFractionalWidth")
 	return rv
 }

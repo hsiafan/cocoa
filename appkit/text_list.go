@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,22 +34,22 @@ func MakeTextList(ptr unsafe.Pointer) TextList {
 }
 
 func (t_ TextList) InitWithMarkerFormat_Options(markerFormat TextListMarkerFormat, options uint) TextList {
-	rv := ffi.CallMethod[TextList](t_, "initWithMarkerFormat:options:", markerFormat, options)
+	rv := objc.CallMethod[TextList](t_, "initWithMarkerFormat:options:", markerFormat, options)
 	return rv
 }
 
 func (t_ TextList) InitWithMarkerFormat_Options_StartingItemNumber(markerFormat TextListMarkerFormat, options TextListOptions, startingItemNumber int) TextList {
-	rv := ffi.CallMethod[TextList](t_, "initWithMarkerFormat:options:startingItemNumber:", markerFormat, options, startingItemNumber)
+	rv := objc.CallMethod[TextList](t_, "initWithMarkerFormat:options:startingItemNumber:", markerFormat, options, startingItemNumber)
 	return rv
 }
 
 func (tc _TextListClass) Alloc() TextList {
-	rv := ffi.CallMethod[TextList](tc, "alloc")
+	rv := objc.CallMethod[TextList](tc, "alloc")
 	return rv
 }
 
 func (tc _TextListClass) New() TextList {
-	rv := ffi.CallMethod[TextList](tc, "new")
+	rv := objc.CallMethod[TextList](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -60,35 +59,35 @@ func NewTextList() TextList {
 }
 
 func (t_ TextList) Init() TextList {
-	rv := ffi.CallMethod[TextList](t_, "init")
+	rv := objc.CallMethod[TextList](t_, "init")
 	return rv
 }
 
 func (t_ TextList) MarkerForItemNumber(itemNumber int) string {
-	rv := ffi.CallMethod[string](t_, "markerForItemNumber:", itemNumber)
+	rv := objc.CallMethod[string](t_, "markerForItemNumber:", itemNumber)
 	return rv
 }
 
 func (t_ TextList) MarkerFormat() TextListMarkerFormat {
-	rv := ffi.CallMethod[TextListMarkerFormat](t_, "markerFormat")
+	rv := objc.CallMethod[TextListMarkerFormat](t_, "markerFormat")
 	return rv
 }
 
 func (t_ TextList) IsOrdered() bool {
-	rv := ffi.CallMethod[bool](t_, "isOrdered")
+	rv := objc.CallMethod[bool](t_, "isOrdered")
 	return rv
 }
 
 func (t_ TextList) ListOptions() TextListOptions {
-	rv := ffi.CallMethod[TextListOptions](t_, "listOptions")
+	rv := objc.CallMethod[TextListOptions](t_, "listOptions")
 	return rv
 }
 
 func (t_ TextList) StartingItemNumber() int {
-	rv := ffi.CallMethod[int](t_, "startingItemNumber")
+	rv := objc.CallMethod[int](t_, "startingItemNumber")
 	return rv
 }
 
 func (t_ TextList) SetStartingItemNumber(value int) {
-	ffi.CallMethod[ffi.Void](t_, "setStartingItemNumber:", value)
+	objc.CallMethod[objc.Void](t_, "setStartingItemNumber:", value)
 }

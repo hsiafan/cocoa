@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -125,22 +124,22 @@ func MakeControl(ptr unsafe.Pointer) Control {
 }
 
 func (c_ Control) InitWithFrame(frameRect foundation.Rect) Control {
-	rv := ffi.CallMethod[Control](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Control](c_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (c_ Control) Init() Control {
-	rv := ffi.CallMethod[Control](c_, "init")
+	rv := objc.CallMethod[Control](c_, "init")
 	return rv
 }
 
 func (cc _ControlClass) Alloc() Control {
-	rv := ffi.CallMethod[Control](cc, "alloc")
+	rv := objc.CallMethod[Control](cc, "alloc")
 	return rv
 }
 
 func (cc _ControlClass) New() Control {
-	rv := ffi.CallMethod[Control](cc, "new")
+	rv := objc.CallMethod[Control](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -150,378 +149,378 @@ func NewControl() Control {
 }
 
 func (c_ Control) TakeDoubleValueFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeDoubleValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeDoubleValueFrom:", sender)
 }
 
 func (c_ Control) TakeFloatValueFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeFloatValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeFloatValueFrom:", sender)
 }
 
 func (c_ Control) TakeIntValueFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeIntValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeIntValueFrom:", sender)
 }
 
 func (c_ Control) TakeIntegerValueFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeIntegerValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeIntegerValueFrom:", sender)
 }
 
 func (c_ Control) TakeObjectValueFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeObjectValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeObjectValueFrom:", sender)
 }
 
 func (c_ Control) TakeStringValueFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeStringValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeStringValueFrom:", sender)
 }
 
 // deprecated
 func (c_ Control) SetFloatingPointFormat_Left_Right(autoRange bool, leftDigits uint, rightDigits uint) {
-	ffi.CallMethod[ffi.Void](c_, "setFloatingPointFormat:left:right:", autoRange, leftDigits, rightDigits)
+	objc.CallMethod[objc.Void](c_, "setFloatingPointFormat:left:right:", autoRange, leftDigits, rightDigits)
 }
 
 func (c_ Control) DrawWithExpansionFrame_InView(contentFrame foundation.Rect, view IView) {
-	ffi.CallMethod[ffi.Void](c_, "drawWithExpansionFrame:inView:", contentFrame, view)
+	objc.CallMethod[objc.Void](c_, "drawWithExpansionFrame:inView:", contentFrame, view)
 }
 
 func (c_ Control) ExpansionFrameWithFrame(contentFrame foundation.Rect) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](c_, "expansionFrameWithFrame:", contentFrame)
+	rv := objc.CallMethod[foundation.Rect](c_, "expansionFrameWithFrame:", contentFrame)
 	return rv
 }
 
 func (c_ Control) AbortEditing() bool {
-	rv := ffi.CallMethod[bool](c_, "abortEditing")
+	rv := objc.CallMethod[bool](c_, "abortEditing")
 	return rv
 }
 
 func (c_ Control) CurrentEditor() Text {
-	rv := ffi.CallMethod[Text](c_, "currentEditor")
+	rv := objc.CallMethod[Text](c_, "currentEditor")
 	return rv
 }
 
 func (c_ Control) ValidateEditing() {
-	ffi.CallMethod[ffi.Void](c_, "validateEditing")
+	objc.CallMethod[objc.Void](c_, "validateEditing")
 }
 
 func (c_ Control) EditWithFrame_Editor_Delegate_Event(rect foundation.Rect, textObj IText, delegate objc.IObject, event IEvent) {
-	ffi.CallMethod[ffi.Void](c_, "editWithFrame:editor:delegate:event:", rect, textObj, delegate, event)
+	objc.CallMethod[objc.Void](c_, "editWithFrame:editor:delegate:event:", rect, textObj, delegate, event)
 }
 
 func (c_ Control) EndEditing(textObj IText) {
-	ffi.CallMethod[ffi.Void](c_, "endEditing:", textObj)
+	objc.CallMethod[objc.Void](c_, "endEditing:", textObj)
 }
 
 func (c_ Control) SelectWithFrame_Editor_Delegate_Start_Length(rect foundation.Rect, textObj IText, delegate objc.IObject, selStart int, selLength int) {
-	ffi.CallMethod[ffi.Void](c_, "selectWithFrame:editor:delegate:start:length:", rect, textObj, delegate, selStart, selLength)
+	objc.CallMethod[objc.Void](c_, "selectWithFrame:editor:delegate:start:length:", rect, textObj, delegate, selStart, selLength)
 }
 
 func (c_ Control) SizeThatFits(size foundation.Size) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](c_, "sizeThatFits:", size)
+	rv := objc.CallMethod[foundation.Size](c_, "sizeThatFits:", size)
 	return rv
 }
 
 func (c_ Control) SizeToFit() {
-	ffi.CallMethod[ffi.Void](c_, "sizeToFit")
+	objc.CallMethod[objc.Void](c_, "sizeToFit")
 }
 
 func (c_ Control) SendAction_To(action objc.Selector, target objc.IObject) bool {
-	rv := ffi.CallMethod[bool](c_, "sendAction:to:", action, target)
+	rv := objc.CallMethod[bool](c_, "sendAction:to:", action, target)
 	return rv
 }
 
 func (c_ Control) SendActionOn(mask EventMask) int {
-	rv := ffi.CallMethod[int](c_, "sendActionOn:", mask)
+	rv := objc.CallMethod[int](c_, "sendActionOn:", mask)
 	return rv
 }
 
 func (c_ Control) PerformClick(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "performClick:", sender)
+	objc.CallMethod[objc.Void](c_, "performClick:", sender)
 }
 
 func (c_ Control) InvalidateIntrinsicContentSizeForCell(cell ICell) {
-	ffi.CallMethod[ffi.Void](c_, "invalidateIntrinsicContentSizeForCell:", cell)
+	objc.CallMethod[objc.Void](c_, "invalidateIntrinsicContentSizeForCell:", cell)
 }
 
 // deprecated
 func (c_ Control) SelectedCell() Cell {
-	rv := ffi.CallMethod[Cell](c_, "selectedCell")
+	rv := objc.CallMethod[Cell](c_, "selectedCell")
 	return rv
 }
 
 // deprecated
 func (c_ Control) SelectedTag() int {
-	rv := ffi.CallMethod[int](c_, "selectedTag")
+	rv := objc.CallMethod[int](c_, "selectedTag")
 	return rv
 }
 
 // deprecated
 func (c_ Control) SetNeedsDisplay0() {
-	ffi.CallMethod[ffi.Void](c_, "setNeedsDisplay")
+	objc.CallMethod[objc.Void](c_, "setNeedsDisplay")
 }
 
 // deprecated
 func (c_ Control) CalcSize() {
-	ffi.CallMethod[ffi.Void](c_, "calcSize")
+	objc.CallMethod[objc.Void](c_, "calcSize")
 }
 
 // deprecated
 func (c_ Control) SelectCell(cell ICell) {
-	ffi.CallMethod[ffi.Void](c_, "selectCell:", cell)
+	objc.CallMethod[objc.Void](c_, "selectCell:", cell)
 }
 
 // deprecated
 func (c_ Control) DrawCell(cell ICell) {
-	ffi.CallMethod[ffi.Void](c_, "drawCell:", cell)
+	objc.CallMethod[objc.Void](c_, "drawCell:", cell)
 }
 
 // deprecated
 func (c_ Control) DrawCellInside(cell ICell) {
-	ffi.CallMethod[ffi.Void](c_, "drawCellInside:", cell)
+	objc.CallMethod[objc.Void](c_, "drawCellInside:", cell)
 }
 
 // deprecated
 func (c_ Control) UpdateCell(cell ICell) {
-	ffi.CallMethod[ffi.Void](c_, "updateCell:", cell)
+	objc.CallMethod[objc.Void](c_, "updateCell:", cell)
 }
 
 // deprecated
 func (c_ Control) UpdateCellInside(cell ICell) {
-	ffi.CallMethod[ffi.Void](c_, "updateCellInside:", cell)
+	objc.CallMethod[objc.Void](c_, "updateCellInside:", cell)
 }
 
 // deprecated
 func (c_ Control) ControlTextDidBeginEditing(obj foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "controlTextDidBeginEditing:", obj)
+	objc.CallMethod[objc.Void](c_, "controlTextDidBeginEditing:", obj)
 }
 
 // deprecated
 func (c_ Control) ControlTextDidChange(obj foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "controlTextDidChange:", obj)
+	objc.CallMethod[objc.Void](c_, "controlTextDidChange:", obj)
 }
 
 // deprecated
 func (c_ Control) ControlTextDidEndEditing(obj foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "controlTextDidEndEditing:", obj)
+	objc.CallMethod[objc.Void](c_, "controlTextDidEndEditing:", obj)
 }
 
 func (c_ Control) IsEnabled() bool {
-	rv := ffi.CallMethod[bool](c_, "isEnabled")
+	rv := objc.CallMethod[bool](c_, "isEnabled")
 	return rv
 }
 
 func (c_ Control) SetEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setEnabled:", value)
+	objc.CallMethod[objc.Void](c_, "setEnabled:", value)
 }
 
 func (c_ Control) DoubleValue() float64 {
-	rv := ffi.CallMethod[float64](c_, "doubleValue")
+	rv := objc.CallMethod[float64](c_, "doubleValue")
 	return rv
 }
 
 func (c_ Control) SetDoubleValue(value float64) {
-	ffi.CallMethod[ffi.Void](c_, "setDoubleValue:", value)
+	objc.CallMethod[objc.Void](c_, "setDoubleValue:", value)
 }
 
 func (c_ Control) FloatValue() float32 {
-	rv := ffi.CallMethod[float32](c_, "floatValue")
+	rv := objc.CallMethod[float32](c_, "floatValue")
 	return rv
 }
 
 func (c_ Control) SetFloatValue(value float32) {
-	ffi.CallMethod[ffi.Void](c_, "setFloatValue:", value)
+	objc.CallMethod[objc.Void](c_, "setFloatValue:", value)
 }
 
 func (c_ Control) IntValue() int32 {
-	rv := ffi.CallMethod[int32](c_, "intValue")
+	rv := objc.CallMethod[int32](c_, "intValue")
 	return rv
 }
 
 func (c_ Control) SetIntValue(value int32) {
-	ffi.CallMethod[ffi.Void](c_, "setIntValue:", value)
+	objc.CallMethod[objc.Void](c_, "setIntValue:", value)
 }
 
 func (c_ Control) IntegerValue() int {
-	rv := ffi.CallMethod[int](c_, "integerValue")
+	rv := objc.CallMethod[int](c_, "integerValue")
 	return rv
 }
 
 func (c_ Control) SetIntegerValue(value int) {
-	ffi.CallMethod[ffi.Void](c_, "setIntegerValue:", value)
+	objc.CallMethod[objc.Void](c_, "setIntegerValue:", value)
 }
 
 func (c_ Control) ObjectValue() objc.Object {
-	rv := ffi.CallMethod[objc.Object](c_, "objectValue")
+	rv := objc.CallMethod[objc.Object](c_, "objectValue")
 	return rv
 }
 
 func (c_ Control) SetObjectValue(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "setObjectValue:", value)
+	objc.CallMethod[objc.Void](c_, "setObjectValue:", value)
 }
 
 func (c_ Control) StringValue() string {
-	rv := ffi.CallMethod[string](c_, "stringValue")
+	rv := objc.CallMethod[string](c_, "stringValue")
 	return rv
 }
 
 func (c_ Control) SetStringValue(value string) {
-	ffi.CallMethod[ffi.Void](c_, "setStringValue:", value)
+	objc.CallMethod[objc.Void](c_, "setStringValue:", value)
 }
 
 func (c_ Control) AttributedStringValue() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](c_, "attributedStringValue")
+	rv := objc.CallMethod[foundation.AttributedString](c_, "attributedStringValue")
 	return rv
 }
 
 func (c_ Control) SetAttributedStringValue(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](c_, "setAttributedStringValue:", value)
+	objc.CallMethod[objc.Void](c_, "setAttributedStringValue:", value)
 }
 
 func (c_ Control) Alignment() TextAlignment {
-	rv := ffi.CallMethod[TextAlignment](c_, "alignment")
+	rv := objc.CallMethod[TextAlignment](c_, "alignment")
 	return rv
 }
 
 func (c_ Control) SetAlignment(value TextAlignment) {
-	ffi.CallMethod[ffi.Void](c_, "setAlignment:", value)
+	objc.CallMethod[objc.Void](c_, "setAlignment:", value)
 }
 
 func (c_ Control) Font() Font {
-	rv := ffi.CallMethod[Font](c_, "font")
+	rv := objc.CallMethod[Font](c_, "font")
 	return rv
 }
 
 func (c_ Control) SetFont(value IFont) {
-	ffi.CallMethod[ffi.Void](c_, "setFont:", value)
+	objc.CallMethod[objc.Void](c_, "setFont:", value)
 }
 
 func (c_ Control) LineBreakMode() LineBreakMode {
-	rv := ffi.CallMethod[LineBreakMode](c_, "lineBreakMode")
+	rv := objc.CallMethod[LineBreakMode](c_, "lineBreakMode")
 	return rv
 }
 
 func (c_ Control) SetLineBreakMode(value LineBreakMode) {
-	ffi.CallMethod[ffi.Void](c_, "setLineBreakMode:", value)
+	objc.CallMethod[objc.Void](c_, "setLineBreakMode:", value)
 }
 
 func (c_ Control) UsesSingleLineMode() bool {
-	rv := ffi.CallMethod[bool](c_, "usesSingleLineMode")
+	rv := objc.CallMethod[bool](c_, "usesSingleLineMode")
 	return rv
 }
 
 func (c_ Control) SetUsesSingleLineMode(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setUsesSingleLineMode:", value)
+	objc.CallMethod[objc.Void](c_, "setUsesSingleLineMode:", value)
 }
 
 func (c_ Control) Formatter() foundation.Formatter {
-	rv := ffi.CallMethod[foundation.Formatter](c_, "formatter")
+	rv := objc.CallMethod[foundation.Formatter](c_, "formatter")
 	return rv
 }
 
 func (c_ Control) SetFormatter(value foundation.IFormatter) {
-	ffi.CallMethod[ffi.Void](c_, "setFormatter:", value)
+	objc.CallMethod[objc.Void](c_, "setFormatter:", value)
 }
 
 func (c_ Control) BaseWritingDirection() WritingDirection {
-	rv := ffi.CallMethod[WritingDirection](c_, "baseWritingDirection")
+	rv := objc.CallMethod[WritingDirection](c_, "baseWritingDirection")
 	return rv
 }
 
 func (c_ Control) SetBaseWritingDirection(value WritingDirection) {
-	ffi.CallMethod[ffi.Void](c_, "setBaseWritingDirection:", value)
+	objc.CallMethod[objc.Void](c_, "setBaseWritingDirection:", value)
 }
 
 func (c_ Control) AllowsExpansionToolTips() bool {
-	rv := ffi.CallMethod[bool](c_, "allowsExpansionToolTips")
+	rv := objc.CallMethod[bool](c_, "allowsExpansionToolTips")
 	return rv
 }
 
 func (c_ Control) SetAllowsExpansionToolTips(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setAllowsExpansionToolTips:", value)
+	objc.CallMethod[objc.Void](c_, "setAllowsExpansionToolTips:", value)
 }
 
 func (c_ Control) ControlSize() ControlSize {
-	rv := ffi.CallMethod[ControlSize](c_, "controlSize")
+	rv := objc.CallMethod[ControlSize](c_, "controlSize")
 	return rv
 }
 
 func (c_ Control) SetControlSize(value ControlSize) {
-	ffi.CallMethod[ffi.Void](c_, "setControlSize:", value)
+	objc.CallMethod[objc.Void](c_, "setControlSize:", value)
 }
 
 func (c_ Control) IsHighlighted() bool {
-	rv := ffi.CallMethod[bool](c_, "isHighlighted")
+	rv := objc.CallMethod[bool](c_, "isHighlighted")
 	return rv
 }
 
 func (c_ Control) SetHighlighted(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setHighlighted:", value)
+	objc.CallMethod[objc.Void](c_, "setHighlighted:", value)
 }
 
 func (c_ Control) Action() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](c_, "action")
+	rv := objc.CallMethod[objc.Selector](c_, "action")
 	return rv
 }
 
 func (c_ Control) SetAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](c_, "setAction:", value)
+	objc.CallMethod[objc.Void](c_, "setAction:", value)
 }
 
 func (c_ Control) Target() objc.Object {
-	rv := ffi.CallMethod[objc.Object](c_, "target")
+	rv := objc.CallMethod[objc.Object](c_, "target")
 	return rv
 }
 
 func (c_ Control) SetTarget(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "setTarget:", value)
+	objc.CallMethod[objc.Void](c_, "setTarget:", value)
 }
 
 func (c_ Control) IsContinuous() bool {
-	rv := ffi.CallMethod[bool](c_, "isContinuous")
+	rv := objc.CallMethod[bool](c_, "isContinuous")
 	return rv
 }
 
 func (c_ Control) SetContinuous(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setContinuous:", value)
+	objc.CallMethod[objc.Void](c_, "setContinuous:", value)
 }
 
 func (c_ Control) SetTag(value int) {
-	ffi.CallMethod[ffi.Void](c_, "setTag:", value)
+	objc.CallMethod[objc.Void](c_, "setTag:", value)
 }
 
 func (c_ Control) RefusesFirstResponder() bool {
-	rv := ffi.CallMethod[bool](c_, "refusesFirstResponder")
+	rv := objc.CallMethod[bool](c_, "refusesFirstResponder")
 	return rv
 }
 
 func (c_ Control) SetRefusesFirstResponder(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setRefusesFirstResponder:", value)
+	objc.CallMethod[objc.Void](c_, "setRefusesFirstResponder:", value)
 }
 
 func (c_ Control) IgnoresMultiClick() bool {
-	rv := ffi.CallMethod[bool](c_, "ignoresMultiClick")
+	rv := objc.CallMethod[bool](c_, "ignoresMultiClick")
 	return rv
 }
 
 func (c_ Control) SetIgnoresMultiClick(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setIgnoresMultiClick:", value)
+	objc.CallMethod[objc.Void](c_, "setIgnoresMultiClick:", value)
 }
 
 // deprecated
 func (c_ Control) Cell() Cell {
-	rv := ffi.CallMethod[Cell](c_, "cell")
+	rv := objc.CallMethod[Cell](c_, "cell")
 	return rv
 }
 
 // deprecated
 func (c_ Control) SetCell(value ICell) {
-	ffi.CallMethod[ffi.Void](c_, "setCell:", value)
+	objc.CallMethod[objc.Void](c_, "setCell:", value)
 }
 
 // deprecated
 func (cc _ControlClass) CellClass() objc.Class {
-	rv := ffi.CallMethod[objc.Class](cc, "cellClass")
+	rv := objc.CallMethod[objc.Class](cc, "cellClass")
 	return rv
 }
 
 // deprecated
 func (cc _ControlClass) SetCellClass(value objc.IClass) {
-	ffi.CallMethod[ffi.Void](cc, "setCellClass:", value)
+	objc.CallMethod[objc.Void](cc, "setCellClass:", value)
 }

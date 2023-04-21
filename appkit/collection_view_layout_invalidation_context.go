@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -42,12 +41,12 @@ func MakeCollectionViewLayoutInvalidationContext(ptr unsafe.Pointer) CollectionV
 }
 
 func (cc _CollectionViewLayoutInvalidationContextClass) Alloc() CollectionViewLayoutInvalidationContext {
-	rv := ffi.CallMethod[CollectionViewLayoutInvalidationContext](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionViewLayoutInvalidationContextClass) New() CollectionViewLayoutInvalidationContext {
-	rv := ffi.CallMethod[CollectionViewLayoutInvalidationContext](cc, "new")
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,61 +56,61 @@ func NewCollectionViewLayoutInvalidationContext() CollectionViewLayoutInvalidati
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) Init() CollectionViewLayoutInvalidationContext {
-	rv := ffi.CallMethod[CollectionViewLayoutInvalidationContext](c_, "init")
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](c_, "init")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateItemsAtIndexPaths(indexPaths foundation.ISet) {
-	ffi.CallMethod[ffi.Void](c_, "invalidateItemsAtIndexPaths:", indexPaths)
+	objc.CallMethod[objc.Void](c_, "invalidateItemsAtIndexPaths:", indexPaths)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateSupplementaryElementsOfKind_AtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet) {
-	ffi.CallMethod[ffi.Void](c_, "invalidateSupplementaryElementsOfKind:atIndexPaths:", elementKind, indexPaths)
+	objc.CallMethod[objc.Void](c_, "invalidateSupplementaryElementsOfKind:atIndexPaths:", elementKind, indexPaths)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateDecorationElementsOfKind_AtIndexPaths(elementKind CollectionViewDecorationElementKind, indexPaths foundation.ISet) {
-	ffi.CallMethod[ffi.Void](c_, "invalidateDecorationElementsOfKind:atIndexPaths:", elementKind, indexPaths)
+	objc.CallMethod[objc.Void](c_, "invalidateDecorationElementsOfKind:atIndexPaths:", elementKind, indexPaths)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateEverything() bool {
-	rv := ffi.CallMethod[bool](c_, "invalidateEverything")
+	rv := objc.CallMethod[bool](c_, "invalidateEverything")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateDataSourceCounts() bool {
-	rv := ffi.CallMethod[bool](c_, "invalidateDataSourceCounts")
+	rv := objc.CallMethod[bool](c_, "invalidateDataSourceCounts")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) ContentOffsetAdjustment() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](c_, "contentOffsetAdjustment")
+	rv := objc.CallMethod[foundation.Point](c_, "contentOffsetAdjustment")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) SetContentOffsetAdjustment(value foundation.Point) {
-	ffi.CallMethod[ffi.Void](c_, "setContentOffsetAdjustment:", value)
+	objc.CallMethod[objc.Void](c_, "setContentOffsetAdjustment:", value)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) ContentSizeAdjustment() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](c_, "contentSizeAdjustment")
+	rv := objc.CallMethod[foundation.Size](c_, "contentSizeAdjustment")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) SetContentSizeAdjustment(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](c_, "setContentSizeAdjustment:", value)
+	objc.CallMethod[objc.Void](c_, "setContentSizeAdjustment:", value)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidatedItemIndexPaths() foundation.Set {
-	rv := ffi.CallMethod[foundation.Set](c_, "invalidatedItemIndexPaths")
+	rv := objc.CallMethod[foundation.Set](c_, "invalidatedItemIndexPaths")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidatedSupplementaryIndexPaths() map[CollectionViewSupplementaryElementKind]foundation.Set {
-	rv := ffi.CallMethod[map[CollectionViewSupplementaryElementKind]foundation.Set](c_, "invalidatedSupplementaryIndexPaths")
+	rv := objc.CallMethod[map[CollectionViewSupplementaryElementKind]foundation.Set](c_, "invalidatedSupplementaryIndexPaths")
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidatedDecorationIndexPaths() map[CollectionViewDecorationElementKind]foundation.Set {
-	rv := ffi.CallMethod[map[CollectionViewDecorationElementKind]foundation.Set](c_, "invalidatedDecorationIndexPaths")
+	rv := objc.CallMethod[map[CollectionViewDecorationElementKind]foundation.Set](c_, "invalidatedDecorationIndexPaths")
 	return rv
 }

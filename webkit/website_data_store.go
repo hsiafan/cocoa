@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -35,12 +34,12 @@ func MakeWebsiteDataStore(ptr unsafe.Pointer) WebsiteDataStore {
 }
 
 func (wc _WebsiteDataStoreClass) Alloc() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](wc, "alloc")
+	rv := objc.CallMethod[WebsiteDataStore](wc, "alloc")
 	return rv
 }
 
 func (wc _WebsiteDataStoreClass) New() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](wc, "new")
+	rv := objc.CallMethod[WebsiteDataStore](wc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,43 +49,43 @@ func NewWebsiteDataStore() WebsiteDataStore {
 }
 
 func (w_ WebsiteDataStore) Init() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](w_, "init")
+	rv := objc.CallMethod[WebsiteDataStore](w_, "init")
 	return rv
 }
 
 func (wc _WebsiteDataStoreClass) DefaultDataStore() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](wc, "defaultDataStore")
+	rv := objc.CallMethod[WebsiteDataStore](wc, "defaultDataStore")
 	return rv
 }
 
 func (wc _WebsiteDataStoreClass) NonPersistentDataStore() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](wc, "nonPersistentDataStore")
+	rv := objc.CallMethod[WebsiteDataStore](wc, "nonPersistentDataStore")
 	return rv
 }
 
 func (w_ WebsiteDataStore) FetchDataRecordsOfTypes_CompletionHandler(dataTypes foundation.ISet, completionHandler func(param1 []WebsiteDataRecord)) {
-	ffi.CallMethod[ffi.Void](w_, "fetchDataRecordsOfTypes:completionHandler:", dataTypes, completionHandler)
+	objc.CallMethod[objc.Void](w_, "fetchDataRecordsOfTypes:completionHandler:", dataTypes, completionHandler)
 }
 
 func (wc _WebsiteDataStoreClass) AllWebsiteDataTypes() foundation.Set {
-	rv := ffi.CallMethod[foundation.Set](wc, "allWebsiteDataTypes")
+	rv := objc.CallMethod[foundation.Set](wc, "allWebsiteDataTypes")
 	return rv
 }
 
 func (w_ WebsiteDataStore) RemoveDataOfTypes_ForDataRecords_CompletionHandler(dataTypes foundation.ISet, dataRecords []IWebsiteDataRecord, completionHandler func()) {
-	ffi.CallMethod[ffi.Void](w_, "removeDataOfTypes:forDataRecords:completionHandler:", dataTypes, dataRecords, completionHandler)
+	objc.CallMethod[objc.Void](w_, "removeDataOfTypes:forDataRecords:completionHandler:", dataTypes, dataRecords, completionHandler)
 }
 
 func (w_ WebsiteDataStore) RemoveDataOfTypes_ModifiedSince_CompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func()) {
-	ffi.CallMethod[ffi.Void](w_, "removeDataOfTypes:modifiedSince:completionHandler:", dataTypes, date, completionHandler)
+	objc.CallMethod[objc.Void](w_, "removeDataOfTypes:modifiedSince:completionHandler:", dataTypes, date, completionHandler)
 }
 
 func (w_ WebsiteDataStore) IsPersistent() bool {
-	rv := ffi.CallMethod[bool](w_, "isPersistent")
+	rv := objc.CallMethod[bool](w_, "isPersistent")
 	return rv
 }
 
 func (w_ WebsiteDataStore) HttpCookieStore() HTTPCookieStore {
-	rv := ffi.CallMethod[HTTPCookieStore](w_, "httpCookieStore")
+	rv := objc.CallMethod[HTTPCookieStore](w_, "httpCookieStore")
 	return rv
 }

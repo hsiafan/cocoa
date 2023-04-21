@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -41,22 +40,22 @@ func MakeAffineTransform(ptr unsafe.Pointer) AffineTransform {
 }
 
 func (a_ AffineTransform) Init() AffineTransform {
-	rv := ffi.CallMethod[AffineTransform](a_, "init")
+	rv := objc.CallMethod[AffineTransform](a_, "init")
 	return rv
 }
 
 func (a_ AffineTransform) InitWithTransform(transform IAffineTransform) AffineTransform {
-	rv := ffi.CallMethod[AffineTransform](a_, "initWithTransform:", transform)
+	rv := objc.CallMethod[AffineTransform](a_, "initWithTransform:", transform)
 	return rv
 }
 
 func (ac _AffineTransformClass) Alloc() AffineTransform {
-	rv := ffi.CallMethod[AffineTransform](ac, "alloc")
+	rv := objc.CallMethod[AffineTransform](ac, "alloc")
 	return rv
 }
 
 func (ac _AffineTransformClass) New() AffineTransform {
-	rv := ffi.CallMethod[AffineTransform](ac, "new")
+	rv := objc.CallMethod[AffineTransform](ac, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -66,57 +65,57 @@ func NewAffineTransform() AffineTransform {
 }
 
 func (ac _AffineTransformClass) Transform() AffineTransform {
-	rv := ffi.CallMethod[AffineTransform](ac, "transform")
+	rv := objc.CallMethod[AffineTransform](ac, "transform")
 	return rv
 }
 
 func (a_ AffineTransform) RotateByDegrees(angle float64) {
-	ffi.CallMethod[ffi.Void](a_, "rotateByDegrees:", angle)
+	objc.CallMethod[objc.Void](a_, "rotateByDegrees:", angle)
 }
 
 func (a_ AffineTransform) RotateByRadians(angle float64) {
-	ffi.CallMethod[ffi.Void](a_, "rotateByRadians:", angle)
+	objc.CallMethod[objc.Void](a_, "rotateByRadians:", angle)
 }
 
 func (a_ AffineTransform) ScaleBy(scale float64) {
-	ffi.CallMethod[ffi.Void](a_, "scaleBy:", scale)
+	objc.CallMethod[objc.Void](a_, "scaleBy:", scale)
 }
 
 func (a_ AffineTransform) ScaleXBy_YBy(scaleX float64, scaleY float64) {
-	ffi.CallMethod[ffi.Void](a_, "scaleXBy:yBy:", scaleX, scaleY)
+	objc.CallMethod[objc.Void](a_, "scaleXBy:yBy:", scaleX, scaleY)
 }
 
 func (a_ AffineTransform) TranslateXBy_YBy(deltaX float64, deltaY float64) {
-	ffi.CallMethod[ffi.Void](a_, "translateXBy:yBy:", deltaX, deltaY)
+	objc.CallMethod[objc.Void](a_, "translateXBy:yBy:", deltaX, deltaY)
 }
 
 func (a_ AffineTransform) AppendTransform(transform IAffineTransform) {
-	ffi.CallMethod[ffi.Void](a_, "appendTransform:", transform)
+	objc.CallMethod[objc.Void](a_, "appendTransform:", transform)
 }
 
 func (a_ AffineTransform) PrependTransform(transform IAffineTransform) {
-	ffi.CallMethod[ffi.Void](a_, "prependTransform:", transform)
+	objc.CallMethod[objc.Void](a_, "prependTransform:", transform)
 }
 
 func (a_ AffineTransform) Invert() {
-	ffi.CallMethod[ffi.Void](a_, "invert")
+	objc.CallMethod[objc.Void](a_, "invert")
 }
 
 func (a_ AffineTransform) TransformPoint(aPoint Point) Point {
-	rv := ffi.CallMethod[Point](a_, "transformPoint:", aPoint)
+	rv := objc.CallMethod[Point](a_, "transformPoint:", aPoint)
 	return rv
 }
 
 func (a_ AffineTransform) TransformSize(aSize Size) Size {
-	rv := ffi.CallMethod[Size](a_, "transformSize:", aSize)
+	rv := objc.CallMethod[Size](a_, "transformSize:", aSize)
 	return rv
 }
 
 func (a_ AffineTransform) TransformStruct() AffineTransformStruct {
-	rv := ffi.CallMethod[AffineTransformStruct](a_, "transformStruct")
+	rv := objc.CallMethod[AffineTransformStruct](a_, "transformStruct")
 	return rv
 }
 
 func (a_ AffineTransform) SetTransformStruct(value AffineTransformStruct) {
-	ffi.CallMethod[ffi.Void](a_, "setTransformStruct:", value)
+	objc.CallMethod[objc.Void](a_, "setTransformStruct:", value)
 }

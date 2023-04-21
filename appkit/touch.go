@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -38,12 +37,12 @@ func MakeTouch(ptr unsafe.Pointer) Touch {
 }
 
 func (tc _TouchClass) Alloc() Touch {
-	rv := ffi.CallMethod[Touch](tc, "alloc")
+	rv := objc.CallMethod[Touch](tc, "alloc")
 	return rv
 }
 
 func (tc _TouchClass) New() Touch {
-	rv := ffi.CallMethod[Touch](tc, "new")
+	rv := objc.CallMethod[Touch](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,46 +52,46 @@ func NewTouch() Touch {
 }
 
 func (t_ Touch) Init() Touch {
-	rv := ffi.CallMethod[Touch](t_, "init")
+	rv := objc.CallMethod[Touch](t_, "init")
 	return rv
 }
 
 func (t_ Touch) LocationInView(view IView) foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](t_, "locationInView:", view)
+	rv := objc.CallMethod[foundation.Point](t_, "locationInView:", view)
 	return rv
 }
 
 func (t_ Touch) PreviousLocationInView(view IView) foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](t_, "previousLocationInView:", view)
+	rv := objc.CallMethod[foundation.Point](t_, "previousLocationInView:", view)
 	return rv
 }
 
 func (t_ Touch) Type() TouchType {
-	rv := ffi.CallMethod[TouchType](t_, "type")
+	rv := objc.CallMethod[TouchType](t_, "type")
 	return rv
 }
 
 func (t_ Touch) Phase() TouchPhase {
-	rv := ffi.CallMethod[TouchPhase](t_, "phase")
+	rv := objc.CallMethod[TouchPhase](t_, "phase")
 	return rv
 }
 
 func (t_ Touch) NormalizedPosition() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](t_, "normalizedPosition")
+	rv := objc.CallMethod[foundation.Point](t_, "normalizedPosition")
 	return rv
 }
 
 func (t_ Touch) IsResting() bool {
-	rv := ffi.CallMethod[bool](t_, "isResting")
+	rv := objc.CallMethod[bool](t_, "isResting")
 	return rv
 }
 
 func (t_ Touch) Device() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "device")
+	rv := objc.CallMethod[objc.Object](t_, "device")
 	return rv
 }
 
 func (t_ Touch) DeviceSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "deviceSize")
+	rv := objc.CallMethod[foundation.Size](t_, "deviceSize")
 	return rv
 }

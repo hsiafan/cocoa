@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -87,17 +86,17 @@ type RuleEditorDelegateWrapper struct {
 }
 
 func (r_ RuleEditorDelegateWrapper) RuleEditor_Child_ForCriterion_WithRowType(editor IRuleEditor, index int, criterion objc.IObject, rowType RuleEditorRowType) objc.Object {
-	rv := ffi.CallMethod[objc.Object](r_, "ruleEditor:child:forCriterion:withRowType:", editor, index, criterion, rowType)
+	rv := objc.CallMethod[objc.Object](r_, "ruleEditor:child:forCriterion:withRowType:", editor, index, criterion, rowType)
 	return rv
 }
 
 func (r_ RuleEditorDelegateWrapper) RuleEditor_DisplayValueForCriterion_InRow(editor IRuleEditor, criterion objc.IObject, row int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](r_, "ruleEditor:displayValueForCriterion:inRow:", editor, criterion, row)
+	rv := objc.CallMethod[objc.Object](r_, "ruleEditor:displayValueForCriterion:inRow:", editor, criterion, row)
 	return rv
 }
 
 func (r_ RuleEditorDelegateWrapper) RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor IRuleEditor, criterion objc.IObject, rowType RuleEditorRowType) int {
-	rv := ffi.CallMethod[int](r_, "ruleEditor:numberOfChildrenForCriterion:withRowType:", editor, criterion, rowType)
+	rv := objc.CallMethod[int](r_, "ruleEditor:numberOfChildrenForCriterion:withRowType:", editor, criterion, rowType)
 	return rv
 }
 
@@ -106,7 +105,7 @@ func (r_ *RuleEditorDelegateWrapper) ImplementsRuleEditor_PredicatePartsForCrite
 }
 
 func (r_ RuleEditorDelegateWrapper) RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor IRuleEditor, criterion objc.IObject, value objc.IObject, row int) map[RuleEditorPredicatePartKey]objc.Object {
-	rv := ffi.CallMethod[map[RuleEditorPredicatePartKey]objc.Object](r_, "ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:", editor, criterion, value, row)
+	rv := objc.CallMethod[map[RuleEditorPredicatePartKey]objc.Object](r_, "ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:", editor, criterion, value, row)
 	return rv
 }
 
@@ -115,5 +114,5 @@ func (r_ *RuleEditorDelegateWrapper) ImplementsRuleEditorRowsDidChange() bool {
 }
 
 func (r_ RuleEditorDelegateWrapper) RuleEditorRowsDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](r_, "ruleEditorRowsDidChange:", notification)
+	objc.CallMethod[objc.Void](r_, "ruleEditorRowsDidChange:", notification)
 }

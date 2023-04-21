@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,12 +31,12 @@ func MakePDFConfiguration(ptr unsafe.Pointer) PDFConfiguration {
 }
 
 func (pc _PDFConfigurationClass) Alloc() PDFConfiguration {
-	rv := ffi.CallMethod[PDFConfiguration](pc, "alloc")
+	rv := objc.CallMethod[PDFConfiguration](pc, "alloc")
 	return rv
 }
 
 func (pc _PDFConfigurationClass) New() PDFConfiguration {
-	rv := ffi.CallMethod[PDFConfiguration](pc, "new")
+	rv := objc.CallMethod[PDFConfiguration](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -47,15 +46,15 @@ func NewPDFConfiguration() PDFConfiguration {
 }
 
 func (p_ PDFConfiguration) Init() PDFConfiguration {
-	rv := ffi.CallMethod[PDFConfiguration](p_, "init")
+	rv := objc.CallMethod[PDFConfiguration](p_, "init")
 	return rv
 }
 
 func (p_ PDFConfiguration) Rect() coregraphics.Rect {
-	rv := ffi.CallMethod[coregraphics.Rect](p_, "rect")
+	rv := objc.CallMethod[coregraphics.Rect](p_, "rect")
 	return rv
 }
 
 func (p_ PDFConfiguration) SetRect(value coregraphics.Rect) {
-	ffi.CallMethod[ffi.Void](p_, "setRect:", value)
+	objc.CallMethod[objc.Void](p_, "setRect:", value)
 }

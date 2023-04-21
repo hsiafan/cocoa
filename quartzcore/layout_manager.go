@@ -3,7 +3,6 @@ package quartzcore
 
 import (
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -28,7 +27,7 @@ func (l_ *LayoutManagerWrapper) ImplementsInvalidateLayoutOfLayer() bool {
 }
 
 func (l_ LayoutManagerWrapper) InvalidateLayoutOfLayer(layer ILayer) {
-	ffi.CallMethod[ffi.Void](l_, "invalidateLayoutOfLayer:", layer)
+	objc.CallMethod[objc.Void](l_, "invalidateLayoutOfLayer:", layer)
 }
 
 func (l_ *LayoutManagerWrapper) ImplementsLayoutSublayersOfLayer() bool {
@@ -36,7 +35,7 @@ func (l_ *LayoutManagerWrapper) ImplementsLayoutSublayersOfLayer() bool {
 }
 
 func (l_ LayoutManagerWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	ffi.CallMethod[ffi.Void](l_, "layoutSublayersOfLayer:", layer)
+	objc.CallMethod[objc.Void](l_, "layoutSublayersOfLayer:", layer)
 }
 
 func (l_ *LayoutManagerWrapper) ImplementsPreferredSizeOfLayer() bool {
@@ -44,6 +43,6 @@ func (l_ *LayoutManagerWrapper) ImplementsPreferredSizeOfLayer() bool {
 }
 
 func (l_ LayoutManagerWrapper) PreferredSizeOfLayer(layer ILayer) coregraphics.Size {
-	rv := ffi.CallMethod[coregraphics.Size](l_, "preferredSizeOfLayer:", layer)
+	rv := objc.CallMethod[coregraphics.Size](l_, "preferredSizeOfLayer:", layer)
 	return rv
 }

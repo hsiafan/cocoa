@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -82,7 +81,7 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_BeginSelectingCandidateAtIndex(anItem ICandidateListTouchBarItem, index int) {
-	ffi.CallMethod[ffi.Void](c_, "candidateListTouchBarItem:beginSelectingCandidateAtIndex:", anItem, index)
+	objc.CallMethod[objc.Void](c_, "candidateListTouchBarItem:beginSelectingCandidateAtIndex:", anItem, index)
 }
 
 func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex() bool {
@@ -90,7 +89,7 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(anItem ICandidateListTouchBarItem, previousIndex int, index int) {
-	ffi.CallMethod[ffi.Void](c_, "candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:", anItem, previousIndex, index)
+	objc.CallMethod[objc.Void](c_, "candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:", anItem, previousIndex, index)
 }
 
 func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouchBarItem_EndSelectingCandidateAtIndex() bool {
@@ -98,7 +97,7 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_EndSelectingCandidateAtIndex(anItem ICandidateListTouchBarItem, index int) {
-	ffi.CallMethod[ffi.Void](c_, "candidateListTouchBarItem:endSelectingCandidateAtIndex:", anItem, index)
+	objc.CallMethod[objc.Void](c_, "candidateListTouchBarItem:endSelectingCandidateAtIndex:", anItem, index)
 }
 
 func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouchBarItem_ChangedCandidateListVisibility() bool {
@@ -106,5 +105,5 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_ChangedCandidateListVisibility(anItem ICandidateListTouchBarItem, isVisible bool) {
-	ffi.CallMethod[ffi.Void](c_, "candidateListTouchBarItem:changedCandidateListVisibility:", anItem, isVisible)
+	objc.CallMethod[objc.Void](c_, "candidateListTouchBarItem:changedCandidateListVisibility:", anItem, isVisible)
 }

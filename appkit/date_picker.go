@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -66,22 +65,22 @@ func MakeDatePicker(ptr unsafe.Pointer) DatePicker {
 }
 
 func (d_ DatePicker) InitWithFrame(frameRect foundation.Rect) DatePicker {
-	rv := ffi.CallMethod[DatePicker](d_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[DatePicker](d_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (d_ DatePicker) Init() DatePicker {
-	rv := ffi.CallMethod[DatePicker](d_, "init")
+	rv := objc.CallMethod[DatePicker](d_, "init")
 	return rv
 }
 
 func (dc _DatePickerClass) Alloc() DatePicker {
-	rv := ffi.CallMethod[DatePicker](dc, "alloc")
+	rv := objc.CallMethod[DatePicker](dc, "alloc")
 	return rv
 }
 
 func (dc _DatePickerClass) New() DatePicker {
-	rv := ffi.CallMethod[DatePicker](dc, "new")
+	rv := objc.CallMethod[DatePicker](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -91,161 +90,161 @@ func NewDatePicker() DatePicker {
 }
 
 func (d_ DatePicker) IsBezeled() bool {
-	rv := ffi.CallMethod[bool](d_, "isBezeled")
+	rv := objc.CallMethod[bool](d_, "isBezeled")
 	return rv
 }
 
 func (d_ DatePicker) SetBezeled(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setBezeled:", value)
+	objc.CallMethod[objc.Void](d_, "setBezeled:", value)
 }
 
 func (d_ DatePicker) IsBordered() bool {
-	rv := ffi.CallMethod[bool](d_, "isBordered")
+	rv := objc.CallMethod[bool](d_, "isBordered")
 	return rv
 }
 
 func (d_ DatePicker) SetBordered(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setBordered:", value)
+	objc.CallMethod[objc.Void](d_, "setBordered:", value)
 }
 
 func (d_ DatePicker) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](d_, "backgroundColor")
+	rv := objc.CallMethod[Color](d_, "backgroundColor")
 	return rv
 }
 
 func (d_ DatePicker) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](d_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](d_, "setBackgroundColor:", value)
 }
 
 func (d_ DatePicker) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](d_, "drawsBackground")
+	rv := objc.CallMethod[bool](d_, "drawsBackground")
 	return rv
 }
 
 func (d_ DatePicker) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](d_, "setDrawsBackground:", value)
 }
 
 func (d_ DatePicker) TextColor() Color {
-	rv := ffi.CallMethod[Color](d_, "textColor")
+	rv := objc.CallMethod[Color](d_, "textColor")
 	return rv
 }
 
 func (d_ DatePicker) SetTextColor(value IColor) {
-	ffi.CallMethod[ffi.Void](d_, "setTextColor:", value)
+	objc.CallMethod[objc.Void](d_, "setTextColor:", value)
 }
 
 func (d_ DatePicker) DatePickerStyle() DatePickerStyle {
-	rv := ffi.CallMethod[DatePickerStyle](d_, "datePickerStyle")
+	rv := objc.CallMethod[DatePickerStyle](d_, "datePickerStyle")
 	return rv
 }
 
 func (d_ DatePicker) SetDatePickerStyle(value DatePickerStyle) {
-	ffi.CallMethod[ffi.Void](d_, "setDatePickerStyle:", value)
+	objc.CallMethod[objc.Void](d_, "setDatePickerStyle:", value)
 }
 
 func (d_ DatePicker) PresentsCalendarOverlay() bool {
-	rv := ffi.CallMethod[bool](d_, "presentsCalendarOverlay")
+	rv := objc.CallMethod[bool](d_, "presentsCalendarOverlay")
 	return rv
 }
 
 func (d_ DatePicker) SetPresentsCalendarOverlay(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setPresentsCalendarOverlay:", value)
+	objc.CallMethod[objc.Void](d_, "setPresentsCalendarOverlay:", value)
 }
 
 func (d_ DatePicker) Delegate() DatePickerCellDelegateWrapper {
-	rv := ffi.CallMethod[DatePickerCellDelegateWrapper](d_, "delegate")
+	rv := objc.CallMethod[DatePickerCellDelegateWrapper](d_, "delegate")
 	return rv
 }
 
 func (d_ DatePicker) SetDelegate(value DatePickerCellDelegate) {
-	po := ffi.CreateProtocol("NSDatePickerCellDelegate", value)
+	po := objc.CreateProtocol("NSDatePickerCellDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](d_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](d_, "setDelegate:", po)
 }
 
 func (d_ DatePicker) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](d_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](d_, "setDelegate:", value)
 }
 
 func (d_ DatePicker) DatePickerElements() DatePickerElementFlags {
-	rv := ffi.CallMethod[DatePickerElementFlags](d_, "datePickerElements")
+	rv := objc.CallMethod[DatePickerElementFlags](d_, "datePickerElements")
 	return rv
 }
 
 func (d_ DatePicker) SetDatePickerElements(value DatePickerElementFlags) {
-	ffi.CallMethod[ffi.Void](d_, "setDatePickerElements:", value)
+	objc.CallMethod[objc.Void](d_, "setDatePickerElements:", value)
 }
 
 func (d_ DatePicker) Calendar() foundation.Calendar {
-	rv := ffi.CallMethod[foundation.Calendar](d_, "calendar")
+	rv := objc.CallMethod[foundation.Calendar](d_, "calendar")
 	return rv
 }
 
 func (d_ DatePicker) SetCalendar(value foundation.ICalendar) {
-	ffi.CallMethod[ffi.Void](d_, "setCalendar:", value)
+	objc.CallMethod[objc.Void](d_, "setCalendar:", value)
 }
 
 func (d_ DatePicker) Locale() foundation.Locale {
-	rv := ffi.CallMethod[foundation.Locale](d_, "locale")
+	rv := objc.CallMethod[foundation.Locale](d_, "locale")
 	return rv
 }
 
 func (d_ DatePicker) SetLocale(value foundation.ILocale) {
-	ffi.CallMethod[ffi.Void](d_, "setLocale:", value)
+	objc.CallMethod[objc.Void](d_, "setLocale:", value)
 }
 
 func (d_ DatePicker) DatePickerMode() DatePickerMode {
-	rv := ffi.CallMethod[DatePickerMode](d_, "datePickerMode")
+	rv := objc.CallMethod[DatePickerMode](d_, "datePickerMode")
 	return rv
 }
 
 func (d_ DatePicker) SetDatePickerMode(value DatePickerMode) {
-	ffi.CallMethod[ffi.Void](d_, "setDatePickerMode:", value)
+	objc.CallMethod[objc.Void](d_, "setDatePickerMode:", value)
 }
 
 func (d_ DatePicker) TimeZone() foundation.TimeZone {
-	rv := ffi.CallMethod[foundation.TimeZone](d_, "timeZone")
+	rv := objc.CallMethod[foundation.TimeZone](d_, "timeZone")
 	return rv
 }
 
 func (d_ DatePicker) SetTimeZone(value foundation.ITimeZone) {
-	ffi.CallMethod[ffi.Void](d_, "setTimeZone:", value)
+	objc.CallMethod[objc.Void](d_, "setTimeZone:", value)
 }
 
 func (d_ DatePicker) DateValue() foundation.Date {
-	rv := ffi.CallMethod[foundation.Date](d_, "dateValue")
+	rv := objc.CallMethod[foundation.Date](d_, "dateValue")
 	return rv
 }
 
 func (d_ DatePicker) SetDateValue(value foundation.IDate) {
-	ffi.CallMethod[ffi.Void](d_, "setDateValue:", value)
+	objc.CallMethod[objc.Void](d_, "setDateValue:", value)
 }
 
 func (d_ DatePicker) TimeInterval() foundation.TimeInterval {
-	rv := ffi.CallMethod[foundation.TimeInterval](d_, "timeInterval")
+	rv := objc.CallMethod[foundation.TimeInterval](d_, "timeInterval")
 	return rv
 }
 
 func (d_ DatePicker) SetTimeInterval(value foundation.TimeInterval) {
-	ffi.CallMethod[ffi.Void](d_, "setTimeInterval:", value)
+	objc.CallMethod[objc.Void](d_, "setTimeInterval:", value)
 }
 
 func (d_ DatePicker) MinDate() foundation.Date {
-	rv := ffi.CallMethod[foundation.Date](d_, "minDate")
+	rv := objc.CallMethod[foundation.Date](d_, "minDate")
 	return rv
 }
 
 func (d_ DatePicker) SetMinDate(value foundation.IDate) {
-	ffi.CallMethod[ffi.Void](d_, "setMinDate:", value)
+	objc.CallMethod[objc.Void](d_, "setMinDate:", value)
 }
 
 func (d_ DatePicker) MaxDate() foundation.Date {
-	rv := ffi.CallMethod[foundation.Date](d_, "maxDate")
+	rv := objc.CallMethod[foundation.Date](d_, "maxDate")
 	return rv
 }
 
 func (d_ DatePicker) SetMaxDate(value foundation.IDate) {
-	ffi.CallMethod[ffi.Void](d_, "setMaxDate:", value)
+	objc.CallMethod[objc.Void](d_, "setMaxDate:", value)
 }

@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -45,9 +44,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingEntered() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingEntered(sender DraggingInfo) DragOperation {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	rv := ffi.CallMethod[DragOperation](d_, "draggingEntered:", po)
+	rv := objc.CallMethod[DragOperation](d_, "draggingEntered:", po)
 	return rv
 }
 
@@ -56,7 +55,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsWantsPeriodicDraggingUpdates() b
 }
 
 func (d_ DraggingDestinationWrapper) WantsPeriodicDraggingUpdates() bool {
-	rv := ffi.CallMethod[bool](d_, "wantsPeriodicDraggingUpdates")
+	rv := objc.CallMethod[bool](d_, "wantsPeriodicDraggingUpdates")
 	return rv
 }
 
@@ -65,9 +64,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingUpdated() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingUpdated(sender DraggingInfo) DragOperation {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	rv := ffi.CallMethod[DragOperation](d_, "draggingUpdated:", po)
+	rv := objc.CallMethod[DragOperation](d_, "draggingUpdated:", po)
 	return rv
 }
 
@@ -76,9 +75,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingEnded() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingEnded(sender DraggingInfo) {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](d_, "draggingEnded:", po)
+	objc.CallMethod[objc.Void](d_, "draggingEnded:", po)
 }
 
 func (d_ *DraggingDestinationWrapper) ImplementsDraggingExited() bool {
@@ -86,9 +85,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingExited() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingExited(sender DraggingInfo) {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](d_, "draggingExited:", po)
+	objc.CallMethod[objc.Void](d_, "draggingExited:", po)
 }
 
 func (d_ *DraggingDestinationWrapper) ImplementsPrepareForDragOperation() bool {
@@ -96,9 +95,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsPrepareForDragOperation() bool {
 }
 
 func (d_ DraggingDestinationWrapper) PrepareForDragOperation(sender DraggingInfo) bool {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	rv := ffi.CallMethod[bool](d_, "prepareForDragOperation:", po)
+	rv := objc.CallMethod[bool](d_, "prepareForDragOperation:", po)
 	return rv
 }
 
@@ -107,9 +106,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsPerformDragOperation() bool {
 }
 
 func (d_ DraggingDestinationWrapper) PerformDragOperation(sender DraggingInfo) bool {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	rv := ffi.CallMethod[bool](d_, "performDragOperation:", po)
+	rv := objc.CallMethod[bool](d_, "performDragOperation:", po)
 	return rv
 }
 
@@ -118,9 +117,9 @@ func (d_ *DraggingDestinationWrapper) ImplementsConcludeDragOperation() bool {
 }
 
 func (d_ DraggingDestinationWrapper) ConcludeDragOperation(sender DraggingInfo) {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](d_, "concludeDragOperation:", po)
+	objc.CallMethod[objc.Void](d_, "concludeDragOperation:", po)
 }
 
 func (d_ *DraggingDestinationWrapper) ImplementsUpdateDraggingItemsForDrag() bool {
@@ -128,7 +127,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsUpdateDraggingItemsForDrag() boo
 }
 
 func (d_ DraggingDestinationWrapper) UpdateDraggingItemsForDrag(sender DraggingInfo) {
-	po := ffi.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.CreateProtocol("NSDraggingInfo", sender)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](d_, "updateDraggingItemsForDrag:", po)
+	objc.CallMethod[objc.Void](d_, "updateDraggingItemsForDrag:", po)
 }

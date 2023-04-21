@@ -28,7 +28,7 @@ func (p *ProtocolType) ObjcName() string {
 }
 
 func (p *ProtocolType) GoImports() set.Set[string] {
-	return set.New("github.com/hsiafan/cocoa/ffi", "github.com/hsiafan/cocoa/"+p.Module.Package)
+	return set.New("github.com/hsiafan/cocoa/objc", "github.com/hsiafan/cocoa/"+p.Module.Package)
 }
 
 func (p *ProtocolType) DeclareModule() *Module {

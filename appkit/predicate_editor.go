@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -32,22 +31,22 @@ func MakePredicateEditor(ptr unsafe.Pointer) PredicateEditor {
 }
 
 func (p_ PredicateEditor) InitWithFrame(frameRect foundation.Rect) PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](p_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[PredicateEditor](p_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (p_ PredicateEditor) Init() PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](p_, "init")
+	rv := objc.CallMethod[PredicateEditor](p_, "init")
 	return rv
 }
 
 func (pc _PredicateEditorClass) Alloc() PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](pc, "alloc")
+	rv := objc.CallMethod[PredicateEditor](pc, "alloc")
 	return rv
 }
 
 func (pc _PredicateEditorClass) New() PredicateEditor {
-	rv := ffi.CallMethod[PredicateEditor](pc, "new")
+	rv := objc.CallMethod[PredicateEditor](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,10 +56,10 @@ func NewPredicateEditor() PredicateEditor {
 }
 
 func (p_ PredicateEditor) RowTemplates() []PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[[]PredicateEditorRowTemplate](p_, "rowTemplates")
+	rv := objc.CallMethod[[]PredicateEditorRowTemplate](p_, "rowTemplates")
 	return rv
 }
 
 func (p_ PredicateEditor) SetRowTemplates(value []IPredicateEditorRowTemplate) {
-	ffi.CallMethod[ffi.Void](p_, "setRowTemplates:", value)
+	objc.CallMethod[objc.Void](p_, "setRowTemplates:", value)
 }

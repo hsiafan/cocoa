@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -32,27 +31,27 @@ func MakeTableHeaderCell(ptr unsafe.Pointer) TableHeaderCell {
 }
 
 func (t_ TableHeaderCell) InitTextCell(string_ string) TableHeaderCell {
-	rv := ffi.CallMethod[TableHeaderCell](t_, "initTextCell:", string_)
+	rv := objc.CallMethod[TableHeaderCell](t_, "initTextCell:", string_)
 	return rv
 }
 
 func (t_ TableHeaderCell) InitImageCell(image IImage) TableHeaderCell {
-	rv := ffi.CallMethod[TableHeaderCell](t_, "initImageCell:", image)
+	rv := objc.CallMethod[TableHeaderCell](t_, "initImageCell:", image)
 	return rv
 }
 
 func (t_ TableHeaderCell) Init() TableHeaderCell {
-	rv := ffi.CallMethod[TableHeaderCell](t_, "init")
+	rv := objc.CallMethod[TableHeaderCell](t_, "init")
 	return rv
 }
 
 func (tc _TableHeaderCellClass) Alloc() TableHeaderCell {
-	rv := ffi.CallMethod[TableHeaderCell](tc, "alloc")
+	rv := objc.CallMethod[TableHeaderCell](tc, "alloc")
 	return rv
 }
 
 func (tc _TableHeaderCellClass) New() TableHeaderCell {
-	rv := ffi.CallMethod[TableHeaderCell](tc, "new")
+	rv := objc.CallMethod[TableHeaderCell](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -62,10 +61,10 @@ func NewTableHeaderCell() TableHeaderCell {
 }
 
 func (t_ TableHeaderCell) DrawSortIndicatorWithFrame_InView_Ascending_Priority(cellFrame foundation.Rect, controlView IView, ascending bool, priority int) {
-	ffi.CallMethod[ffi.Void](t_, "drawSortIndicatorWithFrame:inView:ascending:priority:", cellFrame, controlView, ascending, priority)
+	objc.CallMethod[objc.Void](t_, "drawSortIndicatorWithFrame:inView:ascending:priority:", cellFrame, controlView, ascending, priority)
 }
 
 func (t_ TableHeaderCell) SortIndicatorRectForBounds(rect foundation.Rect) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](t_, "sortIndicatorRectForBounds:", rect)
+	rv := objc.CallMethod[foundation.Rect](t_, "sortIndicatorRectForBounds:", rect)
 	return rv
 }

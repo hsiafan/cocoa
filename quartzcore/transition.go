@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,17 +38,17 @@ func MakeTransition(ptr unsafe.Pointer) Transition {
 }
 
 func (tc _TransitionClass) Animation() Transition {
-	rv := ffi.CallMethod[Transition](tc, "animation")
+	rv := objc.CallMethod[Transition](tc, "animation")
 	return rv
 }
 
 func (tc _TransitionClass) Alloc() Transition {
-	rv := ffi.CallMethod[Transition](tc, "alloc")
+	rv := objc.CallMethod[Transition](tc, "alloc")
 	return rv
 }
 
 func (tc _TransitionClass) New() Transition {
-	rv := ffi.CallMethod[Transition](tc, "new")
+	rv := objc.CallMethod[Transition](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -59,51 +58,51 @@ func NewTransition() Transition {
 }
 
 func (t_ Transition) Init() Transition {
-	rv := ffi.CallMethod[Transition](t_, "init")
+	rv := objc.CallMethod[Transition](t_, "init")
 	return rv
 }
 
 func (t_ Transition) StartProgress() float32 {
-	rv := ffi.CallMethod[float32](t_, "startProgress")
+	rv := objc.CallMethod[float32](t_, "startProgress")
 	return rv
 }
 
 func (t_ Transition) SetStartProgress(value float32) {
-	ffi.CallMethod[ffi.Void](t_, "setStartProgress:", value)
+	objc.CallMethod[objc.Void](t_, "setStartProgress:", value)
 }
 
 func (t_ Transition) EndProgress() float32 {
-	rv := ffi.CallMethod[float32](t_, "endProgress")
+	rv := objc.CallMethod[float32](t_, "endProgress")
 	return rv
 }
 
 func (t_ Transition) SetEndProgress(value float32) {
-	ffi.CallMethod[ffi.Void](t_, "setEndProgress:", value)
+	objc.CallMethod[objc.Void](t_, "setEndProgress:", value)
 }
 
 func (t_ Transition) Type() TransitionType {
-	rv := ffi.CallMethod[TransitionType](t_, "type")
+	rv := objc.CallMethod[TransitionType](t_, "type")
 	return rv
 }
 
 func (t_ Transition) SetType(value TransitionType) {
-	ffi.CallMethod[ffi.Void](t_, "setType:", value)
+	objc.CallMethod[objc.Void](t_, "setType:", value)
 }
 
 func (t_ Transition) Subtype() TransitionSubtype {
-	rv := ffi.CallMethod[TransitionSubtype](t_, "subtype")
+	rv := objc.CallMethod[TransitionSubtype](t_, "subtype")
 	return rv
 }
 
 func (t_ Transition) SetSubtype(value TransitionSubtype) {
-	ffi.CallMethod[ffi.Void](t_, "setSubtype:", value)
+	objc.CallMethod[objc.Void](t_, "setSubtype:", value)
 }
 
 func (t_ Transition) Filter() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "filter")
+	rv := objc.CallMethod[objc.Object](t_, "filter")
 	return rv
 }
 
 func (t_ Transition) SetFilter(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setFilter:", value)
+	objc.CallMethod[objc.Void](t_, "setFilter:", value)
 }

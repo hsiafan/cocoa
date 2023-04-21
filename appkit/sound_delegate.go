@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,5 +36,5 @@ func (s_ *SoundDelegateWrapper) ImplementsSound_DidFinishPlaying() bool {
 }
 
 func (s_ SoundDelegateWrapper) Sound_DidFinishPlaying(sound ISound, flag bool) {
-	ffi.CallMethod[ffi.Void](s_, "sound:didFinishPlaying:", sound, flag)
+	objc.CallMethod[objc.Void](s_, "sound:didFinishPlaying:", sound, flag)
 }

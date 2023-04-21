@@ -5,8 +5,6 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
-
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -40,15 +38,15 @@ func MakeString(ptr unsafe.Pointer) String {
 }
 
 func NewString(str string) String {
-	return MakeString(ffi.ToNSString(str))
+	return MakeString(objc.ToNSString(str))
 }
 
 func (N String) String() string {
-	return ffi.ToGoString(N.Ptr())
+	return objc.ToGoString(N.Ptr())
 }
 
 func (N String) ToString() string {
-	return ffi.ToGoString(N.Ptr())
+	return objc.ToGoString(N.Ptr())
 }
 
 type IMutableString interface {
@@ -69,19 +67,19 @@ func MakeMutableString(ptr unsafe.Pointer) MutableString {
 var _MutableStringClass = objc.GetClass("NSMutableString")
 
 func NewMutableString() MutableString {
-	return ffi.CallMethod[MutableString](_MutableStringClass, "string")
+	return objc.CallMethod[MutableString](_MutableStringClass, "string")
 }
 
 func NewMutableStringWithString(str string) MutableString {
-	return ffi.CallMethod[MutableString](_MutableStringClass, "stringWithString:", str)
+	return objc.CallMethod[MutableString](_MutableStringClass, "stringWithString:", str)
 }
 
 func NewMutableStringWithCapacity(capacity uint) MutableString {
-	return ffi.CallMethod[MutableString](_MutableStringClass, "stringWithCapacity:", capacity)
+	return objc.CallMethod[MutableString](_MutableStringClass, "stringWithCapacity:", capacity)
 }
 
 func (s MutableString) AppendString(str string) {
-	ffi.CallMethod[ffi.Void](s, "appendString:", str)
+	objc.CallMethod[objc.Void](s, "appendString:", str)
 }
 
 type IData interface {
@@ -100,11 +98,11 @@ func MakeData(ptr unsafe.Pointer) Data {
 }
 
 func NewData(bytes []byte) Data {
-	return MakeData(ffi.ToNSData(bytes))
+	return MakeData(objc.ToNSData(bytes))
 }
 
 func (d Data) ToBytes() []byte {
-	return ffi.ToGoBytes(d.Ptr())
+	return objc.ToGoBytes(d.Ptr())
 }
 
 type IMutableData interface {
@@ -125,23 +123,23 @@ func MakeMutableData(ptr unsafe.Pointer) MutableData {
 var _MutableDataClass = objc.GetClass("NSMutableData")
 
 func NewMutableData() MutableData {
-	return ffi.CallMethod[MutableData](_MutableDataClass, "data")
+	return objc.CallMethod[MutableData](_MutableDataClass, "data")
 }
 
 func NewMutableDataWithData(data []byte) MutableData {
-	return ffi.CallMethod[MutableData](_MutableDataClass, "dataWithData:", data)
+	return objc.CallMethod[MutableData](_MutableDataClass, "dataWithData:", data)
 }
 
 func NewMutableDataWithCapacity(capacity uint) MutableData {
-	return ffi.CallMethod[MutableData](_MutableDataClass, "dataWithCapacity:", capacity)
+	return objc.CallMethod[MutableData](_MutableDataClass, "dataWithCapacity:", capacity)
 }
 
 func NewMutableDataWithLength(length uint) MutableData {
-	return ffi.CallMethod[MutableData](_MutableDataClass, "dataWithLength:", length)
+	return objc.CallMethod[MutableData](_MutableDataClass, "dataWithLength:", length)
 }
 
 func (d MutableData) AppendData(data []byte) {
-	ffi.CallMethod[ffi.Void](d, "appendData:", data)
+	objc.CallMethod[objc.Void](d, "appendData:", data)
 }
 
 type ISet interface {
@@ -163,19 +161,19 @@ func MakeSet(ptr unsafe.Pointer) Set {
 var _SetClass = objc.GetClass("NSSet")
 
 func NewSet() Set {
-	return ffi.CallMethod[Set](_SetClass, "set")
+	return objc.CallMethod[Set](_SetClass, "set")
 }
 
 func NewSetWithArray(array IArray) Set {
-	return ffi.CallMethod[Set](_SetClass, "setWithArray:", array)
+	return objc.CallMethod[Set](_SetClass, "setWithArray:", array)
 }
 
 func (s Set) Count() uint {
-	return ffi.CallMethod[uint](s, "count")
+	return objc.CallMethod[uint](s, "count")
 }
 
 func (s Set) AllObjects() Array {
-	return ffi.CallMethod[Array](s, "allObjects")
+	return objc.CallMethod[Array](s, "allObjects")
 }
 
 type IMutableSet interface {
@@ -196,19 +194,19 @@ func MakeMutableSet(ptr unsafe.Pointer) MutableSet {
 var _MutableSetClass = objc.GetClass("NSMutableSet")
 
 func NewMutableSet() MutableSet {
-	return ffi.CallMethod[MutableSet](_MutableSetClass, "set")
+	return objc.CallMethod[MutableSet](_MutableSetClass, "set")
 }
 
 func NewMutableSetWithCapacity(size uint) MutableSet {
-	return ffi.CallMethod[MutableSet](_MutableSetClass, "setWithCapacity:", size)
+	return objc.CallMethod[MutableSet](_MutableSetClass, "setWithCapacity:", size)
 }
 
 func NewMutableSetWithArray(array IArray) Set {
-	return ffi.CallMethod[Set](_MutableSetClass, "setWithArray:", array)
+	return objc.CallMethod[Set](_MutableSetClass, "setWithArray:", array)
 }
 
 func (s MutableSet) AddObject(o objc.IObject) {
-	ffi.CallMethod[ffi.Void](s, "addObject:", o)
+	objc.CallMethod[objc.Void](s, "addObject:", o)
 }
 
 type IArray interface {
@@ -228,20 +226,20 @@ func MakeArray(ptr unsafe.Pointer) Array {
 }
 
 func (a Array) ObjectAtIndex(index uint) objc.Object {
-	return ffi.CallMethod[objc.Object](a, "objectAtIndex:", index)
+	return objc.CallMethod[objc.Object](a, "objectAtIndex:", index)
 }
 
 func (a Array) Count() uint {
-	return ffi.CallMethod[uint](a, "count")
+	return objc.CallMethod[uint](a, "count")
 }
 
 func ArrayOf[T any](slice []T) Array {
-	return MakeArray(ffi.ToNSArray(reflect.ValueOf(slice)))
+	return MakeArray(objc.ToNSArray(reflect.ValueOf(slice)))
 }
 
 func ArrayToSlice[T any](a Array) []T {
 	var zero []T
-	return ffi.ToGoSlice(a.Ptr(), reflect.TypeOf(zero)).Interface().([]T)
+	return objc.ToGoSlice(a.Ptr(), reflect.TypeOf(zero)).Interface().([]T)
 }
 
 type IMutableArray interface {
@@ -265,31 +263,31 @@ func MakeMutableArray(ptr unsafe.Pointer) MutableArray {
 var _MutableArrayClass = objc.GetClass("NSMutableArray")
 
 func NewMutableArray() MutableArray {
-	return ffi.CallMethod[MutableArray](_MutableArrayClass, "array")
+	return objc.CallMethod[MutableArray](_MutableArrayClass, "array")
 }
 
 func NewMutableArrayWithCapacity(size uint) MutableArray {
-	return ffi.CallMethod[MutableArray](_MutableArrayClass, "arrayWithCapacity:", size)
+	return objc.CallMethod[MutableArray](_MutableArrayClass, "arrayWithCapacity:", size)
 }
 
 func NewMutableSetWithSet(set ISet) MutableSet {
-	return ffi.CallMethod[MutableSet](_MutableSetClass, "setWithSet:", set)
+	return objc.CallMethod[MutableSet](_MutableSetClass, "setWithSet:", set)
 }
 
 func (a MutableArray) AddObject(o objc.IObject) {
-	ffi.CallMethod[ffi.Void](a, "addObject:", o)
+	objc.CallMethod[objc.Void](a, "addObject:", o)
 }
 
 func (a MutableArray) InsertObject_AtIndex(o objc.IObject, index uint) {
-	ffi.CallMethod[ffi.Void](a, "insertObject:atIndex:", o, index)
+	objc.CallMethod[objc.Void](a, "insertObject:atIndex:", o, index)
 }
 
 func (a MutableArray) RemoveObjectAtIndex(index uint) {
-	ffi.CallMethod[ffi.Void](a, "removeObjectAtIndex:", index)
+	objc.CallMethod[objc.Void](a, "removeObjectAtIndex:", index)
 }
 
 func (a MutableArray) ReplaceObjectAtIndex_WithObject(index uint, o objc.IObject) {
-	ffi.CallMethod[ffi.Void](a, "replaceObjectAtIndex:withObject:", index, o)
+	objc.CallMethod[objc.Void](a, "replaceObjectAtIndex:withObject:", index, o)
 }
 
 type IDictionary interface {
@@ -311,28 +309,28 @@ func MakeDictionary(ptr unsafe.Pointer) Dictionary {
 }
 
 func (d Dictionary) ObjectForKey(key objc.IObject) objc.Object {
-	return ffi.CallMethod[objc.Object](d, "objectForKey:", key)
+	return objc.CallMethod[objc.Object](d, "objectForKey:", key)
 }
 
 func (d Dictionary) AllKeys() Array {
-	return ffi.CallMethod[Array](d, "allKeys")
+	return objc.CallMethod[Array](d, "allKeys")
 }
 
 func (d Dictionary) AllValues() Array {
-	return ffi.CallMethod[Array](d, "allValues")
+	return objc.CallMethod[Array](d, "allValues")
 }
 
 func (d Dictionary) Count() uint {
-	return ffi.CallMethod[uint](d, "count")
+	return objc.CallMethod[uint](d, "count")
 }
 
 func DictOf[K comparable, V any](m map[K]V) Dictionary {
-	return MakeDictionary(ffi.ToNSDict(reflect.ValueOf(m)))
+	return MakeDictionary(objc.ToNSDict(reflect.ValueOf(m)))
 }
 
 func DictToMap[K comparable, V any](d Dictionary) map[K]V {
 	var zero map[K]V
-	return ffi.ToGoMap(d.Ptr(), reflect.TypeOf(zero)).Interface().(map[K]V)
+	return objc.ToGoMap(d.Ptr(), reflect.TypeOf(zero)).Interface().(map[K]V)
 }
 
 type IMutableDictionary interface {
@@ -354,19 +352,19 @@ func MakeMutableDictionary(ptr unsafe.Pointer) MutableDictionary {
 var _MutableDictionaryClass = objc.GetClass("NSMutableDictionary")
 
 func NewMutableDictionary() MutableDictionary {
-	return ffi.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionary")
+	return objc.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionary")
 }
 
 func NewMutableDictionaryWithDictionary(dict IDictionary) MutableDictionary {
-	return ffi.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionaryWithDictionary:", dict)
+	return objc.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionaryWithDictionary:", dict)
 }
 
 func (d MutableDictionary) SetObject_ForKey(value objc.IObject, key objc.IObject) {
-	ffi.CallMethod[ffi.Void](d, "setObject:forKey:", value, key)
+	objc.CallMethod[objc.Void](d, "setObject:forKey:", value, key)
 }
 
 func (d MutableDictionary) RemoveObjectForKey(key objc.IObject) {
-	ffi.CallMethod[ffi.Void](d, "removeObjectsForKeys:", key)
+	objc.CallMethod[objc.Void](d, "removeObjectsForKeys:", key)
 }
 
 func ToNSError(code int, err error) Error {
@@ -426,16 +424,16 @@ var _NSJSONSerializationClass = objc.GetClass("NSJSONSerialization")
 
 func JSONObjectWithData(data []byte, options JSONReadingOptions) (objc.Object, error) {
 	var err Error
-	r := ffi.CallMethod[objc.Object](_NSJSONSerializationClass, "JSONObjectWithData:options:error:", data, options, unsafe.Pointer(&err))
+	r := objc.CallMethod[objc.Object](_NSJSONSerializationClass, "JSONObjectWithData:options:error:", data, options, unsafe.Pointer(&err))
 	return r, ToGoError(err)
 }
 
 func DataWithJSONObject(o objc.IObject, options JSONWritingOptions) ([]byte, error) {
 	var err Error
-	r := ffi.CallMethod[[]byte](_NSJSONSerializationClass, "dataWithJSONObject:options:error:", o, options, unsafe.Pointer(&err))
+	r := objc.CallMethod[[]byte](_NSJSONSerializationClass, "dataWithJSONObject:options:error:", o, options, unsafe.Pointer(&err))
 	return r, ToGoError(err)
 }
 
 func IsValidJSONObject(o objc.IObject) bool {
-	return ffi.CallMethod[bool](_NSJSONSerializationClass, "isValidJSONObject:", o)
+	return objc.CallMethod[bool](_NSJSONSerializationClass, "isValidJSONObject:", o)
 }

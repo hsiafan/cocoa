@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -536,7 +535,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_IsColumnValid() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_IsColumnValid(sender IBrowser, column int) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:isColumnValid:", sender, column)
+	rv := objc.CallMethod[bool](b_, "browser:isColumnValid:", sender, column)
 	return rv
 }
 
@@ -545,7 +544,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NumberOfRowsInColumn() bool 
 }
 
 func (b_ BrowserDelegateWrapper) Browser_NumberOfRowsInColumn(sender IBrowser, column int) int {
-	rv := ffi.CallMethod[int](b_, "browser:numberOfRowsInColumn:", sender, column)
+	rv := objc.CallMethod[int](b_, "browser:numberOfRowsInColumn:", sender, column)
 	return rv
 }
 
@@ -554,7 +553,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NumberOfChildrenOfItem() boo
 }
 
 func (b_ BrowserDelegateWrapper) Browser_NumberOfChildrenOfItem(browser IBrowser, item objc.IObject) int {
-	rv := ffi.CallMethod[int](b_, "browser:numberOfChildrenOfItem:", browser, item)
+	rv := objc.CallMethod[int](b_, "browser:numberOfChildrenOfItem:", browser, item)
 	return rv
 }
 
@@ -563,7 +562,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_TitleOfColumn() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_TitleOfColumn(sender IBrowser, column int) string {
-	rv := ffi.CallMethod[string](b_, "browser:titleOfColumn:", sender, column)
+	rv := objc.CallMethod[string](b_, "browser:titleOfColumn:", sender, column)
 	return rv
 }
 
@@ -572,7 +571,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldTypeSelectForEvent_Wit
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldTypeSelectForEvent_WithCurrentSearchString(browser IBrowser, event IEvent, searchString string) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:shouldTypeSelectForEvent:withCurrentSearchString:", browser, event, searchString)
+	rv := objc.CallMethod[bool](b_, "browser:shouldTypeSelectForEvent:withCurrentSearchString:", browser, event, searchString)
 	return rv
 }
 
@@ -581,7 +580,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_TypeSelectStringForRow_InCol
 }
 
 func (b_ BrowserDelegateWrapper) Browser_TypeSelectStringForRow_InColumn(browser IBrowser, row int, column int) string {
-	rv := ffi.CallMethod[string](b_, "browser:typeSelectStringForRow:inColumn:", browser, row, column)
+	rv := objc.CallMethod[string](b_, "browser:typeSelectStringForRow:inColumn:", browser, row, column)
 	return rv
 }
 
@@ -590,7 +589,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NextTypeSelectMatchFromRow_T
 }
 
 func (b_ BrowserDelegateWrapper) Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(browser IBrowser, startRow int, endRow int, column int, searchString string) int {
-	rv := ffi.CallMethod[int](b_, "browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:", browser, startRow, endRow, column, searchString)
+	rv := objc.CallMethod[int](b_, "browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:", browser, startRow, endRow, column, searchString)
 	return rv
 }
 
@@ -599,7 +598,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SelectCellWithString_InColum
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SelectCellWithString_InColumn(sender IBrowser, title string, column int) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:selectCellWithString:inColumn:", sender, title, column)
+	rv := objc.CallMethod[bool](b_, "browser:selectCellWithString:inColumn:", sender, title, column)
 	return rv
 }
 
@@ -608,7 +607,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SelectRow_InColumn() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SelectRow_InColumn(sender IBrowser, row int, column int) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:selectRow:inColumn:", sender, row, column)
+	rv := objc.CallMethod[bool](b_, "browser:selectRow:inColumn:", sender, row, column)
 	return rv
 }
 
@@ -617,7 +616,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SelectionIndexesForProposedS
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SelectionIndexesForProposedSelection_InColumn(browser IBrowser, proposedSelectionIndexes foundation.IIndexSet, column int) foundation.IndexSet {
-	rv := ffi.CallMethod[foundation.IndexSet](b_, "browser:selectionIndexesForProposedSelection:inColumn:", browser, proposedSelectionIndexes, column)
+	rv := objc.CallMethod[foundation.IndexSet](b_, "browser:selectionIndexesForProposedSelection:inColumn:", browser, proposedSelectionIndexes, column)
 	return rv
 }
 
@@ -626,7 +625,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_Child_OfItem() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_Child_OfItem(browser IBrowser, index int, item objc.IObject) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "browser:child:ofItem:", browser, index, item)
+	rv := objc.CallMethod[objc.Object](b_, "browser:child:ofItem:", browser, index, item)
 	return rv
 }
 
@@ -635,7 +634,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_IsLeafItem() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_IsLeafItem(browser IBrowser, item objc.IObject) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:isLeafItem:", browser, item)
+	rv := objc.CallMethod[bool](b_, "browser:isLeafItem:", browser, item)
 	return rv
 }
 
@@ -644,7 +643,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldEditItem() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldEditItem(browser IBrowser, item objc.IObject) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:shouldEditItem:", browser, item)
+	rv := objc.CallMethod[bool](b_, "browser:shouldEditItem:", browser, item)
 	return rv
 }
 
@@ -653,7 +652,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ObjectValueForItem() bool {
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ObjectValueForItem(browser IBrowser, item objc.IObject) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "browser:objectValueForItem:", browser, item)
+	rv := objc.CallMethod[objc.Object](b_, "browser:objectValueForItem:", browser, item)
 	return rv
 }
 
@@ -662,7 +661,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SetObjectValue_ForItem() boo
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SetObjectValue_ForItem(browser IBrowser, object objc.IObject, item objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "browser:setObjectValue:forItem:", browser, object, item)
+	objc.CallMethod[objc.Void](b_, "browser:setObjectValue:forItem:", browser, object, item)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsRootItemForBrowser() bool {
@@ -670,7 +669,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsRootItemForBrowser() bool {
 }
 
 func (b_ BrowserDelegateWrapper) RootItemForBrowser(browser IBrowser) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "rootItemForBrowser:", browser)
+	rv := objc.CallMethod[objc.Object](b_, "rootItemForBrowser:", browser)
 	return rv
 }
 
@@ -679,7 +678,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_PreviewViewControllerForLeaf
 }
 
 func (b_ BrowserDelegateWrapper) Browser_PreviewViewControllerForLeafItem(browser IBrowser, item objc.IObject) ViewController {
-	rv := ffi.CallMethod[ViewController](b_, "browser:previewViewControllerForLeafItem:", browser, item)
+	rv := objc.CallMethod[ViewController](b_, "browser:previewViewControllerForLeafItem:", browser, item)
 	return rv
 }
 
@@ -688,7 +687,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_HeaderViewControllerForItem(
 }
 
 func (b_ BrowserDelegateWrapper) Browser_HeaderViewControllerForItem(browser IBrowser, item objc.IObject) ViewController {
-	rv := ffi.CallMethod[ViewController](b_, "browser:headerViewControllerForItem:", browser, item)
+	rv := objc.CallMethod[ViewController](b_, "browser:headerViewControllerForItem:", browser, item)
 	return rv
 }
 
@@ -697,7 +696,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_CreateRowsForColumn_InMatrix
 }
 
 func (b_ BrowserDelegateWrapper) Browser_CreateRowsForColumn_InMatrix(sender IBrowser, column int, matrix IMatrix) {
-	ffi.CallMethod[ffi.Void](b_, "browser:createRowsForColumn:inMatrix:", sender, column, matrix)
+	objc.CallMethod[objc.Void](b_, "browser:createRowsForColumn:inMatrix:", sender, column, matrix)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsBrowser_WillDisplayCell_AtRow_Column() bool {
@@ -705,7 +704,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_WillDisplayCell_AtRow_Column
 }
 
 func (b_ BrowserDelegateWrapper) Browser_WillDisplayCell_AtRow_Column(sender IBrowser, cell objc.IObject, row int, column int) {
-	ffi.CallMethod[ffi.Void](b_, "browser:willDisplayCell:atRow:column:", sender, cell, row, column)
+	objc.CallMethod[objc.Void](b_, "browser:willDisplayCell:atRow:column:", sender, cell, row, column)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsBrowser_DidChangeLastColumn_ToColumn() bool {
@@ -713,7 +712,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_DidChangeLastColumn_ToColumn
 }
 
 func (b_ BrowserDelegateWrapper) Browser_DidChangeLastColumn_ToColumn(browser IBrowser, oldLastColumn int, column int) {
-	ffi.CallMethod[ffi.Void](b_, "browser:didChangeLastColumn:toColumn:", browser, oldLastColumn, column)
+	objc.CallMethod[objc.Void](b_, "browser:didChangeLastColumn:toColumn:", browser, oldLastColumn, column)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsBrowserWillScroll() bool {
@@ -721,7 +720,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowserWillScroll() bool {
 }
 
 func (b_ BrowserDelegateWrapper) BrowserWillScroll(sender IBrowser) {
-	ffi.CallMethod[ffi.Void](b_, "browserWillScroll:", sender)
+	objc.CallMethod[objc.Void](b_, "browserWillScroll:", sender)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsBrowserDidScroll() bool {
@@ -729,7 +728,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowserDidScroll() bool {
 }
 
 func (b_ BrowserDelegateWrapper) BrowserDidScroll(sender IBrowser) {
-	ffi.CallMethod[ffi.Void](b_, "browserDidScroll:", sender)
+	objc.CallMethod[objc.Void](b_, "browserDidScroll:", sender)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsBrowser_CanDragRowsWithIndexes_InColumn_WithEvent() bool {
@@ -737,7 +736,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_CanDragRowsWithIndexes_InCol
 }
 
 func (b_ BrowserDelegateWrapper) Browser_CanDragRowsWithIndexes_InColumn_WithEvent(browser IBrowser, rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:canDragRowsWithIndexes:inColumn:withEvent:", browser, rowIndexes, column, event)
+	rv := objc.CallMethod[bool](b_, "browser:canDragRowsWithIndexes:inColumn:withEvent:", browser, rowIndexes, column, event)
 	return rv
 }
 
@@ -746,7 +745,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_DraggingImageForRowsWithInde
 }
 
 func (b_ BrowserDelegateWrapper) Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser IBrowser, rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := ffi.CallMethod[Image](b_, "browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:", browser, rowIndexes, column, event, dragImageOffset)
+	rv := objc.CallMethod[Image](b_, "browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:", browser, rowIndexes, column, event, dragImageOffset)
 	return rv
 }
 
@@ -755,9 +754,9 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ValidateDrop_ProposedRow_Col
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser IBrowser, info DraggingInfo, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
-	po := ffi.CreateProtocol("NSDraggingInfo", info)
+	po := objc.CreateProtocol("NSDraggingInfo", info)
 	defer po.Release()
-	rv := ffi.CallMethod[DragOperation](b_, "browser:validateDrop:proposedRow:column:dropOperation:", browser, po, row, column, dropOperation)
+	rv := objc.CallMethod[DragOperation](b_, "browser:validateDrop:proposedRow:column:dropOperation:", browser, po, row, column, dropOperation)
 	return rv
 }
 
@@ -766,9 +765,9 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_AcceptDrop_AtRow_Column_Drop
 }
 
 func (b_ BrowserDelegateWrapper) Browser_AcceptDrop_AtRow_Column_DropOperation(browser IBrowser, info DraggingInfo, row int, column int, dropOperation BrowserDropOperation) bool {
-	po := ffi.CreateProtocol("NSDraggingInfo", info)
+	po := objc.CreateProtocol("NSDraggingInfo", info)
 	defer po.Release()
-	rv := ffi.CallMethod[bool](b_, "browser:acceptDrop:atRow:column:dropOperation:", browser, po, row, column, dropOperation)
+	rv := objc.CallMethod[bool](b_, "browser:acceptDrop:atRow:column:dropOperation:", browser, po, row, column, dropOperation)
 	return rv
 }
 
@@ -777,7 +776,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_WriteRowsWithIndexes_InColum
 }
 
 func (b_ BrowserDelegateWrapper) Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser IBrowser, rowIndexes foundation.IIndexSet, column int, pasteboard IPasteboard) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:writeRowsWithIndexes:inColumn:toPasteboard:", browser, rowIndexes, column, pasteboard)
+	rv := objc.CallMethod[bool](b_, "browser:writeRowsWithIndexes:inColumn:toPasteboard:", browser, rowIndexes, column, pasteboard)
 	return rv
 }
 
@@ -787,7 +786,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NamesOfPromisedFilesDroppedA
 
 // deprecated
 func (b_ BrowserDelegateWrapper) Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(browser IBrowser, dropDestination foundation.IURL, rowIndexes foundation.IIndexSet, column int) []string {
-	rv := ffi.CallMethod[[]string](b_, "browser:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:inColumn:", browser, dropDestination, rowIndexes, column)
+	rv := objc.CallMethod[[]string](b_, "browser:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:inColumn:", browser, dropDestination, rowIndexes, column)
 	return rv
 }
 
@@ -796,7 +795,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldSizeColumn_ForUserResi
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldSizeColumn_ForUserResize_ToWidth(browser IBrowser, columnIndex int, forUserResize bool, suggestedWidth float64) float64 {
-	rv := ffi.CallMethod[float64](b_, "browser:shouldSizeColumn:forUserResize:toWidth:", browser, columnIndex, forUserResize, suggestedWidth)
+	rv := objc.CallMethod[float64](b_, "browser:shouldSizeColumn:forUserResize:toWidth:", browser, columnIndex, forUserResize, suggestedWidth)
 	return rv
 }
 
@@ -805,7 +804,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SizeToFitWidthOfColumn() boo
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SizeToFitWidthOfColumn(browser IBrowser, columnIndex int) float64 {
-	rv := ffi.CallMethod[float64](b_, "browser:sizeToFitWidthOfColumn:", browser, columnIndex)
+	rv := objc.CallMethod[float64](b_, "browser:sizeToFitWidthOfColumn:", browser, columnIndex)
 	return rv
 }
 
@@ -814,7 +813,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowserColumnConfigurationDidChange(
 }
 
 func (b_ BrowserDelegateWrapper) BrowserColumnConfigurationDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](b_, "browserColumnConfigurationDidChange:", notification)
+	objc.CallMethod[objc.Void](b_, "browserColumnConfigurationDidChange:", notification)
 }
 
 func (b_ *BrowserDelegateWrapper) ImplementsBrowser_HeightOfRow_InColumn() bool {
@@ -822,7 +821,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_HeightOfRow_InColumn() bool 
 }
 
 func (b_ BrowserDelegateWrapper) Browser_HeightOfRow_InColumn(browser IBrowser, row int, columnIndex int) float64 {
-	rv := ffi.CallMethod[float64](b_, "browser:heightOfRow:inColumn:", browser, row, columnIndex)
+	rv := objc.CallMethod[float64](b_, "browser:heightOfRow:inColumn:", browser, row, columnIndex)
 	return rv
 }
 
@@ -831,6 +830,6 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldShowCellExpansionForRo
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldShowCellExpansionForRow_Column(browser IBrowser, row int, column int) bool {
-	rv := ffi.CallMethod[bool](b_, "browser:shouldShowCellExpansionForRow:column:", browser, row, column)
+	rv := objc.CallMethod[bool](b_, "browser:shouldShowCellExpansionForRow:column:", browser, row, column)
 	return rv
 }

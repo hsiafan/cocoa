@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -102,22 +101,22 @@ func MakeText(ptr unsafe.Pointer) Text {
 }
 
 func (t_ Text) InitWithFrame(frameRect foundation.Rect) Text {
-	rv := ffi.CallMethod[Text](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Text](t_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (t_ Text) Init() Text {
-	rv := ffi.CallMethod[Text](t_, "init")
+	rv := objc.CallMethod[Text](t_, "init")
 	return rv
 }
 
 func (tc _TextClass) Alloc() Text {
-	rv := ffi.CallMethod[Text](tc, "alloc")
+	rv := objc.CallMethod[Text](tc, "alloc")
 	return rv
 }
 
 func (tc _TextClass) New() Text {
-	rv := ffi.CallMethod[Text](tc, "new")
+	rv := objc.CallMethod[Text](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -127,312 +126,312 @@ func NewText() Text {
 }
 
 func (t_ Text) ToggleRuler(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "toggleRuler:", sender)
+	objc.CallMethod[objc.Void](t_, "toggleRuler:", sender)
 }
 
 func (t_ Text) ReplaceCharactersInRange_WithRTF(range_ foundation.Range, rtfData []byte) {
-	ffi.CallMethod[ffi.Void](t_, "replaceCharactersInRange:withRTF:", range_, rtfData)
+	objc.CallMethod[objc.Void](t_, "replaceCharactersInRange:withRTF:", range_, rtfData)
 }
 
 func (t_ Text) ReplaceCharactersInRange_WithRTFD(range_ foundation.Range, rtfdData []byte) {
-	ffi.CallMethod[ffi.Void](t_, "replaceCharactersInRange:withRTFD:", range_, rtfdData)
+	objc.CallMethod[objc.Void](t_, "replaceCharactersInRange:withRTFD:", range_, rtfdData)
 }
 
 func (t_ Text) ReplaceCharactersInRange_WithString(range_ foundation.Range, string_ string) {
-	ffi.CallMethod[ffi.Void](t_, "replaceCharactersInRange:withString:", range_, string_)
+	objc.CallMethod[objc.Void](t_, "replaceCharactersInRange:withString:", range_, string_)
 }
 
 func (t_ Text) SelectAll(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectAll:", sender)
+	objc.CallMethod[objc.Void](t_, "selectAll:", sender)
 }
 
 func (t_ Text) Copy(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "copy:", sender)
+	objc.CallMethod[objc.Void](t_, "copy:", sender)
 }
 
 func (t_ Text) Cut(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "cut:", sender)
+	objc.CallMethod[objc.Void](t_, "cut:", sender)
 }
 
 func (t_ Text) Paste(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "paste:", sender)
+	objc.CallMethod[objc.Void](t_, "paste:", sender)
 }
 
 func (t_ Text) CopyFont(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "copyFont:", sender)
+	objc.CallMethod[objc.Void](t_, "copyFont:", sender)
 }
 
 func (t_ Text) PasteFont(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "pasteFont:", sender)
+	objc.CallMethod[objc.Void](t_, "pasteFont:", sender)
 }
 
 func (t_ Text) CopyRuler(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "copyRuler:", sender)
+	objc.CallMethod[objc.Void](t_, "copyRuler:", sender)
 }
 
 func (t_ Text) PasteRuler(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "pasteRuler:", sender)
+	objc.CallMethod[objc.Void](t_, "pasteRuler:", sender)
 }
 
 func (t_ Text) Delete(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "delete:", sender)
+	objc.CallMethod[objc.Void](t_, "delete:", sender)
 }
 
 func (t_ Text) ChangeFont(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "changeFont:", sender)
+	objc.CallMethod[objc.Void](t_, "changeFont:", sender)
 }
 
 func (t_ Text) SetFont_Range(font IFont, range_ foundation.Range) {
-	ffi.CallMethod[ffi.Void](t_, "setFont:range:", font, range_)
+	objc.CallMethod[objc.Void](t_, "setFont:range:", font, range_)
 }
 
 func (t_ Text) AlignCenter(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "alignCenter:", sender)
+	objc.CallMethod[objc.Void](t_, "alignCenter:", sender)
 }
 
 func (t_ Text) AlignLeft(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "alignLeft:", sender)
+	objc.CallMethod[objc.Void](t_, "alignLeft:", sender)
 }
 
 func (t_ Text) AlignRight(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "alignRight:", sender)
+	objc.CallMethod[objc.Void](t_, "alignRight:", sender)
 }
 
 func (t_ Text) SetTextColor_Range(color IColor, range_ foundation.Range) {
-	ffi.CallMethod[ffi.Void](t_, "setTextColor:range:", color, range_)
+	objc.CallMethod[objc.Void](t_, "setTextColor:range:", color, range_)
 }
 
 func (t_ Text) Superscript(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "superscript:", sender)
+	objc.CallMethod[objc.Void](t_, "superscript:", sender)
 }
 
 func (t_ Text) Subscript(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "subscript:", sender)
+	objc.CallMethod[objc.Void](t_, "subscript:", sender)
 }
 
 func (t_ Text) Unscript(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "unscript:", sender)
+	objc.CallMethod[objc.Void](t_, "unscript:", sender)
 }
 
 func (t_ Text) Underline(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "underline:", sender)
+	objc.CallMethod[objc.Void](t_, "underline:", sender)
 }
 
 func (t_ Text) ReadRTFDFromFile(path string) bool {
-	rv := ffi.CallMethod[bool](t_, "readRTFDFromFile:", path)
+	rv := objc.CallMethod[bool](t_, "readRTFDFromFile:", path)
 	return rv
 }
 
 func (t_ Text) WriteRTFDToFile_Atomically(path string, flag bool) bool {
-	rv := ffi.CallMethod[bool](t_, "writeRTFDToFile:atomically:", path, flag)
+	rv := objc.CallMethod[bool](t_, "writeRTFDToFile:atomically:", path, flag)
 	return rv
 }
 
 func (t_ Text) RTFDFromRange(range_ foundation.Range) []byte {
-	rv := ffi.CallMethod[[]byte](t_, "RTFDFromRange:", range_)
+	rv := objc.CallMethod[[]byte](t_, "RTFDFromRange:", range_)
 	return rv
 }
 
 func (t_ Text) RTFFromRange(range_ foundation.Range) []byte {
-	rv := ffi.CallMethod[[]byte](t_, "RTFFromRange:", range_)
+	rv := objc.CallMethod[[]byte](t_, "RTFFromRange:", range_)
 	return rv
 }
 
 func (t_ Text) CheckSpelling(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "checkSpelling:", sender)
+	objc.CallMethod[objc.Void](t_, "checkSpelling:", sender)
 }
 
 func (t_ Text) ShowGuessPanel(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "showGuessPanel:", sender)
+	objc.CallMethod[objc.Void](t_, "showGuessPanel:", sender)
 }
 
 func (t_ Text) SizeToFit() {
-	ffi.CallMethod[ffi.Void](t_, "sizeToFit")
+	objc.CallMethod[objc.Void](t_, "sizeToFit")
 }
 
 func (t_ Text) ScrollRangeToVisible(range_ foundation.Range) {
-	ffi.CallMethod[ffi.Void](t_, "scrollRangeToVisible:", range_)
+	objc.CallMethod[objc.Void](t_, "scrollRangeToVisible:", range_)
 }
 
 func (t_ Text) String() string {
-	rv := ffi.CallMethod[string](t_, "string")
+	rv := objc.CallMethod[string](t_, "string")
 	return rv
 }
 
 func (t_ Text) SetString(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setString:", value)
+	objc.CallMethod[objc.Void](t_, "setString:", value)
 }
 
 func (t_ Text) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](t_, "backgroundColor")
+	rv := objc.CallMethod[Color](t_, "backgroundColor")
 	return rv
 }
 
 func (t_ Text) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](t_, "setBackgroundColor:", value)
 }
 
 func (t_ Text) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](t_, "drawsBackground")
+	rv := objc.CallMethod[bool](t_, "drawsBackground")
 	return rv
 }
 
 func (t_ Text) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](t_, "setDrawsBackground:", value)
 }
 
 func (t_ Text) IsEditable() bool {
-	rv := ffi.CallMethod[bool](t_, "isEditable")
+	rv := objc.CallMethod[bool](t_, "isEditable")
 	return rv
 }
 
 func (t_ Text) SetEditable(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setEditable:", value)
+	objc.CallMethod[objc.Void](t_, "setEditable:", value)
 }
 
 func (t_ Text) IsSelectable() bool {
-	rv := ffi.CallMethod[bool](t_, "isSelectable")
+	rv := objc.CallMethod[bool](t_, "isSelectable")
 	return rv
 }
 
 func (t_ Text) SetSelectable(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setSelectable:", value)
+	objc.CallMethod[objc.Void](t_, "setSelectable:", value)
 }
 
 func (t_ Text) IsFieldEditor() bool {
-	rv := ffi.CallMethod[bool](t_, "isFieldEditor")
+	rv := objc.CallMethod[bool](t_, "isFieldEditor")
 	return rv
 }
 
 func (t_ Text) SetFieldEditor(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setFieldEditor:", value)
+	objc.CallMethod[objc.Void](t_, "setFieldEditor:", value)
 }
 
 func (t_ Text) IsRichText() bool {
-	rv := ffi.CallMethod[bool](t_, "isRichText")
+	rv := objc.CallMethod[bool](t_, "isRichText")
 	return rv
 }
 
 func (t_ Text) SetRichText(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setRichText:", value)
+	objc.CallMethod[objc.Void](t_, "setRichText:", value)
 }
 
 func (t_ Text) ImportsGraphics() bool {
-	rv := ffi.CallMethod[bool](t_, "importsGraphics")
+	rv := objc.CallMethod[bool](t_, "importsGraphics")
 	return rv
 }
 
 func (t_ Text) SetImportsGraphics(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setImportsGraphics:", value)
+	objc.CallMethod[objc.Void](t_, "setImportsGraphics:", value)
 }
 
 func (t_ Text) UsesFontPanel() bool {
-	rv := ffi.CallMethod[bool](t_, "usesFontPanel")
+	rv := objc.CallMethod[bool](t_, "usesFontPanel")
 	return rv
 }
 
 func (t_ Text) SetUsesFontPanel(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setUsesFontPanel:", value)
+	objc.CallMethod[objc.Void](t_, "setUsesFontPanel:", value)
 }
 
 func (t_ Text) IsRulerVisible() bool {
-	rv := ffi.CallMethod[bool](t_, "isRulerVisible")
+	rv := objc.CallMethod[bool](t_, "isRulerVisible")
 	return rv
 }
 
 func (t_ Text) SelectedRange() foundation.Range {
-	rv := ffi.CallMethod[foundation.Range](t_, "selectedRange")
+	rv := objc.CallMethod[foundation.Range](t_, "selectedRange")
 	return rv
 }
 
 func (t_ Text) SetSelectedRange(value foundation.Range) {
-	ffi.CallMethod[ffi.Void](t_, "setSelectedRange:", value)
+	objc.CallMethod[objc.Void](t_, "setSelectedRange:", value)
 }
 
 func (t_ Text) Font() Font {
-	rv := ffi.CallMethod[Font](t_, "font")
+	rv := objc.CallMethod[Font](t_, "font")
 	return rv
 }
 
 func (t_ Text) SetFont(value IFont) {
-	ffi.CallMethod[ffi.Void](t_, "setFont:", value)
+	objc.CallMethod[objc.Void](t_, "setFont:", value)
 }
 
 func (t_ Text) Alignment() TextAlignment {
-	rv := ffi.CallMethod[TextAlignment](t_, "alignment")
+	rv := objc.CallMethod[TextAlignment](t_, "alignment")
 	return rv
 }
 
 func (t_ Text) SetAlignment(value TextAlignment) {
-	ffi.CallMethod[ffi.Void](t_, "setAlignment:", value)
+	objc.CallMethod[objc.Void](t_, "setAlignment:", value)
 }
 
 func (t_ Text) TextColor() Color {
-	rv := ffi.CallMethod[Color](t_, "textColor")
+	rv := objc.CallMethod[Color](t_, "textColor")
 	return rv
 }
 
 func (t_ Text) SetTextColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setTextColor:", value)
+	objc.CallMethod[objc.Void](t_, "setTextColor:", value)
 }
 
 func (t_ Text) BaseWritingDirection() WritingDirection {
-	rv := ffi.CallMethod[WritingDirection](t_, "baseWritingDirection")
+	rv := objc.CallMethod[WritingDirection](t_, "baseWritingDirection")
 	return rv
 }
 
 func (t_ Text) SetBaseWritingDirection(value WritingDirection) {
-	ffi.CallMethod[ffi.Void](t_, "setBaseWritingDirection:", value)
+	objc.CallMethod[objc.Void](t_, "setBaseWritingDirection:", value)
 }
 
 func (t_ Text) MaxSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "maxSize")
+	rv := objc.CallMethod[foundation.Size](t_, "maxSize")
 	return rv
 }
 
 func (t_ Text) SetMaxSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](t_, "setMaxSize:", value)
+	objc.CallMethod[objc.Void](t_, "setMaxSize:", value)
 }
 
 func (t_ Text) MinSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "minSize")
+	rv := objc.CallMethod[foundation.Size](t_, "minSize")
 	return rv
 }
 
 func (t_ Text) SetMinSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](t_, "setMinSize:", value)
+	objc.CallMethod[objc.Void](t_, "setMinSize:", value)
 }
 
 func (t_ Text) IsVerticallyResizable() bool {
-	rv := ffi.CallMethod[bool](t_, "isVerticallyResizable")
+	rv := objc.CallMethod[bool](t_, "isVerticallyResizable")
 	return rv
 }
 
 func (t_ Text) SetVerticallyResizable(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setVerticallyResizable:", value)
+	objc.CallMethod[objc.Void](t_, "setVerticallyResizable:", value)
 }
 
 func (t_ Text) IsHorizontallyResizable() bool {
-	rv := ffi.CallMethod[bool](t_, "isHorizontallyResizable")
+	rv := objc.CallMethod[bool](t_, "isHorizontallyResizable")
 	return rv
 }
 
 func (t_ Text) SetHorizontallyResizable(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setHorizontallyResizable:", value)
+	objc.CallMethod[objc.Void](t_, "setHorizontallyResizable:", value)
 }
 
 func (t_ Text) Delegate() TextDelegateWrapper {
-	rv := ffi.CallMethod[TextDelegateWrapper](t_, "delegate")
+	rv := objc.CallMethod[TextDelegateWrapper](t_, "delegate")
 	return rv
 }
 
 func (t_ Text) SetDelegate(value TextDelegate) {
-	po := ffi.CreateProtocol("NSTextDelegate", value)
+	po := objc.CreateProtocol("NSTextDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](t_, "setDelegate:", po)
 }
 
 func (t_ Text) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](t_, "setDelegate:", value)
 }

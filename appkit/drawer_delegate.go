@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -150,7 +149,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerShouldOpen() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerShouldOpen(sender IDrawer) bool {
-	rv := ffi.CallMethod[bool](d_, "drawerShouldOpen:", sender)
+	rv := objc.CallMethod[bool](d_, "drawerShouldOpen:", sender)
 	return rv
 }
 
@@ -160,7 +159,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillOpen() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerWillOpen(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](d_, "drawerWillOpen:", notification)
+	objc.CallMethod[objc.Void](d_, "drawerWillOpen:", notification)
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidOpen() bool {
@@ -169,7 +168,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidOpen() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerDidOpen(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](d_, "drawerDidOpen:", notification)
+	objc.CallMethod[objc.Void](d_, "drawerDidOpen:", notification)
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerShouldClose() bool {
@@ -178,7 +177,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerShouldClose() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerShouldClose(sender IDrawer) bool {
-	rv := ffi.CallMethod[bool](d_, "drawerShouldClose:", sender)
+	rv := objc.CallMethod[bool](d_, "drawerShouldClose:", sender)
 	return rv
 }
 
@@ -188,7 +187,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillClose() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerWillClose(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](d_, "drawerWillClose:", notification)
+	objc.CallMethod[objc.Void](d_, "drawerWillClose:", notification)
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidClose() bool {
@@ -197,7 +196,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidClose() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerDidClose(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](d_, "drawerDidClose:", notification)
+	objc.CallMethod[objc.Void](d_, "drawerDidClose:", notification)
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillResizeContents_ToSize() bool {
@@ -206,6 +205,6 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillResizeContents_ToSize() boo
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerWillResizeContents_ToSize(sender IDrawer, contentSize foundation.Size) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](d_, "drawerWillResizeContents:toSize:", sender, contentSize)
+	rv := objc.CallMethod[foundation.Size](d_, "drawerWillResizeContents:toSize:", sender, contentSize)
 	return rv
 }

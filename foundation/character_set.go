@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,12 +33,12 @@ func MakeCharacterSet(ptr unsafe.Pointer) CharacterSet {
 }
 
 func (cc _CharacterSetClass) Alloc() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "alloc")
+	rv := objc.CallMethod[CharacterSet](cc, "alloc")
 	return rv
 }
 
 func (cc _CharacterSetClass) New() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "new")
+	rv := objc.CallMethod[CharacterSet](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -49,157 +48,157 @@ func NewCharacterSet() CharacterSet {
 }
 
 func (c_ CharacterSet) Init() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](c_, "init")
+	rv := objc.CallMethod[CharacterSet](c_, "init")
 	return rv
 }
 
 func (cc _CharacterSetClass) CharacterSetWithCharactersInString(aString string) CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "characterSetWithCharactersInString:", aString)
+	rv := objc.CallMethod[CharacterSet](cc, "characterSetWithCharactersInString:", aString)
 	return rv
 }
 
 func (cc _CharacterSetClass) CharacterSetWithRange(aRange Range) CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "characterSetWithRange:", aRange)
+	rv := objc.CallMethod[CharacterSet](cc, "characterSetWithRange:", aRange)
 	return rv
 }
 
 func (cc _CharacterSetClass) CharacterSetWithBitmapRepresentation(data []byte) CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "characterSetWithBitmapRepresentation:", data)
+	rv := objc.CallMethod[CharacterSet](cc, "characterSetWithBitmapRepresentation:", data)
 	return rv
 }
 
 func (cc _CharacterSetClass) CharacterSetWithContentsOfFile(fName string) CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "characterSetWithContentsOfFile:", fName)
+	rv := objc.CallMethod[CharacterSet](cc, "characterSetWithContentsOfFile:", fName)
 	return rv
 }
 
 func (c_ CharacterSet) CharacterIsMember(aCharacter unichar) bool {
-	rv := ffi.CallMethod[bool](c_, "characterIsMember:", aCharacter)
+	rv := objc.CallMethod[bool](c_, "characterIsMember:", aCharacter)
 	return rv
 }
 
 func (c_ CharacterSet) IsSupersetOfSet(theOtherSet ICharacterSet) bool {
-	rv := ffi.CallMethod[bool](c_, "isSupersetOfSet:", theOtherSet)
+	rv := objc.CallMethod[bool](c_, "isSupersetOfSet:", theOtherSet)
 	return rv
 }
 
 func (c_ CharacterSet) LongCharacterIsMember(theLongChar uint32) bool {
-	rv := ffi.CallMethod[bool](c_, "longCharacterIsMember:", theLongChar)
+	rv := objc.CallMethod[bool](c_, "longCharacterIsMember:", theLongChar)
 	return rv
 }
 
 func (cc _CharacterSetClass) AlphanumericCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "alphanumericCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "alphanumericCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) CapitalizedLetterCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "capitalizedLetterCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "capitalizedLetterCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) ControlCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "controlCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "controlCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) DecimalDigitCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "decimalDigitCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "decimalDigitCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) DecomposableCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "decomposableCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "decomposableCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) IllegalCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "illegalCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "illegalCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) LetterCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "letterCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "letterCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) LowercaseLetterCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "lowercaseLetterCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "lowercaseLetterCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) NewlineCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "newlineCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "newlineCharacterSet")
 	rv.Autorelease()
 	return rv
 }
 
 func (cc _CharacterSetClass) NonBaseCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "nonBaseCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "nonBaseCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) PunctuationCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "punctuationCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "punctuationCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) SymbolCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "symbolCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "symbolCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) UppercaseLetterCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "uppercaseLetterCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "uppercaseLetterCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) WhitespaceAndNewlineCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "whitespaceAndNewlineCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "whitespaceAndNewlineCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) WhitespaceCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "whitespaceCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "whitespaceCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) URLFragmentAllowedCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "URLFragmentAllowedCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "URLFragmentAllowedCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) URLHostAllowedCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "URLHostAllowedCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "URLHostAllowedCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) URLPasswordAllowedCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "URLPasswordAllowedCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "URLPasswordAllowedCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) URLPathAllowedCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "URLPathAllowedCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "URLPathAllowedCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) URLQueryAllowedCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "URLQueryAllowedCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "URLQueryAllowedCharacterSet")
 	return rv
 }
 
 func (cc _CharacterSetClass) URLUserAllowedCharacterSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](cc, "URLUserAllowedCharacterSet")
+	rv := objc.CallMethod[CharacterSet](cc, "URLUserAllowedCharacterSet")
 	return rv
 }
 
 func (c_ CharacterSet) BitmapRepresentation() []byte {
-	rv := ffi.CallMethod[[]byte](c_, "bitmapRepresentation")
+	rv := objc.CallMethod[[]byte](c_, "bitmapRepresentation")
 	return rv
 }
 
 func (c_ CharacterSet) InvertedSet() CharacterSet {
-	rv := ffi.CallMethod[CharacterSet](c_, "invertedSet")
+	rv := objc.CallMethod[CharacterSet](c_, "invertedSet")
 	return rv
 }

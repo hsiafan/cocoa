@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -46,22 +45,22 @@ func MakeCursor(ptr unsafe.Pointer) Cursor {
 }
 
 func (c_ Cursor) InitWithImage_HotSpot(newImage IImage, point foundation.Point) Cursor {
-	rv := ffi.CallMethod[Cursor](c_, "initWithImage:hotSpot:", newImage, point)
+	rv := objc.CallMethod[Cursor](c_, "initWithImage:hotSpot:", newImage, point)
 	return rv
 }
 
 func (c_ Cursor) InitWithImage_ForegroundColorHint_BackgroundColorHint_HotSpot(newImage IImage, fg IColor, bg IColor, hotSpot foundation.Point) Cursor {
-	rv := ffi.CallMethod[Cursor](c_, "initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:", newImage, fg, bg, hotSpot)
+	rv := objc.CallMethod[Cursor](c_, "initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:", newImage, fg, bg, hotSpot)
 	return rv
 }
 
 func (cc _CursorClass) Alloc() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "alloc")
+	rv := objc.CallMethod[Cursor](cc, "alloc")
 	return rv
 }
 
 func (cc _CursorClass) New() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "new")
+	rv := objc.CallMethod[Cursor](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -71,172 +70,172 @@ func NewCursor() Cursor {
 }
 
 func (c_ Cursor) Init() Cursor {
-	rv := ffi.CallMethod[Cursor](c_, "init")
+	rv := objc.CallMethod[Cursor](c_, "init")
 	return rv
 }
 
 func (cc _CursorClass) Hide() {
-	ffi.CallMethod[ffi.Void](cc, "hide")
+	objc.CallMethod[objc.Void](cc, "hide")
 }
 
 func (cc _CursorClass) Unhide() {
-	ffi.CallMethod[ffi.Void](cc, "unhide")
+	objc.CallMethod[objc.Void](cc, "unhide")
 }
 
 func (cc _CursorClass) SetHiddenUntilMouseMoves(flag bool) {
-	ffi.CallMethod[ffi.Void](cc, "setHiddenUntilMouseMoves:", flag)
+	objc.CallMethod[objc.Void](cc, "setHiddenUntilMouseMoves:", flag)
 }
 
 func (cc _CursorClass) Pop() {
-	ffi.CallMethod[ffi.Void](cc, "pop")
+	objc.CallMethod[objc.Void](cc, "pop")
 }
 
 func (c_ Cursor) Push() {
-	ffi.CallMethod[ffi.Void](c_, "push")
+	objc.CallMethod[objc.Void](c_, "push")
 }
 
 func (c_ Cursor) Set() {
-	ffi.CallMethod[ffi.Void](c_, "set")
+	objc.CallMethod[objc.Void](c_, "set")
 }
 
 // deprecated
 func (c_ Cursor) MouseEntered(event IEvent) {
-	ffi.CallMethod[ffi.Void](c_, "mouseEntered:", event)
+	objc.CallMethod[objc.Void](c_, "mouseEntered:", event)
 }
 
 // deprecated
 func (c_ Cursor) SetOnMouseEntered(flag bool) {
-	ffi.CallMethod[ffi.Void](c_, "setOnMouseEntered:", flag)
+	objc.CallMethod[objc.Void](c_, "setOnMouseEntered:", flag)
 }
 
 // deprecated
 func (c_ Cursor) MouseExited(event IEvent) {
-	ffi.CallMethod[ffi.Void](c_, "mouseExited:", event)
+	objc.CallMethod[objc.Void](c_, "mouseExited:", event)
 }
 
 // deprecated
 func (c_ Cursor) SetOnMouseExited(flag bool) {
-	ffi.CallMethod[ffi.Void](c_, "setOnMouseExited:", flag)
+	objc.CallMethod[objc.Void](c_, "setOnMouseExited:", flag)
 }
 
 func (c_ Cursor) Image() Image {
-	rv := ffi.CallMethod[Image](c_, "image")
+	rv := objc.CallMethod[Image](c_, "image")
 	return rv
 }
 
 func (c_ Cursor) HotSpot() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](c_, "hotSpot")
+	rv := objc.CallMethod[foundation.Point](c_, "hotSpot")
 	return rv
 }
 
 // deprecated
 func (c_ Cursor) IsSetOnMouseEntered() bool {
-	rv := ffi.CallMethod[bool](c_, "isSetOnMouseEntered")
+	rv := objc.CallMethod[bool](c_, "isSetOnMouseEntered")
 	return rv
 }
 
 // deprecated
 func (c_ Cursor) IsSetOnMouseExited() bool {
-	rv := ffi.CallMethod[bool](c_, "isSetOnMouseExited")
+	rv := objc.CallMethod[bool](c_, "isSetOnMouseExited")
 	return rv
 }
 
 func (cc _CursorClass) CurrentCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "currentCursor")
+	rv := objc.CallMethod[Cursor](cc, "currentCursor")
 	return rv
 }
 
 func (cc _CursorClass) CurrentSystemCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "currentSystemCursor")
+	rv := objc.CallMethod[Cursor](cc, "currentSystemCursor")
 	return rv
 }
 
 func (cc _CursorClass) ArrowCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "arrowCursor")
+	rv := objc.CallMethod[Cursor](cc, "arrowCursor")
 	return rv
 }
 
 func (cc _CursorClass) ContextualMenuCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "contextualMenuCursor")
+	rv := objc.CallMethod[Cursor](cc, "contextualMenuCursor")
 	return rv
 }
 
 func (cc _CursorClass) ClosedHandCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "closedHandCursor")
+	rv := objc.CallMethod[Cursor](cc, "closedHandCursor")
 	return rv
 }
 
 func (cc _CursorClass) CrosshairCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "crosshairCursor")
+	rv := objc.CallMethod[Cursor](cc, "crosshairCursor")
 	return rv
 }
 
 func (cc _CursorClass) DisappearingItemCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "disappearingItemCursor")
+	rv := objc.CallMethod[Cursor](cc, "disappearingItemCursor")
 	return rv
 }
 
 func (cc _CursorClass) DragCopyCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "dragCopyCursor")
+	rv := objc.CallMethod[Cursor](cc, "dragCopyCursor")
 	return rv
 }
 
 func (cc _CursorClass) DragLinkCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "dragLinkCursor")
+	rv := objc.CallMethod[Cursor](cc, "dragLinkCursor")
 	return rv
 }
 
 func (cc _CursorClass) IBeamCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "IBeamCursor")
+	rv := objc.CallMethod[Cursor](cc, "IBeamCursor")
 	return rv
 }
 
 func (cc _CursorClass) OpenHandCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "openHandCursor")
+	rv := objc.CallMethod[Cursor](cc, "openHandCursor")
 	return rv
 }
 
 func (cc _CursorClass) OperationNotAllowedCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "operationNotAllowedCursor")
+	rv := objc.CallMethod[Cursor](cc, "operationNotAllowedCursor")
 	return rv
 }
 
 func (cc _CursorClass) PointingHandCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "pointingHandCursor")
+	rv := objc.CallMethod[Cursor](cc, "pointingHandCursor")
 	return rv
 }
 
 func (cc _CursorClass) ResizeDownCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "resizeDownCursor")
+	rv := objc.CallMethod[Cursor](cc, "resizeDownCursor")
 	return rv
 }
 
 func (cc _CursorClass) ResizeLeftCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "resizeLeftCursor")
+	rv := objc.CallMethod[Cursor](cc, "resizeLeftCursor")
 	return rv
 }
 
 func (cc _CursorClass) ResizeLeftRightCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "resizeLeftRightCursor")
+	rv := objc.CallMethod[Cursor](cc, "resizeLeftRightCursor")
 	return rv
 }
 
 func (cc _CursorClass) ResizeRightCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "resizeRightCursor")
+	rv := objc.CallMethod[Cursor](cc, "resizeRightCursor")
 	return rv
 }
 
 func (cc _CursorClass) ResizeUpCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "resizeUpCursor")
+	rv := objc.CallMethod[Cursor](cc, "resizeUpCursor")
 	return rv
 }
 
 func (cc _CursorClass) ResizeUpDownCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "resizeUpDownCursor")
+	rv := objc.CallMethod[Cursor](cc, "resizeUpDownCursor")
 	return rv
 }
 
 func (cc _CursorClass) IBeamCursorForVerticalLayout() Cursor {
-	rv := ffi.CallMethod[Cursor](cc, "IBeamCursorForVerticalLayout")
+	rv := objc.CallMethod[Cursor](cc, "IBeamCursorForVerticalLayout")
 	return rv
 }

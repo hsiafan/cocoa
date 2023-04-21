@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -73,22 +72,22 @@ func MakeTabView(ptr unsafe.Pointer) TabView {
 }
 
 func (t_ TabView) InitWithFrame(frameRect foundation.Rect) TabView {
-	rv := ffi.CallMethod[TabView](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TabView](t_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (t_ TabView) Init() TabView {
-	rv := ffi.CallMethod[TabView](t_, "init")
+	rv := objc.CallMethod[TabView](t_, "init")
 	return rv
 }
 
 func (tc _TabViewClass) Alloc() TabView {
-	rv := ffi.CallMethod[TabView](tc, "alloc")
+	rv := objc.CallMethod[TabView](tc, "alloc")
 	return rv
 }
 
 func (tc _TabViewClass) New() TabView {
-	rv := ffi.CallMethod[TabView](tc, "new")
+	rv := objc.CallMethod[TabView](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -98,184 +97,184 @@ func NewTabView() TabView {
 }
 
 func (t_ TabView) AddTabViewItem(tabViewItem ITabViewItem) {
-	ffi.CallMethod[ffi.Void](t_, "addTabViewItem:", tabViewItem)
+	objc.CallMethod[objc.Void](t_, "addTabViewItem:", tabViewItem)
 }
 
 func (t_ TabView) InsertTabViewItem_AtIndex(tabViewItem ITabViewItem, index int) {
-	ffi.CallMethod[ffi.Void](t_, "insertTabViewItem:atIndex:", tabViewItem, index)
+	objc.CallMethod[objc.Void](t_, "insertTabViewItem:atIndex:", tabViewItem, index)
 }
 
 func (t_ TabView) RemoveTabViewItem(tabViewItem ITabViewItem) {
-	ffi.CallMethod[ffi.Void](t_, "removeTabViewItem:", tabViewItem)
+	objc.CallMethod[objc.Void](t_, "removeTabViewItem:", tabViewItem)
 }
 
 func (t_ TabView) IndexOfTabViewItem(tabViewItem ITabViewItem) int {
-	rv := ffi.CallMethod[int](t_, "indexOfTabViewItem:", tabViewItem)
+	rv := objc.CallMethod[int](t_, "indexOfTabViewItem:", tabViewItem)
 	return rv
 }
 
 func (t_ TabView) IndexOfTabViewItemWithIdentifier(identifier objc.IObject) int {
-	rv := ffi.CallMethod[int](t_, "indexOfTabViewItemWithIdentifier:", identifier)
+	rv := objc.CallMethod[int](t_, "indexOfTabViewItemWithIdentifier:", identifier)
 	return rv
 }
 
 func (t_ TabView) TabViewItemAtIndex(index int) TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](t_, "tabViewItemAtIndex:", index)
+	rv := objc.CallMethod[TabViewItem](t_, "tabViewItemAtIndex:", index)
 	return rv
 }
 
 func (t_ TabView) SelectFirstTabViewItem(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectFirstTabViewItem:", sender)
+	objc.CallMethod[objc.Void](t_, "selectFirstTabViewItem:", sender)
 }
 
 func (t_ TabView) SelectLastTabViewItem(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectLastTabViewItem:", sender)
+	objc.CallMethod[objc.Void](t_, "selectLastTabViewItem:", sender)
 }
 
 func (t_ TabView) SelectNextTabViewItem(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectNextTabViewItem:", sender)
+	objc.CallMethod[objc.Void](t_, "selectNextTabViewItem:", sender)
 }
 
 func (t_ TabView) SelectPreviousTabViewItem(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectPreviousTabViewItem:", sender)
+	objc.CallMethod[objc.Void](t_, "selectPreviousTabViewItem:", sender)
 }
 
 func (t_ TabView) SelectTabViewItem(tabViewItem ITabViewItem) {
-	ffi.CallMethod[ffi.Void](t_, "selectTabViewItem:", tabViewItem)
+	objc.CallMethod[objc.Void](t_, "selectTabViewItem:", tabViewItem)
 }
 
 func (t_ TabView) SelectTabViewItemAtIndex(index int) {
-	ffi.CallMethod[ffi.Void](t_, "selectTabViewItemAtIndex:", index)
+	objc.CallMethod[objc.Void](t_, "selectTabViewItemAtIndex:", index)
 }
 
 func (t_ TabView) SelectTabViewItemWithIdentifier(identifier objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectTabViewItemWithIdentifier:", identifier)
+	objc.CallMethod[objc.Void](t_, "selectTabViewItemWithIdentifier:", identifier)
 }
 
 func (t_ TabView) TakeSelectedTabViewItemFromSender(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "takeSelectedTabViewItemFromSender:", sender)
+	objc.CallMethod[objc.Void](t_, "takeSelectedTabViewItemFromSender:", sender)
 }
 
 func (t_ TabView) TabViewItemAtPoint(point foundation.Point) TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](t_, "tabViewItemAtPoint:", point)
+	rv := objc.CallMethod[TabViewItem](t_, "tabViewItemAtPoint:", point)
 	return rv
 }
 
 func (t_ TabView) Delegate() TabViewDelegateWrapper {
-	rv := ffi.CallMethod[TabViewDelegateWrapper](t_, "delegate")
+	rv := objc.CallMethod[TabViewDelegateWrapper](t_, "delegate")
 	return rv
 }
 
 func (t_ TabView) SetDelegate(value TabViewDelegate) {
-	po := ffi.CreateProtocol("NSTabViewDelegate", value)
+	po := objc.CreateProtocol("NSTabViewDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](t_, "setDelegate:", po)
 }
 
 func (t_ TabView) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](t_, "setDelegate:", value)
 }
 
 func (t_ TabView) NumberOfTabViewItems() int {
-	rv := ffi.CallMethod[int](t_, "numberOfTabViewItems")
+	rv := objc.CallMethod[int](t_, "numberOfTabViewItems")
 	return rv
 }
 
 func (t_ TabView) TabViewItems() []TabViewItem {
-	rv := ffi.CallMethod[[]TabViewItem](t_, "tabViewItems")
+	rv := objc.CallMethod[[]TabViewItem](t_, "tabViewItems")
 	return rv
 }
 
 func (t_ TabView) SetTabViewItems(value []ITabViewItem) {
-	ffi.CallMethod[ffi.Void](t_, "setTabViewItems:", value)
+	objc.CallMethod[objc.Void](t_, "setTabViewItems:", value)
 }
 
 func (t_ TabView) TabViewType() TabViewType {
-	rv := ffi.CallMethod[TabViewType](t_, "tabViewType")
+	rv := objc.CallMethod[TabViewType](t_, "tabViewType")
 	return rv
 }
 
 func (t_ TabView) SetTabViewType(value TabViewType) {
-	ffi.CallMethod[ffi.Void](t_, "setTabViewType:", value)
+	objc.CallMethod[objc.Void](t_, "setTabViewType:", value)
 }
 
 func (t_ TabView) TabPosition() TabPosition {
-	rv := ffi.CallMethod[TabPosition](t_, "tabPosition")
+	rv := objc.CallMethod[TabPosition](t_, "tabPosition")
 	return rv
 }
 
 func (t_ TabView) SetTabPosition(value TabPosition) {
-	ffi.CallMethod[ffi.Void](t_, "setTabPosition:", value)
+	objc.CallMethod[objc.Void](t_, "setTabPosition:", value)
 }
 
 func (t_ TabView) TabViewBorderType() TabViewBorderType {
-	rv := ffi.CallMethod[TabViewBorderType](t_, "tabViewBorderType")
+	rv := objc.CallMethod[TabViewBorderType](t_, "tabViewBorderType")
 	return rv
 }
 
 func (t_ TabView) SetTabViewBorderType(value TabViewBorderType) {
-	ffi.CallMethod[ffi.Void](t_, "setTabViewBorderType:", value)
+	objc.CallMethod[objc.Void](t_, "setTabViewBorderType:", value)
 }
 
 func (t_ TabView) SelectedTabViewItem() TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](t_, "selectedTabViewItem")
+	rv := objc.CallMethod[TabViewItem](t_, "selectedTabViewItem")
 	return rv
 }
 
 func (t_ TabView) Font() Font {
-	rv := ffi.CallMethod[Font](t_, "font")
+	rv := objc.CallMethod[Font](t_, "font")
 	return rv
 }
 
 func (t_ TabView) SetFont(value IFont) {
-	ffi.CallMethod[ffi.Void](t_, "setFont:", value)
+	objc.CallMethod[objc.Void](t_, "setFont:", value)
 }
 
 // deprecated
 func (t_ TabView) ControlTint() ControlTint {
-	rv := ffi.CallMethod[ControlTint](t_, "controlTint")
+	rv := objc.CallMethod[ControlTint](t_, "controlTint")
 	return rv
 }
 
 // deprecated
 func (t_ TabView) SetControlTint(value ControlTint) {
-	ffi.CallMethod[ffi.Void](t_, "setControlTint:", value)
+	objc.CallMethod[objc.Void](t_, "setControlTint:", value)
 }
 
 func (t_ TabView) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](t_, "drawsBackground")
+	rv := objc.CallMethod[bool](t_, "drawsBackground")
 	return rv
 }
 
 func (t_ TabView) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](t_, "setDrawsBackground:", value)
 }
 
 func (t_ TabView) MinimumSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "minimumSize")
+	rv := objc.CallMethod[foundation.Size](t_, "minimumSize")
 	return rv
 }
 
 func (t_ TabView) ContentRect() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](t_, "contentRect")
+	rv := objc.CallMethod[foundation.Rect](t_, "contentRect")
 	return rv
 }
 
 func (t_ TabView) ControlSize() ControlSize {
-	rv := ffi.CallMethod[ControlSize](t_, "controlSize")
+	rv := objc.CallMethod[ControlSize](t_, "controlSize")
 	return rv
 }
 
 func (t_ TabView) SetControlSize(value ControlSize) {
-	ffi.CallMethod[ffi.Void](t_, "setControlSize:", value)
+	objc.CallMethod[objc.Void](t_, "setControlSize:", value)
 }
 
 func (t_ TabView) AllowsTruncatedLabels() bool {
-	rv := ffi.CallMethod[bool](t_, "allowsTruncatedLabels")
+	rv := objc.CallMethod[bool](t_, "allowsTruncatedLabels")
 	return rv
 }
 
 func (t_ TabView) SetAllowsTruncatedLabels(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAllowsTruncatedLabels:", value)
+	objc.CallMethod[objc.Void](t_, "setAllowsTruncatedLabels:", value)
 }

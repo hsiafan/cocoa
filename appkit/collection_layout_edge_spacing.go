@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,17 +32,17 @@ func MakeCollectionLayoutEdgeSpacing(ptr unsafe.Pointer) CollectionLayoutEdgeSpa
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) SpacingForLeading_Top_Trailing_Bottom(leading ICollectionLayoutSpacing, top ICollectionLayoutSpacing, trailing ICollectionLayoutSpacing, bottom ICollectionLayoutSpacing) CollectionLayoutEdgeSpacing {
-	rv := ffi.CallMethod[CollectionLayoutEdgeSpacing](cc, "spacingForLeading:top:trailing:bottom:", leading, top, trailing, bottom)
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, "spacingForLeading:top:trailing:bottom:", leading, top, trailing, bottom)
 	return rv
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) Alloc() CollectionLayoutEdgeSpacing {
-	rv := ffi.CallMethod[CollectionLayoutEdgeSpacing](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) New() CollectionLayoutEdgeSpacing {
-	rv := ffi.CallMethod[CollectionLayoutEdgeSpacing](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,26 +52,26 @@ func NewCollectionLayoutEdgeSpacing() CollectionLayoutEdgeSpacing {
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Init() CollectionLayoutEdgeSpacing {
-	rv := ffi.CallMethod[CollectionLayoutEdgeSpacing](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Leading() CollectionLayoutSpacing {
-	rv := ffi.CallMethod[CollectionLayoutSpacing](c_, "leading")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "leading")
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Top() CollectionLayoutSpacing {
-	rv := ffi.CallMethod[CollectionLayoutSpacing](c_, "top")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "top")
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Trailing() CollectionLayoutSpacing {
-	rv := ffi.CallMethod[CollectionLayoutSpacing](c_, "trailing")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "trailing")
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Bottom() CollectionLayoutSpacing {
-	rv := ffi.CallMethod[CollectionLayoutSpacing](c_, "bottom")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "bottom")
 	return rv
 }

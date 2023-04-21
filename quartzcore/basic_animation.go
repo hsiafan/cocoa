@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,22 +34,22 @@ func MakeBasicAnimation(ptr unsafe.Pointer) BasicAnimation {
 }
 
 func (bc _BasicAnimationClass) AnimationWithKeyPath(path string) BasicAnimation {
-	rv := ffi.CallMethod[BasicAnimation](bc, "animationWithKeyPath:", path)
+	rv := objc.CallMethod[BasicAnimation](bc, "animationWithKeyPath:", path)
 	return rv
 }
 
 func (bc _BasicAnimationClass) Animation() BasicAnimation {
-	rv := ffi.CallMethod[BasicAnimation](bc, "animation")
+	rv := objc.CallMethod[BasicAnimation](bc, "animation")
 	return rv
 }
 
 func (bc _BasicAnimationClass) Alloc() BasicAnimation {
-	rv := ffi.CallMethod[BasicAnimation](bc, "alloc")
+	rv := objc.CallMethod[BasicAnimation](bc, "alloc")
 	return rv
 }
 
 func (bc _BasicAnimationClass) New() BasicAnimation {
-	rv := ffi.CallMethod[BasicAnimation](bc, "new")
+	rv := objc.CallMethod[BasicAnimation](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -60,33 +59,33 @@ func NewBasicAnimation() BasicAnimation {
 }
 
 func (b_ BasicAnimation) Init() BasicAnimation {
-	rv := ffi.CallMethod[BasicAnimation](b_, "init")
+	rv := objc.CallMethod[BasicAnimation](b_, "init")
 	return rv
 }
 
 func (b_ BasicAnimation) FromValue() objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "fromValue")
+	rv := objc.CallMethod[objc.Object](b_, "fromValue")
 	return rv
 }
 
 func (b_ BasicAnimation) SetFromValue(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "setFromValue:", value)
+	objc.CallMethod[objc.Void](b_, "setFromValue:", value)
 }
 
 func (b_ BasicAnimation) ToValue() objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "toValue")
+	rv := objc.CallMethod[objc.Object](b_, "toValue")
 	return rv
 }
 
 func (b_ BasicAnimation) SetToValue(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "setToValue:", value)
+	objc.CallMethod[objc.Void](b_, "setToValue:", value)
 }
 
 func (b_ BasicAnimation) ByValue() objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "byValue")
+	rv := objc.CallMethod[objc.Object](b_, "byValue")
 	return rv
 }
 
 func (b_ BasicAnimation) SetByValue(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "setByValue:", value)
+	objc.CallMethod[objc.Void](b_, "setByValue:", value)
 }

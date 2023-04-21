@@ -1,4 +1,4 @@
-package ffi
+package objc
 
 // #import <stdint.h>
 // #include "type_convertion.h"
@@ -21,7 +21,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/internal"
-	"github.com/hsiafan/cocoa/objc"
 )
 
 var intType = reflect.TypeOf(0)
@@ -34,9 +33,9 @@ var float32Type = reflect.TypeOf(float32(0))
 var float64Type = reflect.TypeOf(float64(0))
 var bytesType = reflect.TypeOf([]byte{})
 var unsafePointerType = reflect.TypeOf(unsafe.Pointer(nil))
-var pointerHolderType = reflect.TypeOf((*objc.Holder)(nil)).Elem()
-var selectorType = reflect.TypeOf(objc.Selector{})
-var classType = reflect.TypeOf(objc.Class{})
+var pointerHolderType = reflect.TypeOf((*Holder)(nil)).Elem()
+var selectorType = reflect.TypeOf(Selector{})
+var classType = reflect.TypeOf(Class{})
 
 type holder struct {
 	ptr unsafe.Pointer
@@ -136,7 +135,7 @@ func toNSElement(v reflect.Value) unsafe.Pointer {
 		}
 	case reflect.Interface:
 		if t.ConvertibleTo(pointerHolderType) {
-			return v.Interface().(objc.Holder).Ptr()
+			return v.Interface().(Holder).Ptr()
 		}
 	default:
 
@@ -340,7 +339,7 @@ func convertToObjcValue(v any) unsafe.Pointer {
 		return unsafe.Pointer(&p)
 	}
 
-	if pv, ok := v.(objc.Holder); ok {
+	if pv, ok := v.(Holder); ok {
 		cv := pv.Ptr()
 		return unsafe.Pointer(&cv)
 	}

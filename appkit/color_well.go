@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -49,27 +48,27 @@ func MakeColorWell(ptr unsafe.Pointer) ColorWell {
 }
 
 func (cc _ColorWellClass) ColorWellWithStyle(style ColorWellStyle) ColorWell {
-	rv := ffi.CallMethod[ColorWell](cc, "colorWellWithStyle:", style)
+	rv := objc.CallMethod[ColorWell](cc, "colorWellWithStyle:", style)
 	return rv
 }
 
 func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
-	rv := ffi.CallMethod[ColorWell](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ColorWell](c_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (c_ ColorWell) Init() ColorWell {
-	rv := ffi.CallMethod[ColorWell](c_, "init")
+	rv := objc.CallMethod[ColorWell](c_, "init")
 	return rv
 }
 
 func (cc _ColorWellClass) Alloc() ColorWell {
-	rv := ffi.CallMethod[ColorWell](cc, "alloc")
+	rv := objc.CallMethod[ColorWell](cc, "alloc")
 	return rv
 }
 
 func (cc _ColorWellClass) New() ColorWell {
-	rv := ffi.CallMethod[ColorWell](cc, "new")
+	rv := objc.CallMethod[ColorWell](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -79,78 +78,78 @@ func NewColorWell() ColorWell {
 }
 
 func (c_ ColorWell) TakeColorFrom(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "takeColorFrom:", sender)
+	objc.CallMethod[objc.Void](c_, "takeColorFrom:", sender)
 }
 
 func (c_ ColorWell) Activate(exclusive bool) {
-	ffi.CallMethod[ffi.Void](c_, "activate:", exclusive)
+	objc.CallMethod[objc.Void](c_, "activate:", exclusive)
 }
 
 func (c_ ColorWell) Deactivate() {
-	ffi.CallMethod[ffi.Void](c_, "deactivate")
+	objc.CallMethod[objc.Void](c_, "deactivate")
 }
 
 func (c_ ColorWell) DrawWellInside(insideRect foundation.Rect) {
-	ffi.CallMethod[ffi.Void](c_, "drawWellInside:", insideRect)
+	objc.CallMethod[objc.Void](c_, "drawWellInside:", insideRect)
 }
 
 func (c_ ColorWell) Color() Color {
-	rv := ffi.CallMethod[Color](c_, "color")
+	rv := objc.CallMethod[Color](c_, "color")
 	return rv
 }
 
 func (c_ ColorWell) SetColor(value IColor) {
-	ffi.CallMethod[ffi.Void](c_, "setColor:", value)
+	objc.CallMethod[objc.Void](c_, "setColor:", value)
 }
 
 func (c_ ColorWell) ColorWellStyle() ColorWellStyle {
-	rv := ffi.CallMethod[ColorWellStyle](c_, "colorWellStyle")
+	rv := objc.CallMethod[ColorWellStyle](c_, "colorWellStyle")
 	return rv
 }
 
 func (c_ ColorWell) SetColorWellStyle(value ColorWellStyle) {
-	ffi.CallMethod[ffi.Void](c_, "setColorWellStyle:", value)
+	objc.CallMethod[objc.Void](c_, "setColorWellStyle:", value)
 }
 
 func (c_ ColorWell) Image() Image {
-	rv := ffi.CallMethod[Image](c_, "image")
+	rv := objc.CallMethod[Image](c_, "image")
 	return rv
 }
 
 func (c_ ColorWell) SetImage(value IImage) {
-	ffi.CallMethod[ffi.Void](c_, "setImage:", value)
+	objc.CallMethod[objc.Void](c_, "setImage:", value)
 }
 
 // deprecated
 func (c_ ColorWell) IsBordered() bool {
-	rv := ffi.CallMethod[bool](c_, "isBordered")
+	rv := objc.CallMethod[bool](c_, "isBordered")
 	return rv
 }
 
 // deprecated
 func (c_ ColorWell) SetBordered(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setBordered:", value)
+	objc.CallMethod[objc.Void](c_, "setBordered:", value)
 }
 
 func (c_ ColorWell) IsActive() bool {
-	rv := ffi.CallMethod[bool](c_, "isActive")
+	rv := objc.CallMethod[bool](c_, "isActive")
 	return rv
 }
 
 func (c_ ColorWell) PulldownAction() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](c_, "pulldownAction")
+	rv := objc.CallMethod[objc.Selector](c_, "pulldownAction")
 	return rv
 }
 
 func (c_ ColorWell) SetPulldownAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](c_, "setPulldownAction:", value)
+	objc.CallMethod[objc.Void](c_, "setPulldownAction:", value)
 }
 
 func (c_ ColorWell) PulldownTarget() objc.Object {
-	rv := ffi.CallMethod[objc.Object](c_, "pulldownTarget")
+	rv := objc.CallMethod[objc.Object](c_, "pulldownTarget")
 	return rv
 }
 
 func (c_ ColorWell) SetPulldownTarget(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "setPulldownTarget:", value)
+	objc.CallMethod[objc.Void](c_, "setPulldownTarget:", value)
 }

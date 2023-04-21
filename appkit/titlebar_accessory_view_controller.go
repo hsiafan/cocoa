@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -38,22 +37,22 @@ func MakeTitlebarAccessoryViewController(ptr unsafe.Pointer) TitlebarAccessoryVi
 }
 
 func (t_ TitlebarAccessoryViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
-	rv := ffi.CallMethod[TitlebarAccessoryViewController](t_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
+	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) Init() TitlebarAccessoryViewController {
-	rv := ffi.CallMethod[TitlebarAccessoryViewController](t_, "init")
+	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, "init")
 	return rv
 }
 
 func (tc _TitlebarAccessoryViewControllerClass) Alloc() TitlebarAccessoryViewController {
-	rv := ffi.CallMethod[TitlebarAccessoryViewController](tc, "alloc")
+	rv := objc.CallMethod[TitlebarAccessoryViewController](tc, "alloc")
 	return rv
 }
 
 func (tc _TitlebarAccessoryViewControllerClass) New() TitlebarAccessoryViewController {
-	rv := ffi.CallMethod[TitlebarAccessoryViewController](tc, "new")
+	rv := objc.CallMethod[TitlebarAccessoryViewController](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -63,37 +62,37 @@ func NewTitlebarAccessoryViewController() TitlebarAccessoryViewController {
 }
 
 func (t_ TitlebarAccessoryViewController) FullScreenMinHeight() float64 {
-	rv := ffi.CallMethod[float64](t_, "fullScreenMinHeight")
+	rv := objc.CallMethod[float64](t_, "fullScreenMinHeight")
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetFullScreenMinHeight(value float64) {
-	ffi.CallMethod[ffi.Void](t_, "setFullScreenMinHeight:", value)
+	objc.CallMethod[objc.Void](t_, "setFullScreenMinHeight:", value)
 }
 
 func (t_ TitlebarAccessoryViewController) LayoutAttribute() LayoutAttribute {
-	rv := ffi.CallMethod[LayoutAttribute](t_, "layoutAttribute")
+	rv := objc.CallMethod[LayoutAttribute](t_, "layoutAttribute")
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetLayoutAttribute(value LayoutAttribute) {
-	ffi.CallMethod[ffi.Void](t_, "setLayoutAttribute:", value)
+	objc.CallMethod[objc.Void](t_, "setLayoutAttribute:", value)
 }
 
 func (t_ TitlebarAccessoryViewController) AutomaticallyAdjustsSize() bool {
-	rv := ffi.CallMethod[bool](t_, "automaticallyAdjustsSize")
+	rv := objc.CallMethod[bool](t_, "automaticallyAdjustsSize")
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetAutomaticallyAdjustsSize(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAutomaticallyAdjustsSize:", value)
+	objc.CallMethod[objc.Void](t_, "setAutomaticallyAdjustsSize:", value)
 }
 
 func (t_ TitlebarAccessoryViewController) IsHidden() bool {
-	rv := ffi.CallMethod[bool](t_, "isHidden")
+	rv := objc.CallMethod[bool](t_, "isHidden")
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetHidden(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setHidden:", value)
+	objc.CallMethod[objc.Void](t_, "setHidden:", value)
 }

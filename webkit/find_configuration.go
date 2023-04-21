@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,12 +34,12 @@ func MakeFindConfiguration(ptr unsafe.Pointer) FindConfiguration {
 }
 
 func (fc _FindConfigurationClass) Alloc() FindConfiguration {
-	rv := ffi.CallMethod[FindConfiguration](fc, "alloc")
+	rv := objc.CallMethod[FindConfiguration](fc, "alloc")
 	return rv
 }
 
 func (fc _FindConfigurationClass) New() FindConfiguration {
-	rv := ffi.CallMethod[FindConfiguration](fc, "new")
+	rv := objc.CallMethod[FindConfiguration](fc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,33 +49,33 @@ func NewFindConfiguration() FindConfiguration {
 }
 
 func (f_ FindConfiguration) Init() FindConfiguration {
-	rv := ffi.CallMethod[FindConfiguration](f_, "init")
+	rv := objc.CallMethod[FindConfiguration](f_, "init")
 	return rv
 }
 
 func (f_ FindConfiguration) Backwards() bool {
-	rv := ffi.CallMethod[bool](f_, "backwards")
+	rv := objc.CallMethod[bool](f_, "backwards")
 	return rv
 }
 
 func (f_ FindConfiguration) SetBackwards(value bool) {
-	ffi.CallMethod[ffi.Void](f_, "setBackwards:", value)
+	objc.CallMethod[objc.Void](f_, "setBackwards:", value)
 }
 
 func (f_ FindConfiguration) CaseSensitive() bool {
-	rv := ffi.CallMethod[bool](f_, "caseSensitive")
+	rv := objc.CallMethod[bool](f_, "caseSensitive")
 	return rv
 }
 
 func (f_ FindConfiguration) SetCaseSensitive(value bool) {
-	ffi.CallMethod[ffi.Void](f_, "setCaseSensitive:", value)
+	objc.CallMethod[objc.Void](f_, "setCaseSensitive:", value)
 }
 
 func (f_ FindConfiguration) Wraps() bool {
-	rv := ffi.CallMethod[bool](f_, "wraps")
+	rv := objc.CallMethod[bool](f_, "wraps")
 	return rv
 }
 
 func (f_ FindConfiguration) SetWraps(value bool) {
-	ffi.CallMethod[ffi.Void](f_, "setWraps:", value)
+	objc.CallMethod[objc.Void](f_, "setWraps:", value)
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -35,27 +34,27 @@ func MakeUserInterfaceCompressionOptions(ptr unsafe.Pointer) UserInterfaceCompre
 }
 
 func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "init")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "init")
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "initWithCompressionOptions:", options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "initWithCompressionOptions:", options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithIdentifier(identifier string) UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "initWithIdentifier:", identifier)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "initWithIdentifier:", identifier)
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) Alloc() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "alloc")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "alloc")
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) New() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "new")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -65,51 +64,51 @@ func NewUserInterfaceCompressionOptions() UserInterfaceCompressionOptions {
 }
 
 func (u_ UserInterfaceCompressionOptions) ContainsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := ffi.CallMethod[bool](u_, "containsOptions:", options)
+	rv := objc.CallMethod[bool](u_, "containsOptions:", options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := ffi.CallMethod[bool](u_, "intersectsOptions:", options)
+	rv := objc.CallMethod[bool](u_, "intersectsOptions:", options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) OptionsByAddingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "optionsByAddingOptions:", options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "optionsByAddingOptions:", options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](u_, "optionsByRemovingOptions:", options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "optionsByRemovingOptions:", options)
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) HideImagesOption() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "hideImagesOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "hideImagesOption")
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) HideTextOption() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "hideTextOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "hideTextOption")
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) ReduceMetricsOption() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "reduceMetricsOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "reduceMetricsOption")
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) BreakEqualWidthsOption() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "breakEqualWidthsOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "breakEqualWidthsOption")
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) StandardOptions() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](uc, "standardOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "standardOptions")
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) IsEmpty() bool {
-	rv := ffi.CallMethod[bool](u_, "isEmpty")
+	rv := objc.CallMethod[bool](u_, "isEmpty")
 	return rv
 }

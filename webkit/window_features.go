@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -38,12 +37,12 @@ func MakeWindowFeatures(ptr unsafe.Pointer) WindowFeatures {
 }
 
 func (wc _WindowFeaturesClass) Alloc() WindowFeatures {
-	rv := ffi.CallMethod[WindowFeatures](wc, "alloc")
+	rv := objc.CallMethod[WindowFeatures](wc, "alloc")
 	return rv
 }
 
 func (wc _WindowFeaturesClass) New() WindowFeatures {
-	rv := ffi.CallMethod[WindowFeatures](wc, "new")
+	rv := objc.CallMethod[WindowFeatures](wc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,46 +52,46 @@ func NewWindowFeatures() WindowFeatures {
 }
 
 func (w_ WindowFeatures) Init() WindowFeatures {
-	rv := ffi.CallMethod[WindowFeatures](w_, "init")
+	rv := objc.CallMethod[WindowFeatures](w_, "init")
 	return rv
 }
 
 func (w_ WindowFeatures) AllowsResizing() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "allowsResizing")
+	rv := objc.CallMethod[foundation.Number](w_, "allowsResizing")
 	return rv
 }
 
 func (w_ WindowFeatures) Height() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "height")
+	rv := objc.CallMethod[foundation.Number](w_, "height")
 	return rv
 }
 
 func (w_ WindowFeatures) Width() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "width")
+	rv := objc.CallMethod[foundation.Number](w_, "width")
 	return rv
 }
 
 func (w_ WindowFeatures) X() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "x")
+	rv := objc.CallMethod[foundation.Number](w_, "x")
 	return rv
 }
 
 func (w_ WindowFeatures) Y() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "y")
+	rv := objc.CallMethod[foundation.Number](w_, "y")
 	return rv
 }
 
 func (w_ WindowFeatures) MenuBarVisibility() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "menuBarVisibility")
+	rv := objc.CallMethod[foundation.Number](w_, "menuBarVisibility")
 	return rv
 }
 
 func (w_ WindowFeatures) StatusBarVisibility() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "statusBarVisibility")
+	rv := objc.CallMethod[foundation.Number](w_, "statusBarVisibility")
 	return rv
 }
 
 func (w_ WindowFeatures) ToolbarsVisibility() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](w_, "toolbarsVisibility")
+	rv := objc.CallMethod[foundation.Number](w_, "toolbarsVisibility")
 	return rv
 }

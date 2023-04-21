@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -59,12 +58,12 @@ func MakeAlert(ptr unsafe.Pointer) Alert {
 }
 
 func (ac _AlertClass) Alloc() Alert {
-	rv := ffi.CallMethod[Alert](ac, "alloc")
+	rv := objc.CallMethod[Alert](ac, "alloc")
 	return rv
 }
 
 func (ac _AlertClass) New() Alert {
-	rv := ffi.CallMethod[Alert](ac, "new")
+	rv := objc.CallMethod[Alert](ac, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -74,137 +73,137 @@ func NewAlert() Alert {
 }
 
 func (a_ Alert) Init() Alert {
-	rv := ffi.CallMethod[Alert](a_, "init")
+	rv := objc.CallMethod[Alert](a_, "init")
 	return rv
 }
 
 func (ac _AlertClass) AlertWithError(error foundation.IError) Alert {
-	rv := ffi.CallMethod[Alert](ac, "alertWithError:", error)
+	rv := objc.CallMethod[Alert](ac, "alertWithError:", error)
 	return rv
 }
 
 func (a_ Alert) Layout() {
-	ffi.CallMethod[ffi.Void](a_, "layout")
+	objc.CallMethod[objc.Void](a_, "layout")
 }
 
 func (a_ Alert) RunModal() ModalResponse {
-	rv := ffi.CallMethod[ModalResponse](a_, "runModal")
+	rv := objc.CallMethod[ModalResponse](a_, "runModal")
 	return rv
 }
 
 func (a_ Alert) BeginSheetModalForWindow_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	ffi.CallMethod[ffi.Void](a_, "beginSheetModalForWindow:completionHandler:", sheetWindow, handler)
+	objc.CallMethod[objc.Void](a_, "beginSheetModalForWindow:completionHandler:", sheetWindow, handler)
 }
 
 // deprecated
 func (a_ Alert) BeginSheetModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(window IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](a_, "beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:", window, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](a_, "beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:", window, delegate, didEndSelector, contextInfo)
 }
 
 func (a_ Alert) AddButtonWithTitle(title string) Button {
-	rv := ffi.CallMethod[Button](a_, "addButtonWithTitle:", title)
+	rv := objc.CallMethod[Button](a_, "addButtonWithTitle:", title)
 	return rv
 }
 
 func (a_ Alert) AlertStyle() AlertStyle {
-	rv := ffi.CallMethod[AlertStyle](a_, "alertStyle")
+	rv := objc.CallMethod[AlertStyle](a_, "alertStyle")
 	return rv
 }
 
 func (a_ Alert) SetAlertStyle(value AlertStyle) {
-	ffi.CallMethod[ffi.Void](a_, "setAlertStyle:", value)
+	objc.CallMethod[objc.Void](a_, "setAlertStyle:", value)
 }
 
 func (a_ Alert) AccessoryView() View {
-	rv := ffi.CallMethod[View](a_, "accessoryView")
+	rv := objc.CallMethod[View](a_, "accessoryView")
 	return rv
 }
 
 func (a_ Alert) SetAccessoryView(value IView) {
-	ffi.CallMethod[ffi.Void](a_, "setAccessoryView:", value)
+	objc.CallMethod[objc.Void](a_, "setAccessoryView:", value)
 }
 
 func (a_ Alert) ShowsHelp() bool {
-	rv := ffi.CallMethod[bool](a_, "showsHelp")
+	rv := objc.CallMethod[bool](a_, "showsHelp")
 	return rv
 }
 
 func (a_ Alert) SetShowsHelp(value bool) {
-	ffi.CallMethod[ffi.Void](a_, "setShowsHelp:", value)
+	objc.CallMethod[objc.Void](a_, "setShowsHelp:", value)
 }
 
 func (a_ Alert) HelpAnchor() HelpAnchorName {
-	rv := ffi.CallMethod[HelpAnchorName](a_, "helpAnchor")
+	rv := objc.CallMethod[HelpAnchorName](a_, "helpAnchor")
 	return rv
 }
 
 func (a_ Alert) SetHelpAnchor(value HelpAnchorName) {
-	ffi.CallMethod[ffi.Void](a_, "setHelpAnchor:", value)
+	objc.CallMethod[objc.Void](a_, "setHelpAnchor:", value)
 }
 
 func (a_ Alert) Delegate() AlertDelegateWrapper {
-	rv := ffi.CallMethod[AlertDelegateWrapper](a_, "delegate")
+	rv := objc.CallMethod[AlertDelegateWrapper](a_, "delegate")
 	return rv
 }
 
 func (a_ Alert) SetDelegate(value AlertDelegate) {
-	po := ffi.CreateProtocol("NSAlertDelegate", value)
+	po := objc.CreateProtocol("NSAlertDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](a_, "setDelegate:", po)
 }
 
 func (a_ Alert) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Alert) SuppressionButton() Button {
-	rv := ffi.CallMethod[Button](a_, "suppressionButton")
+	rv := objc.CallMethod[Button](a_, "suppressionButton")
 	return rv
 }
 
 func (a_ Alert) ShowsSuppressionButton() bool {
-	rv := ffi.CallMethod[bool](a_, "showsSuppressionButton")
+	rv := objc.CallMethod[bool](a_, "showsSuppressionButton")
 	return rv
 }
 
 func (a_ Alert) SetShowsSuppressionButton(value bool) {
-	ffi.CallMethod[ffi.Void](a_, "setShowsSuppressionButton:", value)
+	objc.CallMethod[objc.Void](a_, "setShowsSuppressionButton:", value)
 }
 
 func (a_ Alert) InformativeText() string {
-	rv := ffi.CallMethod[string](a_, "informativeText")
+	rv := objc.CallMethod[string](a_, "informativeText")
 	return rv
 }
 
 func (a_ Alert) SetInformativeText(value string) {
-	ffi.CallMethod[ffi.Void](a_, "setInformativeText:", value)
+	objc.CallMethod[objc.Void](a_, "setInformativeText:", value)
 }
 
 func (a_ Alert) MessageText() string {
-	rv := ffi.CallMethod[string](a_, "messageText")
+	rv := objc.CallMethod[string](a_, "messageText")
 	return rv
 }
 
 func (a_ Alert) SetMessageText(value string) {
-	ffi.CallMethod[ffi.Void](a_, "setMessageText:", value)
+	objc.CallMethod[objc.Void](a_, "setMessageText:", value)
 }
 
 func (a_ Alert) Icon() Image {
-	rv := ffi.CallMethod[Image](a_, "icon")
+	rv := objc.CallMethod[Image](a_, "icon")
 	return rv
 }
 
 func (a_ Alert) SetIcon(value IImage) {
-	ffi.CallMethod[ffi.Void](a_, "setIcon:", value)
+	objc.CallMethod[objc.Void](a_, "setIcon:", value)
 }
 
 func (a_ Alert) Buttons() []Button {
-	rv := ffi.CallMethod[[]Button](a_, "buttons")
+	rv := objc.CallMethod[[]Button](a_, "buttons")
 	return rv
 }
 
 func (a_ Alert) Window() Window {
-	rv := ffi.CallMethod[Window](a_, "window")
+	rv := objc.CallMethod[Window](a_, "window")
 	return rv
 }

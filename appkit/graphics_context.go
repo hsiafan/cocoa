@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -52,12 +51,12 @@ func MakeGraphicsContext(ptr unsafe.Pointer) GraphicsContext {
 }
 
 func (gc _GraphicsContextClass) Alloc() GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "alloc")
+	rv := objc.CallMethod[GraphicsContext](gc, "alloc")
 	return rv
 }
 
 func (gc _GraphicsContextClass) New() GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "new")
+	rv := objc.CallMethod[GraphicsContext](gc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -67,145 +66,145 @@ func NewGraphicsContext() GraphicsContext {
 }
 
 func (g_ GraphicsContext) Init() GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](g_, "init")
+	rv := objc.CallMethod[GraphicsContext](g_, "init")
 	return rv
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithAttributes(attributes map[GraphicsContextAttributeKey]objc.IObject) GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "graphicsContextWithAttributes:", attributes)
+	rv := objc.CallMethod[GraphicsContext](gc, "graphicsContextWithAttributes:", attributes)
 	return rv
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithBitmapImageRep(bitmapRep IBitmapImageRep) GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "graphicsContextWithBitmapImageRep:", bitmapRep)
+	rv := objc.CallMethod[GraphicsContext](gc, "graphicsContextWithBitmapImageRep:", bitmapRep)
 	return rv
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithCGContext_Flipped(graphicsPort coregraphics.ContextRef, initialFlippedState bool) GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "graphicsContextWithCGContext:flipped:", graphicsPort, initialFlippedState)
+	rv := objc.CallMethod[GraphicsContext](gc, "graphicsContextWithCGContext:flipped:", graphicsPort, initialFlippedState)
 	return rv
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithWindow(window IWindow) GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "graphicsContextWithWindow:", window)
+	rv := objc.CallMethod[GraphicsContext](gc, "graphicsContextWithWindow:", window)
 	return rv
 }
 
 // deprecated
 func (gc _GraphicsContextClass) GraphicsContextWithGraphicsPort_Flipped(graphicsPort unsafe.Pointer, initialFlippedState bool) GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "graphicsContextWithGraphicsPort:flipped:", graphicsPort, initialFlippedState)
+	rv := objc.CallMethod[GraphicsContext](gc, "graphicsContextWithGraphicsPort:flipped:", graphicsPort, initialFlippedState)
 	return rv
 }
 
 func (gc _GraphicsContextClass) RestoreGraphicsState() {
-	ffi.CallMethod[ffi.Void](gc, "restoreGraphicsState")
+	objc.CallMethod[objc.Void](gc, "restoreGraphicsState")
 }
 
 func (gc _GraphicsContextClass) SaveGraphicsState() {
-	ffi.CallMethod[ffi.Void](gc, "saveGraphicsState")
+	objc.CallMethod[objc.Void](gc, "saveGraphicsState")
 }
 
 // deprecated
 func (gc _GraphicsContextClass) SetGraphicsState(gState int) {
-	ffi.CallMethod[ffi.Void](gc, "setGraphicsState:", gState)
+	objc.CallMethod[objc.Void](gc, "setGraphicsState:", gState)
 }
 
 func (gc _GraphicsContextClass) CurrentContextDrawingToScreen() bool {
-	rv := ffi.CallMethod[bool](gc, "currentContextDrawingToScreen")
+	rv := objc.CallMethod[bool](gc, "currentContextDrawingToScreen")
 	return rv
 }
 
 func (g_ GraphicsContext) FlushGraphics() {
-	ffi.CallMethod[ffi.Void](g_, "flushGraphics")
+	objc.CallMethod[objc.Void](g_, "flushGraphics")
 }
 
 // deprecated
 func (g_ GraphicsContext) FocusStack() objc.Object {
-	rv := ffi.CallMethod[objc.Object](g_, "focusStack")
+	rv := objc.CallMethod[objc.Object](g_, "focusStack")
 	return rv
 }
 
 // deprecated
 func (g_ GraphicsContext) SetFocusStack(stack objc.IObject) {
-	ffi.CallMethod[ffi.Void](g_, "setFocusStack:", stack)
+	objc.CallMethod[objc.Void](g_, "setFocusStack:", stack)
 }
 
 func (gc _GraphicsContextClass) CurrentContext() GraphicsContext {
-	rv := ffi.CallMethod[GraphicsContext](gc, "currentContext")
+	rv := objc.CallMethod[GraphicsContext](gc, "currentContext")
 	return rv
 }
 
 func (gc _GraphicsContextClass) SetCurrentContext(value IGraphicsContext) {
-	ffi.CallMethod[ffi.Void](gc, "setCurrentContext:", value)
+	objc.CallMethod[objc.Void](gc, "setCurrentContext:", value)
 }
 
 func (g_ GraphicsContext) CGContext() coregraphics.ContextRef {
-	rv := ffi.CallMethod[coregraphics.ContextRef](g_, "CGContext")
+	rv := objc.CallMethod[coregraphics.ContextRef](g_, "CGContext")
 	return rv
 }
 
 // deprecated
 func (g_ GraphicsContext) GraphicsPort() unsafe.Pointer {
-	rv := ffi.CallMethod[unsafe.Pointer](g_, "graphicsPort")
+	rv := objc.CallMethod[unsafe.Pointer](g_, "graphicsPort")
 	return rv
 }
 
 func (g_ GraphicsContext) IsDrawingToScreen() bool {
-	rv := ffi.CallMethod[bool](g_, "isDrawingToScreen")
+	rv := objc.CallMethod[bool](g_, "isDrawingToScreen")
 	return rv
 }
 
 func (g_ GraphicsContext) Attributes() map[GraphicsContextAttributeKey]objc.Object {
-	rv := ffi.CallMethod[map[GraphicsContextAttributeKey]objc.Object](g_, "attributes")
+	rv := objc.CallMethod[map[GraphicsContextAttributeKey]objc.Object](g_, "attributes")
 	return rv
 }
 
 func (g_ GraphicsContext) IsFlipped() bool {
-	rv := ffi.CallMethod[bool](g_, "isFlipped")
+	rv := objc.CallMethod[bool](g_, "isFlipped")
 	return rv
 }
 
 func (g_ GraphicsContext) CompositingOperation() CompositingOperation {
-	rv := ffi.CallMethod[CompositingOperation](g_, "compositingOperation")
+	rv := objc.CallMethod[CompositingOperation](g_, "compositingOperation")
 	return rv
 }
 
 func (g_ GraphicsContext) SetCompositingOperation(value CompositingOperation) {
-	ffi.CallMethod[ffi.Void](g_, "setCompositingOperation:", value)
+	objc.CallMethod[objc.Void](g_, "setCompositingOperation:", value)
 }
 
 func (g_ GraphicsContext) ImageInterpolation() ImageInterpolation {
-	rv := ffi.CallMethod[ImageInterpolation](g_, "imageInterpolation")
+	rv := objc.CallMethod[ImageInterpolation](g_, "imageInterpolation")
 	return rv
 }
 
 func (g_ GraphicsContext) SetImageInterpolation(value ImageInterpolation) {
-	ffi.CallMethod[ffi.Void](g_, "setImageInterpolation:", value)
+	objc.CallMethod[objc.Void](g_, "setImageInterpolation:", value)
 }
 
 func (g_ GraphicsContext) ShouldAntialias() bool {
-	rv := ffi.CallMethod[bool](g_, "shouldAntialias")
+	rv := objc.CallMethod[bool](g_, "shouldAntialias")
 	return rv
 }
 
 func (g_ GraphicsContext) SetShouldAntialias(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setShouldAntialias:", value)
+	objc.CallMethod[objc.Void](g_, "setShouldAntialias:", value)
 }
 
 func (g_ GraphicsContext) PatternPhase() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](g_, "patternPhase")
+	rv := objc.CallMethod[foundation.Point](g_, "patternPhase")
 	return rv
 }
 
 func (g_ GraphicsContext) SetPatternPhase(value foundation.Point) {
-	ffi.CallMethod[ffi.Void](g_, "setPatternPhase:", value)
+	objc.CallMethod[objc.Void](g_, "setPatternPhase:", value)
 }
 
 func (g_ GraphicsContext) ColorRenderingIntent() ColorRenderingIntent {
-	rv := ffi.CallMethod[ColorRenderingIntent](g_, "colorRenderingIntent")
+	rv := objc.CallMethod[ColorRenderingIntent](g_, "colorRenderingIntent")
 	return rv
 }
 
 func (g_ GraphicsContext) SetColorRenderingIntent(value ColorRenderingIntent) {
-	ffi.CallMethod[ffi.Void](g_, "setColorRenderingIntent:", value)
+	objc.CallMethod[objc.Void](g_, "setColorRenderingIntent:", value)
 }

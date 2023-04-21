@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,17 +36,17 @@ func MakeSearchToolbarItem(ptr unsafe.Pointer) SearchToolbarItem {
 }
 
 func (s_ SearchToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SearchToolbarItem {
-	rv := ffi.CallMethod[SearchToolbarItem](s_, "initWithItemIdentifier:", itemIdentifier)
+	rv := objc.CallMethod[SearchToolbarItem](s_, "initWithItemIdentifier:", itemIdentifier)
 	return rv
 }
 
 func (sc _SearchToolbarItemClass) Alloc() SearchToolbarItem {
-	rv := ffi.CallMethod[SearchToolbarItem](sc, "alloc")
+	rv := objc.CallMethod[SearchToolbarItem](sc, "alloc")
 	return rv
 }
 
 func (sc _SearchToolbarItemClass) New() SearchToolbarItem {
-	rv := ffi.CallMethod[SearchToolbarItem](sc, "new")
+	rv := objc.CallMethod[SearchToolbarItem](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,41 +56,41 @@ func NewSearchToolbarItem() SearchToolbarItem {
 }
 
 func (s_ SearchToolbarItem) Init() SearchToolbarItem {
-	rv := ffi.CallMethod[SearchToolbarItem](s_, "init")
+	rv := objc.CallMethod[SearchToolbarItem](s_, "init")
 	return rv
 }
 
 func (s_ SearchToolbarItem) BeginSearchInteraction() {
-	ffi.CallMethod[ffi.Void](s_, "beginSearchInteraction")
+	objc.CallMethod[objc.Void](s_, "beginSearchInteraction")
 }
 
 func (s_ SearchToolbarItem) EndSearchInteraction() {
-	ffi.CallMethod[ffi.Void](s_, "endSearchInteraction")
+	objc.CallMethod[objc.Void](s_, "endSearchInteraction")
 }
 
 func (s_ SearchToolbarItem) PreferredWidthForSearchField() float64 {
-	rv := ffi.CallMethod[float64](s_, "preferredWidthForSearchField")
+	rv := objc.CallMethod[float64](s_, "preferredWidthForSearchField")
 	return rv
 }
 
 func (s_ SearchToolbarItem) SetPreferredWidthForSearchField(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setPreferredWidthForSearchField:", value)
+	objc.CallMethod[objc.Void](s_, "setPreferredWidthForSearchField:", value)
 }
 
 func (s_ SearchToolbarItem) ResignsFirstResponderWithCancel() bool {
-	rv := ffi.CallMethod[bool](s_, "resignsFirstResponderWithCancel")
+	rv := objc.CallMethod[bool](s_, "resignsFirstResponderWithCancel")
 	return rv
 }
 
 func (s_ SearchToolbarItem) SetResignsFirstResponderWithCancel(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setResignsFirstResponderWithCancel:", value)
+	objc.CallMethod[objc.Void](s_, "setResignsFirstResponderWithCancel:", value)
 }
 
 func (s_ SearchToolbarItem) SearchField() SearchField {
-	rv := ffi.CallMethod[SearchField](s_, "searchField")
+	rv := objc.CallMethod[SearchField](s_, "searchField")
 	return rv
 }
 
 func (s_ SearchToolbarItem) SetSearchField(value ISearchField) {
-	ffi.CallMethod[ffi.Void](s_, "setSearchField:", value)
+	objc.CallMethod[objc.Void](s_, "setSearchField:", value)
 }

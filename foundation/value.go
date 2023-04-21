@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -41,17 +40,17 @@ func MakeValue(ptr unsafe.Pointer) Value {
 }
 
 func (v_ Value) InitWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Value {
-	rv := ffi.CallMethod[Value](v_, "initWithBytes:objCType:", value, type_)
+	rv := objc.CallMethod[Value](v_, "initWithBytes:objCType:", value, type_)
 	return rv
 }
 
 func (vc _ValueClass) Alloc() Value {
-	rv := ffi.CallMethod[Value](vc, "alloc")
+	rv := objc.CallMethod[Value](vc, "alloc")
 	return rv
 }
 
 func (vc _ValueClass) New() Value {
-	rv := ffi.CallMethod[Value](vc, "new")
+	rv := objc.CallMethod[Value](vc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -61,105 +60,105 @@ func NewValue() Value {
 }
 
 func (v_ Value) Init() Value {
-	rv := ffi.CallMethod[Value](v_, "init")
+	rv := objc.CallMethod[Value](v_, "init")
 	return rv
 }
 
 func (vc _ValueClass) ValueWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithBytes:objCType:", value, type_)
+	rv := objc.CallMethod[Value](vc, "valueWithBytes:objCType:", value, type_)
 	return rv
 }
 
 func (vc _ValueClass) Value_WithObjCType(value unsafe.Pointer, type_ *byte) Value {
-	rv := ffi.CallMethod[Value](vc, "value:withObjCType:", value, type_)
+	rv := objc.CallMethod[Value](vc, "value:withObjCType:", value, type_)
 	return rv
 }
 
 // deprecated
 func (v_ Value) GetValue(value unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](v_, "getValue:", value)
+	objc.CallMethod[objc.Void](v_, "getValue:", value)
 }
 
 func (vc _ValueClass) ValueWithPointer(pointer unsafe.Pointer) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithPointer:", pointer)
+	rv := objc.CallMethod[Value](vc, "valueWithPointer:", pointer)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithNonretainedObject(anObject objc.IObject) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithNonretainedObject:", anObject)
+	rv := objc.CallMethod[Value](vc, "valueWithNonretainedObject:", anObject)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithRange(range_ Range) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithRange:", range_)
+	rv := objc.CallMethod[Value](vc, "valueWithRange:", range_)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithPoint(point Point) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithPoint:", point)
+	rv := objc.CallMethod[Value](vc, "valueWithPoint:", point)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithSize(size Size) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithSize:", size)
+	rv := objc.CallMethod[Value](vc, "valueWithSize:", size)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithRect(rect Rect) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithRect:", rect)
+	rv := objc.CallMethod[Value](vc, "valueWithRect:", rect)
 	return rv
 }
 
 func (v_ Value) IsEqualToValue(value IValue) bool {
-	rv := ffi.CallMethod[bool](v_, "isEqualToValue:", value)
+	rv := objc.CallMethod[bool](v_, "isEqualToValue:", value)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithEdgeInsets(insets EdgeInsets) Value {
-	rv := ffi.CallMethod[Value](vc, "valueWithEdgeInsets:", insets)
+	rv := objc.CallMethod[Value](vc, "valueWithEdgeInsets:", insets)
 	return rv
 }
 
 func (v_ Value) GetValue_Size(value unsafe.Pointer, size uint) {
-	ffi.CallMethod[ffi.Void](v_, "getValue:size:", value, size)
+	objc.CallMethod[objc.Void](v_, "getValue:size:", value, size)
 }
 
 func (v_ Value) ObjCType() *byte {
-	rv := ffi.CallMethod[*byte](v_, "objCType")
+	rv := objc.CallMethod[*byte](v_, "objCType")
 	return rv
 }
 
 func (v_ Value) PointerValue() unsafe.Pointer {
-	rv := ffi.CallMethod[unsafe.Pointer](v_, "pointerValue")
+	rv := objc.CallMethod[unsafe.Pointer](v_, "pointerValue")
 	return rv
 }
 
 func (v_ Value) NonretainedObjectValue() objc.Object {
-	rv := ffi.CallMethod[objc.Object](v_, "nonretainedObjectValue")
+	rv := objc.CallMethod[objc.Object](v_, "nonretainedObjectValue")
 	return rv
 }
 
 func (v_ Value) RangeValue() Range {
-	rv := ffi.CallMethod[Range](v_, "rangeValue")
+	rv := objc.CallMethod[Range](v_, "rangeValue")
 	return rv
 }
 
 func (v_ Value) PointValue() Point {
-	rv := ffi.CallMethod[Point](v_, "pointValue")
+	rv := objc.CallMethod[Point](v_, "pointValue")
 	return rv
 }
 
 func (v_ Value) SizeValue() Size {
-	rv := ffi.CallMethod[Size](v_, "sizeValue")
+	rv := objc.CallMethod[Size](v_, "sizeValue")
 	return rv
 }
 
 func (v_ Value) RectValue() Rect {
-	rv := ffi.CallMethod[Rect](v_, "rectValue")
+	rv := objc.CallMethod[Rect](v_, "rectValue")
 	return rv
 }
 
 func (v_ Value) EdgeInsetsValue() EdgeInsets {
-	rv := ffi.CallMethod[EdgeInsets](v_, "edgeInsetsValue")
+	rv := objc.CallMethod[EdgeInsets](v_, "edgeInsetsValue")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,22 +31,22 @@ func MakeTintConfiguration(ptr unsafe.Pointer) TintConfiguration {
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithFixedColor(color IColor) TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](tc, "tintConfigurationWithFixedColor:", color)
+	rv := objc.CallMethod[TintConfiguration](tc, "tintConfigurationWithFixedColor:", color)
 	return rv
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithPreferredColor(color IColor) TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](tc, "tintConfigurationWithPreferredColor:", color)
+	rv := objc.CallMethod[TintConfiguration](tc, "tintConfigurationWithPreferredColor:", color)
 	return rv
 }
 
 func (tc _TintConfigurationClass) Alloc() TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](tc, "alloc")
+	rv := objc.CallMethod[TintConfiguration](tc, "alloc")
 	return rv
 }
 
 func (tc _TintConfigurationClass) New() TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](tc, "new")
+	rv := objc.CallMethod[TintConfiguration](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,31 +56,31 @@ func NewTintConfiguration() TintConfiguration {
 }
 
 func (t_ TintConfiguration) Init() TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](t_, "init")
+	rv := objc.CallMethod[TintConfiguration](t_, "init")
 	return rv
 }
 
 func (t_ TintConfiguration) AdaptsToUserAccentColor() bool {
-	rv := ffi.CallMethod[bool](t_, "adaptsToUserAccentColor")
+	rv := objc.CallMethod[bool](t_, "adaptsToUserAccentColor")
 	return rv
 }
 
 func (tc _TintConfigurationClass) DefaultTintConfiguration() TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](tc, "defaultTintConfiguration")
+	rv := objc.CallMethod[TintConfiguration](tc, "defaultTintConfiguration")
 	return rv
 }
 
 func (tc _TintConfigurationClass) MonochromeTintConfiguration() TintConfiguration {
-	rv := ffi.CallMethod[TintConfiguration](tc, "monochromeTintConfiguration")
+	rv := objc.CallMethod[TintConfiguration](tc, "monochromeTintConfiguration")
 	return rv
 }
 
 func (t_ TintConfiguration) BaseTintColor() Color {
-	rv := ffi.CallMethod[Color](t_, "baseTintColor")
+	rv := objc.CallMethod[Color](t_, "baseTintColor")
 	return rv
 }
 
 func (t_ TintConfiguration) EquivalentContentTintColor() Color {
-	rv := ffi.CallMethod[Color](t_, "equivalentContentTintColor")
+	rv := objc.CallMethod[Color](t_, "equivalentContentTintColor")
 	return rv
 }

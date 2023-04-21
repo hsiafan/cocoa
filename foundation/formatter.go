@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,12 +33,12 @@ func MakeFormatter(ptr unsafe.Pointer) Formatter {
 }
 
 func (fc _FormatterClass) Alloc() Formatter {
-	rv := ffi.CallMethod[Formatter](fc, "alloc")
+	rv := objc.CallMethod[Formatter](fc, "alloc")
 	return rv
 }
 
 func (fc _FormatterClass) New() Formatter {
-	rv := ffi.CallMethod[Formatter](fc, "new")
+	rv := objc.CallMethod[Formatter](fc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -49,31 +48,31 @@ func NewFormatter() Formatter {
 }
 
 func (f_ Formatter) Init() Formatter {
-	rv := ffi.CallMethod[Formatter](f_, "init")
+	rv := objc.CallMethod[Formatter](f_, "init")
 	return rv
 }
 
 func (f_ Formatter) StringForObjectValue(obj objc.IObject) string {
-	rv := ffi.CallMethod[string](f_, "stringForObjectValue:", obj)
+	rv := objc.CallMethod[string](f_, "stringForObjectValue:", obj)
 	return rv
 }
 
 func (f_ Formatter) AttributedStringForObjectValue_WithDefaultAttributes(obj objc.IObject, attrs map[AttributedStringKey]objc.IObject) AttributedString {
-	rv := ffi.CallMethod[AttributedString](f_, "attributedStringForObjectValue:withDefaultAttributes:", obj, attrs)
+	rv := objc.CallMethod[AttributedString](f_, "attributedStringForObjectValue:withDefaultAttributes:", obj, attrs)
 	return rv
 }
 
 func (f_ Formatter) EditingStringForObjectValue(obj objc.IObject) string {
-	rv := ffi.CallMethod[string](f_, "editingStringForObjectValue:", obj)
+	rv := objc.CallMethod[string](f_, "editingStringForObjectValue:", obj)
 	return rv
 }
 
 func (f_ Formatter) IsPartialStringValid_NewEditingString_ErrorDescription(partialString string, newString *String, error *String) bool {
-	rv := ffi.CallMethod[bool](f_, "isPartialStringValid:newEditingString:errorDescription:", partialString, newString, error)
+	rv := objc.CallMethod[bool](f_, "isPartialStringValid:newEditingString:errorDescription:", partialString, newString, error)
 	return rv
 }
 
 func (f_ Formatter) IsPartialStringValid_ProposedSelectedRange_OriginalString_OriginalSelectedRange_ErrorDescription(partialStringPtr *String, proposedSelRangePtr *Range, origString string, origSelRange Range, error *String) bool {
-	rv := ffi.CallMethod[bool](f_, "isPartialStringValid:proposedSelectedRange:originalString:originalSelectedRange:errorDescription:", partialStringPtr, proposedSelRangePtr, origString, origSelRange, error)
+	rv := objc.CallMethod[bool](f_, "isPartialStringValid:proposedSelectedRange:originalString:originalSelectedRange:errorDescription:", partialStringPtr, proposedSelRangePtr, origString, origSelRange, error)
 	return rv
 }

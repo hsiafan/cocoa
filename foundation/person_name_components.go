@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -43,12 +42,12 @@ func MakePersonNameComponents(ptr unsafe.Pointer) PersonNameComponents {
 }
 
 func (pc _PersonNameComponentsClass) Alloc() PersonNameComponents {
-	rv := ffi.CallMethod[PersonNameComponents](pc, "alloc")
+	rv := objc.CallMethod[PersonNameComponents](pc, "alloc")
 	return rv
 }
 
 func (pc _PersonNameComponentsClass) New() PersonNameComponents {
-	rv := ffi.CallMethod[PersonNameComponents](pc, "new")
+	rv := objc.CallMethod[PersonNameComponents](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -58,69 +57,69 @@ func NewPersonNameComponents() PersonNameComponents {
 }
 
 func (p_ PersonNameComponents) Init() PersonNameComponents {
-	rv := ffi.CallMethod[PersonNameComponents](p_, "init")
+	rv := objc.CallMethod[PersonNameComponents](p_, "init")
 	return rv
 }
 
 func (p_ PersonNameComponents) NamePrefix() string {
-	rv := ffi.CallMethod[string](p_, "namePrefix")
+	rv := objc.CallMethod[string](p_, "namePrefix")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetNamePrefix(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setNamePrefix:", value)
+	objc.CallMethod[objc.Void](p_, "setNamePrefix:", value)
 }
 
 func (p_ PersonNameComponents) GivenName() string {
-	rv := ffi.CallMethod[string](p_, "givenName")
+	rv := objc.CallMethod[string](p_, "givenName")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetGivenName(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setGivenName:", value)
+	objc.CallMethod[objc.Void](p_, "setGivenName:", value)
 }
 
 func (p_ PersonNameComponents) MiddleName() string {
-	rv := ffi.CallMethod[string](p_, "middleName")
+	rv := objc.CallMethod[string](p_, "middleName")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetMiddleName(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setMiddleName:", value)
+	objc.CallMethod[objc.Void](p_, "setMiddleName:", value)
 }
 
 func (p_ PersonNameComponents) FamilyName() string {
-	rv := ffi.CallMethod[string](p_, "familyName")
+	rv := objc.CallMethod[string](p_, "familyName")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetFamilyName(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setFamilyName:", value)
+	objc.CallMethod[objc.Void](p_, "setFamilyName:", value)
 }
 
 func (p_ PersonNameComponents) NameSuffix() string {
-	rv := ffi.CallMethod[string](p_, "nameSuffix")
+	rv := objc.CallMethod[string](p_, "nameSuffix")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetNameSuffix(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setNameSuffix:", value)
+	objc.CallMethod[objc.Void](p_, "setNameSuffix:", value)
 }
 
 func (p_ PersonNameComponents) Nickname() string {
-	rv := ffi.CallMethod[string](p_, "nickname")
+	rv := objc.CallMethod[string](p_, "nickname")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetNickname(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setNickname:", value)
+	objc.CallMethod[objc.Void](p_, "setNickname:", value)
 }
 
 func (p_ PersonNameComponents) PhoneticRepresentation() PersonNameComponents {
-	rv := ffi.CallMethod[PersonNameComponents](p_, "phoneticRepresentation")
+	rv := objc.CallMethod[PersonNameComponents](p_, "phoneticRepresentation")
 	return rv
 }
 
 func (p_ PersonNameComponents) SetPhoneticRepresentation(value IPersonNameComponents) {
-	ffi.CallMethod[ffi.Void](p_, "setPhoneticRepresentation:", value)
+	objc.CallMethod[objc.Void](p_, "setPhoneticRepresentation:", value)
 }

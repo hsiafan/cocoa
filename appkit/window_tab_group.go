@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,12 +38,12 @@ func MakeWindowTabGroup(ptr unsafe.Pointer) WindowTabGroup {
 }
 
 func (wc _WindowTabGroupClass) Alloc() WindowTabGroup {
-	rv := ffi.CallMethod[WindowTabGroup](wc, "alloc")
+	rv := objc.CallMethod[WindowTabGroup](wc, "alloc")
 	return rv
 }
 
 func (wc _WindowTabGroupClass) New() WindowTabGroup {
-	rv := ffi.CallMethod[WindowTabGroup](wc, "new")
+	rv := objc.CallMethod[WindowTabGroup](wc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,51 +53,51 @@ func NewWindowTabGroup() WindowTabGroup {
 }
 
 func (w_ WindowTabGroup) Init() WindowTabGroup {
-	rv := ffi.CallMethod[WindowTabGroup](w_, "init")
+	rv := objc.CallMethod[WindowTabGroup](w_, "init")
 	return rv
 }
 
 func (w_ WindowTabGroup) AddWindow(window IWindow) {
-	ffi.CallMethod[ffi.Void](w_, "addWindow:", window)
+	objc.CallMethod[objc.Void](w_, "addWindow:", window)
 }
 
 func (w_ WindowTabGroup) InsertWindow_AtIndex(window IWindow, index int) {
-	ffi.CallMethod[ffi.Void](w_, "insertWindow:atIndex:", window, index)
+	objc.CallMethod[objc.Void](w_, "insertWindow:atIndex:", window, index)
 }
 
 func (w_ WindowTabGroup) RemoveWindow(window IWindow) {
-	ffi.CallMethod[ffi.Void](w_, "removeWindow:", window)
+	objc.CallMethod[objc.Void](w_, "removeWindow:", window)
 }
 
 func (w_ WindowTabGroup) Identifier() WindowTabbingIdentifier {
-	rv := ffi.CallMethod[WindowTabbingIdentifier](w_, "identifier")
+	rv := objc.CallMethod[WindowTabbingIdentifier](w_, "identifier")
 	return rv
 }
 
 func (w_ WindowTabGroup) IsOverviewVisible() bool {
-	rv := ffi.CallMethod[bool](w_, "isOverviewVisible")
+	rv := objc.CallMethod[bool](w_, "isOverviewVisible")
 	return rv
 }
 
 func (w_ WindowTabGroup) SetOverviewVisible(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setOverviewVisible:", value)
+	objc.CallMethod[objc.Void](w_, "setOverviewVisible:", value)
 }
 
 func (w_ WindowTabGroup) IsTabBarVisible() bool {
-	rv := ffi.CallMethod[bool](w_, "isTabBarVisible")
+	rv := objc.CallMethod[bool](w_, "isTabBarVisible")
 	return rv
 }
 
 func (w_ WindowTabGroup) Windows() []Window {
-	rv := ffi.CallMethod[[]Window](w_, "windows")
+	rv := objc.CallMethod[[]Window](w_, "windows")
 	return rv
 }
 
 func (w_ WindowTabGroup) SelectedWindow() Window {
-	rv := ffi.CallMethod[Window](w_, "selectedWindow")
+	rv := objc.CallMethod[Window](w_, "selectedWindow")
 	return rv
 }
 
 func (w_ WindowTabGroup) SetSelectedWindow(value IWindow) {
-	ffi.CallMethod[ffi.Void](w_, "setSelectedWindow:", value)
+	objc.CallMethod[objc.Void](w_, "setSelectedWindow:", value)
 }

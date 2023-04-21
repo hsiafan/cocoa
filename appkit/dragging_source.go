@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -29,7 +28,7 @@ type DraggingSourceWrapper struct {
 }
 
 func (d_ DraggingSourceWrapper) DraggingSession_SourceOperationMaskForDraggingContext(session IDraggingSession, context DraggingContext) DragOperation {
-	rv := ffi.CallMethod[DragOperation](d_, "draggingSession:sourceOperationMaskForDraggingContext:", session, context)
+	rv := objc.CallMethod[DragOperation](d_, "draggingSession:sourceOperationMaskForDraggingContext:", session, context)
 	return rv
 }
 
@@ -38,7 +37,7 @@ func (d_ *DraggingSourceWrapper) ImplementsDraggingSession_EndedAtPoint_Operatio
 }
 
 func (d_ DraggingSourceWrapper) DraggingSession_EndedAtPoint_Operation(session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	ffi.CallMethod[ffi.Void](d_, "draggingSession:endedAtPoint:operation:", session, screenPoint, operation)
+	objc.CallMethod[objc.Void](d_, "draggingSession:endedAtPoint:operation:", session, screenPoint, operation)
 }
 
 func (d_ *DraggingSourceWrapper) ImplementsDraggingSession_MovedToPoint() bool {
@@ -46,7 +45,7 @@ func (d_ *DraggingSourceWrapper) ImplementsDraggingSession_MovedToPoint() bool {
 }
 
 func (d_ DraggingSourceWrapper) DraggingSession_MovedToPoint(session IDraggingSession, screenPoint foundation.Point) {
-	ffi.CallMethod[ffi.Void](d_, "draggingSession:movedToPoint:", session, screenPoint)
+	objc.CallMethod[objc.Void](d_, "draggingSession:movedToPoint:", session, screenPoint)
 }
 
 func (d_ *DraggingSourceWrapper) ImplementsDraggingSession_WillBeginAtPoint() bool {
@@ -54,7 +53,7 @@ func (d_ *DraggingSourceWrapper) ImplementsDraggingSession_WillBeginAtPoint() bo
 }
 
 func (d_ DraggingSourceWrapper) DraggingSession_WillBeginAtPoint(session IDraggingSession, screenPoint foundation.Point) {
-	ffi.CallMethod[ffi.Void](d_, "draggingSession:willBeginAtPoint:", session, screenPoint)
+	objc.CallMethod[objc.Void](d_, "draggingSession:willBeginAtPoint:", session, screenPoint)
 }
 
 func (d_ *DraggingSourceWrapper) ImplementsIgnoreModifierKeysForDraggingSession() bool {
@@ -62,6 +61,6 @@ func (d_ *DraggingSourceWrapper) ImplementsIgnoreModifierKeysForDraggingSession(
 }
 
 func (d_ DraggingSourceWrapper) IgnoreModifierKeysForDraggingSession(session IDraggingSession) bool {
-	rv := ffi.CallMethod[bool](d_, "ignoreModifierKeysForDraggingSession:", session)
+	rv := objc.CallMethod[bool](d_, "ignoreModifierKeysForDraggingSession:", session)
 	return rv
 }

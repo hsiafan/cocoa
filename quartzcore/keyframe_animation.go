@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -49,22 +48,22 @@ func MakeKeyframeAnimation(ptr unsafe.Pointer) KeyframeAnimation {
 }
 
 func (kc _KeyframeAnimationClass) AnimationWithKeyPath(path string) KeyframeAnimation {
-	rv := ffi.CallMethod[KeyframeAnimation](kc, "animationWithKeyPath:", path)
+	rv := objc.CallMethod[KeyframeAnimation](kc, "animationWithKeyPath:", path)
 	return rv
 }
 
 func (kc _KeyframeAnimationClass) Animation() KeyframeAnimation {
-	rv := ffi.CallMethod[KeyframeAnimation](kc, "animation")
+	rv := objc.CallMethod[KeyframeAnimation](kc, "animation")
 	return rv
 }
 
 func (kc _KeyframeAnimationClass) Alloc() KeyframeAnimation {
-	rv := ffi.CallMethod[KeyframeAnimation](kc, "alloc")
+	rv := objc.CallMethod[KeyframeAnimation](kc, "alloc")
 	return rv
 }
 
 func (kc _KeyframeAnimationClass) New() KeyframeAnimation {
-	rv := ffi.CallMethod[KeyframeAnimation](kc, "new")
+	rv := objc.CallMethod[KeyframeAnimation](kc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -74,87 +73,87 @@ func NewKeyframeAnimation() KeyframeAnimation {
 }
 
 func (k_ KeyframeAnimation) Init() KeyframeAnimation {
-	rv := ffi.CallMethod[KeyframeAnimation](k_, "init")
+	rv := objc.CallMethod[KeyframeAnimation](k_, "init")
 	return rv
 }
 
 func (k_ KeyframeAnimation) Values() []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](k_, "values")
+	rv := objc.CallMethod[[]objc.Object](k_, "values")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetValues(value []objc.IObject) {
-	ffi.CallMethod[ffi.Void](k_, "setValues:", value)
+	objc.CallMethod[objc.Void](k_, "setValues:", value)
 }
 
 func (k_ KeyframeAnimation) Path() coregraphics.PathRef {
-	rv := ffi.CallMethod[coregraphics.PathRef](k_, "path")
+	rv := objc.CallMethod[coregraphics.PathRef](k_, "path")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetPath(value coregraphics.PathRef) {
-	ffi.CallMethod[ffi.Void](k_, "setPath:", value)
+	objc.CallMethod[objc.Void](k_, "setPath:", value)
 }
 
 func (k_ KeyframeAnimation) KeyTimes() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](k_, "keyTimes")
+	rv := objc.CallMethod[[]foundation.Number](k_, "keyTimes")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetKeyTimes(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](k_, "setKeyTimes:", value)
+	objc.CallMethod[objc.Void](k_, "setKeyTimes:", value)
 }
 
 func (k_ KeyframeAnimation) TimingFunctions() []MediaTimingFunction {
-	rv := ffi.CallMethod[[]MediaTimingFunction](k_, "timingFunctions")
+	rv := objc.CallMethod[[]MediaTimingFunction](k_, "timingFunctions")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetTimingFunctions(value []IMediaTimingFunction) {
-	ffi.CallMethod[ffi.Void](k_, "setTimingFunctions:", value)
+	objc.CallMethod[objc.Void](k_, "setTimingFunctions:", value)
 }
 
 func (k_ KeyframeAnimation) CalculationMode() AnimationCalculationMode {
-	rv := ffi.CallMethod[AnimationCalculationMode](k_, "calculationMode")
+	rv := objc.CallMethod[AnimationCalculationMode](k_, "calculationMode")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetCalculationMode(value AnimationCalculationMode) {
-	ffi.CallMethod[ffi.Void](k_, "setCalculationMode:", value)
+	objc.CallMethod[objc.Void](k_, "setCalculationMode:", value)
 }
 
 func (k_ KeyframeAnimation) RotationMode() AnimationRotationMode {
-	rv := ffi.CallMethod[AnimationRotationMode](k_, "rotationMode")
+	rv := objc.CallMethod[AnimationRotationMode](k_, "rotationMode")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetRotationMode(value AnimationRotationMode) {
-	ffi.CallMethod[ffi.Void](k_, "setRotationMode:", value)
+	objc.CallMethod[objc.Void](k_, "setRotationMode:", value)
 }
 
 func (k_ KeyframeAnimation) TensionValues() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](k_, "tensionValues")
+	rv := objc.CallMethod[[]foundation.Number](k_, "tensionValues")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetTensionValues(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](k_, "setTensionValues:", value)
+	objc.CallMethod[objc.Void](k_, "setTensionValues:", value)
 }
 
 func (k_ KeyframeAnimation) ContinuityValues() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](k_, "continuityValues")
+	rv := objc.CallMethod[[]foundation.Number](k_, "continuityValues")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetContinuityValues(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](k_, "setContinuityValues:", value)
+	objc.CallMethod[objc.Void](k_, "setContinuityValues:", value)
 }
 
 func (k_ KeyframeAnimation) BiasValues() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](k_, "biasValues")
+	rv := objc.CallMethod[[]foundation.Number](k_, "biasValues")
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetBiasValues(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](k_, "setBiasValues:", value)
+	objc.CallMethod[objc.Void](k_, "setBiasValues:", value)
 }

@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -31,22 +30,22 @@ func MakeHTTPURLResponse(ptr unsafe.Pointer) HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) InitWithURL_StatusCode_HTTPVersion_HeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
-	rv := ffi.CallMethod[HTTPURLResponse](h_, "initWithURL:statusCode:HTTPVersion:headerFields:", url, statusCode, HTTPVersion, headerFields)
+	rv := objc.CallMethod[HTTPURLResponse](h_, "initWithURL:statusCode:HTTPVersion:headerFields:", url, statusCode, HTTPVersion, headerFields)
 	return rv
 }
 
 func (h_ HTTPURLResponse) InitWithURL_MIMEType_ExpectedContentLength_TextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
-	rv := ffi.CallMethod[HTTPURLResponse](h_, "initWithURL:MIMEType:expectedContentLength:textEncodingName:", URL, MIMEType, length, name)
+	rv := objc.CallMethod[HTTPURLResponse](h_, "initWithURL:MIMEType:expectedContentLength:textEncodingName:", URL, MIMEType, length, name)
 	return rv
 }
 
 func (hc _HTTPURLResponseClass) Alloc() HTTPURLResponse {
-	rv := ffi.CallMethod[HTTPURLResponse](hc, "alloc")
+	rv := objc.CallMethod[HTTPURLResponse](hc, "alloc")
 	return rv
 }
 
 func (hc _HTTPURLResponseClass) New() HTTPURLResponse {
-	rv := ffi.CallMethod[HTTPURLResponse](hc, "new")
+	rv := objc.CallMethod[HTTPURLResponse](hc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -56,21 +55,21 @@ func NewHTTPURLResponse() HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) Init() HTTPURLResponse {
-	rv := ffi.CallMethod[HTTPURLResponse](h_, "init")
+	rv := objc.CallMethod[HTTPURLResponse](h_, "init")
 	return rv
 }
 
 func (h_ HTTPURLResponse) ValueForHTTPHeaderField(field string) string {
-	rv := ffi.CallMethod[string](h_, "valueForHTTPHeaderField:", field)
+	rv := objc.CallMethod[string](h_, "valueForHTTPHeaderField:", field)
 	return rv
 }
 
 func (hc _HTTPURLResponseClass) LocalizedStringForStatusCode(statusCode int) string {
-	rv := ffi.CallMethod[string](hc, "localizedStringForStatusCode:", statusCode)
+	rv := objc.CallMethod[string](hc, "localizedStringForStatusCode:", statusCode)
 	return rv
 }
 
 func (h_ HTTPURLResponse) StatusCode() int {
-	rv := ffi.CallMethod[int](h_, "statusCode")
+	rv := objc.CallMethod[int](h_, "statusCode")
 	return rv
 }

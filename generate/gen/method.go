@@ -88,17 +88,17 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 	rt := typing.UnwrapAlias(m.ReturnType)
 	switch rt.(type) {
 	case *typing.VoidType:
-		returnTypeStr = "ffi.Void"
+		returnTypeStr = "objc.Void"
 	default:
 		returnTypeStr = m.ReturnType.GoName(currentModule, true)
 	}
-	callCode := fmt.Sprintf("ffi.CallMethod[%s](%s, \"%s\"", returnTypeStr, receiver, m.Selector())
+	callCode := fmt.Sprintf("objc.CallMethod[%s](%s, \"%s\"", returnTypeStr, receiver, m.Selector())
 	var sb strings.Builder
 	for _, p := range m.Params {
 		sb.WriteString(", ")
 		switch tt := p.Type.(type) {
 		case *typing.ProtocolType:
-			cw.WriteLineF("po := ffi.CreateProtocol(\"%s\", %s)", tt.Name, p.GoName())
+			cw.WriteLineF("po := objc.CreateProtocol(\"%s\", %s)", tt.Name, p.GoName())
 			cw.WriteLine("defer po.Release()")
 			if m.WeakProperty { // weak property setter
 				cw.WriteLineF("objc.SetAssociatedObject(%s, internal.AssociationKey(\"%s\"), %s, objc.ASSOCIATION_RETAIN)",
@@ -204,7 +204,7 @@ func (m *Method) ProtocolGoFuncName() string {
 
 // GoImports return all imports for go file
 func (m *Method) GoImports() set.Set[string] {
-	var imports = set.New("github.com/hsiafan/cocoa/ffi")
+	var imports = set.New("github.com/hsiafan/cocoa/objc")
 	for _, param := range m.Params {
 		imports.AddSet(param.Type.GoImports())
 		if _, ok := param.Type.(*typing.ClassType); ok {

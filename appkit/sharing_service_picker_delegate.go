@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -67,7 +66,7 @@ func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_Sh
 }
 
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_SharingServicesForItems_ProposedSharingServices(sharingServicePicker ISharingServicePicker, items []objc.IObject, proposedServices []ISharingService) []SharingService {
-	rv := ffi.CallMethod[[]SharingService](s_, "sharingServicePicker:sharingServicesForItems:proposedSharingServices:", sharingServicePicker, items, proposedServices)
+	rv := objc.CallMethod[[]SharingService](s_, "sharingServicePicker:sharingServicesForItems:proposedSharingServices:", sharingServicePicker, items, proposedServices)
 	return rv
 }
 
@@ -76,7 +75,7 @@ func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_Di
 }
 
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_DidChooseSharingService(sharingServicePicker ISharingServicePicker, service ISharingService) {
-	ffi.CallMethod[ffi.Void](s_, "sharingServicePicker:didChooseSharingService:", sharingServicePicker, service)
+	objc.CallMethod[objc.Void](s_, "sharingServicePicker:didChooseSharingService:", sharingServicePicker, service)
 }
 
 func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_DelegateForSharingService() bool {
@@ -84,6 +83,6 @@ func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_De
 }
 
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_DelegateForSharingService(sharingServicePicker ISharingServicePicker, sharingService ISharingService) SharingServiceDelegateWrapper {
-	rv := ffi.CallMethod[SharingServiceDelegateWrapper](s_, "sharingServicePicker:delegateForSharingService:", sharingServicePicker, sharingService)
+	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, "sharingServicePicker:delegateForSharingService:", sharingServicePicker, sharingService)
 	return rv
 }

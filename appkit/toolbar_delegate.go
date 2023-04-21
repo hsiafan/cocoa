@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -143,7 +142,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbar_ItemForItemIdentifier_WillBe
 }
 
 func (t_ ToolbarDelegateWrapper) Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(toolbar IToolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
-	rv := ffi.CallMethod[ToolbarItem](t_, "toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:", toolbar, itemIdentifier, flag)
+	rv := objc.CallMethod[ToolbarItem](t_, "toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:", toolbar, itemIdentifier, flag)
 	return rv
 }
 
@@ -152,7 +151,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbarWillAddItem() bool {
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarWillAddItem(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "toolbarWillAddItem:", notification)
+	objc.CallMethod[objc.Void](t_, "toolbarWillAddItem:", notification)
 }
 
 func (t_ *ToolbarDelegateWrapper) ImplementsToolbarDidRemoveItem() bool {
@@ -160,7 +159,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbarDidRemoveItem() bool {
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarDidRemoveItem(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "toolbarDidRemoveItem:", notification)
+	objc.CallMethod[objc.Void](t_, "toolbarDidRemoveItem:", notification)
 }
 
 func (t_ *ToolbarDelegateWrapper) ImplementsToolbarAllowedItemIdentifiers() bool {
@@ -168,7 +167,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbarAllowedItemIdentifiers() bool
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := ffi.CallMethod[[]ToolbarItemIdentifier](t_, "toolbarAllowedItemIdentifiers:", toolbar)
+	rv := objc.CallMethod[[]ToolbarItemIdentifier](t_, "toolbarAllowedItemIdentifiers:", toolbar)
 	return rv
 }
 
@@ -177,7 +176,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbarDefaultItemIdentifiers() bool
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := ffi.CallMethod[[]ToolbarItemIdentifier](t_, "toolbarDefaultItemIdentifiers:", toolbar)
+	rv := objc.CallMethod[[]ToolbarItemIdentifier](t_, "toolbarDefaultItemIdentifiers:", toolbar)
 	return rv
 }
 
@@ -186,7 +185,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbarImmovableItemIdentifiers() bo
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarImmovableItemIdentifiers(toolbar IToolbar) foundation.Set {
-	rv := ffi.CallMethod[foundation.Set](t_, "toolbarImmovableItemIdentifiers:", toolbar)
+	rv := objc.CallMethod[foundation.Set](t_, "toolbarImmovableItemIdentifiers:", toolbar)
 	return rv
 }
 
@@ -195,7 +194,7 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbarSelectableItemIdentifiers() b
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarSelectableItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := ffi.CallMethod[[]ToolbarItemIdentifier](t_, "toolbarSelectableItemIdentifiers:", toolbar)
+	rv := objc.CallMethod[[]ToolbarItemIdentifier](t_, "toolbarSelectableItemIdentifiers:", toolbar)
 	return rv
 }
 
@@ -204,6 +203,6 @@ func (t_ *ToolbarDelegateWrapper) ImplementsToolbar_ItemIdentifier_CanBeInserted
 }
 
 func (t_ ToolbarDelegateWrapper) Toolbar_ItemIdentifier_CanBeInsertedAtIndex(toolbar IToolbar, itemIdentifier ToolbarItemIdentifier, index int) bool {
-	rv := ffi.CallMethod[bool](t_, "toolbar:itemIdentifier:canBeInsertedAtIndex:", toolbar, itemIdentifier, index)
+	rv := objc.CallMethod[bool](t_, "toolbar:itemIdentifier:canBeInsertedAtIndex:", toolbar, itemIdentifier, index)
 	return rv
 }

@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -54,12 +53,12 @@ func MakeOperation(ptr unsafe.Pointer) Operation {
 }
 
 func (oc _OperationClass) Alloc() Operation {
-	rv := ffi.CallMethod[Operation](oc, "alloc")
+	rv := objc.CallMethod[Operation](oc, "alloc")
 	return rv
 }
 
 func (oc _OperationClass) New() Operation {
-	rv := ffi.CallMethod[Operation](oc, "new")
+	rv := objc.CallMethod[Operation](oc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -69,112 +68,112 @@ func NewOperation() Operation {
 }
 
 func (o_ Operation) Init() Operation {
-	rv := ffi.CallMethod[Operation](o_, "init")
+	rv := objc.CallMethod[Operation](o_, "init")
 	return rv
 }
 
 func (o_ Operation) Start() {
-	ffi.CallMethod[ffi.Void](o_, "start")
+	objc.CallMethod[objc.Void](o_, "start")
 }
 
 func (o_ Operation) Main() {
-	ffi.CallMethod[ffi.Void](o_, "main")
+	objc.CallMethod[objc.Void](o_, "main")
 }
 
 func (o_ Operation) Cancel() {
-	ffi.CallMethod[ffi.Void](o_, "cancel")
+	objc.CallMethod[objc.Void](o_, "cancel")
 }
 
 func (o_ Operation) AddDependency(op IOperation) {
-	ffi.CallMethod[ffi.Void](o_, "addDependency:", op)
+	objc.CallMethod[objc.Void](o_, "addDependency:", op)
 }
 
 func (o_ Operation) RemoveDependency(op IOperation) {
-	ffi.CallMethod[ffi.Void](o_, "removeDependency:", op)
+	objc.CallMethod[objc.Void](o_, "removeDependency:", op)
 }
 
 func (o_ Operation) WaitUntilFinished() {
-	ffi.CallMethod[ffi.Void](o_, "waitUntilFinished")
+	objc.CallMethod[objc.Void](o_, "waitUntilFinished")
 }
 
 func (o_ Operation) CompletionBlock() func() {
-	rv := ffi.CallMethod[func()](o_, "completionBlock")
+	rv := objc.CallMethod[func()](o_, "completionBlock")
 	return rv
 }
 
 func (o_ Operation) SetCompletionBlock(value func()) {
-	ffi.CallMethod[ffi.Void](o_, "setCompletionBlock:", value)
+	objc.CallMethod[objc.Void](o_, "setCompletionBlock:", value)
 }
 
 func (o_ Operation) IsCancelled() bool {
-	rv := ffi.CallMethod[bool](o_, "isCancelled")
+	rv := objc.CallMethod[bool](o_, "isCancelled")
 	return rv
 }
 
 func (o_ Operation) IsExecuting() bool {
-	rv := ffi.CallMethod[bool](o_, "isExecuting")
+	rv := objc.CallMethod[bool](o_, "isExecuting")
 	return rv
 }
 
 func (o_ Operation) IsFinished() bool {
-	rv := ffi.CallMethod[bool](o_, "isFinished")
+	rv := objc.CallMethod[bool](o_, "isFinished")
 	return rv
 }
 
 func (o_ Operation) IsConcurrent() bool {
-	rv := ffi.CallMethod[bool](o_, "isConcurrent")
+	rv := objc.CallMethod[bool](o_, "isConcurrent")
 	return rv
 }
 
 func (o_ Operation) IsAsynchronous() bool {
-	rv := ffi.CallMethod[bool](o_, "isAsynchronous")
+	rv := objc.CallMethod[bool](o_, "isAsynchronous")
 	return rv
 }
 
 func (o_ Operation) IsReady() bool {
-	rv := ffi.CallMethod[bool](o_, "isReady")
+	rv := objc.CallMethod[bool](o_, "isReady")
 	return rv
 }
 
 func (o_ Operation) Name() string {
-	rv := ffi.CallMethod[string](o_, "name")
+	rv := objc.CallMethod[string](o_, "name")
 	return rv
 }
 
 func (o_ Operation) SetName(value string) {
-	ffi.CallMethod[ffi.Void](o_, "setName:", value)
+	objc.CallMethod[objc.Void](o_, "setName:", value)
 }
 
 func (o_ Operation) Dependencies() []Operation {
-	rv := ffi.CallMethod[[]Operation](o_, "dependencies")
+	rv := objc.CallMethod[[]Operation](o_, "dependencies")
 	return rv
 }
 
 func (o_ Operation) QualityOfService() QualityOfService {
-	rv := ffi.CallMethod[QualityOfService](o_, "qualityOfService")
+	rv := objc.CallMethod[QualityOfService](o_, "qualityOfService")
 	return rv
 }
 
 func (o_ Operation) SetQualityOfService(value QualityOfService) {
-	ffi.CallMethod[ffi.Void](o_, "setQualityOfService:", value)
+	objc.CallMethod[objc.Void](o_, "setQualityOfService:", value)
 }
 
 // deprecated
 func (o_ Operation) ThreadPriority() float64 {
-	rv := ffi.CallMethod[float64](o_, "threadPriority")
+	rv := objc.CallMethod[float64](o_, "threadPriority")
 	return rv
 }
 
 // deprecated
 func (o_ Operation) SetThreadPriority(value float64) {
-	ffi.CallMethod[ffi.Void](o_, "setThreadPriority:", value)
+	objc.CallMethod[objc.Void](o_, "setThreadPriority:", value)
 }
 
 func (o_ Operation) QueuePriority() OperationQueuePriority {
-	rv := ffi.CallMethod[OperationQueuePriority](o_, "queuePriority")
+	rv := objc.CallMethod[OperationQueuePriority](o_, "queuePriority")
 	return rv
 }
 
 func (o_ Operation) SetQueuePriority(value OperationQueuePriority) {
-	ffi.CallMethod[ffi.Void](o_, "setQueuePriority:", value)
+	objc.CallMethod[objc.Void](o_, "setQueuePriority:", value)
 }

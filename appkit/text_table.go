@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,17 +36,17 @@ func MakeTextTable(ptr unsafe.Pointer) TextTable {
 }
 
 func (t_ TextTable) Init() TextTable {
-	rv := ffi.CallMethod[TextTable](t_, "init")
+	rv := objc.CallMethod[TextTable](t_, "init")
 	return rv
 }
 
 func (tc _TextTableClass) Alloc() TextTable {
-	rv := ffi.CallMethod[TextTable](tc, "alloc")
+	rv := objc.CallMethod[TextTable](tc, "alloc")
 	return rv
 }
 
 func (tc _TextTableClass) New() TextTable {
-	rv := ffi.CallMethod[TextTable](tc, "new")
+	rv := objc.CallMethod[TextTable](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,37 +56,37 @@ func NewTextTable() TextTable {
 }
 
 func (t_ TextTable) NumberOfColumns() uint {
-	rv := ffi.CallMethod[uint](t_, "numberOfColumns")
+	rv := objc.CallMethod[uint](t_, "numberOfColumns")
 	return rv
 }
 
 func (t_ TextTable) SetNumberOfColumns(value uint) {
-	ffi.CallMethod[ffi.Void](t_, "setNumberOfColumns:", value)
+	objc.CallMethod[objc.Void](t_, "setNumberOfColumns:", value)
 }
 
 func (t_ TextTable) LayoutAlgorithm() TextTableLayoutAlgorithm {
-	rv := ffi.CallMethod[TextTableLayoutAlgorithm](t_, "layoutAlgorithm")
+	rv := objc.CallMethod[TextTableLayoutAlgorithm](t_, "layoutAlgorithm")
 	return rv
 }
 
 func (t_ TextTable) SetLayoutAlgorithm(value TextTableLayoutAlgorithm) {
-	ffi.CallMethod[ffi.Void](t_, "setLayoutAlgorithm:", value)
+	objc.CallMethod[objc.Void](t_, "setLayoutAlgorithm:", value)
 }
 
 func (t_ TextTable) CollapsesBorders() bool {
-	rv := ffi.CallMethod[bool](t_, "collapsesBorders")
+	rv := objc.CallMethod[bool](t_, "collapsesBorders")
 	return rv
 }
 
 func (t_ TextTable) SetCollapsesBorders(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setCollapsesBorders:", value)
+	objc.CallMethod[objc.Void](t_, "setCollapsesBorders:", value)
 }
 
 func (t_ TextTable) HidesEmptyCells() bool {
-	rv := ffi.CallMethod[bool](t_, "hidesEmptyCells")
+	rv := objc.CallMethod[bool](t_, "hidesEmptyCells")
 	return rv
 }
 
 func (t_ TextTable) SetHidesEmptyCells(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setHidesEmptyCells:", value)
+	objc.CallMethod[objc.Void](t_, "setHidesEmptyCells:", value)
 }

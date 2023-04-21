@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,22 +32,22 @@ func MakeTrackingSeparatorToolbarItem(ptr unsafe.Pointer) TrackingSeparatorToolb
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) TrackingSeparatorToolbarItemWithIdentifier_SplitView_DividerIndex(identifier ToolbarItemIdentifier, splitView ISplitView, dividerIndex int) TrackingSeparatorToolbarItem {
-	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](tc, "trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:", identifier, splitView, dividerIndex)
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, "trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:", identifier, splitView, dividerIndex)
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) TrackingSeparatorToolbarItem {
-	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](t_, "initWithItemIdentifier:", itemIdentifier)
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](t_, "initWithItemIdentifier:", itemIdentifier)
 	return rv
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) Alloc() TrackingSeparatorToolbarItem {
-	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](tc, "alloc")
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, "alloc")
 	return rv
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) New() TrackingSeparatorToolbarItem {
-	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](tc, "new")
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -58,24 +57,24 @@ func NewTrackingSeparatorToolbarItem() TrackingSeparatorToolbarItem {
 }
 
 func (t_ TrackingSeparatorToolbarItem) Init() TrackingSeparatorToolbarItem {
-	rv := ffi.CallMethod[TrackingSeparatorToolbarItem](t_, "init")
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](t_, "init")
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) DividerIndex() int {
-	rv := ffi.CallMethod[int](t_, "dividerIndex")
+	rv := objc.CallMethod[int](t_, "dividerIndex")
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) SetDividerIndex(value int) {
-	ffi.CallMethod[ffi.Void](t_, "setDividerIndex:", value)
+	objc.CallMethod[objc.Void](t_, "setDividerIndex:", value)
 }
 
 func (t_ TrackingSeparatorToolbarItem) SplitView() SplitView {
-	rv := ffi.CallMethod[SplitView](t_, "splitView")
+	rv := objc.CallMethod[SplitView](t_, "splitView")
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) SetSplitView(value ISplitView) {
-	ffi.CallMethod[ffi.Void](t_, "setSplitView:", value)
+	objc.CallMethod[objc.Void](t_, "setSplitView:", value)
 }

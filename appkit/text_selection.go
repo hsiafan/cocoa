@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -41,22 +40,22 @@ func MakeTextSelection(ptr unsafe.Pointer) TextSelection {
 }
 
 func (t_ TextSelection) InitWithRange_Affinity_Granularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := ffi.CallMethod[TextSelection](t_, "initWithRange:affinity:granularity:", range_, affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, "initWithRange:affinity:granularity:", range_, affinity, granularity)
 	return rv
 }
 
 func (t_ TextSelection) InitWithRanges_Affinity_Granularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := ffi.CallMethod[TextSelection](t_, "initWithRanges:affinity:granularity:", textRanges, affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, "initWithRanges:affinity:granularity:", textRanges, affinity, granularity)
 	return rv
 }
 
 func (tc _TextSelectionClass) Alloc() TextSelection {
-	rv := ffi.CallMethod[TextSelection](tc, "alloc")
+	rv := objc.CallMethod[TextSelection](tc, "alloc")
 	return rv
 }
 
 func (tc _TextSelectionClass) New() TextSelection {
-	rv := ffi.CallMethod[TextSelection](tc, "new")
+	rv := objc.CallMethod[TextSelection](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -66,58 +65,58 @@ func NewTextSelection() TextSelection {
 }
 
 func (t_ TextSelection) Init() TextSelection {
-	rv := ffi.CallMethod[TextSelection](t_, "init")
+	rv := objc.CallMethod[TextSelection](t_, "init")
 	return rv
 }
 
 func (t_ TextSelection) TextSelectionWithTextRanges(textRanges []ITextRange) TextSelection {
-	rv := ffi.CallMethod[TextSelection](t_, "textSelectionWithTextRanges:", textRanges)
+	rv := objc.CallMethod[TextSelection](t_, "textSelectionWithTextRanges:", textRanges)
 	return rv
 }
 
 func (t_ TextSelection) Affinity() TextSelectionAffinity {
-	rv := ffi.CallMethod[TextSelectionAffinity](t_, "affinity")
+	rv := objc.CallMethod[TextSelectionAffinity](t_, "affinity")
 	return rv
 }
 
 func (t_ TextSelection) AnchorPositionOffset() float64 {
-	rv := ffi.CallMethod[float64](t_, "anchorPositionOffset")
+	rv := objc.CallMethod[float64](t_, "anchorPositionOffset")
 	return rv
 }
 
 func (t_ TextSelection) SetAnchorPositionOffset(value float64) {
-	ffi.CallMethod[ffi.Void](t_, "setAnchorPositionOffset:", value)
+	objc.CallMethod[objc.Void](t_, "setAnchorPositionOffset:", value)
 }
 
 func (t_ TextSelection) Granularity() TextSelectionGranularity {
-	rv := ffi.CallMethod[TextSelectionGranularity](t_, "granularity")
+	rv := objc.CallMethod[TextSelectionGranularity](t_, "granularity")
 	return rv
 }
 
 func (t_ TextSelection) IsLogical() bool {
-	rv := ffi.CallMethod[bool](t_, "isLogical")
+	rv := objc.CallMethod[bool](t_, "isLogical")
 	return rv
 }
 
 func (t_ TextSelection) SetLogical(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setLogical:", value)
+	objc.CallMethod[objc.Void](t_, "setLogical:", value)
 }
 
 func (t_ TextSelection) IsTransient() bool {
-	rv := ffi.CallMethod[bool](t_, "isTransient")
+	rv := objc.CallMethod[bool](t_, "isTransient")
 	return rv
 }
 
 func (t_ TextSelection) TextRanges() []TextRange {
-	rv := ffi.CallMethod[[]TextRange](t_, "textRanges")
+	rv := objc.CallMethod[[]TextRange](t_, "textRanges")
 	return rv
 }
 
 func (t_ TextSelection) TypingAttributes() map[foundation.AttributedStringKey]objc.Object {
-	rv := ffi.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, "typingAttributes")
+	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, "typingAttributes")
 	return rv
 }
 
 func (t_ TextSelection) SetTypingAttributes(value map[foundation.AttributedStringKey]objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setTypingAttributes:", value)
+	objc.CallMethod[objc.Void](t_, "setTypingAttributes:", value)
 }

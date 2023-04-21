@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -32,22 +31,22 @@ func MakeSwitch(ptr unsafe.Pointer) Switch {
 }
 
 func (s_ Switch) InitWithFrame(frameRect foundation.Rect) Switch {
-	rv := ffi.CallMethod[Switch](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Switch](s_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (s_ Switch) Init() Switch {
-	rv := ffi.CallMethod[Switch](s_, "init")
+	rv := objc.CallMethod[Switch](s_, "init")
 	return rv
 }
 
 func (sc _SwitchClass) Alloc() Switch {
-	rv := ffi.CallMethod[Switch](sc, "alloc")
+	rv := objc.CallMethod[Switch](sc, "alloc")
 	return rv
 }
 
 func (sc _SwitchClass) New() Switch {
-	rv := ffi.CallMethod[Switch](sc, "new")
+	rv := objc.CallMethod[Switch](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,10 +56,10 @@ func NewSwitch() Switch {
 }
 
 func (s_ Switch) State() ControlStateValue {
-	rv := ffi.CallMethod[ControlStateValue](s_, "state")
+	rv := objc.CallMethod[ControlStateValue](s_, "state")
 	return rv
 }
 
 func (s_ Switch) SetState(value ControlStateValue) {
-	ffi.CallMethod[ffi.Void](s_, "setState:", value)
+	objc.CallMethod[objc.Void](s_, "setState:", value)
 }

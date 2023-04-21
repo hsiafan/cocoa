@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,7 +33,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsPrepareForReuse() bool {
 }
 
 func (c_ CollectionViewElementWrapper) PrepareForReuse() {
-	ffi.CallMethod[ffi.Void](c_, "prepareForReuse")
+	objc.CallMethod[objc.Void](c_, "prepareForReuse")
 }
 
 func (c_ *CollectionViewElementWrapper) ImplementsPreferredLayoutAttributesFittingAttributes() bool {
@@ -42,7 +41,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsPreferredLayoutAttributesFitti
 }
 
 func (c_ CollectionViewElementWrapper) PreferredLayoutAttributesFittingAttributes(layoutAttributes ICollectionViewLayoutAttributes) CollectionViewLayoutAttributes {
-	rv := ffi.CallMethod[CollectionViewLayoutAttributes](c_, "preferredLayoutAttributesFittingAttributes:", layoutAttributes)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, "preferredLayoutAttributesFittingAttributes:", layoutAttributes)
 	return rv
 }
 
@@ -51,7 +50,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsApplyLayoutAttributes() bool {
 }
 
 func (c_ CollectionViewElementWrapper) ApplyLayoutAttributes(layoutAttributes ICollectionViewLayoutAttributes) {
-	ffi.CallMethod[ffi.Void](c_, "applyLayoutAttributes:", layoutAttributes)
+	objc.CallMethod[objc.Void](c_, "applyLayoutAttributes:", layoutAttributes)
 }
 
 func (c_ *CollectionViewElementWrapper) ImplementsWillTransitionFromLayout_ToLayout() bool {
@@ -59,7 +58,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsWillTransitionFromLayout_ToLay
 }
 
 func (c_ CollectionViewElementWrapper) WillTransitionFromLayout_ToLayout(oldLayout ICollectionViewLayout, newLayout ICollectionViewLayout) {
-	ffi.CallMethod[ffi.Void](c_, "willTransitionFromLayout:toLayout:", oldLayout, newLayout)
+	objc.CallMethod[objc.Void](c_, "willTransitionFromLayout:toLayout:", oldLayout, newLayout)
 }
 
 func (c_ *CollectionViewElementWrapper) ImplementsDidTransitionFromLayout_ToLayout() bool {
@@ -67,5 +66,5 @@ func (c_ *CollectionViewElementWrapper) ImplementsDidTransitionFromLayout_ToLayo
 }
 
 func (c_ CollectionViewElementWrapper) DidTransitionFromLayout_ToLayout(oldLayout ICollectionViewLayout, newLayout ICollectionViewLayout) {
-	ffi.CallMethod[ffi.Void](c_, "didTransitionFromLayout:toLayout:", oldLayout, newLayout)
+	objc.CallMethod[objc.Void](c_, "didTransitionFromLayout:toLayout:", oldLayout, newLayout)
 }

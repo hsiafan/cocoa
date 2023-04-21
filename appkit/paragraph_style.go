@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -51,12 +50,12 @@ func MakeParagraphStyle(ptr unsafe.Pointer) ParagraphStyle {
 }
 
 func (pc _ParagraphStyleClass) Alloc() ParagraphStyle {
-	rv := ffi.CallMethod[ParagraphStyle](pc, "alloc")
+	rv := objc.CallMethod[ParagraphStyle](pc, "alloc")
 	return rv
 }
 
 func (pc _ParagraphStyleClass) New() ParagraphStyle {
-	rv := ffi.CallMethod[ParagraphStyle](pc, "new")
+	rv := objc.CallMethod[ParagraphStyle](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -66,126 +65,126 @@ func NewParagraphStyle() ParagraphStyle {
 }
 
 func (p_ ParagraphStyle) Init() ParagraphStyle {
-	rv := ffi.CallMethod[ParagraphStyle](p_, "init")
+	rv := objc.CallMethod[ParagraphStyle](p_, "init")
 	return rv
 }
 
 func (pc _ParagraphStyleClass) DefaultWritingDirectionForLanguage(languageName string) WritingDirection {
-	rv := ffi.CallMethod[WritingDirection](pc, "defaultWritingDirectionForLanguage:", languageName)
+	rv := objc.CallMethod[WritingDirection](pc, "defaultWritingDirectionForLanguage:", languageName)
 	return rv
 }
 
 func (pc _ParagraphStyleClass) DefaultParagraphStyle() ParagraphStyle {
-	rv := ffi.CallMethod[ParagraphStyle](pc, "defaultParagraphStyle")
+	rv := objc.CallMethod[ParagraphStyle](pc, "defaultParagraphStyle")
 	return rv
 }
 
 func (p_ ParagraphStyle) Alignment() TextAlignment {
-	rv := ffi.CallMethod[TextAlignment](p_, "alignment")
+	rv := objc.CallMethod[TextAlignment](p_, "alignment")
 	return rv
 }
 
 func (p_ ParagraphStyle) FirstLineHeadIndent() float64 {
-	rv := ffi.CallMethod[float64](p_, "firstLineHeadIndent")
+	rv := objc.CallMethod[float64](p_, "firstLineHeadIndent")
 	return rv
 }
 
 func (p_ ParagraphStyle) HeadIndent() float64 {
-	rv := ffi.CallMethod[float64](p_, "headIndent")
+	rv := objc.CallMethod[float64](p_, "headIndent")
 	return rv
 }
 
 func (p_ ParagraphStyle) TailIndent() float64 {
-	rv := ffi.CallMethod[float64](p_, "tailIndent")
+	rv := objc.CallMethod[float64](p_, "tailIndent")
 	return rv
 }
 
 func (p_ ParagraphStyle) LineHeightMultiple() float64 {
-	rv := ffi.CallMethod[float64](p_, "lineHeightMultiple")
+	rv := objc.CallMethod[float64](p_, "lineHeightMultiple")
 	return rv
 }
 
 func (p_ ParagraphStyle) MaximumLineHeight() float64 {
-	rv := ffi.CallMethod[float64](p_, "maximumLineHeight")
+	rv := objc.CallMethod[float64](p_, "maximumLineHeight")
 	return rv
 }
 
 func (p_ ParagraphStyle) MinimumLineHeight() float64 {
-	rv := ffi.CallMethod[float64](p_, "minimumLineHeight")
+	rv := objc.CallMethod[float64](p_, "minimumLineHeight")
 	return rv
 }
 
 func (p_ ParagraphStyle) LineSpacing() float64 {
-	rv := ffi.CallMethod[float64](p_, "lineSpacing")
+	rv := objc.CallMethod[float64](p_, "lineSpacing")
 	return rv
 }
 
 func (p_ ParagraphStyle) ParagraphSpacing() float64 {
-	rv := ffi.CallMethod[float64](p_, "paragraphSpacing")
+	rv := objc.CallMethod[float64](p_, "paragraphSpacing")
 	return rv
 }
 
 func (p_ ParagraphStyle) ParagraphSpacingBefore() float64 {
-	rv := ffi.CallMethod[float64](p_, "paragraphSpacingBefore")
+	rv := objc.CallMethod[float64](p_, "paragraphSpacingBefore")
 	return rv
 }
 
 func (p_ ParagraphStyle) TabStops() []TextTab {
-	rv := ffi.CallMethod[[]TextTab](p_, "tabStops")
+	rv := objc.CallMethod[[]TextTab](p_, "tabStops")
 	return rv
 }
 
 func (p_ ParagraphStyle) DefaultTabInterval() float64 {
-	rv := ffi.CallMethod[float64](p_, "defaultTabInterval")
+	rv := objc.CallMethod[float64](p_, "defaultTabInterval")
 	return rv
 }
 
 func (p_ ParagraphStyle) TextBlocks() []TextBlock {
-	rv := ffi.CallMethod[[]TextBlock](p_, "textBlocks")
+	rv := objc.CallMethod[[]TextBlock](p_, "textBlocks")
 	return rv
 }
 
 func (p_ ParagraphStyle) TextLists() []TextList {
-	rv := ffi.CallMethod[[]TextList](p_, "textLists")
+	rv := objc.CallMethod[[]TextList](p_, "textLists")
 	return rv
 }
 
 func (p_ ParagraphStyle) LineBreakMode() LineBreakMode {
-	rv := ffi.CallMethod[LineBreakMode](p_, "lineBreakMode")
+	rv := objc.CallMethod[LineBreakMode](p_, "lineBreakMode")
 	return rv
 }
 
 func (p_ ParagraphStyle) LineBreakStrategy() LineBreakStrategy {
-	rv := ffi.CallMethod[LineBreakStrategy](p_, "lineBreakStrategy")
+	rv := objc.CallMethod[LineBreakStrategy](p_, "lineBreakStrategy")
 	return rv
 }
 
 func (p_ ParagraphStyle) HyphenationFactor() float32 {
-	rv := ffi.CallMethod[float32](p_, "hyphenationFactor")
+	rv := objc.CallMethod[float32](p_, "hyphenationFactor")
 	return rv
 }
 
 func (p_ ParagraphStyle) UsesDefaultHyphenation() bool {
-	rv := ffi.CallMethod[bool](p_, "usesDefaultHyphenation")
+	rv := objc.CallMethod[bool](p_, "usesDefaultHyphenation")
 	return rv
 }
 
 func (p_ ParagraphStyle) TighteningFactorForTruncation() float32 {
-	rv := ffi.CallMethod[float32](p_, "tighteningFactorForTruncation")
+	rv := objc.CallMethod[float32](p_, "tighteningFactorForTruncation")
 	return rv
 }
 
 func (p_ ParagraphStyle) AllowsDefaultTighteningForTruncation() bool {
-	rv := ffi.CallMethod[bool](p_, "allowsDefaultTighteningForTruncation")
+	rv := objc.CallMethod[bool](p_, "allowsDefaultTighteningForTruncation")
 	return rv
 }
 
 func (p_ ParagraphStyle) HeaderLevel() int {
-	rv := ffi.CallMethod[int](p_, "headerLevel")
+	rv := objc.CallMethod[int](p_, "headerLevel")
 	return rv
 }
 
 func (p_ ParagraphStyle) BaseWritingDirection() WritingDirection {
-	rv := ffi.CallMethod[WritingDirection](p_, "baseWritingDirection")
+	rv := objc.CallMethod[WritingDirection](p_, "baseWritingDirection")
 	return rv
 }

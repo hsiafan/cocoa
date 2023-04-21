@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -37,17 +36,17 @@ func MakeShadow(ptr unsafe.Pointer) Shadow {
 }
 
 func (s_ Shadow) Init() Shadow {
-	rv := ffi.CallMethod[Shadow](s_, "init")
+	rv := objc.CallMethod[Shadow](s_, "init")
 	return rv
 }
 
 func (sc _ShadowClass) Alloc() Shadow {
-	rv := ffi.CallMethod[Shadow](sc, "alloc")
+	rv := objc.CallMethod[Shadow](sc, "alloc")
 	return rv
 }
 
 func (sc _ShadowClass) New() Shadow {
-	rv := ffi.CallMethod[Shadow](sc, "new")
+	rv := objc.CallMethod[Shadow](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,32 +56,32 @@ func NewShadow() Shadow {
 }
 
 func (s_ Shadow) Set() {
-	ffi.CallMethod[ffi.Void](s_, "set")
+	objc.CallMethod[objc.Void](s_, "set")
 }
 
 func (s_ Shadow) ShadowOffset() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](s_, "shadowOffset")
+	rv := objc.CallMethod[foundation.Size](s_, "shadowOffset")
 	return rv
 }
 
 func (s_ Shadow) SetShadowOffset(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](s_, "setShadowOffset:", value)
+	objc.CallMethod[objc.Void](s_, "setShadowOffset:", value)
 }
 
 func (s_ Shadow) ShadowBlurRadius() float64 {
-	rv := ffi.CallMethod[float64](s_, "shadowBlurRadius")
+	rv := objc.CallMethod[float64](s_, "shadowBlurRadius")
 	return rv
 }
 
 func (s_ Shadow) SetShadowBlurRadius(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setShadowBlurRadius:", value)
+	objc.CallMethod[objc.Void](s_, "setShadowBlurRadius:", value)
 }
 
 func (s_ Shadow) ShadowColor() Color {
-	rv := ffi.CallMethod[Color](s_, "shadowColor")
+	rv := objc.CallMethod[Color](s_, "shadowColor")
 	return rv
 }
 
 func (s_ Shadow) SetShadowColor(value IColor) {
-	ffi.CallMethod[ffi.Void](s_, "setShadowColor:", value)
+	objc.CallMethod[objc.Void](s_, "setShadowColor:", value)
 }

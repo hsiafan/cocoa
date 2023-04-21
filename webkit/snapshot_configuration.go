@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -37,12 +36,12 @@ func MakeSnapshotConfiguration(ptr unsafe.Pointer) SnapshotConfiguration {
 }
 
 func (sc _SnapshotConfigurationClass) Alloc() SnapshotConfiguration {
-	rv := ffi.CallMethod[SnapshotConfiguration](sc, "alloc")
+	rv := objc.CallMethod[SnapshotConfiguration](sc, "alloc")
 	return rv
 }
 
 func (sc _SnapshotConfigurationClass) New() SnapshotConfiguration {
-	rv := ffi.CallMethod[SnapshotConfiguration](sc, "new")
+	rv := objc.CallMethod[SnapshotConfiguration](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -52,33 +51,33 @@ func NewSnapshotConfiguration() SnapshotConfiguration {
 }
 
 func (s_ SnapshotConfiguration) Init() SnapshotConfiguration {
-	rv := ffi.CallMethod[SnapshotConfiguration](s_, "init")
+	rv := objc.CallMethod[SnapshotConfiguration](s_, "init")
 	return rv
 }
 
 func (s_ SnapshotConfiguration) Rect() coregraphics.Rect {
-	rv := ffi.CallMethod[coregraphics.Rect](s_, "rect")
+	rv := objc.CallMethod[coregraphics.Rect](s_, "rect")
 	return rv
 }
 
 func (s_ SnapshotConfiguration) SetRect(value coregraphics.Rect) {
-	ffi.CallMethod[ffi.Void](s_, "setRect:", value)
+	objc.CallMethod[objc.Void](s_, "setRect:", value)
 }
 
 func (s_ SnapshotConfiguration) SnapshotWidth() foundation.Number {
-	rv := ffi.CallMethod[foundation.Number](s_, "snapshotWidth")
+	rv := objc.CallMethod[foundation.Number](s_, "snapshotWidth")
 	return rv
 }
 
 func (s_ SnapshotConfiguration) SetSnapshotWidth(value foundation.INumber) {
-	ffi.CallMethod[ffi.Void](s_, "setSnapshotWidth:", value)
+	objc.CallMethod[objc.Void](s_, "setSnapshotWidth:", value)
 }
 
 func (s_ SnapshotConfiguration) AfterScreenUpdates() bool {
-	rv := ffi.CallMethod[bool](s_, "afterScreenUpdates")
+	rv := objc.CallMethod[bool](s_, "afterScreenUpdates")
 	return rv
 }
 
 func (s_ SnapshotConfiguration) SetAfterScreenUpdates(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setAfterScreenUpdates:", value)
+	objc.CallMethod[objc.Void](s_, "setAfterScreenUpdates:", value)
 }

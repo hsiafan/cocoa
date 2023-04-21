@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -54,7 +53,7 @@ func (s_ *SearchFieldDelegateWrapper) ImplementsSearchFieldDidStartSearching() b
 }
 
 func (s_ SearchFieldDelegateWrapper) SearchFieldDidStartSearching(sender ISearchField) {
-	ffi.CallMethod[ffi.Void](s_, "searchFieldDidStartSearching:", sender)
+	objc.CallMethod[objc.Void](s_, "searchFieldDidStartSearching:", sender)
 }
 
 func (s_ *SearchFieldDelegateWrapper) ImplementsSearchFieldDidEndSearching() bool {
@@ -62,5 +61,5 @@ func (s_ *SearchFieldDelegateWrapper) ImplementsSearchFieldDidEndSearching() boo
 }
 
 func (s_ SearchFieldDelegateWrapper) SearchFieldDidEndSearching(sender ISearchField) {
-	ffi.CallMethod[ffi.Void](s_, "searchFieldDidEndSearching:", sender)
+	objc.CallMethod[objc.Void](s_, "searchFieldDidEndSearching:", sender)
 }

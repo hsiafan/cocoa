@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,12 +29,12 @@ func MakeContentWorld(ptr unsafe.Pointer) ContentWorld {
 }
 
 func (cc _ContentWorldClass) Alloc() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](cc, "alloc")
+	rv := objc.CallMethod[ContentWorld](cc, "alloc")
 	return rv
 }
 
 func (cc _ContentWorldClass) New() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](cc, "new")
+	rv := objc.CallMethod[ContentWorld](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -45,26 +44,26 @@ func NewContentWorld() ContentWorld {
 }
 
 func (c_ ContentWorld) Init() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](c_, "init")
+	rv := objc.CallMethod[ContentWorld](c_, "init")
 	return rv
 }
 
 func (cc _ContentWorldClass) WorldWithName(name string) ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](cc, "worldWithName:", name)
+	rv := objc.CallMethod[ContentWorld](cc, "worldWithName:", name)
 	return rv
 }
 
 func (cc _ContentWorldClass) DefaultClientWorld() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](cc, "defaultClientWorld")
+	rv := objc.CallMethod[ContentWorld](cc, "defaultClientWorld")
 	return rv
 }
 
 func (cc _ContentWorldClass) PageWorld() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](cc, "pageWorld")
+	rv := objc.CallMethod[ContentWorld](cc, "pageWorld")
 	return rv
 }
 
 func (c_ ContentWorld) Name() string {
-	rv := ffi.CallMethod[string](c_, "name")
+	rv := objc.CallMethod[string](c_, "name")
 	return rv
 }

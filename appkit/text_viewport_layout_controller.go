@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,17 +34,17 @@ func MakeTextViewportLayoutController(ptr unsafe.Pointer) TextViewportLayoutCont
 }
 
 func (t_ TextViewportLayoutController) InitWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
-	rv := ffi.CallMethod[TextViewportLayoutController](t_, "initWithTextLayoutManager:", textLayoutManager)
+	rv := objc.CallMethod[TextViewportLayoutController](t_, "initWithTextLayoutManager:", textLayoutManager)
 	return rv
 }
 
 func (tc _TextViewportLayoutControllerClass) Alloc() TextViewportLayoutController {
-	rv := ffi.CallMethod[TextViewportLayoutController](tc, "alloc")
+	rv := objc.CallMethod[TextViewportLayoutController](tc, "alloc")
 	return rv
 }
 
 func (tc _TextViewportLayoutControllerClass) New() TextViewportLayoutController {
-	rv := ffi.CallMethod[TextViewportLayoutController](tc, "new")
+	rv := objc.CallMethod[TextViewportLayoutController](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -55,29 +54,29 @@ func NewTextViewportLayoutController() TextViewportLayoutController {
 }
 
 func (t_ TextViewportLayoutController) Init() TextViewportLayoutController {
-	rv := ffi.CallMethod[TextViewportLayoutController](t_, "init")
+	rv := objc.CallMethod[TextViewportLayoutController](t_, "init")
 	return rv
 }
 
 func (t_ TextViewportLayoutController) AdjustViewportByVerticalOffset(verticalOffset float64) {
-	ffi.CallMethod[ffi.Void](t_, "adjustViewportByVerticalOffset:", verticalOffset)
+	objc.CallMethod[objc.Void](t_, "adjustViewportByVerticalOffset:", verticalOffset)
 }
 
 func (t_ TextViewportLayoutController) LayoutViewport() {
-	ffi.CallMethod[ffi.Void](t_, "layoutViewport")
+	objc.CallMethod[objc.Void](t_, "layoutViewport")
 }
 
 func (t_ TextViewportLayoutController) TextLayoutManager() TextLayoutManager {
-	rv := ffi.CallMethod[TextLayoutManager](t_, "textLayoutManager")
+	rv := objc.CallMethod[TextLayoutManager](t_, "textLayoutManager")
 	return rv
 }
 
 func (t_ TextViewportLayoutController) ViewportBounds() coregraphics.Rect {
-	rv := ffi.CallMethod[coregraphics.Rect](t_, "viewportBounds")
+	rv := objc.CallMethod[coregraphics.Rect](t_, "viewportBounds")
 	return rv
 }
 
 func (t_ TextViewportLayoutController) ViewportRange() TextRange {
-	rv := ffi.CallMethod[TextRange](t_, "viewportRange")
+	rv := objc.CallMethod[TextRange](t_, "viewportRange")
 	return rv
 }

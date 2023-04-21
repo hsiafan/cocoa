@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -40,22 +39,22 @@ func MakeStepper(ptr unsafe.Pointer) Stepper {
 }
 
 func (s_ Stepper) InitWithFrame(frameRect foundation.Rect) Stepper {
-	rv := ffi.CallMethod[Stepper](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Stepper](s_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (s_ Stepper) Init() Stepper {
-	rv := ffi.CallMethod[Stepper](s_, "init")
+	rv := objc.CallMethod[Stepper](s_, "init")
 	return rv
 }
 
 func (sc _StepperClass) Alloc() Stepper {
-	rv := ffi.CallMethod[Stepper](sc, "alloc")
+	rv := objc.CallMethod[Stepper](sc, "alloc")
 	return rv
 }
 
 func (sc _StepperClass) New() Stepper {
-	rv := ffi.CallMethod[Stepper](sc, "new")
+	rv := objc.CallMethod[Stepper](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -65,46 +64,46 @@ func NewStepper() Stepper {
 }
 
 func (s_ Stepper) MaxValue() float64 {
-	rv := ffi.CallMethod[float64](s_, "maxValue")
+	rv := objc.CallMethod[float64](s_, "maxValue")
 	return rv
 }
 
 func (s_ Stepper) SetMaxValue(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMaxValue:", value)
+	objc.CallMethod[objc.Void](s_, "setMaxValue:", value)
 }
 
 func (s_ Stepper) MinValue() float64 {
-	rv := ffi.CallMethod[float64](s_, "minValue")
+	rv := objc.CallMethod[float64](s_, "minValue")
 	return rv
 }
 
 func (s_ Stepper) SetMinValue(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMinValue:", value)
+	objc.CallMethod[objc.Void](s_, "setMinValue:", value)
 }
 
 func (s_ Stepper) Increment() float64 {
-	rv := ffi.CallMethod[float64](s_, "increment")
+	rv := objc.CallMethod[float64](s_, "increment")
 	return rv
 }
 
 func (s_ Stepper) SetIncrement(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setIncrement:", value)
+	objc.CallMethod[objc.Void](s_, "setIncrement:", value)
 }
 
 func (s_ Stepper) Autorepeat() bool {
-	rv := ffi.CallMethod[bool](s_, "autorepeat")
+	rv := objc.CallMethod[bool](s_, "autorepeat")
 	return rv
 }
 
 func (s_ Stepper) SetAutorepeat(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setAutorepeat:", value)
+	objc.CallMethod[objc.Void](s_, "setAutorepeat:", value)
 }
 
 func (s_ Stepper) ValueWraps() bool {
-	rv := ffi.CallMethod[bool](s_, "valueWraps")
+	rv := objc.CallMethod[bool](s_, "valueWraps")
 	return rv
 }
 
 func (s_ Stepper) SetValueWraps(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setValueWraps:", value)
+	objc.CallMethod[objc.Void](s_, "setValueWraps:", value)
 }

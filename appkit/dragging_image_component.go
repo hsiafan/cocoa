@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -36,17 +35,17 @@ func MakeDraggingImageComponent(ptr unsafe.Pointer) DraggingImageComponent {
 }
 
 func (d_ DraggingImageComponent) InitWithKey(key DraggingImageComponentKey) DraggingImageComponent {
-	rv := ffi.CallMethod[DraggingImageComponent](d_, "initWithKey:", key)
+	rv := objc.CallMethod[DraggingImageComponent](d_, "initWithKey:", key)
 	return rv
 }
 
 func (dc _DraggingImageComponentClass) Alloc() DraggingImageComponent {
-	rv := ffi.CallMethod[DraggingImageComponent](dc, "alloc")
+	rv := objc.CallMethod[DraggingImageComponent](dc, "alloc")
 	return rv
 }
 
 func (dc _DraggingImageComponentClass) New() DraggingImageComponent {
-	rv := ffi.CallMethod[DraggingImageComponent](dc, "new")
+	rv := objc.CallMethod[DraggingImageComponent](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -56,38 +55,38 @@ func NewDraggingImageComponent() DraggingImageComponent {
 }
 
 func (d_ DraggingImageComponent) Init() DraggingImageComponent {
-	rv := ffi.CallMethod[DraggingImageComponent](d_, "init")
+	rv := objc.CallMethod[DraggingImageComponent](d_, "init")
 	return rv
 }
 
 func (dc _DraggingImageComponentClass) DraggingImageComponentWithKey(key DraggingImageComponentKey) DraggingImageComponent {
-	rv := ffi.CallMethod[DraggingImageComponent](dc, "draggingImageComponentWithKey:", key)
+	rv := objc.CallMethod[DraggingImageComponent](dc, "draggingImageComponentWithKey:", key)
 	return rv
 }
 
 func (d_ DraggingImageComponent) Key() DraggingImageComponentKey {
-	rv := ffi.CallMethod[DraggingImageComponentKey](d_, "key")
+	rv := objc.CallMethod[DraggingImageComponentKey](d_, "key")
 	return rv
 }
 
 func (d_ DraggingImageComponent) SetKey(value DraggingImageComponentKey) {
-	ffi.CallMethod[ffi.Void](d_, "setKey:", value)
+	objc.CallMethod[objc.Void](d_, "setKey:", value)
 }
 
 func (d_ DraggingImageComponent) Contents() objc.Object {
-	rv := ffi.CallMethod[objc.Object](d_, "contents")
+	rv := objc.CallMethod[objc.Object](d_, "contents")
 	return rv
 }
 
 func (d_ DraggingImageComponent) SetContents(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](d_, "setContents:", value)
+	objc.CallMethod[objc.Void](d_, "setContents:", value)
 }
 
 func (d_ DraggingImageComponent) Frame() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](d_, "frame")
+	rv := objc.CallMethod[foundation.Rect](d_, "frame")
 	return rv
 }
 
 func (d_ DraggingImageComponent) SetFrame(value foundation.Rect) {
-	ffi.CallMethod[ffi.Void](d_, "setFrame:", value)
+	objc.CallMethod[objc.Void](d_, "setFrame:", value)
 }

@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,42 +29,42 @@ func MakeOutputStream(ptr unsafe.Pointer) OutputStream {
 }
 
 func (oc _OutputStreamClass) OutputStreamToMemory() OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "outputStreamToMemory")
+	rv := objc.CallMethod[OutputStream](oc, "outputStreamToMemory")
 	return rv
 }
 
 func (oc _OutputStreamClass) OutputStreamToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "outputStreamToFileAtPath:append:", path, shouldAppend)
+	rv := objc.CallMethod[OutputStream](oc, "outputStreamToFileAtPath:append:", path, shouldAppend)
 	return rv
 }
 
 func (oc _OutputStreamClass) OutputStreamWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "outputStreamWithURL:append:", url, shouldAppend)
+	rv := objc.CallMethod[OutputStream](oc, "outputStreamWithURL:append:", url, shouldAppend)
 	return rv
 }
 
 func (o_ OutputStream) InitToMemory() OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "initToMemory")
+	rv := objc.CallMethod[OutputStream](o_, "initToMemory")
 	return rv
 }
 
 func (o_ OutputStream) InitToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "initToFileAtPath:append:", path, shouldAppend)
+	rv := objc.CallMethod[OutputStream](o_, "initToFileAtPath:append:", path, shouldAppend)
 	return rv
 }
 
 func (o_ OutputStream) InitWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "initWithURL:append:", url, shouldAppend)
+	rv := objc.CallMethod[OutputStream](o_, "initWithURL:append:", url, shouldAppend)
 	return rv
 }
 
 func (oc _OutputStreamClass) Alloc() OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "alloc")
+	rv := objc.CallMethod[OutputStream](oc, "alloc")
 	return rv
 }
 
 func (oc _OutputStreamClass) New() OutputStream {
-	rv := ffi.CallMethod[OutputStream](oc, "new")
+	rv := objc.CallMethod[OutputStream](oc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -75,11 +74,11 @@ func NewOutputStream() OutputStream {
 }
 
 func (o_ OutputStream) Init() OutputStream {
-	rv := ffi.CallMethod[OutputStream](o_, "init")
+	rv := objc.CallMethod[OutputStream](o_, "init")
 	return rv
 }
 
 func (o_ OutputStream) HasSpaceAvailable() bool {
-	rv := ffi.CallMethod[bool](o_, "hasSpaceAvailable")
+	rv := objc.CallMethod[bool](o_, "hasSpaceAvailable")
 	return rv
 }

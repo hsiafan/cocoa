@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -69,12 +68,12 @@ func MakePrinter(ptr unsafe.Pointer) Printer {
 }
 
 func (pc _PrinterClass) Alloc() Printer {
-	rv := ffi.CallMethod[Printer](pc, "alloc")
+	rv := objc.CallMethod[Printer](pc, "alloc")
 	return rv
 }
 
 func (pc _PrinterClass) New() Printer {
-	rv := ffi.CallMethod[Printer](pc, "new")
+	rv := objc.CallMethod[Printer](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -84,159 +83,159 @@ func NewPrinter() Printer {
 }
 
 func (p_ Printer) Init() Printer {
-	rv := ffi.CallMethod[Printer](p_, "init")
+	rv := objc.CallMethod[Printer](p_, "init")
 	return rv
 }
 
 func (pc _PrinterClass) PrinterWithName(name string) Printer {
-	rv := ffi.CallMethod[Printer](pc, "printerWithName:", name)
+	rv := objc.CallMethod[Printer](pc, "printerWithName:", name)
 	return rv
 }
 
 func (pc _PrinterClass) PrinterWithType(type_ PrinterTypeName) Printer {
-	rv := ffi.CallMethod[Printer](pc, "printerWithType:", type_)
+	rv := objc.CallMethod[Printer](pc, "printerWithType:", type_)
 	return rv
 }
 
 func (p_ Printer) PageSizeForPaper(paperName PrinterPaperName) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](p_, "pageSizeForPaper:", paperName)
+	rv := objc.CallMethod[foundation.Size](p_, "pageSizeForPaper:", paperName)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) IsKey_InTable(key string, table string) bool {
-	rv := ffi.CallMethod[bool](p_, "isKey:inTable:", key, table)
+	rv := objc.CallMethod[bool](p_, "isKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) StringForKey_InTable(key string, table string) string {
-	rv := ffi.CallMethod[string](p_, "stringForKey:inTable:", key, table)
+	rv := objc.CallMethod[string](p_, "stringForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) StringListForKey_InTable(key string, table string) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](p_, "stringListForKey:inTable:", key, table)
+	rv := objc.CallMethod[[]objc.Object](p_, "stringListForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) BooleanForKey_InTable(key string, table string) bool {
-	rv := ffi.CallMethod[bool](p_, "booleanForKey:inTable:", key, table)
+	rv := objc.CallMethod[bool](p_, "booleanForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) FloatForKey_InTable(key string, table string) float32 {
-	rv := ffi.CallMethod[float32](p_, "floatForKey:inTable:", key, table)
+	rv := objc.CallMethod[float32](p_, "floatForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) IntForKey_InTable(key string, table string) int32 {
-	rv := ffi.CallMethod[int32](p_, "intForKey:inTable:", key, table)
+	rv := objc.CallMethod[int32](p_, "intForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) RectForKey_InTable(key string, table string) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](p_, "rectForKey:inTable:", key, table)
+	rv := objc.CallMethod[foundation.Rect](p_, "rectForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) SizeForKey_InTable(key string, table string) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](p_, "sizeForKey:inTable:", key, table)
+	rv := objc.CallMethod[foundation.Size](p_, "sizeForKey:inTable:", key, table)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) StatusForTable(tableName string) PrinterTableStatus {
-	rv := ffi.CallMethod[PrinterTableStatus](p_, "statusForTable:", tableName)
+	rv := objc.CallMethod[PrinterTableStatus](p_, "statusForTable:", tableName)
 	return rv
 }
 
 // deprecated
 func (pc _PrinterClass) PrinterWithName_Domain_IncludeUnavailable(name string, domain string, flag bool) Printer {
-	rv := ffi.CallMethod[Printer](pc, "printerWithName:domain:includeUnavailable:", name, domain, flag)
+	rv := objc.CallMethod[Printer](pc, "printerWithName:domain:includeUnavailable:", name, domain, flag)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) AcceptsBinary() bool {
-	rv := ffi.CallMethod[bool](p_, "acceptsBinary")
+	rv := objc.CallMethod[bool](p_, "acceptsBinary")
 	return rv
 }
 
 // deprecated
 func (p_ Printer) Domain() string {
-	rv := ffi.CallMethod[string](p_, "domain")
+	rv := objc.CallMethod[string](p_, "domain")
 	return rv
 }
 
 // deprecated
 func (p_ Printer) Host() string {
-	rv := ffi.CallMethod[string](p_, "host")
+	rv := objc.CallMethod[string](p_, "host")
 	return rv
 }
 
 // deprecated
 func (p_ Printer) ImageRectForPaper(paperName string) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](p_, "imageRectForPaper:", paperName)
+	rv := objc.CallMethod[foundation.Rect](p_, "imageRectForPaper:", paperName)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) IsColor() bool {
-	rv := ffi.CallMethod[bool](p_, "isColor")
+	rv := objc.CallMethod[bool](p_, "isColor")
 	return rv
 }
 
 // deprecated
 func (p_ Printer) IsFontAvailable(faceName string) bool {
-	rv := ffi.CallMethod[bool](p_, "isFontAvailable:", faceName)
+	rv := objc.CallMethod[bool](p_, "isFontAvailable:", faceName)
 	return rv
 }
 
 // deprecated
 func (p_ Printer) IsOutputStackInReverseOrder() bool {
-	rv := ffi.CallMethod[bool](p_, "isOutputStackInReverseOrder")
+	rv := objc.CallMethod[bool](p_, "isOutputStackInReverseOrder")
 	return rv
 }
 
 // deprecated
 func (p_ Printer) Note() string {
-	rv := ffi.CallMethod[string](p_, "note")
+	rv := objc.CallMethod[string](p_, "note")
 	return rv
 }
 
 func (pc _PrinterClass) PrinterNames() []string {
-	rv := ffi.CallMethod[[]string](pc, "printerNames")
+	rv := objc.CallMethod[[]string](pc, "printerNames")
 	return rv
 }
 
 func (pc _PrinterClass) PrinterTypes() []PrinterTypeName {
-	rv := ffi.CallMethod[[]PrinterTypeName](pc, "printerTypes")
+	rv := objc.CallMethod[[]PrinterTypeName](pc, "printerTypes")
 	return rv
 }
 
 func (p_ Printer) Name() string {
-	rv := ffi.CallMethod[string](p_, "name")
+	rv := objc.CallMethod[string](p_, "name")
 	return rv
 }
 
 func (p_ Printer) Type() PrinterTypeName {
-	rv := ffi.CallMethod[PrinterTypeName](p_, "type")
+	rv := objc.CallMethod[PrinterTypeName](p_, "type")
 	return rv
 }
 
 func (p_ Printer) LanguageLevel() int {
-	rv := ffi.CallMethod[int](p_, "languageLevel")
+	rv := objc.CallMethod[int](p_, "languageLevel")
 	return rv
 }
 
 func (p_ Printer) DeviceDescription() map[DeviceDescriptionKey]objc.Object {
-	rv := ffi.CallMethod[map[DeviceDescriptionKey]objc.Object](p_, "deviceDescription")
+	rv := objc.CallMethod[map[DeviceDescriptionKey]objc.Object](p_, "deviceDescription")
 	return rv
 }

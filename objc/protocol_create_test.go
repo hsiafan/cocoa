@@ -1,11 +1,9 @@
-package ffi
+package objc
 
 import (
 	"bytes"
 	"reflect"
 	"testing"
-
-	"github.com/hsiafan/cocoa/objc"
 )
 
 func Test_stringConvert(t *testing.T) {
@@ -43,15 +41,15 @@ func Test_sliceConvert(t *testing.T) {
 }
 
 func Test_mapConvert(t *testing.T) {
-	o1 := objc.NewObject()
-	o2 := objc.NewObject()
-	m := map[string]objc.IObject{
+	o1 := NewObject()
+	o2 := NewObject()
+	m := map[string]IObject{
 		"1": o1,
 		"2": o2,
 	}
 	ptr := ToNSDict(reflect.ValueOf(m))
-	nm := ToGoMap(ptr, reflect.TypeOf(map[string]objc.Object{})).Interface().(map[string]objc.Object)
-	if len(m) != len(nm) || m["1"].(objc.Object) != nm["1"] {
+	nm := ToGoMap(ptr, reflect.TypeOf(map[string]Object{})).Interface().(map[string]Object)
+	if len(m) != len(nm) || m["1"].(Object) != nm["1"] {
 		t.Fail()
 	}
 }

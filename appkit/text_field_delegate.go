@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -70,7 +69,7 @@ func (t_ *TextFieldDelegateWrapper) ImplementsTextField_TextView_Candidates_ForS
 }
 
 func (t_ TextFieldDelegateWrapper) TextField_TextView_Candidates_ForSelectedRange(textField ITextField, textView ITextView, candidates []foundation.ITextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
-	rv := ffi.CallMethod[[]foundation.TextCheckingResult](t_, "textField:textView:candidates:forSelectedRange:", textField, textView, candidates, selectedRange)
+	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, "textField:textView:candidates:forSelectedRange:", textField, textView, candidates, selectedRange)
 	return rv
 }
 
@@ -79,7 +78,7 @@ func (t_ *TextFieldDelegateWrapper) ImplementsTextField_TextView_CandidatesForSe
 }
 
 func (t_ TextFieldDelegateWrapper) TextField_TextView_CandidatesForSelectedRange(textField ITextField, textView ITextView, selectedRange foundation.Range) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](t_, "textField:textView:candidatesForSelectedRange:", textField, textView, selectedRange)
+	rv := objc.CallMethod[[]objc.Object](t_, "textField:textView:candidatesForSelectedRange:", textField, textView, selectedRange)
 	return rv
 }
 
@@ -88,6 +87,6 @@ func (t_ *TextFieldDelegateWrapper) ImplementsTextField_TextView_ShouldSelectCan
 }
 
 func (t_ TextFieldDelegateWrapper) TextField_TextView_ShouldSelectCandidateAtIndex(textField ITextField, textView ITextView, index uint) bool {
-	rv := ffi.CallMethod[bool](t_, "textField:textView:shouldSelectCandidateAtIndex:", textField, textView, index)
+	rv := objc.CallMethod[bool](t_, "textField:textView:shouldSelectCandidateAtIndex:", textField, textView, index)
 	return rv
 }

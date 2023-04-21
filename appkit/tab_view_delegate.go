@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -82,7 +81,7 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabViewDidChangeNumberOfTabViewItems
 }
 
 func (t_ TabViewDelegateWrapper) TabViewDidChangeNumberOfTabViewItems(tabView ITabView) {
-	ffi.CallMethod[ffi.Void](t_, "tabViewDidChangeNumberOfTabViewItems:", tabView)
+	objc.CallMethod[objc.Void](t_, "tabViewDidChangeNumberOfTabViewItems:", tabView)
 }
 
 func (t_ *TabViewDelegateWrapper) ImplementsTabView_ShouldSelectTabViewItem() bool {
@@ -90,7 +89,7 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabView_ShouldSelectTabViewItem() bo
 }
 
 func (t_ TabViewDelegateWrapper) TabView_ShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
-	rv := ffi.CallMethod[bool](t_, "tabView:shouldSelectTabViewItem:", tabView, tabViewItem)
+	rv := objc.CallMethod[bool](t_, "tabView:shouldSelectTabViewItem:", tabView, tabViewItem)
 	return rv
 }
 
@@ -99,7 +98,7 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabView_WillSelectTabViewItem() bool
 }
 
 func (t_ TabViewDelegateWrapper) TabView_WillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	ffi.CallMethod[ffi.Void](t_, "tabView:willSelectTabViewItem:", tabView, tabViewItem)
+	objc.CallMethod[objc.Void](t_, "tabView:willSelectTabViewItem:", tabView, tabViewItem)
 }
 
 func (t_ *TabViewDelegateWrapper) ImplementsTabView_DidSelectTabViewItem() bool {
@@ -107,5 +106,5 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabView_DidSelectTabViewItem() bool 
 }
 
 func (t_ TabViewDelegateWrapper) TabView_DidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	ffi.CallMethod[ffi.Void](t_, "tabView:didSelectTabViewItem:", tabView, tabViewItem)
+	objc.CallMethod[objc.Void](t_, "tabView:didSelectTabViewItem:", tabView, tabViewItem)
 }

@@ -2,7 +2,6 @@
 package webkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -16,5 +15,5 @@ type ScriptMessageHandlerWithReplyWrapper struct {
 }
 
 func (s_ ScriptMessageHandlerWithReplyWrapper) UserContentController_DidReceiveScriptMessage_ReplyHandler(userContentController IUserContentController, message IScriptMessage, replyHandler func(reply objc.Object, errorMessage string)) {
-	ffi.CallMethod[ffi.Void](s_, "userContentController:didReceiveScriptMessage:replyHandler:", userContentController, message, replyHandler)
+	objc.CallMethod[objc.Void](s_, "userContentController:didReceiveScriptMessage:replyHandler:", userContentController, message, replyHandler)
 }

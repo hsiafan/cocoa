@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -90,12 +89,12 @@ func MakeFontManager(ptr unsafe.Pointer) FontManager {
 }
 
 func (fc _FontManagerClass) Alloc() FontManager {
-	rv := ffi.CallMethod[FontManager](fc, "alloc")
+	rv := objc.CallMethod[FontManager](fc, "alloc")
 	return rv
 }
 
 func (fc _FontManagerClass) New() FontManager {
-	rv := ffi.CallMethod[FontManager](fc, "new")
+	rv := objc.CallMethod[FontManager](fc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -105,264 +104,264 @@ func NewFontManager() FontManager {
 }
 
 func (f_ FontManager) Init() FontManager {
-	rv := ffi.CallMethod[FontManager](f_, "init")
+	rv := objc.CallMethod[FontManager](f_, "init")
 	return rv
 }
 
 func (fc _FontManagerClass) SetFontManagerFactory(factoryId objc.IClass) {
-	ffi.CallMethod[ffi.Void](fc, "setFontManagerFactory:", factoryId)
+	objc.CallMethod[objc.Void](fc, "setFontManagerFactory:", factoryId)
 }
 
 func (fc _FontManagerClass) SetFontPanelFactory(factoryId objc.IClass) {
-	ffi.CallMethod[ffi.Void](fc, "setFontPanelFactory:", factoryId)
+	objc.CallMethod[objc.Void](fc, "setFontPanelFactory:", factoryId)
 }
 
 func (f_ FontManager) AvailableFontNamesWithTraits(someTraits FontTraitMask) []string {
-	rv := ffi.CallMethod[[]string](f_, "availableFontNamesWithTraits:", someTraits)
+	rv := objc.CallMethod[[]string](f_, "availableFontNamesWithTraits:", someTraits)
 	return rv
 }
 
 func (f_ FontManager) AvailableMembersOfFontFamily(fam string) [][]objc.Object {
-	rv := ffi.CallMethod[[][]objc.Object](f_, "availableMembersOfFontFamily:", fam)
+	rv := objc.CallMethod[[][]objc.Object](f_, "availableMembersOfFontFamily:", fam)
 	return rv
 }
 
 func (f_ FontManager) SetSelectedFont_IsMultiple(fontObj IFont, flag bool) {
-	ffi.CallMethod[ffi.Void](f_, "setSelectedFont:isMultiple:", fontObj, flag)
+	objc.CallMethod[objc.Void](f_, "setSelectedFont:isMultiple:", fontObj, flag)
 }
 
 func (f_ FontManager) SendAction() bool {
-	rv := ffi.CallMethod[bool](f_, "sendAction")
+	rv := objc.CallMethod[bool](f_, "sendAction")
 	return rv
 }
 
 func (f_ FontManager) LocalizedNameForFamily_Face(family string, faceKey string) string {
-	rv := ffi.CallMethod[string](f_, "localizedNameForFamily:face:", family, faceKey)
+	rv := objc.CallMethod[string](f_, "localizedNameForFamily:face:", family, faceKey)
 	return rv
 }
 
 func (f_ FontManager) AddFontTrait(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "addFontTrait:", sender)
+	objc.CallMethod[objc.Void](f_, "addFontTrait:", sender)
 }
 
 func (f_ FontManager) RemoveFontTrait(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "removeFontTrait:", sender)
+	objc.CallMethod[objc.Void](f_, "removeFontTrait:", sender)
 }
 
 func (f_ FontManager) ModifyFont(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "modifyFont:", sender)
+	objc.CallMethod[objc.Void](f_, "modifyFont:", sender)
 }
 
 func (f_ FontManager) ModifyFontViaPanel(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "modifyFontViaPanel:", sender)
+	objc.CallMethod[objc.Void](f_, "modifyFontViaPanel:", sender)
 }
 
 func (f_ FontManager) OrderFrontStylesPanel(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "orderFrontStylesPanel:", sender)
+	objc.CallMethod[objc.Void](f_, "orderFrontStylesPanel:", sender)
 }
 
 func (f_ FontManager) OrderFrontFontPanel(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "orderFrontFontPanel:", sender)
+	objc.CallMethod[objc.Void](f_, "orderFrontFontPanel:", sender)
 }
 
 func (f_ FontManager) ConvertFont(fontObj IFont) Font {
-	rv := ffi.CallMethod[Font](f_, "convertFont:", fontObj)
+	rv := objc.CallMethod[Font](f_, "convertFont:", fontObj)
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) ChangeFont(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "changeFont:", sender)
+	objc.CallMethod[objc.Void](f_, "changeFont:", sender)
 }
 
 func (f_ FontManager) ConvertFont_ToFace(fontObj IFont, typeface string) Font {
-	rv := ffi.CallMethod[Font](f_, "convertFont:toFace:", fontObj, typeface)
+	rv := objc.CallMethod[Font](f_, "convertFont:toFace:", fontObj, typeface)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToFamily(fontObj IFont, family string) Font {
-	rv := ffi.CallMethod[Font](f_, "convertFont:toFamily:", fontObj, family)
+	rv := objc.CallMethod[Font](f_, "convertFont:toFamily:", fontObj, family)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := ffi.CallMethod[Font](f_, "convertFont:toHaveTrait:", fontObj, trait)
+	rv := objc.CallMethod[Font](f_, "convertFont:toHaveTrait:", fontObj, trait)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToNotHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := ffi.CallMethod[Font](f_, "convertFont:toNotHaveTrait:", fontObj, trait)
+	rv := objc.CallMethod[Font](f_, "convertFont:toNotHaveTrait:", fontObj, trait)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToSize(fontObj IFont, size float64) Font {
-	rv := ffi.CallMethod[Font](f_, "convertFont:toSize:", fontObj, size)
+	rv := objc.CallMethod[Font](f_, "convertFont:toSize:", fontObj, size)
 	return rv
 }
 
 func (f_ FontManager) ConvertWeight_OfFont(upFlag bool, fontObj IFont) Font {
-	rv := ffi.CallMethod[Font](f_, "convertWeight:ofFont:", upFlag, fontObj)
+	rv := objc.CallMethod[Font](f_, "convertWeight:ofFont:", upFlag, fontObj)
 	return rv
 }
 
 func (f_ FontManager) ConvertFontTraits(traits FontTraitMask) FontTraitMask {
-	rv := ffi.CallMethod[FontTraitMask](f_, "convertFontTraits:", traits)
+	rv := objc.CallMethod[FontTraitMask](f_, "convertFontTraits:", traits)
 	return rv
 }
 
 func (f_ FontManager) FontWithFamily_Traits_Weight_Size(family string, traits FontTraitMask, weight int, size float64) Font {
-	rv := ffi.CallMethod[Font](f_, "fontWithFamily:traits:weight:size:", family, traits, weight, size)
+	rv := objc.CallMethod[Font](f_, "fontWithFamily:traits:weight:size:", family, traits, weight, size)
 	return rv
 }
 
 func (f_ FontManager) TraitsOfFont(fontObj IFont) FontTraitMask {
-	rv := ffi.CallMethod[FontTraitMask](f_, "traitsOfFont:", fontObj)
+	rv := objc.CallMethod[FontTraitMask](f_, "traitsOfFont:", fontObj)
 	return rv
 }
 
 func (f_ FontManager) FontNamed_HasTraits(fName string, someTraits FontTraitMask) bool {
-	rv := ffi.CallMethod[bool](f_, "fontNamed:hasTraits:", fName, someTraits)
+	rv := objc.CallMethod[bool](f_, "fontNamed:hasTraits:", fName, someTraits)
 	return rv
 }
 
 func (f_ FontManager) WeightOfFont(fontObj IFont) int {
-	rv := ffi.CallMethod[int](f_, "weightOfFont:", fontObj)
+	rv := objc.CallMethod[int](f_, "weightOfFont:", fontObj)
 	return rv
 }
 
 func (f_ FontManager) FontPanel(create bool) FontPanel {
-	rv := ffi.CallMethod[FontPanel](f_, "fontPanel:", create)
+	rv := objc.CallMethod[FontPanel](f_, "fontPanel:", create)
 	return rv
 }
 
 func (f_ FontManager) SetFontMenu(newMenu IMenu) {
-	ffi.CallMethod[ffi.Void](f_, "setFontMenu:", newMenu)
+	objc.CallMethod[objc.Void](f_, "setFontMenu:", newMenu)
 }
 
 func (f_ FontManager) FontMenu(create bool) Menu {
-	rv := ffi.CallMethod[Menu](f_, "fontMenu:", create)
+	rv := objc.CallMethod[Menu](f_, "fontMenu:", create)
 	return rv
 }
 
 func (f_ FontManager) SetSelectedAttributes_IsMultiple(attributes map[string]objc.IObject, flag bool) {
-	ffi.CallMethod[ffi.Void](f_, "setSelectedAttributes:isMultiple:", attributes, flag)
+	objc.CallMethod[objc.Void](f_, "setSelectedAttributes:isMultiple:", attributes, flag)
 }
 
 func (f_ FontManager) ConvertAttributes(attributes map[string]objc.IObject) map[string]objc.Object {
-	rv := ffi.CallMethod[map[string]objc.Object](f_, "convertAttributes:", attributes)
+	rv := objc.CallMethod[map[string]objc.Object](f_, "convertAttributes:", attributes)
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) AvailableFontNamesMatchingFontDescriptor(descriptor IFontDescriptor) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](f_, "availableFontNamesMatchingFontDescriptor:", descriptor)
+	rv := objc.CallMethod[[]objc.Object](f_, "availableFontNamesMatchingFontDescriptor:", descriptor)
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) FontDescriptorsInCollection(collectionNames string) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](f_, "fontDescriptorsInCollection:", collectionNames)
+	rv := objc.CallMethod[[]objc.Object](f_, "fontDescriptorsInCollection:", collectionNames)
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) AddCollection_Options(collectionName string, collectionOptions FontCollectionOptions) bool {
-	rv := ffi.CallMethod[bool](f_, "addCollection:options:", collectionName, collectionOptions)
+	rv := objc.CallMethod[bool](f_, "addCollection:options:", collectionName, collectionOptions)
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) RemoveCollection(collectionName string) bool {
-	rv := ffi.CallMethod[bool](f_, "removeCollection:", collectionName)
+	rv := objc.CallMethod[bool](f_, "removeCollection:", collectionName)
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) AddFontDescriptors_ToCollection(descriptors []objc.IObject, collectionName string) {
-	ffi.CallMethod[ffi.Void](f_, "addFontDescriptors:toCollection:", descriptors, collectionName)
+	objc.CallMethod[objc.Void](f_, "addFontDescriptors:toCollection:", descriptors, collectionName)
 }
 
 // deprecated
 func (f_ FontManager) RemoveFontDescriptor_FromCollection(descriptor IFontDescriptor, collection string) {
-	ffi.CallMethod[ffi.Void](f_, "removeFontDescriptor:fromCollection:", descriptor, collection)
+	objc.CallMethod[objc.Void](f_, "removeFontDescriptor:fromCollection:", descriptor, collection)
 }
 
 // deprecated
 func (f_ FontManager) FontManager_WillIncludeFont(sender objc.IObject, fontName string) bool {
-	rv := ffi.CallMethod[bool](f_, "fontManager:willIncludeFont:", sender, fontName)
+	rv := objc.CallMethod[bool](f_, "fontManager:willIncludeFont:", sender, fontName)
 	return rv
 }
 
 func (fc _FontManagerClass) SharedFontManager() FontManager {
-	rv := ffi.CallMethod[FontManager](fc, "sharedFontManager")
+	rv := objc.CallMethod[FontManager](fc, "sharedFontManager")
 	return rv
 }
 
 func (f_ FontManager) AvailableFonts() []string {
-	rv := ffi.CallMethod[[]string](f_, "availableFonts")
+	rv := objc.CallMethod[[]string](f_, "availableFonts")
 	return rv
 }
 
 func (f_ FontManager) AvailableFontFamilies() []string {
-	rv := ffi.CallMethod[[]string](f_, "availableFontFamilies")
+	rv := objc.CallMethod[[]string](f_, "availableFontFamilies")
 	return rv
 }
 
 func (f_ FontManager) SelectedFont() Font {
-	rv := ffi.CallMethod[Font](f_, "selectedFont")
+	rv := objc.CallMethod[Font](f_, "selectedFont")
 	return rv
 }
 
 func (f_ FontManager) IsMultiple() bool {
-	rv := ffi.CallMethod[bool](f_, "isMultiple")
+	rv := objc.CallMethod[bool](f_, "isMultiple")
 	return rv
 }
 
 func (f_ FontManager) CurrentFontAction() FontAction {
-	rv := ffi.CallMethod[FontAction](f_, "currentFontAction")
+	rv := objc.CallMethod[FontAction](f_, "currentFontAction")
 	return rv
 }
 
 func (f_ FontManager) IsEnabled() bool {
-	rv := ffi.CallMethod[bool](f_, "isEnabled")
+	rv := objc.CallMethod[bool](f_, "isEnabled")
 	return rv
 }
 
 func (f_ FontManager) SetEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](f_, "setEnabled:", value)
+	objc.CallMethod[objc.Void](f_, "setEnabled:", value)
 }
 
 func (f_ FontManager) Action() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](f_, "action")
+	rv := objc.CallMethod[objc.Selector](f_, "action")
 	return rv
 }
 
 func (f_ FontManager) SetAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](f_, "setAction:", value)
+	objc.CallMethod[objc.Void](f_, "setAction:", value)
 }
 
 func (f_ FontManager) Target() objc.Object {
-	rv := ffi.CallMethod[objc.Object](f_, "target")
+	rv := objc.CallMethod[objc.Object](f_, "target")
 	return rv
 }
 
 func (f_ FontManager) SetTarget(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "setTarget:", value)
+	objc.CallMethod[objc.Void](f_, "setTarget:", value)
 }
 
 // deprecated
 func (f_ FontManager) CollectionNames() []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](f_, "collectionNames")
+	rv := objc.CallMethod[[]objc.Object](f_, "collectionNames")
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) Delegate() objc.Object {
-	rv := ffi.CallMethod[objc.Object](f_, "delegate")
+	rv := objc.CallMethod[objc.Object](f_, "delegate")
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) SetDelegate(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](f_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](f_, "setDelegate:", value)
 }

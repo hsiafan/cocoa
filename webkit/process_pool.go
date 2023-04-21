@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -29,12 +28,12 @@ func MakeProcessPool(ptr unsafe.Pointer) ProcessPool {
 }
 
 func (pc _ProcessPoolClass) Alloc() ProcessPool {
-	rv := ffi.CallMethod[ProcessPool](pc, "alloc")
+	rv := objc.CallMethod[ProcessPool](pc, "alloc")
 	return rv
 }
 
 func (pc _ProcessPoolClass) New() ProcessPool {
-	rv := ffi.CallMethod[ProcessPool](pc, "new")
+	rv := objc.CallMethod[ProcessPool](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -44,6 +43,6 @@ func NewProcessPool() ProcessPool {
 }
 
 func (p_ ProcessPool) Init() ProcessPool {
-	rv := ffi.CallMethod[ProcessPool](p_, "init")
+	rv := objc.CallMethod[ProcessPool](p_, "init")
 	return rv
 }

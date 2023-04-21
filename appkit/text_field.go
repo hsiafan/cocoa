@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -78,42 +77,42 @@ func MakeTextField(ptr unsafe.Pointer) TextField {
 }
 
 func (tc _TextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TextField {
-	rv := ffi.CallMethod[TextField](tc, "labelWithAttributedString:", attributedStringValue)
+	rv := objc.CallMethod[TextField](tc, "labelWithAttributedString:", attributedStringValue)
 	return rv
 }
 
 func (tc _TextFieldClass) LabelWithString(stringValue string) TextField {
-	rv := ffi.CallMethod[TextField](tc, "labelWithString:", stringValue)
+	rv := objc.CallMethod[TextField](tc, "labelWithString:", stringValue)
 	return rv
 }
 
 func (tc _TextFieldClass) TextFieldWithString(stringValue string) TextField {
-	rv := ffi.CallMethod[TextField](tc, "textFieldWithString:", stringValue)
+	rv := objc.CallMethod[TextField](tc, "textFieldWithString:", stringValue)
 	return rv
 }
 
 func (tc _TextFieldClass) WrappingLabelWithString(stringValue string) TextField {
-	rv := ffi.CallMethod[TextField](tc, "wrappingLabelWithString:", stringValue)
+	rv := objc.CallMethod[TextField](tc, "wrappingLabelWithString:", stringValue)
 	return rv
 }
 
 func (t_ TextField) InitWithFrame(frameRect foundation.Rect) TextField {
-	rv := ffi.CallMethod[TextField](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TextField](t_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (t_ TextField) Init() TextField {
-	rv := ffi.CallMethod[TextField](t_, "init")
+	rv := objc.CallMethod[TextField](t_, "init")
 	return rv
 }
 
 func (tc _TextFieldClass) Alloc() TextField {
-	rv := ffi.CallMethod[TextField](tc, "alloc")
+	rv := objc.CallMethod[TextField](tc, "alloc")
 	return rv
 }
 
 func (tc _TextFieldClass) New() TextField {
-	rv := ffi.CallMethod[TextField](tc, "new")
+	rv := objc.CallMethod[TextField](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -123,210 +122,210 @@ func NewTextField() TextField {
 }
 
 func (t_ TextField) SelectText(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "selectText:", sender)
+	objc.CallMethod[objc.Void](t_, "selectText:", sender)
 }
 
 // deprecated
 func (t_ TextField) SetTitleWithMnemonic(stringWithAmpersand string) {
-	ffi.CallMethod[ffi.Void](t_, "setTitleWithMnemonic:", stringWithAmpersand)
+	objc.CallMethod[objc.Void](t_, "setTitleWithMnemonic:", stringWithAmpersand)
 }
 
 func (t_ TextField) TextShouldBeginEditing(textObject IText) bool {
-	rv := ffi.CallMethod[bool](t_, "textShouldBeginEditing:", textObject)
+	rv := objc.CallMethod[bool](t_, "textShouldBeginEditing:", textObject)
 	return rv
 }
 
 func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "textDidBeginEditing:", notification)
+	objc.CallMethod[objc.Void](t_, "textDidBeginEditing:", notification)
 }
 
 func (t_ TextField) TextDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "textDidChange:", notification)
+	objc.CallMethod[objc.Void](t_, "textDidChange:", notification)
 }
 
 func (t_ TextField) TextShouldEndEditing(textObject IText) bool {
-	rv := ffi.CallMethod[bool](t_, "textShouldEndEditing:", textObject)
+	rv := objc.CallMethod[bool](t_, "textShouldEndEditing:", textObject)
 	return rv
 }
 
 func (t_ TextField) TextDidEndEditing(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "textDidEndEditing:", notification)
+	objc.CallMethod[objc.Void](t_, "textDidEndEditing:", notification)
 }
 
 func (t_ TextField) IsSelectable() bool {
-	rv := ffi.CallMethod[bool](t_, "isSelectable")
+	rv := objc.CallMethod[bool](t_, "isSelectable")
 	return rv
 }
 
 func (t_ TextField) SetSelectable(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setSelectable:", value)
+	objc.CallMethod[objc.Void](t_, "setSelectable:", value)
 }
 
 func (t_ TextField) IsEditable() bool {
-	rv := ffi.CallMethod[bool](t_, "isEditable")
+	rv := objc.CallMethod[bool](t_, "isEditable")
 	return rv
 }
 
 func (t_ TextField) SetEditable(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setEditable:", value)
+	objc.CallMethod[objc.Void](t_, "setEditable:", value)
 }
 
 func (t_ TextField) AllowsEditingTextAttributes() bool {
-	rv := ffi.CallMethod[bool](t_, "allowsEditingTextAttributes")
+	rv := objc.CallMethod[bool](t_, "allowsEditingTextAttributes")
 	return rv
 }
 
 func (t_ TextField) SetAllowsEditingTextAttributes(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAllowsEditingTextAttributes:", value)
+	objc.CallMethod[objc.Void](t_, "setAllowsEditingTextAttributes:", value)
 }
 
 func (t_ TextField) ImportsGraphics() bool {
-	rv := ffi.CallMethod[bool](t_, "importsGraphics")
+	rv := objc.CallMethod[bool](t_, "importsGraphics")
 	return rv
 }
 
 func (t_ TextField) SetImportsGraphics(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setImportsGraphics:", value)
+	objc.CallMethod[objc.Void](t_, "setImportsGraphics:", value)
 }
 
 func (t_ TextField) PlaceholderString() string {
-	rv := ffi.CallMethod[string](t_, "placeholderString")
+	rv := objc.CallMethod[string](t_, "placeholderString")
 	return rv
 }
 
 func (t_ TextField) SetPlaceholderString(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setPlaceholderString:", value)
+	objc.CallMethod[objc.Void](t_, "setPlaceholderString:", value)
 }
 
 func (t_ TextField) PlaceholderAttributedString() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](t_, "placeholderAttributedString")
+	rv := objc.CallMethod[foundation.AttributedString](t_, "placeholderAttributedString")
 	return rv
 }
 
 func (t_ TextField) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](t_, "setPlaceholderAttributedString:", value)
+	objc.CallMethod[objc.Void](t_, "setPlaceholderAttributedString:", value)
 }
 
 func (t_ TextField) LineBreakStrategy() LineBreakStrategy {
-	rv := ffi.CallMethod[LineBreakStrategy](t_, "lineBreakStrategy")
+	rv := objc.CallMethod[LineBreakStrategy](t_, "lineBreakStrategy")
 	return rv
 }
 
 func (t_ TextField) SetLineBreakStrategy(value LineBreakStrategy) {
-	ffi.CallMethod[ffi.Void](t_, "setLineBreakStrategy:", value)
+	objc.CallMethod[objc.Void](t_, "setLineBreakStrategy:", value)
 }
 
 func (t_ TextField) AllowsDefaultTighteningForTruncation() bool {
-	rv := ffi.CallMethod[bool](t_, "allowsDefaultTighteningForTruncation")
+	rv := objc.CallMethod[bool](t_, "allowsDefaultTighteningForTruncation")
 	return rv
 }
 
 func (t_ TextField) SetAllowsDefaultTighteningForTruncation(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAllowsDefaultTighteningForTruncation:", value)
+	objc.CallMethod[objc.Void](t_, "setAllowsDefaultTighteningForTruncation:", value)
 }
 
 func (t_ TextField) MaximumNumberOfLines() int {
-	rv := ffi.CallMethod[int](t_, "maximumNumberOfLines")
+	rv := objc.CallMethod[int](t_, "maximumNumberOfLines")
 	return rv
 }
 
 func (t_ TextField) SetMaximumNumberOfLines(value int) {
-	ffi.CallMethod[ffi.Void](t_, "setMaximumNumberOfLines:", value)
+	objc.CallMethod[objc.Void](t_, "setMaximumNumberOfLines:", value)
 }
 
 func (t_ TextField) PreferredMaxLayoutWidth() float64 {
-	rv := ffi.CallMethod[float64](t_, "preferredMaxLayoutWidth")
+	rv := objc.CallMethod[float64](t_, "preferredMaxLayoutWidth")
 	return rv
 }
 
 func (t_ TextField) SetPreferredMaxLayoutWidth(value float64) {
-	ffi.CallMethod[ffi.Void](t_, "setPreferredMaxLayoutWidth:", value)
+	objc.CallMethod[objc.Void](t_, "setPreferredMaxLayoutWidth:", value)
 }
 
 func (t_ TextField) TextColor() Color {
-	rv := ffi.CallMethod[Color](t_, "textColor")
+	rv := objc.CallMethod[Color](t_, "textColor")
 	return rv
 }
 
 func (t_ TextField) SetTextColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setTextColor:", value)
+	objc.CallMethod[objc.Void](t_, "setTextColor:", value)
 }
 
 func (t_ TextField) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](t_, "backgroundColor")
+	rv := objc.CallMethod[Color](t_, "backgroundColor")
 	return rv
 }
 
 func (t_ TextField) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](t_, "setBackgroundColor:", value)
 }
 
 func (t_ TextField) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](t_, "drawsBackground")
+	rv := objc.CallMethod[bool](t_, "drawsBackground")
 	return rv
 }
 
 func (t_ TextField) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](t_, "setDrawsBackground:", value)
 }
 
 func (t_ TextField) IsBezeled() bool {
-	rv := ffi.CallMethod[bool](t_, "isBezeled")
+	rv := objc.CallMethod[bool](t_, "isBezeled")
 	return rv
 }
 
 func (t_ TextField) SetBezeled(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setBezeled:", value)
+	objc.CallMethod[objc.Void](t_, "setBezeled:", value)
 }
 
 func (t_ TextField) BezelStyle() TextFieldBezelStyle {
-	rv := ffi.CallMethod[TextFieldBezelStyle](t_, "bezelStyle")
+	rv := objc.CallMethod[TextFieldBezelStyle](t_, "bezelStyle")
 	return rv
 }
 
 func (t_ TextField) SetBezelStyle(value TextFieldBezelStyle) {
-	ffi.CallMethod[ffi.Void](t_, "setBezelStyle:", value)
+	objc.CallMethod[objc.Void](t_, "setBezelStyle:", value)
 }
 
 func (t_ TextField) IsBordered() bool {
-	rv := ffi.CallMethod[bool](t_, "isBordered")
+	rv := objc.CallMethod[bool](t_, "isBordered")
 	return rv
 }
 
 func (t_ TextField) SetBordered(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setBordered:", value)
+	objc.CallMethod[objc.Void](t_, "setBordered:", value)
 }
 
 func (t_ TextField) AllowsCharacterPickerTouchBarItem() bool {
-	rv := ffi.CallMethod[bool](t_, "allowsCharacterPickerTouchBarItem")
+	rv := objc.CallMethod[bool](t_, "allowsCharacterPickerTouchBarItem")
 	return rv
 }
 
 func (t_ TextField) SetAllowsCharacterPickerTouchBarItem(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAllowsCharacterPickerTouchBarItem:", value)
+	objc.CallMethod[objc.Void](t_, "setAllowsCharacterPickerTouchBarItem:", value)
 }
 
 func (t_ TextField) IsAutomaticTextCompletionEnabled() bool {
-	rv := ffi.CallMethod[bool](t_, "isAutomaticTextCompletionEnabled")
+	rv := objc.CallMethod[bool](t_, "isAutomaticTextCompletionEnabled")
 	return rv
 }
 
 func (t_ TextField) SetAutomaticTextCompletionEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAutomaticTextCompletionEnabled:", value)
+	objc.CallMethod[objc.Void](t_, "setAutomaticTextCompletionEnabled:", value)
 }
 
 func (t_ TextField) Delegate() TextFieldDelegateWrapper {
-	rv := ffi.CallMethod[TextFieldDelegateWrapper](t_, "delegate")
+	rv := objc.CallMethod[TextFieldDelegateWrapper](t_, "delegate")
 	return rv
 }
 
 func (t_ TextField) SetDelegate(value TextFieldDelegate) {
-	po := ffi.CreateProtocol("NSTextFieldDelegate", value)
+	po := objc.CreateProtocol("NSTextFieldDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](t_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](t_, "setDelegate:", po)
 }
 
 func (t_ TextField) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](t_, "setDelegate:", value)
 }

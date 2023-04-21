@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,12 +36,12 @@ func MakePort(ptr unsafe.Pointer) Port {
 }
 
 func (pc _PortClass) Alloc() Port {
-	rv := ffi.CallMethod[Port](pc, "alloc")
+	rv := objc.CallMethod[Port](pc, "alloc")
 	return rv
 }
 
 func (pc _PortClass) New() Port {
-	rv := ffi.CallMethod[Port](pc, "new")
+	rv := objc.CallMethod[Port](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -52,48 +51,48 @@ func NewPort() Port {
 }
 
 func (p_ Port) Init() Port {
-	rv := ffi.CallMethod[Port](p_, "init")
+	rv := objc.CallMethod[Port](p_, "init")
 	return rv
 }
 
 func (pc _PortClass) Port() Port {
-	rv := ffi.CallMethod[Port](pc, "port")
+	rv := objc.CallMethod[Port](pc, "port")
 	return rv
 }
 
 func (p_ Port) Invalidate() {
-	ffi.CallMethod[ffi.Void](p_, "invalidate")
+	objc.CallMethod[objc.Void](p_, "invalidate")
 }
 
 func (p_ Port) SetDelegate(anObject PortDelegate) {
-	po := ffi.CreateProtocol("NSPortDelegate", anObject)
+	po := objc.CreateProtocol("NSPortDelegate", anObject)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](p_, "setDelegate:", po)
 }
 
 func (p_ Port) SetDelegate0(anObject objc.IObject) {
-	ffi.CallMethod[ffi.Void](p_, "setDelegate:", anObject)
+	objc.CallMethod[objc.Void](p_, "setDelegate:", anObject)
 }
 
 func (p_ Port) Delegate() PortDelegateWrapper {
-	rv := ffi.CallMethod[PortDelegateWrapper](p_, "delegate")
+	rv := objc.CallMethod[PortDelegateWrapper](p_, "delegate")
 	return rv
 }
 
 func (p_ Port) RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode) {
-	ffi.CallMethod[ffi.Void](p_, "removeFromRunLoop:forMode:", runLoop, mode)
+	objc.CallMethod[objc.Void](p_, "removeFromRunLoop:forMode:", runLoop, mode)
 }
 
 func (p_ Port) ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode) {
-	ffi.CallMethod[ffi.Void](p_, "scheduleInRunLoop:forMode:", runLoop, mode)
+	objc.CallMethod[objc.Void](p_, "scheduleInRunLoop:forMode:", runLoop, mode)
 }
 
 func (p_ Port) IsValid() bool {
-	rv := ffi.CallMethod[bool](p_, "isValid")
+	rv := objc.CallMethod[bool](p_, "isValid")
 	return rv
 }
 
 func (p_ Port) ReservedSpaceLength() uint {
-	rv := ffi.CallMethod[uint](p_, "reservedSpaceLength")
+	rv := objc.CallMethod[uint](p_, "reservedSpaceLength")
 	return rv
 }

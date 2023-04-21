@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -45,27 +44,27 @@ func MakeTextFieldCell(ptr unsafe.Pointer) TextFieldCell {
 }
 
 func (t_ TextFieldCell) InitTextCell(string_ string) TextFieldCell {
-	rv := ffi.CallMethod[TextFieldCell](t_, "initTextCell:", string_)
+	rv := objc.CallMethod[TextFieldCell](t_, "initTextCell:", string_)
 	return rv
 }
 
 func (t_ TextFieldCell) InitImageCell(image IImage) TextFieldCell {
-	rv := ffi.CallMethod[TextFieldCell](t_, "initImageCell:", image)
+	rv := objc.CallMethod[TextFieldCell](t_, "initImageCell:", image)
 	return rv
 }
 
 func (t_ TextFieldCell) Init() TextFieldCell {
-	rv := ffi.CallMethod[TextFieldCell](t_, "init")
+	rv := objc.CallMethod[TextFieldCell](t_, "init")
 	return rv
 }
 
 func (tc _TextFieldCellClass) Alloc() TextFieldCell {
-	rv := ffi.CallMethod[TextFieldCell](tc, "alloc")
+	rv := objc.CallMethod[TextFieldCell](tc, "alloc")
 	return rv
 }
 
 func (tc _TextFieldCellClass) New() TextFieldCell {
-	rv := ffi.CallMethod[TextFieldCell](tc, "new")
+	rv := objc.CallMethod[TextFieldCell](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -75,68 +74,68 @@ func NewTextFieldCell() TextFieldCell {
 }
 
 func (t_ TextFieldCell) SetWantsNotificationForMarkedText(flag bool) {
-	ffi.CallMethod[ffi.Void](t_, "setWantsNotificationForMarkedText:", flag)
+	objc.CallMethod[objc.Void](t_, "setWantsNotificationForMarkedText:", flag)
 }
 
 func (t_ TextFieldCell) TextColor() Color {
-	rv := ffi.CallMethod[Color](t_, "textColor")
+	rv := objc.CallMethod[Color](t_, "textColor")
 	return rv
 }
 
 func (t_ TextFieldCell) SetTextColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setTextColor:", value)
+	objc.CallMethod[objc.Void](t_, "setTextColor:", value)
 }
 
 func (t_ TextFieldCell) BezelStyle() TextFieldBezelStyle {
-	rv := ffi.CallMethod[TextFieldBezelStyle](t_, "bezelStyle")
+	rv := objc.CallMethod[TextFieldBezelStyle](t_, "bezelStyle")
 	return rv
 }
 
 func (t_ TextFieldCell) SetBezelStyle(value TextFieldBezelStyle) {
-	ffi.CallMethod[ffi.Void](t_, "setBezelStyle:", value)
+	objc.CallMethod[objc.Void](t_, "setBezelStyle:", value)
 }
 
 func (t_ TextFieldCell) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](t_, "backgroundColor")
+	rv := objc.CallMethod[Color](t_, "backgroundColor")
 	return rv
 }
 
 func (t_ TextFieldCell) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](t_, "setBackgroundColor:", value)
 }
 
 func (t_ TextFieldCell) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](t_, "drawsBackground")
+	rv := objc.CallMethod[bool](t_, "drawsBackground")
 	return rv
 }
 
 func (t_ TextFieldCell) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](t_, "setDrawsBackground:", value)
 }
 
 func (t_ TextFieldCell) PlaceholderString() string {
-	rv := ffi.CallMethod[string](t_, "placeholderString")
+	rv := objc.CallMethod[string](t_, "placeholderString")
 	return rv
 }
 
 func (t_ TextFieldCell) SetPlaceholderString(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setPlaceholderString:", value)
+	objc.CallMethod[objc.Void](t_, "setPlaceholderString:", value)
 }
 
 func (t_ TextFieldCell) PlaceholderAttributedString() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](t_, "placeholderAttributedString")
+	rv := objc.CallMethod[foundation.AttributedString](t_, "placeholderAttributedString")
 	return rv
 }
 
 func (t_ TextFieldCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](t_, "setPlaceholderAttributedString:", value)
+	objc.CallMethod[objc.Void](t_, "setPlaceholderAttributedString:", value)
 }
 
 func (t_ TextFieldCell) AllowedInputSourceLocales() []string {
-	rv := ffi.CallMethod[[]string](t_, "allowedInputSourceLocales")
+	rv := objc.CallMethod[[]string](t_, "allowedInputSourceLocales")
 	return rv
 }
 
 func (t_ TextFieldCell) SetAllowedInputSourceLocales(value []string) {
-	ffi.CallMethod[ffi.Void](t_, "setAllowedInputSourceLocales:", value)
+	objc.CallMethod[objc.Void](t_, "setAllowedInputSourceLocales:", value)
 }

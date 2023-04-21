@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,17 +29,17 @@ func MakeValueFunction(ptr unsafe.Pointer) ValueFunction {
 }
 
 func (vc _ValueFunctionClass) FunctionWithName(name ValueFunctionName) ValueFunction {
-	rv := ffi.CallMethod[ValueFunction](vc, "functionWithName:", name)
+	rv := objc.CallMethod[ValueFunction](vc, "functionWithName:", name)
 	return rv
 }
 
 func (vc _ValueFunctionClass) Alloc() ValueFunction {
-	rv := ffi.CallMethod[ValueFunction](vc, "alloc")
+	rv := objc.CallMethod[ValueFunction](vc, "alloc")
 	return rv
 }
 
 func (vc _ValueFunctionClass) New() ValueFunction {
-	rv := ffi.CallMethod[ValueFunction](vc, "new")
+	rv := objc.CallMethod[ValueFunction](vc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,11 +49,11 @@ func NewValueFunction() ValueFunction {
 }
 
 func (v_ ValueFunction) Init() ValueFunction {
-	rv := ffi.CallMethod[ValueFunction](v_, "init")
+	rv := objc.CallMethod[ValueFunction](v_, "init")
 	return rv
 }
 
 func (v_ ValueFunction) Name() ValueFunctionName {
-	rv := ffi.CallMethod[ValueFunctionName](v_, "name")
+	rv := objc.CallMethod[ValueFunctionName](v_, "name")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -75,17 +74,17 @@ func MakeToolbarItem(ptr unsafe.Pointer) ToolbarItem {
 }
 
 func (t_ ToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItem {
-	rv := ffi.CallMethod[ToolbarItem](t_, "initWithItemIdentifier:", itemIdentifier)
+	rv := objc.CallMethod[ToolbarItem](t_, "initWithItemIdentifier:", itemIdentifier)
 	return rv
 }
 
 func (tc _ToolbarItemClass) Alloc() ToolbarItem {
-	rv := ffi.CallMethod[ToolbarItem](tc, "alloc")
+	rv := objc.CallMethod[ToolbarItem](tc, "alloc")
 	return rv
 }
 
 func (tc _ToolbarItemClass) New() ToolbarItem {
-	rv := ffi.CallMethod[ToolbarItem](tc, "new")
+	rv := objc.CallMethod[ToolbarItem](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -95,196 +94,196 @@ func NewToolbarItem() ToolbarItem {
 }
 
 func (t_ ToolbarItem) Init() ToolbarItem {
-	rv := ffi.CallMethod[ToolbarItem](t_, "init")
+	rv := objc.CallMethod[ToolbarItem](t_, "init")
 	return rv
 }
 
 func (t_ ToolbarItem) Validate() {
-	ffi.CallMethod[ffi.Void](t_, "validate")
+	objc.CallMethod[objc.Void](t_, "validate")
 }
 
 func (t_ ToolbarItem) ItemIdentifier() ToolbarItemIdentifier {
-	rv := ffi.CallMethod[ToolbarItemIdentifier](t_, "itemIdentifier")
+	rv := objc.CallMethod[ToolbarItemIdentifier](t_, "itemIdentifier")
 	return rv
 }
 
 func (t_ ToolbarItem) PossibleLabels() foundation.Set {
-	rv := ffi.CallMethod[foundation.Set](t_, "possibleLabels")
+	rv := objc.CallMethod[foundation.Set](t_, "possibleLabels")
 	return rv
 }
 
 func (t_ ToolbarItem) SetPossibleLabels(value foundation.ISet) {
-	ffi.CallMethod[ffi.Void](t_, "setPossibleLabels:", value)
+	objc.CallMethod[objc.Void](t_, "setPossibleLabels:", value)
 }
 
 func (t_ ToolbarItem) Label() string {
-	rv := ffi.CallMethod[string](t_, "label")
+	rv := objc.CallMethod[string](t_, "label")
 	return rv
 }
 
 func (t_ ToolbarItem) SetLabel(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setLabel:", value)
+	objc.CallMethod[objc.Void](t_, "setLabel:", value)
 }
 
 func (t_ ToolbarItem) PaletteLabel() string {
-	rv := ffi.CallMethod[string](t_, "paletteLabel")
+	rv := objc.CallMethod[string](t_, "paletteLabel")
 	return rv
 }
 
 func (t_ ToolbarItem) SetPaletteLabel(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setPaletteLabel:", value)
+	objc.CallMethod[objc.Void](t_, "setPaletteLabel:", value)
 }
 
 func (t_ ToolbarItem) Title() string {
-	rv := ffi.CallMethod[string](t_, "title")
+	rv := objc.CallMethod[string](t_, "title")
 	return rv
 }
 
 func (t_ ToolbarItem) SetTitle(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setTitle:", value)
+	objc.CallMethod[objc.Void](t_, "setTitle:", value)
 }
 
 func (t_ ToolbarItem) ToolTip() string {
-	rv := ffi.CallMethod[string](t_, "toolTip")
+	rv := objc.CallMethod[string](t_, "toolTip")
 	return rv
 }
 
 func (t_ ToolbarItem) SetToolTip(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setToolTip:", value)
+	objc.CallMethod[objc.Void](t_, "setToolTip:", value)
 }
 
 func (t_ ToolbarItem) Image() Image {
-	rv := ffi.CallMethod[Image](t_, "image")
+	rv := objc.CallMethod[Image](t_, "image")
 	return rv
 }
 
 func (t_ ToolbarItem) SetImage(value IImage) {
-	ffi.CallMethod[ffi.Void](t_, "setImage:", value)
+	objc.CallMethod[objc.Void](t_, "setImage:", value)
 }
 
 func (t_ ToolbarItem) View() View {
-	rv := ffi.CallMethod[View](t_, "view")
+	rv := objc.CallMethod[View](t_, "view")
 	return rv
 }
 
 func (t_ ToolbarItem) SetView(value IView) {
-	ffi.CallMethod[ffi.Void](t_, "setView:", value)
+	objc.CallMethod[objc.Void](t_, "setView:", value)
 }
 
 func (t_ ToolbarItem) Target() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "target")
+	rv := objc.CallMethod[objc.Object](t_, "target")
 	return rv
 }
 
 func (t_ ToolbarItem) SetTarget(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setTarget:", value)
+	objc.CallMethod[objc.Void](t_, "setTarget:", value)
 }
 
 func (t_ ToolbarItem) Action() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](t_, "action")
+	rv := objc.CallMethod[objc.Selector](t_, "action")
 	return rv
 }
 
 func (t_ ToolbarItem) SetAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](t_, "setAction:", value)
+	objc.CallMethod[objc.Void](t_, "setAction:", value)
 }
 
 func (t_ ToolbarItem) MenuFormRepresentation() MenuItem {
-	rv := ffi.CallMethod[MenuItem](t_, "menuFormRepresentation")
+	rv := objc.CallMethod[MenuItem](t_, "menuFormRepresentation")
 	return rv
 }
 
 func (t_ ToolbarItem) SetMenuFormRepresentation(value IMenuItem) {
-	ffi.CallMethod[ffi.Void](t_, "setMenuFormRepresentation:", value)
+	objc.CallMethod[objc.Void](t_, "setMenuFormRepresentation:", value)
 }
 
 func (t_ ToolbarItem) IsVisible() bool {
-	rv := ffi.CallMethod[bool](t_, "isVisible")
+	rv := objc.CallMethod[bool](t_, "isVisible")
 	return rv
 }
 
 func (t_ ToolbarItem) IsBordered() bool {
-	rv := ffi.CallMethod[bool](t_, "isBordered")
+	rv := objc.CallMethod[bool](t_, "isBordered")
 	return rv
 }
 
 func (t_ ToolbarItem) SetBordered(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setBordered:", value)
+	objc.CallMethod[objc.Void](t_, "setBordered:", value)
 }
 
 func (t_ ToolbarItem) IsNavigational() bool {
-	rv := ffi.CallMethod[bool](t_, "isNavigational")
+	rv := objc.CallMethod[bool](t_, "isNavigational")
 	return rv
 }
 
 func (t_ ToolbarItem) SetNavigational(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setNavigational:", value)
+	objc.CallMethod[objc.Void](t_, "setNavigational:", value)
 }
 
 func (t_ ToolbarItem) IsEnabled() bool {
-	rv := ffi.CallMethod[bool](t_, "isEnabled")
+	rv := objc.CallMethod[bool](t_, "isEnabled")
 	return rv
 }
 
 func (t_ ToolbarItem) SetEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setEnabled:", value)
+	objc.CallMethod[objc.Void](t_, "setEnabled:", value)
 }
 
 func (t_ ToolbarItem) AllowsDuplicatesInToolbar() bool {
-	rv := ffi.CallMethod[bool](t_, "allowsDuplicatesInToolbar")
+	rv := objc.CallMethod[bool](t_, "allowsDuplicatesInToolbar")
 	return rv
 }
 
 func (t_ ToolbarItem) VisibilityPriority() ToolbarItemVisibilityPriority {
-	rv := ffi.CallMethod[ToolbarItemVisibilityPriority](t_, "visibilityPriority")
+	rv := objc.CallMethod[ToolbarItemVisibilityPriority](t_, "visibilityPriority")
 	return rv
 }
 
 func (t_ ToolbarItem) SetVisibilityPriority(value ToolbarItemVisibilityPriority) {
-	ffi.CallMethod[ffi.Void](t_, "setVisibilityPriority:", value)
+	objc.CallMethod[objc.Void](t_, "setVisibilityPriority:", value)
 }
 
 func (t_ ToolbarItem) Tag() int {
-	rv := ffi.CallMethod[int](t_, "tag")
+	rv := objc.CallMethod[int](t_, "tag")
 	return rv
 }
 
 func (t_ ToolbarItem) SetTag(value int) {
-	ffi.CallMethod[ffi.Void](t_, "setTag:", value)
+	objc.CallMethod[objc.Void](t_, "setTag:", value)
 }
 
 func (t_ ToolbarItem) Toolbar() Toolbar {
-	rv := ffi.CallMethod[Toolbar](t_, "toolbar")
+	rv := objc.CallMethod[Toolbar](t_, "toolbar")
 	return rv
 }
 
 func (t_ ToolbarItem) Autovalidates() bool {
-	rv := ffi.CallMethod[bool](t_, "autovalidates")
+	rv := objc.CallMethod[bool](t_, "autovalidates")
 	return rv
 }
 
 func (t_ ToolbarItem) SetAutovalidates(value bool) {
-	ffi.CallMethod[ffi.Void](t_, "setAutovalidates:", value)
+	objc.CallMethod[objc.Void](t_, "setAutovalidates:", value)
 }
 
 // deprecated
 func (t_ ToolbarItem) MinSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "minSize")
+	rv := objc.CallMethod[foundation.Size](t_, "minSize")
 	return rv
 }
 
 // deprecated
 func (t_ ToolbarItem) SetMinSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](t_, "setMinSize:", value)
+	objc.CallMethod[objc.Void](t_, "setMinSize:", value)
 }
 
 // deprecated
 func (t_ ToolbarItem) MaxSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "maxSize")
+	rv := objc.CallMethod[foundation.Size](t_, "maxSize")
 	return rv
 }
 
 // deprecated
 func (t_ ToolbarItem) SetMaxSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](t_, "setMaxSize:", value)
+	objc.CallMethod[objc.Void](t_, "setMaxSize:", value)
 }

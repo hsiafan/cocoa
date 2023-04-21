@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -21,7 +20,7 @@ type PasteboardWritingWrapper struct {
 }
 
 func (p_ PasteboardWritingWrapper) WritableTypesForPasteboard(pasteboard IPasteboard) []PasteboardType {
-	rv := ffi.CallMethod[[]PasteboardType](p_, "writableTypesForPasteboard:", pasteboard)
+	rv := objc.CallMethod[[]PasteboardType](p_, "writableTypesForPasteboard:", pasteboard)
 	return rv
 }
 
@@ -30,11 +29,11 @@ func (p_ *PasteboardWritingWrapper) ImplementsWritingOptionsForType_Pasteboard()
 }
 
 func (p_ PasteboardWritingWrapper) WritingOptionsForType_Pasteboard(type_ PasteboardType, pasteboard IPasteboard) PasteboardWritingOptions {
-	rv := ffi.CallMethod[PasteboardWritingOptions](p_, "writingOptionsForType:pasteboard:", type_, pasteboard)
+	rv := objc.CallMethod[PasteboardWritingOptions](p_, "writingOptionsForType:pasteboard:", type_, pasteboard)
 	return rv
 }
 
 func (p_ PasteboardWritingWrapper) PasteboardPropertyListForType(type_ PasteboardType) objc.Object {
-	rv := ffi.CallMethod[objc.Object](p_, "pasteboardPropertyListForType:", type_)
+	rv := objc.CallMethod[objc.Object](p_, "pasteboardPropertyListForType:", type_)
 	return rv
 }

@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -45,67 +44,67 @@ func MakeDate(ptr unsafe.Pointer) Date {
 }
 
 func (dc _DateClass) Date() Date {
-	rv := ffi.CallMethod[Date](dc, "date")
+	rv := objc.CallMethod[Date](dc, "date")
 	return rv
 }
 
 func (dc _DateClass) DateWithTimeIntervalSinceNow(secs TimeInterval) Date {
-	rv := ffi.CallMethod[Date](dc, "dateWithTimeIntervalSinceNow:", secs)
+	rv := objc.CallMethod[Date](dc, "dateWithTimeIntervalSinceNow:", secs)
 	return rv
 }
 
 func (dc _DateClass) DateWithTimeInterval_SinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	rv := ffi.CallMethod[Date](dc, "dateWithTimeInterval:sinceDate:", secsToBeAdded, date)
+	rv := objc.CallMethod[Date](dc, "dateWithTimeInterval:sinceDate:", secsToBeAdded, date)
 	return rv
 }
 
 func (dc _DateClass) DateWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
-	rv := ffi.CallMethod[Date](dc, "dateWithTimeIntervalSinceReferenceDate:", ti)
+	rv := objc.CallMethod[Date](dc, "dateWithTimeIntervalSinceReferenceDate:", ti)
 	return rv
 }
 
 func (dc _DateClass) DateWithTimeIntervalSince1970(secs TimeInterval) Date {
-	rv := ffi.CallMethod[Date](dc, "dateWithTimeIntervalSince1970:", secs)
+	rv := objc.CallMethod[Date](dc, "dateWithTimeIntervalSince1970:", secs)
 	return rv
 }
 
 func (d_ Date) Init() Date {
-	rv := ffi.CallMethod[Date](d_, "init")
+	rv := objc.CallMethod[Date](d_, "init")
 	return rv
 }
 
 func (d_ Date) InitWithTimeIntervalSinceNow(secs TimeInterval) Date {
-	rv := ffi.CallMethod[Date](d_, "initWithTimeIntervalSinceNow:", secs)
+	rv := objc.CallMethod[Date](d_, "initWithTimeIntervalSinceNow:", secs)
 	return rv
 }
 
 func (d_ Date) InitWithTimeInterval_SinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	rv := ffi.CallMethod[Date](d_, "initWithTimeInterval:sinceDate:", secsToBeAdded, date)
+	rv := objc.CallMethod[Date](d_, "initWithTimeInterval:sinceDate:", secsToBeAdded, date)
 	return rv
 }
 
 func (d_ Date) InitWithTimeIntervalSinceReferenceDate(ti TimeInterval) Date {
-	rv := ffi.CallMethod[Date](d_, "initWithTimeIntervalSinceReferenceDate:", ti)
+	rv := objc.CallMethod[Date](d_, "initWithTimeIntervalSinceReferenceDate:", ti)
 	return rv
 }
 
 func (d_ Date) InitWithTimeIntervalSince1970(secs TimeInterval) Date {
-	rv := ffi.CallMethod[Date](d_, "initWithTimeIntervalSince1970:", secs)
+	rv := objc.CallMethod[Date](d_, "initWithTimeIntervalSince1970:", secs)
 	return rv
 }
 
 func (d_ Date) DateByAddingTimeInterval(ti TimeInterval) Date {
-	rv := ffi.CallMethod[Date](d_, "dateByAddingTimeInterval:", ti)
+	rv := objc.CallMethod[Date](d_, "dateByAddingTimeInterval:", ti)
 	return rv
 }
 
 func (dc _DateClass) Alloc() Date {
-	rv := ffi.CallMethod[Date](dc, "alloc")
+	rv := objc.CallMethod[Date](dc, "alloc")
 	return rv
 }
 
 func (dc _DateClass) New() Date {
-	rv := ffi.CallMethod[Date](dc, "new")
+	rv := objc.CallMethod[Date](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -115,102 +114,102 @@ func NewDate() Date {
 }
 
 func (d_ Date) IsEqualToDate(otherDate IDate) bool {
-	rv := ffi.CallMethod[bool](d_, "isEqualToDate:", otherDate)
+	rv := objc.CallMethod[bool](d_, "isEqualToDate:", otherDate)
 	return rv
 }
 
 func (d_ Date) EarlierDate(anotherDate IDate) Date {
-	rv := ffi.CallMethod[Date](d_, "earlierDate:", anotherDate)
+	rv := objc.CallMethod[Date](d_, "earlierDate:", anotherDate)
 	return rv
 }
 
 func (d_ Date) LaterDate(anotherDate IDate) Date {
-	rv := ffi.CallMethod[Date](d_, "laterDate:", anotherDate)
+	rv := objc.CallMethod[Date](d_, "laterDate:", anotherDate)
 	return rv
 }
 
 func (d_ Date) Compare(other IDate) ComparisonResult {
-	rv := ffi.CallMethod[ComparisonResult](d_, "compare:", other)
+	rv := objc.CallMethod[ComparisonResult](d_, "compare:", other)
 	return rv
 }
 
 func (d_ Date) TimeIntervalSinceDate(anotherDate IDate) TimeInterval {
-	rv := ffi.CallMethod[TimeInterval](d_, "timeIntervalSinceDate:", anotherDate)
+	rv := objc.CallMethod[TimeInterval](d_, "timeIntervalSinceDate:", anotherDate)
 	return rv
 }
 
 func (d_ Date) DescriptionWithLocale(locale objc.IObject) string {
-	rv := ffi.CallMethod[string](d_, "descriptionWithLocale:", locale)
+	rv := objc.CallMethod[string](d_, "descriptionWithLocale:", locale)
 	return rv
 }
 
 // deprecated
 func (dc _DateClass) DateWithNaturalLanguageString(string_ string) objc.Object {
-	rv := ffi.CallMethod[objc.Object](dc, "dateWithNaturalLanguageString:", string_)
+	rv := objc.CallMethod[objc.Object](dc, "dateWithNaturalLanguageString:", string_)
 	return rv
 }
 
 // deprecated
 func (dc _DateClass) DateWithNaturalLanguageString_Locale(string_ string, locale objc.IObject) objc.Object {
-	rv := ffi.CallMethod[objc.Object](dc, "dateWithNaturalLanguageString:locale:", string_, locale)
+	rv := objc.CallMethod[objc.Object](dc, "dateWithNaturalLanguageString:locale:", string_, locale)
 	return rv
 }
 
 // deprecated
 func (dc _DateClass) DateWithString(aString string) objc.Object {
-	rv := ffi.CallMethod[objc.Object](dc, "dateWithString:", aString)
+	rv := objc.CallMethod[objc.Object](dc, "dateWithString:", aString)
 	return rv
 }
 
 // deprecated
 func (d_ Date) InitWithString(description string) objc.Object {
-	rv := ffi.CallMethod[objc.Object](d_, "initWithString:", description)
+	rv := objc.CallMethod[objc.Object](d_, "initWithString:", description)
 	return rv
 }
 
 // deprecated
 func (d_ Date) AddTimeInterval(seconds TimeInterval) objc.Object {
-	rv := ffi.CallMethod[objc.Object](d_, "addTimeInterval:", seconds)
+	rv := objc.CallMethod[objc.Object](d_, "addTimeInterval:", seconds)
 	return rv
 }
 
 // deprecated
 func (d_ Date) DescriptionWithCalendarFormat_TimeZone_Locale(format string, aTimeZone ITimeZone, locale objc.IObject) string {
-	rv := ffi.CallMethod[string](d_, "descriptionWithCalendarFormat:timeZone:locale:", format, aTimeZone, locale)
+	rv := objc.CallMethod[string](d_, "descriptionWithCalendarFormat:timeZone:locale:", format, aTimeZone, locale)
 	return rv
 }
 
 func (dc _DateClass) DistantFuture() Date {
-	rv := ffi.CallMethod[Date](dc, "distantFuture")
+	rv := objc.CallMethod[Date](dc, "distantFuture")
 	return rv
 }
 
 func (dc _DateClass) DistantPast() Date {
-	rv := ffi.CallMethod[Date](dc, "distantPast")
+	rv := objc.CallMethod[Date](dc, "distantPast")
 	return rv
 }
 
 func (dc _DateClass) Now() Date {
-	rv := ffi.CallMethod[Date](dc, "now")
+	rv := objc.CallMethod[Date](dc, "now")
 	return rv
 }
 
 func (d_ Date) TimeIntervalSinceNow() TimeInterval {
-	rv := ffi.CallMethod[TimeInterval](d_, "timeIntervalSinceNow")
+	rv := objc.CallMethod[TimeInterval](d_, "timeIntervalSinceNow")
 	return rv
 }
 
 func (d_ Date) TimeIntervalSinceReferenceDate() TimeInterval {
-	rv := ffi.CallMethod[TimeInterval](d_, "timeIntervalSinceReferenceDate")
+	rv := objc.CallMethod[TimeInterval](d_, "timeIntervalSinceReferenceDate")
 	return rv
 }
 
 func (d_ Date) TimeIntervalSince1970() TimeInterval {
-	rv := ffi.CallMethod[TimeInterval](d_, "timeIntervalSince1970")
+	rv := objc.CallMethod[TimeInterval](d_, "timeIntervalSince1970")
 	return rv
 }
 
 func (d_ Date) Description() string {
-	rv := ffi.CallMethod[string](d_, "description")
+	rv := objc.CallMethod[string](d_, "description")
 	return rv
 }

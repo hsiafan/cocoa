@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,12 +38,12 @@ func MakeMeasurementFormatter(ptr unsafe.Pointer) MeasurementFormatter {
 }
 
 func (mc _MeasurementFormatterClass) Alloc() MeasurementFormatter {
-	rv := ffi.CallMethod[MeasurementFormatter](mc, "alloc")
+	rv := objc.CallMethod[MeasurementFormatter](mc, "alloc")
 	return rv
 }
 
 func (mc _MeasurementFormatterClass) New() MeasurementFormatter {
-	rv := ffi.CallMethod[MeasurementFormatter](mc, "new")
+	rv := objc.CallMethod[MeasurementFormatter](mc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,52 +53,52 @@ func NewMeasurementFormatter() MeasurementFormatter {
 }
 
 func (m_ MeasurementFormatter) Init() MeasurementFormatter {
-	rv := ffi.CallMethod[MeasurementFormatter](m_, "init")
+	rv := objc.CallMethod[MeasurementFormatter](m_, "init")
 	return rv
 }
 
 func (m_ MeasurementFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := ffi.CallMethod[string](m_, "stringFromMeasurement:", measurement)
+	rv := objc.CallMethod[string](m_, "stringFromMeasurement:", measurement)
 	return rv
 }
 
 func (m_ MeasurementFormatter) StringFromUnit(unit IUnit) string {
-	rv := ffi.CallMethod[string](m_, "stringFromUnit:", unit)
+	rv := objc.CallMethod[string](m_, "stringFromUnit:", unit)
 	return rv
 }
 
 func (m_ MeasurementFormatter) UnitOptions() MeasurementFormatterUnitOptions {
-	rv := ffi.CallMethod[MeasurementFormatterUnitOptions](m_, "unitOptions")
+	rv := objc.CallMethod[MeasurementFormatterUnitOptions](m_, "unitOptions")
 	return rv
 }
 
 func (m_ MeasurementFormatter) SetUnitOptions(value MeasurementFormatterUnitOptions) {
-	ffi.CallMethod[ffi.Void](m_, "setUnitOptions:", value)
+	objc.CallMethod[objc.Void](m_, "setUnitOptions:", value)
 }
 
 func (m_ MeasurementFormatter) UnitStyle() FormattingUnitStyle {
-	rv := ffi.CallMethod[FormattingUnitStyle](m_, "unitStyle")
+	rv := objc.CallMethod[FormattingUnitStyle](m_, "unitStyle")
 	return rv
 }
 
 func (m_ MeasurementFormatter) SetUnitStyle(value FormattingUnitStyle) {
-	ffi.CallMethod[ffi.Void](m_, "setUnitStyle:", value)
+	objc.CallMethod[objc.Void](m_, "setUnitStyle:", value)
 }
 
 func (m_ MeasurementFormatter) Locale() Locale {
-	rv := ffi.CallMethod[Locale](m_, "locale")
+	rv := objc.CallMethod[Locale](m_, "locale")
 	return rv
 }
 
 func (m_ MeasurementFormatter) SetLocale(value ILocale) {
-	ffi.CallMethod[ffi.Void](m_, "setLocale:", value)
+	objc.CallMethod[objc.Void](m_, "setLocale:", value)
 }
 
 func (m_ MeasurementFormatter) NumberFormatter() NumberFormatter {
-	rv := ffi.CallMethod[NumberFormatter](m_, "numberFormatter")
+	rv := objc.CallMethod[NumberFormatter](m_, "numberFormatter")
 	return rv
 }
 
 func (m_ MeasurementFormatter) SetNumberFormatter(value INumberFormatter) {
-	ffi.CallMethod[ffi.Void](m_, "setNumberFormatter:", value)
+	objc.CallMethod[objc.Void](m_, "setNumberFormatter:", value)
 }

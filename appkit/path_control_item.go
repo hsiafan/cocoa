@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -37,12 +36,12 @@ func MakePathControlItem(ptr unsafe.Pointer) PathControlItem {
 }
 
 func (pc _PathControlItemClass) Alloc() PathControlItem {
-	rv := ffi.CallMethod[PathControlItem](pc, "alloc")
+	rv := objc.CallMethod[PathControlItem](pc, "alloc")
 	return rv
 }
 
 func (pc _PathControlItemClass) New() PathControlItem {
-	rv := ffi.CallMethod[PathControlItem](pc, "new")
+	rv := objc.CallMethod[PathControlItem](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -52,38 +51,38 @@ func NewPathControlItem() PathControlItem {
 }
 
 func (p_ PathControlItem) Init() PathControlItem {
-	rv := ffi.CallMethod[PathControlItem](p_, "init")
+	rv := objc.CallMethod[PathControlItem](p_, "init")
 	return rv
 }
 
 func (p_ PathControlItem) AttributedTitle() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](p_, "attributedTitle")
+	rv := objc.CallMethod[foundation.AttributedString](p_, "attributedTitle")
 	return rv
 }
 
 func (p_ PathControlItem) SetAttributedTitle(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](p_, "setAttributedTitle:", value)
+	objc.CallMethod[objc.Void](p_, "setAttributedTitle:", value)
 }
 
 func (p_ PathControlItem) Image() Image {
-	rv := ffi.CallMethod[Image](p_, "image")
+	rv := objc.CallMethod[Image](p_, "image")
 	return rv
 }
 
 func (p_ PathControlItem) SetImage(value IImage) {
-	ffi.CallMethod[ffi.Void](p_, "setImage:", value)
+	objc.CallMethod[objc.Void](p_, "setImage:", value)
 }
 
 func (p_ PathControlItem) Title() string {
-	rv := ffi.CallMethod[string](p_, "title")
+	rv := objc.CallMethod[string](p_, "title")
 	return rv
 }
 
 func (p_ PathControlItem) SetTitle(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setTitle:", value)
+	objc.CallMethod[objc.Void](p_, "setTitle:", value)
 }
 
 func (p_ PathControlItem) URL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](p_, "URL")
+	rv := objc.CallMethod[foundation.URL](p_, "URL")
 	return rv
 }

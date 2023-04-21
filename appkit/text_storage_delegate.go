@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -53,7 +52,7 @@ func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_WillProcessEditing_R
 }
 
 func (t_ TextStorageDelegateWrapper) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	ffi.CallMethod[ffi.Void](t_, "textStorage:willProcessEditing:range:changeInLength:", textStorage, editedMask, editedRange, delta)
+	objc.CallMethod[objc.Void](t_, "textStorage:willProcessEditing:range:changeInLength:", textStorage, editedMask, editedRange, delta)
 }
 
 func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
@@ -61,5 +60,5 @@ func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_DidProcessEditing_Ra
 }
 
 func (t_ TextStorageDelegateWrapper) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	ffi.CallMethod[ffi.Void](t_, "textStorage:didProcessEditing:range:changeInLength:", textStorage, editedMask, editedRange, delta)
+	objc.CallMethod[objc.Void](t_, "textStorage:didProcessEditing:range:changeInLength:", textStorage, editedMask, editedRange, delta)
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -39,17 +38,17 @@ func MakeColorPicker(ptr unsafe.Pointer) ColorPicker {
 }
 
 func (c_ ColorPicker) InitWithPickerMask_ColorPanel(mask uint, owningColorPanel IColorPanel) ColorPicker {
-	rv := ffi.CallMethod[ColorPicker](c_, "initWithPickerMask:colorPanel:", mask, owningColorPanel)
+	rv := objc.CallMethod[ColorPicker](c_, "initWithPickerMask:colorPanel:", mask, owningColorPanel)
 	return rv
 }
 
 func (cc _ColorPickerClass) Alloc() ColorPicker {
-	rv := ffi.CallMethod[ColorPicker](cc, "alloc")
+	rv := objc.CallMethod[ColorPicker](cc, "alloc")
 	return rv
 }
 
 func (cc _ColorPickerClass) New() ColorPicker {
-	rv := ffi.CallMethod[ColorPicker](cc, "new")
+	rv := objc.CallMethod[ColorPicker](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -59,46 +58,46 @@ func NewColorPicker() ColorPicker {
 }
 
 func (c_ ColorPicker) Init() ColorPicker {
-	rv := ffi.CallMethod[ColorPicker](c_, "init")
+	rv := objc.CallMethod[ColorPicker](c_, "init")
 	return rv
 }
 
 func (c_ ColorPicker) InsertNewButtonImage_In(newButtonImage IImage, buttonCell IButtonCell) {
-	ffi.CallMethod[ffi.Void](c_, "insertNewButtonImage:in:", newButtonImage, buttonCell)
+	objc.CallMethod[objc.Void](c_, "insertNewButtonImage:in:", newButtonImage, buttonCell)
 }
 
 func (c_ ColorPicker) SetMode(mode ColorPanelMode) {
-	ffi.CallMethod[ffi.Void](c_, "setMode:", mode)
+	objc.CallMethod[objc.Void](c_, "setMode:", mode)
 }
 
 func (c_ ColorPicker) AttachColorList(colorList IColorList) {
-	ffi.CallMethod[ffi.Void](c_, "attachColorList:", colorList)
+	objc.CallMethod[objc.Void](c_, "attachColorList:", colorList)
 }
 
 func (c_ ColorPicker) DetachColorList(colorList IColorList) {
-	ffi.CallMethod[ffi.Void](c_, "detachColorList:", colorList)
+	objc.CallMethod[objc.Void](c_, "detachColorList:", colorList)
 }
 
 func (c_ ColorPicker) ViewSizeChanged(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](c_, "viewSizeChanged:", sender)
+	objc.CallMethod[objc.Void](c_, "viewSizeChanged:", sender)
 }
 
 func (c_ ColorPicker) ColorPanel() ColorPanel {
-	rv := ffi.CallMethod[ColorPanel](c_, "colorPanel")
+	rv := objc.CallMethod[ColorPanel](c_, "colorPanel")
 	return rv
 }
 
 func (c_ ColorPicker) ProvideNewButtonImage() Image {
-	rv := ffi.CallMethod[Image](c_, "provideNewButtonImage")
+	rv := objc.CallMethod[Image](c_, "provideNewButtonImage")
 	return rv
 }
 
 func (c_ ColorPicker) ButtonToolTip() string {
-	rv := ffi.CallMethod[string](c_, "buttonToolTip")
+	rv := objc.CallMethod[string](c_, "buttonToolTip")
 	return rv
 }
 
 func (c_ ColorPicker) MinContentSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](c_, "minContentSize")
+	rv := objc.CallMethod[foundation.Size](c_, "minContentSize")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -31,17 +30,17 @@ func MakePressureConfiguration(ptr unsafe.Pointer) PressureConfiguration {
 }
 
 func (p_ PressureConfiguration) InitWithPressureBehavior(pressureBehavior PressureBehavior) PressureConfiguration {
-	rv := ffi.CallMethod[PressureConfiguration](p_, "initWithPressureBehavior:", pressureBehavior)
+	rv := objc.CallMethod[PressureConfiguration](p_, "initWithPressureBehavior:", pressureBehavior)
 	return rv
 }
 
 func (pc _PressureConfigurationClass) Alloc() PressureConfiguration {
-	rv := ffi.CallMethod[PressureConfiguration](pc, "alloc")
+	rv := objc.CallMethod[PressureConfiguration](pc, "alloc")
 	return rv
 }
 
 func (pc _PressureConfigurationClass) New() PressureConfiguration {
-	rv := ffi.CallMethod[PressureConfiguration](pc, "new")
+	rv := objc.CallMethod[PressureConfiguration](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -51,15 +50,15 @@ func NewPressureConfiguration() PressureConfiguration {
 }
 
 func (p_ PressureConfiguration) Init() PressureConfiguration {
-	rv := ffi.CallMethod[PressureConfiguration](p_, "init")
+	rv := objc.CallMethod[PressureConfiguration](p_, "init")
 	return rv
 }
 
 func (p_ PressureConfiguration) Set() {
-	ffi.CallMethod[ffi.Void](p_, "set")
+	objc.CallMethod[objc.Void](p_, "set")
 }
 
 func (p_ PressureConfiguration) PressureBehavior() PressureBehavior {
-	rv := ffi.CallMethod[PressureBehavior](p_, "pressureBehavior")
+	rv := objc.CallMethod[PressureBehavior](p_, "pressureBehavior")
 	return rv
 }

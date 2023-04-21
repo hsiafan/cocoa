@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -63,22 +62,22 @@ func MakeBox(ptr unsafe.Pointer) Box {
 }
 
 func (b_ Box) InitWithFrame(frameRect foundation.Rect) Box {
-	rv := ffi.CallMethod[Box](b_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Box](b_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (b_ Box) Init() Box {
-	rv := ffi.CallMethod[Box](b_, "init")
+	rv := objc.CallMethod[Box](b_, "init")
 	return rv
 }
 
 func (bc _BoxClass) Alloc() Box {
-	rv := ffi.CallMethod[Box](bc, "alloc")
+	rv := objc.CallMethod[Box](bc, "alloc")
 	return rv
 }
 
 func (bc _BoxClass) New() Box {
-	rv := ffi.CallMethod[Box](bc, "new")
+	rv := objc.CallMethod[Box](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -89,138 +88,138 @@ func NewBox() Box {
 
 // deprecated
 func (b_ Box) SetTitleWithMnemonic(stringWithAmpersand string) {
-	ffi.CallMethod[ffi.Void](b_, "setTitleWithMnemonic:", stringWithAmpersand)
+	objc.CallMethod[objc.Void](b_, "setTitleWithMnemonic:", stringWithAmpersand)
 }
 
 func (b_ Box) SetFrameFromContentFrame(contentFrame foundation.Rect) {
-	ffi.CallMethod[ffi.Void](b_, "setFrameFromContentFrame:", contentFrame)
+	objc.CallMethod[objc.Void](b_, "setFrameFromContentFrame:", contentFrame)
 }
 
 func (b_ Box) SizeToFit() {
-	ffi.CallMethod[ffi.Void](b_, "sizeToFit")
+	objc.CallMethod[objc.Void](b_, "sizeToFit")
 }
 
 func (b_ Box) BorderRect() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](b_, "borderRect")
+	rv := objc.CallMethod[foundation.Rect](b_, "borderRect")
 	return rv
 }
 
 func (b_ Box) BoxType() BoxType {
-	rv := ffi.CallMethod[BoxType](b_, "boxType")
+	rv := objc.CallMethod[BoxType](b_, "boxType")
 	return rv
 }
 
 func (b_ Box) SetBoxType(value BoxType) {
-	ffi.CallMethod[ffi.Void](b_, "setBoxType:", value)
+	objc.CallMethod[objc.Void](b_, "setBoxType:", value)
 }
 
 // deprecated
 func (b_ Box) BorderType() BorderType {
-	rv := ffi.CallMethod[BorderType](b_, "borderType")
+	rv := objc.CallMethod[BorderType](b_, "borderType")
 	return rv
 }
 
 // deprecated
 func (b_ Box) SetBorderType(value BorderType) {
-	ffi.CallMethod[ffi.Void](b_, "setBorderType:", value)
+	objc.CallMethod[objc.Void](b_, "setBorderType:", value)
 }
 
 func (b_ Box) IsTransparent() bool {
-	rv := ffi.CallMethod[bool](b_, "isTransparent")
+	rv := objc.CallMethod[bool](b_, "isTransparent")
 	return rv
 }
 
 func (b_ Box) SetTransparent(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setTransparent:", value)
+	objc.CallMethod[objc.Void](b_, "setTransparent:", value)
 }
 
 func (b_ Box) Title() string {
-	rv := ffi.CallMethod[string](b_, "title")
+	rv := objc.CallMethod[string](b_, "title")
 	return rv
 }
 
 func (b_ Box) SetTitle(value string) {
-	ffi.CallMethod[ffi.Void](b_, "setTitle:", value)
+	objc.CallMethod[objc.Void](b_, "setTitle:", value)
 }
 
 func (b_ Box) TitleFont() Font {
-	rv := ffi.CallMethod[Font](b_, "titleFont")
+	rv := objc.CallMethod[Font](b_, "titleFont")
 	return rv
 }
 
 func (b_ Box) SetTitleFont(value IFont) {
-	ffi.CallMethod[ffi.Void](b_, "setTitleFont:", value)
+	objc.CallMethod[objc.Void](b_, "setTitleFont:", value)
 }
 
 func (b_ Box) TitlePosition() TitlePosition {
-	rv := ffi.CallMethod[TitlePosition](b_, "titlePosition")
+	rv := objc.CallMethod[TitlePosition](b_, "titlePosition")
 	return rv
 }
 
 func (b_ Box) SetTitlePosition(value TitlePosition) {
-	ffi.CallMethod[ffi.Void](b_, "setTitlePosition:", value)
+	objc.CallMethod[objc.Void](b_, "setTitlePosition:", value)
 }
 
 func (b_ Box) TitleCell() objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "titleCell")
+	rv := objc.CallMethod[objc.Object](b_, "titleCell")
 	return rv
 }
 
 func (b_ Box) TitleRect() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](b_, "titleRect")
+	rv := objc.CallMethod[foundation.Rect](b_, "titleRect")
 	return rv
 }
 
 func (b_ Box) BorderColor() Color {
-	rv := ffi.CallMethod[Color](b_, "borderColor")
+	rv := objc.CallMethod[Color](b_, "borderColor")
 	return rv
 }
 
 func (b_ Box) SetBorderColor(value IColor) {
-	ffi.CallMethod[ffi.Void](b_, "setBorderColor:", value)
+	objc.CallMethod[objc.Void](b_, "setBorderColor:", value)
 }
 
 func (b_ Box) BorderWidth() float64 {
-	rv := ffi.CallMethod[float64](b_, "borderWidth")
+	rv := objc.CallMethod[float64](b_, "borderWidth")
 	return rv
 }
 
 func (b_ Box) SetBorderWidth(value float64) {
-	ffi.CallMethod[ffi.Void](b_, "setBorderWidth:", value)
+	objc.CallMethod[objc.Void](b_, "setBorderWidth:", value)
 }
 
 func (b_ Box) CornerRadius() float64 {
-	rv := ffi.CallMethod[float64](b_, "cornerRadius")
+	rv := objc.CallMethod[float64](b_, "cornerRadius")
 	return rv
 }
 
 func (b_ Box) SetCornerRadius(value float64) {
-	ffi.CallMethod[ffi.Void](b_, "setCornerRadius:", value)
+	objc.CallMethod[objc.Void](b_, "setCornerRadius:", value)
 }
 
 func (b_ Box) FillColor() Color {
-	rv := ffi.CallMethod[Color](b_, "fillColor")
+	rv := objc.CallMethod[Color](b_, "fillColor")
 	return rv
 }
 
 func (b_ Box) SetFillColor(value IColor) {
-	ffi.CallMethod[ffi.Void](b_, "setFillColor:", value)
+	objc.CallMethod[objc.Void](b_, "setFillColor:", value)
 }
 
 func (b_ Box) ContentView() View {
-	rv := ffi.CallMethod[View](b_, "contentView")
+	rv := objc.CallMethod[View](b_, "contentView")
 	return rv
 }
 
 func (b_ Box) SetContentView(value IView) {
-	ffi.CallMethod[ffi.Void](b_, "setContentView:", value)
+	objc.CallMethod[objc.Void](b_, "setContentView:", value)
 }
 
 func (b_ Box) ContentViewMargins() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](b_, "contentViewMargins")
+	rv := objc.CallMethod[foundation.Size](b_, "contentViewMargins")
 	return rv
 }
 
 func (b_ Box) SetContentViewMargins(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](b_, "setContentViewMargins:", value)
+	objc.CallMethod[objc.Void](b_, "setContentViewMargins:", value)
 }

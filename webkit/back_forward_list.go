@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,12 +34,12 @@ func MakeBackForwardList(ptr unsafe.Pointer) BackForwardList {
 }
 
 func (bc _BackForwardListClass) Alloc() BackForwardList {
-	rv := ffi.CallMethod[BackForwardList](bc, "alloc")
+	rv := objc.CallMethod[BackForwardList](bc, "alloc")
 	return rv
 }
 
 func (bc _BackForwardListClass) New() BackForwardList {
-	rv := ffi.CallMethod[BackForwardList](bc, "new")
+	rv := objc.CallMethod[BackForwardList](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,36 +49,36 @@ func NewBackForwardList() BackForwardList {
 }
 
 func (b_ BackForwardList) Init() BackForwardList {
-	rv := ffi.CallMethod[BackForwardList](b_, "init")
+	rv := objc.CallMethod[BackForwardList](b_, "init")
 	return rv
 }
 
 func (b_ BackForwardList) ItemAtIndex(index int) BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](b_, "itemAtIndex:", index)
+	rv := objc.CallMethod[BackForwardListItem](b_, "itemAtIndex:", index)
 	return rv
 }
 
 func (b_ BackForwardList) BackItem() BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](b_, "backItem")
+	rv := objc.CallMethod[BackForwardListItem](b_, "backItem")
 	return rv
 }
 
 func (b_ BackForwardList) CurrentItem() BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](b_, "currentItem")
+	rv := objc.CallMethod[BackForwardListItem](b_, "currentItem")
 	return rv
 }
 
 func (b_ BackForwardList) ForwardItem() BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](b_, "forwardItem")
+	rv := objc.CallMethod[BackForwardListItem](b_, "forwardItem")
 	return rv
 }
 
 func (b_ BackForwardList) BackList() []BackForwardListItem {
-	rv := ffi.CallMethod[[]BackForwardListItem](b_, "backList")
+	rv := objc.CallMethod[[]BackForwardListItem](b_, "backList")
 	return rv
 }
 
 func (b_ BackForwardList) ForwardList() []BackForwardListItem {
-	rv := ffi.CallMethod[[]BackForwardListItem](b_, "forwardList")
+	rv := objc.CallMethod[[]BackForwardListItem](b_, "forwardList")
 	return rv
 }

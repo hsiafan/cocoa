@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,12 +29,12 @@ func MakeNavigation(ptr unsafe.Pointer) Navigation {
 }
 
 func (nc _NavigationClass) Alloc() Navigation {
-	rv := ffi.CallMethod[Navigation](nc, "alloc")
+	rv := objc.CallMethod[Navigation](nc, "alloc")
 	return rv
 }
 
 func (nc _NavigationClass) New() Navigation {
-	rv := ffi.CallMethod[Navigation](nc, "new")
+	rv := objc.CallMethod[Navigation](nc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -45,11 +44,11 @@ func NewNavigation() Navigation {
 }
 
 func (n_ Navigation) Init() Navigation {
-	rv := ffi.CallMethod[Navigation](n_, "init")
+	rv := objc.CallMethod[Navigation](n_, "init")
 	return rv
 }
 
 func (n_ Navigation) EffectiveContentMode() ContentMode {
-	rv := ffi.CallMethod[ContentMode](n_, "effectiveContentMode")
+	rv := objc.CallMethod[ContentMode](n_, "effectiveContentMode")
 	return rv
 }

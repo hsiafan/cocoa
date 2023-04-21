@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -33,12 +32,12 @@ func MakeBackForwardListItem(ptr unsafe.Pointer) BackForwardListItem {
 }
 
 func (bc _BackForwardListItemClass) Alloc() BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](bc, "alloc")
+	rv := objc.CallMethod[BackForwardListItem](bc, "alloc")
 	return rv
 }
 
 func (bc _BackForwardListItemClass) New() BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](bc, "new")
+	rv := objc.CallMethod[BackForwardListItem](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -48,21 +47,21 @@ func NewBackForwardListItem() BackForwardListItem {
 }
 
 func (b_ BackForwardListItem) Init() BackForwardListItem {
-	rv := ffi.CallMethod[BackForwardListItem](b_, "init")
+	rv := objc.CallMethod[BackForwardListItem](b_, "init")
 	return rv
 }
 
 func (b_ BackForwardListItem) Title() string {
-	rv := ffi.CallMethod[string](b_, "title")
+	rv := objc.CallMethod[string](b_, "title")
 	return rv
 }
 
 func (b_ BackForwardListItem) URL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](b_, "URL")
+	rv := objc.CallMethod[foundation.URL](b_, "URL")
 	return rv
 }
 
 func (b_ BackForwardListItem) InitialURL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](b_, "initialURL")
+	rv := objc.CallMethod[foundation.URL](b_, "initialURL")
 	return rv
 }

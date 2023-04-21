@@ -2,7 +2,6 @@
 package foundation
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,5 +36,5 @@ func (s_ *StreamDelegateWrapper) ImplementsStream_HandleEvent() bool {
 }
 
 func (s_ StreamDelegateWrapper) Stream_HandleEvent(aStream IStream, eventCode StreamEvent) {
-	ffi.CallMethod[ffi.Void](s_, "stream:handleEvent:", aStream, eventCode)
+	objc.CallMethod[objc.Void](s_, "stream:handleEvent:", aStream, eventCode)
 }

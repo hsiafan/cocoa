@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -81,12 +80,12 @@ func MakeFont(ptr unsafe.Pointer) Font {
 }
 
 func (fc _FontClass) Alloc() Font {
-	rv := ffi.CallMethod[Font](fc, "alloc")
+	rv := objc.CallMethod[Font](fc, "alloc")
 	return rv
 }
 
 func (fc _FontClass) New() Font {
-	rv := ffi.CallMethod[Font](fc, "new")
+	rv := objc.CallMethod[Font](fc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -96,342 +95,342 @@ func NewFont() Font {
 }
 
 func (f_ Font) Init() Font {
-	rv := ffi.CallMethod[Font](f_, "init")
+	rv := objc.CallMethod[Font](f_, "init")
 	return rv
 }
 
 func (fc _FontClass) FontWithName_Size(fontName string, fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "fontWithName:size:", fontName, fontSize)
+	rv := objc.CallMethod[Font](fc, "fontWithName:size:", fontName, fontSize)
 	return rv
 }
 
 func (fc _FontClass) FontWithDescriptor_Size(fontDescriptor IFontDescriptor, fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "fontWithDescriptor:size:", fontDescriptor, fontSize)
+	rv := objc.CallMethod[Font](fc, "fontWithDescriptor:size:", fontDescriptor, fontSize)
 	return rv
 }
 
 func (fc _FontClass) FontWithDescriptor_TextTransform(fontDescriptor IFontDescriptor, textTransform foundation.IAffineTransform) Font {
-	rv := ffi.CallMethod[Font](fc, "fontWithDescriptor:textTransform:", fontDescriptor, textTransform)
+	rv := objc.CallMethod[Font](fc, "fontWithDescriptor:textTransform:", fontDescriptor, textTransform)
 	return rv
 }
 
 func (fc _FontClass) FontWithName_Matrix(fontName string, fontMatrix *float64) Font {
-	rv := ffi.CallMethod[Font](fc, "fontWithName:matrix:", fontName, fontMatrix)
+	rv := objc.CallMethod[Font](fc, "fontWithName:matrix:", fontName, fontMatrix)
 	return rv
 }
 
 func (fc _FontClass) UserFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "userFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "userFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) UserFixedPitchFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "userFixedPitchFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "userFixedPitchFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) PreferredFontForTextStyle_Options(style FontTextStyle, options map[FontTextStyleOptionKey]objc.IObject) Font {
-	rv := ffi.CallMethod[Font](fc, "preferredFontForTextStyle:options:", style, options)
+	rv := objc.CallMethod[Font](fc, "preferredFontForTextStyle:options:", style, options)
 	return rv
 }
 
 func (fc _FontClass) SystemFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "systemFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "systemFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) SystemFontOfSize_Weight(fontSize float64, weight FontWeight) Font {
-	rv := ffi.CallMethod[Font](fc, "systemFontOfSize:weight:", fontSize, weight)
+	rv := objc.CallMethod[Font](fc, "systemFontOfSize:weight:", fontSize, weight)
 	return rv
 }
 
 func (fc _FontClass) BoldSystemFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "boldSystemFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "boldSystemFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) MonospacedSystemFontOfSize_Weight(fontSize float64, weight FontWeight) Font {
-	rv := ffi.CallMethod[Font](fc, "monospacedSystemFontOfSize:weight:", fontSize, weight)
+	rv := objc.CallMethod[Font](fc, "monospacedSystemFontOfSize:weight:", fontSize, weight)
 	return rv
 }
 
 func (fc _FontClass) MonospacedDigitSystemFontOfSize_Weight(fontSize float64, weight FontWeight) Font {
-	rv := ffi.CallMethod[Font](fc, "monospacedDigitSystemFontOfSize:weight:", fontSize, weight)
+	rv := objc.CallMethod[Font](fc, "monospacedDigitSystemFontOfSize:weight:", fontSize, weight)
 	return rv
 }
 
 func (fc _FontClass) LabelFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "labelFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "labelFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) MessageFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "messageFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "messageFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) MenuBarFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "menuBarFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "menuBarFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) MenuFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "menuFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "menuFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) ControlContentFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "controlContentFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "controlContentFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) TitleBarFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "titleBarFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "titleBarFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) PaletteFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "paletteFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "paletteFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) ToolTipsFontOfSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](fc, "toolTipsFontOfSize:", fontSize)
+	rv := objc.CallMethod[Font](fc, "toolTipsFontOfSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) SystemFontSizeForControlSize(controlSize ControlSize) float64 {
-	rv := ffi.CallMethod[float64](fc, "systemFontSizeForControlSize:", controlSize)
+	rv := objc.CallMethod[float64](fc, "systemFontSizeForControlSize:", controlSize)
 	return rv
 }
 
 func (f_ Font) Set() {
-	ffi.CallMethod[ffi.Void](f_, "set")
+	objc.CallMethod[objc.Void](f_, "set")
 }
 
 func (f_ Font) SetInContext(graphicsContext IGraphicsContext) {
-	ffi.CallMethod[ffi.Void](f_, "setInContext:", graphicsContext)
+	objc.CallMethod[objc.Void](f_, "setInContext:", graphicsContext)
 }
 
 func (fc _FontClass) SetUserFont(font IFont) {
-	ffi.CallMethod[ffi.Void](fc, "setUserFont:", font)
+	objc.CallMethod[objc.Void](fc, "setUserFont:", font)
 }
 
 func (fc _FontClass) SetUserFixedPitchFont(font IFont) {
-	ffi.CallMethod[ffi.Void](fc, "setUserFixedPitchFont:", font)
+	objc.CallMethod[objc.Void](fc, "setUserFixedPitchFont:", font)
 }
 
 func (f_ Font) FontWithSize(fontSize float64) Font {
-	rv := ffi.CallMethod[Font](f_, "fontWithSize:", fontSize)
+	rv := objc.CallMethod[Font](f_, "fontWithSize:", fontSize)
 	return rv
 }
 
 func (fc _FontClass) SystemFontOfSize_Weight_Width(fontSize float64, weight FontWeight, width FontWidth) Font {
-	rv := ffi.CallMethod[Font](fc, "systemFontOfSize:weight:width:", fontSize, weight, width)
+	rv := objc.CallMethod[Font](fc, "systemFontOfSize:weight:width:", fontSize, weight, width)
 	return rv
 }
 
 func (f_ Font) BoundingRectForCGGlyph(glyph coregraphics.Glyph) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](f_, "boundingRectForCGGlyph:", glyph)
+	rv := objc.CallMethod[foundation.Rect](f_, "boundingRectForCGGlyph:", glyph)
 	return rv
 }
 
 func (f_ Font) GetBoundingRects_ForCGGlyphs_Count(bounds *foundation.Rect, glyphs *coregraphics.Glyph, glyphCount uint) {
-	ffi.CallMethod[ffi.Void](f_, "getBoundingRects:forCGGlyphs:count:", bounds, glyphs, glyphCount)
+	objc.CallMethod[objc.Void](f_, "getBoundingRects:forCGGlyphs:count:", bounds, glyphs, glyphCount)
 }
 
 func (f_ Font) AdvancementForCGGlyph(glyph coregraphics.Glyph) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](f_, "advancementForCGGlyph:", glyph)
+	rv := objc.CallMethod[foundation.Size](f_, "advancementForCGGlyph:", glyph)
 	return rv
 }
 
 func (f_ Font) GetAdvancements_ForCGGlyphs_Count(advancements *foundation.Size, glyphs *coregraphics.Glyph, glyphCount uint) {
-	ffi.CallMethod[ffi.Void](f_, "getAdvancements:forCGGlyphs:count:", advancements, glyphs, glyphCount)
+	objc.CallMethod[objc.Void](f_, "getAdvancements:forCGGlyphs:count:", advancements, glyphs, glyphCount)
 }
 
 // deprecated
 func (f_ Font) GetAdvancements_ForGlyphs_Count(advancements *foundation.Size, glyphs *Glyph, glyphCount uint) {
-	ffi.CallMethod[ffi.Void](f_, "getAdvancements:forGlyphs:count:", advancements, glyphs, glyphCount)
+	objc.CallMethod[objc.Void](f_, "getAdvancements:forGlyphs:count:", advancements, glyphs, glyphCount)
 }
 
 // deprecated
 func (f_ Font) GetAdvancements_ForPackedGlyphs_Length(advancements *foundation.Size, packedGlyphs unsafe.Pointer, length uint) {
-	ffi.CallMethod[ffi.Void](f_, "getAdvancements:forPackedGlyphs:length:", advancements, packedGlyphs, length)
+	objc.CallMethod[objc.Void](f_, "getAdvancements:forPackedGlyphs:length:", advancements, packedGlyphs, length)
 }
 
 // deprecated
 func (f_ Font) AdvancementForGlyph(glyph Glyph) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](f_, "advancementForGlyph:", glyph)
+	rv := objc.CallMethod[foundation.Size](f_, "advancementForGlyph:", glyph)
 	return rv
 }
 
 // deprecated
 func (f_ Font) BoundingRectForGlyph(glyph Glyph) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](f_, "boundingRectForGlyph:", glyph)
+	rv := objc.CallMethod[foundation.Rect](f_, "boundingRectForGlyph:", glyph)
 	return rv
 }
 
 // deprecated
 func (f_ Font) GetBoundingRects_ForGlyphs_Count(bounds *foundation.Rect, glyphs *Glyph, glyphCount uint) {
-	ffi.CallMethod[ffi.Void](f_, "getBoundingRects:forGlyphs:count:", bounds, glyphs, glyphCount)
+	objc.CallMethod[objc.Void](f_, "getBoundingRects:forGlyphs:count:", bounds, glyphs, glyphCount)
 }
 
 // deprecated
 func (f_ Font) GlyphWithName(name string) Glyph {
-	rv := ffi.CallMethod[Glyph](f_, "glyphWithName:", name)
+	rv := objc.CallMethod[Glyph](f_, "glyphWithName:", name)
 	return rv
 }
 
 // deprecated
 func (f_ Font) ScreenFontWithRenderingMode(renderingMode FontRenderingMode) Font {
-	rv := ffi.CallMethod[Font](f_, "screenFontWithRenderingMode:", renderingMode)
+	rv := objc.CallMethod[Font](f_, "screenFontWithRenderingMode:", renderingMode)
 	return rv
 }
 
 func (fc _FontClass) SystemFontSize() float64 {
-	rv := ffi.CallMethod[float64](fc, "systemFontSize")
+	rv := objc.CallMethod[float64](fc, "systemFontSize")
 	return rv
 }
 
 func (fc _FontClass) SmallSystemFontSize() float64 {
-	rv := ffi.CallMethod[float64](fc, "smallSystemFontSize")
+	rv := objc.CallMethod[float64](fc, "smallSystemFontSize")
 	return rv
 }
 
 func (fc _FontClass) LabelFontSize() float64 {
-	rv := ffi.CallMethod[float64](fc, "labelFontSize")
+	rv := objc.CallMethod[float64](fc, "labelFontSize")
 	return rv
 }
 
 func (f_ Font) PointSize() float64 {
-	rv := ffi.CallMethod[float64](f_, "pointSize")
+	rv := objc.CallMethod[float64](f_, "pointSize")
 	return rv
 }
 
 func (f_ Font) CoveredCharacterSet() foundation.CharacterSet {
-	rv := ffi.CallMethod[foundation.CharacterSet](f_, "coveredCharacterSet")
+	rv := objc.CallMethod[foundation.CharacterSet](f_, "coveredCharacterSet")
 	return rv
 }
 
 func (f_ Font) FontDescriptor() FontDescriptor {
-	rv := ffi.CallMethod[FontDescriptor](f_, "fontDescriptor")
+	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptor")
 	return rv
 }
 
 func (f_ Font) IsFixedPitch() bool {
-	rv := ffi.CallMethod[bool](f_, "isFixedPitch")
+	rv := objc.CallMethod[bool](f_, "isFixedPitch")
 	return rv
 }
 
 func (f_ Font) MostCompatibleStringEncoding() foundation.StringEncoding {
-	rv := ffi.CallMethod[foundation.StringEncoding](f_, "mostCompatibleStringEncoding")
+	rv := objc.CallMethod[foundation.StringEncoding](f_, "mostCompatibleStringEncoding")
 	return rv
 }
 
 func (f_ Font) NumberOfGlyphs() uint {
-	rv := ffi.CallMethod[uint](f_, "numberOfGlyphs")
+	rv := objc.CallMethod[uint](f_, "numberOfGlyphs")
 	return rv
 }
 
 func (f_ Font) DisplayName() string {
-	rv := ffi.CallMethod[string](f_, "displayName")
+	rv := objc.CallMethod[string](f_, "displayName")
 	return rv
 }
 
 func (f_ Font) FamilyName() string {
-	rv := ffi.CallMethod[string](f_, "familyName")
+	rv := objc.CallMethod[string](f_, "familyName")
 	return rv
 }
 
 func (f_ Font) FontName() string {
-	rv := ffi.CallMethod[string](f_, "fontName")
+	rv := objc.CallMethod[string](f_, "fontName")
 	return rv
 }
 
 func (f_ Font) IsVertical() bool {
-	rv := ffi.CallMethod[bool](f_, "isVertical")
+	rv := objc.CallMethod[bool](f_, "isVertical")
 	return rv
 }
 
 func (f_ Font) VerticalFont() Font {
-	rv := ffi.CallMethod[Font](f_, "verticalFont")
+	rv := objc.CallMethod[Font](f_, "verticalFont")
 	return rv
 }
 
 func (f_ Font) Ascender() float64 {
-	rv := ffi.CallMethod[float64](f_, "ascender")
+	rv := objc.CallMethod[float64](f_, "ascender")
 	return rv
 }
 
 func (f_ Font) Descender() float64 {
-	rv := ffi.CallMethod[float64](f_, "descender")
+	rv := objc.CallMethod[float64](f_, "descender")
 	return rv
 }
 
 func (f_ Font) CapHeight() float64 {
-	rv := ffi.CallMethod[float64](f_, "capHeight")
+	rv := objc.CallMethod[float64](f_, "capHeight")
 	return rv
 }
 
 func (f_ Font) Leading() float64 {
-	rv := ffi.CallMethod[float64](f_, "leading")
+	rv := objc.CallMethod[float64](f_, "leading")
 	return rv
 }
 
 func (f_ Font) XHeight() float64 {
-	rv := ffi.CallMethod[float64](f_, "xHeight")
+	rv := objc.CallMethod[float64](f_, "xHeight")
 	return rv
 }
 
 func (f_ Font) ItalicAngle() float64 {
-	rv := ffi.CallMethod[float64](f_, "italicAngle")
+	rv := objc.CallMethod[float64](f_, "italicAngle")
 	return rv
 }
 
 func (f_ Font) UnderlinePosition() float64 {
-	rv := ffi.CallMethod[float64](f_, "underlinePosition")
+	rv := objc.CallMethod[float64](f_, "underlinePosition")
 	return rv
 }
 
 func (f_ Font) UnderlineThickness() float64 {
-	rv := ffi.CallMethod[float64](f_, "underlineThickness")
+	rv := objc.CallMethod[float64](f_, "underlineThickness")
 	return rv
 }
 
 func (f_ Font) BoundingRectForFont() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](f_, "boundingRectForFont")
+	rv := objc.CallMethod[foundation.Rect](f_, "boundingRectForFont")
 	return rv
 }
 
 func (f_ Font) MaximumAdvancement() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](f_, "maximumAdvancement")
+	rv := objc.CallMethod[foundation.Size](f_, "maximumAdvancement")
 	return rv
 }
 
 func (f_ Font) Matrix() *float64 {
-	rv := ffi.CallMethod[*float64](f_, "matrix")
+	rv := objc.CallMethod[*float64](f_, "matrix")
 	return rv
 }
 
 func (f_ Font) TextTransform() foundation.AffineTransform {
-	rv := ffi.CallMethod[foundation.AffineTransform](f_, "textTransform")
+	rv := objc.CallMethod[foundation.AffineTransform](f_, "textTransform")
 	return rv
 }
 
 // deprecated
 func (f_ Font) RenderingMode() FontRenderingMode {
-	rv := ffi.CallMethod[FontRenderingMode](f_, "renderingMode")
+	rv := objc.CallMethod[FontRenderingMode](f_, "renderingMode")
 	return rv
 }
 
 // deprecated
 func (f_ Font) PrinterFont() Font {
-	rv := ffi.CallMethod[Font](f_, "printerFont")
+	rv := objc.CallMethod[Font](f_, "printerFont")
 	return rv
 }
 
 // deprecated
 func (f_ Font) ScreenFont() Font {
-	rv := ffi.CallMethod[Font](f_, "screenFont")
+	rv := objc.CallMethod[Font](f_, "screenFont")
 	return rv
 }

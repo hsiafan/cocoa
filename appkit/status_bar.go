@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,12 +32,12 @@ func MakeStatusBar(ptr unsafe.Pointer) StatusBar {
 }
 
 func (sc _StatusBarClass) Alloc() StatusBar {
-	rv := ffi.CallMethod[StatusBar](sc, "alloc")
+	rv := objc.CallMethod[StatusBar](sc, "alloc")
 	return rv
 }
 
 func (sc _StatusBarClass) New() StatusBar {
-	rv := ffi.CallMethod[StatusBar](sc, "new")
+	rv := objc.CallMethod[StatusBar](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -48,30 +47,30 @@ func NewStatusBar() StatusBar {
 }
 
 func (s_ StatusBar) Init() StatusBar {
-	rv := ffi.CallMethod[StatusBar](s_, "init")
+	rv := objc.CallMethod[StatusBar](s_, "init")
 	return rv
 }
 
 func (s_ StatusBar) StatusItemWithLength(length float64) StatusItem {
-	rv := ffi.CallMethod[StatusItem](s_, "statusItemWithLength:", length)
+	rv := objc.CallMethod[StatusItem](s_, "statusItemWithLength:", length)
 	return rv
 }
 
 func (s_ StatusBar) RemoveStatusItem(item IStatusItem) {
-	ffi.CallMethod[ffi.Void](s_, "removeStatusItem:", item)
+	objc.CallMethod[objc.Void](s_, "removeStatusItem:", item)
 }
 
 func (sc _StatusBarClass) SystemStatusBar() StatusBar {
-	rv := ffi.CallMethod[StatusBar](sc, "systemStatusBar")
+	rv := objc.CallMethod[StatusBar](sc, "systemStatusBar")
 	return rv
 }
 
 func (s_ StatusBar) IsVertical() bool {
-	rv := ffi.CallMethod[bool](s_, "isVertical")
+	rv := objc.CallMethod[bool](s_, "isVertical")
 	return rv
 }
 
 func (s_ StatusBar) Thickness() float64 {
-	rv := ffi.CallMethod[float64](s_, "thickness")
+	rv := objc.CallMethod[float64](s_, "thickness")
 	return rv
 }

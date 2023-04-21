@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -52,12 +51,12 @@ func MakePrintPanel(ptr unsafe.Pointer) PrintPanel {
 }
 
 func (pc _PrintPanelClass) Alloc() PrintPanel {
-	rv := ffi.CallMethod[PrintPanel](pc, "alloc")
+	rv := objc.CallMethod[PrintPanel](pc, "alloc")
 	return rv
 }
 
 func (pc _PrintPanelClass) New() PrintPanel {
-	rv := ffi.CallMethod[PrintPanel](pc, "new")
+	rv := objc.CallMethod[PrintPanel](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -67,100 +66,100 @@ func NewPrintPanel() PrintPanel {
 }
 
 func (p_ PrintPanel) Init() PrintPanel {
-	rv := ffi.CallMethod[PrintPanel](p_, "init")
+	rv := objc.CallMethod[PrintPanel](p_, "init")
 	return rv
 }
 
 func (pc _PrintPanelClass) PrintPanel() PrintPanel {
-	rv := ffi.CallMethod[PrintPanel](pc, "printPanel")
+	rv := objc.CallMethod[PrintPanel](pc, "printPanel")
 	return rv
 }
 
 func (p_ PrintPanel) DefaultButtonTitle() string {
-	rv := ffi.CallMethod[string](p_, "defaultButtonTitle")
+	rv := objc.CallMethod[string](p_, "defaultButtonTitle")
 	return rv
 }
 
 func (p_ PrintPanel) SetDefaultButtonTitle(defaultButtonTitle string) {
-	ffi.CallMethod[ffi.Void](p_, "setDefaultButtonTitle:", defaultButtonTitle)
+	objc.CallMethod[objc.Void](p_, "setDefaultButtonTitle:", defaultButtonTitle)
 }
 
 func (p_ PrintPanel) AddAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "addAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, "addAccessoryController:", accessoryController)
 }
 
 func (p_ PrintPanel) RemoveAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "removeAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, "removeAccessoryController:", accessoryController)
 }
 
 func (p_ PrintPanel) BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](p_, "beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:", printInfo, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](p_, "beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:", printInfo, docWindow, delegate, didEndSelector, contextInfo)
 }
 
 func (p_ PrintPanel) RunModal() int {
-	rv := ffi.CallMethod[int](p_, "runModal")
+	rv := objc.CallMethod[int](p_, "runModal")
 	return rv
 }
 
 func (p_ PrintPanel) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := ffi.CallMethod[int](p_, "runModalWithPrintInfo:", printInfo)
+	rv := objc.CallMethod[int](p_, "runModalWithPrintInfo:", printInfo)
 	return rv
 }
 
 // deprecated
 func (p_ PrintPanel) AccessoryView() View {
-	rv := ffi.CallMethod[View](p_, "accessoryView")
+	rv := objc.CallMethod[View](p_, "accessoryView")
 	return rv
 }
 
 // deprecated
 func (p_ PrintPanel) SetAccessoryView(accessoryView IView) {
-	ffi.CallMethod[ffi.Void](p_, "setAccessoryView:", accessoryView)
+	objc.CallMethod[objc.Void](p_, "setAccessoryView:", accessoryView)
 }
 
 // deprecated
 func (p_ PrintPanel) UpdateFromPrintInfo() {
-	ffi.CallMethod[ffi.Void](p_, "updateFromPrintInfo")
+	objc.CallMethod[objc.Void](p_, "updateFromPrintInfo")
 }
 
 // deprecated
 func (p_ PrintPanel) FinalWritePrintInfo() {
-	ffi.CallMethod[ffi.Void](p_, "finalWritePrintInfo")
+	objc.CallMethod[objc.Void](p_, "finalWritePrintInfo")
 }
 
 func (p_ PrintPanel) JobStyleHint() PrintPanelJobStyleHint {
-	rv := ffi.CallMethod[PrintPanelJobStyleHint](p_, "jobStyleHint")
+	rv := objc.CallMethod[PrintPanelJobStyleHint](p_, "jobStyleHint")
 	return rv
 }
 
 func (p_ PrintPanel) SetJobStyleHint(value PrintPanelJobStyleHint) {
-	ffi.CallMethod[ffi.Void](p_, "setJobStyleHint:", value)
+	objc.CallMethod[objc.Void](p_, "setJobStyleHint:", value)
 }
 
 func (p_ PrintPanel) Options() PrintPanelOptions {
-	rv := ffi.CallMethod[PrintPanelOptions](p_, "options")
+	rv := objc.CallMethod[PrintPanelOptions](p_, "options")
 	return rv
 }
 
 func (p_ PrintPanel) SetOptions(value PrintPanelOptions) {
-	ffi.CallMethod[ffi.Void](p_, "setOptions:", value)
+	objc.CallMethod[objc.Void](p_, "setOptions:", value)
 }
 
 func (p_ PrintPanel) HelpAnchor() HelpAnchorName {
-	rv := ffi.CallMethod[HelpAnchorName](p_, "helpAnchor")
+	rv := objc.CallMethod[HelpAnchorName](p_, "helpAnchor")
 	return rv
 }
 
 func (p_ PrintPanel) SetHelpAnchor(value HelpAnchorName) {
-	ffi.CallMethod[ffi.Void](p_, "setHelpAnchor:", value)
+	objc.CallMethod[objc.Void](p_, "setHelpAnchor:", value)
 }
 
 func (p_ PrintPanel) AccessoryControllers() []ViewController {
-	rv := ffi.CallMethod[[]ViewController](p_, "accessoryControllers")
+	rv := objc.CallMethod[[]ViewController](p_, "accessoryControllers")
 	return rv
 }
 
 func (p_ PrintPanel) PrintInfo() PrintInfo {
-	rv := ffi.CallMethod[PrintInfo](p_, "printInfo")
+	rv := objc.CallMethod[PrintInfo](p_, "printInfo")
 	return rv
 }

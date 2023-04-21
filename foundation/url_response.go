@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,17 +33,17 @@ func MakeURLResponse(ptr unsafe.Pointer) URLResponse {
 }
 
 func (u_ URLResponse) InitWithURL_MIMEType_ExpectedContentLength_TextEncodingName(URL IURL, MIMEType string, length int, name string) URLResponse {
-	rv := ffi.CallMethod[URLResponse](u_, "initWithURL:MIMEType:expectedContentLength:textEncodingName:", URL, MIMEType, length, name)
+	rv := objc.CallMethod[URLResponse](u_, "initWithURL:MIMEType:expectedContentLength:textEncodingName:", URL, MIMEType, length, name)
 	return rv
 }
 
 func (uc _URLResponseClass) Alloc() URLResponse {
-	rv := ffi.CallMethod[URLResponse](uc, "alloc")
+	rv := objc.CallMethod[URLResponse](uc, "alloc")
 	return rv
 }
 
 func (uc _URLResponseClass) New() URLResponse {
-	rv := ffi.CallMethod[URLResponse](uc, "new")
+	rv := objc.CallMethod[URLResponse](uc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,31 +53,31 @@ func NewURLResponse() URLResponse {
 }
 
 func (u_ URLResponse) Init() URLResponse {
-	rv := ffi.CallMethod[URLResponse](u_, "init")
+	rv := objc.CallMethod[URLResponse](u_, "init")
 	return rv
 }
 
 func (u_ URLResponse) ExpectedContentLength() int64 {
-	rv := ffi.CallMethod[int64](u_, "expectedContentLength")
+	rv := objc.CallMethod[int64](u_, "expectedContentLength")
 	return rv
 }
 
 func (u_ URLResponse) SuggestedFilename() string {
-	rv := ffi.CallMethod[string](u_, "suggestedFilename")
+	rv := objc.CallMethod[string](u_, "suggestedFilename")
 	return rv
 }
 
 func (u_ URLResponse) MIMEType() string {
-	rv := ffi.CallMethod[string](u_, "MIMEType")
+	rv := objc.CallMethod[string](u_, "MIMEType")
 	return rv
 }
 
 func (u_ URLResponse) TextEncodingName() string {
-	rv := ffi.CallMethod[string](u_, "textEncodingName")
+	rv := objc.CallMethod[string](u_, "textEncodingName")
 	return rv
 }
 
 func (u_ URLResponse) URL() URL {
-	rv := ffi.CallMethod[URL](u_, "URL")
+	rv := objc.CallMethod[URL](u_, "URL")
 	return rv
 }

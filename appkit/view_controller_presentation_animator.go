@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -18,9 +17,9 @@ type ViewControllerPresentationAnimatorWrapper struct {
 }
 
 func (v_ ViewControllerPresentationAnimatorWrapper) AnimatePresentationOfViewController_FromViewController(viewController IViewController, fromViewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "animatePresentationOfViewController:fromViewController:", viewController, fromViewController)
+	objc.CallMethod[objc.Void](v_, "animatePresentationOfViewController:fromViewController:", viewController, fromViewController)
 }
 
 func (v_ ViewControllerPresentationAnimatorWrapper) AnimateDismissalOfViewController_FromViewController(viewController IViewController, fromViewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "animateDismissalOfViewController:fromViewController:", viewController, fromViewController)
+	objc.CallMethod[objc.Void](v_, "animateDismissalOfViewController:fromViewController:", viewController, fromViewController)
 }

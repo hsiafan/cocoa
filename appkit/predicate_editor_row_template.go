@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -41,22 +40,22 @@ func MakePredicateEditorRowTemplate(ptr unsafe.Pointer) PredicateEditorRowTempla
 }
 
 func (p_ PredicateEditorRowTemplate) InitWithLeftExpressions_RightExpressions_Modifier_Operators_Options(leftExpressions []foundation.IExpression, rightExpressions []foundation.IExpression, modifier foundation.ComparisonPredicateModifier, operators []foundation.INumber, options uint) PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "initWithLeftExpressions:rightExpressions:modifier:operators:options:", leftExpressions, rightExpressions, modifier, operators, options)
+	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, "initWithLeftExpressions:rightExpressions:modifier:operators:options:", leftExpressions, rightExpressions, modifier, operators, options)
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) InitWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "initWithCompoundTypes:", compoundTypes)
+	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, "initWithCompoundTypes:", compoundTypes)
 	return rv
 }
 
 func (pc _PredicateEditorRowTemplateClass) Alloc() PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](pc, "alloc")
+	rv := objc.CallMethod[PredicateEditorRowTemplate](pc, "alloc")
 	return rv
 }
 
 func (pc _PredicateEditorRowTemplateClass) New() PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](pc, "new")
+	rv := objc.CallMethod[PredicateEditorRowTemplate](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -66,60 +65,60 @@ func NewPredicateEditorRowTemplate() PredicateEditorRowTemplate {
 }
 
 func (p_ PredicateEditorRowTemplate) Init() PredicateEditorRowTemplate {
-	rv := ffi.CallMethod[PredicateEditorRowTemplate](p_, "init")
+	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, "init")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) MatchForPredicate(predicate foundation.IPredicate) float64 {
-	rv := ffi.CallMethod[float64](p_, "matchForPredicate:", predicate)
+	rv := objc.CallMethod[float64](p_, "matchForPredicate:", predicate)
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) SetPredicate(predicate foundation.IPredicate) {
-	ffi.CallMethod[ffi.Void](p_, "setPredicate:", predicate)
+	objc.CallMethod[objc.Void](p_, "setPredicate:", predicate)
 }
 
 func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate {
-	rv := ffi.CallMethod[[]foundation.Predicate](p_, "displayableSubpredicatesOfPredicate:", predicate)
+	rv := objc.CallMethod[[]foundation.Predicate](p_, "displayableSubpredicatesOfPredicate:", predicate)
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) PredicateWithSubpredicates(subpredicates []foundation.IPredicate) foundation.Predicate {
-	rv := ffi.CallMethod[foundation.Predicate](p_, "predicateWithSubpredicates:", subpredicates)
+	rv := objc.CallMethod[foundation.Predicate](p_, "predicateWithSubpredicates:", subpredicates)
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) TemplateViews() []View {
-	rv := ffi.CallMethod[[]View](p_, "templateViews")
+	rv := objc.CallMethod[[]View](p_, "templateViews")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) LeftExpressions() []foundation.Expression {
-	rv := ffi.CallMethod[[]foundation.Expression](p_, "leftExpressions")
+	rv := objc.CallMethod[[]foundation.Expression](p_, "leftExpressions")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) RightExpressions() []foundation.Expression {
-	rv := ffi.CallMethod[[]foundation.Expression](p_, "rightExpressions")
+	rv := objc.CallMethod[[]foundation.Expression](p_, "rightExpressions")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) CompoundTypes() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](p_, "compoundTypes")
+	rv := objc.CallMethod[[]foundation.Number](p_, "compoundTypes")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) Modifier() foundation.ComparisonPredicateModifier {
-	rv := ffi.CallMethod[foundation.ComparisonPredicateModifier](p_, "modifier")
+	rv := objc.CallMethod[foundation.ComparisonPredicateModifier](p_, "modifier")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) Operators() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](p_, "operators")
+	rv := objc.CallMethod[[]foundation.Number](p_, "operators")
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) Options() uint {
-	rv := ffi.CallMethod[uint](p_, "options")
+	rv := objc.CallMethod[uint](p_, "options")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -37,22 +36,22 @@ func MakeTableHeaderView(ptr unsafe.Pointer) TableHeaderView {
 }
 
 func (t_ TableHeaderView) InitWithFrame(frameRect foundation.Rect) TableHeaderView {
-	rv := ffi.CallMethod[TableHeaderView](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TableHeaderView](t_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (t_ TableHeaderView) Init() TableHeaderView {
-	rv := ffi.CallMethod[TableHeaderView](t_, "init")
+	rv := objc.CallMethod[TableHeaderView](t_, "init")
 	return rv
 }
 
 func (tc _TableHeaderViewClass) Alloc() TableHeaderView {
-	rv := ffi.CallMethod[TableHeaderView](tc, "alloc")
+	rv := objc.CallMethod[TableHeaderView](tc, "alloc")
 	return rv
 }
 
 func (tc _TableHeaderViewClass) New() TableHeaderView {
-	rv := ffi.CallMethod[TableHeaderView](tc, "new")
+	rv := objc.CallMethod[TableHeaderView](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -62,35 +61,35 @@ func NewTableHeaderView() TableHeaderView {
 }
 
 func (t_ TableHeaderView) ColumnAtPoint(point foundation.Point) int {
-	rv := ffi.CallMethod[int](t_, "columnAtPoint:", point)
+	rv := objc.CallMethod[int](t_, "columnAtPoint:", point)
 	return rv
 }
 
 func (t_ TableHeaderView) HeaderRectOfColumn(column int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](t_, "headerRectOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](t_, "headerRectOfColumn:", column)
 	return rv
 }
 
 func (t_ TableHeaderView) TableView() TableView {
-	rv := ffi.CallMethod[TableView](t_, "tableView")
+	rv := objc.CallMethod[TableView](t_, "tableView")
 	return rv
 }
 
 func (t_ TableHeaderView) SetTableView(value ITableView) {
-	ffi.CallMethod[ffi.Void](t_, "setTableView:", value)
+	objc.CallMethod[objc.Void](t_, "setTableView:", value)
 }
 
 func (t_ TableHeaderView) DraggedColumn() int {
-	rv := ffi.CallMethod[int](t_, "draggedColumn")
+	rv := objc.CallMethod[int](t_, "draggedColumn")
 	return rv
 }
 
 func (t_ TableHeaderView) DraggedDistance() float64 {
-	rv := ffi.CallMethod[float64](t_, "draggedDistance")
+	rv := objc.CallMethod[float64](t_, "draggedDistance")
 	return rv
 }
 
 func (t_ TableHeaderView) ResizedColumn() int {
-	rv := ffi.CallMethod[int](t_, "resizedColumn")
+	rv := objc.CallMethod[int](t_, "resizedColumn")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -55,27 +54,27 @@ func MakePathCell(ptr unsafe.Pointer) PathCell {
 }
 
 func (p_ PathCell) InitImageCell(image IImage) PathCell {
-	rv := ffi.CallMethod[PathCell](p_, "initImageCell:", image)
+	rv := objc.CallMethod[PathCell](p_, "initImageCell:", image)
 	return rv
 }
 
 func (p_ PathCell) InitTextCell(string_ string) PathCell {
-	rv := ffi.CallMethod[PathCell](p_, "initTextCell:", string_)
+	rv := objc.CallMethod[PathCell](p_, "initTextCell:", string_)
 	return rv
 }
 
 func (p_ PathCell) Init() PathCell {
-	rv := ffi.CallMethod[PathCell](p_, "init")
+	rv := objc.CallMethod[PathCell](p_, "init")
 	return rv
 }
 
 func (pc _PathCellClass) Alloc() PathCell {
-	rv := ffi.CallMethod[PathCell](pc, "alloc")
+	rv := objc.CallMethod[PathCell](pc, "alloc")
 	return rv
 }
 
 func (pc _PathCellClass) New() PathCell {
-	rv := ffi.CallMethod[PathCell](pc, "new")
+	rv := objc.CallMethod[PathCell](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -85,117 +84,117 @@ func NewPathCell() PathCell {
 }
 
 func (p_ PathCell) MouseEntered_WithFrame_InView(event IEvent, frame foundation.Rect, view IView) {
-	ffi.CallMethod[ffi.Void](p_, "mouseEntered:withFrame:inView:", event, frame, view)
+	objc.CallMethod[objc.Void](p_, "mouseEntered:withFrame:inView:", event, frame, view)
 }
 
 func (p_ PathCell) MouseExited_WithFrame_InView(event IEvent, frame foundation.Rect, view IView) {
-	ffi.CallMethod[ffi.Void](p_, "mouseExited:withFrame:inView:", event, frame, view)
+	objc.CallMethod[objc.Void](p_, "mouseExited:withFrame:inView:", event, frame, view)
 }
 
 func (p_ PathCell) RectOfPathComponentCell_WithFrame_InView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](p_, "rectOfPathComponentCell:withFrame:inView:", cell, frame, view)
+	rv := objc.CallMethod[foundation.Rect](p_, "rectOfPathComponentCell:withFrame:inView:", cell, frame, view)
 	return rv
 }
 
 func (p_ PathCell) PathComponentCellAtPoint_WithFrame_InView(point foundation.Point, frame foundation.Rect, view IView) PathComponentCell {
-	rv := ffi.CallMethod[PathComponentCell](p_, "pathComponentCellAtPoint:withFrame:inView:", point, frame, view)
+	rv := objc.CallMethod[PathComponentCell](p_, "pathComponentCellAtPoint:withFrame:inView:", point, frame, view)
 	return rv
 }
 
 func (p_ PathCell) AllowedTypes() []string {
-	rv := ffi.CallMethod[[]string](p_, "allowedTypes")
+	rv := objc.CallMethod[[]string](p_, "allowedTypes")
 	return rv
 }
 
 func (p_ PathCell) SetAllowedTypes(value []string) {
-	ffi.CallMethod[ffi.Void](p_, "setAllowedTypes:", value)
+	objc.CallMethod[objc.Void](p_, "setAllowedTypes:", value)
 }
 
 func (p_ PathCell) PathStyle() PathStyle {
-	rv := ffi.CallMethod[PathStyle](p_, "pathStyle")
+	rv := objc.CallMethod[PathStyle](p_, "pathStyle")
 	return rv
 }
 
 func (p_ PathCell) SetPathStyle(value PathStyle) {
-	ffi.CallMethod[ffi.Void](p_, "setPathStyle:", value)
+	objc.CallMethod[objc.Void](p_, "setPathStyle:", value)
 }
 
 func (p_ PathCell) PlaceholderAttributedString() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](p_, "placeholderAttributedString")
+	rv := objc.CallMethod[foundation.AttributedString](p_, "placeholderAttributedString")
 	return rv
 }
 
 func (p_ PathCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](p_, "setPlaceholderAttributedString:", value)
+	objc.CallMethod[objc.Void](p_, "setPlaceholderAttributedString:", value)
 }
 
 func (p_ PathCell) PlaceholderString() string {
-	rv := ffi.CallMethod[string](p_, "placeholderString")
+	rv := objc.CallMethod[string](p_, "placeholderString")
 	return rv
 }
 
 func (p_ PathCell) SetPlaceholderString(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setPlaceholderString:", value)
+	objc.CallMethod[objc.Void](p_, "setPlaceholderString:", value)
 }
 
 func (p_ PathCell) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](p_, "backgroundColor")
+	rv := objc.CallMethod[Color](p_, "backgroundColor")
 	return rv
 }
 
 func (p_ PathCell) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](p_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](p_, "setBackgroundColor:", value)
 }
 
 func (pc _PathCellClass) PathComponentCellClass() objc.Class {
-	rv := ffi.CallMethod[objc.Class](pc, "pathComponentCellClass")
+	rv := objc.CallMethod[objc.Class](pc, "pathComponentCellClass")
 	return rv
 }
 
 func (p_ PathCell) ClickedPathComponentCell() PathComponentCell {
-	rv := ffi.CallMethod[PathComponentCell](p_, "clickedPathComponentCell")
+	rv := objc.CallMethod[PathComponentCell](p_, "clickedPathComponentCell")
 	return rv
 }
 
 func (p_ PathCell) PathComponentCells() []PathComponentCell {
-	rv := ffi.CallMethod[[]PathComponentCell](p_, "pathComponentCells")
+	rv := objc.CallMethod[[]PathComponentCell](p_, "pathComponentCells")
 	return rv
 }
 
 func (p_ PathCell) SetPathComponentCells(value []IPathComponentCell) {
-	ffi.CallMethod[ffi.Void](p_, "setPathComponentCells:", value)
+	objc.CallMethod[objc.Void](p_, "setPathComponentCells:", value)
 }
 
 func (p_ PathCell) DoubleAction() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](p_, "doubleAction")
+	rv := objc.CallMethod[objc.Selector](p_, "doubleAction")
 	return rv
 }
 
 func (p_ PathCell) SetDoubleAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](p_, "setDoubleAction:", value)
+	objc.CallMethod[objc.Void](p_, "setDoubleAction:", value)
 }
 
 func (p_ PathCell) URL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](p_, "URL")
+	rv := objc.CallMethod[foundation.URL](p_, "URL")
 	return rv
 }
 
 func (p_ PathCell) SetURL(value foundation.IURL) {
-	ffi.CallMethod[ffi.Void](p_, "setURL:", value)
+	objc.CallMethod[objc.Void](p_, "setURL:", value)
 }
 
 func (p_ PathCell) Delegate() PathCellDelegateWrapper {
-	rv := ffi.CallMethod[PathCellDelegateWrapper](p_, "delegate")
+	rv := objc.CallMethod[PathCellDelegateWrapper](p_, "delegate")
 	return rv
 }
 
 func (p_ PathCell) SetDelegate(value PathCellDelegate) {
-	po := ffi.CreateProtocol("NSPathCellDelegate", value)
+	po := objc.CreateProtocol("NSPathCellDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](p_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](p_, "setDelegate:", po)
 }
 
 func (p_ PathCell) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](p_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](p_, "setDelegate:", value)
 }

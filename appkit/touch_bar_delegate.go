@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,6 +36,6 @@ func (t_ *TouchBarDelegateWrapper) ImplementsTouchBar_MakeItemForIdentifier() bo
 }
 
 func (t_ TouchBarDelegateWrapper) TouchBar_MakeItemForIdentifier(touchBar ITouchBar, identifier TouchBarItemIdentifier) TouchBarItem {
-	rv := ffi.CallMethod[TouchBarItem](t_, "touchBar:makeItemForIdentifier:", touchBar, identifier)
+	rv := objc.CallMethod[TouchBarItem](t_, "touchBar:makeItemForIdentifier:", touchBar, identifier)
 	return rv
 }

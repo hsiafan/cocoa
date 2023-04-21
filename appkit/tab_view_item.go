@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -50,22 +49,22 @@ func MakeTabViewItem(ptr unsafe.Pointer) TabViewItem {
 }
 
 func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](t_, "initWithIdentifier:", identifier)
+	rv := objc.CallMethod[TabViewItem](t_, "initWithIdentifier:", identifier)
 	return rv
 }
 
 func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](tc, "tabViewItemWithViewController:", viewController)
+	rv := objc.CallMethod[TabViewItem](tc, "tabViewItemWithViewController:", viewController)
 	return rv
 }
 
 func (tc _TabViewItemClass) Alloc() TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](tc, "alloc")
+	rv := objc.CallMethod[TabViewItem](tc, "alloc")
 	return rv
 }
 
 func (tc _TabViewItemClass) New() TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](tc, "new")
+	rv := objc.CallMethod[TabViewItem](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -75,97 +74,97 @@ func NewTabViewItem() TabViewItem {
 }
 
 func (t_ TabViewItem) Init() TabViewItem {
-	rv := ffi.CallMethod[TabViewItem](t_, "init")
+	rv := objc.CallMethod[TabViewItem](t_, "init")
 	return rv
 }
 
 func (t_ TabViewItem) DrawLabel_InRect(shouldTruncateLabel bool, labelRect foundation.Rect) {
-	ffi.CallMethod[ffi.Void](t_, "drawLabel:inRect:", shouldTruncateLabel, labelRect)
+	objc.CallMethod[objc.Void](t_, "drawLabel:inRect:", shouldTruncateLabel, labelRect)
 }
 
 func (t_ TabViewItem) SizeOfLabel(computeMin bool) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](t_, "sizeOfLabel:", computeMin)
+	rv := objc.CallMethod[foundation.Size](t_, "sizeOfLabel:", computeMin)
 	return rv
 }
 
 func (t_ TabViewItem) Label() string {
-	rv := ffi.CallMethod[string](t_, "label")
+	rv := objc.CallMethod[string](t_, "label")
 	return rv
 }
 
 func (t_ TabViewItem) SetLabel(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setLabel:", value)
+	objc.CallMethod[objc.Void](t_, "setLabel:", value)
 }
 
 func (t_ TabViewItem) TabState() TabState {
-	rv := ffi.CallMethod[TabState](t_, "tabState")
+	rv := objc.CallMethod[TabState](t_, "tabState")
 	return rv
 }
 
 func (t_ TabViewItem) Identifier() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "identifier")
+	rv := objc.CallMethod[objc.Object](t_, "identifier")
 	return rv
 }
 
 func (t_ TabViewItem) SetIdentifier(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setIdentifier:", value)
+	objc.CallMethod[objc.Void](t_, "setIdentifier:", value)
 }
 
 func (t_ TabViewItem) Color() Color {
-	rv := ffi.CallMethod[Color](t_, "color")
+	rv := objc.CallMethod[Color](t_, "color")
 	return rv
 }
 
 func (t_ TabViewItem) SetColor(value IColor) {
-	ffi.CallMethod[ffi.Void](t_, "setColor:", value)
+	objc.CallMethod[objc.Void](t_, "setColor:", value)
 }
 
 func (t_ TabViewItem) View() View {
-	rv := ffi.CallMethod[View](t_, "view")
+	rv := objc.CallMethod[View](t_, "view")
 	return rv
 }
 
 func (t_ TabViewItem) SetView(value IView) {
-	ffi.CallMethod[ffi.Void](t_, "setView:", value)
+	objc.CallMethod[objc.Void](t_, "setView:", value)
 }
 
 func (t_ TabViewItem) InitialFirstResponder() View {
-	rv := ffi.CallMethod[View](t_, "initialFirstResponder")
+	rv := objc.CallMethod[View](t_, "initialFirstResponder")
 	return rv
 }
 
 func (t_ TabViewItem) SetInitialFirstResponder(value IView) {
-	ffi.CallMethod[ffi.Void](t_, "setInitialFirstResponder:", value)
+	objc.CallMethod[objc.Void](t_, "setInitialFirstResponder:", value)
 }
 
 func (t_ TabViewItem) TabView() TabView {
-	rv := ffi.CallMethod[TabView](t_, "tabView")
+	rv := objc.CallMethod[TabView](t_, "tabView")
 	return rv
 }
 
 func (t_ TabViewItem) ToolTip() string {
-	rv := ffi.CallMethod[string](t_, "toolTip")
+	rv := objc.CallMethod[string](t_, "toolTip")
 	return rv
 }
 
 func (t_ TabViewItem) SetToolTip(value string) {
-	ffi.CallMethod[ffi.Void](t_, "setToolTip:", value)
+	objc.CallMethod[objc.Void](t_, "setToolTip:", value)
 }
 
 func (t_ TabViewItem) Image() Image {
-	rv := ffi.CallMethod[Image](t_, "image")
+	rv := objc.CallMethod[Image](t_, "image")
 	return rv
 }
 
 func (t_ TabViewItem) SetImage(value IImage) {
-	ffi.CallMethod[ffi.Void](t_, "setImage:", value)
+	objc.CallMethod[objc.Void](t_, "setImage:", value)
 }
 
 func (t_ TabViewItem) ViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](t_, "viewController")
+	rv := objc.CallMethod[ViewController](t_, "viewController")
 	return rv
 }
 
 func (t_ TabViewItem) SetViewController(value IViewController) {
-	ffi.CallMethod[ffi.Void](t_, "setViewController:", value)
+	objc.CallMethod[objc.Void](t_, "setViewController:", value)
 }

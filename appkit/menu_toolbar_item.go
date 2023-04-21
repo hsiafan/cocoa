@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,17 +32,17 @@ func MakeMenuToolbarItem(ptr unsafe.Pointer) MenuToolbarItem {
 }
 
 func (m_ MenuToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
-	rv := ffi.CallMethod[MenuToolbarItem](m_, "initWithItemIdentifier:", itemIdentifier)
+	rv := objc.CallMethod[MenuToolbarItem](m_, "initWithItemIdentifier:", itemIdentifier)
 	return rv
 }
 
 func (mc _MenuToolbarItemClass) Alloc() MenuToolbarItem {
-	rv := ffi.CallMethod[MenuToolbarItem](mc, "alloc")
+	rv := objc.CallMethod[MenuToolbarItem](mc, "alloc")
 	return rv
 }
 
 func (mc _MenuToolbarItemClass) New() MenuToolbarItem {
-	rv := ffi.CallMethod[MenuToolbarItem](mc, "new")
+	rv := objc.CallMethod[MenuToolbarItem](mc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,24 +52,24 @@ func NewMenuToolbarItem() MenuToolbarItem {
 }
 
 func (m_ MenuToolbarItem) Init() MenuToolbarItem {
-	rv := ffi.CallMethod[MenuToolbarItem](m_, "init")
+	rv := objc.CallMethod[MenuToolbarItem](m_, "init")
 	return rv
 }
 
 func (m_ MenuToolbarItem) ShowsIndicator() bool {
-	rv := ffi.CallMethod[bool](m_, "showsIndicator")
+	rv := objc.CallMethod[bool](m_, "showsIndicator")
 	return rv
 }
 
 func (m_ MenuToolbarItem) SetShowsIndicator(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setShowsIndicator:", value)
+	objc.CallMethod[objc.Void](m_, "setShowsIndicator:", value)
 }
 
 func (m_ MenuToolbarItem) Menu() Menu {
-	rv := ffi.CallMethod[Menu](m_, "menu")
+	rv := objc.CallMethod[Menu](m_, "menu")
 	return rv
 }
 
 func (m_ MenuToolbarItem) SetMenu(value IMenu) {
-	ffi.CallMethod[ffi.Void](m_, "setMenu:", value)
+	objc.CallMethod[objc.Void](m_, "setMenu:", value)
 }

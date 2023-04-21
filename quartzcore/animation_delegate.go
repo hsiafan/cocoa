@@ -2,7 +2,6 @@
 package quartzcore
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -52,7 +51,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStart() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStart(anim IAnimation) {
-	ffi.CallMethod[ffi.Void](a_, "animationDidStart:", anim)
+	objc.CallMethod[objc.Void](a_, "animationDidStart:", anim)
 }
 
 func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop_Finished() bool {
@@ -60,5 +59,5 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop_Finished() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStop_Finished(anim IAnimation, flag bool) {
-	ffi.CallMethod[ffi.Void](a_, "animationDidStop:finished:", anim, flag)
+	objc.CallMethod[objc.Void](a_, "animationDidStop:finished:", anim, flag)
 }

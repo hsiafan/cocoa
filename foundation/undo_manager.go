@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -63,12 +62,12 @@ func MakeUndoManager(ptr unsafe.Pointer) UndoManager {
 }
 
 func (uc _UndoManagerClass) Alloc() UndoManager {
-	rv := ffi.CallMethod[UndoManager](uc, "alloc")
+	rv := objc.CallMethod[UndoManager](uc, "alloc")
 	return rv
 }
 
 func (uc _UndoManagerClass) New() UndoManager {
-	rv := ffi.CallMethod[UndoManager](uc, "new")
+	rv := objc.CallMethod[UndoManager](uc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -78,160 +77,160 @@ func NewUndoManager() UndoManager {
 }
 
 func (u_ UndoManager) Init() UndoManager {
-	rv := ffi.CallMethod[UndoManager](u_, "init")
+	rv := objc.CallMethod[UndoManager](u_, "init")
 	return rv
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Handler(target objc.IObject, undoHandler func(target objc.Object)) {
-	ffi.CallMethod[ffi.Void](u_, "registerUndoWithTarget:handler:", target, undoHandler)
+	objc.CallMethod[objc.Void](u_, "registerUndoWithTarget:handler:", target, undoHandler)
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Selector_Object(target objc.IObject, selector objc.Selector, anObject objc.IObject) {
-	ffi.CallMethod[ffi.Void](u_, "registerUndoWithTarget:selector:object:", target, selector, anObject)
+	objc.CallMethod[objc.Void](u_, "registerUndoWithTarget:selector:object:", target, selector, anObject)
 }
 
 func (u_ UndoManager) PrepareWithInvocationTarget(target objc.IObject) objc.Object {
-	rv := ffi.CallMethod[objc.Object](u_, "prepareWithInvocationTarget:", target)
+	rv := objc.CallMethod[objc.Object](u_, "prepareWithInvocationTarget:", target)
 	return rv
 }
 
 func (u_ UndoManager) Undo() {
-	ffi.CallMethod[ffi.Void](u_, "undo")
+	objc.CallMethod[objc.Void](u_, "undo")
 }
 
 func (u_ UndoManager) UndoNestedGroup() {
-	ffi.CallMethod[ffi.Void](u_, "undoNestedGroup")
+	objc.CallMethod[objc.Void](u_, "undoNestedGroup")
 }
 
 func (u_ UndoManager) Redo() {
-	ffi.CallMethod[ffi.Void](u_, "redo")
+	objc.CallMethod[objc.Void](u_, "redo")
 }
 
 func (u_ UndoManager) BeginUndoGrouping() {
-	ffi.CallMethod[ffi.Void](u_, "beginUndoGrouping")
+	objc.CallMethod[objc.Void](u_, "beginUndoGrouping")
 }
 
 func (u_ UndoManager) EndUndoGrouping() {
-	ffi.CallMethod[ffi.Void](u_, "endUndoGrouping")
+	objc.CallMethod[objc.Void](u_, "endUndoGrouping")
 }
 
 func (u_ UndoManager) DisableUndoRegistration() {
-	ffi.CallMethod[ffi.Void](u_, "disableUndoRegistration")
+	objc.CallMethod[objc.Void](u_, "disableUndoRegistration")
 }
 
 func (u_ UndoManager) EnableUndoRegistration() {
-	ffi.CallMethod[ffi.Void](u_, "enableUndoRegistration")
+	objc.CallMethod[objc.Void](u_, "enableUndoRegistration")
 }
 
 func (u_ UndoManager) RemoveAllActions() {
-	ffi.CallMethod[ffi.Void](u_, "removeAllActions")
+	objc.CallMethod[objc.Void](u_, "removeAllActions")
 }
 
 func (u_ UndoManager) RemoveAllActionsWithTarget(target objc.IObject) {
-	ffi.CallMethod[ffi.Void](u_, "removeAllActionsWithTarget:", target)
+	objc.CallMethod[objc.Void](u_, "removeAllActionsWithTarget:", target)
 }
 
 func (u_ UndoManager) SetActionName(actionName string) {
-	ffi.CallMethod[ffi.Void](u_, "setActionName:", actionName)
+	objc.CallMethod[objc.Void](u_, "setActionName:", actionName)
 }
 
 func (u_ UndoManager) UndoMenuTitleForUndoActionName(actionName string) string {
-	rv := ffi.CallMethod[string](u_, "undoMenuTitleForUndoActionName:", actionName)
+	rv := objc.CallMethod[string](u_, "undoMenuTitleForUndoActionName:", actionName)
 	return rv
 }
 
 func (u_ UndoManager) RedoMenuTitleForUndoActionName(actionName string) string {
-	rv := ffi.CallMethod[string](u_, "redoMenuTitleForUndoActionName:", actionName)
+	rv := objc.CallMethod[string](u_, "redoMenuTitleForUndoActionName:", actionName)
 	return rv
 }
 
 func (u_ UndoManager) SetActionIsDiscardable(discardable bool) {
-	ffi.CallMethod[ffi.Void](u_, "setActionIsDiscardable:", discardable)
+	objc.CallMethod[objc.Void](u_, "setActionIsDiscardable:", discardable)
 }
 
 func (u_ UndoManager) CanUndo() bool {
-	rv := ffi.CallMethod[bool](u_, "canUndo")
+	rv := objc.CallMethod[bool](u_, "canUndo")
 	return rv
 }
 
 func (u_ UndoManager) CanRedo() bool {
-	rv := ffi.CallMethod[bool](u_, "canRedo")
+	rv := objc.CallMethod[bool](u_, "canRedo")
 	return rv
 }
 
 func (u_ UndoManager) LevelsOfUndo() uint {
-	rv := ffi.CallMethod[uint](u_, "levelsOfUndo")
+	rv := objc.CallMethod[uint](u_, "levelsOfUndo")
 	return rv
 }
 
 func (u_ UndoManager) SetLevelsOfUndo(value uint) {
-	ffi.CallMethod[ffi.Void](u_, "setLevelsOfUndo:", value)
+	objc.CallMethod[objc.Void](u_, "setLevelsOfUndo:", value)
 }
 
 func (u_ UndoManager) GroupsByEvent() bool {
-	rv := ffi.CallMethod[bool](u_, "groupsByEvent")
+	rv := objc.CallMethod[bool](u_, "groupsByEvent")
 	return rv
 }
 
 func (u_ UndoManager) SetGroupsByEvent(value bool) {
-	ffi.CallMethod[ffi.Void](u_, "setGroupsByEvent:", value)
+	objc.CallMethod[objc.Void](u_, "setGroupsByEvent:", value)
 }
 
 func (u_ UndoManager) GroupingLevel() int {
-	rv := ffi.CallMethod[int](u_, "groupingLevel")
+	rv := objc.CallMethod[int](u_, "groupingLevel")
 	return rv
 }
 
 func (u_ UndoManager) IsUndoRegistrationEnabled() bool {
-	rv := ffi.CallMethod[bool](u_, "isUndoRegistrationEnabled")
+	rv := objc.CallMethod[bool](u_, "isUndoRegistrationEnabled")
 	return rv
 }
 
 func (u_ UndoManager) IsUndoing() bool {
-	rv := ffi.CallMethod[bool](u_, "isUndoing")
+	rv := objc.CallMethod[bool](u_, "isUndoing")
 	return rv
 }
 
 func (u_ UndoManager) IsRedoing() bool {
-	rv := ffi.CallMethod[bool](u_, "isRedoing")
+	rv := objc.CallMethod[bool](u_, "isRedoing")
 	return rv
 }
 
 func (u_ UndoManager) UndoActionName() string {
-	rv := ffi.CallMethod[string](u_, "undoActionName")
+	rv := objc.CallMethod[string](u_, "undoActionName")
 	return rv
 }
 
 func (u_ UndoManager) RedoActionName() string {
-	rv := ffi.CallMethod[string](u_, "redoActionName")
+	rv := objc.CallMethod[string](u_, "redoActionName")
 	return rv
 }
 
 func (u_ UndoManager) UndoMenuItemTitle() string {
-	rv := ffi.CallMethod[string](u_, "undoMenuItemTitle")
+	rv := objc.CallMethod[string](u_, "undoMenuItemTitle")
 	return rv
 }
 
 func (u_ UndoManager) RedoMenuItemTitle() string {
-	rv := ffi.CallMethod[string](u_, "redoMenuItemTitle")
+	rv := objc.CallMethod[string](u_, "redoMenuItemTitle")
 	return rv
 }
 
 func (u_ UndoManager) RunLoopModes() []RunLoopMode {
-	rv := ffi.CallMethod[[]RunLoopMode](u_, "runLoopModes")
+	rv := objc.CallMethod[[]RunLoopMode](u_, "runLoopModes")
 	return rv
 }
 
 func (u_ UndoManager) SetRunLoopModes(value []RunLoopMode) {
-	ffi.CallMethod[ffi.Void](u_, "setRunLoopModes:", value)
+	objc.CallMethod[objc.Void](u_, "setRunLoopModes:", value)
 }
 
 func (u_ UndoManager) UndoActionIsDiscardable() bool {
-	rv := ffi.CallMethod[bool](u_, "undoActionIsDiscardable")
+	rv := objc.CallMethod[bool](u_, "undoActionIsDiscardable")
 	return rv
 }
 
 func (u_ UndoManager) RedoActionIsDiscardable() bool {
-	rv := ffi.CallMethod[bool](u_, "redoActionIsDiscardable")
+	rv := objc.CallMethod[bool](u_, "redoActionIsDiscardable")
 	return rv
 }

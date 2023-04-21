@@ -1,4 +1,4 @@
-package ffi
+package objc
 
 import (
 	"reflect"

@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -24,7 +23,7 @@ func (v_ *ValidatedUserInterfaceItemWrapper) ImplementsAction() bool {
 }
 
 func (v_ ValidatedUserInterfaceItemWrapper) Action() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](v_, "action")
+	rv := objc.CallMethod[objc.Selector](v_, "action")
 	return rv
 }
 
@@ -33,6 +32,6 @@ func (v_ *ValidatedUserInterfaceItemWrapper) ImplementsTag() bool {
 }
 
 func (v_ ValidatedUserInterfaceItemWrapper) Tag() int {
-	rv := ffi.CallMethod[int](v_, "tag")
+	rv := objc.CallMethod[int](v_, "tag")
 	return rv
 }

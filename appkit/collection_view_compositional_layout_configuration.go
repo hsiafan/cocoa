@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,12 +34,12 @@ func MakeCollectionViewCompositionalLayoutConfiguration(ptr unsafe.Pointer) Coll
 }
 
 func (cc _CollectionViewCompositionalLayoutConfigurationClass) Alloc() CollectionViewCompositionalLayoutConfiguration {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionViewCompositionalLayoutConfigurationClass) New() CollectionViewCompositionalLayoutConfiguration {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, "new")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,33 +49,33 @@ func NewCollectionViewCompositionalLayoutConfiguration() CollectionViewCompositi
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) Init() CollectionViewCompositionalLayoutConfiguration {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "init")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "init")
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) ScrollDirection() CollectionViewScrollDirection {
-	rv := ffi.CallMethod[CollectionViewScrollDirection](c_, "scrollDirection")
+	rv := objc.CallMethod[CollectionViewScrollDirection](c_, "scrollDirection")
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetScrollDirection(value CollectionViewScrollDirection) {
-	ffi.CallMethod[ffi.Void](c_, "setScrollDirection:", value)
+	objc.CallMethod[objc.Void](c_, "setScrollDirection:", value)
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) InterSectionSpacing() float64 {
-	rv := ffi.CallMethod[float64](c_, "interSectionSpacing")
+	rv := objc.CallMethod[float64](c_, "interSectionSpacing")
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetInterSectionSpacing(value float64) {
-	ffi.CallMethod[ffi.Void](c_, "setInterSectionSpacing:", value)
+	objc.CallMethod[objc.Void](c_, "setInterSectionSpacing:", value)
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
-	rv := ffi.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, "boundarySupplementaryItems")
+	rv := objc.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, "boundarySupplementaryItems")
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem) {
-	ffi.CallMethod[ffi.Void](c_, "setBoundarySupplementaryItems:", value)
+	objc.CallMethod[objc.Void](c_, "setBoundarySupplementaryItems:", value)
 }

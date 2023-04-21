@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -31,32 +30,32 @@ func MakeCollectionViewCompositionalLayout(ptr unsafe.Pointer) CollectionViewCom
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:", section)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:", section)
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection_Configuration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:configuration:", section, configuration)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:configuration:", section, configuration)
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSectionProvider:", sectionProvider)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSectionProvider:", sectionProvider)
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider_Configuration(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSectionProvider:configuration:", sectionProvider, configuration)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSectionProvider:configuration:", sectionProvider, configuration)
 	return rv
 }
 
 func (cc _CollectionViewCompositionalLayoutClass) Alloc() CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionViewCompositionalLayoutClass) New() CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](cc, "new")
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -66,15 +65,15 @@ func NewCollectionViewCompositionalLayout() CollectionViewCompositionalLayout {
 }
 
 func (c_ CollectionViewCompositionalLayout) Init() CollectionViewCompositionalLayout {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayout](c_, "init")
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "init")
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) Configuration() CollectionViewCompositionalLayoutConfiguration {
-	rv := ffi.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "configuration")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "configuration")
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) SetConfiguration(value ICollectionViewCompositionalLayoutConfiguration) {
-	ffi.CallMethod[ffi.Void](c_, "setConfiguration:", value)
+	objc.CallMethod[objc.Void](c_, "setConfiguration:", value)
 }

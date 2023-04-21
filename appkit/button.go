@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -88,47 +87,47 @@ func MakeButton(ptr unsafe.Pointer) Button {
 }
 
 func (bc _ButtonClass) CheckboxWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := ffi.CallMethod[Button](bc, "checkboxWithTitle:target:action:", title, target, action)
+	rv := objc.CallMethod[Button](bc, "checkboxWithTitle:target:action:", title, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithImage_Target_Action(image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := ffi.CallMethod[Button](bc, "buttonWithImage:target:action:", image, target, action)
+	rv := objc.CallMethod[Button](bc, "buttonWithImage:target:action:", image, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) RadioButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := ffi.CallMethod[Button](bc, "radioButtonWithTitle:target:action:", title, target, action)
+	rv := objc.CallMethod[Button](bc, "radioButtonWithTitle:target:action:", title, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithTitle_Image_Target_Action(title string, image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := ffi.CallMethod[Button](bc, "buttonWithTitle:image:target:action:", title, image, target, action)
+	rv := objc.CallMethod[Button](bc, "buttonWithTitle:image:target:action:", title, image, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := ffi.CallMethod[Button](bc, "buttonWithTitle:target:action:", title, target, action)
+	rv := objc.CallMethod[Button](bc, "buttonWithTitle:target:action:", title, target, action)
 	return rv
 }
 
 func (b_ Button) InitWithFrame(frameRect foundation.Rect) Button {
-	rv := ffi.CallMethod[Button](b_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Button](b_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (b_ Button) Init() Button {
-	rv := ffi.CallMethod[Button](b_, "init")
+	rv := objc.CallMethod[Button](b_, "init")
 	return rv
 }
 
 func (bc _ButtonClass) Alloc() Button {
-	rv := ffi.CallMethod[Button](bc, "alloc")
+	rv := objc.CallMethod[Button](bc, "alloc")
 	return rv
 }
 
 func (bc _ButtonClass) New() Button {
-	rv := ffi.CallMethod[Button](bc, "new")
+	rv := objc.CallMethod[Button](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -138,256 +137,256 @@ func NewButton() Button {
 }
 
 func (b_ Button) SetButtonType(type_ ButtonType) {
-	ffi.CallMethod[ffi.Void](b_, "setButtonType:", type_)
+	objc.CallMethod[objc.Void](b_, "setButtonType:", type_)
 }
 
 func (b_ Button) GetPeriodicDelay_Interval(delay *float32, interval *float32) {
-	ffi.CallMethod[ffi.Void](b_, "getPeriodicDelay:interval:", delay, interval)
+	objc.CallMethod[objc.Void](b_, "getPeriodicDelay:interval:", delay, interval)
 }
 
 func (b_ Button) SetPeriodicDelay_Interval(delay float32, interval float32) {
-	ffi.CallMethod[ffi.Void](b_, "setPeriodicDelay:interval:", delay, interval)
+	objc.CallMethod[objc.Void](b_, "setPeriodicDelay:interval:", delay, interval)
 }
 
 // deprecated
 func (b_ Button) SetTitleWithMnemonic(stringWithAmpersand string) {
-	ffi.CallMethod[ffi.Void](b_, "setTitleWithMnemonic:", stringWithAmpersand)
+	objc.CallMethod[objc.Void](b_, "setTitleWithMnemonic:", stringWithAmpersand)
 }
 
 func (b_ Button) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	ffi.CallMethod[ffi.Void](b_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
+	objc.CallMethod[objc.Void](b_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
 }
 
 func (b_ Button) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](b_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
+	rv := objc.CallMethod[foundation.Size](b_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
 	return rv
 }
 
 func (b_ Button) SetNextState() {
-	ffi.CallMethod[ffi.Void](b_, "setNextState")
+	objc.CallMethod[objc.Void](b_, "setNextState")
 }
 
 func (b_ Button) Highlight(flag bool) {
-	ffi.CallMethod[ffi.Void](b_, "highlight:", flag)
+	objc.CallMethod[objc.Void](b_, "highlight:", flag)
 }
 
 func (b_ Button) ContentTintColor() Color {
-	rv := ffi.CallMethod[Color](b_, "contentTintColor")
+	rv := objc.CallMethod[Color](b_, "contentTintColor")
 	return rv
 }
 
 func (b_ Button) SetContentTintColor(value IColor) {
-	ffi.CallMethod[ffi.Void](b_, "setContentTintColor:", value)
+	objc.CallMethod[objc.Void](b_, "setContentTintColor:", value)
 }
 
 func (b_ Button) HasDestructiveAction() bool {
-	rv := ffi.CallMethod[bool](b_, "hasDestructiveAction")
+	rv := objc.CallMethod[bool](b_, "hasDestructiveAction")
 	return rv
 }
 
 func (b_ Button) SetHasDestructiveAction(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setHasDestructiveAction:", value)
+	objc.CallMethod[objc.Void](b_, "setHasDestructiveAction:", value)
 }
 
 func (b_ Button) AlternateTitle() string {
-	rv := ffi.CallMethod[string](b_, "alternateTitle")
+	rv := objc.CallMethod[string](b_, "alternateTitle")
 	return rv
 }
 
 func (b_ Button) SetAlternateTitle(value string) {
-	ffi.CallMethod[ffi.Void](b_, "setAlternateTitle:", value)
+	objc.CallMethod[objc.Void](b_, "setAlternateTitle:", value)
 }
 
 func (b_ Button) AttributedTitle() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](b_, "attributedTitle")
+	rv := objc.CallMethod[foundation.AttributedString](b_, "attributedTitle")
 	return rv
 }
 
 func (b_ Button) SetAttributedTitle(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](b_, "setAttributedTitle:", value)
+	objc.CallMethod[objc.Void](b_, "setAttributedTitle:", value)
 }
 
 func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](b_, "attributedAlternateTitle")
+	rv := objc.CallMethod[foundation.AttributedString](b_, "attributedAlternateTitle")
 	return rv
 }
 
 func (b_ Button) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](b_, "setAttributedAlternateTitle:", value)
+	objc.CallMethod[objc.Void](b_, "setAttributedAlternateTitle:", value)
 }
 
 func (b_ Button) Title() string {
-	rv := ffi.CallMethod[string](b_, "title")
+	rv := objc.CallMethod[string](b_, "title")
 	return rv
 }
 
 func (b_ Button) SetTitle(value string) {
-	ffi.CallMethod[ffi.Void](b_, "setTitle:", value)
+	objc.CallMethod[objc.Void](b_, "setTitle:", value)
 }
 
 func (b_ Button) SymbolConfiguration() ImageSymbolConfiguration {
-	rv := ffi.CallMethod[ImageSymbolConfiguration](b_, "symbolConfiguration")
+	rv := objc.CallMethod[ImageSymbolConfiguration](b_, "symbolConfiguration")
 	return rv
 }
 
 func (b_ Button) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	ffi.CallMethod[ffi.Void](b_, "setSymbolConfiguration:", value)
+	objc.CallMethod[objc.Void](b_, "setSymbolConfiguration:", value)
 }
 
 func (b_ Button) Sound() Sound {
-	rv := ffi.CallMethod[Sound](b_, "sound")
+	rv := objc.CallMethod[Sound](b_, "sound")
 	return rv
 }
 
 func (b_ Button) SetSound(value ISound) {
-	ffi.CallMethod[ffi.Void](b_, "setSound:", value)
+	objc.CallMethod[objc.Void](b_, "setSound:", value)
 }
 
 func (b_ Button) IsSpringLoaded() bool {
-	rv := ffi.CallMethod[bool](b_, "isSpringLoaded")
+	rv := objc.CallMethod[bool](b_, "isSpringLoaded")
 	return rv
 }
 
 func (b_ Button) SetSpringLoaded(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setSpringLoaded:", value)
+	objc.CallMethod[objc.Void](b_, "setSpringLoaded:", value)
 }
 
 func (b_ Button) MaxAcceleratorLevel() int {
-	rv := ffi.CallMethod[int](b_, "maxAcceleratorLevel")
+	rv := objc.CallMethod[int](b_, "maxAcceleratorLevel")
 	return rv
 }
 
 func (b_ Button) SetMaxAcceleratorLevel(value int) {
-	ffi.CallMethod[ffi.Void](b_, "setMaxAcceleratorLevel:", value)
+	objc.CallMethod[objc.Void](b_, "setMaxAcceleratorLevel:", value)
 }
 
 func (b_ Button) Image() Image {
-	rv := ffi.CallMethod[Image](b_, "image")
+	rv := objc.CallMethod[Image](b_, "image")
 	return rv
 }
 
 func (b_ Button) SetImage(value IImage) {
-	ffi.CallMethod[ffi.Void](b_, "setImage:", value)
+	objc.CallMethod[objc.Void](b_, "setImage:", value)
 }
 
 func (b_ Button) AlternateImage() Image {
-	rv := ffi.CallMethod[Image](b_, "alternateImage")
+	rv := objc.CallMethod[Image](b_, "alternateImage")
 	return rv
 }
 
 func (b_ Button) SetAlternateImage(value IImage) {
-	ffi.CallMethod[ffi.Void](b_, "setAlternateImage:", value)
+	objc.CallMethod[objc.Void](b_, "setAlternateImage:", value)
 }
 
 func (b_ Button) ImagePosition() CellImagePosition {
-	rv := ffi.CallMethod[CellImagePosition](b_, "imagePosition")
+	rv := objc.CallMethod[CellImagePosition](b_, "imagePosition")
 	return rv
 }
 
 func (b_ Button) SetImagePosition(value CellImagePosition) {
-	ffi.CallMethod[ffi.Void](b_, "setImagePosition:", value)
+	objc.CallMethod[objc.Void](b_, "setImagePosition:", value)
 }
 
 func (b_ Button) IsBordered() bool {
-	rv := ffi.CallMethod[bool](b_, "isBordered")
+	rv := objc.CallMethod[bool](b_, "isBordered")
 	return rv
 }
 
 func (b_ Button) SetBordered(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setBordered:", value)
+	objc.CallMethod[objc.Void](b_, "setBordered:", value)
 }
 
 func (b_ Button) IsTransparent() bool {
-	rv := ffi.CallMethod[bool](b_, "isTransparent")
+	rv := objc.CallMethod[bool](b_, "isTransparent")
 	return rv
 }
 
 func (b_ Button) SetTransparent(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setTransparent:", value)
+	objc.CallMethod[objc.Void](b_, "setTransparent:", value)
 }
 
 func (b_ Button) BezelStyle() BezelStyle {
-	rv := ffi.CallMethod[BezelStyle](b_, "bezelStyle")
+	rv := objc.CallMethod[BezelStyle](b_, "bezelStyle")
 	return rv
 }
 
 func (b_ Button) SetBezelStyle(value BezelStyle) {
-	ffi.CallMethod[ffi.Void](b_, "setBezelStyle:", value)
+	objc.CallMethod[objc.Void](b_, "setBezelStyle:", value)
 }
 
 func (b_ Button) BezelColor() Color {
-	rv := ffi.CallMethod[Color](b_, "bezelColor")
+	rv := objc.CallMethod[Color](b_, "bezelColor")
 	return rv
 }
 
 func (b_ Button) SetBezelColor(value IColor) {
-	ffi.CallMethod[ffi.Void](b_, "setBezelColor:", value)
+	objc.CallMethod[objc.Void](b_, "setBezelColor:", value)
 }
 
 func (b_ Button) ShowsBorderOnlyWhileMouseInside() bool {
-	rv := ffi.CallMethod[bool](b_, "showsBorderOnlyWhileMouseInside")
+	rv := objc.CallMethod[bool](b_, "showsBorderOnlyWhileMouseInside")
 	return rv
 }
 
 func (b_ Button) SetShowsBorderOnlyWhileMouseInside(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setShowsBorderOnlyWhileMouseInside:", value)
+	objc.CallMethod[objc.Void](b_, "setShowsBorderOnlyWhileMouseInside:", value)
 }
 
 func (b_ Button) ImageHugsTitle() bool {
-	rv := ffi.CallMethod[bool](b_, "imageHugsTitle")
+	rv := objc.CallMethod[bool](b_, "imageHugsTitle")
 	return rv
 }
 
 func (b_ Button) SetImageHugsTitle(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setImageHugsTitle:", value)
+	objc.CallMethod[objc.Void](b_, "setImageHugsTitle:", value)
 }
 
 func (b_ Button) ImageScaling() ImageScaling {
-	rv := ffi.CallMethod[ImageScaling](b_, "imageScaling")
+	rv := objc.CallMethod[ImageScaling](b_, "imageScaling")
 	return rv
 }
 
 func (b_ Button) SetImageScaling(value ImageScaling) {
-	ffi.CallMethod[ffi.Void](b_, "setImageScaling:", value)
+	objc.CallMethod[objc.Void](b_, "setImageScaling:", value)
 }
 
 func (b_ Button) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](b_, "activeCompressionOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](b_, "activeCompressionOptions")
 	return rv
 }
 
 func (b_ Button) AllowsMixedState() bool {
-	rv := ffi.CallMethod[bool](b_, "allowsMixedState")
+	rv := objc.CallMethod[bool](b_, "allowsMixedState")
 	return rv
 }
 
 func (b_ Button) SetAllowsMixedState(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAllowsMixedState:", value)
+	objc.CallMethod[objc.Void](b_, "setAllowsMixedState:", value)
 }
 
 func (b_ Button) State() ControlStateValue {
-	rv := ffi.CallMethod[ControlStateValue](b_, "state")
+	rv := objc.CallMethod[ControlStateValue](b_, "state")
 	return rv
 }
 
 func (b_ Button) SetState(value ControlStateValue) {
-	ffi.CallMethod[ffi.Void](b_, "setState:", value)
+	objc.CallMethod[objc.Void](b_, "setState:", value)
 }
 
 func (b_ Button) KeyEquivalent() string {
-	rv := ffi.CallMethod[string](b_, "keyEquivalent")
+	rv := objc.CallMethod[string](b_, "keyEquivalent")
 	return rv
 }
 
 func (b_ Button) SetKeyEquivalent(value string) {
-	ffi.CallMethod[ffi.Void](b_, "setKeyEquivalent:", value)
+	objc.CallMethod[objc.Void](b_, "setKeyEquivalent:", value)
 }
 
 func (b_ Button) KeyEquivalentModifierMask() EventModifierFlags {
-	rv := ffi.CallMethod[EventModifierFlags](b_, "keyEquivalentModifierMask")
+	rv := objc.CallMethod[EventModifierFlags](b_, "keyEquivalentModifierMask")
 	return rv
 }
 
 func (b_ Button) SetKeyEquivalentModifierMask(value EventModifierFlags) {
-	ffi.CallMethod[ffi.Void](b_, "setKeyEquivalentModifierMask:", value)
+	objc.CallMethod[objc.Void](b_, "setKeyEquivalentModifierMask:", value)
 }

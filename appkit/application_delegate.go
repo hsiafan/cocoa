@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -653,7 +652,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillFinishLaunching()
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillFinishLaunching(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillFinishLaunching:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillFinishLaunching:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidFinishLaunching() bool {
@@ -661,7 +660,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidFinishLaunching() 
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidFinishLaunching(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidFinishLaunching:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidFinishLaunching:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillBecomeActive() bool {
@@ -669,7 +668,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillBecomeActive() bo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillBecomeActive(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillBecomeActive:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillBecomeActive:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidBecomeActive() bool {
@@ -677,7 +676,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidBecomeActive() boo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidBecomeActive(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidBecomeActive:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidBecomeActive:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillResignActive() bool {
@@ -685,7 +684,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillResignActive() bo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillResignActive(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillResignActive:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillResignActive:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidResignActive() bool {
@@ -693,7 +692,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidResignActive() boo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidResignActive(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidResignActive:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidResignActive:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldTerminate() bool {
@@ -701,7 +700,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldTerminate() boo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldTerminate(sender IApplication) ApplicationTerminateReply {
-	rv := ffi.CallMethod[ApplicationTerminateReply](a_, "applicationShouldTerminate:", sender)
+	rv := objc.CallMethod[ApplicationTerminateReply](a_, "applicationShouldTerminate:", sender)
 	return rv
 }
 
@@ -710,7 +709,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldTerminateAfterL
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldTerminateAfterLastWindowClosed(sender IApplication) bool {
-	rv := ffi.CallMethod[bool](a_, "applicationShouldTerminateAfterLastWindowClosed:", sender)
+	rv := objc.CallMethod[bool](a_, "applicationShouldTerminateAfterLastWindowClosed:", sender)
 	return rv
 }
 
@@ -719,7 +718,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillTerminate() bool 
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillTerminate(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillTerminate:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillTerminate:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillHide() bool {
@@ -727,7 +726,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillHide() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillHide(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillHide:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillHide:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidHide() bool {
@@ -735,7 +734,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidHide() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidHide(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidHide:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidHide:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillUnhide() bool {
@@ -743,7 +742,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillUnhide() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillUnhide(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillUnhide:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillUnhide:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidUnhide() bool {
@@ -751,7 +750,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidUnhide() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidUnhide(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidUnhide:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidUnhide:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillUpdate() bool {
@@ -759,7 +758,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillUpdate() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillUpdate(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationWillUpdate:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationWillUpdate:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidUpdate() bool {
@@ -767,7 +766,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidUpdate() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidUpdate(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidUpdate:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidUpdate:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldHandleReopen_HasVisibleWindows() bool {
@@ -775,7 +774,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldHandleReopen_Ha
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldHandleReopen_HasVisibleWindows(sender IApplication, flag bool) bool {
-	rv := ffi.CallMethod[bool](a_, "applicationShouldHandleReopen:hasVisibleWindows:", sender, flag)
+	rv := objc.CallMethod[bool](a_, "applicationShouldHandleReopen:hasVisibleWindows:", sender, flag)
 	return rv
 }
 
@@ -784,7 +783,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDockMenu() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDockMenu(sender IApplication) Menu {
-	rv := ffi.CallMethod[Menu](a_, "applicationDockMenu:", sender)
+	rv := objc.CallMethod[Menu](a_, "applicationDockMenu:", sender)
 	return rv
 }
 
@@ -793,7 +792,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldAutomaticallyLo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application IApplication) bool {
-	rv := ffi.CallMethod[bool](a_, "applicationShouldAutomaticallyLocalizeKeyEquivalents:", application)
+	rv := objc.CallMethod[bool](a_, "applicationShouldAutomaticallyLocalizeKeyEquivalents:", application)
 	return rv
 }
 
@@ -802,7 +801,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillPresentError() b
 }
 
 func (a_ ApplicationDelegateWrapper) Application_WillPresentError(application IApplication, error foundation.IError) foundation.Error {
-	rv := ffi.CallMethod[foundation.Error](a_, "application:willPresentError:", application, error)
+	rv := objc.CallMethod[foundation.Error](a_, "application:willPresentError:", application, error)
 	return rv
 }
 
@@ -811,7 +810,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidChangeScreenParame
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidChangeScreenParameters(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidChangeScreenParameters:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidChangeScreenParameters:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillContinueUserActivityWithType() bool {
@@ -819,7 +818,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillContinueUserActi
 }
 
 func (a_ ApplicationDelegateWrapper) Application_WillContinueUserActivityWithType(application IApplication, userActivityType string) bool {
-	rv := ffi.CallMethod[bool](a_, "application:willContinueUserActivityWithType:", application, userActivityType)
+	rv := objc.CallMethod[bool](a_, "application:willContinueUserActivityWithType:", application, userActivityType)
 	return rv
 }
 
@@ -828,7 +827,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidFailToContinueUse
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidFailToContinueUserActivityWithType_Error(application IApplication, userActivityType string, error foundation.IError) {
-	ffi.CallMethod[ffi.Void](a_, "application:didFailToContinueUserActivityWithType:error:", application, userActivityType, error)
+	objc.CallMethod[objc.Void](a_, "application:didFailToContinueUserActivityWithType:error:", application, userActivityType, error)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidUpdateUserActivity() bool {
@@ -836,7 +835,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidUpdateUserActivit
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidUpdateUserActivity(application IApplication, userActivity foundation.IUserActivity) {
-	ffi.CallMethod[ffi.Void](a_, "application:didUpdateUserActivity:", application, userActivity)
+	objc.CallMethod[objc.Void](a_, "application:didUpdateUserActivity:", application, userActivity)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidRegisterForRemoteNotificationsWithDeviceToken() bool {
@@ -844,7 +843,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidRegisterForRemote
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidRegisterForRemoteNotificationsWithDeviceToken(application IApplication, deviceToken []byte) {
-	ffi.CallMethod[ffi.Void](a_, "application:didRegisterForRemoteNotificationsWithDeviceToken:", application, deviceToken)
+	objc.CallMethod[objc.Void](a_, "application:didRegisterForRemoteNotificationsWithDeviceToken:", application, deviceToken)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidFailToRegisterForRemoteNotificationsWithError() bool {
@@ -852,7 +851,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidFailToRegisterFor
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidFailToRegisterForRemoteNotificationsWithError(application IApplication, error foundation.IError) {
-	ffi.CallMethod[ffi.Void](a_, "application:didFailToRegisterForRemoteNotificationsWithError:", application, error)
+	objc.CallMethod[objc.Void](a_, "application:didFailToRegisterForRemoteNotificationsWithError:", application, error)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidReceiveRemoteNotification() bool {
@@ -860,7 +859,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidReceiveRemoteNoti
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidReceiveRemoteNotification(application IApplication, userInfo map[string]objc.IObject) {
-	ffi.CallMethod[ffi.Void](a_, "application:didReceiveRemoteNotification:", application, userInfo)
+	objc.CallMethod[objc.Void](a_, "application:didReceiveRemoteNotification:", application, userInfo)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenURLs() bool {
@@ -868,7 +867,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenURLs() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenURLs(application IApplication, urls []foundation.IURL) {
-	ffi.CallMethod[ffi.Void](a_, "application:openURLs:", application, urls)
+	objc.CallMethod[objc.Void](a_, "application:openURLs:", application, urls)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFile() bool {
@@ -876,7 +875,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFile() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenFile(sender IApplication, filename string) bool {
-	rv := ffi.CallMethod[bool](a_, "application:openFile:", sender, filename)
+	rv := objc.CallMethod[bool](a_, "application:openFile:", sender, filename)
 	return rv
 }
 
@@ -885,7 +884,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFileWithoutUI() 
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenFileWithoutUI(sender objc.IObject, filename string) bool {
-	rv := ffi.CallMethod[bool](a_, "application:openFileWithoutUI:", sender, filename)
+	rv := objc.CallMethod[bool](a_, "application:openFileWithoutUI:", sender, filename)
 	return rv
 }
 
@@ -894,7 +893,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenTempFile() bool 
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenTempFile(sender IApplication, filename string) bool {
-	rv := ffi.CallMethod[bool](a_, "application:openTempFile:", sender, filename)
+	rv := objc.CallMethod[bool](a_, "application:openTempFile:", sender, filename)
 	return rv
 }
 
@@ -903,7 +902,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFiles() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenFiles(sender IApplication, filenames []string) {
-	ffi.CallMethod[ffi.Void](a_, "application:openFiles:", sender, filenames)
+	objc.CallMethod[objc.Void](a_, "application:openFiles:", sender, filenames)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldOpenUntitledFile() bool {
@@ -911,7 +910,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldOpenUntitledFil
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldOpenUntitledFile(sender IApplication) bool {
-	rv := ffi.CallMethod[bool](a_, "applicationShouldOpenUntitledFile:", sender)
+	rv := objc.CallMethod[bool](a_, "applicationShouldOpenUntitledFile:", sender)
 	return rv
 }
 
@@ -920,7 +919,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationOpenUntitledFile() bo
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationOpenUntitledFile(sender IApplication) bool {
-	rv := ffi.CallMethod[bool](a_, "applicationOpenUntitledFile:", sender)
+	rv := objc.CallMethod[bool](a_, "applicationOpenUntitledFile:", sender)
 	return rv
 }
 
@@ -929,7 +928,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_PrintFile() bool {
 }
 
 func (a_ ApplicationDelegateWrapper) Application_PrintFile(sender IApplication, filename string) bool {
-	rv := ffi.CallMethod[bool](a_, "application:printFile:", sender, filename)
+	rv := objc.CallMethod[bool](a_, "application:printFile:", sender, filename)
 	return rv
 }
 
@@ -938,7 +937,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_PrintFiles_WithSetti
 }
 
 func (a_ ApplicationDelegateWrapper) Application_PrintFiles_WithSettings_ShowPrintPanels(application IApplication, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.IObject, showPrintPanels bool) ApplicationPrintReply {
-	rv := ffi.CallMethod[ApplicationPrintReply](a_, "application:printFiles:withSettings:showPrintPanels:", application, fileNames, printSettings, showPrintPanels)
+	rv := objc.CallMethod[ApplicationPrintReply](a_, "application:printFiles:withSettings:showPrintPanels:", application, fileNames, printSettings, showPrintPanels)
 	return rv
 }
 
@@ -947,7 +946,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationSupportsSecureRestora
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationSupportsSecureRestorableState(app IApplication) bool {
-	rv := ffi.CallMethod[bool](a_, "applicationSupportsSecureRestorableState:", app)
+	rv := objc.CallMethod[bool](a_, "applicationSupportsSecureRestorableState:", app)
 	return rv
 }
 
@@ -956,7 +955,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationProtectedDataDidBecom
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationProtectedDataDidBecomeAvailable(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationProtectedDataDidBecomeAvailable:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationProtectedDataDidBecomeAvailable:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationProtectedDataWillBecomeUnavailable() bool {
@@ -964,7 +963,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationProtectedDataWillBeco
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationProtectedDataWillBecomeUnavailable:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationProtectedDataWillBecomeUnavailable:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillEncodeRestorableState() bool {
@@ -972,7 +971,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillEncodeRestorable
 }
 
 func (a_ ApplicationDelegateWrapper) Application_WillEncodeRestorableState(app IApplication, coder foundation.ICoder) {
-	ffi.CallMethod[ffi.Void](a_, "application:willEncodeRestorableState:", app, coder)
+	objc.CallMethod[objc.Void](a_, "application:willEncodeRestorableState:", app, coder)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidDecodeRestorableState() bool {
@@ -980,7 +979,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidDecodeRestorableS
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidDecodeRestorableState(app IApplication, coder foundation.ICoder) {
-	ffi.CallMethod[ffi.Void](a_, "application:didDecodeRestorableState:", app, coder)
+	objc.CallMethod[objc.Void](a_, "application:didDecodeRestorableState:", app, coder)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidChangeOcclusionState() bool {
@@ -988,7 +987,7 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidChangeOcclusionSta
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidChangeOcclusionState(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](a_, "applicationDidChangeOcclusionState:", notification)
+	objc.CallMethod[objc.Void](a_, "applicationDidChangeOcclusionState:", notification)
 }
 
 func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DelegateHandlesKey() bool {
@@ -996,6 +995,6 @@ func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DelegateHandlesKey()
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DelegateHandlesKey(sender IApplication, key string) bool {
-	rv := ffi.CallMethod[bool](a_, "application:delegateHandlesKey:", sender, key)
+	rv := objc.CallMethod[bool](a_, "application:delegateHandlesKey:", sender, key)
 	return rv
 }

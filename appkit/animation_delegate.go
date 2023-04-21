@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -97,7 +96,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidEnd() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidEnd(animation IAnimation) {
-	ffi.CallMethod[ffi.Void](a_, "animationDidEnd:", animation)
+	objc.CallMethod[objc.Void](a_, "animationDidEnd:", animation)
 }
 
 func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop() bool {
@@ -105,7 +104,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStop(animation IAnimation) {
-	ffi.CallMethod[ffi.Void](a_, "animationDidStop:", animation)
+	objc.CallMethod[objc.Void](a_, "animationDidStop:", animation)
 }
 
 func (a_ *AnimationDelegateWrapper) ImplementsAnimationShouldStart() bool {
@@ -113,7 +112,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationShouldStart() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bool {
-	rv := ffi.CallMethod[bool](a_, "animationShouldStart:", animation)
+	rv := objc.CallMethod[bool](a_, "animationShouldStart:", animation)
 	return rv
 }
 
@@ -122,7 +121,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimation_ValueForProgress() bool 
 }
 
 func (a_ AnimationDelegateWrapper) Animation_ValueForProgress(animation IAnimation, progress AnimationProgress) float32 {
-	rv := ffi.CallMethod[float32](a_, "animation:valueForProgress:", animation, progress)
+	rv := objc.CallMethod[float32](a_, "animation:valueForProgress:", animation, progress)
 	return rv
 }
 
@@ -131,5 +130,5 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimation_DidReachProgressMark() b
 }
 
 func (a_ AnimationDelegateWrapper) Animation_DidReachProgressMark(animation IAnimation, progress AnimationProgress) {
-	ffi.CallMethod[ffi.Void](a_, "animation:didReachProgressMark:", animation, progress)
+	objc.CallMethod[objc.Void](a_, "animation:didReachProgressMark:", animation, progress)
 }

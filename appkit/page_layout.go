@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -44,12 +43,12 @@ func MakePageLayout(ptr unsafe.Pointer) PageLayout {
 }
 
 func (pc _PageLayoutClass) Alloc() PageLayout {
-	rv := ffi.CallMethod[PageLayout](pc, "alloc")
+	rv := objc.CallMethod[PageLayout](pc, "alloc")
 	return rv
 }
 
 func (pc _PageLayoutClass) New() PageLayout {
-	rv := ffi.CallMethod[PageLayout](pc, "new")
+	rv := objc.CallMethod[PageLayout](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -59,64 +58,64 @@ func NewPageLayout() PageLayout {
 }
 
 func (p_ PageLayout) Init() PageLayout {
-	rv := ffi.CallMethod[PageLayout](p_, "init")
+	rv := objc.CallMethod[PageLayout](p_, "init")
 	return rv
 }
 
 func (pc _PageLayoutClass) PageLayout() PageLayout {
-	rv := ffi.CallMethod[PageLayout](pc, "pageLayout")
+	rv := objc.CallMethod[PageLayout](pc, "pageLayout")
 	return rv
 }
 
 func (p_ PageLayout) BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](p_, "beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:", printInfo, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](p_, "beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:", printInfo, docWindow, delegate, didEndSelector, contextInfo)
 }
 
 func (p_ PageLayout) RunModal() int {
-	rv := ffi.CallMethod[int](p_, "runModal")
+	rv := objc.CallMethod[int](p_, "runModal")
 	return rv
 }
 
 func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := ffi.CallMethod[int](p_, "runModalWithPrintInfo:", printInfo)
+	rv := objc.CallMethod[int](p_, "runModalWithPrintInfo:", printInfo)
 	return rv
 }
 
 func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "addAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, "addAccessoryController:", accessoryController)
 }
 
 func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
-	ffi.CallMethod[ffi.Void](p_, "removeAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, "removeAccessoryController:", accessoryController)
 }
 
 // deprecated
 func (p_ PageLayout) AccessoryView() View {
-	rv := ffi.CallMethod[View](p_, "accessoryView")
+	rv := objc.CallMethod[View](p_, "accessoryView")
 	return rv
 }
 
 // deprecated
 func (p_ PageLayout) SetAccessoryView(accessoryView IView) {
-	ffi.CallMethod[ffi.Void](p_, "setAccessoryView:", accessoryView)
+	objc.CallMethod[objc.Void](p_, "setAccessoryView:", accessoryView)
 }
 
 // deprecated
 func (p_ PageLayout) ReadPrintInfo() {
-	ffi.CallMethod[ffi.Void](p_, "readPrintInfo")
+	objc.CallMethod[objc.Void](p_, "readPrintInfo")
 }
 
 // deprecated
 func (p_ PageLayout) WritePrintInfo() {
-	ffi.CallMethod[ffi.Void](p_, "writePrintInfo")
+	objc.CallMethod[objc.Void](p_, "writePrintInfo")
 }
 
 func (p_ PageLayout) AccessoryControllers() []ViewController {
-	rv := ffi.CallMethod[[]ViewController](p_, "accessoryControllers")
+	rv := objc.CallMethod[[]ViewController](p_, "accessoryControllers")
 	return rv
 }
 
 func (p_ PageLayout) PrintInfo() PrintInfo {
-	rv := ffi.CallMethod[PrintInfo](p_, "printInfo")
+	rv := objc.CallMethod[PrintInfo](p_, "printInfo")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -29,27 +28,27 @@ func MakeActionCell(ptr unsafe.Pointer) ActionCell {
 }
 
 func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
-	rv := ffi.CallMethod[ActionCell](a_, "initImageCell:", image)
+	rv := objc.CallMethod[ActionCell](a_, "initImageCell:", image)
 	return rv
 }
 
 func (a_ ActionCell) InitTextCell(string_ string) ActionCell {
-	rv := ffi.CallMethod[ActionCell](a_, "initTextCell:", string_)
+	rv := objc.CallMethod[ActionCell](a_, "initTextCell:", string_)
 	return rv
 }
 
 func (a_ ActionCell) Init() ActionCell {
-	rv := ffi.CallMethod[ActionCell](a_, "init")
+	rv := objc.CallMethod[ActionCell](a_, "init")
 	return rv
 }
 
 func (ac _ActionCellClass) Alloc() ActionCell {
-	rv := ffi.CallMethod[ActionCell](ac, "alloc")
+	rv := objc.CallMethod[ActionCell](ac, "alloc")
 	return rv
 }
 
 func (ac _ActionCellClass) New() ActionCell {
-	rv := ffi.CallMethod[ActionCell](ac, "new")
+	rv := objc.CallMethod[ActionCell](ac, "new")
 	rv.Autorelease()
 	return rv
 }

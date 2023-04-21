@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,6 +36,6 @@ func (a_ *AlertDelegateWrapper) ImplementsAlertShowHelp() bool {
 }
 
 func (a_ AlertDelegateWrapper) AlertShowHelp(alert IAlert) bool {
-	rv := ffi.CallMethod[bool](a_, "alertShowHelp:", alert)
+	rv := objc.CallMethod[bool](a_, "alertShowHelp:", alert)
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 	"github.com/hsiafan/cocoa/quartzcore"
@@ -39,12 +38,12 @@ func MakeAnimationContext(ptr unsafe.Pointer) AnimationContext {
 }
 
 func (ac _AnimationContextClass) Alloc() AnimationContext {
-	rv := ffi.CallMethod[AnimationContext](ac, "alloc")
+	rv := objc.CallMethod[AnimationContext](ac, "alloc")
 	return rv
 }
 
 func (ac _AnimationContextClass) New() AnimationContext {
-	rv := ffi.CallMethod[AnimationContext](ac, "new")
+	rv := objc.CallMethod[AnimationContext](ac, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,63 +53,63 @@ func NewAnimationContext() AnimationContext {
 }
 
 func (a_ AnimationContext) Init() AnimationContext {
-	rv := ffi.CallMethod[AnimationContext](a_, "init")
+	rv := objc.CallMethod[AnimationContext](a_, "init")
 	return rv
 }
 
 func (ac _AnimationContextClass) BeginGrouping() {
-	ffi.CallMethod[ffi.Void](ac, "beginGrouping")
+	objc.CallMethod[objc.Void](ac, "beginGrouping")
 }
 
 func (ac _AnimationContextClass) EndGrouping() {
-	ffi.CallMethod[ffi.Void](ac, "endGrouping")
+	objc.CallMethod[objc.Void](ac, "endGrouping")
 }
 
 func (ac _AnimationContextClass) RunAnimationGroup_CompletionHandler(changes func(context AnimationContext), completionHandler func()) {
-	ffi.CallMethod[ffi.Void](ac, "runAnimationGroup:completionHandler:", changes, completionHandler)
+	objc.CallMethod[objc.Void](ac, "runAnimationGroup:completionHandler:", changes, completionHandler)
 }
 
 func (ac _AnimationContextClass) RunAnimationGroup(changes func(context AnimationContext)) {
-	ffi.CallMethod[ffi.Void](ac, "runAnimationGroup:", changes)
+	objc.CallMethod[objc.Void](ac, "runAnimationGroup:", changes)
 }
 
 func (ac _AnimationContextClass) CurrentContext() AnimationContext {
-	rv := ffi.CallMethod[AnimationContext](ac, "currentContext")
+	rv := objc.CallMethod[AnimationContext](ac, "currentContext")
 	return rv
 }
 
 func (a_ AnimationContext) CompletionHandler() func() {
-	rv := ffi.CallMethod[func()](a_, "completionHandler")
+	rv := objc.CallMethod[func()](a_, "completionHandler")
 	return rv
 }
 
 func (a_ AnimationContext) SetCompletionHandler(value func()) {
-	ffi.CallMethod[ffi.Void](a_, "setCompletionHandler:", value)
+	objc.CallMethod[objc.Void](a_, "setCompletionHandler:", value)
 }
 
 func (a_ AnimationContext) Duration() foundation.TimeInterval {
-	rv := ffi.CallMethod[foundation.TimeInterval](a_, "duration")
+	rv := objc.CallMethod[foundation.TimeInterval](a_, "duration")
 	return rv
 }
 
 func (a_ AnimationContext) SetDuration(value foundation.TimeInterval) {
-	ffi.CallMethod[ffi.Void](a_, "setDuration:", value)
+	objc.CallMethod[objc.Void](a_, "setDuration:", value)
 }
 
 func (a_ AnimationContext) TimingFunction() quartzcore.MediaTimingFunction {
-	rv := ffi.CallMethod[quartzcore.MediaTimingFunction](a_, "timingFunction")
+	rv := objc.CallMethod[quartzcore.MediaTimingFunction](a_, "timingFunction")
 	return rv
 }
 
 func (a_ AnimationContext) SetTimingFunction(value quartzcore.IMediaTimingFunction) {
-	ffi.CallMethod[ffi.Void](a_, "setTimingFunction:", value)
+	objc.CallMethod[objc.Void](a_, "setTimingFunction:", value)
 }
 
 func (a_ AnimationContext) AllowsImplicitAnimation() bool {
-	rv := ffi.CallMethod[bool](a_, "allowsImplicitAnimation")
+	rv := objc.CallMethod[bool](a_, "allowsImplicitAnimation")
 	return rv
 }
 
 func (a_ AnimationContext) SetAllowsImplicitAnimation(value bool) {
-	ffi.CallMethod[ffi.Void](a_, "setAllowsImplicitAnimation:", value)
+	objc.CallMethod[objc.Void](a_, "setAllowsImplicitAnimation:", value)
 }

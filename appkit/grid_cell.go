@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -41,12 +40,12 @@ func MakeGridCell(ptr unsafe.Pointer) GridCell {
 }
 
 func (gc _GridCellClass) Alloc() GridCell {
-	rv := ffi.CallMethod[GridCell](gc, "alloc")
+	rv := objc.CallMethod[GridCell](gc, "alloc")
 	return rv
 }
 
 func (gc _GridCellClass) New() GridCell {
-	rv := ffi.CallMethod[GridCell](gc, "new")
+	rv := objc.CallMethod[GridCell](gc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -56,66 +55,66 @@ func NewGridCell() GridCell {
 }
 
 func (g_ GridCell) Init() GridCell {
-	rv := ffi.CallMethod[GridCell](g_, "init")
+	rv := objc.CallMethod[GridCell](g_, "init")
 	return rv
 }
 
 func (g_ GridCell) Column() GridColumn {
-	rv := ffi.CallMethod[GridColumn](g_, "column")
+	rv := objc.CallMethod[GridColumn](g_, "column")
 	return rv
 }
 
 func (g_ GridCell) Row() GridRow {
-	rv := ffi.CallMethod[GridRow](g_, "row")
+	rv := objc.CallMethod[GridRow](g_, "row")
 	return rv
 }
 
 func (g_ GridCell) ContentView() View {
-	rv := ffi.CallMethod[View](g_, "contentView")
+	rv := objc.CallMethod[View](g_, "contentView")
 	return rv
 }
 
 func (g_ GridCell) SetContentView(value IView) {
-	ffi.CallMethod[ffi.Void](g_, "setContentView:", value)
+	objc.CallMethod[objc.Void](g_, "setContentView:", value)
 }
 
 func (gc _GridCellClass) EmptyContentView() View {
-	rv := ffi.CallMethod[View](gc, "emptyContentView")
+	rv := objc.CallMethod[View](gc, "emptyContentView")
 	return rv
 }
 
 func (g_ GridCell) CustomPlacementConstraints() []LayoutConstraint {
-	rv := ffi.CallMethod[[]LayoutConstraint](g_, "customPlacementConstraints")
+	rv := objc.CallMethod[[]LayoutConstraint](g_, "customPlacementConstraints")
 	return rv
 }
 
 func (g_ GridCell) SetCustomPlacementConstraints(value []ILayoutConstraint) {
-	ffi.CallMethod[ffi.Void](g_, "setCustomPlacementConstraints:", value)
+	objc.CallMethod[objc.Void](g_, "setCustomPlacementConstraints:", value)
 }
 
 func (g_ GridCell) RowAlignment() GridRowAlignment {
-	rv := ffi.CallMethod[GridRowAlignment](g_, "rowAlignment")
+	rv := objc.CallMethod[GridRowAlignment](g_, "rowAlignment")
 	return rv
 }
 
 func (g_ GridCell) SetRowAlignment(value GridRowAlignment) {
-	ffi.CallMethod[ffi.Void](g_, "setRowAlignment:", value)
+	objc.CallMethod[objc.Void](g_, "setRowAlignment:", value)
 }
 
 func (g_ GridCell) XPlacement() GridCellPlacement {
-	rv := ffi.CallMethod[GridCellPlacement](g_, "xPlacement")
+	rv := objc.CallMethod[GridCellPlacement](g_, "xPlacement")
 	return rv
 }
 
 func (g_ GridCell) SetXPlacement(value GridCellPlacement) {
-	ffi.CallMethod[ffi.Void](g_, "setXPlacement:", value)
+	objc.CallMethod[objc.Void](g_, "setXPlacement:", value)
 }
 
 func (g_ GridCell) YPlacement() GridCellPlacement {
-	rv := ffi.CallMethod[GridCellPlacement](g_, "yPlacement")
+	rv := objc.CallMethod[GridCellPlacement](g_, "yPlacement")
 	return rv
 }
 
 func (g_ GridCell) SetYPlacement(value GridCellPlacement) {
-	ffi.CallMethod[ffi.Void](g_, "setYPlacement:", value)
+	objc.CallMethod[objc.Void](g_, "setYPlacement:", value)
 }

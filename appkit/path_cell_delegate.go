@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -52,7 +51,7 @@ func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillDisplayOpenPanel() boo
 }
 
 func (p_ PathCellDelegateWrapper) PathCell_WillDisplayOpenPanel(pathCell IPathCell, openPanel IOpenPanel) {
-	ffi.CallMethod[ffi.Void](p_, "pathCell:willDisplayOpenPanel:", pathCell, openPanel)
+	objc.CallMethod[objc.Void](p_, "pathCell:willDisplayOpenPanel:", pathCell, openPanel)
 }
 
 func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillPopUpMenu() bool {
@@ -60,5 +59,5 @@ func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillPopUpMenu() bool {
 }
 
 func (p_ PathCellDelegateWrapper) PathCell_WillPopUpMenu(pathCell IPathCell, menu IMenu) {
-	ffi.CallMethod[ffi.Void](p_, "pathCell:willPopUpMenu:", pathCell, menu)
+	objc.CallMethod[objc.Void](p_, "pathCell:willPopUpMenu:", pathCell, menu)
 }

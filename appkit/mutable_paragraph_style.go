@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -54,12 +53,12 @@ func MakeMutableParagraphStyle(ptr unsafe.Pointer) MutableParagraphStyle {
 }
 
 func (mc _MutableParagraphStyleClass) Alloc() MutableParagraphStyle {
-	rv := ffi.CallMethod[MutableParagraphStyle](mc, "alloc")
+	rv := objc.CallMethod[MutableParagraphStyle](mc, "alloc")
 	return rv
 }
 
 func (mc _MutableParagraphStyleClass) New() MutableParagraphStyle {
-	rv := ffi.CallMethod[MutableParagraphStyle](mc, "new")
+	rv := objc.CallMethod[MutableParagraphStyle](mc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -69,106 +68,106 @@ func NewMutableParagraphStyle() MutableParagraphStyle {
 }
 
 func (m_ MutableParagraphStyle) Init() MutableParagraphStyle {
-	rv := ffi.CallMethod[MutableParagraphStyle](m_, "init")
+	rv := objc.CallMethod[MutableParagraphStyle](m_, "init")
 	return rv
 }
 
 func (m_ MutableParagraphStyle) SetParagraphStyle(obj IParagraphStyle) {
-	ffi.CallMethod[ffi.Void](m_, "setParagraphStyle:", obj)
+	objc.CallMethod[objc.Void](m_, "setParagraphStyle:", obj)
 }
 
 func (m_ MutableParagraphStyle) AddTabStop(anObject ITextTab) {
-	ffi.CallMethod[ffi.Void](m_, "addTabStop:", anObject)
+	objc.CallMethod[objc.Void](m_, "addTabStop:", anObject)
 }
 
 func (m_ MutableParagraphStyle) RemoveTabStop(anObject ITextTab) {
-	ffi.CallMethod[ffi.Void](m_, "removeTabStop:", anObject)
+	objc.CallMethod[objc.Void](m_, "removeTabStop:", anObject)
 }
 
 func (m_ MutableParagraphStyle) SetAlignment(value TextAlignment) {
-	ffi.CallMethod[ffi.Void](m_, "setAlignment:", value)
+	objc.CallMethod[objc.Void](m_, "setAlignment:", value)
 }
 
 func (m_ MutableParagraphStyle) SetFirstLineHeadIndent(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setFirstLineHeadIndent:", value)
+	objc.CallMethod[objc.Void](m_, "setFirstLineHeadIndent:", value)
 }
 
 func (m_ MutableParagraphStyle) SetHeadIndent(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setHeadIndent:", value)
+	objc.CallMethod[objc.Void](m_, "setHeadIndent:", value)
 }
 
 func (m_ MutableParagraphStyle) SetTailIndent(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setTailIndent:", value)
+	objc.CallMethod[objc.Void](m_, "setTailIndent:", value)
 }
 
 func (m_ MutableParagraphStyle) SetLineHeightMultiple(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setLineHeightMultiple:", value)
+	objc.CallMethod[objc.Void](m_, "setLineHeightMultiple:", value)
 }
 
 func (m_ MutableParagraphStyle) SetMaximumLineHeight(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setMaximumLineHeight:", value)
+	objc.CallMethod[objc.Void](m_, "setMaximumLineHeight:", value)
 }
 
 func (m_ MutableParagraphStyle) SetMinimumLineHeight(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setMinimumLineHeight:", value)
+	objc.CallMethod[objc.Void](m_, "setMinimumLineHeight:", value)
 }
 
 func (m_ MutableParagraphStyle) SetLineSpacing(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setLineSpacing:", value)
+	objc.CallMethod[objc.Void](m_, "setLineSpacing:", value)
 }
 
 func (m_ MutableParagraphStyle) SetParagraphSpacing(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setParagraphSpacing:", value)
+	objc.CallMethod[objc.Void](m_, "setParagraphSpacing:", value)
 }
 
 func (m_ MutableParagraphStyle) SetParagraphSpacingBefore(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setParagraphSpacingBefore:", value)
+	objc.CallMethod[objc.Void](m_, "setParagraphSpacingBefore:", value)
 }
 
 func (m_ MutableParagraphStyle) SetBaseWritingDirection(value WritingDirection) {
-	ffi.CallMethod[ffi.Void](m_, "setBaseWritingDirection:", value)
+	objc.CallMethod[objc.Void](m_, "setBaseWritingDirection:", value)
 }
 
 func (m_ MutableParagraphStyle) SetTabStops(value []ITextTab) {
-	ffi.CallMethod[ffi.Void](m_, "setTabStops:", value)
+	objc.CallMethod[objc.Void](m_, "setTabStops:", value)
 }
 
 func (m_ MutableParagraphStyle) SetDefaultTabInterval(value float64) {
-	ffi.CallMethod[ffi.Void](m_, "setDefaultTabInterval:", value)
+	objc.CallMethod[objc.Void](m_, "setDefaultTabInterval:", value)
 }
 
 func (m_ MutableParagraphStyle) SetTextBlocks(value []ITextBlock) {
-	ffi.CallMethod[ffi.Void](m_, "setTextBlocks:", value)
+	objc.CallMethod[objc.Void](m_, "setTextBlocks:", value)
 }
 
 func (m_ MutableParagraphStyle) SetTextLists(value []ITextList) {
-	ffi.CallMethod[ffi.Void](m_, "setTextLists:", value)
+	objc.CallMethod[objc.Void](m_, "setTextLists:", value)
 }
 
 func (m_ MutableParagraphStyle) SetLineBreakMode(value LineBreakMode) {
-	ffi.CallMethod[ffi.Void](m_, "setLineBreakMode:", value)
+	objc.CallMethod[objc.Void](m_, "setLineBreakMode:", value)
 }
 
 func (m_ MutableParagraphStyle) SetLineBreakStrategy(value LineBreakStrategy) {
-	ffi.CallMethod[ffi.Void](m_, "setLineBreakStrategy:", value)
+	objc.CallMethod[objc.Void](m_, "setLineBreakStrategy:", value)
 }
 
 func (m_ MutableParagraphStyle) SetHyphenationFactor(value float32) {
-	ffi.CallMethod[ffi.Void](m_, "setHyphenationFactor:", value)
+	objc.CallMethod[objc.Void](m_, "setHyphenationFactor:", value)
 }
 
 func (m_ MutableParagraphStyle) SetUsesDefaultHyphenation(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setUsesDefaultHyphenation:", value)
+	objc.CallMethod[objc.Void](m_, "setUsesDefaultHyphenation:", value)
 }
 
 func (m_ MutableParagraphStyle) SetTighteningFactorForTruncation(value float32) {
-	ffi.CallMethod[ffi.Void](m_, "setTighteningFactorForTruncation:", value)
+	objc.CallMethod[objc.Void](m_, "setTighteningFactorForTruncation:", value)
 }
 
 func (m_ MutableParagraphStyle) SetAllowsDefaultTighteningForTruncation(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAllowsDefaultTighteningForTruncation:", value)
+	objc.CallMethod[objc.Void](m_, "setAllowsDefaultTighteningForTruncation:", value)
 }
 
 func (m_ MutableParagraphStyle) SetHeaderLevel(value int) {
-	ffi.CallMethod[ffi.Void](m_, "setHeaderLevel:", value)
+	objc.CallMethod[objc.Void](m_, "setHeaderLevel:", value)
 }

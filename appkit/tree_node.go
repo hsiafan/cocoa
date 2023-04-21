@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -37,22 +36,22 @@ func MakeTreeNode(ptr unsafe.Pointer) TreeNode {
 }
 
 func (tc _TreeNodeClass) TreeNodeWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := ffi.CallMethod[TreeNode](tc, "treeNodeWithRepresentedObject:", modelObject)
+	rv := objc.CallMethod[TreeNode](tc, "treeNodeWithRepresentedObject:", modelObject)
 	return rv
 }
 
 func (t_ TreeNode) InitWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := ffi.CallMethod[TreeNode](t_, "initWithRepresentedObject:", modelObject)
+	rv := objc.CallMethod[TreeNode](t_, "initWithRepresentedObject:", modelObject)
 	return rv
 }
 
 func (tc _TreeNodeClass) Alloc() TreeNode {
-	rv := ffi.CallMethod[TreeNode](tc, "alloc")
+	rv := objc.CallMethod[TreeNode](tc, "alloc")
 	return rv
 }
 
 func (tc _TreeNodeClass) New() TreeNode {
-	rv := ffi.CallMethod[TreeNode](tc, "new")
+	rv := objc.CallMethod[TreeNode](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -62,40 +61,40 @@ func NewTreeNode() TreeNode {
 }
 
 func (t_ TreeNode) Init() TreeNode {
-	rv := ffi.CallMethod[TreeNode](t_, "init")
+	rv := objc.CallMethod[TreeNode](t_, "init")
 	return rv
 }
 
 func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode {
-	rv := ffi.CallMethod[TreeNode](t_, "descendantNodeAtIndexPath:", indexPath)
+	rv := objc.CallMethod[TreeNode](t_, "descendantNodeAtIndexPath:", indexPath)
 	return rv
 }
 
 func (t_ TreeNode) SortWithSortDescriptors_Recursively(sortDescriptors []foundation.ISortDescriptor, recursively bool) {
-	ffi.CallMethod[ffi.Void](t_, "sortWithSortDescriptors:recursively:", sortDescriptors, recursively)
+	objc.CallMethod[objc.Void](t_, "sortWithSortDescriptors:recursively:", sortDescriptors, recursively)
 }
 
 func (t_ TreeNode) RepresentedObject() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "representedObject")
+	rv := objc.CallMethod[objc.Object](t_, "representedObject")
 	return rv
 }
 
 func (t_ TreeNode) IndexPath() foundation.IndexPath {
-	rv := ffi.CallMethod[foundation.IndexPath](t_, "indexPath")
+	rv := objc.CallMethod[foundation.IndexPath](t_, "indexPath")
 	return rv
 }
 
 func (t_ TreeNode) IsLeaf() bool {
-	rv := ffi.CallMethod[bool](t_, "isLeaf")
+	rv := objc.CallMethod[bool](t_, "isLeaf")
 	return rv
 }
 
 func (t_ TreeNode) ChildNodes() []TreeNode {
-	rv := ffi.CallMethod[[]TreeNode](t_, "childNodes")
+	rv := objc.CallMethod[[]TreeNode](t_, "childNodes")
 	return rv
 }
 
 func (t_ TreeNode) ParentNode() TreeNode {
-	rv := ffi.CallMethod[TreeNode](t_, "parentNode")
+	rv := objc.CallMethod[TreeNode](t_, "parentNode")
 	return rv
 }

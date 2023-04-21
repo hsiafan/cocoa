@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,32 +33,32 @@ func MakeCollectionLayoutSupplementaryItem(ptr unsafe.Pointer) CollectionLayoutS
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) SupplementaryItemWithLayoutSize_ElementKind_ContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](cc, "supplementaryItemWithLayoutSize:elementKind:containerAnchor:", layoutSize, elementKind, containerAnchor)
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](cc, "supplementaryItemWithLayoutSize:elementKind:containerAnchor:", layoutSize, elementKind, containerAnchor)
 	return rv
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) SupplementaryItemWithLayoutSize_ElementKind_ContainerAnchor_ItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](cc, "supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:", layoutSize, elementKind, containerAnchor, itemAnchor)
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](cc, "supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:", layoutSize, elementKind, containerAnchor, itemAnchor)
 	return rv
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](cc, "itemWithLayoutSize:", layoutSize)
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](cc, "itemWithLayoutSize:", layoutSize)
 	return rv
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
 	return rv
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) Alloc() CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutSupplementaryItemClass) New() CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -69,30 +68,30 @@ func NewCollectionLayoutSupplementaryItem() CollectionLayoutSupplementaryItem {
 }
 
 func (c_ CollectionLayoutSupplementaryItem) Init() CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[CollectionLayoutSupplementaryItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutSupplementaryItem](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutSupplementaryItem) ItemAnchor() CollectionLayoutAnchor {
-	rv := ffi.CallMethod[CollectionLayoutAnchor](c_, "itemAnchor")
+	rv := objc.CallMethod[CollectionLayoutAnchor](c_, "itemAnchor")
 	return rv
 }
 
 func (c_ CollectionLayoutSupplementaryItem) ContainerAnchor() CollectionLayoutAnchor {
-	rv := ffi.CallMethod[CollectionLayoutAnchor](c_, "containerAnchor")
+	rv := objc.CallMethod[CollectionLayoutAnchor](c_, "containerAnchor")
 	return rv
 }
 
 func (c_ CollectionLayoutSupplementaryItem) ElementKind() string {
-	rv := ffi.CallMethod[string](c_, "elementKind")
+	rv := objc.CallMethod[string](c_, "elementKind")
 	return rv
 }
 
 func (c_ CollectionLayoutSupplementaryItem) ZIndex() int {
-	rv := ffi.CallMethod[int](c_, "zIndex")
+	rv := objc.CallMethod[int](c_, "zIndex")
 	return rv
 }
 
 func (c_ CollectionLayoutSupplementaryItem) SetZIndex(value int) {
-	ffi.CallMethod[ffi.Void](c_, "setZIndex:", value)
+	objc.CallMethod[objc.Void](c_, "setZIndex:", value)
 }

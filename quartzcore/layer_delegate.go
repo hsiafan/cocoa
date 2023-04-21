@@ -3,7 +3,6 @@ package quartzcore
 
 import (
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -98,7 +97,7 @@ func (l_ *LayerDelegateWrapper) ImplementsDisplayLayer() bool {
 }
 
 func (l_ LayerDelegateWrapper) DisplayLayer(layer ILayer) {
-	ffi.CallMethod[ffi.Void](l_, "displayLayer:", layer)
+	objc.CallMethod[objc.Void](l_, "displayLayer:", layer)
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsDrawLayer_InContext() bool {
@@ -106,7 +105,7 @@ func (l_ *LayerDelegateWrapper) ImplementsDrawLayer_InContext() bool {
 }
 
 func (l_ LayerDelegateWrapper) DrawLayer_InContext(layer ILayer, ctx coregraphics.ContextRef) {
-	ffi.CallMethod[ffi.Void](l_, "drawLayer:inContext:", layer, ctx)
+	objc.CallMethod[objc.Void](l_, "drawLayer:inContext:", layer, ctx)
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsLayerWillDraw() bool {
@@ -114,7 +113,7 @@ func (l_ *LayerDelegateWrapper) ImplementsLayerWillDraw() bool {
 }
 
 func (l_ LayerDelegateWrapper) LayerWillDraw(layer ILayer) {
-	ffi.CallMethod[ffi.Void](l_, "layerWillDraw:", layer)
+	objc.CallMethod[objc.Void](l_, "layerWillDraw:", layer)
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsLayoutSublayersOfLayer() bool {
@@ -122,7 +121,7 @@ func (l_ *LayerDelegateWrapper) ImplementsLayoutSublayersOfLayer() bool {
 }
 
 func (l_ LayerDelegateWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	ffi.CallMethod[ffi.Void](l_, "layoutSublayersOfLayer:", layer)
+	objc.CallMethod[objc.Void](l_, "layoutSublayersOfLayer:", layer)
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsActionForLayer_ForKey() bool {
@@ -130,6 +129,6 @@ func (l_ *LayerDelegateWrapper) ImplementsActionForLayer_ForKey() bool {
 }
 
 func (l_ LayerDelegateWrapper) ActionForLayer_ForKey(layer ILayer, event string) ActionWrapper {
-	rv := ffi.CallMethod[ActionWrapper](l_, "actionForLayer:forKey:", layer, event)
+	rv := objc.CallMethod[ActionWrapper](l_, "actionForLayer:forKey:", layer, event)
 	return rv
 }

@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -72,12 +71,12 @@ func MakeDateComponents(ptr unsafe.Pointer) DateComponents {
 }
 
 func (dc _DateComponentsClass) Alloc() DateComponents {
-	rv := ffi.CallMethod[DateComponents](dc, "alloc")
+	rv := objc.CallMethod[DateComponents](dc, "alloc")
 	return rv
 }
 
 func (dc _DateComponentsClass) New() DateComponents {
-	rv := ffi.CallMethod[DateComponents](dc, "new")
+	rv := objc.CallMethod[DateComponents](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -87,194 +86,194 @@ func NewDateComponents() DateComponents {
 }
 
 func (d_ DateComponents) Init() DateComponents {
-	rv := ffi.CallMethod[DateComponents](d_, "init")
+	rv := objc.CallMethod[DateComponents](d_, "init")
 	return rv
 }
 
 func (d_ DateComponents) IsValidDateInCalendar(calendar ICalendar) bool {
-	rv := ffi.CallMethod[bool](d_, "isValidDateInCalendar:", calendar)
+	rv := objc.CallMethod[bool](d_, "isValidDateInCalendar:", calendar)
 	return rv
 }
 
 // deprecated
 func (d_ DateComponents) Week() int {
-	rv := ffi.CallMethod[int](d_, "week")
+	rv := objc.CallMethod[int](d_, "week")
 	return rv
 }
 
 // deprecated
 func (d_ DateComponents) SetWeek(v int) {
-	ffi.CallMethod[ffi.Void](d_, "setWeek:", v)
+	objc.CallMethod[objc.Void](d_, "setWeek:", v)
 }
 
 func (d_ DateComponents) ValueForComponent(unit CalendarUnit) int {
-	rv := ffi.CallMethod[int](d_, "valueForComponent:", unit)
+	rv := objc.CallMethod[int](d_, "valueForComponent:", unit)
 	return rv
 }
 
 func (d_ DateComponents) SetValue_ForComponent(value int, unit CalendarUnit) {
-	ffi.CallMethod[ffi.Void](d_, "setValue:forComponent:", value, unit)
+	objc.CallMethod[objc.Void](d_, "setValue:forComponent:", value, unit)
 }
 
 func (d_ DateComponents) Calendar() Calendar {
-	rv := ffi.CallMethod[Calendar](d_, "calendar")
+	rv := objc.CallMethod[Calendar](d_, "calendar")
 	return rv
 }
 
 func (d_ DateComponents) SetCalendar(value ICalendar) {
-	ffi.CallMethod[ffi.Void](d_, "setCalendar:", value)
+	objc.CallMethod[objc.Void](d_, "setCalendar:", value)
 }
 
 func (d_ DateComponents) TimeZone() TimeZone {
-	rv := ffi.CallMethod[TimeZone](d_, "timeZone")
+	rv := objc.CallMethod[TimeZone](d_, "timeZone")
 	return rv
 }
 
 func (d_ DateComponents) SetTimeZone(value ITimeZone) {
-	ffi.CallMethod[ffi.Void](d_, "setTimeZone:", value)
+	objc.CallMethod[objc.Void](d_, "setTimeZone:", value)
 }
 
 func (d_ DateComponents) IsValidDate() bool {
-	rv := ffi.CallMethod[bool](d_, "isValidDate")
+	rv := objc.CallMethod[bool](d_, "isValidDate")
 	return rv
 }
 
 func (d_ DateComponents) Date() Date {
-	rv := ffi.CallMethod[Date](d_, "date")
+	rv := objc.CallMethod[Date](d_, "date")
 	return rv
 }
 
 func (d_ DateComponents) Era() int {
-	rv := ffi.CallMethod[int](d_, "era")
+	rv := objc.CallMethod[int](d_, "era")
 	return rv
 }
 
 func (d_ DateComponents) SetEra(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setEra:", value)
+	objc.CallMethod[objc.Void](d_, "setEra:", value)
 }
 
 func (d_ DateComponents) Year() int {
-	rv := ffi.CallMethod[int](d_, "year")
+	rv := objc.CallMethod[int](d_, "year")
 	return rv
 }
 
 func (d_ DateComponents) SetYear(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setYear:", value)
+	objc.CallMethod[objc.Void](d_, "setYear:", value)
 }
 
 func (d_ DateComponents) YearForWeekOfYear() int {
-	rv := ffi.CallMethod[int](d_, "yearForWeekOfYear")
+	rv := objc.CallMethod[int](d_, "yearForWeekOfYear")
 	return rv
 }
 
 func (d_ DateComponents) SetYearForWeekOfYear(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setYearForWeekOfYear:", value)
+	objc.CallMethod[objc.Void](d_, "setYearForWeekOfYear:", value)
 }
 
 func (d_ DateComponents) Quarter() int {
-	rv := ffi.CallMethod[int](d_, "quarter")
+	rv := objc.CallMethod[int](d_, "quarter")
 	return rv
 }
 
 func (d_ DateComponents) SetQuarter(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setQuarter:", value)
+	objc.CallMethod[objc.Void](d_, "setQuarter:", value)
 }
 
 func (d_ DateComponents) Month() int {
-	rv := ffi.CallMethod[int](d_, "month")
+	rv := objc.CallMethod[int](d_, "month")
 	return rv
 }
 
 func (d_ DateComponents) SetMonth(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setMonth:", value)
+	objc.CallMethod[objc.Void](d_, "setMonth:", value)
 }
 
 func (d_ DateComponents) IsLeapMonth() bool {
-	rv := ffi.CallMethod[bool](d_, "isLeapMonth")
+	rv := objc.CallMethod[bool](d_, "isLeapMonth")
 	return rv
 }
 
 func (d_ DateComponents) SetLeapMonth(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setLeapMonth:", value)
+	objc.CallMethod[objc.Void](d_, "setLeapMonth:", value)
 }
 
 func (d_ DateComponents) Weekday() int {
-	rv := ffi.CallMethod[int](d_, "weekday")
+	rv := objc.CallMethod[int](d_, "weekday")
 	return rv
 }
 
 func (d_ DateComponents) SetWeekday(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setWeekday:", value)
+	objc.CallMethod[objc.Void](d_, "setWeekday:", value)
 }
 
 func (d_ DateComponents) WeekdayOrdinal() int {
-	rv := ffi.CallMethod[int](d_, "weekdayOrdinal")
+	rv := objc.CallMethod[int](d_, "weekdayOrdinal")
 	return rv
 }
 
 func (d_ DateComponents) SetWeekdayOrdinal(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setWeekdayOrdinal:", value)
+	objc.CallMethod[objc.Void](d_, "setWeekdayOrdinal:", value)
 }
 
 func (d_ DateComponents) WeekOfMonth() int {
-	rv := ffi.CallMethod[int](d_, "weekOfMonth")
+	rv := objc.CallMethod[int](d_, "weekOfMonth")
 	return rv
 }
 
 func (d_ DateComponents) SetWeekOfMonth(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setWeekOfMonth:", value)
+	objc.CallMethod[objc.Void](d_, "setWeekOfMonth:", value)
 }
 
 func (d_ DateComponents) WeekOfYear() int {
-	rv := ffi.CallMethod[int](d_, "weekOfYear")
+	rv := objc.CallMethod[int](d_, "weekOfYear")
 	return rv
 }
 
 func (d_ DateComponents) SetWeekOfYear(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setWeekOfYear:", value)
+	objc.CallMethod[objc.Void](d_, "setWeekOfYear:", value)
 }
 
 func (d_ DateComponents) Day() int {
-	rv := ffi.CallMethod[int](d_, "day")
+	rv := objc.CallMethod[int](d_, "day")
 	return rv
 }
 
 func (d_ DateComponents) SetDay(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setDay:", value)
+	objc.CallMethod[objc.Void](d_, "setDay:", value)
 }
 
 func (d_ DateComponents) Hour() int {
-	rv := ffi.CallMethod[int](d_, "hour")
+	rv := objc.CallMethod[int](d_, "hour")
 	return rv
 }
 
 func (d_ DateComponents) SetHour(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setHour:", value)
+	objc.CallMethod[objc.Void](d_, "setHour:", value)
 }
 
 func (d_ DateComponents) Minute() int {
-	rv := ffi.CallMethod[int](d_, "minute")
+	rv := objc.CallMethod[int](d_, "minute")
 	return rv
 }
 
 func (d_ DateComponents) SetMinute(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setMinute:", value)
+	objc.CallMethod[objc.Void](d_, "setMinute:", value)
 }
 
 func (d_ DateComponents) Second() int {
-	rv := ffi.CallMethod[int](d_, "second")
+	rv := objc.CallMethod[int](d_, "second")
 	return rv
 }
 
 func (d_ DateComponents) SetSecond(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setSecond:", value)
+	objc.CallMethod[objc.Void](d_, "setSecond:", value)
 }
 
 func (d_ DateComponents) Nanosecond() int {
-	rv := ffi.CallMethod[int](d_, "nanosecond")
+	rv := objc.CallMethod[int](d_, "nanosecond")
 	return rv
 }
 
 func (d_ DateComponents) SetNanosecond(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setNanosecond:", value)
+	objc.CallMethod[objc.Void](d_, "setNanosecond:", value)
 }

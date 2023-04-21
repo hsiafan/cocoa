@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,12 +33,12 @@ func MakeScriptMessage(ptr unsafe.Pointer) ScriptMessage {
 }
 
 func (sc _ScriptMessageClass) Alloc() ScriptMessage {
-	rv := ffi.CallMethod[ScriptMessage](sc, "alloc")
+	rv := objc.CallMethod[ScriptMessage](sc, "alloc")
 	return rv
 }
 
 func (sc _ScriptMessageClass) New() ScriptMessage {
-	rv := ffi.CallMethod[ScriptMessage](sc, "new")
+	rv := objc.CallMethod[ScriptMessage](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -49,31 +48,31 @@ func NewScriptMessage() ScriptMessage {
 }
 
 func (s_ ScriptMessage) Init() ScriptMessage {
-	rv := ffi.CallMethod[ScriptMessage](s_, "init")
+	rv := objc.CallMethod[ScriptMessage](s_, "init")
 	return rv
 }
 
 func (s_ ScriptMessage) Body() objc.Object {
-	rv := ffi.CallMethod[objc.Object](s_, "body")
+	rv := objc.CallMethod[objc.Object](s_, "body")
 	return rv
 }
 
 func (s_ ScriptMessage) FrameInfo() FrameInfo {
-	rv := ffi.CallMethod[FrameInfo](s_, "frameInfo")
+	rv := objc.CallMethod[FrameInfo](s_, "frameInfo")
 	return rv
 }
 
 func (s_ ScriptMessage) WebView() WebView {
-	rv := ffi.CallMethod[WebView](s_, "webView")
+	rv := objc.CallMethod[WebView](s_, "webView")
 	return rv
 }
 
 func (s_ ScriptMessage) World() ContentWorld {
-	rv := ffi.CallMethod[ContentWorld](s_, "world")
+	rv := objc.CallMethod[ContentWorld](s_, "world")
 	return rv
 }
 
 func (s_ ScriptMessage) Name() string {
-	rv := ffi.CallMethod[string](s_, "name")
+	rv := objc.CallMethod[string](s_, "name")
 	return rv
 }

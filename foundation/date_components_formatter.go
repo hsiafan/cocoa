@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -54,12 +53,12 @@ func MakeDateComponentsFormatter(ptr unsafe.Pointer) DateComponentsFormatter {
 }
 
 func (dc _DateComponentsFormatterClass) Alloc() DateComponentsFormatter {
-	rv := ffi.CallMethod[DateComponentsFormatter](dc, "alloc")
+	rv := objc.CallMethod[DateComponentsFormatter](dc, "alloc")
 	return rv
 }
 
 func (dc _DateComponentsFormatterClass) New() DateComponentsFormatter {
-	rv := ffi.CallMethod[DateComponentsFormatter](dc, "new")
+	rv := objc.CallMethod[DateComponentsFormatter](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -69,125 +68,125 @@ func NewDateComponentsFormatter() DateComponentsFormatter {
 }
 
 func (d_ DateComponentsFormatter) Init() DateComponentsFormatter {
-	rv := ffi.CallMethod[DateComponentsFormatter](d_, "init")
+	rv := objc.CallMethod[DateComponentsFormatter](d_, "init")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromDateComponents(components IDateComponents) string {
-	rv := ffi.CallMethod[string](d_, "stringFromDateComponents:", components)
+	rv := objc.CallMethod[string](d_, "stringFromDateComponents:", components)
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromDate_ToDate(startDate IDate, endDate IDate) string {
-	rv := ffi.CallMethod[string](d_, "stringFromDate:toDate:", startDate, endDate)
+	rv := objc.CallMethod[string](d_, "stringFromDate:toDate:", startDate, endDate)
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromTimeInterval(ti TimeInterval) string {
-	rv := ffi.CallMethod[string](d_, "stringFromTimeInterval:", ti)
+	rv := objc.CallMethod[string](d_, "stringFromTimeInterval:", ti)
 	return rv
 }
 
 func (dc _DateComponentsFormatterClass) LocalizedStringFromDateComponents_UnitsStyle(components IDateComponents, unitsStyle DateComponentsFormatterUnitsStyle) string {
-	rv := ffi.CallMethod[string](dc, "localizedStringFromDateComponents:unitsStyle:", components, unitsStyle)
+	rv := objc.CallMethod[string](dc, "localizedStringFromDateComponents:unitsStyle:", components, unitsStyle)
 	return rv
 }
 
 func (d_ DateComponentsFormatter) AllowedUnits() CalendarUnit {
-	rv := ffi.CallMethod[CalendarUnit](d_, "allowedUnits")
+	rv := objc.CallMethod[CalendarUnit](d_, "allowedUnits")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetAllowedUnits(value CalendarUnit) {
-	ffi.CallMethod[ffi.Void](d_, "setAllowedUnits:", value)
+	objc.CallMethod[objc.Void](d_, "setAllowedUnits:", value)
 }
 
 func (d_ DateComponentsFormatter) AllowsFractionalUnits() bool {
-	rv := ffi.CallMethod[bool](d_, "allowsFractionalUnits")
+	rv := objc.CallMethod[bool](d_, "allowsFractionalUnits")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetAllowsFractionalUnits(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setAllowsFractionalUnits:", value)
+	objc.CallMethod[objc.Void](d_, "setAllowsFractionalUnits:", value)
 }
 
 func (d_ DateComponentsFormatter) Calendar() Calendar {
-	rv := ffi.CallMethod[Calendar](d_, "calendar")
+	rv := objc.CallMethod[Calendar](d_, "calendar")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetCalendar(value ICalendar) {
-	ffi.CallMethod[ffi.Void](d_, "setCalendar:", value)
+	objc.CallMethod[objc.Void](d_, "setCalendar:", value)
 }
 
 func (d_ DateComponentsFormatter) CollapsesLargestUnit() bool {
-	rv := ffi.CallMethod[bool](d_, "collapsesLargestUnit")
+	rv := objc.CallMethod[bool](d_, "collapsesLargestUnit")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetCollapsesLargestUnit(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setCollapsesLargestUnit:", value)
+	objc.CallMethod[objc.Void](d_, "setCollapsesLargestUnit:", value)
 }
 
 func (d_ DateComponentsFormatter) IncludesApproximationPhrase() bool {
-	rv := ffi.CallMethod[bool](d_, "includesApproximationPhrase")
+	rv := objc.CallMethod[bool](d_, "includesApproximationPhrase")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetIncludesApproximationPhrase(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setIncludesApproximationPhrase:", value)
+	objc.CallMethod[objc.Void](d_, "setIncludesApproximationPhrase:", value)
 }
 
 func (d_ DateComponentsFormatter) IncludesTimeRemainingPhrase() bool {
-	rv := ffi.CallMethod[bool](d_, "includesTimeRemainingPhrase")
+	rv := objc.CallMethod[bool](d_, "includesTimeRemainingPhrase")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetIncludesTimeRemainingPhrase(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setIncludesTimeRemainingPhrase:", value)
+	objc.CallMethod[objc.Void](d_, "setIncludesTimeRemainingPhrase:", value)
 }
 
 func (d_ DateComponentsFormatter) MaximumUnitCount() int {
-	rv := ffi.CallMethod[int](d_, "maximumUnitCount")
+	rv := objc.CallMethod[int](d_, "maximumUnitCount")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetMaximumUnitCount(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setMaximumUnitCount:", value)
+	objc.CallMethod[objc.Void](d_, "setMaximumUnitCount:", value)
 }
 
 func (d_ DateComponentsFormatter) UnitsStyle() DateComponentsFormatterUnitsStyle {
-	rv := ffi.CallMethod[DateComponentsFormatterUnitsStyle](d_, "unitsStyle")
+	rv := objc.CallMethod[DateComponentsFormatterUnitsStyle](d_, "unitsStyle")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetUnitsStyle(value DateComponentsFormatterUnitsStyle) {
-	ffi.CallMethod[ffi.Void](d_, "setUnitsStyle:", value)
+	objc.CallMethod[objc.Void](d_, "setUnitsStyle:", value)
 }
 
 func (d_ DateComponentsFormatter) ZeroFormattingBehavior() DateComponentsFormatterZeroFormattingBehavior {
-	rv := ffi.CallMethod[DateComponentsFormatterZeroFormattingBehavior](d_, "zeroFormattingBehavior")
+	rv := objc.CallMethod[DateComponentsFormatterZeroFormattingBehavior](d_, "zeroFormattingBehavior")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetZeroFormattingBehavior(value DateComponentsFormatterZeroFormattingBehavior) {
-	ffi.CallMethod[ffi.Void](d_, "setZeroFormattingBehavior:", value)
+	objc.CallMethod[objc.Void](d_, "setZeroFormattingBehavior:", value)
 }
 
 func (d_ DateComponentsFormatter) FormattingContext() FormattingContext {
-	rv := ffi.CallMethod[FormattingContext](d_, "formattingContext")
+	rv := objc.CallMethod[FormattingContext](d_, "formattingContext")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetFormattingContext(value FormattingContext) {
-	ffi.CallMethod[ffi.Void](d_, "setFormattingContext:", value)
+	objc.CallMethod[objc.Void](d_, "setFormattingContext:", value)
 }
 
 func (d_ DateComponentsFormatter) ReferenceDate() Date {
-	rv := ffi.CallMethod[Date](d_, "referenceDate")
+	rv := objc.CallMethod[Date](d_, "referenceDate")
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetReferenceDate(value IDate) {
-	ffi.CallMethod[ffi.Void](d_, "setReferenceDate:", value)
+	objc.CallMethod[objc.Void](d_, "setReferenceDate:", value)
 }

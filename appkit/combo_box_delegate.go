@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -85,7 +84,7 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionDidChange() bool {
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxSelectionDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "comboBoxSelectionDidChange:", notification)
+	objc.CallMethod[objc.Void](c_, "comboBoxSelectionDidChange:", notification)
 }
 
 func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionIsChanging() bool {
@@ -93,7 +92,7 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionIsChanging() bool 
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxSelectionIsChanging(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "comboBoxSelectionIsChanging:", notification)
+	objc.CallMethod[objc.Void](c_, "comboBoxSelectionIsChanging:", notification)
 }
 
 func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillDismiss() bool {
@@ -101,7 +100,7 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillDismiss() bool {
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxWillDismiss(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "comboBoxWillDismiss:", notification)
+	objc.CallMethod[objc.Void](c_, "comboBoxWillDismiss:", notification)
 }
 
 func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillPopUp() bool {
@@ -109,5 +108,5 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillPopUp() bool {
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxWillPopUp(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](c_, "comboBoxWillPopUp:", notification)
+	objc.CallMethod[objc.Void](c_, "comboBoxWillPopUp:", notification)
 }

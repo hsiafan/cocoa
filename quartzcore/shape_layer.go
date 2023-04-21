@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -55,37 +54,37 @@ func MakeShapeLayer(ptr unsafe.Pointer) ShapeLayer {
 }
 
 func (sc _ShapeLayerClass) Layer() ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](sc, "layer")
+	rv := objc.CallMethod[ShapeLayer](sc, "layer")
 	return rv
 }
 
 func (s_ ShapeLayer) Init() ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](s_, "init")
+	rv := objc.CallMethod[ShapeLayer](s_, "init")
 	return rv
 }
 
 func (s_ ShapeLayer) InitWithLayer(layer objc.IObject) ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](s_, "initWithLayer:", layer)
+	rv := objc.CallMethod[ShapeLayer](s_, "initWithLayer:", layer)
 	return rv
 }
 
 func (s_ ShapeLayer) PresentationLayer() ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](s_, "presentationLayer")
+	rv := objc.CallMethod[ShapeLayer](s_, "presentationLayer")
 	return rv
 }
 
 func (s_ ShapeLayer) ModelLayer() ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](s_, "modelLayer")
+	rv := objc.CallMethod[ShapeLayer](s_, "modelLayer")
 	return rv
 }
 
 func (sc _ShapeLayerClass) Alloc() ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](sc, "alloc")
+	rv := objc.CallMethod[ShapeLayer](sc, "alloc")
 	return rv
 }
 
 func (sc _ShapeLayerClass) New() ShapeLayer {
-	rv := ffi.CallMethod[ShapeLayer](sc, "new")
+	rv := objc.CallMethod[ShapeLayer](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -95,109 +94,109 @@ func NewShapeLayer() ShapeLayer {
 }
 
 func (s_ ShapeLayer) Path() coregraphics.PathRef {
-	rv := ffi.CallMethod[coregraphics.PathRef](s_, "path")
+	rv := objc.CallMethod[coregraphics.PathRef](s_, "path")
 	return rv
 }
 
 func (s_ ShapeLayer) SetPath(value coregraphics.PathRef) {
-	ffi.CallMethod[ffi.Void](s_, "setPath:", value)
+	objc.CallMethod[objc.Void](s_, "setPath:", value)
 }
 
 func (s_ ShapeLayer) FillColor() coregraphics.ColorRef {
-	rv := ffi.CallMethod[coregraphics.ColorRef](s_, "fillColor")
+	rv := objc.CallMethod[coregraphics.ColorRef](s_, "fillColor")
 	return rv
 }
 
 func (s_ ShapeLayer) SetFillColor(value coregraphics.ColorRef) {
-	ffi.CallMethod[ffi.Void](s_, "setFillColor:", value)
+	objc.CallMethod[objc.Void](s_, "setFillColor:", value)
 }
 
 func (s_ ShapeLayer) FillRule() ShapeLayerFillRule {
-	rv := ffi.CallMethod[ShapeLayerFillRule](s_, "fillRule")
+	rv := objc.CallMethod[ShapeLayerFillRule](s_, "fillRule")
 	return rv
 }
 
 func (s_ ShapeLayer) SetFillRule(value ShapeLayerFillRule) {
-	ffi.CallMethod[ffi.Void](s_, "setFillRule:", value)
+	objc.CallMethod[objc.Void](s_, "setFillRule:", value)
 }
 
 func (s_ ShapeLayer) LineCap() ShapeLayerLineCap {
-	rv := ffi.CallMethod[ShapeLayerLineCap](s_, "lineCap")
+	rv := objc.CallMethod[ShapeLayerLineCap](s_, "lineCap")
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineCap(value ShapeLayerLineCap) {
-	ffi.CallMethod[ffi.Void](s_, "setLineCap:", value)
+	objc.CallMethod[objc.Void](s_, "setLineCap:", value)
 }
 
 func (s_ ShapeLayer) LineDashPattern() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](s_, "lineDashPattern")
+	rv := objc.CallMethod[[]foundation.Number](s_, "lineDashPattern")
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineDashPattern(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](s_, "setLineDashPattern:", value)
+	objc.CallMethod[objc.Void](s_, "setLineDashPattern:", value)
 }
 
 func (s_ ShapeLayer) LineDashPhase() float64 {
-	rv := ffi.CallMethod[float64](s_, "lineDashPhase")
+	rv := objc.CallMethod[float64](s_, "lineDashPhase")
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineDashPhase(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setLineDashPhase:", value)
+	objc.CallMethod[objc.Void](s_, "setLineDashPhase:", value)
 }
 
 func (s_ ShapeLayer) LineJoin() ShapeLayerLineJoin {
-	rv := ffi.CallMethod[ShapeLayerLineJoin](s_, "lineJoin")
+	rv := objc.CallMethod[ShapeLayerLineJoin](s_, "lineJoin")
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineJoin(value ShapeLayerLineJoin) {
-	ffi.CallMethod[ffi.Void](s_, "setLineJoin:", value)
+	objc.CallMethod[objc.Void](s_, "setLineJoin:", value)
 }
 
 func (s_ ShapeLayer) LineWidth() float64 {
-	rv := ffi.CallMethod[float64](s_, "lineWidth")
+	rv := objc.CallMethod[float64](s_, "lineWidth")
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineWidth(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setLineWidth:", value)
+	objc.CallMethod[objc.Void](s_, "setLineWidth:", value)
 }
 
 func (s_ ShapeLayer) MiterLimit() float64 {
-	rv := ffi.CallMethod[float64](s_, "miterLimit")
+	rv := objc.CallMethod[float64](s_, "miterLimit")
 	return rv
 }
 
 func (s_ ShapeLayer) SetMiterLimit(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMiterLimit:", value)
+	objc.CallMethod[objc.Void](s_, "setMiterLimit:", value)
 }
 
 func (s_ ShapeLayer) StrokeColor() coregraphics.ColorRef {
-	rv := ffi.CallMethod[coregraphics.ColorRef](s_, "strokeColor")
+	rv := objc.CallMethod[coregraphics.ColorRef](s_, "strokeColor")
 	return rv
 }
 
 func (s_ ShapeLayer) SetStrokeColor(value coregraphics.ColorRef) {
-	ffi.CallMethod[ffi.Void](s_, "setStrokeColor:", value)
+	objc.CallMethod[objc.Void](s_, "setStrokeColor:", value)
 }
 
 func (s_ ShapeLayer) StrokeStart() float64 {
-	rv := ffi.CallMethod[float64](s_, "strokeStart")
+	rv := objc.CallMethod[float64](s_, "strokeStart")
 	return rv
 }
 
 func (s_ ShapeLayer) SetStrokeStart(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setStrokeStart:", value)
+	objc.CallMethod[objc.Void](s_, "setStrokeStart:", value)
 }
 
 func (s_ ShapeLayer) StrokeEnd() float64 {
-	rv := ffi.CallMethod[float64](s_, "strokeEnd")
+	rv := objc.CallMethod[float64](s_, "strokeEnd")
 	return rv
 }
 
 func (s_ ShapeLayer) SetStrokeEnd(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setStrokeEnd:", value)
+	objc.CallMethod[objc.Void](s_, "setStrokeEnd:", value)
 }

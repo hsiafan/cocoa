@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -24,7 +23,7 @@ func (f_ *FontChangingWrapper) ImplementsChangeFont() bool {
 }
 
 func (f_ FontChangingWrapper) ChangeFont(sender IFontManager) {
-	ffi.CallMethod[ffi.Void](f_, "changeFont:", sender)
+	objc.CallMethod[objc.Void](f_, "changeFont:", sender)
 }
 
 func (f_ *FontChangingWrapper) ImplementsValidModesForFontPanel() bool {
@@ -32,6 +31,6 @@ func (f_ *FontChangingWrapper) ImplementsValidModesForFontPanel() bool {
 }
 
 func (f_ FontChangingWrapper) ValidModesForFontPanel(fontPanel IFontPanel) FontPanelModeMask {
-	rv := ffi.CallMethod[FontPanelModeMask](f_, "validModesForFontPanel:", fontPanel)
+	rv := objc.CallMethod[FontPanelModeMask](f_, "validModesForFontPanel:", fontPanel)
 	return rv
 }

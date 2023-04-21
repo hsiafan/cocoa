@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -31,12 +30,12 @@ func MakeEnumerator(ptr unsafe.Pointer) Enumerator {
 }
 
 func (ec _EnumeratorClass) Alloc() Enumerator {
-	rv := ffi.CallMethod[Enumerator](ec, "alloc")
+	rv := objc.CallMethod[Enumerator](ec, "alloc")
 	return rv
 }
 
 func (ec _EnumeratorClass) New() Enumerator {
-	rv := ffi.CallMethod[Enumerator](ec, "new")
+	rv := objc.CallMethod[Enumerator](ec, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -46,16 +45,16 @@ func NewEnumerator() Enumerator {
 }
 
 func (e_ Enumerator) Init() Enumerator {
-	rv := ffi.CallMethod[Enumerator](e_, "init")
+	rv := objc.CallMethod[Enumerator](e_, "init")
 	return rv
 }
 
 func (e_ Enumerator) NextObject() objc.Object {
-	rv := ffi.CallMethod[objc.Object](e_, "nextObject")
+	rv := objc.CallMethod[objc.Object](e_, "nextObject")
 	return rv
 }
 
 func (e_ Enumerator) AllObjects() []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](e_, "allObjects")
+	rv := objc.CallMethod[[]objc.Object](e_, "allObjects")
 	return rv
 }

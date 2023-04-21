@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -55,12 +54,12 @@ func MakePreferences(ptr unsafe.Pointer) Preferences {
 }
 
 func (pc _PreferencesClass) Alloc() Preferences {
-	rv := ffi.CallMethod[Preferences](pc, "alloc")
+	rv := objc.CallMethod[Preferences](pc, "alloc")
 	return rv
 }
 
 func (pc _PreferencesClass) New() Preferences {
-	rv := ffi.CallMethod[Preferences](pc, "new")
+	rv := objc.CallMethod[Preferences](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -70,102 +69,102 @@ func NewPreferences() Preferences {
 }
 
 func (p_ Preferences) Init() Preferences {
-	rv := ffi.CallMethod[Preferences](p_, "init")
+	rv := objc.CallMethod[Preferences](p_, "init")
 	return rv
 }
 
 func (p_ Preferences) MinimumFontSize() float64 {
-	rv := ffi.CallMethod[float64](p_, "minimumFontSize")
+	rv := objc.CallMethod[float64](p_, "minimumFontSize")
 	return rv
 }
 
 func (p_ Preferences) SetMinimumFontSize(value float64) {
-	ffi.CallMethod[ffi.Void](p_, "setMinimumFontSize:", value)
+	objc.CallMethod[objc.Void](p_, "setMinimumFontSize:", value)
 }
 
 func (p_ Preferences) TabFocusesLinks() bool {
-	rv := ffi.CallMethod[bool](p_, "tabFocusesLinks")
+	rv := objc.CallMethod[bool](p_, "tabFocusesLinks")
 	return rv
 }
 
 func (p_ Preferences) SetTabFocusesLinks(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setTabFocusesLinks:", value)
+	objc.CallMethod[objc.Void](p_, "setTabFocusesLinks:", value)
 }
 
 func (p_ Preferences) JavaScriptCanOpenWindowsAutomatically() bool {
-	rv := ffi.CallMethod[bool](p_, "javaScriptCanOpenWindowsAutomatically")
+	rv := objc.CallMethod[bool](p_, "javaScriptCanOpenWindowsAutomatically")
 	return rv
 }
 
 func (p_ Preferences) SetJavaScriptCanOpenWindowsAutomatically(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setJavaScriptCanOpenWindowsAutomatically:", value)
+	objc.CallMethod[objc.Void](p_, "setJavaScriptCanOpenWindowsAutomatically:", value)
 }
 
 func (p_ Preferences) IsFraudulentWebsiteWarningEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "isFraudulentWebsiteWarningEnabled")
+	rv := objc.CallMethod[bool](p_, "isFraudulentWebsiteWarningEnabled")
 	return rv
 }
 
 func (p_ Preferences) SetFraudulentWebsiteWarningEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setFraudulentWebsiteWarningEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setFraudulentWebsiteWarningEnabled:", value)
 }
 
 // deprecated
 func (p_ Preferences) JavaEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "javaEnabled")
+	rv := objc.CallMethod[bool](p_, "javaEnabled")
 	return rv
 }
 
 // deprecated
 func (p_ Preferences) SetJavaEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setJavaEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setJavaEnabled:", value)
 }
 
 // deprecated
 func (p_ Preferences) JavaScriptEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "javaScriptEnabled")
+	rv := objc.CallMethod[bool](p_, "javaScriptEnabled")
 	return rv
 }
 
 // deprecated
 func (p_ Preferences) SetJavaScriptEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setJavaScriptEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setJavaScriptEnabled:", value)
 }
 
 // deprecated
 func (p_ Preferences) PlugInsEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "plugInsEnabled")
+	rv := objc.CallMethod[bool](p_, "plugInsEnabled")
 	return rv
 }
 
 // deprecated
 func (p_ Preferences) SetPlugInsEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setPlugInsEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setPlugInsEnabled:", value)
 }
 
 func (p_ Preferences) IsElementFullscreenEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "isElementFullscreenEnabled")
+	rv := objc.CallMethod[bool](p_, "isElementFullscreenEnabled")
 	return rv
 }
 
 func (p_ Preferences) SetElementFullscreenEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setElementFullscreenEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setElementFullscreenEnabled:", value)
 }
 
 func (p_ Preferences) IsSiteSpecificQuirksModeEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "isSiteSpecificQuirksModeEnabled")
+	rv := objc.CallMethod[bool](p_, "isSiteSpecificQuirksModeEnabled")
 	return rv
 }
 
 func (p_ Preferences) SetSiteSpecificQuirksModeEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setSiteSpecificQuirksModeEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setSiteSpecificQuirksModeEnabled:", value)
 }
 
 func (p_ Preferences) IsTextInteractionEnabled() bool {
-	rv := ffi.CallMethod[bool](p_, "isTextInteractionEnabled")
+	rv := objc.CallMethod[bool](p_, "isTextInteractionEnabled")
 	return rv
 }
 
 func (p_ Preferences) SetTextInteractionEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setTextInteractionEnabled:", value)
+	objc.CallMethod[objc.Void](p_, "setTextInteractionEnabled:", value)
 }

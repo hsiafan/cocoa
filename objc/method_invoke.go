@@ -1,4 +1,4 @@
-package ffi
+package objc
 
 // #import <stdint.h>
 // void callMethod(void *op, void* sp, int argc, uintptr_t argsPtr, void* ret);
@@ -7,8 +7,6 @@ import (
 	"reflect"
 	"runtime"
 	"unsafe"
-
-	"github.com/hsiafan/cocoa/objc"
 )
 
 // for void type
@@ -17,12 +15,12 @@ type Void struct{}
 var voidType = reflect.TypeOf((*Void)(nil)).Elem()
 
 // type T: the ret value type
-func CallMethod[T any](o objc.Holder, selName string, params ...any) T {
+func CallMethod[T any](o Holder, selName string, params ...any) T {
 	if o.Ptr() == nil {
 		panic("object is nil")
 	}
 	argc := len(params)
-	selector := objc.GetSelector(selName)
+	selector := GetSelector(selName)
 
 	var argsPtr C.uintptr_t
 	var args []unsafe.Pointer

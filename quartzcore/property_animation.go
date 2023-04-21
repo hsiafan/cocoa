@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,22 +36,22 @@ func MakePropertyAnimation(ptr unsafe.Pointer) PropertyAnimation {
 }
 
 func (pc _PropertyAnimationClass) AnimationWithKeyPath(path string) PropertyAnimation {
-	rv := ffi.CallMethod[PropertyAnimation](pc, "animationWithKeyPath:", path)
+	rv := objc.CallMethod[PropertyAnimation](pc, "animationWithKeyPath:", path)
 	return rv
 }
 
 func (pc _PropertyAnimationClass) Animation() PropertyAnimation {
-	rv := ffi.CallMethod[PropertyAnimation](pc, "animation")
+	rv := objc.CallMethod[PropertyAnimation](pc, "animation")
 	return rv
 }
 
 func (pc _PropertyAnimationClass) Alloc() PropertyAnimation {
-	rv := ffi.CallMethod[PropertyAnimation](pc, "alloc")
+	rv := objc.CallMethod[PropertyAnimation](pc, "alloc")
 	return rv
 }
 
 func (pc _PropertyAnimationClass) New() PropertyAnimation {
-	rv := ffi.CallMethod[PropertyAnimation](pc, "new")
+	rv := objc.CallMethod[PropertyAnimation](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -62,42 +61,42 @@ func NewPropertyAnimation() PropertyAnimation {
 }
 
 func (p_ PropertyAnimation) Init() PropertyAnimation {
-	rv := ffi.CallMethod[PropertyAnimation](p_, "init")
+	rv := objc.CallMethod[PropertyAnimation](p_, "init")
 	return rv
 }
 
 func (p_ PropertyAnimation) KeyPath() string {
-	rv := ffi.CallMethod[string](p_, "keyPath")
+	rv := objc.CallMethod[string](p_, "keyPath")
 	return rv
 }
 
 func (p_ PropertyAnimation) SetKeyPath(value string) {
-	ffi.CallMethod[ffi.Void](p_, "setKeyPath:", value)
+	objc.CallMethod[objc.Void](p_, "setKeyPath:", value)
 }
 
 func (p_ PropertyAnimation) IsCumulative() bool {
-	rv := ffi.CallMethod[bool](p_, "isCumulative")
+	rv := objc.CallMethod[bool](p_, "isCumulative")
 	return rv
 }
 
 func (p_ PropertyAnimation) SetCumulative(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setCumulative:", value)
+	objc.CallMethod[objc.Void](p_, "setCumulative:", value)
 }
 
 func (p_ PropertyAnimation) IsAdditive() bool {
-	rv := ffi.CallMethod[bool](p_, "isAdditive")
+	rv := objc.CallMethod[bool](p_, "isAdditive")
 	return rv
 }
 
 func (p_ PropertyAnimation) SetAdditive(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setAdditive:", value)
+	objc.CallMethod[objc.Void](p_, "setAdditive:", value)
 }
 
 func (p_ PropertyAnimation) ValueFunction() ValueFunction {
-	rv := ffi.CallMethod[ValueFunction](p_, "valueFunction")
+	rv := objc.CallMethod[ValueFunction](p_, "valueFunction")
 	return rv
 }
 
 func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
-	ffi.CallMethod[ffi.Void](p_, "setValueFunction:", value)
+	objc.CallMethod[objc.Void](p_, "setValueFunction:", value)
 }

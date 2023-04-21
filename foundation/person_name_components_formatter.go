@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -38,12 +37,12 @@ func MakePersonNameComponentsFormatter(ptr unsafe.Pointer) PersonNameComponentsF
 }
 
 func (pc _PersonNameComponentsFormatterClass) Alloc() PersonNameComponentsFormatter {
-	rv := ffi.CallMethod[PersonNameComponentsFormatter](pc, "alloc")
+	rv := objc.CallMethod[PersonNameComponentsFormatter](pc, "alloc")
 	return rv
 }
 
 func (pc _PersonNameComponentsFormatterClass) New() PersonNameComponentsFormatter {
-	rv := ffi.CallMethod[PersonNameComponentsFormatter](pc, "new")
+	rv := objc.CallMethod[PersonNameComponentsFormatter](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,53 +52,53 @@ func NewPersonNameComponentsFormatter() PersonNameComponentsFormatter {
 }
 
 func (p_ PersonNameComponentsFormatter) Init() PersonNameComponentsFormatter {
-	rv := ffi.CallMethod[PersonNameComponentsFormatter](p_, "init")
+	rv := objc.CallMethod[PersonNameComponentsFormatter](p_, "init")
 	return rv
 }
 
 func (pc _PersonNameComponentsFormatterClass) LocalizedStringFromPersonNameComponents_Style_Options(components IPersonNameComponents, nameFormatStyle PersonNameComponentsFormatterStyle, nameOptions PersonNameComponentsFormatterOptions) string {
-	rv := ffi.CallMethod[string](pc, "localizedStringFromPersonNameComponents:style:options:", components, nameFormatStyle, nameOptions)
+	rv := objc.CallMethod[string](pc, "localizedStringFromPersonNameComponents:style:options:", components, nameFormatStyle, nameOptions)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) StringFromPersonNameComponents(components IPersonNameComponents) string {
-	rv := ffi.CallMethod[string](p_, "stringFromPersonNameComponents:", components)
+	rv := objc.CallMethod[string](p_, "stringFromPersonNameComponents:", components)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString {
-	rv := ffi.CallMethod[AttributedString](p_, "annotatedStringFromPersonNameComponents:", components)
+	rv := objc.CallMethod[AttributedString](p_, "annotatedStringFromPersonNameComponents:", components)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) PersonNameComponentsFromString(string_ string) PersonNameComponents {
-	rv := ffi.CallMethod[PersonNameComponents](p_, "personNameComponentsFromString:", string_)
+	rv := objc.CallMethod[PersonNameComponents](p_, "personNameComponentsFromString:", string_)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) Style() PersonNameComponentsFormatterStyle {
-	rv := ffi.CallMethod[PersonNameComponentsFormatterStyle](p_, "style")
+	rv := objc.CallMethod[PersonNameComponentsFormatterStyle](p_, "style")
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) SetStyle(value PersonNameComponentsFormatterStyle) {
-	ffi.CallMethod[ffi.Void](p_, "setStyle:", value)
+	objc.CallMethod[objc.Void](p_, "setStyle:", value)
 }
 
 func (p_ PersonNameComponentsFormatter) IsPhonetic() bool {
-	rv := ffi.CallMethod[bool](p_, "isPhonetic")
+	rv := objc.CallMethod[bool](p_, "isPhonetic")
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) SetPhonetic(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setPhonetic:", value)
+	objc.CallMethod[objc.Void](p_, "setPhonetic:", value)
 }
 
 func (p_ PersonNameComponentsFormatter) Locale() Locale {
-	rv := ffi.CallMethod[Locale](p_, "locale")
+	rv := objc.CallMethod[Locale](p_, "locale")
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) SetLocale(value ILocale) {
-	ffi.CallMethod[ffi.Void](p_, "setLocale:", value)
+	objc.CallMethod[objc.Void](p_, "setLocale:", value)
 }

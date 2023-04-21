@@ -2,7 +2,6 @@
 package webkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -18,13 +17,13 @@ type URLSchemeHandlerWrapper struct {
 }
 
 func (u_ URLSchemeHandlerWrapper) WebView_StartURLSchemeTask(webView IWebView, urlSchemeTask URLSchemeTask) {
-	po := ffi.CreateProtocol("WKURLSchemeTask", urlSchemeTask)
+	po := objc.CreateProtocol("WKURLSchemeTask", urlSchemeTask)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](u_, "webView:startURLSchemeTask:", webView, po)
+	objc.CallMethod[objc.Void](u_, "webView:startURLSchemeTask:", webView, po)
 }
 
 func (u_ URLSchemeHandlerWrapper) WebView_StopURLSchemeTask(webView IWebView, urlSchemeTask URLSchemeTask) {
-	po := ffi.CreateProtocol("WKURLSchemeTask", urlSchemeTask)
+	po := objc.CreateProtocol("WKURLSchemeTask", urlSchemeTask)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](u_, "webView:stopURLSchemeTask:", webView, po)
+	objc.CallMethod[objc.Void](u_, "webView:stopURLSchemeTask:", webView, po)
 }

@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,17 +29,17 @@ func MakeCloseCommand(ptr unsafe.Pointer) CloseCommand {
 }
 
 func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
-	rv := ffi.CallMethod[CloseCommand](c_, "initWithCommandDescription:", commandDef)
+	rv := objc.CallMethod[CloseCommand](c_, "initWithCommandDescription:", commandDef)
 	return rv
 }
 
 func (cc _CloseCommandClass) Alloc() CloseCommand {
-	rv := ffi.CallMethod[CloseCommand](cc, "alloc")
+	rv := objc.CallMethod[CloseCommand](cc, "alloc")
 	return rv
 }
 
 func (cc _CloseCommandClass) New() CloseCommand {
-	rv := ffi.CallMethod[CloseCommand](cc, "new")
+	rv := objc.CallMethod[CloseCommand](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,11 +49,11 @@ func NewCloseCommand() CloseCommand {
 }
 
 func (c_ CloseCommand) Init() CloseCommand {
-	rv := ffi.CallMethod[CloseCommand](c_, "init")
+	rv := objc.CallMethod[CloseCommand](c_, "init")
 	return rv
 }
 
 func (c_ CloseCommand) SaveOptions() SaveOptions {
-	rv := ffi.CallMethod[SaveOptions](c_, "saveOptions")
+	rv := objc.CallMethod[SaveOptions](c_, "saveOptions")
 	return rv
 }

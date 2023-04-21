@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,12 +34,12 @@ func MakeWebpagePreferences(ptr unsafe.Pointer) WebpagePreferences {
 }
 
 func (wc _WebpagePreferencesClass) Alloc() WebpagePreferences {
-	rv := ffi.CallMethod[WebpagePreferences](wc, "alloc")
+	rv := objc.CallMethod[WebpagePreferences](wc, "alloc")
 	return rv
 }
 
 func (wc _WebpagePreferencesClass) New() WebpagePreferences {
-	rv := ffi.CallMethod[WebpagePreferences](wc, "new")
+	rv := objc.CallMethod[WebpagePreferences](wc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -50,33 +49,33 @@ func NewWebpagePreferences() WebpagePreferences {
 }
 
 func (w_ WebpagePreferences) Init() WebpagePreferences {
-	rv := ffi.CallMethod[WebpagePreferences](w_, "init")
+	rv := objc.CallMethod[WebpagePreferences](w_, "init")
 	return rv
 }
 
 func (w_ WebpagePreferences) AllowsContentJavaScript() bool {
-	rv := ffi.CallMethod[bool](w_, "allowsContentJavaScript")
+	rv := objc.CallMethod[bool](w_, "allowsContentJavaScript")
 	return rv
 }
 
 func (w_ WebpagePreferences) SetAllowsContentJavaScript(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setAllowsContentJavaScript:", value)
+	objc.CallMethod[objc.Void](w_, "setAllowsContentJavaScript:", value)
 }
 
 func (w_ WebpagePreferences) PreferredContentMode() ContentMode {
-	rv := ffi.CallMethod[ContentMode](w_, "preferredContentMode")
+	rv := objc.CallMethod[ContentMode](w_, "preferredContentMode")
 	return rv
 }
 
 func (w_ WebpagePreferences) SetPreferredContentMode(value ContentMode) {
-	ffi.CallMethod[ffi.Void](w_, "setPreferredContentMode:", value)
+	objc.CallMethod[objc.Void](w_, "setPreferredContentMode:", value)
 }
 
 func (w_ WebpagePreferences) IsLockdownModeEnabled() bool {
-	rv := ffi.CallMethod[bool](w_, "isLockdownModeEnabled")
+	rv := objc.CallMethod[bool](w_, "isLockdownModeEnabled")
 	return rv
 }
 
 func (w_ WebpagePreferences) SetLockdownModeEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setLockdownModeEnabled:", value)
+	objc.CallMethod[objc.Void](w_, "setLockdownModeEnabled:", value)
 }

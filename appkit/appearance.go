@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -34,17 +33,17 @@ func MakeAppearance(ptr unsafe.Pointer) Appearance {
 }
 
 func (a_ Appearance) InitWithAppearanceNamed_Bundle(name AppearanceName, bundle foundation.IBundle) Appearance {
-	rv := ffi.CallMethod[Appearance](a_, "initWithAppearanceNamed:bundle:", name, bundle)
+	rv := objc.CallMethod[Appearance](a_, "initWithAppearanceNamed:bundle:", name, bundle)
 	return rv
 }
 
 func (ac _AppearanceClass) Alloc() Appearance {
-	rv := ffi.CallMethod[Appearance](ac, "alloc")
+	rv := objc.CallMethod[Appearance](ac, "alloc")
 	return rv
 }
 
 func (ac _AppearanceClass) New() Appearance {
-	rv := ffi.CallMethod[Appearance](ac, "new")
+	rv := objc.CallMethod[Appearance](ac, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,46 +53,46 @@ func NewAppearance() Appearance {
 }
 
 func (a_ Appearance) Init() Appearance {
-	rv := ffi.CallMethod[Appearance](a_, "init")
+	rv := objc.CallMethod[Appearance](a_, "init")
 	return rv
 }
 
 func (ac _AppearanceClass) AppearanceNamed(name AppearanceName) Appearance {
-	rv := ffi.CallMethod[Appearance](ac, "appearanceNamed:", name)
+	rv := objc.CallMethod[Appearance](ac, "appearanceNamed:", name)
 	return rv
 }
 
 func (a_ Appearance) BestMatchFromAppearancesWithNames(appearances []AppearanceName) AppearanceName {
-	rv := ffi.CallMethod[AppearanceName](a_, "bestMatchFromAppearancesWithNames:", appearances)
+	rv := objc.CallMethod[AppearanceName](a_, "bestMatchFromAppearancesWithNames:", appearances)
 	return rv
 }
 
 func (a_ Appearance) PerformAsCurrentDrawingAppearance(block func()) {
-	ffi.CallMethod[ffi.Void](a_, "performAsCurrentDrawingAppearance:", block)
+	objc.CallMethod[objc.Void](a_, "performAsCurrentDrawingAppearance:", block)
 }
 
 func (a_ Appearance) Name() AppearanceName {
-	rv := ffi.CallMethod[AppearanceName](a_, "name")
+	rv := objc.CallMethod[AppearanceName](a_, "name")
 	return rv
 }
 
 func (ac _AppearanceClass) CurrentDrawingAppearance() Appearance {
-	rv := ffi.CallMethod[Appearance](ac, "currentDrawingAppearance")
+	rv := objc.CallMethod[Appearance](ac, "currentDrawingAppearance")
 	return rv
 }
 
 // deprecated
 func (ac _AppearanceClass) CurrentAppearance() Appearance {
-	rv := ffi.CallMethod[Appearance](ac, "currentAppearance")
+	rv := objc.CallMethod[Appearance](ac, "currentAppearance")
 	return rv
 }
 
 // deprecated
 func (ac _AppearanceClass) SetCurrentAppearance(value IAppearance) {
-	ffi.CallMethod[ffi.Void](ac, "setCurrentAppearance:", value)
+	objc.CallMethod[objc.Void](ac, "setCurrentAppearance:", value)
 }
 
 func (a_ Appearance) AllowsVibrancy() bool {
-	rv := ffi.CallMethod[bool](a_, "allowsVibrancy")
+	rv := objc.CallMethod[bool](a_, "allowsVibrancy")
 	return rv
 }

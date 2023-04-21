@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -109,22 +108,22 @@ func MakeScrollView(ptr unsafe.Pointer) ScrollView {
 }
 
 func (s_ ScrollView) InitWithFrame(frameRect foundation.Rect) ScrollView {
-	rv := ffi.CallMethod[ScrollView](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ScrollView](s_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (s_ ScrollView) Init() ScrollView {
-	rv := ffi.CallMethod[ScrollView](s_, "init")
+	rv := objc.CallMethod[ScrollView](s_, "init")
 	return rv
 }
 
 func (sc _ScrollViewClass) Alloc() ScrollView {
-	rv := ffi.CallMethod[ScrollView](sc, "alloc")
+	rv := objc.CallMethod[ScrollView](sc, "alloc")
 	return rv
 }
 
 func (sc _ScrollViewClass) New() ScrollView {
-	rv := ffi.CallMethod[ScrollView](sc, "new")
+	rv := objc.CallMethod[ScrollView](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -134,386 +133,386 @@ func NewScrollView() ScrollView {
 }
 
 func (sc _ScrollViewClass) FrameSizeForContentSize_HorizontalScrollerClass_VerticalScrollerClass_BorderType_ControlSize_ScrollerStyle(cSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](sc, "frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:", cSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
+	rv := objc.CallMethod[foundation.Size](sc, "frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:", cSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
 	return rv
 }
 
 func (sc _ScrollViewClass) ContentSizeForFrameSize_HorizontalScrollerClass_VerticalScrollerClass_BorderType_ControlSize_ScrollerStyle(fSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:", fSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
+	rv := objc.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:", fSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
 	return rv
 }
 
 func (s_ ScrollView) AddFloatingSubview_ForAxis(view IView, axis EventGestureAxis) {
-	ffi.CallMethod[ffi.Void](s_, "addFloatingSubview:forAxis:", view, axis)
+	objc.CallMethod[objc.Void](s_, "addFloatingSubview:forAxis:", view, axis)
 }
 
 func (s_ ScrollView) Tile() {
-	ffi.CallMethod[ffi.Void](s_, "tile")
+	objc.CallMethod[objc.Void](s_, "tile")
 }
 
 func (s_ ScrollView) FlashScrollers() {
-	ffi.CallMethod[ffi.Void](s_, "flashScrollers")
+	objc.CallMethod[objc.Void](s_, "flashScrollers")
 }
 
 func (s_ ScrollView) MagnifyToFitRect(rect foundation.Rect) {
-	ffi.CallMethod[ffi.Void](s_, "magnifyToFitRect:", rect)
+	objc.CallMethod[objc.Void](s_, "magnifyToFitRect:", rect)
 }
 
 func (s_ ScrollView) SetMagnification_CenteredAtPoint(magnification float64, point foundation.Point) {
-	ffi.CallMethod[ffi.Void](s_, "setMagnification:centeredAtPoint:", magnification, point)
+	objc.CallMethod[objc.Void](s_, "setMagnification:centeredAtPoint:", magnification, point)
 }
 
 // deprecated
 func (sc _ScrollViewClass) FrameSizeForContentSize_HasHorizontalScroller_HasVerticalScroller_BorderType(cSize foundation.Size, hFlag bool, vFlag bool, type_ BorderType) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](sc, "frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:", cSize, hFlag, vFlag, type_)
+	rv := objc.CallMethod[foundation.Size](sc, "frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:", cSize, hFlag, vFlag, type_)
 	return rv
 }
 
 // deprecated
 func (sc _ScrollViewClass) ContentSizeForFrameSize_HasHorizontalScroller_HasVerticalScroller_BorderType(fSize foundation.Size, hFlag bool, vFlag bool, type_ BorderType) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:", fSize, hFlag, vFlag, type_)
+	rv := objc.CallMethod[foundation.Size](sc, "contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:", fSize, hFlag, vFlag, type_)
 	return rv
 }
 
 func (s_ ScrollView) ContentSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](s_, "contentSize")
+	rv := objc.CallMethod[foundation.Size](s_, "contentSize")
 	return rv
 }
 
 func (s_ ScrollView) DocumentVisibleRect() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](s_, "documentVisibleRect")
+	rv := objc.CallMethod[foundation.Rect](s_, "documentVisibleRect")
 	return rv
 }
 
 func (s_ ScrollView) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](s_, "backgroundColor")
+	rv := objc.CallMethod[Color](s_, "backgroundColor")
 	return rv
 }
 
 func (s_ ScrollView) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](s_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](s_, "setBackgroundColor:", value)
 }
 
 func (s_ ScrollView) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](s_, "drawsBackground")
+	rv := objc.CallMethod[bool](s_, "drawsBackground")
 	return rv
 }
 
 func (s_ ScrollView) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](s_, "setDrawsBackground:", value)
 }
 
 func (s_ ScrollView) BorderType() BorderType {
-	rv := ffi.CallMethod[BorderType](s_, "borderType")
+	rv := objc.CallMethod[BorderType](s_, "borderType")
 	return rv
 }
 
 func (s_ ScrollView) SetBorderType(value BorderType) {
-	ffi.CallMethod[ffi.Void](s_, "setBorderType:", value)
+	objc.CallMethod[objc.Void](s_, "setBorderType:", value)
 }
 
 func (s_ ScrollView) DocumentCursor() Cursor {
-	rv := ffi.CallMethod[Cursor](s_, "documentCursor")
+	rv := objc.CallMethod[Cursor](s_, "documentCursor")
 	return rv
 }
 
 func (s_ ScrollView) SetDocumentCursor(value ICursor) {
-	ffi.CallMethod[ffi.Void](s_, "setDocumentCursor:", value)
+	objc.CallMethod[objc.Void](s_, "setDocumentCursor:", value)
 }
 
 func (s_ ScrollView) ContentView() ClipView {
-	rv := ffi.CallMethod[ClipView](s_, "contentView")
+	rv := objc.CallMethod[ClipView](s_, "contentView")
 	return rv
 }
 
 func (s_ ScrollView) SetContentView(value IClipView) {
-	ffi.CallMethod[ffi.Void](s_, "setContentView:", value)
+	objc.CallMethod[objc.Void](s_, "setContentView:", value)
 }
 
 func (s_ ScrollView) DocumentView() View {
-	rv := ffi.CallMethod[View](s_, "documentView")
+	rv := objc.CallMethod[View](s_, "documentView")
 	return rv
 }
 
 func (s_ ScrollView) SetDocumentView(value IView) {
-	ffi.CallMethod[ffi.Void](s_, "setDocumentView:", value)
+	objc.CallMethod[objc.Void](s_, "setDocumentView:", value)
 }
 
 func (s_ ScrollView) HorizontalScroller() Scroller {
-	rv := ffi.CallMethod[Scroller](s_, "horizontalScroller")
+	rv := objc.CallMethod[Scroller](s_, "horizontalScroller")
 	return rv
 }
 
 func (s_ ScrollView) SetHorizontalScroller(value IScroller) {
-	ffi.CallMethod[ffi.Void](s_, "setHorizontalScroller:", value)
+	objc.CallMethod[objc.Void](s_, "setHorizontalScroller:", value)
 }
 
 func (s_ ScrollView) HasHorizontalScroller() bool {
-	rv := ffi.CallMethod[bool](s_, "hasHorizontalScroller")
+	rv := objc.CallMethod[bool](s_, "hasHorizontalScroller")
 	return rv
 }
 
 func (s_ ScrollView) SetHasHorizontalScroller(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setHasHorizontalScroller:", value)
+	objc.CallMethod[objc.Void](s_, "setHasHorizontalScroller:", value)
 }
 
 func (s_ ScrollView) VerticalScroller() Scroller {
-	rv := ffi.CallMethod[Scroller](s_, "verticalScroller")
+	rv := objc.CallMethod[Scroller](s_, "verticalScroller")
 	return rv
 }
 
 func (s_ ScrollView) SetVerticalScroller(value IScroller) {
-	ffi.CallMethod[ffi.Void](s_, "setVerticalScroller:", value)
+	objc.CallMethod[objc.Void](s_, "setVerticalScroller:", value)
 }
 
 func (s_ ScrollView) HasVerticalScroller() bool {
-	rv := ffi.CallMethod[bool](s_, "hasVerticalScroller")
+	rv := objc.CallMethod[bool](s_, "hasVerticalScroller")
 	return rv
 }
 
 func (s_ ScrollView) SetHasVerticalScroller(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setHasVerticalScroller:", value)
+	objc.CallMethod[objc.Void](s_, "setHasVerticalScroller:", value)
 }
 
 func (s_ ScrollView) AutohidesScrollers() bool {
-	rv := ffi.CallMethod[bool](s_, "autohidesScrollers")
+	rv := objc.CallMethod[bool](s_, "autohidesScrollers")
 	return rv
 }
 
 func (s_ ScrollView) SetAutohidesScrollers(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setAutohidesScrollers:", value)
+	objc.CallMethod[objc.Void](s_, "setAutohidesScrollers:", value)
 }
 
 func (sc _ScrollViewClass) RulerViewClass() objc.Class {
-	rv := ffi.CallMethod[objc.Class](sc, "rulerViewClass")
+	rv := objc.CallMethod[objc.Class](sc, "rulerViewClass")
 	return rv
 }
 
 func (sc _ScrollViewClass) SetRulerViewClass(value objc.IClass) {
-	ffi.CallMethod[ffi.Void](sc, "setRulerViewClass:", value)
+	objc.CallMethod[objc.Void](sc, "setRulerViewClass:", value)
 }
 
 func (s_ ScrollView) HasHorizontalRuler() bool {
-	rv := ffi.CallMethod[bool](s_, "hasHorizontalRuler")
+	rv := objc.CallMethod[bool](s_, "hasHorizontalRuler")
 	return rv
 }
 
 func (s_ ScrollView) SetHasHorizontalRuler(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setHasHorizontalRuler:", value)
+	objc.CallMethod[objc.Void](s_, "setHasHorizontalRuler:", value)
 }
 
 func (s_ ScrollView) HorizontalRulerView() RulerView {
-	rv := ffi.CallMethod[RulerView](s_, "horizontalRulerView")
+	rv := objc.CallMethod[RulerView](s_, "horizontalRulerView")
 	return rv
 }
 
 func (s_ ScrollView) SetHorizontalRulerView(value IRulerView) {
-	ffi.CallMethod[ffi.Void](s_, "setHorizontalRulerView:", value)
+	objc.CallMethod[objc.Void](s_, "setHorizontalRulerView:", value)
 }
 
 func (s_ ScrollView) HasVerticalRuler() bool {
-	rv := ffi.CallMethod[bool](s_, "hasVerticalRuler")
+	rv := objc.CallMethod[bool](s_, "hasVerticalRuler")
 	return rv
 }
 
 func (s_ ScrollView) SetHasVerticalRuler(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setHasVerticalRuler:", value)
+	objc.CallMethod[objc.Void](s_, "setHasVerticalRuler:", value)
 }
 
 func (s_ ScrollView) VerticalRulerView() RulerView {
-	rv := ffi.CallMethod[RulerView](s_, "verticalRulerView")
+	rv := objc.CallMethod[RulerView](s_, "verticalRulerView")
 	return rv
 }
 
 func (s_ ScrollView) SetVerticalRulerView(value IRulerView) {
-	ffi.CallMethod[ffi.Void](s_, "setVerticalRulerView:", value)
+	objc.CallMethod[objc.Void](s_, "setVerticalRulerView:", value)
 }
 
 func (s_ ScrollView) RulersVisible() bool {
-	rv := ffi.CallMethod[bool](s_, "rulersVisible")
+	rv := objc.CallMethod[bool](s_, "rulersVisible")
 	return rv
 }
 
 func (s_ ScrollView) SetRulersVisible(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setRulersVisible:", value)
+	objc.CallMethod[objc.Void](s_, "setRulersVisible:", value)
 }
 
 func (s_ ScrollView) AutomaticallyAdjustsContentInsets() bool {
-	rv := ffi.CallMethod[bool](s_, "automaticallyAdjustsContentInsets")
+	rv := objc.CallMethod[bool](s_, "automaticallyAdjustsContentInsets")
 	return rv
 }
 
 func (s_ ScrollView) SetAutomaticallyAdjustsContentInsets(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setAutomaticallyAdjustsContentInsets:", value)
+	objc.CallMethod[objc.Void](s_, "setAutomaticallyAdjustsContentInsets:", value)
 }
 
 func (s_ ScrollView) ContentInsets() foundation.EdgeInsets {
-	rv := ffi.CallMethod[foundation.EdgeInsets](s_, "contentInsets")
+	rv := objc.CallMethod[foundation.EdgeInsets](s_, "contentInsets")
 	return rv
 }
 
 func (s_ ScrollView) SetContentInsets(value foundation.EdgeInsets) {
-	ffi.CallMethod[ffi.Void](s_, "setContentInsets:", value)
+	objc.CallMethod[objc.Void](s_, "setContentInsets:", value)
 }
 
 func (s_ ScrollView) ScrollerInsets() foundation.EdgeInsets {
-	rv := ffi.CallMethod[foundation.EdgeInsets](s_, "scrollerInsets")
+	rv := objc.CallMethod[foundation.EdgeInsets](s_, "scrollerInsets")
 	return rv
 }
 
 func (s_ ScrollView) SetScrollerInsets(value foundation.EdgeInsets) {
-	ffi.CallMethod[ffi.Void](s_, "setScrollerInsets:", value)
+	objc.CallMethod[objc.Void](s_, "setScrollerInsets:", value)
 }
 
 func (s_ ScrollView) ScrollerKnobStyle() ScrollerKnobStyle {
-	rv := ffi.CallMethod[ScrollerKnobStyle](s_, "scrollerKnobStyle")
+	rv := objc.CallMethod[ScrollerKnobStyle](s_, "scrollerKnobStyle")
 	return rv
 }
 
 func (s_ ScrollView) SetScrollerKnobStyle(value ScrollerKnobStyle) {
-	ffi.CallMethod[ffi.Void](s_, "setScrollerKnobStyle:", value)
+	objc.CallMethod[objc.Void](s_, "setScrollerKnobStyle:", value)
 }
 
 func (s_ ScrollView) ScrollerStyle() ScrollerStyle {
-	rv := ffi.CallMethod[ScrollerStyle](s_, "scrollerStyle")
+	rv := objc.CallMethod[ScrollerStyle](s_, "scrollerStyle")
 	return rv
 }
 
 func (s_ ScrollView) SetScrollerStyle(value ScrollerStyle) {
-	ffi.CallMethod[ffi.Void](s_, "setScrollerStyle:", value)
+	objc.CallMethod[objc.Void](s_, "setScrollerStyle:", value)
 }
 
 func (s_ ScrollView) LineScroll() float64 {
-	rv := ffi.CallMethod[float64](s_, "lineScroll")
+	rv := objc.CallMethod[float64](s_, "lineScroll")
 	return rv
 }
 
 func (s_ ScrollView) SetLineScroll(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setLineScroll:", value)
+	objc.CallMethod[objc.Void](s_, "setLineScroll:", value)
 }
 
 func (s_ ScrollView) HorizontalLineScroll() float64 {
-	rv := ffi.CallMethod[float64](s_, "horizontalLineScroll")
+	rv := objc.CallMethod[float64](s_, "horizontalLineScroll")
 	return rv
 }
 
 func (s_ ScrollView) SetHorizontalLineScroll(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setHorizontalLineScroll:", value)
+	objc.CallMethod[objc.Void](s_, "setHorizontalLineScroll:", value)
 }
 
 func (s_ ScrollView) VerticalLineScroll() float64 {
-	rv := ffi.CallMethod[float64](s_, "verticalLineScroll")
+	rv := objc.CallMethod[float64](s_, "verticalLineScroll")
 	return rv
 }
 
 func (s_ ScrollView) SetVerticalLineScroll(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setVerticalLineScroll:", value)
+	objc.CallMethod[objc.Void](s_, "setVerticalLineScroll:", value)
 }
 
 func (s_ ScrollView) PageScroll() float64 {
-	rv := ffi.CallMethod[float64](s_, "pageScroll")
+	rv := objc.CallMethod[float64](s_, "pageScroll")
 	return rv
 }
 
 func (s_ ScrollView) SetPageScroll(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setPageScroll:", value)
+	objc.CallMethod[objc.Void](s_, "setPageScroll:", value)
 }
 
 func (s_ ScrollView) HorizontalPageScroll() float64 {
-	rv := ffi.CallMethod[float64](s_, "horizontalPageScroll")
+	rv := objc.CallMethod[float64](s_, "horizontalPageScroll")
 	return rv
 }
 
 func (s_ ScrollView) SetHorizontalPageScroll(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setHorizontalPageScroll:", value)
+	objc.CallMethod[objc.Void](s_, "setHorizontalPageScroll:", value)
 }
 
 func (s_ ScrollView) VerticalPageScroll() float64 {
-	rv := ffi.CallMethod[float64](s_, "verticalPageScroll")
+	rv := objc.CallMethod[float64](s_, "verticalPageScroll")
 	return rv
 }
 
 func (s_ ScrollView) SetVerticalPageScroll(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setVerticalPageScroll:", value)
+	objc.CallMethod[objc.Void](s_, "setVerticalPageScroll:", value)
 }
 
 func (s_ ScrollView) ScrollsDynamically() bool {
-	rv := ffi.CallMethod[bool](s_, "scrollsDynamically")
+	rv := objc.CallMethod[bool](s_, "scrollsDynamically")
 	return rv
 }
 
 func (s_ ScrollView) SetScrollsDynamically(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setScrollsDynamically:", value)
+	objc.CallMethod[objc.Void](s_, "setScrollsDynamically:", value)
 }
 
 func (s_ ScrollView) FindBarPosition() ScrollViewFindBarPosition {
-	rv := ffi.CallMethod[ScrollViewFindBarPosition](s_, "findBarPosition")
+	rv := objc.CallMethod[ScrollViewFindBarPosition](s_, "findBarPosition")
 	return rv
 }
 
 func (s_ ScrollView) SetFindBarPosition(value ScrollViewFindBarPosition) {
-	ffi.CallMethod[ffi.Void](s_, "setFindBarPosition:", value)
+	objc.CallMethod[objc.Void](s_, "setFindBarPosition:", value)
 }
 
 func (s_ ScrollView) UsesPredominantAxisScrolling() bool {
-	rv := ffi.CallMethod[bool](s_, "usesPredominantAxisScrolling")
+	rv := objc.CallMethod[bool](s_, "usesPredominantAxisScrolling")
 	return rv
 }
 
 func (s_ ScrollView) SetUsesPredominantAxisScrolling(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setUsesPredominantAxisScrolling:", value)
+	objc.CallMethod[objc.Void](s_, "setUsesPredominantAxisScrolling:", value)
 }
 
 func (s_ ScrollView) HorizontalScrollElasticity() ScrollElasticity {
-	rv := ffi.CallMethod[ScrollElasticity](s_, "horizontalScrollElasticity")
+	rv := objc.CallMethod[ScrollElasticity](s_, "horizontalScrollElasticity")
 	return rv
 }
 
 func (s_ ScrollView) SetHorizontalScrollElasticity(value ScrollElasticity) {
-	ffi.CallMethod[ffi.Void](s_, "setHorizontalScrollElasticity:", value)
+	objc.CallMethod[objc.Void](s_, "setHorizontalScrollElasticity:", value)
 }
 
 func (s_ ScrollView) VerticalScrollElasticity() ScrollElasticity {
-	rv := ffi.CallMethod[ScrollElasticity](s_, "verticalScrollElasticity")
+	rv := objc.CallMethod[ScrollElasticity](s_, "verticalScrollElasticity")
 	return rv
 }
 
 func (s_ ScrollView) SetVerticalScrollElasticity(value ScrollElasticity) {
-	ffi.CallMethod[ffi.Void](s_, "setVerticalScrollElasticity:", value)
+	objc.CallMethod[objc.Void](s_, "setVerticalScrollElasticity:", value)
 }
 
 func (s_ ScrollView) AllowsMagnification() bool {
-	rv := ffi.CallMethod[bool](s_, "allowsMagnification")
+	rv := objc.CallMethod[bool](s_, "allowsMagnification")
 	return rv
 }
 
 func (s_ ScrollView) SetAllowsMagnification(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setAllowsMagnification:", value)
+	objc.CallMethod[objc.Void](s_, "setAllowsMagnification:", value)
 }
 
 func (s_ ScrollView) Magnification() float64 {
-	rv := ffi.CallMethod[float64](s_, "magnification")
+	rv := objc.CallMethod[float64](s_, "magnification")
 	return rv
 }
 
 func (s_ ScrollView) SetMagnification(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMagnification:", value)
+	objc.CallMethod[objc.Void](s_, "setMagnification:", value)
 }
 
 func (s_ ScrollView) MaxMagnification() float64 {
-	rv := ffi.CallMethod[float64](s_, "maxMagnification")
+	rv := objc.CallMethod[float64](s_, "maxMagnification")
 	return rv
 }
 
 func (s_ ScrollView) SetMaxMagnification(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMaxMagnification:", value)
+	objc.CallMethod[objc.Void](s_, "setMaxMagnification:", value)
 }
 
 func (s_ ScrollView) MinMagnification() float64 {
-	rv := ffi.CallMethod[float64](s_, "minMagnification")
+	rv := objc.CallMethod[float64](s_, "minMagnification")
 	return rv
 }
 
 func (s_ ScrollView) SetMinMagnification(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMinMagnification:", value)
+	objc.CallMethod[objc.Void](s_, "setMinMagnification:", value)
 }

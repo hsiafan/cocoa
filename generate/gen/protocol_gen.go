@@ -84,7 +84,7 @@ func (p *Protocol) Init() {
 }
 
 func (p *Protocol) GoImports() set.Set[string] {
-	imports := set.New("github.com/hsiafan/cocoa/ffi")
+	imports := set.New("github.com/hsiafan/cocoa/objc")
 	for _, parent := range p.Parents {
 		imports.Add("github.com/hsiafan/cocoa/" + parent.Type.Module.Package)
 	}

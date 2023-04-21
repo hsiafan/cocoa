@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -21,6 +20,6 @@ func (c_ *CollectionLayoutEnvironmentWrapper) ImplementsContainer() bool {
 }
 
 func (c_ CollectionLayoutEnvironmentWrapper) Container() CollectionLayoutContainerWrapper {
-	rv := ffi.CallMethod[CollectionLayoutContainerWrapper](c_, "container")
+	rv := objc.CallMethod[CollectionLayoutContainerWrapper](c_, "container")
 	return rv
 }

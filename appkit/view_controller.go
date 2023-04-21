@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -80,22 +79,22 @@ func MakeViewController(ptr unsafe.Pointer) ViewController {
 }
 
 func (v_ ViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) ViewController {
-	rv := ffi.CallMethod[ViewController](v_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
+	rv := objc.CallMethod[ViewController](v_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
 func (v_ ViewController) Init() ViewController {
-	rv := ffi.CallMethod[ViewController](v_, "init")
+	rv := objc.CallMethod[ViewController](v_, "init")
 	return rv
 }
 
 func (vc _ViewControllerClass) Alloc() ViewController {
-	rv := ffi.CallMethod[ViewController](vc, "alloc")
+	rv := objc.CallMethod[ViewController](vc, "alloc")
 	return rv
 }
 
 func (vc _ViewControllerClass) New() ViewController {
-	rv := ffi.CallMethod[ViewController](vc, "new")
+	rv := objc.CallMethod[ViewController](vc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -105,221 +104,221 @@ func NewViewController() ViewController {
 }
 
 func (v_ ViewController) LoadView() {
-	ffi.CallMethod[ffi.Void](v_, "loadView")
+	objc.CallMethod[objc.Void](v_, "loadView")
 }
 
 func (v_ ViewController) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](v_, "commitEditingWithDelegate:didCommitSelector:contextInfo:", delegate, didCommitSelector, contextInfo)
+	objc.CallMethod[objc.Void](v_, "commitEditingWithDelegate:didCommitSelector:contextInfo:", delegate, didCommitSelector, contextInfo)
 }
 
 func (v_ ViewController) CommitEditing() bool {
-	rv := ffi.CallMethod[bool](v_, "commitEditing")
+	rv := objc.CallMethod[bool](v_, "commitEditing")
 	return rv
 }
 
 func (v_ ViewController) DiscardEditing() {
-	ffi.CallMethod[ffi.Void](v_, "discardEditing")
+	objc.CallMethod[objc.Void](v_, "discardEditing")
 }
 
 func (v_ ViewController) DismissController(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](v_, "dismissController:", sender)
+	objc.CallMethod[objc.Void](v_, "dismissController:", sender)
 }
 
 func (v_ ViewController) ViewDidLoad() {
-	ffi.CallMethod[ffi.Void](v_, "viewDidLoad")
+	objc.CallMethod[objc.Void](v_, "viewDidLoad")
 }
 
 func (v_ ViewController) ViewWillAppear() {
-	ffi.CallMethod[ffi.Void](v_, "viewWillAppear")
+	objc.CallMethod[objc.Void](v_, "viewWillAppear")
 }
 
 func (v_ ViewController) ViewDidAppear() {
-	ffi.CallMethod[ffi.Void](v_, "viewDidAppear")
+	objc.CallMethod[objc.Void](v_, "viewDidAppear")
 }
 
 func (v_ ViewController) ViewWillDisappear() {
-	ffi.CallMethod[ffi.Void](v_, "viewWillDisappear")
+	objc.CallMethod[objc.Void](v_, "viewWillDisappear")
 }
 
 func (v_ ViewController) ViewDidDisappear() {
-	ffi.CallMethod[ffi.Void](v_, "viewDidDisappear")
+	objc.CallMethod[objc.Void](v_, "viewDidDisappear")
 }
 
 func (v_ ViewController) UpdateViewConstraints() {
-	ffi.CallMethod[ffi.Void](v_, "updateViewConstraints")
+	objc.CallMethod[objc.Void](v_, "updateViewConstraints")
 }
 
 func (v_ ViewController) ViewWillLayout() {
-	ffi.CallMethod[ffi.Void](v_, "viewWillLayout")
+	objc.CallMethod[objc.Void](v_, "viewWillLayout")
 }
 
 func (v_ ViewController) ViewDidLayout() {
-	ffi.CallMethod[ffi.Void](v_, "viewDidLayout")
+	objc.CallMethod[objc.Void](v_, "viewDidLayout")
 }
 
 func (v_ ViewController) AddChildViewController(childViewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "addChildViewController:", childViewController)
+	objc.CallMethod[objc.Void](v_, "addChildViewController:", childViewController)
 }
 
 func (v_ ViewController) TransitionFromViewController_ToViewController_Options_CompletionHandler(fromViewController IViewController, toViewController IViewController, options ViewControllerTransitionOptions, completion func()) {
-	ffi.CallMethod[ffi.Void](v_, "transitionFromViewController:toViewController:options:completionHandler:", fromViewController, toViewController, options, completion)
+	objc.CallMethod[objc.Void](v_, "transitionFromViewController:toViewController:options:completionHandler:", fromViewController, toViewController, options, completion)
 }
 
 func (v_ ViewController) InsertChildViewController_AtIndex(childViewController IViewController, index int) {
-	ffi.CallMethod[ffi.Void](v_, "insertChildViewController:atIndex:", childViewController, index)
+	objc.CallMethod[objc.Void](v_, "insertChildViewController:atIndex:", childViewController, index)
 }
 
 func (v_ ViewController) RemoveChildViewControllerAtIndex(index int) {
-	ffi.CallMethod[ffi.Void](v_, "removeChildViewControllerAtIndex:", index)
+	objc.CallMethod[objc.Void](v_, "removeChildViewControllerAtIndex:", index)
 }
 
 func (v_ ViewController) RemoveFromParentViewController() {
-	ffi.CallMethod[ffi.Void](v_, "removeFromParentViewController")
+	objc.CallMethod[objc.Void](v_, "removeFromParentViewController")
 }
 
 func (v_ ViewController) PreferredContentSizeDidChangeForViewController(viewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "preferredContentSizeDidChangeForViewController:", viewController)
+	objc.CallMethod[objc.Void](v_, "preferredContentSizeDidChangeForViewController:", viewController)
 }
 
 func (v_ ViewController) PresentViewController_Animator(viewController IViewController, animator ViewControllerPresentationAnimator) {
-	po := ffi.CreateProtocol("NSViewControllerPresentationAnimator", animator)
+	po := objc.CreateProtocol("NSViewControllerPresentationAnimator", animator)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](v_, "presentViewController:animator:", viewController, po)
+	objc.CallMethod[objc.Void](v_, "presentViewController:animator:", viewController, po)
 }
 
 func (v_ ViewController) PresentViewController0_Animator(viewController IViewController, animator objc.IObject) {
-	ffi.CallMethod[ffi.Void](v_, "presentViewController:animator:", viewController, animator)
+	objc.CallMethod[objc.Void](v_, "presentViewController:animator:", viewController, animator)
 }
 
 func (v_ ViewController) DismissViewController(viewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "dismissViewController:", viewController)
+	objc.CallMethod[objc.Void](v_, "dismissViewController:", viewController)
 }
 
 func (v_ ViewController) PresentViewController_AsPopoverRelativeToRect_OfView_PreferredEdge_Behavior(viewController IViewController, positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge, behavior PopoverBehavior) {
-	ffi.CallMethod[ffi.Void](v_, "presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:", viewController, positioningRect, positioningView, preferredEdge, behavior)
+	objc.CallMethod[objc.Void](v_, "presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:", viewController, positioningRect, positioningView, preferredEdge, behavior)
 }
 
 func (v_ ViewController) PresentViewControllerAsModalWindow(viewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "presentViewControllerAsModalWindow:", viewController)
+	objc.CallMethod[objc.Void](v_, "presentViewControllerAsModalWindow:", viewController)
 }
 
 func (v_ ViewController) PresentViewControllerAsSheet(viewController IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "presentViewControllerAsSheet:", viewController)
+	objc.CallMethod[objc.Void](v_, "presentViewControllerAsSheet:", viewController)
 }
 
 func (v_ ViewController) ViewWillTransitionToSize(newSize foundation.Size) {
-	ffi.CallMethod[ffi.Void](v_, "viewWillTransitionToSize:", newSize)
+	objc.CallMethod[objc.Void](v_, "viewWillTransitionToSize:", newSize)
 }
 
 func (v_ ViewController) RepresentedObject() objc.Object {
-	rv := ffi.CallMethod[objc.Object](v_, "representedObject")
+	rv := objc.CallMethod[objc.Object](v_, "representedObject")
 	return rv
 }
 
 func (v_ ViewController) SetRepresentedObject(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](v_, "setRepresentedObject:", value)
+	objc.CallMethod[objc.Void](v_, "setRepresentedObject:", value)
 }
 
 func (v_ ViewController) NibBundle() foundation.Bundle {
-	rv := ffi.CallMethod[foundation.Bundle](v_, "nibBundle")
+	rv := objc.CallMethod[foundation.Bundle](v_, "nibBundle")
 	return rv
 }
 
 func (v_ ViewController) NibName() NibName {
-	rv := ffi.CallMethod[NibName](v_, "nibName")
+	rv := objc.CallMethod[NibName](v_, "nibName")
 	return rv
 }
 
 func (v_ ViewController) View() View {
-	rv := ffi.CallMethod[View](v_, "view")
+	rv := objc.CallMethod[View](v_, "view")
 	return rv
 }
 
 func (v_ ViewController) SetView(value IView) {
-	ffi.CallMethod[ffi.Void](v_, "setView:", value)
+	objc.CallMethod[objc.Void](v_, "setView:", value)
 }
 
 func (v_ ViewController) Title() string {
-	rv := ffi.CallMethod[string](v_, "title")
+	rv := objc.CallMethod[string](v_, "title")
 	return rv
 }
 
 func (v_ ViewController) SetTitle(value string) {
-	ffi.CallMethod[ffi.Void](v_, "setTitle:", value)
+	objc.CallMethod[objc.Void](v_, "setTitle:", value)
 }
 
 func (v_ ViewController) Storyboard() Storyboard {
-	rv := ffi.CallMethod[Storyboard](v_, "storyboard")
+	rv := objc.CallMethod[Storyboard](v_, "storyboard")
 	return rv
 }
 
 func (v_ ViewController) IsViewLoaded() bool {
-	rv := ffi.CallMethod[bool](v_, "isViewLoaded")
+	rv := objc.CallMethod[bool](v_, "isViewLoaded")
 	return rv
 }
 
 func (v_ ViewController) PreferredContentSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](v_, "preferredContentSize")
+	rv := objc.CallMethod[foundation.Size](v_, "preferredContentSize")
 	return rv
 }
 
 func (v_ ViewController) SetPreferredContentSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](v_, "setPreferredContentSize:", value)
+	objc.CallMethod[objc.Void](v_, "setPreferredContentSize:", value)
 }
 
 func (v_ ViewController) ChildViewControllers() []ViewController {
-	rv := ffi.CallMethod[[]ViewController](v_, "childViewControllers")
+	rv := objc.CallMethod[[]ViewController](v_, "childViewControllers")
 	return rv
 }
 
 func (v_ ViewController) SetChildViewControllers(value []IViewController) {
-	ffi.CallMethod[ffi.Void](v_, "setChildViewControllers:", value)
+	objc.CallMethod[objc.Void](v_, "setChildViewControllers:", value)
 }
 
 func (v_ ViewController) ParentViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](v_, "parentViewController")
+	rv := objc.CallMethod[ViewController](v_, "parentViewController")
 	return rv
 }
 
 func (v_ ViewController) PresentedViewControllers() []ViewController {
-	rv := ffi.CallMethod[[]ViewController](v_, "presentedViewControllers")
+	rv := objc.CallMethod[[]ViewController](v_, "presentedViewControllers")
 	return rv
 }
 
 func (v_ ViewController) PresentingViewController() ViewController {
-	rv := ffi.CallMethod[ViewController](v_, "presentingViewController")
+	rv := objc.CallMethod[ViewController](v_, "presentingViewController")
 	return rv
 }
 
 func (v_ ViewController) ExtensionContext() foundation.ExtensionContext {
-	rv := ffi.CallMethod[foundation.ExtensionContext](v_, "extensionContext")
+	rv := objc.CallMethod[foundation.ExtensionContext](v_, "extensionContext")
 	return rv
 }
 
 func (v_ ViewController) PreferredScreenOrigin() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](v_, "preferredScreenOrigin")
+	rv := objc.CallMethod[foundation.Point](v_, "preferredScreenOrigin")
 	return rv
 }
 
 func (v_ ViewController) SetPreferredScreenOrigin(value foundation.Point) {
-	ffi.CallMethod[ffi.Void](v_, "setPreferredScreenOrigin:", value)
+	objc.CallMethod[objc.Void](v_, "setPreferredScreenOrigin:", value)
 }
 
 func (v_ ViewController) PreferredMaximumSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](v_, "preferredMaximumSize")
+	rv := objc.CallMethod[foundation.Size](v_, "preferredMaximumSize")
 	return rv
 }
 
 func (v_ ViewController) PreferredMinimumSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](v_, "preferredMinimumSize")
+	rv := objc.CallMethod[foundation.Size](v_, "preferredMinimumSize")
 	return rv
 }
 
 func (v_ ViewController) SourceItemView() View {
-	rv := ffi.CallMethod[View](v_, "sourceItemView")
+	rv := objc.CallMethod[View](v_, "sourceItemView")
 	return rv
 }
 
 func (v_ ViewController) SetSourceItemView(value IView) {
-	ffi.CallMethod[ffi.Void](v_, "setSourceItemView:", value)
+	objc.CallMethod[objc.Void](v_, "setSourceItemView:", value)
 }

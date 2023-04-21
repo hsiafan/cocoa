@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -37,22 +36,22 @@ func MakeSpringAnimation(ptr unsafe.Pointer) SpringAnimation {
 }
 
 func (sc _SpringAnimationClass) AnimationWithKeyPath(path string) SpringAnimation {
-	rv := ffi.CallMethod[SpringAnimation](sc, "animationWithKeyPath:", path)
+	rv := objc.CallMethod[SpringAnimation](sc, "animationWithKeyPath:", path)
 	return rv
 }
 
 func (sc _SpringAnimationClass) Animation() SpringAnimation {
-	rv := ffi.CallMethod[SpringAnimation](sc, "animation")
+	rv := objc.CallMethod[SpringAnimation](sc, "animation")
 	return rv
 }
 
 func (sc _SpringAnimationClass) Alloc() SpringAnimation {
-	rv := ffi.CallMethod[SpringAnimation](sc, "alloc")
+	rv := objc.CallMethod[SpringAnimation](sc, "alloc")
 	return rv
 }
 
 func (sc _SpringAnimationClass) New() SpringAnimation {
-	rv := ffi.CallMethod[SpringAnimation](sc, "new")
+	rv := objc.CallMethod[SpringAnimation](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -62,42 +61,42 @@ func NewSpringAnimation() SpringAnimation {
 }
 
 func (s_ SpringAnimation) Init() SpringAnimation {
-	rv := ffi.CallMethod[SpringAnimation](s_, "init")
+	rv := objc.CallMethod[SpringAnimation](s_, "init")
 	return rv
 }
 
 func (s_ SpringAnimation) Damping() float64 {
-	rv := ffi.CallMethod[float64](s_, "damping")
+	rv := objc.CallMethod[float64](s_, "damping")
 	return rv
 }
 
 func (s_ SpringAnimation) SetDamping(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setDamping:", value)
+	objc.CallMethod[objc.Void](s_, "setDamping:", value)
 }
 
 func (s_ SpringAnimation) InitialVelocity() float64 {
-	rv := ffi.CallMethod[float64](s_, "initialVelocity")
+	rv := objc.CallMethod[float64](s_, "initialVelocity")
 	return rv
 }
 
 func (s_ SpringAnimation) SetInitialVelocity(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setInitialVelocity:", value)
+	objc.CallMethod[objc.Void](s_, "setInitialVelocity:", value)
 }
 
 func (s_ SpringAnimation) Mass() float64 {
-	rv := ffi.CallMethod[float64](s_, "mass")
+	rv := objc.CallMethod[float64](s_, "mass")
 	return rv
 }
 
 func (s_ SpringAnimation) SetMass(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setMass:", value)
+	objc.CallMethod[objc.Void](s_, "setMass:", value)
 }
 
 func (s_ SpringAnimation) Stiffness() float64 {
-	rv := ffi.CallMethod[float64](s_, "stiffness")
+	rv := objc.CallMethod[float64](s_, "stiffness")
 	return rv
 }
 
 func (s_ SpringAnimation) SetStiffness(value float64) {
-	ffi.CallMethod[ffi.Void](s_, "setStiffness:", value)
+	objc.CallMethod[objc.Void](s_, "setStiffness:", value)
 }

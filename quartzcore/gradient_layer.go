@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/coregraphics"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -41,37 +40,37 @@ func MakeGradientLayer(ptr unsafe.Pointer) GradientLayer {
 }
 
 func (gc _GradientLayerClass) Layer() GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](gc, "layer")
+	rv := objc.CallMethod[GradientLayer](gc, "layer")
 	return rv
 }
 
 func (g_ GradientLayer) Init() GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](g_, "init")
+	rv := objc.CallMethod[GradientLayer](g_, "init")
 	return rv
 }
 
 func (g_ GradientLayer) InitWithLayer(layer objc.IObject) GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](g_, "initWithLayer:", layer)
+	rv := objc.CallMethod[GradientLayer](g_, "initWithLayer:", layer)
 	return rv
 }
 
 func (g_ GradientLayer) PresentationLayer() GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](g_, "presentationLayer")
+	rv := objc.CallMethod[GradientLayer](g_, "presentationLayer")
 	return rv
 }
 
 func (g_ GradientLayer) ModelLayer() GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](g_, "modelLayer")
+	rv := objc.CallMethod[GradientLayer](g_, "modelLayer")
 	return rv
 }
 
 func (gc _GradientLayerClass) Alloc() GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](gc, "alloc")
+	rv := objc.CallMethod[GradientLayer](gc, "alloc")
 	return rv
 }
 
 func (gc _GradientLayerClass) New() GradientLayer {
-	rv := ffi.CallMethod[GradientLayer](gc, "new")
+	rv := objc.CallMethod[GradientLayer](gc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -81,46 +80,46 @@ func NewGradientLayer() GradientLayer {
 }
 
 func (g_ GradientLayer) Colors() []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](g_, "colors")
+	rv := objc.CallMethod[[]objc.Object](g_, "colors")
 	return rv
 }
 
 func (g_ GradientLayer) SetColors(value []objc.IObject) {
-	ffi.CallMethod[ffi.Void](g_, "setColors:", value)
+	objc.CallMethod[objc.Void](g_, "setColors:", value)
 }
 
 func (g_ GradientLayer) Locations() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](g_, "locations")
+	rv := objc.CallMethod[[]foundation.Number](g_, "locations")
 	return rv
 }
 
 func (g_ GradientLayer) SetLocations(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](g_, "setLocations:", value)
+	objc.CallMethod[objc.Void](g_, "setLocations:", value)
 }
 
 func (g_ GradientLayer) EndPoint() coregraphics.Point {
-	rv := ffi.CallMethod[coregraphics.Point](g_, "endPoint")
+	rv := objc.CallMethod[coregraphics.Point](g_, "endPoint")
 	return rv
 }
 
 func (g_ GradientLayer) SetEndPoint(value coregraphics.Point) {
-	ffi.CallMethod[ffi.Void](g_, "setEndPoint:", value)
+	objc.CallMethod[objc.Void](g_, "setEndPoint:", value)
 }
 
 func (g_ GradientLayer) StartPoint() coregraphics.Point {
-	rv := ffi.CallMethod[coregraphics.Point](g_, "startPoint")
+	rv := objc.CallMethod[coregraphics.Point](g_, "startPoint")
 	return rv
 }
 
 func (g_ GradientLayer) SetStartPoint(value coregraphics.Point) {
-	ffi.CallMethod[ffi.Void](g_, "setStartPoint:", value)
+	objc.CallMethod[objc.Void](g_, "setStartPoint:", value)
 }
 
 func (g_ GradientLayer) Type() GradientLayerType {
-	rv := ffi.CallMethod[GradientLayerType](g_, "type")
+	rv := objc.CallMethod[GradientLayerType](g_, "type")
 	return rv
 }
 
 func (g_ GradientLayer) SetType(value GradientLayerType) {
-	ffi.CallMethod[ffi.Void](g_, "setType:", value)
+	objc.CallMethod[objc.Void](g_, "setType:", value)
 }

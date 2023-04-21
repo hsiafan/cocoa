@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -174,7 +173,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_DisplayStringForRepres
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_DisplayStringForRepresentedObject(tokenField ITokenField, representedObject objc.IObject) string {
-	rv := ffi.CallMethod[string](t_, "tokenField:displayStringForRepresentedObject:", tokenField, representedObject)
+	rv := objc.CallMethod[string](t_, "tokenField:displayStringForRepresentedObject:", tokenField, representedObject)
 	return rv
 }
 
@@ -183,7 +182,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_StyleForRepresentedObj
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_StyleForRepresentedObject(tokenField ITokenField, representedObject objc.IObject) TokenStyle {
-	rv := ffi.CallMethod[TokenStyle](t_, "tokenField:styleForRepresentedObject:", tokenField, representedObject)
+	rv := objc.CallMethod[TokenStyle](t_, "tokenField:styleForRepresentedObject:", tokenField, representedObject)
 	return rv
 }
 
@@ -192,7 +191,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_CompletionsForSubstrin
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_CompletionsForSubstring_IndexOfToken_IndexOfSelectedItem(tokenField ITokenField, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](t_, "tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:", tokenField, substring, tokenIndex, selectedIndex)
+	rv := objc.CallMethod[[]objc.Object](t_, "tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:", tokenField, substring, tokenIndex, selectedIndex)
 	return rv
 }
 
@@ -201,7 +200,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_EditingStringForRepres
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_EditingStringForRepresentedObject(tokenField ITokenField, representedObject objc.IObject) string {
-	rv := ffi.CallMethod[string](t_, "tokenField:editingStringForRepresentedObject:", tokenField, representedObject)
+	rv := objc.CallMethod[string](t_, "tokenField:editingStringForRepresentedObject:", tokenField, representedObject)
 	return rv
 }
 
@@ -210,7 +209,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_RepresentedObjectForEd
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_RepresentedObjectForEditingString(tokenField ITokenField, editingString string) objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "tokenField:representedObjectForEditingString:", tokenField, editingString)
+	rv := objc.CallMethod[objc.Object](t_, "tokenField:representedObjectForEditingString:", tokenField, editingString)
 	return rv
 }
 
@@ -219,7 +218,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_ShouldAddObjects_AtInd
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_ShouldAddObjects_AtIndex(tokenField ITokenField, tokens []objc.IObject, index uint) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](t_, "tokenField:shouldAddObjects:atIndex:", tokenField, tokens, index)
+	rv := objc.CallMethod[[]objc.Object](t_, "tokenField:shouldAddObjects:atIndex:", tokenField, tokens, index)
 	return rv
 }
 
@@ -228,7 +227,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_ReadFromPasteboard() b
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_ReadFromPasteboard(tokenField ITokenField, pboard IPasteboard) []objc.Object {
-	rv := ffi.CallMethod[[]objc.Object](t_, "tokenField:readFromPasteboard:", tokenField, pboard)
+	rv := objc.CallMethod[[]objc.Object](t_, "tokenField:readFromPasteboard:", tokenField, pboard)
 	return rv
 }
 
@@ -237,7 +236,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_WriteRepresentedObject
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_WriteRepresentedObjects_ToPasteboard(tokenField ITokenField, objects []objc.IObject, pboard IPasteboard) bool {
-	rv := ffi.CallMethod[bool](t_, "tokenField:writeRepresentedObjects:toPasteboard:", tokenField, objects, pboard)
+	rv := objc.CallMethod[bool](t_, "tokenField:writeRepresentedObjects:toPasteboard:", tokenField, objects, pboard)
 	return rv
 }
 
@@ -246,7 +245,7 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_HasMenuForRepresentedO
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_HasMenuForRepresentedObject(tokenField ITokenField, representedObject objc.IObject) bool {
-	rv := ffi.CallMethod[bool](t_, "tokenField:hasMenuForRepresentedObject:", tokenField, representedObject)
+	rv := objc.CallMethod[bool](t_, "tokenField:hasMenuForRepresentedObject:", tokenField, representedObject)
 	return rv
 }
 
@@ -255,6 +254,6 @@ func (t_ *TokenFieldDelegateWrapper) ImplementsTokenField_MenuForRepresentedObje
 }
 
 func (t_ TokenFieldDelegateWrapper) TokenField_MenuForRepresentedObject(tokenField ITokenField, representedObject objc.IObject) Menu {
-	rv := ffi.CallMethod[Menu](t_, "tokenField:menuForRepresentedObject:", tokenField, representedObject)
+	rv := objc.CallMethod[Menu](t_, "tokenField:menuForRepresentedObject:", tokenField, representedObject)
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -41,12 +40,12 @@ func MakePDFInfo(ptr unsafe.Pointer) PDFInfo {
 }
 
 func (pc _PDFInfoClass) Alloc() PDFInfo {
-	rv := ffi.CallMethod[PDFInfo](pc, "alloc")
+	rv := objc.CallMethod[PDFInfo](pc, "alloc")
 	return rv
 }
 
 func (pc _PDFInfoClass) New() PDFInfo {
-	rv := ffi.CallMethod[PDFInfo](pc, "new")
+	rv := objc.CallMethod[PDFInfo](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -56,56 +55,56 @@ func NewPDFInfo() PDFInfo {
 }
 
 func (p_ PDFInfo) Init() PDFInfo {
-	rv := ffi.CallMethod[PDFInfo](p_, "init")
+	rv := objc.CallMethod[PDFInfo](p_, "init")
 	return rv
 }
 
 func (p_ PDFInfo) URL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](p_, "URL")
+	rv := objc.CallMethod[foundation.URL](p_, "URL")
 	return rv
 }
 
 func (p_ PDFInfo) SetURL(value foundation.IURL) {
-	ffi.CallMethod[ffi.Void](p_, "setURL:", value)
+	objc.CallMethod[objc.Void](p_, "setURL:", value)
 }
 
 func (p_ PDFInfo) IsFileExtensionHidden() bool {
-	rv := ffi.CallMethod[bool](p_, "isFileExtensionHidden")
+	rv := objc.CallMethod[bool](p_, "isFileExtensionHidden")
 	return rv
 }
 
 func (p_ PDFInfo) SetFileExtensionHidden(value bool) {
-	ffi.CallMethod[ffi.Void](p_, "setFileExtensionHidden:", value)
+	objc.CallMethod[objc.Void](p_, "setFileExtensionHidden:", value)
 }
 
 func (p_ PDFInfo) TagNames() []string {
-	rv := ffi.CallMethod[[]string](p_, "tagNames")
+	rv := objc.CallMethod[[]string](p_, "tagNames")
 	return rv
 }
 
 func (p_ PDFInfo) SetTagNames(value []string) {
-	ffi.CallMethod[ffi.Void](p_, "setTagNames:", value)
+	objc.CallMethod[objc.Void](p_, "setTagNames:", value)
 }
 
 func (p_ PDFInfo) Orientation() PaperOrientation {
-	rv := ffi.CallMethod[PaperOrientation](p_, "orientation")
+	rv := objc.CallMethod[PaperOrientation](p_, "orientation")
 	return rv
 }
 
 func (p_ PDFInfo) SetOrientation(value PaperOrientation) {
-	ffi.CallMethod[ffi.Void](p_, "setOrientation:", value)
+	objc.CallMethod[objc.Void](p_, "setOrientation:", value)
 }
 
 func (p_ PDFInfo) PaperSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](p_, "paperSize")
+	rv := objc.CallMethod[foundation.Size](p_, "paperSize")
 	return rv
 }
 
 func (p_ PDFInfo) SetPaperSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](p_, "setPaperSize:", value)
+	objc.CallMethod[objc.Void](p_, "setPaperSize:", value)
 }
 
 func (p_ PDFInfo) Attributes() foundation.MutableDictionary {
-	rv := ffi.CallMethod[foundation.MutableDictionary](p_, "attributes")
+	rv := objc.CallMethod[foundation.MutableDictionary](p_, "attributes")
 	return rv
 }

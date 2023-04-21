@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -38,12 +37,12 @@ func MakeLayoutDimension(ptr unsafe.Pointer) LayoutDimension {
 }
 
 func (lc _LayoutDimensionClass) Alloc() LayoutDimension {
-	rv := ffi.CallMethod[LayoutDimension](lc, "alloc")
+	rv := objc.CallMethod[LayoutDimension](lc, "alloc")
 	return rv
 }
 
 func (lc _LayoutDimensionClass) New() LayoutDimension {
-	rv := ffi.CallMethod[LayoutDimension](lc, "new")
+	rv := objc.CallMethod[LayoutDimension](lc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,51 +52,51 @@ func NewLayoutDimension() LayoutDimension {
 }
 
 func (l_ LayoutDimension) Init() LayoutDimension {
-	rv := ffi.CallMethod[LayoutDimension](l_, "init")
+	rv := objc.CallMethod[LayoutDimension](l_, "init")
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintEqualToAnchor_Multiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:multiplier:", anchor, m)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:multiplier:", anchor, m)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintEqualToAnchor_Multiplier_Constant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:multiplier:constant:", anchor, m, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:multiplier:constant:", anchor, m, c)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintEqualToConstant(c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintEqualToConstant:", c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintEqualToConstant:", c)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchor_Multiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:multiplier:", anchor, m)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:multiplier:", anchor, m)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchor_Multiplier_Constant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:multiplier:constant:", anchor, m, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:multiplier:constant:", anchor, m, c)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToConstant(c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToConstant:", c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToConstant:", c)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchor_Multiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:multiplier:", anchor, m)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:multiplier:", anchor, m)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchor_Multiplier_Constant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:multiplier:constant:", anchor, m, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:multiplier:constant:", anchor, m, c)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToConstant(c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToConstant:", c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToConstant:", c)
 	return rv
 }

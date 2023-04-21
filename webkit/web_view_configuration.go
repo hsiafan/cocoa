@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -56,12 +55,12 @@ func MakeWebViewConfiguration(ptr unsafe.Pointer) WebViewConfiguration {
 }
 
 func (wc _WebViewConfigurationClass) Alloc() WebViewConfiguration {
-	rv := ffi.CallMethod[WebViewConfiguration](wc, "alloc")
+	rv := objc.CallMethod[WebViewConfiguration](wc, "alloc")
 	return rv
 }
 
 func (wc _WebViewConfigurationClass) New() WebViewConfiguration {
-	rv := ffi.CallMethod[WebViewConfiguration](wc, "new")
+	rv := objc.CallMethod[WebViewConfiguration](wc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -71,129 +70,129 @@ func NewWebViewConfiguration() WebViewConfiguration {
 }
 
 func (w_ WebViewConfiguration) Init() WebViewConfiguration {
-	rv := ffi.CallMethod[WebViewConfiguration](w_, "init")
+	rv := objc.CallMethod[WebViewConfiguration](w_, "init")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetURLSchemeHandler_ForURLScheme(urlSchemeHandler URLSchemeHandler, urlScheme string) {
-	po := ffi.CreateProtocol("WKURLSchemeHandler", urlSchemeHandler)
+	po := objc.CreateProtocol("WKURLSchemeHandler", urlSchemeHandler)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](w_, "setURLSchemeHandler:forURLScheme:", po, urlScheme)
+	objc.CallMethod[objc.Void](w_, "setURLSchemeHandler:forURLScheme:", po, urlScheme)
 }
 
 func (w_ WebViewConfiguration) SetURLSchemeHandler0_ForURLScheme(urlSchemeHandler objc.IObject, urlScheme string) {
-	ffi.CallMethod[ffi.Void](w_, "setURLSchemeHandler:forURLScheme:", urlSchemeHandler, urlScheme)
+	objc.CallMethod[objc.Void](w_, "setURLSchemeHandler:forURLScheme:", urlSchemeHandler, urlScheme)
 }
 
 func (w_ WebViewConfiguration) UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerWrapper {
-	rv := ffi.CallMethod[URLSchemeHandlerWrapper](w_, "urlSchemeHandlerForURLScheme:", urlScheme)
+	rv := objc.CallMethod[URLSchemeHandlerWrapper](w_, "urlSchemeHandlerForURLScheme:", urlScheme)
 	return rv
 }
 
 func (w_ WebViewConfiguration) WebsiteDataStore() WebsiteDataStore {
-	rv := ffi.CallMethod[WebsiteDataStore](w_, "websiteDataStore")
+	rv := objc.CallMethod[WebsiteDataStore](w_, "websiteDataStore")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetWebsiteDataStore(value IWebsiteDataStore) {
-	ffi.CallMethod[ffi.Void](w_, "setWebsiteDataStore:", value)
+	objc.CallMethod[objc.Void](w_, "setWebsiteDataStore:", value)
 }
 
 func (w_ WebViewConfiguration) UserContentController() UserContentController {
-	rv := ffi.CallMethod[UserContentController](w_, "userContentController")
+	rv := objc.CallMethod[UserContentController](w_, "userContentController")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetUserContentController(value IUserContentController) {
-	ffi.CallMethod[ffi.Void](w_, "setUserContentController:", value)
+	objc.CallMethod[objc.Void](w_, "setUserContentController:", value)
 }
 
 func (w_ WebViewConfiguration) ProcessPool() ProcessPool {
-	rv := ffi.CallMethod[ProcessPool](w_, "processPool")
+	rv := objc.CallMethod[ProcessPool](w_, "processPool")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetProcessPool(value IProcessPool) {
-	ffi.CallMethod[ffi.Void](w_, "setProcessPool:", value)
+	objc.CallMethod[objc.Void](w_, "setProcessPool:", value)
 }
 
 func (w_ WebViewConfiguration) ApplicationNameForUserAgent() string {
-	rv := ffi.CallMethod[string](w_, "applicationNameForUserAgent")
+	rv := objc.CallMethod[string](w_, "applicationNameForUserAgent")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetApplicationNameForUserAgent(value string) {
-	ffi.CallMethod[ffi.Void](w_, "setApplicationNameForUserAgent:", value)
+	objc.CallMethod[objc.Void](w_, "setApplicationNameForUserAgent:", value)
 }
 
 func (w_ WebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
-	rv := ffi.CallMethod[bool](w_, "limitsNavigationsToAppBoundDomains")
+	rv := objc.CallMethod[bool](w_, "limitsNavigationsToAppBoundDomains")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setLimitsNavigationsToAppBoundDomains:", value)
+	objc.CallMethod[objc.Void](w_, "setLimitsNavigationsToAppBoundDomains:", value)
 }
 
 func (w_ WebViewConfiguration) Preferences() Preferences {
-	rv := ffi.CallMethod[Preferences](w_, "preferences")
+	rv := objc.CallMethod[Preferences](w_, "preferences")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetPreferences(value IPreferences) {
-	ffi.CallMethod[ffi.Void](w_, "setPreferences:", value)
+	objc.CallMethod[objc.Void](w_, "setPreferences:", value)
 }
 
 func (w_ WebViewConfiguration) DefaultWebpagePreferences() WebpagePreferences {
-	rv := ffi.CallMethod[WebpagePreferences](w_, "defaultWebpagePreferences")
+	rv := objc.CallMethod[WebpagePreferences](w_, "defaultWebpagePreferences")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetDefaultWebpagePreferences(value IWebpagePreferences) {
-	ffi.CallMethod[ffi.Void](w_, "setDefaultWebpagePreferences:", value)
+	objc.CallMethod[objc.Void](w_, "setDefaultWebpagePreferences:", value)
 }
 
 func (w_ WebViewConfiguration) SuppressesIncrementalRendering() bool {
-	rv := ffi.CallMethod[bool](w_, "suppressesIncrementalRendering")
+	rv := objc.CallMethod[bool](w_, "suppressesIncrementalRendering")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetSuppressesIncrementalRendering(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setSuppressesIncrementalRendering:", value)
+	objc.CallMethod[objc.Void](w_, "setSuppressesIncrementalRendering:", value)
 }
 
 func (w_ WebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
-	rv := ffi.CallMethod[bool](w_, "allowsAirPlayForMediaPlayback")
+	rv := objc.CallMethod[bool](w_, "allowsAirPlayForMediaPlayback")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetAllowsAirPlayForMediaPlayback(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setAllowsAirPlayForMediaPlayback:", value)
+	objc.CallMethod[objc.Void](w_, "setAllowsAirPlayForMediaPlayback:", value)
 }
 
 func (w_ WebViewConfiguration) MediaTypesRequiringUserActionForPlayback() AudiovisualMediaTypes {
-	rv := ffi.CallMethod[AudiovisualMediaTypes](w_, "mediaTypesRequiringUserActionForPlayback")
+	rv := objc.CallMethod[AudiovisualMediaTypes](w_, "mediaTypesRequiringUserActionForPlayback")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetMediaTypesRequiringUserActionForPlayback(value AudiovisualMediaTypes) {
-	ffi.CallMethod[ffi.Void](w_, "setMediaTypesRequiringUserActionForPlayback:", value)
+	objc.CallMethod[objc.Void](w_, "setMediaTypesRequiringUserActionForPlayback:", value)
 }
 
 func (w_ WebViewConfiguration) UserInterfaceDirectionPolicy() UserInterfaceDirectionPolicy {
-	rv := ffi.CallMethod[UserInterfaceDirectionPolicy](w_, "userInterfaceDirectionPolicy")
+	rv := objc.CallMethod[UserInterfaceDirectionPolicy](w_, "userInterfaceDirectionPolicy")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetUserInterfaceDirectionPolicy(value UserInterfaceDirectionPolicy) {
-	ffi.CallMethod[ffi.Void](w_, "setUserInterfaceDirectionPolicy:", value)
+	objc.CallMethod[objc.Void](w_, "setUserInterfaceDirectionPolicy:", value)
 }
 
 func (w_ WebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
-	rv := ffi.CallMethod[bool](w_, "upgradeKnownHostsToHTTPS")
+	rv := objc.CallMethod[bool](w_, "upgradeKnownHostsToHTTPS")
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetUpgradeKnownHostsToHTTPS(value bool) {
-	ffi.CallMethod[ffi.Void](w_, "setUpgradeKnownHostsToHTTPS:", value)
+	objc.CallMethod[objc.Void](w_, "setUpgradeKnownHostsToHTTPS:", value)
 }

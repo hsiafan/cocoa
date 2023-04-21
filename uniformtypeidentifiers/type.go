@@ -4,7 +4,6 @@ package uniformtypeidentifiers
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -29,12 +28,12 @@ func MakeType(ptr unsafe.Pointer) Type {
 }
 
 func (tc _TypeClass) Alloc() Type {
-	rv := ffi.CallMethod[Type](tc, "alloc")
+	rv := objc.CallMethod[Type](tc, "alloc")
 	return rv
 }
 
 func (tc _TypeClass) New() Type {
-	rv := ffi.CallMethod[Type](tc, "new")
+	rv := objc.CallMethod[Type](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -44,6 +43,6 @@ func NewType() Type {
 }
 
 func (t_ Type) Init() Type {
-	rv := ffi.CallMethod[Type](t_, "init")
+	rv := objc.CallMethod[Type](t_, "init")
 	return rv
 }

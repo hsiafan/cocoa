@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 	"github.com/hsiafan/cocoa/uniformtypeidentifiers"
@@ -97,32 +96,32 @@ func MakeSavePanel(ptr unsafe.Pointer) SavePanel {
 }
 
 func (sc _SavePanelClass) WindowWithContentViewController(contentViewController IViewController) SavePanel {
-	rv := ffi.CallMethod[SavePanel](sc, "windowWithContentViewController:", contentViewController)
+	rv := objc.CallMethod[SavePanel](sc, "windowWithContentViewController:", contentViewController)
 	return rv
 }
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) SavePanel {
-	rv := ffi.CallMethod[SavePanel](s_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
+	rv := objc.CallMethod[SavePanel](s_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
 	return rv
 }
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) SavePanel {
-	rv := ffi.CallMethod[SavePanel](s_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[SavePanel](s_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
 func (s_ SavePanel) Init() SavePanel {
-	rv := ffi.CallMethod[SavePanel](s_, "init")
+	rv := objc.CallMethod[SavePanel](s_, "init")
 	return rv
 }
 
 func (sc _SavePanelClass) Alloc() SavePanel {
-	rv := ffi.CallMethod[SavePanel](sc, "alloc")
+	rv := objc.CallMethod[SavePanel](sc, "alloc")
 	return rv
 }
 
 func (sc _SavePanelClass) New() SavePanel {
-	rv := ffi.CallMethod[SavePanel](sc, "new")
+	rv := objc.CallMethod[SavePanel](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -132,254 +131,254 @@ func NewSavePanel() SavePanel {
 }
 
 func (sc _SavePanelClass) SavePanel() SavePanel {
-	rv := ffi.CallMethod[SavePanel](sc, "savePanel")
+	rv := objc.CallMethod[SavePanel](sc, "savePanel")
 	return rv
 }
 
 func (s_ SavePanel) BeginSheetModalForWindow_CompletionHandler(window IWindow, handler func(result ModalResponse)) {
-	ffi.CallMethod[ffi.Void](s_, "beginSheetModalForWindow:completionHandler:", window, handler)
+	objc.CallMethod[objc.Void](s_, "beginSheetModalForWindow:completionHandler:", window, handler)
 }
 
 func (s_ SavePanel) BeginWithCompletionHandler(handler func(result ModalResponse)) {
-	ffi.CallMethod[ffi.Void](s_, "beginWithCompletionHandler:", handler)
+	objc.CallMethod[objc.Void](s_, "beginWithCompletionHandler:", handler)
 }
 
 func (s_ SavePanel) RunModal() ModalResponse {
-	rv := ffi.CallMethod[ModalResponse](s_, "runModal")
+	rv := objc.CallMethod[ModalResponse](s_, "runModal")
 	return rv
 }
 
 func (s_ SavePanel) ValidateVisibleColumns() {
-	ffi.CallMethod[ffi.Void](s_, "validateVisibleColumns")
+	objc.CallMethod[objc.Void](s_, "validateVisibleColumns")
 }
 
 func (s_ SavePanel) Ok(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](s_, "ok:", sender)
+	objc.CallMethod[objc.Void](s_, "ok:", sender)
 }
 
 func (s_ SavePanel) Cancel(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](s_, "cancel:", sender)
+	objc.CallMethod[objc.Void](s_, "cancel:", sender)
 }
 
 // deprecated
 func (s_ SavePanel) RequiredFileType() string {
-	rv := ffi.CallMethod[string](s_, "requiredFileType")
+	rv := objc.CallMethod[string](s_, "requiredFileType")
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) SetRequiredFileType(type_ string) {
-	ffi.CallMethod[ffi.Void](s_, "setRequiredFileType:", type_)
+	objc.CallMethod[objc.Void](s_, "setRequiredFileType:", type_)
 }
 
 // deprecated
 func (s_ SavePanel) SetDirectory(path string) {
-	ffi.CallMethod[ffi.Void](s_, "setDirectory:", path)
+	objc.CallMethod[objc.Void](s_, "setDirectory:", path)
 }
 
 // deprecated
 func (s_ SavePanel) BeginSheetForDirectory_File_ModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(path string, name string, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](s_, "beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:", path, name, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](s_, "beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:", path, name, docWindow, delegate, didEndSelector, contextInfo)
 }
 
 // deprecated
 func (s_ SavePanel) RunModalForDirectory_File(path string, name string) int {
-	rv := ffi.CallMethod[int](s_, "runModalForDirectory:file:", path, name)
+	rv := objc.CallMethod[int](s_, "runModalForDirectory:file:", path, name)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_CompareFilename_With_CaseSensitive(sender objc.IObject, name1 string, name2 string, caseSensitive bool) foundation.ComparisonResult {
-	rv := ffi.CallMethod[foundation.ComparisonResult](s_, "panel:compareFilename:with:caseSensitive:", sender, name1, name2, caseSensitive)
+	rv := objc.CallMethod[foundation.ComparisonResult](s_, "panel:compareFilename:with:caseSensitive:", sender, name1, name2, caseSensitive)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_IsValidFilename(sender objc.IObject, filename string) bool {
-	rv := ffi.CallMethod[bool](s_, "panel:isValidFilename:", sender, filename)
+	rv := objc.CallMethod[bool](s_, "panel:isValidFilename:", sender, filename)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_ShouldShowFilename(sender objc.IObject, filename string) bool {
-	rv := ffi.CallMethod[bool](s_, "panel:shouldShowFilename:", sender, filename)
+	rv := objc.CallMethod[bool](s_, "panel:shouldShowFilename:", sender, filename)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_DirectoryDidChange(sender objc.IObject, path string) {
-	ffi.CallMethod[ffi.Void](s_, "panel:directoryDidChange:", sender, path)
+	objc.CallMethod[objc.Void](s_, "panel:directoryDidChange:", sender, path)
 }
 
 // deprecated
 func (s_ SavePanel) Directory() string {
-	rv := ffi.CallMethod[string](s_, "directory")
+	rv := objc.CallMethod[string](s_, "directory")
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Filename() string {
-	rv := ffi.CallMethod[string](s_, "filename")
+	rv := objc.CallMethod[string](s_, "filename")
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) SelectText(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](s_, "selectText:", sender)
+	objc.CallMethod[objc.Void](s_, "selectText:", sender)
 }
 
 func (s_ SavePanel) URL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](s_, "URL")
+	rv := objc.CallMethod[foundation.URL](s_, "URL")
 	return rv
 }
 
 func (s_ SavePanel) Prompt() string {
-	rv := ffi.CallMethod[string](s_, "prompt")
+	rv := objc.CallMethod[string](s_, "prompt")
 	return rv
 }
 
 func (s_ SavePanel) SetPrompt(value string) {
-	ffi.CallMethod[ffi.Void](s_, "setPrompt:", value)
+	objc.CallMethod[objc.Void](s_, "setPrompt:", value)
 }
 
 func (s_ SavePanel) Message() string {
-	rv := ffi.CallMethod[string](s_, "message")
+	rv := objc.CallMethod[string](s_, "message")
 	return rv
 }
 
 func (s_ SavePanel) SetMessage(value string) {
-	ffi.CallMethod[ffi.Void](s_, "setMessage:", value)
+	objc.CallMethod[objc.Void](s_, "setMessage:", value)
 }
 
 func (s_ SavePanel) NameFieldLabel() string {
-	rv := ffi.CallMethod[string](s_, "nameFieldLabel")
+	rv := objc.CallMethod[string](s_, "nameFieldLabel")
 	return rv
 }
 
 func (s_ SavePanel) SetNameFieldLabel(value string) {
-	ffi.CallMethod[ffi.Void](s_, "setNameFieldLabel:", value)
+	objc.CallMethod[objc.Void](s_, "setNameFieldLabel:", value)
 }
 
 func (s_ SavePanel) NameFieldStringValue() string {
-	rv := ffi.CallMethod[string](s_, "nameFieldStringValue")
+	rv := objc.CallMethod[string](s_, "nameFieldStringValue")
 	return rv
 }
 
 func (s_ SavePanel) SetNameFieldStringValue(value string) {
-	ffi.CallMethod[ffi.Void](s_, "setNameFieldStringValue:", value)
+	objc.CallMethod[objc.Void](s_, "setNameFieldStringValue:", value)
 }
 
 func (s_ SavePanel) DirectoryURL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](s_, "directoryURL")
+	rv := objc.CallMethod[foundation.URL](s_, "directoryURL")
 	return rv
 }
 
 func (s_ SavePanel) SetDirectoryURL(value foundation.IURL) {
-	ffi.CallMethod[ffi.Void](s_, "setDirectoryURL:", value)
+	objc.CallMethod[objc.Void](s_, "setDirectoryURL:", value)
 }
 
 func (s_ SavePanel) AccessoryView() View {
-	rv := ffi.CallMethod[View](s_, "accessoryView")
+	rv := objc.CallMethod[View](s_, "accessoryView")
 	return rv
 }
 
 func (s_ SavePanel) SetAccessoryView(value IView) {
-	ffi.CallMethod[ffi.Void](s_, "setAccessoryView:", value)
+	objc.CallMethod[objc.Void](s_, "setAccessoryView:", value)
 }
 
 func (s_ SavePanel) ShowsTagField() bool {
-	rv := ffi.CallMethod[bool](s_, "showsTagField")
+	rv := objc.CallMethod[bool](s_, "showsTagField")
 	return rv
 }
 
 func (s_ SavePanel) SetShowsTagField(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setShowsTagField:", value)
+	objc.CallMethod[objc.Void](s_, "setShowsTagField:", value)
 }
 
 func (s_ SavePanel) TagNames() []string {
-	rv := ffi.CallMethod[[]string](s_, "tagNames")
+	rv := objc.CallMethod[[]string](s_, "tagNames")
 	return rv
 }
 
 func (s_ SavePanel) SetTagNames(value []string) {
-	ffi.CallMethod[ffi.Void](s_, "setTagNames:", value)
+	objc.CallMethod[objc.Void](s_, "setTagNames:", value)
 }
 
 func (s_ SavePanel) CanCreateDirectories() bool {
-	rv := ffi.CallMethod[bool](s_, "canCreateDirectories")
+	rv := objc.CallMethod[bool](s_, "canCreateDirectories")
 	return rv
 }
 
 func (s_ SavePanel) SetCanCreateDirectories(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setCanCreateDirectories:", value)
+	objc.CallMethod[objc.Void](s_, "setCanCreateDirectories:", value)
 }
 
 func (s_ SavePanel) CanSelectHiddenExtension() bool {
-	rv := ffi.CallMethod[bool](s_, "canSelectHiddenExtension")
+	rv := objc.CallMethod[bool](s_, "canSelectHiddenExtension")
 	return rv
 }
 
 func (s_ SavePanel) SetCanSelectHiddenExtension(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setCanSelectHiddenExtension:", value)
+	objc.CallMethod[objc.Void](s_, "setCanSelectHiddenExtension:", value)
 }
 
 func (s_ SavePanel) ShowsHiddenFiles() bool {
-	rv := ffi.CallMethod[bool](s_, "showsHiddenFiles")
+	rv := objc.CallMethod[bool](s_, "showsHiddenFiles")
 	return rv
 }
 
 func (s_ SavePanel) SetShowsHiddenFiles(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setShowsHiddenFiles:", value)
+	objc.CallMethod[objc.Void](s_, "setShowsHiddenFiles:", value)
 }
 
 func (s_ SavePanel) IsExtensionHidden() bool {
-	rv := ffi.CallMethod[bool](s_, "isExtensionHidden")
+	rv := objc.CallMethod[bool](s_, "isExtensionHidden")
 	return rv
 }
 
 func (s_ SavePanel) SetExtensionHidden(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setExtensionHidden:", value)
+	objc.CallMethod[objc.Void](s_, "setExtensionHidden:", value)
 }
 
 func (s_ SavePanel) IsExpanded() bool {
-	rv := ffi.CallMethod[bool](s_, "isExpanded")
+	rv := objc.CallMethod[bool](s_, "isExpanded")
 	return rv
 }
 
 func (s_ SavePanel) AllowedContentTypes() []uniformtypeidentifiers.Type {
-	rv := ffi.CallMethod[[]uniformtypeidentifiers.Type](s_, "allowedContentTypes")
+	rv := objc.CallMethod[[]uniformtypeidentifiers.Type](s_, "allowedContentTypes")
 	return rv
 }
 
 func (s_ SavePanel) SetAllowedContentTypes(value []uniformtypeidentifiers.IType) {
-	ffi.CallMethod[ffi.Void](s_, "setAllowedContentTypes:", value)
+	objc.CallMethod[objc.Void](s_, "setAllowedContentTypes:", value)
 }
 
 func (s_ SavePanel) AllowsOtherFileTypes() bool {
-	rv := ffi.CallMethod[bool](s_, "allowsOtherFileTypes")
+	rv := objc.CallMethod[bool](s_, "allowsOtherFileTypes")
 	return rv
 }
 
 func (s_ SavePanel) SetAllowsOtherFileTypes(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setAllowsOtherFileTypes:", value)
+	objc.CallMethod[objc.Void](s_, "setAllowsOtherFileTypes:", value)
 }
 
 func (s_ SavePanel) TreatsFilePackagesAsDirectories() bool {
-	rv := ffi.CallMethod[bool](s_, "treatsFilePackagesAsDirectories")
+	rv := objc.CallMethod[bool](s_, "treatsFilePackagesAsDirectories")
 	return rv
 }
 
 func (s_ SavePanel) SetTreatsFilePackagesAsDirectories(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setTreatsFilePackagesAsDirectories:", value)
+	objc.CallMethod[objc.Void](s_, "setTreatsFilePackagesAsDirectories:", value)
 }
 
 // deprecated
 func (s_ SavePanel) AllowedFileTypes() []string {
-	rv := ffi.CallMethod[[]string](s_, "allowedFileTypes")
+	rv := objc.CallMethod[[]string](s_, "allowedFileTypes")
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) SetAllowedFileTypes(value []string) {
-	ffi.CallMethod[ffi.Void](s_, "setAllowedFileTypes:", value)
+	objc.CallMethod[objc.Void](s_, "setAllowedFileTypes:", value)
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -44,12 +43,12 @@ func MakeGridColumn(ptr unsafe.Pointer) GridColumn {
 }
 
 func (gc _GridColumnClass) Alloc() GridColumn {
-	rv := ffi.CallMethod[GridColumn](gc, "alloc")
+	rv := objc.CallMethod[GridColumn](gc, "alloc")
 	return rv
 }
 
 func (gc _GridColumnClass) New() GridColumn {
-	rv := ffi.CallMethod[GridColumn](gc, "new")
+	rv := objc.CallMethod[GridColumn](gc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -59,70 +58,70 @@ func NewGridColumn() GridColumn {
 }
 
 func (g_ GridColumn) Init() GridColumn {
-	rv := ffi.CallMethod[GridColumn](g_, "init")
+	rv := objc.CallMethod[GridColumn](g_, "init")
 	return rv
 }
 
 func (g_ GridColumn) CellAtIndex(index int) GridCell {
-	rv := ffi.CallMethod[GridCell](g_, "cellAtIndex:", index)
+	rv := objc.CallMethod[GridCell](g_, "cellAtIndex:", index)
 	return rv
 }
 
 func (g_ GridColumn) MergeCellsInRange(range_ foundation.Range) {
-	ffi.CallMethod[ffi.Void](g_, "mergeCellsInRange:", range_)
+	objc.CallMethod[objc.Void](g_, "mergeCellsInRange:", range_)
 }
 
 func (g_ GridColumn) GridView() GridView {
-	rv := ffi.CallMethod[GridView](g_, "gridView")
+	rv := objc.CallMethod[GridView](g_, "gridView")
 	return rv
 }
 
 func (g_ GridColumn) IsHidden() bool {
-	rv := ffi.CallMethod[bool](g_, "isHidden")
+	rv := objc.CallMethod[bool](g_, "isHidden")
 	return rv
 }
 
 func (g_ GridColumn) SetHidden(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setHidden:", value)
+	objc.CallMethod[objc.Void](g_, "setHidden:", value)
 }
 
 func (g_ GridColumn) LeadingPadding() float64 {
-	rv := ffi.CallMethod[float64](g_, "leadingPadding")
+	rv := objc.CallMethod[float64](g_, "leadingPadding")
 	return rv
 }
 
 func (g_ GridColumn) SetLeadingPadding(value float64) {
-	ffi.CallMethod[ffi.Void](g_, "setLeadingPadding:", value)
+	objc.CallMethod[objc.Void](g_, "setLeadingPadding:", value)
 }
 
 func (g_ GridColumn) NumberOfCells() int {
-	rv := ffi.CallMethod[int](g_, "numberOfCells")
+	rv := objc.CallMethod[int](g_, "numberOfCells")
 	return rv
 }
 
 func (g_ GridColumn) TrailingPadding() float64 {
-	rv := ffi.CallMethod[float64](g_, "trailingPadding")
+	rv := objc.CallMethod[float64](g_, "trailingPadding")
 	return rv
 }
 
 func (g_ GridColumn) SetTrailingPadding(value float64) {
-	ffi.CallMethod[ffi.Void](g_, "setTrailingPadding:", value)
+	objc.CallMethod[objc.Void](g_, "setTrailingPadding:", value)
 }
 
 func (g_ GridColumn) Width() float64 {
-	rv := ffi.CallMethod[float64](g_, "width")
+	rv := objc.CallMethod[float64](g_, "width")
 	return rv
 }
 
 func (g_ GridColumn) SetWidth(value float64) {
-	ffi.CallMethod[ffi.Void](g_, "setWidth:", value)
+	objc.CallMethod[objc.Void](g_, "setWidth:", value)
 }
 
 func (g_ GridColumn) XPlacement() GridCellPlacement {
-	rv := ffi.CallMethod[GridCellPlacement](g_, "xPlacement")
+	rv := objc.CallMethod[GridCellPlacement](g_, "xPlacement")
 	return rv
 }
 
 func (g_ GridColumn) SetXPlacement(value GridCellPlacement) {
-	ffi.CallMethod[ffi.Void](g_, "setXPlacement:", value)
+	objc.CallMethod[objc.Void](g_, "setXPlacement:", value)
 }

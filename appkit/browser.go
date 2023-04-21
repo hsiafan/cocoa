@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -158,22 +157,22 @@ func MakeBrowser(ptr unsafe.Pointer) Browser {
 }
 
 func (b_ Browser) InitWithFrame(frameRect foundation.Rect) Browser {
-	rv := ffi.CallMethod[Browser](b_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Browser](b_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (b_ Browser) Init() Browser {
-	rv := ffi.CallMethod[Browser](b_, "init")
+	rv := objc.CallMethod[Browser](b_, "init")
 	return rv
 }
 
 func (bc _BrowserClass) Alloc() Browser {
-	rv := ffi.CallMethod[Browser](bc, "alloc")
+	rv := objc.CallMethod[Browser](bc, "alloc")
 	return rv
 }
 
 func (bc _BrowserClass) New() Browser {
-	rv := ffi.CallMethod[Browser](bc, "new")
+	rv := objc.CallMethod[Browser](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -183,549 +182,549 @@ func NewBrowser() Browser {
 }
 
 func (b_ Browser) Tile() {
-	ffi.CallMethod[ffi.Void](b_, "tile")
+	objc.CallMethod[objc.Void](b_, "tile")
 }
 
 func (b_ Browser) SelectedRowIndexesInColumn(column int) foundation.IndexSet {
-	rv := ffi.CallMethod[foundation.IndexSet](b_, "selectedRowIndexesInColumn:", column)
+	rv := objc.CallMethod[foundation.IndexSet](b_, "selectedRowIndexesInColumn:", column)
 	return rv
 }
 
 func (b_ Browser) SelectRowIndexes_InColumn(indexes foundation.IIndexSet, column int) {
-	ffi.CallMethod[ffi.Void](b_, "selectRowIndexes:inColumn:", indexes, column)
+	objc.CallMethod[objc.Void](b_, "selectRowIndexes:inColumn:", indexes, column)
 }
 
 func (b_ Browser) SelectedCellInColumn(column int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "selectedCellInColumn:", column)
+	rv := objc.CallMethod[objc.Object](b_, "selectedCellInColumn:", column)
 	return rv
 }
 
 func (b_ Browser) SelectAll(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "selectAll:", sender)
+	objc.CallMethod[objc.Void](b_, "selectAll:", sender)
 }
 
 func (b_ Browser) SelectedRowInColumn(column int) int {
-	rv := ffi.CallMethod[int](b_, "selectedRowInColumn:", column)
+	rv := objc.CallMethod[int](b_, "selectedRowInColumn:", column)
 	return rv
 }
 
 func (b_ Browser) SelectRow_InColumn(row int, column int) {
-	ffi.CallMethod[ffi.Void](b_, "selectRow:inColumn:", row, column)
+	objc.CallMethod[objc.Void](b_, "selectRow:inColumn:", row, column)
 }
 
 func (b_ Browser) LoadedCellAtRow_Column(row int, col int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "loadedCellAtRow:column:", row, col)
+	rv := objc.CallMethod[objc.Object](b_, "loadedCellAtRow:column:", row, col)
 	return rv
 }
 
 func (b_ Browser) EditItemAtIndexPath_WithEvent_Select(indexPath foundation.IIndexPath, event IEvent, select_ bool) {
-	ffi.CallMethod[ffi.Void](b_, "editItemAtIndexPath:withEvent:select:", indexPath, event, select_)
+	objc.CallMethod[objc.Void](b_, "editItemAtIndexPath:withEvent:select:", indexPath, event, select_)
 }
 
 func (b_ Browser) ItemAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "itemAtIndexPath:", indexPath)
+	rv := objc.CallMethod[objc.Object](b_, "itemAtIndexPath:", indexPath)
 	return rv
 }
 
 func (b_ Browser) ItemAtRow_InColumn(row int, column int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "itemAtRow:inColumn:", row, column)
+	rv := objc.CallMethod[objc.Object](b_, "itemAtRow:inColumn:", row, column)
 	return rv
 }
 
 func (b_ Browser) IndexPathForColumn(column int) foundation.IndexPath {
-	rv := ffi.CallMethod[foundation.IndexPath](b_, "indexPathForColumn:", column)
+	rv := objc.CallMethod[foundation.IndexPath](b_, "indexPathForColumn:", column)
 	return rv
 }
 
 func (b_ Browser) IsLeafItem(item objc.IObject) bool {
-	rv := ffi.CallMethod[bool](b_, "isLeafItem:", item)
+	rv := objc.CallMethod[bool](b_, "isLeafItem:", item)
 	return rv
 }
 
 func (b_ Browser) ParentForItemsInColumn(column int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "parentForItemsInColumn:", column)
+	rv := objc.CallMethod[objc.Object](b_, "parentForItemsInColumn:", column)
 	return rv
 }
 
 func (b_ Browser) Path() string {
-	rv := ffi.CallMethod[string](b_, "path")
+	rv := objc.CallMethod[string](b_, "path")
 	return rv
 }
 
 func (b_ Browser) SetPath(path string) bool {
-	rv := ffi.CallMethod[bool](b_, "setPath:", path)
+	rv := objc.CallMethod[bool](b_, "setPath:", path)
 	return rv
 }
 
 func (b_ Browser) PathToColumn(column int) string {
-	rv := ffi.CallMethod[string](b_, "pathToColumn:", column)
+	rv := objc.CallMethod[string](b_, "pathToColumn:", column)
 	return rv
 }
 
 func (b_ Browser) AddColumn() {
-	ffi.CallMethod[ffi.Void](b_, "addColumn")
+	objc.CallMethod[objc.Void](b_, "addColumn")
 }
 
 func (b_ Browser) ValidateVisibleColumns() {
-	ffi.CallMethod[ffi.Void](b_, "validateVisibleColumns")
+	objc.CallMethod[objc.Void](b_, "validateVisibleColumns")
 }
 
 func (b_ Browser) LoadColumnZero() {
-	ffi.CallMethod[ffi.Void](b_, "loadColumnZero")
+	objc.CallMethod[objc.Void](b_, "loadColumnZero")
 }
 
 func (b_ Browser) ReloadColumn(column int) {
-	ffi.CallMethod[ffi.Void](b_, "reloadColumn:", column)
+	objc.CallMethod[objc.Void](b_, "reloadColumn:", column)
 }
 
 func (b_ Browser) TitleOfColumn(column int) string {
-	rv := ffi.CallMethod[string](b_, "titleOfColumn:", column)
+	rv := objc.CallMethod[string](b_, "titleOfColumn:", column)
 	return rv
 }
 
 func (b_ Browser) SetTitle_OfColumn(string_ string, column int) {
-	ffi.CallMethod[ffi.Void](b_, "setTitle:ofColumn:", string_, column)
+	objc.CallMethod[objc.Void](b_, "setTitle:ofColumn:", string_, column)
 }
 
 func (b_ Browser) DrawTitleOfColumn_InRect(column int, rect foundation.Rect) {
-	ffi.CallMethod[ffi.Void](b_, "drawTitleOfColumn:inRect:", column, rect)
+	objc.CallMethod[objc.Void](b_, "drawTitleOfColumn:inRect:", column, rect)
 }
 
 func (b_ Browser) TitleFrameOfColumn(column int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](b_, "titleFrameOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](b_, "titleFrameOfColumn:", column)
 	return rv
 }
 
 func (b_ Browser) NoteHeightOfRowsWithIndexesChanged_InColumn(indexSet foundation.IIndexSet, columnIndex int) {
-	ffi.CallMethod[ffi.Void](b_, "noteHeightOfRowsWithIndexesChanged:inColumn:", indexSet, columnIndex)
+	objc.CallMethod[objc.Void](b_, "noteHeightOfRowsWithIndexesChanged:inColumn:", indexSet, columnIndex)
 }
 
 func (b_ Browser) ReloadDataForRowIndexes_InColumn(rowIndexes foundation.IIndexSet, column int) {
-	ffi.CallMethod[ffi.Void](b_, "reloadDataForRowIndexes:inColumn:", rowIndexes, column)
+	objc.CallMethod[objc.Void](b_, "reloadDataForRowIndexes:inColumn:", rowIndexes, column)
 }
 
 func (b_ Browser) ScrollColumnToVisible(column int) {
-	ffi.CallMethod[ffi.Void](b_, "scrollColumnToVisible:", column)
+	objc.CallMethod[objc.Void](b_, "scrollColumnToVisible:", column)
 }
 
 func (b_ Browser) ScrollColumnsLeftBy(shiftAmount int) {
-	ffi.CallMethod[ffi.Void](b_, "scrollColumnsLeftBy:", shiftAmount)
+	objc.CallMethod[objc.Void](b_, "scrollColumnsLeftBy:", shiftAmount)
 }
 
 func (b_ Browser) ScrollColumnsRightBy(shiftAmount int) {
-	ffi.CallMethod[ffi.Void](b_, "scrollColumnsRightBy:", shiftAmount)
+	objc.CallMethod[objc.Void](b_, "scrollColumnsRightBy:", shiftAmount)
 }
 
 func (b_ Browser) ScrollRowToVisible_InColumn(row int, column int) {
-	ffi.CallMethod[ffi.Void](b_, "scrollRowToVisible:inColumn:", row, column)
+	objc.CallMethod[objc.Void](b_, "scrollRowToVisible:inColumn:", row, column)
 }
 
 func (b_ Browser) SetDraggingSourceOperationMask_ForLocal(mask DragOperation, isLocal bool) {
-	ffi.CallMethod[ffi.Void](b_, "setDraggingSourceOperationMask:forLocal:", mask, isLocal)
+	objc.CallMethod[objc.Void](b_, "setDraggingSourceOperationMask:forLocal:", mask, isLocal)
 }
 
 func (b_ Browser) CanDragRowsWithIndexes_InColumn_WithEvent(rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
-	rv := ffi.CallMethod[bool](b_, "canDragRowsWithIndexes:inColumn:withEvent:", rowIndexes, column, event)
+	rv := objc.CallMethod[bool](b_, "canDragRowsWithIndexes:inColumn:withEvent:", rowIndexes, column, event)
 	return rv
 }
 
 func (b_ Browser) DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := ffi.CallMethod[Image](b_, "draggingImageForRowsWithIndexes:inColumn:withEvent:offset:", rowIndexes, column, event, dragImageOffset)
+	rv := objc.CallMethod[Image](b_, "draggingImageForRowsWithIndexes:inColumn:withEvent:offset:", rowIndexes, column, event, dragImageOffset)
 	return rv
 }
 
 func (b_ Browser) FrameOfColumn(column int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](b_, "frameOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](b_, "frameOfColumn:", column)
 	return rv
 }
 
 func (b_ Browser) FrameOfInsideOfColumn(column int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](b_, "frameOfInsideOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](b_, "frameOfInsideOfColumn:", column)
 	return rv
 }
 
 func (b_ Browser) FrameOfRow_InColumn(row int, column int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](b_, "frameOfRow:inColumn:", row, column)
+	rv := objc.CallMethod[foundation.Rect](b_, "frameOfRow:inColumn:", row, column)
 	return rv
 }
 
 func (b_ Browser) GetRow_Column_ForPoint(row *int, column *int, point foundation.Point) bool {
-	rv := ffi.CallMethod[bool](b_, "getRow:column:forPoint:", row, column, point)
+	rv := objc.CallMethod[bool](b_, "getRow:column:forPoint:", row, column, point)
 	return rv
 }
 
 func (b_ Browser) SendAction() bool {
-	rv := ffi.CallMethod[bool](b_, "sendAction")
+	rv := objc.CallMethod[bool](b_, "sendAction")
 	return rv
 }
 
 func (b_ Browser) DoClick(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "doClick:", sender)
+	objc.CallMethod[objc.Void](b_, "doClick:", sender)
 }
 
 func (b_ Browser) DoDoubleClick(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "doDoubleClick:", sender)
+	objc.CallMethod[objc.Void](b_, "doDoubleClick:", sender)
 }
 
 func (bc _BrowserClass) RemoveSavedColumnsWithAutosaveName(name BrowserColumnsAutosaveName) {
-	ffi.CallMethod[ffi.Void](bc, "removeSavedColumnsWithAutosaveName:", name)
+	objc.CallMethod[objc.Void](bc, "removeSavedColumnsWithAutosaveName:", name)
 }
 
 func (b_ Browser) ColumnContentWidthForColumnWidth(columnWidth float64) float64 {
-	rv := ffi.CallMethod[float64](b_, "columnContentWidthForColumnWidth:", columnWidth)
+	rv := objc.CallMethod[float64](b_, "columnContentWidthForColumnWidth:", columnWidth)
 	return rv
 }
 
 func (b_ Browser) ColumnWidthForColumnContentWidth(columnContentWidth float64) float64 {
-	rv := ffi.CallMethod[float64](b_, "columnWidthForColumnContentWidth:", columnContentWidth)
+	rv := objc.CallMethod[float64](b_, "columnWidthForColumnContentWidth:", columnContentWidth)
 	return rv
 }
 
 func (b_ Browser) WidthOfColumn(column int) float64 {
-	rv := ffi.CallMethod[float64](b_, "widthOfColumn:", column)
+	rv := objc.CallMethod[float64](b_, "widthOfColumn:", column)
 	return rv
 }
 
 func (b_ Browser) SetWidth_OfColumn(columnWidth float64, columnIndex int) {
-	ffi.CallMethod[ffi.Void](b_, "setWidth:ofColumn:", columnWidth, columnIndex)
+	objc.CallMethod[objc.Void](b_, "setWidth:ofColumn:", columnWidth, columnIndex)
 }
 
 func (b_ Browser) DefaultColumnWidth() float64 {
-	rv := ffi.CallMethod[float64](b_, "defaultColumnWidth")
+	rv := objc.CallMethod[float64](b_, "defaultColumnWidth")
 	return rv
 }
 
 func (b_ Browser) SetDefaultColumnWidth(columnWidth float64) {
-	ffi.CallMethod[ffi.Void](b_, "setDefaultColumnWidth:", columnWidth)
+	objc.CallMethod[objc.Void](b_, "setDefaultColumnWidth:", columnWidth)
 }
 
 // deprecated
 func (b_ Browser) UpdateScroller() {
-	ffi.CallMethod[ffi.Void](b_, "updateScroller")
+	objc.CallMethod[objc.Void](b_, "updateScroller")
 }
 
 // deprecated
 func (b_ Browser) ScrollViaScroller(sender IScroller) {
-	ffi.CallMethod[ffi.Void](b_, "scrollViaScroller:", sender)
+	objc.CallMethod[objc.Void](b_, "scrollViaScroller:", sender)
 }
 
 // deprecated
 func (b_ Browser) DisplayAllColumns() {
-	ffi.CallMethod[ffi.Void](b_, "displayAllColumns")
+	objc.CallMethod[objc.Void](b_, "displayAllColumns")
 }
 
 // deprecated
 func (b_ Browser) DisplayColumn(column int) {
-	ffi.CallMethod[ffi.Void](b_, "displayColumn:", column)
+	objc.CallMethod[objc.Void](b_, "displayColumn:", column)
 }
 
 // deprecated
 func (b_ Browser) ColumnOfMatrix(matrix IMatrix) int {
-	rv := ffi.CallMethod[int](b_, "columnOfMatrix:", matrix)
+	rv := objc.CallMethod[int](b_, "columnOfMatrix:", matrix)
 	return rv
 }
 
 // deprecated
 func (b_ Browser) MatrixInColumn(column int) Matrix {
-	rv := ffi.CallMethod[Matrix](b_, "matrixInColumn:", column)
+	rv := objc.CallMethod[Matrix](b_, "matrixInColumn:", column)
 	return rv
 }
 
 // deprecated
 func (b_ Browser) MatrixClass() objc.Class {
-	rv := ffi.CallMethod[objc.Class](b_, "matrixClass")
+	rv := objc.CallMethod[objc.Class](b_, "matrixClass")
 	return rv
 }
 
 // deprecated
 func (b_ Browser) SetMatrixClass(factoryId objc.IClass) {
-	ffi.CallMethod[ffi.Void](b_, "setMatrixClass:", factoryId)
+	objc.CallMethod[objc.Void](b_, "setMatrixClass:", factoryId)
 }
 
 // deprecated
 func (b_ Browser) AcceptsArrowKeys() bool {
-	rv := ffi.CallMethod[bool](b_, "acceptsArrowKeys")
+	rv := objc.CallMethod[bool](b_, "acceptsArrowKeys")
 	return rv
 }
 
 // deprecated
 func (b_ Browser) SetAcceptsArrowKeys(flag bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAcceptsArrowKeys:", flag)
+	objc.CallMethod[objc.Void](b_, "setAcceptsArrowKeys:", flag)
 }
 
 func (b_ Browser) ReusesColumns() bool {
-	rv := ffi.CallMethod[bool](b_, "reusesColumns")
+	rv := objc.CallMethod[bool](b_, "reusesColumns")
 	return rv
 }
 
 func (b_ Browser) SetReusesColumns(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setReusesColumns:", value)
+	objc.CallMethod[objc.Void](b_, "setReusesColumns:", value)
 }
 
 func (b_ Browser) MaxVisibleColumns() int {
-	rv := ffi.CallMethod[int](b_, "maxVisibleColumns")
+	rv := objc.CallMethod[int](b_, "maxVisibleColumns")
 	return rv
 }
 
 func (b_ Browser) SetMaxVisibleColumns(value int) {
-	ffi.CallMethod[ffi.Void](b_, "setMaxVisibleColumns:", value)
+	objc.CallMethod[objc.Void](b_, "setMaxVisibleColumns:", value)
 }
 
 func (b_ Browser) AutohidesScroller() bool {
-	rv := ffi.CallMethod[bool](b_, "autohidesScroller")
+	rv := objc.CallMethod[bool](b_, "autohidesScroller")
 	return rv
 }
 
 func (b_ Browser) SetAutohidesScroller(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAutohidesScroller:", value)
+	objc.CallMethod[objc.Void](b_, "setAutohidesScroller:", value)
 }
 
 func (b_ Browser) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](b_, "backgroundColor")
+	rv := objc.CallMethod[Color](b_, "backgroundColor")
 	return rv
 }
 
 func (b_ Browser) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](b_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](b_, "setBackgroundColor:", value)
 }
 
 func (b_ Browser) MinColumnWidth() float64 {
-	rv := ffi.CallMethod[float64](b_, "minColumnWidth")
+	rv := objc.CallMethod[float64](b_, "minColumnWidth")
 	return rv
 }
 
 func (b_ Browser) SetMinColumnWidth(value float64) {
-	ffi.CallMethod[ffi.Void](b_, "setMinColumnWidth:", value)
+	objc.CallMethod[objc.Void](b_, "setMinColumnWidth:", value)
 }
 
 func (b_ Browser) SeparatesColumns() bool {
-	rv := ffi.CallMethod[bool](b_, "separatesColumns")
+	rv := objc.CallMethod[bool](b_, "separatesColumns")
 	return rv
 }
 
 func (b_ Browser) SetSeparatesColumns(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setSeparatesColumns:", value)
+	objc.CallMethod[objc.Void](b_, "setSeparatesColumns:", value)
 }
 
 func (b_ Browser) TakesTitleFromPreviousColumn() bool {
-	rv := ffi.CallMethod[bool](b_, "takesTitleFromPreviousColumn")
+	rv := objc.CallMethod[bool](b_, "takesTitleFromPreviousColumn")
 	return rv
 }
 
 func (b_ Browser) SetTakesTitleFromPreviousColumn(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setTakesTitleFromPreviousColumn:", value)
+	objc.CallMethod[objc.Void](b_, "setTakesTitleFromPreviousColumn:", value)
 }
 
 func (b_ Browser) Delegate() BrowserDelegateWrapper {
-	rv := ffi.CallMethod[BrowserDelegateWrapper](b_, "delegate")
+	rv := objc.CallMethod[BrowserDelegateWrapper](b_, "delegate")
 	return rv
 }
 
 func (b_ Browser) SetDelegate(value BrowserDelegate) {
-	po := ffi.CreateProtocol("NSBrowserDelegate", value)
+	po := objc.CreateProtocol("NSBrowserDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(b_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](b_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](b_, "setDelegate:", po)
 }
 
 func (b_ Browser) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](b_, "setDelegate:", value)
 }
 
 func (b_ Browser) CellPrototype() objc.Object {
-	rv := ffi.CallMethod[objc.Object](b_, "cellPrototype")
+	rv := objc.CallMethod[objc.Object](b_, "cellPrototype")
 	return rv
 }
 
 func (b_ Browser) SetCellPrototype(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](b_, "setCellPrototype:", value)
+	objc.CallMethod[objc.Void](b_, "setCellPrototype:", value)
 }
 
 func (b_ Browser) AllowsBranchSelection() bool {
-	rv := ffi.CallMethod[bool](b_, "allowsBranchSelection")
+	rv := objc.CallMethod[bool](b_, "allowsBranchSelection")
 	return rv
 }
 
 func (b_ Browser) SetAllowsBranchSelection(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAllowsBranchSelection:", value)
+	objc.CallMethod[objc.Void](b_, "setAllowsBranchSelection:", value)
 }
 
 func (b_ Browser) AllowsEmptySelection() bool {
-	rv := ffi.CallMethod[bool](b_, "allowsEmptySelection")
+	rv := objc.CallMethod[bool](b_, "allowsEmptySelection")
 	return rv
 }
 
 func (b_ Browser) SetAllowsEmptySelection(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAllowsEmptySelection:", value)
+	objc.CallMethod[objc.Void](b_, "setAllowsEmptySelection:", value)
 }
 
 func (b_ Browser) AllowsMultipleSelection() bool {
-	rv := ffi.CallMethod[bool](b_, "allowsMultipleSelection")
+	rv := objc.CallMethod[bool](b_, "allowsMultipleSelection")
 	return rv
 }
 
 func (b_ Browser) SetAllowsMultipleSelection(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAllowsMultipleSelection:", value)
+	objc.CallMethod[objc.Void](b_, "setAllowsMultipleSelection:", value)
 }
 
 func (b_ Browser) AllowsTypeSelect() bool {
-	rv := ffi.CallMethod[bool](b_, "allowsTypeSelect")
+	rv := objc.CallMethod[bool](b_, "allowsTypeSelect")
 	return rv
 }
 
 func (b_ Browser) SetAllowsTypeSelect(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setAllowsTypeSelect:", value)
+	objc.CallMethod[objc.Void](b_, "setAllowsTypeSelect:", value)
 }
 
 func (b_ Browser) SelectedCells() []Cell {
-	rv := ffi.CallMethod[[]Cell](b_, "selectedCells")
+	rv := objc.CallMethod[[]Cell](b_, "selectedCells")
 	return rv
 }
 
 func (b_ Browser) SelectionIndexPath() foundation.IndexPath {
-	rv := ffi.CallMethod[foundation.IndexPath](b_, "selectionIndexPath")
+	rv := objc.CallMethod[foundation.IndexPath](b_, "selectionIndexPath")
 	return rv
 }
 
 func (b_ Browser) SetSelectionIndexPath(value foundation.IIndexPath) {
-	ffi.CallMethod[ffi.Void](b_, "setSelectionIndexPath:", value)
+	objc.CallMethod[objc.Void](b_, "setSelectionIndexPath:", value)
 }
 
 func (b_ Browser) SelectionIndexPaths() []foundation.IndexPath {
-	rv := ffi.CallMethod[[]foundation.IndexPath](b_, "selectionIndexPaths")
+	rv := objc.CallMethod[[]foundation.IndexPath](b_, "selectionIndexPaths")
 	return rv
 }
 
 func (b_ Browser) SetSelectionIndexPaths(value []foundation.IIndexPath) {
-	ffi.CallMethod[ffi.Void](b_, "setSelectionIndexPaths:", value)
+	objc.CallMethod[objc.Void](b_, "setSelectionIndexPaths:", value)
 }
 
 func (b_ Browser) PathSeparator() string {
-	rv := ffi.CallMethod[string](b_, "pathSeparator")
+	rv := objc.CallMethod[string](b_, "pathSeparator")
 	return rv
 }
 
 func (b_ Browser) SetPathSeparator(value string) {
-	ffi.CallMethod[ffi.Void](b_, "setPathSeparator:", value)
+	objc.CallMethod[objc.Void](b_, "setPathSeparator:", value)
 }
 
 func (b_ Browser) SelectedColumn() int {
-	rv := ffi.CallMethod[int](b_, "selectedColumn")
+	rv := objc.CallMethod[int](b_, "selectedColumn")
 	return rv
 }
 
 func (b_ Browser) LastColumn() int {
-	rv := ffi.CallMethod[int](b_, "lastColumn")
+	rv := objc.CallMethod[int](b_, "lastColumn")
 	return rv
 }
 
 func (b_ Browser) SetLastColumn(value int) {
-	ffi.CallMethod[ffi.Void](b_, "setLastColumn:", value)
+	objc.CallMethod[objc.Void](b_, "setLastColumn:", value)
 }
 
 func (b_ Browser) FirstVisibleColumn() int {
-	rv := ffi.CallMethod[int](b_, "firstVisibleColumn")
+	rv := objc.CallMethod[int](b_, "firstVisibleColumn")
 	return rv
 }
 
 func (b_ Browser) NumberOfVisibleColumns() int {
-	rv := ffi.CallMethod[int](b_, "numberOfVisibleColumns")
+	rv := objc.CallMethod[int](b_, "numberOfVisibleColumns")
 	return rv
 }
 
 func (b_ Browser) LastVisibleColumn() int {
-	rv := ffi.CallMethod[int](b_, "lastVisibleColumn")
+	rv := objc.CallMethod[int](b_, "lastVisibleColumn")
 	return rv
 }
 
 func (b_ Browser) IsLoaded() bool {
-	rv := ffi.CallMethod[bool](b_, "isLoaded")
+	rv := objc.CallMethod[bool](b_, "isLoaded")
 	return rv
 }
 
 func (b_ Browser) IsTitled() bool {
-	rv := ffi.CallMethod[bool](b_, "isTitled")
+	rv := objc.CallMethod[bool](b_, "isTitled")
 	return rv
 }
 
 func (b_ Browser) SetTitled(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setTitled:", value)
+	objc.CallMethod[objc.Void](b_, "setTitled:", value)
 }
 
 func (b_ Browser) TitleHeight() float64 {
-	rv := ffi.CallMethod[float64](b_, "titleHeight")
+	rv := objc.CallMethod[float64](b_, "titleHeight")
 	return rv
 }
 
 func (b_ Browser) HasHorizontalScroller() bool {
-	rv := ffi.CallMethod[bool](b_, "hasHorizontalScroller")
+	rv := objc.CallMethod[bool](b_, "hasHorizontalScroller")
 	return rv
 }
 
 func (b_ Browser) SetHasHorizontalScroller(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setHasHorizontalScroller:", value)
+	objc.CallMethod[objc.Void](b_, "setHasHorizontalScroller:", value)
 }
 
 func (b_ Browser) DoubleAction() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](b_, "doubleAction")
+	rv := objc.CallMethod[objc.Selector](b_, "doubleAction")
 	return rv
 }
 
 func (b_ Browser) SetDoubleAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](b_, "setDoubleAction:", value)
+	objc.CallMethod[objc.Void](b_, "setDoubleAction:", value)
 }
 
 func (b_ Browser) SendsActionOnArrowKeys() bool {
-	rv := ffi.CallMethod[bool](b_, "sendsActionOnArrowKeys")
+	rv := objc.CallMethod[bool](b_, "sendsActionOnArrowKeys")
 	return rv
 }
 
 func (b_ Browser) SetSendsActionOnArrowKeys(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setSendsActionOnArrowKeys:", value)
+	objc.CallMethod[objc.Void](b_, "setSendsActionOnArrowKeys:", value)
 }
 
 func (b_ Browser) ClickedColumn() int {
-	rv := ffi.CallMethod[int](b_, "clickedColumn")
+	rv := objc.CallMethod[int](b_, "clickedColumn")
 	return rv
 }
 
 func (b_ Browser) ClickedRow() int {
-	rv := ffi.CallMethod[int](b_, "clickedRow")
+	rv := objc.CallMethod[int](b_, "clickedRow")
 	return rv
 }
 
 func (b_ Browser) ColumnsAutosaveName() BrowserColumnsAutosaveName {
-	rv := ffi.CallMethod[BrowserColumnsAutosaveName](b_, "columnsAutosaveName")
+	rv := objc.CallMethod[BrowserColumnsAutosaveName](b_, "columnsAutosaveName")
 	return rv
 }
 
 func (b_ Browser) SetColumnsAutosaveName(value BrowserColumnsAutosaveName) {
-	ffi.CallMethod[ffi.Void](b_, "setColumnsAutosaveName:", value)
+	objc.CallMethod[objc.Void](b_, "setColumnsAutosaveName:", value)
 }
 
 func (b_ Browser) ColumnResizingType() BrowserColumnResizingType {
-	rv := ffi.CallMethod[BrowserColumnResizingType](b_, "columnResizingType")
+	rv := objc.CallMethod[BrowserColumnResizingType](b_, "columnResizingType")
 	return rv
 }
 
 func (b_ Browser) SetColumnResizingType(value BrowserColumnResizingType) {
-	ffi.CallMethod[ffi.Void](b_, "setColumnResizingType:", value)
+	objc.CallMethod[objc.Void](b_, "setColumnResizingType:", value)
 }
 
 func (b_ Browser) PrefersAllColumnUserResizing() bool {
-	rv := ffi.CallMethod[bool](b_, "prefersAllColumnUserResizing")
+	rv := objc.CallMethod[bool](b_, "prefersAllColumnUserResizing")
 	return rv
 }
 
 func (b_ Browser) SetPrefersAllColumnUserResizing(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setPrefersAllColumnUserResizing:", value)
+	objc.CallMethod[objc.Void](b_, "setPrefersAllColumnUserResizing:", value)
 }
 
 func (b_ Browser) RowHeight() float64 {
-	rv := ffi.CallMethod[float64](b_, "rowHeight")
+	rv := objc.CallMethod[float64](b_, "rowHeight")
 	return rv
 }
 
 func (b_ Browser) SetRowHeight(value float64) {
-	ffi.CallMethod[ffi.Void](b_, "setRowHeight:", value)
+	objc.CallMethod[objc.Void](b_, "setRowHeight:", value)
 }

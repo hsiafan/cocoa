@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -64,22 +63,22 @@ func MakeLevelIndicator(ptr unsafe.Pointer) LevelIndicator {
 }
 
 func (l_ LevelIndicator) InitWithFrame(frameRect foundation.Rect) LevelIndicator {
-	rv := ffi.CallMethod[LevelIndicator](l_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[LevelIndicator](l_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (l_ LevelIndicator) Init() LevelIndicator {
-	rv := ffi.CallMethod[LevelIndicator](l_, "init")
+	rv := objc.CallMethod[LevelIndicator](l_, "init")
 	return rv
 }
 
 func (lc _LevelIndicatorClass) Alloc() LevelIndicator {
-	rv := ffi.CallMethod[LevelIndicator](lc, "alloc")
+	rv := objc.CallMethod[LevelIndicator](lc, "alloc")
 	return rv
 }
 
 func (lc _LevelIndicatorClass) New() LevelIndicator {
-	rv := ffi.CallMethod[LevelIndicator](lc, "new")
+	rv := objc.CallMethod[LevelIndicator](lc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -89,155 +88,155 @@ func NewLevelIndicator() LevelIndicator {
 }
 
 func (l_ LevelIndicator) TickMarkValueAtIndex(index int) float64 {
-	rv := ffi.CallMethod[float64](l_, "tickMarkValueAtIndex:", index)
+	rv := objc.CallMethod[float64](l_, "tickMarkValueAtIndex:", index)
 	return rv
 }
 
 func (l_ LevelIndicator) RectOfTickMarkAtIndex(index int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](l_, "rectOfTickMarkAtIndex:", index)
+	rv := objc.CallMethod[foundation.Rect](l_, "rectOfTickMarkAtIndex:", index)
 	return rv
 }
 
 func (l_ LevelIndicator) MinValue() float64 {
-	rv := ffi.CallMethod[float64](l_, "minValue")
+	rv := objc.CallMethod[float64](l_, "minValue")
 	return rv
 }
 
 func (l_ LevelIndicator) SetMinValue(value float64) {
-	ffi.CallMethod[ffi.Void](l_, "setMinValue:", value)
+	objc.CallMethod[objc.Void](l_, "setMinValue:", value)
 }
 
 func (l_ LevelIndicator) MaxValue() float64 {
-	rv := ffi.CallMethod[float64](l_, "maxValue")
+	rv := objc.CallMethod[float64](l_, "maxValue")
 	return rv
 }
 
 func (l_ LevelIndicator) SetMaxValue(value float64) {
-	ffi.CallMethod[ffi.Void](l_, "setMaxValue:", value)
+	objc.CallMethod[objc.Void](l_, "setMaxValue:", value)
 }
 
 func (l_ LevelIndicator) WarningValue() float64 {
-	rv := ffi.CallMethod[float64](l_, "warningValue")
+	rv := objc.CallMethod[float64](l_, "warningValue")
 	return rv
 }
 
 func (l_ LevelIndicator) SetWarningValue(value float64) {
-	ffi.CallMethod[ffi.Void](l_, "setWarningValue:", value)
+	objc.CallMethod[objc.Void](l_, "setWarningValue:", value)
 }
 
 func (l_ LevelIndicator) CriticalValue() float64 {
-	rv := ffi.CallMethod[float64](l_, "criticalValue")
+	rv := objc.CallMethod[float64](l_, "criticalValue")
 	return rv
 }
 
 func (l_ LevelIndicator) SetCriticalValue(value float64) {
-	ffi.CallMethod[ffi.Void](l_, "setCriticalValue:", value)
+	objc.CallMethod[objc.Void](l_, "setCriticalValue:", value)
 }
 
 func (l_ LevelIndicator) TickMarkPosition() TickMarkPosition {
-	rv := ffi.CallMethod[TickMarkPosition](l_, "tickMarkPosition")
+	rv := objc.CallMethod[TickMarkPosition](l_, "tickMarkPosition")
 	return rv
 }
 
 func (l_ LevelIndicator) SetTickMarkPosition(value TickMarkPosition) {
-	ffi.CallMethod[ffi.Void](l_, "setTickMarkPosition:", value)
+	objc.CallMethod[objc.Void](l_, "setTickMarkPosition:", value)
 }
 
 func (l_ LevelIndicator) NumberOfTickMarks() int {
-	rv := ffi.CallMethod[int](l_, "numberOfTickMarks")
+	rv := objc.CallMethod[int](l_, "numberOfTickMarks")
 	return rv
 }
 
 func (l_ LevelIndicator) SetNumberOfTickMarks(value int) {
-	ffi.CallMethod[ffi.Void](l_, "setNumberOfTickMarks:", value)
+	objc.CallMethod[objc.Void](l_, "setNumberOfTickMarks:", value)
 }
 
 func (l_ LevelIndicator) NumberOfMajorTickMarks() int {
-	rv := ffi.CallMethod[int](l_, "numberOfMajorTickMarks")
+	rv := objc.CallMethod[int](l_, "numberOfMajorTickMarks")
 	return rv
 }
 
 func (l_ LevelIndicator) SetNumberOfMajorTickMarks(value int) {
-	ffi.CallMethod[ffi.Void](l_, "setNumberOfMajorTickMarks:", value)
+	objc.CallMethod[objc.Void](l_, "setNumberOfMajorTickMarks:", value)
 }
 
 func (l_ LevelIndicator) LevelIndicatorStyle() LevelIndicatorStyle {
-	rv := ffi.CallMethod[LevelIndicatorStyle](l_, "levelIndicatorStyle")
+	rv := objc.CallMethod[LevelIndicatorStyle](l_, "levelIndicatorStyle")
 	return rv
 }
 
 func (l_ LevelIndicator) SetLevelIndicatorStyle(value LevelIndicatorStyle) {
-	ffi.CallMethod[ffi.Void](l_, "setLevelIndicatorStyle:", value)
+	objc.CallMethod[objc.Void](l_, "setLevelIndicatorStyle:", value)
 }
 
 func (l_ LevelIndicator) RatingImage() Image {
-	rv := ffi.CallMethod[Image](l_, "ratingImage")
+	rv := objc.CallMethod[Image](l_, "ratingImage")
 	return rv
 }
 
 func (l_ LevelIndicator) SetRatingImage(value IImage) {
-	ffi.CallMethod[ffi.Void](l_, "setRatingImage:", value)
+	objc.CallMethod[objc.Void](l_, "setRatingImage:", value)
 }
 
 func (l_ LevelIndicator) DrawsTieredCapacityLevels() bool {
-	rv := ffi.CallMethod[bool](l_, "drawsTieredCapacityLevels")
+	rv := objc.CallMethod[bool](l_, "drawsTieredCapacityLevels")
 	return rv
 }
 
 func (l_ LevelIndicator) SetDrawsTieredCapacityLevels(value bool) {
-	ffi.CallMethod[ffi.Void](l_, "setDrawsTieredCapacityLevels:", value)
+	objc.CallMethod[objc.Void](l_, "setDrawsTieredCapacityLevels:", value)
 }
 
 func (l_ LevelIndicator) FillColor() Color {
-	rv := ffi.CallMethod[Color](l_, "fillColor")
+	rv := objc.CallMethod[Color](l_, "fillColor")
 	return rv
 }
 
 func (l_ LevelIndicator) SetFillColor(value IColor) {
-	ffi.CallMethod[ffi.Void](l_, "setFillColor:", value)
+	objc.CallMethod[objc.Void](l_, "setFillColor:", value)
 }
 
 func (l_ LevelIndicator) WarningFillColor() Color {
-	rv := ffi.CallMethod[Color](l_, "warningFillColor")
+	rv := objc.CallMethod[Color](l_, "warningFillColor")
 	return rv
 }
 
 func (l_ LevelIndicator) SetWarningFillColor(value IColor) {
-	ffi.CallMethod[ffi.Void](l_, "setWarningFillColor:", value)
+	objc.CallMethod[objc.Void](l_, "setWarningFillColor:", value)
 }
 
 func (l_ LevelIndicator) CriticalFillColor() Color {
-	rv := ffi.CallMethod[Color](l_, "criticalFillColor")
+	rv := objc.CallMethod[Color](l_, "criticalFillColor")
 	return rv
 }
 
 func (l_ LevelIndicator) SetCriticalFillColor(value IColor) {
-	ffi.CallMethod[ffi.Void](l_, "setCriticalFillColor:", value)
+	objc.CallMethod[objc.Void](l_, "setCriticalFillColor:", value)
 }
 
 func (l_ LevelIndicator) RatingPlaceholderImage() Image {
-	rv := ffi.CallMethod[Image](l_, "ratingPlaceholderImage")
+	rv := objc.CallMethod[Image](l_, "ratingPlaceholderImage")
 	return rv
 }
 
 func (l_ LevelIndicator) SetRatingPlaceholderImage(value IImage) {
-	ffi.CallMethod[ffi.Void](l_, "setRatingPlaceholderImage:", value)
+	objc.CallMethod[objc.Void](l_, "setRatingPlaceholderImage:", value)
 }
 
 func (l_ LevelIndicator) PlaceholderVisibility() LevelIndicatorPlaceholderVisibility {
-	rv := ffi.CallMethod[LevelIndicatorPlaceholderVisibility](l_, "placeholderVisibility")
+	rv := objc.CallMethod[LevelIndicatorPlaceholderVisibility](l_, "placeholderVisibility")
 	return rv
 }
 
 func (l_ LevelIndicator) SetPlaceholderVisibility(value LevelIndicatorPlaceholderVisibility) {
-	ffi.CallMethod[ffi.Void](l_, "setPlaceholderVisibility:", value)
+	objc.CallMethod[objc.Void](l_, "setPlaceholderVisibility:", value)
 }
 
 func (l_ LevelIndicator) IsEditable() bool {
-	rv := ffi.CallMethod[bool](l_, "isEditable")
+	rv := objc.CallMethod[bool](l_, "isEditable")
 	return rv
 }
 
 func (l_ LevelIndicator) SetEditable(value bool) {
-	ffi.CallMethod[ffi.Void](l_, "setEditable:", value)
+	objc.CallMethod[objc.Void](l_, "setEditable:", value)
 }

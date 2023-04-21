@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -48,12 +47,12 @@ func MakeRunningApplication(ptr unsafe.Pointer) RunningApplication {
 }
 
 func (rc _RunningApplicationClass) Alloc() RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](rc, "alloc")
+	rv := objc.CallMethod[RunningApplication](rc, "alloc")
 	return rv
 }
 
 func (rc _RunningApplicationClass) New() RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](rc, "new")
+	rv := objc.CallMethod[RunningApplication](rc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -63,110 +62,110 @@ func NewRunningApplication() RunningApplication {
 }
 
 func (r_ RunningApplication) Init() RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](r_, "init")
+	rv := objc.CallMethod[RunningApplication](r_, "init")
 	return rv
 }
 
 func (rc _RunningApplicationClass) RunningApplicationsWithBundleIdentifier(bundleIdentifier string) []RunningApplication {
-	rv := ffi.CallMethod[[]RunningApplication](rc, "runningApplicationsWithBundleIdentifier:", bundleIdentifier)
+	rv := objc.CallMethod[[]RunningApplication](rc, "runningApplicationsWithBundleIdentifier:", bundleIdentifier)
 	return rv
 }
 
 func (r_ RunningApplication) ActivateWithOptions(options ApplicationActivationOptions) bool {
-	rv := ffi.CallMethod[bool](r_, "activateWithOptions:", options)
+	rv := objc.CallMethod[bool](r_, "activateWithOptions:", options)
 	return rv
 }
 
 func (r_ RunningApplication) Hide() bool {
-	rv := ffi.CallMethod[bool](r_, "hide")
+	rv := objc.CallMethod[bool](r_, "hide")
 	return rv
 }
 
 func (r_ RunningApplication) Unhide() bool {
-	rv := ffi.CallMethod[bool](r_, "unhide")
+	rv := objc.CallMethod[bool](r_, "unhide")
 	return rv
 }
 
 func (r_ RunningApplication) ForceTerminate() bool {
-	rv := ffi.CallMethod[bool](r_, "forceTerminate")
+	rv := objc.CallMethod[bool](r_, "forceTerminate")
 	return rv
 }
 
 func (r_ RunningApplication) Terminate() bool {
-	rv := ffi.CallMethod[bool](r_, "terminate")
+	rv := objc.CallMethod[bool](r_, "terminate")
 	return rv
 }
 
 func (rc _RunningApplicationClass) TerminateAutomaticallyTerminableApplications() {
-	ffi.CallMethod[ffi.Void](rc, "terminateAutomaticallyTerminableApplications")
+	objc.CallMethod[objc.Void](rc, "terminateAutomaticallyTerminableApplications")
 }
 
 func (rc _RunningApplicationClass) CurrentApplication() RunningApplication {
-	rv := ffi.CallMethod[RunningApplication](rc, "currentApplication")
+	rv := objc.CallMethod[RunningApplication](rc, "currentApplication")
 	return rv
 }
 
 func (r_ RunningApplication) IsActive() bool {
-	rv := ffi.CallMethod[bool](r_, "isActive")
+	rv := objc.CallMethod[bool](r_, "isActive")
 	return rv
 }
 
 func (r_ RunningApplication) ActivationPolicy() ApplicationActivationPolicy {
-	rv := ffi.CallMethod[ApplicationActivationPolicy](r_, "activationPolicy")
+	rv := objc.CallMethod[ApplicationActivationPolicy](r_, "activationPolicy")
 	return rv
 }
 
 func (r_ RunningApplication) IsHidden() bool {
-	rv := ffi.CallMethod[bool](r_, "isHidden")
+	rv := objc.CallMethod[bool](r_, "isHidden")
 	return rv
 }
 
 func (r_ RunningApplication) LocalizedName() string {
-	rv := ffi.CallMethod[string](r_, "localizedName")
+	rv := objc.CallMethod[string](r_, "localizedName")
 	return rv
 }
 
 func (r_ RunningApplication) Icon() Image {
-	rv := ffi.CallMethod[Image](r_, "icon")
+	rv := objc.CallMethod[Image](r_, "icon")
 	return rv
 }
 
 func (r_ RunningApplication) BundleIdentifier() string {
-	rv := ffi.CallMethod[string](r_, "bundleIdentifier")
+	rv := objc.CallMethod[string](r_, "bundleIdentifier")
 	return rv
 }
 
 func (r_ RunningApplication) BundleURL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](r_, "bundleURL")
+	rv := objc.CallMethod[foundation.URL](r_, "bundleURL")
 	return rv
 }
 
 func (r_ RunningApplication) ExecutableArchitecture() int {
-	rv := ffi.CallMethod[int](r_, "executableArchitecture")
+	rv := objc.CallMethod[int](r_, "executableArchitecture")
 	return rv
 }
 
 func (r_ RunningApplication) ExecutableURL() foundation.URL {
-	rv := ffi.CallMethod[foundation.URL](r_, "executableURL")
+	rv := objc.CallMethod[foundation.URL](r_, "executableURL")
 	return rv
 }
 
 func (r_ RunningApplication) LaunchDate() foundation.Date {
-	rv := ffi.CallMethod[foundation.Date](r_, "launchDate")
+	rv := objc.CallMethod[foundation.Date](r_, "launchDate")
 	return rv
 }
 
 func (r_ RunningApplication) IsFinishedLaunching() bool {
-	rv := ffi.CallMethod[bool](r_, "isFinishedLaunching")
+	rv := objc.CallMethod[bool](r_, "isFinishedLaunching")
 	return rv
 }
 
 func (r_ RunningApplication) OwnsMenuBar() bool {
-	rv := ffi.CallMethod[bool](r_, "ownsMenuBar")
+	rv := objc.CallMethod[bool](r_, "ownsMenuBar")
 	return rv
 }
 
 func (r_ RunningApplication) IsTerminated() bool {
-	rv := ffi.CallMethod[bool](r_, "isTerminated")
+	rv := objc.CallMethod[bool](r_, "isTerminated")
 	return rv
 }

@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -98,7 +97,7 @@ func (i_ *ImageDelegateWrapper) ImplementsImageDidNotDraw_InRect() bool {
 }
 
 func (i_ ImageDelegateWrapper) ImageDidNotDraw_InRect(sender IImage, rect foundation.Rect) Image {
-	rv := ffi.CallMethod[Image](i_, "imageDidNotDraw:inRect:", sender, rect)
+	rv := objc.CallMethod[Image](i_, "imageDidNotDraw:inRect:", sender, rect)
 	return rv
 }
 
@@ -107,7 +106,7 @@ func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadPartOfRepresentation_With
 }
 
 func (i_ ImageDelegateWrapper) Image_DidLoadPartOfRepresentation_WithValidRows(image IImage, rep IImageRep, rows int) {
-	ffi.CallMethod[ffi.Void](i_, "image:didLoadPartOfRepresentation:withValidRows:", image, rep, rows)
+	objc.CallMethod[objc.Void](i_, "image:didLoadPartOfRepresentation:withValidRows:", image, rep, rows)
 }
 
 func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadRepresentation_WithStatus() bool {
@@ -115,7 +114,7 @@ func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadRepresentation_WithStatus
 }
 
 func (i_ ImageDelegateWrapper) Image_DidLoadRepresentation_WithStatus(image IImage, rep IImageRep, status ImageLoadStatus) {
-	ffi.CallMethod[ffi.Void](i_, "image:didLoadRepresentation:withStatus:", image, rep, status)
+	objc.CallMethod[objc.Void](i_, "image:didLoadRepresentation:withStatus:", image, rep, status)
 }
 
 func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadRepresentationHeader() bool {
@@ -123,7 +122,7 @@ func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadRepresentationHeader() bo
 }
 
 func (i_ ImageDelegateWrapper) Image_DidLoadRepresentationHeader(image IImage, rep IImageRep) {
-	ffi.CallMethod[ffi.Void](i_, "image:didLoadRepresentationHeader:", image, rep)
+	objc.CallMethod[objc.Void](i_, "image:didLoadRepresentationHeader:", image, rep)
 }
 
 func (i_ *ImageDelegateWrapper) ImplementsImage_WillLoadRepresentation() bool {
@@ -131,5 +130,5 @@ func (i_ *ImageDelegateWrapper) ImplementsImage_WillLoadRepresentation() bool {
 }
 
 func (i_ ImageDelegateWrapper) Image_WillLoadRepresentation(image IImage, rep IImageRep) {
-	ffi.CallMethod[ffi.Void](i_, "image:willLoadRepresentation:", image, rep)
+	objc.CallMethod[objc.Void](i_, "image:willLoadRepresentation:", image, rep)
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -32,22 +31,22 @@ func MakeCollectionLayoutGroupCustomItem(ptr unsafe.Pointer) CollectionLayoutGro
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame(frame foundation.Rect) CollectionLayoutGroupCustomItem {
-	rv := ffi.CallMethod[CollectionLayoutGroupCustomItem](cc, "customItemWithFrame:", frame)
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "customItemWithFrame:", frame)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame_ZIndex(frame foundation.Rect, zIndex int) CollectionLayoutGroupCustomItem {
-	rv := ffi.CallMethod[CollectionLayoutGroupCustomItem](cc, "customItemWithFrame:zIndex:", frame, zIndex)
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "customItemWithFrame:zIndex:", frame, zIndex)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) Alloc() CollectionLayoutGroupCustomItem {
-	rv := ffi.CallMethod[CollectionLayoutGroupCustomItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) New() CollectionLayoutGroupCustomItem {
-	rv := ffi.CallMethod[CollectionLayoutGroupCustomItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -57,16 +56,16 @@ func NewCollectionLayoutGroupCustomItem() CollectionLayoutGroupCustomItem {
 }
 
 func (c_ CollectionLayoutGroupCustomItem) Init() CollectionLayoutGroupCustomItem {
-	rv := ffi.CallMethod[CollectionLayoutGroupCustomItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutGroupCustomItem) Frame() foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](c_, "frame")
+	rv := objc.CallMethod[foundation.Rect](c_, "frame")
 	return rv
 }
 
 func (c_ CollectionLayoutGroupCustomItem) ZIndex() int {
-	rv := ffi.CallMethod[int](c_, "zIndex")
+	rv := objc.CallMethod[int](c_, "zIndex")
 	return rv
 }

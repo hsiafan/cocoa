@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,12 +33,12 @@ func MakeException(ptr unsafe.Pointer) Exception {
 }
 
 func (ec _ExceptionClass) Alloc() Exception {
-	rv := ffi.CallMethod[Exception](ec, "alloc")
+	rv := objc.CallMethod[Exception](ec, "alloc")
 	return rv
 }
 
 func (ec _ExceptionClass) New() Exception {
-	rv := ffi.CallMethod[Exception](ec, "new")
+	rv := objc.CallMethod[Exception](ec, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -49,30 +48,30 @@ func NewException() Exception {
 }
 
 func (e_ Exception) Init() Exception {
-	rv := ffi.CallMethod[Exception](e_, "init")
+	rv := objc.CallMethod[Exception](e_, "init")
 	return rv
 }
 
 func (e_ Exception) Raise() {
-	ffi.CallMethod[ffi.Void](e_, "raise")
+	objc.CallMethod[objc.Void](e_, "raise")
 }
 
 func (e_ Exception) Name() ExceptionName {
-	rv := ffi.CallMethod[ExceptionName](e_, "name")
+	rv := objc.CallMethod[ExceptionName](e_, "name")
 	return rv
 }
 
 func (e_ Exception) Reason() string {
-	rv := ffi.CallMethod[string](e_, "reason")
+	rv := objc.CallMethod[string](e_, "reason")
 	return rv
 }
 
 func (e_ Exception) CallStackReturnAddresses() []Number {
-	rv := ffi.CallMethod[[]Number](e_, "callStackReturnAddresses")
+	rv := objc.CallMethod[[]Number](e_, "callStackReturnAddresses")
 	return rv
 }
 
 func (e_ Exception) CallStackSymbols() []string {
-	rv := ffi.CallMethod[[]string](e_, "callStackSymbols")
+	rv := objc.CallMethod[[]string](e_, "callStackSymbols")
 	return rv
 }

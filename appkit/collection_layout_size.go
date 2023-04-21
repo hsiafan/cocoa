@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -31,17 +30,17 @@ func MakeCollectionLayoutSize(ptr unsafe.Pointer) CollectionLayoutSize {
 }
 
 func (cc _CollectionLayoutSizeClass) SizeWithWidthDimension_HeightDimension(width ICollectionLayoutDimension, height ICollectionLayoutDimension) CollectionLayoutSize {
-	rv := ffi.CallMethod[CollectionLayoutSize](cc, "sizeWithWidthDimension:heightDimension:", width, height)
+	rv := objc.CallMethod[CollectionLayoutSize](cc, "sizeWithWidthDimension:heightDimension:", width, height)
 	return rv
 }
 
 func (cc _CollectionLayoutSizeClass) Alloc() CollectionLayoutSize {
-	rv := ffi.CallMethod[CollectionLayoutSize](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutSize](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutSizeClass) New() CollectionLayoutSize {
-	rv := ffi.CallMethod[CollectionLayoutSize](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutSize](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -51,16 +50,16 @@ func NewCollectionLayoutSize() CollectionLayoutSize {
 }
 
 func (c_ CollectionLayoutSize) Init() CollectionLayoutSize {
-	rv := ffi.CallMethod[CollectionLayoutSize](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutSize](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutSize) WidthDimension() CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](c_, "widthDimension")
+	rv := objc.CallMethod[CollectionLayoutDimension](c_, "widthDimension")
 	return rv
 }
 
 func (c_ CollectionLayoutSize) HeightDimension() CollectionLayoutDimension {
-	rv := ffi.CallMethod[CollectionLayoutDimension](c_, "heightDimension")
+	rv := objc.CallMethod[CollectionLayoutDimension](c_, "heightDimension")
 	return rv
 }

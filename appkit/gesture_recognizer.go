@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -84,17 +83,17 @@ func MakeGestureRecognizer(ptr unsafe.Pointer) GestureRecognizer {
 }
 
 func (g_ GestureRecognizer) InitWithTarget_Action(target objc.IObject, action objc.Selector) GestureRecognizer {
-	rv := ffi.CallMethod[GestureRecognizer](g_, "initWithTarget:action:", target, action)
+	rv := objc.CallMethod[GestureRecognizer](g_, "initWithTarget:action:", target, action)
 	return rv
 }
 
 func (gc _GestureRecognizerClass) Alloc() GestureRecognizer {
-	rv := ffi.CallMethod[GestureRecognizer](gc, "alloc")
+	rv := objc.CallMethod[GestureRecognizer](gc, "alloc")
 	return rv
 }
 
 func (gc _GestureRecognizerClass) New() GestureRecognizer {
-	rv := ffi.CallMethod[GestureRecognizer](gc, "new")
+	rv := objc.CallMethod[GestureRecognizer](gc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -104,240 +103,240 @@ func NewGestureRecognizer() GestureRecognizer {
 }
 
 func (g_ GestureRecognizer) Init() GestureRecognizer {
-	rv := ffi.CallMethod[GestureRecognizer](g_, "init")
+	rv := objc.CallMethod[GestureRecognizer](g_, "init")
 	return rv
 }
 
 func (g_ GestureRecognizer) LocationInView(view IView) foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](g_, "locationInView:", view)
+	rv := objc.CallMethod[foundation.Point](g_, "locationInView:", view)
 	return rv
 }
 
 func (g_ GestureRecognizer) Reset() {
-	ffi.CallMethod[ffi.Void](g_, "reset")
+	objc.CallMethod[objc.Void](g_, "reset")
 }
 
 func (g_ GestureRecognizer) MouseDown(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "mouseDown:", event)
+	objc.CallMethod[objc.Void](g_, "mouseDown:", event)
 }
 
 func (g_ GestureRecognizer) MouseDragged(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "mouseDragged:", event)
+	objc.CallMethod[objc.Void](g_, "mouseDragged:", event)
 }
 
 func (g_ GestureRecognizer) MouseUp(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "mouseUp:", event)
+	objc.CallMethod[objc.Void](g_, "mouseUp:", event)
 }
 
 func (g_ GestureRecognizer) OtherMouseDown(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "otherMouseDown:", event)
+	objc.CallMethod[objc.Void](g_, "otherMouseDown:", event)
 }
 
 func (g_ GestureRecognizer) OtherMouseDragged(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "otherMouseDragged:", event)
+	objc.CallMethod[objc.Void](g_, "otherMouseDragged:", event)
 }
 
 func (g_ GestureRecognizer) OtherMouseUp(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "otherMouseUp:", event)
+	objc.CallMethod[objc.Void](g_, "otherMouseUp:", event)
 }
 
 func (g_ GestureRecognizer) RightMouseDown(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "rightMouseDown:", event)
+	objc.CallMethod[objc.Void](g_, "rightMouseDown:", event)
 }
 
 func (g_ GestureRecognizer) RightMouseDragged(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "rightMouseDragged:", event)
+	objc.CallMethod[objc.Void](g_, "rightMouseDragged:", event)
 }
 
 func (g_ GestureRecognizer) RightMouseUp(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "rightMouseUp:", event)
+	objc.CallMethod[objc.Void](g_, "rightMouseUp:", event)
 }
 
 func (g_ GestureRecognizer) MagnifyWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "magnifyWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "magnifyWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) RotateWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "rotateWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "rotateWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) CanBePreventedByGestureRecognizer(preventingGestureRecognizer IGestureRecognizer) bool {
-	rv := ffi.CallMethod[bool](g_, "canBePreventedByGestureRecognizer:", preventingGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, "canBePreventedByGestureRecognizer:", preventingGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool {
-	rv := ffi.CallMethod[bool](g_, "canPreventGestureRecognizer:", preventedGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, "canPreventGestureRecognizer:", preventedGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) ShouldBeRequiredToFailByGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool {
-	rv := ffi.CallMethod[bool](g_, "shouldBeRequiredToFailByGestureRecognizer:", otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, "shouldBeRequiredToFailByGestureRecognizer:", otherGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) ShouldRequireFailureOfGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool {
-	rv := ffi.CallMethod[bool](g_, "shouldRequireFailureOfGestureRecognizer:", otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, "shouldRequireFailureOfGestureRecognizer:", otherGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) KeyDown(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "keyDown:", event)
+	objc.CallMethod[objc.Void](g_, "keyDown:", event)
 }
 
 func (g_ GestureRecognizer) KeyUp(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "keyUp:", event)
+	objc.CallMethod[objc.Void](g_, "keyUp:", event)
 }
 
 func (g_ GestureRecognizer) TabletPoint(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "tabletPoint:", event)
+	objc.CallMethod[objc.Void](g_, "tabletPoint:", event)
 }
 
 func (g_ GestureRecognizer) FlagsChanged(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "flagsChanged:", event)
+	objc.CallMethod[objc.Void](g_, "flagsChanged:", event)
 }
 
 func (g_ GestureRecognizer) PressureChangeWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "pressureChangeWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "pressureChangeWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) TouchesBeganWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "touchesBeganWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "touchesBeganWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) TouchesCancelledWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "touchesCancelledWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "touchesCancelledWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) TouchesEndedWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "touchesEndedWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "touchesEndedWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) TouchesMovedWithEvent(event IEvent) {
-	ffi.CallMethod[ffi.Void](g_, "touchesMovedWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, "touchesMovedWithEvent:", event)
 }
 
 func (g_ GestureRecognizer) Action() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](g_, "action")
+	rv := objc.CallMethod[objc.Selector](g_, "action")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](g_, "setAction:", value)
+	objc.CallMethod[objc.Void](g_, "setAction:", value)
 }
 
 func (g_ GestureRecognizer) Target() objc.Object {
-	rv := ffi.CallMethod[objc.Object](g_, "target")
+	rv := objc.CallMethod[objc.Object](g_, "target")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetTarget(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](g_, "setTarget:", value)
+	objc.CallMethod[objc.Void](g_, "setTarget:", value)
 }
 
 func (g_ GestureRecognizer) State() GestureRecognizerState {
-	rv := ffi.CallMethod[GestureRecognizerState](g_, "state")
+	rv := objc.CallMethod[GestureRecognizerState](g_, "state")
 	return rv
 }
 
 func (g_ GestureRecognizer) View() View {
-	rv := ffi.CallMethod[View](g_, "view")
+	rv := objc.CallMethod[View](g_, "view")
 	return rv
 }
 
 func (g_ GestureRecognizer) IsEnabled() bool {
-	rv := ffi.CallMethod[bool](g_, "isEnabled")
+	rv := objc.CallMethod[bool](g_, "isEnabled")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetEnabled(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setEnabled:", value)
+	objc.CallMethod[objc.Void](g_, "setEnabled:", value)
 }
 
 func (g_ GestureRecognizer) DelaysPrimaryMouseButtonEvents() bool {
-	rv := ffi.CallMethod[bool](g_, "delaysPrimaryMouseButtonEvents")
+	rv := objc.CallMethod[bool](g_, "delaysPrimaryMouseButtonEvents")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysPrimaryMouseButtonEvents(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setDelaysPrimaryMouseButtonEvents:", value)
+	objc.CallMethod[objc.Void](g_, "setDelaysPrimaryMouseButtonEvents:", value)
 }
 
 func (g_ GestureRecognizer) DelaysSecondaryMouseButtonEvents() bool {
-	rv := ffi.CallMethod[bool](g_, "delaysSecondaryMouseButtonEvents")
+	rv := objc.CallMethod[bool](g_, "delaysSecondaryMouseButtonEvents")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysSecondaryMouseButtonEvents(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setDelaysSecondaryMouseButtonEvents:", value)
+	objc.CallMethod[objc.Void](g_, "setDelaysSecondaryMouseButtonEvents:", value)
 }
 
 func (g_ GestureRecognizer) DelaysOtherMouseButtonEvents() bool {
-	rv := ffi.CallMethod[bool](g_, "delaysOtherMouseButtonEvents")
+	rv := objc.CallMethod[bool](g_, "delaysOtherMouseButtonEvents")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysOtherMouseButtonEvents(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setDelaysOtherMouseButtonEvents:", value)
+	objc.CallMethod[objc.Void](g_, "setDelaysOtherMouseButtonEvents:", value)
 }
 
 func (g_ GestureRecognizer) DelaysKeyEvents() bool {
-	rv := ffi.CallMethod[bool](g_, "delaysKeyEvents")
+	rv := objc.CallMethod[bool](g_, "delaysKeyEvents")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysKeyEvents(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setDelaysKeyEvents:", value)
+	objc.CallMethod[objc.Void](g_, "setDelaysKeyEvents:", value)
 }
 
 func (g_ GestureRecognizer) DelaysMagnificationEvents() bool {
-	rv := ffi.CallMethod[bool](g_, "delaysMagnificationEvents")
+	rv := objc.CallMethod[bool](g_, "delaysMagnificationEvents")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysMagnificationEvents(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setDelaysMagnificationEvents:", value)
+	objc.CallMethod[objc.Void](g_, "setDelaysMagnificationEvents:", value)
 }
 
 func (g_ GestureRecognizer) DelaysRotationEvents() bool {
-	rv := ffi.CallMethod[bool](g_, "delaysRotationEvents")
+	rv := objc.CallMethod[bool](g_, "delaysRotationEvents")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysRotationEvents(value bool) {
-	ffi.CallMethod[ffi.Void](g_, "setDelaysRotationEvents:", value)
+	objc.CallMethod[objc.Void](g_, "setDelaysRotationEvents:", value)
 }
 
 func (g_ GestureRecognizer) Delegate() GestureRecognizerDelegateWrapper {
-	rv := ffi.CallMethod[GestureRecognizerDelegateWrapper](g_, "delegate")
+	rv := objc.CallMethod[GestureRecognizerDelegateWrapper](g_, "delegate")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelegate(value GestureRecognizerDelegate) {
-	po := ffi.CreateProtocol("NSGestureRecognizerDelegate", value)
+	po := objc.CreateProtocol("NSGestureRecognizerDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(g_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](g_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](g_, "setDelegate:", po)
 }
 
 func (g_ GestureRecognizer) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](g_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](g_, "setDelegate:", value)
 }
 
 func (g_ GestureRecognizer) PressureConfiguration() PressureConfiguration {
-	rv := ffi.CallMethod[PressureConfiguration](g_, "pressureConfiguration")
+	rv := objc.CallMethod[PressureConfiguration](g_, "pressureConfiguration")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetPressureConfiguration(value IPressureConfiguration) {
-	ffi.CallMethod[ffi.Void](g_, "setPressureConfiguration:", value)
+	objc.CallMethod[objc.Void](g_, "setPressureConfiguration:", value)
 }
 
 func (g_ GestureRecognizer) AllowedTouchTypes() TouchTypeMask {
-	rv := ffi.CallMethod[TouchTypeMask](g_, "allowedTouchTypes")
+	rv := objc.CallMethod[TouchTypeMask](g_, "allowedTouchTypes")
 	return rv
 }
 
 func (g_ GestureRecognizer) SetAllowedTouchTypes(value TouchTypeMask) {
-	ffi.CallMethod[ffi.Void](g_, "setAllowedTouchTypes:", value)
+	objc.CallMethod[objc.Void](g_, "setAllowedTouchTypes:", value)
 }

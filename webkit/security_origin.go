@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,12 +31,12 @@ func MakeSecurityOrigin(ptr unsafe.Pointer) SecurityOrigin {
 }
 
 func (sc _SecurityOriginClass) Alloc() SecurityOrigin {
-	rv := ffi.CallMethod[SecurityOrigin](sc, "alloc")
+	rv := objc.CallMethod[SecurityOrigin](sc, "alloc")
 	return rv
 }
 
 func (sc _SecurityOriginClass) New() SecurityOrigin {
-	rv := ffi.CallMethod[SecurityOrigin](sc, "new")
+	rv := objc.CallMethod[SecurityOrigin](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -47,21 +46,21 @@ func NewSecurityOrigin() SecurityOrigin {
 }
 
 func (s_ SecurityOrigin) Init() SecurityOrigin {
-	rv := ffi.CallMethod[SecurityOrigin](s_, "init")
+	rv := objc.CallMethod[SecurityOrigin](s_, "init")
 	return rv
 }
 
 func (s_ SecurityOrigin) Host() string {
-	rv := ffi.CallMethod[string](s_, "host")
+	rv := objc.CallMethod[string](s_, "host")
 	return rv
 }
 
 func (s_ SecurityOrigin) Port() int {
-	rv := ffi.CallMethod[int](s_, "port")
+	rv := objc.CallMethod[int](s_, "port")
 	return rv
 }
 
 func (s_ SecurityOrigin) Protocol() string {
-	rv := ffi.CallMethod[string](s_, "protocol")
+	rv := objc.CallMethod[string](s_, "protocol")
 	return rv
 }

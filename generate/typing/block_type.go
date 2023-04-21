@@ -20,7 +20,7 @@ type BlockType struct {
 }
 
 func (a *BlockType) GoImports() set.Set[string] {
-	imports := set.New("github.com/hsiafan/cocoa/ffi")
+	imports := set.New("github.com/hsiafan/cocoa/objc")
 	imports.AddSet(a.ReturnType.GoImports())
 	for _, p := range a.Params {
 		imports.AddSet(p.Type.GoImports())

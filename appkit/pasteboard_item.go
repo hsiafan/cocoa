@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,12 +38,12 @@ func MakePasteboardItem(ptr unsafe.Pointer) PasteboardItem {
 }
 
 func (pc _PasteboardItemClass) Alloc() PasteboardItem {
-	rv := ffi.CallMethod[PasteboardItem](pc, "alloc")
+	rv := objc.CallMethod[PasteboardItem](pc, "alloc")
 	return rv
 }
 
 func (pc _PasteboardItemClass) New() PasteboardItem {
-	rv := ffi.CallMethod[PasteboardItem](pc, "new")
+	rv := objc.CallMethod[PasteboardItem](pc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,58 +53,58 @@ func NewPasteboardItem() PasteboardItem {
 }
 
 func (p_ PasteboardItem) Init() PasteboardItem {
-	rv := ffi.CallMethod[PasteboardItem](p_, "init")
+	rv := objc.CallMethod[PasteboardItem](p_, "init")
 	return rv
 }
 
 func (p_ PasteboardItem) AvailableTypeFromArray(types []PasteboardType) PasteboardType {
-	rv := ffi.CallMethod[PasteboardType](p_, "availableTypeFromArray:", types)
+	rv := objc.CallMethod[PasteboardType](p_, "availableTypeFromArray:", types)
 	return rv
 }
 
 func (p_ PasteboardItem) SetDataProvider_ForTypes(dataProvider PasteboardItemDataProvider, types []PasteboardType) bool {
-	po := ffi.CreateProtocol("NSPasteboardItemDataProvider", dataProvider)
+	po := objc.CreateProtocol("NSPasteboardItemDataProvider", dataProvider)
 	defer po.Release()
-	rv := ffi.CallMethod[bool](p_, "setDataProvider:forTypes:", po, types)
+	rv := objc.CallMethod[bool](p_, "setDataProvider:forTypes:", po, types)
 	return rv
 }
 
 func (p_ PasteboardItem) SetDataProvider0_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool {
-	rv := ffi.CallMethod[bool](p_, "setDataProvider:forTypes:", dataProvider, types)
+	rv := objc.CallMethod[bool](p_, "setDataProvider:forTypes:", dataProvider, types)
 	return rv
 }
 
 func (p_ PasteboardItem) SetData_ForType(data []byte, type_ PasteboardType) bool {
-	rv := ffi.CallMethod[bool](p_, "setData:forType:", data, type_)
+	rv := objc.CallMethod[bool](p_, "setData:forType:", data, type_)
 	return rv
 }
 
 func (p_ PasteboardItem) SetString_ForType(string_ string, type_ PasteboardType) bool {
-	rv := ffi.CallMethod[bool](p_, "setString:forType:", string_, type_)
+	rv := objc.CallMethod[bool](p_, "setString:forType:", string_, type_)
 	return rv
 }
 
 func (p_ PasteboardItem) SetPropertyList_ForType(propertyList objc.IObject, type_ PasteboardType) bool {
-	rv := ffi.CallMethod[bool](p_, "setPropertyList:forType:", propertyList, type_)
+	rv := objc.CallMethod[bool](p_, "setPropertyList:forType:", propertyList, type_)
 	return rv
 }
 
 func (p_ PasteboardItem) DataForType(type_ PasteboardType) []byte {
-	rv := ffi.CallMethod[[]byte](p_, "dataForType:", type_)
+	rv := objc.CallMethod[[]byte](p_, "dataForType:", type_)
 	return rv
 }
 
 func (p_ PasteboardItem) StringForType(type_ PasteboardType) string {
-	rv := ffi.CallMethod[string](p_, "stringForType:", type_)
+	rv := objc.CallMethod[string](p_, "stringForType:", type_)
 	return rv
 }
 
 func (p_ PasteboardItem) PropertyListForType(type_ PasteboardType) objc.Object {
-	rv := ffi.CallMethod[objc.Object](p_, "propertyListForType:", type_)
+	rv := objc.CallMethod[objc.Object](p_, "propertyListForType:", type_)
 	return rv
 }
 
 func (p_ PasteboardItem) Types() []PasteboardType {
-	rv := ffi.CallMethod[[]PasteboardType](p_, "types")
+	rv := objc.CallMethod[[]PasteboardType](p_, "types")
 	return rv
 }

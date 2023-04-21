@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -460,7 +459,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ViewForTableColumn_Row()
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ViewForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) View {
-	rv := ffi.CallMethod[View](t_, "tableView:viewForTableColumn:row:", tableView, tableColumn, row)
+	rv := objc.CallMethod[View](t_, "tableView:viewForTableColumn:row:", tableView, tableColumn, row)
 	return rv
 }
 
@@ -469,7 +468,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_RowViewForRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_RowViewForRow(tableView ITableView, row int) TableRowView {
-	rv := ffi.CallMethod[TableRowView](t_, "tableView:rowViewForRow:", tableView, row)
+	rv := objc.CallMethod[TableRowView](t_, "tableView:rowViewForRow:", tableView, row)
 	return rv
 }
 
@@ -478,7 +477,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidAddRowView_ForRow() b
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidAddRowView_ForRow(tableView ITableView, rowView ITableRowView, row int) {
-	ffi.CallMethod[ffi.Void](t_, "tableView:didAddRowView:forRow:", tableView, rowView, row)
+	objc.CallMethod[objc.Void](t_, "tableView:didAddRowView:forRow:", tableView, rowView, row)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidRemoveRowView_ForRow() bool {
@@ -486,7 +485,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidRemoveRowView_ForRow(
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidRemoveRowView_ForRow(tableView ITableView, rowView ITableRowView, row int) {
-	ffi.CallMethod[ffi.Void](t_, "tableView:didRemoveRowView:forRow:", tableView, rowView, row)
+	objc.CallMethod[objc.Void](t_, "tableView:didRemoveRowView:forRow:", tableView, rowView, row)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_IsGroupRow() bool {
@@ -494,7 +493,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_IsGroupRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_IsGroupRow(tableView ITableView, row int) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:isGroupRow:", tableView, row)
+	rv := objc.CallMethod[bool](t_, "tableView:isGroupRow:", tableView, row)
 	return rv
 }
 
@@ -503,7 +502,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_WillDisplayCell_ForTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_WillDisplayCell_ForTableColumn_Row(tableView ITableView, cell objc.IObject, tableColumn ITableColumn, row int) {
-	ffi.CallMethod[ffi.Void](t_, "tableView:willDisplayCell:forTableColumn:row:", tableView, cell, tableColumn, row)
+	objc.CallMethod[objc.Void](t_, "tableView:willDisplayCell:forTableColumn:row:", tableView, cell, tableColumn, row)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_DataCellForTableColumn_Row() bool {
@@ -511,7 +510,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DataCellForTableColumn_R
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DataCellForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) Cell {
-	rv := ffi.CallMethod[Cell](t_, "tableView:dataCellForTableColumn:row:", tableView, tableColumn, row)
+	rv := objc.CallMethod[Cell](t_, "tableView:dataCellForTableColumn:row:", tableView, tableColumn, row)
 	return rv
 }
 
@@ -520,7 +519,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldShowCellExpansionF
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldShowCellExpansionForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldShowCellExpansionForTableColumn:row:", tableView, tableColumn, row)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldShowCellExpansionForTableColumn:row:", tableView, tableColumn, row)
 	return rv
 }
 
@@ -529,7 +528,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ToolTipForCell_Rect_Tabl
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ToolTipForCell_Rect_TableColumn_Row_MouseLocation(tableView ITableView, cell ICell, rect *foundation.Rect, tableColumn ITableColumn, row int, mouseLocation foundation.Point) string {
-	rv := ffi.CallMethod[string](t_, "tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:", tableView, cell, rect, tableColumn, row, mouseLocation)
+	rv := objc.CallMethod[string](t_, "tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:", tableView, cell, rect, tableColumn, row, mouseLocation)
 	return rv
 }
 
@@ -538,7 +537,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldEditTableColumn_Ro
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldEditTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldEditTableColumn:row:", tableView, tableColumn, row)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldEditTableColumn:row:", tableView, tableColumn, row)
 	return rv
 }
 
@@ -547,7 +546,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_HeightOfRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_HeightOfRow(tableView ITableView, row int) float64 {
-	rv := ffi.CallMethod[float64](t_, "tableView:heightOfRow:", tableView, row)
+	rv := objc.CallMethod[float64](t_, "tableView:heightOfRow:", tableView, row)
 	return rv
 }
 
@@ -556,7 +555,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_SizeToFitWidthOfColumn()
 }
 
 func (t_ TableViewDelegateWrapper) TableView_SizeToFitWidthOfColumn(tableView ITableView, column int) float64 {
-	rv := ffi.CallMethod[float64](t_, "tableView:sizeToFitWidthOfColumn:", tableView, column)
+	rv := objc.CallMethod[float64](t_, "tableView:sizeToFitWidthOfColumn:", tableView, column)
 	return rv
 }
 
@@ -565,7 +564,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsSelectionShouldChangeInTableView()
 }
 
 func (t_ TableViewDelegateWrapper) SelectionShouldChangeInTableView(tableView ITableView) bool {
-	rv := ffi.CallMethod[bool](t_, "selectionShouldChangeInTableView:", tableView)
+	rv := objc.CallMethod[bool](t_, "selectionShouldChangeInTableView:", tableView)
 	return rv
 }
 
@@ -574,7 +573,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldSelectRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldSelectRow(tableView ITableView, row int) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldSelectRow:", tableView, row)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldSelectRow:", tableView, row)
 	return rv
 }
 
@@ -583,7 +582,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_SelectionIndexesForPropo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_SelectionIndexesForProposedSelection(tableView ITableView, proposedSelectionIndexes foundation.IIndexSet) foundation.IndexSet {
-	rv := ffi.CallMethod[foundation.IndexSet](t_, "tableView:selectionIndexesForProposedSelection:", tableView, proposedSelectionIndexes)
+	rv := objc.CallMethod[foundation.IndexSet](t_, "tableView:selectionIndexesForProposedSelection:", tableView, proposedSelectionIndexes)
 	return rv
 }
 
@@ -592,7 +591,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldSelectTableColumn(
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldSelectTableColumn(tableView ITableView, tableColumn ITableColumn) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldSelectTableColumn:", tableView, tableColumn)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldSelectTableColumn:", tableView, tableColumn)
 	return rv
 }
 
@@ -601,7 +600,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewSelectionIsChanging() boo
 }
 
 func (t_ TableViewDelegateWrapper) TableViewSelectionIsChanging(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "tableViewSelectionIsChanging:", notification)
+	objc.CallMethod[objc.Void](t_, "tableViewSelectionIsChanging:", notification)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableViewSelectionDidChange() bool {
@@ -609,7 +608,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewSelectionDidChange() bool
 }
 
 func (t_ TableViewDelegateWrapper) TableViewSelectionDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "tableViewSelectionDidChange:", notification)
+	objc.CallMethod[objc.Void](t_, "tableViewSelectionDidChange:", notification)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTypeSelectForEvent_WithCurrentSearchString() bool {
@@ -617,7 +616,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTypeSelectForEvent
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldTypeSelectForEvent_WithCurrentSearchString(tableView ITableView, event IEvent, searchString string) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldTypeSelectForEvent:withCurrentSearchString:", tableView, event, searchString)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldTypeSelectForEvent:withCurrentSearchString:", tableView, event, searchString)
 	return rv
 }
 
@@ -626,7 +625,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_TypeSelectStringForTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_TypeSelectStringForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) string {
-	rv := ffi.CallMethod[string](t_, "tableView:typeSelectStringForTableColumn:row:", tableView, tableColumn, row)
+	rv := objc.CallMethod[string](t_, "tableView:typeSelectStringForTableColumn:row:", tableView, tableColumn, row)
 	return rv
 }
 
@@ -635,7 +634,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_NextTypeSelectMatchFromR
 }
 
 func (t_ TableViewDelegateWrapper) TableView_NextTypeSelectMatchFromRow_ToRow_ForString(tableView ITableView, startRow int, endRow int, searchString string) int {
-	rv := ffi.CallMethod[int](t_, "tableView:nextTypeSelectMatchFromRow:toRow:forString:", tableView, startRow, endRow, searchString)
+	rv := objc.CallMethod[int](t_, "tableView:nextTypeSelectMatchFromRow:toRow:forString:", tableView, startRow, endRow, searchString)
 	return rv
 }
 
@@ -644,7 +643,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldReorderColumn_ToCo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldReorderColumn_ToColumn(tableView ITableView, columnIndex int, newColumnIndex int) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldReorderColumn:toColumn:", tableView, columnIndex, newColumnIndex)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldReorderColumn:toColumn:", tableView, columnIndex, newColumnIndex)
 	return rv
 }
 
@@ -653,7 +652,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidDragTableColumn() boo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidDragTableColumn(tableView ITableView, tableColumn ITableColumn) {
-	ffi.CallMethod[ffi.Void](t_, "tableView:didDragTableColumn:", tableView, tableColumn)
+	objc.CallMethod[objc.Void](t_, "tableView:didDragTableColumn:", tableView, tableColumn)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidMove() bool {
@@ -661,7 +660,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidMove() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableViewColumnDidMove(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "tableViewColumnDidMove:", notification)
+	objc.CallMethod[objc.Void](t_, "tableViewColumnDidMove:", notification)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidResize() bool {
@@ -669,7 +668,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidResize() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableViewColumnDidResize(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](t_, "tableViewColumnDidResize:", notification)
+	objc.CallMethod[objc.Void](t_, "tableViewColumnDidResize:", notification)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidClickTableColumn() bool {
@@ -677,7 +676,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidClickTableColumn() bo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidClickTableColumn(tableView ITableView, tableColumn ITableColumn) {
-	ffi.CallMethod[ffi.Void](t_, "tableView:didClickTableColumn:", tableView, tableColumn)
+	objc.CallMethod[objc.Void](t_, "tableView:didClickTableColumn:", tableView, tableColumn)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_MouseDownInHeaderOfTableColumn() bool {
@@ -685,7 +684,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_MouseDownInHeaderOfTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_MouseDownInHeaderOfTableColumn(tableView ITableView, tableColumn ITableColumn) {
-	ffi.CallMethod[ffi.Void](t_, "tableView:mouseDownInHeaderOfTableColumn:", tableView, tableColumn)
+	objc.CallMethod[objc.Void](t_, "tableView:mouseDownInHeaderOfTableColumn:", tableView, tableColumn)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTrackCell_ForTableColumn_Row() bool {
@@ -693,7 +692,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTrackCell_ForTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldTrackCell_ForTableColumn_Row(tableView ITableView, cell ICell, tableColumn ITableColumn, row int) bool {
-	rv := ffi.CallMethod[bool](t_, "tableView:shouldTrackCell:forTableColumn:row:", tableView, cell, tableColumn, row)
+	rv := objc.CallMethod[bool](t_, "tableView:shouldTrackCell:forTableColumn:row:", tableView, cell, tableColumn, row)
 	return rv
 }
 
@@ -702,6 +701,6 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_RowActionsForRow_Edge() 
 }
 
 func (t_ TableViewDelegateWrapper) TableView_RowActionsForRow_Edge(tableView ITableView, row int, edge TableRowActionEdge) []TableViewRowAction {
-	rv := ffi.CallMethod[[]TableViewRowAction](t_, "tableView:rowActionsForRow:edge:", tableView, row, edge)
+	rv := objc.CallMethod[[]TableViewRowAction](t_, "tableView:rowActionsForRow:edge:", tableView, row, edge)
 	return rv
 }

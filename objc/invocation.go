@@ -1,4 +1,4 @@
-package ffi
+package objc
 
 // #import <stdlib.h>
 // #import <stdint.h>
@@ -8,17 +8,15 @@ package ffi
 import "C"
 import (
 	"unsafe"
-
-	"github.com/hsiafan/cocoa/objc"
 )
 
 type invocation struct {
-	objc.Object
+	Object
 }
 
 func makeInvocation(ptr unsafe.Pointer) invocation {
 	return invocation{
-		Object: objc.MakeObject(ptr),
+		Object: MakeObject(ptr),
 	}
 }
 

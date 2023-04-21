@@ -4,7 +4,6 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,17 +38,17 @@ func MakeAnimation(ptr unsafe.Pointer) Animation {
 }
 
 func (ac _AnimationClass) Animation() Animation {
-	rv := ffi.CallMethod[Animation](ac, "animation")
+	rv := objc.CallMethod[Animation](ac, "animation")
 	return rv
 }
 
 func (ac _AnimationClass) Alloc() Animation {
-	rv := ffi.CallMethod[Animation](ac, "alloc")
+	rv := objc.CallMethod[Animation](ac, "alloc")
 	return rv
 }
 
 func (ac _AnimationClass) New() Animation {
-	rv := ffi.CallMethod[Animation](ac, "new")
+	rv := objc.CallMethod[Animation](ac, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -59,58 +58,58 @@ func NewAnimation() Animation {
 }
 
 func (a_ Animation) Init() Animation {
-	rv := ffi.CallMethod[Animation](a_, "init")
+	rv := objc.CallMethod[Animation](a_, "init")
 	return rv
 }
 
 func (ac _AnimationClass) DefaultValueForKey(key string) objc.Object {
-	rv := ffi.CallMethod[objc.Object](ac, "defaultValueForKey:", key)
+	rv := objc.CallMethod[objc.Object](ac, "defaultValueForKey:", key)
 	return rv
 }
 
 func (a_ Animation) ShouldArchiveValueForKey(key string) bool {
-	rv := ffi.CallMethod[bool](a_, "shouldArchiveValueForKey:", key)
+	rv := objc.CallMethod[bool](a_, "shouldArchiveValueForKey:", key)
 	return rv
 }
 
 func (a_ Animation) IsRemovedOnCompletion() bool {
-	rv := ffi.CallMethod[bool](a_, "isRemovedOnCompletion")
+	rv := objc.CallMethod[bool](a_, "isRemovedOnCompletion")
 	return rv
 }
 
 func (a_ Animation) SetRemovedOnCompletion(value bool) {
-	ffi.CallMethod[ffi.Void](a_, "setRemovedOnCompletion:", value)
+	objc.CallMethod[objc.Void](a_, "setRemovedOnCompletion:", value)
 }
 
 func (a_ Animation) TimingFunction() MediaTimingFunction {
-	rv := ffi.CallMethod[MediaTimingFunction](a_, "timingFunction")
+	rv := objc.CallMethod[MediaTimingFunction](a_, "timingFunction")
 	return rv
 }
 
 func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
-	ffi.CallMethod[ffi.Void](a_, "setTimingFunction:", value)
+	objc.CallMethod[objc.Void](a_, "setTimingFunction:", value)
 }
 
 func (a_ Animation) Delegate() AnimationDelegateWrapper {
-	rv := ffi.CallMethod[AnimationDelegateWrapper](a_, "delegate")
+	rv := objc.CallMethod[AnimationDelegateWrapper](a_, "delegate")
 	return rv
 }
 
 func (a_ Animation) SetDelegate(value AnimationDelegate) {
-	po := ffi.CreateProtocol("CAAnimationDelegate", value)
+	po := objc.CreateProtocol("CAAnimationDelegate", value)
 	defer po.Release()
-	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](a_, "setDelegate:", po)
 }
 
 func (a_ Animation) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Animation) PreferredFrameRateRange() FrameRateRange {
-	rv := ffi.CallMethod[FrameRateRange](a_, "preferredFrameRateRange")
+	rv := objc.CallMethod[FrameRateRange](a_, "preferredFrameRateRange")
 	return rv
 }
 
 func (a_ Animation) SetPreferredFrameRateRange(value FrameRateRange) {
-	ffi.CallMethod[ffi.Void](a_, "setPreferredFrameRateRange:", value)
+	objc.CallMethod[objc.Void](a_, "setPreferredFrameRateRange:", value)
 }

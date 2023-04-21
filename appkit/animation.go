@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -57,17 +56,17 @@ func MakeAnimation(ptr unsafe.Pointer) Animation {
 }
 
 func (a_ Animation) InitWithDuration_AnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) Animation {
-	rv := ffi.CallMethod[Animation](a_, "initWithDuration:animationCurve:", duration, animationCurve)
+	rv := objc.CallMethod[Animation](a_, "initWithDuration:animationCurve:", duration, animationCurve)
 	return rv
 }
 
 func (ac _AnimationClass) Alloc() Animation {
-	rv := ffi.CallMethod[Animation](ac, "alloc")
+	rv := objc.CallMethod[Animation](ac, "alloc")
 	return rv
 }
 
 func (ac _AnimationClass) New() Animation {
-	rv := ffi.CallMethod[Animation](ac, "new")
+	rv := objc.CallMethod[Animation](ac, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -77,123 +76,123 @@ func NewAnimation() Animation {
 }
 
 func (a_ Animation) Init() Animation {
-	rv := ffi.CallMethod[Animation](a_, "init")
+	rv := objc.CallMethod[Animation](a_, "init")
 	return rv
 }
 
 func (a_ Animation) StartAnimation() {
-	ffi.CallMethod[ffi.Void](a_, "startAnimation")
+	objc.CallMethod[objc.Void](a_, "startAnimation")
 }
 
 func (a_ Animation) StopAnimation() {
-	ffi.CallMethod[ffi.Void](a_, "stopAnimation")
+	objc.CallMethod[objc.Void](a_, "stopAnimation")
 }
 
 func (a_ Animation) AddProgressMark(progressMark AnimationProgress) {
-	ffi.CallMethod[ffi.Void](a_, "addProgressMark:", progressMark)
+	objc.CallMethod[objc.Void](a_, "addProgressMark:", progressMark)
 }
 
 func (a_ Animation) RemoveProgressMark(progressMark AnimationProgress) {
-	ffi.CallMethod[ffi.Void](a_, "removeProgressMark:", progressMark)
+	objc.CallMethod[objc.Void](a_, "removeProgressMark:", progressMark)
 }
 
 func (a_ Animation) StartWhenAnimation_ReachesProgress(animation IAnimation, startProgress AnimationProgress) {
-	ffi.CallMethod[ffi.Void](a_, "startWhenAnimation:reachesProgress:", animation, startProgress)
+	objc.CallMethod[objc.Void](a_, "startWhenAnimation:reachesProgress:", animation, startProgress)
 }
 
 func (a_ Animation) StopWhenAnimation_ReachesProgress(animation IAnimation, stopProgress AnimationProgress) {
-	ffi.CallMethod[ffi.Void](a_, "stopWhenAnimation:reachesProgress:", animation, stopProgress)
+	objc.CallMethod[objc.Void](a_, "stopWhenAnimation:reachesProgress:", animation, stopProgress)
 }
 
 func (a_ Animation) ClearStartAnimation() {
-	ffi.CallMethod[ffi.Void](a_, "clearStartAnimation")
+	objc.CallMethod[objc.Void](a_, "clearStartAnimation")
 }
 
 func (a_ Animation) ClearStopAnimation() {
-	ffi.CallMethod[ffi.Void](a_, "clearStopAnimation")
+	objc.CallMethod[objc.Void](a_, "clearStopAnimation")
 }
 
 func (a_ Animation) AnimationBlockingMode() AnimationBlockingMode {
-	rv := ffi.CallMethod[AnimationBlockingMode](a_, "animationBlockingMode")
+	rv := objc.CallMethod[AnimationBlockingMode](a_, "animationBlockingMode")
 	return rv
 }
 
 func (a_ Animation) SetAnimationBlockingMode(value AnimationBlockingMode) {
-	ffi.CallMethod[ffi.Void](a_, "setAnimationBlockingMode:", value)
+	objc.CallMethod[objc.Void](a_, "setAnimationBlockingMode:", value)
 }
 
 func (a_ Animation) RunLoopModesForAnimating() []foundation.RunLoopMode {
-	rv := ffi.CallMethod[[]foundation.RunLoopMode](a_, "runLoopModesForAnimating")
+	rv := objc.CallMethod[[]foundation.RunLoopMode](a_, "runLoopModesForAnimating")
 	return rv
 }
 
 func (a_ Animation) AnimationCurve() AnimationCurve {
-	rv := ffi.CallMethod[AnimationCurve](a_, "animationCurve")
+	rv := objc.CallMethod[AnimationCurve](a_, "animationCurve")
 	return rv
 }
 
 func (a_ Animation) SetAnimationCurve(value AnimationCurve) {
-	ffi.CallMethod[ffi.Void](a_, "setAnimationCurve:", value)
+	objc.CallMethod[objc.Void](a_, "setAnimationCurve:", value)
 }
 
 func (a_ Animation) Duration() foundation.TimeInterval {
-	rv := ffi.CallMethod[foundation.TimeInterval](a_, "duration")
+	rv := objc.CallMethod[foundation.TimeInterval](a_, "duration")
 	return rv
 }
 
 func (a_ Animation) SetDuration(value foundation.TimeInterval) {
-	ffi.CallMethod[ffi.Void](a_, "setDuration:", value)
+	objc.CallMethod[objc.Void](a_, "setDuration:", value)
 }
 
 func (a_ Animation) FrameRate() float32 {
-	rv := ffi.CallMethod[float32](a_, "frameRate")
+	rv := objc.CallMethod[float32](a_, "frameRate")
 	return rv
 }
 
 func (a_ Animation) SetFrameRate(value float32) {
-	ffi.CallMethod[ffi.Void](a_, "setFrameRate:", value)
+	objc.CallMethod[objc.Void](a_, "setFrameRate:", value)
 }
 
 func (a_ Animation) Delegate() AnimationDelegateWrapper {
-	rv := ffi.CallMethod[AnimationDelegateWrapper](a_, "delegate")
+	rv := objc.CallMethod[AnimationDelegateWrapper](a_, "delegate")
 	return rv
 }
 
 func (a_ Animation) SetDelegate(value AnimationDelegate) {
-	po := ffi.CreateProtocol("NSAnimationDelegate", value)
+	po := objc.CreateProtocol("NSAnimationDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](a_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](a_, "setDelegate:", po)
 }
 
 func (a_ Animation) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](a_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](a_, "setDelegate:", value)
 }
 
 func (a_ Animation) IsAnimating() bool {
-	rv := ffi.CallMethod[bool](a_, "isAnimating")
+	rv := objc.CallMethod[bool](a_, "isAnimating")
 	return rv
 }
 
 func (a_ Animation) CurrentProgress() AnimationProgress {
-	rv := ffi.CallMethod[AnimationProgress](a_, "currentProgress")
+	rv := objc.CallMethod[AnimationProgress](a_, "currentProgress")
 	return rv
 }
 
 func (a_ Animation) SetCurrentProgress(value AnimationProgress) {
-	ffi.CallMethod[ffi.Void](a_, "setCurrentProgress:", value)
+	objc.CallMethod[objc.Void](a_, "setCurrentProgress:", value)
 }
 
 func (a_ Animation) CurrentValue() float32 {
-	rv := ffi.CallMethod[float32](a_, "currentValue")
+	rv := objc.CallMethod[float32](a_, "currentValue")
 	return rv
 }
 
 func (a_ Animation) ProgressMarks() []foundation.Number {
-	rv := ffi.CallMethod[[]foundation.Number](a_, "progressMarks")
+	rv := objc.CallMethod[[]foundation.Number](a_, "progressMarks")
 	return rv
 }
 
 func (a_ Animation) SetProgressMarks(value []foundation.INumber) {
-	ffi.CallMethod[ffi.Void](a_, "setProgressMarks:", value)
+	objc.CallMethod[objc.Void](a_, "setProgressMarks:", value)
 }

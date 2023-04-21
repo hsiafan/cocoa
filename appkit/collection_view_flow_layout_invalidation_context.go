@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,12 +32,12 @@ func MakeCollectionViewFlowLayoutInvalidationContext(ptr unsafe.Pointer) Collect
 }
 
 func (cc _CollectionViewFlowLayoutInvalidationContextClass) Alloc() CollectionViewFlowLayoutInvalidationContext {
-	rv := ffi.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionViewFlowLayoutInvalidationContextClass) New() CollectionViewFlowLayoutInvalidationContext {
-	rv := ffi.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, "new")
+	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -48,24 +47,24 @@ func NewCollectionViewFlowLayoutInvalidationContext() CollectionViewFlowLayoutIn
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) Init() CollectionViewFlowLayoutInvalidationContext {
-	rv := ffi.CallMethod[CollectionViewFlowLayoutInvalidationContext](c_, "init")
+	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](c_, "init")
 	return rv
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutAttributes() bool {
-	rv := ffi.CallMethod[bool](c_, "invalidateFlowLayoutAttributes")
+	rv := objc.CallMethod[bool](c_, "invalidateFlowLayoutAttributes")
 	return rv
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutAttributes(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setInvalidateFlowLayoutAttributes:", value)
+	objc.CallMethod[objc.Void](c_, "setInvalidateFlowLayoutAttributes:", value)
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutDelegateMetrics() bool {
-	rv := ffi.CallMethod[bool](c_, "invalidateFlowLayoutDelegateMetrics")
+	rv := objc.CallMethod[bool](c_, "invalidateFlowLayoutDelegateMetrics")
 	return rv
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutDelegateMetrics(value bool) {
-	ffi.CallMethod[ffi.Void](c_, "setInvalidateFlowLayoutDelegateMetrics:", value)
+	objc.CallMethod[objc.Void](c_, "setInvalidateFlowLayoutDelegateMetrics:", value)
 }

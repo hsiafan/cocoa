@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -38,27 +37,27 @@ func MakeBrowserCell(ptr unsafe.Pointer) BrowserCell {
 }
 
 func (b_ BrowserCell) InitImageCell(image IImage) BrowserCell {
-	rv := ffi.CallMethod[BrowserCell](b_, "initImageCell:", image)
+	rv := objc.CallMethod[BrowserCell](b_, "initImageCell:", image)
 	return rv
 }
 
 func (b_ BrowserCell) InitTextCell(string_ string) BrowserCell {
-	rv := ffi.CallMethod[BrowserCell](b_, "initTextCell:", string_)
+	rv := objc.CallMethod[BrowserCell](b_, "initTextCell:", string_)
 	return rv
 }
 
 func (b_ BrowserCell) Init() BrowserCell {
-	rv := ffi.CallMethod[BrowserCell](b_, "init")
+	rv := objc.CallMethod[BrowserCell](b_, "init")
 	return rv
 }
 
 func (bc _BrowserCellClass) Alloc() BrowserCell {
-	rv := ffi.CallMethod[BrowserCell](bc, "alloc")
+	rv := objc.CallMethod[BrowserCell](bc, "alloc")
 	return rv
 }
 
 func (bc _BrowserCellClass) New() BrowserCell {
-	rv := ffi.CallMethod[BrowserCell](bc, "new")
+	rv := objc.CallMethod[BrowserCell](bc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -68,51 +67,51 @@ func NewBrowserCell() BrowserCell {
 }
 
 func (b_ BrowserCell) Reset() {
-	ffi.CallMethod[ffi.Void](b_, "reset")
+	objc.CallMethod[objc.Void](b_, "reset")
 }
 
 func (b_ BrowserCell) Set() {
-	ffi.CallMethod[ffi.Void](b_, "set")
+	objc.CallMethod[objc.Void](b_, "set")
 }
 
 func (b_ BrowserCell) HighlightColorInView(controlView IView) Color {
-	rv := ffi.CallMethod[Color](b_, "highlightColorInView:", controlView)
+	rv := objc.CallMethod[Color](b_, "highlightColorInView:", controlView)
 	return rv
 }
 
 func (bc _BrowserCellClass) BranchImage() Image {
-	rv := ffi.CallMethod[Image](bc, "branchImage")
+	rv := objc.CallMethod[Image](bc, "branchImage")
 	return rv
 }
 
 func (bc _BrowserCellClass) HighlightedBranchImage() Image {
-	rv := ffi.CallMethod[Image](bc, "highlightedBranchImage")
+	rv := objc.CallMethod[Image](bc, "highlightedBranchImage")
 	return rv
 }
 
 func (b_ BrowserCell) AlternateImage() Image {
-	rv := ffi.CallMethod[Image](b_, "alternateImage")
+	rv := objc.CallMethod[Image](b_, "alternateImage")
 	return rv
 }
 
 func (b_ BrowserCell) SetAlternateImage(value IImage) {
-	ffi.CallMethod[ffi.Void](b_, "setAlternateImage:", value)
+	objc.CallMethod[objc.Void](b_, "setAlternateImage:", value)
 }
 
 func (b_ BrowserCell) IsLeaf() bool {
-	rv := ffi.CallMethod[bool](b_, "isLeaf")
+	rv := objc.CallMethod[bool](b_, "isLeaf")
 	return rv
 }
 
 func (b_ BrowserCell) SetLeaf(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setLeaf:", value)
+	objc.CallMethod[objc.Void](b_, "setLeaf:", value)
 }
 
 func (b_ BrowserCell) IsLoaded() bool {
-	rv := ffi.CallMethod[bool](b_, "isLoaded")
+	rv := objc.CallMethod[bool](b_, "isLoaded")
 	return rv
 }
 
 func (b_ BrowserCell) SetLoaded(value bool) {
-	ffi.CallMethod[ffi.Void](b_, "setLoaded:", value)
+	objc.CallMethod[objc.Void](b_, "setLoaded:", value)
 }

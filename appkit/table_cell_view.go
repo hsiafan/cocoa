@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -41,22 +40,22 @@ func MakeTableCellView(ptr unsafe.Pointer) TableCellView {
 }
 
 func (t_ TableCellView) InitWithFrame(frameRect foundation.Rect) TableCellView {
-	rv := ffi.CallMethod[TableCellView](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TableCellView](t_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (t_ TableCellView) Init() TableCellView {
-	rv := ffi.CallMethod[TableCellView](t_, "init")
+	rv := objc.CallMethod[TableCellView](t_, "init")
 	return rv
 }
 
 func (tc _TableCellViewClass) Alloc() TableCellView {
-	rv := ffi.CallMethod[TableCellView](tc, "alloc")
+	rv := objc.CallMethod[TableCellView](tc, "alloc")
 	return rv
 }
 
 func (tc _TableCellViewClass) New() TableCellView {
-	rv := ffi.CallMethod[TableCellView](tc, "new")
+	rv := objc.CallMethod[TableCellView](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -66,51 +65,51 @@ func NewTableCellView() TableCellView {
 }
 
 func (t_ TableCellView) ObjectValue() objc.Object {
-	rv := ffi.CallMethod[objc.Object](t_, "objectValue")
+	rv := objc.CallMethod[objc.Object](t_, "objectValue")
 	return rv
 }
 
 func (t_ TableCellView) SetObjectValue(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](t_, "setObjectValue:", value)
+	objc.CallMethod[objc.Void](t_, "setObjectValue:", value)
 }
 
 func (t_ TableCellView) ImageView() ImageView {
-	rv := ffi.CallMethod[ImageView](t_, "imageView")
+	rv := objc.CallMethod[ImageView](t_, "imageView")
 	return rv
 }
 
 func (t_ TableCellView) SetImageView(value IImageView) {
-	ffi.CallMethod[ffi.Void](t_, "setImageView:", value)
+	objc.CallMethod[objc.Void](t_, "setImageView:", value)
 }
 
 func (t_ TableCellView) TextField() TextField {
-	rv := ffi.CallMethod[TextField](t_, "textField")
+	rv := objc.CallMethod[TextField](t_, "textField")
 	return rv
 }
 
 func (t_ TableCellView) SetTextField(value ITextField) {
-	ffi.CallMethod[ffi.Void](t_, "setTextField:", value)
+	objc.CallMethod[objc.Void](t_, "setTextField:", value)
 }
 
 func (t_ TableCellView) BackgroundStyle() BackgroundStyle {
-	rv := ffi.CallMethod[BackgroundStyle](t_, "backgroundStyle")
+	rv := objc.CallMethod[BackgroundStyle](t_, "backgroundStyle")
 	return rv
 }
 
 func (t_ TableCellView) SetBackgroundStyle(value BackgroundStyle) {
-	ffi.CallMethod[ffi.Void](t_, "setBackgroundStyle:", value)
+	objc.CallMethod[objc.Void](t_, "setBackgroundStyle:", value)
 }
 
 func (t_ TableCellView) RowSizeStyle() TableViewRowSizeStyle {
-	rv := ffi.CallMethod[TableViewRowSizeStyle](t_, "rowSizeStyle")
+	rv := objc.CallMethod[TableViewRowSizeStyle](t_, "rowSizeStyle")
 	return rv
 }
 
 func (t_ TableCellView) SetRowSizeStyle(value TableViewRowSizeStyle) {
-	ffi.CallMethod[ffi.Void](t_, "setRowSizeStyle:", value)
+	objc.CallMethod[objc.Void](t_, "setRowSizeStyle:", value)
 }
 
 func (t_ TableCellView) DraggingImageComponents() []DraggingImageComponent {
-	rv := ffi.CallMethod[[]DraggingImageComponent](t_, "draggingImageComponents")
+	rv := objc.CallMethod[[]DraggingImageComponent](t_, "draggingImageComponents")
 	return rv
 }

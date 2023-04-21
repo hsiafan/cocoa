@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,7 +29,7 @@ func (c_ *ComboBoxDataSourceWrapper) ImplementsComboBox_CompletedString() bool {
 }
 
 func (c_ ComboBoxDataSourceWrapper) ComboBox_CompletedString(comboBox IComboBox, string_ string) string {
-	rv := ffi.CallMethod[string](c_, "comboBox:completedString:", comboBox, string_)
+	rv := objc.CallMethod[string](c_, "comboBox:completedString:", comboBox, string_)
 	return rv
 }
 
@@ -39,7 +38,7 @@ func (c_ *ComboBoxDataSourceWrapper) ImplementsComboBox_IndexOfItemWithStringVal
 }
 
 func (c_ ComboBoxDataSourceWrapper) ComboBox_IndexOfItemWithStringValue(comboBox IComboBox, string_ string) uint {
-	rv := ffi.CallMethod[uint](c_, "comboBox:indexOfItemWithStringValue:", comboBox, string_)
+	rv := objc.CallMethod[uint](c_, "comboBox:indexOfItemWithStringValue:", comboBox, string_)
 	return rv
 }
 
@@ -48,7 +47,7 @@ func (c_ *ComboBoxDataSourceWrapper) ImplementsComboBox_ObjectValueForItemAtInde
 }
 
 func (c_ ComboBoxDataSourceWrapper) ComboBox_ObjectValueForItemAtIndex(comboBox IComboBox, index int) objc.Object {
-	rv := ffi.CallMethod[objc.Object](c_, "comboBox:objectValueForItemAtIndex:", comboBox, index)
+	rv := objc.CallMethod[objc.Object](c_, "comboBox:objectValueForItemAtIndex:", comboBox, index)
 	return rv
 }
 
@@ -57,6 +56,6 @@ func (c_ *ComboBoxDataSourceWrapper) ImplementsNumberOfItemsInComboBox() bool {
 }
 
 func (c_ ComboBoxDataSourceWrapper) NumberOfItemsInComboBox(comboBox IComboBox) int {
-	rv := ffi.CallMethod[int](c_, "numberOfItemsInComboBox:", comboBox)
+	rv := objc.CallMethod[int](c_, "numberOfItemsInComboBox:", comboBox)
 	return rv
 }

@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -71,20 +70,20 @@ type DraggingInfoWrapper struct {
 
 // deprecated
 func (d_ DraggingInfoWrapper) NamesOfPromisedFilesDroppedAtDestination(dropDestination foundation.IURL) []string {
-	rv := ffi.CallMethod[[]string](d_, "namesOfPromisedFilesDroppedAtDestination:", dropDestination)
+	rv := objc.CallMethod[[]string](d_, "namesOfPromisedFilesDroppedAtDestination:", dropDestination)
 	return rv
 }
 
 func (d_ DraggingInfoWrapper) SlideDraggedImageTo(screenPoint foundation.Point) {
-	ffi.CallMethod[ffi.Void](d_, "slideDraggedImageTo:", screenPoint)
+	objc.CallMethod[objc.Void](d_, "slideDraggedImageTo:", screenPoint)
 }
 
 func (d_ DraggingInfoWrapper) EnumerateDraggingItemsWithOptions_ForView_Classes_SearchOptions_UsingBlock(enumOpts DraggingItemEnumerationOptions, view IView, classArray []objc.IClass, searchOptions map[PasteboardReadingOptionKey]objc.IObject, block func(draggingItem DraggingItem, idx int, stop *bool)) {
-	ffi.CallMethod[ffi.Void](d_, "enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:", enumOpts, view, classArray, searchOptions, block)
+	objc.CallMethod[objc.Void](d_, "enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:", enumOpts, view, classArray, searchOptions, block)
 }
 
 func (d_ DraggingInfoWrapper) ResetSpringLoading() {
-	ffi.CallMethod[ffi.Void](d_, "resetSpringLoading")
+	objc.CallMethod[objc.Void](d_, "resetSpringLoading")
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsDraggingPasteboard() bool {
@@ -92,7 +91,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingPasteboard() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingPasteboard() Pasteboard {
-	rv := ffi.CallMethod[Pasteboard](d_, "draggingPasteboard")
+	rv := objc.CallMethod[Pasteboard](d_, "draggingPasteboard")
 	return rv
 }
 
@@ -101,7 +100,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingSequenceNumber() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingSequenceNumber() int {
-	rv := ffi.CallMethod[int](d_, "draggingSequenceNumber")
+	rv := objc.CallMethod[int](d_, "draggingSequenceNumber")
 	return rv
 }
 
@@ -110,7 +109,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingSource() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingSource() objc.Object {
-	rv := ffi.CallMethod[objc.Object](d_, "draggingSource")
+	rv := objc.CallMethod[objc.Object](d_, "draggingSource")
 	return rv
 }
 
@@ -119,7 +118,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingSourceOperationMask() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingSourceOperationMask() DragOperation {
-	rv := ffi.CallMethod[DragOperation](d_, "draggingSourceOperationMask")
+	rv := objc.CallMethod[DragOperation](d_, "draggingSourceOperationMask")
 	return rv
 }
 
@@ -128,7 +127,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingLocation() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingLocation() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](d_, "draggingLocation")
+	rv := objc.CallMethod[foundation.Point](d_, "draggingLocation")
 	return rv
 }
 
@@ -137,7 +136,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingDestinationWindow() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingDestinationWindow() Window {
-	rv := ffi.CallMethod[Window](d_, "draggingDestinationWindow")
+	rv := objc.CallMethod[Window](d_, "draggingDestinationWindow")
 	return rv
 }
 
@@ -146,7 +145,7 @@ func (d_ *DraggingInfoWrapper) ImplementsSetNumberOfValidItemsForDrop() bool {
 }
 
 func (d_ DraggingInfoWrapper) SetNumberOfValidItemsForDrop(value int) {
-	ffi.CallMethod[ffi.Void](d_, "setNumberOfValidItemsForDrop:", value)
+	objc.CallMethod[objc.Void](d_, "setNumberOfValidItemsForDrop:", value)
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsNumberOfValidItemsForDrop() bool {
@@ -154,7 +153,7 @@ func (d_ *DraggingInfoWrapper) ImplementsNumberOfValidItemsForDrop() bool {
 }
 
 func (d_ DraggingInfoWrapper) NumberOfValidItemsForDrop() int {
-	rv := ffi.CallMethod[int](d_, "numberOfValidItemsForDrop")
+	rv := objc.CallMethod[int](d_, "numberOfValidItemsForDrop")
 	return rv
 }
 
@@ -164,7 +163,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggedImage() bool {
 
 // deprecated
 func (d_ DraggingInfoWrapper) DraggedImage() Image {
-	rv := ffi.CallMethod[Image](d_, "draggedImage")
+	rv := objc.CallMethod[Image](d_, "draggedImage")
 	return rv
 }
 
@@ -173,7 +172,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggedImageLocation() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggedImageLocation() foundation.Point {
-	rv := ffi.CallMethod[foundation.Point](d_, "draggedImageLocation")
+	rv := objc.CallMethod[foundation.Point](d_, "draggedImageLocation")
 	return rv
 }
 
@@ -182,7 +181,7 @@ func (d_ *DraggingInfoWrapper) ImplementsSetAnimatesToDestination() bool {
 }
 
 func (d_ DraggingInfoWrapper) SetAnimatesToDestination(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setAnimatesToDestination:", value)
+	objc.CallMethod[objc.Void](d_, "setAnimatesToDestination:", value)
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsAnimatesToDestination() bool {
@@ -190,7 +189,7 @@ func (d_ *DraggingInfoWrapper) ImplementsAnimatesToDestination() bool {
 }
 
 func (d_ DraggingInfoWrapper) AnimatesToDestination() bool {
-	rv := ffi.CallMethod[bool](d_, "animatesToDestination")
+	rv := objc.CallMethod[bool](d_, "animatesToDestination")
 	return rv
 }
 
@@ -199,7 +198,7 @@ func (d_ *DraggingInfoWrapper) ImplementsSetDraggingFormation() bool {
 }
 
 func (d_ DraggingInfoWrapper) SetDraggingFormation(value DraggingFormation) {
-	ffi.CallMethod[ffi.Void](d_, "setDraggingFormation:", value)
+	objc.CallMethod[objc.Void](d_, "setDraggingFormation:", value)
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsDraggingFormation() bool {
@@ -207,7 +206,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingFormation() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingFormation() DraggingFormation {
-	rv := ffi.CallMethod[DraggingFormation](d_, "draggingFormation")
+	rv := objc.CallMethod[DraggingFormation](d_, "draggingFormation")
 	return rv
 }
 
@@ -216,6 +215,6 @@ func (d_ *DraggingInfoWrapper) ImplementsSpringLoadingHighlight() bool {
 }
 
 func (d_ DraggingInfoWrapper) SpringLoadingHighlight() SpringLoadingHighlight {
-	rv := ffi.CallMethod[SpringLoadingHighlight](d_, "springLoadingHighlight")
+	rv := objc.CallMethod[SpringLoadingHighlight](d_, "springLoadingHighlight")
 	return rv
 }

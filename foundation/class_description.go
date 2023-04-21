@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,12 +32,12 @@ func MakeClassDescription(ptr unsafe.Pointer) ClassDescription {
 }
 
 func (cc _ClassDescriptionClass) Alloc() ClassDescription {
-	rv := ffi.CallMethod[ClassDescription](cc, "alloc")
+	rv := objc.CallMethod[ClassDescription](cc, "alloc")
 	return rv
 }
 
 func (cc _ClassDescriptionClass) New() ClassDescription {
-	rv := ffi.CallMethod[ClassDescription](cc, "new")
+	rv := objc.CallMethod[ClassDescription](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -48,39 +47,39 @@ func NewClassDescription() ClassDescription {
 }
 
 func (c_ ClassDescription) Init() ClassDescription {
-	rv := ffi.CallMethod[ClassDescription](c_, "init")
+	rv := objc.CallMethod[ClassDescription](c_, "init")
 	return rv
 }
 
 func (cc _ClassDescriptionClass) ClassDescriptionForClass(aClass objc.IClass) ClassDescription {
-	rv := ffi.CallMethod[ClassDescription](cc, "classDescriptionForClass:", aClass)
+	rv := objc.CallMethod[ClassDescription](cc, "classDescriptionForClass:", aClass)
 	return rv
 }
 
 func (cc _ClassDescriptionClass) InvalidateClassDescriptionCache() {
-	ffi.CallMethod[ffi.Void](cc, "invalidateClassDescriptionCache")
+	objc.CallMethod[objc.Void](cc, "invalidateClassDescriptionCache")
 }
 
 func (cc _ClassDescriptionClass) RegisterClassDescription_ForClass(description IClassDescription, aClass objc.IClass) {
-	ffi.CallMethod[ffi.Void](cc, "registerClassDescription:forClass:", description, aClass)
+	objc.CallMethod[objc.Void](cc, "registerClassDescription:forClass:", description, aClass)
 }
 
 func (c_ ClassDescription) InverseForRelationshipKey(relationshipKey string) string {
-	rv := ffi.CallMethod[string](c_, "inverseForRelationshipKey:", relationshipKey)
+	rv := objc.CallMethod[string](c_, "inverseForRelationshipKey:", relationshipKey)
 	return rv
 }
 
 func (c_ ClassDescription) AttributeKeys() []string {
-	rv := ffi.CallMethod[[]string](c_, "attributeKeys")
+	rv := objc.CallMethod[[]string](c_, "attributeKeys")
 	return rv
 }
 
 func (c_ ClassDescription) ToManyRelationshipKeys() []string {
-	rv := ffi.CallMethod[[]string](c_, "toManyRelationshipKeys")
+	rv := objc.CallMethod[[]string](c_, "toManyRelationshipKeys")
 	return rv
 }
 
 func (c_ ClassDescription) ToOneRelationshipKeys() []string {
-	rv := ffi.CallMethod[[]string](c_, "toOneRelationshipKeys")
+	rv := objc.CallMethod[[]string](c_, "toOneRelationshipKeys")
 	return rv
 }

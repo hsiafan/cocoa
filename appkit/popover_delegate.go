@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -143,7 +142,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsDetachableWindowForPopover() bool {
 }
 
 func (p_ PopoverDelegateWrapper) DetachableWindowForPopover(popover IPopover) Window {
-	rv := ffi.CallMethod[Window](p_, "detachableWindowForPopover:", popover)
+	rv := objc.CallMethod[Window](p_, "detachableWindowForPopover:", popover)
 	return rv
 }
 
@@ -152,7 +151,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldClose() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverShouldClose(popover IPopover) bool {
-	rv := ffi.CallMethod[bool](p_, "popoverShouldClose:", popover)
+	rv := objc.CallMethod[bool](p_, "popoverShouldClose:", popover)
 	return rv
 }
 
@@ -161,7 +160,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillShow() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverWillShow(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](p_, "popoverWillShow:", notification)
+	objc.CallMethod[objc.Void](p_, "popoverWillShow:", notification)
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidShow() bool {
@@ -169,7 +168,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidShow() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverDidShow(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](p_, "popoverDidShow:", notification)
+	objc.CallMethod[objc.Void](p_, "popoverDidShow:", notification)
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillClose() bool {
@@ -177,7 +176,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillClose() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverWillClose(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](p_, "popoverWillClose:", notification)
+	objc.CallMethod[objc.Void](p_, "popoverWillClose:", notification)
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidClose() bool {
@@ -185,7 +184,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidClose() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverDidClose(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](p_, "popoverDidClose:", notification)
+	objc.CallMethod[objc.Void](p_, "popoverDidClose:", notification)
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidDetach() bool {
@@ -193,7 +192,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidDetach() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverDidDetach(popover IPopover) {
-	ffi.CallMethod[ffi.Void](p_, "popoverDidDetach:", popover)
+	objc.CallMethod[objc.Void](p_, "popoverDidDetach:", popover)
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldDetach() bool {
@@ -201,6 +200,6 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldDetach() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverShouldDetach(popover IPopover) bool {
-	rv := ffi.CallMethod[bool](p_, "popoverShouldDetach:", popover)
+	rv := objc.CallMethod[bool](p_, "popoverShouldDetach:", popover)
 	return rv
 }

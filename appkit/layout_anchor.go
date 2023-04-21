@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,12 +38,12 @@ func MakeLayoutAnchor(ptr unsafe.Pointer) LayoutAnchor {
 }
 
 func (lc _LayoutAnchorClass) Alloc() LayoutAnchor {
-	rv := ffi.CallMethod[LayoutAnchor](lc, "alloc")
+	rv := objc.CallMethod[LayoutAnchor](lc, "alloc")
 	return rv
 }
 
 func (lc _LayoutAnchorClass) New() LayoutAnchor {
-	rv := ffi.CallMethod[LayoutAnchor](lc, "new")
+	rv := objc.CallMethod[LayoutAnchor](lc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,56 +53,56 @@ func NewLayoutAnchor() LayoutAnchor {
 }
 
 func (l_ LayoutAnchor) Init() LayoutAnchor {
-	rv := ffi.CallMethod[LayoutAnchor](l_, "init")
+	rv := objc.CallMethod[LayoutAnchor](l_, "init")
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:", anchor)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:", anchor)
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintEqualToAnchor_Constant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:constant:", anchor, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintEqualToAnchor:constant:", anchor, c)
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:", anchor)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:", anchor)
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor_Constant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:constant:", anchor, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToAnchor:constant:", anchor, c)
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:", anchor)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:", anchor)
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchor_Constant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := ffi.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:constant:", anchor, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToAnchor:constant:", anchor, c)
 	return rv
 }
 
 func (l_ LayoutAnchor) ConstraintsAffectingLayout() []LayoutConstraint {
-	rv := ffi.CallMethod[[]LayoutConstraint](l_, "constraintsAffectingLayout")
+	rv := objc.CallMethod[[]LayoutConstraint](l_, "constraintsAffectingLayout")
 	return rv
 }
 
 func (l_ LayoutAnchor) HasAmbiguousLayout() bool {
-	rv := ffi.CallMethod[bool](l_, "hasAmbiguousLayout")
+	rv := objc.CallMethod[bool](l_, "hasAmbiguousLayout")
 	return rv
 }
 
 func (l_ LayoutAnchor) Name() string {
-	rv := ffi.CallMethod[string](l_, "name")
+	rv := objc.CallMethod[string](l_, "name")
 	return rv
 }
 
 func (l_ LayoutAnchor) Item() objc.Object {
-	rv := ffi.CallMethod[objc.Object](l_, "item")
+	rv := objc.CallMethod[objc.Object](l_, "item")
 	return rv
 }

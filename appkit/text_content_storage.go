@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -35,17 +34,17 @@ func MakeTextContentStorage(ptr unsafe.Pointer) TextContentStorage {
 }
 
 func (t_ TextContentStorage) Init() TextContentStorage {
-	rv := ffi.CallMethod[TextContentStorage](t_, "init")
+	rv := objc.CallMethod[TextContentStorage](t_, "init")
 	return rv
 }
 
 func (tc _TextContentStorageClass) Alloc() TextContentStorage {
-	rv := ffi.CallMethod[TextContentStorage](tc, "alloc")
+	rv := objc.CallMethod[TextContentStorage](tc, "alloc")
 	return rv
 }
 
 func (tc _TextContentStorageClass) New() TextContentStorage {
-	rv := ffi.CallMethod[TextContentStorage](tc, "new")
+	rv := objc.CallMethod[TextContentStorage](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -55,25 +54,25 @@ func NewTextContentStorage() TextContentStorage {
 }
 
 func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](t_, "attributedStringForTextElement:", textElement)
+	rv := objc.CallMethod[foundation.AttributedString](t_, "attributedStringForTextElement:", textElement)
 	return rv
 }
 
 func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
-	rv := ffi.CallMethod[TextElement](t_, "textElementForAttributedString:", attributedString)
+	rv := objc.CallMethod[TextElement](t_, "textElementForAttributedString:", attributedString)
 	return rv
 }
 
 func (t_ TextContentStorage) AdjustedRangeFromRange_ForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
-	rv := ffi.CallMethod[TextRange](t_, "adjustedRangeFromRange:forEditingTextSelection:", textRange, forEditingTextSelection)
+	rv := objc.CallMethod[TextRange](t_, "adjustedRangeFromRange:forEditingTextSelection:", textRange, forEditingTextSelection)
 	return rv
 }
 
 func (t_ TextContentStorage) AttributedString() foundation.AttributedString {
-	rv := ffi.CallMethod[foundation.AttributedString](t_, "attributedString")
+	rv := objc.CallMethod[foundation.AttributedString](t_, "attributedString")
 	return rv
 }
 
 func (t_ TextContentStorage) SetAttributedString(value foundation.IAttributedString) {
-	ffi.CallMethod[ffi.Void](t_, "setAttributedString:", value)
+	objc.CallMethod[objc.Void](t_, "setAttributedString:", value)
 }

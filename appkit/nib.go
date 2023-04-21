@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -33,22 +32,22 @@ func MakeNib(ptr unsafe.Pointer) Nib {
 }
 
 func (n_ Nib) InitWithNibNamed_Bundle(nibName NibName, bundle foundation.IBundle) Nib {
-	rv := ffi.CallMethod[Nib](n_, "initWithNibNamed:bundle:", nibName, bundle)
+	rv := objc.CallMethod[Nib](n_, "initWithNibNamed:bundle:", nibName, bundle)
 	return rv
 }
 
 func (n_ Nib) InitWithNibData_Bundle(nibData []byte, bundle foundation.IBundle) Nib {
-	rv := ffi.CallMethod[Nib](n_, "initWithNibData:bundle:", nibData, bundle)
+	rv := objc.CallMethod[Nib](n_, "initWithNibData:bundle:", nibData, bundle)
 	return rv
 }
 
 func (nc _NibClass) Alloc() Nib {
-	rv := ffi.CallMethod[Nib](nc, "alloc")
+	rv := objc.CallMethod[Nib](nc, "alloc")
 	return rv
 }
 
 func (nc _NibClass) New() Nib {
-	rv := ffi.CallMethod[Nib](nc, "new")
+	rv := objc.CallMethod[Nib](nc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -58,17 +57,17 @@ func NewNib() Nib {
 }
 
 func (n_ Nib) Init() Nib {
-	rv := ffi.CallMethod[Nib](n_, "init")
+	rv := objc.CallMethod[Nib](n_, "init")
 	return rv
 }
 
 // deprecated
 func (n_ Nib) InitWithContentsOfURL(nibFileURL foundation.IURL) objc.Object {
-	rv := ffi.CallMethod[objc.Object](n_, "initWithContentsOfURL:", nibFileURL)
+	rv := objc.CallMethod[objc.Object](n_, "initWithContentsOfURL:", nibFileURL)
 	return rv
 }
 
 func (n_ Nib) InstantiateWithOwner_TopLevelObjects(owner objc.IObject, topLevelObjects *foundation.Array) bool {
-	rv := ffi.CallMethod[bool](n_, "instantiateWithOwner:topLevelObjects:", owner, topLevelObjects)
+	rv := objc.CallMethod[bool](n_, "instantiateWithOwner:topLevelObjects:", owner, topLevelObjects)
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -25,19 +24,19 @@ type EditorWrapper struct {
 }
 
 func (e_ EditorWrapper) CommitEditing() bool {
-	rv := ffi.CallMethod[bool](e_, "commitEditing")
+	rv := objc.CallMethod[bool](e_, "commitEditing")
 	return rv
 }
 
 func (e_ EditorWrapper) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer) {
-	ffi.CallMethod[ffi.Void](e_, "commitEditingWithDelegate:didCommitSelector:contextInfo:", delegate, didCommitSelector, contextInfo)
+	objc.CallMethod[objc.Void](e_, "commitEditingWithDelegate:didCommitSelector:contextInfo:", delegate, didCommitSelector, contextInfo)
 }
 
 func (e_ EditorWrapper) CommitEditingAndReturnError(error *foundation.Error) bool {
-	rv := ffi.CallMethod[bool](e_, "commitEditingAndReturnError:", unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](e_, "commitEditingAndReturnError:", unsafe.Pointer(error))
 	return rv
 }
 
 func (e_ EditorWrapper) DiscardEditing() {
-	ffi.CallMethod[ffi.Void](e_, "discardEditing")
+	objc.CallMethod[objc.Void](e_, "discardEditing")
 }

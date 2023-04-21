@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -33,12 +32,12 @@ func MakeDownload(ptr unsafe.Pointer) Download {
 }
 
 func (dc _DownloadClass) Alloc() Download {
-	rv := ffi.CallMethod[Download](dc, "alloc")
+	rv := objc.CallMethod[Download](dc, "alloc")
 	return rv
 }
 
 func (dc _DownloadClass) New() Download {
-	rv := ffi.CallMethod[Download](dc, "new")
+	rv := objc.CallMethod[Download](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -48,20 +47,20 @@ func NewDownload() Download {
 }
 
 func (d_ Download) Init() Download {
-	rv := ffi.CallMethod[Download](d_, "init")
+	rv := objc.CallMethod[Download](d_, "init")
 	return rv
 }
 
 func (d_ Download) Cancel(completionHandler func(resumeData []byte)) {
-	ffi.CallMethod[ffi.Void](d_, "cancel:", completionHandler)
+	objc.CallMethod[objc.Void](d_, "cancel:", completionHandler)
 }
 
 func (d_ Download) OriginalRequest() foundation.URLRequest {
-	rv := ffi.CallMethod[foundation.URLRequest](d_, "originalRequest")
+	rv := objc.CallMethod[foundation.URLRequest](d_, "originalRequest")
 	return rv
 }
 
 func (d_ Download) WebView() WebView {
-	rv := ffi.CallMethod[WebView](d_, "webView")
+	rv := objc.CallMethod[WebView](d_, "webView")
 	return rv
 }

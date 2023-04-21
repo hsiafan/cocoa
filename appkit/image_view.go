@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -48,27 +47,27 @@ func MakeImageView(ptr unsafe.Pointer) ImageView {
 }
 
 func (ic _ImageViewClass) ImageViewWithImage(image IImage) ImageView {
-	rv := ffi.CallMethod[ImageView](ic, "imageViewWithImage:", image)
+	rv := objc.CallMethod[ImageView](ic, "imageViewWithImage:", image)
 	return rv
 }
 
 func (i_ ImageView) InitWithFrame(frameRect foundation.Rect) ImageView {
-	rv := ffi.CallMethod[ImageView](i_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ImageView](i_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (i_ ImageView) Init() ImageView {
-	rv := ffi.CallMethod[ImageView](i_, "init")
+	rv := objc.CallMethod[ImageView](i_, "init")
 	return rv
 }
 
 func (ic _ImageViewClass) Alloc() ImageView {
-	rv := ffi.CallMethod[ImageView](ic, "alloc")
+	rv := objc.CallMethod[ImageView](ic, "alloc")
 	return rv
 }
 
 func (ic _ImageViewClass) New() ImageView {
-	rv := ffi.CallMethod[ImageView](ic, "new")
+	rv := objc.CallMethod[ImageView](ic, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -78,82 +77,82 @@ func NewImageView() ImageView {
 }
 
 func (i_ ImageView) Image() Image {
-	rv := ffi.CallMethod[Image](i_, "image")
+	rv := objc.CallMethod[Image](i_, "image")
 	return rv
 }
 
 func (i_ ImageView) SetImage(value IImage) {
-	ffi.CallMethod[ffi.Void](i_, "setImage:", value)
+	objc.CallMethod[objc.Void](i_, "setImage:", value)
 }
 
 func (i_ ImageView) ImageFrameStyle() ImageFrameStyle {
-	rv := ffi.CallMethod[ImageFrameStyle](i_, "imageFrameStyle")
+	rv := objc.CallMethod[ImageFrameStyle](i_, "imageFrameStyle")
 	return rv
 }
 
 func (i_ ImageView) SetImageFrameStyle(value ImageFrameStyle) {
-	ffi.CallMethod[ffi.Void](i_, "setImageFrameStyle:", value)
+	objc.CallMethod[objc.Void](i_, "setImageFrameStyle:", value)
 }
 
 func (i_ ImageView) ImageAlignment() ImageAlignment {
-	rv := ffi.CallMethod[ImageAlignment](i_, "imageAlignment")
+	rv := objc.CallMethod[ImageAlignment](i_, "imageAlignment")
 	return rv
 }
 
 func (i_ ImageView) SetImageAlignment(value ImageAlignment) {
-	ffi.CallMethod[ffi.Void](i_, "setImageAlignment:", value)
+	objc.CallMethod[objc.Void](i_, "setImageAlignment:", value)
 }
 
 func (i_ ImageView) ImageScaling() ImageScaling {
-	rv := ffi.CallMethod[ImageScaling](i_, "imageScaling")
+	rv := objc.CallMethod[ImageScaling](i_, "imageScaling")
 	return rv
 }
 
 func (i_ ImageView) SetImageScaling(value ImageScaling) {
-	ffi.CallMethod[ffi.Void](i_, "setImageScaling:", value)
+	objc.CallMethod[objc.Void](i_, "setImageScaling:", value)
 }
 
 func (i_ ImageView) Animates() bool {
-	rv := ffi.CallMethod[bool](i_, "animates")
+	rv := objc.CallMethod[bool](i_, "animates")
 	return rv
 }
 
 func (i_ ImageView) SetAnimates(value bool) {
-	ffi.CallMethod[ffi.Void](i_, "setAnimates:", value)
+	objc.CallMethod[objc.Void](i_, "setAnimates:", value)
 }
 
 func (i_ ImageView) IsEditable() bool {
-	rv := ffi.CallMethod[bool](i_, "isEditable")
+	rv := objc.CallMethod[bool](i_, "isEditable")
 	return rv
 }
 
 func (i_ ImageView) SetEditable(value bool) {
-	ffi.CallMethod[ffi.Void](i_, "setEditable:", value)
+	objc.CallMethod[objc.Void](i_, "setEditable:", value)
 }
 
 func (i_ ImageView) AllowsCutCopyPaste() bool {
-	rv := ffi.CallMethod[bool](i_, "allowsCutCopyPaste")
+	rv := objc.CallMethod[bool](i_, "allowsCutCopyPaste")
 	return rv
 }
 
 func (i_ ImageView) SetAllowsCutCopyPaste(value bool) {
-	ffi.CallMethod[ffi.Void](i_, "setAllowsCutCopyPaste:", value)
+	objc.CallMethod[objc.Void](i_, "setAllowsCutCopyPaste:", value)
 }
 
 func (i_ ImageView) ContentTintColor() Color {
-	rv := ffi.CallMethod[Color](i_, "contentTintColor")
+	rv := objc.CallMethod[Color](i_, "contentTintColor")
 	return rv
 }
 
 func (i_ ImageView) SetContentTintColor(value IColor) {
-	ffi.CallMethod[ffi.Void](i_, "setContentTintColor:", value)
+	objc.CallMethod[objc.Void](i_, "setContentTintColor:", value)
 }
 
 func (i_ ImageView) SymbolConfiguration() ImageSymbolConfiguration {
-	rv := ffi.CallMethod[ImageSymbolConfiguration](i_, "symbolConfiguration")
+	rv := objc.CallMethod[ImageSymbolConfiguration](i_, "symbolConfiguration")
 	return rv
 }
 
 func (i_ ImageView) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	ffi.CallMethod[ffi.Void](i_, "setSymbolConfiguration:", value)
+	objc.CallMethod[objc.Void](i_, "setSymbolConfiguration:", value)
 }

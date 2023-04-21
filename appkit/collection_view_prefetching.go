@@ -2,7 +2,6 @@
 package appkit
 
 import (
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -24,9 +23,9 @@ func (c_ *CollectionViewPrefetchingWrapper) ImplementsCollectionView_CancelPrefe
 }
 
 func (c_ CollectionViewPrefetchingWrapper) CollectionView_CancelPrefetchingForItemsAtIndexPaths(collectionView ICollectionView, indexPaths []foundation.IIndexPath) {
-	ffi.CallMethod[ffi.Void](c_, "collectionView:cancelPrefetchingForItemsAtIndexPaths:", collectionView, indexPaths)
+	objc.CallMethod[objc.Void](c_, "collectionView:cancelPrefetchingForItemsAtIndexPaths:", collectionView, indexPaths)
 }
 
 func (c_ CollectionViewPrefetchingWrapper) CollectionView_PrefetchItemsAtIndexPaths(collectionView ICollectionView, indexPaths []foundation.IIndexPath) {
-	ffi.CallMethod[ffi.Void](c_, "collectionView:prefetchItemsAtIndexPaths:", collectionView, indexPaths)
+	objc.CallMethod[objc.Void](c_, "collectionView:prefetchItemsAtIndexPaths:", collectionView, indexPaths)
 }

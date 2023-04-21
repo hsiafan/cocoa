@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,22 +34,22 @@ func MakeCollectionLayoutItem(ptr unsafe.Pointer) CollectionLayoutItem {
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutItem {
-	rv := ffi.CallMethod[CollectionLayoutItem](cc, "itemWithLayoutSize:", layoutSize)
+	rv := objc.CallMethod[CollectionLayoutItem](cc, "itemWithLayoutSize:", layoutSize)
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutItem {
-	rv := ffi.CallMethod[CollectionLayoutItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) Alloc() CollectionLayoutItem {
-	rv := ffi.CallMethod[CollectionLayoutItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutItem](cc, "alloc")
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) New() CollectionLayoutItem {
-	rv := ffi.CallMethod[CollectionLayoutItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutItem](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -60,34 +59,34 @@ func NewCollectionLayoutItem() CollectionLayoutItem {
 }
 
 func (c_ CollectionLayoutItem) Init() CollectionLayoutItem {
-	rv := ffi.CallMethod[CollectionLayoutItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutItem](c_, "init")
 	return rv
 }
 
 func (c_ CollectionLayoutItem) LayoutSize() CollectionLayoutSize {
-	rv := ffi.CallMethod[CollectionLayoutSize](c_, "layoutSize")
+	rv := objc.CallMethod[CollectionLayoutSize](c_, "layoutSize")
 	return rv
 }
 
 func (c_ CollectionLayoutItem) SupplementaryItems() []CollectionLayoutSupplementaryItem {
-	rv := ffi.CallMethod[[]CollectionLayoutSupplementaryItem](c_, "supplementaryItems")
+	rv := objc.CallMethod[[]CollectionLayoutSupplementaryItem](c_, "supplementaryItems")
 	return rv
 }
 
 func (c_ CollectionLayoutItem) EdgeSpacing() CollectionLayoutEdgeSpacing {
-	rv := ffi.CallMethod[CollectionLayoutEdgeSpacing](c_, "edgeSpacing")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](c_, "edgeSpacing")
 	return rv
 }
 
 func (c_ CollectionLayoutItem) SetEdgeSpacing(value ICollectionLayoutEdgeSpacing) {
-	ffi.CallMethod[ffi.Void](c_, "setEdgeSpacing:", value)
+	objc.CallMethod[objc.Void](c_, "setEdgeSpacing:", value)
 }
 
 func (c_ CollectionLayoutItem) ContentInsets() DirectionalEdgeInsets {
-	rv := ffi.CallMethod[DirectionalEdgeInsets](c_, "contentInsets")
+	rv := objc.CallMethod[DirectionalEdgeInsets](c_, "contentInsets")
 	return rv
 }
 
 func (c_ CollectionLayoutItem) SetContentInsets(value DirectionalEdgeInsets) {
-	ffi.CallMethod[ffi.Void](c_, "setContentInsets:", value)
+	objc.CallMethod[objc.Void](c_, "setContentInsets:", value)
 }

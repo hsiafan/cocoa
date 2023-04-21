@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -31,22 +30,22 @@ func MakeNotification(ptr unsafe.Pointer) Notification {
 }
 
 func (n_ Notification) Init() Notification {
-	rv := ffi.CallMethod[Notification](n_, "init")
+	rv := objc.CallMethod[Notification](n_, "init")
 	return rv
 }
 
 func (nc _NotificationClass) NotificationWithName_Object(aName NotificationName, anObject objc.IObject) Notification {
-	rv := ffi.CallMethod[Notification](nc, "notificationWithName:object:", aName, anObject)
+	rv := objc.CallMethod[Notification](nc, "notificationWithName:object:", aName, anObject)
 	return rv
 }
 
 func (nc _NotificationClass) Alloc() Notification {
-	rv := ffi.CallMethod[Notification](nc, "alloc")
+	rv := objc.CallMethod[Notification](nc, "alloc")
 	return rv
 }
 
 func (nc _NotificationClass) New() Notification {
-	rv := ffi.CallMethod[Notification](nc, "new")
+	rv := objc.CallMethod[Notification](nc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -56,11 +55,11 @@ func NewNotification() Notification {
 }
 
 func (n_ Notification) Name() NotificationName {
-	rv := ffi.CallMethod[NotificationName](n_, "name")
+	rv := objc.CallMethod[NotificationName](n_, "name")
 	return rv
 }
 
 func (n_ Notification) Object_() objc.Object {
-	rv := ffi.CallMethod[objc.Object](n_, "object")
+	rv := objc.CallMethod[objc.Object](n_, "object")
 	return rv
 }

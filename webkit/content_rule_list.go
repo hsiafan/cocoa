@@ -4,7 +4,6 @@ package webkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -30,12 +29,12 @@ func MakeContentRuleList(ptr unsafe.Pointer) ContentRuleList {
 }
 
 func (cc _ContentRuleListClass) Alloc() ContentRuleList {
-	rv := ffi.CallMethod[ContentRuleList](cc, "alloc")
+	rv := objc.CallMethod[ContentRuleList](cc, "alloc")
 	return rv
 }
 
 func (cc _ContentRuleListClass) New() ContentRuleList {
-	rv := ffi.CallMethod[ContentRuleList](cc, "new")
+	rv := objc.CallMethod[ContentRuleList](cc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -45,11 +44,11 @@ func NewContentRuleList() ContentRuleList {
 }
 
 func (c_ ContentRuleList) Init() ContentRuleList {
-	rv := ffi.CallMethod[ContentRuleList](c_, "init")
+	rv := objc.CallMethod[ContentRuleList](c_, "init")
 	return rv
 }
 
 func (c_ ContentRuleList) Identifier() string {
-	rv := ffi.CallMethod[string](c_, "identifier")
+	rv := objc.CallMethod[string](c_, "identifier")
 	return rv
 }

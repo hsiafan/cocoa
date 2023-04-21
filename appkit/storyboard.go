@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -34,17 +33,17 @@ func MakeStoryboard(ptr unsafe.Pointer) Storyboard {
 }
 
 func (sc _StoryboardClass) StoryboardWithName_Bundle(name StoryboardName, storyboardBundleOrNil foundation.IBundle) Storyboard {
-	rv := ffi.CallMethod[Storyboard](sc, "storyboardWithName:bundle:", name, storyboardBundleOrNil)
+	rv := objc.CallMethod[Storyboard](sc, "storyboardWithName:bundle:", name, storyboardBundleOrNil)
 	return rv
 }
 
 func (sc _StoryboardClass) Alloc() Storyboard {
-	rv := ffi.CallMethod[Storyboard](sc, "alloc")
+	rv := objc.CallMethod[Storyboard](sc, "alloc")
 	return rv
 }
 
 func (sc _StoryboardClass) New() Storyboard {
-	rv := ffi.CallMethod[Storyboard](sc, "new")
+	rv := objc.CallMethod[Storyboard](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,31 +53,31 @@ func NewStoryboard() Storyboard {
 }
 
 func (s_ Storyboard) Init() Storyboard {
-	rv := ffi.CallMethod[Storyboard](s_, "init")
+	rv := objc.CallMethod[Storyboard](s_, "init")
 	return rv
 }
 
 func (s_ Storyboard) InstantiateInitialController() objc.Object {
-	rv := ffi.CallMethod[objc.Object](s_, "instantiateInitialController")
+	rv := objc.CallMethod[objc.Object](s_, "instantiateInitialController")
 	return rv
 }
 
 func (s_ Storyboard) InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object {
-	rv := ffi.CallMethod[objc.Object](s_, "instantiateControllerWithIdentifier:", identifier)
+	rv := objc.CallMethod[objc.Object](s_, "instantiateControllerWithIdentifier:", identifier)
 	return rv
 }
 
 func (s_ Storyboard) InstantiateControllerWithIdentifier_Creator(identifier StoryboardSceneIdentifier, block func(coder foundation.Coder) objc.IObject) objc.Object {
-	rv := ffi.CallMethod[objc.Object](s_, "instantiateControllerWithIdentifier:creator:", identifier, block)
+	rv := objc.CallMethod[objc.Object](s_, "instantiateControllerWithIdentifier:creator:", identifier, block)
 	return rv
 }
 
 func (s_ Storyboard) InstantiateInitialControllerWithCreator(block func(coder foundation.Coder) objc.IObject) objc.Object {
-	rv := ffi.CallMethod[objc.Object](s_, "instantiateInitialControllerWithCreator:", block)
+	rv := objc.CallMethod[objc.Object](s_, "instantiateInitialControllerWithCreator:", block)
 	return rv
 }
 
 func (sc _StoryboardClass) MainStoryboard() Storyboard {
-	rv := ffi.CallMethod[Storyboard](sc, "mainStoryboard")
+	rv := objc.CallMethod[Storyboard](sc, "mainStoryboard")
 	return rv
 }

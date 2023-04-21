@@ -1,4 +1,4 @@
-package ffi
+package objc
 
 // #import <stdint.h>
 //
@@ -12,16 +12,14 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/internal"
-
-	"github.com/hsiafan/cocoa/objc"
 )
 
 var classCache = map[string]*classInfo{} //go protocol interface name to ClassInfo
 var classLock sync.Mutex
-var baseClass = objc.GetClass("ProtocolImplBase")
+var baseClass = GetClass("ProtocolImplBase")
 
 type classInfo struct {
-	class       objc.Class
+	class       Class
 	methodInfos map[string]*methodInfo // selector name to MethodInfo
 }
 
@@ -37,8 +35,8 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 	if ci, ok := classCache[protocolName]; ok {
 		return ci
 	}
-	class := objc.AllocateClassPair(baseClass, protocolName+"Adaptor", 0)
-	protocol := objc.GetProtocol(protocolName)
+	class := AllocateClassPair(baseClass, protocolName+"Adaptor", 0)
+	protocol := GetProtocol(protocolName)
 	class.AddProtocol(protocol)
 
 	var methodInfos = map[string]*methodInfo{} // selector name to method signature
@@ -73,12 +71,12 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 }
 
 type methodDescription struct {
-	objc.MethodDescription
+	MethodDescription
 	required       bool
 	instanceMethod bool
 }
 
-func getProtocolMethods(protocol objc.Protocol) []methodDescription {
+func getProtocolMethods(protocol Protocol) []methodDescription {
 	if protocol.GetName() == "NSObject" {
 		return nil
 	}
@@ -113,7 +111,7 @@ type instanceInfo struct {
 
 // param protocolName: the delegate go interface name
 // param d: the delegate go implementaion
-func CreateProtocol[T any](protocolName string, d T) objc.Object {
+func CreateProtocol[T any](protocolName string, d T) Object {
 	dv := reflect.ValueOf(d)
 	ci := createClass(dv.Type(), protocolName)
 	ii := &instanceInfo{
@@ -122,12 +120,12 @@ func CreateProtocol[T any](protocolName string, d T) objc.Object {
 		protocolName: protocolName,
 	}
 	h := cgo.NewHandle(ii)
-	return objc.MakeObject(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
+	return MakeObject(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
 }
 
 //export respondsTo
 func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
-	selName := objc.MakeSelector(sel).GetName()
+	selName := MakeSelector(sel).GetName()
 	ii := cgo.Handle(goID).Value().(*instanceInfo)
 	mi := ii.classInfo.methodInfos[selName]
 	if mi == nil {
@@ -150,7 +148,7 @@ func internalDeleteHandle(hp uintptr) {
 //export handleDelegateInvocation
 func handleDelegateInvocation(goID uintptr, sel unsafe.Pointer, invocationPtr unsafe.Pointer) {
 	invocation := makeInvocation(invocationPtr)
-	selName := objc.MakeSelector(sel).GetName()
+	selName := MakeSelector(sel).GetName()
 	ii := cgo.Handle(goID).Value().(*instanceInfo)
 	f := ii.classInfo.methodInfos[selName].fun
 

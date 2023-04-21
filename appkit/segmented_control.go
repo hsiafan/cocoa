@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -72,32 +71,32 @@ func MakeSegmentedControl(ptr unsafe.Pointer) SegmentedControl {
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithImages_TrackingMode_Target_Action(images []IImage, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := ffi.CallMethod[SegmentedControl](sc, "segmentedControlWithImages:trackingMode:target:action:", images, trackingMode, target, action)
+	rv := objc.CallMethod[SegmentedControl](sc, "segmentedControlWithImages:trackingMode:target:action:", images, trackingMode, target, action)
 	return rv
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithLabels_TrackingMode_Target_Action(labels []string, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := ffi.CallMethod[SegmentedControl](sc, "segmentedControlWithLabels:trackingMode:target:action:", labels, trackingMode, target, action)
+	rv := objc.CallMethod[SegmentedControl](sc, "segmentedControlWithLabels:trackingMode:target:action:", labels, trackingMode, target, action)
 	return rv
 }
 
 func (s_ SegmentedControl) InitWithFrame(frameRect foundation.Rect) SegmentedControl {
-	rv := ffi.CallMethod[SegmentedControl](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[SegmentedControl](s_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (s_ SegmentedControl) Init() SegmentedControl {
-	rv := ffi.CallMethod[SegmentedControl](s_, "init")
+	rv := objc.CallMethod[SegmentedControl](s_, "init")
 	return rv
 }
 
 func (sc _SegmentedControlClass) Alloc() SegmentedControl {
-	rv := ffi.CallMethod[SegmentedControl](sc, "alloc")
+	rv := objc.CallMethod[SegmentedControl](sc, "alloc")
 	return rv
 }
 
 func (sc _SegmentedControlClass) New() SegmentedControl {
-	rv := ffi.CallMethod[SegmentedControl](sc, "new")
+	rv := objc.CallMethod[SegmentedControl](sc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -107,192 +106,192 @@ func NewSegmentedControl() SegmentedControl {
 }
 
 func (s_ SegmentedControl) LabelForSegment(segment int) string {
-	rv := ffi.CallMethod[string](s_, "labelForSegment:", segment)
+	rv := objc.CallMethod[string](s_, "labelForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetLabel_ForSegment(label string, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setLabel:forSegment:", label, segment)
+	objc.CallMethod[objc.Void](s_, "setLabel:forSegment:", label, segment)
 }
 
 func (s_ SegmentedControl) SetAlignment_ForSegment(alignment TextAlignment, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setAlignment:forSegment:", alignment, segment)
+	objc.CallMethod[objc.Void](s_, "setAlignment:forSegment:", alignment, segment)
 }
 
 func (s_ SegmentedControl) AlignmentForSegment(segment int) TextAlignment {
-	rv := ffi.CallMethod[TextAlignment](s_, "alignmentForSegment:", segment)
+	rv := objc.CallMethod[TextAlignment](s_, "alignmentForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetImage_ForSegment(image IImage, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setImage:forSegment:", image, segment)
+	objc.CallMethod[objc.Void](s_, "setImage:forSegment:", image, segment)
 }
 
 func (s_ SegmentedControl) ImageForSegment(segment int) Image {
-	rv := ffi.CallMethod[Image](s_, "imageForSegment:", segment)
+	rv := objc.CallMethod[Image](s_, "imageForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetImageScaling_ForSegment(scaling ImageScaling, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setImageScaling:forSegment:", scaling, segment)
+	objc.CallMethod[objc.Void](s_, "setImageScaling:forSegment:", scaling, segment)
 }
 
 func (s_ SegmentedControl) ImageScalingForSegment(segment int) ImageScaling {
-	rv := ffi.CallMethod[ImageScaling](s_, "imageScalingForSegment:", segment)
+	rv := objc.CallMethod[ImageScaling](s_, "imageScalingForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetMenu_ForSegment(menu IMenu, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setMenu:forSegment:", menu, segment)
+	objc.CallMethod[objc.Void](s_, "setMenu:forSegment:", menu, segment)
 }
 
 func (s_ SegmentedControl) MenuForSegment(segment int) Menu {
-	rv := ffi.CallMethod[Menu](s_, "menuForSegment:", segment)
+	rv := objc.CallMethod[Menu](s_, "menuForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetShowsMenuIndicator_ForSegment(showsMenuIndicator bool, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setShowsMenuIndicator:forSegment:", showsMenuIndicator, segment)
+	objc.CallMethod[objc.Void](s_, "setShowsMenuIndicator:forSegment:", showsMenuIndicator, segment)
 }
 
 func (s_ SegmentedControl) ShowsMenuIndicatorForSegment(segment int) bool {
-	rv := ffi.CallMethod[bool](s_, "showsMenuIndicatorForSegment:", segment)
+	rv := objc.CallMethod[bool](s_, "showsMenuIndicatorForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SelectSegmentWithTag(tag int) bool {
-	rv := ffi.CallMethod[bool](s_, "selectSegmentWithTag:", tag)
+	rv := objc.CallMethod[bool](s_, "selectSegmentWithTag:", tag)
 	return rv
 }
 
 func (s_ SegmentedControl) SetSelected_ForSegment(selected bool, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setSelected:forSegment:", selected, segment)
+	objc.CallMethod[objc.Void](s_, "setSelected:forSegment:", selected, segment)
 }
 
 func (s_ SegmentedControl) IsSelectedForSegment(segment int) bool {
-	rv := ffi.CallMethod[bool](s_, "isSelectedForSegment:", segment)
+	rv := objc.CallMethod[bool](s_, "isSelectedForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetWidth_ForSegment(width float64, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setWidth:forSegment:", width, segment)
+	objc.CallMethod[objc.Void](s_, "setWidth:forSegment:", width, segment)
 }
 
 func (s_ SegmentedControl) WidthForSegment(segment int) float64 {
-	rv := ffi.CallMethod[float64](s_, "widthForSegment:", segment)
+	rv := objc.CallMethod[float64](s_, "widthForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	ffi.CallMethod[ffi.Void](s_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
+	objc.CallMethod[objc.Void](s_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
 }
 
 func (s_ SegmentedControl) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](s_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
+	rv := objc.CallMethod[foundation.Size](s_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
 	return rv
 }
 
 func (s_ SegmentedControl) SetEnabled_ForSegment(enabled bool, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setEnabled:forSegment:", enabled, segment)
+	objc.CallMethod[objc.Void](s_, "setEnabled:forSegment:", enabled, segment)
 }
 
 func (s_ SegmentedControl) IsEnabledForSegment(segment int) bool {
-	rv := ffi.CallMethod[bool](s_, "isEnabledForSegment:", segment)
+	rv := objc.CallMethod[bool](s_, "isEnabledForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) TagForSegment(segment int) int {
-	rv := ffi.CallMethod[int](s_, "tagForSegment:", segment)
+	rv := objc.CallMethod[int](s_, "tagForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetTag_ForSegment(tag int, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setTag:forSegment:", tag, segment)
+	objc.CallMethod[objc.Void](s_, "setTag:forSegment:", tag, segment)
 }
 
 func (s_ SegmentedControl) SetToolTip_ForSegment(toolTip string, segment int) {
-	ffi.CallMethod[ffi.Void](s_, "setToolTip:forSegment:", toolTip, segment)
+	objc.CallMethod[objc.Void](s_, "setToolTip:forSegment:", toolTip, segment)
 }
 
 func (s_ SegmentedControl) ToolTipForSegment(segment int) string {
-	rv := ffi.CallMethod[string](s_, "toolTipForSegment:", segment)
+	rv := objc.CallMethod[string](s_, "toolTipForSegment:", segment)
 	return rv
 }
 
 func (s_ SegmentedControl) TrackingMode() SegmentSwitchTracking {
-	rv := ffi.CallMethod[SegmentSwitchTracking](s_, "trackingMode")
+	rv := objc.CallMethod[SegmentSwitchTracking](s_, "trackingMode")
 	return rv
 }
 
 func (s_ SegmentedControl) SetTrackingMode(value SegmentSwitchTracking) {
-	ffi.CallMethod[ffi.Void](s_, "setTrackingMode:", value)
+	objc.CallMethod[objc.Void](s_, "setTrackingMode:", value)
 }
 
 func (s_ SegmentedControl) SegmentStyle() SegmentStyle {
-	rv := ffi.CallMethod[SegmentStyle](s_, "segmentStyle")
+	rv := objc.CallMethod[SegmentStyle](s_, "segmentStyle")
 	return rv
 }
 
 func (s_ SegmentedControl) SetSegmentStyle(value SegmentStyle) {
-	ffi.CallMethod[ffi.Void](s_, "setSegmentStyle:", value)
+	objc.CallMethod[objc.Void](s_, "setSegmentStyle:", value)
 }
 
 func (s_ SegmentedControl) SegmentCount() int {
-	rv := ffi.CallMethod[int](s_, "segmentCount")
+	rv := objc.CallMethod[int](s_, "segmentCount")
 	return rv
 }
 
 func (s_ SegmentedControl) SetSegmentCount(value int) {
-	ffi.CallMethod[ffi.Void](s_, "setSegmentCount:", value)
+	objc.CallMethod[objc.Void](s_, "setSegmentCount:", value)
 }
 
 func (s_ SegmentedControl) IsSpringLoaded() bool {
-	rv := ffi.CallMethod[bool](s_, "isSpringLoaded")
+	rv := objc.CallMethod[bool](s_, "isSpringLoaded")
 	return rv
 }
 
 func (s_ SegmentedControl) SetSpringLoaded(value bool) {
-	ffi.CallMethod[ffi.Void](s_, "setSpringLoaded:", value)
+	objc.CallMethod[objc.Void](s_, "setSpringLoaded:", value)
 }
 
 func (s_ SegmentedControl) SelectedSegment() int {
-	rv := ffi.CallMethod[int](s_, "selectedSegment")
+	rv := objc.CallMethod[int](s_, "selectedSegment")
 	return rv
 }
 
 func (s_ SegmentedControl) SetSelectedSegment(value int) {
-	ffi.CallMethod[ffi.Void](s_, "setSelectedSegment:", value)
+	objc.CallMethod[objc.Void](s_, "setSelectedSegment:", value)
 }
 
 func (s_ SegmentedControl) IndexOfSelectedItem() int {
-	rv := ffi.CallMethod[int](s_, "indexOfSelectedItem")
+	rv := objc.CallMethod[int](s_, "indexOfSelectedItem")
 	return rv
 }
 
 func (s_ SegmentedControl) SelectedSegmentBezelColor() Color {
-	rv := ffi.CallMethod[Color](s_, "selectedSegmentBezelColor")
+	rv := objc.CallMethod[Color](s_, "selectedSegmentBezelColor")
 	return rv
 }
 
 func (s_ SegmentedControl) SetSelectedSegmentBezelColor(value IColor) {
-	ffi.CallMethod[ffi.Void](s_, "setSelectedSegmentBezelColor:", value)
+	objc.CallMethod[objc.Void](s_, "setSelectedSegmentBezelColor:", value)
 }
 
 func (s_ SegmentedControl) DoubleValueForSelectedSegment() float64 {
-	rv := ffi.CallMethod[float64](s_, "doubleValueForSelectedSegment")
+	rv := objc.CallMethod[float64](s_, "doubleValueForSelectedSegment")
 	return rv
 }
 
 func (s_ SegmentedControl) SegmentDistribution() SegmentDistribution {
-	rv := ffi.CallMethod[SegmentDistribution](s_, "segmentDistribution")
+	rv := objc.CallMethod[SegmentDistribution](s_, "segmentDistribution")
 	return rv
 }
 
 func (s_ SegmentedControl) SetSegmentDistribution(value SegmentDistribution) {
-	ffi.CallMethod[ffi.Void](s_, "setSegmentDistribution:", value)
+	objc.CallMethod[objc.Void](s_, "setSegmentDistribution:", value)
 }
 
 func (s_ SegmentedControl) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := ffi.CallMethod[UserInterfaceCompressionOptions](s_, "activeCompressionOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](s_, "activeCompressionOptions")
 	return rv
 }

@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -30,42 +29,42 @@ func MakeSecureTextField(ptr unsafe.Pointer) SecureTextField {
 }
 
 func (sc _SecureTextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](sc, "labelWithAttributedString:", attributedStringValue)
+	rv := objc.CallMethod[SecureTextField](sc, "labelWithAttributedString:", attributedStringValue)
 	return rv
 }
 
 func (sc _SecureTextFieldClass) LabelWithString(stringValue string) SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](sc, "labelWithString:", stringValue)
+	rv := objc.CallMethod[SecureTextField](sc, "labelWithString:", stringValue)
 	return rv
 }
 
 func (sc _SecureTextFieldClass) TextFieldWithString(stringValue string) SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](sc, "textFieldWithString:", stringValue)
+	rv := objc.CallMethod[SecureTextField](sc, "textFieldWithString:", stringValue)
 	return rv
 }
 
 func (sc _SecureTextFieldClass) WrappingLabelWithString(stringValue string) SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](sc, "wrappingLabelWithString:", stringValue)
+	rv := objc.CallMethod[SecureTextField](sc, "wrappingLabelWithString:", stringValue)
 	return rv
 }
 
 func (s_ SecureTextField) InitWithFrame(frameRect foundation.Rect) SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[SecureTextField](s_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (s_ SecureTextField) Init() SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](s_, "init")
+	rv := objc.CallMethod[SecureTextField](s_, "init")
 	return rv
 }
 
 func (sc _SecureTextFieldClass) Alloc() SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](sc, "alloc")
+	rv := objc.CallMethod[SecureTextField](sc, "alloc")
 	return rv
 }
 
 func (sc _SecureTextFieldClass) New() SecureTextField {
-	rv := ffi.CallMethod[SecureTextField](sc, "new")
+	rv := objc.CallMethod[SecureTextField](sc, "new")
 	rv.Autorelease()
 	return rv
 }

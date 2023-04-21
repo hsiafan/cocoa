@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -39,12 +38,12 @@ func MakeDockTile(ptr unsafe.Pointer) DockTile {
 }
 
 func (dc _DockTileClass) Alloc() DockTile {
-	rv := ffi.CallMethod[DockTile](dc, "alloc")
+	rv := objc.CallMethod[DockTile](dc, "alloc")
 	return rv
 }
 
 func (dc _DockTileClass) New() DockTile {
-	rv := ffi.CallMethod[DockTile](dc, "new")
+	rv := objc.CallMethod[DockTile](dc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -54,47 +53,47 @@ func NewDockTile() DockTile {
 }
 
 func (d_ DockTile) Init() DockTile {
-	rv := ffi.CallMethod[DockTile](d_, "init")
+	rv := objc.CallMethod[DockTile](d_, "init")
 	return rv
 }
 
 func (d_ DockTile) Display() {
-	ffi.CallMethod[ffi.Void](d_, "display")
+	objc.CallMethod[objc.Void](d_, "display")
 }
 
 func (d_ DockTile) ContentView() View {
-	rv := ffi.CallMethod[View](d_, "contentView")
+	rv := objc.CallMethod[View](d_, "contentView")
 	return rv
 }
 
 func (d_ DockTile) SetContentView(value IView) {
-	ffi.CallMethod[ffi.Void](d_, "setContentView:", value)
+	objc.CallMethod[objc.Void](d_, "setContentView:", value)
 }
 
 func (d_ DockTile) Size() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](d_, "size")
+	rv := objc.CallMethod[foundation.Size](d_, "size")
 	return rv
 }
 
 func (d_ DockTile) Owner() objc.Object {
-	rv := ffi.CallMethod[objc.Object](d_, "owner")
+	rv := objc.CallMethod[objc.Object](d_, "owner")
 	return rv
 }
 
 func (d_ DockTile) ShowsApplicationBadge() bool {
-	rv := ffi.CallMethod[bool](d_, "showsApplicationBadge")
+	rv := objc.CallMethod[bool](d_, "showsApplicationBadge")
 	return rv
 }
 
 func (d_ DockTile) SetShowsApplicationBadge(value bool) {
-	ffi.CallMethod[ffi.Void](d_, "setShowsApplicationBadge:", value)
+	objc.CallMethod[objc.Void](d_, "setShowsApplicationBadge:", value)
 }
 
 func (d_ DockTile) BadgeLabel() string {
-	rv := ffi.CallMethod[string](d_, "badgeLabel")
+	rv := objc.CallMethod[string](d_, "badgeLabel")
 	return rv
 }
 
 func (d_ DockTile) SetBadgeLabel(value string) {
-	ffi.CallMethod[ffi.Void](d_, "setBadgeLabel:", value)
+	objc.CallMethod[objc.Void](d_, "setBadgeLabel:", value)
 }

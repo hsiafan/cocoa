@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
@@ -118,32 +117,32 @@ func MakeMatrix(ptr unsafe.Pointer) Matrix {
 }
 
 func (m_ Matrix) InitWithFrame(frameRect foundation.Rect) Matrix {
-	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Matrix](m_, "initWithFrame:", frameRect)
 	return rv
 }
 
 func (m_ Matrix) InitWithFrame_Mode_CellClass_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Matrix {
-	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:", frameRect, mode, factoryId, rowsHigh, colsWide)
+	rv := objc.CallMethod[Matrix](m_, "initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:", frameRect, mode, factoryId, rowsHigh, colsWide)
 	return rv
 }
 
 func (m_ Matrix) InitWithFrame_Mode_Prototype_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
-	rv := ffi.CallMethod[Matrix](m_, "initWithFrame:mode:prototype:numberOfRows:numberOfColumns:", frameRect, mode, cell, rowsHigh, colsWide)
+	rv := objc.CallMethod[Matrix](m_, "initWithFrame:mode:prototype:numberOfRows:numberOfColumns:", frameRect, mode, cell, rowsHigh, colsWide)
 	return rv
 }
 
 func (m_ Matrix) Init() Matrix {
-	rv := ffi.CallMethod[Matrix](m_, "init")
+	rv := objc.CallMethod[Matrix](m_, "init")
 	return rv
 }
 
 func (mc _MatrixClass) Alloc() Matrix {
-	rv := ffi.CallMethod[Matrix](mc, "alloc")
+	rv := objc.CallMethod[Matrix](mc, "alloc")
 	return rv
 }
 
 func (mc _MatrixClass) New() Matrix {
-	rv := ffi.CallMethod[Matrix](mc, "new")
+	rv := objc.CallMethod[Matrix](mc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -153,388 +152,388 @@ func NewMatrix() Matrix {
 }
 
 func (m_ Matrix) AddColumn() {
-	ffi.CallMethod[ffi.Void](m_, "addColumn")
+	objc.CallMethod[objc.Void](m_, "addColumn")
 }
 
 func (m_ Matrix) AddColumnWithCells(newCells []ICell) {
-	ffi.CallMethod[ffi.Void](m_, "addColumnWithCells:", newCells)
+	objc.CallMethod[objc.Void](m_, "addColumnWithCells:", newCells)
 }
 
 func (m_ Matrix) AddRow() {
-	ffi.CallMethod[ffi.Void](m_, "addRow")
+	objc.CallMethod[objc.Void](m_, "addRow")
 }
 
 func (m_ Matrix) AddRowWithCells(newCells []ICell) {
-	ffi.CallMethod[ffi.Void](m_, "addRowWithCells:", newCells)
+	objc.CallMethod[objc.Void](m_, "addRowWithCells:", newCells)
 }
 
 func (m_ Matrix) CellFrameAtRow_Column(row int, col int) foundation.Rect {
-	rv := ffi.CallMethod[foundation.Rect](m_, "cellFrameAtRow:column:", row, col)
+	rv := objc.CallMethod[foundation.Rect](m_, "cellFrameAtRow:column:", row, col)
 	return rv
 }
 
 func (m_ Matrix) GetNumberOfRows_Columns(rowCount *int, colCount *int) {
-	ffi.CallMethod[ffi.Void](m_, "getNumberOfRows:columns:", rowCount, colCount)
+	objc.CallMethod[objc.Void](m_, "getNumberOfRows:columns:", rowCount, colCount)
 }
 
 func (m_ Matrix) InsertColumn(column int) {
-	ffi.CallMethod[ffi.Void](m_, "insertColumn:", column)
+	objc.CallMethod[objc.Void](m_, "insertColumn:", column)
 }
 
 func (m_ Matrix) InsertColumn_WithCells(column int, newCells []ICell) {
-	ffi.CallMethod[ffi.Void](m_, "insertColumn:withCells:", column, newCells)
+	objc.CallMethod[objc.Void](m_, "insertColumn:withCells:", column, newCells)
 }
 
 func (m_ Matrix) InsertRow(row int) {
-	ffi.CallMethod[ffi.Void](m_, "insertRow:", row)
+	objc.CallMethod[objc.Void](m_, "insertRow:", row)
 }
 
 func (m_ Matrix) InsertRow_WithCells(row int, newCells []ICell) {
-	ffi.CallMethod[ffi.Void](m_, "insertRow:withCells:", row, newCells)
+	objc.CallMethod[objc.Void](m_, "insertRow:withCells:", row, newCells)
 }
 
 func (m_ Matrix) MakeCellAtRow_Column(row int, col int) Cell {
-	rv := ffi.CallMethod[Cell](m_, "makeCellAtRow:column:", row, col)
+	rv := objc.CallMethod[Cell](m_, "makeCellAtRow:column:", row, col)
 	return rv
 }
 
 func (m_ Matrix) PutCell_AtRow_Column(newCell ICell, row int, col int) {
-	ffi.CallMethod[ffi.Void](m_, "putCell:atRow:column:", newCell, row, col)
+	objc.CallMethod[objc.Void](m_, "putCell:atRow:column:", newCell, row, col)
 }
 
 func (m_ Matrix) RemoveColumn(col int) {
-	ffi.CallMethod[ffi.Void](m_, "removeColumn:", col)
+	objc.CallMethod[objc.Void](m_, "removeColumn:", col)
 }
 
 func (m_ Matrix) RemoveRow(row int) {
-	ffi.CallMethod[ffi.Void](m_, "removeRow:", row)
+	objc.CallMethod[objc.Void](m_, "removeRow:", row)
 }
 
 func (m_ Matrix) RenewRows_Columns(newRows int, newCols int) {
-	ffi.CallMethod[ffi.Void](m_, "renewRows:columns:", newRows, newCols)
+	objc.CallMethod[objc.Void](m_, "renewRows:columns:", newRows, newCols)
 }
 
 func (m_ Matrix) SortUsingSelector(comparator objc.Selector) {
-	ffi.CallMethod[ffi.Void](m_, "sortUsingSelector:", comparator)
+	objc.CallMethod[objc.Void](m_, "sortUsingSelector:", comparator)
 }
 
 func (m_ Matrix) GetRow_Column_ForPoint(row *int, col *int, point foundation.Point) bool {
-	rv := ffi.CallMethod[bool](m_, "getRow:column:forPoint:", row, col, point)
+	rv := objc.CallMethod[bool](m_, "getRow:column:forPoint:", row, col, point)
 	return rv
 }
 
 func (m_ Matrix) GetRow_Column_OfCell(row *int, col *int, cell ICell) bool {
-	rv := ffi.CallMethod[bool](m_, "getRow:column:ofCell:", row, col, cell)
+	rv := objc.CallMethod[bool](m_, "getRow:column:ofCell:", row, col, cell)
 	return rv
 }
 
 func (m_ Matrix) SetState_AtRow_Column(value int, row int, col int) {
-	ffi.CallMethod[ffi.Void](m_, "setState:atRow:column:", value, row, col)
+	objc.CallMethod[objc.Void](m_, "setState:atRow:column:", value, row, col)
 }
 
 func (m_ Matrix) SetToolTip_ForCell(toolTipString string, cell ICell) {
-	ffi.CallMethod[ffi.Void](m_, "setToolTip:forCell:", toolTipString, cell)
+	objc.CallMethod[objc.Void](m_, "setToolTip:forCell:", toolTipString, cell)
 }
 
 func (m_ Matrix) ToolTipForCell(cell ICell) string {
-	rv := ffi.CallMethod[string](m_, "toolTipForCell:", cell)
+	rv := objc.CallMethod[string](m_, "toolTipForCell:", cell)
 	return rv
 }
 
 func (m_ Matrix) SelectCellAtRow_Column(row int, col int) {
-	ffi.CallMethod[ffi.Void](m_, "selectCellAtRow:column:", row, col)
+	objc.CallMethod[objc.Void](m_, "selectCellAtRow:column:", row, col)
 }
 
 func (m_ Matrix) SelectCellWithTag(tag int) bool {
-	rv := ffi.CallMethod[bool](m_, "selectCellWithTag:", tag)
+	rv := objc.CallMethod[bool](m_, "selectCellWithTag:", tag)
 	return rv
 }
 
 func (m_ Matrix) SelectAll(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](m_, "selectAll:", sender)
+	objc.CallMethod[objc.Void](m_, "selectAll:", sender)
 }
 
 func (m_ Matrix) SetSelectionFrom_To_Anchor_Highlight(startPos int, endPos int, anchorPos int, lit bool) {
-	ffi.CallMethod[ffi.Void](m_, "setSelectionFrom:to:anchor:highlight:", startPos, endPos, anchorPos, lit)
+	objc.CallMethod[objc.Void](m_, "setSelectionFrom:to:anchor:highlight:", startPos, endPos, anchorPos, lit)
 }
 
 func (m_ Matrix) DeselectAllCells() {
-	ffi.CallMethod[ffi.Void](m_, "deselectAllCells")
+	objc.CallMethod[objc.Void](m_, "deselectAllCells")
 }
 
 func (m_ Matrix) DeselectSelectedCell() {
-	ffi.CallMethod[ffi.Void](m_, "deselectSelectedCell")
+	objc.CallMethod[objc.Void](m_, "deselectSelectedCell")
 }
 
 func (m_ Matrix) CellAtRow_Column(row int, col int) Cell {
-	rv := ffi.CallMethod[Cell](m_, "cellAtRow:column:", row, col)
+	rv := objc.CallMethod[Cell](m_, "cellAtRow:column:", row, col)
 	return rv
 }
 
 func (m_ Matrix) CellWithTag(tag int) Cell {
-	rv := ffi.CallMethod[Cell](m_, "cellWithTag:", tag)
+	rv := objc.CallMethod[Cell](m_, "cellWithTag:", tag)
 	return rv
 }
 
 func (m_ Matrix) SelectText(sender objc.IObject) {
-	ffi.CallMethod[ffi.Void](m_, "selectText:", sender)
+	objc.CallMethod[objc.Void](m_, "selectText:", sender)
 }
 
 func (m_ Matrix) SelectTextAtRow_Column(row int, col int) Cell {
-	rv := ffi.CallMethod[Cell](m_, "selectTextAtRow:column:", row, col)
+	rv := objc.CallMethod[Cell](m_, "selectTextAtRow:column:", row, col)
 	return rv
 }
 
 func (m_ Matrix) TextShouldBeginEditing(textObject IText) bool {
-	rv := ffi.CallMethod[bool](m_, "textShouldBeginEditing:", textObject)
+	rv := objc.CallMethod[bool](m_, "textShouldBeginEditing:", textObject)
 	return rv
 }
 
 func (m_ Matrix) TextDidBeginEditing(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](m_, "textDidBeginEditing:", notification)
+	objc.CallMethod[objc.Void](m_, "textDidBeginEditing:", notification)
 }
 
 func (m_ Matrix) TextDidChange(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](m_, "textDidChange:", notification)
+	objc.CallMethod[objc.Void](m_, "textDidChange:", notification)
 }
 
 func (m_ Matrix) TextShouldEndEditing(textObject IText) bool {
-	rv := ffi.CallMethod[bool](m_, "textShouldEndEditing:", textObject)
+	rv := objc.CallMethod[bool](m_, "textShouldEndEditing:", textObject)
 	return rv
 }
 
 func (m_ Matrix) TextDidEndEditing(notification foundation.INotification) {
-	ffi.CallMethod[ffi.Void](m_, "textDidEndEditing:", notification)
+	objc.CallMethod[objc.Void](m_, "textDidEndEditing:", notification)
 }
 
 func (m_ Matrix) SetValidateSize(flag bool) {
-	ffi.CallMethod[ffi.Void](m_, "setValidateSize:", flag)
+	objc.CallMethod[objc.Void](m_, "setValidateSize:", flag)
 }
 
 func (m_ Matrix) SizeToCells() {
-	ffi.CallMethod[ffi.Void](m_, "sizeToCells")
+	objc.CallMethod[objc.Void](m_, "sizeToCells")
 }
 
 func (m_ Matrix) SetScrollable(flag bool) {
-	ffi.CallMethod[ffi.Void](m_, "setScrollable:", flag)
+	objc.CallMethod[objc.Void](m_, "setScrollable:", flag)
 }
 
 func (m_ Matrix) ScrollCellToVisibleAtRow_Column(row int, col int) {
-	ffi.CallMethod[ffi.Void](m_, "scrollCellToVisibleAtRow:column:", row, col)
+	objc.CallMethod[objc.Void](m_, "scrollCellToVisibleAtRow:column:", row, col)
 }
 
 func (m_ Matrix) DrawCellAtRow_Column(row int, col int) {
-	ffi.CallMethod[ffi.Void](m_, "drawCellAtRow:column:", row, col)
+	objc.CallMethod[objc.Void](m_, "drawCellAtRow:column:", row, col)
 }
 
 func (m_ Matrix) HighlightCell_AtRow_Column(flag bool, row int, col int) {
-	ffi.CallMethod[ffi.Void](m_, "highlightCell:atRow:column:", flag, row, col)
+	objc.CallMethod[objc.Void](m_, "highlightCell:atRow:column:", flag, row, col)
 }
 
 func (m_ Matrix) SendAction() bool {
-	rv := ffi.CallMethod[bool](m_, "sendAction")
+	rv := objc.CallMethod[bool](m_, "sendAction")
 	return rv
 }
 
 func (m_ Matrix) SendAction_To_ForAllCells(selector objc.Selector, object objc.IObject, flag bool) {
-	ffi.CallMethod[ffi.Void](m_, "sendAction:to:forAllCells:", selector, object, flag)
+	objc.CallMethod[objc.Void](m_, "sendAction:to:forAllCells:", selector, object, flag)
 }
 
 func (m_ Matrix) SendDoubleAction() {
-	ffi.CallMethod[ffi.Void](m_, "sendDoubleAction")
+	objc.CallMethod[objc.Void](m_, "sendDoubleAction")
 }
 
 func (m_ Matrix) Mode() MatrixMode {
-	rv := ffi.CallMethod[MatrixMode](m_, "mode")
+	rv := objc.CallMethod[MatrixMode](m_, "mode")
 	return rv
 }
 
 func (m_ Matrix) SetMode(value MatrixMode) {
-	ffi.CallMethod[ffi.Void](m_, "setMode:", value)
+	objc.CallMethod[objc.Void](m_, "setMode:", value)
 }
 
 func (m_ Matrix) AllowsEmptySelection() bool {
-	rv := ffi.CallMethod[bool](m_, "allowsEmptySelection")
+	rv := objc.CallMethod[bool](m_, "allowsEmptySelection")
 	return rv
 }
 
 func (m_ Matrix) SetAllowsEmptySelection(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAllowsEmptySelection:", value)
+	objc.CallMethod[objc.Void](m_, "setAllowsEmptySelection:", value)
 }
 
 func (m_ Matrix) IsSelectionByRect() bool {
-	rv := ffi.CallMethod[bool](m_, "isSelectionByRect")
+	rv := objc.CallMethod[bool](m_, "isSelectionByRect")
 	return rv
 }
 
 func (m_ Matrix) SetSelectionByRect(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setSelectionByRect:", value)
+	objc.CallMethod[objc.Void](m_, "setSelectionByRect:", value)
 }
 
 func (m_ Matrix) Prototype() Cell {
-	rv := ffi.CallMethod[Cell](m_, "prototype")
+	rv := objc.CallMethod[Cell](m_, "prototype")
 	return rv
 }
 
 func (m_ Matrix) SetPrototype(value ICell) {
-	ffi.CallMethod[ffi.Void](m_, "setPrototype:", value)
+	objc.CallMethod[objc.Void](m_, "setPrototype:", value)
 }
 
 func (m_ Matrix) CellSize() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](m_, "cellSize")
+	rv := objc.CallMethod[foundation.Size](m_, "cellSize")
 	return rv
 }
 
 func (m_ Matrix) SetCellSize(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](m_, "setCellSize:", value)
+	objc.CallMethod[objc.Void](m_, "setCellSize:", value)
 }
 
 func (m_ Matrix) IntercellSpacing() foundation.Size {
-	rv := ffi.CallMethod[foundation.Size](m_, "intercellSpacing")
+	rv := objc.CallMethod[foundation.Size](m_, "intercellSpacing")
 	return rv
 }
 
 func (m_ Matrix) SetIntercellSpacing(value foundation.Size) {
-	ffi.CallMethod[ffi.Void](m_, "setIntercellSpacing:", value)
+	objc.CallMethod[objc.Void](m_, "setIntercellSpacing:", value)
 }
 
 func (m_ Matrix) NumberOfColumns() int {
-	rv := ffi.CallMethod[int](m_, "numberOfColumns")
+	rv := objc.CallMethod[int](m_, "numberOfColumns")
 	return rv
 }
 
 func (m_ Matrix) NumberOfRows() int {
-	rv := ffi.CallMethod[int](m_, "numberOfRows")
+	rv := objc.CallMethod[int](m_, "numberOfRows")
 	return rv
 }
 
 func (m_ Matrix) AutorecalculatesCellSize() bool {
-	rv := ffi.CallMethod[bool](m_, "autorecalculatesCellSize")
+	rv := objc.CallMethod[bool](m_, "autorecalculatesCellSize")
 	return rv
 }
 
 func (m_ Matrix) SetAutorecalculatesCellSize(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAutorecalculatesCellSize:", value)
+	objc.CallMethod[objc.Void](m_, "setAutorecalculatesCellSize:", value)
 }
 
 func (m_ Matrix) KeyCell() Cell {
-	rv := ffi.CallMethod[Cell](m_, "keyCell")
+	rv := objc.CallMethod[Cell](m_, "keyCell")
 	return rv
 }
 
 func (m_ Matrix) SetKeyCell(value ICell) {
-	ffi.CallMethod[ffi.Void](m_, "setKeyCell:", value)
+	objc.CallMethod[objc.Void](m_, "setKeyCell:", value)
 }
 
 func (m_ Matrix) SelectedCells() []Cell {
-	rv := ffi.CallMethod[[]Cell](m_, "selectedCells")
+	rv := objc.CallMethod[[]Cell](m_, "selectedCells")
 	return rv
 }
 
 func (m_ Matrix) SelectedColumn() int {
-	rv := ffi.CallMethod[int](m_, "selectedColumn")
+	rv := objc.CallMethod[int](m_, "selectedColumn")
 	return rv
 }
 
 func (m_ Matrix) SelectedRow() int {
-	rv := ffi.CallMethod[int](m_, "selectedRow")
+	rv := objc.CallMethod[int](m_, "selectedRow")
 	return rv
 }
 
 func (m_ Matrix) Cells() []Cell {
-	rv := ffi.CallMethod[[]Cell](m_, "cells")
+	rv := objc.CallMethod[[]Cell](m_, "cells")
 	return rv
 }
 
 func (m_ Matrix) BackgroundColor() Color {
-	rv := ffi.CallMethod[Color](m_, "backgroundColor")
+	rv := objc.CallMethod[Color](m_, "backgroundColor")
 	return rv
 }
 
 func (m_ Matrix) SetBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](m_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](m_, "setBackgroundColor:", value)
 }
 
 func (m_ Matrix) CellBackgroundColor() Color {
-	rv := ffi.CallMethod[Color](m_, "cellBackgroundColor")
+	rv := objc.CallMethod[Color](m_, "cellBackgroundColor")
 	return rv
 }
 
 func (m_ Matrix) SetCellBackgroundColor(value IColor) {
-	ffi.CallMethod[ffi.Void](m_, "setCellBackgroundColor:", value)
+	objc.CallMethod[objc.Void](m_, "setCellBackgroundColor:", value)
 }
 
 func (m_ Matrix) DrawsBackground() bool {
-	rv := ffi.CallMethod[bool](m_, "drawsBackground")
+	rv := objc.CallMethod[bool](m_, "drawsBackground")
 	return rv
 }
 
 func (m_ Matrix) SetDrawsBackground(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](m_, "setDrawsBackground:", value)
 }
 
 func (m_ Matrix) DrawsCellBackground() bool {
-	rv := ffi.CallMethod[bool](m_, "drawsCellBackground")
+	rv := objc.CallMethod[bool](m_, "drawsCellBackground")
 	return rv
 }
 
 func (m_ Matrix) SetDrawsCellBackground(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setDrawsCellBackground:", value)
+	objc.CallMethod[objc.Void](m_, "setDrawsCellBackground:", value)
 }
 
 func (m_ Matrix) TabKeyTraversesCells() bool {
-	rv := ffi.CallMethod[bool](m_, "tabKeyTraversesCells")
+	rv := objc.CallMethod[bool](m_, "tabKeyTraversesCells")
 	return rv
 }
 
 func (m_ Matrix) SetTabKeyTraversesCells(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setTabKeyTraversesCells:", value)
+	objc.CallMethod[objc.Void](m_, "setTabKeyTraversesCells:", value)
 }
 
 func (m_ Matrix) Delegate() MatrixDelegateWrapper {
-	rv := ffi.CallMethod[MatrixDelegateWrapper](m_, "delegate")
+	rv := objc.CallMethod[MatrixDelegateWrapper](m_, "delegate")
 	return rv
 }
 
 func (m_ Matrix) SetDelegate(value MatrixDelegate) {
-	po := ffi.CreateProtocol("NSMatrixDelegate", value)
+	po := objc.CreateProtocol("NSMatrixDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	ffi.CallMethod[ffi.Void](m_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](m_, "setDelegate:", po)
 }
 
 func (m_ Matrix) SetDelegate0(value objc.IObject) {
-	ffi.CallMethod[ffi.Void](m_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](m_, "setDelegate:", value)
 }
 
 func (m_ Matrix) AutosizesCells() bool {
-	rv := ffi.CallMethod[bool](m_, "autosizesCells")
+	rv := objc.CallMethod[bool](m_, "autosizesCells")
 	return rv
 }
 
 func (m_ Matrix) SetAutosizesCells(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAutosizesCells:", value)
+	objc.CallMethod[objc.Void](m_, "setAutosizesCells:", value)
 }
 
 func (m_ Matrix) IsAutoscroll() bool {
-	rv := ffi.CallMethod[bool](m_, "isAutoscroll")
+	rv := objc.CallMethod[bool](m_, "isAutoscroll")
 	return rv
 }
 
 func (m_ Matrix) SetAutoscroll(value bool) {
-	ffi.CallMethod[ffi.Void](m_, "setAutoscroll:", value)
+	objc.CallMethod[objc.Void](m_, "setAutoscroll:", value)
 }
 
 func (m_ Matrix) DoubleAction() objc.Selector {
-	rv := ffi.CallMethod[objc.Selector](m_, "doubleAction")
+	rv := objc.CallMethod[objc.Selector](m_, "doubleAction")
 	return rv
 }
 
 func (m_ Matrix) SetDoubleAction(value objc.Selector) {
-	ffi.CallMethod[ffi.Void](m_, "setDoubleAction:", value)
+	objc.CallMethod[objc.Void](m_, "setDoubleAction:", value)
 }
 
 func (m_ Matrix) MouseDownFlags() int {
-	rv := ffi.CallMethod[int](m_, "mouseDownFlags")
+	rv := objc.CallMethod[int](m_, "mouseDownFlags")
 	return rv
 }

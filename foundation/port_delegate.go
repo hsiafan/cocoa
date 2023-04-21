@@ -1,7 +1,9 @@
 // auto-generated code, do not modify
 package foundation
 
-import "github.com/hsiafan/cocoa/objc"
+import (
+	"github.com/hsiafan/cocoa/objc"
+)
 
 type PortDelegate interface {
 }

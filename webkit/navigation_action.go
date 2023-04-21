@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/appkit"
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/foundation"
 	"github.com/hsiafan/cocoa/objc"
 )
@@ -38,12 +37,12 @@ func MakeNavigationAction(ptr unsafe.Pointer) NavigationAction {
 }
 
 func (nc _NavigationActionClass) Alloc() NavigationAction {
-	rv := ffi.CallMethod[NavigationAction](nc, "alloc")
+	rv := objc.CallMethod[NavigationAction](nc, "alloc")
 	return rv
 }
 
 func (nc _NavigationActionClass) New() NavigationAction {
-	rv := ffi.CallMethod[NavigationAction](nc, "new")
+	rv := objc.CallMethod[NavigationAction](nc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -53,41 +52,41 @@ func NewNavigationAction() NavigationAction {
 }
 
 func (n_ NavigationAction) Init() NavigationAction {
-	rv := ffi.CallMethod[NavigationAction](n_, "init")
+	rv := objc.CallMethod[NavigationAction](n_, "init")
 	return rv
 }
 
 func (n_ NavigationAction) NavigationType() NavigationType {
-	rv := ffi.CallMethod[NavigationType](n_, "navigationType")
+	rv := objc.CallMethod[NavigationType](n_, "navigationType")
 	return rv
 }
 
 func (n_ NavigationAction) Request() foundation.URLRequest {
-	rv := ffi.CallMethod[foundation.URLRequest](n_, "request")
+	rv := objc.CallMethod[foundation.URLRequest](n_, "request")
 	return rv
 }
 
 func (n_ NavigationAction) SourceFrame() FrameInfo {
-	rv := ffi.CallMethod[FrameInfo](n_, "sourceFrame")
+	rv := objc.CallMethod[FrameInfo](n_, "sourceFrame")
 	return rv
 }
 
 func (n_ NavigationAction) TargetFrame() FrameInfo {
-	rv := ffi.CallMethod[FrameInfo](n_, "targetFrame")
+	rv := objc.CallMethod[FrameInfo](n_, "targetFrame")
 	return rv
 }
 
 func (n_ NavigationAction) ButtonNumber() int {
-	rv := ffi.CallMethod[int](n_, "buttonNumber")
+	rv := objc.CallMethod[int](n_, "buttonNumber")
 	return rv
 }
 
 func (n_ NavigationAction) ModifierFlags() appkit.EventModifierFlags {
-	rv := ffi.CallMethod[appkit.EventModifierFlags](n_, "modifierFlags")
+	rv := objc.CallMethod[appkit.EventModifierFlags](n_, "modifierFlags")
 	return rv
 }
 
 func (n_ NavigationAction) ShouldPerformDownload() bool {
-	rv := ffi.CallMethod[bool](n_, "shouldPerformDownload")
+	rv := objc.CallMethod[bool](n_, "shouldPerformDownload")
 	return rv
 }

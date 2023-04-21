@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,22 +32,22 @@ func MakeTextRange(ptr unsafe.Pointer) TextRange {
 }
 
 func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	rv := ffi.CallMethod[TextRange](t_, "textRangeByIntersectingWithTextRange:", textRange)
+	rv := objc.CallMethod[TextRange](t_, "textRangeByIntersectingWithTextRange:", textRange)
 	return rv
 }
 
 func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
-	rv := ffi.CallMethod[TextRange](t_, "textRangeByFormingUnionWithTextRange:", textRange)
+	rv := objc.CallMethod[TextRange](t_, "textRangeByFormingUnionWithTextRange:", textRange)
 	return rv
 }
 
 func (tc _TextRangeClass) Alloc() TextRange {
-	rv := ffi.CallMethod[TextRange](tc, "alloc")
+	rv := objc.CallMethod[TextRange](tc, "alloc")
 	return rv
 }
 
 func (tc _TextRangeClass) New() TextRange {
-	rv := ffi.CallMethod[TextRange](tc, "new")
+	rv := objc.CallMethod[TextRange](tc, "new")
 	rv.Autorelease()
 	return rv
 }
@@ -58,26 +57,26 @@ func NewTextRange() TextRange {
 }
 
 func (t_ TextRange) Init() TextRange {
-	rv := ffi.CallMethod[TextRange](t_, "init")
+	rv := objc.CallMethod[TextRange](t_, "init")
 	return rv
 }
 
 func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
-	rv := ffi.CallMethod[bool](t_, "intersectsWithTextRange:", textRange)
+	rv := objc.CallMethod[bool](t_, "intersectsWithTextRange:", textRange)
 	return rv
 }
 
 func (t_ TextRange) IsEqualToTextRange(textRange ITextRange) bool {
-	rv := ffi.CallMethod[bool](t_, "isEqualToTextRange:", textRange)
+	rv := objc.CallMethod[bool](t_, "isEqualToTextRange:", textRange)
 	return rv
 }
 
 func (t_ TextRange) ContainsRange(textRange ITextRange) bool {
-	rv := ffi.CallMethod[bool](t_, "containsRange:", textRange)
+	rv := objc.CallMethod[bool](t_, "containsRange:", textRange)
 	return rv
 }
 
 func (t_ TextRange) IsEmpty() bool {
-	rv := ffi.CallMethod[bool](t_, "isEmpty")
+	rv := objc.CallMethod[bool](t_, "isEmpty")
 	return rv
 }
