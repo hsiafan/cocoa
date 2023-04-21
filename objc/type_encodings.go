@@ -2,6 +2,7 @@ package objc
 
 import (
 	"reflect"
+	"strconv"
 	"strings"
 )
 
@@ -56,6 +57,8 @@ func getTypeEncoding(t reflect.Type) string {
 		return "^" + getTypeEncoding(t.Elem())
 	case reflect.String, reflect.Slice, reflect.Map:
 		return "@"
+	case reflect.Array:
+		return "[" + strconv.Itoa(t.Len()) + getTypeEncoding(t.Elem()) + "]"
 	case reflect.Struct:
 		if t == classType {
 			return "#"
@@ -64,31 +67,19 @@ func getTypeEncoding(t reflect.Type) string {
 		} else if t.Implements(pointerHolderType) {
 			return "@"
 		} else {
-			switch t.Name() {
-			case "Size":
-				return "{CGSize=dd}"
-			case "Point":
-				return "{CGPoint=dd}"
-			case "Rect":
-				return "{CGRect={CGPoint=dd}{CGSize=dd}}"
-			case "EdgeInsets":
-				return "{NSEdgeInsets=dddd}"
-			case "Range":
-				return "{NSRange=QQ}"
-			case "AffineTransformStruct":
-				return "{NSAffineTransformStruct=dddddd}"
-			case "Decimal":
-				return "{?=b8b4b1b1b18[8S]}"
-			case "DirectionalEdgeInsets":
-				return "{NSDirectionalEdgeInsets=dddd}"
-			case "AffineTransform":
-				return "{CGAffineTransform=dddddd}"
-			default:
-				panic("unsupported type:" + t.Name())
-			}
-
+			return getStructTypeEncoding(t)
 		}
 	default:
 		panic("unsupported type:" + t.Name())
 	}
+}
+
+func getStructTypeEncoding(t reflect.Type) string {
+	var sb strings.Builder
+	sb.WriteString("{?=")
+	for i := 0; i < t.NumField(); i++ {
+		sb.WriteString(getTypeEncoding(t.Field(i).Type))
+	}
+	sb.WriteString("}")
+	return sb.String()
 }
