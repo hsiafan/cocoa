@@ -32,12 +32,12 @@ func MakeNavigationResponse(ptr unsafe.Pointer) NavigationResponse {
 }
 
 func (nc _NavigationResponseClass) Alloc() NavigationResponse {
-	rv := objc.CallMethod[NavigationResponse](nc, "alloc")
+	rv := objc.CallMethod[NavigationResponse](nc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (nc _NavigationResponseClass) New() NavigationResponse {
-	rv := objc.CallMethod[NavigationResponse](nc, "new")
+	rv := objc.CallMethod[NavigationResponse](nc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,21 +47,21 @@ func NewNavigationResponse() NavigationResponse {
 }
 
 func (n_ NavigationResponse) Init() NavigationResponse {
-	rv := objc.CallMethod[NavigationResponse](n_, "init")
+	rv := objc.CallMethod[NavigationResponse](n_, objc.GetSelector("init"))
 	return rv
 }
 
 func (n_ NavigationResponse) Response() foundation.URLResponse {
-	rv := objc.CallMethod[foundation.URLResponse](n_, "response")
+	rv := objc.CallMethod[foundation.URLResponse](n_, objc.GetSelector("response"))
 	return rv
 }
 
 func (n_ NavigationResponse) CanShowMIMEType() bool {
-	rv := objc.CallMethod[bool](n_, "canShowMIMEType")
+	rv := objc.CallMethod[bool](n_, objc.GetSelector("canShowMIMEType"))
 	return rv
 }
 
 func (n_ NavigationResponse) IsForMainFrame() bool {
-	rv := objc.CallMethod[bool](n_, "isForMainFrame")
+	rv := objc.CallMethod[bool](n_, objc.GetSelector("isForMainFrame"))
 	return rv
 }

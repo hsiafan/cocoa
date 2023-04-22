@@ -47,12 +47,12 @@ func MakeOperationQueue(ptr unsafe.Pointer) OperationQueue {
 }
 
 func (oc _OperationQueueClass) Alloc() OperationQueue {
-	rv := objc.CallMethod[OperationQueue](oc, "alloc")
+	rv := objc.CallMethod[OperationQueue](oc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (oc _OperationQueueClass) New() OperationQueue {
-	rv := objc.CallMethod[OperationQueue](oc, "new")
+	rv := objc.CallMethod[OperationQueue](oc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -62,93 +62,93 @@ func NewOperationQueue() OperationQueue {
 }
 
 func (o_ OperationQueue) Init() OperationQueue {
-	rv := objc.CallMethod[OperationQueue](o_, "init")
+	rv := objc.CallMethod[OperationQueue](o_, objc.GetSelector("init"))
 	return rv
 }
 
 func (o_ OperationQueue) AddOperation(op IOperation) {
-	objc.CallMethod[objc.Void](o_, "addOperation:", op)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("addOperation:"), op)
 }
 
 func (o_ OperationQueue) AddOperations_WaitUntilFinished(ops []IOperation, wait bool) {
-	objc.CallMethod[objc.Void](o_, "addOperations:waitUntilFinished:", ops, wait)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("addOperations:waitUntilFinished:"), ops, wait)
 }
 
 func (o_ OperationQueue) AddOperationWithBlock(block func()) {
-	objc.CallMethod[objc.Void](o_, "addOperationWithBlock:", block)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("addOperationWithBlock:"), block)
 }
 
 func (o_ OperationQueue) AddBarrierBlock(barrier func()) {
-	objc.CallMethod[objc.Void](o_, "addBarrierBlock:", barrier)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("addBarrierBlock:"), barrier)
 }
 
 func (o_ OperationQueue) CancelAllOperations() {
-	objc.CallMethod[objc.Void](o_, "cancelAllOperations")
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("cancelAllOperations"))
 }
 
 func (o_ OperationQueue) WaitUntilAllOperationsAreFinished() {
-	objc.CallMethod[objc.Void](o_, "waitUntilAllOperationsAreFinished")
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("waitUntilAllOperationsAreFinished"))
 }
 
 func (oc _OperationQueueClass) MainQueue() OperationQueue {
-	rv := objc.CallMethod[OperationQueue](oc, "mainQueue")
+	rv := objc.CallMethod[OperationQueue](oc, objc.GetSelector("mainQueue"))
 	return rv
 }
 
 func (oc _OperationQueueClass) CurrentQueue() OperationQueue {
-	rv := objc.CallMethod[OperationQueue](oc, "currentQueue")
+	rv := objc.CallMethod[OperationQueue](oc, objc.GetSelector("currentQueue"))
 	return rv
 }
 
 // deprecated
 func (o_ OperationQueue) Operations() []Operation {
-	rv := objc.CallMethod[[]Operation](o_, "operations")
+	rv := objc.CallMethod[[]Operation](o_, objc.GetSelector("operations"))
 	return rv
 }
 
 // deprecated
 func (o_ OperationQueue) OperationCount() uint {
-	rv := objc.CallMethod[uint](o_, "operationCount")
+	rv := objc.CallMethod[uint](o_, objc.GetSelector("operationCount"))
 	return rv
 }
 
 func (o_ OperationQueue) QualityOfService() QualityOfService {
-	rv := objc.CallMethod[QualityOfService](o_, "qualityOfService")
+	rv := objc.CallMethod[QualityOfService](o_, objc.GetSelector("qualityOfService"))
 	return rv
 }
 
 func (o_ OperationQueue) SetQualityOfService(value QualityOfService) {
-	objc.CallMethod[objc.Void](o_, "setQualityOfService:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setQualityOfService:"), value)
 }
 
 func (o_ OperationQueue) MaxConcurrentOperationCount() int {
-	rv := objc.CallMethod[int](o_, "maxConcurrentOperationCount")
+	rv := objc.CallMethod[int](o_, objc.GetSelector("maxConcurrentOperationCount"))
 	return rv
 }
 
 func (o_ OperationQueue) SetMaxConcurrentOperationCount(value int) {
-	objc.CallMethod[objc.Void](o_, "setMaxConcurrentOperationCount:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setMaxConcurrentOperationCount:"), value)
 }
 
 func (o_ OperationQueue) Progress() Progress {
-	rv := objc.CallMethod[Progress](o_, "progress")
+	rv := objc.CallMethod[Progress](o_, objc.GetSelector("progress"))
 	return rv
 }
 
 func (o_ OperationQueue) IsSuspended() bool {
-	rv := objc.CallMethod[bool](o_, "isSuspended")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("isSuspended"))
 	return rv
 }
 
 func (o_ OperationQueue) SetSuspended(value bool) {
-	objc.CallMethod[objc.Void](o_, "setSuspended:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setSuspended:"), value)
 }
 
 func (o_ OperationQueue) Name() string {
-	rv := objc.CallMethod[string](o_, "name")
+	rv := objc.CallMethod[string](o_, objc.GetSelector("name"))
 	return rv
 }
 
 func (o_ OperationQueue) SetName(value string) {
-	objc.CallMethod[objc.Void](o_, "setName:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setName:"), value)
 }

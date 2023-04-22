@@ -32,12 +32,12 @@ func MakeCollectionViewUpdateItem(ptr unsafe.Pointer) CollectionViewUpdateItem {
 }
 
 func (cc _CollectionViewUpdateItemClass) Alloc() CollectionViewUpdateItem {
-	rv := objc.CallMethod[CollectionViewUpdateItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewUpdateItem](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewUpdateItemClass) New() CollectionViewUpdateItem {
-	rv := objc.CallMethod[CollectionViewUpdateItem](cc, "new")
+	rv := objc.CallMethod[CollectionViewUpdateItem](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,21 +47,21 @@ func NewCollectionViewUpdateItem() CollectionViewUpdateItem {
 }
 
 func (c_ CollectionViewUpdateItem) Init() CollectionViewUpdateItem {
-	rv := objc.CallMethod[CollectionViewUpdateItem](c_, "init")
+	rv := objc.CallMethod[CollectionViewUpdateItem](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionViewUpdateItem) IndexPathBeforeUpdate() foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](c_, "indexPathBeforeUpdate")
+	rv := objc.CallMethod[foundation.IndexPath](c_, objc.GetSelector("indexPathBeforeUpdate"))
 	return rv
 }
 
 func (c_ CollectionViewUpdateItem) IndexPathAfterUpdate() foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](c_, "indexPathAfterUpdate")
+	rv := objc.CallMethod[foundation.IndexPath](c_, objc.GetSelector("indexPathAfterUpdate"))
 	return rv
 }
 
 func (c_ CollectionViewUpdateItem) UpdateAction() CollectionUpdateAction {
-	rv := objc.CallMethod[CollectionUpdateAction](c_, "updateAction")
+	rv := objc.CallMethod[CollectionUpdateAction](c_, objc.GetSelector("updateAction"))
 	return rv
 }

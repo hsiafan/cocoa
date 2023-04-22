@@ -25,19 +25,19 @@ type URLSchemeTaskWrapper struct {
 }
 
 func (u_ URLSchemeTaskWrapper) DidReceiveResponse(response foundation.IURLResponse) {
-	objc.CallMethod[objc.Void](u_, "didReceiveResponse:", response)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("didReceiveResponse:"), response)
 }
 
 func (u_ URLSchemeTaskWrapper) DidReceiveData(data []byte) {
-	objc.CallMethod[objc.Void](u_, "didReceiveData:", data)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("didReceiveData:"), data)
 }
 
 func (u_ URLSchemeTaskWrapper) DidFinish() {
-	objc.CallMethod[objc.Void](u_, "didFinish")
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFinish"))
 }
 
 func (u_ URLSchemeTaskWrapper) DidFailWithError(error foundation.IError) {
-	objc.CallMethod[objc.Void](u_, "didFailWithError:", error)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFailWithError:"), error)
 }
 
 func (u_ *URLSchemeTaskWrapper) ImplementsRequest() bool {
@@ -45,6 +45,6 @@ func (u_ *URLSchemeTaskWrapper) ImplementsRequest() bool {
 }
 
 func (u_ URLSchemeTaskWrapper) Request() foundation.URLRequest {
-	rv := objc.CallMethod[foundation.URLRequest](u_, "request")
+	rv := objc.CallMethod[foundation.URLRequest](u_, objc.GetSelector("request"))
 	return rv
 }

@@ -43,12 +43,12 @@ func MakePageLayout(ptr unsafe.Pointer) PageLayout {
 }
 
 func (pc _PageLayoutClass) Alloc() PageLayout {
-	rv := objc.CallMethod[PageLayout](pc, "alloc")
+	rv := objc.CallMethod[PageLayout](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PageLayoutClass) New() PageLayout {
-	rv := objc.CallMethod[PageLayout](pc, "new")
+	rv := objc.CallMethod[PageLayout](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -58,64 +58,64 @@ func NewPageLayout() PageLayout {
 }
 
 func (p_ PageLayout) Init() PageLayout {
-	rv := objc.CallMethod[PageLayout](p_, "init")
+	rv := objc.CallMethod[PageLayout](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PageLayoutClass) PageLayout() PageLayout {
-	rv := objc.CallMethod[PageLayout](pc, "pageLayout")
+	rv := objc.CallMethod[PageLayout](pc, objc.GetSelector("pageLayout"))
 	return rv
 }
 
 func (p_ PageLayout) BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](p_, "beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:", printInfo, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:"), printInfo, docWindow, delegate, didEndSelector, contextInfo)
 }
 
 func (p_ PageLayout) RunModal() int {
-	rv := objc.CallMethod[int](p_, "runModal")
+	rv := objc.CallMethod[int](p_, objc.GetSelector("runModal"))
 	return rv
 }
 
 func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.CallMethod[int](p_, "runModalWithPrintInfo:", printInfo)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("runModalWithPrintInfo:"), printInfo)
 	return rv
 }
 
 func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, "addAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("addAccessoryController:"), accessoryController)
 }
 
 func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, "removeAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAccessoryController:"), accessoryController)
 }
 
 // deprecated
 func (p_ PageLayout) AccessoryView() View {
-	rv := objc.CallMethod[View](p_, "accessoryView")
+	rv := objc.CallMethod[View](p_, objc.GetSelector("accessoryView"))
 	return rv
 }
 
 // deprecated
 func (p_ PageLayout) SetAccessoryView(accessoryView IView) {
-	objc.CallMethod[objc.Void](p_, "setAccessoryView:", accessoryView)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryView:"), accessoryView)
 }
 
 // deprecated
 func (p_ PageLayout) ReadPrintInfo() {
-	objc.CallMethod[objc.Void](p_, "readPrintInfo")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("readPrintInfo"))
 }
 
 // deprecated
 func (p_ PageLayout) WritePrintInfo() {
-	objc.CallMethod[objc.Void](p_, "writePrintInfo")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("writePrintInfo"))
 }
 
 func (p_ PageLayout) AccessoryControllers() []ViewController {
-	rv := objc.CallMethod[[]ViewController](p_, "accessoryControllers")
+	rv := objc.CallMethod[[]ViewController](p_, objc.GetSelector("accessoryControllers"))
 	return rv
 }
 
 func (p_ PageLayout) PrintInfo() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](p_, "printInfo")
+	rv := objc.CallMethod[PrintInfo](p_, objc.GetSelector("printInfo"))
 	return rv
 }

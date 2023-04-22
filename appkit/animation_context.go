@@ -38,12 +38,12 @@ func MakeAnimationContext(ptr unsafe.Pointer) AnimationContext {
 }
 
 func (ac _AnimationContextClass) Alloc() AnimationContext {
-	rv := objc.CallMethod[AnimationContext](ac, "alloc")
+	rv := objc.CallMethod[AnimationContext](ac, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (ac _AnimationContextClass) New() AnimationContext {
-	rv := objc.CallMethod[AnimationContext](ac, "new")
+	rv := objc.CallMethod[AnimationContext](ac, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,63 +53,63 @@ func NewAnimationContext() AnimationContext {
 }
 
 func (a_ AnimationContext) Init() AnimationContext {
-	rv := objc.CallMethod[AnimationContext](a_, "init")
+	rv := objc.CallMethod[AnimationContext](a_, objc.GetSelector("init"))
 	return rv
 }
 
 func (ac _AnimationContextClass) BeginGrouping() {
-	objc.CallMethod[objc.Void](ac, "beginGrouping")
+	objc.CallMethod[objc.Void](ac, objc.GetSelector("beginGrouping"))
 }
 
 func (ac _AnimationContextClass) EndGrouping() {
-	objc.CallMethod[objc.Void](ac, "endGrouping")
+	objc.CallMethod[objc.Void](ac, objc.GetSelector("endGrouping"))
 }
 
 func (ac _AnimationContextClass) RunAnimationGroup_CompletionHandler(changes func(context AnimationContext), completionHandler func()) {
-	objc.CallMethod[objc.Void](ac, "runAnimationGroup:completionHandler:", changes, completionHandler)
+	objc.CallMethod[objc.Void](ac, objc.GetSelector("runAnimationGroup:completionHandler:"), changes, completionHandler)
 }
 
 func (ac _AnimationContextClass) RunAnimationGroup(changes func(context AnimationContext)) {
-	objc.CallMethod[objc.Void](ac, "runAnimationGroup:", changes)
+	objc.CallMethod[objc.Void](ac, objc.GetSelector("runAnimationGroup:"), changes)
 }
 
 func (ac _AnimationContextClass) CurrentContext() AnimationContext {
-	rv := objc.CallMethod[AnimationContext](ac, "currentContext")
+	rv := objc.CallMethod[AnimationContext](ac, objc.GetSelector("currentContext"))
 	return rv
 }
 
 func (a_ AnimationContext) CompletionHandler() func() {
-	rv := objc.CallMethod[func()](a_, "completionHandler")
+	rv := objc.CallMethod[func()](a_, objc.GetSelector("completionHandler"))
 	return rv
 }
 
 func (a_ AnimationContext) SetCompletionHandler(value func()) {
-	objc.CallMethod[objc.Void](a_, "setCompletionHandler:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setCompletionHandler:"), value)
 }
 
 func (a_ AnimationContext) Duration() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](a_, "duration")
+	rv := objc.CallMethod[foundation.TimeInterval](a_, objc.GetSelector("duration"))
 	return rv
 }
 
 func (a_ AnimationContext) SetDuration(value foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](a_, "setDuration:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDuration:"), value)
 }
 
 func (a_ AnimationContext) TimingFunction() quartzcore.MediaTimingFunction {
-	rv := objc.CallMethod[quartzcore.MediaTimingFunction](a_, "timingFunction")
+	rv := objc.CallMethod[quartzcore.MediaTimingFunction](a_, objc.GetSelector("timingFunction"))
 	return rv
 }
 
 func (a_ AnimationContext) SetTimingFunction(value quartzcore.IMediaTimingFunction) {
-	objc.CallMethod[objc.Void](a_, "setTimingFunction:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), value)
 }
 
 func (a_ AnimationContext) AllowsImplicitAnimation() bool {
-	rv := objc.CallMethod[bool](a_, "allowsImplicitAnimation")
+	rv := objc.CallMethod[bool](a_, objc.GetSelector("allowsImplicitAnimation"))
 	return rv
 }
 
 func (a_ AnimationContext) SetAllowsImplicitAnimation(value bool) {
-	objc.CallMethod[objc.Void](a_, "setAllowsImplicitAnimation:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAllowsImplicitAnimation:"), value)
 }

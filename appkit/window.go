@@ -373,32 +373,32 @@ func MakeWindow(ptr unsafe.Pointer) Window {
 }
 
 func (wc _WindowClass) WindowWithContentViewController(contentViewController IViewController) Window {
-	rv := objc.CallMethod[Window](wc, "windowWithContentViewController:", contentViewController)
+	rv := objc.CallMethod[Window](wc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
 func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Window {
-	rv := objc.CallMethod[Window](w_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
 	return rv
 }
 
 func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Window {
-	rv := objc.CallMethod[Window](w_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
 func (w_ Window) Init() Window {
-	rv := objc.CallMethod[Window](w_, "init")
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (wc _WindowClass) Alloc() Window {
-	rv := objc.CallMethod[Window](wc, "alloc")
+	rv := objc.CallMethod[Window](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WindowClass) New() Window {
-	rv := objc.CallMethod[Window](wc, "new")
+	rv := objc.CallMethod[Window](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -408,620 +408,620 @@ func NewWindow() Window {
 }
 
 func (w_ Window) ToggleFullScreen(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "toggleFullScreen:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleFullScreen:"), sender)
 }
 
 func (w_ Window) SetDynamicDepthLimit(flag bool) {
-	objc.CallMethod[objc.Void](w_, "setDynamicDepthLimit:", flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDynamicDepthLimit:"), flag)
 }
 
 func (w_ Window) InvalidateShadow() {
-	objc.CallMethod[objc.Void](w_, "invalidateShadow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("invalidateShadow"))
 }
 
 func (w_ Window) AutorecalculatesContentBorderThicknessForEdge(edge foundation.RectEdge) bool {
-	rv := objc.CallMethod[bool](w_, "autorecalculatesContentBorderThicknessForEdge:", edge)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("autorecalculatesContentBorderThicknessForEdge:"), edge)
 	return rv
 }
 
 func (w_ Window) SetAutorecalculatesContentBorderThickness_ForEdge(flag bool, edge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](w_, "setAutorecalculatesContentBorderThickness:forEdge:", flag, edge)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAutorecalculatesContentBorderThickness:forEdge:"), flag, edge)
 }
 
 func (w_ Window) ContentBorderThicknessForEdge(edge foundation.RectEdge) float64 {
-	rv := objc.CallMethod[float64](w_, "contentBorderThicknessForEdge:", edge)
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("contentBorderThicknessForEdge:"), edge)
 	return rv
 }
 
 func (w_ Window) SetContentBorderThickness_ForEdge(thickness float64, edge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](w_, "setContentBorderThickness:forEdge:", thickness, edge)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentBorderThickness:forEdge:"), thickness, edge)
 }
 
 func (wc _WindowClass) WindowNumbersWithOptions(options WindowNumberListOptions) []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](wc, "windowNumbersWithOptions:", options)
+	rv := objc.CallMethod[[]foundation.Number](wc, objc.GetSelector("windowNumbersWithOptions:"), options)
 	return rv
 }
 
 func (wc _WindowClass) ContentRectForFrameRect_StyleMask(fRect foundation.Rect, style WindowStyleMask) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](wc, "contentRectForFrameRect:styleMask:", fRect, style)
+	rv := objc.CallMethod[foundation.Rect](wc, objc.GetSelector("contentRectForFrameRect:styleMask:"), fRect, style)
 	return rv
 }
 
 func (wc _WindowClass) FrameRectForContentRect_StyleMask(cRect foundation.Rect, style WindowStyleMask) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](wc, "frameRectForContentRect:styleMask:", cRect, style)
+	rv := objc.CallMethod[foundation.Rect](wc, objc.GetSelector("frameRectForContentRect:styleMask:"), cRect, style)
 	return rv
 }
 
 func (wc _WindowClass) MinFrameWidthWithTitle_StyleMask(title string, style WindowStyleMask) float64 {
-	rv := objc.CallMethod[float64](wc, "minFrameWidthWithTitle:styleMask:", title, style)
+	rv := objc.CallMethod[float64](wc, objc.GetSelector("minFrameWidthWithTitle:styleMask:"), title, style)
 	return rv
 }
 
 func (w_ Window) ContentRectForFrameRect(frameRect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "contentRectForFrameRect:", frameRect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("contentRectForFrameRect:"), frameRect)
 	return rv
 }
 
 func (w_ Window) FrameRectForContentRect(contentRect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "frameRectForContentRect:", contentRect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("frameRectForContentRect:"), contentRect)
 	return rv
 }
 
 func (w_ Window) BeginSheet_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.CallMethod[objc.Void](w_, "beginSheet:completionHandler:", sheetWindow, handler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("beginSheet:completionHandler:"), sheetWindow, handler)
 }
 
 func (w_ Window) BeginCriticalSheet_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.CallMethod[objc.Void](w_, "beginCriticalSheet:completionHandler:", sheetWindow, handler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("beginCriticalSheet:completionHandler:"), sheetWindow, handler)
 }
 
 func (w_ Window) EndSheet(sheetWindow IWindow) {
-	objc.CallMethod[objc.Void](w_, "endSheet:", sheetWindow)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("endSheet:"), sheetWindow)
 }
 
 func (w_ Window) EndSheet_ReturnCode(sheetWindow IWindow, returnCode ModalResponse) {
-	objc.CallMethod[objc.Void](w_, "endSheet:returnCode:", sheetWindow, returnCode)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("endSheet:returnCode:"), sheetWindow, returnCode)
 }
 
 func (w_ Window) SetFrameOrigin(point foundation.Point) {
-	objc.CallMethod[objc.Void](w_, "setFrameOrigin:", point)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setFrameOrigin:"), point)
 }
 
 func (w_ Window) SetFrameTopLeftPoint(point foundation.Point) {
-	objc.CallMethod[objc.Void](w_, "setFrameTopLeftPoint:", point)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setFrameTopLeftPoint:"), point)
 }
 
 func (w_ Window) ConstrainFrameRect_ToScreen(frameRect foundation.Rect, screen IScreen) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "constrainFrameRect:toScreen:", frameRect, screen)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("constrainFrameRect:toScreen:"), frameRect, screen)
 	return rv
 }
 
 func (w_ Window) CascadeTopLeftFromPoint(topLeftPoint foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "cascadeTopLeftFromPoint:", topLeftPoint)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("cascadeTopLeftFromPoint:"), topLeftPoint)
 	return rv
 }
 
 func (w_ Window) SetFrame_Display(frameRect foundation.Rect, flag bool) {
-	objc.CallMethod[objc.Void](w_, "setFrame:display:", frameRect, flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setFrame:display:"), frameRect, flag)
 }
 
 func (w_ Window) SetFrame_Display_Animate(frameRect foundation.Rect, displayFlag bool, animateFlag bool) {
-	objc.CallMethod[objc.Void](w_, "setFrame:display:animate:", frameRect, displayFlag, animateFlag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setFrame:display:animate:"), frameRect, displayFlag, animateFlag)
 }
 
 func (w_ Window) AnimationResizeTime(newFrame foundation.Rect) foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](w_, "animationResizeTime:", newFrame)
+	rv := objc.CallMethod[foundation.TimeInterval](w_, objc.GetSelector("animationResizeTime:"), newFrame)
 	return rv
 }
 
 func (w_ Window) PerformZoom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "performZoom:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performZoom:"), sender)
 }
 
 func (w_ Window) Zoom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "zoom:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("zoom:"), sender)
 }
 
 func (w_ Window) SetContentSize(size foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setContentSize:", size)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentSize:"), size)
 }
 
 func (w_ Window) OrderOut(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "orderOut:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderOut:"), sender)
 }
 
 func (w_ Window) OrderBack(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "orderBack:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderBack:"), sender)
 }
 
 func (w_ Window) OrderFront(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "orderFront:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderFront:"), sender)
 }
 
 func (w_ Window) OrderFrontRegardless() {
-	objc.CallMethod[objc.Void](w_, "orderFrontRegardless")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderFrontRegardless"))
 }
 
 func (w_ Window) OrderWindow_RelativeTo(place WindowOrderingMode, otherWin int) {
-	objc.CallMethod[objc.Void](w_, "orderWindow:relativeTo:", place, otherWin)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderWindow:relativeTo:"), place, otherWin)
 }
 
 func (wc _WindowClass) RemoveFrameUsingName(name WindowFrameAutosaveName) {
-	objc.CallMethod[objc.Void](wc, "removeFrameUsingName:", name)
+	objc.CallMethod[objc.Void](wc, objc.GetSelector("removeFrameUsingName:"), name)
 }
 
 func (w_ Window) SetFrameUsingName(name WindowFrameAutosaveName) bool {
-	rv := objc.CallMethod[bool](w_, "setFrameUsingName:", name)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("setFrameUsingName:"), name)
 	return rv
 }
 
 func (w_ Window) SetFrameUsingName_Force(name WindowFrameAutosaveName, force bool) bool {
-	rv := objc.CallMethod[bool](w_, "setFrameUsingName:force:", name, force)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("setFrameUsingName:force:"), name, force)
 	return rv
 }
 
 func (w_ Window) SaveFrameUsingName(name WindowFrameAutosaveName) {
-	objc.CallMethod[objc.Void](w_, "saveFrameUsingName:", name)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("saveFrameUsingName:"), name)
 }
 
 func (w_ Window) SetFrameAutosaveName(name WindowFrameAutosaveName) bool {
-	rv := objc.CallMethod[bool](w_, "setFrameAutosaveName:", name)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("setFrameAutosaveName:"), name)
 	return rv
 }
 
 func (w_ Window) SetFrameFromString(string_ WindowPersistableFrameDescriptor) {
-	objc.CallMethod[objc.Void](w_, "setFrameFromString:", string_)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setFrameFromString:"), string_)
 }
 
 func (w_ Window) MakeKeyWindow() {
-	objc.CallMethod[objc.Void](w_, "makeKeyWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("makeKeyWindow"))
 }
 
 func (w_ Window) MakeKeyAndOrderFront(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "makeKeyAndOrderFront:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("makeKeyAndOrderFront:"), sender)
 }
 
 func (w_ Window) BecomeKeyWindow() {
-	objc.CallMethod[objc.Void](w_, "becomeKeyWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("becomeKeyWindow"))
 }
 
 func (w_ Window) ResignKeyWindow() {
-	objc.CallMethod[objc.Void](w_, "resignKeyWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("resignKeyWindow"))
 }
 
 func (w_ Window) MakeMainWindow() {
-	objc.CallMethod[objc.Void](w_, "makeMainWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("makeMainWindow"))
 }
 
 func (w_ Window) BecomeMainWindow() {
-	objc.CallMethod[objc.Void](w_, "becomeMainWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("becomeMainWindow"))
 }
 
 func (w_ Window) ResignMainWindow() {
-	objc.CallMethod[objc.Void](w_, "resignMainWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("resignMainWindow"))
 }
 
 func (w_ Window) ToggleToolbarShown(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "toggleToolbarShown:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleToolbarShown:"), sender)
 }
 
 func (w_ Window) RunToolbarCustomizationPalette(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "runToolbarCustomizationPalette:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("runToolbarCustomizationPalette:"), sender)
 }
 
 func (w_ Window) AddChildWindow_Ordered(childWin IWindow, place WindowOrderingMode) {
-	objc.CallMethod[objc.Void](w_, "addChildWindow:ordered:", childWin, place)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addChildWindow:ordered:"), childWin, place)
 }
 
 func (w_ Window) RemoveChildWindow(childWin IWindow) {
-	objc.CallMethod[objc.Void](w_, "removeChildWindow:", childWin)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeChildWindow:"), childWin)
 }
 
 func (w_ Window) EnableKeyEquivalentForDefaultButtonCell() {
-	objc.CallMethod[objc.Void](w_, "enableKeyEquivalentForDefaultButtonCell")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("enableKeyEquivalentForDefaultButtonCell"))
 }
 
 func (w_ Window) DisableKeyEquivalentForDefaultButtonCell() {
-	objc.CallMethod[objc.Void](w_, "disableKeyEquivalentForDefaultButtonCell")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("disableKeyEquivalentForDefaultButtonCell"))
 }
 
 func (w_ Window) FieldEditor_ForObject(createFlag bool, object objc.IObject) Text {
-	rv := objc.CallMethod[Text](w_, "fieldEditor:forObject:", createFlag, object)
+	rv := objc.CallMethod[Text](w_, objc.GetSelector("fieldEditor:forObject:"), createFlag, object)
 	return rv
 }
 
 func (w_ Window) EndEditingFor(object objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "endEditingFor:", object)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("endEditingFor:"), object)
 }
 
 func (w_ Window) EnableCursorRects() {
-	objc.CallMethod[objc.Void](w_, "enableCursorRects")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("enableCursorRects"))
 }
 
 func (w_ Window) DisableCursorRects() {
-	objc.CallMethod[objc.Void](w_, "disableCursorRects")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("disableCursorRects"))
 }
 
 func (w_ Window) DiscardCursorRects() {
-	objc.CallMethod[objc.Void](w_, "discardCursorRects")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("discardCursorRects"))
 }
 
 func (w_ Window) InvalidateCursorRectsForView(view IView) {
-	objc.CallMethod[objc.Void](w_, "invalidateCursorRectsForView:", view)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("invalidateCursorRectsForView:"), view)
 }
 
 func (w_ Window) ResetCursorRects() {
-	objc.CallMethod[objc.Void](w_, "resetCursorRects")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("resetCursorRects"))
 }
 
 func (wc _WindowClass) StandardWindowButton_ForStyleMask(b WindowButton, styleMask WindowStyleMask) Button {
-	rv := objc.CallMethod[Button](wc, "standardWindowButton:forStyleMask:", b, styleMask)
+	rv := objc.CallMethod[Button](wc, objc.GetSelector("standardWindowButton:forStyleMask:"), b, styleMask)
 	return rv
 }
 
 func (w_ Window) StandardWindowButton(b WindowButton) Button {
-	rv := objc.CallMethod[Button](w_, "standardWindowButton:", b)
+	rv := objc.CallMethod[Button](w_, objc.GetSelector("standardWindowButton:"), b)
 	return rv
 }
 
 func (w_ Window) AddTitlebarAccessoryViewController(childViewController ITitlebarAccessoryViewController) {
-	objc.CallMethod[objc.Void](w_, "addTitlebarAccessoryViewController:", childViewController)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addTitlebarAccessoryViewController:"), childViewController)
 }
 
 func (w_ Window) InsertTitlebarAccessoryViewController_AtIndex(childViewController ITitlebarAccessoryViewController, index int) {
-	objc.CallMethod[objc.Void](w_, "insertTitlebarAccessoryViewController:atIndex:", childViewController, index)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("insertTitlebarAccessoryViewController:atIndex:"), childViewController, index)
 }
 
 func (w_ Window) RemoveTitlebarAccessoryViewControllerAtIndex(index int) {
-	objc.CallMethod[objc.Void](w_, "removeTitlebarAccessoryViewControllerAtIndex:", index)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeTitlebarAccessoryViewControllerAtIndex:"), index)
 }
 
 func (w_ Window) AddTabbedWindow_Ordered(window IWindow, ordered WindowOrderingMode) {
-	objc.CallMethod[objc.Void](w_, "addTabbedWindow:ordered:", window, ordered)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addTabbedWindow:ordered:"), window, ordered)
 }
 
 func (w_ Window) MergeAllWindows(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "mergeAllWindows:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("mergeAllWindows:"), sender)
 }
 
 func (w_ Window) SelectNextTab(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "selectNextTab:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectNextTab:"), sender)
 }
 
 func (w_ Window) SelectPreviousTab(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "selectPreviousTab:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectPreviousTab:"), sender)
 }
 
 func (w_ Window) MoveTabToNewWindow(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "moveTabToNewWindow:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("moveTabToNewWindow:"), sender)
 }
 
 func (w_ Window) ToggleTabBar(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "toggleTabBar:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleTabBar:"), sender)
 }
 
 func (w_ Window) ToggleTabOverview(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "toggleTabOverview:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleTabOverview:"), sender)
 }
 
 func (w_ Window) NextEventMatchingMask(mask EventMask) Event {
-	rv := objc.CallMethod[Event](w_, "nextEventMatchingMask:", mask)
+	rv := objc.CallMethod[Event](w_, objc.GetSelector("nextEventMatchingMask:"), mask)
 	return rv
 }
 
 func (w_ Window) NextEventMatchingMask_UntilDate_InMode_Dequeue(mask EventMask, expiration foundation.IDate, mode foundation.RunLoopMode, deqFlag bool) Event {
-	rv := objc.CallMethod[Event](w_, "nextEventMatchingMask:untilDate:inMode:dequeue:", mask, expiration, mode, deqFlag)
+	rv := objc.CallMethod[Event](w_, objc.GetSelector("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, expiration, mode, deqFlag)
 	return rv
 }
 
 func (w_ Window) DiscardEventsMatchingMask_BeforeEvent(mask EventMask, lastEvent IEvent) {
-	objc.CallMethod[objc.Void](w_, "discardEventsMatchingMask:beforeEvent:", mask, lastEvent)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("discardEventsMatchingMask:beforeEvent:"), mask, lastEvent)
 }
 
 func (w_ Window) PostEvent_AtStart(event IEvent, flag bool) {
-	objc.CallMethod[objc.Void](w_, "postEvent:atStart:", event, flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("postEvent:atStart:"), event, flag)
 }
 
 func (w_ Window) SendEvent(event IEvent) {
-	objc.CallMethod[objc.Void](w_, "sendEvent:", event)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("sendEvent:"), event)
 }
 
 func (w_ Window) MakeFirstResponder(responder IResponder) bool {
-	rv := objc.CallMethod[bool](w_, "makeFirstResponder:", responder)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("makeFirstResponder:"), responder)
 	return rv
 }
 
 func (w_ Window) SelectKeyViewPrecedingView(view IView) {
-	objc.CallMethod[objc.Void](w_, "selectKeyViewPrecedingView:", view)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectKeyViewPrecedingView:"), view)
 }
 
 func (w_ Window) SelectKeyViewFollowingView(view IView) {
-	objc.CallMethod[objc.Void](w_, "selectKeyViewFollowingView:", view)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectKeyViewFollowingView:"), view)
 }
 
 func (w_ Window) SelectPreviousKeyView(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "selectPreviousKeyView:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectPreviousKeyView:"), sender)
 }
 
 func (w_ Window) SelectNextKeyView(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "selectNextKeyView:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectNextKeyView:"), sender)
 }
 
 func (w_ Window) RecalculateKeyViewLoop() {
-	objc.CallMethod[objc.Void](w_, "recalculateKeyViewLoop")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("recalculateKeyViewLoop"))
 }
 
 func (wc _WindowClass) WindowNumberAtPoint_BelowWindowWithWindowNumber(point foundation.Point, windowNumber int) int {
-	rv := objc.CallMethod[int](wc, "windowNumberAtPoint:belowWindowWithWindowNumber:", point, windowNumber)
+	rv := objc.CallMethod[int](wc, objc.GetSelector("windowNumberAtPoint:belowWindowWithWindowNumber:"), point, windowNumber)
 	return rv
 }
 
 func (w_ Window) TrackEventsMatchingMask_Timeout_Mode_Handler(mask EventMask, timeout foundation.TimeInterval, mode foundation.RunLoopMode, trackingHandler func(event Event, stop *bool)) {
-	objc.CallMethod[objc.Void](w_, "trackEventsMatchingMask:timeout:mode:handler:", mask, timeout, mode, trackingHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("trackEventsMatchingMask:timeout:mode:handler:"), mask, timeout, mode, trackingHandler)
 }
 
 func (w_ Window) PerformWindowDragWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](w_, "performWindowDragWithEvent:", event)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performWindowDragWithEvent:"), event)
 }
 
 func (w_ Window) DisableSnapshotRestoration() {
-	objc.CallMethod[objc.Void](w_, "disableSnapshotRestoration")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("disableSnapshotRestoration"))
 }
 
 func (w_ Window) EnableSnapshotRestoration() {
-	objc.CallMethod[objc.Void](w_, "enableSnapshotRestoration")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("enableSnapshotRestoration"))
 }
 
 func (w_ Window) Display() {
-	objc.CallMethod[objc.Void](w_, "display")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("display"))
 }
 
 func (w_ Window) DisplayIfNeeded() {
-	objc.CallMethod[objc.Void](w_, "displayIfNeeded")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("displayIfNeeded"))
 }
 
 func (w_ Window) DisableScreenUpdatesUntilFlush() {
-	objc.CallMethod[objc.Void](w_, "disableScreenUpdatesUntilFlush")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("disableScreenUpdatesUntilFlush"))
 }
 
 func (w_ Window) Update() {
-	objc.CallMethod[objc.Void](w_, "update")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("update"))
 }
 
 func (w_ Window) DragImage_At_Offset_Event_Pasteboard_Source_SlideBack(image IImage, baseLocation foundation.Point, initialOffset foundation.Size, event IEvent, pboard IPasteboard, sourceObj objc.IObject, slideFlag bool) {
-	objc.CallMethod[objc.Void](w_, "dragImage:at:offset:event:pasteboard:source:slideBack:", image, baseLocation, initialOffset, event, pboard, sourceObj, slideFlag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("dragImage:at:offset:event:pasteboard:source:slideBack:"), image, baseLocation, initialOffset, event, pboard, sourceObj, slideFlag)
 }
 
 func (w_ Window) RegisterForDraggedTypes(newTypes []PasteboardType) {
-	objc.CallMethod[objc.Void](w_, "registerForDraggedTypes:", newTypes)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("registerForDraggedTypes:"), newTypes)
 }
 
 func (w_ Window) UnregisterDraggedTypes() {
-	objc.CallMethod[objc.Void](w_, "unregisterDraggedTypes")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("unregisterDraggedTypes"))
 }
 
 func (w_ Window) BackingAlignedRect_Options(rect foundation.Rect, options foundation.AlignmentOptions) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "backingAlignedRect:options:", rect, options)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("backingAlignedRect:options:"), rect, options)
 	return rv
 }
 
 func (w_ Window) ConvertRectFromBacking(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "convertRectFromBacking:", rect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("convertRectFromBacking:"), rect)
 	return rv
 }
 
 func (w_ Window) ConvertRectFromScreen(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "convertRectFromScreen:", rect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("convertRectFromScreen:"), rect)
 	return rv
 }
 
 func (w_ Window) ConvertPointFromBacking(point foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "convertPointFromBacking:", point)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("convertPointFromBacking:"), point)
 	return rv
 }
 
 func (w_ Window) ConvertPointFromScreen(point foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "convertPointFromScreen:", point)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("convertPointFromScreen:"), point)
 	return rv
 }
 
 func (w_ Window) ConvertRectToBacking(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "convertRectToBacking:", rect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("convertRectToBacking:"), rect)
 	return rv
 }
 
 func (w_ Window) ConvertRectToScreen(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "convertRectToScreen:", rect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("convertRectToScreen:"), rect)
 	return rv
 }
 
 func (w_ Window) ConvertPointToBacking(point foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "convertPointToBacking:", point)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("convertPointToBacking:"), point)
 	return rv
 }
 
 func (w_ Window) ConvertPointToScreen(point foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "convertPointToScreen:", point)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("convertPointToScreen:"), point)
 	return rv
 }
 
 func (w_ Window) SetTitleWithRepresentedFilename(filename string) {
-	objc.CallMethod[objc.Void](w_, "setTitleWithRepresentedFilename:", filename)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitleWithRepresentedFilename:"), filename)
 }
 
 func (w_ Window) Center() {
-	objc.CallMethod[objc.Void](w_, "center")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("center"))
 }
 
 func (w_ Window) PerformClose(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "performClose:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performClose:"), sender)
 }
 
 func (w_ Window) Close() {
-	objc.CallMethod[objc.Void](w_, "close")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("close"))
 }
 
 func (w_ Window) PerformMiniaturize(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "performMiniaturize:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performMiniaturize:"), sender)
 }
 
 func (w_ Window) Miniaturize(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "miniaturize:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("miniaturize:"), sender)
 }
 
 func (w_ Window) Deminiaturize(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "deminiaturize:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("deminiaturize:"), sender)
 }
 
 func (w_ Window) Print(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "print:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("print:"), sender)
 }
 
 func (w_ Window) DataWithEPSInsideRect(rect foundation.Rect) []byte {
-	rv := objc.CallMethod[[]byte](w_, "dataWithEPSInsideRect:", rect)
+	rv := objc.CallMethod[[]byte](w_, objc.GetSelector("dataWithEPSInsideRect:"), rect)
 	return rv
 }
 
 func (w_ Window) DataWithPDFInsideRect(rect foundation.Rect) []byte {
-	rv := objc.CallMethod[[]byte](w_, "dataWithPDFInsideRect:", rect)
+	rv := objc.CallMethod[[]byte](w_, objc.GetSelector("dataWithPDFInsideRect:"), rect)
 	return rv
 }
 
 func (w_ Window) UpdateConstraintsIfNeeded() {
-	objc.CallMethod[objc.Void](w_, "updateConstraintsIfNeeded")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("updateConstraintsIfNeeded"))
 }
 
 func (w_ Window) LayoutIfNeeded() {
-	objc.CallMethod[objc.Void](w_, "layoutIfNeeded")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("layoutIfNeeded"))
 }
 
 func (w_ Window) VisualizeConstraints(constraints []ILayoutConstraint) {
-	objc.CallMethod[objc.Void](w_, "visualizeConstraints:", constraints)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("visualizeConstraints:"), constraints)
 }
 
 func (w_ Window) AnchorAttributeForOrientation(orientation LayoutConstraintOrientation) LayoutAttribute {
-	rv := objc.CallMethod[LayoutAttribute](w_, "anchorAttributeForOrientation:", orientation)
+	rv := objc.CallMethod[LayoutAttribute](w_, objc.GetSelector("anchorAttributeForOrientation:"), orientation)
 	return rv
 }
 
 func (w_ Window) SetAnchorAttribute_ForOrientation(attr LayoutAttribute, orientation LayoutConstraintOrientation) {
-	objc.CallMethod[objc.Void](w_, "setAnchorAttribute:forOrientation:", attr, orientation)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAnchorAttribute:forOrientation:"), attr, orientation)
 }
 
 func (w_ Window) CanRepresentDisplayGamut(displayGamut DisplayGamut) bool {
-	rv := objc.CallMethod[bool](w_, "canRepresentDisplayGamut:", displayGamut)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canRepresentDisplayGamut:"), displayGamut)
 	return rv
 }
 
 func (w_ Window) SetIsMiniaturized(flag bool) {
-	objc.CallMethod[objc.Void](w_, "setIsMiniaturized:", flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setIsMiniaturized:"), flag)
 }
 
 func (w_ Window) SetIsVisible(flag bool) {
-	objc.CallMethod[objc.Void](w_, "setIsVisible:", flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setIsVisible:"), flag)
 }
 
 func (w_ Window) SetIsZoomed(flag bool) {
-	objc.CallMethod[objc.Void](w_, "setIsZoomed:", flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setIsZoomed:"), flag)
 }
 
 func (w_ Window) HandleCloseScriptCommand(command foundation.ICloseCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, "handleCloseScriptCommand:", command)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handleCloseScriptCommand:"), command)
 	return rv
 }
 
 func (w_ Window) HandlePrintScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, "handlePrintScriptCommand:", command)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handlePrintScriptCommand:"), command)
 	return rv
 }
 
 func (w_ Window) HandleSaveScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, "handleSaveScriptCommand:", command)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handleSaveScriptCommand:"), command)
 	return rv
 }
 
 // deprecated
 func (w_ Window) GState() int {
-	rv := objc.CallMethod[int](w_, "gState")
+	rv := objc.CallMethod[int](w_, objc.GetSelector("gState"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) CanStoreColor() bool {
-	rv := objc.CallMethod[bool](w_, "canStoreColor")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canStoreColor"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) EnableFlushWindow() {
-	objc.CallMethod[objc.Void](w_, "enableFlushWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("enableFlushWindow"))
 }
 
 // deprecated
 func (w_ Window) DisableFlushWindow() {
-	objc.CallMethod[objc.Void](w_, "disableFlushWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("disableFlushWindow"))
 }
 
 // deprecated
 func (w_ Window) FlushWindow() {
-	objc.CallMethod[objc.Void](w_, "flushWindow")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("flushWindow"))
 }
 
 // deprecated
 func (w_ Window) FlushWindowIfNeeded() {
-	objc.CallMethod[objc.Void](w_, "flushWindowIfNeeded")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("flushWindowIfNeeded"))
 }
 
 // deprecated
 func (wc _WindowClass) MenuChanged(menu IMenu) {
-	objc.CallMethod[objc.Void](wc, "menuChanged:", menu)
+	objc.CallMethod[objc.Void](wc, objc.GetSelector("menuChanged:"), menu)
 }
 
 // deprecated
 func (w_ Window) CacheImageInRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](w_, "cacheImageInRect:", rect)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("cacheImageInRect:"), rect)
 }
 
 // deprecated
 func (w_ Window) RestoreCachedImage() {
-	objc.CallMethod[objc.Void](w_, "restoreCachedImage")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("restoreCachedImage"))
 }
 
 // deprecated
 func (w_ Window) DiscardCachedImage() {
-	objc.CallMethod[objc.Void](w_, "discardCachedImage")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("discardCachedImage"))
 }
 
 // deprecated
 func (w_ Window) UseOptimizedDrawing(flag bool) {
-	objc.CallMethod[objc.Void](w_, "useOptimizedDrawing:", flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("useOptimizedDrawing:"), flag)
 }
 
 // deprecated
 func (w_ Window) ConvertBaseToScreen(point foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "convertBaseToScreen:", point)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("convertBaseToScreen:"), point)
 	return rv
 }
 
 // deprecated
 func (w_ Window) ConvertScreenToBase(point foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "convertScreenToBase:", point)
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("convertScreenToBase:"), point)
 	return rv
 }
 
 // deprecated
 func (w_ Window) UserSpaceScaleFactor() float64 {
-	rv := objc.CallMethod[float64](w_, "userSpaceScaleFactor")
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("userSpaceScaleFactor"))
 	return rv
 }
 
 func (w_ Window) InitWithWindowRef(windowRef unsafe.Pointer) Window {
-	rv := objc.CallMethod[Window](w_, "initWithWindowRef:", windowRef)
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("initWithWindowRef:"), windowRef)
 	return rv
 }
 
 func (w_ Window) Delegate() WindowDelegateWrapper {
-	rv := objc.CallMethod[WindowDelegateWrapper](w_, "delegate")
+	rv := objc.CallMethod[WindowDelegateWrapper](w_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -1029,886 +1029,886 @@ func (w_ Window) SetDelegate(value WindowDelegate) {
 	po := objc.CreateProtocol("NSWindowDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](w_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (w_ Window) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (w_ Window) ContentViewController() ViewController {
-	rv := objc.CallMethod[ViewController](w_, "contentViewController")
+	rv := objc.CallMethod[ViewController](w_, objc.GetSelector("contentViewController"))
 	return rv
 }
 
 func (w_ Window) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](w_, "setContentViewController:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentViewController:"), value)
 }
 
 func (w_ Window) ContentView() View {
-	rv := objc.CallMethod[View](w_, "contentView")
+	rv := objc.CallMethod[View](w_, objc.GetSelector("contentView"))
 	return rv
 }
 
 func (w_ Window) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](w_, "setContentView:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentView:"), value)
 }
 
 func (w_ Window) StyleMask() WindowStyleMask {
-	rv := objc.CallMethod[WindowStyleMask](w_, "styleMask")
+	rv := objc.CallMethod[WindowStyleMask](w_, objc.GetSelector("styleMask"))
 	return rv
 }
 
 func (w_ Window) SetStyleMask(value WindowStyleMask) {
-	objc.CallMethod[objc.Void](w_, "setStyleMask:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setStyleMask:"), value)
 }
 
 func (w_ Window) WorksWhenModal() bool {
-	rv := objc.CallMethod[bool](w_, "worksWhenModal")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("worksWhenModal"))
 	return rv
 }
 
 func (w_ Window) AlphaValue() float64 {
-	rv := objc.CallMethod[float64](w_, "alphaValue")
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("alphaValue"))
 	return rv
 }
 
 func (w_ Window) SetAlphaValue(value float64) {
-	objc.CallMethod[objc.Void](w_, "setAlphaValue:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAlphaValue:"), value)
 }
 
 func (w_ Window) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](w_, "backgroundColor")
+	rv := objc.CallMethod[Color](w_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (w_ Window) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](w_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setBackgroundColor:"), value)
 }
 
 func (w_ Window) ColorSpace() ColorSpace {
-	rv := objc.CallMethod[ColorSpace](w_, "colorSpace")
+	rv := objc.CallMethod[ColorSpace](w_, objc.GetSelector("colorSpace"))
 	return rv
 }
 
 func (w_ Window) SetColorSpace(value IColorSpace) {
-	objc.CallMethod[objc.Void](w_, "setColorSpace:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setColorSpace:"), value)
 }
 
 func (w_ Window) CanHide() bool {
-	rv := objc.CallMethod[bool](w_, "canHide")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canHide"))
 	return rv
 }
 
 func (w_ Window) SetCanHide(value bool) {
-	objc.CallMethod[objc.Void](w_, "setCanHide:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setCanHide:"), value)
 }
 
 func (w_ Window) IsOnActiveSpace() bool {
-	rv := objc.CallMethod[bool](w_, "isOnActiveSpace")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isOnActiveSpace"))
 	return rv
 }
 
 func (w_ Window) HidesOnDeactivate() bool {
-	rv := objc.CallMethod[bool](w_, "hidesOnDeactivate")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("hidesOnDeactivate"))
 	return rv
 }
 
 func (w_ Window) SetHidesOnDeactivate(value bool) {
-	objc.CallMethod[objc.Void](w_, "setHidesOnDeactivate:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setHidesOnDeactivate:"), value)
 }
 
 func (w_ Window) CollectionBehavior() WindowCollectionBehavior {
-	rv := objc.CallMethod[WindowCollectionBehavior](w_, "collectionBehavior")
+	rv := objc.CallMethod[WindowCollectionBehavior](w_, objc.GetSelector("collectionBehavior"))
 	return rv
 }
 
 func (w_ Window) SetCollectionBehavior(value WindowCollectionBehavior) {
-	objc.CallMethod[objc.Void](w_, "setCollectionBehavior:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setCollectionBehavior:"), value)
 }
 
 func (w_ Window) IsOpaque() bool {
-	rv := objc.CallMethod[bool](w_, "isOpaque")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isOpaque"))
 	return rv
 }
 
 func (w_ Window) SetOpaque(value bool) {
-	objc.CallMethod[objc.Void](w_, "setOpaque:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setOpaque:"), value)
 }
 
 func (w_ Window) HasShadow() bool {
-	rv := objc.CallMethod[bool](w_, "hasShadow")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("hasShadow"))
 	return rv
 }
 
 func (w_ Window) SetHasShadow(value bool) {
-	objc.CallMethod[objc.Void](w_, "setHasShadow:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setHasShadow:"), value)
 }
 
 func (w_ Window) PreventsApplicationTerminationWhenModal() bool {
-	rv := objc.CallMethod[bool](w_, "preventsApplicationTerminationWhenModal")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("preventsApplicationTerminationWhenModal"))
 	return rv
 }
 
 func (w_ Window) SetPreventsApplicationTerminationWhenModal(value bool) {
-	objc.CallMethod[objc.Void](w_, "setPreventsApplicationTerminationWhenModal:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreventsApplicationTerminationWhenModal:"), value)
 }
 
 func (w_ Window) DepthLimit() WindowDepth {
-	rv := objc.CallMethod[WindowDepth](w_, "depthLimit")
+	rv := objc.CallMethod[WindowDepth](w_, objc.GetSelector("depthLimit"))
 	return rv
 }
 
 func (w_ Window) SetDepthLimit(value WindowDepth) {
-	objc.CallMethod[objc.Void](w_, "setDepthLimit:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDepthLimit:"), value)
 }
 
 func (w_ Window) HasDynamicDepthLimit() bool {
-	rv := objc.CallMethod[bool](w_, "hasDynamicDepthLimit")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("hasDynamicDepthLimit"))
 	return rv
 }
 
 func (wc _WindowClass) DefaultDepthLimit() WindowDepth {
-	rv := objc.CallMethod[WindowDepth](wc, "defaultDepthLimit")
+	rv := objc.CallMethod[WindowDepth](wc, objc.GetSelector("defaultDepthLimit"))
 	return rv
 }
 
 func (w_ Window) WindowNumber() int {
-	rv := objc.CallMethod[int](w_, "windowNumber")
+	rv := objc.CallMethod[int](w_, objc.GetSelector("windowNumber"))
 	return rv
 }
 
 func (w_ Window) DeviceDescription() map[DeviceDescriptionKey]objc.Object {
-	rv := objc.CallMethod[map[DeviceDescriptionKey]objc.Object](w_, "deviceDescription")
+	rv := objc.CallMethod[map[DeviceDescriptionKey]objc.Object](w_, objc.GetSelector("deviceDescription"))
 	return rv
 }
 
 func (w_ Window) CanBecomeVisibleWithoutLogin() bool {
-	rv := objc.CallMethod[bool](w_, "canBecomeVisibleWithoutLogin")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canBecomeVisibleWithoutLogin"))
 	return rv
 }
 
 func (w_ Window) SetCanBecomeVisibleWithoutLogin(value bool) {
-	objc.CallMethod[objc.Void](w_, "setCanBecomeVisibleWithoutLogin:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setCanBecomeVisibleWithoutLogin:"), value)
 }
 
 func (w_ Window) SharingType() WindowSharingType {
-	rv := objc.CallMethod[WindowSharingType](w_, "sharingType")
+	rv := objc.CallMethod[WindowSharingType](w_, objc.GetSelector("sharingType"))
 	return rv
 }
 
 func (w_ Window) SetSharingType(value WindowSharingType) {
-	objc.CallMethod[objc.Void](w_, "setSharingType:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSharingType:"), value)
 }
 
 func (w_ Window) BackingType() BackingStoreType {
-	rv := objc.CallMethod[BackingStoreType](w_, "backingType")
+	rv := objc.CallMethod[BackingStoreType](w_, objc.GetSelector("backingType"))
 	return rv
 }
 
 func (w_ Window) SetBackingType(value BackingStoreType) {
-	objc.CallMethod[objc.Void](w_, "setBackingType:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setBackingType:"), value)
 }
 
 func (w_ Window) WindowController() WindowController {
-	rv := objc.CallMethod[WindowController](w_, "windowController")
+	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("windowController"))
 	return rv
 }
 
 func (w_ Window) SetWindowController(value IWindowController) {
-	objc.CallMethod[objc.Void](w_, "setWindowController:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindowController:"), value)
 }
 
 func (w_ Window) AttachedSheet() Window {
-	rv := objc.CallMethod[Window](w_, "attachedSheet")
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("attachedSheet"))
 	return rv
 }
 
 func (w_ Window) IsSheet() bool {
-	rv := objc.CallMethod[bool](w_, "isSheet")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isSheet"))
 	return rv
 }
 
 func (w_ Window) SheetParent() Window {
-	rv := objc.CallMethod[Window](w_, "sheetParent")
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("sheetParent"))
 	return rv
 }
 
 func (w_ Window) Sheets() []Window {
-	rv := objc.CallMethod[[]Window](w_, "sheets")
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("sheets"))
 	return rv
 }
 
 func (w_ Window) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "frame")
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("frame"))
 	return rv
 }
 
 func (w_ Window) AspectRatio() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "aspectRatio")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("aspectRatio"))
 	return rv
 }
 
 func (w_ Window) SetAspectRatio(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setAspectRatio:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAspectRatio:"), value)
 }
 
 func (w_ Window) MinSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "minSize")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("minSize"))
 	return rv
 }
 
 func (w_ Window) SetMinSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setMinSize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMinSize:"), value)
 }
 
 func (w_ Window) MaxSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "maxSize")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("maxSize"))
 	return rv
 }
 
 func (w_ Window) SetMaxSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setMaxSize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMaxSize:"), value)
 }
 
 func (w_ Window) IsZoomed() bool {
-	rv := objc.CallMethod[bool](w_, "isZoomed")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isZoomed"))
 	return rv
 }
 
 func (w_ Window) ResizeFlags() EventModifierFlags {
-	rv := objc.CallMethod[EventModifierFlags](w_, "resizeFlags")
+	rv := objc.CallMethod[EventModifierFlags](w_, objc.GetSelector("resizeFlags"))
 	return rv
 }
 
 func (w_ Window) ResizeIncrements() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "resizeIncrements")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("resizeIncrements"))
 	return rv
 }
 
 func (w_ Window) SetResizeIncrements(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setResizeIncrements:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setResizeIncrements:"), value)
 }
 
 func (w_ Window) PreservesContentDuringLiveResize() bool {
-	rv := objc.CallMethod[bool](w_, "preservesContentDuringLiveResize")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("preservesContentDuringLiveResize"))
 	return rv
 }
 
 func (w_ Window) SetPreservesContentDuringLiveResize(value bool) {
-	objc.CallMethod[objc.Void](w_, "setPreservesContentDuringLiveResize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreservesContentDuringLiveResize:"), value)
 }
 
 func (w_ Window) InLiveResize() bool {
-	rv := objc.CallMethod[bool](w_, "inLiveResize")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("inLiveResize"))
 	return rv
 }
 
 func (w_ Window) ContentAspectRatio() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "contentAspectRatio")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("contentAspectRatio"))
 	return rv
 }
 
 func (w_ Window) SetContentAspectRatio(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setContentAspectRatio:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentAspectRatio:"), value)
 }
 
 func (w_ Window) ContentMinSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "contentMinSize")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("contentMinSize"))
 	return rv
 }
 
 func (w_ Window) SetContentMinSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setContentMinSize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentMinSize:"), value)
 }
 
 func (w_ Window) ContentMaxSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "contentMaxSize")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("contentMaxSize"))
 	return rv
 }
 
 func (w_ Window) SetContentMaxSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setContentMaxSize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentMaxSize:"), value)
 }
 
 func (w_ Window) ContentResizeIncrements() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "contentResizeIncrements")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("contentResizeIncrements"))
 	return rv
 }
 
 func (w_ Window) SetContentResizeIncrements(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setContentResizeIncrements:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentResizeIncrements:"), value)
 }
 
 func (w_ Window) ContentLayoutGuide() objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, "contentLayoutGuide")
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("contentLayoutGuide"))
 	return rv
 }
 
 func (w_ Window) ContentLayoutRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, "contentLayoutRect")
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("contentLayoutRect"))
 	return rv
 }
 
 func (w_ Window) MaxFullScreenContentSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "maxFullScreenContentSize")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("maxFullScreenContentSize"))
 	return rv
 }
 
 func (w_ Window) SetMaxFullScreenContentSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setMaxFullScreenContentSize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMaxFullScreenContentSize:"), value)
 }
 
 func (w_ Window) MinFullScreenContentSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, "minFullScreenContentSize")
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("minFullScreenContentSize"))
 	return rv
 }
 
 func (w_ Window) SetMinFullScreenContentSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](w_, "setMinFullScreenContentSize:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMinFullScreenContentSize:"), value)
 }
 
 func (w_ Window) Level() WindowLevel {
-	rv := objc.CallMethod[WindowLevel](w_, "level")
+	rv := objc.CallMethod[WindowLevel](w_, objc.GetSelector("level"))
 	return rv
 }
 
 func (w_ Window) SetLevel(value WindowLevel) {
-	objc.CallMethod[objc.Void](w_, "setLevel:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setLevel:"), value)
 }
 
 func (w_ Window) IsVisible() bool {
-	rv := objc.CallMethod[bool](w_, "isVisible")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isVisible"))
 	return rv
 }
 
 func (w_ Window) OcclusionState() WindowOcclusionState {
-	rv := objc.CallMethod[WindowOcclusionState](w_, "occlusionState")
+	rv := objc.CallMethod[WindowOcclusionState](w_, objc.GetSelector("occlusionState"))
 	return rv
 }
 
 func (w_ Window) FrameAutosaveName() WindowFrameAutosaveName {
-	rv := objc.CallMethod[WindowFrameAutosaveName](w_, "frameAutosaveName")
+	rv := objc.CallMethod[WindowFrameAutosaveName](w_, objc.GetSelector("frameAutosaveName"))
 	return rv
 }
 
 func (w_ Window) StringWithSavedFrame() WindowPersistableFrameDescriptor {
-	rv := objc.CallMethod[WindowPersistableFrameDescriptor](w_, "stringWithSavedFrame")
+	rv := objc.CallMethod[WindowPersistableFrameDescriptor](w_, objc.GetSelector("stringWithSavedFrame"))
 	return rv
 }
 
 func (w_ Window) IsKeyWindow() bool {
-	rv := objc.CallMethod[bool](w_, "isKeyWindow")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isKeyWindow"))
 	return rv
 }
 
 func (w_ Window) CanBecomeKeyWindow() bool {
-	rv := objc.CallMethod[bool](w_, "canBecomeKeyWindow")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canBecomeKeyWindow"))
 	return rv
 }
 
 func (w_ Window) IsMainWindow() bool {
-	rv := objc.CallMethod[bool](w_, "isMainWindow")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isMainWindow"))
 	return rv
 }
 
 func (w_ Window) CanBecomeMainWindow() bool {
-	rv := objc.CallMethod[bool](w_, "canBecomeMainWindow")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canBecomeMainWindow"))
 	return rv
 }
 
 func (w_ Window) Toolbar() Toolbar {
-	rv := objc.CallMethod[Toolbar](w_, "toolbar")
+	rv := objc.CallMethod[Toolbar](w_, objc.GetSelector("toolbar"))
 	return rv
 }
 
 func (w_ Window) SetToolbar(value IToolbar) {
-	objc.CallMethod[objc.Void](w_, "setToolbar:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setToolbar:"), value)
 }
 
 func (w_ Window) ChildWindows() []Window {
-	rv := objc.CallMethod[[]Window](w_, "childWindows")
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("childWindows"))
 	return rv
 }
 
 func (w_ Window) ParentWindow() Window {
-	rv := objc.CallMethod[Window](w_, "parentWindow")
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("parentWindow"))
 	return rv
 }
 
 func (w_ Window) SetParentWindow(value IWindow) {
-	objc.CallMethod[objc.Void](w_, "setParentWindow:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setParentWindow:"), value)
 }
 
 func (w_ Window) DefaultButtonCell() ButtonCell {
-	rv := objc.CallMethod[ButtonCell](w_, "defaultButtonCell")
+	rv := objc.CallMethod[ButtonCell](w_, objc.GetSelector("defaultButtonCell"))
 	return rv
 }
 
 func (w_ Window) SetDefaultButtonCell(value IButtonCell) {
-	objc.CallMethod[objc.Void](w_, "setDefaultButtonCell:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultButtonCell:"), value)
 }
 
 func (w_ Window) IsExcludedFromWindowsMenu() bool {
-	rv := objc.CallMethod[bool](w_, "isExcludedFromWindowsMenu")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isExcludedFromWindowsMenu"))
 	return rv
 }
 
 func (w_ Window) SetExcludedFromWindowsMenu(value bool) {
-	objc.CallMethod[objc.Void](w_, "setExcludedFromWindowsMenu:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setExcludedFromWindowsMenu:"), value)
 }
 
 func (w_ Window) AreCursorRectsEnabled() bool {
-	rv := objc.CallMethod[bool](w_, "areCursorRectsEnabled")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("areCursorRectsEnabled"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) ShowsToolbarButton() bool {
-	rv := objc.CallMethod[bool](w_, "showsToolbarButton")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("showsToolbarButton"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) SetShowsToolbarButton(value bool) {
-	objc.CallMethod[objc.Void](w_, "setShowsToolbarButton:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setShowsToolbarButton:"), value)
 }
 
 func (w_ Window) TitlebarAppearsTransparent() bool {
-	rv := objc.CallMethod[bool](w_, "titlebarAppearsTransparent")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("titlebarAppearsTransparent"))
 	return rv
 }
 
 func (w_ Window) SetTitlebarAppearsTransparent(value bool) {
-	objc.CallMethod[objc.Void](w_, "setTitlebarAppearsTransparent:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitlebarAppearsTransparent:"), value)
 }
 
 func (w_ Window) ToolbarStyle() WindowToolbarStyle {
-	rv := objc.CallMethod[WindowToolbarStyle](w_, "toolbarStyle")
+	rv := objc.CallMethod[WindowToolbarStyle](w_, objc.GetSelector("toolbarStyle"))
 	return rv
 }
 
 func (w_ Window) SetToolbarStyle(value WindowToolbarStyle) {
-	objc.CallMethod[objc.Void](w_, "setToolbarStyle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setToolbarStyle:"), value)
 }
 
 func (w_ Window) TitlebarSeparatorStyle() TitlebarSeparatorStyle {
-	rv := objc.CallMethod[TitlebarSeparatorStyle](w_, "titlebarSeparatorStyle")
+	rv := objc.CallMethod[TitlebarSeparatorStyle](w_, objc.GetSelector("titlebarSeparatorStyle"))
 	return rv
 }
 
 func (w_ Window) SetTitlebarSeparatorStyle(value TitlebarSeparatorStyle) {
-	objc.CallMethod[objc.Void](w_, "setTitlebarSeparatorStyle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitlebarSeparatorStyle:"), value)
 }
 
 func (w_ Window) WindowTitlebarLayoutDirection() UserInterfaceLayoutDirection {
-	rv := objc.CallMethod[UserInterfaceLayoutDirection](w_, "windowTitlebarLayoutDirection")
+	rv := objc.CallMethod[UserInterfaceLayoutDirection](w_, objc.GetSelector("windowTitlebarLayoutDirection"))
 	return rv
 }
 
 func (w_ Window) TitlebarAccessoryViewControllers() []TitlebarAccessoryViewController {
-	rv := objc.CallMethod[[]TitlebarAccessoryViewController](w_, "titlebarAccessoryViewControllers")
+	rv := objc.CallMethod[[]TitlebarAccessoryViewController](w_, objc.GetSelector("titlebarAccessoryViewControllers"))
 	return rv
 }
 
 func (w_ Window) SetTitlebarAccessoryViewControllers(value []ITitlebarAccessoryViewController) {
-	objc.CallMethod[objc.Void](w_, "setTitlebarAccessoryViewControllers:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitlebarAccessoryViewControllers:"), value)
 }
 
 func (wc _WindowClass) AllowsAutomaticWindowTabbing() bool {
-	rv := objc.CallMethod[bool](wc, "allowsAutomaticWindowTabbing")
+	rv := objc.CallMethod[bool](wc, objc.GetSelector("allowsAutomaticWindowTabbing"))
 	return rv
 }
 
 func (wc _WindowClass) SetAllowsAutomaticWindowTabbing(value bool) {
-	objc.CallMethod[objc.Void](wc, "setAllowsAutomaticWindowTabbing:", value)
+	objc.CallMethod[objc.Void](wc, objc.GetSelector("setAllowsAutomaticWindowTabbing:"), value)
 }
 
 func (wc _WindowClass) UserTabbingPreference() WindowUserTabbingPreference {
-	rv := objc.CallMethod[WindowUserTabbingPreference](wc, "userTabbingPreference")
+	rv := objc.CallMethod[WindowUserTabbingPreference](wc, objc.GetSelector("userTabbingPreference"))
 	return rv
 }
 
 func (w_ Window) Tab() WindowTab {
-	rv := objc.CallMethod[WindowTab](w_, "tab")
+	rv := objc.CallMethod[WindowTab](w_, objc.GetSelector("tab"))
 	return rv
 }
 
 func (w_ Window) TabbingIdentifier() WindowTabbingIdentifier {
-	rv := objc.CallMethod[WindowTabbingIdentifier](w_, "tabbingIdentifier")
+	rv := objc.CallMethod[WindowTabbingIdentifier](w_, objc.GetSelector("tabbingIdentifier"))
 	return rv
 }
 
 func (w_ Window) SetTabbingIdentifier(value WindowTabbingIdentifier) {
-	objc.CallMethod[objc.Void](w_, "setTabbingIdentifier:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTabbingIdentifier:"), value)
 }
 
 func (w_ Window) TabbingMode() WindowTabbingMode {
-	rv := objc.CallMethod[WindowTabbingMode](w_, "tabbingMode")
+	rv := objc.CallMethod[WindowTabbingMode](w_, objc.GetSelector("tabbingMode"))
 	return rv
 }
 
 func (w_ Window) SetTabbingMode(value WindowTabbingMode) {
-	objc.CallMethod[objc.Void](w_, "setTabbingMode:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTabbingMode:"), value)
 }
 
 func (w_ Window) TabbedWindows() []Window {
-	rv := objc.CallMethod[[]Window](w_, "tabbedWindows")
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("tabbedWindows"))
 	return rv
 }
 
 func (w_ Window) TabGroup() WindowTabGroup {
-	rv := objc.CallMethod[WindowTabGroup](w_, "tabGroup")
+	rv := objc.CallMethod[WindowTabGroup](w_, objc.GetSelector("tabGroup"))
 	return rv
 }
 
 func (w_ Window) AllowsToolTipsWhenApplicationIsInactive() bool {
-	rv := objc.CallMethod[bool](w_, "allowsToolTipsWhenApplicationIsInactive")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsToolTipsWhenApplicationIsInactive"))
 	return rv
 }
 
 func (w_ Window) SetAllowsToolTipsWhenApplicationIsInactive(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsToolTipsWhenApplicationIsInactive:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsToolTipsWhenApplicationIsInactive:"), value)
 }
 
 func (w_ Window) CurrentEvent() Event {
-	rv := objc.CallMethod[Event](w_, "currentEvent")
+	rv := objc.CallMethod[Event](w_, objc.GetSelector("currentEvent"))
 	return rv
 }
 
 func (w_ Window) InitialFirstResponder() View {
-	rv := objc.CallMethod[View](w_, "initialFirstResponder")
+	rv := objc.CallMethod[View](w_, objc.GetSelector("initialFirstResponder"))
 	return rv
 }
 
 func (w_ Window) SetInitialFirstResponder(value IView) {
-	objc.CallMethod[objc.Void](w_, "setInitialFirstResponder:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setInitialFirstResponder:"), value)
 }
 
 func (w_ Window) FirstResponder() Responder {
-	rv := objc.CallMethod[Responder](w_, "firstResponder")
+	rv := objc.CallMethod[Responder](w_, objc.GetSelector("firstResponder"))
 	return rv
 }
 
 func (w_ Window) KeyViewSelectionDirection() SelectionDirection {
-	rv := objc.CallMethod[SelectionDirection](w_, "keyViewSelectionDirection")
+	rv := objc.CallMethod[SelectionDirection](w_, objc.GetSelector("keyViewSelectionDirection"))
 	return rv
 }
 
 func (w_ Window) AutorecalculatesKeyViewLoop() bool {
-	rv := objc.CallMethod[bool](w_, "autorecalculatesKeyViewLoop")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("autorecalculatesKeyViewLoop"))
 	return rv
 }
 
 func (w_ Window) SetAutorecalculatesKeyViewLoop(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAutorecalculatesKeyViewLoop:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAutorecalculatesKeyViewLoop:"), value)
 }
 
 func (w_ Window) AcceptsMouseMovedEvents() bool {
-	rv := objc.CallMethod[bool](w_, "acceptsMouseMovedEvents")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("acceptsMouseMovedEvents"))
 	return rv
 }
 
 func (w_ Window) SetAcceptsMouseMovedEvents(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAcceptsMouseMovedEvents:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAcceptsMouseMovedEvents:"), value)
 }
 
 func (w_ Window) IgnoresMouseEvents() bool {
-	rv := objc.CallMethod[bool](w_, "ignoresMouseEvents")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("ignoresMouseEvents"))
 	return rv
 }
 
 func (w_ Window) SetIgnoresMouseEvents(value bool) {
-	objc.CallMethod[objc.Void](w_, "setIgnoresMouseEvents:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setIgnoresMouseEvents:"), value)
 }
 
 func (w_ Window) MouseLocationOutsideOfEventStream() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](w_, "mouseLocationOutsideOfEventStream")
+	rv := objc.CallMethod[foundation.Point](w_, objc.GetSelector("mouseLocationOutsideOfEventStream"))
 	return rv
 }
 
 func (w_ Window) IsRestorable() bool {
-	rv := objc.CallMethod[bool](w_, "isRestorable")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isRestorable"))
 	return rv
 }
 
 func (w_ Window) SetRestorable(value bool) {
-	objc.CallMethod[objc.Void](w_, "setRestorable:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setRestorable:"), value)
 }
 
 func (w_ Window) ViewsNeedDisplay() bool {
-	rv := objc.CallMethod[bool](w_, "viewsNeedDisplay")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("viewsNeedDisplay"))
 	return rv
 }
 
 func (w_ Window) SetViewsNeedDisplay(value bool) {
-	objc.CallMethod[objc.Void](w_, "setViewsNeedDisplay:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setViewsNeedDisplay:"), value)
 }
 
 func (w_ Window) AllowsConcurrentViewDrawing() bool {
-	rv := objc.CallMethod[bool](w_, "allowsConcurrentViewDrawing")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsConcurrentViewDrawing"))
 	return rv
 }
 
 func (w_ Window) SetAllowsConcurrentViewDrawing(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsConcurrentViewDrawing:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsConcurrentViewDrawing:"), value)
 }
 
 func (w_ Window) AnimationBehavior() WindowAnimationBehavior {
-	rv := objc.CallMethod[WindowAnimationBehavior](w_, "animationBehavior")
+	rv := objc.CallMethod[WindowAnimationBehavior](w_, objc.GetSelector("animationBehavior"))
 	return rv
 }
 
 func (w_ Window) SetAnimationBehavior(value WindowAnimationBehavior) {
-	objc.CallMethod[objc.Void](w_, "setAnimationBehavior:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAnimationBehavior:"), value)
 }
 
 func (w_ Window) IsDocumentEdited() bool {
-	rv := objc.CallMethod[bool](w_, "isDocumentEdited")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isDocumentEdited"))
 	return rv
 }
 
 func (w_ Window) SetDocumentEdited(value bool) {
-	objc.CallMethod[objc.Void](w_, "setDocumentEdited:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDocumentEdited:"), value)
 }
 
 func (w_ Window) BackingScaleFactor() float64 {
-	rv := objc.CallMethod[float64](w_, "backingScaleFactor")
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("backingScaleFactor"))
 	return rv
 }
 
 func (w_ Window) Title() string {
-	rv := objc.CallMethod[string](w_, "title")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("title"))
 	return rv
 }
 
 func (w_ Window) SetTitle(value string) {
-	objc.CallMethod[objc.Void](w_, "setTitle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitle:"), value)
 }
 
 func (w_ Window) Subtitle() string {
-	rv := objc.CallMethod[string](w_, "subtitle")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("subtitle"))
 	return rv
 }
 
 func (w_ Window) SetSubtitle(value string) {
-	objc.CallMethod[objc.Void](w_, "setSubtitle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSubtitle:"), value)
 }
 
 func (w_ Window) TitleVisibility() WindowTitleVisibility {
-	rv := objc.CallMethod[WindowTitleVisibility](w_, "titleVisibility")
+	rv := objc.CallMethod[WindowTitleVisibility](w_, objc.GetSelector("titleVisibility"))
 	return rv
 }
 
 func (w_ Window) SetTitleVisibility(value WindowTitleVisibility) {
-	objc.CallMethod[objc.Void](w_, "setTitleVisibility:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitleVisibility:"), value)
 }
 
 func (w_ Window) RepresentedFilename() string {
-	rv := objc.CallMethod[string](w_, "representedFilename")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("representedFilename"))
 	return rv
 }
 
 func (w_ Window) SetRepresentedFilename(value string) {
-	objc.CallMethod[objc.Void](w_, "setRepresentedFilename:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setRepresentedFilename:"), value)
 }
 
 func (w_ Window) RepresentedURL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](w_, "representedURL")
+	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("representedURL"))
 	return rv
 }
 
 func (w_ Window) SetRepresentedURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](w_, "setRepresentedURL:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setRepresentedURL:"), value)
 }
 
 func (w_ Window) Screen() Screen {
-	rv := objc.CallMethod[Screen](w_, "screen")
+	rv := objc.CallMethod[Screen](w_, objc.GetSelector("screen"))
 	return rv
 }
 
 func (w_ Window) DeepestScreen() Screen {
-	rv := objc.CallMethod[Screen](w_, "deepestScreen")
+	rv := objc.CallMethod[Screen](w_, objc.GetSelector("deepestScreen"))
 	return rv
 }
 
 func (w_ Window) DisplaysWhenScreenProfileChanges() bool {
-	rv := objc.CallMethod[bool](w_, "displaysWhenScreenProfileChanges")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("displaysWhenScreenProfileChanges"))
 	return rv
 }
 
 func (w_ Window) SetDisplaysWhenScreenProfileChanges(value bool) {
-	objc.CallMethod[objc.Void](w_, "setDisplaysWhenScreenProfileChanges:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDisplaysWhenScreenProfileChanges:"), value)
 }
 
 func (w_ Window) IsMovableByWindowBackground() bool {
-	rv := objc.CallMethod[bool](w_, "isMovableByWindowBackground")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isMovableByWindowBackground"))
 	return rv
 }
 
 func (w_ Window) SetMovableByWindowBackground(value bool) {
-	objc.CallMethod[objc.Void](w_, "setMovableByWindowBackground:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMovableByWindowBackground:"), value)
 }
 
 func (w_ Window) IsMovable() bool {
-	rv := objc.CallMethod[bool](w_, "isMovable")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isMovable"))
 	return rv
 }
 
 func (w_ Window) SetMovable(value bool) {
-	objc.CallMethod[objc.Void](w_, "setMovable:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMovable:"), value)
 }
 
 func (w_ Window) IsReleasedWhenClosed() bool {
-	rv := objc.CallMethod[bool](w_, "isReleasedWhenClosed")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isReleasedWhenClosed"))
 	return rv
 }
 
 func (w_ Window) SetReleasedWhenClosed(value bool) {
-	objc.CallMethod[objc.Void](w_, "setReleasedWhenClosed:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setReleasedWhenClosed:"), value)
 }
 
 func (w_ Window) IsMiniaturized() bool {
-	rv := objc.CallMethod[bool](w_, "isMiniaturized")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isMiniaturized"))
 	return rv
 }
 
 func (w_ Window) MiniwindowImage() Image {
-	rv := objc.CallMethod[Image](w_, "miniwindowImage")
+	rv := objc.CallMethod[Image](w_, objc.GetSelector("miniwindowImage"))
 	return rv
 }
 
 func (w_ Window) SetMiniwindowImage(value IImage) {
-	objc.CallMethod[objc.Void](w_, "setMiniwindowImage:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMiniwindowImage:"), value)
 }
 
 func (w_ Window) MiniwindowTitle() string {
-	rv := objc.CallMethod[string](w_, "miniwindowTitle")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("miniwindowTitle"))
 	return rv
 }
 
 func (w_ Window) SetMiniwindowTitle(value string) {
-	objc.CallMethod[objc.Void](w_, "setMiniwindowTitle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMiniwindowTitle:"), value)
 }
 
 func (w_ Window) DockTile() DockTile {
-	rv := objc.CallMethod[DockTile](w_, "dockTile")
+	rv := objc.CallMethod[DockTile](w_, objc.GetSelector("dockTile"))
 	return rv
 }
 
 func (w_ Window) HasCloseBox() bool {
-	rv := objc.CallMethod[bool](w_, "hasCloseBox")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("hasCloseBox"))
 	return rv
 }
 
 func (w_ Window) HasTitleBar() bool {
-	rv := objc.CallMethod[bool](w_, "hasTitleBar")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("hasTitleBar"))
 	return rv
 }
 
 func (w_ Window) IsModalPanel() bool {
-	rv := objc.CallMethod[bool](w_, "isModalPanel")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isModalPanel"))
 	return rv
 }
 
 func (w_ Window) IsFloatingPanel() bool {
-	rv := objc.CallMethod[bool](w_, "isFloatingPanel")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isFloatingPanel"))
 	return rv
 }
 
 func (w_ Window) IsZoomable() bool {
-	rv := objc.CallMethod[bool](w_, "isZoomable")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isZoomable"))
 	return rv
 }
 
 func (w_ Window) IsResizable() bool {
-	rv := objc.CallMethod[bool](w_, "isResizable")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isResizable"))
 	return rv
 }
 
 func (w_ Window) IsMiniaturizable() bool {
-	rv := objc.CallMethod[bool](w_, "isMiniaturizable")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isMiniaturizable"))
 	return rv
 }
 
 func (w_ Window) OrderedIndex() int {
-	rv := objc.CallMethod[int](w_, "orderedIndex")
+	rv := objc.CallMethod[int](w_, objc.GetSelector("orderedIndex"))
 	return rv
 }
 
 func (w_ Window) SetOrderedIndex(value int) {
-	objc.CallMethod[objc.Void](w_, "setOrderedIndex:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setOrderedIndex:"), value)
 }
 
 // deprecated
 func (w_ Window) BackingLocation() WindowBackingLocation {
-	rv := objc.CallMethod[WindowBackingLocation](w_, "backingLocation")
+	rv := objc.CallMethod[WindowBackingLocation](w_, objc.GetSelector("backingLocation"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) PreferredBackingLocation() WindowBackingLocation {
-	rv := objc.CallMethod[WindowBackingLocation](w_, "preferredBackingLocation")
+	rv := objc.CallMethod[WindowBackingLocation](w_, objc.GetSelector("preferredBackingLocation"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) SetPreferredBackingLocation(value WindowBackingLocation) {
-	objc.CallMethod[objc.Void](w_, "setPreferredBackingLocation:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreferredBackingLocation:"), value)
 }
 
 // deprecated
 func (w_ Window) IsOneShot() bool {
-	rv := objc.CallMethod[bool](w_, "isOneShot")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isOneShot"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) SetOneShot(value bool) {
-	objc.CallMethod[objc.Void](w_, "setOneShot:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setOneShot:"), value)
 }
 
 // deprecated
 func (w_ Window) Drawers() []Drawer {
-	rv := objc.CallMethod[[]Drawer](w_, "drawers")
+	rv := objc.CallMethod[[]Drawer](w_, objc.GetSelector("drawers"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) ShowsResizeIndicator() bool {
-	rv := objc.CallMethod[bool](w_, "showsResizeIndicator")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("showsResizeIndicator"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) SetShowsResizeIndicator(value bool) {
-	objc.CallMethod[objc.Void](w_, "setShowsResizeIndicator:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setShowsResizeIndicator:"), value)
 }
 
 // deprecated
 func (w_ Window) IsFlushWindowDisabled() bool {
-	rv := objc.CallMethod[bool](w_, "isFlushWindowDisabled")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isFlushWindowDisabled"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) IsAutodisplay() bool {
-	rv := objc.CallMethod[bool](w_, "isAutodisplay")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isAutodisplay"))
 	return rv
 }
 
 // deprecated
 func (w_ Window) SetAutodisplay(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAutodisplay:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAutodisplay:"), value)
 }
 
 // deprecated
 func (w_ Window) GraphicsContext() GraphicsContext {
-	rv := objc.CallMethod[GraphicsContext](w_, "graphicsContext")
+	rv := objc.CallMethod[GraphicsContext](w_, objc.GetSelector("graphicsContext"))
 	return rv
 }
 
 func (w_ Window) WindowRef() unsafe.Pointer {
-	rv := objc.CallMethod[unsafe.Pointer](w_, "windowRef")
+	rv := objc.CallMethod[unsafe.Pointer](w_, objc.GetSelector("windowRef"))
 	return rv
 }

@@ -53,22 +53,22 @@ func MakeClipView(ptr unsafe.Pointer) ClipView {
 }
 
 func (c_ ClipView) InitWithFrame(frameRect foundation.Rect) ClipView {
-	rv := objc.CallMethod[ClipView](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ClipView](c_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (c_ ClipView) Init() ClipView {
-	rv := objc.CallMethod[ClipView](c_, "init")
+	rv := objc.CallMethod[ClipView](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _ClipViewClass) Alloc() ClipView {
-	rv := objc.CallMethod[ClipView](cc, "alloc")
+	rv := objc.CallMethod[ClipView](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ClipViewClass) New() ClipView {
-	rv := objc.CallMethod[ClipView](cc, "new")
+	rv := objc.CallMethod[ClipView](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -78,99 +78,99 @@ func NewClipView() ClipView {
 }
 
 func (c_ ClipView) ScrollToPoint(newOrigin foundation.Point) {
-	objc.CallMethod[objc.Void](c_, "scrollToPoint:", newOrigin)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("scrollToPoint:"), newOrigin)
 }
 
 // deprecated
 func (c_ ClipView) ConstrainScrollPoint(newOrigin foundation.Point) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](c_, "constrainScrollPoint:", newOrigin)
+	rv := objc.CallMethod[foundation.Point](c_, objc.GetSelector("constrainScrollPoint:"), newOrigin)
 	return rv
 }
 
 func (c_ ClipView) ConstrainBoundsRect(proposedBounds foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, "constrainBoundsRect:", proposedBounds)
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("constrainBoundsRect:"), proposedBounds)
 	return rv
 }
 
 func (c_ ClipView) ViewBoundsChanged(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "viewBoundsChanged:", notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("viewBoundsChanged:"), notification)
 }
 
 func (c_ ClipView) ViewFrameChanged(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "viewFrameChanged:", notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("viewFrameChanged:"), notification)
 }
 
 func (c_ ClipView) DocumentView() View {
-	rv := objc.CallMethod[View](c_, "documentView")
+	rv := objc.CallMethod[View](c_, objc.GetSelector("documentView"))
 	return rv
 }
 
 func (c_ ClipView) SetDocumentView(value IView) {
-	objc.CallMethod[objc.Void](c_, "setDocumentView:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDocumentView:"), value)
 }
 
 // deprecated
 func (c_ ClipView) CopiesOnScroll() bool {
-	rv := objc.CallMethod[bool](c_, "copiesOnScroll")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("copiesOnScroll"))
 	return rv
 }
 
 // deprecated
 func (c_ ClipView) SetCopiesOnScroll(value bool) {
-	objc.CallMethod[objc.Void](c_, "setCopiesOnScroll:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCopiesOnScroll:"), value)
 }
 
 func (c_ ClipView) ContentInsets() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](c_, "contentInsets")
+	rv := objc.CallMethod[foundation.EdgeInsets](c_, objc.GetSelector("contentInsets"))
 	return rv
 }
 
 func (c_ ClipView) SetContentInsets(value foundation.EdgeInsets) {
-	objc.CallMethod[objc.Void](c_, "setContentInsets:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContentInsets:"), value)
 }
 
 func (c_ ClipView) AutomaticallyAdjustsContentInsets() bool {
-	rv := objc.CallMethod[bool](c_, "automaticallyAdjustsContentInsets")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("automaticallyAdjustsContentInsets"))
 	return rv
 }
 
 func (c_ ClipView) SetAutomaticallyAdjustsContentInsets(value bool) {
-	objc.CallMethod[objc.Void](c_, "setAutomaticallyAdjustsContentInsets:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAutomaticallyAdjustsContentInsets:"), value)
 }
 
 func (c_ ClipView) DocumentRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, "documentRect")
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("documentRect"))
 	return rv
 }
 
 func (c_ ClipView) DocumentVisibleRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, "documentVisibleRect")
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("documentVisibleRect"))
 	return rv
 }
 
 func (c_ ClipView) DocumentCursor() Cursor {
-	rv := objc.CallMethod[Cursor](c_, "documentCursor")
+	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("documentCursor"))
 	return rv
 }
 
 func (c_ ClipView) SetDocumentCursor(value ICursor) {
-	objc.CallMethod[objc.Void](c_, "setDocumentCursor:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDocumentCursor:"), value)
 }
 
 func (c_ ClipView) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](c_, "drawsBackground")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("drawsBackground"))
 	return rv
 }
 
 func (c_ ClipView) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](c_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDrawsBackground:"), value)
 }
 
 func (c_ ClipView) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](c_, "backgroundColor")
+	rv := objc.CallMethod[Color](c_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (c_ ClipView) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundColor:"), value)
 }

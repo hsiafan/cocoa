@@ -67,19 +67,19 @@ func MakeMutableString(ptr unsafe.Pointer) MutableString {
 var _MutableStringClass = objc.GetClass("NSMutableString")
 
 func NewMutableString() MutableString {
-	return objc.CallMethod[MutableString](_MutableStringClass, "string")
+	return objc.CallMethod[MutableString](_MutableStringClass, objc.GetSelector("string"))
 }
 
 func NewMutableStringWithString(str string) MutableString {
-	return objc.CallMethod[MutableString](_MutableStringClass, "stringWithString:", str)
+	return objc.CallMethod[MutableString](_MutableStringClass, objc.GetSelector("stringWithString:"), str)
 }
 
 func NewMutableStringWithCapacity(capacity uint) MutableString {
-	return objc.CallMethod[MutableString](_MutableStringClass, "stringWithCapacity:", capacity)
+	return objc.CallMethod[MutableString](_MutableStringClass, objc.GetSelector("stringWithCapacity:"), capacity)
 }
 
 func (s MutableString) AppendString(str string) {
-	objc.CallMethod[objc.Void](s, "appendString:", str)
+	objc.CallMethod[objc.Void](s, objc.GetSelector("appendString:"), str)
 }
 
 type IData interface {
@@ -123,23 +123,23 @@ func MakeMutableData(ptr unsafe.Pointer) MutableData {
 var _MutableDataClass = objc.GetClass("NSMutableData")
 
 func NewMutableData() MutableData {
-	return objc.CallMethod[MutableData](_MutableDataClass, "data")
+	return objc.CallMethod[MutableData](_MutableDataClass, objc.GetSelector("data"))
 }
 
 func NewMutableDataWithData(data []byte) MutableData {
-	return objc.CallMethod[MutableData](_MutableDataClass, "dataWithData:", data)
+	return objc.CallMethod[MutableData](_MutableDataClass, objc.GetSelector("dataWithData:"), data)
 }
 
 func NewMutableDataWithCapacity(capacity uint) MutableData {
-	return objc.CallMethod[MutableData](_MutableDataClass, "dataWithCapacity:", capacity)
+	return objc.CallMethod[MutableData](_MutableDataClass, objc.GetSelector("dataWithCapacity:"), capacity)
 }
 
 func NewMutableDataWithLength(length uint) MutableData {
-	return objc.CallMethod[MutableData](_MutableDataClass, "dataWithLength:", length)
+	return objc.CallMethod[MutableData](_MutableDataClass, objc.GetSelector("dataWithLength:"), length)
 }
 
 func (d MutableData) AppendData(data []byte) {
-	objc.CallMethod[objc.Void](d, "appendData:", data)
+	objc.CallMethod[objc.Void](d, objc.GetSelector("appendData:"), data)
 }
 
 type ISet interface {
@@ -161,19 +161,19 @@ func MakeSet(ptr unsafe.Pointer) Set {
 var _SetClass = objc.GetClass("NSSet")
 
 func NewSet() Set {
-	return objc.CallMethod[Set](_SetClass, "set")
+	return objc.CallMethod[Set](_SetClass, objc.GetSelector("set"))
 }
 
 func NewSetWithArray(array IArray) Set {
-	return objc.CallMethod[Set](_SetClass, "setWithArray:", array)
+	return objc.CallMethod[Set](_SetClass, objc.GetSelector("setWithArray:"), array)
 }
 
 func (s Set) Count() uint {
-	return objc.CallMethod[uint](s, "count")
+	return objc.CallMethod[uint](s, objc.GetSelector("count"))
 }
 
 func (s Set) AllObjects() Array {
-	return objc.CallMethod[Array](s, "allObjects")
+	return objc.CallMethod[Array](s, objc.GetSelector("allObjects"))
 }
 
 type IMutableSet interface {
@@ -194,19 +194,19 @@ func MakeMutableSet(ptr unsafe.Pointer) MutableSet {
 var _MutableSetClass = objc.GetClass("NSMutableSet")
 
 func NewMutableSet() MutableSet {
-	return objc.CallMethod[MutableSet](_MutableSetClass, "set")
+	return objc.CallMethod[MutableSet](_MutableSetClass, objc.GetSelector("set"))
 }
 
 func NewMutableSetWithCapacity(size uint) MutableSet {
-	return objc.CallMethod[MutableSet](_MutableSetClass, "setWithCapacity:", size)
+	return objc.CallMethod[MutableSet](_MutableSetClass, objc.GetSelector("setWithCapacity:"), size)
 }
 
 func NewMutableSetWithArray(array IArray) Set {
-	return objc.CallMethod[Set](_MutableSetClass, "setWithArray:", array)
+	return objc.CallMethod[Set](_MutableSetClass, objc.GetSelector("setWithArray:"), array)
 }
 
 func (s MutableSet) AddObject(o objc.IObject) {
-	objc.CallMethod[objc.Void](s, "addObject:", o)
+	objc.CallMethod[objc.Void](s, objc.GetSelector("addObject:"), o)
 }
 
 type IArray interface {
@@ -226,11 +226,11 @@ func MakeArray(ptr unsafe.Pointer) Array {
 }
 
 func (a Array) ObjectAtIndex(index uint) objc.Object {
-	return objc.CallMethod[objc.Object](a, "objectAtIndex:", index)
+	return objc.CallMethod[objc.Object](a, objc.GetSelector("objectAtIndex:"), index)
 }
 
 func (a Array) Count() uint {
-	return objc.CallMethod[uint](a, "count")
+	return objc.CallMethod[uint](a, objc.GetSelector("count"))
 }
 
 func ArrayOf[T any](slice []T) Array {
@@ -263,31 +263,31 @@ func MakeMutableArray(ptr unsafe.Pointer) MutableArray {
 var _MutableArrayClass = objc.GetClass("NSMutableArray")
 
 func NewMutableArray() MutableArray {
-	return objc.CallMethod[MutableArray](_MutableArrayClass, "array")
+	return objc.CallMethod[MutableArray](_MutableArrayClass, objc.GetSelector("array"))
 }
 
 func NewMutableArrayWithCapacity(size uint) MutableArray {
-	return objc.CallMethod[MutableArray](_MutableArrayClass, "arrayWithCapacity:", size)
+	return objc.CallMethod[MutableArray](_MutableArrayClass, objc.GetSelector("arrayWithCapacity:"), size)
 }
 
 func NewMutableSetWithSet(set ISet) MutableSet {
-	return objc.CallMethod[MutableSet](_MutableSetClass, "setWithSet:", set)
+	return objc.CallMethod[MutableSet](_MutableSetClass, objc.GetSelector("setWithSet:"), set)
 }
 
 func (a MutableArray) AddObject(o objc.IObject) {
-	objc.CallMethod[objc.Void](a, "addObject:", o)
+	objc.CallMethod[objc.Void](a, objc.GetSelector("addObject:"), o)
 }
 
 func (a MutableArray) InsertObject_AtIndex(o objc.IObject, index uint) {
-	objc.CallMethod[objc.Void](a, "insertObject:atIndex:", o, index)
+	objc.CallMethod[objc.Void](a, objc.GetSelector("insertObject:atIndex:"), o, index)
 }
 
 func (a MutableArray) RemoveObjectAtIndex(index uint) {
-	objc.CallMethod[objc.Void](a, "removeObjectAtIndex:", index)
+	objc.CallMethod[objc.Void](a, objc.GetSelector("removeObjectAtIndex:"), index)
 }
 
 func (a MutableArray) ReplaceObjectAtIndex_WithObject(index uint, o objc.IObject) {
-	objc.CallMethod[objc.Void](a, "replaceObjectAtIndex:withObject:", index, o)
+	objc.CallMethod[objc.Void](a, objc.GetSelector("replaceObjectAtIndex:withObject:"), index, o)
 }
 
 type IDictionary interface {
@@ -309,19 +309,19 @@ func MakeDictionary(ptr unsafe.Pointer) Dictionary {
 }
 
 func (d Dictionary) ObjectForKey(key objc.IObject) objc.Object {
-	return objc.CallMethod[objc.Object](d, "objectForKey:", key)
+	return objc.CallMethod[objc.Object](d, objc.GetSelector("objectForKey:"), key)
 }
 
 func (d Dictionary) AllKeys() Array {
-	return objc.CallMethod[Array](d, "allKeys")
+	return objc.CallMethod[Array](d, objc.GetSelector("allKeys"))
 }
 
 func (d Dictionary) AllValues() Array {
-	return objc.CallMethod[Array](d, "allValues")
+	return objc.CallMethod[Array](d, objc.GetSelector("allValues"))
 }
 
 func (d Dictionary) Count() uint {
-	return objc.CallMethod[uint](d, "count")
+	return objc.CallMethod[uint](d, objc.GetSelector("count"))
 }
 
 func DictOf[K comparable, V any](m map[K]V) Dictionary {
@@ -352,19 +352,19 @@ func MakeMutableDictionary(ptr unsafe.Pointer) MutableDictionary {
 var _MutableDictionaryClass = objc.GetClass("NSMutableDictionary")
 
 func NewMutableDictionary() MutableDictionary {
-	return objc.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionary")
+	return objc.CallMethod[MutableDictionary](_MutableDictionaryClass, objc.GetSelector("dictionary"))
 }
 
 func NewMutableDictionaryWithDictionary(dict IDictionary) MutableDictionary {
-	return objc.CallMethod[MutableDictionary](_MutableDictionaryClass, "dictionaryWithDictionary:", dict)
+	return objc.CallMethod[MutableDictionary](_MutableDictionaryClass, objc.GetSelector("dictionaryWithDictionary:"), dict)
 }
 
 func (d MutableDictionary) SetObject_ForKey(value objc.IObject, key objc.IObject) {
-	objc.CallMethod[objc.Void](d, "setObject:forKey:", value, key)
+	objc.CallMethod[objc.Void](d, objc.GetSelector("setObject:forKey:"), value, key)
 }
 
 func (d MutableDictionary) RemoveObjectForKey(key objc.IObject) {
-	objc.CallMethod[objc.Void](d, "removeObjectsForKeys:", key)
+	objc.CallMethod[objc.Void](d, objc.GetSelector("removeObjectsForKeys:"), key)
 }
 
 func ToNSError(code int, err error) Error {
@@ -424,16 +424,16 @@ var _NSJSONSerializationClass = objc.GetClass("NSJSONSerialization")
 
 func JSONObjectWithData(data []byte, options JSONReadingOptions) (objc.Object, error) {
 	var err Error
-	r := objc.CallMethod[objc.Object](_NSJSONSerializationClass, "JSONObjectWithData:options:error:", data, options, unsafe.Pointer(&err))
+	r := objc.CallMethod[objc.Object](_NSJSONSerializationClass, objc.GetSelector("JSONObjectWithData:options:error:"), data, options, unsafe.Pointer(&err))
 	return r, ToGoError(err)
 }
 
 func DataWithJSONObject(o objc.IObject, options JSONWritingOptions) ([]byte, error) {
 	var err Error
-	r := objc.CallMethod[[]byte](_NSJSONSerializationClass, "dataWithJSONObject:options:error:", o, options, unsafe.Pointer(&err))
+	r := objc.CallMethod[[]byte](_NSJSONSerializationClass, objc.GetSelector("dataWithJSONObject:options:error:"), o, options, unsafe.Pointer(&err))
 	return r, ToGoError(err)
 }
 
 func IsValidJSONObject(o objc.IObject) bool {
-	return objc.CallMethod[bool](_NSJSONSerializationClass, "isValidJSONObject:", o)
+	return objc.CallMethod[bool](_NSJSONSerializationClass, objc.GetSelector("isValidJSONObject:"), o)
 }

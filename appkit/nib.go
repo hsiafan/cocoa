@@ -32,22 +32,22 @@ func MakeNib(ptr unsafe.Pointer) Nib {
 }
 
 func (n_ Nib) InitWithNibNamed_Bundle(nibName NibName, bundle foundation.IBundle) Nib {
-	rv := objc.CallMethod[Nib](n_, "initWithNibNamed:bundle:", nibName, bundle)
+	rv := objc.CallMethod[Nib](n_, objc.GetSelector("initWithNibNamed:bundle:"), nibName, bundle)
 	return rv
 }
 
 func (n_ Nib) InitWithNibData_Bundle(nibData []byte, bundle foundation.IBundle) Nib {
-	rv := objc.CallMethod[Nib](n_, "initWithNibData:bundle:", nibData, bundle)
+	rv := objc.CallMethod[Nib](n_, objc.GetSelector("initWithNibData:bundle:"), nibData, bundle)
 	return rv
 }
 
 func (nc _NibClass) Alloc() Nib {
-	rv := objc.CallMethod[Nib](nc, "alloc")
+	rv := objc.CallMethod[Nib](nc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (nc _NibClass) New() Nib {
-	rv := objc.CallMethod[Nib](nc, "new")
+	rv := objc.CallMethod[Nib](nc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -57,17 +57,17 @@ func NewNib() Nib {
 }
 
 func (n_ Nib) Init() Nib {
-	rv := objc.CallMethod[Nib](n_, "init")
+	rv := objc.CallMethod[Nib](n_, objc.GetSelector("init"))
 	return rv
 }
 
 // deprecated
 func (n_ Nib) InitWithContentsOfURL(nibFileURL foundation.IURL) objc.Object {
-	rv := objc.CallMethod[objc.Object](n_, "initWithContentsOfURL:", nibFileURL)
+	rv := objc.CallMethod[objc.Object](n_, objc.GetSelector("initWithContentsOfURL:"), nibFileURL)
 	return rv
 }
 
 func (n_ Nib) InstantiateWithOwner_TopLevelObjects(owner objc.IObject, topLevelObjects *foundation.Array) bool {
-	rv := objc.CallMethod[bool](n_, "instantiateWithOwner:topLevelObjects:", owner, topLevelObjects)
+	rv := objc.CallMethod[bool](n_, objc.GetSelector("instantiateWithOwner:topLevelObjects:"), owner, topLevelObjects)
 	return rv
 }

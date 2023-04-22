@@ -34,12 +34,12 @@ func MakeBackForwardList(ptr unsafe.Pointer) BackForwardList {
 }
 
 func (bc _BackForwardListClass) Alloc() BackForwardList {
-	rv := objc.CallMethod[BackForwardList](bc, "alloc")
+	rv := objc.CallMethod[BackForwardList](bc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (bc _BackForwardListClass) New() BackForwardList {
-	rv := objc.CallMethod[BackForwardList](bc, "new")
+	rv := objc.CallMethod[BackForwardList](bc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,36 +49,36 @@ func NewBackForwardList() BackForwardList {
 }
 
 func (b_ BackForwardList) Init() BackForwardList {
-	rv := objc.CallMethod[BackForwardList](b_, "init")
+	rv := objc.CallMethod[BackForwardList](b_, objc.GetSelector("init"))
 	return rv
 }
 
 func (b_ BackForwardList) ItemAtIndex(index int) BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](b_, "itemAtIndex:", index)
+	rv := objc.CallMethod[BackForwardListItem](b_, objc.GetSelector("itemAtIndex:"), index)
 	return rv
 }
 
 func (b_ BackForwardList) BackItem() BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](b_, "backItem")
+	rv := objc.CallMethod[BackForwardListItem](b_, objc.GetSelector("backItem"))
 	return rv
 }
 
 func (b_ BackForwardList) CurrentItem() BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](b_, "currentItem")
+	rv := objc.CallMethod[BackForwardListItem](b_, objc.GetSelector("currentItem"))
 	return rv
 }
 
 func (b_ BackForwardList) ForwardItem() BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](b_, "forwardItem")
+	rv := objc.CallMethod[BackForwardListItem](b_, objc.GetSelector("forwardItem"))
 	return rv
 }
 
 func (b_ BackForwardList) BackList() []BackForwardListItem {
-	rv := objc.CallMethod[[]BackForwardListItem](b_, "backList")
+	rv := objc.CallMethod[[]BackForwardListItem](b_, objc.GetSelector("backList"))
 	return rv
 }
 
 func (b_ BackForwardList) ForwardList() []BackForwardListItem {
-	rv := objc.CallMethod[[]BackForwardListItem](b_, "forwardList")
+	rv := objc.CallMethod[[]BackForwardListItem](b_, objc.GetSelector("forwardList"))
 	return rv
 }

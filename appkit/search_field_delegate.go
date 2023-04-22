@@ -53,7 +53,7 @@ func (s_ *SearchFieldDelegateWrapper) ImplementsSearchFieldDidStartSearching() b
 }
 
 func (s_ SearchFieldDelegateWrapper) SearchFieldDidStartSearching(sender ISearchField) {
-	objc.CallMethod[objc.Void](s_, "searchFieldDidStartSearching:", sender)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("searchFieldDidStartSearching:"), sender)
 }
 
 func (s_ *SearchFieldDelegateWrapper) ImplementsSearchFieldDidEndSearching() bool {
@@ -61,5 +61,5 @@ func (s_ *SearchFieldDelegateWrapper) ImplementsSearchFieldDidEndSearching() boo
 }
 
 func (s_ SearchFieldDelegateWrapper) SearchFieldDidEndSearching(sender ISearchField) {
-	objc.CallMethod[objc.Void](s_, "searchFieldDidEndSearching:", sender)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("searchFieldDidEndSearching:"), sender)
 }

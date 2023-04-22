@@ -97,7 +97,7 @@ func (t_ *TextDelegateWrapper) ImplementsTextDidChange() bool {
 }
 
 func (t_ TextDelegateWrapper) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, "textDidChange:", notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), notification)
 }
 
 func (t_ *TextDelegateWrapper) ImplementsTextShouldBeginEditing() bool {
@@ -105,7 +105,7 @@ func (t_ *TextDelegateWrapper) ImplementsTextShouldBeginEditing() bool {
 }
 
 func (t_ TextDelegateWrapper) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, "textShouldBeginEditing:", textObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), textObject)
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (t_ *TextDelegateWrapper) ImplementsTextDidBeginEditing() bool {
 }
 
 func (t_ TextDelegateWrapper) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, "textDidBeginEditing:", notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), notification)
 }
 
 func (t_ *TextDelegateWrapper) ImplementsTextShouldEndEditing() bool {
@@ -122,7 +122,7 @@ func (t_ *TextDelegateWrapper) ImplementsTextShouldEndEditing() bool {
 }
 
 func (t_ TextDelegateWrapper) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, "textShouldEndEditing:", textObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), textObject)
 	return rv
 }
 
@@ -131,5 +131,5 @@ func (t_ *TextDelegateWrapper) ImplementsTextDidEndEditing() bool {
 }
 
 func (t_ TextDelegateWrapper) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, "textDidEndEditing:", notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), notification)
 }

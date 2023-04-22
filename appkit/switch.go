@@ -31,22 +31,22 @@ func MakeSwitch(ptr unsafe.Pointer) Switch {
 }
 
 func (s_ Switch) InitWithFrame(frameRect foundation.Rect) Switch {
-	rv := objc.CallMethod[Switch](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Switch](s_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ Switch) Init() Switch {
-	rv := objc.CallMethod[Switch](s_, "init")
+	rv := objc.CallMethod[Switch](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _SwitchClass) Alloc() Switch {
-	rv := objc.CallMethod[Switch](sc, "alloc")
+	rv := objc.CallMethod[Switch](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SwitchClass) New() Switch {
-	rv := objc.CallMethod[Switch](sc, "new")
+	rv := objc.CallMethod[Switch](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,10 +56,10 @@ func NewSwitch() Switch {
 }
 
 func (s_ Switch) State() ControlStateValue {
-	rv := objc.CallMethod[ControlStateValue](s_, "state")
+	rv := objc.CallMethod[ControlStateValue](s_, objc.GetSelector("state"))
 	return rv
 }
 
 func (s_ Switch) SetState(value ControlStateValue) {
-	objc.CallMethod[objc.Void](s_, "setState:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setState:"), value)
 }

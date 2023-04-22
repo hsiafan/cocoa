@@ -160,6 +160,11 @@ func (c Class) GetName() string {
 	return name
 }
 
+// GetClass returns class's meta class.
+func (c Class) GetClass() Class {
+	return MakeObject(c.ptr).GetClass()
+}
+
 func (c Class) SetVersion(version int) {
 	C.Class_SetVersion(c.ptr, C.int(version))
 }

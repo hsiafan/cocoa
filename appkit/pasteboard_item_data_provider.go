@@ -18,7 +18,7 @@ type PasteboardItemDataProviderWrapper struct {
 }
 
 func (p_ PasteboardItemDataProviderWrapper) Pasteboard_Item_ProvideDataForType(pasteboard IPasteboard, item IPasteboardItem, type_ PasteboardType) {
-	objc.CallMethod[objc.Void](p_, "pasteboard:item:provideDataForType:", pasteboard, item, type_)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("pasteboard:item:provideDataForType:"), pasteboard, item, type_)
 }
 
 func (p_ *PasteboardItemDataProviderWrapper) ImplementsPasteboardFinishedWithDataProvider() bool {
@@ -26,5 +26,5 @@ func (p_ *PasteboardItemDataProviderWrapper) ImplementsPasteboardFinishedWithDat
 }
 
 func (p_ PasteboardItemDataProviderWrapper) PasteboardFinishedWithDataProvider(pasteboard IPasteboard) {
-	objc.CallMethod[objc.Void](p_, "pasteboardFinishedWithDataProvider:", pasteboard)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("pasteboardFinishedWithDataProvider:"), pasteboard)
 }

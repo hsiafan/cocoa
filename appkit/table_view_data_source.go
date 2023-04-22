@@ -56,7 +56,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsNumberOfRowsInTableView() bool {
 }
 
 func (t_ TableViewDataSourceWrapper) NumberOfRowsInTableView(tableView ITableView) int {
-	rv := objc.CallMethod[int](t_, "numberOfRowsInTableView:", tableView)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("numberOfRowsInTableView:"), tableView)
 	return rv
 }
 
@@ -65,7 +65,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_ObjectValueForTableCol
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_ObjectValueForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "tableView:objectValueForTableColumn:row:", tableView, tableColumn, row)
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("tableView:objectValueForTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_SetObjectValue_ForTabl
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_SetObjectValue_ForTableColumn_Row(tableView ITableView, object objc.IObject, tableColumn ITableColumn, row int) {
-	objc.CallMethod[objc.Void](t_, "tableView:setObjectValue:forTableColumn:row:", tableView, object, tableColumn, row)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:setObjectValue:forTableColumn:row:"), tableView, object, tableColumn, row)
 }
 
 func (t_ *TableViewDataSourceWrapper) ImplementsTableView_PasteboardWriterForRow() bool {
@@ -82,7 +82,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_PasteboardWriterForRow
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_PasteboardWriterForRow(tableView ITableView, row int) PasteboardWritingWrapper {
-	rv := objc.CallMethod[PasteboardWritingWrapper](t_, "tableView:pasteboardWriterForRow:", tableView, row)
+	rv := objc.CallMethod[PasteboardWritingWrapper](t_, objc.GetSelector("tableView:pasteboardWriterForRow:"), tableView, row)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_AcceptDrop_Row_DropOpe
 func (t_ TableViewDataSourceWrapper) TableView_AcceptDrop_Row_DropOperation(tableView ITableView, info DraggingInfo, row int, dropOperation TableViewDropOperation) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", info)
 	defer po.Release()
-	rv := objc.CallMethod[bool](t_, "tableView:acceptDrop:row:dropOperation:", tableView, po, row, dropOperation)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:acceptDrop:row:dropOperation:"), tableView, po, row, dropOperation)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_NamesOfPromisedFilesDr
 
 // deprecated
 func (t_ TableViewDataSourceWrapper) TableView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes(tableView ITableView, dropDestination foundation.IURL, indexSet foundation.IIndexSet) []string {
-	rv := objc.CallMethod[[]string](t_, "tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:", tableView, dropDestination, indexSet)
+	rv := objc.CallMethod[[]string](t_, objc.GetSelector("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:"), tableView, dropDestination, indexSet)
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_ValidateDrop_ProposedR
 func (t_ TableViewDataSourceWrapper) TableView_ValidateDrop_ProposedRow_ProposedDropOperation(tableView ITableView, info DraggingInfo, row int, dropOperation TableViewDropOperation) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", info)
 	defer po.Release()
-	rv := objc.CallMethod[DragOperation](t_, "tableView:validateDrop:proposedRow:proposedDropOperation:", tableView, po, row, dropOperation)
+	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("tableView:validateDrop:proposedRow:proposedDropOperation:"), tableView, po, row, dropOperation)
 	return rv
 }
 
@@ -124,7 +124,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_WriteRowsWithIndexes_T
 
 // deprecated
 func (t_ TableViewDataSourceWrapper) TableView_WriteRowsWithIndexes_ToPasteboard(tableView ITableView, rowIndexes foundation.IIndexSet, pboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](t_, "tableView:writeRowsWithIndexes:toPasteboard:", tableView, rowIndexes, pboard)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:writeRowsWithIndexes:toPasteboard:"), tableView, rowIndexes, pboard)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_DraggingSession_WillBe
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_DraggingSession_WillBeginAtPoint_ForRowIndexes(tableView ITableView, session IDraggingSession, screenPoint foundation.Point, rowIndexes foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](t_, "tableView:draggingSession:willBeginAtPoint:forRowIndexes:", tableView, session, screenPoint, rowIndexes)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"), tableView, session, screenPoint, rowIndexes)
 }
 
 func (t_ *TableViewDataSourceWrapper) ImplementsTableView_UpdateDraggingItemsForDrag() bool {
@@ -143,7 +143,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_UpdateDraggingItemsFor
 func (t_ TableViewDataSourceWrapper) TableView_UpdateDraggingItemsForDrag(tableView ITableView, draggingInfo DraggingInfo) {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
 	defer po.Release()
-	objc.CallMethod[objc.Void](t_, "tableView:updateDraggingItemsForDrag:", tableView, po)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:updateDraggingItemsForDrag:"), tableView, po)
 }
 
 func (t_ *TableViewDataSourceWrapper) ImplementsTableView_DraggingSession_EndedAtPoint_Operation() bool {
@@ -151,7 +151,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_DraggingSession_EndedA
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_DraggingSession_EndedAtPoint_Operation(tableView ITableView, session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.CallMethod[objc.Void](t_, "tableView:draggingSession:endedAtPoint:operation:", tableView, session, screenPoint, operation)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:draggingSession:endedAtPoint:operation:"), tableView, session, screenPoint, operation)
 }
 
 func (t_ *TableViewDataSourceWrapper) ImplementsTableView_SortDescriptorsDidChange() bool {
@@ -159,5 +159,5 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_SortDescriptorsDidChan
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_SortDescriptorsDidChange(tableView ITableView, oldDescriptors []foundation.ISortDescriptor) {
-	objc.CallMethod[objc.Void](t_, "tableView:sortDescriptorsDidChange:", tableView, oldDescriptors)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:sortDescriptorsDidChange:"), tableView, oldDescriptors)
 }

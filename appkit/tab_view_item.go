@@ -49,22 +49,22 @@ func MakeTabViewItem(ptr unsafe.Pointer) TabViewItem {
 }
 
 func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
-	rv := objc.CallMethod[TabViewItem](t_, "initWithIdentifier:", identifier)
+	rv := objc.CallMethod[TabViewItem](t_, objc.GetSelector("initWithIdentifier:"), identifier)
 	return rv
 }
 
 func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	rv := objc.CallMethod[TabViewItem](tc, "tabViewItemWithViewController:", viewController)
+	rv := objc.CallMethod[TabViewItem](tc, objc.GetSelector("tabViewItemWithViewController:"), viewController)
 	return rv
 }
 
 func (tc _TabViewItemClass) Alloc() TabViewItem {
-	rv := objc.CallMethod[TabViewItem](tc, "alloc")
+	rv := objc.CallMethod[TabViewItem](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TabViewItemClass) New() TabViewItem {
-	rv := objc.CallMethod[TabViewItem](tc, "new")
+	rv := objc.CallMethod[TabViewItem](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -74,97 +74,97 @@ func NewTabViewItem() TabViewItem {
 }
 
 func (t_ TabViewItem) Init() TabViewItem {
-	rv := objc.CallMethod[TabViewItem](t_, "init")
+	rv := objc.CallMethod[TabViewItem](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TabViewItem) DrawLabel_InRect(shouldTruncateLabel bool, labelRect foundation.Rect) {
-	objc.CallMethod[objc.Void](t_, "drawLabel:inRect:", shouldTruncateLabel, labelRect)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawLabel:inRect:"), shouldTruncateLabel, labelRect)
 }
 
 func (t_ TabViewItem) SizeOfLabel(computeMin bool) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, "sizeOfLabel:", computeMin)
+	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("sizeOfLabel:"), computeMin)
 	return rv
 }
 
 func (t_ TabViewItem) Label() string {
-	rv := objc.CallMethod[string](t_, "label")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("label"))
 	return rv
 }
 
 func (t_ TabViewItem) SetLabel(value string) {
-	objc.CallMethod[objc.Void](t_, "setLabel:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLabel:"), value)
 }
 
 func (t_ TabViewItem) TabState() TabState {
-	rv := objc.CallMethod[TabState](t_, "tabState")
+	rv := objc.CallMethod[TabState](t_, objc.GetSelector("tabState"))
 	return rv
 }
 
 func (t_ TabViewItem) Identifier() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "identifier")
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("identifier"))
 	return rv
 }
 
 func (t_ TabViewItem) SetIdentifier(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setIdentifier:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setIdentifier:"), value)
 }
 
 func (t_ TabViewItem) Color() Color {
-	rv := objc.CallMethod[Color](t_, "color")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("color"))
 	return rv
 }
 
 func (t_ TabViewItem) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, "setColor:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setColor:"), value)
 }
 
 func (t_ TabViewItem) View() View {
-	rv := objc.CallMethod[View](t_, "view")
+	rv := objc.CallMethod[View](t_, objc.GetSelector("view"))
 	return rv
 }
 
 func (t_ TabViewItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](t_, "setView:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), value)
 }
 
 func (t_ TabViewItem) InitialFirstResponder() View {
-	rv := objc.CallMethod[View](t_, "initialFirstResponder")
+	rv := objc.CallMethod[View](t_, objc.GetSelector("initialFirstResponder"))
 	return rv
 }
 
 func (t_ TabViewItem) SetInitialFirstResponder(value IView) {
-	objc.CallMethod[objc.Void](t_, "setInitialFirstResponder:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setInitialFirstResponder:"), value)
 }
 
 func (t_ TabViewItem) TabView() TabView {
-	rv := objc.CallMethod[TabView](t_, "tabView")
+	rv := objc.CallMethod[TabView](t_, objc.GetSelector("tabView"))
 	return rv
 }
 
 func (t_ TabViewItem) ToolTip() string {
-	rv := objc.CallMethod[string](t_, "toolTip")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("toolTip"))
 	return rv
 }
 
 func (t_ TabViewItem) SetToolTip(value string) {
-	objc.CallMethod[objc.Void](t_, "setToolTip:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setToolTip:"), value)
 }
 
 func (t_ TabViewItem) Image() Image {
-	rv := objc.CallMethod[Image](t_, "image")
+	rv := objc.CallMethod[Image](t_, objc.GetSelector("image"))
 	return rv
 }
 
 func (t_ TabViewItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, "setImage:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), value)
 }
 
 func (t_ TabViewItem) ViewController() ViewController {
-	rv := objc.CallMethod[ViewController](t_, "viewController")
+	rv := objc.CallMethod[ViewController](t_, objc.GetSelector("viewController"))
 	return rv
 }
 
 func (t_ TabViewItem) SetViewController(value IViewController) {
-	objc.CallMethod[objc.Void](t_, "setViewController:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setViewController:"), value)
 }

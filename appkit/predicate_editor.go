@@ -31,22 +31,22 @@ func MakePredicateEditor(ptr unsafe.Pointer) PredicateEditor {
 }
 
 func (p_ PredicateEditor) InitWithFrame(frameRect foundation.Rect) PredicateEditor {
-	rv := objc.CallMethod[PredicateEditor](p_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[PredicateEditor](p_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (p_ PredicateEditor) Init() PredicateEditor {
-	rv := objc.CallMethod[PredicateEditor](p_, "init")
+	rv := objc.CallMethod[PredicateEditor](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PredicateEditorClass) Alloc() PredicateEditor {
-	rv := objc.CallMethod[PredicateEditor](pc, "alloc")
+	rv := objc.CallMethod[PredicateEditor](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PredicateEditorClass) New() PredicateEditor {
-	rv := objc.CallMethod[PredicateEditor](pc, "new")
+	rv := objc.CallMethod[PredicateEditor](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,10 +56,10 @@ func NewPredicateEditor() PredicateEditor {
 }
 
 func (p_ PredicateEditor) RowTemplates() []PredicateEditorRowTemplate {
-	rv := objc.CallMethod[[]PredicateEditorRowTemplate](p_, "rowTemplates")
+	rv := objc.CallMethod[[]PredicateEditorRowTemplate](p_, objc.GetSelector("rowTemplates"))
 	return rv
 }
 
 func (p_ PredicateEditor) SetRowTemplates(value []IPredicateEditorRowTemplate) {
-	objc.CallMethod[objc.Void](p_, "setRowTemplates:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setRowTemplates:"), value)
 }

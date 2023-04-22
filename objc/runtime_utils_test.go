@@ -18,9 +18,9 @@ func TestSetDeallocListener(t *testing.T) {
 	}
 }
 
-func TestPossessObject(t *testing.T) {
+func Test_RetainObjectUtilGced(t *testing.T) {
 	o := NewObject()
-	op := PossessObject(o)
+	op := RetainObjectUtilGced(o)
 	op.Description()
 
 	runtime.GC()

@@ -26,7 +26,7 @@ func (a_ *AppearanceCustomizationWrapper) ImplementsSetAppearance() bool {
 }
 
 func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](a_, "setAppearance:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), value)
 }
 
 func (a_ *AppearanceCustomizationWrapper) ImplementsAppearance() bool {
@@ -34,7 +34,7 @@ func (a_ *AppearanceCustomizationWrapper) ImplementsAppearance() bool {
 }
 
 func (a_ AppearanceCustomizationWrapper) Appearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, "appearance")
+	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("appearance"))
 	return rv
 }
 
@@ -43,6 +43,6 @@ func (a_ *AppearanceCustomizationWrapper) ImplementsEffectiveAppearance() bool {
 }
 
 func (a_ AppearanceCustomizationWrapper) EffectiveAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, "effectiveAppearance")
+	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("effectiveAppearance"))
 	return rv
 }

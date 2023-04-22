@@ -202,7 +202,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DecidePolicyForNavigation
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DecidePolicyForNavigationAction_Preferences_DecisionHandler(webView IWebView, navigationAction INavigationAction, preferences IWebpagePreferences, decisionHandler func(param1 NavigationActionPolicy, param2 WebpagePreferences)) {
-	objc.CallMethod[objc.Void](n_, "webView:decidePolicyForNavigationAction:preferences:decisionHandler:", webView, navigationAction, preferences, decisionHandler)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:decidePolicyForNavigationAction:preferences:decisionHandler:"), webView, navigationAction, preferences, decisionHandler)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DecidePolicyForNavigationAction_DecisionHandler() bool {
@@ -210,7 +210,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DecidePolicyForNavigation
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DecidePolicyForNavigationAction_DecisionHandler(webView IWebView, navigationAction INavigationAction, decisionHandler func(param1 NavigationActionPolicy)) {
-	objc.CallMethod[objc.Void](n_, "webView:decidePolicyForNavigationAction:decisionHandler:", webView, navigationAction, decisionHandler)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:decidePolicyForNavigationAction:decisionHandler:"), webView, navigationAction, decisionHandler)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DecidePolicyForNavigationResponse_DecisionHandler() bool {
@@ -218,7 +218,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DecidePolicyForNavigation
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DecidePolicyForNavigationResponse_DecisionHandler(webView IWebView, navigationResponse INavigationResponse, decisionHandler func(param1 NavigationResponsePolicy)) {
-	objc.CallMethod[objc.Void](n_, "webView:decidePolicyForNavigationResponse:decisionHandler:", webView, navigationResponse, decisionHandler)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:decidePolicyForNavigationResponse:decisionHandler:"), webView, navigationResponse, decisionHandler)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidStartProvisionalNavigation() bool {
@@ -226,7 +226,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidStartProvisionalNaviga
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DidStartProvisionalNavigation(webView IWebView, navigation INavigation) {
-	objc.CallMethod[objc.Void](n_, "webView:didStartProvisionalNavigation:", webView, navigation)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:didStartProvisionalNavigation:"), webView, navigation)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidReceiveServerRedirectForProvisionalNavigation() bool {
@@ -234,7 +234,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidReceiveServerRedirectF
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DidReceiveServerRedirectForProvisionalNavigation(webView IWebView, navigation INavigation) {
-	objc.CallMethod[objc.Void](n_, "webView:didReceiveServerRedirectForProvisionalNavigation:", webView, navigation)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:didReceiveServerRedirectForProvisionalNavigation:"), webView, navigation)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidCommitNavigation() bool {
@@ -242,7 +242,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidCommitNavigation() boo
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DidCommitNavigation(webView IWebView, navigation INavigation) {
-	objc.CallMethod[objc.Void](n_, "webView:didCommitNavigation:", webView, navigation)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:didCommitNavigation:"), webView, navigation)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidFinishNavigation() bool {
@@ -250,7 +250,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidFinishNavigation() boo
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DidFinishNavigation(webView IWebView, navigation INavigation) {
-	objc.CallMethod[objc.Void](n_, "webView:didFinishNavigation:", webView, navigation)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:didFinishNavigation:"), webView, navigation)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidFailNavigation_WithError() bool {
@@ -258,7 +258,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidFailNavigation_WithErr
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DidFailNavigation_WithError(webView IWebView, navigation INavigation, error foundation.IError) {
-	objc.CallMethod[objc.Void](n_, "webView:didFailNavigation:withError:", webView, navigation, error)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:didFailNavigation:withError:"), webView, navigation, error)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidFailProvisionalNavigation_WithError() bool {
@@ -266,7 +266,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_DidFailProvisionalNavigat
 }
 
 func (n_ NavigationDelegateWrapper) WebView_DidFailProvisionalNavigation_WithError(webView IWebView, navigation INavigation, error foundation.IError) {
-	objc.CallMethod[objc.Void](n_, "webView:didFailProvisionalNavigation:withError:", webView, navigation, error)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:didFailProvisionalNavigation:withError:"), webView, navigation, error)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebViewWebContentProcessDidTerminate() bool {
@@ -274,7 +274,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebViewWebContentProcessDidTermin
 }
 
 func (n_ NavigationDelegateWrapper) WebViewWebContentProcessDidTerminate(webView IWebView) {
-	objc.CallMethod[objc.Void](n_, "webViewWebContentProcessDidTerminate:", webView)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webViewWebContentProcessDidTerminate:"), webView)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_NavigationResponse_DidBecomeDownload() bool {
@@ -282,7 +282,7 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_NavigationResponse_DidBec
 }
 
 func (n_ NavigationDelegateWrapper) WebView_NavigationResponse_DidBecomeDownload(webView IWebView, navigationResponse INavigationResponse, download IDownload) {
-	objc.CallMethod[objc.Void](n_, "webView:navigationResponse:didBecomeDownload:", webView, navigationResponse, download)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:navigationResponse:didBecomeDownload:"), webView, navigationResponse, download)
 }
 
 func (n_ *NavigationDelegateWrapper) ImplementsWebView_NavigationAction_DidBecomeDownload() bool {
@@ -290,5 +290,5 @@ func (n_ *NavigationDelegateWrapper) ImplementsWebView_NavigationAction_DidBecom
 }
 
 func (n_ NavigationDelegateWrapper) WebView_NavigationAction_DidBecomeDownload(webView IWebView, navigationAction INavigationAction, download IDownload) {
-	objc.CallMethod[objc.Void](n_, "webView:navigationAction:didBecomeDownload:", webView, navigationAction, download)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("webView:navigationAction:didBecomeDownload:"), webView, navigationAction, download)
 }

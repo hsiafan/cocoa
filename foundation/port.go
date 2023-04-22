@@ -36,12 +36,12 @@ func MakePort(ptr unsafe.Pointer) Port {
 }
 
 func (pc _PortClass) Alloc() Port {
-	rv := objc.CallMethod[Port](pc, "alloc")
+	rv := objc.CallMethod[Port](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PortClass) New() Port {
-	rv := objc.CallMethod[Port](pc, "new")
+	rv := objc.CallMethod[Port](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -51,48 +51,48 @@ func NewPort() Port {
 }
 
 func (p_ Port) Init() Port {
-	rv := objc.CallMethod[Port](p_, "init")
+	rv := objc.CallMethod[Port](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PortClass) Port() Port {
-	rv := objc.CallMethod[Port](pc, "port")
+	rv := objc.CallMethod[Port](pc, objc.GetSelector("port"))
 	return rv
 }
 
 func (p_ Port) Invalidate() {
-	objc.CallMethod[objc.Void](p_, "invalidate")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("invalidate"))
 }
 
 func (p_ Port) SetDelegate(anObject PortDelegate) {
 	po := objc.CreateProtocol("NSPortDelegate", anObject)
 	defer po.Release()
-	objc.CallMethod[objc.Void](p_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (p_ Port) SetDelegate0(anObject objc.IObject) {
-	objc.CallMethod[objc.Void](p_, "setDelegate:", anObject)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), anObject)
 }
 
 func (p_ Port) Delegate() PortDelegateWrapper {
-	rv := objc.CallMethod[PortDelegateWrapper](p_, "delegate")
+	rv := objc.CallMethod[PortDelegateWrapper](p_, objc.GetSelector("delegate"))
 	return rv
 }
 
 func (p_ Port) RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](p_, "removeFromRunLoop:forMode:", runLoop, mode)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeFromRunLoop:forMode:"), runLoop, mode)
 }
 
 func (p_ Port) ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](p_, "scheduleInRunLoop:forMode:", runLoop, mode)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("scheduleInRunLoop:forMode:"), runLoop, mode)
 }
 
 func (p_ Port) IsValid() bool {
-	rv := objc.CallMethod[bool](p_, "isValid")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isValid"))
 	return rv
 }
 
 func (p_ Port) ReservedSpaceLength() uint {
-	rv := objc.CallMethod[uint](p_, "reservedSpaceLength")
+	rv := objc.CallMethod[uint](p_, objc.GetSelector("reservedSpaceLength"))
 	return rv
 }

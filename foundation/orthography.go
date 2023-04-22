@@ -35,27 +35,27 @@ func MakeOrthography(ptr unsafe.Pointer) Orthography {
 }
 
 func (oc _OrthographyClass) DefaultOrthographyForLanguage(language string) Orthography {
-	rv := objc.CallMethod[Orthography](oc, "defaultOrthographyForLanguage:", language)
+	rv := objc.CallMethod[Orthography](oc, objc.GetSelector("defaultOrthographyForLanguage:"), language)
 	return rv
 }
 
 func (o_ Orthography) InitWithDominantScript_LanguageMap(script string, map_ map[string][]string) Orthography {
-	rv := objc.CallMethod[Orthography](o_, "initWithDominantScript:languageMap:", script, map_)
+	rv := objc.CallMethod[Orthography](o_, objc.GetSelector("initWithDominantScript:languageMap:"), script, map_)
 	return rv
 }
 
 func (oc _OrthographyClass) OrthographyWithDominantScript_LanguageMap(script string, map_ map[string][]string) Orthography {
-	rv := objc.CallMethod[Orthography](oc, "orthographyWithDominantScript:languageMap:", script, map_)
+	rv := objc.CallMethod[Orthography](oc, objc.GetSelector("orthographyWithDominantScript:languageMap:"), script, map_)
 	return rv
 }
 
 func (oc _OrthographyClass) Alloc() Orthography {
-	rv := objc.CallMethod[Orthography](oc, "alloc")
+	rv := objc.CallMethod[Orthography](oc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (oc _OrthographyClass) New() Orthography {
-	rv := objc.CallMethod[Orthography](oc, "new")
+	rv := objc.CallMethod[Orthography](oc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,41 +65,41 @@ func NewOrthography() Orthography {
 }
 
 func (o_ Orthography) Init() Orthography {
-	rv := objc.CallMethod[Orthography](o_, "init")
+	rv := objc.CallMethod[Orthography](o_, objc.GetSelector("init"))
 	return rv
 }
 
 func (o_ Orthography) DominantLanguageForScript(script string) string {
-	rv := objc.CallMethod[string](o_, "dominantLanguageForScript:", script)
+	rv := objc.CallMethod[string](o_, objc.GetSelector("dominantLanguageForScript:"), script)
 	return rv
 }
 
 func (o_ Orthography) LanguagesForScript(script string) []string {
-	rv := objc.CallMethod[[]string](o_, "languagesForScript:", script)
+	rv := objc.CallMethod[[]string](o_, objc.GetSelector("languagesForScript:"), script)
 	return rv
 }
 
 func (o_ Orthography) LanguageMap() map[string][]string {
-	rv := objc.CallMethod[map[string][]string](o_, "languageMap")
+	rv := objc.CallMethod[map[string][]string](o_, objc.GetSelector("languageMap"))
 	return rv
 }
 
 func (o_ Orthography) DominantLanguage() string {
-	rv := objc.CallMethod[string](o_, "dominantLanguage")
+	rv := objc.CallMethod[string](o_, objc.GetSelector("dominantLanguage"))
 	return rv
 }
 
 func (o_ Orthography) DominantScript() string {
-	rv := objc.CallMethod[string](o_, "dominantScript")
+	rv := objc.CallMethod[string](o_, objc.GetSelector("dominantScript"))
 	return rv
 }
 
 func (o_ Orthography) AllScripts() []string {
-	rv := objc.CallMethod[[]string](o_, "allScripts")
+	rv := objc.CallMethod[[]string](o_, objc.GetSelector("allScripts"))
 	return rv
 }
 
 func (o_ Orthography) AllLanguages() []string {
-	rv := objc.CallMethod[[]string](o_, "allLanguages")
+	rv := objc.CallMethod[[]string](o_, objc.GetSelector("allLanguages"))
 	return rv
 }

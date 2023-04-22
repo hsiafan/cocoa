@@ -43,32 +43,32 @@ func MakeCollectionViewLayoutAttributes(ptr unsafe.Pointer) CollectionViewLayout
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, "layoutAttributesForItemWithIndexPath:", indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForItemWithIndexPath:"), indexPath)
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForSupplementaryViewOfKind_WithIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, "layoutAttributesForSupplementaryViewOfKind:withIndexPath:", elementKind, indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForSupplementaryViewOfKind:withIndexPath:"), elementKind, indexPath)
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForDecorationViewOfKind_WithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, "layoutAttributesForDecorationViewOfKind:withIndexPath:", decorationViewKind, indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, indexPath)
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForInterItemGapBeforeIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, "layoutAttributesForInterItemGapBeforeIndexPath:", indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForInterItemGapBeforeIndexPath:"), indexPath)
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) Alloc() CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) New() CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, "new")
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -78,70 +78,70 @@ func NewCollectionViewLayoutAttributes() CollectionViewLayoutAttributes {
 }
 
 func (c_ CollectionViewLayoutAttributes) Init() CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, "init")
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) RepresentedElementCategory() CollectionElementCategory {
-	rv := objc.CallMethod[CollectionElementCategory](c_, "representedElementCategory")
+	rv := objc.CallMethod[CollectionElementCategory](c_, objc.GetSelector("representedElementCategory"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) IndexPath() foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](c_, "indexPath")
+	rv := objc.CallMethod[foundation.IndexPath](c_, objc.GetSelector("indexPath"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) SetIndexPath(value foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, "setIndexPath:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIndexPath:"), value)
 }
 
 func (c_ CollectionViewLayoutAttributes) RepresentedElementKind() string {
-	rv := objc.CallMethod[string](c_, "representedElementKind")
+	rv := objc.CallMethod[string](c_, objc.GetSelector("representedElementKind"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, "frame")
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("frame"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) SetFrame(value foundation.Rect) {
-	objc.CallMethod[objc.Void](c_, "setFrame:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFrame:"), value)
 }
 
 func (c_ CollectionViewLayoutAttributes) Size() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "size")
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("size"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) SetSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, "setSize:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSize:"), value)
 }
 
 func (c_ CollectionViewLayoutAttributes) Alpha() float64 {
-	rv := objc.CallMethod[float64](c_, "alpha")
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("alpha"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) SetAlpha(value float64) {
-	objc.CallMethod[objc.Void](c_, "setAlpha:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAlpha:"), value)
 }
 
 func (c_ CollectionViewLayoutAttributes) IsHidden() bool {
-	rv := objc.CallMethod[bool](c_, "isHidden")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isHidden"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) SetHidden(value bool) {
-	objc.CallMethod[objc.Void](c_, "setHidden:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setHidden:"), value)
 }
 
 func (c_ CollectionViewLayoutAttributes) ZIndex() int {
-	rv := objc.CallMethod[int](c_, "zIndex")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("zIndex"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutAttributes) SetZIndex(value int) {
-	objc.CallMethod[objc.Void](c_, "setZIndex:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setZIndex:"), value)
 }

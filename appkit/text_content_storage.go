@@ -34,17 +34,17 @@ func MakeTextContentStorage(ptr unsafe.Pointer) TextContentStorage {
 }
 
 func (t_ TextContentStorage) Init() TextContentStorage {
-	rv := objc.CallMethod[TextContentStorage](t_, "init")
+	rv := objc.CallMethod[TextContentStorage](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TextContentStorageClass) Alloc() TextContentStorage {
-	rv := objc.CallMethod[TextContentStorage](tc, "alloc")
+	rv := objc.CallMethod[TextContentStorage](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextContentStorageClass) New() TextContentStorage {
-	rv := objc.CallMethod[TextContentStorage](tc, "new")
+	rv := objc.CallMethod[TextContentStorage](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -54,25 +54,25 @@ func NewTextContentStorage() TextContentStorage {
 }
 
 func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](t_, "attributedStringForTextElement:", textElement)
+	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("attributedStringForTextElement:"), textElement)
 	return rv
 }
 
 func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
-	rv := objc.CallMethod[TextElement](t_, "textElementForAttributedString:", attributedString)
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("textElementForAttributedString:"), attributedString)
 	return rv
 }
 
 func (t_ TextContentStorage) AdjustedRangeFromRange_ForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
-	rv := objc.CallMethod[TextRange](t_, "adjustedRangeFromRange:forEditingTextSelection:", textRange, forEditingTextSelection)
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("adjustedRangeFromRange:forEditingTextSelection:"), textRange, forEditingTextSelection)
 	return rv
 }
 
 func (t_ TextContentStorage) AttributedString() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](t_, "attributedString")
+	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("attributedString"))
 	return rv
 }
 
 func (t_ TextContentStorage) SetAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, "setAttributedString:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributedString:"), value)
 }

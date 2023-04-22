@@ -38,12 +38,12 @@ func MakePasteboardItem(ptr unsafe.Pointer) PasteboardItem {
 }
 
 func (pc _PasteboardItemClass) Alloc() PasteboardItem {
-	rv := objc.CallMethod[PasteboardItem](pc, "alloc")
+	rv := objc.CallMethod[PasteboardItem](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PasteboardItemClass) New() PasteboardItem {
-	rv := objc.CallMethod[PasteboardItem](pc, "new")
+	rv := objc.CallMethod[PasteboardItem](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,58 +53,58 @@ func NewPasteboardItem() PasteboardItem {
 }
 
 func (p_ PasteboardItem) Init() PasteboardItem {
-	rv := objc.CallMethod[PasteboardItem](p_, "init")
+	rv := objc.CallMethod[PasteboardItem](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (p_ PasteboardItem) AvailableTypeFromArray(types []PasteboardType) PasteboardType {
-	rv := objc.CallMethod[PasteboardType](p_, "availableTypeFromArray:", types)
+	rv := objc.CallMethod[PasteboardType](p_, objc.GetSelector("availableTypeFromArray:"), types)
 	return rv
 }
 
 func (p_ PasteboardItem) SetDataProvider_ForTypes(dataProvider PasteboardItemDataProvider, types []PasteboardType) bool {
 	po := objc.CreateProtocol("NSPasteboardItemDataProvider", dataProvider)
 	defer po.Release()
-	rv := objc.CallMethod[bool](p_, "setDataProvider:forTypes:", po, types)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), po, types)
 	return rv
 }
 
 func (p_ PasteboardItem) SetDataProvider0_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, "setDataProvider:forTypes:", dataProvider, types)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), dataProvider, types)
 	return rv
 }
 
 func (p_ PasteboardItem) SetData_ForType(data []byte, type_ PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, "setData:forType:", data, type_)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setData:forType:"), data, type_)
 	return rv
 }
 
 func (p_ PasteboardItem) SetString_ForType(string_ string, type_ PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, "setString:forType:", string_, type_)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setString:forType:"), string_, type_)
 	return rv
 }
 
 func (p_ PasteboardItem) SetPropertyList_ForType(propertyList objc.IObject, type_ PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, "setPropertyList:forType:", propertyList, type_)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setPropertyList:forType:"), propertyList, type_)
 	return rv
 }
 
 func (p_ PasteboardItem) DataForType(type_ PasteboardType) []byte {
-	rv := objc.CallMethod[[]byte](p_, "dataForType:", type_)
+	rv := objc.CallMethod[[]byte](p_, objc.GetSelector("dataForType:"), type_)
 	return rv
 }
 
 func (p_ PasteboardItem) StringForType(type_ PasteboardType) string {
-	rv := objc.CallMethod[string](p_, "stringForType:", type_)
+	rv := objc.CallMethod[string](p_, objc.GetSelector("stringForType:"), type_)
 	return rv
 }
 
 func (p_ PasteboardItem) PropertyListForType(type_ PasteboardType) objc.Object {
-	rv := objc.CallMethod[objc.Object](p_, "propertyListForType:", type_)
+	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("propertyListForType:"), type_)
 	return rv
 }
 
 func (p_ PasteboardItem) Types() []PasteboardType {
-	rv := objc.CallMethod[[]PasteboardType](p_, "types")
+	rv := objc.CallMethod[[]PasteboardType](p_, objc.GetSelector("types"))
 	return rv
 }

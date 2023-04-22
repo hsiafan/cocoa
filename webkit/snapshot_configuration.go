@@ -36,12 +36,12 @@ func MakeSnapshotConfiguration(ptr unsafe.Pointer) SnapshotConfiguration {
 }
 
 func (sc _SnapshotConfigurationClass) Alloc() SnapshotConfiguration {
-	rv := objc.CallMethod[SnapshotConfiguration](sc, "alloc")
+	rv := objc.CallMethod[SnapshotConfiguration](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SnapshotConfigurationClass) New() SnapshotConfiguration {
-	rv := objc.CallMethod[SnapshotConfiguration](sc, "new")
+	rv := objc.CallMethod[SnapshotConfiguration](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -51,33 +51,33 @@ func NewSnapshotConfiguration() SnapshotConfiguration {
 }
 
 func (s_ SnapshotConfiguration) Init() SnapshotConfiguration {
-	rv := objc.CallMethod[SnapshotConfiguration](s_, "init")
+	rv := objc.CallMethod[SnapshotConfiguration](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (s_ SnapshotConfiguration) Rect() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](s_, "rect")
+	rv := objc.CallMethod[coregraphics.Rect](s_, objc.GetSelector("rect"))
 	return rv
 }
 
 func (s_ SnapshotConfiguration) SetRect(value coregraphics.Rect) {
-	objc.CallMethod[objc.Void](s_, "setRect:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRect:"), value)
 }
 
 func (s_ SnapshotConfiguration) SnapshotWidth() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](s_, "snapshotWidth")
+	rv := objc.CallMethod[foundation.Number](s_, objc.GetSelector("snapshotWidth"))
 	return rv
 }
 
 func (s_ SnapshotConfiguration) SetSnapshotWidth(value foundation.INumber) {
-	objc.CallMethod[objc.Void](s_, "setSnapshotWidth:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSnapshotWidth:"), value)
 }
 
 func (s_ SnapshotConfiguration) AfterScreenUpdates() bool {
-	rv := objc.CallMethod[bool](s_, "afterScreenUpdates")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("afterScreenUpdates"))
 	return rv
 }
 
 func (s_ SnapshotConfiguration) SetAfterScreenUpdates(value bool) {
-	objc.CallMethod[objc.Void](s_, "setAfterScreenUpdates:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAfterScreenUpdates:"), value)
 }

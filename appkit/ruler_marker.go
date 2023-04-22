@@ -48,17 +48,17 @@ func MakeRulerMarker(ptr unsafe.Pointer) RulerMarker {
 }
 
 func (r_ RulerMarker) InitWithRulerView_MarkerLocation_Image_ImageOrigin(ruler IRulerView, location float64, image IImage, imageOrigin foundation.Point) RulerMarker {
-	rv := objc.CallMethod[RulerMarker](r_, "initWithRulerView:markerLocation:image:imageOrigin:", ruler, location, image, imageOrigin)
+	rv := objc.CallMethod[RulerMarker](r_, objc.GetSelector("initWithRulerView:markerLocation:image:imageOrigin:"), ruler, location, image, imageOrigin)
 	return rv
 }
 
 func (rc _RulerMarkerClass) Alloc() RulerMarker {
-	rv := objc.CallMethod[RulerMarker](rc, "alloc")
+	rv := objc.CallMethod[RulerMarker](rc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (rc _RulerMarkerClass) New() RulerMarker {
-	rv := objc.CallMethod[RulerMarker](rc, "new")
+	rv := objc.CallMethod[RulerMarker](rc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -68,95 +68,95 @@ func NewRulerMarker() RulerMarker {
 }
 
 func (r_ RulerMarker) Init() RulerMarker {
-	rv := objc.CallMethod[RulerMarker](r_, "init")
+	rv := objc.CallMethod[RulerMarker](r_, objc.GetSelector("init"))
 	return rv
 }
 
 func (r_ RulerMarker) DrawRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](r_, "drawRect:", rect)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("drawRect:"), rect)
 }
 
 func (r_ RulerMarker) TrackMouse_Adding(mouseDownEvent IEvent, isAdding bool) bool {
-	rv := objc.CallMethod[bool](r_, "trackMouse:adding:", mouseDownEvent, isAdding)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("trackMouse:adding:"), mouseDownEvent, isAdding)
 	return rv
 }
 
 func (r_ RulerMarker) Ruler() RulerView {
-	rv := objc.CallMethod[RulerView](r_, "ruler")
+	rv := objc.CallMethod[RulerView](r_, objc.GetSelector("ruler"))
 	return rv
 }
 
 func (r_ RulerMarker) Image() Image {
-	rv := objc.CallMethod[Image](r_, "image")
+	rv := objc.CallMethod[Image](r_, objc.GetSelector("image"))
 	return rv
 }
 
 func (r_ RulerMarker) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](r_, "setImage:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setImage:"), value)
 }
 
 func (r_ RulerMarker) ImageOrigin() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](r_, "imageOrigin")
+	rv := objc.CallMethod[foundation.Point](r_, objc.GetSelector("imageOrigin"))
 	return rv
 }
 
 func (r_ RulerMarker) SetImageOrigin(value foundation.Point) {
-	objc.CallMethod[objc.Void](r_, "setImageOrigin:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setImageOrigin:"), value)
 }
 
 func (r_ RulerMarker) ImageRectInRuler() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](r_, "imageRectInRuler")
+	rv := objc.CallMethod[foundation.Rect](r_, objc.GetSelector("imageRectInRuler"))
 	return rv
 }
 
 func (r_ RulerMarker) ThicknessRequiredInRuler() float64 {
-	rv := objc.CallMethod[float64](r_, "thicknessRequiredInRuler")
+	rv := objc.CallMethod[float64](r_, objc.GetSelector("thicknessRequiredInRuler"))
 	return rv
 }
 
 func (r_ RulerMarker) IsMovable() bool {
-	rv := objc.CallMethod[bool](r_, "isMovable")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isMovable"))
 	return rv
 }
 
 func (r_ RulerMarker) SetMovable(value bool) {
-	objc.CallMethod[objc.Void](r_, "setMovable:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setMovable:"), value)
 }
 
 func (r_ RulerMarker) IsRemovable() bool {
-	rv := objc.CallMethod[bool](r_, "isRemovable")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isRemovable"))
 	return rv
 }
 
 func (r_ RulerMarker) SetRemovable(value bool) {
-	objc.CallMethod[objc.Void](r_, "setRemovable:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRemovable:"), value)
 }
 
 func (r_ RulerMarker) MarkerLocation() float64 {
-	rv := objc.CallMethod[float64](r_, "markerLocation")
+	rv := objc.CallMethod[float64](r_, objc.GetSelector("markerLocation"))
 	return rv
 }
 
 func (r_ RulerMarker) SetMarkerLocation(value float64) {
-	objc.CallMethod[objc.Void](r_, "setMarkerLocation:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setMarkerLocation:"), value)
 }
 
 func (r_ RulerMarker) RepresentedObject() CopyingWrapper {
-	rv := objc.CallMethod[CopyingWrapper](r_, "representedObject")
+	rv := objc.CallMethod[CopyingWrapper](r_, objc.GetSelector("representedObject"))
 	return rv
 }
 
 func (r_ RulerMarker) SetRepresentedObject(value Copying) {
 	po := objc.CreateProtocol("NSCopying", value)
 	defer po.Release()
-	objc.CallMethod[objc.Void](r_, "setRepresentedObject:", po)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), po)
 }
 
 func (r_ RulerMarker) SetRepresentedObject0(value objc.IObject) {
-	objc.CallMethod[objc.Void](r_, "setRepresentedObject:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), value)
 }
 
 func (r_ RulerMarker) IsDragging() bool {
-	rv := objc.CallMethod[bool](r_, "isDragging")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isDragging"))
 	return rv
 }

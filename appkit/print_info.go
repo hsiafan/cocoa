@@ -70,22 +70,22 @@ func MakePrintInfo(ptr unsafe.Pointer) PrintInfo {
 }
 
 func (p_ PrintInfo) InitWithDictionary(attributes map[PrintInfoAttributeKey]objc.IObject) PrintInfo {
-	rv := objc.CallMethod[PrintInfo](p_, "initWithDictionary:", attributes)
+	rv := objc.CallMethod[PrintInfo](p_, objc.GetSelector("initWithDictionary:"), attributes)
 	return rv
 }
 
 func (p_ PrintInfo) Init() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](p_, "init")
+	rv := objc.CallMethod[PrintInfo](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PrintInfoClass) Alloc() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](pc, "alloc")
+	rv := objc.CallMethod[PrintInfo](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PrintInfoClass) New() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](pc, "new")
+	rv := objc.CallMethod[PrintInfo](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -95,212 +95,212 @@ func NewPrintInfo() PrintInfo {
 }
 
 func (p_ PrintInfo) SetUpPrintOperationDefaultValues() {
-	objc.CallMethod[objc.Void](p_, "setUpPrintOperationDefaultValues")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setUpPrintOperationDefaultValues"))
 }
 
 func (p_ PrintInfo) Dictionary() foundation.MutableDictionary {
-	rv := objc.CallMethod[foundation.MutableDictionary](p_, "dictionary")
+	rv := objc.CallMethod[foundation.MutableDictionary](p_, objc.GetSelector("dictionary"))
 	return rv
 }
 
 func (p_ PrintInfo) PMPrintSession() unsafe.Pointer {
-	rv := objc.CallMethod[unsafe.Pointer](p_, "PMPrintSession")
+	rv := objc.CallMethod[unsafe.Pointer](p_, objc.GetSelector("PMPrintSession"))
 	return rv
 }
 
 func (p_ PrintInfo) PMPageFormat() unsafe.Pointer {
-	rv := objc.CallMethod[unsafe.Pointer](p_, "PMPageFormat")
+	rv := objc.CallMethod[unsafe.Pointer](p_, objc.GetSelector("PMPageFormat"))
 	return rv
 }
 
 func (p_ PrintInfo) PMPrintSettings() unsafe.Pointer {
-	rv := objc.CallMethod[unsafe.Pointer](p_, "PMPrintSettings")
+	rv := objc.CallMethod[unsafe.Pointer](p_, objc.GetSelector("PMPrintSettings"))
 	return rv
 }
 
 func (p_ PrintInfo) UpdateFromPMPageFormat() {
-	objc.CallMethod[objc.Void](p_, "updateFromPMPageFormat")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("updateFromPMPageFormat"))
 }
 
 func (p_ PrintInfo) UpdateFromPMPrintSettings() {
-	objc.CallMethod[objc.Void](p_, "updateFromPMPrintSettings")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("updateFromPMPrintSettings"))
 }
 
 func (p_ PrintInfo) TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo) {
-	objc.CallMethod[objc.Void](p_, "takeSettingsFromPDFInfo:", inPDFInfo)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("takeSettingsFromPDFInfo:"), inPDFInfo)
 }
 
 // deprecated
 func (pc _PrintInfoClass) SetDefaultPrinter(printer IPrinter) {
-	objc.CallMethod[objc.Void](pc, "setDefaultPrinter:", printer)
+	objc.CallMethod[objc.Void](pc, objc.GetSelector("setDefaultPrinter:"), printer)
 }
 
 // deprecated
 func (pc _PrintInfoClass) SizeForPaperName(name PrinterPaperName) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](pc, "sizeForPaperName:", name)
+	rv := objc.CallMethod[foundation.Size](pc, objc.GetSelector("sizeForPaperName:"), name)
 	return rv
 }
 
 func (pc _PrintInfoClass) SharedPrintInfo() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](pc, "sharedPrintInfo")
+	rv := objc.CallMethod[PrintInfo](pc, objc.GetSelector("sharedPrintInfo"))
 	return rv
 }
 
 func (pc _PrintInfoClass) SetSharedPrintInfo(value IPrintInfo) {
-	objc.CallMethod[objc.Void](pc, "setSharedPrintInfo:", value)
+	objc.CallMethod[objc.Void](pc, objc.GetSelector("setSharedPrintInfo:"), value)
 }
 
 func (p_ PrintInfo) PaperSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](p_, "paperSize")
+	rv := objc.CallMethod[foundation.Size](p_, objc.GetSelector("paperSize"))
 	return rv
 }
 
 func (p_ PrintInfo) SetPaperSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](p_, "setPaperSize:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPaperSize:"), value)
 }
 
 func (p_ PrintInfo) TopMargin() float64 {
-	rv := objc.CallMethod[float64](p_, "topMargin")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("topMargin"))
 	return rv
 }
 
 func (p_ PrintInfo) SetTopMargin(value float64) {
-	objc.CallMethod[objc.Void](p_, "setTopMargin:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setTopMargin:"), value)
 }
 
 func (p_ PrintInfo) BottomMargin() float64 {
-	rv := objc.CallMethod[float64](p_, "bottomMargin")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("bottomMargin"))
 	return rv
 }
 
 func (p_ PrintInfo) SetBottomMargin(value float64) {
-	objc.CallMethod[objc.Void](p_, "setBottomMargin:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBottomMargin:"), value)
 }
 
 func (p_ PrintInfo) LeftMargin() float64 {
-	rv := objc.CallMethod[float64](p_, "leftMargin")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("leftMargin"))
 	return rv
 }
 
 func (p_ PrintInfo) SetLeftMargin(value float64) {
-	objc.CallMethod[objc.Void](p_, "setLeftMargin:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setLeftMargin:"), value)
 }
 
 func (p_ PrintInfo) RightMargin() float64 {
-	rv := objc.CallMethod[float64](p_, "rightMargin")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("rightMargin"))
 	return rv
 }
 
 func (p_ PrintInfo) SetRightMargin(value float64) {
-	objc.CallMethod[objc.Void](p_, "setRightMargin:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setRightMargin:"), value)
 }
 
 func (p_ PrintInfo) ImageablePageBounds() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](p_, "imageablePageBounds")
+	rv := objc.CallMethod[foundation.Rect](p_, objc.GetSelector("imageablePageBounds"))
 	return rv
 }
 
 func (p_ PrintInfo) Orientation() PaperOrientation {
-	rv := objc.CallMethod[PaperOrientation](p_, "orientation")
+	rv := objc.CallMethod[PaperOrientation](p_, objc.GetSelector("orientation"))
 	return rv
 }
 
 func (p_ PrintInfo) SetOrientation(value PaperOrientation) {
-	objc.CallMethod[objc.Void](p_, "setOrientation:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setOrientation:"), value)
 }
 
 func (p_ PrintInfo) PaperName() PrinterPaperName {
-	rv := objc.CallMethod[PrinterPaperName](p_, "paperName")
+	rv := objc.CallMethod[PrinterPaperName](p_, objc.GetSelector("paperName"))
 	return rv
 }
 
 func (p_ PrintInfo) SetPaperName(value PrinterPaperName) {
-	objc.CallMethod[objc.Void](p_, "setPaperName:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPaperName:"), value)
 }
 
 func (p_ PrintInfo) LocalizedPaperName() string {
-	rv := objc.CallMethod[string](p_, "localizedPaperName")
+	rv := objc.CallMethod[string](p_, objc.GetSelector("localizedPaperName"))
 	return rv
 }
 
 func (p_ PrintInfo) HorizontalPagination() PrintingPaginationMode {
-	rv := objc.CallMethod[PrintingPaginationMode](p_, "horizontalPagination")
+	rv := objc.CallMethod[PrintingPaginationMode](p_, objc.GetSelector("horizontalPagination"))
 	return rv
 }
 
 func (p_ PrintInfo) SetHorizontalPagination(value PrintingPaginationMode) {
-	objc.CallMethod[objc.Void](p_, "setHorizontalPagination:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setHorizontalPagination:"), value)
 }
 
 func (p_ PrintInfo) VerticalPagination() PrintingPaginationMode {
-	rv := objc.CallMethod[PrintingPaginationMode](p_, "verticalPagination")
+	rv := objc.CallMethod[PrintingPaginationMode](p_, objc.GetSelector("verticalPagination"))
 	return rv
 }
 
 func (p_ PrintInfo) SetVerticalPagination(value PrintingPaginationMode) {
-	objc.CallMethod[objc.Void](p_, "setVerticalPagination:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setVerticalPagination:"), value)
 }
 
 func (p_ PrintInfo) IsHorizontallyCentered() bool {
-	rv := objc.CallMethod[bool](p_, "isHorizontallyCentered")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isHorizontallyCentered"))
 	return rv
 }
 
 func (p_ PrintInfo) SetHorizontallyCentered(value bool) {
-	objc.CallMethod[objc.Void](p_, "setHorizontallyCentered:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setHorizontallyCentered:"), value)
 }
 
 func (p_ PrintInfo) IsVerticallyCentered() bool {
-	rv := objc.CallMethod[bool](p_, "isVerticallyCentered")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isVerticallyCentered"))
 	return rv
 }
 
 func (p_ PrintInfo) SetVerticallyCentered(value bool) {
-	objc.CallMethod[objc.Void](p_, "setVerticallyCentered:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setVerticallyCentered:"), value)
 }
 
 func (p_ PrintInfo) Printer() Printer {
-	rv := objc.CallMethod[Printer](p_, "printer")
+	rv := objc.CallMethod[Printer](p_, objc.GetSelector("printer"))
 	return rv
 }
 
 func (p_ PrintInfo) SetPrinter(value IPrinter) {
-	objc.CallMethod[objc.Void](p_, "setPrinter:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrinter:"), value)
 }
 
 func (p_ PrintInfo) JobDisposition() PrintJobDispositionValue {
-	rv := objc.CallMethod[PrintJobDispositionValue](p_, "jobDisposition")
+	rv := objc.CallMethod[PrintJobDispositionValue](p_, objc.GetSelector("jobDisposition"))
 	return rv
 }
 
 func (p_ PrintInfo) SetJobDisposition(value PrintJobDispositionValue) {
-	objc.CallMethod[objc.Void](p_, "setJobDisposition:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setJobDisposition:"), value)
 }
 
 func (p_ PrintInfo) IsSelectionOnly() bool {
-	rv := objc.CallMethod[bool](p_, "isSelectionOnly")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isSelectionOnly"))
 	return rv
 }
 
 func (p_ PrintInfo) SetSelectionOnly(value bool) {
-	objc.CallMethod[objc.Void](p_, "setSelectionOnly:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setSelectionOnly:"), value)
 }
 
 func (p_ PrintInfo) ScalingFactor() float64 {
-	rv := objc.CallMethod[float64](p_, "scalingFactor")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("scalingFactor"))
 	return rv
 }
 
 func (p_ PrintInfo) SetScalingFactor(value float64) {
-	objc.CallMethod[objc.Void](p_, "setScalingFactor:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setScalingFactor:"), value)
 }
 
 func (p_ PrintInfo) PrintSettings() foundation.MutableDictionary {
-	rv := objc.CallMethod[foundation.MutableDictionary](p_, "printSettings")
+	rv := objc.CallMethod[foundation.MutableDictionary](p_, objc.GetSelector("printSettings"))
 	return rv
 }
 
 func (pc _PrintInfoClass) DefaultPrinter() Printer {
-	rv := objc.CallMethod[Printer](pc, "defaultPrinter")
+	rv := objc.CallMethod[Printer](pc, objc.GetSelector("defaultPrinter"))
 	return rv
 }

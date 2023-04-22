@@ -35,42 +35,42 @@ func MakeSortDescriptor(ptr unsafe.Pointer) SortDescriptor {
 }
 
 func (sc _SortDescriptorClass) SortDescriptorWithKey_Ascending(key string, ascending bool) SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](sc, "sortDescriptorWithKey:ascending:", key, ascending)
+	rv := objc.CallMethod[SortDescriptor](sc, objc.GetSelector("sortDescriptorWithKey:ascending:"), key, ascending)
 	return rv
 }
 
 func (s_ SortDescriptor) InitWithKey_Ascending(key string, ascending bool) SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](s_, "initWithKey:ascending:", key, ascending)
+	rv := objc.CallMethod[SortDescriptor](s_, objc.GetSelector("initWithKey:ascending:"), key, ascending)
 	return rv
 }
 
 func (sc _SortDescriptorClass) SortDescriptorWithKey_Ascending_Selector(key string, ascending bool, selector objc.Selector) SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](sc, "sortDescriptorWithKey:ascending:selector:", key, ascending, selector)
+	rv := objc.CallMethod[SortDescriptor](sc, objc.GetSelector("sortDescriptorWithKey:ascending:selector:"), key, ascending, selector)
 	return rv
 }
 
 func (s_ SortDescriptor) InitWithKey_Ascending_Selector(key string, ascending bool, selector objc.Selector) SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](s_, "initWithKey:ascending:selector:", key, ascending, selector)
+	rv := objc.CallMethod[SortDescriptor](s_, objc.GetSelector("initWithKey:ascending:selector:"), key, ascending, selector)
 	return rv
 }
 
 func (sc _SortDescriptorClass) SortDescriptorWithKey_Ascending_Comparator(key string, ascending bool, cmptr func(obj1 objc.Object, obj2 objc.Object) ComparisonResult) SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](sc, "sortDescriptorWithKey:ascending:comparator:", key, ascending, cmptr)
+	rv := objc.CallMethod[SortDescriptor](sc, objc.GetSelector("sortDescriptorWithKey:ascending:comparator:"), key, ascending, cmptr)
 	return rv
 }
 
 func (s_ SortDescriptor) InitWithKey_Ascending_Comparator(key string, ascending bool, cmptr func(obj1 objc.Object, obj2 objc.Object) ComparisonResult) SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](s_, "initWithKey:ascending:comparator:", key, ascending, cmptr)
+	rv := objc.CallMethod[SortDescriptor](s_, objc.GetSelector("initWithKey:ascending:comparator:"), key, ascending, cmptr)
 	return rv
 }
 
 func (sc _SortDescriptorClass) Alloc() SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](sc, "alloc")
+	rv := objc.CallMethod[SortDescriptor](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SortDescriptorClass) New() SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](sc, "new")
+	rv := objc.CallMethod[SortDescriptor](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -80,40 +80,40 @@ func NewSortDescriptor() SortDescriptor {
 }
 
 func (s_ SortDescriptor) Init() SortDescriptor {
-	rv := objc.CallMethod[SortDescriptor](s_, "init")
+	rv := objc.CallMethod[SortDescriptor](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (s_ SortDescriptor) CompareObject_ToObject(object1 objc.IObject, object2 objc.IObject) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](s_, "compareObject:toObject:", object1, object2)
+	rv := objc.CallMethod[ComparisonResult](s_, objc.GetSelector("compareObject:toObject:"), object1, object2)
 	return rv
 }
 
 func (s_ SortDescriptor) AllowEvaluation() {
-	objc.CallMethod[objc.Void](s_, "allowEvaluation")
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("allowEvaluation"))
 }
 
 func (s_ SortDescriptor) Ascending() bool {
-	rv := objc.CallMethod[bool](s_, "ascending")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("ascending"))
 	return rv
 }
 
 func (s_ SortDescriptor) Key() string {
-	rv := objc.CallMethod[string](s_, "key")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("key"))
 	return rv
 }
 
 func (s_ SortDescriptor) Selector() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](s_, "selector")
+	rv := objc.CallMethod[objc.Selector](s_, objc.GetSelector("selector"))
 	return rv
 }
 
 func (s_ SortDescriptor) Comparator() func(obj1 objc.IObject, obj2 objc.IObject) ComparisonResult {
-	rv := objc.CallMethod[func(obj1 objc.IObject, obj2 objc.IObject) ComparisonResult](s_, "comparator")
+	rv := objc.CallMethod[func(obj1 objc.IObject, obj2 objc.IObject) ComparisonResult](s_, objc.GetSelector("comparator"))
 	return rv
 }
 
 func (s_ SortDescriptor) ReversedSortDescriptor() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, "reversedSortDescriptor")
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("reversedSortDescriptor"))
 	return rv
 }

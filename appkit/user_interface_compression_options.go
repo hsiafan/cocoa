@@ -34,27 +34,27 @@ func MakeUserInterfaceCompressionOptions(ptr unsafe.Pointer) UserInterfaceCompre
 }
 
 func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "init")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("init"))
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "initWithCompressionOptions:", options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("initWithCompressionOptions:"), options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithIdentifier(identifier string) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "initWithIdentifier:", identifier)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("initWithIdentifier:"), identifier)
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) Alloc() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "alloc")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) New() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "new")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -64,51 +64,51 @@ func NewUserInterfaceCompressionOptions() UserInterfaceCompressionOptions {
 }
 
 func (u_ UserInterfaceCompressionOptions) ContainsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.CallMethod[bool](u_, "containsOptions:", options)
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("containsOptions:"), options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.CallMethod[bool](u_, "intersectsOptions:", options)
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("intersectsOptions:"), options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) OptionsByAddingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "optionsByAddingOptions:", options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("optionsByAddingOptions:"), options)
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "optionsByRemovingOptions:", options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("optionsByRemovingOptions:"), options)
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) HideImagesOption() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "hideImagesOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("hideImagesOption"))
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) HideTextOption() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "hideTextOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("hideTextOption"))
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) ReduceMetricsOption() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "reduceMetricsOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("reduceMetricsOption"))
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) BreakEqualWidthsOption() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "breakEqualWidthsOption")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("breakEqualWidthsOption"))
 	return rv
 }
 
 func (uc _UserInterfaceCompressionOptionsClass) StandardOptions() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, "standardOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](uc, objc.GetSelector("standardOptions"))
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) IsEmpty() bool {
-	rv := objc.CallMethod[bool](u_, "isEmpty")
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("isEmpty"))
 	return rv
 }

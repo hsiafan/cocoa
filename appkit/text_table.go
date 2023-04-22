@@ -36,17 +36,17 @@ func MakeTextTable(ptr unsafe.Pointer) TextTable {
 }
 
 func (t_ TextTable) Init() TextTable {
-	rv := objc.CallMethod[TextTable](t_, "init")
+	rv := objc.CallMethod[TextTable](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TextTableClass) Alloc() TextTable {
-	rv := objc.CallMethod[TextTable](tc, "alloc")
+	rv := objc.CallMethod[TextTable](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextTableClass) New() TextTable {
-	rv := objc.CallMethod[TextTable](tc, "new")
+	rv := objc.CallMethod[TextTable](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,37 +56,37 @@ func NewTextTable() TextTable {
 }
 
 func (t_ TextTable) NumberOfColumns() uint {
-	rv := objc.CallMethod[uint](t_, "numberOfColumns")
+	rv := objc.CallMethod[uint](t_, objc.GetSelector("numberOfColumns"))
 	return rv
 }
 
 func (t_ TextTable) SetNumberOfColumns(value uint) {
-	objc.CallMethod[objc.Void](t_, "setNumberOfColumns:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setNumberOfColumns:"), value)
 }
 
 func (t_ TextTable) LayoutAlgorithm() TextTableLayoutAlgorithm {
-	rv := objc.CallMethod[TextTableLayoutAlgorithm](t_, "layoutAlgorithm")
+	rv := objc.CallMethod[TextTableLayoutAlgorithm](t_, objc.GetSelector("layoutAlgorithm"))
 	return rv
 }
 
 func (t_ TextTable) SetLayoutAlgorithm(value TextTableLayoutAlgorithm) {
-	objc.CallMethod[objc.Void](t_, "setLayoutAlgorithm:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutAlgorithm:"), value)
 }
 
 func (t_ TextTable) CollapsesBorders() bool {
-	rv := objc.CallMethod[bool](t_, "collapsesBorders")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("collapsesBorders"))
 	return rv
 }
 
 func (t_ TextTable) SetCollapsesBorders(value bool) {
-	objc.CallMethod[objc.Void](t_, "setCollapsesBorders:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCollapsesBorders:"), value)
 }
 
 func (t_ TextTable) HidesEmptyCells() bool {
-	rv := objc.CallMethod[bool](t_, "hidesEmptyCells")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("hidesEmptyCells"))
 	return rv
 }
 
 func (t_ TextTable) SetHidesEmptyCells(value bool) {
-	objc.CallMethod[objc.Void](t_, "setHidesEmptyCells:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHidesEmptyCells:"), value)
 }

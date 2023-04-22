@@ -37,37 +37,37 @@ func MakeComboButton(ptr unsafe.Pointer) ComboButton {
 }
 
 func (cc _ComboButtonClass) ComboButtonWithTitle_Image_Menu_Target_Action(title string, image IImage, menu IMenu, target objc.IObject, action objc.Selector) ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, "comboButtonWithTitle:image:menu:target:action:", title, image, menu, target, action)
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithTitle:image:menu:target:action:"), title, image, menu, target, action)
 	return rv
 }
 
 func (cc _ComboButtonClass) ComboButtonWithTitle_Menu_Target_Action(title string, menu IMenu, target objc.IObject, action objc.Selector) ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, "comboButtonWithTitle:menu:target:action:", title, menu, target, action)
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithTitle:menu:target:action:"), title, menu, target, action)
 	return rv
 }
 
 func (cc _ComboButtonClass) ComboButtonWithImage_Menu_Target_Action(image IImage, menu IMenu, target objc.IObject, action objc.Selector) ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, "comboButtonWithImage:menu:target:action:", image, menu, target, action)
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithImage:menu:target:action:"), image, menu, target, action)
 	return rv
 }
 
 func (c_ ComboButton) InitWithFrame(frameRect foundation.Rect) ComboButton {
-	rv := objc.CallMethod[ComboButton](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ComboButton](c_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (c_ ComboButton) Init() ComboButton {
-	rv := objc.CallMethod[ComboButton](c_, "init")
+	rv := objc.CallMethod[ComboButton](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _ComboButtonClass) Alloc() ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, "alloc")
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ComboButtonClass) New() ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, "new")
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -77,37 +77,37 @@ func NewComboButton() ComboButton {
 }
 
 func (c_ ComboButton) Style() ComboButtonStyle {
-	rv := objc.CallMethod[ComboButtonStyle](c_, "style")
+	rv := objc.CallMethod[ComboButtonStyle](c_, objc.GetSelector("style"))
 	return rv
 }
 
 func (c_ ComboButton) SetStyle(value ComboButtonStyle) {
-	objc.CallMethod[objc.Void](c_, "setStyle:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setStyle:"), value)
 }
 
 func (c_ ComboButton) Title() string {
-	rv := objc.CallMethod[string](c_, "title")
+	rv := objc.CallMethod[string](c_, objc.GetSelector("title"))
 	return rv
 }
 
 func (c_ ComboButton) SetTitle(value string) {
-	objc.CallMethod[objc.Void](c_, "setTitle:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTitle:"), value)
 }
 
 func (c_ ComboButton) Image() Image {
-	rv := objc.CallMethod[Image](c_, "image")
+	rv := objc.CallMethod[Image](c_, objc.GetSelector("image"))
 	return rv
 }
 
 func (c_ ComboButton) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](c_, "setImage:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), value)
 }
 
 func (c_ ComboButton) ImageScaling() ImageScaling {
-	rv := objc.CallMethod[ImageScaling](c_, "imageScaling")
+	rv := objc.CallMethod[ImageScaling](c_, objc.GetSelector("imageScaling"))
 	return rv
 }
 
 func (c_ ComboButton) SetImageScaling(value ImageScaling) {
-	objc.CallMethod[objc.Void](c_, "setImageScaling:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImageScaling:"), value)
 }

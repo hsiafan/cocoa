@@ -123,27 +123,27 @@ func MakeWebView(ptr unsafe.Pointer) WebView {
 }
 
 func (w_ WebView) InitWithFrame_Configuration(frame coregraphics.Rect, configuration IWebViewConfiguration) WebView {
-	rv := objc.CallMethod[WebView](w_, "initWithFrame:configuration:", frame, configuration)
+	rv := objc.CallMethod[WebView](w_, objc.GetSelector("initWithFrame:configuration:"), frame, configuration)
 	return rv
 }
 
 func (w_ WebView) InitWithFrame(frameRect foundation.Rect) WebView {
-	rv := objc.CallMethod[WebView](w_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[WebView](w_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (w_ WebView) Init() WebView {
-	rv := objc.CallMethod[WebView](w_, "init")
+	rv := objc.CallMethod[WebView](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (wc _WebViewClass) Alloc() WebView {
-	rv := objc.CallMethod[WebView](wc, "alloc")
+	rv := objc.CallMethod[WebView](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WebViewClass) New() WebView {
-	rv := objc.CallMethod[WebView](wc, "new")
+	rv := objc.CallMethod[WebView](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -153,211 +153,211 @@ func NewWebView() WebView {
 }
 
 func (wc _WebViewClass) HandlesURLScheme(urlScheme string) bool {
-	rv := objc.CallMethod[bool](wc, "handlesURLScheme:", urlScheme)
+	rv := objc.CallMethod[bool](wc, objc.GetSelector("handlesURLScheme:"), urlScheme)
 	return rv
 }
 
 func (w_ WebView) LoadRequest(request foundation.IURLRequest) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadRequest:", request)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadRequest:"), request)
 	return rv
 }
 
 func (w_ WebView) LoadData_MIMEType_CharacterEncodingName_BaseURL(data []byte, MIMEType string, characterEncodingName string, baseURL foundation.IURL) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadData:MIMEType:characterEncodingName:baseURL:", data, MIMEType, characterEncodingName, baseURL)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadData:MIMEType:characterEncodingName:baseURL:"), data, MIMEType, characterEncodingName, baseURL)
 	return rv
 }
 
 func (w_ WebView) LoadHTMLString_BaseURL(string_ string, baseURL foundation.IURL) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadHTMLString:baseURL:", string_, baseURL)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadHTMLString:baseURL:"), string_, baseURL)
 	return rv
 }
 
 func (w_ WebView) LoadFileRequest_AllowingReadAccessToURL(request foundation.IURLRequest, readAccessURL foundation.IURL) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadFileRequest:allowingReadAccessToURL:", request, readAccessURL)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadFileRequest:allowingReadAccessToURL:"), request, readAccessURL)
 	return rv
 }
 
 func (w_ WebView) LoadFileURL_AllowingReadAccessToURL(URL foundation.IURL, readAccessURL foundation.IURL) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadFileURL:allowingReadAccessToURL:", URL, readAccessURL)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadFileURL:allowingReadAccessToURL:"), URL, readAccessURL)
 	return rv
 }
 
 func (w_ WebView) LoadSimulatedRequest_Response_ResponseData(request foundation.IURLRequest, response foundation.IURLResponse, data []byte) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadSimulatedRequest:response:responseData:", request, response, data)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadSimulatedRequest:response:responseData:"), request, response, data)
 	return rv
 }
 
 func (w_ WebView) LoadSimulatedRequest_ResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadSimulatedRequest:responseHTMLString:", request, string_)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadSimulatedRequest:responseHTMLString:"), request, string_)
 	return rv
 }
 
 func (w_ WebView) Reload() Navigation {
-	rv := objc.CallMethod[Navigation](w_, "reload")
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("reload"))
 	return rv
 }
 
 func (w_ WebView) Reload1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "reload:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("reload:"), sender)
 }
 
 func (w_ WebView) ReloadFromOrigin() Navigation {
-	rv := objc.CallMethod[Navigation](w_, "reloadFromOrigin")
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("reloadFromOrigin"))
 	return rv
 }
 
 func (w_ WebView) ReloadFromOrigin1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "reloadFromOrigin:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("reloadFromOrigin:"), sender)
 }
 
 func (w_ WebView) StopLoading() {
-	objc.CallMethod[objc.Void](w_, "stopLoading")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("stopLoading"))
 }
 
 func (w_ WebView) StopLoading1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "stopLoading:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("stopLoading:"), sender)
 }
 
 func (w_ WebView) StartDownloadUsingRequest_CompletionHandler(request foundation.IURLRequest, completionHandler func(param1 Download)) {
-	objc.CallMethod[objc.Void](w_, "startDownloadUsingRequest:completionHandler:", request, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("startDownloadUsingRequest:completionHandler:"), request, completionHandler)
 }
 
 func (w_ WebView) ResumeDownloadFromResumeData_CompletionHandler(resumeData []byte, completionHandler func(param1 Download)) {
-	objc.CallMethod[objc.Void](w_, "resumeDownloadFromResumeData:completionHandler:", resumeData, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("resumeDownloadFromResumeData:completionHandler:"), resumeData, completionHandler)
 }
 
 func (w_ WebView) SetMagnification_CenteredAtPoint(magnification float64, point coregraphics.Point) {
-	objc.CallMethod[objc.Void](w_, "setMagnification:centeredAtPoint:", magnification, point)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMagnification:centeredAtPoint:"), magnification, point)
 }
 
 func (w_ WebView) PauseAllMediaPlaybackWithCompletionHandler(completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "pauseAllMediaPlaybackWithCompletionHandler:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("pauseAllMediaPlaybackWithCompletionHandler:"), completionHandler)
 }
 
 // deprecated
 func (w_ WebView) PauseAllMediaPlayback(completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "pauseAllMediaPlayback:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("pauseAllMediaPlayback:"), completionHandler)
 }
 
 func (w_ WebView) RequestMediaPlaybackStateWithCompletionHandler(completionHandler func(param1 MediaPlaybackState)) {
-	objc.CallMethod[objc.Void](w_, "requestMediaPlaybackStateWithCompletionHandler:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("requestMediaPlaybackStateWithCompletionHandler:"), completionHandler)
 }
 
 // deprecated
 func (w_ WebView) RequestMediaPlaybackState(completionHandler func(param1 MediaPlaybackState)) {
-	objc.CallMethod[objc.Void](w_, "requestMediaPlaybackState:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("requestMediaPlaybackState:"), completionHandler)
 }
 
 func (w_ WebView) SetAllMediaPlaybackSuspended_CompletionHandler(suspended bool, completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "setAllMediaPlaybackSuspended:completionHandler:", suspended, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllMediaPlaybackSuspended:completionHandler:"), suspended, completionHandler)
 }
 
 // deprecated
 func (w_ WebView) SuspendAllMediaPlayback(completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "suspendAllMediaPlayback:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("suspendAllMediaPlayback:"), completionHandler)
 }
 
 // deprecated
 func (w_ WebView) ResumeAllMediaPlayback(completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "resumeAllMediaPlayback:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("resumeAllMediaPlayback:"), completionHandler)
 }
 
 func (w_ WebView) CloseAllMediaPresentationsWithCompletionHandler(completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "closeAllMediaPresentationsWithCompletionHandler:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("closeAllMediaPresentationsWithCompletionHandler:"), completionHandler)
 }
 
 func (w_ WebView) SetCameraCaptureState_CompletionHandler(state MediaCaptureState, completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "setCameraCaptureState:completionHandler:", state, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setCameraCaptureState:completionHandler:"), state, completionHandler)
 }
 
 func (w_ WebView) SetMicrophoneCaptureState_CompletionHandler(state MediaCaptureState, completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, "setMicrophoneCaptureState:completionHandler:", state, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMicrophoneCaptureState:completionHandler:"), state, completionHandler)
 }
 
 func (w_ WebView) FindString_WithConfiguration_CompletionHandler(string_ string, configuration IFindConfiguration, completionHandler func(result FindResult)) {
-	objc.CallMethod[objc.Void](w_, "findString:withConfiguration:completionHandler:", string_, configuration, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("findString:withConfiguration:completionHandler:"), string_, configuration, completionHandler)
 }
 
 func (w_ WebView) GoBack1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "goBack:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("goBack:"), sender)
 }
 
 func (w_ WebView) GoBack() Navigation {
-	rv := objc.CallMethod[Navigation](w_, "goBack")
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("goBack"))
 	return rv
 }
 
 func (w_ WebView) GoForward1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "goForward:", sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("goForward:"), sender)
 }
 
 func (w_ WebView) GoForward() Navigation {
-	rv := objc.CallMethod[Navigation](w_, "goForward")
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("goForward"))
 	return rv
 }
 
 func (w_ WebView) GoToBackForwardListItem(item IBackForwardListItem) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "goToBackForwardListItem:", item)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("goToBackForwardListItem:"), item)
 	return rv
 }
 
 func (w_ WebView) EvaluateJavaScript_CompletionHandler(javaScriptString string, completionHandler func(param1 objc.Object, error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, "evaluateJavaScript:completionHandler:", javaScriptString, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("evaluateJavaScript:completionHandler:"), javaScriptString, completionHandler)
 }
 
 func (w_ WebView) EvaluateJavaScript_InFrame_InContentWorld_CompletionHandler(javaScriptString string, frame IFrameInfo, contentWorld IContentWorld, completionHandler func(param1 objc.Object, error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, "evaluateJavaScript:inFrame:inContentWorld:completionHandler:", javaScriptString, frame, contentWorld, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("evaluateJavaScript:inFrame:inContentWorld:completionHandler:"), javaScriptString, frame, contentWorld, completionHandler)
 }
 
 func (w_ WebView) CallAsyncJavaScript_Arguments_InFrame_InContentWorld_CompletionHandler(functionBody string, arguments map[string]objc.IObject, frame IFrameInfo, contentWorld IContentWorld, completionHandler func(param1 objc.Object, error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, "callAsyncJavaScript:arguments:inFrame:inContentWorld:completionHandler:", functionBody, arguments, frame, contentWorld, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("callAsyncJavaScript:arguments:inFrame:inContentWorld:completionHandler:"), functionBody, arguments, frame, contentWorld, completionHandler)
 }
 
 func (w_ WebView) TakeSnapshotWithConfiguration_CompletionHandler(snapshotConfiguration ISnapshotConfiguration, completionHandler func(snapshotImage appkit.Image, error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, "takeSnapshotWithConfiguration:completionHandler:", snapshotConfiguration, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("takeSnapshotWithConfiguration:completionHandler:"), snapshotConfiguration, completionHandler)
 }
 
 func (w_ WebView) CreatePDFWithConfiguration_CompletionHandler(pdfConfiguration IPDFConfiguration, completionHandler func(pdfDocumentData []byte, error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, "createPDFWithConfiguration:completionHandler:", pdfConfiguration, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("createPDFWithConfiguration:completionHandler:"), pdfConfiguration, completionHandler)
 }
 
 func (w_ WebView) CreateWebArchiveDataWithCompletionHandler(completionHandler func(param1 []byte, param2 foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, "createWebArchiveDataWithCompletionHandler:", completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("createWebArchiveDataWithCompletionHandler:"), completionHandler)
 }
 
 func (w_ WebView) PrintOperationWithPrintInfo(printInfo appkit.IPrintInfo) appkit.PrintOperation {
-	rv := objc.CallMethod[appkit.PrintOperation](w_, "printOperationWithPrintInfo:", printInfo)
+	rv := objc.CallMethod[appkit.PrintOperation](w_, objc.GetSelector("printOperationWithPrintInfo:"), printInfo)
 	return rv
 }
 
 func (w_ WebView) SetMinimumViewportInset_MaximumViewportInset(minimumViewportInset foundation.EdgeInsets, maximumViewportInset foundation.EdgeInsets) {
-	objc.CallMethod[objc.Void](w_, "setMinimumViewportInset:maximumViewportInset:", minimumViewportInset, maximumViewportInset)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMinimumViewportInset:maximumViewportInset:"), minimumViewportInset, maximumViewportInset)
 }
 
 // deprecated
 func (w_ WebView) CloseAllMediaPresentations() {
-	objc.CallMethod[objc.Void](w_, "closeAllMediaPresentations")
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("closeAllMediaPresentations"))
 }
 
 // deprecated
 func (w_ WebView) LoadSimulatedRequest_WithResponse_ResponseData(request foundation.IURLRequest, response foundation.IURLResponse, data []byte) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadSimulatedRequest:withResponse:responseData:", request, response, data)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadSimulatedRequest:withResponse:responseData:"), request, response, data)
 	return rv
 }
 
 // deprecated
 func (w_ WebView) LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation {
-	rv := objc.CallMethod[Navigation](w_, "loadSimulatedRequest:withResponseHTMLString:", request, string_)
+	rv := objc.CallMethod[Navigation](w_, objc.GetSelector("loadSimulatedRequest:withResponseHTMLString:"), request, string_)
 	return rv
 }
 
 func (w_ WebView) Configuration() WebViewConfiguration {
-	rv := objc.CallMethod[WebViewConfiguration](w_, "configuration")
+	rv := objc.CallMethod[WebViewConfiguration](w_, objc.GetSelector("configuration"))
 	return rv
 }
 
 func (w_ WebView) UIDelegate() UIDelegateWrapper {
-	rv := objc.CallMethod[UIDelegateWrapper](w_, "UIDelegate")
+	rv := objc.CallMethod[UIDelegateWrapper](w_, objc.GetSelector("UIDelegate"))
 	return rv
 }
 
@@ -365,15 +365,15 @@ func (w_ WebView) SetUIDelegate(value UIDelegate) {
 	po := objc.CreateProtocol("WKUIDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setUIDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](w_, "setUIDelegate:", po)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUIDelegate:"), po)
 }
 
 func (w_ WebView) SetUIDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "setUIDelegate:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUIDelegate:"), value)
 }
 
 func (w_ WebView) NavigationDelegate() NavigationDelegateWrapper {
-	rv := objc.CallMethod[NavigationDelegateWrapper](w_, "navigationDelegate")
+	rv := objc.CallMethod[NavigationDelegateWrapper](w_, objc.GetSelector("navigationDelegate"))
 	return rv
 }
 
@@ -381,166 +381,166 @@ func (w_ WebView) SetNavigationDelegate(value NavigationDelegate) {
 	po := objc.CreateProtocol("WKNavigationDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setNavigationDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](w_, "setNavigationDelegate:", po)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setNavigationDelegate:"), po)
 }
 
 func (w_ WebView) SetNavigationDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "setNavigationDelegate:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setNavigationDelegate:"), value)
 }
 
 func (w_ WebView) IsLoading() bool {
-	rv := objc.CallMethod[bool](w_, "isLoading")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isLoading"))
 	return rv
 }
 
 func (w_ WebView) EstimatedProgress() float64 {
-	rv := objc.CallMethod[float64](w_, "estimatedProgress")
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("estimatedProgress"))
 	return rv
 }
 
 func (w_ WebView) Title() string {
-	rv := objc.CallMethod[string](w_, "title")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("title"))
 	return rv
 }
 
 func (w_ WebView) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](w_, "URL")
+	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("URL"))
 	return rv
 }
 
 func (w_ WebView) MediaType() string {
-	rv := objc.CallMethod[string](w_, "mediaType")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("mediaType"))
 	return rv
 }
 
 func (w_ WebView) SetMediaType(value string) {
-	objc.CallMethod[objc.Void](w_, "setMediaType:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMediaType:"), value)
 }
 
 func (w_ WebView) CustomUserAgent() string {
-	rv := objc.CallMethod[string](w_, "customUserAgent")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("customUserAgent"))
 	return rv
 }
 
 func (w_ WebView) SetCustomUserAgent(value string) {
-	objc.CallMethod[objc.Void](w_, "setCustomUserAgent:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setCustomUserAgent:"), value)
 }
 
 func (w_ WebView) HasOnlySecureContent() bool {
-	rv := objc.CallMethod[bool](w_, "hasOnlySecureContent")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("hasOnlySecureContent"))
 	return rv
 }
 
 func (w_ WebView) ThemeColor() appkit.Color {
-	rv := objc.CallMethod[appkit.Color](w_, "themeColor")
+	rv := objc.CallMethod[appkit.Color](w_, objc.GetSelector("themeColor"))
 	return rv
 }
 
 func (w_ WebView) UnderPageBackgroundColor() appkit.Color {
-	rv := objc.CallMethod[appkit.Color](w_, "underPageBackgroundColor")
+	rv := objc.CallMethod[appkit.Color](w_, objc.GetSelector("underPageBackgroundColor"))
 	return rv
 }
 
 func (w_ WebView) SetUnderPageBackgroundColor(value appkit.IColor) {
-	objc.CallMethod[objc.Void](w_, "setUnderPageBackgroundColor:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUnderPageBackgroundColor:"), value)
 }
 
 func (w_ WebView) PageZoom() float64 {
-	rv := objc.CallMethod[float64](w_, "pageZoom")
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("pageZoom"))
 	return rv
 }
 
 func (w_ WebView) SetPageZoom(value float64) {
-	objc.CallMethod[objc.Void](w_, "setPageZoom:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPageZoom:"), value)
 }
 
 func (w_ WebView) AllowsMagnification() bool {
-	rv := objc.CallMethod[bool](w_, "allowsMagnification")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsMagnification"))
 	return rv
 }
 
 func (w_ WebView) SetAllowsMagnification(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsMagnification:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsMagnification:"), value)
 }
 
 func (w_ WebView) Magnification() float64 {
-	rv := objc.CallMethod[float64](w_, "magnification")
+	rv := objc.CallMethod[float64](w_, objc.GetSelector("magnification"))
 	return rv
 }
 
 func (w_ WebView) SetMagnification(value float64) {
-	objc.CallMethod[objc.Void](w_, "setMagnification:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMagnification:"), value)
 }
 
 func (w_ WebView) CameraCaptureState() MediaCaptureState {
-	rv := objc.CallMethod[MediaCaptureState](w_, "cameraCaptureState")
+	rv := objc.CallMethod[MediaCaptureState](w_, objc.GetSelector("cameraCaptureState"))
 	return rv
 }
 
 func (w_ WebView) MicrophoneCaptureState() MediaCaptureState {
-	rv := objc.CallMethod[MediaCaptureState](w_, "microphoneCaptureState")
+	rv := objc.CallMethod[MediaCaptureState](w_, objc.GetSelector("microphoneCaptureState"))
 	return rv
 }
 
 func (w_ WebView) AllowsBackForwardNavigationGestures() bool {
-	rv := objc.CallMethod[bool](w_, "allowsBackForwardNavigationGestures")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsBackForwardNavigationGestures"))
 	return rv
 }
 
 func (w_ WebView) SetAllowsBackForwardNavigationGestures(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsBackForwardNavigationGestures:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsBackForwardNavigationGestures:"), value)
 }
 
 func (w_ WebView) BackForwardList() BackForwardList {
-	rv := objc.CallMethod[BackForwardList](w_, "backForwardList")
+	rv := objc.CallMethod[BackForwardList](w_, objc.GetSelector("backForwardList"))
 	return rv
 }
 
 func (w_ WebView) CanGoBack() bool {
-	rv := objc.CallMethod[bool](w_, "canGoBack")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canGoBack"))
 	return rv
 }
 
 func (w_ WebView) CanGoForward() bool {
-	rv := objc.CallMethod[bool](w_, "canGoForward")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("canGoForward"))
 	return rv
 }
 
 func (w_ WebView) AllowsLinkPreview() bool {
-	rv := objc.CallMethod[bool](w_, "allowsLinkPreview")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsLinkPreview"))
 	return rv
 }
 
 func (w_ WebView) SetAllowsLinkPreview(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsLinkPreview:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsLinkPreview:"), value)
 }
 
 func (w_ WebView) InteractionState() objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, "interactionState")
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("interactionState"))
 	return rv
 }
 
 func (w_ WebView) SetInteractionState(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, "setInteractionState:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setInteractionState:"), value)
 }
 
 func (w_ WebView) FullscreenState() FullscreenState {
-	rv := objc.CallMethod[FullscreenState](w_, "fullscreenState")
+	rv := objc.CallMethod[FullscreenState](w_, objc.GetSelector("fullscreenState"))
 	return rv
 }
 
 func (w_ WebView) MaximumViewportInset() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](w_, "maximumViewportInset")
+	rv := objc.CallMethod[foundation.EdgeInsets](w_, objc.GetSelector("maximumViewportInset"))
 	return rv
 }
 
 func (w_ WebView) MinimumViewportInset() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](w_, "minimumViewportInset")
+	rv := objc.CallMethod[foundation.EdgeInsets](w_, objc.GetSelector("minimumViewportInset"))
 	return rv
 }
 
 // deprecated
 func (w_ WebView) CertificateChain() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](w_, "certificateChain")
+	rv := objc.CallMethod[[]objc.Object](w_, objc.GetSelector("certificateChain"))
 	return rv
 }

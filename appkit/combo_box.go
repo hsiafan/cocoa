@@ -66,42 +66,42 @@ func MakeComboBox(ptr unsafe.Pointer) ComboBox {
 }
 
 func (cc _ComboBoxClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, "labelWithAttributedString:", attributedStringValue)
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 
 func (cc _ComboBoxClass) LabelWithString(stringValue string) ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, "labelWithString:", stringValue)
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("labelWithString:"), stringValue)
 	return rv
 }
 
 func (cc _ComboBoxClass) TextFieldWithString(stringValue string) ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, "textFieldWithString:", stringValue)
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("textFieldWithString:"), stringValue)
 	return rv
 }
 
 func (cc _ComboBoxClass) WrappingLabelWithString(stringValue string) ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, "wrappingLabelWithString:", stringValue)
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("wrappingLabelWithString:"), stringValue)
 	return rv
 }
 
 func (c_ ComboBox) InitWithFrame(frameRect foundation.Rect) ComboBox {
-	rv := objc.CallMethod[ComboBox](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ComboBox](c_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (c_ ComboBox) Init() ComboBox {
-	rv := objc.CallMethod[ComboBox](c_, "init")
+	rv := objc.CallMethod[ComboBox](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _ComboBoxClass) Alloc() ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, "alloc")
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ComboBoxClass) New() ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, "new")
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -111,114 +111,114 @@ func NewComboBox() ComboBox {
 }
 
 func (c_ ComboBox) AddItemsWithObjectValues(objects []objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "addItemsWithObjectValues:", objects)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("addItemsWithObjectValues:"), objects)
 }
 
 func (c_ ComboBox) AddItemWithObjectValue(object objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "addItemWithObjectValue:", object)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("addItemWithObjectValue:"), object)
 }
 
 func (c_ ComboBox) InsertItemWithObjectValue_AtIndex(object objc.IObject, index int) {
-	objc.CallMethod[objc.Void](c_, "insertItemWithObjectValue:atIndex:", object, index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertItemWithObjectValue:atIndex:"), object, index)
 }
 
 func (c_ ComboBox) RemoveAllItems() {
-	objc.CallMethod[objc.Void](c_, "removeAllItems")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("removeAllItems"))
 }
 
 func (c_ ComboBox) RemoveItemAtIndex(index int) {
-	objc.CallMethod[objc.Void](c_, "removeItemAtIndex:", index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("removeItemAtIndex:"), index)
 }
 
 func (c_ ComboBox) RemoveItemWithObjectValue(object objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "removeItemWithObjectValue:", object)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("removeItemWithObjectValue:"), object)
 }
 
 func (c_ ComboBox) IndexOfItemWithObjectValue(object objc.IObject) int {
-	rv := objc.CallMethod[int](c_, "indexOfItemWithObjectValue:", object)
+	rv := objc.CallMethod[int](c_, objc.GetSelector("indexOfItemWithObjectValue:"), object)
 	return rv
 }
 
 func (c_ ComboBox) ItemObjectValueAtIndex(index int) objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, "itemObjectValueAtIndex:", index)
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("itemObjectValueAtIndex:"), index)
 	return rv
 }
 
 func (c_ ComboBox) NoteNumberOfItemsChanged() {
-	objc.CallMethod[objc.Void](c_, "noteNumberOfItemsChanged")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("noteNumberOfItemsChanged"))
 }
 
 func (c_ ComboBox) ReloadData() {
-	objc.CallMethod[objc.Void](c_, "reloadData")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("reloadData"))
 }
 
 func (c_ ComboBox) ScrollItemAtIndexToTop(index int) {
-	objc.CallMethod[objc.Void](c_, "scrollItemAtIndexToTop:", index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("scrollItemAtIndexToTop:"), index)
 }
 
 func (c_ ComboBox) ScrollItemAtIndexToVisible(index int) {
-	objc.CallMethod[objc.Void](c_, "scrollItemAtIndexToVisible:", index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("scrollItemAtIndexToVisible:"), index)
 }
 
 func (c_ ComboBox) DeselectItemAtIndex(index int) {
-	objc.CallMethod[objc.Void](c_, "deselectItemAtIndex:", index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("deselectItemAtIndex:"), index)
 }
 
 func (c_ ComboBox) SelectItemAtIndex(index int) {
-	objc.CallMethod[objc.Void](c_, "selectItemAtIndex:", index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectItemAtIndex:"), index)
 }
 
 func (c_ ComboBox) SelectItemWithObjectValue(object objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "selectItemWithObjectValue:", object)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectItemWithObjectValue:"), object)
 }
 
 func (c_ ComboBox) HasVerticalScroller() bool {
-	rv := objc.CallMethod[bool](c_, "hasVerticalScroller")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("hasVerticalScroller"))
 	return rv
 }
 
 func (c_ ComboBox) SetHasVerticalScroller(value bool) {
-	objc.CallMethod[objc.Void](c_, "setHasVerticalScroller:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setHasVerticalScroller:"), value)
 }
 
 func (c_ ComboBox) IntercellSpacing() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "intercellSpacing")
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("intercellSpacing"))
 	return rv
 }
 
 func (c_ ComboBox) SetIntercellSpacing(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, "setIntercellSpacing:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIntercellSpacing:"), value)
 }
 
 func (c_ ComboBox) IsButtonBordered() bool {
-	rv := objc.CallMethod[bool](c_, "isButtonBordered")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isButtonBordered"))
 	return rv
 }
 
 func (c_ ComboBox) SetButtonBordered(value bool) {
-	objc.CallMethod[objc.Void](c_, "setButtonBordered:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setButtonBordered:"), value)
 }
 
 func (c_ ComboBox) ItemHeight() float64 {
-	rv := objc.CallMethod[float64](c_, "itemHeight")
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("itemHeight"))
 	return rv
 }
 
 func (c_ ComboBox) SetItemHeight(value float64) {
-	objc.CallMethod[objc.Void](c_, "setItemHeight:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setItemHeight:"), value)
 }
 
 func (c_ ComboBox) NumberOfVisibleItems() int {
-	rv := objc.CallMethod[int](c_, "numberOfVisibleItems")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfVisibleItems"))
 	return rv
 }
 
 func (c_ ComboBox) SetNumberOfVisibleItems(value int) {
-	objc.CallMethod[objc.Void](c_, "setNumberOfVisibleItems:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setNumberOfVisibleItems:"), value)
 }
 
 func (c_ ComboBox) DataSource() ComboBoxDataSourceWrapper {
-	rv := objc.CallMethod[ComboBoxDataSourceWrapper](c_, "dataSource")
+	rv := objc.CallMethod[ComboBoxDataSourceWrapper](c_, objc.GetSelector("dataSource"))
 	return rv
 }
 
@@ -226,47 +226,47 @@ func (c_ ComboBox) SetDataSource(value ComboBoxDataSource) {
 	po := objc.CreateProtocol("NSComboBoxDataSource", value)
 	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](c_, "setDataSource:", po)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), po)
 }
 
 func (c_ ComboBox) SetDataSource0(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "setDataSource:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), value)
 }
 
 func (c_ ComboBox) UsesDataSource() bool {
-	rv := objc.CallMethod[bool](c_, "usesDataSource")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("usesDataSource"))
 	return rv
 }
 
 func (c_ ComboBox) SetUsesDataSource(value bool) {
-	objc.CallMethod[objc.Void](c_, "setUsesDataSource:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setUsesDataSource:"), value)
 }
 
 func (c_ ComboBox) ObjectValues() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](c_, "objectValues")
+	rv := objc.CallMethod[[]objc.Object](c_, objc.GetSelector("objectValues"))
 	return rv
 }
 
 func (c_ ComboBox) NumberOfItems() int {
-	rv := objc.CallMethod[int](c_, "numberOfItems")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfItems"))
 	return rv
 }
 
 func (c_ ComboBox) IndexOfSelectedItem() int {
-	rv := objc.CallMethod[int](c_, "indexOfSelectedItem")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("indexOfSelectedItem"))
 	return rv
 }
 
 func (c_ ComboBox) ObjectValueOfSelectedItem() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, "objectValueOfSelectedItem")
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("objectValueOfSelectedItem"))
 	return rv
 }
 
 func (c_ ComboBox) Completes() bool {
-	rv := objc.CallMethod[bool](c_, "completes")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("completes"))
 	return rv
 }
 
 func (c_ ComboBox) SetCompletes(value bool) {
-	objc.CallMethod[objc.Void](c_, "setCompletes:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCompletes:"), value)
 }

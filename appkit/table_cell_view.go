@@ -40,22 +40,22 @@ func MakeTableCellView(ptr unsafe.Pointer) TableCellView {
 }
 
 func (t_ TableCellView) InitWithFrame(frameRect foundation.Rect) TableCellView {
-	rv := objc.CallMethod[TableCellView](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TableCellView](t_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (t_ TableCellView) Init() TableCellView {
-	rv := objc.CallMethod[TableCellView](t_, "init")
+	rv := objc.CallMethod[TableCellView](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TableCellViewClass) Alloc() TableCellView {
-	rv := objc.CallMethod[TableCellView](tc, "alloc")
+	rv := objc.CallMethod[TableCellView](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TableCellViewClass) New() TableCellView {
-	rv := objc.CallMethod[TableCellView](tc, "new")
+	rv := objc.CallMethod[TableCellView](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,51 +65,51 @@ func NewTableCellView() TableCellView {
 }
 
 func (t_ TableCellView) ObjectValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "objectValue")
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("objectValue"))
 	return rv
 }
 
 func (t_ TableCellView) SetObjectValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setObjectValue:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setObjectValue:"), value)
 }
 
 func (t_ TableCellView) ImageView() ImageView {
-	rv := objc.CallMethod[ImageView](t_, "imageView")
+	rv := objc.CallMethod[ImageView](t_, objc.GetSelector("imageView"))
 	return rv
 }
 
 func (t_ TableCellView) SetImageView(value IImageView) {
-	objc.CallMethod[objc.Void](t_, "setImageView:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImageView:"), value)
 }
 
 func (t_ TableCellView) TextField() TextField {
-	rv := objc.CallMethod[TextField](t_, "textField")
+	rv := objc.CallMethod[TextField](t_, objc.GetSelector("textField"))
 	return rv
 }
 
 func (t_ TableCellView) SetTextField(value ITextField) {
-	objc.CallMethod[objc.Void](t_, "setTextField:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextField:"), value)
 }
 
 func (t_ TableCellView) BackgroundStyle() BackgroundStyle {
-	rv := objc.CallMethod[BackgroundStyle](t_, "backgroundStyle")
+	rv := objc.CallMethod[BackgroundStyle](t_, objc.GetSelector("backgroundStyle"))
 	return rv
 }
 
 func (t_ TableCellView) SetBackgroundStyle(value BackgroundStyle) {
-	objc.CallMethod[objc.Void](t_, "setBackgroundStyle:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundStyle:"), value)
 }
 
 func (t_ TableCellView) RowSizeStyle() TableViewRowSizeStyle {
-	rv := objc.CallMethod[TableViewRowSizeStyle](t_, "rowSizeStyle")
+	rv := objc.CallMethod[TableViewRowSizeStyle](t_, objc.GetSelector("rowSizeStyle"))
 	return rv
 }
 
 func (t_ TableCellView) SetRowSizeStyle(value TableViewRowSizeStyle) {
-	objc.CallMethod[objc.Void](t_, "setRowSizeStyle:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setRowSizeStyle:"), value)
 }
 
 func (t_ TableCellView) DraggingImageComponents() []DraggingImageComponent {
-	rv := objc.CallMethod[[]DraggingImageComponent](t_, "draggingImageComponents")
+	rv := objc.CallMethod[[]DraggingImageComponent](t_, objc.GetSelector("draggingImageComponents"))
 	return rv
 }

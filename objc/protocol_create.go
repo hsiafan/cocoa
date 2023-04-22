@@ -3,7 +3,6 @@ package objc
 // #import <stdint.h>
 //
 // void* New_ProtocolImpl(void* class, uintptr_t goID);
-// uintptr_t ProtocolImpl_GetGoID(void* ptr);
 import "C"
 import (
 	"reflect"
@@ -11,12 +10,19 @@ import (
 	"sync"
 	"unsafe"
 
+	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/internal"
 )
 
 var classCache = map[string]*classInfo{} //go protocol interface name to ClassInfo
 var classLock sync.Mutex
 var baseClass = GetClass("ProtocolImplBase")
+
+type instanceInfo struct {
+	instance     any        // the go instance
+	protocolName string     // go protocol interface name
+	classInfo    *classInfo // the class info for this instance
+}
 
 type classInfo struct {
 	class       Class
@@ -26,10 +32,27 @@ type classInfo struct {
 type methodInfo struct {
 	required bool          // if is required protocol method
 	hasFunc  reflect.Value // the hasXXX func for this method
-	fun      reflect.Value // the func for this method
+}
+
+// param protocolName: the delegate go interface name
+// param d: the delegate go implementaion
+func CreateProtocol[T any](protocolName string, d T) Object {
+	dv := reflect.ValueOf(d)
+	ci := createClass(dv.Type(), protocolName)
+	ii := &instanceInfo{
+		classInfo:    ci,
+		instance:     d,
+		protocolName: protocolName,
+	}
+	h := cgo.NewHandle(ii)
+	return MakeObject(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
 }
 
 func createClass(t reflect.Type, protocolName string) *classInfo {
+	if t.Kind() == reflect.Interface {
+		panic("should not be interface type")
+	}
+
 	classLock.Lock()
 	defer classLock.Unlock()
 	if ci, ok := classCache[protocolName]; ok {
@@ -44,7 +67,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 		selector := md.Name
 		selName := selector.GetName()
 		goFuncName := internal.SelectorToGoName(selName)
-		fun, ok := t.MethodByName(goFuncName)
+		goMethod, ok := t.MethodByName(goFuncName)
 		if !ok {
 			if md.required {
 				panic("required method not implemented:" + selName)
@@ -52,15 +75,16 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 				continue
 			}
 		}
+		addProtocolMethod(class, md, goMethod)
 		hasFunc, _ := t.MethodByName("Implements" + goFuncName)
 
 		methodInfos[selName] = &methodInfo{
 			required: md.required,
 			hasFunc:  hasFunc.Func,
-			fun:      fun.Func,
 		}
 	}
 
+	RegisterClassPair(class)
 	ci := &classInfo{
 		class:       class,
 		methodInfos: methodInfos,
@@ -103,24 +127,61 @@ func getProtocolMethods(protocol Protocol) []methodDescription {
 	return mds
 }
 
-type instanceInfo struct {
-	instance     any        // the go instance
-	protocolName string     // go protocol interface name
-	classInfo    *classInfo // the class info for this instance
-}
-
-// param protocolName: the delegate go interface name
-// param d: the delegate go implementaion
-func CreateProtocol[T any](protocolName string, d T) Object {
-	dv := reflect.ValueOf(d)
-	ci := createClass(dv.Type(), protocolName)
-	ii := &instanceInfo{
-		classInfo:    ci,
-		instance:     d,
-		protocolName: protocolName,
+func addProtocolMethod(class Class, md methodDescription, method reflect.Method) {
+	//TODO: class method
+	if !md.instanceMethod {
+		return
 	}
-	h := cgo.NewHandle(ii)
-	return MakeObject(C.New_ProtocolImpl(ci.class.Ptr(), C.uintptr_t(h)))
+
+	rt := method.Type
+	if rt.NumOut() > 1 {
+		panic("too many return value")
+	}
+	goArgc := rt.NumIn()
+	var objcArgTypes = make([]*ffi.Type, goArgc+1)
+	objcArgTypes[0] = ffi.TypePointer // objc instance or class pointer
+	objcArgTypes[1] = ffi.TypePointer // selector pointer
+	// first go fun param is receiver
+	for i := 1; i < goArgc; i++ {
+		objcArgTypes[i+1] = toFFIType(rt.In(i))
+	}
+
+	var retType *ffi.Type
+	if rt.NumOut() == 0 {
+		retType = ffi.TypeVoid
+	} else {
+		retType = getFFIType(rt.Out(0))
+	}
+
+	cif, status := ffi.PrepCIF(retType, objcArgTypes)
+	if status != ffi.OK {
+		panic("ffi prep cif status not ok")
+	}
+
+	fn, handle, status := ffi.CreateClosure(cif, func(cif *ffi.CIF, ret unsafe.Pointer, objcArgs []unsafe.Pointer) {
+		o := MakeObject(*(*unsafe.Pointer)(objcArgs[0]))
+		handle := CallMethod[uintptr](o, GetSelector("goID"))
+		instance := cgo.Handle(handle).Value().(*instanceInfo)
+
+		var goArgs = make([]reflect.Value, len(objcArgs)-1)
+		goArgs[0] = reflect.ValueOf(instance.instance)
+		// skip selector param(the second param of objc method)
+		for i := 1; i < len(goArgs); i++ {
+			goArgs[i] = convertToGoValue(objcArgs[i+1], rt.In(i))
+		}
+		results := method.Func.Call(goArgs)
+		if len(results) == 1 {
+			setGoValueToObjcPointer(results[0], ret)
+		}
+	})
+	_ = handle // never free
+	if status != ffi.OK {
+		panic("ffi prep closure status not ok")
+	}
+	flag := class.AddMethod(md.Name, MakeIMP(fn), md.Types)
+	if !flag {
+		panic("add method to protocol failed")
+	}
 }
 
 //export respondsTo
@@ -138,41 +199,4 @@ func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
 	}
 
 	return mi.hasFunc.Call([]reflect.Value{v})[0].Bool()
-}
-
-//export internalDeleteHandle
-func internalDeleteHandle(hp uintptr) {
-	cgo.Handle(hp).Delete()
-}
-
-//export handleDelegateInvocation
-func handleDelegateInvocation(goID uintptr, sel unsafe.Pointer, invocationPtr unsafe.Pointer) {
-	invocation := makeInvocation(invocationPtr)
-	selName := MakeSelector(sel).GetName()
-	ii := cgo.Handle(goID).Value().(*instanceInfo)
-	f := ii.classInfo.methodInfos[selName].fun
-
-	ft := f.Type()
-	args := make([]reflect.Value, ft.NumIn())
-	args[0] = reflect.ValueOf(ii.instance)
-
-	argsPtr := make([]unsafe.Pointer, len(args)-1)
-	for i := 1; i < ft.NumIn(); i++ {
-		argsPtr[i-1] = parseGoType(ft.In(i))
-	}
-	if len(argsPtr) > 0 {
-		invocation.getArguments(2, argsPtr)
-	}
-	for i := 1; i < ft.NumIn(); i++ {
-		args[i] = convertToGoValue(argsPtr[i-1], ft.In(i))
-	}
-
-	rvs := f.Call(args)
-	if len(rvs) > 1 {
-		panic("too many return values")
-	}
-	if len(rvs) == 1 {
-		rp := convertToObjcValue(rvs[0].Interface())
-		invocation.setReturnValue(rp)
-	}
 }

@@ -579,7 +579,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldExpandItem() b
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldExpandItem(outlineView IOutlineView, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldExpandItem:", outlineView, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldExpandItem:"), outlineView, item)
 	return rv
 }
 
@@ -588,7 +588,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldCollapseItem()
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldCollapseItem(outlineView IOutlineView, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldCollapseItem:", outlineView, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldCollapseItem:"), outlineView, item)
 	return rv
 }
 
@@ -597,7 +597,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_TypeSelectStringForT
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_TypeSelectStringForTableColumn_Item(outlineView IOutlineView, tableColumn ITableColumn, item objc.IObject) string {
-	rv := objc.CallMethod[string](o_, "outlineView:typeSelectStringForTableColumn:item:", outlineView, tableColumn, item)
+	rv := objc.CallMethod[string](o_, objc.GetSelector("outlineView:typeSelectStringForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -606,7 +606,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_NextTypeSelectMatchF
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_NextTypeSelectMatchFromItem_ToItem_ForString(outlineView IOutlineView, startItem objc.IObject, endItem objc.IObject, searchString string) objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, "outlineView:nextTypeSelectMatchFromItem:toItem:forString:", outlineView, startItem, endItem, searchString)
+	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("outlineView:nextTypeSelectMatchFromItem:toItem:forString:"), outlineView, startItem, endItem, searchString)
 	return rv
 }
 
@@ -615,7 +615,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldTypeSelectForE
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldTypeSelectForEvent_WithCurrentSearchString(outlineView IOutlineView, event IEvent, searchString string) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldTypeSelectForEvent:withCurrentSearchString:", outlineView, event, searchString)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:"), outlineView, event, searchString)
 	return rv
 }
 
@@ -624,7 +624,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ToolTipForCell_Rect_
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ToolTipForCell_Rect_TableColumn_Item_MouseLocation(outlineView IOutlineView, cell ICell, rect *foundation.Rect, tableColumn ITableColumn, item objc.IObject, mouseLocation foundation.Point) string {
-	rv := objc.CallMethod[string](o_, "outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:", outlineView, cell, rect, tableColumn, item, mouseLocation)
+	rv := objc.CallMethod[string](o_, objc.GetSelector("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:"), outlineView, cell, rect, tableColumn, item, mouseLocation)
 	return rv
 }
 
@@ -633,7 +633,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldSelectTableCol
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldSelectTableColumn(outlineView IOutlineView, tableColumn ITableColumn) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldSelectTableColumn:", outlineView, tableColumn)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldSelectTableColumn:"), outlineView, tableColumn)
 	return rv
 }
 
@@ -642,7 +642,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldSelectItem() b
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldSelectItem(outlineView IOutlineView, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldSelectItem:", outlineView, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldSelectItem:"), outlineView, item)
 	return rv
 }
 
@@ -651,7 +651,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_SelectionIndexesForP
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_SelectionIndexesForProposedSelection(outlineView IOutlineView, proposedSelectionIndexes foundation.IIndexSet) foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](o_, "outlineView:selectionIndexesForProposedSelection:", outlineView, proposedSelectionIndexes)
+	rv := objc.CallMethod[foundation.IndexSet](o_, objc.GetSelector("outlineView:selectionIndexesForProposedSelection:"), outlineView, proposedSelectionIndexes)
 	return rv
 }
 
@@ -660,7 +660,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsSelectionShouldChangeInOutlineVi
 }
 
 func (o_ OutlineViewDelegateWrapper) SelectionShouldChangeInOutlineView(outlineView IOutlineView) bool {
-	rv := objc.CallMethod[bool](o_, "selectionShouldChangeInOutlineView:", outlineView)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("selectionShouldChangeInOutlineView:"), outlineView)
 	return rv
 }
 
@@ -669,7 +669,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewSelectionIsChanging()
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewSelectionIsChanging(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewSelectionIsChanging:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewSelectionIsChanging:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewSelectionDidChange() bool {
@@ -677,7 +677,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewSelectionDidChange() 
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewSelectionDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewSelectionDidChange:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewSelectionDidChange:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_WillDisplayCell_ForTableColumn_Item() bool {
@@ -685,7 +685,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_WillDisplayCell_ForT
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_WillDisplayCell_ForTableColumn_Item(outlineView IOutlineView, cell objc.IObject, tableColumn ITableColumn, item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "outlineView:willDisplayCell:forTableColumn:item:", outlineView, cell, tableColumn, item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:willDisplayCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_WillDisplayOutlineCell_ForTableColumn_Item() bool {
@@ -693,7 +693,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_WillDisplayOutlineCe
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_WillDisplayOutlineCell_ForTableColumn_Item(outlineView IOutlineView, cell objc.IObject, tableColumn ITableColumn, item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "outlineView:willDisplayOutlineCell:forTableColumn:item:", outlineView, cell, tableColumn, item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:willDisplayOutlineCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DataCellForTableColumn_Item() bool {
@@ -701,7 +701,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DataCellForTableColu
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_DataCellForTableColumn_Item(outlineView IOutlineView, tableColumn ITableColumn, item objc.IObject) Cell {
-	rv := objc.CallMethod[Cell](o_, "outlineView:dataCellForTableColumn:item:", outlineView, tableColumn, item)
+	rv := objc.CallMethod[Cell](o_, objc.GetSelector("outlineView:dataCellForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -710,7 +710,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldShowOutlineCel
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldShowOutlineCellForItem(outlineView IOutlineView, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldShowOutlineCellForItem:", outlineView, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldShowOutlineCellForItem:"), outlineView, item)
 	return rv
 }
 
@@ -719,7 +719,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldShowCellExpans
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldShowCellExpansionForTableColumn_Item(outlineView IOutlineView, tableColumn ITableColumn, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldShowCellExpansionForTableColumn:item:", outlineView, tableColumn, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldShowCellExpansionForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -728,7 +728,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldReorderColumn_
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldReorderColumn_ToColumn(outlineView IOutlineView, columnIndex int, newColumnIndex int) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldReorderColumn:toColumn:", outlineView, columnIndex, newColumnIndex)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldReorderColumn:toColumn:"), outlineView, columnIndex, newColumnIndex)
 	return rv
 }
 
@@ -737,7 +737,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewColumnDidMove() bool 
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewColumnDidMove(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewColumnDidMove:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewColumnDidMove:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewColumnDidResize() bool {
@@ -745,7 +745,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewColumnDidResize() boo
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewColumnDidResize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewColumnDidResize:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewColumnDidResize:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemWillExpand() bool {
@@ -753,7 +753,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemWillExpand() bool
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewItemWillExpand(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewItemWillExpand:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewItemWillExpand:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemDidExpand() bool {
@@ -761,7 +761,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemDidExpand() bool 
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewItemDidExpand(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewItemDidExpand:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewItemDidExpand:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemWillCollapse() bool {
@@ -769,7 +769,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemWillCollapse() bo
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewItemWillCollapse(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewItemWillCollapse:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewItemWillCollapse:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemDidCollapse() bool {
@@ -777,7 +777,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineViewItemDidCollapse() boo
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineViewItemDidCollapse(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](o_, "outlineViewItemDidCollapse:", notification)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineViewItemDidCollapse:"), notification)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldEditTableColumn_Item() bool {
@@ -785,7 +785,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldEditTableColum
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldEditTableColumn_Item(outlineView IOutlineView, tableColumn ITableColumn, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldEditTableColumn:item:", outlineView, tableColumn, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldEditTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -794,7 +794,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_MouseDownInHeaderOfT
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_MouseDownInHeaderOfTableColumn(outlineView IOutlineView, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](o_, "outlineView:mouseDownInHeaderOfTableColumn:", outlineView, tableColumn)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:mouseDownInHeaderOfTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidClickTableColumn() bool {
@@ -802,7 +802,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidClickTableColumn(
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_DidClickTableColumn(outlineView IOutlineView, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](o_, "outlineView:didClickTableColumn:", outlineView, tableColumn)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:didClickTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidDragTableColumn() bool {
@@ -810,7 +810,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidDragTableColumn()
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_DidDragTableColumn(outlineView IOutlineView, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](o_, "outlineView:didDragTableColumn:", outlineView, tableColumn)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:didDragTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_HeightOfRowByItem() bool {
@@ -818,7 +818,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_HeightOfRowByItem() 
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_HeightOfRowByItem(outlineView IOutlineView, item objc.IObject) float64 {
-	rv := objc.CallMethod[float64](o_, "outlineView:heightOfRowByItem:", outlineView, item)
+	rv := objc.CallMethod[float64](o_, objc.GetSelector("outlineView:heightOfRowByItem:"), outlineView, item)
 	return rv
 }
 
@@ -827,7 +827,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_SizeToFitWidthOfColu
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_SizeToFitWidthOfColumn(outlineView IOutlineView, column int) float64 {
-	rv := objc.CallMethod[float64](o_, "outlineView:sizeToFitWidthOfColumn:", outlineView, column)
+	rv := objc.CallMethod[float64](o_, objc.GetSelector("outlineView:sizeToFitWidthOfColumn:"), outlineView, column)
 	return rv
 }
 
@@ -836,7 +836,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_TintConfigurationFor
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_TintConfigurationForItem(outlineView IOutlineView, item objc.IObject) TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](o_, "outlineView:tintConfigurationForItem:", outlineView, item)
+	rv := objc.CallMethod[TintConfiguration](o_, objc.GetSelector("outlineView:tintConfigurationForItem:"), outlineView, item)
 	return rv
 }
 
@@ -845,7 +845,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ShouldTrackCell_ForT
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ShouldTrackCell_ForTableColumn_Item(outlineView IOutlineView, cell ICell, tableColumn ITableColumn, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:shouldTrackCell:forTableColumn:item:", outlineView, cell, tableColumn, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:shouldTrackCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
 	return rv
 }
 
@@ -854,7 +854,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_IsGroupItem() bool {
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_IsGroupItem(outlineView IOutlineView, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "outlineView:isGroupItem:", outlineView, item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:isGroupItem:"), outlineView, item)
 	return rv
 }
 
@@ -863,7 +863,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidAddRowView_ForRow
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_DidAddRowView_ForRow(outlineView IOutlineView, rowView ITableRowView, row int) {
-	objc.CallMethod[objc.Void](o_, "outlineView:didAddRowView:forRow:", outlineView, rowView, row)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:didAddRowView:forRow:"), outlineView, rowView, row)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidRemoveRowView_ForRow() bool {
@@ -871,7 +871,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_DidRemoveRowView_For
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_DidRemoveRowView_ForRow(outlineView IOutlineView, rowView ITableRowView, row int) {
-	objc.CallMethod[objc.Void](o_, "outlineView:didRemoveRowView:forRow:", outlineView, rowView, row)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:didRemoveRowView:forRow:"), outlineView, rowView, row)
 }
 
 func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_RowViewForItem() bool {
@@ -879,7 +879,7 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_RowViewForItem() boo
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_RowViewForItem(outlineView IOutlineView, item objc.IObject) TableRowView {
-	rv := objc.CallMethod[TableRowView](o_, "outlineView:rowViewForItem:", outlineView, item)
+	rv := objc.CallMethod[TableRowView](o_, objc.GetSelector("outlineView:rowViewForItem:"), outlineView, item)
 	return rv
 }
 
@@ -888,6 +888,6 @@ func (o_ *OutlineViewDelegateWrapper) ImplementsOutlineView_ViewForTableColumn_I
 }
 
 func (o_ OutlineViewDelegateWrapper) OutlineView_ViewForTableColumn_Item(outlineView IOutlineView, tableColumn ITableColumn, item objc.IObject) View {
-	rv := objc.CallMethod[View](o_, "outlineView:viewForTableColumn:item:", outlineView, tableColumn, item)
+	rv := objc.CallMethod[View](o_, objc.GetSelector("outlineView:viewForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }

@@ -33,12 +33,12 @@ func MakeMeasurement(ptr unsafe.Pointer) Measurement {
 }
 
 func (mc _MeasurementClass) Alloc() Measurement {
-	rv := objc.CallMethod[Measurement](mc, "alloc")
+	rv := objc.CallMethod[Measurement](mc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (mc _MeasurementClass) New() Measurement {
-	rv := objc.CallMethod[Measurement](mc, "new")
+	rv := objc.CallMethod[Measurement](mc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,31 +48,31 @@ func NewMeasurement() Measurement {
 }
 
 func (m_ Measurement) Init() Measurement {
-	rv := objc.CallMethod[Measurement](m_, "init")
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("init"))
 	return rv
 }
 
 func (m_ Measurement) CanBeConvertedToUnit(unit IUnit) bool {
-	rv := objc.CallMethod[bool](m_, "canBeConvertedToUnit:", unit)
+	rv := objc.CallMethod[bool](m_, objc.GetSelector("canBeConvertedToUnit:"), unit)
 	return rv
 }
 
 func (m_ Measurement) MeasurementByConvertingToUnit(unit IUnit) Measurement {
-	rv := objc.CallMethod[Measurement](m_, "measurementByConvertingToUnit:", unit)
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByConvertingToUnit:"), unit)
 	return rv
 }
 
 func (m_ Measurement) MeasurementByAddingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.CallMethod[Measurement](m_, "measurementByAddingMeasurement:", measurement)
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByAddingMeasurement:"), measurement)
 	return rv
 }
 
 func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.CallMethod[Measurement](m_, "measurementBySubtractingMeasurement:", measurement)
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementBySubtractingMeasurement:"), measurement)
 	return rv
 }
 
 func (m_ Measurement) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](m_, "doubleValue")
+	rv := objc.CallMethod[float64](m_, objc.GetSelector("doubleValue"))
 	return rv
 }

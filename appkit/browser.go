@@ -157,22 +157,22 @@ func MakeBrowser(ptr unsafe.Pointer) Browser {
 }
 
 func (b_ Browser) InitWithFrame(frameRect foundation.Rect) Browser {
-	rv := objc.CallMethod[Browser](b_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Browser](b_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (b_ Browser) Init() Browser {
-	rv := objc.CallMethod[Browser](b_, "init")
+	rv := objc.CallMethod[Browser](b_, objc.GetSelector("init"))
 	return rv
 }
 
 func (bc _BrowserClass) Alloc() Browser {
-	rv := objc.CallMethod[Browser](bc, "alloc")
+	rv := objc.CallMethod[Browser](bc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (bc _BrowserClass) New() Browser {
-	rv := objc.CallMethod[Browser](bc, "new")
+	rv := objc.CallMethod[Browser](bc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -182,341 +182,341 @@ func NewBrowser() Browser {
 }
 
 func (b_ Browser) Tile() {
-	objc.CallMethod[objc.Void](b_, "tile")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("tile"))
 }
 
 func (b_ Browser) SelectedRowIndexesInColumn(column int) foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](b_, "selectedRowIndexesInColumn:", column)
+	rv := objc.CallMethod[foundation.IndexSet](b_, objc.GetSelector("selectedRowIndexesInColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) SelectRowIndexes_InColumn(indexes foundation.IIndexSet, column int) {
-	objc.CallMethod[objc.Void](b_, "selectRowIndexes:inColumn:", indexes, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectRowIndexes:inColumn:"), indexes, column)
 }
 
 func (b_ Browser) SelectedCellInColumn(column int) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, "selectedCellInColumn:", column)
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("selectedCellInColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](b_, "selectAll:", sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectAll:"), sender)
 }
 
 func (b_ Browser) SelectedRowInColumn(column int) int {
-	rv := objc.CallMethod[int](b_, "selectedRowInColumn:", column)
+	rv := objc.CallMethod[int](b_, objc.GetSelector("selectedRowInColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) SelectRow_InColumn(row int, column int) {
-	objc.CallMethod[objc.Void](b_, "selectRow:inColumn:", row, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectRow:inColumn:"), row, column)
 }
 
 func (b_ Browser) LoadedCellAtRow_Column(row int, col int) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, "loadedCellAtRow:column:", row, col)
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("loadedCellAtRow:column:"), row, col)
 	return rv
 }
 
 func (b_ Browser) EditItemAtIndexPath_WithEvent_Select(indexPath foundation.IIndexPath, event IEvent, select_ bool) {
-	objc.CallMethod[objc.Void](b_, "editItemAtIndexPath:withEvent:select:", indexPath, event, select_)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("editItemAtIndexPath:withEvent:select:"), indexPath, event, select_)
 }
 
 func (b_ Browser) ItemAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, "itemAtIndexPath:", indexPath)
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("itemAtIndexPath:"), indexPath)
 	return rv
 }
 
 func (b_ Browser) ItemAtRow_InColumn(row int, column int) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, "itemAtRow:inColumn:", row, column)
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("itemAtRow:inColumn:"), row, column)
 	return rv
 }
 
 func (b_ Browser) IndexPathForColumn(column int) foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](b_, "indexPathForColumn:", column)
+	rv := objc.CallMethod[foundation.IndexPath](b_, objc.GetSelector("indexPathForColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) IsLeafItem(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](b_, "isLeafItem:", item)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLeafItem:"), item)
 	return rv
 }
 
 func (b_ Browser) ParentForItemsInColumn(column int) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, "parentForItemsInColumn:", column)
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("parentForItemsInColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) Path() string {
-	rv := objc.CallMethod[string](b_, "path")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("path"))
 	return rv
 }
 
 func (b_ Browser) SetPath(path string) bool {
-	rv := objc.CallMethod[bool](b_, "setPath:", path)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("setPath:"), path)
 	return rv
 }
 
 func (b_ Browser) PathToColumn(column int) string {
-	rv := objc.CallMethod[string](b_, "pathToColumn:", column)
+	rv := objc.CallMethod[string](b_, objc.GetSelector("pathToColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) AddColumn() {
-	objc.CallMethod[objc.Void](b_, "addColumn")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("addColumn"))
 }
 
 func (b_ Browser) ValidateVisibleColumns() {
-	objc.CallMethod[objc.Void](b_, "validateVisibleColumns")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("validateVisibleColumns"))
 }
 
 func (b_ Browser) LoadColumnZero() {
-	objc.CallMethod[objc.Void](b_, "loadColumnZero")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("loadColumnZero"))
 }
 
 func (b_ Browser) ReloadColumn(column int) {
-	objc.CallMethod[objc.Void](b_, "reloadColumn:", column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("reloadColumn:"), column)
 }
 
 func (b_ Browser) TitleOfColumn(column int) string {
-	rv := objc.CallMethod[string](b_, "titleOfColumn:", column)
+	rv := objc.CallMethod[string](b_, objc.GetSelector("titleOfColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) SetTitle_OfColumn(string_ string, column int) {
-	objc.CallMethod[objc.Void](b_, "setTitle:ofColumn:", string_, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitle:ofColumn:"), string_, column)
 }
 
 func (b_ Browser) DrawTitleOfColumn_InRect(column int, rect foundation.Rect) {
-	objc.CallMethod[objc.Void](b_, "drawTitleOfColumn:inRect:", column, rect)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawTitleOfColumn:inRect:"), column, rect)
 }
 
 func (b_ Browser) TitleFrameOfColumn(column int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "titleFrameOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("titleFrameOfColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) NoteHeightOfRowsWithIndexesChanged_InColumn(indexSet foundation.IIndexSet, columnIndex int) {
-	objc.CallMethod[objc.Void](b_, "noteHeightOfRowsWithIndexesChanged:inColumn:", indexSet, columnIndex)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("noteHeightOfRowsWithIndexesChanged:inColumn:"), indexSet, columnIndex)
 }
 
 func (b_ Browser) ReloadDataForRowIndexes_InColumn(rowIndexes foundation.IIndexSet, column int) {
-	objc.CallMethod[objc.Void](b_, "reloadDataForRowIndexes:inColumn:", rowIndexes, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("reloadDataForRowIndexes:inColumn:"), rowIndexes, column)
 }
 
 func (b_ Browser) ScrollColumnToVisible(column int) {
-	objc.CallMethod[objc.Void](b_, "scrollColumnToVisible:", column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollColumnToVisible:"), column)
 }
 
 func (b_ Browser) ScrollColumnsLeftBy(shiftAmount int) {
-	objc.CallMethod[objc.Void](b_, "scrollColumnsLeftBy:", shiftAmount)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollColumnsLeftBy:"), shiftAmount)
 }
 
 func (b_ Browser) ScrollColumnsRightBy(shiftAmount int) {
-	objc.CallMethod[objc.Void](b_, "scrollColumnsRightBy:", shiftAmount)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollColumnsRightBy:"), shiftAmount)
 }
 
 func (b_ Browser) ScrollRowToVisible_InColumn(row int, column int) {
-	objc.CallMethod[objc.Void](b_, "scrollRowToVisible:inColumn:", row, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollRowToVisible:inColumn:"), row, column)
 }
 
 func (b_ Browser) SetDraggingSourceOperationMask_ForLocal(mask DragOperation, isLocal bool) {
-	objc.CallMethod[objc.Void](b_, "setDraggingSourceOperationMask:forLocal:", mask, isLocal)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDraggingSourceOperationMask:forLocal:"), mask, isLocal)
 }
 
 func (b_ Browser) CanDragRowsWithIndexes_InColumn_WithEvent(rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
-	rv := objc.CallMethod[bool](b_, "canDragRowsWithIndexes:inColumn:withEvent:", rowIndexes, column, event)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("canDragRowsWithIndexes:inColumn:withEvent:"), rowIndexes, column, event)
 	return rv
 }
 
 func (b_ Browser) DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](b_, "draggingImageForRowsWithIndexes:inColumn:withEvent:offset:", rowIndexes, column, event, dragImageOffset)
+	rv := objc.CallMethod[Image](b_, objc.GetSelector("draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), rowIndexes, column, event, dragImageOffset)
 	return rv
 }
 
 func (b_ Browser) FrameOfColumn(column int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "frameOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("frameOfColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) FrameOfInsideOfColumn(column int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "frameOfInsideOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("frameOfInsideOfColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) FrameOfRow_InColumn(row int, column int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "frameOfRow:inColumn:", row, column)
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("frameOfRow:inColumn:"), row, column)
 	return rv
 }
 
 func (b_ Browser) GetRow_Column_ForPoint(row *int, column *int, point foundation.Point) bool {
-	rv := objc.CallMethod[bool](b_, "getRow:column:forPoint:", row, column, point)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("getRow:column:forPoint:"), row, column, point)
 	return rv
 }
 
 func (b_ Browser) SendAction() bool {
-	rv := objc.CallMethod[bool](b_, "sendAction")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("sendAction"))
 	return rv
 }
 
 func (b_ Browser) DoClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](b_, "doClick:", sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("doClick:"), sender)
 }
 
 func (b_ Browser) DoDoubleClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](b_, "doDoubleClick:", sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("doDoubleClick:"), sender)
 }
 
 func (bc _BrowserClass) RemoveSavedColumnsWithAutosaveName(name BrowserColumnsAutosaveName) {
-	objc.CallMethod[objc.Void](bc, "removeSavedColumnsWithAutosaveName:", name)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("removeSavedColumnsWithAutosaveName:"), name)
 }
 
 func (b_ Browser) ColumnContentWidthForColumnWidth(columnWidth float64) float64 {
-	rv := objc.CallMethod[float64](b_, "columnContentWidthForColumnWidth:", columnWidth)
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("columnContentWidthForColumnWidth:"), columnWidth)
 	return rv
 }
 
 func (b_ Browser) ColumnWidthForColumnContentWidth(columnContentWidth float64) float64 {
-	rv := objc.CallMethod[float64](b_, "columnWidthForColumnContentWidth:", columnContentWidth)
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("columnWidthForColumnContentWidth:"), columnContentWidth)
 	return rv
 }
 
 func (b_ Browser) WidthOfColumn(column int) float64 {
-	rv := objc.CallMethod[float64](b_, "widthOfColumn:", column)
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("widthOfColumn:"), column)
 	return rv
 }
 
 func (b_ Browser) SetWidth_OfColumn(columnWidth float64, columnIndex int) {
-	objc.CallMethod[objc.Void](b_, "setWidth:ofColumn:", columnWidth, columnIndex)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setWidth:ofColumn:"), columnWidth, columnIndex)
 }
 
 func (b_ Browser) DefaultColumnWidth() float64 {
-	rv := objc.CallMethod[float64](b_, "defaultColumnWidth")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("defaultColumnWidth"))
 	return rv
 }
 
 func (b_ Browser) SetDefaultColumnWidth(columnWidth float64) {
-	objc.CallMethod[objc.Void](b_, "setDefaultColumnWidth:", columnWidth)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDefaultColumnWidth:"), columnWidth)
 }
 
 // deprecated
 func (b_ Browser) UpdateScroller() {
-	objc.CallMethod[objc.Void](b_, "updateScroller")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("updateScroller"))
 }
 
 // deprecated
 func (b_ Browser) ScrollViaScroller(sender IScroller) {
-	objc.CallMethod[objc.Void](b_, "scrollViaScroller:", sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollViaScroller:"), sender)
 }
 
 // deprecated
 func (b_ Browser) DisplayAllColumns() {
-	objc.CallMethod[objc.Void](b_, "displayAllColumns")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("displayAllColumns"))
 }
 
 // deprecated
 func (b_ Browser) DisplayColumn(column int) {
-	objc.CallMethod[objc.Void](b_, "displayColumn:", column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("displayColumn:"), column)
 }
 
 // deprecated
 func (b_ Browser) ColumnOfMatrix(matrix IMatrix) int {
-	rv := objc.CallMethod[int](b_, "columnOfMatrix:", matrix)
+	rv := objc.CallMethod[int](b_, objc.GetSelector("columnOfMatrix:"), matrix)
 	return rv
 }
 
 // deprecated
 func (b_ Browser) MatrixInColumn(column int) Matrix {
-	rv := objc.CallMethod[Matrix](b_, "matrixInColumn:", column)
+	rv := objc.CallMethod[Matrix](b_, objc.GetSelector("matrixInColumn:"), column)
 	return rv
 }
 
 // deprecated
 func (b_ Browser) MatrixClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](b_, "matrixClass")
+	rv := objc.CallMethod[objc.Class](b_, objc.GetSelector("matrixClass"))
 	return rv
 }
 
 // deprecated
 func (b_ Browser) SetMatrixClass(factoryId objc.IClass) {
-	objc.CallMethod[objc.Void](b_, "setMatrixClass:", factoryId)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMatrixClass:"), factoryId)
 }
 
 // deprecated
 func (b_ Browser) AcceptsArrowKeys() bool {
-	rv := objc.CallMethod[bool](b_, "acceptsArrowKeys")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("acceptsArrowKeys"))
 	return rv
 }
 
 // deprecated
 func (b_ Browser) SetAcceptsArrowKeys(flag bool) {
-	objc.CallMethod[objc.Void](b_, "setAcceptsArrowKeys:", flag)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAcceptsArrowKeys:"), flag)
 }
 
 func (b_ Browser) ReusesColumns() bool {
-	rv := objc.CallMethod[bool](b_, "reusesColumns")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("reusesColumns"))
 	return rv
 }
 
 func (b_ Browser) SetReusesColumns(value bool) {
-	objc.CallMethod[objc.Void](b_, "setReusesColumns:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setReusesColumns:"), value)
 }
 
 func (b_ Browser) MaxVisibleColumns() int {
-	rv := objc.CallMethod[int](b_, "maxVisibleColumns")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("maxVisibleColumns"))
 	return rv
 }
 
 func (b_ Browser) SetMaxVisibleColumns(value int) {
-	objc.CallMethod[objc.Void](b_, "setMaxVisibleColumns:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMaxVisibleColumns:"), value)
 }
 
 func (b_ Browser) AutohidesScroller() bool {
-	rv := objc.CallMethod[bool](b_, "autohidesScroller")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("autohidesScroller"))
 	return rv
 }
 
 func (b_ Browser) SetAutohidesScroller(value bool) {
-	objc.CallMethod[objc.Void](b_, "setAutohidesScroller:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAutohidesScroller:"), value)
 }
 
 func (b_ Browser) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](b_, "backgroundColor")
+	rv := objc.CallMethod[Color](b_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (b_ Browser) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBackgroundColor:"), value)
 }
 
 func (b_ Browser) MinColumnWidth() float64 {
-	rv := objc.CallMethod[float64](b_, "minColumnWidth")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("minColumnWidth"))
 	return rv
 }
 
 func (b_ Browser) SetMinColumnWidth(value float64) {
-	objc.CallMethod[objc.Void](b_, "setMinColumnWidth:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMinColumnWidth:"), value)
 }
 
 func (b_ Browser) SeparatesColumns() bool {
-	rv := objc.CallMethod[bool](b_, "separatesColumns")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("separatesColumns"))
 	return rv
 }
 
 func (b_ Browser) SetSeparatesColumns(value bool) {
-	objc.CallMethod[objc.Void](b_, "setSeparatesColumns:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSeparatesColumns:"), value)
 }
 
 func (b_ Browser) TakesTitleFromPreviousColumn() bool {
-	rv := objc.CallMethod[bool](b_, "takesTitleFromPreviousColumn")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("takesTitleFromPreviousColumn"))
 	return rv
 }
 
 func (b_ Browser) SetTakesTitleFromPreviousColumn(value bool) {
-	objc.CallMethod[objc.Void](b_, "setTakesTitleFromPreviousColumn:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTakesTitleFromPreviousColumn:"), value)
 }
 
 func (b_ Browser) Delegate() BrowserDelegateWrapper {
-	rv := objc.CallMethod[BrowserDelegateWrapper](b_, "delegate")
+	rv := objc.CallMethod[BrowserDelegateWrapper](b_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -524,207 +524,207 @@ func (b_ Browser) SetDelegate(value BrowserDelegate) {
 	po := objc.CreateProtocol("NSBrowserDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(b_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](b_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (b_ Browser) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (b_ Browser) CellPrototype() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, "cellPrototype")
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("cellPrototype"))
 	return rv
 }
 
 func (b_ Browser) SetCellPrototype(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, "setCellPrototype:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCellPrototype:"), value)
 }
 
 func (b_ Browser) AllowsBranchSelection() bool {
-	rv := objc.CallMethod[bool](b_, "allowsBranchSelection")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("allowsBranchSelection"))
 	return rv
 }
 
 func (b_ Browser) SetAllowsBranchSelection(value bool) {
-	objc.CallMethod[objc.Void](b_, "setAllowsBranchSelection:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowsBranchSelection:"), value)
 }
 
 func (b_ Browser) AllowsEmptySelection() bool {
-	rv := objc.CallMethod[bool](b_, "allowsEmptySelection")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("allowsEmptySelection"))
 	return rv
 }
 
 func (b_ Browser) SetAllowsEmptySelection(value bool) {
-	objc.CallMethod[objc.Void](b_, "setAllowsEmptySelection:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowsEmptySelection:"), value)
 }
 
 func (b_ Browser) AllowsMultipleSelection() bool {
-	rv := objc.CallMethod[bool](b_, "allowsMultipleSelection")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("allowsMultipleSelection"))
 	return rv
 }
 
 func (b_ Browser) SetAllowsMultipleSelection(value bool) {
-	objc.CallMethod[objc.Void](b_, "setAllowsMultipleSelection:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowsMultipleSelection:"), value)
 }
 
 func (b_ Browser) AllowsTypeSelect() bool {
-	rv := objc.CallMethod[bool](b_, "allowsTypeSelect")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("allowsTypeSelect"))
 	return rv
 }
 
 func (b_ Browser) SetAllowsTypeSelect(value bool) {
-	objc.CallMethod[objc.Void](b_, "setAllowsTypeSelect:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowsTypeSelect:"), value)
 }
 
 func (b_ Browser) SelectedCells() []Cell {
-	rv := objc.CallMethod[[]Cell](b_, "selectedCells")
+	rv := objc.CallMethod[[]Cell](b_, objc.GetSelector("selectedCells"))
 	return rv
 }
 
 func (b_ Browser) SelectionIndexPath() foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](b_, "selectionIndexPath")
+	rv := objc.CallMethod[foundation.IndexPath](b_, objc.GetSelector("selectionIndexPath"))
 	return rv
 }
 
 func (b_ Browser) SetSelectionIndexPath(value foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](b_, "setSelectionIndexPath:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSelectionIndexPath:"), value)
 }
 
 func (b_ Browser) SelectionIndexPaths() []foundation.IndexPath {
-	rv := objc.CallMethod[[]foundation.IndexPath](b_, "selectionIndexPaths")
+	rv := objc.CallMethod[[]foundation.IndexPath](b_, objc.GetSelector("selectionIndexPaths"))
 	return rv
 }
 
 func (b_ Browser) SetSelectionIndexPaths(value []foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](b_, "setSelectionIndexPaths:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSelectionIndexPaths:"), value)
 }
 
 func (b_ Browser) PathSeparator() string {
-	rv := objc.CallMethod[string](b_, "pathSeparator")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("pathSeparator"))
 	return rv
 }
 
 func (b_ Browser) SetPathSeparator(value string) {
-	objc.CallMethod[objc.Void](b_, "setPathSeparator:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setPathSeparator:"), value)
 }
 
 func (b_ Browser) SelectedColumn() int {
-	rv := objc.CallMethod[int](b_, "selectedColumn")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("selectedColumn"))
 	return rv
 }
 
 func (b_ Browser) LastColumn() int {
-	rv := objc.CallMethod[int](b_, "lastColumn")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("lastColumn"))
 	return rv
 }
 
 func (b_ Browser) SetLastColumn(value int) {
-	objc.CallMethod[objc.Void](b_, "setLastColumn:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLastColumn:"), value)
 }
 
 func (b_ Browser) FirstVisibleColumn() int {
-	rv := objc.CallMethod[int](b_, "firstVisibleColumn")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("firstVisibleColumn"))
 	return rv
 }
 
 func (b_ Browser) NumberOfVisibleColumns() int {
-	rv := objc.CallMethod[int](b_, "numberOfVisibleColumns")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("numberOfVisibleColumns"))
 	return rv
 }
 
 func (b_ Browser) LastVisibleColumn() int {
-	rv := objc.CallMethod[int](b_, "lastVisibleColumn")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("lastVisibleColumn"))
 	return rv
 }
 
 func (b_ Browser) IsLoaded() bool {
-	rv := objc.CallMethod[bool](b_, "isLoaded")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLoaded"))
 	return rv
 }
 
 func (b_ Browser) IsTitled() bool {
-	rv := objc.CallMethod[bool](b_, "isTitled")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isTitled"))
 	return rv
 }
 
 func (b_ Browser) SetTitled(value bool) {
-	objc.CallMethod[objc.Void](b_, "setTitled:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitled:"), value)
 }
 
 func (b_ Browser) TitleHeight() float64 {
-	rv := objc.CallMethod[float64](b_, "titleHeight")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("titleHeight"))
 	return rv
 }
 
 func (b_ Browser) HasHorizontalScroller() bool {
-	rv := objc.CallMethod[bool](b_, "hasHorizontalScroller")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("hasHorizontalScroller"))
 	return rv
 }
 
 func (b_ Browser) SetHasHorizontalScroller(value bool) {
-	objc.CallMethod[objc.Void](b_, "setHasHorizontalScroller:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setHasHorizontalScroller:"), value)
 }
 
 func (b_ Browser) DoubleAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](b_, "doubleAction")
+	rv := objc.CallMethod[objc.Selector](b_, objc.GetSelector("doubleAction"))
 	return rv
 }
 
 func (b_ Browser) SetDoubleAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](b_, "setDoubleAction:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDoubleAction:"), value)
 }
 
 func (b_ Browser) SendsActionOnArrowKeys() bool {
-	rv := objc.CallMethod[bool](b_, "sendsActionOnArrowKeys")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("sendsActionOnArrowKeys"))
 	return rv
 }
 
 func (b_ Browser) SetSendsActionOnArrowKeys(value bool) {
-	objc.CallMethod[objc.Void](b_, "setSendsActionOnArrowKeys:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSendsActionOnArrowKeys:"), value)
 }
 
 func (b_ Browser) ClickedColumn() int {
-	rv := objc.CallMethod[int](b_, "clickedColumn")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("clickedColumn"))
 	return rv
 }
 
 func (b_ Browser) ClickedRow() int {
-	rv := objc.CallMethod[int](b_, "clickedRow")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("clickedRow"))
 	return rv
 }
 
 func (b_ Browser) ColumnsAutosaveName() BrowserColumnsAutosaveName {
-	rv := objc.CallMethod[BrowserColumnsAutosaveName](b_, "columnsAutosaveName")
+	rv := objc.CallMethod[BrowserColumnsAutosaveName](b_, objc.GetSelector("columnsAutosaveName"))
 	return rv
 }
 
 func (b_ Browser) SetColumnsAutosaveName(value BrowserColumnsAutosaveName) {
-	objc.CallMethod[objc.Void](b_, "setColumnsAutosaveName:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setColumnsAutosaveName:"), value)
 }
 
 func (b_ Browser) ColumnResizingType() BrowserColumnResizingType {
-	rv := objc.CallMethod[BrowserColumnResizingType](b_, "columnResizingType")
+	rv := objc.CallMethod[BrowserColumnResizingType](b_, objc.GetSelector("columnResizingType"))
 	return rv
 }
 
 func (b_ Browser) SetColumnResizingType(value BrowserColumnResizingType) {
-	objc.CallMethod[objc.Void](b_, "setColumnResizingType:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setColumnResizingType:"), value)
 }
 
 func (b_ Browser) PrefersAllColumnUserResizing() bool {
-	rv := objc.CallMethod[bool](b_, "prefersAllColumnUserResizing")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("prefersAllColumnUserResizing"))
 	return rv
 }
 
 func (b_ Browser) SetPrefersAllColumnUserResizing(value bool) {
-	objc.CallMethod[objc.Void](b_, "setPrefersAllColumnUserResizing:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setPrefersAllColumnUserResizing:"), value)
 }
 
 func (b_ Browser) RowHeight() float64 {
-	rv := objc.CallMethod[float64](b_, "rowHeight")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("rowHeight"))
 	return rv
 }
 
 func (b_ Browser) SetRowHeight(value float64) {
-	objc.CallMethod[objc.Void](b_, "setRowHeight:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setRowHeight:"), value)
 }

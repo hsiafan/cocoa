@@ -32,12 +32,12 @@ func MakeExtensionContext(ptr unsafe.Pointer) ExtensionContext {
 }
 
 func (ec _ExtensionContextClass) Alloc() ExtensionContext {
-	rv := objc.CallMethod[ExtensionContext](ec, "alloc")
+	rv := objc.CallMethod[ExtensionContext](ec, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (ec _ExtensionContextClass) New() ExtensionContext {
-	rv := objc.CallMethod[ExtensionContext](ec, "new")
+	rv := objc.CallMethod[ExtensionContext](ec, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,23 +47,23 @@ func NewExtensionContext() ExtensionContext {
 }
 
 func (e_ ExtensionContext) Init() ExtensionContext {
-	rv := objc.CallMethod[ExtensionContext](e_, "init")
+	rv := objc.CallMethod[ExtensionContext](e_, objc.GetSelector("init"))
 	return rv
 }
 
 func (e_ ExtensionContext) CancelRequestWithError(error IError) {
-	objc.CallMethod[objc.Void](e_, "cancelRequestWithError:", error)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("cancelRequestWithError:"), error)
 }
 
 func (e_ ExtensionContext) CompleteRequestReturningItems_CompletionHandler(items []objc.IObject, completionHandler func(expired bool)) {
-	objc.CallMethod[objc.Void](e_, "completeRequestReturningItems:completionHandler:", items, completionHandler)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("completeRequestReturningItems:completionHandler:"), items, completionHandler)
 }
 
 func (e_ ExtensionContext) OpenURL_CompletionHandler(URL IURL, completionHandler func(success bool)) {
-	objc.CallMethod[objc.Void](e_, "openURL:completionHandler:", URL, completionHandler)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("openURL:completionHandler:"), URL, completionHandler)
 }
 
 func (e_ ExtensionContext) InputItems() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](e_, "inputItems")
+	rv := objc.CallMethod[[]objc.Object](e_, objc.GetSelector("inputItems"))
 	return rv
 }

@@ -31,27 +31,27 @@ func MakeCollectionLayoutDecorationItem(ptr unsafe.Pointer) CollectionLayoutDeco
 }
 
 func (cc _CollectionLayoutDecorationItemClass) BackgroundDecorationItemWithElementKind(elementKind string) CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "backgroundDecorationItemWithElementKind:", elementKind)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("backgroundDecorationItemWithElementKind:"), elementKind)
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "itemWithLayoutSize:", layoutSize)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) Alloc() CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) New() CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,20 +61,20 @@ func NewCollectionLayoutDecorationItem() CollectionLayoutDecorationItem {
 }
 
 func (c_ CollectionLayoutDecorationItem) Init() CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutDecorationItem) ElementKind() string {
-	rv := objc.CallMethod[string](c_, "elementKind")
+	rv := objc.CallMethod[string](c_, objc.GetSelector("elementKind"))
 	return rv
 }
 
 func (c_ CollectionLayoutDecorationItem) ZIndex() int {
-	rv := objc.CallMethod[int](c_, "zIndex")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("zIndex"))
 	return rv
 }
 
 func (c_ CollectionLayoutDecorationItem) SetZIndex(value int) {
-	objc.CallMethod[objc.Void](c_, "setZIndex:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setZIndex:"), value)
 }

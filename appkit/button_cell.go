@@ -85,27 +85,27 @@ func MakeButtonCell(ptr unsafe.Pointer) ButtonCell {
 }
 
 func (b_ ButtonCell) InitImageCell(image IImage) ButtonCell {
-	rv := objc.CallMethod[ButtonCell](b_, "initImageCell:", image)
+	rv := objc.CallMethod[ButtonCell](b_, objc.GetSelector("initImageCell:"), image)
 	return rv
 }
 
 func (b_ ButtonCell) InitTextCell(string_ string) ButtonCell {
-	rv := objc.CallMethod[ButtonCell](b_, "initTextCell:", string_)
+	rv := objc.CallMethod[ButtonCell](b_, objc.GetSelector("initTextCell:"), string_)
 	return rv
 }
 
 func (b_ ButtonCell) Init() ButtonCell {
-	rv := objc.CallMethod[ButtonCell](b_, "init")
+	rv := objc.CallMethod[ButtonCell](b_, objc.GetSelector("init"))
 	return rv
 }
 
 func (bc _ButtonCellClass) Alloc() ButtonCell {
-	rv := objc.CallMethod[ButtonCell](bc, "alloc")
+	rv := objc.CallMethod[ButtonCell](bc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (bc _ButtonCellClass) New() ButtonCell {
-	rv := objc.CallMethod[ButtonCell](bc, "new")
+	rv := objc.CallMethod[ButtonCell](bc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -116,217 +116,217 @@ func NewButtonCell() ButtonCell {
 
 // deprecated
 func (b_ ButtonCell) AlternateMnemonic() string {
-	rv := objc.CallMethod[string](b_, "alternateMnemonic")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("alternateMnemonic"))
 	return rv
 }
 
 // deprecated
 func (b_ ButtonCell) AlternateMnemonicLocation() uint {
-	rv := objc.CallMethod[uint](b_, "alternateMnemonicLocation")
+	rv := objc.CallMethod[uint](b_, objc.GetSelector("alternateMnemonicLocation"))
 	return rv
 }
 
 // deprecated
 func (b_ ButtonCell) SetAlternateMnemonicLocation(location uint) {
-	objc.CallMethod[objc.Void](b_, "setAlternateMnemonicLocation:", location)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateMnemonicLocation:"), location)
 }
 
 // deprecated
 func (b_ ButtonCell) SetAlternateTitleWithMnemonic(stringWithAmpersand string) {
-	objc.CallMethod[objc.Void](b_, "setAlternateTitleWithMnemonic:", stringWithAmpersand)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateTitleWithMnemonic:"), stringWithAmpersand)
 }
 
 func (b_ ButtonCell) SetPeriodicDelay_Interval(delay float32, interval float32) {
-	objc.CallMethod[objc.Void](b_, "setPeriodicDelay:interval:", delay, interval)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setPeriodicDelay:interval:"), delay, interval)
 }
 
 // deprecated
 func (b_ ButtonCell) SetKeyEquivalentFont_Size(fontName string, fontSize float64) {
-	objc.CallMethod[objc.Void](b_, "setKeyEquivalentFont:size:", fontName, fontSize)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalentFont:size:"), fontName, fontSize)
 }
 
 func (b_ ButtonCell) SetButtonType(type_ ButtonType) {
-	objc.CallMethod[objc.Void](b_, "setButtonType:", type_)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setButtonType:"), type_)
 }
 
 func (b_ ButtonCell) MouseEntered(event IEvent) {
-	objc.CallMethod[objc.Void](b_, "mouseEntered:", event)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("mouseEntered:"), event)
 }
 
 func (b_ ButtonCell) MouseExited(event IEvent) {
-	objc.CallMethod[objc.Void](b_, "mouseExited:", event)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("mouseExited:"), event)
 }
 
 func (b_ ButtonCell) DrawBezelWithFrame_InView(frame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](b_, "drawBezelWithFrame:inView:", frame, controlView)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawBezelWithFrame:inView:"), frame, controlView)
 }
 
 func (b_ ButtonCell) DrawImage_WithFrame_InView(image IImage, frame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](b_, "drawImage:withFrame:inView:", image, frame, controlView)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawImage:withFrame:inView:"), image, frame, controlView)
 }
 
 func (b_ ButtonCell) DrawTitle_WithFrame_InView(title foundation.IAttributedString, frame foundation.Rect, controlView IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "drawTitle:withFrame:inView:", title, frame, controlView)
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("drawTitle:withFrame:inView:"), title, frame, controlView)
 	return rv
 }
 
 func (b_ ButtonCell) AlternateTitle() string {
-	rv := objc.CallMethod[string](b_, "alternateTitle")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("alternateTitle"))
 	return rv
 }
 
 func (b_ ButtonCell) SetAlternateTitle(value string) {
-	objc.CallMethod[objc.Void](b_, "setAlternateTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateTitle:"), value)
 }
 
 func (b_ ButtonCell) AttributedAlternateTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](b_, "attributedAlternateTitle")
+	rv := objc.CallMethod[foundation.AttributedString](b_, objc.GetSelector("attributedAlternateTitle"))
 	return rv
 }
 
 func (b_ ButtonCell) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, "setAttributedAlternateTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedAlternateTitle:"), value)
 }
 
 func (b_ ButtonCell) AttributedTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](b_, "attributedTitle")
+	rv := objc.CallMethod[foundation.AttributedString](b_, objc.GetSelector("attributedTitle"))
 	return rv
 }
 
 func (b_ ButtonCell) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, "setAttributedTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedTitle:"), value)
 }
 
 func (b_ ButtonCell) AlternateImage() Image {
-	rv := objc.CallMethod[Image](b_, "alternateImage")
+	rv := objc.CallMethod[Image](b_, objc.GetSelector("alternateImage"))
 	return rv
 }
 
 func (b_ ButtonCell) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, "setAlternateImage:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), value)
 }
 
 func (b_ ButtonCell) ImagePosition() CellImagePosition {
-	rv := objc.CallMethod[CellImagePosition](b_, "imagePosition")
+	rv := objc.CallMethod[CellImagePosition](b_, objc.GetSelector("imagePosition"))
 	return rv
 }
 
 func (b_ ButtonCell) SetImagePosition(value CellImagePosition) {
-	objc.CallMethod[objc.Void](b_, "setImagePosition:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImagePosition:"), value)
 }
 
 func (b_ ButtonCell) ImageScaling() ImageScaling {
-	rv := objc.CallMethod[ImageScaling](b_, "imageScaling")
+	rv := objc.CallMethod[ImageScaling](b_, objc.GetSelector("imageScaling"))
 	return rv
 }
 
 func (b_ ButtonCell) SetImageScaling(value ImageScaling) {
-	objc.CallMethod[objc.Void](b_, "setImageScaling:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImageScaling:"), value)
 }
 
 func (b_ ButtonCell) SetKeyEquivalent(value string) {
-	objc.CallMethod[objc.Void](b_, "setKeyEquivalent:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalent:"), value)
 }
 
 // deprecated
 func (b_ ButtonCell) KeyEquivalentFont() Font {
-	rv := objc.CallMethod[Font](b_, "keyEquivalentFont")
+	rv := objc.CallMethod[Font](b_, objc.GetSelector("keyEquivalentFont"))
 	return rv
 }
 
 // deprecated
 func (b_ ButtonCell) SetKeyEquivalentFont(value IFont) {
-	objc.CallMethod[objc.Void](b_, "setKeyEquivalentFont:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalentFont:"), value)
 }
 
 func (b_ ButtonCell) KeyEquivalentModifierMask() EventModifierFlags {
-	rv := objc.CallMethod[EventModifierFlags](b_, "keyEquivalentModifierMask")
+	rv := objc.CallMethod[EventModifierFlags](b_, objc.GetSelector("keyEquivalentModifierMask"))
 	return rv
 }
 
 func (b_ ButtonCell) SetKeyEquivalentModifierMask(value EventModifierFlags) {
-	objc.CallMethod[objc.Void](b_, "setKeyEquivalentModifierMask:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalentModifierMask:"), value)
 }
 
 func (b_ ButtonCell) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](b_, "backgroundColor")
+	rv := objc.CallMethod[Color](b_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (b_ ButtonCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBackgroundColor:"), value)
 }
 
 func (b_ ButtonCell) BezelStyle() BezelStyle {
-	rv := objc.CallMethod[BezelStyle](b_, "bezelStyle")
+	rv := objc.CallMethod[BezelStyle](b_, objc.GetSelector("bezelStyle"))
 	return rv
 }
 
 func (b_ ButtonCell) SetBezelStyle(value BezelStyle) {
-	objc.CallMethod[objc.Void](b_, "setBezelStyle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBezelStyle:"), value)
 }
 
 // deprecated
 func (b_ ButtonCell) GradientType() GradientType {
-	rv := objc.CallMethod[GradientType](b_, "gradientType")
+	rv := objc.CallMethod[GradientType](b_, objc.GetSelector("gradientType"))
 	return rv
 }
 
 // deprecated
 func (b_ ButtonCell) SetGradientType(value GradientType) {
-	objc.CallMethod[objc.Void](b_, "setGradientType:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setGradientType:"), value)
 }
 
 func (b_ ButtonCell) ImageDimsWhenDisabled() bool {
-	rv := objc.CallMethod[bool](b_, "imageDimsWhenDisabled")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("imageDimsWhenDisabled"))
 	return rv
 }
 
 func (b_ ButtonCell) SetImageDimsWhenDisabled(value bool) {
-	objc.CallMethod[objc.Void](b_, "setImageDimsWhenDisabled:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImageDimsWhenDisabled:"), value)
 }
 
 func (b_ ButtonCell) IsTransparent() bool {
-	rv := objc.CallMethod[bool](b_, "isTransparent")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isTransparent"))
 	return rv
 }
 
 func (b_ ButtonCell) SetTransparent(value bool) {
-	objc.CallMethod[objc.Void](b_, "setTransparent:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTransparent:"), value)
 }
 
 func (b_ ButtonCell) ShowsBorderOnlyWhileMouseInside() bool {
-	rv := objc.CallMethod[bool](b_, "showsBorderOnlyWhileMouseInside")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("showsBorderOnlyWhileMouseInside"))
 	return rv
 }
 
 func (b_ ButtonCell) SetShowsBorderOnlyWhileMouseInside(value bool) {
-	objc.CallMethod[objc.Void](b_, "setShowsBorderOnlyWhileMouseInside:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setShowsBorderOnlyWhileMouseInside:"), value)
 }
 
 func (b_ ButtonCell) HighlightsBy() CellStyleMask {
-	rv := objc.CallMethod[CellStyleMask](b_, "highlightsBy")
+	rv := objc.CallMethod[CellStyleMask](b_, objc.GetSelector("highlightsBy"))
 	return rv
 }
 
 func (b_ ButtonCell) SetHighlightsBy(value CellStyleMask) {
-	objc.CallMethod[objc.Void](b_, "setHighlightsBy:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setHighlightsBy:"), value)
 }
 
 func (b_ ButtonCell) ShowsStateBy() CellStyleMask {
-	rv := objc.CallMethod[CellStyleMask](b_, "showsStateBy")
+	rv := objc.CallMethod[CellStyleMask](b_, objc.GetSelector("showsStateBy"))
 	return rv
 }
 
 func (b_ ButtonCell) SetShowsStateBy(value CellStyleMask) {
-	objc.CallMethod[objc.Void](b_, "setShowsStateBy:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setShowsStateBy:"), value)
 }
 
 func (b_ ButtonCell) Sound() Sound {
-	rv := objc.CallMethod[Sound](b_, "sound")
+	rv := objc.CallMethod[Sound](b_, objc.GetSelector("sound"))
 	return rv
 }
 
 func (b_ ButtonCell) SetSound(value ISound) {
-	objc.CallMethod[objc.Void](b_, "setSound:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSound:"), value)
 }

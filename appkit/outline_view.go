@@ -63,22 +63,22 @@ func MakeOutlineView(ptr unsafe.Pointer) OutlineView {
 }
 
 func (o_ OutlineView) InitWithFrame(frameRect foundation.Rect) OutlineView {
-	rv := objc.CallMethod[OutlineView](o_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[OutlineView](o_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (o_ OutlineView) Init() OutlineView {
-	rv := objc.CallMethod[OutlineView](o_, "init")
+	rv := objc.CallMethod[OutlineView](o_, objc.GetSelector("init"))
 	return rv
 }
 
 func (oc _OutlineViewClass) Alloc() OutlineView {
-	rv := objc.CallMethod[OutlineView](oc, "alloc")
+	rv := objc.CallMethod[OutlineView](oc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (oc _OutlineViewClass) New() OutlineView {
-	rv := objc.CallMethod[OutlineView](oc, "new")
+	rv := objc.CallMethod[OutlineView](oc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -88,155 +88,155 @@ func NewOutlineView() OutlineView {
 }
 
 func (o_ OutlineView) IsExpandable(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "isExpandable:", item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("isExpandable:"), item)
 	return rv
 }
 
 func (o_ OutlineView) IsItemExpanded(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, "isItemExpanded:", item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("isItemExpanded:"), item)
 	return rv
 }
 
 func (o_ OutlineView) ExpandItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "expandItem:", item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("expandItem:"), item)
 }
 
 func (o_ OutlineView) ExpandItem_ExpandChildren(item objc.IObject, expandChildren bool) {
-	objc.CallMethod[objc.Void](o_, "expandItem:expandChildren:", item, expandChildren)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("expandItem:expandChildren:"), item, expandChildren)
 }
 
 func (o_ OutlineView) CollapseItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "collapseItem:", item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("collapseItem:"), item)
 }
 
 func (o_ OutlineView) CollapseItem_CollapseChildren(item objc.IObject, collapseChildren bool) {
-	objc.CallMethod[objc.Void](o_, "collapseItem:collapseChildren:", item, collapseChildren)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("collapseItem:collapseChildren:"), item, collapseChildren)
 }
 
 func (o_ OutlineView) ReloadItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "reloadItem:", item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("reloadItem:"), item)
 }
 
 func (o_ OutlineView) ReloadItem_ReloadChildren(item objc.IObject, reloadChildren bool) {
-	objc.CallMethod[objc.Void](o_, "reloadItem:reloadChildren:", item, reloadChildren)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("reloadItem:reloadChildren:"), item, reloadChildren)
 }
 
 func (o_ OutlineView) ItemAtRow(row int) objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, "itemAtRow:", row)
+	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("itemAtRow:"), row)
 	return rv
 }
 
 func (o_ OutlineView) RowForItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, "rowForItem:", item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("rowForItem:"), item)
 	return rv
 }
 
 func (o_ OutlineView) LevelForItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, "levelForItem:", item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("levelForItem:"), item)
 	return rv
 }
 
 func (o_ OutlineView) LevelForRow(row int) int {
-	rv := objc.CallMethod[int](o_, "levelForRow:", row)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("levelForRow:"), row)
 	return rv
 }
 
 func (o_ OutlineView) SetDropItem_DropChildIndex(item objc.IObject, index int) {
-	objc.CallMethod[objc.Void](o_, "setDropItem:dropChildIndex:", item, index)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setDropItem:dropChildIndex:"), item, index)
 }
 
 func (o_ OutlineView) ShouldCollapseAutoExpandedItemsForDeposited(deposited bool) bool {
-	rv := objc.CallMethod[bool](o_, "shouldCollapseAutoExpandedItemsForDeposited:", deposited)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("shouldCollapseAutoExpandedItemsForDeposited:"), deposited)
 	return rv
 }
 
 func (o_ OutlineView) ParentForItem(item objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, "parentForItem:", item)
+	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("parentForItem:"), item)
 	return rv
 }
 
 func (o_ OutlineView) ChildIndexForItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, "childIndexForItem:", item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("childIndexForItem:"), item)
 	return rv
 }
 
 func (o_ OutlineView) Child_OfItem(index int, item objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, "child:ofItem:", index, item)
+	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("child:ofItem:"), index, item)
 	return rv
 }
 
 func (o_ OutlineView) NumberOfChildrenOfItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, "numberOfChildrenOfItem:", item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("numberOfChildrenOfItem:"), item)
 	return rv
 }
 
 func (o_ OutlineView) FrameOfOutlineCellAtRow(row int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](o_, "frameOfOutlineCellAtRow:", row)
+	rv := objc.CallMethod[foundation.Rect](o_, objc.GetSelector("frameOfOutlineCellAtRow:"), row)
 	return rv
 }
 
 func (o_ OutlineView) InsertItemsAtIndexes_InParent_WithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](o_, "insertItemsAtIndexes:inParent:withAnimation:", indexes, parent, animationOptions)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("insertItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
 }
 
 func (o_ OutlineView) MoveItemAtIndex_InParent_ToIndex_InParent(fromIndex int, oldParent objc.IObject, toIndex int, newParent objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "moveItemAtIndex:inParent:toIndex:inParent:", fromIndex, oldParent, toIndex, newParent)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("moveItemAtIndex:inParent:toIndex:inParent:"), fromIndex, oldParent, toIndex, newParent)
 }
 
 func (o_ OutlineView) RemoveItemsAtIndexes_InParent_WithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](o_, "removeItemsAtIndexes:inParent:withAnimation:", indexes, parent, animationOptions)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
 }
 
 func (o_ OutlineView) StronglyReferencesItems() bool {
-	rv := objc.CallMethod[bool](o_, "stronglyReferencesItems")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("stronglyReferencesItems"))
 	return rv
 }
 
 func (o_ OutlineView) SetStronglyReferencesItems(value bool) {
-	objc.CallMethod[objc.Void](o_, "setStronglyReferencesItems:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setStronglyReferencesItems:"), value)
 }
 
 func (o_ OutlineView) OutlineTableColumn() TableColumn {
-	rv := objc.CallMethod[TableColumn](o_, "outlineTableColumn")
+	rv := objc.CallMethod[TableColumn](o_, objc.GetSelector("outlineTableColumn"))
 	return rv
 }
 
 func (o_ OutlineView) SetOutlineTableColumn(value ITableColumn) {
-	objc.CallMethod[objc.Void](o_, "setOutlineTableColumn:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setOutlineTableColumn:"), value)
 }
 
 func (o_ OutlineView) AutoresizesOutlineColumn() bool {
-	rv := objc.CallMethod[bool](o_, "autoresizesOutlineColumn")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("autoresizesOutlineColumn"))
 	return rv
 }
 
 func (o_ OutlineView) SetAutoresizesOutlineColumn(value bool) {
-	objc.CallMethod[objc.Void](o_, "setAutoresizesOutlineColumn:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setAutoresizesOutlineColumn:"), value)
 }
 
 func (o_ OutlineView) IndentationPerLevel() float64 {
-	rv := objc.CallMethod[float64](o_, "indentationPerLevel")
+	rv := objc.CallMethod[float64](o_, objc.GetSelector("indentationPerLevel"))
 	return rv
 }
 
 func (o_ OutlineView) SetIndentationPerLevel(value float64) {
-	objc.CallMethod[objc.Void](o_, "setIndentationPerLevel:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setIndentationPerLevel:"), value)
 }
 
 func (o_ OutlineView) IndentationMarkerFollowsCell() bool {
-	rv := objc.CallMethod[bool](o_, "indentationMarkerFollowsCell")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("indentationMarkerFollowsCell"))
 	return rv
 }
 
 func (o_ OutlineView) SetIndentationMarkerFollowsCell(value bool) {
-	objc.CallMethod[objc.Void](o_, "setIndentationMarkerFollowsCell:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setIndentationMarkerFollowsCell:"), value)
 }
 
 func (o_ OutlineView) AutosaveExpandedItems() bool {
-	rv := objc.CallMethod[bool](o_, "autosaveExpandedItems")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("autosaveExpandedItems"))
 	return rv
 }
 
 func (o_ OutlineView) SetAutosaveExpandedItems(value bool) {
-	objc.CallMethod[objc.Void](o_, "setAutosaveExpandedItems:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setAutosaveExpandedItems:"), value)
 }

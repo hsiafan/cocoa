@@ -23,7 +23,7 @@ func (u_ *UserInterfaceItemIdentificationWrapper) ImplementsSetIdentifier() bool
 }
 
 func (u_ UserInterfaceItemIdentificationWrapper) SetIdentifier(value UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](u_, "setIdentifier:", value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setIdentifier:"), value)
 }
 
 func (u_ *UserInterfaceItemIdentificationWrapper) ImplementsIdentifier() bool {
@@ -31,6 +31,6 @@ func (u_ *UserInterfaceItemIdentificationWrapper) ImplementsIdentifier() bool {
 }
 
 func (u_ UserInterfaceItemIdentificationWrapper) Identifier() UserInterfaceItemIdentifier {
-	rv := objc.CallMethod[UserInterfaceItemIdentifier](u_, "identifier")
+	rv := objc.CallMethod[UserInterfaceItemIdentifier](u_, objc.GetSelector("identifier"))
 	return rv
 }

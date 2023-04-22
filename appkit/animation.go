@@ -56,17 +56,17 @@ func MakeAnimation(ptr unsafe.Pointer) Animation {
 }
 
 func (a_ Animation) InitWithDuration_AnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) Animation {
-	rv := objc.CallMethod[Animation](a_, "initWithDuration:animationCurve:", duration, animationCurve)
+	rv := objc.CallMethod[Animation](a_, objc.GetSelector("initWithDuration:animationCurve:"), duration, animationCurve)
 	return rv
 }
 
 func (ac _AnimationClass) Alloc() Animation {
-	rv := objc.CallMethod[Animation](ac, "alloc")
+	rv := objc.CallMethod[Animation](ac, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (ac _AnimationClass) New() Animation {
-	rv := objc.CallMethod[Animation](ac, "new")
+	rv := objc.CallMethod[Animation](ac, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -76,85 +76,85 @@ func NewAnimation() Animation {
 }
 
 func (a_ Animation) Init() Animation {
-	rv := objc.CallMethod[Animation](a_, "init")
+	rv := objc.CallMethod[Animation](a_, objc.GetSelector("init"))
 	return rv
 }
 
 func (a_ Animation) StartAnimation() {
-	objc.CallMethod[objc.Void](a_, "startAnimation")
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("startAnimation"))
 }
 
 func (a_ Animation) StopAnimation() {
-	objc.CallMethod[objc.Void](a_, "stopAnimation")
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("stopAnimation"))
 }
 
 func (a_ Animation) AddProgressMark(progressMark AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, "addProgressMark:", progressMark)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("addProgressMark:"), progressMark)
 }
 
 func (a_ Animation) RemoveProgressMark(progressMark AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, "removeProgressMark:", progressMark)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("removeProgressMark:"), progressMark)
 }
 
 func (a_ Animation) StartWhenAnimation_ReachesProgress(animation IAnimation, startProgress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, "startWhenAnimation:reachesProgress:", animation, startProgress)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("startWhenAnimation:reachesProgress:"), animation, startProgress)
 }
 
 func (a_ Animation) StopWhenAnimation_ReachesProgress(animation IAnimation, stopProgress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, "stopWhenAnimation:reachesProgress:", animation, stopProgress)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("stopWhenAnimation:reachesProgress:"), animation, stopProgress)
 }
 
 func (a_ Animation) ClearStartAnimation() {
-	objc.CallMethod[objc.Void](a_, "clearStartAnimation")
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("clearStartAnimation"))
 }
 
 func (a_ Animation) ClearStopAnimation() {
-	objc.CallMethod[objc.Void](a_, "clearStopAnimation")
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("clearStopAnimation"))
 }
 
 func (a_ Animation) AnimationBlockingMode() AnimationBlockingMode {
-	rv := objc.CallMethod[AnimationBlockingMode](a_, "animationBlockingMode")
+	rv := objc.CallMethod[AnimationBlockingMode](a_, objc.GetSelector("animationBlockingMode"))
 	return rv
 }
 
 func (a_ Animation) SetAnimationBlockingMode(value AnimationBlockingMode) {
-	objc.CallMethod[objc.Void](a_, "setAnimationBlockingMode:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAnimationBlockingMode:"), value)
 }
 
 func (a_ Animation) RunLoopModesForAnimating() []foundation.RunLoopMode {
-	rv := objc.CallMethod[[]foundation.RunLoopMode](a_, "runLoopModesForAnimating")
+	rv := objc.CallMethod[[]foundation.RunLoopMode](a_, objc.GetSelector("runLoopModesForAnimating"))
 	return rv
 }
 
 func (a_ Animation) AnimationCurve() AnimationCurve {
-	rv := objc.CallMethod[AnimationCurve](a_, "animationCurve")
+	rv := objc.CallMethod[AnimationCurve](a_, objc.GetSelector("animationCurve"))
 	return rv
 }
 
 func (a_ Animation) SetAnimationCurve(value AnimationCurve) {
-	objc.CallMethod[objc.Void](a_, "setAnimationCurve:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAnimationCurve:"), value)
 }
 
 func (a_ Animation) Duration() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](a_, "duration")
+	rv := objc.CallMethod[foundation.TimeInterval](a_, objc.GetSelector("duration"))
 	return rv
 }
 
 func (a_ Animation) SetDuration(value foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](a_, "setDuration:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDuration:"), value)
 }
 
 func (a_ Animation) FrameRate() float32 {
-	rv := objc.CallMethod[float32](a_, "frameRate")
+	rv := objc.CallMethod[float32](a_, objc.GetSelector("frameRate"))
 	return rv
 }
 
 func (a_ Animation) SetFrameRate(value float32) {
-	objc.CallMethod[objc.Void](a_, "setFrameRate:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setFrameRate:"), value)
 }
 
 func (a_ Animation) Delegate() AnimationDelegateWrapper {
-	rv := objc.CallMethod[AnimationDelegateWrapper](a_, "delegate")
+	rv := objc.CallMethod[AnimationDelegateWrapper](a_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -162,37 +162,37 @@ func (a_ Animation) SetDelegate(value AnimationDelegate) {
 	po := objc.CreateProtocol("NSAnimationDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](a_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (a_ Animation) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (a_ Animation) IsAnimating() bool {
-	rv := objc.CallMethod[bool](a_, "isAnimating")
+	rv := objc.CallMethod[bool](a_, objc.GetSelector("isAnimating"))
 	return rv
 }
 
 func (a_ Animation) CurrentProgress() AnimationProgress {
-	rv := objc.CallMethod[AnimationProgress](a_, "currentProgress")
+	rv := objc.CallMethod[AnimationProgress](a_, objc.GetSelector("currentProgress"))
 	return rv
 }
 
 func (a_ Animation) SetCurrentProgress(value AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, "setCurrentProgress:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setCurrentProgress:"), value)
 }
 
 func (a_ Animation) CurrentValue() float32 {
-	rv := objc.CallMethod[float32](a_, "currentValue")
+	rv := objc.CallMethod[float32](a_, objc.GetSelector("currentValue"))
 	return rv
 }
 
 func (a_ Animation) ProgressMarks() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](a_, "progressMarks")
+	rv := objc.CallMethod[[]foundation.Number](a_, objc.GetSelector("progressMarks"))
 	return rv
 }
 
 func (a_ Animation) SetProgressMarks(value []foundation.INumber) {
-	objc.CallMethod[objc.Void](a_, "setProgressMarks:", value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setProgressMarks:"), value)
 }

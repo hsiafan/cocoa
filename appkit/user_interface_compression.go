@@ -21,11 +21,11 @@ type UserInterfaceCompressionWrapper struct {
 }
 
 func (u_ UserInterfaceCompressionWrapper) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	objc.CallMethod[objc.Void](u_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
 }
 
 func (u_ UserInterfaceCompressionWrapper) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](u_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
+	rv := objc.CallMethod[foundation.Size](u_, objc.GetSelector("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
 	return rv
 }
 
@@ -34,6 +34,6 @@ func (u_ *UserInterfaceCompressionWrapper) ImplementsActiveCompressionOptions() 
 }
 
 func (u_ UserInterfaceCompressionWrapper) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, "activeCompressionOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("activeCompressionOptions"))
 	return rv
 }

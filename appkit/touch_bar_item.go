@@ -35,17 +35,17 @@ func MakeTouchBarItem(ptr unsafe.Pointer) TouchBarItem {
 }
 
 func (t_ TouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifier) TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](t_, "initWithIdentifier:", identifier)
+	rv := objc.CallMethod[TouchBarItem](t_, objc.GetSelector("initWithIdentifier:"), identifier)
 	return rv
 }
 
 func (tc _TouchBarItemClass) Alloc() TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](tc, "alloc")
+	rv := objc.CallMethod[TouchBarItem](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TouchBarItemClass) New() TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](tc, "new")
+	rv := objc.CallMethod[TouchBarItem](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,40 +55,40 @@ func NewTouchBarItem() TouchBarItem {
 }
 
 func (t_ TouchBarItem) Init() TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](t_, "init")
+	rv := objc.CallMethod[TouchBarItem](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TouchBarItem) Identifier() TouchBarItemIdentifier {
-	rv := objc.CallMethod[TouchBarItemIdentifier](t_, "identifier")
+	rv := objc.CallMethod[TouchBarItemIdentifier](t_, objc.GetSelector("identifier"))
 	return rv
 }
 
 func (t_ TouchBarItem) VisibilityPriority() TouchBarItemPriority {
-	rv := objc.CallMethod[TouchBarItemPriority](t_, "visibilityPriority")
+	rv := objc.CallMethod[TouchBarItemPriority](t_, objc.GetSelector("visibilityPriority"))
 	return rv
 }
 
 func (t_ TouchBarItem) SetVisibilityPriority(value TouchBarItemPriority) {
-	objc.CallMethod[objc.Void](t_, "setVisibilityPriority:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setVisibilityPriority:"), value)
 }
 
 func (t_ TouchBarItem) IsVisible() bool {
-	rv := objc.CallMethod[bool](t_, "isVisible")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isVisible"))
 	return rv
 }
 
 func (t_ TouchBarItem) CustomizationLabel() string {
-	rv := objc.CallMethod[string](t_, "customizationLabel")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("customizationLabel"))
 	return rv
 }
 
 func (t_ TouchBarItem) ViewController() ViewController {
-	rv := objc.CallMethod[ViewController](t_, "viewController")
+	rv := objc.CallMethod[ViewController](t_, objc.GetSelector("viewController"))
 	return rv
 }
 
 func (t_ TouchBarItem) View() View {
-	rv := objc.CallMethod[View](t_, "view")
+	rv := objc.CallMethod[View](t_, objc.GetSelector("view"))
 	return rv
 }

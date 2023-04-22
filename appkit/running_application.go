@@ -47,12 +47,12 @@ func MakeRunningApplication(ptr unsafe.Pointer) RunningApplication {
 }
 
 func (rc _RunningApplicationClass) Alloc() RunningApplication {
-	rv := objc.CallMethod[RunningApplication](rc, "alloc")
+	rv := objc.CallMethod[RunningApplication](rc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (rc _RunningApplicationClass) New() RunningApplication {
-	rv := objc.CallMethod[RunningApplication](rc, "new")
+	rv := objc.CallMethod[RunningApplication](rc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -62,110 +62,110 @@ func NewRunningApplication() RunningApplication {
 }
 
 func (r_ RunningApplication) Init() RunningApplication {
-	rv := objc.CallMethod[RunningApplication](r_, "init")
+	rv := objc.CallMethod[RunningApplication](r_, objc.GetSelector("init"))
 	return rv
 }
 
 func (rc _RunningApplicationClass) RunningApplicationsWithBundleIdentifier(bundleIdentifier string) []RunningApplication {
-	rv := objc.CallMethod[[]RunningApplication](rc, "runningApplicationsWithBundleIdentifier:", bundleIdentifier)
+	rv := objc.CallMethod[[]RunningApplication](rc, objc.GetSelector("runningApplicationsWithBundleIdentifier:"), bundleIdentifier)
 	return rv
 }
 
 func (r_ RunningApplication) ActivateWithOptions(options ApplicationActivationOptions) bool {
-	rv := objc.CallMethod[bool](r_, "activateWithOptions:", options)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("activateWithOptions:"), options)
 	return rv
 }
 
 func (r_ RunningApplication) Hide() bool {
-	rv := objc.CallMethod[bool](r_, "hide")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("hide"))
 	return rv
 }
 
 func (r_ RunningApplication) Unhide() bool {
-	rv := objc.CallMethod[bool](r_, "unhide")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("unhide"))
 	return rv
 }
 
 func (r_ RunningApplication) ForceTerminate() bool {
-	rv := objc.CallMethod[bool](r_, "forceTerminate")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("forceTerminate"))
 	return rv
 }
 
 func (r_ RunningApplication) Terminate() bool {
-	rv := objc.CallMethod[bool](r_, "terminate")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("terminate"))
 	return rv
 }
 
 func (rc _RunningApplicationClass) TerminateAutomaticallyTerminableApplications() {
-	objc.CallMethod[objc.Void](rc, "terminateAutomaticallyTerminableApplications")
+	objc.CallMethod[objc.Void](rc, objc.GetSelector("terminateAutomaticallyTerminableApplications"))
 }
 
 func (rc _RunningApplicationClass) CurrentApplication() RunningApplication {
-	rv := objc.CallMethod[RunningApplication](rc, "currentApplication")
+	rv := objc.CallMethod[RunningApplication](rc, objc.GetSelector("currentApplication"))
 	return rv
 }
 
 func (r_ RunningApplication) IsActive() bool {
-	rv := objc.CallMethod[bool](r_, "isActive")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isActive"))
 	return rv
 }
 
 func (r_ RunningApplication) ActivationPolicy() ApplicationActivationPolicy {
-	rv := objc.CallMethod[ApplicationActivationPolicy](r_, "activationPolicy")
+	rv := objc.CallMethod[ApplicationActivationPolicy](r_, objc.GetSelector("activationPolicy"))
 	return rv
 }
 
 func (r_ RunningApplication) IsHidden() bool {
-	rv := objc.CallMethod[bool](r_, "isHidden")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isHidden"))
 	return rv
 }
 
 func (r_ RunningApplication) LocalizedName() string {
-	rv := objc.CallMethod[string](r_, "localizedName")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("localizedName"))
 	return rv
 }
 
 func (r_ RunningApplication) Icon() Image {
-	rv := objc.CallMethod[Image](r_, "icon")
+	rv := objc.CallMethod[Image](r_, objc.GetSelector("icon"))
 	return rv
 }
 
 func (r_ RunningApplication) BundleIdentifier() string {
-	rv := objc.CallMethod[string](r_, "bundleIdentifier")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("bundleIdentifier"))
 	return rv
 }
 
 func (r_ RunningApplication) BundleURL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](r_, "bundleURL")
+	rv := objc.CallMethod[foundation.URL](r_, objc.GetSelector("bundleURL"))
 	return rv
 }
 
 func (r_ RunningApplication) ExecutableArchitecture() int {
-	rv := objc.CallMethod[int](r_, "executableArchitecture")
+	rv := objc.CallMethod[int](r_, objc.GetSelector("executableArchitecture"))
 	return rv
 }
 
 func (r_ RunningApplication) ExecutableURL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](r_, "executableURL")
+	rv := objc.CallMethod[foundation.URL](r_, objc.GetSelector("executableURL"))
 	return rv
 }
 
 func (r_ RunningApplication) LaunchDate() foundation.Date {
-	rv := objc.CallMethod[foundation.Date](r_, "launchDate")
+	rv := objc.CallMethod[foundation.Date](r_, objc.GetSelector("launchDate"))
 	return rv
 }
 
 func (r_ RunningApplication) IsFinishedLaunching() bool {
-	rv := objc.CallMethod[bool](r_, "isFinishedLaunching")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isFinishedLaunching"))
 	return rv
 }
 
 func (r_ RunningApplication) OwnsMenuBar() bool {
-	rv := objc.CallMethod[bool](r_, "ownsMenuBar")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("ownsMenuBar"))
 	return rv
 }
 
 func (r_ RunningApplication) IsTerminated() bool {
-	rv := objc.CallMethod[bool](r_, "isTerminated")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isTerminated"))
 	return rv
 }

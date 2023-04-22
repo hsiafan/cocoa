@@ -32,12 +32,12 @@ func MakeClassDescription(ptr unsafe.Pointer) ClassDescription {
 }
 
 func (cc _ClassDescriptionClass) Alloc() ClassDescription {
-	rv := objc.CallMethod[ClassDescription](cc, "alloc")
+	rv := objc.CallMethod[ClassDescription](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ClassDescriptionClass) New() ClassDescription {
-	rv := objc.CallMethod[ClassDescription](cc, "new")
+	rv := objc.CallMethod[ClassDescription](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,39 +47,39 @@ func NewClassDescription() ClassDescription {
 }
 
 func (c_ ClassDescription) Init() ClassDescription {
-	rv := objc.CallMethod[ClassDescription](c_, "init")
+	rv := objc.CallMethod[ClassDescription](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _ClassDescriptionClass) ClassDescriptionForClass(aClass objc.IClass) ClassDescription {
-	rv := objc.CallMethod[ClassDescription](cc, "classDescriptionForClass:", aClass)
+	rv := objc.CallMethod[ClassDescription](cc, objc.GetSelector("classDescriptionForClass:"), aClass)
 	return rv
 }
 
 func (cc _ClassDescriptionClass) InvalidateClassDescriptionCache() {
-	objc.CallMethod[objc.Void](cc, "invalidateClassDescriptionCache")
+	objc.CallMethod[objc.Void](cc, objc.GetSelector("invalidateClassDescriptionCache"))
 }
 
 func (cc _ClassDescriptionClass) RegisterClassDescription_ForClass(description IClassDescription, aClass objc.IClass) {
-	objc.CallMethod[objc.Void](cc, "registerClassDescription:forClass:", description, aClass)
+	objc.CallMethod[objc.Void](cc, objc.GetSelector("registerClassDescription:forClass:"), description, aClass)
 }
 
 func (c_ ClassDescription) InverseForRelationshipKey(relationshipKey string) string {
-	rv := objc.CallMethod[string](c_, "inverseForRelationshipKey:", relationshipKey)
+	rv := objc.CallMethod[string](c_, objc.GetSelector("inverseForRelationshipKey:"), relationshipKey)
 	return rv
 }
 
 func (c_ ClassDescription) AttributeKeys() []string {
-	rv := objc.CallMethod[[]string](c_, "attributeKeys")
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("attributeKeys"))
 	return rv
 }
 
 func (c_ ClassDescription) ToManyRelationshipKeys() []string {
-	rv := objc.CallMethod[[]string](c_, "toManyRelationshipKeys")
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("toManyRelationshipKeys"))
 	return rv
 }
 
 func (c_ ClassDescription) ToOneRelationshipKeys() []string {
-	rv := objc.CallMethod[[]string](c_, "toOneRelationshipKeys")
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("toOneRelationshipKeys"))
 	return rv
 }

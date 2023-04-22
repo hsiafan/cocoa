@@ -33,17 +33,17 @@ func MakeTrackingArea(ptr unsafe.Pointer) TrackingArea {
 }
 
 func (t_ TrackingArea) InitWithRect_Options_Owner_UserInfo(rect foundation.Rect, options TrackingAreaOptions, owner objc.IObject, userInfo foundation.IDictionary) TrackingArea {
-	rv := objc.CallMethod[TrackingArea](t_, "initWithRect:options:owner:userInfo:", rect, options, owner, userInfo)
+	rv := objc.CallMethod[TrackingArea](t_, objc.GetSelector("initWithRect:options:owner:userInfo:"), rect, options, owner, userInfo)
 	return rv
 }
 
 func (tc _TrackingAreaClass) Alloc() TrackingArea {
-	rv := objc.CallMethod[TrackingArea](tc, "alloc")
+	rv := objc.CallMethod[TrackingArea](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TrackingAreaClass) New() TrackingArea {
-	rv := objc.CallMethod[TrackingArea](tc, "new")
+	rv := objc.CallMethod[TrackingArea](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,26 +53,26 @@ func NewTrackingArea() TrackingArea {
 }
 
 func (t_ TrackingArea) Init() TrackingArea {
-	rv := objc.CallMethod[TrackingArea](t_, "init")
+	rv := objc.CallMethod[TrackingArea](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TrackingArea) Options() TrackingAreaOptions {
-	rv := objc.CallMethod[TrackingAreaOptions](t_, "options")
+	rv := objc.CallMethod[TrackingAreaOptions](t_, objc.GetSelector("options"))
 	return rv
 }
 
 func (t_ TrackingArea) Owner() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "owner")
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("owner"))
 	return rv
 }
 
 func (t_ TrackingArea) Rect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, "rect")
+	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("rect"))
 	return rv
 }
 
 func (t_ TrackingArea) UserInfo() foundation.Dictionary {
-	rv := objc.CallMethod[foundation.Dictionary](t_, "userInfo")
+	rv := objc.CallMethod[foundation.Dictionary](t_, objc.GetSelector("userInfo"))
 	return rv
 }

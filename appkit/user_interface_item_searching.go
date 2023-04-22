@@ -23,7 +23,7 @@ type UserInterfaceItemSearchingWrapper struct {
 }
 
 func (u_ UserInterfaceItemSearchingWrapper) LocalizedTitlesForItem(item objc.IObject) []string {
-	rv := objc.CallMethod[[]string](u_, "localizedTitlesForItem:", item)
+	rv := objc.CallMethod[[]string](u_, objc.GetSelector("localizedTitlesForItem:"), item)
 	return rv
 }
 
@@ -32,11 +32,11 @@ func (u_ *UserInterfaceItemSearchingWrapper) ImplementsShowAllHelpTopicsForSearc
 }
 
 func (u_ UserInterfaceItemSearchingWrapper) ShowAllHelpTopicsForSearchString(searchString string) {
-	objc.CallMethod[objc.Void](u_, "showAllHelpTopicsForSearchString:", searchString)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("showAllHelpTopicsForSearchString:"), searchString)
 }
 
 func (u_ UserInterfaceItemSearchingWrapper) SearchForItemsWithSearchString_ResultLimit_MatchedItemHandler(searchString string, resultLimit int, handleMatchedItems func(items []objc.Object)) {
-	objc.CallMethod[objc.Void](u_, "searchForItemsWithSearchString:resultLimit:matchedItemHandler:", searchString, resultLimit, handleMatchedItems)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("searchForItemsWithSearchString:resultLimit:matchedItemHandler:"), searchString, resultLimit, handleMatchedItems)
 }
 
 func (u_ *UserInterfaceItemSearchingWrapper) ImplementsPerformActionForItem() bool {
@@ -44,5 +44,5 @@ func (u_ *UserInterfaceItemSearchingWrapper) ImplementsPerformActionForItem() bo
 }
 
 func (u_ UserInterfaceItemSearchingWrapper) PerformActionForItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](u_, "performActionForItem:", item)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("performActionForItem:"), item)
 }

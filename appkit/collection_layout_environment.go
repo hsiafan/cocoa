@@ -20,6 +20,6 @@ func (c_ *CollectionLayoutEnvironmentWrapper) ImplementsContainer() bool {
 }
 
 func (c_ CollectionLayoutEnvironmentWrapper) Container() CollectionLayoutContainerWrapper {
-	rv := objc.CallMethod[CollectionLayoutContainerWrapper](c_, "container")
+	rv := objc.CallMethod[CollectionLayoutContainerWrapper](c_, objc.GetSelector("container"))
 	return rv
 }

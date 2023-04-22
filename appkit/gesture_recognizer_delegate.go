@@ -111,7 +111,7 @@ func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldAt
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldAttemptToRecognizeWithEvent(gestureRecognizer IGestureRecognizer, event IEvent) bool {
-	rv := objc.CallMethod[bool](g_, "gestureRecognizer:shouldAttemptToRecognizeWithEvent:", gestureRecognizer, event)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), gestureRecognizer, event)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizerShouldBeg
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizerShouldBegin(gestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "gestureRecognizerShouldBegin:", gestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizerShouldBegin:"), gestureRecognizer)
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldRe
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:", gestureRecognizer, otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldRe
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRequireFailureOfGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "gestureRecognizer:shouldRequireFailureOfGestureRecognizer:", gestureRecognizer, otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
 	return rv
 }
 
@@ -147,7 +147,7 @@ func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldBe
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:", gestureRecognizer, otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
 	return rv
 }
 
@@ -156,6 +156,6 @@ func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldRe
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldReceiveTouch(gestureRecognizer IGestureRecognizer, touch ITouch) bool {
-	rv := objc.CallMethod[bool](g_, "gestureRecognizer:shouldReceiveTouch:", gestureRecognizer, touch)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldReceiveTouch:"), gestureRecognizer, touch)
 	return rv
 }

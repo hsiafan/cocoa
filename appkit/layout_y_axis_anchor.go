@@ -32,12 +32,12 @@ func MakeLayoutYAxisAnchor(ptr unsafe.Pointer) LayoutYAxisAnchor {
 }
 
 func (lc _LayoutYAxisAnchorClass) Alloc() LayoutYAxisAnchor {
-	rv := objc.CallMethod[LayoutYAxisAnchor](lc, "alloc")
+	rv := objc.CallMethod[LayoutYAxisAnchor](lc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (lc _LayoutYAxisAnchorClass) New() LayoutYAxisAnchor {
-	rv := objc.CallMethod[LayoutYAxisAnchor](lc, "new")
+	rv := objc.CallMethod[LayoutYAxisAnchor](lc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,26 +47,26 @@ func NewLayoutYAxisAnchor() LayoutYAxisAnchor {
 }
 
 func (l_ LayoutYAxisAnchor) Init() LayoutYAxisAnchor {
-	rv := objc.CallMethod[LayoutYAxisAnchor](l_, "init")
+	rv := objc.CallMethod[LayoutYAxisAnchor](l_, objc.GetSelector("init"))
 	return rv
 }
 
 func (l_ LayoutYAxisAnchor) ConstraintEqualToSystemSpacingBelowAnchor_Multiplier(anchor ILayoutYAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, "constraintEqualToSystemSpacingBelowAnchor:multiplier:", anchor, multiplier)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToSystemSpacingBelowAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }
 
 func (l_ LayoutYAxisAnchor) ConstraintGreaterThanOrEqualToSystemSpacingBelowAnchor_Multiplier(anchor ILayoutYAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, "constraintGreaterThanOrEqualToSystemSpacingBelowAnchor:multiplier:", anchor, multiplier)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToSystemSpacingBelowAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }
 
 func (l_ LayoutYAxisAnchor) ConstraintLessThanOrEqualToSystemSpacingBelowAnchor_Multiplier(anchor ILayoutYAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, "constraintLessThanOrEqualToSystemSpacingBelowAnchor:multiplier:", anchor, multiplier)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToSystemSpacingBelowAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }
 
 func (l_ LayoutYAxisAnchor) AnchorWithOffsetToAnchor(otherAnchor ILayoutYAxisAnchor) LayoutDimension {
-	rv := objc.CallMethod[LayoutDimension](l_, "anchorWithOffsetToAnchor:", otherAnchor)
+	rv := objc.CallMethod[LayoutDimension](l_, objc.GetSelector("anchorWithOffsetToAnchor:"), otherAnchor)
 	return rv
 }

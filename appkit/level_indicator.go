@@ -63,22 +63,22 @@ func MakeLevelIndicator(ptr unsafe.Pointer) LevelIndicator {
 }
 
 func (l_ LevelIndicator) InitWithFrame(frameRect foundation.Rect) LevelIndicator {
-	rv := objc.CallMethod[LevelIndicator](l_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[LevelIndicator](l_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (l_ LevelIndicator) Init() LevelIndicator {
-	rv := objc.CallMethod[LevelIndicator](l_, "init")
+	rv := objc.CallMethod[LevelIndicator](l_, objc.GetSelector("init"))
 	return rv
 }
 
 func (lc _LevelIndicatorClass) Alloc() LevelIndicator {
-	rv := objc.CallMethod[LevelIndicator](lc, "alloc")
+	rv := objc.CallMethod[LevelIndicator](lc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (lc _LevelIndicatorClass) New() LevelIndicator {
-	rv := objc.CallMethod[LevelIndicator](lc, "new")
+	rv := objc.CallMethod[LevelIndicator](lc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -88,155 +88,155 @@ func NewLevelIndicator() LevelIndicator {
 }
 
 func (l_ LevelIndicator) TickMarkValueAtIndex(index int) float64 {
-	rv := objc.CallMethod[float64](l_, "tickMarkValueAtIndex:", index)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("tickMarkValueAtIndex:"), index)
 	return rv
 }
 
 func (l_ LevelIndicator) RectOfTickMarkAtIndex(index int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, "rectOfTickMarkAtIndex:", index)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("rectOfTickMarkAtIndex:"), index)
 	return rv
 }
 
 func (l_ LevelIndicator) MinValue() float64 {
-	rv := objc.CallMethod[float64](l_, "minValue")
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("minValue"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetMinValue(value float64) {
-	objc.CallMethod[objc.Void](l_, "setMinValue:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMinValue:"), value)
 }
 
 func (l_ LevelIndicator) MaxValue() float64 {
-	rv := objc.CallMethod[float64](l_, "maxValue")
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("maxValue"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetMaxValue(value float64) {
-	objc.CallMethod[objc.Void](l_, "setMaxValue:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMaxValue:"), value)
 }
 
 func (l_ LevelIndicator) WarningValue() float64 {
-	rv := objc.CallMethod[float64](l_, "warningValue")
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("warningValue"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetWarningValue(value float64) {
-	objc.CallMethod[objc.Void](l_, "setWarningValue:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setWarningValue:"), value)
 }
 
 func (l_ LevelIndicator) CriticalValue() float64 {
-	rv := objc.CallMethod[float64](l_, "criticalValue")
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("criticalValue"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetCriticalValue(value float64) {
-	objc.CallMethod[objc.Void](l_, "setCriticalValue:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCriticalValue:"), value)
 }
 
 func (l_ LevelIndicator) TickMarkPosition() TickMarkPosition {
-	rv := objc.CallMethod[TickMarkPosition](l_, "tickMarkPosition")
+	rv := objc.CallMethod[TickMarkPosition](l_, objc.GetSelector("tickMarkPosition"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetTickMarkPosition(value TickMarkPosition) {
-	objc.CallMethod[objc.Void](l_, "setTickMarkPosition:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTickMarkPosition:"), value)
 }
 
 func (l_ LevelIndicator) NumberOfTickMarks() int {
-	rv := objc.CallMethod[int](l_, "numberOfTickMarks")
+	rv := objc.CallMethod[int](l_, objc.GetSelector("numberOfTickMarks"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetNumberOfTickMarks(value int) {
-	objc.CallMethod[objc.Void](l_, "setNumberOfTickMarks:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNumberOfTickMarks:"), value)
 }
 
 func (l_ LevelIndicator) NumberOfMajorTickMarks() int {
-	rv := objc.CallMethod[int](l_, "numberOfMajorTickMarks")
+	rv := objc.CallMethod[int](l_, objc.GetSelector("numberOfMajorTickMarks"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetNumberOfMajorTickMarks(value int) {
-	objc.CallMethod[objc.Void](l_, "setNumberOfMajorTickMarks:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNumberOfMajorTickMarks:"), value)
 }
 
 func (l_ LevelIndicator) LevelIndicatorStyle() LevelIndicatorStyle {
-	rv := objc.CallMethod[LevelIndicatorStyle](l_, "levelIndicatorStyle")
+	rv := objc.CallMethod[LevelIndicatorStyle](l_, objc.GetSelector("levelIndicatorStyle"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetLevelIndicatorStyle(value LevelIndicatorStyle) {
-	objc.CallMethod[objc.Void](l_, "setLevelIndicatorStyle:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLevelIndicatorStyle:"), value)
 }
 
 func (l_ LevelIndicator) RatingImage() Image {
-	rv := objc.CallMethod[Image](l_, "ratingImage")
+	rv := objc.CallMethod[Image](l_, objc.GetSelector("ratingImage"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetRatingImage(value IImage) {
-	objc.CallMethod[objc.Void](l_, "setRatingImage:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRatingImage:"), value)
 }
 
 func (l_ LevelIndicator) DrawsTieredCapacityLevels() bool {
-	rv := objc.CallMethod[bool](l_, "drawsTieredCapacityLevels")
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("drawsTieredCapacityLevels"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetDrawsTieredCapacityLevels(value bool) {
-	objc.CallMethod[objc.Void](l_, "setDrawsTieredCapacityLevels:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDrawsTieredCapacityLevels:"), value)
 }
 
 func (l_ LevelIndicator) FillColor() Color {
-	rv := objc.CallMethod[Color](l_, "fillColor")
+	rv := objc.CallMethod[Color](l_, objc.GetSelector("fillColor"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetFillColor(value IColor) {
-	objc.CallMethod[objc.Void](l_, "setFillColor:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setFillColor:"), value)
 }
 
 func (l_ LevelIndicator) WarningFillColor() Color {
-	rv := objc.CallMethod[Color](l_, "warningFillColor")
+	rv := objc.CallMethod[Color](l_, objc.GetSelector("warningFillColor"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetWarningFillColor(value IColor) {
-	objc.CallMethod[objc.Void](l_, "setWarningFillColor:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setWarningFillColor:"), value)
 }
 
 func (l_ LevelIndicator) CriticalFillColor() Color {
-	rv := objc.CallMethod[Color](l_, "criticalFillColor")
+	rv := objc.CallMethod[Color](l_, objc.GetSelector("criticalFillColor"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetCriticalFillColor(value IColor) {
-	objc.CallMethod[objc.Void](l_, "setCriticalFillColor:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCriticalFillColor:"), value)
 }
 
 func (l_ LevelIndicator) RatingPlaceholderImage() Image {
-	rv := objc.CallMethod[Image](l_, "ratingPlaceholderImage")
+	rv := objc.CallMethod[Image](l_, objc.GetSelector("ratingPlaceholderImage"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetRatingPlaceholderImage(value IImage) {
-	objc.CallMethod[objc.Void](l_, "setRatingPlaceholderImage:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRatingPlaceholderImage:"), value)
 }
 
 func (l_ LevelIndicator) PlaceholderVisibility() LevelIndicatorPlaceholderVisibility {
-	rv := objc.CallMethod[LevelIndicatorPlaceholderVisibility](l_, "placeholderVisibility")
+	rv := objc.CallMethod[LevelIndicatorPlaceholderVisibility](l_, objc.GetSelector("placeholderVisibility"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetPlaceholderVisibility(value LevelIndicatorPlaceholderVisibility) {
-	objc.CallMethod[objc.Void](l_, "setPlaceholderVisibility:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setPlaceholderVisibility:"), value)
 }
 
 func (l_ LevelIndicator) IsEditable() bool {
-	rv := objc.CallMethod[bool](l_, "isEditable")
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("isEditable"))
 	return rv
 }
 
 func (l_ LevelIndicator) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](l_, "setEditable:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setEditable:"), value)
 }

@@ -48,27 +48,27 @@ func MakeColorWell(ptr unsafe.Pointer) ColorWell {
 }
 
 func (cc _ColorWellClass) ColorWellWithStyle(style ColorWellStyle) ColorWell {
-	rv := objc.CallMethod[ColorWell](cc, "colorWellWithStyle:", style)
+	rv := objc.CallMethod[ColorWell](cc, objc.GetSelector("colorWellWithStyle:"), style)
 	return rv
 }
 
 func (c_ ColorWell) InitWithFrame(frameRect foundation.Rect) ColorWell {
-	rv := objc.CallMethod[ColorWell](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ColorWell](c_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (c_ ColorWell) Init() ColorWell {
-	rv := objc.CallMethod[ColorWell](c_, "init")
+	rv := objc.CallMethod[ColorWell](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _ColorWellClass) Alloc() ColorWell {
-	rv := objc.CallMethod[ColorWell](cc, "alloc")
+	rv := objc.CallMethod[ColorWell](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ColorWellClass) New() ColorWell {
-	rv := objc.CallMethod[ColorWell](cc, "new")
+	rv := objc.CallMethod[ColorWell](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -78,78 +78,78 @@ func NewColorWell() ColorWell {
 }
 
 func (c_ ColorWell) TakeColorFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeColorFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeColorFrom:"), sender)
 }
 
 func (c_ ColorWell) Activate(exclusive bool) {
-	objc.CallMethod[objc.Void](c_, "activate:", exclusive)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("activate:"), exclusive)
 }
 
 func (c_ ColorWell) Deactivate() {
-	objc.CallMethod[objc.Void](c_, "deactivate")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("deactivate"))
 }
 
 func (c_ ColorWell) DrawWellInside(insideRect foundation.Rect) {
-	objc.CallMethod[objc.Void](c_, "drawWellInside:", insideRect)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWellInside:"), insideRect)
 }
 
 func (c_ ColorWell) Color() Color {
-	rv := objc.CallMethod[Color](c_, "color")
+	rv := objc.CallMethod[Color](c_, objc.GetSelector("color"))
 	return rv
 }
 
 func (c_ ColorWell) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, "setColor:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), value)
 }
 
 func (c_ ColorWell) ColorWellStyle() ColorWellStyle {
-	rv := objc.CallMethod[ColorWellStyle](c_, "colorWellStyle")
+	rv := objc.CallMethod[ColorWellStyle](c_, objc.GetSelector("colorWellStyle"))
 	return rv
 }
 
 func (c_ ColorWell) SetColorWellStyle(value ColorWellStyle) {
-	objc.CallMethod[objc.Void](c_, "setColorWellStyle:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColorWellStyle:"), value)
 }
 
 func (c_ ColorWell) Image() Image {
-	rv := objc.CallMethod[Image](c_, "image")
+	rv := objc.CallMethod[Image](c_, objc.GetSelector("image"))
 	return rv
 }
 
 func (c_ ColorWell) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](c_, "setImage:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), value)
 }
 
 // deprecated
 func (c_ ColorWell) IsBordered() bool {
-	rv := objc.CallMethod[bool](c_, "isBordered")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isBordered"))
 	return rv
 }
 
 // deprecated
 func (c_ ColorWell) SetBordered(value bool) {
-	objc.CallMethod[objc.Void](c_, "setBordered:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBordered:"), value)
 }
 
 func (c_ ColorWell) IsActive() bool {
-	rv := objc.CallMethod[bool](c_, "isActive")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isActive"))
 	return rv
 }
 
 func (c_ ColorWell) PulldownAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](c_, "pulldownAction")
+	rv := objc.CallMethod[objc.Selector](c_, objc.GetSelector("pulldownAction"))
 	return rv
 }
 
 func (c_ ColorWell) SetPulldownAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](c_, "setPulldownAction:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownAction:"), value)
 }
 
 func (c_ ColorWell) PulldownTarget() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, "pulldownTarget")
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("pulldownTarget"))
 	return rv
 }
 
 func (c_ ColorWell) SetPulldownTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "setPulldownTarget:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownTarget:"), value)
 }

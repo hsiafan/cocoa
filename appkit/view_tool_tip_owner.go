@@ -18,6 +18,6 @@ type ViewToolTipOwnerWrapper struct {
 }
 
 func (v_ ViewToolTipOwnerWrapper) View_StringForToolTip_Point_UserData(view IView, tag ToolTipTag, point foundation.Point, data unsafe.Pointer) string {
-	rv := objc.CallMethod[string](v_, "view:stringForToolTip:point:userData:", view, tag, point, data)
+	rv := objc.CallMethod[string](v_, objc.GetSelector("view:stringForToolTip:point:userData:"), view, tag, point, data)
 	return rv
 }

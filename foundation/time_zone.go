@@ -43,42 +43,42 @@ func MakeTimeZone(ptr unsafe.Pointer) TimeZone {
 }
 
 func (tc _TimeZoneClass) TimeZoneWithName(tzName string) TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "timeZoneWithName:", tzName)
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("timeZoneWithName:"), tzName)
 	return rv
 }
 
 func (tc _TimeZoneClass) TimeZoneWithName_Data(tzName string, aData []byte) TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "timeZoneWithName:data:", tzName, aData)
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("timeZoneWithName:data:"), tzName, aData)
 	return rv
 }
 
 func (t_ TimeZone) InitWithName(tzName string) TimeZone {
-	rv := objc.CallMethod[TimeZone](t_, "initWithName:", tzName)
+	rv := objc.CallMethod[TimeZone](t_, objc.GetSelector("initWithName:"), tzName)
 	return rv
 }
 
 func (t_ TimeZone) InitWithName_Data(tzName string, aData []byte) TimeZone {
-	rv := objc.CallMethod[TimeZone](t_, "initWithName:data:", tzName, aData)
+	rv := objc.CallMethod[TimeZone](t_, objc.GetSelector("initWithName:data:"), tzName, aData)
 	return rv
 }
 
 func (tc _TimeZoneClass) TimeZoneWithAbbreviation(abbreviation string) TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "timeZoneWithAbbreviation:", abbreviation)
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("timeZoneWithAbbreviation:"), abbreviation)
 	return rv
 }
 
 func (tc _TimeZoneClass) TimeZoneForSecondsFromGMT(seconds int) TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "timeZoneForSecondsFromGMT:", seconds)
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("timeZoneForSecondsFromGMT:"), seconds)
 	return rv
 }
 
 func (tc _TimeZoneClass) Alloc() TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "alloc")
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TimeZoneClass) New() TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "new")
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -88,123 +88,123 @@ func NewTimeZone() TimeZone {
 }
 
 func (t_ TimeZone) Init() TimeZone {
-	rv := objc.CallMethod[TimeZone](t_, "init")
+	rv := objc.CallMethod[TimeZone](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TimeZoneClass) ResetSystemTimeZone() {
-	objc.CallMethod[objc.Void](tc, "resetSystemTimeZone")
+	objc.CallMethod[objc.Void](tc, objc.GetSelector("resetSystemTimeZone"))
 }
 
 func (t_ TimeZone) AbbreviationForDate(aDate IDate) string {
-	rv := objc.CallMethod[string](t_, "abbreviationForDate:", aDate)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("abbreviationForDate:"), aDate)
 	return rv
 }
 
 func (t_ TimeZone) SecondsFromGMTForDate(aDate IDate) int {
-	rv := objc.CallMethod[int](t_, "secondsFromGMTForDate:", aDate)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("secondsFromGMTForDate:"), aDate)
 	return rv
 }
 
 func (t_ TimeZone) IsDaylightSavingTimeForDate(aDate IDate) bool {
-	rv := objc.CallMethod[bool](t_, "isDaylightSavingTimeForDate:", aDate)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isDaylightSavingTimeForDate:"), aDate)
 	return rv
 }
 
 func (t_ TimeZone) DaylightSavingTimeOffsetForDate(aDate IDate) TimeInterval {
-	rv := objc.CallMethod[TimeInterval](t_, "daylightSavingTimeOffsetForDate:", aDate)
+	rv := objc.CallMethod[TimeInterval](t_, objc.GetSelector("daylightSavingTimeOffsetForDate:"), aDate)
 	return rv
 }
 
 func (t_ TimeZone) NextDaylightSavingTimeTransitionAfterDate(aDate IDate) Date {
-	rv := objc.CallMethod[Date](t_, "nextDaylightSavingTimeTransitionAfterDate:", aDate)
+	rv := objc.CallMethod[Date](t_, objc.GetSelector("nextDaylightSavingTimeTransitionAfterDate:"), aDate)
 	return rv
 }
 
 func (t_ TimeZone) IsEqualToTimeZone(aTimeZone ITimeZone) bool {
-	rv := objc.CallMethod[bool](t_, "isEqualToTimeZone:", aTimeZone)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEqualToTimeZone:"), aTimeZone)
 	return rv
 }
 
 func (t_ TimeZone) LocalizedName_Locale(style TimeZoneNameStyle, locale ILocale) string {
-	rv := objc.CallMethod[string](t_, "localizedName:locale:", style, locale)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("localizedName:locale:"), style, locale)
 	return rv
 }
 
 func (tc _TimeZoneClass) LocalTimeZone() TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "localTimeZone")
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("localTimeZone"))
 	return rv
 }
 
 func (tc _TimeZoneClass) SystemTimeZone() TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "systemTimeZone")
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("systemTimeZone"))
 	return rv
 }
 
 func (tc _TimeZoneClass) DefaultTimeZone() TimeZone {
-	rv := objc.CallMethod[TimeZone](tc, "defaultTimeZone")
+	rv := objc.CallMethod[TimeZone](tc, objc.GetSelector("defaultTimeZone"))
 	return rv
 }
 
 func (tc _TimeZoneClass) SetDefaultTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](tc, "setDefaultTimeZone:", value)
+	objc.CallMethod[objc.Void](tc, objc.GetSelector("setDefaultTimeZone:"), value)
 }
 
 func (tc _TimeZoneClass) KnownTimeZoneNames() []string {
-	rv := objc.CallMethod[[]string](tc, "knownTimeZoneNames")
+	rv := objc.CallMethod[[]string](tc, objc.GetSelector("knownTimeZoneNames"))
 	return rv
 }
 
 func (tc _TimeZoneClass) AbbreviationDictionary() map[string]string {
-	rv := objc.CallMethod[map[string]string](tc, "abbreviationDictionary")
+	rv := objc.CallMethod[map[string]string](tc, objc.GetSelector("abbreviationDictionary"))
 	return rv
 }
 
 func (tc _TimeZoneClass) SetAbbreviationDictionary(value map[string]string) {
-	objc.CallMethod[objc.Void](tc, "setAbbreviationDictionary:", value)
+	objc.CallMethod[objc.Void](tc, objc.GetSelector("setAbbreviationDictionary:"), value)
 }
 
 func (t_ TimeZone) Name() string {
-	rv := objc.CallMethod[string](t_, "name")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("name"))
 	return rv
 }
 
 func (t_ TimeZone) Abbreviation() string {
-	rv := objc.CallMethod[string](t_, "abbreviation")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("abbreviation"))
 	return rv
 }
 
 func (t_ TimeZone) SecondsFromGMT() int {
-	rv := objc.CallMethod[int](t_, "secondsFromGMT")
+	rv := objc.CallMethod[int](t_, objc.GetSelector("secondsFromGMT"))
 	return rv
 }
 
 func (t_ TimeZone) Data() []byte {
-	rv := objc.CallMethod[[]byte](t_, "data")
+	rv := objc.CallMethod[[]byte](t_, objc.GetSelector("data"))
 	return rv
 }
 
 func (tc _TimeZoneClass) TimeZoneDataVersion() string {
-	rv := objc.CallMethod[string](tc, "timeZoneDataVersion")
+	rv := objc.CallMethod[string](tc, objc.GetSelector("timeZoneDataVersion"))
 	return rv
 }
 
 func (t_ TimeZone) IsDaylightSavingTime() bool {
-	rv := objc.CallMethod[bool](t_, "isDaylightSavingTime")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isDaylightSavingTime"))
 	return rv
 }
 
 func (t_ TimeZone) DaylightSavingTimeOffset() TimeInterval {
-	rv := objc.CallMethod[TimeInterval](t_, "daylightSavingTimeOffset")
+	rv := objc.CallMethod[TimeInterval](t_, objc.GetSelector("daylightSavingTimeOffset"))
 	return rv
 }
 
 func (t_ TimeZone) NextDaylightSavingTimeTransition() Date {
-	rv := objc.CallMethod[Date](t_, "nextDaylightSavingTimeTransition")
+	rv := objc.CallMethod[Date](t_, objc.GetSelector("nextDaylightSavingTimeTransition"))
 	return rv
 }
 
 func (t_ TimeZone) Description() string {
-	rv := objc.CallMethod[string](t_, "description")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("description"))
 	return rv
 }

@@ -29,12 +29,12 @@ func MakeNavigation(ptr unsafe.Pointer) Navigation {
 }
 
 func (nc _NavigationClass) Alloc() Navigation {
-	rv := objc.CallMethod[Navigation](nc, "alloc")
+	rv := objc.CallMethod[Navigation](nc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (nc _NavigationClass) New() Navigation {
-	rv := objc.CallMethod[Navigation](nc, "new")
+	rv := objc.CallMethod[Navigation](nc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -44,11 +44,11 @@ func NewNavigation() Navigation {
 }
 
 func (n_ Navigation) Init() Navigation {
-	rv := objc.CallMethod[Navigation](n_, "init")
+	rv := objc.CallMethod[Navigation](n_, objc.GetSelector("init"))
 	return rv
 }
 
 func (n_ Navigation) EffectiveContentMode() ContentMode {
-	rv := objc.CallMethod[ContentMode](n_, "effectiveContentMode")
+	rv := objc.CallMethod[ContentMode](n_, objc.GetSelector("effectiveContentMode"))
 	return rv
 }

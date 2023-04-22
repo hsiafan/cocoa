@@ -32,17 +32,17 @@ func MakeCollectionLayoutEdgeSpacing(ptr unsafe.Pointer) CollectionLayoutEdgeSpa
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) SpacingForLeading_Top_Trailing_Bottom(leading ICollectionLayoutSpacing, top ICollectionLayoutSpacing, trailing ICollectionLayoutSpacing, bottom ICollectionLayoutSpacing) CollectionLayoutEdgeSpacing {
-	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, "spacingForLeading:top:trailing:bottom:", leading, top, trailing, bottom)
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, objc.GetSelector("spacingForLeading:top:trailing:bottom:"), leading, top, trailing, bottom)
 	return rv
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) Alloc() CollectionLayoutEdgeSpacing {
-	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) New() CollectionLayoutEdgeSpacing {
-	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,26 +52,26 @@ func NewCollectionLayoutEdgeSpacing() CollectionLayoutEdgeSpacing {
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Init() CollectionLayoutEdgeSpacing {
-	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Leading() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "leading")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.GetSelector("leading"))
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Top() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "top")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.GetSelector("top"))
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Trailing() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "trailing")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.GetSelector("trailing"))
 	return rv
 }
 
 func (c_ CollectionLayoutEdgeSpacing) Bottom() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](c_, "bottom")
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.GetSelector("bottom"))
 	return rv
 }

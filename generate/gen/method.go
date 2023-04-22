@@ -92,7 +92,7 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 	default:
 		returnTypeStr = m.ReturnType.GoName(currentModule, true)
 	}
-	callCode := fmt.Sprintf("objc.CallMethod[%s](%s, \"%s\"", returnTypeStr, receiver, m.Selector())
+	callCode := fmt.Sprintf("objc.CallMethod[%s](%s, objc.GetSelector(\"%s\")", returnTypeStr, receiver, m.Selector())
 	var sb strings.Builder
 	for _, p := range m.Params {
 		sb.WriteString(", ")

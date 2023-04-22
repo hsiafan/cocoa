@@ -68,27 +68,27 @@ func MakeStackView(ptr unsafe.Pointer) StackView {
 }
 
 func (sc _StackViewClass) StackViewWithViews(views []IView) StackView {
-	rv := objc.CallMethod[StackView](sc, "stackViewWithViews:", views)
+	rv := objc.CallMethod[StackView](sc, objc.GetSelector("stackViewWithViews:"), views)
 	return rv
 }
 
 func (s_ StackView) InitWithFrame(frameRect foundation.Rect) StackView {
-	rv := objc.CallMethod[StackView](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[StackView](s_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ StackView) Init() StackView {
-	rv := objc.CallMethod[StackView](s_, "init")
+	rv := objc.CallMethod[StackView](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _StackViewClass) Alloc() StackView {
-	rv := objc.CallMethod[StackView](sc, "alloc")
+	rv := objc.CallMethod[StackView](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _StackViewClass) New() StackView {
-	rv := objc.CallMethod[StackView](sc, "new")
+	rv := objc.CallMethod[StackView](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -98,76 +98,76 @@ func NewStackView() StackView {
 }
 
 func (s_ StackView) AddView_InGravity(view IView, gravity StackViewGravity) {
-	objc.CallMethod[objc.Void](s_, "addView:inGravity:", view, gravity)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addView:inGravity:"), view, gravity)
 }
 
 func (s_ StackView) InsertView_AtIndex_InGravity(view IView, index uint, gravity StackViewGravity) {
-	objc.CallMethod[objc.Void](s_, "insertView:atIndex:inGravity:", view, index, gravity)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertView:atIndex:inGravity:"), view, index, gravity)
 }
 
 func (s_ StackView) SetViews_InGravity(views []IView, gravity StackViewGravity) {
-	objc.CallMethod[objc.Void](s_, "setViews:inGravity:", views, gravity)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setViews:inGravity:"), views, gravity)
 }
 
 func (s_ StackView) RemoveView(view IView) {
-	objc.CallMethod[objc.Void](s_, "removeView:", view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeView:"), view)
 }
 
 func (s_ StackView) AddArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, "addArrangedSubview:", view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addArrangedSubview:"), view)
 }
 
 func (s_ StackView) InsertArrangedSubview_AtIndex(view IView, index int) {
-	objc.CallMethod[objc.Void](s_, "insertArrangedSubview:atIndex:", view, index)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertArrangedSubview:atIndex:"), view, index)
 }
 
 func (s_ StackView) RemoveArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, "removeArrangedSubview:", view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeArrangedSubview:"), view)
 }
 
 func (s_ StackView) ViewsInGravity(gravity StackViewGravity) []View {
-	rv := objc.CallMethod[[]View](s_, "viewsInGravity:", gravity)
+	rv := objc.CallMethod[[]View](s_, objc.GetSelector("viewsInGravity:"), gravity)
 	return rv
 }
 
 func (s_ StackView) ClippingResistancePriorityForOrientation(orientation LayoutConstraintOrientation) LayoutPriority {
-	rv := objc.CallMethod[LayoutPriority](s_, "clippingResistancePriorityForOrientation:", orientation)
+	rv := objc.CallMethod[LayoutPriority](s_, objc.GetSelector("clippingResistancePriorityForOrientation:"), orientation)
 	return rv
 }
 
 func (s_ StackView) HuggingPriorityForOrientation(orientation LayoutConstraintOrientation) LayoutPriority {
-	rv := objc.CallMethod[LayoutPriority](s_, "huggingPriorityForOrientation:", orientation)
+	rv := objc.CallMethod[LayoutPriority](s_, objc.GetSelector("huggingPriorityForOrientation:"), orientation)
 	return rv
 }
 
 func (s_ StackView) CustomSpacingAfterView(view IView) float64 {
-	rv := objc.CallMethod[float64](s_, "customSpacingAfterView:", view)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("customSpacingAfterView:"), view)
 	return rv
 }
 
 func (s_ StackView) SetCustomSpacing_AfterView(spacing float64, view IView) {
-	objc.CallMethod[objc.Void](s_, "setCustomSpacing:afterView:", spacing, view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCustomSpacing:afterView:"), spacing, view)
 }
 
 func (s_ StackView) VisibilityPriorityForView(view IView) StackViewVisibilityPriority {
-	rv := objc.CallMethod[StackViewVisibilityPriority](s_, "visibilityPriorityForView:", view)
+	rv := objc.CallMethod[StackViewVisibilityPriority](s_, objc.GetSelector("visibilityPriorityForView:"), view)
 	return rv
 }
 
 func (s_ StackView) SetVisibilityPriority_ForView(priority StackViewVisibilityPriority, view IView) {
-	objc.CallMethod[objc.Void](s_, "setVisibilityPriority:forView:", priority, view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVisibilityPriority:forView:"), priority, view)
 }
 
 func (s_ StackView) SetClippingResistancePriority_ForOrientation(clippingResistancePriority LayoutPriority, orientation LayoutConstraintOrientation) {
-	objc.CallMethod[objc.Void](s_, "setClippingResistancePriority:forOrientation:", clippingResistancePriority, orientation)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setClippingResistancePriority:forOrientation:"), clippingResistancePriority, orientation)
 }
 
 func (s_ StackView) SetHuggingPriority_ForOrientation(huggingPriority LayoutPriority, orientation LayoutConstraintOrientation) {
-	objc.CallMethod[objc.Void](s_, "setHuggingPriority:forOrientation:", huggingPriority, orientation)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHuggingPriority:forOrientation:"), huggingPriority, orientation)
 }
 
 func (s_ StackView) Delegate() StackViewDelegateWrapper {
-	rv := objc.CallMethod[StackViewDelegateWrapper](s_, "delegate")
+	rv := objc.CallMethod[StackViewDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -175,89 +175,89 @@ func (s_ StackView) SetDelegate(value StackViewDelegate) {
 	po := objc.CreateProtocol("NSStackViewDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (s_ StackView) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (s_ StackView) ArrangedSubviews() []View {
-	rv := objc.CallMethod[[]View](s_, "arrangedSubviews")
+	rv := objc.CallMethod[[]View](s_, objc.GetSelector("arrangedSubviews"))
 	return rv
 }
 
 func (s_ StackView) Views() []View {
-	rv := objc.CallMethod[[]View](s_, "views")
+	rv := objc.CallMethod[[]View](s_, objc.GetSelector("views"))
 	return rv
 }
 
 func (s_ StackView) DetachedViews() []View {
-	rv := objc.CallMethod[[]View](s_, "detachedViews")
+	rv := objc.CallMethod[[]View](s_, objc.GetSelector("detachedViews"))
 	return rv
 }
 
 func (s_ StackView) Orientation() UserInterfaceLayoutOrientation {
-	rv := objc.CallMethod[UserInterfaceLayoutOrientation](s_, "orientation")
+	rv := objc.CallMethod[UserInterfaceLayoutOrientation](s_, objc.GetSelector("orientation"))
 	return rv
 }
 
 func (s_ StackView) SetOrientation(value UserInterfaceLayoutOrientation) {
-	objc.CallMethod[objc.Void](s_, "setOrientation:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setOrientation:"), value)
 }
 
 func (s_ StackView) Alignment() LayoutAttribute {
-	rv := objc.CallMethod[LayoutAttribute](s_, "alignment")
+	rv := objc.CallMethod[LayoutAttribute](s_, objc.GetSelector("alignment"))
 	return rv
 }
 
 func (s_ StackView) SetAlignment(value LayoutAttribute) {
-	objc.CallMethod[objc.Void](s_, "setAlignment:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAlignment:"), value)
 }
 
 func (s_ StackView) Spacing() float64 {
-	rv := objc.CallMethod[float64](s_, "spacing")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("spacing"))
 	return rv
 }
 
 func (s_ StackView) SetSpacing(value float64) {
-	objc.CallMethod[objc.Void](s_, "setSpacing:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSpacing:"), value)
 }
 
 func (s_ StackView) EdgeInsets() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](s_, "edgeInsets")
+	rv := objc.CallMethod[foundation.EdgeInsets](s_, objc.GetSelector("edgeInsets"))
 	return rv
 }
 
 func (s_ StackView) SetEdgeInsets(value foundation.EdgeInsets) {
-	objc.CallMethod[objc.Void](s_, "setEdgeInsets:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setEdgeInsets:"), value)
 }
 
 // deprecated
 func (s_ StackView) HasEqualSpacing() bool {
-	rv := objc.CallMethod[bool](s_, "hasEqualSpacing")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("hasEqualSpacing"))
 	return rv
 }
 
 // deprecated
 func (s_ StackView) SetHasEqualSpacing(value bool) {
-	objc.CallMethod[objc.Void](s_, "setHasEqualSpacing:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHasEqualSpacing:"), value)
 }
 
 func (s_ StackView) Distribution() StackViewDistribution {
-	rv := objc.CallMethod[StackViewDistribution](s_, "distribution")
+	rv := objc.CallMethod[StackViewDistribution](s_, objc.GetSelector("distribution"))
 	return rv
 }
 
 func (s_ StackView) SetDistribution(value StackViewDistribution) {
-	objc.CallMethod[objc.Void](s_, "setDistribution:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDistribution:"), value)
 }
 
 func (s_ StackView) DetachesHiddenViews() bool {
-	rv := objc.CallMethod[bool](s_, "detachesHiddenViews")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("detachesHiddenViews"))
 	return rv
 }
 
 func (s_ StackView) SetDetachesHiddenViews(value bool) {
-	objc.CallMethod[objc.Void](s_, "setDetachesHiddenViews:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDetachesHiddenViews:"), value)
 }

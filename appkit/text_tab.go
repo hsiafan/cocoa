@@ -34,22 +34,22 @@ func MakeTextTab(ptr unsafe.Pointer) TextTab {
 }
 
 func (t_ TextTab) InitWithTextAlignment_Location_Options(alignment TextAlignment, loc float64, options map[TextTabOptionKey]objc.IObject) TextTab {
-	rv := objc.CallMethod[TextTab](t_, "initWithTextAlignment:location:options:", alignment, loc, options)
+	rv := objc.CallMethod[TextTab](t_, objc.GetSelector("initWithTextAlignment:location:options:"), alignment, loc, options)
 	return rv
 }
 
 func (t_ TextTab) InitWithType_Location(type_ TextTabType, loc float64) TextTab {
-	rv := objc.CallMethod[TextTab](t_, "initWithType:location:", type_, loc)
+	rv := objc.CallMethod[TextTab](t_, objc.GetSelector("initWithType:location:"), type_, loc)
 	return rv
 }
 
 func (tc _TextTabClass) Alloc() TextTab {
-	rv := objc.CallMethod[TextTab](tc, "alloc")
+	rv := objc.CallMethod[TextTab](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextTabClass) New() TextTab {
-	rv := objc.CallMethod[TextTab](tc, "new")
+	rv := objc.CallMethod[TextTab](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -59,32 +59,32 @@ func NewTextTab() TextTab {
 }
 
 func (t_ TextTab) Init() TextTab {
-	rv := objc.CallMethod[TextTab](t_, "init")
+	rv := objc.CallMethod[TextTab](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TextTabClass) ColumnTerminatorsForLocale(aLocale foundation.ILocale) foundation.CharacterSet {
-	rv := objc.CallMethod[foundation.CharacterSet](tc, "columnTerminatorsForLocale:", aLocale)
+	rv := objc.CallMethod[foundation.CharacterSet](tc, objc.GetSelector("columnTerminatorsForLocale:"), aLocale)
 	return rv
 }
 
 func (t_ TextTab) Location() float64 {
-	rv := objc.CallMethod[float64](t_, "location")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("location"))
 	return rv
 }
 
 func (t_ TextTab) Alignment() TextAlignment {
-	rv := objc.CallMethod[TextAlignment](t_, "alignment")
+	rv := objc.CallMethod[TextAlignment](t_, objc.GetSelector("alignment"))
 	return rv
 }
 
 func (t_ TextTab) Options() map[TextTabOptionKey]objc.Object {
-	rv := objc.CallMethod[map[TextTabOptionKey]objc.Object](t_, "options")
+	rv := objc.CallMethod[map[TextTabOptionKey]objc.Object](t_, objc.GetSelector("options"))
 	return rv
 }
 
 // deprecated
 func (t_ TextTab) TabStopType() TextTabType {
-	rv := objc.CallMethod[TextTabType](t_, "tabStopType")
+	rv := objc.CallMethod[TextTabType](t_, objc.GetSelector("tabStopType"))
 	return rv
 }

@@ -29,12 +29,12 @@ func MakeFindResult(ptr unsafe.Pointer) FindResult {
 }
 
 func (fc _FindResultClass) Alloc() FindResult {
-	rv := objc.CallMethod[FindResult](fc, "alloc")
+	rv := objc.CallMethod[FindResult](fc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (fc _FindResultClass) New() FindResult {
-	rv := objc.CallMethod[FindResult](fc, "new")
+	rv := objc.CallMethod[FindResult](fc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -44,11 +44,11 @@ func NewFindResult() FindResult {
 }
 
 func (f_ FindResult) Init() FindResult {
-	rv := objc.CallMethod[FindResult](f_, "init")
+	rv := objc.CallMethod[FindResult](f_, objc.GetSelector("init"))
 	return rv
 }
 
 func (f_ FindResult) MatchFound() bool {
-	rv := objc.CallMethod[bool](f_, "matchFound")
+	rv := objc.CallMethod[bool](f_, objc.GetSelector("matchFound"))
 	return rv
 }

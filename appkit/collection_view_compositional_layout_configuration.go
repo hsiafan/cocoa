@@ -34,12 +34,12 @@ func MakeCollectionViewCompositionalLayoutConfiguration(ptr unsafe.Pointer) Coll
 }
 
 func (cc _CollectionViewCompositionalLayoutConfigurationClass) Alloc() CollectionViewCompositionalLayoutConfiguration {
-	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewCompositionalLayoutConfigurationClass) New() CollectionViewCompositionalLayoutConfiguration {
-	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, "new")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,33 +49,33 @@ func NewCollectionViewCompositionalLayoutConfiguration() CollectionViewCompositi
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) Init() CollectionViewCompositionalLayoutConfiguration {
-	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "init")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) ScrollDirection() CollectionViewScrollDirection {
-	rv := objc.CallMethod[CollectionViewScrollDirection](c_, "scrollDirection")
+	rv := objc.CallMethod[CollectionViewScrollDirection](c_, objc.GetSelector("scrollDirection"))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetScrollDirection(value CollectionViewScrollDirection) {
-	objc.CallMethod[objc.Void](c_, "setScrollDirection:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setScrollDirection:"), value)
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) InterSectionSpacing() float64 {
-	rv := objc.CallMethod[float64](c_, "interSectionSpacing")
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("interSectionSpacing"))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetInterSectionSpacing(value float64) {
-	objc.CallMethod[objc.Void](c_, "setInterSectionSpacing:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInterSectionSpacing:"), value)
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) BoundarySupplementaryItems() []CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, "boundarySupplementaryItems")
+	rv := objc.CallMethod[[]CollectionLayoutBoundarySupplementaryItem](c_, objc.GetSelector("boundarySupplementaryItems"))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayoutConfiguration) SetBoundarySupplementaryItems(value []ICollectionLayoutBoundarySupplementaryItem) {
-	objc.CallMethod[objc.Void](c_, "setBoundarySupplementaryItems:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBoundarySupplementaryItems:"), value)
 }

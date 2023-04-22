@@ -30,32 +30,32 @@ func MakeCollectionViewCompositionalLayout(ptr unsafe.Pointer) CollectionViewCom
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:", section)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSection:"), section)
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection_Configuration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSection:configuration:", section, configuration)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSection:configuration:"), section, configuration)
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSectionProvider:", sectionProvider)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSectionProvider:"), sectionProvider)
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider_Configuration(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "initWithSectionProvider:configuration:", sectionProvider, configuration)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSectionProvider:configuration:"), sectionProvider, configuration)
 	return rv
 }
 
 func (cc _CollectionViewCompositionalLayoutClass) Alloc() CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewCompositionalLayoutClass) New() CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](cc, "new")
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,15 +65,15 @@ func NewCollectionViewCompositionalLayout() CollectionViewCompositionalLayout {
 }
 
 func (c_ CollectionViewCompositionalLayout) Init() CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, "init")
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) Configuration() CollectionViewCompositionalLayoutConfiguration {
-	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, "configuration")
+	rv := objc.CallMethod[CollectionViewCompositionalLayoutConfiguration](c_, objc.GetSelector("configuration"))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) SetConfiguration(value ICollectionViewCompositionalLayoutConfiguration) {
-	objc.CallMethod[objc.Void](c_, "setConfiguration:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setConfiguration:"), value)
 }

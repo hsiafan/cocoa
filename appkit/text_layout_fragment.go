@@ -46,17 +46,17 @@ func MakeTextLayoutFragment(ptr unsafe.Pointer) TextLayoutFragment {
 }
 
 func (t_ TextLayoutFragment) InitWithTextElement_Range(textElement ITextElement, rangeInElement ITextRange) TextLayoutFragment {
-	rv := objc.CallMethod[TextLayoutFragment](t_, "initWithTextElement:range:", textElement, rangeInElement)
+	rv := objc.CallMethod[TextLayoutFragment](t_, objc.GetSelector("initWithTextElement:range:"), textElement, rangeInElement)
 	return rv
 }
 
 func (tc _TextLayoutFragmentClass) Alloc() TextLayoutFragment {
-	rv := objc.CallMethod[TextLayoutFragment](tc, "alloc")
+	rv := objc.CallMethod[TextLayoutFragment](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextLayoutFragmentClass) New() TextLayoutFragment {
-	rv := objc.CallMethod[TextLayoutFragment](tc, "new")
+	rv := objc.CallMethod[TextLayoutFragment](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -66,83 +66,83 @@ func NewTextLayoutFragment() TextLayoutFragment {
 }
 
 func (t_ TextLayoutFragment) Init() TextLayoutFragment {
-	rv := objc.CallMethod[TextLayoutFragment](t_, "init")
+	rv := objc.CallMethod[TextLayoutFragment](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) DrawAtPoint_InContext(point coregraphics.Point, context coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](t_, "drawAtPoint:inContext:", point, context)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawAtPoint:inContext:"), point, context)
 }
 
 func (t_ TextLayoutFragment) InvalidateLayout() {
-	objc.CallMethod[objc.Void](t_, "invalidateLayout")
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("invalidateLayout"))
 }
 
 func (t_ TextLayoutFragment) BottomMargin() float64 {
-	rv := objc.CallMethod[float64](t_, "bottomMargin")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("bottomMargin"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) LeadingPadding() float64 {
-	rv := objc.CallMethod[float64](t_, "leadingPadding")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("leadingPadding"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) TopMargin() float64 {
-	rv := objc.CallMethod[float64](t_, "topMargin")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("topMargin"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) TrailingPadding() float64 {
-	rv := objc.CallMethod[float64](t_, "trailingPadding")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("trailingPadding"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) TextLayoutManager() TextLayoutManager {
-	rv := objc.CallMethod[TextLayoutManager](t_, "textLayoutManager")
+	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) LayoutQueue() foundation.OperationQueue {
-	rv := objc.CallMethod[foundation.OperationQueue](t_, "layoutQueue")
+	rv := objc.CallMethod[foundation.OperationQueue](t_, objc.GetSelector("layoutQueue"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) SetLayoutQueue(value foundation.IOperationQueue) {
-	objc.CallMethod[objc.Void](t_, "setLayoutQueue:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutQueue:"), value)
 }
 
 func (t_ TextLayoutFragment) LayoutFragmentFrame() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](t_, "layoutFragmentFrame")
+	rv := objc.CallMethod[coregraphics.Rect](t_, objc.GetSelector("layoutFragmentFrame"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) RenderingSurfaceBounds() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](t_, "renderingSurfaceBounds")
+	rv := objc.CallMethod[coregraphics.Rect](t_, objc.GetSelector("renderingSurfaceBounds"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) TextAttachmentViewProviders() []TextAttachmentViewProvider {
-	rv := objc.CallMethod[[]TextAttachmentViewProvider](t_, "textAttachmentViewProviders")
+	rv := objc.CallMethod[[]TextAttachmentViewProvider](t_, objc.GetSelector("textAttachmentViewProviders"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) State() TextLayoutFragmentState {
-	rv := objc.CallMethod[TextLayoutFragmentState](t_, "state")
+	rv := objc.CallMethod[TextLayoutFragmentState](t_, objc.GetSelector("state"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) RangeInElement() TextRange {
-	rv := objc.CallMethod[TextRange](t_, "rangeInElement")
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("rangeInElement"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) TextElement() TextElement {
-	rv := objc.CallMethod[TextElement](t_, "textElement")
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("textElement"))
 	return rv
 }
 
 func (t_ TextLayoutFragment) TextLineFragments() []TextLineFragment {
-	rv := objc.CallMethod[[]TextLineFragment](t_, "textLineFragments")
+	rv := objc.CallMethod[[]TextLineFragment](t_, objc.GetSelector("textLineFragments"))
 	return rv
 }

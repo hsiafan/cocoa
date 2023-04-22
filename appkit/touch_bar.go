@@ -50,17 +50,17 @@ func MakeTouchBar(ptr unsafe.Pointer) TouchBar {
 }
 
 func (t_ TouchBar) Init() TouchBar {
-	rv := objc.CallMethod[TouchBar](t_, "init")
+	rv := objc.CallMethod[TouchBar](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TouchBarClass) Alloc() TouchBar {
-	rv := objc.CallMethod[TouchBar](tc, "alloc")
+	rv := objc.CallMethod[TouchBar](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TouchBarClass) New() TouchBar {
-	rv := objc.CallMethod[TouchBar](tc, "new")
+	rv := objc.CallMethod[TouchBar](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -70,12 +70,12 @@ func NewTouchBar() TouchBar {
 }
 
 func (t_ TouchBar) ItemForIdentifier(identifier TouchBarItemIdentifier) TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](t_, "itemForIdentifier:", identifier)
+	rv := objc.CallMethod[TouchBarItem](t_, objc.GetSelector("itemForIdentifier:"), identifier)
 	return rv
 }
 
 func (t_ TouchBar) Delegate() TouchBarDelegateWrapper {
-	rv := objc.CallMethod[TouchBarDelegateWrapper](t_, "delegate")
+	rv := objc.CallMethod[TouchBarDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -83,91 +83,91 @@ func (t_ TouchBar) SetDelegate(value TouchBarDelegate) {
 	po := objc.CreateProtocol("NSTouchBarDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (t_ TouchBar) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (t_ TouchBar) TemplateItems() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](t_, "templateItems")
+	rv := objc.CallMethod[foundation.Set](t_, objc.GetSelector("templateItems"))
 	return rv
 }
 
 func (t_ TouchBar) SetTemplateItems(value foundation.ISet) {
-	objc.CallMethod[objc.Void](t_, "setTemplateItems:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTemplateItems:"), value)
 }
 
 func (t_ TouchBar) DefaultItemIdentifiers() []TouchBarItemIdentifier {
-	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, "defaultItemIdentifiers")
+	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, objc.GetSelector("defaultItemIdentifiers"))
 	return rv
 }
 
 func (t_ TouchBar) SetDefaultItemIdentifiers(value []TouchBarItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setDefaultItemIdentifiers:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDefaultItemIdentifiers:"), value)
 }
 
 func (t_ TouchBar) PrincipalItemIdentifier() TouchBarItemIdentifier {
-	rv := objc.CallMethod[TouchBarItemIdentifier](t_, "principalItemIdentifier")
+	rv := objc.CallMethod[TouchBarItemIdentifier](t_, objc.GetSelector("principalItemIdentifier"))
 	return rv
 }
 
 func (t_ TouchBar) SetPrincipalItemIdentifier(value TouchBarItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setPrincipalItemIdentifier:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPrincipalItemIdentifier:"), value)
 }
 
 func (t_ TouchBar) EscapeKeyReplacementItemIdentifier() TouchBarItemIdentifier {
-	rv := objc.CallMethod[TouchBarItemIdentifier](t_, "escapeKeyReplacementItemIdentifier")
+	rv := objc.CallMethod[TouchBarItemIdentifier](t_, objc.GetSelector("escapeKeyReplacementItemIdentifier"))
 	return rv
 }
 
 func (t_ TouchBar) SetEscapeKeyReplacementItemIdentifier(value TouchBarItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setEscapeKeyReplacementItemIdentifier:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setEscapeKeyReplacementItemIdentifier:"), value)
 }
 
 func (t_ TouchBar) IsVisible() bool {
-	rv := objc.CallMethod[bool](t_, "isVisible")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isVisible"))
 	return rv
 }
 
 func (t_ TouchBar) ItemIdentifiers() []TouchBarItemIdentifier {
-	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, "itemIdentifiers")
+	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, objc.GetSelector("itemIdentifiers"))
 	return rv
 }
 
 func (t_ TouchBar) CustomizationIdentifier() TouchBarCustomizationIdentifier {
-	rv := objc.CallMethod[TouchBarCustomizationIdentifier](t_, "customizationIdentifier")
+	rv := objc.CallMethod[TouchBarCustomizationIdentifier](t_, objc.GetSelector("customizationIdentifier"))
 	return rv
 }
 
 func (t_ TouchBar) SetCustomizationIdentifier(value TouchBarCustomizationIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setCustomizationIdentifier:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCustomizationIdentifier:"), value)
 }
 
 func (t_ TouchBar) CustomizationAllowedItemIdentifiers() []TouchBarItemIdentifier {
-	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, "customizationAllowedItemIdentifiers")
+	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, objc.GetSelector("customizationAllowedItemIdentifiers"))
 	return rv
 }
 
 func (t_ TouchBar) SetCustomizationAllowedItemIdentifiers(value []TouchBarItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setCustomizationAllowedItemIdentifiers:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCustomizationAllowedItemIdentifiers:"), value)
 }
 
 func (t_ TouchBar) CustomizationRequiredItemIdentifiers() []TouchBarItemIdentifier {
-	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, "customizationRequiredItemIdentifiers")
+	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, objc.GetSelector("customizationRequiredItemIdentifiers"))
 	return rv
 }
 
 func (t_ TouchBar) SetCustomizationRequiredItemIdentifiers(value []TouchBarItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setCustomizationRequiredItemIdentifiers:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCustomizationRequiredItemIdentifiers:"), value)
 }
 
 func (tc _TouchBarClass) IsAutomaticCustomizeTouchBarMenuItemEnabled() bool {
-	rv := objc.CallMethod[bool](tc, "isAutomaticCustomizeTouchBarMenuItemEnabled")
+	rv := objc.CallMethod[bool](tc, objc.GetSelector("isAutomaticCustomizeTouchBarMenuItemEnabled"))
 	return rv
 }
 
 func (tc _TouchBarClass) SetAutomaticCustomizeTouchBarMenuItemEnabled(value bool) {
-	objc.CallMethod[objc.Void](tc, "setAutomaticCustomizeTouchBarMenuItemEnabled:", value)
+	objc.CallMethod[objc.Void](tc, objc.GetSelector("setAutomaticCustomizeTouchBarMenuItemEnabled:"), value)
 }

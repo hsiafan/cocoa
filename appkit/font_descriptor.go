@@ -44,22 +44,22 @@ func MakeFontDescriptor(ptr unsafe.Pointer) FontDescriptor {
 }
 
 func (f_ FontDescriptor) InitWithFontAttributes(attributes map[FontDescriptorAttributeName]objc.IObject) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "initWithFontAttributes:", attributes)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("initWithFontAttributes:"), attributes)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorWithDesign(design FontDescriptorSystemDesign) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorWithDesign:", design)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithDesign:"), design)
 	return rv
 }
 
 func (fc _FontDescriptorClass) Alloc() FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, "alloc")
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (fc _FontDescriptorClass) New() FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, "new")
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -69,101 +69,101 @@ func NewFontDescriptor() FontDescriptor {
 }
 
 func (f_ FontDescriptor) Init() FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "init")
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("init"))
 	return rv
 }
 
 func (fc _FontDescriptorClass) PreferredFontDescriptorForTextStyle_Options(style FontTextStyle, options map[FontTextStyleOptionKey]objc.IObject) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, "preferredFontDescriptorForTextStyle:options:", style, options)
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("preferredFontDescriptorForTextStyle:options:"), style, options)
 	return rv
 }
 
 func (fc _FontDescriptorClass) FontDescriptorWithFontAttributes(attributes map[FontDescriptorAttributeName]objc.IObject) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, "fontDescriptorWithFontAttributes:", attributes)
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("fontDescriptorWithFontAttributes:"), attributes)
 	return rv
 }
 
 func (fc _FontDescriptorClass) FontDescriptorWithName_Matrix(fontName string, matrix foundation.IAffineTransform) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, "fontDescriptorWithName:matrix:", fontName, matrix)
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("fontDescriptorWithName:matrix:"), fontName, matrix)
 	return rv
 }
 
 func (fc _FontDescriptorClass) FontDescriptorWithName_Size(fontName string, size float64) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, "fontDescriptorWithName:size:", fontName, size)
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("fontDescriptorWithName:size:"), fontName, size)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorByAddingAttributes(attributes map[FontDescriptorAttributeName]objc.IObject) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorByAddingAttributes:", attributes)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorByAddingAttributes:"), attributes)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorWithFace(newFace string) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorWithFace:", newFace)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithFace:"), newFace)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorWithFamily(newFamily string) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorWithFamily:", newFamily)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithFamily:"), newFamily)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorWithMatrix(matrix foundation.IAffineTransform) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorWithMatrix:", matrix)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithMatrix:"), matrix)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorWithSize(newPointSize float64) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorWithSize:", newPointSize)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithSize:"), newPointSize)
 	return rv
 }
 
 func (f_ FontDescriptor) FontDescriptorWithSymbolicTraits(symbolicTraits FontDescriptorSymbolicTraits) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "fontDescriptorWithSymbolicTraits:", symbolicTraits)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithSymbolicTraits:"), symbolicTraits)
 	return rv
 }
 
 func (f_ FontDescriptor) MatchingFontDescriptorsWithMandatoryKeys(mandatoryKeys foundation.ISet) []FontDescriptor {
-	rv := objc.CallMethod[[]FontDescriptor](f_, "matchingFontDescriptorsWithMandatoryKeys:", mandatoryKeys)
+	rv := objc.CallMethod[[]FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorsWithMandatoryKeys:"), mandatoryKeys)
 	return rv
 }
 
 func (f_ FontDescriptor) MatchingFontDescriptorWithMandatoryKeys(mandatoryKeys foundation.ISet) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, "matchingFontDescriptorWithMandatoryKeys:", mandatoryKeys)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorWithMandatoryKeys:"), mandatoryKeys)
 	return rv
 }
 
 func (f_ FontDescriptor) ObjectForKey(attribute FontDescriptorAttributeName) objc.Object {
-	rv := objc.CallMethod[objc.Object](f_, "objectForKey:", attribute)
+	rv := objc.CallMethod[objc.Object](f_, objc.GetSelector("objectForKey:"), attribute)
 	return rv
 }
 
 func (f_ FontDescriptor) FontAttributes() map[FontDescriptorAttributeName]objc.Object {
-	rv := objc.CallMethod[map[FontDescriptorAttributeName]objc.Object](f_, "fontAttributes")
+	rv := objc.CallMethod[map[FontDescriptorAttributeName]objc.Object](f_, objc.GetSelector("fontAttributes"))
 	return rv
 }
 
 func (f_ FontDescriptor) Matrix() foundation.AffineTransform {
-	rv := objc.CallMethod[foundation.AffineTransform](f_, "matrix")
+	rv := objc.CallMethod[foundation.AffineTransform](f_, objc.GetSelector("matrix"))
 	return rv
 }
 
 func (f_ FontDescriptor) PointSize() float64 {
-	rv := objc.CallMethod[float64](f_, "pointSize")
+	rv := objc.CallMethod[float64](f_, objc.GetSelector("pointSize"))
 	return rv
 }
 
 func (f_ FontDescriptor) PostscriptName() string {
-	rv := objc.CallMethod[string](f_, "postscriptName")
+	rv := objc.CallMethod[string](f_, objc.GetSelector("postscriptName"))
 	return rv
 }
 
 func (f_ FontDescriptor) SymbolicTraits() FontDescriptorSymbolicTraits {
-	rv := objc.CallMethod[FontDescriptorSymbolicTraits](f_, "symbolicTraits")
+	rv := objc.CallMethod[FontDescriptorSymbolicTraits](f_, objc.GetSelector("symbolicTraits"))
 	return rv
 }
 
 func (f_ FontDescriptor) RequiresFontAssetRequest() bool {
-	rv := objc.CallMethod[bool](f_, "requiresFontAssetRequest")
+	rv := objc.CallMethod[bool](f_, objc.GetSelector("requiresFontAssetRequest"))
 	return rv
 }

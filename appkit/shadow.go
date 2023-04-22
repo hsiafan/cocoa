@@ -36,17 +36,17 @@ func MakeShadow(ptr unsafe.Pointer) Shadow {
 }
 
 func (s_ Shadow) Init() Shadow {
-	rv := objc.CallMethod[Shadow](s_, "init")
+	rv := objc.CallMethod[Shadow](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _ShadowClass) Alloc() Shadow {
-	rv := objc.CallMethod[Shadow](sc, "alloc")
+	rv := objc.CallMethod[Shadow](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _ShadowClass) New() Shadow {
-	rv := objc.CallMethod[Shadow](sc, "new")
+	rv := objc.CallMethod[Shadow](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,32 +56,32 @@ func NewShadow() Shadow {
 }
 
 func (s_ Shadow) Set() {
-	objc.CallMethod[objc.Void](s_, "set")
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("set"))
 }
 
 func (s_ Shadow) ShadowOffset() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](s_, "shadowOffset")
+	rv := objc.CallMethod[foundation.Size](s_, objc.GetSelector("shadowOffset"))
 	return rv
 }
 
 func (s_ Shadow) SetShadowOffset(value foundation.Size) {
-	objc.CallMethod[objc.Void](s_, "setShadowOffset:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowOffset:"), value)
 }
 
 func (s_ Shadow) ShadowBlurRadius() float64 {
-	rv := objc.CallMethod[float64](s_, "shadowBlurRadius")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("shadowBlurRadius"))
 	return rv
 }
 
 func (s_ Shadow) SetShadowBlurRadius(value float64) {
-	objc.CallMethod[objc.Void](s_, "setShadowBlurRadius:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowBlurRadius:"), value)
 }
 
 func (s_ Shadow) ShadowColor() Color {
-	rv := objc.CallMethod[Color](s_, "shadowColor")
+	rv := objc.CallMethod[Color](s_, objc.GetSelector("shadowColor"))
 	return rv
 }
 
 func (s_ Shadow) SetShadowColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, "setShadowColor:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowColor:"), value)
 }

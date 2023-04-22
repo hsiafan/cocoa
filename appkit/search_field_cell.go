@@ -50,27 +50,27 @@ func MakeSearchFieldCell(ptr unsafe.Pointer) SearchFieldCell {
 }
 
 func (s_ SearchFieldCell) InitTextCell(string_ string) SearchFieldCell {
-	rv := objc.CallMethod[SearchFieldCell](s_, "initTextCell:", string_)
+	rv := objc.CallMethod[SearchFieldCell](s_, objc.GetSelector("initTextCell:"), string_)
 	return rv
 }
 
 func (s_ SearchFieldCell) InitImageCell(image IImage) SearchFieldCell {
-	rv := objc.CallMethod[SearchFieldCell](s_, "initImageCell:", image)
+	rv := objc.CallMethod[SearchFieldCell](s_, objc.GetSelector("initImageCell:"), image)
 	return rv
 }
 
 func (s_ SearchFieldCell) Init() SearchFieldCell {
-	rv := objc.CallMethod[SearchFieldCell](s_, "init")
+	rv := objc.CallMethod[SearchFieldCell](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _SearchFieldCellClass) Alloc() SearchFieldCell {
-	rv := objc.CallMethod[SearchFieldCell](sc, "alloc")
+	rv := objc.CallMethod[SearchFieldCell](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SearchFieldCellClass) New() SearchFieldCell {
-	rv := objc.CallMethod[SearchFieldCell](sc, "new")
+	rv := objc.CallMethod[SearchFieldCell](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -80,96 +80,96 @@ func NewSearchFieldCell() SearchFieldCell {
 }
 
 func (s_ SearchFieldCell) ResetSearchButtonCell() {
-	objc.CallMethod[objc.Void](s_, "resetSearchButtonCell")
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("resetSearchButtonCell"))
 }
 
 func (s_ SearchFieldCell) ResetCancelButtonCell() {
-	objc.CallMethod[objc.Void](s_, "resetCancelButtonCell")
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("resetCancelButtonCell"))
 }
 
 func (s_ SearchFieldCell) SearchTextRectForBounds(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "searchTextRectForBounds:", rect)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("searchTextRectForBounds:"), rect)
 	return rv
 }
 
 func (s_ SearchFieldCell) SearchButtonRectForBounds(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "searchButtonRectForBounds:", rect)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("searchButtonRectForBounds:"), rect)
 	return rv
 }
 
 func (s_ SearchFieldCell) CancelButtonRectForBounds(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "cancelButtonRectForBounds:", rect)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("cancelButtonRectForBounds:"), rect)
 	return rv
 }
 
 func (s_ SearchFieldCell) SearchButtonCell() ButtonCell {
-	rv := objc.CallMethod[ButtonCell](s_, "searchButtonCell")
+	rv := objc.CallMethod[ButtonCell](s_, objc.GetSelector("searchButtonCell"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetSearchButtonCell(value IButtonCell) {
-	objc.CallMethod[objc.Void](s_, "setSearchButtonCell:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchButtonCell:"), value)
 }
 
 func (s_ SearchFieldCell) CancelButtonCell() ButtonCell {
-	rv := objc.CallMethod[ButtonCell](s_, "cancelButtonCell")
+	rv := objc.CallMethod[ButtonCell](s_, objc.GetSelector("cancelButtonCell"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetCancelButtonCell(value IButtonCell) {
-	objc.CallMethod[objc.Void](s_, "setCancelButtonCell:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCancelButtonCell:"), value)
 }
 
 func (s_ SearchFieldCell) SearchMenuTemplate() Menu {
-	rv := objc.CallMethod[Menu](s_, "searchMenuTemplate")
+	rv := objc.CallMethod[Menu](s_, objc.GetSelector("searchMenuTemplate"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetSearchMenuTemplate(value IMenu) {
-	objc.CallMethod[objc.Void](s_, "setSearchMenuTemplate:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchMenuTemplate:"), value)
 }
 
 func (s_ SearchFieldCell) SendsWholeSearchString() bool {
-	rv := objc.CallMethod[bool](s_, "sendsWholeSearchString")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("sendsWholeSearchString"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetSendsWholeSearchString(value bool) {
-	objc.CallMethod[objc.Void](s_, "setSendsWholeSearchString:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSendsWholeSearchString:"), value)
 }
 
 func (s_ SearchFieldCell) SendsSearchStringImmediately() bool {
-	rv := objc.CallMethod[bool](s_, "sendsSearchStringImmediately")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("sendsSearchStringImmediately"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetSendsSearchStringImmediately(value bool) {
-	objc.CallMethod[objc.Void](s_, "setSendsSearchStringImmediately:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSendsSearchStringImmediately:"), value)
 }
 
 func (s_ SearchFieldCell) MaximumRecents() int {
-	rv := objc.CallMethod[int](s_, "maximumRecents")
+	rv := objc.CallMethod[int](s_, objc.GetSelector("maximumRecents"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetMaximumRecents(value int) {
-	objc.CallMethod[objc.Void](s_, "setMaximumRecents:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMaximumRecents:"), value)
 }
 
 func (s_ SearchFieldCell) RecentSearches() []string {
-	rv := objc.CallMethod[[]string](s_, "recentSearches")
+	rv := objc.CallMethod[[]string](s_, objc.GetSelector("recentSearches"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetRecentSearches(value []string) {
-	objc.CallMethod[objc.Void](s_, "setRecentSearches:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRecentSearches:"), value)
 }
 
 func (s_ SearchFieldCell) RecentsAutosaveName() SearchFieldRecentsAutosaveName {
-	rv := objc.CallMethod[SearchFieldRecentsAutosaveName](s_, "recentsAutosaveName")
+	rv := objc.CallMethod[SearchFieldRecentsAutosaveName](s_, objc.GetSelector("recentsAutosaveName"))
 	return rv
 }
 
 func (s_ SearchFieldCell) SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName) {
-	objc.CallMethod[objc.Void](s_, "setRecentsAutosaveName:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRecentsAutosaveName:"), value)
 }

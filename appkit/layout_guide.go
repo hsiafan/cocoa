@@ -46,12 +46,12 @@ func MakeLayoutGuide(ptr unsafe.Pointer) LayoutGuide {
 }
 
 func (lc _LayoutGuideClass) Alloc() LayoutGuide {
-	rv := objc.CallMethod[LayoutGuide](lc, "alloc")
+	rv := objc.CallMethod[LayoutGuide](lc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (lc _LayoutGuideClass) New() LayoutGuide {
-	rv := objc.CallMethod[LayoutGuide](lc, "new")
+	rv := objc.CallMethod[LayoutGuide](lc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,89 +61,89 @@ func NewLayoutGuide() LayoutGuide {
 }
 
 func (l_ LayoutGuide) Init() LayoutGuide {
-	rv := objc.CallMethod[LayoutGuide](l_, "init")
+	rv := objc.CallMethod[LayoutGuide](l_, objc.GetSelector("init"))
 	return rv
 }
 
 func (l_ LayoutGuide) ConstraintsAffectingLayoutForOrientation(orientation LayoutConstraintOrientation) []LayoutConstraint {
-	rv := objc.CallMethod[[]LayoutConstraint](l_, "constraintsAffectingLayoutForOrientation:", orientation)
+	rv := objc.CallMethod[[]LayoutConstraint](l_, objc.GetSelector("constraintsAffectingLayoutForOrientation:"), orientation)
 	return rv
 }
 
 func (l_ LayoutGuide) Identifier() UserInterfaceItemIdentifier {
-	rv := objc.CallMethod[UserInterfaceItemIdentifier](l_, "identifier")
+	rv := objc.CallMethod[UserInterfaceItemIdentifier](l_, objc.GetSelector("identifier"))
 	return rv
 }
 
 func (l_ LayoutGuide) SetIdentifier(value UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](l_, "setIdentifier:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setIdentifier:"), value)
 }
 
 func (l_ LayoutGuide) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, "frame")
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("frame"))
 	return rv
 }
 
 func (l_ LayoutGuide) OwningView() View {
-	rv := objc.CallMethod[View](l_, "owningView")
+	rv := objc.CallMethod[View](l_, objc.GetSelector("owningView"))
 	return rv
 }
 
 func (l_ LayoutGuide) SetOwningView(value IView) {
-	objc.CallMethod[objc.Void](l_, "setOwningView:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setOwningView:"), value)
 }
 
 func (l_ LayoutGuide) BottomAnchor() LayoutYAxisAnchor {
-	rv := objc.CallMethod[LayoutYAxisAnchor](l_, "bottomAnchor")
+	rv := objc.CallMethod[LayoutYAxisAnchor](l_, objc.GetSelector("bottomAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) CenterXAnchor() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](l_, "centerXAnchor")
+	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.GetSelector("centerXAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) CenterYAnchor() LayoutYAxisAnchor {
-	rv := objc.CallMethod[LayoutYAxisAnchor](l_, "centerYAnchor")
+	rv := objc.CallMethod[LayoutYAxisAnchor](l_, objc.GetSelector("centerYAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) HeightAnchor() LayoutDimension {
-	rv := objc.CallMethod[LayoutDimension](l_, "heightAnchor")
+	rv := objc.CallMethod[LayoutDimension](l_, objc.GetSelector("heightAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) LeadingAnchor() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](l_, "leadingAnchor")
+	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.GetSelector("leadingAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) LeftAnchor() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](l_, "leftAnchor")
+	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.GetSelector("leftAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) RightAnchor() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](l_, "rightAnchor")
+	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.GetSelector("rightAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) TopAnchor() LayoutYAxisAnchor {
-	rv := objc.CallMethod[LayoutYAxisAnchor](l_, "topAnchor")
+	rv := objc.CallMethod[LayoutYAxisAnchor](l_, objc.GetSelector("topAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) TrailingAnchor() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](l_, "trailingAnchor")
+	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.GetSelector("trailingAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) WidthAnchor() LayoutDimension {
-	rv := objc.CallMethod[LayoutDimension](l_, "widthAnchor")
+	rv := objc.CallMethod[LayoutDimension](l_, objc.GetSelector("widthAnchor"))
 	return rv
 }
 
 func (l_ LayoutGuide) HasAmbiguousLayout() bool {
-	rv := objc.CallMethod[bool](l_, "hasAmbiguousLayout")
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("hasAmbiguousLayout"))
 	return rv
 }

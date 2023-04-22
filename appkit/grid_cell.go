@@ -40,12 +40,12 @@ func MakeGridCell(ptr unsafe.Pointer) GridCell {
 }
 
 func (gc _GridCellClass) Alloc() GridCell {
-	rv := objc.CallMethod[GridCell](gc, "alloc")
+	rv := objc.CallMethod[GridCell](gc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (gc _GridCellClass) New() GridCell {
-	rv := objc.CallMethod[GridCell](gc, "new")
+	rv := objc.CallMethod[GridCell](gc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,66 +55,66 @@ func NewGridCell() GridCell {
 }
 
 func (g_ GridCell) Init() GridCell {
-	rv := objc.CallMethod[GridCell](g_, "init")
+	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("init"))
 	return rv
 }
 
 func (g_ GridCell) Column() GridColumn {
-	rv := objc.CallMethod[GridColumn](g_, "column")
+	rv := objc.CallMethod[GridColumn](g_, objc.GetSelector("column"))
 	return rv
 }
 
 func (g_ GridCell) Row() GridRow {
-	rv := objc.CallMethod[GridRow](g_, "row")
+	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("row"))
 	return rv
 }
 
 func (g_ GridCell) ContentView() View {
-	rv := objc.CallMethod[View](g_, "contentView")
+	rv := objc.CallMethod[View](g_, objc.GetSelector("contentView"))
 	return rv
 }
 
 func (g_ GridCell) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](g_, "setContentView:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setContentView:"), value)
 }
 
 func (gc _GridCellClass) EmptyContentView() View {
-	rv := objc.CallMethod[View](gc, "emptyContentView")
+	rv := objc.CallMethod[View](gc, objc.GetSelector("emptyContentView"))
 	return rv
 }
 
 func (g_ GridCell) CustomPlacementConstraints() []LayoutConstraint {
-	rv := objc.CallMethod[[]LayoutConstraint](g_, "customPlacementConstraints")
+	rv := objc.CallMethod[[]LayoutConstraint](g_, objc.GetSelector("customPlacementConstraints"))
 	return rv
 }
 
 func (g_ GridCell) SetCustomPlacementConstraints(value []ILayoutConstraint) {
-	objc.CallMethod[objc.Void](g_, "setCustomPlacementConstraints:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setCustomPlacementConstraints:"), value)
 }
 
 func (g_ GridCell) RowAlignment() GridRowAlignment {
-	rv := objc.CallMethod[GridRowAlignment](g_, "rowAlignment")
+	rv := objc.CallMethod[GridRowAlignment](g_, objc.GetSelector("rowAlignment"))
 	return rv
 }
 
 func (g_ GridCell) SetRowAlignment(value GridRowAlignment) {
-	objc.CallMethod[objc.Void](g_, "setRowAlignment:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setRowAlignment:"), value)
 }
 
 func (g_ GridCell) XPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, "xPlacement")
+	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("xPlacement"))
 	return rv
 }
 
 func (g_ GridCell) SetXPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, "setXPlacement:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setXPlacement:"), value)
 }
 
 func (g_ GridCell) YPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, "yPlacement")
+	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("yPlacement"))
 	return rv
 }
 
 func (g_ GridCell) SetYPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, "setYPlacement:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setYPlacement:"), value)
 }

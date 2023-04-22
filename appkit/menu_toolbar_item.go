@@ -32,17 +32,17 @@ func MakeMenuToolbarItem(ptr unsafe.Pointer) MenuToolbarItem {
 }
 
 func (m_ MenuToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](m_, "initWithItemIdentifier:", itemIdentifier)
+	rv := objc.CallMethod[MenuToolbarItem](m_, objc.GetSelector("initWithItemIdentifier:"), itemIdentifier)
 	return rv
 }
 
 func (mc _MenuToolbarItemClass) Alloc() MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](mc, "alloc")
+	rv := objc.CallMethod[MenuToolbarItem](mc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (mc _MenuToolbarItemClass) New() MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](mc, "new")
+	rv := objc.CallMethod[MenuToolbarItem](mc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,24 +52,24 @@ func NewMenuToolbarItem() MenuToolbarItem {
 }
 
 func (m_ MenuToolbarItem) Init() MenuToolbarItem {
-	rv := objc.CallMethod[MenuToolbarItem](m_, "init")
+	rv := objc.CallMethod[MenuToolbarItem](m_, objc.GetSelector("init"))
 	return rv
 }
 
 func (m_ MenuToolbarItem) ShowsIndicator() bool {
-	rv := objc.CallMethod[bool](m_, "showsIndicator")
+	rv := objc.CallMethod[bool](m_, objc.GetSelector("showsIndicator"))
 	return rv
 }
 
 func (m_ MenuToolbarItem) SetShowsIndicator(value bool) {
-	objc.CallMethod[objc.Void](m_, "setShowsIndicator:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setShowsIndicator:"), value)
 }
 
 func (m_ MenuToolbarItem) Menu() Menu {
-	rv := objc.CallMethod[Menu](m_, "menu")
+	rv := objc.CallMethod[Menu](m_, objc.GetSelector("menu"))
 	return rv
 }
 
 func (m_ MenuToolbarItem) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, "setMenu:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), value)
 }

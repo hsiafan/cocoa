@@ -59,22 +59,22 @@ func MakeSplitView(ptr unsafe.Pointer) SplitView {
 }
 
 func (s_ SplitView) InitWithFrame(frameRect foundation.Rect) SplitView {
-	rv := objc.CallMethod[SplitView](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[SplitView](s_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ SplitView) Init() SplitView {
-	rv := objc.CallMethod[SplitView](s_, "init")
+	rv := objc.CallMethod[SplitView](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _SplitViewClass) Alloc() SplitView {
-	rv := objc.CallMethod[SplitView](sc, "alloc")
+	rv := objc.CallMethod[SplitView](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SplitViewClass) New() SplitView {
-	rv := objc.CallMethod[SplitView](sc, "new")
+	rv := objc.CallMethod[SplitView](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -84,66 +84,66 @@ func NewSplitView() SplitView {
 }
 
 func (s_ SplitView) AddArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, "addArrangedSubview:", view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addArrangedSubview:"), view)
 }
 
 func (s_ SplitView) InsertArrangedSubview_AtIndex(view IView, index int) {
-	objc.CallMethod[objc.Void](s_, "insertArrangedSubview:atIndex:", view, index)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertArrangedSubview:atIndex:"), view, index)
 }
 
 func (s_ SplitView) RemoveArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, "removeArrangedSubview:", view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeArrangedSubview:"), view)
 }
 
 func (s_ SplitView) AdjustSubviews() {
-	objc.CallMethod[objc.Void](s_, "adjustSubviews")
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("adjustSubviews"))
 }
 
 func (s_ SplitView) IsSubviewCollapsed(subview IView) bool {
-	rv := objc.CallMethod[bool](s_, "isSubviewCollapsed:", subview)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSubviewCollapsed:"), subview)
 	return rv
 }
 
 func (s_ SplitView) HoldingPriorityForSubviewAtIndex(subviewIndex int) LayoutPriority {
-	rv := objc.CallMethod[LayoutPriority](s_, "holdingPriorityForSubviewAtIndex:", subviewIndex)
+	rv := objc.CallMethod[LayoutPriority](s_, objc.GetSelector("holdingPriorityForSubviewAtIndex:"), subviewIndex)
 	return rv
 }
 
 func (s_ SplitView) SetHoldingPriority_ForSubviewAtIndex(priority LayoutPriority, subviewIndex int) {
-	objc.CallMethod[objc.Void](s_, "setHoldingPriority:forSubviewAtIndex:", priority, subviewIndex)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHoldingPriority:forSubviewAtIndex:"), priority, subviewIndex)
 }
 
 func (s_ SplitView) DrawDividerInRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](s_, "drawDividerInRect:", rect)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawDividerInRect:"), rect)
 }
 
 func (s_ SplitView) MinPossiblePositionOfDividerAtIndex(dividerIndex int) float64 {
-	rv := objc.CallMethod[float64](s_, "minPossiblePositionOfDividerAtIndex:", dividerIndex)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("minPossiblePositionOfDividerAtIndex:"), dividerIndex)
 	return rv
 }
 
 func (s_ SplitView) MaxPossiblePositionOfDividerAtIndex(dividerIndex int) float64 {
-	rv := objc.CallMethod[float64](s_, "maxPossiblePositionOfDividerAtIndex:", dividerIndex)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("maxPossiblePositionOfDividerAtIndex:"), dividerIndex)
 	return rv
 }
 
 func (s_ SplitView) SetPosition_OfDividerAtIndex(position float64, dividerIndex int) {
-	objc.CallMethod[objc.Void](s_, "setPosition:ofDividerAtIndex:", position, dividerIndex)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setPosition:ofDividerAtIndex:"), position, dividerIndex)
 }
 
 // deprecated
 func (s_ SplitView) IsPaneSplitter() bool {
-	rv := objc.CallMethod[bool](s_, "isPaneSplitter")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("isPaneSplitter"))
 	return rv
 }
 
 // deprecated
 func (s_ SplitView) SetIsPaneSplitter(flag bool) {
-	objc.CallMethod[objc.Void](s_, "setIsPaneSplitter:", flag)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setIsPaneSplitter:"), flag)
 }
 
 func (s_ SplitView) Delegate() SplitViewDelegateWrapper {
-	rv := objc.CallMethod[SplitViewDelegateWrapper](s_, "delegate")
+	rv := objc.CallMethod[SplitViewDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -151,60 +151,60 @@ func (s_ SplitView) SetDelegate(value SplitViewDelegate) {
 	po := objc.CreateProtocol("NSSplitViewDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (s_ SplitView) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (s_ SplitView) ArrangesAllSubviews() bool {
-	rv := objc.CallMethod[bool](s_, "arrangesAllSubviews")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("arrangesAllSubviews"))
 	return rv
 }
 
 func (s_ SplitView) SetArrangesAllSubviews(value bool) {
-	objc.CallMethod[objc.Void](s_, "setArrangesAllSubviews:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setArrangesAllSubviews:"), value)
 }
 
 func (s_ SplitView) ArrangedSubviews() []View {
-	rv := objc.CallMethod[[]View](s_, "arrangedSubviews")
+	rv := objc.CallMethod[[]View](s_, objc.GetSelector("arrangedSubviews"))
 	return rv
 }
 
 func (s_ SplitView) IsVertical() bool {
-	rv := objc.CallMethod[bool](s_, "isVertical")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("isVertical"))
 	return rv
 }
 
 func (s_ SplitView) SetVertical(value bool) {
-	objc.CallMethod[objc.Void](s_, "setVertical:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVertical:"), value)
 }
 
 func (s_ SplitView) DividerStyle() SplitViewDividerStyle {
-	rv := objc.CallMethod[SplitViewDividerStyle](s_, "dividerStyle")
+	rv := objc.CallMethod[SplitViewDividerStyle](s_, objc.GetSelector("dividerStyle"))
 	return rv
 }
 
 func (s_ SplitView) SetDividerStyle(value SplitViewDividerStyle) {
-	objc.CallMethod[objc.Void](s_, "setDividerStyle:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDividerStyle:"), value)
 }
 
 func (s_ SplitView) DividerColor() Color {
-	rv := objc.CallMethod[Color](s_, "dividerColor")
+	rv := objc.CallMethod[Color](s_, objc.GetSelector("dividerColor"))
 	return rv
 }
 
 func (s_ SplitView) DividerThickness() float64 {
-	rv := objc.CallMethod[float64](s_, "dividerThickness")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("dividerThickness"))
 	return rv
 }
 
 func (s_ SplitView) AutosaveName() SplitViewAutosaveName {
-	rv := objc.CallMethod[SplitViewAutosaveName](s_, "autosaveName")
+	rv := objc.CallMethod[SplitViewAutosaveName](s_, objc.GetSelector("autosaveName"))
 	return rv
 }
 
 func (s_ SplitView) SetAutosaveName(value SplitViewAutosaveName) {
-	objc.CallMethod[objc.Void](s_, "setAutosaveName:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAutosaveName:"), value)
 }

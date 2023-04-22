@@ -31,22 +31,22 @@ func MakeUserScript(ptr unsafe.Pointer) UserScript {
 }
 
 func (u_ UserScript) InitWithSource_InjectionTime_ForMainFrameOnly(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool) UserScript {
-	rv := objc.CallMethod[UserScript](u_, "initWithSource:injectionTime:forMainFrameOnly:", source, injectionTime, forMainFrameOnly)
+	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("initWithSource:injectionTime:forMainFrameOnly:"), source, injectionTime, forMainFrameOnly)
 	return rv
 }
 
 func (u_ UserScript) InitWithSource_InjectionTime_ForMainFrameOnly_InContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	rv := objc.CallMethod[UserScript](u_, "initWithSource:injectionTime:forMainFrameOnly:inContentWorld:", source, injectionTime, forMainFrameOnly, contentWorld)
+	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, contentWorld)
 	return rv
 }
 
 func (uc _UserScriptClass) Alloc() UserScript {
-	rv := objc.CallMethod[UserScript](uc, "alloc")
+	rv := objc.CallMethod[UserScript](uc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (uc _UserScriptClass) New() UserScript {
-	rv := objc.CallMethod[UserScript](uc, "new")
+	rv := objc.CallMethod[UserScript](uc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,21 +56,21 @@ func NewUserScript() UserScript {
 }
 
 func (u_ UserScript) Init() UserScript {
-	rv := objc.CallMethod[UserScript](u_, "init")
+	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("init"))
 	return rv
 }
 
 func (u_ UserScript) Source() string {
-	rv := objc.CallMethod[string](u_, "source")
+	rv := objc.CallMethod[string](u_, objc.GetSelector("source"))
 	return rv
 }
 
 func (u_ UserScript) InjectionTime() UserScriptInjectionTime {
-	rv := objc.CallMethod[UserScriptInjectionTime](u_, "injectionTime")
+	rv := objc.CallMethod[UserScriptInjectionTime](u_, objc.GetSelector("injectionTime"))
 	return rv
 }
 
 func (u_ UserScript) IsForMainFrameOnly() bool {
-	rv := objc.CallMethod[bool](u_, "isForMainFrameOnly")
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("isForMainFrameOnly"))
 	return rv
 }

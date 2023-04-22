@@ -17,9 +17,9 @@ type ViewControllerPresentationAnimatorWrapper struct {
 }
 
 func (v_ ViewControllerPresentationAnimatorWrapper) AnimatePresentationOfViewController_FromViewController(viewController IViewController, fromViewController IViewController) {
-	objc.CallMethod[objc.Void](v_, "animatePresentationOfViewController:fromViewController:", viewController, fromViewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("animatePresentationOfViewController:fromViewController:"), viewController, fromViewController)
 }
 
 func (v_ ViewControllerPresentationAnimatorWrapper) AnimateDismissalOfViewController_FromViewController(viewController IViewController, fromViewController IViewController) {
-	objc.CallMethod[objc.Void](v_, "animateDismissalOfViewController:fromViewController:", viewController, fromViewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("animateDismissalOfViewController:fromViewController:"), viewController, fromViewController)
 }

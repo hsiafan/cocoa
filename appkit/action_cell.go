@@ -28,27 +28,27 @@ func MakeActionCell(ptr unsafe.Pointer) ActionCell {
 }
 
 func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, "initImageCell:", image)
+	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("initImageCell:"), image)
 	return rv
 }
 
 func (a_ ActionCell) InitTextCell(string_ string) ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, "initTextCell:", string_)
+	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("initTextCell:"), string_)
 	return rv
 }
 
 func (a_ ActionCell) Init() ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, "init")
+	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("init"))
 	return rv
 }
 
 func (ac _ActionCellClass) Alloc() ActionCell {
-	rv := objc.CallMethod[ActionCell](ac, "alloc")
+	rv := objc.CallMethod[ActionCell](ac, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (ac _ActionCellClass) New() ActionCell {
-	rv := objc.CallMethod[ActionCell](ac, "new")
+	rv := objc.CallMethod[ActionCell](ac, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }

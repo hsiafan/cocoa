@@ -31,12 +31,12 @@ func MakeSecurityOrigin(ptr unsafe.Pointer) SecurityOrigin {
 }
 
 func (sc _SecurityOriginClass) Alloc() SecurityOrigin {
-	rv := objc.CallMethod[SecurityOrigin](sc, "alloc")
+	rv := objc.CallMethod[SecurityOrigin](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SecurityOriginClass) New() SecurityOrigin {
-	rv := objc.CallMethod[SecurityOrigin](sc, "new")
+	rv := objc.CallMethod[SecurityOrigin](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -46,21 +46,21 @@ func NewSecurityOrigin() SecurityOrigin {
 }
 
 func (s_ SecurityOrigin) Init() SecurityOrigin {
-	rv := objc.CallMethod[SecurityOrigin](s_, "init")
+	rv := objc.CallMethod[SecurityOrigin](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (s_ SecurityOrigin) Host() string {
-	rv := objc.CallMethod[string](s_, "host")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("host"))
 	return rv
 }
 
 func (s_ SecurityOrigin) Port() int {
-	rv := objc.CallMethod[int](s_, "port")
+	rv := objc.CallMethod[int](s_, objc.GetSelector("port"))
 	return rv
 }
 
 func (s_ SecurityOrigin) Protocol() string {
-	rv := objc.CallMethod[string](s_, "protocol")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("protocol"))
 	return rv
 }

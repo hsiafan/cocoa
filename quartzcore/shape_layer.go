@@ -54,37 +54,37 @@ func MakeShapeLayer(ptr unsafe.Pointer) ShapeLayer {
 }
 
 func (sc _ShapeLayerClass) Layer() ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](sc, "layer")
+	rv := objc.CallMethod[ShapeLayer](sc, objc.GetSelector("layer"))
 	return rv
 }
 
 func (s_ ShapeLayer) Init() ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](s_, "init")
+	rv := objc.CallMethod[ShapeLayer](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (s_ ShapeLayer) InitWithLayer(layer objc.IObject) ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](s_, "initWithLayer:", layer)
+	rv := objc.CallMethod[ShapeLayer](s_, objc.GetSelector("initWithLayer:"), layer)
 	return rv
 }
 
 func (s_ ShapeLayer) PresentationLayer() ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](s_, "presentationLayer")
+	rv := objc.CallMethod[ShapeLayer](s_, objc.GetSelector("presentationLayer"))
 	return rv
 }
 
 func (s_ ShapeLayer) ModelLayer() ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](s_, "modelLayer")
+	rv := objc.CallMethod[ShapeLayer](s_, objc.GetSelector("modelLayer"))
 	return rv
 }
 
 func (sc _ShapeLayerClass) Alloc() ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](sc, "alloc")
+	rv := objc.CallMethod[ShapeLayer](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _ShapeLayerClass) New() ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](sc, "new")
+	rv := objc.CallMethod[ShapeLayer](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -94,109 +94,109 @@ func NewShapeLayer() ShapeLayer {
 }
 
 func (s_ ShapeLayer) Path() coregraphics.PathRef {
-	rv := objc.CallMethod[coregraphics.PathRef](s_, "path")
+	rv := objc.CallMethod[coregraphics.PathRef](s_, objc.GetSelector("path"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetPath(value coregraphics.PathRef) {
-	objc.CallMethod[objc.Void](s_, "setPath:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setPath:"), value)
 }
 
 func (s_ ShapeLayer) FillColor() coregraphics.ColorRef {
-	rv := objc.CallMethod[coregraphics.ColorRef](s_, "fillColor")
+	rv := objc.CallMethod[coregraphics.ColorRef](s_, objc.GetSelector("fillColor"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetFillColor(value coregraphics.ColorRef) {
-	objc.CallMethod[objc.Void](s_, "setFillColor:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setFillColor:"), value)
 }
 
 func (s_ ShapeLayer) FillRule() ShapeLayerFillRule {
-	rv := objc.CallMethod[ShapeLayerFillRule](s_, "fillRule")
+	rv := objc.CallMethod[ShapeLayerFillRule](s_, objc.GetSelector("fillRule"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetFillRule(value ShapeLayerFillRule) {
-	objc.CallMethod[objc.Void](s_, "setFillRule:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setFillRule:"), value)
 }
 
 func (s_ ShapeLayer) LineCap() ShapeLayerLineCap {
-	rv := objc.CallMethod[ShapeLayerLineCap](s_, "lineCap")
+	rv := objc.CallMethod[ShapeLayerLineCap](s_, objc.GetSelector("lineCap"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineCap(value ShapeLayerLineCap) {
-	objc.CallMethod[objc.Void](s_, "setLineCap:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLineCap:"), value)
 }
 
 func (s_ ShapeLayer) LineDashPattern() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](s_, "lineDashPattern")
+	rv := objc.CallMethod[[]foundation.Number](s_, objc.GetSelector("lineDashPattern"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineDashPattern(value []foundation.INumber) {
-	objc.CallMethod[objc.Void](s_, "setLineDashPattern:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLineDashPattern:"), value)
 }
 
 func (s_ ShapeLayer) LineDashPhase() float64 {
-	rv := objc.CallMethod[float64](s_, "lineDashPhase")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("lineDashPhase"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineDashPhase(value float64) {
-	objc.CallMethod[objc.Void](s_, "setLineDashPhase:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLineDashPhase:"), value)
 }
 
 func (s_ ShapeLayer) LineJoin() ShapeLayerLineJoin {
-	rv := objc.CallMethod[ShapeLayerLineJoin](s_, "lineJoin")
+	rv := objc.CallMethod[ShapeLayerLineJoin](s_, objc.GetSelector("lineJoin"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineJoin(value ShapeLayerLineJoin) {
-	objc.CallMethod[objc.Void](s_, "setLineJoin:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLineJoin:"), value)
 }
 
 func (s_ ShapeLayer) LineWidth() float64 {
-	rv := objc.CallMethod[float64](s_, "lineWidth")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("lineWidth"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetLineWidth(value float64) {
-	objc.CallMethod[objc.Void](s_, "setLineWidth:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLineWidth:"), value)
 }
 
 func (s_ ShapeLayer) MiterLimit() float64 {
-	rv := objc.CallMethod[float64](s_, "miterLimit")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("miterLimit"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetMiterLimit(value float64) {
-	objc.CallMethod[objc.Void](s_, "setMiterLimit:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMiterLimit:"), value)
 }
 
 func (s_ ShapeLayer) StrokeColor() coregraphics.ColorRef {
-	rv := objc.CallMethod[coregraphics.ColorRef](s_, "strokeColor")
+	rv := objc.CallMethod[coregraphics.ColorRef](s_, objc.GetSelector("strokeColor"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetStrokeColor(value coregraphics.ColorRef) {
-	objc.CallMethod[objc.Void](s_, "setStrokeColor:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setStrokeColor:"), value)
 }
 
 func (s_ ShapeLayer) StrokeStart() float64 {
-	rv := objc.CallMethod[float64](s_, "strokeStart")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("strokeStart"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetStrokeStart(value float64) {
-	objc.CallMethod[objc.Void](s_, "setStrokeStart:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setStrokeStart:"), value)
 }
 
 func (s_ ShapeLayer) StrokeEnd() float64 {
-	rv := objc.CallMethod[float64](s_, "strokeEnd")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("strokeEnd"))
 	return rv
 }
 
 func (s_ ShapeLayer) SetStrokeEnd(value float64) {
-	objc.CallMethod[objc.Void](s_, "setStrokeEnd:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setStrokeEnd:"), value)
 }

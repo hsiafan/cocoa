@@ -31,22 +31,22 @@ func MakeTintConfiguration(ptr unsafe.Pointer) TintConfiguration {
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithFixedColor(color IColor) TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, "tintConfigurationWithFixedColor:", color)
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("tintConfigurationWithFixedColor:"), color)
 	return rv
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithPreferredColor(color IColor) TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, "tintConfigurationWithPreferredColor:", color)
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("tintConfigurationWithPreferredColor:"), color)
 	return rv
 }
 
 func (tc _TintConfigurationClass) Alloc() TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, "alloc")
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TintConfigurationClass) New() TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, "new")
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,31 +56,31 @@ func NewTintConfiguration() TintConfiguration {
 }
 
 func (t_ TintConfiguration) Init() TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](t_, "init")
+	rv := objc.CallMethod[TintConfiguration](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TintConfiguration) AdaptsToUserAccentColor() bool {
-	rv := objc.CallMethod[bool](t_, "adaptsToUserAccentColor")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("adaptsToUserAccentColor"))
 	return rv
 }
 
 func (tc _TintConfigurationClass) DefaultTintConfiguration() TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, "defaultTintConfiguration")
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("defaultTintConfiguration"))
 	return rv
 }
 
 func (tc _TintConfigurationClass) MonochromeTintConfiguration() TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, "monochromeTintConfiguration")
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("monochromeTintConfiguration"))
 	return rv
 }
 
 func (t_ TintConfiguration) BaseTintColor() Color {
-	rv := objc.CallMethod[Color](t_, "baseTintColor")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("baseTintColor"))
 	return rv
 }
 
 func (t_ TintConfiguration) EquivalentContentTintColor() Color {
-	rv := objc.CallMethod[Color](t_, "equivalentContentTintColor")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("equivalentContentTintColor"))
 	return rv
 }

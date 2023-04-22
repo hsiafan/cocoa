@@ -38,17 +38,17 @@ func MakeDraggingItem(ptr unsafe.Pointer) DraggingItem {
 func (d_ DraggingItem) InitWithPasteboardWriter(pasteboardWriter PasteboardWriting) DraggingItem {
 	po := objc.CreateProtocol("NSPasteboardWriting", pasteboardWriter)
 	defer po.Release()
-	rv := objc.CallMethod[DraggingItem](d_, "initWithPasteboardWriter:", po)
+	rv := objc.CallMethod[DraggingItem](d_, objc.GetSelector("initWithPasteboardWriter:"), po)
 	return rv
 }
 
 func (dc _DraggingItemClass) Alloc() DraggingItem {
-	rv := objc.CallMethod[DraggingItem](dc, "alloc")
+	rv := objc.CallMethod[DraggingItem](dc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (dc _DraggingItemClass) New() DraggingItem {
-	rv := objc.CallMethod[DraggingItem](dc, "new")
+	rv := objc.CallMethod[DraggingItem](dc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -58,38 +58,38 @@ func NewDraggingItem() DraggingItem {
 }
 
 func (d_ DraggingItem) Init() DraggingItem {
-	rv := objc.CallMethod[DraggingItem](d_, "init")
+	rv := objc.CallMethod[DraggingItem](d_, objc.GetSelector("init"))
 	return rv
 }
 
 func (d_ DraggingItem) SetDraggingFrame_Contents(frame foundation.Rect, contents objc.IObject) {
-	objc.CallMethod[objc.Void](d_, "setDraggingFrame:contents:", frame, contents)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFrame:contents:"), frame, contents)
 }
 
 func (d_ DraggingItem) DraggingFrame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](d_, "draggingFrame")
+	rv := objc.CallMethod[foundation.Rect](d_, objc.GetSelector("draggingFrame"))
 	return rv
 }
 
 func (d_ DraggingItem) SetDraggingFrame(value foundation.Rect) {
-	objc.CallMethod[objc.Void](d_, "setDraggingFrame:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFrame:"), value)
 }
 
 func (d_ DraggingItem) ImageComponents() []DraggingImageComponent {
-	rv := objc.CallMethod[[]DraggingImageComponent](d_, "imageComponents")
+	rv := objc.CallMethod[[]DraggingImageComponent](d_, objc.GetSelector("imageComponents"))
 	return rv
 }
 
 func (d_ DraggingItem) ImageComponentsProvider() func() []DraggingImageComponent {
-	rv := objc.CallMethod[func() []DraggingImageComponent](d_, "imageComponentsProvider")
+	rv := objc.CallMethod[func() []DraggingImageComponent](d_, objc.GetSelector("imageComponentsProvider"))
 	return rv
 }
 
 func (d_ DraggingItem) SetImageComponentsProvider(value func() []IDraggingImageComponent) {
-	objc.CallMethod[objc.Void](d_, "setImageComponentsProvider:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setImageComponentsProvider:"), value)
 }
 
 func (d_ DraggingItem) Item() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, "item")
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("item"))
 	return rv
 }

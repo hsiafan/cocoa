@@ -2,9 +2,8 @@
 #import <stdint.h>
 #import <stdbool.h>
 #import <objc/runtime.h>
-#include "_cgo_export.h"
-#import <objc/runtime.h>
 #import <Block.h>
+#include "_cgo_export.h"
 
 void Run_WithAutoreleasePool(uintptr_t ptr) {
     @autoreleasepool {

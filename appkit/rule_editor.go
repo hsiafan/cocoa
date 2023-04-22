@@ -73,22 +73,22 @@ func MakeRuleEditor(ptr unsafe.Pointer) RuleEditor {
 }
 
 func (r_ RuleEditor) InitWithFrame(frameRect foundation.Rect) RuleEditor {
-	rv := objc.CallMethod[RuleEditor](r_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[RuleEditor](r_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (r_ RuleEditor) Init() RuleEditor {
-	rv := objc.CallMethod[RuleEditor](r_, "init")
+	rv := objc.CallMethod[RuleEditor](r_, objc.GetSelector("init"))
 	return rv
 }
 
 func (rc _RuleEditorClass) Alloc() RuleEditor {
-	rv := objc.CallMethod[RuleEditor](rc, "alloc")
+	rv := objc.CallMethod[RuleEditor](rc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (rc _RuleEditorClass) New() RuleEditor {
-	rv := objc.CallMethod[RuleEditor](rc, "new")
+	rv := objc.CallMethod[RuleEditor](rc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -98,74 +98,74 @@ func NewRuleEditor() RuleEditor {
 }
 
 func (r_ RuleEditor) ReloadCriteria() {
-	objc.CallMethod[objc.Void](r_, "reloadCriteria")
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("reloadCriteria"))
 }
 
 func (r_ RuleEditor) SetCriteria_AndDisplayValues_ForRowAtIndex(criteria []objc.IObject, values []objc.IObject, rowIndex int) {
-	objc.CallMethod[objc.Void](r_, "setCriteria:andDisplayValues:forRowAtIndex:", criteria, values, rowIndex)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setCriteria:andDisplayValues:forRowAtIndex:"), criteria, values, rowIndex)
 }
 
 func (r_ RuleEditor) CriteriaForRow(row int) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](r_, "criteriaForRow:", row)
+	rv := objc.CallMethod[[]objc.Object](r_, objc.GetSelector("criteriaForRow:"), row)
 	return rv
 }
 
 func (r_ RuleEditor) DisplayValuesForRow(row int) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](r_, "displayValuesForRow:", row)
+	rv := objc.CallMethod[[]objc.Object](r_, objc.GetSelector("displayValuesForRow:"), row)
 	return rv
 }
 
 func (r_ RuleEditor) ParentRowForRow(rowIndex int) int {
-	rv := objc.CallMethod[int](r_, "parentRowForRow:", rowIndex)
+	rv := objc.CallMethod[int](r_, objc.GetSelector("parentRowForRow:"), rowIndex)
 	return rv
 }
 
 func (r_ RuleEditor) RowForDisplayValue(displayValue objc.IObject) int {
-	rv := objc.CallMethod[int](r_, "rowForDisplayValue:", displayValue)
+	rv := objc.CallMethod[int](r_, objc.GetSelector("rowForDisplayValue:"), displayValue)
 	return rv
 }
 
 func (r_ RuleEditor) RowTypeForRow(rowIndex int) RuleEditorRowType {
-	rv := objc.CallMethod[RuleEditorRowType](r_, "rowTypeForRow:", rowIndex)
+	rv := objc.CallMethod[RuleEditorRowType](r_, objc.GetSelector("rowTypeForRow:"), rowIndex)
 	return rv
 }
 
 func (r_ RuleEditor) SubrowIndexesForRow(rowIndex int) foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](r_, "subrowIndexesForRow:", rowIndex)
+	rv := objc.CallMethod[foundation.IndexSet](r_, objc.GetSelector("subrowIndexesForRow:"), rowIndex)
 	return rv
 }
 
 func (r_ RuleEditor) SelectRowIndexes_ByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.CallMethod[objc.Void](r_, "selectRowIndexes:byExtendingSelection:", indexes, extend)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("selectRowIndexes:byExtendingSelection:"), indexes, extend)
 }
 
 func (r_ RuleEditor) AddRow(sender objc.IObject) {
-	objc.CallMethod[objc.Void](r_, "addRow:", sender)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("addRow:"), sender)
 }
 
 func (r_ RuleEditor) InsertRowAtIndex_WithType_AsSubrowOfRow_Animate(rowIndex int, rowType RuleEditorRowType, parentRow int, shouldAnimate bool) {
-	objc.CallMethod[objc.Void](r_, "insertRowAtIndex:withType:asSubrowOfRow:animate:", rowIndex, rowType, parentRow, shouldAnimate)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("insertRowAtIndex:withType:asSubrowOfRow:animate:"), rowIndex, rowType, parentRow, shouldAnimate)
 }
 
 func (r_ RuleEditor) RemoveRowAtIndex(rowIndex int) {
-	objc.CallMethod[objc.Void](r_, "removeRowAtIndex:", rowIndex)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("removeRowAtIndex:"), rowIndex)
 }
 
 func (r_ RuleEditor) RemoveRowsAtIndexes_IncludeSubrows(rowIndexes foundation.IIndexSet, includeSubrows bool) {
-	objc.CallMethod[objc.Void](r_, "removeRowsAtIndexes:includeSubrows:", rowIndexes, includeSubrows)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("removeRowsAtIndexes:includeSubrows:"), rowIndexes, includeSubrows)
 }
 
 func (r_ RuleEditor) ReloadPredicate() {
-	objc.CallMethod[objc.Void](r_, "reloadPredicate")
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("reloadPredicate"))
 }
 
 func (r_ RuleEditor) PredicateForRow(row int) foundation.Predicate {
-	rv := objc.CallMethod[foundation.Predicate](r_, "predicateForRow:", row)
+	rv := objc.CallMethod[foundation.Predicate](r_, objc.GetSelector("predicateForRow:"), row)
 	return rv
 }
 
 func (r_ RuleEditor) Delegate() RuleEditorDelegateWrapper {
-	rv := objc.CallMethod[RuleEditorDelegateWrapper](r_, "delegate")
+	rv := objc.CallMethod[RuleEditorDelegateWrapper](r_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -173,123 +173,123 @@ func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
 	po := objc.CreateProtocol("NSRuleEditorDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(r_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](r_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (r_ RuleEditor) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](r_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (r_ RuleEditor) IsEditable() bool {
-	rv := objc.CallMethod[bool](r_, "isEditable")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("isEditable"))
 	return rv
 }
 
 func (r_ RuleEditor) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](r_, "setEditable:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setEditable:"), value)
 }
 
 func (r_ RuleEditor) NestingMode() RuleEditorNestingMode {
-	rv := objc.CallMethod[RuleEditorNestingMode](r_, "nestingMode")
+	rv := objc.CallMethod[RuleEditorNestingMode](r_, objc.GetSelector("nestingMode"))
 	return rv
 }
 
 func (r_ RuleEditor) SetNestingMode(value RuleEditorNestingMode) {
-	objc.CallMethod[objc.Void](r_, "setNestingMode:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setNestingMode:"), value)
 }
 
 func (r_ RuleEditor) CanRemoveAllRows() bool {
-	rv := objc.CallMethod[bool](r_, "canRemoveAllRows")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("canRemoveAllRows"))
 	return rv
 }
 
 func (r_ RuleEditor) SetCanRemoveAllRows(value bool) {
-	objc.CallMethod[objc.Void](r_, "setCanRemoveAllRows:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setCanRemoveAllRows:"), value)
 }
 
 func (r_ RuleEditor) RowHeight() float64 {
-	rv := objc.CallMethod[float64](r_, "rowHeight")
+	rv := objc.CallMethod[float64](r_, objc.GetSelector("rowHeight"))
 	return rv
 }
 
 func (r_ RuleEditor) SetRowHeight(value float64) {
-	objc.CallMethod[objc.Void](r_, "setRowHeight:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRowHeight:"), value)
 }
 
 func (r_ RuleEditor) FormattingDictionary() map[string]string {
-	rv := objc.CallMethod[map[string]string](r_, "formattingDictionary")
+	rv := objc.CallMethod[map[string]string](r_, objc.GetSelector("formattingDictionary"))
 	return rv
 }
 
 func (r_ RuleEditor) SetFormattingDictionary(value map[string]string) {
-	objc.CallMethod[objc.Void](r_, "setFormattingDictionary:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setFormattingDictionary:"), value)
 }
 
 func (r_ RuleEditor) FormattingStringsFilename() string {
-	rv := objc.CallMethod[string](r_, "formattingStringsFilename")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("formattingStringsFilename"))
 	return rv
 }
 
 func (r_ RuleEditor) SetFormattingStringsFilename(value string) {
-	objc.CallMethod[objc.Void](r_, "setFormattingStringsFilename:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setFormattingStringsFilename:"), value)
 }
 
 func (r_ RuleEditor) NumberOfRows() int {
-	rv := objc.CallMethod[int](r_, "numberOfRows")
+	rv := objc.CallMethod[int](r_, objc.GetSelector("numberOfRows"))
 	return rv
 }
 
 func (r_ RuleEditor) SelectedRowIndexes() foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](r_, "selectedRowIndexes")
+	rv := objc.CallMethod[foundation.IndexSet](r_, objc.GetSelector("selectedRowIndexes"))
 	return rv
 }
 
 func (r_ RuleEditor) Predicate() foundation.Predicate {
-	rv := objc.CallMethod[foundation.Predicate](r_, "predicate")
+	rv := objc.CallMethod[foundation.Predicate](r_, objc.GetSelector("predicate"))
 	return rv
 }
 
 func (r_ RuleEditor) RowClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](r_, "rowClass")
+	rv := objc.CallMethod[objc.Class](r_, objc.GetSelector("rowClass"))
 	return rv
 }
 
 func (r_ RuleEditor) SetRowClass(value objc.IClass) {
-	objc.CallMethod[objc.Void](r_, "setRowClass:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRowClass:"), value)
 }
 
 func (r_ RuleEditor) RowTypeKeyPath() string {
-	rv := objc.CallMethod[string](r_, "rowTypeKeyPath")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("rowTypeKeyPath"))
 	return rv
 }
 
 func (r_ RuleEditor) SetRowTypeKeyPath(value string) {
-	objc.CallMethod[objc.Void](r_, "setRowTypeKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRowTypeKeyPath:"), value)
 }
 
 func (r_ RuleEditor) SubrowsKeyPath() string {
-	rv := objc.CallMethod[string](r_, "subrowsKeyPath")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("subrowsKeyPath"))
 	return rv
 }
 
 func (r_ RuleEditor) SetSubrowsKeyPath(value string) {
-	objc.CallMethod[objc.Void](r_, "setSubrowsKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setSubrowsKeyPath:"), value)
 }
 
 func (r_ RuleEditor) CriteriaKeyPath() string {
-	rv := objc.CallMethod[string](r_, "criteriaKeyPath")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("criteriaKeyPath"))
 	return rv
 }
 
 func (r_ RuleEditor) SetCriteriaKeyPath(value string) {
-	objc.CallMethod[objc.Void](r_, "setCriteriaKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setCriteriaKeyPath:"), value)
 }
 
 func (r_ RuleEditor) DisplayValuesKeyPath() string {
-	rv := objc.CallMethod[string](r_, "displayValuesKeyPath")
+	rv := objc.CallMethod[string](r_, objc.GetSelector("displayValuesKeyPath"))
 	return rv
 }
 
 func (r_ RuleEditor) SetDisplayValuesKeyPath(value string) {
-	objc.CallMethod[objc.Void](r_, "setDisplayValuesKeyPath:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDisplayValuesKeyPath:"), value)
 }

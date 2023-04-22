@@ -28,17 +28,17 @@ func MakeConstraintLayoutManager(ptr unsafe.Pointer) ConstraintLayoutManager {
 }
 
 func (cc _ConstraintLayoutManagerClass) LayoutManager() ConstraintLayoutManager {
-	rv := objc.CallMethod[ConstraintLayoutManager](cc, "layoutManager")
+	rv := objc.CallMethod[ConstraintLayoutManager](cc, objc.GetSelector("layoutManager"))
 	return rv
 }
 
 func (cc _ConstraintLayoutManagerClass) Alloc() ConstraintLayoutManager {
-	rv := objc.CallMethod[ConstraintLayoutManager](cc, "alloc")
+	rv := objc.CallMethod[ConstraintLayoutManager](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ConstraintLayoutManagerClass) New() ConstraintLayoutManager {
-	rv := objc.CallMethod[ConstraintLayoutManager](cc, "new")
+	rv := objc.CallMethod[ConstraintLayoutManager](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,6 +48,6 @@ func NewConstraintLayoutManager() ConstraintLayoutManager {
 }
 
 func (c_ ConstraintLayoutManager) Init() ConstraintLayoutManager {
-	rv := objc.CallMethod[ConstraintLayoutManager](c_, "init")
+	rv := objc.CallMethod[ConstraintLayoutManager](c_, objc.GetSelector("init"))
 	return rv
 }

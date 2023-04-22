@@ -20,6 +20,7 @@ import (
 	"reflect"
 	"unsafe"
 
+	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/internal"
 )
 
@@ -296,10 +297,8 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 		return reflect.ValueOf(uint16(*((*C.uint16_t)(p)))).Convert(t)
 	case reflect.Uint32:
 		return reflect.ValueOf(uint32(*((*C.uint32_t)(p)))).Convert(t)
-	case reflect.Uint, reflect.Uint64:
+	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
 		return reflect.ValueOf(uint64(*((*C.uint64_t)(p)))).Convert(t)
-	case reflect.Uintptr:
-		return reflect.ValueOf(uintptr(*((*C.uintptr_t)(p)))).Convert(t)
 	case reflect.Float32:
 		return reflect.ValueOf(float32(*((*C.float)(p)))).Convert(t)
 	case reflect.Float64:
@@ -321,7 +320,7 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 			return objectToGoHolder(*(*unsafe.Pointer)(p), t)
 		} else {
 			rv := reflect.New(t).Elem()
-			storeStructValue(rv, p)
+			storeStructValue(&rv, p)
 			return rv
 		}
 	case reflect.Func:
@@ -332,83 +331,145 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 	}
 }
 
-// convertToObjcValue convert go value to objc value, and return the pointer to objc value
-func convertToObjcValue(v any) unsafe.Pointer {
-	if v == nil {
+// convertToObjcValue convert go value to objc value, return the pointer to objc value, and the ffi-type
+func convertToObjcValue(v reflect.Value) unsafe.Pointer {
+	if !v.IsValid() {
 		var p unsafe.Pointer = nil
 		return unsafe.Pointer(&p)
 	}
 
-	if pv, ok := v.(Holder); ok {
-		cv := pv.Ptr()
+	if v.Type().AssignableTo(pointerHolderType) {
+		cv := v.Interface().(Holder).Ptr()
 		return unsafe.Pointer(&cv)
 	}
 
-	rv := reflect.ValueOf(v)
-	rt := rv.Type()
+	rt := v.Type()
 	switch rt.Kind() {
 	case reflect.Bool:
 		var cv C.uint8_t = 0
-		if rv.Bool() {
+		if v.Bool() {
 			cv = 1
 		}
 		return unsafe.Pointer(&cv)
 	case reflect.Int8:
-		cv := C.int8_t(rv.Int())
+		cv := C.int8_t(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Int16:
-		cv := C.int16_t(rv.Int())
+		cv := C.int16_t(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Int32:
-		cv := C.int32_t(rv.Int())
+		cv := C.int32_t(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Int, reflect.Int64:
-		cv := C.int64_t(rv.Int())
+		cv := C.int64_t(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint8:
-		cv := C.uint8_t(rv.Uint())
+		cv := C.uint8_t(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint16:
-		cv := C.uint16_t(rv.Uint())
+		cv := C.uint16_t(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint32:
-		cv := C.uint32_t(rv.Uint())
+		cv := C.uint32_t(v.Uint())
 		return unsafe.Pointer(&cv)
-	case reflect.Uint, reflect.Uint64:
-		cv := C.uint64_t(rv.Uint())
+	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
+		cv := C.uint64_t(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Float32:
-		cv := C.float(rv.Float())
+		cv := C.float(v.Float())
 		return unsafe.Pointer(&cv)
 	case reflect.Float64:
-		cv := C.double(rv.Float())
+		cv := C.double(v.Float())
 		return unsafe.Pointer(&cv)
 	case reflect.UnsafePointer, reflect.Pointer:
-		cv := rv.Pointer()
+		cv := v.UnsafePointer()
 		return unsafe.Pointer(&cv)
 	case reflect.Interface:
 		panic(fmt.Sprintf("not support type: %T", v))
 	case reflect.Struct:
-		return getStructPointer(rv)
+		return getStructPointer(v)
 	case reflect.String:
-		sp := ToNSString(rv.String())
+		sp := ToNSString(v.String())
 		return unsafe.Pointer(&sp)
 	case reflect.Slice:
 		if rt.Elem().Kind() == reflect.Uint8 {
-			dp := ToNSData(rv.Bytes())
+			dp := ToNSData(v.Bytes())
 			return unsafe.Pointer(&dp)
 		} else {
-			sp := ToNSArray(rv)
+			sp := ToNSArray(v)
 			return unsafe.Pointer(&sp)
 		}
 	case reflect.Map:
-		dp := ToNSDict(rv)
+		dp := ToNSDict(v)
 		return unsafe.Pointer(&dp)
 	case reflect.Func:
-		fp := WrapBlock(rv.Interface())
-		return unsafe.Pointer(&fp)
+		fp := CreateMallocBlock(v.Interface())
+		return unsafe.Pointer(&fp.ptr)
 	default:
-		panic(fmt.Sprintf("not support type: %T, kind: %v", v, rv.Kind()))
+		panic(fmt.Sprintf("not support type: %T, kind: %v", v, v.Kind()))
+	}
+}
+
+func setGoValueToObjcPointer(rv reflect.Value, p unsafe.Pointer) {
+	if rv.Type().AssignableTo(pointerHolderType) {
+		*(*unsafe.Pointer)(p) = rv.Interface().(Holder).Ptr()
+	}
+
+	rt := rv.Type()
+	switch rt.Kind() {
+	case reflect.Bool:
+		if rv.Bool() {
+			*(*uint8)(p) = 1
+		} else {
+			*(*uint8)(p) = 0
+		}
+	case reflect.Int8:
+		*(*int8)(p) = int8(rv.Int())
+	case reflect.Int16:
+		*(*int16)(p) = int16(rv.Int())
+	case reflect.Int32:
+		*(*int32)(p) = int32(rv.Int())
+	case reflect.Int, reflect.Int64:
+		*(*int64)(p) = int64(rv.Int())
+	case reflect.Uint8:
+		*(*uint8)(p) = uint8(rv.Uint())
+	case reflect.Uint16:
+		*(*uint16)(p) = uint16(rv.Uint())
+	case reflect.Uint32:
+		*(*uint32)(p) = uint32(rv.Uint())
+	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
+		*(*uint64)(p) = uint64(rv.Uint())
+	case reflect.Float32:
+		*(*float32)(p) = float32(rv.Float())
+	case reflect.Float64:
+		*(*float64)(p) = float64(rv.Float())
+	case reflect.UnsafePointer, reflect.Pointer:
+		*(*unsafe.Pointer)(p) = rv.UnsafePointer()
+	case reflect.Interface:
+		panic(fmt.Sprintf("not support type: %v", rv.Type()))
+	case reflect.Struct:
+		sp := getStructPointer(rv)
+		size := rv.Type().Size()
+		copy(unsafe.Slice((*byte)(p), size), unsafe.Slice((*byte)(sp), size))
+	case reflect.String:
+		sp := ToNSString(rv.String())
+		*(*unsafe.Pointer)(p) = sp
+	case reflect.Slice:
+		if rt.Elem().Kind() == reflect.Uint8 {
+			dp := ToNSData(rv.Bytes())
+			*(*unsafe.Pointer)(p) = dp
+		} else {
+			sp := ToNSArray(rv)
+			*(*unsafe.Pointer)(p) = sp
+		}
+	case reflect.Map:
+		dp := ToNSDict(rv)
+		*(*unsafe.Pointer)(p) = dp
+	case reflect.Func:
+		fp := CreateMallocBlock(rv.Interface())
+		*(*unsafe.Pointer)(p) = fp.ptr
+	default:
+		panic(fmt.Sprintf("not support type: %v, kind: %v", rv.Type(), rv.Kind()))
 	}
 }
 
@@ -422,12 +483,93 @@ func getStructPointer(value reflect.Value) unsafe.Pointer {
 	}
 }
 
-func storeStructValue(value reflect.Value, ptr unsafe.Pointer) {
-	vsp := (*Value)(unsafe.Pointer(&value))
+func storeStructValue(value *reflect.Value, ptr unsafe.Pointer) {
+	vsp := (*Value)(unsafe.Pointer(value))
 
 	if vsp.flag&flagIndir == 0 {
 		vsp.ptr = *(*unsafe.Pointer)(ptr)
 	} else {
 		vsp.ptr = ptr
 	}
+}
+
+// getFFIType return the ffi type
+func getFFIType(v any) *ffi.Type {
+	if v == nil {
+		return ffi.TypePointer
+	}
+
+	if _, ok := v.(Holder); ok {
+		return ffi.TypePointer
+	}
+
+	rv := reflect.ValueOf(v)
+	rt := rv.Type()
+	return toFFIType(rt)
+}
+
+func toFFIType(rt reflect.Type) *ffi.Type {
+	if rt.AssignableTo(pointerHolderType) {
+		return ffi.TypePointer
+	}
+	switch rt.Kind() {
+	case reflect.Bool:
+		return ffi.TypeUint8
+	case reflect.Int8:
+		return ffi.TypeSint8
+	case reflect.Int16:
+		return ffi.TypeSint16
+	case reflect.Int32:
+		return ffi.TypeSint32
+	case reflect.Int, reflect.Int64:
+		return ffi.TypeSint64
+	case reflect.Uint8:
+		return ffi.TypeUint8
+	case reflect.Uint16:
+		return ffi.TypeUint16
+	case reflect.Uint32:
+		return ffi.TypeUint32
+	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
+		return ffi.TypeUint64
+	case reflect.Float32:
+		return ffi.TypeFloat
+	case reflect.Float64:
+		return ffi.TypeDouble
+	case reflect.UnsafePointer, reflect.Pointer:
+		return ffi.TypePointer
+	case reflect.Interface:
+		panic(fmt.Sprintf("not support type: %v", rt))
+	case reflect.Struct:
+		if rt.Size() == 0 {
+			return ffi.TypeVoid
+		}
+		return getStructFFIType(rt)
+	case reflect.String:
+		return ffi.TypePointer
+	case reflect.Slice:
+		return ffi.TypePointer
+	case reflect.Map:
+		return ffi.TypePointer
+	case reflect.Func:
+		return ffi.TypePointer
+	default:
+		panic(fmt.Sprintf("not support type: %v, kind: %v", rt, rt.Kind()))
+	}
+}
+
+func getStructFFIType(t reflect.Type) *ffi.Type {
+	fn := t.NumField()
+	var fts []*ffi.Type
+	for i := 0; i < fn; i++ {
+		ft := t.Field(i).Type
+		switch ft.Kind() {
+		case reflect.Array:
+			for i := 0; i < ft.Len(); i++ {
+				fts = append(fts, toFFIType(ft.Elem()))
+			}
+		default:
+			fts = append(fts, toFFIType(ft))
+		}
+	}
+	return ffi.StructType(fts)
 }

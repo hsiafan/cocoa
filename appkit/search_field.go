@@ -54,42 +54,42 @@ func MakeSearchField(ptr unsafe.Pointer) SearchField {
 }
 
 func (sc _SearchFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SearchField {
-	rv := objc.CallMethod[SearchField](sc, "labelWithAttributedString:", attributedStringValue)
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 
 func (sc _SearchFieldClass) LabelWithString(stringValue string) SearchField {
-	rv := objc.CallMethod[SearchField](sc, "labelWithString:", stringValue)
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("labelWithString:"), stringValue)
 	return rv
 }
 
 func (sc _SearchFieldClass) TextFieldWithString(stringValue string) SearchField {
-	rv := objc.CallMethod[SearchField](sc, "textFieldWithString:", stringValue)
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("textFieldWithString:"), stringValue)
 	return rv
 }
 
 func (sc _SearchFieldClass) WrappingLabelWithString(stringValue string) SearchField {
-	rv := objc.CallMethod[SearchField](sc, "wrappingLabelWithString:", stringValue)
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("wrappingLabelWithString:"), stringValue)
 	return rv
 }
 
 func (s_ SearchField) InitWithFrame(frameRect foundation.Rect) SearchField {
-	rv := objc.CallMethod[SearchField](s_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[SearchField](s_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ SearchField) Init() SearchField {
-	rv := objc.CallMethod[SearchField](s_, "init")
+	rv := objc.CallMethod[SearchField](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _SearchFieldClass) Alloc() SearchField {
-	rv := objc.CallMethod[SearchField](sc, "alloc")
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SearchFieldClass) New() SearchField {
-	rv := objc.CallMethod[SearchField](sc, "new")
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -100,98 +100,98 @@ func NewSearchField() SearchField {
 
 // deprecated
 func (s_ SearchField) RectForCancelButtonWhenCentered(isCentered bool) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "rectForCancelButtonWhenCentered:", isCentered)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("rectForCancelButtonWhenCentered:"), isCentered)
 	return rv
 }
 
 // deprecated
 func (s_ SearchField) RectForSearchButtonWhenCentered(isCentered bool) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "rectForSearchButtonWhenCentered:", isCentered)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("rectForSearchButtonWhenCentered:"), isCentered)
 	return rv
 }
 
 // deprecated
 func (s_ SearchField) RectForSearchTextWhenCentered(isCentered bool) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "rectForSearchTextWhenCentered:", isCentered)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("rectForSearchTextWhenCentered:"), isCentered)
 	return rv
 }
 
 func (s_ SearchField) SearchMenuTemplate() Menu {
-	rv := objc.CallMethod[Menu](s_, "searchMenuTemplate")
+	rv := objc.CallMethod[Menu](s_, objc.GetSelector("searchMenuTemplate"))
 	return rv
 }
 
 func (s_ SearchField) SetSearchMenuTemplate(value IMenu) {
-	objc.CallMethod[objc.Void](s_, "setSearchMenuTemplate:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchMenuTemplate:"), value)
 }
 
 func (s_ SearchField) SendsSearchStringImmediately() bool {
-	rv := objc.CallMethod[bool](s_, "sendsSearchStringImmediately")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("sendsSearchStringImmediately"))
 	return rv
 }
 
 func (s_ SearchField) SetSendsSearchStringImmediately(value bool) {
-	objc.CallMethod[objc.Void](s_, "setSendsSearchStringImmediately:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSendsSearchStringImmediately:"), value)
 }
 
 func (s_ SearchField) SendsWholeSearchString() bool {
-	rv := objc.CallMethod[bool](s_, "sendsWholeSearchString")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("sendsWholeSearchString"))
 	return rv
 }
 
 func (s_ SearchField) SetSendsWholeSearchString(value bool) {
-	objc.CallMethod[objc.Void](s_, "setSendsWholeSearchString:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSendsWholeSearchString:"), value)
 }
 
 func (s_ SearchField) RecentSearches() []string {
-	rv := objc.CallMethod[[]string](s_, "recentSearches")
+	rv := objc.CallMethod[[]string](s_, objc.GetSelector("recentSearches"))
 	return rv
 }
 
 func (s_ SearchField) SetRecentSearches(value []string) {
-	objc.CallMethod[objc.Void](s_, "setRecentSearches:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRecentSearches:"), value)
 }
 
 func (s_ SearchField) MaximumRecents() int {
-	rv := objc.CallMethod[int](s_, "maximumRecents")
+	rv := objc.CallMethod[int](s_, objc.GetSelector("maximumRecents"))
 	return rv
 }
 
 func (s_ SearchField) SetMaximumRecents(value int) {
-	objc.CallMethod[objc.Void](s_, "setMaximumRecents:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMaximumRecents:"), value)
 }
 
 func (s_ SearchField) RecentsAutosaveName() SearchFieldRecentsAutosaveName {
-	rv := objc.CallMethod[SearchFieldRecentsAutosaveName](s_, "recentsAutosaveName")
+	rv := objc.CallMethod[SearchFieldRecentsAutosaveName](s_, objc.GetSelector("recentsAutosaveName"))
 	return rv
 }
 
 func (s_ SearchField) SetRecentsAutosaveName(value SearchFieldRecentsAutosaveName) {
-	objc.CallMethod[objc.Void](s_, "setRecentsAutosaveName:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRecentsAutosaveName:"), value)
 }
 
 func (s_ SearchField) CancelButtonBounds() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "cancelButtonBounds")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("cancelButtonBounds"))
 	return rv
 }
 
 func (s_ SearchField) SearchButtonBounds() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "searchButtonBounds")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("searchButtonBounds"))
 	return rv
 }
 
 func (s_ SearchField) SearchTextBounds() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "searchTextBounds")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("searchTextBounds"))
 	return rv
 }
 
 // deprecated
 func (s_ SearchField) CentersPlaceholder() bool {
-	rv := objc.CallMethod[bool](s_, "centersPlaceholder")
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("centersPlaceholder"))
 	return rv
 }
 
 // deprecated
 func (s_ SearchField) SetCentersPlaceholder(value bool) {
-	objc.CallMethod[objc.Void](s_, "setCentersPlaceholder:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCentersPlaceholder:"), value)
 }

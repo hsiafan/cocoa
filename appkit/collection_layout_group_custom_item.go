@@ -31,22 +31,22 @@ func MakeCollectionLayoutGroupCustomItem(ptr unsafe.Pointer) CollectionLayoutGro
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame(frame foundation.Rect) CollectionLayoutGroupCustomItem {
-	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "customItemWithFrame:", frame)
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, objc.GetSelector("customItemWithFrame:"), frame)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) CustomItemWithFrame_ZIndex(frame foundation.Rect, zIndex int) CollectionLayoutGroupCustomItem {
-	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "customItemWithFrame:zIndex:", frame, zIndex)
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, objc.GetSelector("customItemWithFrame:zIndex:"), frame, zIndex)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) Alloc() CollectionLayoutGroupCustomItem {
-	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutGroupCustomItemClass) New() CollectionLayoutGroupCustomItem {
-	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,16 +56,16 @@ func NewCollectionLayoutGroupCustomItem() CollectionLayoutGroupCustomItem {
 }
 
 func (c_ CollectionLayoutGroupCustomItem) Init() CollectionLayoutGroupCustomItem {
-	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutGroupCustomItem](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutGroupCustomItem) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, "frame")
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("frame"))
 	return rv
 }
 
 func (c_ CollectionLayoutGroupCustomItem) ZIndex() int {
-	rv := objc.CallMethod[int](c_, "zIndex")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("zIndex"))
 	return rv
 }

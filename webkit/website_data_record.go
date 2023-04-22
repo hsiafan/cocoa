@@ -31,12 +31,12 @@ func MakeWebsiteDataRecord(ptr unsafe.Pointer) WebsiteDataRecord {
 }
 
 func (wc _WebsiteDataRecordClass) Alloc() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](wc, "alloc")
+	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WebsiteDataRecordClass) New() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](wc, "new")
+	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -46,16 +46,16 @@ func NewWebsiteDataRecord() WebsiteDataRecord {
 }
 
 func (w_ WebsiteDataRecord) Init() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](w_, "init")
+	rv := objc.CallMethod[WebsiteDataRecord](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (w_ WebsiteDataRecord) DisplayName() string {
-	rv := objc.CallMethod[string](w_, "displayName")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("displayName"))
 	return rv
 }
 
 func (w_ WebsiteDataRecord) DataTypes() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](w_, "dataTypes")
+	rv := objc.CallMethod[foundation.Set](w_, objc.GetSelector("dataTypes"))
 	return rv
 }

@@ -103,12 +103,12 @@ func MakeDateFormatter(ptr unsafe.Pointer) DateFormatter {
 }
 
 func (dc _DateFormatterClass) Alloc() DateFormatter {
-	rv := objc.CallMethod[DateFormatter](dc, "alloc")
+	rv := objc.CallMethod[DateFormatter](dc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (dc _DateFormatterClass) New() DateFormatter {
-	rv := objc.CallMethod[DateFormatter](dc, "new")
+	rv := objc.CallMethod[DateFormatter](dc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -118,357 +118,357 @@ func NewDateFormatter() DateFormatter {
 }
 
 func (d_ DateFormatter) Init() DateFormatter {
-	rv := objc.CallMethod[DateFormatter](d_, "init")
+	rv := objc.CallMethod[DateFormatter](d_, objc.GetSelector("init"))
 	return rv
 }
 
 func (d_ DateFormatter) DateFromString(string_ string) Date {
-	rv := objc.CallMethod[Date](d_, "dateFromString:", string_)
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("dateFromString:"), string_)
 	return rv
 }
 
 func (d_ DateFormatter) StringFromDate(date IDate) string {
-	rv := objc.CallMethod[string](d_, "stringFromDate:", date)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:"), date)
 	return rv
 }
 
 func (dc _DateFormatterClass) LocalizedStringFromDate_DateStyle_TimeStyle(date IDate, dstyle DateFormatterStyle, tstyle DateFormatterStyle) string {
-	rv := objc.CallMethod[string](dc, "localizedStringFromDate:dateStyle:timeStyle:", date, dstyle, tstyle)
+	rv := objc.CallMethod[string](dc, objc.GetSelector("localizedStringFromDate:dateStyle:timeStyle:"), date, dstyle, tstyle)
 	return rv
 }
 
 func (d_ DateFormatter) SetLocalizedDateFormatFromTemplate(dateFormatTemplate string) {
-	objc.CallMethod[objc.Void](d_, "setLocalizedDateFormatFromTemplate:", dateFormatTemplate)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocalizedDateFormatFromTemplate:"), dateFormatTemplate)
 }
 
 func (dc _DateFormatterClass) DateFormatFromTemplate_Options_Locale(tmplate string, opts uint, locale ILocale) string {
-	rv := objc.CallMethod[string](dc, "dateFormatFromTemplate:options:locale:", tmplate, opts, locale)
+	rv := objc.CallMethod[string](dc, objc.GetSelector("dateFormatFromTemplate:options:locale:"), tmplate, opts, locale)
 	return rv
 }
 
 // deprecated
 func (d_ DateFormatter) AllowsNaturalLanguage() bool {
-	rv := objc.CallMethod[bool](d_, "allowsNaturalLanguage")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("allowsNaturalLanguage"))
 	return rv
 }
 
 // deprecated
 func (d_ DateFormatter) InitWithDateFormat_AllowNaturalLanguage(format string, flag bool) objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, "initWithDateFormat:allowNaturalLanguage:", format, flag)
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("initWithDateFormat:allowNaturalLanguage:"), format, flag)
 	return rv
 }
 
 func (d_ DateFormatter) DateStyle() DateFormatterStyle {
-	rv := objc.CallMethod[DateFormatterStyle](d_, "dateStyle")
+	rv := objc.CallMethod[DateFormatterStyle](d_, objc.GetSelector("dateStyle"))
 	return rv
 }
 
 func (d_ DateFormatter) SetDateStyle(value DateFormatterStyle) {
-	objc.CallMethod[objc.Void](d_, "setDateStyle:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDateStyle:"), value)
 }
 
 func (d_ DateFormatter) TimeStyle() DateFormatterStyle {
-	rv := objc.CallMethod[DateFormatterStyle](d_, "timeStyle")
+	rv := objc.CallMethod[DateFormatterStyle](d_, objc.GetSelector("timeStyle"))
 	return rv
 }
 
 func (d_ DateFormatter) SetTimeStyle(value DateFormatterStyle) {
-	objc.CallMethod[objc.Void](d_, "setTimeStyle:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeStyle:"), value)
 }
 
 func (d_ DateFormatter) DateFormat() string {
-	rv := objc.CallMethod[string](d_, "dateFormat")
+	rv := objc.CallMethod[string](d_, objc.GetSelector("dateFormat"))
 	return rv
 }
 
 func (d_ DateFormatter) SetDateFormat(value string) {
-	objc.CallMethod[objc.Void](d_, "setDateFormat:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDateFormat:"), value)
 }
 
 func (d_ DateFormatter) FormattingContext() FormattingContext {
-	rv := objc.CallMethod[FormattingContext](d_, "formattingContext")
+	rv := objc.CallMethod[FormattingContext](d_, objc.GetSelector("formattingContext"))
 	return rv
 }
 
 func (d_ DateFormatter) SetFormattingContext(value FormattingContext) {
-	objc.CallMethod[objc.Void](d_, "setFormattingContext:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFormattingContext:"), value)
 }
 
 func (d_ DateFormatter) Calendar() Calendar {
-	rv := objc.CallMethod[Calendar](d_, "calendar")
+	rv := objc.CallMethod[Calendar](d_, objc.GetSelector("calendar"))
 	return rv
 }
 
 func (d_ DateFormatter) SetCalendar(value ICalendar) {
-	objc.CallMethod[objc.Void](d_, "setCalendar:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
 }
 
 func (d_ DateFormatter) DefaultDate() Date {
-	rv := objc.CallMethod[Date](d_, "defaultDate")
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("defaultDate"))
 	return rv
 }
 
 func (d_ DateFormatter) SetDefaultDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, "setDefaultDate:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDefaultDate:"), value)
 }
 
 func (d_ DateFormatter) Locale() Locale {
-	rv := objc.CallMethod[Locale](d_, "locale")
+	rv := objc.CallMethod[Locale](d_, objc.GetSelector("locale"))
 	return rv
 }
 
 func (d_ DateFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](d_, "setLocale:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), value)
 }
 
 func (d_ DateFormatter) TimeZone() TimeZone {
-	rv := objc.CallMethod[TimeZone](d_, "timeZone")
+	rv := objc.CallMethod[TimeZone](d_, objc.GetSelector("timeZone"))
 	return rv
 }
 
 func (d_ DateFormatter) SetTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](d_, "setTimeZone:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), value)
 }
 
 func (d_ DateFormatter) TwoDigitStartDate() Date {
-	rv := objc.CallMethod[Date](d_, "twoDigitStartDate")
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("twoDigitStartDate"))
 	return rv
 }
 
 func (d_ DateFormatter) SetTwoDigitStartDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, "setTwoDigitStartDate:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTwoDigitStartDate:"), value)
 }
 
 func (d_ DateFormatter) GregorianStartDate() Date {
-	rv := objc.CallMethod[Date](d_, "gregorianStartDate")
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("gregorianStartDate"))
 	return rv
 }
 
 func (d_ DateFormatter) SetGregorianStartDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, "setGregorianStartDate:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setGregorianStartDate:"), value)
 }
 
 func (d_ DateFormatter) FormatterBehavior() DateFormatterBehavior {
-	rv := objc.CallMethod[DateFormatterBehavior](d_, "formatterBehavior")
+	rv := objc.CallMethod[DateFormatterBehavior](d_, objc.GetSelector("formatterBehavior"))
 	return rv
 }
 
 func (d_ DateFormatter) SetFormatterBehavior(value DateFormatterBehavior) {
-	objc.CallMethod[objc.Void](d_, "setFormatterBehavior:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFormatterBehavior:"), value)
 }
 
 func (dc _DateFormatterClass) DefaultFormatterBehavior() DateFormatterBehavior {
-	rv := objc.CallMethod[DateFormatterBehavior](dc, "defaultFormatterBehavior")
+	rv := objc.CallMethod[DateFormatterBehavior](dc, objc.GetSelector("defaultFormatterBehavior"))
 	return rv
 }
 
 func (dc _DateFormatterClass) SetDefaultFormatterBehavior(value DateFormatterBehavior) {
-	objc.CallMethod[objc.Void](dc, "setDefaultFormatterBehavior:", value)
+	objc.CallMethod[objc.Void](dc, objc.GetSelector("setDefaultFormatterBehavior:"), value)
 }
 
 func (d_ DateFormatter) IsLenient() bool {
-	rv := objc.CallMethod[bool](d_, "isLenient")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("isLenient"))
 	return rv
 }
 
 func (d_ DateFormatter) SetLenient(value bool) {
-	objc.CallMethod[objc.Void](d_, "setLenient:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLenient:"), value)
 }
 
 func (d_ DateFormatter) DoesRelativeDateFormatting() bool {
-	rv := objc.CallMethod[bool](d_, "doesRelativeDateFormatting")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("doesRelativeDateFormatting"))
 	return rv
 }
 
 func (d_ DateFormatter) SetDoesRelativeDateFormatting(value bool) {
-	objc.CallMethod[objc.Void](d_, "setDoesRelativeDateFormatting:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDoesRelativeDateFormatting:"), value)
 }
 
 func (d_ DateFormatter) AMSymbol() string {
-	rv := objc.CallMethod[string](d_, "AMSymbol")
+	rv := objc.CallMethod[string](d_, objc.GetSelector("AMSymbol"))
 	return rv
 }
 
 func (d_ DateFormatter) SetAMSymbol(value string) {
-	objc.CallMethod[objc.Void](d_, "setAMSymbol:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAMSymbol:"), value)
 }
 
 func (d_ DateFormatter) PMSymbol() string {
-	rv := objc.CallMethod[string](d_, "PMSymbol")
+	rv := objc.CallMethod[string](d_, objc.GetSelector("PMSymbol"))
 	return rv
 }
 
 func (d_ DateFormatter) SetPMSymbol(value string) {
-	objc.CallMethod[objc.Void](d_, "setPMSymbol:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setPMSymbol:"), value)
 }
 
 func (d_ DateFormatter) WeekdaySymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "weekdaySymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("weekdaySymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetWeekdaySymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setWeekdaySymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setWeekdaySymbols:"), value)
 }
 
 func (d_ DateFormatter) ShortWeekdaySymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "shortWeekdaySymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("shortWeekdaySymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetShortWeekdaySymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setShortWeekdaySymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShortWeekdaySymbols:"), value)
 }
 
 func (d_ DateFormatter) VeryShortWeekdaySymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "veryShortWeekdaySymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("veryShortWeekdaySymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetVeryShortWeekdaySymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setVeryShortWeekdaySymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setVeryShortWeekdaySymbols:"), value)
 }
 
 func (d_ DateFormatter) StandaloneWeekdaySymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "standaloneWeekdaySymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("standaloneWeekdaySymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetStandaloneWeekdaySymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setStandaloneWeekdaySymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setStandaloneWeekdaySymbols:"), value)
 }
 
 func (d_ DateFormatter) ShortStandaloneWeekdaySymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "shortStandaloneWeekdaySymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("shortStandaloneWeekdaySymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetShortStandaloneWeekdaySymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setShortStandaloneWeekdaySymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShortStandaloneWeekdaySymbols:"), value)
 }
 
 func (d_ DateFormatter) VeryShortStandaloneWeekdaySymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "veryShortStandaloneWeekdaySymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("veryShortStandaloneWeekdaySymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetVeryShortStandaloneWeekdaySymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setVeryShortStandaloneWeekdaySymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setVeryShortStandaloneWeekdaySymbols:"), value)
 }
 
 func (d_ DateFormatter) MonthSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "monthSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("monthSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetMonthSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setMonthSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMonthSymbols:"), value)
 }
 
 func (d_ DateFormatter) ShortMonthSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "shortMonthSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("shortMonthSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetShortMonthSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setShortMonthSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShortMonthSymbols:"), value)
 }
 
 func (d_ DateFormatter) VeryShortMonthSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "veryShortMonthSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("veryShortMonthSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetVeryShortMonthSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setVeryShortMonthSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setVeryShortMonthSymbols:"), value)
 }
 
 func (d_ DateFormatter) StandaloneMonthSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "standaloneMonthSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("standaloneMonthSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetStandaloneMonthSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setStandaloneMonthSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setStandaloneMonthSymbols:"), value)
 }
 
 func (d_ DateFormatter) ShortStandaloneMonthSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "shortStandaloneMonthSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("shortStandaloneMonthSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetShortStandaloneMonthSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setShortStandaloneMonthSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShortStandaloneMonthSymbols:"), value)
 }
 
 func (d_ DateFormatter) VeryShortStandaloneMonthSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "veryShortStandaloneMonthSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("veryShortStandaloneMonthSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetVeryShortStandaloneMonthSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setVeryShortStandaloneMonthSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setVeryShortStandaloneMonthSymbols:"), value)
 }
 
 func (d_ DateFormatter) QuarterSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "quarterSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("quarterSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetQuarterSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setQuarterSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setQuarterSymbols:"), value)
 }
 
 func (d_ DateFormatter) ShortQuarterSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "shortQuarterSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("shortQuarterSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetShortQuarterSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setShortQuarterSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShortQuarterSymbols:"), value)
 }
 
 func (d_ DateFormatter) StandaloneQuarterSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "standaloneQuarterSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("standaloneQuarterSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetStandaloneQuarterSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setStandaloneQuarterSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setStandaloneQuarterSymbols:"), value)
 }
 
 func (d_ DateFormatter) ShortStandaloneQuarterSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "shortStandaloneQuarterSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("shortStandaloneQuarterSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetShortStandaloneQuarterSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setShortStandaloneQuarterSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShortStandaloneQuarterSymbols:"), value)
 }
 
 func (d_ DateFormatter) EraSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "eraSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("eraSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetEraSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setEraSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setEraSymbols:"), value)
 }
 
 func (d_ DateFormatter) LongEraSymbols() []string {
-	rv := objc.CallMethod[[]string](d_, "longEraSymbols")
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("longEraSymbols"))
 	return rv
 }
 
 func (d_ DateFormatter) SetLongEraSymbols(value []string) {
-	objc.CallMethod[objc.Void](d_, "setLongEraSymbols:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLongEraSymbols:"), value)
 }
 
 func (d_ DateFormatter) GeneratesCalendarDates() bool {
-	rv := objc.CallMethod[bool](d_, "generatesCalendarDates")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("generatesCalendarDates"))
 	return rv
 }
 
 func (d_ DateFormatter) SetGeneratesCalendarDates(value bool) {
-	objc.CallMethod[objc.Void](d_, "setGeneratesCalendarDates:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setGeneratesCalendarDates:"), value)
 }

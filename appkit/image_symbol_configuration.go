@@ -28,67 +28,67 @@ func MakeImageSymbolConfiguration(ptr unsafe.Pointer) ImageSymbolConfiguration {
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithPointSize_Weight(pointSize float64, weight FontWeight) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithPointSize:weight:", pointSize, weight)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithPointSize:weight:"), pointSize, weight)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithPointSize_Weight_Scale(pointSize float64, weight FontWeight, scale ImageSymbolScale) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithPointSize:weight:scale:", pointSize, weight, scale)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithPointSize:weight:scale:"), pointSize, weight, scale)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithTextStyle(style FontTextStyle) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithTextStyle:", style)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithTextStyle:"), style)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithTextStyle_Scale(style FontTextStyle, scale ImageSymbolScale) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithTextStyle:scale:", style, scale)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithTextStyle:scale:"), style, scale)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithScale(scale ImageSymbolScale) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithScale:", scale)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithScale:"), scale)
 	return rv
 }
 
 func (i_ ImageSymbolConfiguration) ConfigurationByApplyingConfiguration(configuration IImageSymbolConfiguration) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](i_, "configurationByApplyingConfiguration:", configuration)
+	rv := objc.CallMethod[ImageSymbolConfiguration](i_, objc.GetSelector("configurationByApplyingConfiguration:"), configuration)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithPaletteColors(paletteColors []IColor) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithPaletteColors:", paletteColors)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithPaletteColors:"), paletteColors)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithHierarchicalColor(hierarchicalColor IColor) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationWithHierarchicalColor:", hierarchicalColor)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithHierarchicalColor:"), hierarchicalColor)
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationPreferringMulticolor() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationPreferringMulticolor")
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationPreferringMulticolor"))
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationPreferringHierarchical() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationPreferringHierarchical")
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationPreferringHierarchical"))
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationPreferringMonochrome() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "configurationPreferringMonochrome")
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationPreferringMonochrome"))
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) Alloc() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "alloc")
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (ic _ImageSymbolConfigurationClass) New() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, "new")
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -98,6 +98,6 @@ func NewImageSymbolConfiguration() ImageSymbolConfiguration {
 }
 
 func (i_ ImageSymbolConfiguration) Init() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](i_, "init")
+	rv := objc.CallMethod[ImageSymbolConfiguration](i_, objc.GetSelector("init"))
 	return rv
 }

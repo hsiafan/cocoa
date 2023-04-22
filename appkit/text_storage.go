@@ -56,27 +56,27 @@ func MakeTextStorage(ptr unsafe.Pointer) TextStorage {
 }
 
 func (t_ TextStorage) InitWithString(str string) TextStorage {
-	rv := objc.CallMethod[TextStorage](t_, "initWithString:", str)
+	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("initWithString:"), str)
 	return rv
 }
 
 func (t_ TextStorage) InitWithString_Attributes(str string, attrs map[foundation.AttributedStringKey]objc.IObject) TextStorage {
-	rv := objc.CallMethod[TextStorage](t_, "initWithString:attributes:", str, attrs)
+	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("initWithString:attributes:"), str, attrs)
 	return rv
 }
 
 func (t_ TextStorage) InitWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
-	rv := objc.CallMethod[TextStorage](t_, "initWithAttributedString:", attrStr)
+	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("initWithAttributedString:"), attrStr)
 	return rv
 }
 
 func (tc _TextStorageClass) Alloc() TextStorage {
-	rv := objc.CallMethod[TextStorage](tc, "alloc")
+	rv := objc.CallMethod[TextStorage](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextStorageClass) New() TextStorage {
-	rv := objc.CallMethod[TextStorage](tc, "new")
+	rv := objc.CallMethod[TextStorage](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -86,36 +86,36 @@ func NewTextStorage() TextStorage {
 }
 
 func (t_ TextStorage) Init() TextStorage {
-	rv := objc.CallMethod[TextStorage](t_, "init")
+	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextStorage) AddLayoutManager(aLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, "addLayoutManager:", aLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addLayoutManager:"), aLayoutManager)
 }
 
 func (t_ TextStorage) RemoveLayoutManager(aLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, "removeLayoutManager:", aLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeLayoutManager:"), aLayoutManager)
 }
 
 func (t_ TextStorage) Edited_Range_ChangeInLength(editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	objc.CallMethod[objc.Void](t_, "edited:range:changeInLength:", editedMask, editedRange, delta)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("edited:range:changeInLength:"), editedMask, editedRange, delta)
 }
 
 func (t_ TextStorage) ProcessEditing() {
-	objc.CallMethod[objc.Void](t_, "processEditing")
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("processEditing"))
 }
 
 func (t_ TextStorage) InvalidateAttributesInRange(range_ foundation.Range) {
-	objc.CallMethod[objc.Void](t_, "invalidateAttributesInRange:", range_)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("invalidateAttributesInRange:"), range_)
 }
 
 func (t_ TextStorage) EnsureAttributesAreFixedInRange(range_ foundation.Range) {
-	objc.CallMethod[objc.Void](t_, "ensureAttributesAreFixedInRange:", range_)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("ensureAttributesAreFixedInRange:"), range_)
 }
 
 func (t_ TextStorage) Delegate() TextStorageDelegateWrapper {
-	rv := objc.CallMethod[TextStorageDelegateWrapper](t_, "delegate")
+	rv := objc.CallMethod[TextStorageDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -123,88 +123,88 @@ func (t_ TextStorage) SetDelegate(value TextStorageDelegate) {
 	po := objc.CreateProtocol("NSTextStorageDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (t_ TextStorage) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (t_ TextStorage) LayoutManagers() []LayoutManager {
-	rv := objc.CallMethod[[]LayoutManager](t_, "layoutManagers")
+	rv := objc.CallMethod[[]LayoutManager](t_, objc.GetSelector("layoutManagers"))
 	return rv
 }
 
 func (t_ TextStorage) FixesAttributesLazily() bool {
-	rv := objc.CallMethod[bool](t_, "fixesAttributesLazily")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("fixesAttributesLazily"))
 	return rv
 }
 
 func (t_ TextStorage) EditedMask() TextStorageEditActions {
-	rv := objc.CallMethod[TextStorageEditActions](t_, "editedMask")
+	rv := objc.CallMethod[TextStorageEditActions](t_, objc.GetSelector("editedMask"))
 	return rv
 }
 
 func (t_ TextStorage) EditedRange() foundation.Range {
-	rv := objc.CallMethod[foundation.Range](t_, "editedRange")
+	rv := objc.CallMethod[foundation.Range](t_, objc.GetSelector("editedRange"))
 	return rv
 }
 
 func (t_ TextStorage) ChangeInLength() int {
-	rv := objc.CallMethod[int](t_, "changeInLength")
+	rv := objc.CallMethod[int](t_, objc.GetSelector("changeInLength"))
 	return rv
 }
 
 func (t_ TextStorage) AttributeRuns() []TextStorage {
-	rv := objc.CallMethod[[]TextStorage](t_, "attributeRuns")
+	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("attributeRuns"))
 	return rv
 }
 
 func (t_ TextStorage) SetAttributeRuns(value []ITextStorage) {
-	objc.CallMethod[objc.Void](t_, "setAttributeRuns:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributeRuns:"), value)
 }
 
 func (t_ TextStorage) Paragraphs() []TextStorage {
-	rv := objc.CallMethod[[]TextStorage](t_, "paragraphs")
+	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("paragraphs"))
 	return rv
 }
 
 func (t_ TextStorage) SetParagraphs(value []ITextStorage) {
-	objc.CallMethod[objc.Void](t_, "setParagraphs:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setParagraphs:"), value)
 }
 
 func (t_ TextStorage) Words() []TextStorage {
-	rv := objc.CallMethod[[]TextStorage](t_, "words")
+	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("words"))
 	return rv
 }
 
 func (t_ TextStorage) SetWords(value []ITextStorage) {
-	objc.CallMethod[objc.Void](t_, "setWords:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setWords:"), value)
 }
 
 func (t_ TextStorage) Characters() []TextStorage {
-	rv := objc.CallMethod[[]TextStorage](t_, "characters")
+	rv := objc.CallMethod[[]TextStorage](t_, objc.GetSelector("characters"))
 	return rv
 }
 
 func (t_ TextStorage) SetCharacters(value []ITextStorage) {
-	objc.CallMethod[objc.Void](t_, "setCharacters:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCharacters:"), value)
 }
 
 func (t_ TextStorage) Font() Font {
-	rv := objc.CallMethod[Font](t_, "font")
+	rv := objc.CallMethod[Font](t_, objc.GetSelector("font"))
 	return rv
 }
 
 func (t_ TextStorage) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](t_, "setFont:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:"), value)
 }
 
 func (t_ TextStorage) ForegroundColor() Color {
-	rv := objc.CallMethod[Color](t_, "foregroundColor")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("foregroundColor"))
 	return rv
 }
 
 func (t_ TextStorage) SetForegroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, "setForegroundColor:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setForegroundColor:"), value)
 }

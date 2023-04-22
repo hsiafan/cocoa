@@ -38,12 +38,12 @@ func MakeWindowTabGroup(ptr unsafe.Pointer) WindowTabGroup {
 }
 
 func (wc _WindowTabGroupClass) Alloc() WindowTabGroup {
-	rv := objc.CallMethod[WindowTabGroup](wc, "alloc")
+	rv := objc.CallMethod[WindowTabGroup](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WindowTabGroupClass) New() WindowTabGroup {
-	rv := objc.CallMethod[WindowTabGroup](wc, "new")
+	rv := objc.CallMethod[WindowTabGroup](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,51 +53,51 @@ func NewWindowTabGroup() WindowTabGroup {
 }
 
 func (w_ WindowTabGroup) Init() WindowTabGroup {
-	rv := objc.CallMethod[WindowTabGroup](w_, "init")
+	rv := objc.CallMethod[WindowTabGroup](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (w_ WindowTabGroup) AddWindow(window IWindow) {
-	objc.CallMethod[objc.Void](w_, "addWindow:", window)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addWindow:"), window)
 }
 
 func (w_ WindowTabGroup) InsertWindow_AtIndex(window IWindow, index int) {
-	objc.CallMethod[objc.Void](w_, "insertWindow:atIndex:", window, index)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("insertWindow:atIndex:"), window, index)
 }
 
 func (w_ WindowTabGroup) RemoveWindow(window IWindow) {
-	objc.CallMethod[objc.Void](w_, "removeWindow:", window)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeWindow:"), window)
 }
 
 func (w_ WindowTabGroup) Identifier() WindowTabbingIdentifier {
-	rv := objc.CallMethod[WindowTabbingIdentifier](w_, "identifier")
+	rv := objc.CallMethod[WindowTabbingIdentifier](w_, objc.GetSelector("identifier"))
 	return rv
 }
 
 func (w_ WindowTabGroup) IsOverviewVisible() bool {
-	rv := objc.CallMethod[bool](w_, "isOverviewVisible")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isOverviewVisible"))
 	return rv
 }
 
 func (w_ WindowTabGroup) SetOverviewVisible(value bool) {
-	objc.CallMethod[objc.Void](w_, "setOverviewVisible:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setOverviewVisible:"), value)
 }
 
 func (w_ WindowTabGroup) IsTabBarVisible() bool {
-	rv := objc.CallMethod[bool](w_, "isTabBarVisible")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isTabBarVisible"))
 	return rv
 }
 
 func (w_ WindowTabGroup) Windows() []Window {
-	rv := objc.CallMethod[[]Window](w_, "windows")
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("windows"))
 	return rv
 }
 
 func (w_ WindowTabGroup) SelectedWindow() Window {
-	rv := objc.CallMethod[Window](w_, "selectedWindow")
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("selectedWindow"))
 	return rv
 }
 
 func (w_ WindowTabGroup) SetSelectedWindow(value IWindow) {
-	objc.CallMethod[objc.Void](w_, "setSelectedWindow:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSelectedWindow:"), value)
 }

@@ -83,17 +83,17 @@ func MakeGestureRecognizer(ptr unsafe.Pointer) GestureRecognizer {
 }
 
 func (g_ GestureRecognizer) InitWithTarget_Action(target objc.IObject, action objc.Selector) GestureRecognizer {
-	rv := objc.CallMethod[GestureRecognizer](g_, "initWithTarget:action:", target, action)
+	rv := objc.CallMethod[GestureRecognizer](g_, objc.GetSelector("initWithTarget:action:"), target, action)
 	return rv
 }
 
 func (gc _GestureRecognizerClass) Alloc() GestureRecognizer {
-	rv := objc.CallMethod[GestureRecognizer](gc, "alloc")
+	rv := objc.CallMethod[GestureRecognizer](gc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (gc _GestureRecognizerClass) New() GestureRecognizer {
-	rv := objc.CallMethod[GestureRecognizer](gc, "new")
+	rv := objc.CallMethod[GestureRecognizer](gc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -103,212 +103,212 @@ func NewGestureRecognizer() GestureRecognizer {
 }
 
 func (g_ GestureRecognizer) Init() GestureRecognizer {
-	rv := objc.CallMethod[GestureRecognizer](g_, "init")
+	rv := objc.CallMethod[GestureRecognizer](g_, objc.GetSelector("init"))
 	return rv
 }
 
 func (g_ GestureRecognizer) LocationInView(view IView) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](g_, "locationInView:", view)
+	rv := objc.CallMethod[foundation.Point](g_, objc.GetSelector("locationInView:"), view)
 	return rv
 }
 
 func (g_ GestureRecognizer) Reset() {
-	objc.CallMethod[objc.Void](g_, "reset")
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("reset"))
 }
 
 func (g_ GestureRecognizer) MouseDown(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "mouseDown:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("mouseDown:"), event)
 }
 
 func (g_ GestureRecognizer) MouseDragged(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "mouseDragged:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("mouseDragged:"), event)
 }
 
 func (g_ GestureRecognizer) MouseUp(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "mouseUp:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("mouseUp:"), event)
 }
 
 func (g_ GestureRecognizer) OtherMouseDown(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "otherMouseDown:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("otherMouseDown:"), event)
 }
 
 func (g_ GestureRecognizer) OtherMouseDragged(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "otherMouseDragged:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("otherMouseDragged:"), event)
 }
 
 func (g_ GestureRecognizer) OtherMouseUp(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "otherMouseUp:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("otherMouseUp:"), event)
 }
 
 func (g_ GestureRecognizer) RightMouseDown(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "rightMouseDown:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("rightMouseDown:"), event)
 }
 
 func (g_ GestureRecognizer) RightMouseDragged(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "rightMouseDragged:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("rightMouseDragged:"), event)
 }
 
 func (g_ GestureRecognizer) RightMouseUp(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "rightMouseUp:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("rightMouseUp:"), event)
 }
 
 func (g_ GestureRecognizer) MagnifyWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "magnifyWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("magnifyWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) RotateWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "rotateWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("rotateWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) CanBePreventedByGestureRecognizer(preventingGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "canBePreventedByGestureRecognizer:", preventingGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("canBePreventedByGestureRecognizer:"), preventingGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "canPreventGestureRecognizer:", preventedGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("canPreventGestureRecognizer:"), preventedGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) ShouldBeRequiredToFailByGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "shouldBeRequiredToFailByGestureRecognizer:", otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("shouldBeRequiredToFailByGestureRecognizer:"), otherGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) ShouldRequireFailureOfGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, "shouldRequireFailureOfGestureRecognizer:", otherGestureRecognizer)
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("shouldRequireFailureOfGestureRecognizer:"), otherGestureRecognizer)
 	return rv
 }
 
 func (g_ GestureRecognizer) KeyDown(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "keyDown:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("keyDown:"), event)
 }
 
 func (g_ GestureRecognizer) KeyUp(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "keyUp:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("keyUp:"), event)
 }
 
 func (g_ GestureRecognizer) TabletPoint(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "tabletPoint:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("tabletPoint:"), event)
 }
 
 func (g_ GestureRecognizer) FlagsChanged(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "flagsChanged:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("flagsChanged:"), event)
 }
 
 func (g_ GestureRecognizer) PressureChangeWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "pressureChangeWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("pressureChangeWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) TouchesBeganWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "touchesBeganWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("touchesBeganWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) TouchesCancelledWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "touchesCancelledWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("touchesCancelledWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) TouchesEndedWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "touchesEndedWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("touchesEndedWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) TouchesMovedWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](g_, "touchesMovedWithEvent:", event)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("touchesMovedWithEvent:"), event)
 }
 
 func (g_ GestureRecognizer) Action() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](g_, "action")
+	rv := objc.CallMethod[objc.Selector](g_, objc.GetSelector("action"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](g_, "setAction:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setAction:"), value)
 }
 
 func (g_ GestureRecognizer) Target() objc.Object {
-	rv := objc.CallMethod[objc.Object](g_, "target")
+	rv := objc.CallMethod[objc.Object](g_, objc.GetSelector("target"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](g_, "setTarget:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setTarget:"), value)
 }
 
 func (g_ GestureRecognizer) State() GestureRecognizerState {
-	rv := objc.CallMethod[GestureRecognizerState](g_, "state")
+	rv := objc.CallMethod[GestureRecognizerState](g_, objc.GetSelector("state"))
 	return rv
 }
 
 func (g_ GestureRecognizer) View() View {
-	rv := objc.CallMethod[View](g_, "view")
+	rv := objc.CallMethod[View](g_, objc.GetSelector("view"))
 	return rv
 }
 
 func (g_ GestureRecognizer) IsEnabled() bool {
-	rv := objc.CallMethod[bool](g_, "isEnabled")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("isEnabled"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetEnabled(value bool) {
-	objc.CallMethod[objc.Void](g_, "setEnabled:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setEnabled:"), value)
 }
 
 func (g_ GestureRecognizer) DelaysPrimaryMouseButtonEvents() bool {
-	rv := objc.CallMethod[bool](g_, "delaysPrimaryMouseButtonEvents")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("delaysPrimaryMouseButtonEvents"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysPrimaryMouseButtonEvents(value bool) {
-	objc.CallMethod[objc.Void](g_, "setDelaysPrimaryMouseButtonEvents:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysPrimaryMouseButtonEvents:"), value)
 }
 
 func (g_ GestureRecognizer) DelaysSecondaryMouseButtonEvents() bool {
-	rv := objc.CallMethod[bool](g_, "delaysSecondaryMouseButtonEvents")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("delaysSecondaryMouseButtonEvents"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysSecondaryMouseButtonEvents(value bool) {
-	objc.CallMethod[objc.Void](g_, "setDelaysSecondaryMouseButtonEvents:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysSecondaryMouseButtonEvents:"), value)
 }
 
 func (g_ GestureRecognizer) DelaysOtherMouseButtonEvents() bool {
-	rv := objc.CallMethod[bool](g_, "delaysOtherMouseButtonEvents")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("delaysOtherMouseButtonEvents"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysOtherMouseButtonEvents(value bool) {
-	objc.CallMethod[objc.Void](g_, "setDelaysOtherMouseButtonEvents:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysOtherMouseButtonEvents:"), value)
 }
 
 func (g_ GestureRecognizer) DelaysKeyEvents() bool {
-	rv := objc.CallMethod[bool](g_, "delaysKeyEvents")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("delaysKeyEvents"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysKeyEvents(value bool) {
-	objc.CallMethod[objc.Void](g_, "setDelaysKeyEvents:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysKeyEvents:"), value)
 }
 
 func (g_ GestureRecognizer) DelaysMagnificationEvents() bool {
-	rv := objc.CallMethod[bool](g_, "delaysMagnificationEvents")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("delaysMagnificationEvents"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysMagnificationEvents(value bool) {
-	objc.CallMethod[objc.Void](g_, "setDelaysMagnificationEvents:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysMagnificationEvents:"), value)
 }
 
 func (g_ GestureRecognizer) DelaysRotationEvents() bool {
-	rv := objc.CallMethod[bool](g_, "delaysRotationEvents")
+	rv := objc.CallMethod[bool](g_, objc.GetSelector("delaysRotationEvents"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetDelaysRotationEvents(value bool) {
-	objc.CallMethod[objc.Void](g_, "setDelaysRotationEvents:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysRotationEvents:"), value)
 }
 
 func (g_ GestureRecognizer) Delegate() GestureRecognizerDelegateWrapper {
-	rv := objc.CallMethod[GestureRecognizerDelegateWrapper](g_, "delegate")
+	rv := objc.CallMethod[GestureRecognizerDelegateWrapper](g_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -316,27 +316,27 @@ func (g_ GestureRecognizer) SetDelegate(value GestureRecognizerDelegate) {
 	po := objc.CreateProtocol("NSGestureRecognizerDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(g_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](g_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (g_ GestureRecognizer) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](g_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (g_ GestureRecognizer) PressureConfiguration() PressureConfiguration {
-	rv := objc.CallMethod[PressureConfiguration](g_, "pressureConfiguration")
+	rv := objc.CallMethod[PressureConfiguration](g_, objc.GetSelector("pressureConfiguration"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetPressureConfiguration(value IPressureConfiguration) {
-	objc.CallMethod[objc.Void](g_, "setPressureConfiguration:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setPressureConfiguration:"), value)
 }
 
 func (g_ GestureRecognizer) AllowedTouchTypes() TouchTypeMask {
-	rv := objc.CallMethod[TouchTypeMask](g_, "allowedTouchTypes")
+	rv := objc.CallMethod[TouchTypeMask](g_, objc.GetSelector("allowedTouchTypes"))
 	return rv
 }
 
 func (g_ GestureRecognizer) SetAllowedTouchTypes(value TouchTypeMask) {
-	objc.CallMethod[objc.Void](g_, "setAllowedTouchTypes:", value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setAllowedTouchTypes:"), value)
 }

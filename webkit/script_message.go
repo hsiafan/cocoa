@@ -33,12 +33,12 @@ func MakeScriptMessage(ptr unsafe.Pointer) ScriptMessage {
 }
 
 func (sc _ScriptMessageClass) Alloc() ScriptMessage {
-	rv := objc.CallMethod[ScriptMessage](sc, "alloc")
+	rv := objc.CallMethod[ScriptMessage](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _ScriptMessageClass) New() ScriptMessage {
-	rv := objc.CallMethod[ScriptMessage](sc, "new")
+	rv := objc.CallMethod[ScriptMessage](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,31 +48,31 @@ func NewScriptMessage() ScriptMessage {
 }
 
 func (s_ ScriptMessage) Init() ScriptMessage {
-	rv := objc.CallMethod[ScriptMessage](s_, "init")
+	rv := objc.CallMethod[ScriptMessage](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (s_ ScriptMessage) Body() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, "body")
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("body"))
 	return rv
 }
 
 func (s_ ScriptMessage) FrameInfo() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](s_, "frameInfo")
+	rv := objc.CallMethod[FrameInfo](s_, objc.GetSelector("frameInfo"))
 	return rv
 }
 
 func (s_ ScriptMessage) WebView() WebView {
-	rv := objc.CallMethod[WebView](s_, "webView")
+	rv := objc.CallMethod[WebView](s_, objc.GetSelector("webView"))
 	return rv
 }
 
 func (s_ ScriptMessage) World() ContentWorld {
-	rv := objc.CallMethod[ContentWorld](s_, "world")
+	rv := objc.CallMethod[ContentWorld](s_, objc.GetSelector("world"))
 	return rv
 }
 
 func (s_ ScriptMessage) Name() string {
-	rv := objc.CallMethod[string](s_, "name")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("name"))
 	return rv
 }

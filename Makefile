@@ -1,7 +1,7 @@
 .PHONY: build example lint test clean help gen
 
 build:
-	@go build  -gcflags="-m" ./...
+	@go build ./...
 	@mkdir -p dist
 
 example:

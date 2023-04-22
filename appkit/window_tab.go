@@ -37,12 +37,12 @@ func MakeWindowTab(ptr unsafe.Pointer) WindowTab {
 }
 
 func (wc _WindowTabClass) Alloc() WindowTab {
-	rv := objc.CallMethod[WindowTab](wc, "alloc")
+	rv := objc.CallMethod[WindowTab](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WindowTabClass) New() WindowTab {
-	rv := objc.CallMethod[WindowTab](wc, "new")
+	rv := objc.CallMethod[WindowTab](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,42 +52,42 @@ func NewWindowTab() WindowTab {
 }
 
 func (w_ WindowTab) Init() WindowTab {
-	rv := objc.CallMethod[WindowTab](w_, "init")
+	rv := objc.CallMethod[WindowTab](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (w_ WindowTab) Title() string {
-	rv := objc.CallMethod[string](w_, "title")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("title"))
 	return rv
 }
 
 func (w_ WindowTab) SetTitle(value string) {
-	objc.CallMethod[objc.Void](w_, "setTitle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitle:"), value)
 }
 
 func (w_ WindowTab) AttributedTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](w_, "attributedTitle")
+	rv := objc.CallMethod[foundation.AttributedString](w_, objc.GetSelector("attributedTitle"))
 	return rv
 }
 
 func (w_ WindowTab) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](w_, "setAttributedTitle:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAttributedTitle:"), value)
 }
 
 func (w_ WindowTab) ToolTip() string {
-	rv := objc.CallMethod[string](w_, "toolTip")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("toolTip"))
 	return rv
 }
 
 func (w_ WindowTab) SetToolTip(value string) {
-	objc.CallMethod[objc.Void](w_, "setToolTip:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setToolTip:"), value)
 }
 
 func (w_ WindowTab) AccessoryView() View {
-	rv := objc.CallMethod[View](w_, "accessoryView")
+	rv := objc.CallMethod[View](w_, objc.GetSelector("accessoryView"))
 	return rv
 }
 
 func (w_ WindowTab) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](w_, "setAccessoryView:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAccessoryView:"), value)
 }

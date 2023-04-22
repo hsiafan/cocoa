@@ -54,12 +54,12 @@ func MakePreferences(ptr unsafe.Pointer) Preferences {
 }
 
 func (pc _PreferencesClass) Alloc() Preferences {
-	rv := objc.CallMethod[Preferences](pc, "alloc")
+	rv := objc.CallMethod[Preferences](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PreferencesClass) New() Preferences {
-	rv := objc.CallMethod[Preferences](pc, "new")
+	rv := objc.CallMethod[Preferences](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -69,102 +69,102 @@ func NewPreferences() Preferences {
 }
 
 func (p_ Preferences) Init() Preferences {
-	rv := objc.CallMethod[Preferences](p_, "init")
+	rv := objc.CallMethod[Preferences](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (p_ Preferences) MinimumFontSize() float64 {
-	rv := objc.CallMethod[float64](p_, "minimumFontSize")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("minimumFontSize"))
 	return rv
 }
 
 func (p_ Preferences) SetMinimumFontSize(value float64) {
-	objc.CallMethod[objc.Void](p_, "setMinimumFontSize:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setMinimumFontSize:"), value)
 }
 
 func (p_ Preferences) TabFocusesLinks() bool {
-	rv := objc.CallMethod[bool](p_, "tabFocusesLinks")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("tabFocusesLinks"))
 	return rv
 }
 
 func (p_ Preferences) SetTabFocusesLinks(value bool) {
-	objc.CallMethod[objc.Void](p_, "setTabFocusesLinks:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setTabFocusesLinks:"), value)
 }
 
 func (p_ Preferences) JavaScriptCanOpenWindowsAutomatically() bool {
-	rv := objc.CallMethod[bool](p_, "javaScriptCanOpenWindowsAutomatically")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("javaScriptCanOpenWindowsAutomatically"))
 	return rv
 }
 
 func (p_ Preferences) SetJavaScriptCanOpenWindowsAutomatically(value bool) {
-	objc.CallMethod[objc.Void](p_, "setJavaScriptCanOpenWindowsAutomatically:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setJavaScriptCanOpenWindowsAutomatically:"), value)
 }
 
 func (p_ Preferences) IsFraudulentWebsiteWarningEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "isFraudulentWebsiteWarningEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isFraudulentWebsiteWarningEnabled"))
 	return rv
 }
 
 func (p_ Preferences) SetFraudulentWebsiteWarningEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setFraudulentWebsiteWarningEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFraudulentWebsiteWarningEnabled:"), value)
 }
 
 // deprecated
 func (p_ Preferences) JavaEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "javaEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("javaEnabled"))
 	return rv
 }
 
 // deprecated
 func (p_ Preferences) SetJavaEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setJavaEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setJavaEnabled:"), value)
 }
 
 // deprecated
 func (p_ Preferences) JavaScriptEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "javaScriptEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("javaScriptEnabled"))
 	return rv
 }
 
 // deprecated
 func (p_ Preferences) SetJavaScriptEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setJavaScriptEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setJavaScriptEnabled:"), value)
 }
 
 // deprecated
 func (p_ Preferences) PlugInsEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "plugInsEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("plugInsEnabled"))
 	return rv
 }
 
 // deprecated
 func (p_ Preferences) SetPlugInsEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setPlugInsEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlugInsEnabled:"), value)
 }
 
 func (p_ Preferences) IsElementFullscreenEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "isElementFullscreenEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isElementFullscreenEnabled"))
 	return rv
 }
 
 func (p_ Preferences) SetElementFullscreenEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setElementFullscreenEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setElementFullscreenEnabled:"), value)
 }
 
 func (p_ Preferences) IsSiteSpecificQuirksModeEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "isSiteSpecificQuirksModeEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isSiteSpecificQuirksModeEnabled"))
 	return rv
 }
 
 func (p_ Preferences) SetSiteSpecificQuirksModeEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setSiteSpecificQuirksModeEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setSiteSpecificQuirksModeEnabled:"), value)
 }
 
 func (p_ Preferences) IsTextInteractionEnabled() bool {
-	rv := objc.CallMethod[bool](p_, "isTextInteractionEnabled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isTextInteractionEnabled"))
 	return rv
 }
 
 func (p_ Preferences) SetTextInteractionEnabled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setTextInteractionEnabled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setTextInteractionEnabled:"), value)
 }

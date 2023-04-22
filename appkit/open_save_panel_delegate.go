@@ -114,7 +114,7 @@ func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_UserEnteredFilename_Conf
 }
 
 func (o_ OpenSavePanelDelegateWrapper) Panel_UserEnteredFilename_Confirmed(sender objc.IObject, filename string, okFlag bool) string {
-	rv := objc.CallMethod[string](o_, "panel:userEnteredFilename:confirmed:", sender, filename, okFlag)
+	rv := objc.CallMethod[string](o_, objc.GetSelector("panel:userEnteredFilename:confirmed:"), sender, filename, okFlag)
 	return rv
 }
 
@@ -123,7 +123,7 @@ func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanelSelectionDidChange() bool
 }
 
 func (o_ OpenSavePanelDelegateWrapper) PanelSelectionDidChange(sender objc.IObject) {
-	objc.CallMethod[objc.Void](o_, "panelSelectionDidChange:", sender)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("panelSelectionDidChange:"), sender)
 }
 
 func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_DidChangeToDirectoryURL() bool {
@@ -131,7 +131,7 @@ func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_DidChangeToDirectoryURL(
 }
 
 func (o_ OpenSavePanelDelegateWrapper) Panel_DidChangeToDirectoryURL(sender objc.IObject, url foundation.IURL) {
-	objc.CallMethod[objc.Void](o_, "panel:didChangeToDirectoryURL:", sender, url)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("panel:didChangeToDirectoryURL:"), sender, url)
 }
 
 func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_WillExpand() bool {
@@ -139,7 +139,7 @@ func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_WillExpand() bool {
 }
 
 func (o_ OpenSavePanelDelegateWrapper) Panel_WillExpand(sender objc.IObject, expanding bool) {
-	objc.CallMethod[objc.Void](o_, "panel:willExpand:", sender, expanding)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("panel:willExpand:"), sender, expanding)
 }
 
 func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_ShouldEnableURL() bool {
@@ -147,7 +147,7 @@ func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_ShouldEnableURL() bool {
 }
 
 func (o_ OpenSavePanelDelegateWrapper) Panel_ShouldEnableURL(sender objc.IObject, url foundation.IURL) bool {
-	rv := objc.CallMethod[bool](o_, "panel:shouldEnableURL:", sender, url)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("panel:shouldEnableURL:"), sender, url)
 	return rv
 }
 
@@ -156,6 +156,6 @@ func (o_ *OpenSavePanelDelegateWrapper) ImplementsPanel_ValidateURL_Error() bool
 }
 
 func (o_ OpenSavePanelDelegateWrapper) Panel_ValidateURL_Error(sender objc.IObject, url foundation.IURL, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](o_, "panel:validateURL:error:", sender, url, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("panel:validateURL:error:"), sender, url, unsafe.Pointer(outError))
 	return rv
 }

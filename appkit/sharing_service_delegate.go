@@ -127,7 +127,7 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_WillShareItems
 }
 
 func (s_ SharingServiceDelegateWrapper) SharingService_WillShareItems(sharingService ISharingService, items []objc.IObject) {
-	objc.CallMethod[objc.Void](s_, "sharingService:willShareItems:", sharingService, items)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingService:willShareItems:"), sharingService, items)
 }
 
 func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_DidShareItems() bool {
@@ -135,7 +135,7 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_DidShareItems(
 }
 
 func (s_ SharingServiceDelegateWrapper) SharingService_DidShareItems(sharingService ISharingService, items []objc.IObject) {
-	objc.CallMethod[objc.Void](s_, "sharingService:didShareItems:", sharingService, items)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingService:didShareItems:"), sharingService, items)
 }
 
 func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_DidFailToShareItems_Error() bool {
@@ -143,7 +143,7 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_DidFailToShare
 }
 
 func (s_ SharingServiceDelegateWrapper) SharingService_DidFailToShareItems_Error(sharingService ISharingService, items []objc.IObject, error foundation.IError) {
-	objc.CallMethod[objc.Void](s_, "sharingService:didFailToShareItems:error:", sharingService, items, error)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingService:didFailToShareItems:error:"), sharingService, items, error)
 }
 
 func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_SourceFrameOnScreenForShareItem() bool {
@@ -151,7 +151,7 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_SourceFrameOnS
 }
 
 func (s_ SharingServiceDelegateWrapper) SharingService_SourceFrameOnScreenForShareItem(sharingService ISharingService, item objc.IObject) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "sharingService:sourceFrameOnScreenForShareItem:", sharingService, item)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("sharingService:sourceFrameOnScreenForShareItem:"), sharingService, item)
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_TransitionImag
 }
 
 func (s_ SharingServiceDelegateWrapper) SharingService_TransitionImageForShareItem_ContentRect(sharingService ISharingService, item objc.IObject, contentRect *foundation.Rect) Image {
-	rv := objc.CallMethod[Image](s_, "sharingService:transitionImageForShareItem:contentRect:", sharingService, item, contentRect)
+	rv := objc.CallMethod[Image](s_, objc.GetSelector("sharingService:transitionImageForShareItem:contentRect:"), sharingService, item, contentRect)
 	return rv
 }
 
@@ -169,7 +169,7 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsSharingService_SourceWindowFo
 }
 
 func (s_ SharingServiceDelegateWrapper) SharingService_SourceWindowForShareItems_SharingContentScope(sharingService ISharingService, items []objc.IObject, sharingContentScope *SharingContentScope) Window {
-	rv := objc.CallMethod[Window](s_, "sharingService:sourceWindowForShareItems:sharingContentScope:", sharingService, items, sharingContentScope)
+	rv := objc.CallMethod[Window](s_, objc.GetSelector("sharingService:sourceWindowForShareItems:sharingContentScope:"), sharingService, items, sharingContentScope)
 	return rv
 }
 
@@ -178,6 +178,6 @@ func (s_ *SharingServiceDelegateWrapper) ImplementsAnchoringViewForSharingServic
 }
 
 func (s_ SharingServiceDelegateWrapper) AnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(sharingService ISharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) View {
-	rv := objc.CallMethod[View](s_, "anchoringViewForSharingService:showRelativeToRect:preferredEdge:", sharingService, positioningRect, preferredEdge)
+	rv := objc.CallMethod[View](s_, objc.GetSelector("anchoringViewForSharingService:showRelativeToRect:preferredEdge:"), sharingService, positioningRect, preferredEdge)
 	return rv
 }

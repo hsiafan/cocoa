@@ -23,7 +23,7 @@ func (f_ *FontChangingWrapper) ImplementsChangeFont() bool {
 }
 
 func (f_ FontChangingWrapper) ChangeFont(sender IFontManager) {
-	objc.CallMethod[objc.Void](f_, "changeFont:", sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("changeFont:"), sender)
 }
 
 func (f_ *FontChangingWrapper) ImplementsValidModesForFontPanel() bool {
@@ -31,6 +31,6 @@ func (f_ *FontChangingWrapper) ImplementsValidModesForFontPanel() bool {
 }
 
 func (f_ FontChangingWrapper) ValidModesForFontPanel(fontPanel IFontPanel) FontPanelModeMask {
-	rv := objc.CallMethod[FontPanelModeMask](f_, "validModesForFontPanel:", fontPanel)
+	rv := objc.CallMethod[FontPanelModeMask](f_, objc.GetSelector("validModesForFontPanel:"), fontPanel)
 	return rv
 }

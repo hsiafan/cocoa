@@ -43,37 +43,37 @@ func MakeTextLayer(ptr unsafe.Pointer) TextLayer {
 }
 
 func (tc _TextLayerClass) Layer() TextLayer {
-	rv := objc.CallMethod[TextLayer](tc, "layer")
+	rv := objc.CallMethod[TextLayer](tc, objc.GetSelector("layer"))
 	return rv
 }
 
 func (t_ TextLayer) Init() TextLayer {
-	rv := objc.CallMethod[TextLayer](t_, "init")
+	rv := objc.CallMethod[TextLayer](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextLayer) InitWithLayer(layer objc.IObject) TextLayer {
-	rv := objc.CallMethod[TextLayer](t_, "initWithLayer:", layer)
+	rv := objc.CallMethod[TextLayer](t_, objc.GetSelector("initWithLayer:"), layer)
 	return rv
 }
 
 func (t_ TextLayer) PresentationLayer() TextLayer {
-	rv := objc.CallMethod[TextLayer](t_, "presentationLayer")
+	rv := objc.CallMethod[TextLayer](t_, objc.GetSelector("presentationLayer"))
 	return rv
 }
 
 func (t_ TextLayer) ModelLayer() TextLayer {
-	rv := objc.CallMethod[TextLayer](t_, "modelLayer")
+	rv := objc.CallMethod[TextLayer](t_, objc.GetSelector("modelLayer"))
 	return rv
 }
 
 func (tc _TextLayerClass) Alloc() TextLayer {
-	rv := objc.CallMethod[TextLayer](tc, "alloc")
+	rv := objc.CallMethod[TextLayer](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextLayerClass) New() TextLayer {
-	rv := objc.CallMethod[TextLayer](tc, "new")
+	rv := objc.CallMethod[TextLayer](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -83,64 +83,64 @@ func NewTextLayer() TextLayer {
 }
 
 func (t_ TextLayer) String() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "string")
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("string"))
 	return rv
 }
 
 func (t_ TextLayer) SetString(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setString:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setString:"), value)
 }
 
 func (t_ TextLayer) FontSize() float64 {
-	rv := objc.CallMethod[float64](t_, "fontSize")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("fontSize"))
 	return rv
 }
 
 func (t_ TextLayer) SetFontSize(value float64) {
-	objc.CallMethod[objc.Void](t_, "setFontSize:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFontSize:"), value)
 }
 
 func (t_ TextLayer) ForegroundColor() coregraphics.ColorRef {
-	rv := objc.CallMethod[coregraphics.ColorRef](t_, "foregroundColor")
+	rv := objc.CallMethod[coregraphics.ColorRef](t_, objc.GetSelector("foregroundColor"))
 	return rv
 }
 
 func (t_ TextLayer) SetForegroundColor(value coregraphics.ColorRef) {
-	objc.CallMethod[objc.Void](t_, "setForegroundColor:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setForegroundColor:"), value)
 }
 
 func (t_ TextLayer) AllowsFontSubpixelQuantization() bool {
-	rv := objc.CallMethod[bool](t_, "allowsFontSubpixelQuantization")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("allowsFontSubpixelQuantization"))
 	return rv
 }
 
 func (t_ TextLayer) SetAllowsFontSubpixelQuantization(value bool) {
-	objc.CallMethod[objc.Void](t_, "setAllowsFontSubpixelQuantization:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAllowsFontSubpixelQuantization:"), value)
 }
 
 func (t_ TextLayer) IsWrapped() bool {
-	rv := objc.CallMethod[bool](t_, "isWrapped")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isWrapped"))
 	return rv
 }
 
 func (t_ TextLayer) SetWrapped(value bool) {
-	objc.CallMethod[objc.Void](t_, "setWrapped:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setWrapped:"), value)
 }
 
 func (t_ TextLayer) AlignmentMode() TextLayerAlignmentMode {
-	rv := objc.CallMethod[TextLayerAlignmentMode](t_, "alignmentMode")
+	rv := objc.CallMethod[TextLayerAlignmentMode](t_, objc.GetSelector("alignmentMode"))
 	return rv
 }
 
 func (t_ TextLayer) SetAlignmentMode(value TextLayerAlignmentMode) {
-	objc.CallMethod[objc.Void](t_, "setAlignmentMode:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAlignmentMode:"), value)
 }
 
 func (t_ TextLayer) TruncationMode() TextLayerTruncationMode {
-	rv := objc.CallMethod[TextLayerTruncationMode](t_, "truncationMode")
+	rv := objc.CallMethod[TextLayerTruncationMode](t_, objc.GetSelector("truncationMode"))
 	return rv
 }
 
 func (t_ TextLayer) SetTruncationMode(value TextLayerTruncationMode) {
-	objc.CallMethod[objc.Void](t_, "setTruncationMode:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTruncationMode:"), value)
 }

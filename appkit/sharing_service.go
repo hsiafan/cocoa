@@ -48,17 +48,17 @@ func MakeSharingService(ptr unsafe.Pointer) SharingService {
 }
 
 func (s_ SharingService) InitWithTitle_Image_AlternateImage_Handler(title string, image IImage, alternateImage IImage, block func()) SharingService {
-	rv := objc.CallMethod[SharingService](s_, "initWithTitle:image:alternateImage:handler:", title, image, alternateImage, block)
+	rv := objc.CallMethod[SharingService](s_, objc.GetSelector("initWithTitle:image:alternateImage:handler:"), title, image, alternateImage, block)
 	return rv
 }
 
 func (sc _SharingServiceClass) Alloc() SharingService {
-	rv := objc.CallMethod[SharingService](sc, "alloc")
+	rv := objc.CallMethod[SharingService](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _SharingServiceClass) New() SharingService {
-	rv := objc.CallMethod[SharingService](sc, "new")
+	rv := objc.CallMethod[SharingService](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -68,32 +68,32 @@ func NewSharingService() SharingService {
 }
 
 func (s_ SharingService) Init() SharingService {
-	rv := objc.CallMethod[SharingService](s_, "init")
+	rv := objc.CallMethod[SharingService](s_, objc.GetSelector("init"))
 	return rv
 }
 
 func (sc _SharingServiceClass) SharingServiceNamed(serviceName SharingServiceName) SharingService {
-	rv := objc.CallMethod[SharingService](sc, "sharingServiceNamed:", serviceName)
+	rv := objc.CallMethod[SharingService](sc, objc.GetSelector("sharingServiceNamed:"), serviceName)
 	return rv
 }
 
 // deprecated
 func (sc _SharingServiceClass) SharingServicesForItems(items []objc.IObject) []SharingService {
-	rv := objc.CallMethod[[]SharingService](sc, "sharingServicesForItems:", items)
+	rv := objc.CallMethod[[]SharingService](sc, objc.GetSelector("sharingServicesForItems:"), items)
 	return rv
 }
 
 func (s_ SharingService) CanPerformWithItems(items []objc.IObject) bool {
-	rv := objc.CallMethod[bool](s_, "canPerformWithItems:", items)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("canPerformWithItems:"), items)
 	return rv
 }
 
 func (s_ SharingService) PerformWithItems(items []objc.IObject) {
-	objc.CallMethod[objc.Void](s_, "performWithItems:", items)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("performWithItems:"), items)
 }
 
 func (s_ SharingService) Delegate() SharingServiceDelegateWrapper {
-	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, "delegate")
+	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -101,71 +101,71 @@ func (s_ SharingService) SetDelegate(value SharingServiceDelegate) {
 	po := objc.CreateProtocol("NSSharingServiceDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (s_ SharingService) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (s_ SharingService) AccountName() string {
-	rv := objc.CallMethod[string](s_, "accountName")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("accountName"))
 	return rv
 }
 
 func (s_ SharingService) AlternateImage() Image {
-	rv := objc.CallMethod[Image](s_, "alternateImage")
+	rv := objc.CallMethod[Image](s_, objc.GetSelector("alternateImage"))
 	return rv
 }
 
 func (s_ SharingService) Image() Image {
-	rv := objc.CallMethod[Image](s_, "image")
+	rv := objc.CallMethod[Image](s_, objc.GetSelector("image"))
 	return rv
 }
 
 func (s_ SharingService) Title() string {
-	rv := objc.CallMethod[string](s_, "title")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("title"))
 	return rv
 }
 
 func (s_ SharingService) MenuItemTitle() string {
-	rv := objc.CallMethod[string](s_, "menuItemTitle")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("menuItemTitle"))
 	return rv
 }
 
 func (s_ SharingService) SetMenuItemTitle(value string) {
-	objc.CallMethod[objc.Void](s_, "setMenuItemTitle:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenuItemTitle:"), value)
 }
 
 func (s_ SharingService) Recipients() []string {
-	rv := objc.CallMethod[[]string](s_, "recipients")
+	rv := objc.CallMethod[[]string](s_, objc.GetSelector("recipients"))
 	return rv
 }
 
 func (s_ SharingService) SetRecipients(value []string) {
-	objc.CallMethod[objc.Void](s_, "setRecipients:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRecipients:"), value)
 }
 
 func (s_ SharingService) Subject() string {
-	rv := objc.CallMethod[string](s_, "subject")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("subject"))
 	return rv
 }
 
 func (s_ SharingService) SetSubject(value string) {
-	objc.CallMethod[objc.Void](s_, "setSubject:", value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSubject:"), value)
 }
 
 func (s_ SharingService) AttachmentFileURLs() []foundation.URL {
-	rv := objc.CallMethod[[]foundation.URL](s_, "attachmentFileURLs")
+	rv := objc.CallMethod[[]foundation.URL](s_, objc.GetSelector("attachmentFileURLs"))
 	return rv
 }
 
 func (s_ SharingService) MessageBody() string {
-	rv := objc.CallMethod[string](s_, "messageBody")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("messageBody"))
 	return rv
 }
 
 func (s_ SharingService) PermanentLink() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](s_, "permanentLink")
+	rv := objc.CallMethod[foundation.URL](s_, objc.GetSelector("permanentLink"))
 	return rv
 }

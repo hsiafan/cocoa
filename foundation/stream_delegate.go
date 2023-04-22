@@ -36,5 +36,5 @@ func (s_ *StreamDelegateWrapper) ImplementsStream_HandleEvent() bool {
 }
 
 func (s_ StreamDelegateWrapper) Stream_HandleEvent(aStream IStream, eventCode StreamEvent) {
-	objc.CallMethod[objc.Void](s_, "stream:handleEvent:", aStream, eventCode)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("stream:handleEvent:"), aStream, eventCode)
 }

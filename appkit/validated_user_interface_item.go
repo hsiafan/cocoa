@@ -23,7 +23,7 @@ func (v_ *ValidatedUserInterfaceItemWrapper) ImplementsAction() bool {
 }
 
 func (v_ ValidatedUserInterfaceItemWrapper) Action() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](v_, "action")
+	rv := objc.CallMethod[objc.Selector](v_, objc.GetSelector("action"))
 	return rv
 }
 
@@ -32,6 +32,6 @@ func (v_ *ValidatedUserInterfaceItemWrapper) ImplementsTag() bool {
 }
 
 func (v_ ValidatedUserInterfaceItemWrapper) Tag() int {
-	rv := objc.CallMethod[int](v_, "tag")
+	rv := objc.CallMethod[int](v_, objc.GetSelector("tag"))
 	return rv
 }

@@ -55,12 +55,12 @@ func MakeWebViewConfiguration(ptr unsafe.Pointer) WebViewConfiguration {
 }
 
 func (wc _WebViewConfigurationClass) Alloc() WebViewConfiguration {
-	rv := objc.CallMethod[WebViewConfiguration](wc, "alloc")
+	rv := objc.CallMethod[WebViewConfiguration](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WebViewConfigurationClass) New() WebViewConfiguration {
-	rv := objc.CallMethod[WebViewConfiguration](wc, "new")
+	rv := objc.CallMethod[WebViewConfiguration](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -70,129 +70,129 @@ func NewWebViewConfiguration() WebViewConfiguration {
 }
 
 func (w_ WebViewConfiguration) Init() WebViewConfiguration {
-	rv := objc.CallMethod[WebViewConfiguration](w_, "init")
+	rv := objc.CallMethod[WebViewConfiguration](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetURLSchemeHandler_ForURLScheme(urlSchemeHandler URLSchemeHandler, urlScheme string) {
 	po := objc.CreateProtocol("WKURLSchemeHandler", urlSchemeHandler)
 	defer po.Release()
-	objc.CallMethod[objc.Void](w_, "setURLSchemeHandler:forURLScheme:", po, urlScheme)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setURLSchemeHandler:forURLScheme:"), po, urlScheme)
 }
 
 func (w_ WebViewConfiguration) SetURLSchemeHandler0_ForURLScheme(urlSchemeHandler objc.IObject, urlScheme string) {
-	objc.CallMethod[objc.Void](w_, "setURLSchemeHandler:forURLScheme:", urlSchemeHandler, urlScheme)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setURLSchemeHandler:forURLScheme:"), urlSchemeHandler, urlScheme)
 }
 
 func (w_ WebViewConfiguration) UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerWrapper {
-	rv := objc.CallMethod[URLSchemeHandlerWrapper](w_, "urlSchemeHandlerForURLScheme:", urlScheme)
+	rv := objc.CallMethod[URLSchemeHandlerWrapper](w_, objc.GetSelector("urlSchemeHandlerForURLScheme:"), urlScheme)
 	return rv
 }
 
 func (w_ WebViewConfiguration) WebsiteDataStore() WebsiteDataStore {
-	rv := objc.CallMethod[WebsiteDataStore](w_, "websiteDataStore")
+	rv := objc.CallMethod[WebsiteDataStore](w_, objc.GetSelector("websiteDataStore"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetWebsiteDataStore(value IWebsiteDataStore) {
-	objc.CallMethod[objc.Void](w_, "setWebsiteDataStore:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWebsiteDataStore:"), value)
 }
 
 func (w_ WebViewConfiguration) UserContentController() UserContentController {
-	rv := objc.CallMethod[UserContentController](w_, "userContentController")
+	rv := objc.CallMethod[UserContentController](w_, objc.GetSelector("userContentController"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetUserContentController(value IUserContentController) {
-	objc.CallMethod[objc.Void](w_, "setUserContentController:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUserContentController:"), value)
 }
 
 func (w_ WebViewConfiguration) ProcessPool() ProcessPool {
-	rv := objc.CallMethod[ProcessPool](w_, "processPool")
+	rv := objc.CallMethod[ProcessPool](w_, objc.GetSelector("processPool"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetProcessPool(value IProcessPool) {
-	objc.CallMethod[objc.Void](w_, "setProcessPool:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setProcessPool:"), value)
 }
 
 func (w_ WebViewConfiguration) ApplicationNameForUserAgent() string {
-	rv := objc.CallMethod[string](w_, "applicationNameForUserAgent")
+	rv := objc.CallMethod[string](w_, objc.GetSelector("applicationNameForUserAgent"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetApplicationNameForUserAgent(value string) {
-	objc.CallMethod[objc.Void](w_, "setApplicationNameForUserAgent:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setApplicationNameForUserAgent:"), value)
 }
 
 func (w_ WebViewConfiguration) LimitsNavigationsToAppBoundDomains() bool {
-	rv := objc.CallMethod[bool](w_, "limitsNavigationsToAppBoundDomains")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("limitsNavigationsToAppBoundDomains"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetLimitsNavigationsToAppBoundDomains(value bool) {
-	objc.CallMethod[objc.Void](w_, "setLimitsNavigationsToAppBoundDomains:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setLimitsNavigationsToAppBoundDomains:"), value)
 }
 
 func (w_ WebViewConfiguration) Preferences() Preferences {
-	rv := objc.CallMethod[Preferences](w_, "preferences")
+	rv := objc.CallMethod[Preferences](w_, objc.GetSelector("preferences"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetPreferences(value IPreferences) {
-	objc.CallMethod[objc.Void](w_, "setPreferences:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreferences:"), value)
 }
 
 func (w_ WebViewConfiguration) DefaultWebpagePreferences() WebpagePreferences {
-	rv := objc.CallMethod[WebpagePreferences](w_, "defaultWebpagePreferences")
+	rv := objc.CallMethod[WebpagePreferences](w_, objc.GetSelector("defaultWebpagePreferences"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetDefaultWebpagePreferences(value IWebpagePreferences) {
-	objc.CallMethod[objc.Void](w_, "setDefaultWebpagePreferences:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultWebpagePreferences:"), value)
 }
 
 func (w_ WebViewConfiguration) SuppressesIncrementalRendering() bool {
-	rv := objc.CallMethod[bool](w_, "suppressesIncrementalRendering")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("suppressesIncrementalRendering"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetSuppressesIncrementalRendering(value bool) {
-	objc.CallMethod[objc.Void](w_, "setSuppressesIncrementalRendering:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSuppressesIncrementalRendering:"), value)
 }
 
 func (w_ WebViewConfiguration) AllowsAirPlayForMediaPlayback() bool {
-	rv := objc.CallMethod[bool](w_, "allowsAirPlayForMediaPlayback")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsAirPlayForMediaPlayback"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetAllowsAirPlayForMediaPlayback(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsAirPlayForMediaPlayback:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsAirPlayForMediaPlayback:"), value)
 }
 
 func (w_ WebViewConfiguration) MediaTypesRequiringUserActionForPlayback() AudiovisualMediaTypes {
-	rv := objc.CallMethod[AudiovisualMediaTypes](w_, "mediaTypesRequiringUserActionForPlayback")
+	rv := objc.CallMethod[AudiovisualMediaTypes](w_, objc.GetSelector("mediaTypesRequiringUserActionForPlayback"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetMediaTypesRequiringUserActionForPlayback(value AudiovisualMediaTypes) {
-	objc.CallMethod[objc.Void](w_, "setMediaTypesRequiringUserActionForPlayback:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMediaTypesRequiringUserActionForPlayback:"), value)
 }
 
 func (w_ WebViewConfiguration) UserInterfaceDirectionPolicy() UserInterfaceDirectionPolicy {
-	rv := objc.CallMethod[UserInterfaceDirectionPolicy](w_, "userInterfaceDirectionPolicy")
+	rv := objc.CallMethod[UserInterfaceDirectionPolicy](w_, objc.GetSelector("userInterfaceDirectionPolicy"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetUserInterfaceDirectionPolicy(value UserInterfaceDirectionPolicy) {
-	objc.CallMethod[objc.Void](w_, "setUserInterfaceDirectionPolicy:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUserInterfaceDirectionPolicy:"), value)
 }
 
 func (w_ WebViewConfiguration) UpgradeKnownHostsToHTTPS() bool {
-	rv := objc.CallMethod[bool](w_, "upgradeKnownHostsToHTTPS")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("upgradeKnownHostsToHTTPS"))
 	return rv
 }
 
 func (w_ WebViewConfiguration) SetUpgradeKnownHostsToHTTPS(value bool) {
-	objc.CallMethod[objc.Void](w_, "setUpgradeKnownHostsToHTTPS:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUpgradeKnownHostsToHTTPS:"), value)
 }

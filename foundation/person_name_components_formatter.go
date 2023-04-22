@@ -37,12 +37,12 @@ func MakePersonNameComponentsFormatter(ptr unsafe.Pointer) PersonNameComponentsF
 }
 
 func (pc _PersonNameComponentsFormatterClass) Alloc() PersonNameComponentsFormatter {
-	rv := objc.CallMethod[PersonNameComponentsFormatter](pc, "alloc")
+	rv := objc.CallMethod[PersonNameComponentsFormatter](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PersonNameComponentsFormatterClass) New() PersonNameComponentsFormatter {
-	rv := objc.CallMethod[PersonNameComponentsFormatter](pc, "new")
+	rv := objc.CallMethod[PersonNameComponentsFormatter](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,53 +52,53 @@ func NewPersonNameComponentsFormatter() PersonNameComponentsFormatter {
 }
 
 func (p_ PersonNameComponentsFormatter) Init() PersonNameComponentsFormatter {
-	rv := objc.CallMethod[PersonNameComponentsFormatter](p_, "init")
+	rv := objc.CallMethod[PersonNameComponentsFormatter](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PersonNameComponentsFormatterClass) LocalizedStringFromPersonNameComponents_Style_Options(components IPersonNameComponents, nameFormatStyle PersonNameComponentsFormatterStyle, nameOptions PersonNameComponentsFormatterOptions) string {
-	rv := objc.CallMethod[string](pc, "localizedStringFromPersonNameComponents:style:options:", components, nameFormatStyle, nameOptions)
+	rv := objc.CallMethod[string](pc, objc.GetSelector("localizedStringFromPersonNameComponents:style:options:"), components, nameFormatStyle, nameOptions)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) StringFromPersonNameComponents(components IPersonNameComponents) string {
-	rv := objc.CallMethod[string](p_, "stringFromPersonNameComponents:", components)
+	rv := objc.CallMethod[string](p_, objc.GetSelector("stringFromPersonNameComponents:"), components)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString {
-	rv := objc.CallMethod[AttributedString](p_, "annotatedStringFromPersonNameComponents:", components)
+	rv := objc.CallMethod[AttributedString](p_, objc.GetSelector("annotatedStringFromPersonNameComponents:"), components)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) PersonNameComponentsFromString(string_ string) PersonNameComponents {
-	rv := objc.CallMethod[PersonNameComponents](p_, "personNameComponentsFromString:", string_)
+	rv := objc.CallMethod[PersonNameComponents](p_, objc.GetSelector("personNameComponentsFromString:"), string_)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) Style() PersonNameComponentsFormatterStyle {
-	rv := objc.CallMethod[PersonNameComponentsFormatterStyle](p_, "style")
+	rv := objc.CallMethod[PersonNameComponentsFormatterStyle](p_, objc.GetSelector("style"))
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) SetStyle(value PersonNameComponentsFormatterStyle) {
-	objc.CallMethod[objc.Void](p_, "setStyle:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setStyle:"), value)
 }
 
 func (p_ PersonNameComponentsFormatter) IsPhonetic() bool {
-	rv := objc.CallMethod[bool](p_, "isPhonetic")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isPhonetic"))
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) SetPhonetic(value bool) {
-	objc.CallMethod[objc.Void](p_, "setPhonetic:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPhonetic:"), value)
 }
 
 func (p_ PersonNameComponentsFormatter) Locale() Locale {
-	rv := objc.CallMethod[Locale](p_, "locale")
+	rv := objc.CallMethod[Locale](p_, objc.GetSelector("locale"))
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](p_, "setLocale:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setLocale:"), value)
 }

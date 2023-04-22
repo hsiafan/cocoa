@@ -42,17 +42,17 @@ func MakeHTTPCookie(ptr unsafe.Pointer) HTTPCookie {
 }
 
 func (h_ HTTPCookie) InitWithProperties(properties map[HTTPCookiePropertyKey]objc.IObject) HTTPCookie {
-	rv := objc.CallMethod[HTTPCookie](h_, "initWithProperties:", properties)
+	rv := objc.CallMethod[HTTPCookie](h_, objc.GetSelector("initWithProperties:"), properties)
 	return rv
 }
 
 func (hc _HTTPCookieClass) Alloc() HTTPCookie {
-	rv := objc.CallMethod[HTTPCookie](hc, "alloc")
+	rv := objc.CallMethod[HTTPCookie](hc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (hc _HTTPCookieClass) New() HTTPCookie {
-	rv := objc.CallMethod[HTTPCookie](hc, "new")
+	rv := objc.CallMethod[HTTPCookie](hc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -62,91 +62,91 @@ func NewHTTPCookie() HTTPCookie {
 }
 
 func (h_ HTTPCookie) Init() HTTPCookie {
-	rv := objc.CallMethod[HTTPCookie](h_, "init")
+	rv := objc.CallMethod[HTTPCookie](h_, objc.GetSelector("init"))
 	return rv
 }
 
 func (hc _HTTPCookieClass) CookiesWithResponseHeaderFields_ForURL(headerFields map[string]string, URL IURL) []HTTPCookie {
-	rv := objc.CallMethod[[]HTTPCookie](hc, "cookiesWithResponseHeaderFields:forURL:", headerFields, URL)
+	rv := objc.CallMethod[[]HTTPCookie](hc, objc.GetSelector("cookiesWithResponseHeaderFields:forURL:"), headerFields, URL)
 	return rv
 }
 
 func (hc _HTTPCookieClass) CookieWithProperties(properties map[HTTPCookiePropertyKey]objc.IObject) HTTPCookie {
-	rv := objc.CallMethod[HTTPCookie](hc, "cookieWithProperties:", properties)
+	rv := objc.CallMethod[HTTPCookie](hc, objc.GetSelector("cookieWithProperties:"), properties)
 	return rv
 }
 
 func (hc _HTTPCookieClass) RequestHeaderFieldsWithCookies(cookies []IHTTPCookie) map[string]string {
-	rv := objc.CallMethod[map[string]string](hc, "requestHeaderFieldsWithCookies:", cookies)
+	rv := objc.CallMethod[map[string]string](hc, objc.GetSelector("requestHeaderFieldsWithCookies:"), cookies)
 	return rv
 }
 
 func (h_ HTTPCookie) Domain() string {
-	rv := objc.CallMethod[string](h_, "domain")
+	rv := objc.CallMethod[string](h_, objc.GetSelector("domain"))
 	return rv
 }
 
 func (h_ HTTPCookie) Path() string {
-	rv := objc.CallMethod[string](h_, "path")
+	rv := objc.CallMethod[string](h_, objc.GetSelector("path"))
 	return rv
 }
 
 func (h_ HTTPCookie) PortList() []Number {
-	rv := objc.CallMethod[[]Number](h_, "portList")
+	rv := objc.CallMethod[[]Number](h_, objc.GetSelector("portList"))
 	return rv
 }
 
 func (h_ HTTPCookie) Name() string {
-	rv := objc.CallMethod[string](h_, "name")
+	rv := objc.CallMethod[string](h_, objc.GetSelector("name"))
 	return rv
 }
 
 func (h_ HTTPCookie) Value() string {
-	rv := objc.CallMethod[string](h_, "value")
+	rv := objc.CallMethod[string](h_, objc.GetSelector("value"))
 	return rv
 }
 
 func (h_ HTTPCookie) Version() uint {
-	rv := objc.CallMethod[uint](h_, "version")
+	rv := objc.CallMethod[uint](h_, objc.GetSelector("version"))
 	return rv
 }
 
 func (h_ HTTPCookie) ExpiresDate() Date {
-	rv := objc.CallMethod[Date](h_, "expiresDate")
+	rv := objc.CallMethod[Date](h_, objc.GetSelector("expiresDate"))
 	return rv
 }
 
 func (h_ HTTPCookie) IsSessionOnly() bool {
-	rv := objc.CallMethod[bool](h_, "isSessionOnly")
+	rv := objc.CallMethod[bool](h_, objc.GetSelector("isSessionOnly"))
 	return rv
 }
 
 func (h_ HTTPCookie) IsHTTPOnly() bool {
-	rv := objc.CallMethod[bool](h_, "isHTTPOnly")
+	rv := objc.CallMethod[bool](h_, objc.GetSelector("isHTTPOnly"))
 	return rv
 }
 
 func (h_ HTTPCookie) IsSecure() bool {
-	rv := objc.CallMethod[bool](h_, "isSecure")
+	rv := objc.CallMethod[bool](h_, objc.GetSelector("isSecure"))
 	return rv
 }
 
 func (h_ HTTPCookie) SameSitePolicy() HTTPCookieStringPolicy {
-	rv := objc.CallMethod[HTTPCookieStringPolicy](h_, "sameSitePolicy")
+	rv := objc.CallMethod[HTTPCookieStringPolicy](h_, objc.GetSelector("sameSitePolicy"))
 	return rv
 }
 
 func (h_ HTTPCookie) Properties() map[HTTPCookiePropertyKey]objc.Object {
-	rv := objc.CallMethod[map[HTTPCookiePropertyKey]objc.Object](h_, "properties")
+	rv := objc.CallMethod[map[HTTPCookiePropertyKey]objc.Object](h_, objc.GetSelector("properties"))
 	return rv
 }
 
 func (h_ HTTPCookie) Comment() string {
-	rv := objc.CallMethod[string](h_, "comment")
+	rv := objc.CallMethod[string](h_, objc.GetSelector("comment"))
 	return rv
 }
 
 func (h_ HTTPCookie) CommentURL() URL {
-	rv := objc.CallMethod[URL](h_, "commentURL")
+	rv := objc.CallMethod[URL](h_, objc.GetSelector("commentURL"))
 	return rv
 }

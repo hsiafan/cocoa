@@ -59,22 +59,22 @@ func MakeProgressIndicator(ptr unsafe.Pointer) ProgressIndicator {
 }
 
 func (p_ ProgressIndicator) InitWithFrame(frameRect foundation.Rect) ProgressIndicator {
-	rv := objc.CallMethod[ProgressIndicator](p_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[ProgressIndicator](p_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (p_ ProgressIndicator) Init() ProgressIndicator {
-	rv := objc.CallMethod[ProgressIndicator](p_, "init")
+	rv := objc.CallMethod[ProgressIndicator](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _ProgressIndicatorClass) Alloc() ProgressIndicator {
-	rv := objc.CallMethod[ProgressIndicator](pc, "alloc")
+	rv := objc.CallMethod[ProgressIndicator](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _ProgressIndicatorClass) New() ProgressIndicator {
-	rv := objc.CallMethod[ProgressIndicator](pc, "new")
+	rv := objc.CallMethod[ProgressIndicator](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -84,123 +84,123 @@ func NewProgressIndicator() ProgressIndicator {
 }
 
 func (p_ ProgressIndicator) StartAnimation(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, "startAnimation:", sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("startAnimation:"), sender)
 }
 
 func (p_ ProgressIndicator) StopAnimation(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, "stopAnimation:", sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("stopAnimation:"), sender)
 }
 
 // deprecated
 func (p_ ProgressIndicator) Animate(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, "animate:", sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("animate:"), sender)
 }
 
 // deprecated
 func (p_ ProgressIndicator) AnimationDelay() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](p_, "animationDelay")
+	rv := objc.CallMethod[foundation.TimeInterval](p_, objc.GetSelector("animationDelay"))
 	return rv
 }
 
 // deprecated
 func (p_ ProgressIndicator) SetAnimationDelay(delay foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](p_, "setAnimationDelay:", delay)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAnimationDelay:"), delay)
 }
 
 func (p_ ProgressIndicator) IncrementBy(delta float64) {
-	objc.CallMethod[objc.Void](p_, "incrementBy:", delta)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("incrementBy:"), delta)
 }
 
 func (p_ ProgressIndicator) SizeToFit() {
-	objc.CallMethod[objc.Void](p_, "sizeToFit")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("sizeToFit"))
 }
 
 func (p_ ProgressIndicator) UsesThreadedAnimation() bool {
-	rv := objc.CallMethod[bool](p_, "usesThreadedAnimation")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("usesThreadedAnimation"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetUsesThreadedAnimation(value bool) {
-	objc.CallMethod[objc.Void](p_, "setUsesThreadedAnimation:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setUsesThreadedAnimation:"), value)
 }
 
 func (p_ ProgressIndicator) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](p_, "doubleValue")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("doubleValue"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetDoubleValue(value float64) {
-	objc.CallMethod[objc.Void](p_, "setDoubleValue:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDoubleValue:"), value)
 }
 
 func (p_ ProgressIndicator) MinValue() float64 {
-	rv := objc.CallMethod[float64](p_, "minValue")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("minValue"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetMinValue(value float64) {
-	objc.CallMethod[objc.Void](p_, "setMinValue:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setMinValue:"), value)
 }
 
 func (p_ ProgressIndicator) MaxValue() float64 {
-	rv := objc.CallMethod[float64](p_, "maxValue")
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("maxValue"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetMaxValue(value float64) {
-	objc.CallMethod[objc.Void](p_, "setMaxValue:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setMaxValue:"), value)
 }
 
 func (p_ ProgressIndicator) ControlSize() ControlSize {
-	rv := objc.CallMethod[ControlSize](p_, "controlSize")
+	rv := objc.CallMethod[ControlSize](p_, objc.GetSelector("controlSize"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetControlSize(value ControlSize) {
-	objc.CallMethod[objc.Void](p_, "setControlSize:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setControlSize:"), value)
 }
 
 func (p_ ProgressIndicator) ControlTint() ControlTint {
-	rv := objc.CallMethod[ControlTint](p_, "controlTint")
+	rv := objc.CallMethod[ControlTint](p_, objc.GetSelector("controlTint"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetControlTint(value ControlTint) {
-	objc.CallMethod[objc.Void](p_, "setControlTint:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setControlTint:"), value)
 }
 
 func (p_ ProgressIndicator) IsBezeled() bool {
-	rv := objc.CallMethod[bool](p_, "isBezeled")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isBezeled"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetBezeled(value bool) {
-	objc.CallMethod[objc.Void](p_, "setBezeled:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBezeled:"), value)
 }
 
 func (p_ ProgressIndicator) IsIndeterminate() bool {
-	rv := objc.CallMethod[bool](p_, "isIndeterminate")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isIndeterminate"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetIndeterminate(value bool) {
-	objc.CallMethod[objc.Void](p_, "setIndeterminate:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setIndeterminate:"), value)
 }
 
 func (p_ ProgressIndicator) Style() ProgressIndicatorStyle {
-	rv := objc.CallMethod[ProgressIndicatorStyle](p_, "style")
+	rv := objc.CallMethod[ProgressIndicatorStyle](p_, objc.GetSelector("style"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetStyle(value ProgressIndicatorStyle) {
-	objc.CallMethod[objc.Void](p_, "setStyle:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setStyle:"), value)
 }
 
 func (p_ ProgressIndicator) IsDisplayedWhenStopped() bool {
-	rv := objc.CallMethod[bool](p_, "isDisplayedWhenStopped")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isDisplayedWhenStopped"))
 	return rv
 }
 
 func (p_ ProgressIndicator) SetDisplayedWhenStopped(value bool) {
-	objc.CallMethod[objc.Void](p_, "setDisplayedWhenStopped:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDisplayedWhenStopped:"), value)
 }

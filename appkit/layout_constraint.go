@@ -46,17 +46,17 @@ func MakeLayoutConstraint(ptr unsafe.Pointer) LayoutConstraint {
 }
 
 func (lc _LayoutConstraintClass) ConstraintWithItem_Attribute_RelatedBy_ToItem_Attribute_Multiplier_Constant(view1 objc.IObject, attr1 LayoutAttribute, relation LayoutRelation, view2 objc.IObject, attr2 LayoutAttribute, multiplier float64, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](lc, "constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:", view1, attr1, relation, view2, attr2, multiplier, c)
+	rv := objc.CallMethod[LayoutConstraint](lc, objc.GetSelector("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:"), view1, attr1, relation, view2, attr2, multiplier, c)
 	return rv
 }
 
 func (lc _LayoutConstraintClass) Alloc() LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](lc, "alloc")
+	rv := objc.CallMethod[LayoutConstraint](lc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (lc _LayoutConstraintClass) New() LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](lc, "new")
+	rv := objc.CallMethod[LayoutConstraint](lc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -66,104 +66,104 @@ func NewLayoutConstraint() LayoutConstraint {
 }
 
 func (l_ LayoutConstraint) Init() LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, "init")
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("init"))
 	return rv
 }
 
 func (lc _LayoutConstraintClass) ConstraintsWithVisualFormat_Options_Metrics_Views(format string, opts LayoutFormatOptions, metrics map[string]objc.IObject, views map[string]objc.IObject) []LayoutConstraint {
-	rv := objc.CallMethod[[]LayoutConstraint](lc, "constraintsWithVisualFormat:options:metrics:views:", format, opts, metrics, views)
+	rv := objc.CallMethod[[]LayoutConstraint](lc, objc.GetSelector("constraintsWithVisualFormat:options:metrics:views:"), format, opts, metrics, views)
 	return rv
 }
 
 func (lc _LayoutConstraintClass) ActivateConstraints(constraints []ILayoutConstraint) {
-	objc.CallMethod[objc.Void](lc, "activateConstraints:", constraints)
+	objc.CallMethod[objc.Void](lc, objc.GetSelector("activateConstraints:"), constraints)
 }
 
 func (lc _LayoutConstraintClass) DeactivateConstraints(constraints []ILayoutConstraint) {
-	objc.CallMethod[objc.Void](lc, "deactivateConstraints:", constraints)
+	objc.CallMethod[objc.Void](lc, objc.GetSelector("deactivateConstraints:"), constraints)
 }
 
 func (l_ LayoutConstraint) IsActive() bool {
-	rv := objc.CallMethod[bool](l_, "isActive")
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("isActive"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SetActive(value bool) {
-	objc.CallMethod[objc.Void](l_, "setActive:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setActive:"), value)
 }
 
 func (l_ LayoutConstraint) FirstItem() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, "firstItem")
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("firstItem"))
 	return rv
 }
 
 func (l_ LayoutConstraint) FirstAttribute() LayoutAttribute {
-	rv := objc.CallMethod[LayoutAttribute](l_, "firstAttribute")
+	rv := objc.CallMethod[LayoutAttribute](l_, objc.GetSelector("firstAttribute"))
 	return rv
 }
 
 func (l_ LayoutConstraint) Relation() LayoutRelation {
-	rv := objc.CallMethod[LayoutRelation](l_, "relation")
+	rv := objc.CallMethod[LayoutRelation](l_, objc.GetSelector("relation"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SecondItem() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, "secondItem")
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("secondItem"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SecondAttribute() LayoutAttribute {
-	rv := objc.CallMethod[LayoutAttribute](l_, "secondAttribute")
+	rv := objc.CallMethod[LayoutAttribute](l_, objc.GetSelector("secondAttribute"))
 	return rv
 }
 
 func (l_ LayoutConstraint) Multiplier() float64 {
-	rv := objc.CallMethod[float64](l_, "multiplier")
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("multiplier"))
 	return rv
 }
 
 func (l_ LayoutConstraint) Constant() float64 {
-	rv := objc.CallMethod[float64](l_, "constant")
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("constant"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SetConstant(value float64) {
-	objc.CallMethod[objc.Void](l_, "setConstant:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setConstant:"), value)
 }
 
 func (l_ LayoutConstraint) FirstAnchor() LayoutAnchor {
-	rv := objc.CallMethod[LayoutAnchor](l_, "firstAnchor")
+	rv := objc.CallMethod[LayoutAnchor](l_, objc.GetSelector("firstAnchor"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SecondAnchor() LayoutAnchor {
-	rv := objc.CallMethod[LayoutAnchor](l_, "secondAnchor")
+	rv := objc.CallMethod[LayoutAnchor](l_, objc.GetSelector("secondAnchor"))
 	return rv
 }
 
 func (l_ LayoutConstraint) Priority() LayoutPriority {
-	rv := objc.CallMethod[LayoutPriority](l_, "priority")
+	rv := objc.CallMethod[LayoutPriority](l_, objc.GetSelector("priority"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SetPriority(value LayoutPriority) {
-	objc.CallMethod[objc.Void](l_, "setPriority:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setPriority:"), value)
 }
 
 func (l_ LayoutConstraint) Identifier() string {
-	rv := objc.CallMethod[string](l_, "identifier")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("identifier"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SetIdentifier(value string) {
-	objc.CallMethod[objc.Void](l_, "setIdentifier:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setIdentifier:"), value)
 }
 
 func (l_ LayoutConstraint) ShouldBeArchived() bool {
-	rv := objc.CallMethod[bool](l_, "shouldBeArchived")
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("shouldBeArchived"))
 	return rv
 }
 
 func (l_ LayoutConstraint) SetShouldBeArchived(value bool) {
-	objc.CallMethod[objc.Void](l_, "setShouldBeArchived:", value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShouldBeArchived:"), value)
 }

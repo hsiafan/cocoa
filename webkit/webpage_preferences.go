@@ -34,12 +34,12 @@ func MakeWebpagePreferences(ptr unsafe.Pointer) WebpagePreferences {
 }
 
 func (wc _WebpagePreferencesClass) Alloc() WebpagePreferences {
-	rv := objc.CallMethod[WebpagePreferences](wc, "alloc")
+	rv := objc.CallMethod[WebpagePreferences](wc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (wc _WebpagePreferencesClass) New() WebpagePreferences {
-	rv := objc.CallMethod[WebpagePreferences](wc, "new")
+	rv := objc.CallMethod[WebpagePreferences](wc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,33 +49,33 @@ func NewWebpagePreferences() WebpagePreferences {
 }
 
 func (w_ WebpagePreferences) Init() WebpagePreferences {
-	rv := objc.CallMethod[WebpagePreferences](w_, "init")
+	rv := objc.CallMethod[WebpagePreferences](w_, objc.GetSelector("init"))
 	return rv
 }
 
 func (w_ WebpagePreferences) AllowsContentJavaScript() bool {
-	rv := objc.CallMethod[bool](w_, "allowsContentJavaScript")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("allowsContentJavaScript"))
 	return rv
 }
 
 func (w_ WebpagePreferences) SetAllowsContentJavaScript(value bool) {
-	objc.CallMethod[objc.Void](w_, "setAllowsContentJavaScript:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAllowsContentJavaScript:"), value)
 }
 
 func (w_ WebpagePreferences) PreferredContentMode() ContentMode {
-	rv := objc.CallMethod[ContentMode](w_, "preferredContentMode")
+	rv := objc.CallMethod[ContentMode](w_, objc.GetSelector("preferredContentMode"))
 	return rv
 }
 
 func (w_ WebpagePreferences) SetPreferredContentMode(value ContentMode) {
-	objc.CallMethod[objc.Void](w_, "setPreferredContentMode:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreferredContentMode:"), value)
 }
 
 func (w_ WebpagePreferences) IsLockdownModeEnabled() bool {
-	rv := objc.CallMethod[bool](w_, "isLockdownModeEnabled")
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("isLockdownModeEnabled"))
 	return rv
 }
 
 func (w_ WebpagePreferences) SetLockdownModeEnabled(value bool) {
-	objc.CallMethod[objc.Void](w_, "setLockdownModeEnabled:", value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setLockdownModeEnabled:"), value)
 }

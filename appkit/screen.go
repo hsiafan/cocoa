@@ -54,12 +54,12 @@ func MakeScreen(ptr unsafe.Pointer) Screen {
 }
 
 func (sc _ScreenClass) Alloc() Screen {
-	rv := objc.CallMethod[Screen](sc, "alloc")
+	rv := objc.CallMethod[Screen](sc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (sc _ScreenClass) New() Screen {
-	rv := objc.CallMethod[Screen](sc, "new")
+	rv := objc.CallMethod[Screen](sc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -69,147 +69,147 @@ func NewScreen() Screen {
 }
 
 func (s_ Screen) Init() Screen {
-	rv := objc.CallMethod[Screen](s_, "init")
+	rv := objc.CallMethod[Screen](s_, objc.GetSelector("init"))
 	return rv
 }
 
 // deprecated
 func (s_ Screen) UserSpaceScaleFactor() float64 {
-	rv := objc.CallMethod[float64](s_, "userSpaceScaleFactor")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("userSpaceScaleFactor"))
 	return rv
 }
 
 func (s_ Screen) CanRepresentDisplayGamut(displayGamut DisplayGamut) bool {
-	rv := objc.CallMethod[bool](s_, "canRepresentDisplayGamut:", displayGamut)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("canRepresentDisplayGamut:"), displayGamut)
 	return rv
 }
 
 func (s_ Screen) BackingAlignedRect_Options(rect foundation.Rect, options foundation.AlignmentOptions) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "backingAlignedRect:options:", rect, options)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("backingAlignedRect:options:"), rect, options)
 	return rv
 }
 
 func (s_ Screen) ConvertRectFromBacking(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "convertRectFromBacking:", rect)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("convertRectFromBacking:"), rect)
 	return rv
 }
 
 func (s_ Screen) ConvertRectToBacking(rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "convertRectToBacking:", rect)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("convertRectToBacking:"), rect)
 	return rv
 }
 
 func (sc _ScreenClass) MainScreen() Screen {
-	rv := objc.CallMethod[Screen](sc, "mainScreen")
+	rv := objc.CallMethod[Screen](sc, objc.GetSelector("mainScreen"))
 	return rv
 }
 
 func (sc _ScreenClass) DeepestScreen() Screen {
-	rv := objc.CallMethod[Screen](sc, "deepestScreen")
+	rv := objc.CallMethod[Screen](sc, objc.GetSelector("deepestScreen"))
 	return rv
 }
 
 func (sc _ScreenClass) Screens() []Screen {
-	rv := objc.CallMethod[[]Screen](sc, "screens")
+	rv := objc.CallMethod[[]Screen](sc, objc.GetSelector("screens"))
 	return rv
 }
 
 func (s_ Screen) Depth() WindowDepth {
-	rv := objc.CallMethod[WindowDepth](s_, "depth")
+	rv := objc.CallMethod[WindowDepth](s_, objc.GetSelector("depth"))
 	return rv
 }
 
 func (s_ Screen) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "frame")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("frame"))
 	return rv
 }
 
 func (s_ Screen) SupportedWindowDepths() *WindowDepth {
-	rv := objc.CallMethod[*WindowDepth](s_, "supportedWindowDepths")
+	rv := objc.CallMethod[*WindowDepth](s_, objc.GetSelector("supportedWindowDepths"))
 	return rv
 }
 
 func (s_ Screen) DeviceDescription() map[DeviceDescriptionKey]objc.Object {
-	rv := objc.CallMethod[map[DeviceDescriptionKey]objc.Object](s_, "deviceDescription")
+	rv := objc.CallMethod[map[DeviceDescriptionKey]objc.Object](s_, objc.GetSelector("deviceDescription"))
 	return rv
 }
 
 func (s_ Screen) ColorSpace() ColorSpace {
-	rv := objc.CallMethod[ColorSpace](s_, "colorSpace")
+	rv := objc.CallMethod[ColorSpace](s_, objc.GetSelector("colorSpace"))
 	return rv
 }
 
 func (s_ Screen) LocalizedName() string {
-	rv := objc.CallMethod[string](s_, "localizedName")
+	rv := objc.CallMethod[string](s_, objc.GetSelector("localizedName"))
 	return rv
 }
 
 func (sc _ScreenClass) ScreensHaveSeparateSpaces() bool {
-	rv := objc.CallMethod[bool](sc, "screensHaveSeparateSpaces")
+	rv := objc.CallMethod[bool](sc, objc.GetSelector("screensHaveSeparateSpaces"))
 	return rv
 }
 
 func (s_ Screen) BackingScaleFactor() float64 {
-	rv := objc.CallMethod[float64](s_, "backingScaleFactor")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("backingScaleFactor"))
 	return rv
 }
 
 func (s_ Screen) VisibleFrame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "visibleFrame")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("visibleFrame"))
 	return rv
 }
 
 func (s_ Screen) SafeAreaInsets() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](s_, "safeAreaInsets")
+	rv := objc.CallMethod[foundation.EdgeInsets](s_, objc.GetSelector("safeAreaInsets"))
 	return rv
 }
 
 func (s_ Screen) MaximumPotentialExtendedDynamicRangeColorComponentValue() float64 {
-	rv := objc.CallMethod[float64](s_, "maximumPotentialExtendedDynamicRangeColorComponentValue")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("maximumPotentialExtendedDynamicRangeColorComponentValue"))
 	return rv
 }
 
 func (s_ Screen) MaximumExtendedDynamicRangeColorComponentValue() float64 {
-	rv := objc.CallMethod[float64](s_, "maximumExtendedDynamicRangeColorComponentValue")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("maximumExtendedDynamicRangeColorComponentValue"))
 	return rv
 }
 
 func (s_ Screen) MaximumReferenceExtendedDynamicRangeColorComponentValue() float64 {
-	rv := objc.CallMethod[float64](s_, "maximumReferenceExtendedDynamicRangeColorComponentValue")
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("maximumReferenceExtendedDynamicRangeColorComponentValue"))
 	return rv
 }
 
 func (s_ Screen) MaximumFramesPerSecond() int {
-	rv := objc.CallMethod[int](s_, "maximumFramesPerSecond")
+	rv := objc.CallMethod[int](s_, objc.GetSelector("maximumFramesPerSecond"))
 	return rv
 }
 
 func (s_ Screen) MinimumRefreshInterval() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, "minimumRefreshInterval")
+	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("minimumRefreshInterval"))
 	return rv
 }
 
 func (s_ Screen) MaximumRefreshInterval() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, "maximumRefreshInterval")
+	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("maximumRefreshInterval"))
 	return rv
 }
 
 func (s_ Screen) DisplayUpdateGranularity() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, "displayUpdateGranularity")
+	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("displayUpdateGranularity"))
 	return rv
 }
 
 func (s_ Screen) LastDisplayUpdateTimestamp() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](s_, "lastDisplayUpdateTimestamp")
+	rv := objc.CallMethod[foundation.TimeInterval](s_, objc.GetSelector("lastDisplayUpdateTimestamp"))
 	return rv
 }
 
 func (s_ Screen) AuxiliaryTopLeftArea() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "auxiliaryTopLeftArea")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("auxiliaryTopLeftArea"))
 	return rv
 }
 
 func (s_ Screen) AuxiliaryTopRightArea() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "auxiliaryTopRightArea")
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("auxiliaryTopRightArea"))
 	return rv
 }

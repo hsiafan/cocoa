@@ -114,7 +114,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_SizeForItemAtIndexPath(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, indexPath foundation.IIndexPath) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "collectionView:layout:sizeForItemAtIndexPath:", collectionView, collectionViewLayout, indexPath)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:sizeForItemAtIndexPath:"), collectionView, collectionViewLayout, indexPath)
 	return rv
 }
 
@@ -123,7 +123,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_InsetForSectionAtIndex(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](c_, "collectionView:layout:insetForSectionAtIndex:", collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[foundation.EdgeInsets](c_, objc.GetSelector("collectionView:layout:insetForSectionAtIndex:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_MinimumLineSpacingForSectionAtIndex(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) float64 {
-	rv := objc.CallMethod[float64](c_, "collectionView:layout:minimumLineSpacingForSectionAtIndex:", collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -141,7 +141,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_MinimumInteritemSpacingForSectionAtIndex(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) float64 {
-	rv := objc.CallMethod[float64](c_, "collectionView:layout:minimumInteritemSpacingForSectionAtIndex:", collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -150,7 +150,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_ReferenceSizeForHeaderInSection(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "collectionView:layout:referenceSizeForHeaderInSection:", collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:referenceSizeForHeaderInSection:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -159,6 +159,6 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_ReferenceSizeForFooterInSection(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "collectionView:layout:referenceSizeForFooterInSection:", collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:referenceSizeForFooterInSection:"), collectionView, collectionViewLayout, section)
 	return rv
 }

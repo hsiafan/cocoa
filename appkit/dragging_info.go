@@ -70,20 +70,20 @@ type DraggingInfoWrapper struct {
 
 // deprecated
 func (d_ DraggingInfoWrapper) NamesOfPromisedFilesDroppedAtDestination(dropDestination foundation.IURL) []string {
-	rv := objc.CallMethod[[]string](d_, "namesOfPromisedFilesDroppedAtDestination:", dropDestination)
+	rv := objc.CallMethod[[]string](d_, objc.GetSelector("namesOfPromisedFilesDroppedAtDestination:"), dropDestination)
 	return rv
 }
 
 func (d_ DraggingInfoWrapper) SlideDraggedImageTo(screenPoint foundation.Point) {
-	objc.CallMethod[objc.Void](d_, "slideDraggedImageTo:", screenPoint)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("slideDraggedImageTo:"), screenPoint)
 }
 
 func (d_ DraggingInfoWrapper) EnumerateDraggingItemsWithOptions_ForView_Classes_SearchOptions_UsingBlock(enumOpts DraggingItemEnumerationOptions, view IView, classArray []objc.IClass, searchOptions map[PasteboardReadingOptionKey]objc.IObject, block func(draggingItem DraggingItem, idx int, stop *bool)) {
-	objc.CallMethod[objc.Void](d_, "enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:", enumOpts, view, classArray, searchOptions, block)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, view, classArray, searchOptions, block)
 }
 
 func (d_ DraggingInfoWrapper) ResetSpringLoading() {
-	objc.CallMethod[objc.Void](d_, "resetSpringLoading")
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("resetSpringLoading"))
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsDraggingPasteboard() bool {
@@ -91,7 +91,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingPasteboard() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingPasteboard() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](d_, "draggingPasteboard")
+	rv := objc.CallMethod[Pasteboard](d_, objc.GetSelector("draggingPasteboard"))
 	return rv
 }
 
@@ -100,7 +100,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingSequenceNumber() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingSequenceNumber() int {
-	rv := objc.CallMethod[int](d_, "draggingSequenceNumber")
+	rv := objc.CallMethod[int](d_, objc.GetSelector("draggingSequenceNumber"))
 	return rv
 }
 
@@ -109,7 +109,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingSource() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingSource() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, "draggingSource")
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("draggingSource"))
 	return rv
 }
 
@@ -118,7 +118,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingSourceOperationMask() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingSourceOperationMask() DragOperation {
-	rv := objc.CallMethod[DragOperation](d_, "draggingSourceOperationMask")
+	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingSourceOperationMask"))
 	return rv
 }
 
@@ -127,7 +127,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingLocation() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingLocation() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](d_, "draggingLocation")
+	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggingLocation"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingDestinationWindow() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingDestinationWindow() Window {
-	rv := objc.CallMethod[Window](d_, "draggingDestinationWindow")
+	rv := objc.CallMethod[Window](d_, objc.GetSelector("draggingDestinationWindow"))
 	return rv
 }
 
@@ -145,7 +145,7 @@ func (d_ *DraggingInfoWrapper) ImplementsSetNumberOfValidItemsForDrop() bool {
 }
 
 func (d_ DraggingInfoWrapper) SetNumberOfValidItemsForDrop(value int) {
-	objc.CallMethod[objc.Void](d_, "setNumberOfValidItemsForDrop:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setNumberOfValidItemsForDrop:"), value)
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsNumberOfValidItemsForDrop() bool {
@@ -153,7 +153,7 @@ func (d_ *DraggingInfoWrapper) ImplementsNumberOfValidItemsForDrop() bool {
 }
 
 func (d_ DraggingInfoWrapper) NumberOfValidItemsForDrop() int {
-	rv := objc.CallMethod[int](d_, "numberOfValidItemsForDrop")
+	rv := objc.CallMethod[int](d_, objc.GetSelector("numberOfValidItemsForDrop"))
 	return rv
 }
 
@@ -163,7 +163,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggedImage() bool {
 
 // deprecated
 func (d_ DraggingInfoWrapper) DraggedImage() Image {
-	rv := objc.CallMethod[Image](d_, "draggedImage")
+	rv := objc.CallMethod[Image](d_, objc.GetSelector("draggedImage"))
 	return rv
 }
 
@@ -172,7 +172,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggedImageLocation() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggedImageLocation() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](d_, "draggedImageLocation")
+	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggedImageLocation"))
 	return rv
 }
 
@@ -181,7 +181,7 @@ func (d_ *DraggingInfoWrapper) ImplementsSetAnimatesToDestination() bool {
 }
 
 func (d_ DraggingInfoWrapper) SetAnimatesToDestination(value bool) {
-	objc.CallMethod[objc.Void](d_, "setAnimatesToDestination:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAnimatesToDestination:"), value)
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsAnimatesToDestination() bool {
@@ -189,7 +189,7 @@ func (d_ *DraggingInfoWrapper) ImplementsAnimatesToDestination() bool {
 }
 
 func (d_ DraggingInfoWrapper) AnimatesToDestination() bool {
-	rv := objc.CallMethod[bool](d_, "animatesToDestination")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("animatesToDestination"))
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (d_ *DraggingInfoWrapper) ImplementsSetDraggingFormation() bool {
 }
 
 func (d_ DraggingInfoWrapper) SetDraggingFormation(value DraggingFormation) {
-	objc.CallMethod[objc.Void](d_, "setDraggingFormation:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFormation:"), value)
 }
 
 func (d_ *DraggingInfoWrapper) ImplementsDraggingFormation() bool {
@@ -206,7 +206,7 @@ func (d_ *DraggingInfoWrapper) ImplementsDraggingFormation() bool {
 }
 
 func (d_ DraggingInfoWrapper) DraggingFormation() DraggingFormation {
-	rv := objc.CallMethod[DraggingFormation](d_, "draggingFormation")
+	rv := objc.CallMethod[DraggingFormation](d_, objc.GetSelector("draggingFormation"))
 	return rv
 }
 
@@ -215,6 +215,6 @@ func (d_ *DraggingInfoWrapper) ImplementsSpringLoadingHighlight() bool {
 }
 
 func (d_ DraggingInfoWrapper) SpringLoadingHighlight() SpringLoadingHighlight {
-	rv := objc.CallMethod[SpringLoadingHighlight](d_, "springLoadingHighlight")
+	rv := objc.CallMethod[SpringLoadingHighlight](d_, objc.GetSelector("springLoadingHighlight"))
 	return rv
 }

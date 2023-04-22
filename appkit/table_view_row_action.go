@@ -35,17 +35,17 @@ func MakeTableViewRowAction(ptr unsafe.Pointer) TableViewRowAction {
 }
 
 func (tc _TableViewRowActionClass) RowActionWithStyle_Title_Handler(style TableViewRowActionStyle, title string, handler func(action TableViewRowAction, row int)) TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](tc, "rowActionWithStyle:title:handler:", style, title, handler)
+	rv := objc.CallMethod[TableViewRowAction](tc, objc.GetSelector("rowActionWithStyle:title:handler:"), style, title, handler)
 	return rv
 }
 
 func (tc _TableViewRowActionClass) Alloc() TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](tc, "alloc")
+	rv := objc.CallMethod[TableViewRowAction](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TableViewRowActionClass) New() TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](tc, "new")
+	rv := objc.CallMethod[TableViewRowAction](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,38 +55,38 @@ func NewTableViewRowAction() TableViewRowAction {
 }
 
 func (t_ TableViewRowAction) Init() TableViewRowAction {
-	rv := objc.CallMethod[TableViewRowAction](t_, "init")
+	rv := objc.CallMethod[TableViewRowAction](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TableViewRowAction) Style() TableViewRowActionStyle {
-	rv := objc.CallMethod[TableViewRowActionStyle](t_, "style")
+	rv := objc.CallMethod[TableViewRowActionStyle](t_, objc.GetSelector("style"))
 	return rv
 }
 
 func (t_ TableViewRowAction) Title() string {
-	rv := objc.CallMethod[string](t_, "title")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("title"))
 	return rv
 }
 
 func (t_ TableViewRowAction) SetTitle(value string) {
-	objc.CallMethod[objc.Void](t_, "setTitle:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTitle:"), value)
 }
 
 func (t_ TableViewRowAction) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](t_, "backgroundColor")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (t_ TableViewRowAction) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
 }
 
 func (t_ TableViewRowAction) Image() Image {
-	rv := objc.CallMethod[Image](t_, "image")
+	rv := objc.CallMethod[Image](t_, objc.GetSelector("image"))
 	return rv
 }
 
 func (t_ TableViewRowAction) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, "setImage:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), value)
 }

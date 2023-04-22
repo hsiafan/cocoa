@@ -121,77 +121,77 @@ func MakeImage(ptr unsafe.Pointer) Image {
 }
 
 func (ic _ImageClass) ImageWithSystemSymbolName_AccessibilityDescription(symbolName string, description string) Image {
-	rv := objc.CallMethod[Image](ic, "imageWithSystemSymbolName:accessibilityDescription:", symbolName, description)
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("imageWithSystemSymbolName:accessibilityDescription:"), symbolName, description)
 	return rv
 }
 
 func (ic _ImageClass) ImageWithSystemSymbolName_VariableValue_AccessibilityDescription(name string, value float64, description string) Image {
-	rv := objc.CallMethod[Image](ic, "imageWithSystemSymbolName:variableValue:accessibilityDescription:", name, value, description)
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("imageWithSystemSymbolName:variableValue:accessibilityDescription:"), name, value, description)
 	return rv
 }
 
 func (ic _ImageClass) ImageWithSymbolName_VariableValue(name string, value float64) Image {
-	rv := objc.CallMethod[Image](ic, "imageWithSymbolName:variableValue:", name, value)
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("imageWithSymbolName:variableValue:"), name, value)
 	return rv
 }
 
 func (ic _ImageClass) ImageWithSize_Flipped_DrawingHandler(size foundation.Size, drawingHandlerShouldBeCalledWithFlippedContext bool, drawingHandler func(dstRect foundation.Rect) bool) Image {
-	rv := objc.CallMethod[Image](ic, "imageWithSize:flipped:drawingHandler:", size, drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler)
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("imageWithSize:flipped:drawingHandler:"), size, drawingHandlerShouldBeCalledWithFlippedContext, drawingHandler)
 	return rv
 }
 
 func (i_ Image) InitByReferencingFile(fileName string) Image {
-	rv := objc.CallMethod[Image](i_, "initByReferencingFile:", fileName)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initByReferencingFile:"), fileName)
 	return rv
 }
 
 func (i_ Image) InitByReferencingURL(url foundation.IURL) Image {
-	rv := objc.CallMethod[Image](i_, "initByReferencingURL:", url)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initByReferencingURL:"), url)
 	return rv
 }
 
 func (i_ Image) InitWithContentsOfFile(fileName string) Image {
-	rv := objc.CallMethod[Image](i_, "initWithContentsOfFile:", fileName)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithContentsOfFile:"), fileName)
 	return rv
 }
 
 func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.CallMethod[Image](i_, "initWithContentsOfURL:", url)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithContentsOfURL:"), url)
 	return rv
 }
 
 func (i_ Image) InitWithData(data []byte) Image {
-	rv := objc.CallMethod[Image](i_, "initWithData:", data)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithData:"), data)
 	return rv
 }
 
 func (i_ Image) InitWithDataIgnoringOrientation(data []byte) Image {
-	rv := objc.CallMethod[Image](i_, "initWithDataIgnoringOrientation:", data)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithDataIgnoringOrientation:"), data)
 	return rv
 }
 
 func (i_ Image) InitWithCGImage_Size(cgImage coregraphics.ImageRef, size foundation.Size) Image {
-	rv := objc.CallMethod[Image](i_, "initWithCGImage:size:", cgImage, size)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithCGImage:size:"), cgImage, size)
 	return rv
 }
 
 func (i_ Image) InitWithPasteboard(pasteboard IPasteboard) Image {
-	rv := objc.CallMethod[Image](i_, "initWithPasteboard:", pasteboard)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithPasteboard:"), pasteboard)
 	return rv
 }
 
 func (i_ Image) InitWithSize(size foundation.Size) Image {
-	rv := objc.CallMethod[Image](i_, "initWithSize:", size)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithSize:"), size)
 	return rv
 }
 
 func (ic _ImageClass) Alloc() Image {
-	rv := objc.CallMethod[Image](ic, "alloc")
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (ic _ImageClass) New() Image {
-	rv := objc.CallMethod[Image](ic, "new")
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -201,242 +201,242 @@ func NewImage() Image {
 }
 
 func (i_ Image) Init() Image {
-	rv := objc.CallMethod[Image](i_, "init")
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("init"))
 	return rv
 }
 
 func (ic _ImageClass) ImageNamed(name ImageName) Image {
-	rv := objc.CallMethod[Image](ic, "imageNamed:", name)
+	rv := objc.CallMethod[Image](ic, objc.GetSelector("imageNamed:"), name)
 	return rv
 }
 
 func (i_ Image) SetName(string_ ImageName) bool {
-	rv := objc.CallMethod[bool](i_, "setName:", string_)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("setName:"), string_)
 	return rv
 }
 
 func (i_ Image) Name() ImageName {
-	rv := objc.CallMethod[ImageName](i_, "name")
+	rv := objc.CallMethod[ImageName](i_, objc.GetSelector("name"))
 	return rv
 }
 
 func (i_ Image) ImageWithSymbolConfiguration(configuration IImageSymbolConfiguration) Image {
-	rv := objc.CallMethod[Image](i_, "imageWithSymbolConfiguration:", configuration)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("imageWithSymbolConfiguration:"), configuration)
 	return rv
 }
 
 func (ic _ImageClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](ic, "canInitWithPasteboard:", pasteboard)
+	rv := objc.CallMethod[bool](ic, objc.GetSelector("canInitWithPasteboard:"), pasteboard)
 	return rv
 }
 
 func (i_ Image) AddRepresentation(imageRep IImageRep) {
-	objc.CallMethod[objc.Void](i_, "addRepresentation:", imageRep)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("addRepresentation:"), imageRep)
 }
 
 func (i_ Image) AddRepresentations(imageReps []IImageRep) {
-	objc.CallMethod[objc.Void](i_, "addRepresentations:", imageReps)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("addRepresentations:"), imageReps)
 }
 
 func (i_ Image) RemoveRepresentation(imageRep IImageRep) {
-	objc.CallMethod[objc.Void](i_, "removeRepresentation:", imageRep)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("removeRepresentation:"), imageRep)
 }
 
 func (i_ Image) BestRepresentationForRect_Context_Hints(rect foundation.Rect, referenceContext IGraphicsContext, hints map[ImageHintKey]objc.IObject) ImageRep {
-	rv := objc.CallMethod[ImageRep](i_, "bestRepresentationForRect:context:hints:", rect, referenceContext, hints)
+	rv := objc.CallMethod[ImageRep](i_, objc.GetSelector("bestRepresentationForRect:context:hints:"), rect, referenceContext, hints)
 	return rv
 }
 
 func (i_ Image) DrawInRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](i_, "drawInRect:", rect)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("drawInRect:"), rect)
 }
 
 func (i_ Image) DrawAtPoint_FromRect_Operation_Fraction(point foundation.Point, fromRect foundation.Rect, op CompositingOperation, delta float64) {
-	objc.CallMethod[objc.Void](i_, "drawAtPoint:fromRect:operation:fraction:", point, fromRect, op, delta)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("drawAtPoint:fromRect:operation:fraction:"), point, fromRect, op, delta)
 }
 
 func (i_ Image) DrawInRect_FromRect_Operation_Fraction(rect foundation.Rect, fromRect foundation.Rect, op CompositingOperation, delta float64) {
-	objc.CallMethod[objc.Void](i_, "drawInRect:fromRect:operation:fraction:", rect, fromRect, op, delta)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("drawInRect:fromRect:operation:fraction:"), rect, fromRect, op, delta)
 }
 
 func (i_ Image) DrawInRect_FromRect_Operation_Fraction_RespectFlipped_Hints(dstSpacePortionRect foundation.Rect, srcSpacePortionRect foundation.Rect, op CompositingOperation, requestedAlpha float64, respectContextIsFlipped bool, hints map[ImageHintKey]objc.IObject) {
-	objc.CallMethod[objc.Void](i_, "drawInRect:fromRect:operation:fraction:respectFlipped:hints:", dstSpacePortionRect, srcSpacePortionRect, op, requestedAlpha, respectContextIsFlipped, hints)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("drawInRect:fromRect:operation:fraction:respectFlipped:hints:"), dstSpacePortionRect, srcSpacePortionRect, op, requestedAlpha, respectContextIsFlipped, hints)
 }
 
 func (i_ Image) DrawRepresentation_InRect(imageRep IImageRep, rect foundation.Rect) bool {
-	rv := objc.CallMethod[bool](i_, "drawRepresentation:inRect:", imageRep, rect)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("drawRepresentation:inRect:"), imageRep, rect)
 	return rv
 }
 
 func (i_ Image) Recache() {
-	objc.CallMethod[objc.Void](i_, "recache")
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("recache"))
 }
 
 func (i_ Image) TIFFRepresentationUsingCompression_Factor(comp TIFFCompression, factor float32) []byte {
-	rv := objc.CallMethod[[]byte](i_, "TIFFRepresentationUsingCompression:factor:", comp, factor)
+	rv := objc.CallMethod[[]byte](i_, objc.GetSelector("TIFFRepresentationUsingCompression:factor:"), comp, factor)
 	return rv
 }
 
 func (i_ Image) CGImageForProposedRect_Context_Hints(proposedDestRect *foundation.Rect, referenceContext IGraphicsContext, hints map[ImageHintKey]objc.IObject) coregraphics.ImageRef {
-	rv := objc.CallMethod[coregraphics.ImageRef](i_, "CGImageForProposedRect:context:hints:", proposedDestRect, referenceContext, hints)
+	rv := objc.CallMethod[coregraphics.ImageRef](i_, objc.GetSelector("CGImageForProposedRect:context:hints:"), proposedDestRect, referenceContext, hints)
 	return rv
 }
 
 func (i_ Image) CancelIncrementalLoad() {
-	objc.CallMethod[objc.Void](i_, "cancelIncrementalLoad")
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("cancelIncrementalLoad"))
 }
 
 func (i_ Image) HitTestRect_WithImageDestinationRect_Context_Hints_Flipped(testRectDestSpace foundation.Rect, imageRectDestSpace foundation.Rect, context IGraphicsContext, hints map[ImageHintKey]objc.IObject, flipped bool) bool {
-	rv := objc.CallMethod[bool](i_, "hitTestRect:withImageDestinationRect:context:hints:flipped:", testRectDestSpace, imageRectDestSpace, context, hints, flipped)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("hitTestRect:withImageDestinationRect:context:hints:flipped:"), testRectDestSpace, imageRectDestSpace, context, hints, flipped)
 	return rv
 }
 
 func (i_ Image) LayerContentsForContentsScale(layerContentsScale float64) objc.Object {
-	rv := objc.CallMethod[objc.Object](i_, "layerContentsForContentsScale:", layerContentsScale)
+	rv := objc.CallMethod[objc.Object](i_, objc.GetSelector("layerContentsForContentsScale:"), layerContentsScale)
 	return rv
 }
 
 func (i_ Image) RecommendedLayerContentsScale(preferredContentsScale float64) float64 {
-	rv := objc.CallMethod[float64](i_, "recommendedLayerContentsScale:", preferredContentsScale)
+	rv := objc.CallMethod[float64](i_, objc.GetSelector("recommendedLayerContentsScale:"), preferredContentsScale)
 	return rv
 }
 
 // deprecated
 func (ic _ImageClass) ImageFileTypes() []string {
-	rv := objc.CallMethod[[]string](ic, "imageFileTypes")
+	rv := objc.CallMethod[[]string](ic, objc.GetSelector("imageFileTypes"))
 	return rv
 }
 
 // deprecated
 func (ic _ImageClass) ImageUnfilteredFileTypes() []string {
-	rv := objc.CallMethod[[]string](ic, "imageUnfilteredFileTypes")
+	rv := objc.CallMethod[[]string](ic, objc.GetSelector("imageUnfilteredFileTypes"))
 	return rv
 }
 
 // deprecated
 func (ic _ImageClass) ImagePasteboardTypes() []PasteboardType {
-	rv := objc.CallMethod[[]PasteboardType](ic, "imagePasteboardTypes")
+	rv := objc.CallMethod[[]PasteboardType](ic, objc.GetSelector("imagePasteboardTypes"))
 	return rv
 }
 
 // deprecated
 func (ic _ImageClass) ImageUnfilteredPasteboardTypes() []PasteboardType {
-	rv := objc.CallMethod[[]PasteboardType](ic, "imageUnfilteredPasteboardTypes")
+	rv := objc.CallMethod[[]PasteboardType](ic, objc.GetSelector("imageUnfilteredPasteboardTypes"))
 	return rv
 }
 
 // deprecated
 func (i_ Image) LockFocus() {
-	objc.CallMethod[objc.Void](i_, "lockFocus")
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("lockFocus"))
 }
 
 // deprecated
 func (i_ Image) LockFocusFlipped(flipped bool) {
-	objc.CallMethod[objc.Void](i_, "lockFocusFlipped:", flipped)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("lockFocusFlipped:"), flipped)
 }
 
 // deprecated
 func (i_ Image) UnlockFocus() {
-	objc.CallMethod[objc.Void](i_, "unlockFocus")
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("unlockFocus"))
 }
 
 // deprecated
 func (i_ Image) LockFocusOnRepresentation(imageRepresentation IImageRep) {
-	objc.CallMethod[objc.Void](i_, "lockFocusOnRepresentation:", imageRepresentation)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("lockFocusOnRepresentation:"), imageRepresentation)
 }
 
 // deprecated
 func (i_ Image) CompositeToPoint_Operation(point foundation.Point, op CompositingOperation) {
-	objc.CallMethod[objc.Void](i_, "compositeToPoint:operation:", point, op)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("compositeToPoint:operation:"), point, op)
 }
 
 // deprecated
 func (i_ Image) CompositeToPoint_FromRect_Operation(point foundation.Point, rect foundation.Rect, op CompositingOperation) {
-	objc.CallMethod[objc.Void](i_, "compositeToPoint:fromRect:operation:", point, rect, op)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("compositeToPoint:fromRect:operation:"), point, rect, op)
 }
 
 // deprecated
 func (i_ Image) CompositeToPoint_FromRect_Operation_Fraction(point foundation.Point, rect foundation.Rect, op CompositingOperation, delta float64) {
-	objc.CallMethod[objc.Void](i_, "compositeToPoint:fromRect:operation:fraction:", point, rect, op, delta)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("compositeToPoint:fromRect:operation:fraction:"), point, rect, op, delta)
 }
 
 // deprecated
 func (i_ Image) CompositeToPoint_Operation_Fraction(point foundation.Point, op CompositingOperation, delta float64) {
-	objc.CallMethod[objc.Void](i_, "compositeToPoint:operation:fraction:", point, op, delta)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("compositeToPoint:operation:fraction:"), point, op, delta)
 }
 
 // deprecated
 func (i_ Image) DissolveToPoint_Fraction(point foundation.Point, fraction float64) {
-	objc.CallMethod[objc.Void](i_, "dissolveToPoint:fraction:", point, fraction)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("dissolveToPoint:fraction:"), point, fraction)
 }
 
 // deprecated
 func (i_ Image) DissolveToPoint_FromRect_Fraction(point foundation.Point, rect foundation.Rect, fraction float64) {
-	objc.CallMethod[objc.Void](i_, "dissolveToPoint:fromRect:fraction:", point, rect, fraction)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("dissolveToPoint:fromRect:fraction:"), point, rect, fraction)
 }
 
 // deprecated
 func (i_ Image) SetScalesWhenResized(flag bool) {
-	objc.CallMethod[objc.Void](i_, "setScalesWhenResized:", flag)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setScalesWhenResized:"), flag)
 }
 
 // deprecated
 func (i_ Image) ScalesWhenResized() bool {
-	rv := objc.CallMethod[bool](i_, "scalesWhenResized")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("scalesWhenResized"))
 	return rv
 }
 
 // deprecated
 func (i_ Image) SetDataRetained(flag bool) {
-	objc.CallMethod[objc.Void](i_, "setDataRetained:", flag)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDataRetained:"), flag)
 }
 
 // deprecated
 func (i_ Image) IsDataRetained() bool {
-	rv := objc.CallMethod[bool](i_, "isDataRetained")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("isDataRetained"))
 	return rv
 }
 
 // deprecated
 func (i_ Image) SetCachedSeparately(flag bool) {
-	objc.CallMethod[objc.Void](i_, "setCachedSeparately:", flag)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setCachedSeparately:"), flag)
 }
 
 // deprecated
 func (i_ Image) IsCachedSeparately() bool {
-	rv := objc.CallMethod[bool](i_, "isCachedSeparately")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("isCachedSeparately"))
 	return rv
 }
 
 // deprecated
 func (i_ Image) SetCacheDepthMatchesImageDepth(flag bool) {
-	objc.CallMethod[objc.Void](i_, "setCacheDepthMatchesImageDepth:", flag)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setCacheDepthMatchesImageDepth:"), flag)
 }
 
 // deprecated
 func (i_ Image) CacheDepthMatchesImageDepth() bool {
-	rv := objc.CallMethod[bool](i_, "cacheDepthMatchesImageDepth")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("cacheDepthMatchesImageDepth"))
 	return rv
 }
 
 // deprecated
 func (i_ Image) SetFlipped(flag bool) {
-	objc.CallMethod[objc.Void](i_, "setFlipped:", flag)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setFlipped:"), flag)
 }
 
 // deprecated
 func (i_ Image) IsFlipped() bool {
-	rv := objc.CallMethod[bool](i_, "isFlipped")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("isFlipped"))
 	return rv
 }
 
 func (i_ Image) SymbolConfiguration() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](i_, "symbolConfiguration")
+	rv := objc.CallMethod[ImageSymbolConfiguration](i_, objc.GetSelector("symbolConfiguration"))
 	return rv
 }
 
 func (i_ Image) Delegate() ImageDelegateWrapper {
-	rv := objc.CallMethod[ImageDelegateWrapper](i_, "delegate")
+	rv := objc.CallMethod[ImageDelegateWrapper](i_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -444,142 +444,142 @@ func (i_ Image) SetDelegate(value ImageDelegate) {
 	po := objc.CreateProtocol("NSImageDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(i_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](i_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (i_ Image) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](i_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), value)
 }
 
 func (i_ Image) Size() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](i_, "size")
+	rv := objc.CallMethod[foundation.Size](i_, objc.GetSelector("size"))
 	return rv
 }
 
 func (i_ Image) SetSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](i_, "setSize:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setSize:"), value)
 }
 
 func (i_ Image) IsTemplate() bool {
-	rv := objc.CallMethod[bool](i_, "isTemplate")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("isTemplate"))
 	return rv
 }
 
 func (i_ Image) SetTemplate(value bool) {
-	objc.CallMethod[objc.Void](i_, "setTemplate:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setTemplate:"), value)
 }
 
 func (ic _ImageClass) ImageTypes() []string {
-	rv := objc.CallMethod[[]string](ic, "imageTypes")
+	rv := objc.CallMethod[[]string](ic, objc.GetSelector("imageTypes"))
 	return rv
 }
 
 func (ic _ImageClass) ImageUnfilteredTypes() []string {
-	rv := objc.CallMethod[[]string](ic, "imageUnfilteredTypes")
+	rv := objc.CallMethod[[]string](ic, objc.GetSelector("imageUnfilteredTypes"))
 	return rv
 }
 
 func (i_ Image) Representations() []ImageRep {
-	rv := objc.CallMethod[[]ImageRep](i_, "representations")
+	rv := objc.CallMethod[[]ImageRep](i_, objc.GetSelector("representations"))
 	return rv
 }
 
 func (i_ Image) PrefersColorMatch() bool {
-	rv := objc.CallMethod[bool](i_, "prefersColorMatch")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("prefersColorMatch"))
 	return rv
 }
 
 func (i_ Image) SetPrefersColorMatch(value bool) {
-	objc.CallMethod[objc.Void](i_, "setPrefersColorMatch:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setPrefersColorMatch:"), value)
 }
 
 func (i_ Image) UsesEPSOnResolutionMismatch() bool {
-	rv := objc.CallMethod[bool](i_, "usesEPSOnResolutionMismatch")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("usesEPSOnResolutionMismatch"))
 	return rv
 }
 
 func (i_ Image) SetUsesEPSOnResolutionMismatch(value bool) {
-	objc.CallMethod[objc.Void](i_, "setUsesEPSOnResolutionMismatch:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setUsesEPSOnResolutionMismatch:"), value)
 }
 
 func (i_ Image) MatchesOnMultipleResolution() bool {
-	rv := objc.CallMethod[bool](i_, "matchesOnMultipleResolution")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("matchesOnMultipleResolution"))
 	return rv
 }
 
 func (i_ Image) SetMatchesOnMultipleResolution(value bool) {
-	objc.CallMethod[objc.Void](i_, "setMatchesOnMultipleResolution:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setMatchesOnMultipleResolution:"), value)
 }
 
 func (i_ Image) IsValid() bool {
-	rv := objc.CallMethod[bool](i_, "isValid")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("isValid"))
 	return rv
 }
 
 func (i_ Image) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](i_, "backgroundColor")
+	rv := objc.CallMethod[Color](i_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (i_ Image) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](i_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setBackgroundColor:"), value)
 }
 
 func (i_ Image) CapInsets() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](i_, "capInsets")
+	rv := objc.CallMethod[foundation.EdgeInsets](i_, objc.GetSelector("capInsets"))
 	return rv
 }
 
 func (i_ Image) SetCapInsets(value foundation.EdgeInsets) {
-	objc.CallMethod[objc.Void](i_, "setCapInsets:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setCapInsets:"), value)
 }
 
 func (i_ Image) ResizingMode() ImageResizingMode {
-	rv := objc.CallMethod[ImageResizingMode](i_, "resizingMode")
+	rv := objc.CallMethod[ImageResizingMode](i_, objc.GetSelector("resizingMode"))
 	return rv
 }
 
 func (i_ Image) SetResizingMode(value ImageResizingMode) {
-	objc.CallMethod[objc.Void](i_, "setResizingMode:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setResizingMode:"), value)
 }
 
 func (i_ Image) AlignmentRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](i_, "alignmentRect")
+	rv := objc.CallMethod[foundation.Rect](i_, objc.GetSelector("alignmentRect"))
 	return rv
 }
 
 func (i_ Image) SetAlignmentRect(value foundation.Rect) {
-	objc.CallMethod[objc.Void](i_, "setAlignmentRect:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setAlignmentRect:"), value)
 }
 
 func (i_ Image) CacheMode() ImageCacheMode {
-	rv := objc.CallMethod[ImageCacheMode](i_, "cacheMode")
+	rv := objc.CallMethod[ImageCacheMode](i_, objc.GetSelector("cacheMode"))
 	return rv
 }
 
 func (i_ Image) SetCacheMode(value ImageCacheMode) {
-	objc.CallMethod[objc.Void](i_, "setCacheMode:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setCacheMode:"), value)
 }
 
 func (i_ Image) TIFFRepresentation() []byte {
-	rv := objc.CallMethod[[]byte](i_, "TIFFRepresentation")
+	rv := objc.CallMethod[[]byte](i_, objc.GetSelector("TIFFRepresentation"))
 	return rv
 }
 
 func (i_ Image) AccessibilityDescription() string {
-	rv := objc.CallMethod[string](i_, "accessibilityDescription")
+	rv := objc.CallMethod[string](i_, objc.GetSelector("accessibilityDescription"))
 	return rv
 }
 
 func (i_ Image) SetAccessibilityDescription(value string) {
-	objc.CallMethod[objc.Void](i_, "setAccessibilityDescription:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setAccessibilityDescription:"), value)
 }
 
 func (i_ Image) MatchesOnlyOnBestFittingAxis() bool {
-	rv := objc.CallMethod[bool](i_, "matchesOnlyOnBestFittingAxis")
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("matchesOnlyOnBestFittingAxis"))
 	return rv
 }
 
 func (i_ Image) SetMatchesOnlyOnBestFittingAxis(value bool) {
-	objc.CallMethod[objc.Void](i_, "setMatchesOnlyOnBestFittingAxis:", value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setMatchesOnlyOnBestFittingAxis:"), value)
 }

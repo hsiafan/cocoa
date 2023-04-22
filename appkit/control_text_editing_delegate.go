@@ -172,7 +172,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_IsValidObject() b
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_IsValidObject(control IControl, obj objc.IObject) bool {
-	rv := objc.CallMethod[bool](c_, "control:isValidObject:", control, obj)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:isValidObject:"), control, obj)
 	return rv
 }
 
@@ -181,7 +181,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_DidFailToValidate
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_DidFailToValidatePartialString_ErrorDescription(control IControl, string_ string, error string) {
-	objc.CallMethod[objc.Void](c_, "control:didFailToValidatePartialString:errorDescription:", control, string_, error)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("control:didFailToValidatePartialString:errorDescription:"), control, string_, error)
 }
 
 func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_DidFailToFormatString_ErrorDescription() bool {
@@ -189,7 +189,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_DidFailToFormatSt
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_DidFailToFormatString_ErrorDescription(control IControl, string_ string, error string) bool {
-	rv := objc.CallMethod[bool](c_, "control:didFailToFormatString:errorDescription:", control, string_, error)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:didFailToFormatString:errorDescription:"), control, string_, error)
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextShouldBeginEd
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_TextShouldBeginEditing(control IControl, fieldEditor IText) bool {
-	rv := objc.CallMethod[bool](c_, "control:textShouldBeginEditing:", control, fieldEditor)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:textShouldBeginEditing:"), control, fieldEditor)
 	return rv
 }
 
@@ -207,7 +207,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextShouldEndEdit
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_TextShouldEndEditing(control IControl, fieldEditor IText) bool {
-	rv := objc.CallMethod[bool](c_, "control:textShouldEndEditing:", control, fieldEditor)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:textShouldEndEditing:"), control, fieldEditor)
 	return rv
 }
 
@@ -216,7 +216,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextView_Completi
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(control IControl, textView ITextView, words []string, charRange foundation.Range, index *int) []string {
-	rv := objc.CallMethod[[]string](c_, "control:textView:completions:forPartialWordRange:indexOfSelectedItem:", control, textView, words, charRange, index)
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), control, textView, words, charRange, index)
 	return rv
 }
 
@@ -225,7 +225,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControl_TextView_DoComman
 }
 
 func (c_ ControlTextEditingDelegateWrapper) Control_TextView_DoCommandBySelector(control IControl, textView ITextView, commandSelector objc.Selector) bool {
-	rv := objc.CallMethod[bool](c_, "control:textView:doCommandBySelector:", control, textView, commandSelector)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:textView:doCommandBySelector:"), control, textView, commandSelector)
 	return rv
 }
 
@@ -234,7 +234,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidBeginEditin
 }
 
 func (c_ ControlTextEditingDelegateWrapper) ControlTextDidBeginEditing(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "controlTextDidBeginEditing:", obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidBeginEditing:"), obj)
 }
 
 func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidChange() bool {
@@ -242,7 +242,7 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidChange() bo
 }
 
 func (c_ ControlTextEditingDelegateWrapper) ControlTextDidChange(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "controlTextDidChange:", obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidChange:"), obj)
 }
 
 func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidEndEditing() bool {
@@ -250,5 +250,5 @@ func (c_ *ControlTextEditingDelegateWrapper) ImplementsControlTextDidEndEditing(
 }
 
 func (c_ ControlTextEditingDelegateWrapper) ControlTextDidEndEditing(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "controlTextDidEndEditing:", obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidEndEditing:"), obj)
 }

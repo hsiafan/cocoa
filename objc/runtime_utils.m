@@ -1,6 +1,6 @@
 #import <stdint.h>
 #import <objc/runtime.h>
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 #include "_cgo_export.h"
 
 

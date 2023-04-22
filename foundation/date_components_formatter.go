@@ -53,12 +53,12 @@ func MakeDateComponentsFormatter(ptr unsafe.Pointer) DateComponentsFormatter {
 }
 
 func (dc _DateComponentsFormatterClass) Alloc() DateComponentsFormatter {
-	rv := objc.CallMethod[DateComponentsFormatter](dc, "alloc")
+	rv := objc.CallMethod[DateComponentsFormatter](dc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (dc _DateComponentsFormatterClass) New() DateComponentsFormatter {
-	rv := objc.CallMethod[DateComponentsFormatter](dc, "new")
+	rv := objc.CallMethod[DateComponentsFormatter](dc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -68,125 +68,125 @@ func NewDateComponentsFormatter() DateComponentsFormatter {
 }
 
 func (d_ DateComponentsFormatter) Init() DateComponentsFormatter {
-	rv := objc.CallMethod[DateComponentsFormatter](d_, "init")
+	rv := objc.CallMethod[DateComponentsFormatter](d_, objc.GetSelector("init"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromDateComponents(components IDateComponents) string {
-	rv := objc.CallMethod[string](d_, "stringFromDateComponents:", components)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDateComponents:"), components)
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromDate_ToDate(startDate IDate, endDate IDate) string {
-	rv := objc.CallMethod[string](d_, "stringFromDate:toDate:", startDate, endDate)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:toDate:"), startDate, endDate)
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromTimeInterval(ti TimeInterval) string {
-	rv := objc.CallMethod[string](d_, "stringFromTimeInterval:", ti)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromTimeInterval:"), ti)
 	return rv
 }
 
 func (dc _DateComponentsFormatterClass) LocalizedStringFromDateComponents_UnitsStyle(components IDateComponents, unitsStyle DateComponentsFormatterUnitsStyle) string {
-	rv := objc.CallMethod[string](dc, "localizedStringFromDateComponents:unitsStyle:", components, unitsStyle)
+	rv := objc.CallMethod[string](dc, objc.GetSelector("localizedStringFromDateComponents:unitsStyle:"), components, unitsStyle)
 	return rv
 }
 
 func (d_ DateComponentsFormatter) AllowedUnits() CalendarUnit {
-	rv := objc.CallMethod[CalendarUnit](d_, "allowedUnits")
+	rv := objc.CallMethod[CalendarUnit](d_, objc.GetSelector("allowedUnits"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetAllowedUnits(value CalendarUnit) {
-	objc.CallMethod[objc.Void](d_, "setAllowedUnits:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAllowedUnits:"), value)
 }
 
 func (d_ DateComponentsFormatter) AllowsFractionalUnits() bool {
-	rv := objc.CallMethod[bool](d_, "allowsFractionalUnits")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("allowsFractionalUnits"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetAllowsFractionalUnits(value bool) {
-	objc.CallMethod[objc.Void](d_, "setAllowsFractionalUnits:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAllowsFractionalUnits:"), value)
 }
 
 func (d_ DateComponentsFormatter) Calendar() Calendar {
-	rv := objc.CallMethod[Calendar](d_, "calendar")
+	rv := objc.CallMethod[Calendar](d_, objc.GetSelector("calendar"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetCalendar(value ICalendar) {
-	objc.CallMethod[objc.Void](d_, "setCalendar:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
 }
 
 func (d_ DateComponentsFormatter) CollapsesLargestUnit() bool {
-	rv := objc.CallMethod[bool](d_, "collapsesLargestUnit")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("collapsesLargestUnit"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetCollapsesLargestUnit(value bool) {
-	objc.CallMethod[objc.Void](d_, "setCollapsesLargestUnit:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCollapsesLargestUnit:"), value)
 }
 
 func (d_ DateComponentsFormatter) IncludesApproximationPhrase() bool {
-	rv := objc.CallMethod[bool](d_, "includesApproximationPhrase")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("includesApproximationPhrase"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetIncludesApproximationPhrase(value bool) {
-	objc.CallMethod[objc.Void](d_, "setIncludesApproximationPhrase:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setIncludesApproximationPhrase:"), value)
 }
 
 func (d_ DateComponentsFormatter) IncludesTimeRemainingPhrase() bool {
-	rv := objc.CallMethod[bool](d_, "includesTimeRemainingPhrase")
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("includesTimeRemainingPhrase"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetIncludesTimeRemainingPhrase(value bool) {
-	objc.CallMethod[objc.Void](d_, "setIncludesTimeRemainingPhrase:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setIncludesTimeRemainingPhrase:"), value)
 }
 
 func (d_ DateComponentsFormatter) MaximumUnitCount() int {
-	rv := objc.CallMethod[int](d_, "maximumUnitCount")
+	rv := objc.CallMethod[int](d_, objc.GetSelector("maximumUnitCount"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetMaximumUnitCount(value int) {
-	objc.CallMethod[objc.Void](d_, "setMaximumUnitCount:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMaximumUnitCount:"), value)
 }
 
 func (d_ DateComponentsFormatter) UnitsStyle() DateComponentsFormatterUnitsStyle {
-	rv := objc.CallMethod[DateComponentsFormatterUnitsStyle](d_, "unitsStyle")
+	rv := objc.CallMethod[DateComponentsFormatterUnitsStyle](d_, objc.GetSelector("unitsStyle"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetUnitsStyle(value DateComponentsFormatterUnitsStyle) {
-	objc.CallMethod[objc.Void](d_, "setUnitsStyle:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setUnitsStyle:"), value)
 }
 
 func (d_ DateComponentsFormatter) ZeroFormattingBehavior() DateComponentsFormatterZeroFormattingBehavior {
-	rv := objc.CallMethod[DateComponentsFormatterZeroFormattingBehavior](d_, "zeroFormattingBehavior")
+	rv := objc.CallMethod[DateComponentsFormatterZeroFormattingBehavior](d_, objc.GetSelector("zeroFormattingBehavior"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetZeroFormattingBehavior(value DateComponentsFormatterZeroFormattingBehavior) {
-	objc.CallMethod[objc.Void](d_, "setZeroFormattingBehavior:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setZeroFormattingBehavior:"), value)
 }
 
 func (d_ DateComponentsFormatter) FormattingContext() FormattingContext {
-	rv := objc.CallMethod[FormattingContext](d_, "formattingContext")
+	rv := objc.CallMethod[FormattingContext](d_, objc.GetSelector("formattingContext"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetFormattingContext(value FormattingContext) {
-	objc.CallMethod[objc.Void](d_, "setFormattingContext:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFormattingContext:"), value)
 }
 
 func (d_ DateComponentsFormatter) ReferenceDate() Date {
-	rv := objc.CallMethod[Date](d_, "referenceDate")
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("referenceDate"))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) SetReferenceDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, "setReferenceDate:", value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setReferenceDate:"), value)
 }

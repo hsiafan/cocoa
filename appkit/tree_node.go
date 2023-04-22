@@ -36,22 +36,22 @@ func MakeTreeNode(ptr unsafe.Pointer) TreeNode {
 }
 
 func (tc _TreeNodeClass) TreeNodeWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, "treeNodeWithRepresentedObject:", modelObject)
+	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("treeNodeWithRepresentedObject:"), modelObject)
 	return rv
 }
 
 func (t_ TreeNode) InitWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, "initWithRepresentedObject:", modelObject)
+	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("initWithRepresentedObject:"), modelObject)
 	return rv
 }
 
 func (tc _TreeNodeClass) Alloc() TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, "alloc")
+	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TreeNodeClass) New() TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, "new")
+	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,40 +61,40 @@ func NewTreeNode() TreeNode {
 }
 
 func (t_ TreeNode) Init() TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, "init")
+	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, "descendantNodeAtIndexPath:", indexPath)
+	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("descendantNodeAtIndexPath:"), indexPath)
 	return rv
 }
 
 func (t_ TreeNode) SortWithSortDescriptors_Recursively(sortDescriptors []foundation.ISortDescriptor, recursively bool) {
-	objc.CallMethod[objc.Void](t_, "sortWithSortDescriptors:recursively:", sortDescriptors, recursively)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("sortWithSortDescriptors:recursively:"), sortDescriptors, recursively)
 }
 
 func (t_ TreeNode) RepresentedObject() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "representedObject")
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("representedObject"))
 	return rv
 }
 
 func (t_ TreeNode) IndexPath() foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](t_, "indexPath")
+	rv := objc.CallMethod[foundation.IndexPath](t_, objc.GetSelector("indexPath"))
 	return rv
 }
 
 func (t_ TreeNode) IsLeaf() bool {
-	rv := objc.CallMethod[bool](t_, "isLeaf")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isLeaf"))
 	return rv
 }
 
 func (t_ TreeNode) ChildNodes() []TreeNode {
-	rv := objc.CallMethod[[]TreeNode](t_, "childNodes")
+	rv := objc.CallMethod[[]TreeNode](t_, objc.GetSelector("childNodes"))
 	return rv
 }
 
 func (t_ TreeNode) ParentNode() TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, "parentNode")
+	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("parentNode"))
 	return rv
 }

@@ -124,22 +124,22 @@ func MakeControl(ptr unsafe.Pointer) Control {
 }
 
 func (c_ Control) InitWithFrame(frameRect foundation.Rect) Control {
-	rv := objc.CallMethod[Control](c_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Control](c_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (c_ Control) Init() Control {
-	rv := objc.CallMethod[Control](c_, "init")
+	rv := objc.CallMethod[Control](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _ControlClass) Alloc() Control {
-	rv := objc.CallMethod[Control](cc, "alloc")
+	rv := objc.CallMethod[Control](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ControlClass) New() Control {
-	rv := objc.CallMethod[Control](cc, "new")
+	rv := objc.CallMethod[Control](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -149,378 +149,378 @@ func NewControl() Control {
 }
 
 func (c_ Control) TakeDoubleValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeDoubleValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeDoubleValueFrom:"), sender)
 }
 
 func (c_ Control) TakeFloatValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeFloatValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeFloatValueFrom:"), sender)
 }
 
 func (c_ Control) TakeIntValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeIntValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntValueFrom:"), sender)
 }
 
 func (c_ Control) TakeIntegerValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeIntegerValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntegerValueFrom:"), sender)
 }
 
 func (c_ Control) TakeObjectValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeObjectValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeObjectValueFrom:"), sender)
 }
 
 func (c_ Control) TakeStringValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "takeStringValueFrom:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeStringValueFrom:"), sender)
 }
 
 // deprecated
 func (c_ Control) SetFloatingPointFormat_Left_Right(autoRange bool, leftDigits uint, rightDigits uint) {
-	objc.CallMethod[objc.Void](c_, "setFloatingPointFormat:left:right:", autoRange, leftDigits, rightDigits)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFloatingPointFormat:left:right:"), autoRange, leftDigits, rightDigits)
 }
 
 func (c_ Control) DrawWithExpansionFrame_InView(contentFrame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](c_, "drawWithExpansionFrame:inView:", contentFrame, view)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithExpansionFrame:inView:"), contentFrame, view)
 }
 
 func (c_ Control) ExpansionFrameWithFrame(contentFrame foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, "expansionFrameWithFrame:", contentFrame)
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("expansionFrameWithFrame:"), contentFrame)
 	return rv
 }
 
 func (c_ Control) AbortEditing() bool {
-	rv := objc.CallMethod[bool](c_, "abortEditing")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("abortEditing"))
 	return rv
 }
 
 func (c_ Control) CurrentEditor() Text {
-	rv := objc.CallMethod[Text](c_, "currentEditor")
+	rv := objc.CallMethod[Text](c_, objc.GetSelector("currentEditor"))
 	return rv
 }
 
 func (c_ Control) ValidateEditing() {
-	objc.CallMethod[objc.Void](c_, "validateEditing")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("validateEditing"))
 }
 
 func (c_ Control) EditWithFrame_Editor_Delegate_Event(rect foundation.Rect, textObj IText, delegate objc.IObject, event IEvent) {
-	objc.CallMethod[objc.Void](c_, "editWithFrame:editor:delegate:event:", rect, textObj, delegate, event)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("editWithFrame:editor:delegate:event:"), rect, textObj, delegate, event)
 }
 
 func (c_ Control) EndEditing(textObj IText) {
-	objc.CallMethod[objc.Void](c_, "endEditing:", textObj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("endEditing:"), textObj)
 }
 
 func (c_ Control) SelectWithFrame_Editor_Delegate_Start_Length(rect foundation.Rect, textObj IText, delegate objc.IObject, selStart int, selLength int) {
-	objc.CallMethod[objc.Void](c_, "selectWithFrame:editor:delegate:start:length:", rect, textObj, delegate, selStart, selLength)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectWithFrame:editor:delegate:start:length:"), rect, textObj, delegate, selStart, selLength)
 }
 
 func (c_ Control) SizeThatFits(size foundation.Size) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "sizeThatFits:", size)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("sizeThatFits:"), size)
 	return rv
 }
 
 func (c_ Control) SizeToFit() {
-	objc.CallMethod[objc.Void](c_, "sizeToFit")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("sizeToFit"))
 }
 
 func (c_ Control) SendAction_To(action objc.Selector, target objc.IObject) bool {
-	rv := objc.CallMethod[bool](c_, "sendAction:to:", action, target)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("sendAction:to:"), action, target)
 	return rv
 }
 
 func (c_ Control) SendActionOn(mask EventMask) int {
-	rv := objc.CallMethod[int](c_, "sendActionOn:", mask)
+	rv := objc.CallMethod[int](c_, objc.GetSelector("sendActionOn:"), mask)
 	return rv
 }
 
 func (c_ Control) PerformClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "performClick:", sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("performClick:"), sender)
 }
 
 func (c_ Control) InvalidateIntrinsicContentSizeForCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, "invalidateIntrinsicContentSizeForCell:", cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateIntrinsicContentSizeForCell:"), cell)
 }
 
 // deprecated
 func (c_ Control) SelectedCell() Cell {
-	rv := objc.CallMethod[Cell](c_, "selectedCell")
+	rv := objc.CallMethod[Cell](c_, objc.GetSelector("selectedCell"))
 	return rv
 }
 
 // deprecated
 func (c_ Control) SelectedTag() int {
-	rv := objc.CallMethod[int](c_, "selectedTag")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("selectedTag"))
 	return rv
 }
 
 // deprecated
 func (c_ Control) SetNeedsDisplay0() {
-	objc.CallMethod[objc.Void](c_, "setNeedsDisplay")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setNeedsDisplay"))
 }
 
 // deprecated
 func (c_ Control) CalcSize() {
-	objc.CallMethod[objc.Void](c_, "calcSize")
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("calcSize"))
 }
 
 // deprecated
 func (c_ Control) SelectCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, "selectCell:", cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectCell:"), cell)
 }
 
 // deprecated
 func (c_ Control) DrawCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, "drawCell:", cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawCell:"), cell)
 }
 
 // deprecated
 func (c_ Control) DrawCellInside(cell ICell) {
-	objc.CallMethod[objc.Void](c_, "drawCellInside:", cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawCellInside:"), cell)
 }
 
 // deprecated
 func (c_ Control) UpdateCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, "updateCell:", cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateCell:"), cell)
 }
 
 // deprecated
 func (c_ Control) UpdateCellInside(cell ICell) {
-	objc.CallMethod[objc.Void](c_, "updateCellInside:", cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateCellInside:"), cell)
 }
 
 // deprecated
 func (c_ Control) ControlTextDidBeginEditing(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "controlTextDidBeginEditing:", obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidBeginEditing:"), obj)
 }
 
 // deprecated
 func (c_ Control) ControlTextDidChange(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "controlTextDidChange:", obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidChange:"), obj)
 }
 
 // deprecated
 func (c_ Control) ControlTextDidEndEditing(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, "controlTextDidEndEditing:", obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidEndEditing:"), obj)
 }
 
 func (c_ Control) IsEnabled() bool {
-	rv := objc.CallMethod[bool](c_, "isEnabled")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isEnabled"))
 	return rv
 }
 
 func (c_ Control) SetEnabled(value bool) {
-	objc.CallMethod[objc.Void](c_, "setEnabled:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setEnabled:"), value)
 }
 
 func (c_ Control) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](c_, "doubleValue")
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("doubleValue"))
 	return rv
 }
 
 func (c_ Control) SetDoubleValue(value float64) {
-	objc.CallMethod[objc.Void](c_, "setDoubleValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDoubleValue:"), value)
 }
 
 func (c_ Control) FloatValue() float32 {
-	rv := objc.CallMethod[float32](c_, "floatValue")
+	rv := objc.CallMethod[float32](c_, objc.GetSelector("floatValue"))
 	return rv
 }
 
 func (c_ Control) SetFloatValue(value float32) {
-	objc.CallMethod[objc.Void](c_, "setFloatValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFloatValue:"), value)
 }
 
 func (c_ Control) IntValue() int32 {
-	rv := objc.CallMethod[int32](c_, "intValue")
+	rv := objc.CallMethod[int32](c_, objc.GetSelector("intValue"))
 	return rv
 }
 
 func (c_ Control) SetIntValue(value int32) {
-	objc.CallMethod[objc.Void](c_, "setIntValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIntValue:"), value)
 }
 
 func (c_ Control) IntegerValue() int {
-	rv := objc.CallMethod[int](c_, "integerValue")
+	rv := objc.CallMethod[int](c_, objc.GetSelector("integerValue"))
 	return rv
 }
 
 func (c_ Control) SetIntegerValue(value int) {
-	objc.CallMethod[objc.Void](c_, "setIntegerValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIntegerValue:"), value)
 }
 
 func (c_ Control) ObjectValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, "objectValue")
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("objectValue"))
 	return rv
 }
 
 func (c_ Control) SetObjectValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "setObjectValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setObjectValue:"), value)
 }
 
 func (c_ Control) StringValue() string {
-	rv := objc.CallMethod[string](c_, "stringValue")
+	rv := objc.CallMethod[string](c_, objc.GetSelector("stringValue"))
 	return rv
 }
 
 func (c_ Control) SetStringValue(value string) {
-	objc.CallMethod[objc.Void](c_, "setStringValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setStringValue:"), value)
 }
 
 func (c_ Control) AttributedStringValue() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](c_, "attributedStringValue")
+	rv := objc.CallMethod[foundation.AttributedString](c_, objc.GetSelector("attributedStringValue"))
 	return rv
 }
 
 func (c_ Control) SetAttributedStringValue(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](c_, "setAttributedStringValue:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAttributedStringValue:"), value)
 }
 
 func (c_ Control) Alignment() TextAlignment {
-	rv := objc.CallMethod[TextAlignment](c_, "alignment")
+	rv := objc.CallMethod[TextAlignment](c_, objc.GetSelector("alignment"))
 	return rv
 }
 
 func (c_ Control) SetAlignment(value TextAlignment) {
-	objc.CallMethod[objc.Void](c_, "setAlignment:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAlignment:"), value)
 }
 
 func (c_ Control) Font() Font {
-	rv := objc.CallMethod[Font](c_, "font")
+	rv := objc.CallMethod[Font](c_, objc.GetSelector("font"))
 	return rv
 }
 
 func (c_ Control) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](c_, "setFont:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFont:"), value)
 }
 
 func (c_ Control) LineBreakMode() LineBreakMode {
-	rv := objc.CallMethod[LineBreakMode](c_, "lineBreakMode")
+	rv := objc.CallMethod[LineBreakMode](c_, objc.GetSelector("lineBreakMode"))
 	return rv
 }
 
 func (c_ Control) SetLineBreakMode(value LineBreakMode) {
-	objc.CallMethod[objc.Void](c_, "setLineBreakMode:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setLineBreakMode:"), value)
 }
 
 func (c_ Control) UsesSingleLineMode() bool {
-	rv := objc.CallMethod[bool](c_, "usesSingleLineMode")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("usesSingleLineMode"))
 	return rv
 }
 
 func (c_ Control) SetUsesSingleLineMode(value bool) {
-	objc.CallMethod[objc.Void](c_, "setUsesSingleLineMode:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setUsesSingleLineMode:"), value)
 }
 
 func (c_ Control) Formatter() foundation.Formatter {
-	rv := objc.CallMethod[foundation.Formatter](c_, "formatter")
+	rv := objc.CallMethod[foundation.Formatter](c_, objc.GetSelector("formatter"))
 	return rv
 }
 
 func (c_ Control) SetFormatter(value foundation.IFormatter) {
-	objc.CallMethod[objc.Void](c_, "setFormatter:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFormatter:"), value)
 }
 
 func (c_ Control) BaseWritingDirection() WritingDirection {
-	rv := objc.CallMethod[WritingDirection](c_, "baseWritingDirection")
+	rv := objc.CallMethod[WritingDirection](c_, objc.GetSelector("baseWritingDirection"))
 	return rv
 }
 
 func (c_ Control) SetBaseWritingDirection(value WritingDirection) {
-	objc.CallMethod[objc.Void](c_, "setBaseWritingDirection:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBaseWritingDirection:"), value)
 }
 
 func (c_ Control) AllowsExpansionToolTips() bool {
-	rv := objc.CallMethod[bool](c_, "allowsExpansionToolTips")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("allowsExpansionToolTips"))
 	return rv
 }
 
 func (c_ Control) SetAllowsExpansionToolTips(value bool) {
-	objc.CallMethod[objc.Void](c_, "setAllowsExpansionToolTips:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAllowsExpansionToolTips:"), value)
 }
 
 func (c_ Control) ControlSize() ControlSize {
-	rv := objc.CallMethod[ControlSize](c_, "controlSize")
+	rv := objc.CallMethod[ControlSize](c_, objc.GetSelector("controlSize"))
 	return rv
 }
 
 func (c_ Control) SetControlSize(value ControlSize) {
-	objc.CallMethod[objc.Void](c_, "setControlSize:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setControlSize:"), value)
 }
 
 func (c_ Control) IsHighlighted() bool {
-	rv := objc.CallMethod[bool](c_, "isHighlighted")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isHighlighted"))
 	return rv
 }
 
 func (c_ Control) SetHighlighted(value bool) {
-	objc.CallMethod[objc.Void](c_, "setHighlighted:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setHighlighted:"), value)
 }
 
 func (c_ Control) Action() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](c_, "action")
+	rv := objc.CallMethod[objc.Selector](c_, objc.GetSelector("action"))
 	return rv
 }
 
 func (c_ Control) SetAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](c_, "setAction:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAction:"), value)
 }
 
 func (c_ Control) Target() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, "target")
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("target"))
 	return rv
 }
 
 func (c_ Control) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, "setTarget:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), value)
 }
 
 func (c_ Control) IsContinuous() bool {
-	rv := objc.CallMethod[bool](c_, "isContinuous")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isContinuous"))
 	return rv
 }
 
 func (c_ Control) SetContinuous(value bool) {
-	objc.CallMethod[objc.Void](c_, "setContinuous:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContinuous:"), value)
 }
 
 func (c_ Control) SetTag(value int) {
-	objc.CallMethod[objc.Void](c_, "setTag:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTag:"), value)
 }
 
 func (c_ Control) RefusesFirstResponder() bool {
-	rv := objc.CallMethod[bool](c_, "refusesFirstResponder")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("refusesFirstResponder"))
 	return rv
 }
 
 func (c_ Control) SetRefusesFirstResponder(value bool) {
-	objc.CallMethod[objc.Void](c_, "setRefusesFirstResponder:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setRefusesFirstResponder:"), value)
 }
 
 func (c_ Control) IgnoresMultiClick() bool {
-	rv := objc.CallMethod[bool](c_, "ignoresMultiClick")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("ignoresMultiClick"))
 	return rv
 }
 
 func (c_ Control) SetIgnoresMultiClick(value bool) {
-	objc.CallMethod[objc.Void](c_, "setIgnoresMultiClick:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIgnoresMultiClick:"), value)
 }
 
 // deprecated
 func (c_ Control) Cell() Cell {
-	rv := objc.CallMethod[Cell](c_, "cell")
+	rv := objc.CallMethod[Cell](c_, objc.GetSelector("cell"))
 	return rv
 }
 
 // deprecated
 func (c_ Control) SetCell(value ICell) {
-	objc.CallMethod[objc.Void](c_, "setCell:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCell:"), value)
 }
 
 // deprecated
 func (cc _ControlClass) CellClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](cc, "cellClass")
+	rv := objc.CallMethod[objc.Class](cc, objc.GetSelector("cellClass"))
 	return rv
 }
 
 // deprecated
 func (cc _ControlClass) SetCellClass(value objc.IClass) {
-	objc.CallMethod[objc.Void](cc, "setCellClass:", value)
+	objc.CallMethod[objc.Void](cc, objc.GetSelector("setCellClass:"), value)
 }

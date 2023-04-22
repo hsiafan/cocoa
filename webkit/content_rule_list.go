@@ -29,12 +29,12 @@ func MakeContentRuleList(ptr unsafe.Pointer) ContentRuleList {
 }
 
 func (cc _ContentRuleListClass) Alloc() ContentRuleList {
-	rv := objc.CallMethod[ContentRuleList](cc, "alloc")
+	rv := objc.CallMethod[ContentRuleList](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _ContentRuleListClass) New() ContentRuleList {
-	rv := objc.CallMethod[ContentRuleList](cc, "new")
+	rv := objc.CallMethod[ContentRuleList](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -44,11 +44,11 @@ func NewContentRuleList() ContentRuleList {
 }
 
 func (c_ ContentRuleList) Init() ContentRuleList {
-	rv := objc.CallMethod[ContentRuleList](c_, "init")
+	rv := objc.CallMethod[ContentRuleList](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ ContentRuleList) Identifier() string {
-	rv := objc.CallMethod[string](c_, "identifier")
+	rv := objc.CallMethod[string](c_, objc.GetSelector("identifier"))
 	return rv
 }

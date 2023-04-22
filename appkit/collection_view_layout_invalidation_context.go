@@ -41,12 +41,12 @@ func MakeCollectionViewLayoutInvalidationContext(ptr unsafe.Pointer) CollectionV
 }
 
 func (cc _CollectionViewLayoutInvalidationContextClass) Alloc() CollectionViewLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewLayoutInvalidationContextClass) New() CollectionViewLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](cc, "new")
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,61 +56,61 @@ func NewCollectionViewLayoutInvalidationContext() CollectionViewLayoutInvalidati
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) Init() CollectionViewLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](c_, "init")
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, "invalidateItemsAtIndexPaths:", indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateItemsAtIndexPaths:"), indexPaths)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateSupplementaryElementsOfKind_AtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, "invalidateSupplementaryElementsOfKind:atIndexPaths:", elementKind, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateDecorationElementsOfKind_AtIndexPaths(elementKind CollectionViewDecorationElementKind, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, "invalidateDecorationElementsOfKind:atIndexPaths:", elementKind, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateDecorationElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateEverything() bool {
-	rv := objc.CallMethod[bool](c_, "invalidateEverything")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("invalidateEverything"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateDataSourceCounts() bool {
-	rv := objc.CallMethod[bool](c_, "invalidateDataSourceCounts")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("invalidateDataSourceCounts"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) ContentOffsetAdjustment() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](c_, "contentOffsetAdjustment")
+	rv := objc.CallMethod[foundation.Point](c_, objc.GetSelector("contentOffsetAdjustment"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) SetContentOffsetAdjustment(value foundation.Point) {
-	objc.CallMethod[objc.Void](c_, "setContentOffsetAdjustment:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContentOffsetAdjustment:"), value)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) ContentSizeAdjustment() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, "contentSizeAdjustment")
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("contentSizeAdjustment"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) SetContentSizeAdjustment(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, "setContentSizeAdjustment:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContentSizeAdjustment:"), value)
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidatedItemIndexPaths() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, "invalidatedItemIndexPaths")
+	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("invalidatedItemIndexPaths"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidatedSupplementaryIndexPaths() map[CollectionViewSupplementaryElementKind]foundation.Set {
-	rv := objc.CallMethod[map[CollectionViewSupplementaryElementKind]foundation.Set](c_, "invalidatedSupplementaryIndexPaths")
+	rv := objc.CallMethod[map[CollectionViewSupplementaryElementKind]foundation.Set](c_, objc.GetSelector("invalidatedSupplementaryIndexPaths"))
 	return rv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidatedDecorationIndexPaths() map[CollectionViewDecorationElementKind]foundation.Set {
-	rv := objc.CallMethod[map[CollectionViewDecorationElementKind]foundation.Set](c_, "invalidatedDecorationIndexPaths")
+	rv := objc.CallMethod[map[CollectionViewDecorationElementKind]foundation.Set](c_, objc.GetSelector("invalidatedDecorationIndexPaths"))
 	return rv
 }

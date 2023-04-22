@@ -44,27 +44,27 @@ func MakeTextFieldCell(ptr unsafe.Pointer) TextFieldCell {
 }
 
 func (t_ TextFieldCell) InitTextCell(string_ string) TextFieldCell {
-	rv := objc.CallMethod[TextFieldCell](t_, "initTextCell:", string_)
+	rv := objc.CallMethod[TextFieldCell](t_, objc.GetSelector("initTextCell:"), string_)
 	return rv
 }
 
 func (t_ TextFieldCell) InitImageCell(image IImage) TextFieldCell {
-	rv := objc.CallMethod[TextFieldCell](t_, "initImageCell:", image)
+	rv := objc.CallMethod[TextFieldCell](t_, objc.GetSelector("initImageCell:"), image)
 	return rv
 }
 
 func (t_ TextFieldCell) Init() TextFieldCell {
-	rv := objc.CallMethod[TextFieldCell](t_, "init")
+	rv := objc.CallMethod[TextFieldCell](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TextFieldCellClass) Alloc() TextFieldCell {
-	rv := objc.CallMethod[TextFieldCell](tc, "alloc")
+	rv := objc.CallMethod[TextFieldCell](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextFieldCellClass) New() TextFieldCell {
-	rv := objc.CallMethod[TextFieldCell](tc, "new")
+	rv := objc.CallMethod[TextFieldCell](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -74,68 +74,68 @@ func NewTextFieldCell() TextFieldCell {
 }
 
 func (t_ TextFieldCell) SetWantsNotificationForMarkedText(flag bool) {
-	objc.CallMethod[objc.Void](t_, "setWantsNotificationForMarkedText:", flag)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setWantsNotificationForMarkedText:"), flag)
 }
 
 func (t_ TextFieldCell) TextColor() Color {
-	rv := objc.CallMethod[Color](t_, "textColor")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("textColor"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, "setTextColor:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), value)
 }
 
 func (t_ TextFieldCell) BezelStyle() TextFieldBezelStyle {
-	rv := objc.CallMethod[TextFieldBezelStyle](t_, "bezelStyle")
+	rv := objc.CallMethod[TextFieldBezelStyle](t_, objc.GetSelector("bezelStyle"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetBezelStyle(value TextFieldBezelStyle) {
-	objc.CallMethod[objc.Void](t_, "setBezelStyle:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBezelStyle:"), value)
 }
 
 func (t_ TextFieldCell) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](t_, "backgroundColor")
+	rv := objc.CallMethod[Color](t_, objc.GetSelector("backgroundColor"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, "setBackgroundColor:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
 }
 
 func (t_ TextFieldCell) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](t_, "drawsBackground")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("drawsBackground"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](t_, "setDrawsBackground:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDrawsBackground:"), value)
 }
 
 func (t_ TextFieldCell) PlaceholderString() string {
-	rv := objc.CallMethod[string](t_, "placeholderString")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("placeholderString"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetPlaceholderString(value string) {
-	objc.CallMethod[objc.Void](t_, "setPlaceholderString:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderString:"), value)
 }
 
 func (t_ TextFieldCell) PlaceholderAttributedString() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](t_, "placeholderAttributedString")
+	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("placeholderAttributedString"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, "setPlaceholderAttributedString:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderAttributedString:"), value)
 }
 
 func (t_ TextFieldCell) AllowedInputSourceLocales() []string {
-	rv := objc.CallMethod[[]string](t_, "allowedInputSourceLocales")
+	rv := objc.CallMethod[[]string](t_, objc.GetSelector("allowedInputSourceLocales"))
 	return rv
 }
 
 func (t_ TextFieldCell) SetAllowedInputSourceLocales(value []string) {
-	objc.CallMethod[objc.Void](t_, "setAllowedInputSourceLocales:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAllowedInputSourceLocales:"), value)
 }

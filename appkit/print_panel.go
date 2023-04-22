@@ -51,12 +51,12 @@ func MakePrintPanel(ptr unsafe.Pointer) PrintPanel {
 }
 
 func (pc _PrintPanelClass) Alloc() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](pc, "alloc")
+	rv := objc.CallMethod[PrintPanel](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PrintPanelClass) New() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](pc, "new")
+	rv := objc.CallMethod[PrintPanel](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -66,100 +66,100 @@ func NewPrintPanel() PrintPanel {
 }
 
 func (p_ PrintPanel) Init() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](p_, "init")
+	rv := objc.CallMethod[PrintPanel](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PrintPanelClass) PrintPanel() PrintPanel {
-	rv := objc.CallMethod[PrintPanel](pc, "printPanel")
+	rv := objc.CallMethod[PrintPanel](pc, objc.GetSelector("printPanel"))
 	return rv
 }
 
 func (p_ PrintPanel) DefaultButtonTitle() string {
-	rv := objc.CallMethod[string](p_, "defaultButtonTitle")
+	rv := objc.CallMethod[string](p_, objc.GetSelector("defaultButtonTitle"))
 	return rv
 }
 
 func (p_ PrintPanel) SetDefaultButtonTitle(defaultButtonTitle string) {
-	objc.CallMethod[objc.Void](p_, "setDefaultButtonTitle:", defaultButtonTitle)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDefaultButtonTitle:"), defaultButtonTitle)
 }
 
 func (p_ PrintPanel) AddAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, "addAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("addAccessoryController:"), accessoryController)
 }
 
 func (p_ PrintPanel) RemoveAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, "removeAccessoryController:", accessoryController)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAccessoryController:"), accessoryController)
 }
 
 func (p_ PrintPanel) BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](p_, "beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:", printInfo, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:"), printInfo, docWindow, delegate, didEndSelector, contextInfo)
 }
 
 func (p_ PrintPanel) RunModal() int {
-	rv := objc.CallMethod[int](p_, "runModal")
+	rv := objc.CallMethod[int](p_, objc.GetSelector("runModal"))
 	return rv
 }
 
 func (p_ PrintPanel) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.CallMethod[int](p_, "runModalWithPrintInfo:", printInfo)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("runModalWithPrintInfo:"), printInfo)
 	return rv
 }
 
 // deprecated
 func (p_ PrintPanel) AccessoryView() View {
-	rv := objc.CallMethod[View](p_, "accessoryView")
+	rv := objc.CallMethod[View](p_, objc.GetSelector("accessoryView"))
 	return rv
 }
 
 // deprecated
 func (p_ PrintPanel) SetAccessoryView(accessoryView IView) {
-	objc.CallMethod[objc.Void](p_, "setAccessoryView:", accessoryView)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryView:"), accessoryView)
 }
 
 // deprecated
 func (p_ PrintPanel) UpdateFromPrintInfo() {
-	objc.CallMethod[objc.Void](p_, "updateFromPrintInfo")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("updateFromPrintInfo"))
 }
 
 // deprecated
 func (p_ PrintPanel) FinalWritePrintInfo() {
-	objc.CallMethod[objc.Void](p_, "finalWritePrintInfo")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("finalWritePrintInfo"))
 }
 
 func (p_ PrintPanel) JobStyleHint() PrintPanelJobStyleHint {
-	rv := objc.CallMethod[PrintPanelJobStyleHint](p_, "jobStyleHint")
+	rv := objc.CallMethod[PrintPanelJobStyleHint](p_, objc.GetSelector("jobStyleHint"))
 	return rv
 }
 
 func (p_ PrintPanel) SetJobStyleHint(value PrintPanelJobStyleHint) {
-	objc.CallMethod[objc.Void](p_, "setJobStyleHint:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setJobStyleHint:"), value)
 }
 
 func (p_ PrintPanel) Options() PrintPanelOptions {
-	rv := objc.CallMethod[PrintPanelOptions](p_, "options")
+	rv := objc.CallMethod[PrintPanelOptions](p_, objc.GetSelector("options"))
 	return rv
 }
 
 func (p_ PrintPanel) SetOptions(value PrintPanelOptions) {
-	objc.CallMethod[objc.Void](p_, "setOptions:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setOptions:"), value)
 }
 
 func (p_ PrintPanel) HelpAnchor() HelpAnchorName {
-	rv := objc.CallMethod[HelpAnchorName](p_, "helpAnchor")
+	rv := objc.CallMethod[HelpAnchorName](p_, objc.GetSelector("helpAnchor"))
 	return rv
 }
 
 func (p_ PrintPanel) SetHelpAnchor(value HelpAnchorName) {
-	objc.CallMethod[objc.Void](p_, "setHelpAnchor:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setHelpAnchor:"), value)
 }
 
 func (p_ PrintPanel) AccessoryControllers() []ViewController {
-	rv := objc.CallMethod[[]ViewController](p_, "accessoryControllers")
+	rv := objc.CallMethod[[]ViewController](p_, objc.GetSelector("accessoryControllers"))
 	return rv
 }
 
 func (p_ PrintPanel) PrintInfo() PrintInfo {
-	rv := objc.CallMethod[PrintInfo](p_, "printInfo")
+	rv := objc.CallMethod[PrintInfo](p_, objc.GetSelector("printInfo"))
 	return rv
 }

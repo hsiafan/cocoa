@@ -30,17 +30,17 @@ func MakeCollectionLayoutSize(ptr unsafe.Pointer) CollectionLayoutSize {
 }
 
 func (cc _CollectionLayoutSizeClass) SizeWithWidthDimension_HeightDimension(width ICollectionLayoutDimension, height ICollectionLayoutDimension) CollectionLayoutSize {
-	rv := objc.CallMethod[CollectionLayoutSize](cc, "sizeWithWidthDimension:heightDimension:", width, height)
+	rv := objc.CallMethod[CollectionLayoutSize](cc, objc.GetSelector("sizeWithWidthDimension:heightDimension:"), width, height)
 	return rv
 }
 
 func (cc _CollectionLayoutSizeClass) Alloc() CollectionLayoutSize {
-	rv := objc.CallMethod[CollectionLayoutSize](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutSize](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutSizeClass) New() CollectionLayoutSize {
-	rv := objc.CallMethod[CollectionLayoutSize](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutSize](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -50,16 +50,16 @@ func NewCollectionLayoutSize() CollectionLayoutSize {
 }
 
 func (c_ CollectionLayoutSize) Init() CollectionLayoutSize {
-	rv := objc.CallMethod[CollectionLayoutSize](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutSize](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutSize) WidthDimension() CollectionLayoutDimension {
-	rv := objc.CallMethod[CollectionLayoutDimension](c_, "widthDimension")
+	rv := objc.CallMethod[CollectionLayoutDimension](c_, objc.GetSelector("widthDimension"))
 	return rv
 }
 
 func (c_ CollectionLayoutSize) HeightDimension() CollectionLayoutDimension {
-	rv := objc.CallMethod[CollectionLayoutDimension](c_, "heightDimension")
+	rv := objc.CallMethod[CollectionLayoutDimension](c_, objc.GetSelector("heightDimension"))
 	return rv
 }

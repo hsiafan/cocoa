@@ -40,12 +40,12 @@ func MakePDFInfo(ptr unsafe.Pointer) PDFInfo {
 }
 
 func (pc _PDFInfoClass) Alloc() PDFInfo {
-	rv := objc.CallMethod[PDFInfo](pc, "alloc")
+	rv := objc.CallMethod[PDFInfo](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PDFInfoClass) New() PDFInfo {
-	rv := objc.CallMethod[PDFInfo](pc, "new")
+	rv := objc.CallMethod[PDFInfo](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,56 +55,56 @@ func NewPDFInfo() PDFInfo {
 }
 
 func (p_ PDFInfo) Init() PDFInfo {
-	rv := objc.CallMethod[PDFInfo](p_, "init")
+	rv := objc.CallMethod[PDFInfo](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (p_ PDFInfo) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](p_, "URL")
+	rv := objc.CallMethod[foundation.URL](p_, objc.GetSelector("URL"))
 	return rv
 }
 
 func (p_ PDFInfo) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, "setURL:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), value)
 }
 
 func (p_ PDFInfo) IsFileExtensionHidden() bool {
-	rv := objc.CallMethod[bool](p_, "isFileExtensionHidden")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isFileExtensionHidden"))
 	return rv
 }
 
 func (p_ PDFInfo) SetFileExtensionHidden(value bool) {
-	objc.CallMethod[objc.Void](p_, "setFileExtensionHidden:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileExtensionHidden:"), value)
 }
 
 func (p_ PDFInfo) TagNames() []string {
-	rv := objc.CallMethod[[]string](p_, "tagNames")
+	rv := objc.CallMethod[[]string](p_, objc.GetSelector("tagNames"))
 	return rv
 }
 
 func (p_ PDFInfo) SetTagNames(value []string) {
-	objc.CallMethod[objc.Void](p_, "setTagNames:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setTagNames:"), value)
 }
 
 func (p_ PDFInfo) Orientation() PaperOrientation {
-	rv := objc.CallMethod[PaperOrientation](p_, "orientation")
+	rv := objc.CallMethod[PaperOrientation](p_, objc.GetSelector("orientation"))
 	return rv
 }
 
 func (p_ PDFInfo) SetOrientation(value PaperOrientation) {
-	objc.CallMethod[objc.Void](p_, "setOrientation:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setOrientation:"), value)
 }
 
 func (p_ PDFInfo) PaperSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](p_, "paperSize")
+	rv := objc.CallMethod[foundation.Size](p_, objc.GetSelector("paperSize"))
 	return rv
 }
 
 func (p_ PDFInfo) SetPaperSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](p_, "setPaperSize:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPaperSize:"), value)
 }
 
 func (p_ PDFInfo) Attributes() foundation.MutableDictionary {
-	rv := objc.CallMethod[foundation.MutableDictionary](p_, "attributes")
+	rv := objc.CallMethod[foundation.MutableDictionary](p_, objc.GetSelector("attributes"))
 	return rv
 }

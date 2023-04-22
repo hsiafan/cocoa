@@ -43,17 +43,17 @@ func MakeTextContentManager(ptr unsafe.Pointer) TextContentManager {
 }
 
 func (t_ TextContentManager) Init() TextContentManager {
-	rv := objc.CallMethod[TextContentManager](t_, "init")
+	rv := objc.CallMethod[TextContentManager](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TextContentManagerClass) Alloc() TextContentManager {
-	rv := objc.CallMethod[TextContentManager](tc, "alloc")
+	rv := objc.CallMethod[TextContentManager](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextContentManagerClass) New() TextContentManager {
-	rv := objc.CallMethod[TextContentManager](tc, "new")
+	rv := objc.CallMethod[TextContentManager](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -63,63 +63,63 @@ func NewTextContentManager() TextContentManager {
 }
 
 func (t_ TextContentManager) PerformEditingTransactionUsingBlock(transaction func()) {
-	objc.CallMethod[objc.Void](t_, "performEditingTransactionUsingBlock:", transaction)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("performEditingTransactionUsingBlock:"), transaction)
 }
 
 func (t_ TextContentManager) RecordEditActionInRange_NewTextRange(originalTextRange ITextRange, newTextRange ITextRange) {
-	objc.CallMethod[objc.Void](t_, "recordEditActionInRange:newTextRange:", originalTextRange, newTextRange)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("recordEditActionInRange:newTextRange:"), originalTextRange, newTextRange)
 }
 
 func (t_ TextContentManager) AddTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.CallMethod[objc.Void](t_, "addTextLayoutManager:", textLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTextLayoutManager:"), textLayoutManager)
 }
 
 func (t_ TextContentManager) RemoveTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.CallMethod[objc.Void](t_, "removeTextLayoutManager:", textLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTextLayoutManager:"), textLayoutManager)
 }
 
 func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler func(error foundation.Error)) {
-	objc.CallMethod[objc.Void](t_, "synchronizeTextLayoutManagers:", completionHandler)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("synchronizeTextLayoutManagers:"), completionHandler)
 }
 
 func (t_ TextContentManager) TextElementsForRange(range_ ITextRange) []TextElement {
-	rv := objc.CallMethod[[]TextElement](t_, "textElementsForRange:", range_)
+	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("textElementsForRange:"), range_)
 	return rv
 }
 
 func (t_ TextContentManager) AutomaticallySynchronizesToBackingStore() bool {
-	rv := objc.CallMethod[bool](t_, "automaticallySynchronizesToBackingStore")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("automaticallySynchronizesToBackingStore"))
 	return rv
 }
 
 func (t_ TextContentManager) SetAutomaticallySynchronizesToBackingStore(value bool) {
-	objc.CallMethod[objc.Void](t_, "setAutomaticallySynchronizesToBackingStore:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutomaticallySynchronizesToBackingStore:"), value)
 }
 
 func (t_ TextContentManager) HasEditingTransaction() bool {
-	rv := objc.CallMethod[bool](t_, "hasEditingTransaction")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("hasEditingTransaction"))
 	return rv
 }
 
 func (t_ TextContentManager) PrimaryTextLayoutManager() TextLayoutManager {
-	rv := objc.CallMethod[TextLayoutManager](t_, "primaryTextLayoutManager")
+	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("primaryTextLayoutManager"))
 	return rv
 }
 
 func (t_ TextContentManager) SetPrimaryTextLayoutManager(value ITextLayoutManager) {
-	objc.CallMethod[objc.Void](t_, "setPrimaryTextLayoutManager:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPrimaryTextLayoutManager:"), value)
 }
 
 func (t_ TextContentManager) TextLayoutManagers() []TextLayoutManager {
-	rv := objc.CallMethod[[]TextLayoutManager](t_, "textLayoutManagers")
+	rv := objc.CallMethod[[]TextLayoutManager](t_, objc.GetSelector("textLayoutManagers"))
 	return rv
 }
 
 func (t_ TextContentManager) AutomaticallySynchronizesTextLayoutManagers() bool {
-	rv := objc.CallMethod[bool](t_, "automaticallySynchronizesTextLayoutManagers")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("automaticallySynchronizesTextLayoutManagers"))
 	return rv
 }
 
 func (t_ TextContentManager) SetAutomaticallySynchronizesTextLayoutManagers(value bool) {
-	objc.CallMethod[objc.Void](t_, "setAutomaticallySynchronizesTextLayoutManagers:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutomaticallySynchronizesTextLayoutManagers:"), value)
 }

@@ -34,22 +34,22 @@ func MakeTextList(ptr unsafe.Pointer) TextList {
 }
 
 func (t_ TextList) InitWithMarkerFormat_Options(markerFormat TextListMarkerFormat, options uint) TextList {
-	rv := objc.CallMethod[TextList](t_, "initWithMarkerFormat:options:", markerFormat, options)
+	rv := objc.CallMethod[TextList](t_, objc.GetSelector("initWithMarkerFormat:options:"), markerFormat, options)
 	return rv
 }
 
 func (t_ TextList) InitWithMarkerFormat_Options_StartingItemNumber(markerFormat TextListMarkerFormat, options TextListOptions, startingItemNumber int) TextList {
-	rv := objc.CallMethod[TextList](t_, "initWithMarkerFormat:options:startingItemNumber:", markerFormat, options, startingItemNumber)
+	rv := objc.CallMethod[TextList](t_, objc.GetSelector("initWithMarkerFormat:options:startingItemNumber:"), markerFormat, options, startingItemNumber)
 	return rv
 }
 
 func (tc _TextListClass) Alloc() TextList {
-	rv := objc.CallMethod[TextList](tc, "alloc")
+	rv := objc.CallMethod[TextList](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextListClass) New() TextList {
-	rv := objc.CallMethod[TextList](tc, "new")
+	rv := objc.CallMethod[TextList](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -59,35 +59,35 @@ func NewTextList() TextList {
 }
 
 func (t_ TextList) Init() TextList {
-	rv := objc.CallMethod[TextList](t_, "init")
+	rv := objc.CallMethod[TextList](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextList) MarkerForItemNumber(itemNumber int) string {
-	rv := objc.CallMethod[string](t_, "markerForItemNumber:", itemNumber)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("markerForItemNumber:"), itemNumber)
 	return rv
 }
 
 func (t_ TextList) MarkerFormat() TextListMarkerFormat {
-	rv := objc.CallMethod[TextListMarkerFormat](t_, "markerFormat")
+	rv := objc.CallMethod[TextListMarkerFormat](t_, objc.GetSelector("markerFormat"))
 	return rv
 }
 
 func (t_ TextList) IsOrdered() bool {
-	rv := objc.CallMethod[bool](t_, "isOrdered")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isOrdered"))
 	return rv
 }
 
 func (t_ TextList) ListOptions() TextListOptions {
-	rv := objc.CallMethod[TextListOptions](t_, "listOptions")
+	rv := objc.CallMethod[TextListOptions](t_, objc.GetSelector("listOptions"))
 	return rv
 }
 
 func (t_ TextList) StartingItemNumber() int {
-	rv := objc.CallMethod[int](t_, "startingItemNumber")
+	rv := objc.CallMethod[int](t_, objc.GetSelector("startingItemNumber"))
 	return rv
 }
 
 func (t_ TextList) SetStartingItemNumber(value int) {
-	objc.CallMethod[objc.Void](t_, "setStartingItemNumber:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setStartingItemNumber:"), value)
 }

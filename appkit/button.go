@@ -87,47 +87,47 @@ func MakeButton(ptr unsafe.Pointer) Button {
 }
 
 func (bc _ButtonClass) CheckboxWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, "checkboxWithTitle:target:action:", title, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("checkboxWithTitle:target:action:"), title, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithImage_Target_Action(image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, "buttonWithImage:target:action:", image, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithImage:target:action:"), image, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) RadioButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, "radioButtonWithTitle:target:action:", title, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithTitle_Image_Target_Action(title string, image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, "buttonWithTitle:image:target:action:", title, image, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, image, target, action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, "buttonWithTitle:target:action:", title, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithTitle:target:action:"), title, target, action)
 	return rv
 }
 
 func (b_ Button) InitWithFrame(frameRect foundation.Rect) Button {
-	rv := objc.CallMethod[Button](b_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[Button](b_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (b_ Button) Init() Button {
-	rv := objc.CallMethod[Button](b_, "init")
+	rv := objc.CallMethod[Button](b_, objc.GetSelector("init"))
 	return rv
 }
 
 func (bc _ButtonClass) Alloc() Button {
-	rv := objc.CallMethod[Button](bc, "alloc")
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (bc _ButtonClass) New() Button {
-	rv := objc.CallMethod[Button](bc, "new")
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -137,256 +137,256 @@ func NewButton() Button {
 }
 
 func (b_ Button) SetButtonType(type_ ButtonType) {
-	objc.CallMethod[objc.Void](b_, "setButtonType:", type_)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setButtonType:"), type_)
 }
 
 func (b_ Button) GetPeriodicDelay_Interval(delay *float32, interval *float32) {
-	objc.CallMethod[objc.Void](b_, "getPeriodicDelay:interval:", delay, interval)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("getPeriodicDelay:interval:"), delay, interval)
 }
 
 func (b_ Button) SetPeriodicDelay_Interval(delay float32, interval float32) {
-	objc.CallMethod[objc.Void](b_, "setPeriodicDelay:interval:", delay, interval)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setPeriodicDelay:interval:"), delay, interval)
 }
 
 // deprecated
 func (b_ Button) SetTitleWithMnemonic(stringWithAmpersand string) {
-	objc.CallMethod[objc.Void](b_, "setTitleWithMnemonic:", stringWithAmpersand)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitleWithMnemonic:"), stringWithAmpersand)
 }
 
 func (b_ Button) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	objc.CallMethod[objc.Void](b_, "compressWithPrioritizedCompressionOptions:", prioritizedOptions)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
 }
 
 func (b_ Button) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](b_, "minimumSizeWithPrioritizedCompressionOptions:", prioritizedOptions)
+	rv := objc.CallMethod[foundation.Size](b_, objc.GetSelector("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
 	return rv
 }
 
 func (b_ Button) SetNextState() {
-	objc.CallMethod[objc.Void](b_, "setNextState")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setNextState"))
 }
 
 func (b_ Button) Highlight(flag bool) {
-	objc.CallMethod[objc.Void](b_, "highlight:", flag)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("highlight:"), flag)
 }
 
 func (b_ Button) ContentTintColor() Color {
-	rv := objc.CallMethod[Color](b_, "contentTintColor")
+	rv := objc.CallMethod[Color](b_, objc.GetSelector("contentTintColor"))
 	return rv
 }
 
 func (b_ Button) SetContentTintColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, "setContentTintColor:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentTintColor:"), value)
 }
 
 func (b_ Button) HasDestructiveAction() bool {
-	rv := objc.CallMethod[bool](b_, "hasDestructiveAction")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("hasDestructiveAction"))
 	return rv
 }
 
 func (b_ Button) SetHasDestructiveAction(value bool) {
-	objc.CallMethod[objc.Void](b_, "setHasDestructiveAction:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setHasDestructiveAction:"), value)
 }
 
 func (b_ Button) AlternateTitle() string {
-	rv := objc.CallMethod[string](b_, "alternateTitle")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("alternateTitle"))
 	return rv
 }
 
 func (b_ Button) SetAlternateTitle(value string) {
-	objc.CallMethod[objc.Void](b_, "setAlternateTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateTitle:"), value)
 }
 
 func (b_ Button) AttributedTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](b_, "attributedTitle")
+	rv := objc.CallMethod[foundation.AttributedString](b_, objc.GetSelector("attributedTitle"))
 	return rv
 }
 
 func (b_ Button) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, "setAttributedTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedTitle:"), value)
 }
 
 func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](b_, "attributedAlternateTitle")
+	rv := objc.CallMethod[foundation.AttributedString](b_, objc.GetSelector("attributedAlternateTitle"))
 	return rv
 }
 
 func (b_ Button) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, "setAttributedAlternateTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedAlternateTitle:"), value)
 }
 
 func (b_ Button) Title() string {
-	rv := objc.CallMethod[string](b_, "title")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("title"))
 	return rv
 }
 
 func (b_ Button) SetTitle(value string) {
-	objc.CallMethod[objc.Void](b_, "setTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitle:"), value)
 }
 
 func (b_ Button) SymbolConfiguration() ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](b_, "symbolConfiguration")
+	rv := objc.CallMethod[ImageSymbolConfiguration](b_, objc.GetSelector("symbolConfiguration"))
 	return rv
 }
 
 func (b_ Button) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.CallMethod[objc.Void](b_, "setSymbolConfiguration:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSymbolConfiguration:"), value)
 }
 
 func (b_ Button) Sound() Sound {
-	rv := objc.CallMethod[Sound](b_, "sound")
+	rv := objc.CallMethod[Sound](b_, objc.GetSelector("sound"))
 	return rv
 }
 
 func (b_ Button) SetSound(value ISound) {
-	objc.CallMethod[objc.Void](b_, "setSound:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSound:"), value)
 }
 
 func (b_ Button) IsSpringLoaded() bool {
-	rv := objc.CallMethod[bool](b_, "isSpringLoaded")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isSpringLoaded"))
 	return rv
 }
 
 func (b_ Button) SetSpringLoaded(value bool) {
-	objc.CallMethod[objc.Void](b_, "setSpringLoaded:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSpringLoaded:"), value)
 }
 
 func (b_ Button) MaxAcceleratorLevel() int {
-	rv := objc.CallMethod[int](b_, "maxAcceleratorLevel")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("maxAcceleratorLevel"))
 	return rv
 }
 
 func (b_ Button) SetMaxAcceleratorLevel(value int) {
-	objc.CallMethod[objc.Void](b_, "setMaxAcceleratorLevel:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMaxAcceleratorLevel:"), value)
 }
 
 func (b_ Button) Image() Image {
-	rv := objc.CallMethod[Image](b_, "image")
+	rv := objc.CallMethod[Image](b_, objc.GetSelector("image"))
 	return rv
 }
 
 func (b_ Button) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, "setImage:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImage:"), value)
 }
 
 func (b_ Button) AlternateImage() Image {
-	rv := objc.CallMethod[Image](b_, "alternateImage")
+	rv := objc.CallMethod[Image](b_, objc.GetSelector("alternateImage"))
 	return rv
 }
 
 func (b_ Button) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, "setAlternateImage:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), value)
 }
 
 func (b_ Button) ImagePosition() CellImagePosition {
-	rv := objc.CallMethod[CellImagePosition](b_, "imagePosition")
+	rv := objc.CallMethod[CellImagePosition](b_, objc.GetSelector("imagePosition"))
 	return rv
 }
 
 func (b_ Button) SetImagePosition(value CellImagePosition) {
-	objc.CallMethod[objc.Void](b_, "setImagePosition:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImagePosition:"), value)
 }
 
 func (b_ Button) IsBordered() bool {
-	rv := objc.CallMethod[bool](b_, "isBordered")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isBordered"))
 	return rv
 }
 
 func (b_ Button) SetBordered(value bool) {
-	objc.CallMethod[objc.Void](b_, "setBordered:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBordered:"), value)
 }
 
 func (b_ Button) IsTransparent() bool {
-	rv := objc.CallMethod[bool](b_, "isTransparent")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isTransparent"))
 	return rv
 }
 
 func (b_ Button) SetTransparent(value bool) {
-	objc.CallMethod[objc.Void](b_, "setTransparent:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTransparent:"), value)
 }
 
 func (b_ Button) BezelStyle() BezelStyle {
-	rv := objc.CallMethod[BezelStyle](b_, "bezelStyle")
+	rv := objc.CallMethod[BezelStyle](b_, objc.GetSelector("bezelStyle"))
 	return rv
 }
 
 func (b_ Button) SetBezelStyle(value BezelStyle) {
-	objc.CallMethod[objc.Void](b_, "setBezelStyle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBezelStyle:"), value)
 }
 
 func (b_ Button) BezelColor() Color {
-	rv := objc.CallMethod[Color](b_, "bezelColor")
+	rv := objc.CallMethod[Color](b_, objc.GetSelector("bezelColor"))
 	return rv
 }
 
 func (b_ Button) SetBezelColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, "setBezelColor:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBezelColor:"), value)
 }
 
 func (b_ Button) ShowsBorderOnlyWhileMouseInside() bool {
-	rv := objc.CallMethod[bool](b_, "showsBorderOnlyWhileMouseInside")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("showsBorderOnlyWhileMouseInside"))
 	return rv
 }
 
 func (b_ Button) SetShowsBorderOnlyWhileMouseInside(value bool) {
-	objc.CallMethod[objc.Void](b_, "setShowsBorderOnlyWhileMouseInside:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setShowsBorderOnlyWhileMouseInside:"), value)
 }
 
 func (b_ Button) ImageHugsTitle() bool {
-	rv := objc.CallMethod[bool](b_, "imageHugsTitle")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("imageHugsTitle"))
 	return rv
 }
 
 func (b_ Button) SetImageHugsTitle(value bool) {
-	objc.CallMethod[objc.Void](b_, "setImageHugsTitle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImageHugsTitle:"), value)
 }
 
 func (b_ Button) ImageScaling() ImageScaling {
-	rv := objc.CallMethod[ImageScaling](b_, "imageScaling")
+	rv := objc.CallMethod[ImageScaling](b_, objc.GetSelector("imageScaling"))
 	return rv
 }
 
 func (b_ Button) SetImageScaling(value ImageScaling) {
-	objc.CallMethod[objc.Void](b_, "setImageScaling:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImageScaling:"), value)
 }
 
 func (b_ Button) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](b_, "activeCompressionOptions")
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](b_, objc.GetSelector("activeCompressionOptions"))
 	return rv
 }
 
 func (b_ Button) AllowsMixedState() bool {
-	rv := objc.CallMethod[bool](b_, "allowsMixedState")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("allowsMixedState"))
 	return rv
 }
 
 func (b_ Button) SetAllowsMixedState(value bool) {
-	objc.CallMethod[objc.Void](b_, "setAllowsMixedState:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowsMixedState:"), value)
 }
 
 func (b_ Button) State() ControlStateValue {
-	rv := objc.CallMethod[ControlStateValue](b_, "state")
+	rv := objc.CallMethod[ControlStateValue](b_, objc.GetSelector("state"))
 	return rv
 }
 
 func (b_ Button) SetState(value ControlStateValue) {
-	objc.CallMethod[objc.Void](b_, "setState:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setState:"), value)
 }
 
 func (b_ Button) KeyEquivalent() string {
-	rv := objc.CallMethod[string](b_, "keyEquivalent")
+	rv := objc.CallMethod[string](b_, objc.GetSelector("keyEquivalent"))
 	return rv
 }
 
 func (b_ Button) SetKeyEquivalent(value string) {
-	objc.CallMethod[objc.Void](b_, "setKeyEquivalent:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalent:"), value)
 }
 
 func (b_ Button) KeyEquivalentModifierMask() EventModifierFlags {
-	rv := objc.CallMethod[EventModifierFlags](b_, "keyEquivalentModifierMask")
+	rv := objc.CallMethod[EventModifierFlags](b_, objc.GetSelector("keyEquivalentModifierMask"))
 	return rv
 }
 
 func (b_ Button) SetKeyEquivalentModifierMask(value EventModifierFlags) {
-	objc.CallMethod[objc.Void](b_, "setKeyEquivalentModifierMask:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalentModifierMask:"), value)
 }

@@ -57,22 +57,22 @@ func MakeLocale(ptr unsafe.Pointer) Locale {
 }
 
 func (lc _LocaleClass) LocaleWithLocaleIdentifier(ident string) Locale {
-	rv := objc.CallMethod[Locale](lc, "localeWithLocaleIdentifier:", ident)
+	rv := objc.CallMethod[Locale](lc, objc.GetSelector("localeWithLocaleIdentifier:"), ident)
 	return rv
 }
 
 func (l_ Locale) InitWithLocaleIdentifier(string_ string) Locale {
-	rv := objc.CallMethod[Locale](l_, "initWithLocaleIdentifier:", string_)
+	rv := objc.CallMethod[Locale](l_, objc.GetSelector("initWithLocaleIdentifier:"), string_)
 	return rv
 }
 
 func (lc _LocaleClass) Alloc() Locale {
-	rv := objc.CallMethod[Locale](lc, "alloc")
+	rv := objc.CallMethod[Locale](lc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (lc _LocaleClass) New() Locale {
-	rv := objc.CallMethod[Locale](lc, "new")
+	rv := objc.CallMethod[Locale](lc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -82,236 +82,236 @@ func NewLocale() Locale {
 }
 
 func (l_ Locale) Init() Locale {
-	rv := objc.CallMethod[Locale](l_, "init")
+	rv := objc.CallMethod[Locale](l_, objc.GetSelector("init"))
 	return rv
 }
 
 func (lc _LocaleClass) CanonicalLocaleIdentifierFromString(string_ string) string {
-	rv := objc.CallMethod[string](lc, "canonicalLocaleIdentifierFromString:", string_)
+	rv := objc.CallMethod[string](lc, objc.GetSelector("canonicalLocaleIdentifierFromString:"), string_)
 	return rv
 }
 
 func (lc _LocaleClass) ComponentsFromLocaleIdentifier(string_ string) map[string]string {
-	rv := objc.CallMethod[map[string]string](lc, "componentsFromLocaleIdentifier:", string_)
+	rv := objc.CallMethod[map[string]string](lc, objc.GetSelector("componentsFromLocaleIdentifier:"), string_)
 	return rv
 }
 
 func (lc _LocaleClass) LocaleIdentifierFromComponents(dict map[string]string) string {
-	rv := objc.CallMethod[string](lc, "localeIdentifierFromComponents:", dict)
+	rv := objc.CallMethod[string](lc, objc.GetSelector("localeIdentifierFromComponents:"), dict)
 	return rv
 }
 
 func (lc _LocaleClass) CanonicalLanguageIdentifierFromString(string_ string) string {
-	rv := objc.CallMethod[string](lc, "canonicalLanguageIdentifierFromString:", string_)
+	rv := objc.CallMethod[string](lc, objc.GetSelector("canonicalLanguageIdentifierFromString:"), string_)
 	return rv
 }
 
 func (lc _LocaleClass) LocaleIdentifierFromWindowsLocaleCode(lcid uint32) string {
-	rv := objc.CallMethod[string](lc, "localeIdentifierFromWindowsLocaleCode:", lcid)
+	rv := objc.CallMethod[string](lc, objc.GetSelector("localeIdentifierFromWindowsLocaleCode:"), lcid)
 	return rv
 }
 
 func (lc _LocaleClass) WindowsLocaleCodeFromLocaleIdentifier(localeIdentifier string) uint32 {
-	rv := objc.CallMethod[uint32](lc, "windowsLocaleCodeFromLocaleIdentifier:", localeIdentifier)
+	rv := objc.CallMethod[uint32](lc, objc.GetSelector("windowsLocaleCodeFromLocaleIdentifier:"), localeIdentifier)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForLocaleIdentifier(localeIdentifier string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForLocaleIdentifier:", localeIdentifier)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForLocaleIdentifier:"), localeIdentifier)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForCountryCode(countryCode string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForCountryCode:", countryCode)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForCountryCode:"), countryCode)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForLanguageCode(languageCode string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForLanguageCode:", languageCode)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForLanguageCode:"), languageCode)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForScriptCode(scriptCode string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForScriptCode:", scriptCode)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForScriptCode:"), scriptCode)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForVariantCode(variantCode string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForVariantCode:", variantCode)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForVariantCode:"), variantCode)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForCollationIdentifier(collationIdentifier string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForCollationIdentifier:", collationIdentifier)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForCollationIdentifier:"), collationIdentifier)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForCollatorIdentifier(collatorIdentifier string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForCollatorIdentifier:", collatorIdentifier)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForCollatorIdentifier:"), collatorIdentifier)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForCurrencyCode(currencyCode string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForCurrencyCode:", currencyCode)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForCurrencyCode:"), currencyCode)
 	return rv
 }
 
 func (l_ Locale) LocalizedStringForCalendarIdentifier(calendarIdentifier string) string {
-	rv := objc.CallMethod[string](l_, "localizedStringForCalendarIdentifier:", calendarIdentifier)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localizedStringForCalendarIdentifier:"), calendarIdentifier)
 	return rv
 }
 
 func (l_ Locale) ObjectForKey(key LocaleKey) objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, "objectForKey:", key)
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("objectForKey:"), key)
 	return rv
 }
 
 func (l_ Locale) DisplayNameForKey_Value(key LocaleKey, value objc.IObject) string {
-	rv := objc.CallMethod[string](l_, "displayNameForKey:value:", key, value)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("displayNameForKey:value:"), key, value)
 	return rv
 }
 
 func (lc _LocaleClass) CharacterDirectionForLanguage(isoLangCode string) LocaleLanguageDirection {
-	rv := objc.CallMethod[LocaleLanguageDirection](lc, "characterDirectionForLanguage:", isoLangCode)
+	rv := objc.CallMethod[LocaleLanguageDirection](lc, objc.GetSelector("characterDirectionForLanguage:"), isoLangCode)
 	return rv
 }
 
 func (lc _LocaleClass) LineDirectionForLanguage(isoLangCode string) LocaleLanguageDirection {
-	rv := objc.CallMethod[LocaleLanguageDirection](lc, "lineDirectionForLanguage:", isoLangCode)
+	rv := objc.CallMethod[LocaleLanguageDirection](lc, objc.GetSelector("lineDirectionForLanguage:"), isoLangCode)
 	return rv
 }
 
 func (lc _LocaleClass) AutoupdatingCurrentLocale() Locale {
-	rv := objc.CallMethod[Locale](lc, "autoupdatingCurrentLocale")
+	rv := objc.CallMethod[Locale](lc, objc.GetSelector("autoupdatingCurrentLocale"))
 	return rv
 }
 
 func (lc _LocaleClass) CurrentLocale() Locale {
-	rv := objc.CallMethod[Locale](lc, "currentLocale")
+	rv := objc.CallMethod[Locale](lc, objc.GetSelector("currentLocale"))
 	return rv
 }
 
 func (lc _LocaleClass) SystemLocale() Locale {
-	rv := objc.CallMethod[Locale](lc, "systemLocale")
+	rv := objc.CallMethod[Locale](lc, objc.GetSelector("systemLocale"))
 	return rv
 }
 
 func (lc _LocaleClass) AvailableLocaleIdentifiers() []string {
-	rv := objc.CallMethod[[]string](lc, "availableLocaleIdentifiers")
+	rv := objc.CallMethod[[]string](lc, objc.GetSelector("availableLocaleIdentifiers"))
 	return rv
 }
 
 func (lc _LocaleClass) ISOCountryCodes() []string {
-	rv := objc.CallMethod[[]string](lc, "ISOCountryCodes")
+	rv := objc.CallMethod[[]string](lc, objc.GetSelector("ISOCountryCodes"))
 	return rv
 }
 
 func (lc _LocaleClass) ISOLanguageCodes() []string {
-	rv := objc.CallMethod[[]string](lc, "ISOLanguageCodes")
+	rv := objc.CallMethod[[]string](lc, objc.GetSelector("ISOLanguageCodes"))
 	return rv
 }
 
 func (lc _LocaleClass) ISOCurrencyCodes() []string {
-	rv := objc.CallMethod[[]string](lc, "ISOCurrencyCodes")
+	rv := objc.CallMethod[[]string](lc, objc.GetSelector("ISOCurrencyCodes"))
 	return rv
 }
 
 func (lc _LocaleClass) CommonISOCurrencyCodes() []string {
-	rv := objc.CallMethod[[]string](lc, "commonISOCurrencyCodes")
+	rv := objc.CallMethod[[]string](lc, objc.GetSelector("commonISOCurrencyCodes"))
 	return rv
 }
 
 func (l_ Locale) LocaleIdentifier() string {
-	rv := objc.CallMethod[string](l_, "localeIdentifier")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("localeIdentifier"))
 	return rv
 }
 
 func (l_ Locale) CountryCode() string {
-	rv := objc.CallMethod[string](l_, "countryCode")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("countryCode"))
 	return rv
 }
 
 func (l_ Locale) LanguageCode() string {
-	rv := objc.CallMethod[string](l_, "languageCode")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("languageCode"))
 	return rv
 }
 
 func (l_ Locale) ScriptCode() string {
-	rv := objc.CallMethod[string](l_, "scriptCode")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("scriptCode"))
 	return rv
 }
 
 func (l_ Locale) VariantCode() string {
-	rv := objc.CallMethod[string](l_, "variantCode")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("variantCode"))
 	return rv
 }
 
 func (l_ Locale) ExemplarCharacterSet() CharacterSet {
-	rv := objc.CallMethod[CharacterSet](l_, "exemplarCharacterSet")
+	rv := objc.CallMethod[CharacterSet](l_, objc.GetSelector("exemplarCharacterSet"))
 	return rv
 }
 
 func (l_ Locale) CollationIdentifier() string {
-	rv := objc.CallMethod[string](l_, "collationIdentifier")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("collationIdentifier"))
 	return rv
 }
 
 func (l_ Locale) CollatorIdentifier() string {
-	rv := objc.CallMethod[string](l_, "collatorIdentifier")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("collatorIdentifier"))
 	return rv
 }
 
 func (l_ Locale) UsesMetricSystem() bool {
-	rv := objc.CallMethod[bool](l_, "usesMetricSystem")
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("usesMetricSystem"))
 	return rv
 }
 
 func (l_ Locale) DecimalSeparator() string {
-	rv := objc.CallMethod[string](l_, "decimalSeparator")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("decimalSeparator"))
 	return rv
 }
 
 func (l_ Locale) GroupingSeparator() string {
-	rv := objc.CallMethod[string](l_, "groupingSeparator")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("groupingSeparator"))
 	return rv
 }
 
 func (l_ Locale) CurrencyCode() string {
-	rv := objc.CallMethod[string](l_, "currencyCode")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("currencyCode"))
 	return rv
 }
 
 func (l_ Locale) CurrencySymbol() string {
-	rv := objc.CallMethod[string](l_, "currencySymbol")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("currencySymbol"))
 	return rv
 }
 
 func (l_ Locale) CalendarIdentifier() string {
-	rv := objc.CallMethod[string](l_, "calendarIdentifier")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("calendarIdentifier"))
 	return rv
 }
 
 func (l_ Locale) QuotationBeginDelimiter() string {
-	rv := objc.CallMethod[string](l_, "quotationBeginDelimiter")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("quotationBeginDelimiter"))
 	return rv
 }
 
 func (l_ Locale) QuotationEndDelimiter() string {
-	rv := objc.CallMethod[string](l_, "quotationEndDelimiter")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("quotationEndDelimiter"))
 	return rv
 }
 
 func (l_ Locale) AlternateQuotationBeginDelimiter() string {
-	rv := objc.CallMethod[string](l_, "alternateQuotationBeginDelimiter")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("alternateQuotationBeginDelimiter"))
 	return rv
 }
 
 func (l_ Locale) AlternateQuotationEndDelimiter() string {
-	rv := objc.CallMethod[string](l_, "alternateQuotationEndDelimiter")
+	rv := objc.CallMethod[string](l_, objc.GetSelector("alternateQuotationEndDelimiter"))
 	return rv
 }
 
 func (lc _LocaleClass) PreferredLanguages() []string {
-	rv := objc.CallMethod[[]string](lc, "preferredLanguages")
+	rv := objc.CallMethod[[]string](lc, objc.GetSelector("preferredLanguages"))
 	return rv
 }

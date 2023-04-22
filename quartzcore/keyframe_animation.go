@@ -48,22 +48,22 @@ func MakeKeyframeAnimation(ptr unsafe.Pointer) KeyframeAnimation {
 }
 
 func (kc _KeyframeAnimationClass) AnimationWithKeyPath(path string) KeyframeAnimation {
-	rv := objc.CallMethod[KeyframeAnimation](kc, "animationWithKeyPath:", path)
+	rv := objc.CallMethod[KeyframeAnimation](kc, objc.GetSelector("animationWithKeyPath:"), path)
 	return rv
 }
 
 func (kc _KeyframeAnimationClass) Animation() KeyframeAnimation {
-	rv := objc.CallMethod[KeyframeAnimation](kc, "animation")
+	rv := objc.CallMethod[KeyframeAnimation](kc, objc.GetSelector("animation"))
 	return rv
 }
 
 func (kc _KeyframeAnimationClass) Alloc() KeyframeAnimation {
-	rv := objc.CallMethod[KeyframeAnimation](kc, "alloc")
+	rv := objc.CallMethod[KeyframeAnimation](kc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (kc _KeyframeAnimationClass) New() KeyframeAnimation {
-	rv := objc.CallMethod[KeyframeAnimation](kc, "new")
+	rv := objc.CallMethod[KeyframeAnimation](kc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -73,87 +73,87 @@ func NewKeyframeAnimation() KeyframeAnimation {
 }
 
 func (k_ KeyframeAnimation) Init() KeyframeAnimation {
-	rv := objc.CallMethod[KeyframeAnimation](k_, "init")
+	rv := objc.CallMethod[KeyframeAnimation](k_, objc.GetSelector("init"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) Values() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](k_, "values")
+	rv := objc.CallMethod[[]objc.Object](k_, objc.GetSelector("values"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetValues(value []objc.IObject) {
-	objc.CallMethod[objc.Void](k_, "setValues:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setValues:"), value)
 }
 
 func (k_ KeyframeAnimation) Path() coregraphics.PathRef {
-	rv := objc.CallMethod[coregraphics.PathRef](k_, "path")
+	rv := objc.CallMethod[coregraphics.PathRef](k_, objc.GetSelector("path"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetPath(value coregraphics.PathRef) {
-	objc.CallMethod[objc.Void](k_, "setPath:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setPath:"), value)
 }
 
 func (k_ KeyframeAnimation) KeyTimes() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](k_, "keyTimes")
+	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("keyTimes"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetKeyTimes(value []foundation.INumber) {
-	objc.CallMethod[objc.Void](k_, "setKeyTimes:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setKeyTimes:"), value)
 }
 
 func (k_ KeyframeAnimation) TimingFunctions() []MediaTimingFunction {
-	rv := objc.CallMethod[[]MediaTimingFunction](k_, "timingFunctions")
+	rv := objc.CallMethod[[]MediaTimingFunction](k_, objc.GetSelector("timingFunctions"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetTimingFunctions(value []IMediaTimingFunction) {
-	objc.CallMethod[objc.Void](k_, "setTimingFunctions:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setTimingFunctions:"), value)
 }
 
 func (k_ KeyframeAnimation) CalculationMode() AnimationCalculationMode {
-	rv := objc.CallMethod[AnimationCalculationMode](k_, "calculationMode")
+	rv := objc.CallMethod[AnimationCalculationMode](k_, objc.GetSelector("calculationMode"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetCalculationMode(value AnimationCalculationMode) {
-	objc.CallMethod[objc.Void](k_, "setCalculationMode:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setCalculationMode:"), value)
 }
 
 func (k_ KeyframeAnimation) RotationMode() AnimationRotationMode {
-	rv := objc.CallMethod[AnimationRotationMode](k_, "rotationMode")
+	rv := objc.CallMethod[AnimationRotationMode](k_, objc.GetSelector("rotationMode"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetRotationMode(value AnimationRotationMode) {
-	objc.CallMethod[objc.Void](k_, "setRotationMode:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setRotationMode:"), value)
 }
 
 func (k_ KeyframeAnimation) TensionValues() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](k_, "tensionValues")
+	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("tensionValues"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetTensionValues(value []foundation.INumber) {
-	objc.CallMethod[objc.Void](k_, "setTensionValues:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setTensionValues:"), value)
 }
 
 func (k_ KeyframeAnimation) ContinuityValues() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](k_, "continuityValues")
+	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("continuityValues"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetContinuityValues(value []foundation.INumber) {
-	objc.CallMethod[objc.Void](k_, "setContinuityValues:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setContinuityValues:"), value)
 }
 
 func (k_ KeyframeAnimation) BiasValues() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](k_, "biasValues")
+	rv := objc.CallMethod[[]foundation.Number](k_, objc.GetSelector("biasValues"))
 	return rv
 }
 
 func (k_ KeyframeAnimation) SetBiasValues(value []foundation.INumber) {
-	objc.CallMethod[objc.Void](k_, "setBiasValues:", value)
+	objc.CallMethod[objc.Void](k_, objc.GetSelector("setBiasValues:"), value)
 }

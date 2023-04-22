@@ -24,19 +24,19 @@ type EditorWrapper struct {
 }
 
 func (e_ EditorWrapper) CommitEditing() bool {
-	rv := objc.CallMethod[bool](e_, "commitEditing")
+	rv := objc.CallMethod[bool](e_, objc.GetSelector("commitEditing"))
 	return rv
 }
 
 func (e_ EditorWrapper) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](e_, "commitEditingWithDelegate:didCommitSelector:contextInfo:", delegate, didCommitSelector, contextInfo)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("commitEditingWithDelegate:didCommitSelector:contextInfo:"), delegate, didCommitSelector, contextInfo)
 }
 
 func (e_ EditorWrapper) CommitEditingAndReturnError(error *foundation.Error) bool {
-	rv := objc.CallMethod[bool](e_, "commitEditingAndReturnError:", unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](e_, objc.GetSelector("commitEditingAndReturnError:"), unsafe.Pointer(error))
 	return rv
 }
 
 func (e_ EditorWrapper) DiscardEditing() {
-	objc.CallMethod[objc.Void](e_, "discardEditing")
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("discardEditing"))
 }

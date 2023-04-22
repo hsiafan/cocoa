@@ -205,7 +205,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitViewWillResizeSubviews() bool
 }
 
 func (s_ SplitViewDelegateWrapper) SplitViewWillResizeSubviews(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](s_, "splitViewWillResizeSubviews:", notification)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("splitViewWillResizeSubviews:"), notification)
 }
 
 func (s_ *SplitViewDelegateWrapper) ImplementsSplitViewDidResizeSubviews() bool {
@@ -213,7 +213,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitViewDidResizeSubviews() bool 
 }
 
 func (s_ SplitViewDelegateWrapper) SplitViewDidResizeSubviews(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](s_, "splitViewDidResizeSubviews:", notification)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("splitViewDidResizeSubviews:"), notification)
 }
 
 func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_CanCollapseSubview() bool {
@@ -221,7 +221,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_CanCollapseSubview() boo
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_CanCollapseSubview(splitView ISplitView, subview IView) bool {
-	rv := objc.CallMethod[bool](s_, "splitView:canCollapseSubview:", splitView, subview)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("splitView:canCollapseSubview:"), splitView, subview)
 	return rv
 }
 
@@ -231,7 +231,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ShouldCollapseSubview_Fo
 
 // deprecated
 func (s_ SplitViewDelegateWrapper) SplitView_ShouldCollapseSubview_ForDoubleClickOnDividerAtIndex(splitView ISplitView, subview IView, dividerIndex int) bool {
-	rv := objc.CallMethod[bool](s_, "splitView:shouldCollapseSubview:forDoubleClickOnDividerAtIndex:", splitView, subview, dividerIndex)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("splitView:shouldCollapseSubview:forDoubleClickOnDividerAtIndex:"), splitView, subview, dividerIndex)
 	return rv
 }
 
@@ -240,7 +240,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_EffectiveRect_ForDrawnRe
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_EffectiveRect_ForDrawnRect_OfDividerAtIndex(splitView ISplitView, proposedEffectiveRect foundation.Rect, drawnRect foundation.Rect, dividerIndex int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:", splitView, proposedEffectiveRect, drawnRect, dividerIndex)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:"), splitView, proposedEffectiveRect, drawnRect, dividerIndex)
 	return rv
 }
 
@@ -249,7 +249,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ShouldHideDividerAtIndex
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_ShouldHideDividerAtIndex(splitView ISplitView, dividerIndex int) bool {
-	rv := objc.CallMethod[bool](s_, "splitView:shouldHideDividerAtIndex:", splitView, dividerIndex)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("splitView:shouldHideDividerAtIndex:"), splitView, dividerIndex)
 	return rv
 }
 
@@ -258,7 +258,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_AdditionalEffectiveRectO
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_AdditionalEffectiveRectOfDividerAtIndex(splitView ISplitView, dividerIndex int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, "splitView:additionalEffectiveRectOfDividerAtIndex:", splitView, dividerIndex)
+	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("splitView:additionalEffectiveRectOfDividerAtIndex:"), splitView, dividerIndex)
 	return rv
 }
 
@@ -267,7 +267,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ConstrainSplitPosition_O
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_ConstrainSplitPosition_OfSubviewAt(splitView ISplitView, proposedPosition float64, dividerIndex int) float64 {
-	rv := objc.CallMethod[float64](s_, "splitView:constrainSplitPosition:ofSubviewAt:", splitView, proposedPosition, dividerIndex)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("splitView:constrainSplitPosition:ofSubviewAt:"), splitView, proposedPosition, dividerIndex)
 	return rv
 }
 
@@ -276,7 +276,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ConstrainMinCoordinate_O
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_ConstrainMinCoordinate_OfSubviewAt(splitView ISplitView, proposedMinimumPosition float64, dividerIndex int) float64 {
-	rv := objc.CallMethod[float64](s_, "splitView:constrainMinCoordinate:ofSubviewAt:", splitView, proposedMinimumPosition, dividerIndex)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("splitView:constrainMinCoordinate:ofSubviewAt:"), splitView, proposedMinimumPosition, dividerIndex)
 	return rv
 }
 
@@ -285,7 +285,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ConstrainMaxCoordinate_O
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_ConstrainMaxCoordinate_OfSubviewAt(splitView ISplitView, proposedMaximumPosition float64, dividerIndex int) float64 {
-	rv := objc.CallMethod[float64](s_, "splitView:constrainMaxCoordinate:ofSubviewAt:", splitView, proposedMaximumPosition, dividerIndex)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("splitView:constrainMaxCoordinate:ofSubviewAt:"), splitView, proposedMaximumPosition, dividerIndex)
 	return rv
 }
 
@@ -294,7 +294,7 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ResizeSubviewsWithOldSiz
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_ResizeSubviewsWithOldSize(splitView ISplitView, oldSize foundation.Size) {
-	objc.CallMethod[objc.Void](s_, "splitView:resizeSubviewsWithOldSize:", splitView, oldSize)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("splitView:resizeSubviewsWithOldSize:"), splitView, oldSize)
 }
 
 func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ShouldAdjustSizeOfSubview() bool {
@@ -302,6 +302,6 @@ func (s_ *SplitViewDelegateWrapper) ImplementsSplitView_ShouldAdjustSizeOfSubvie
 }
 
 func (s_ SplitViewDelegateWrapper) SplitView_ShouldAdjustSizeOfSubview(splitView ISplitView, view IView) bool {
-	rv := objc.CallMethod[bool](s_, "splitView:shouldAdjustSizeOfSubview:", splitView, view)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("splitView:shouldAdjustSizeOfSubview:"), splitView, view)
 	return rv
 }

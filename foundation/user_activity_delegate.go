@@ -66,7 +66,7 @@ func (u_ *UserActivityDelegateWrapper) ImplementsUserActivity_DidReceiveInputStr
 }
 
 func (u_ UserActivityDelegateWrapper) UserActivity_DidReceiveInputStream_OutputStream(userActivity IUserActivity, inputStream IInputStream, outputStream IOutputStream) {
-	objc.CallMethod[objc.Void](u_, "userActivity:didReceiveInputStream:outputStream:", userActivity, inputStream, outputStream)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("userActivity:didReceiveInputStream:outputStream:"), userActivity, inputStream, outputStream)
 }
 
 func (u_ *UserActivityDelegateWrapper) ImplementsUserActivityWasContinued() bool {
@@ -74,7 +74,7 @@ func (u_ *UserActivityDelegateWrapper) ImplementsUserActivityWasContinued() bool
 }
 
 func (u_ UserActivityDelegateWrapper) UserActivityWasContinued(userActivity IUserActivity) {
-	objc.CallMethod[objc.Void](u_, "userActivityWasContinued:", userActivity)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("userActivityWasContinued:"), userActivity)
 }
 
 func (u_ *UserActivityDelegateWrapper) ImplementsUserActivityWillSave() bool {
@@ -82,5 +82,5 @@ func (u_ *UserActivityDelegateWrapper) ImplementsUserActivityWillSave() bool {
 }
 
 func (u_ UserActivityDelegateWrapper) UserActivityWillSave(userActivity IUserActivity) {
-	objc.CallMethod[objc.Void](u_, "userActivityWillSave:", userActivity)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("userActivityWillSave:"), userActivity)
 }

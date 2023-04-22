@@ -34,22 +34,22 @@ func MakeCollectionLayoutItem(ptr unsafe.Pointer) CollectionLayoutItem {
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](cc, "itemWithLayoutSize:", layoutSize)
+	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) Alloc() CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) New() CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -59,34 +59,34 @@ func NewCollectionLayoutItem() CollectionLayoutItem {
 }
 
 func (c_ CollectionLayoutItem) Init() CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutItem](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutItem) LayoutSize() CollectionLayoutSize {
-	rv := objc.CallMethod[CollectionLayoutSize](c_, "layoutSize")
+	rv := objc.CallMethod[CollectionLayoutSize](c_, objc.GetSelector("layoutSize"))
 	return rv
 }
 
 func (c_ CollectionLayoutItem) SupplementaryItems() []CollectionLayoutSupplementaryItem {
-	rv := objc.CallMethod[[]CollectionLayoutSupplementaryItem](c_, "supplementaryItems")
+	rv := objc.CallMethod[[]CollectionLayoutSupplementaryItem](c_, objc.GetSelector("supplementaryItems"))
 	return rv
 }
 
 func (c_ CollectionLayoutItem) EdgeSpacing() CollectionLayoutEdgeSpacing {
-	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](c_, "edgeSpacing")
+	rv := objc.CallMethod[CollectionLayoutEdgeSpacing](c_, objc.GetSelector("edgeSpacing"))
 	return rv
 }
 
 func (c_ CollectionLayoutItem) SetEdgeSpacing(value ICollectionLayoutEdgeSpacing) {
-	objc.CallMethod[objc.Void](c_, "setEdgeSpacing:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setEdgeSpacing:"), value)
 }
 
 func (c_ CollectionLayoutItem) ContentInsets() DirectionalEdgeInsets {
-	rv := objc.CallMethod[DirectionalEdgeInsets](c_, "contentInsets")
+	rv := objc.CallMethod[DirectionalEdgeInsets](c_, objc.GetSelector("contentInsets"))
 	return rv
 }
 
 func (c_ CollectionLayoutItem) SetContentInsets(value DirectionalEdgeInsets) {
-	objc.CallMethod[objc.Void](c_, "setContentInsets:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContentInsets:"), value)
 }

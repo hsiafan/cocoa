@@ -28,12 +28,12 @@ func MakeType(ptr unsafe.Pointer) Type {
 }
 
 func (tc _TypeClass) Alloc() Type {
-	rv := objc.CallMethod[Type](tc, "alloc")
+	rv := objc.CallMethod[Type](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TypeClass) New() Type {
-	rv := objc.CallMethod[Type](tc, "new")
+	rv := objc.CallMethod[Type](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -43,6 +43,6 @@ func NewType() Type {
 }
 
 func (t_ Type) Init() Type {
-	rv := objc.CallMethod[Type](t_, "init")
+	rv := objc.CallMethod[Type](t_, objc.GetSelector("init"))
 	return rv
 }

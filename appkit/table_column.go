@@ -64,17 +64,17 @@ func MakeTableColumn(ptr unsafe.Pointer) TableColumn {
 }
 
 func (t_ TableColumn) InitWithIdentifier(identifier UserInterfaceItemIdentifier) TableColumn {
-	rv := objc.CallMethod[TableColumn](t_, "initWithIdentifier:", identifier)
+	rv := objc.CallMethod[TableColumn](t_, objc.GetSelector("initWithIdentifier:"), identifier)
 	return rv
 }
 
 func (tc _TableColumnClass) Alloc() TableColumn {
-	rv := objc.CallMethod[TableColumn](tc, "alloc")
+	rv := objc.CallMethod[TableColumn](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TableColumnClass) New() TableColumn {
-	rv := objc.CallMethod[TableColumn](tc, "new")
+	rv := objc.CallMethod[TableColumn](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -84,146 +84,146 @@ func NewTableColumn() TableColumn {
 }
 
 func (t_ TableColumn) Init() TableColumn {
-	rv := objc.CallMethod[TableColumn](t_, "init")
+	rv := objc.CallMethod[TableColumn](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TableColumn) SizeToFit() {
-	objc.CallMethod[objc.Void](t_, "sizeToFit")
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("sizeToFit"))
 }
 
 // deprecated
 func (t_ TableColumn) IsResizable() bool {
-	rv := objc.CallMethod[bool](t_, "isResizable")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isResizable"))
 	return rv
 }
 
 // deprecated
 func (t_ TableColumn) SetResizable(flag bool) {
-	objc.CallMethod[objc.Void](t_, "setResizable:", flag)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setResizable:"), flag)
 }
 
 // deprecated
 func (t_ TableColumn) DataCellForRow(row int) objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "dataCellForRow:", row)
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("dataCellForRow:"), row)
 	return rv
 }
 
 func (t_ TableColumn) TableView() TableView {
-	rv := objc.CallMethod[TableView](t_, "tableView")
+	rv := objc.CallMethod[TableView](t_, objc.GetSelector("tableView"))
 	return rv
 }
 
 func (t_ TableColumn) SetTableView(value ITableView) {
-	objc.CallMethod[objc.Void](t_, "setTableView:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), value)
 }
 
 func (t_ TableColumn) Width() float64 {
-	rv := objc.CallMethod[float64](t_, "width")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("width"))
 	return rv
 }
 
 func (t_ TableColumn) SetWidth(value float64) {
-	objc.CallMethod[objc.Void](t_, "setWidth:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setWidth:"), value)
 }
 
 func (t_ TableColumn) MinWidth() float64 {
-	rv := objc.CallMethod[float64](t_, "minWidth")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("minWidth"))
 	return rv
 }
 
 func (t_ TableColumn) SetMinWidth(value float64) {
-	objc.CallMethod[objc.Void](t_, "setMinWidth:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMinWidth:"), value)
 }
 
 func (t_ TableColumn) MaxWidth() float64 {
-	rv := objc.CallMethod[float64](t_, "maxWidth")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("maxWidth"))
 	return rv
 }
 
 func (t_ TableColumn) SetMaxWidth(value float64) {
-	objc.CallMethod[objc.Void](t_, "setMaxWidth:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMaxWidth:"), value)
 }
 
 func (t_ TableColumn) ResizingMask() TableColumnResizingOptions {
-	rv := objc.CallMethod[TableColumnResizingOptions](t_, "resizingMask")
+	rv := objc.CallMethod[TableColumnResizingOptions](t_, objc.GetSelector("resizingMask"))
 	return rv
 }
 
 func (t_ TableColumn) SetResizingMask(value TableColumnResizingOptions) {
-	objc.CallMethod[objc.Void](t_, "setResizingMask:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setResizingMask:"), value)
 }
 
 func (t_ TableColumn) Title() string {
-	rv := objc.CallMethod[string](t_, "title")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("title"))
 	return rv
 }
 
 func (t_ TableColumn) SetTitle(value string) {
-	objc.CallMethod[objc.Void](t_, "setTitle:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTitle:"), value)
 }
 
 func (t_ TableColumn) HeaderCell() TableHeaderCell {
-	rv := objc.CallMethod[TableHeaderCell](t_, "headerCell")
+	rv := objc.CallMethod[TableHeaderCell](t_, objc.GetSelector("headerCell"))
 	return rv
 }
 
 func (t_ TableColumn) SetHeaderCell(value ITableHeaderCell) {
-	objc.CallMethod[objc.Void](t_, "setHeaderCell:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeaderCell:"), value)
 }
 
 func (t_ TableColumn) Identifier() UserInterfaceItemIdentifier {
-	rv := objc.CallMethod[UserInterfaceItemIdentifier](t_, "identifier")
+	rv := objc.CallMethod[UserInterfaceItemIdentifier](t_, objc.GetSelector("identifier"))
 	return rv
 }
 
 func (t_ TableColumn) SetIdentifier(value UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, "setIdentifier:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setIdentifier:"), value)
 }
 
 func (t_ TableColumn) IsEditable() bool {
-	rv := objc.CallMethod[bool](t_, "isEditable")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEditable"))
 	return rv
 }
 
 func (t_ TableColumn) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](t_, "setEditable:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setEditable:"), value)
 }
 
 func (t_ TableColumn) SortDescriptorPrototype() foundation.SortDescriptor {
-	rv := objc.CallMethod[foundation.SortDescriptor](t_, "sortDescriptorPrototype")
+	rv := objc.CallMethod[foundation.SortDescriptor](t_, objc.GetSelector("sortDescriptorPrototype"))
 	return rv
 }
 
 func (t_ TableColumn) SetSortDescriptorPrototype(value foundation.ISortDescriptor) {
-	objc.CallMethod[objc.Void](t_, "setSortDescriptorPrototype:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSortDescriptorPrototype:"), value)
 }
 
 func (t_ TableColumn) IsHidden() bool {
-	rv := objc.CallMethod[bool](t_, "isHidden")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isHidden"))
 	return rv
 }
 
 func (t_ TableColumn) SetHidden(value bool) {
-	objc.CallMethod[objc.Void](t_, "setHidden:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHidden:"), value)
 }
 
 func (t_ TableColumn) HeaderToolTip() string {
-	rv := objc.CallMethod[string](t_, "headerToolTip")
+	rv := objc.CallMethod[string](t_, objc.GetSelector("headerToolTip"))
 	return rv
 }
 
 func (t_ TableColumn) SetHeaderToolTip(value string) {
-	objc.CallMethod[objc.Void](t_, "setHeaderToolTip:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeaderToolTip:"), value)
 }
 
 // deprecated
 func (t_ TableColumn) DataCell() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, "dataCell")
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("dataCell"))
 	return rv
 }
 
 // deprecated
 func (t_ TableColumn) SetDataCell(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setDataCell:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataCell:"), value)
 }

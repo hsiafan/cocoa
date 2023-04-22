@@ -103,17 +103,17 @@ func MakeResponder(ptr unsafe.Pointer) Responder {
 }
 
 func (r_ Responder) Init() Responder {
-	rv := objc.CallMethod[Responder](r_, "init")
+	rv := objc.CallMethod[Responder](r_, objc.GetSelector("init"))
 	return rv
 }
 
 func (rc _ResponderClass) Alloc() Responder {
-	rv := objc.CallMethod[Responder](rc, "alloc")
+	rv := objc.CallMethod[Responder](rc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (rc _ResponderClass) New() Responder {
-	rv := objc.CallMethod[Responder](rc, "new")
+	rv := objc.CallMethod[Responder](rc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -123,319 +123,319 @@ func NewResponder() Responder {
 }
 
 func (r_ Responder) BecomeFirstResponder() bool {
-	rv := objc.CallMethod[bool](r_, "becomeFirstResponder")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("becomeFirstResponder"))
 	return rv
 }
 
 func (r_ Responder) ResignFirstResponder() bool {
-	rv := objc.CallMethod[bool](r_, "resignFirstResponder")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("resignFirstResponder"))
 	return rv
 }
 
 func (r_ Responder) ValidateProposedFirstResponder_ForEvent(responder IResponder, event IEvent) bool {
-	rv := objc.CallMethod[bool](r_, "validateProposedFirstResponder:forEvent:", responder, event)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("validateProposedFirstResponder:forEvent:"), responder, event)
 	return rv
 }
 
 func (r_ Responder) MouseDown(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "mouseDown:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("mouseDown:"), event)
 }
 
 func (r_ Responder) MouseDragged(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "mouseDragged:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("mouseDragged:"), event)
 }
 
 func (r_ Responder) MouseUp(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "mouseUp:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("mouseUp:"), event)
 }
 
 func (r_ Responder) MouseMoved(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "mouseMoved:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("mouseMoved:"), event)
 }
 
 func (r_ Responder) MouseEntered(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "mouseEntered:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("mouseEntered:"), event)
 }
 
 func (r_ Responder) MouseExited(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "mouseExited:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("mouseExited:"), event)
 }
 
 func (r_ Responder) RightMouseDown(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "rightMouseDown:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("rightMouseDown:"), event)
 }
 
 func (r_ Responder) RightMouseDragged(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "rightMouseDragged:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("rightMouseDragged:"), event)
 }
 
 func (r_ Responder) RightMouseUp(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "rightMouseUp:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("rightMouseUp:"), event)
 }
 
 func (r_ Responder) OtherMouseDown(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "otherMouseDown:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("otherMouseDown:"), event)
 }
 
 func (r_ Responder) OtherMouseDragged(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "otherMouseDragged:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("otherMouseDragged:"), event)
 }
 
 func (r_ Responder) OtherMouseUp(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "otherMouseUp:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("otherMouseUp:"), event)
 }
 
 func (r_ Responder) KeyDown(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "keyDown:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("keyDown:"), event)
 }
 
 func (r_ Responder) KeyUp(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "keyUp:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("keyUp:"), event)
 }
 
 func (r_ Responder) InterpretKeyEvents(eventArray []IEvent) {
-	objc.CallMethod[objc.Void](r_, "interpretKeyEvents:", eventArray)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("interpretKeyEvents:"), eventArray)
 }
 
 func (r_ Responder) PerformKeyEquivalent(event IEvent) bool {
-	rv := objc.CallMethod[bool](r_, "performKeyEquivalent:", event)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("performKeyEquivalent:"), event)
 	return rv
 }
 
 // deprecated
 func (r_ Responder) PerformMnemonic(string_ string) bool {
-	rv := objc.CallMethod[bool](r_, "performMnemonic:", string_)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("performMnemonic:"), string_)
 	return rv
 }
 
 func (r_ Responder) FlushBufferedKeyEvents() {
-	objc.CallMethod[objc.Void](r_, "flushBufferedKeyEvents")
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("flushBufferedKeyEvents"))
 }
 
 func (r_ Responder) PressureChangeWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "pressureChangeWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("pressureChangeWithEvent:"), event)
 }
 
 func (r_ Responder) CursorUpdate(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "cursorUpdate:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("cursorUpdate:"), event)
 }
 
 func (r_ Responder) FlagsChanged(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "flagsChanged:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("flagsChanged:"), event)
 }
 
 func (r_ Responder) TabletPoint(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "tabletPoint:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("tabletPoint:"), event)
 }
 
 func (r_ Responder) TabletProximity(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "tabletProximity:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("tabletProximity:"), event)
 }
 
 func (r_ Responder) HelpRequested(eventPtr IEvent) {
-	objc.CallMethod[objc.Void](r_, "helpRequested:", eventPtr)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("helpRequested:"), eventPtr)
 }
 
 func (r_ Responder) ScrollWheel(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "scrollWheel:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("scrollWheel:"), event)
 }
 
 func (r_ Responder) QuickLookWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "quickLookWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("quickLookWithEvent:"), event)
 }
 
 func (r_ Responder) ChangeModeWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "changeModeWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("changeModeWithEvent:"), event)
 }
 
 func (r_ Responder) SupplementalTargetForAction_Sender(action objc.Selector, sender objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](r_, "supplementalTargetForAction:sender:", action, sender)
+	rv := objc.CallMethod[objc.Object](r_, objc.GetSelector("supplementalTargetForAction:sender:"), action, sender)
 	return rv
 }
 
 func (rc _ResponderClass) AllowedClassesForRestorableStateKeyPath(keyPath string) []objc.Class {
-	rv := objc.CallMethod[[]objc.Class](rc, "allowedClassesForRestorableStateKeyPath:", keyPath)
+	rv := objc.CallMethod[[]objc.Class](rc, objc.GetSelector("allowedClassesForRestorableStateKeyPath:"), keyPath)
 	return rv
 }
 
 func (r_ Responder) EncodeRestorableStateWithCoder(coder foundation.ICoder) {
-	objc.CallMethod[objc.Void](r_, "encodeRestorableStateWithCoder:", coder)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("encodeRestorableStateWithCoder:"), coder)
 }
 
 func (r_ Responder) EncodeRestorableStateWithCoder_BackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue) {
-	objc.CallMethod[objc.Void](r_, "encodeRestorableStateWithCoder:backgroundQueue:", coder, queue)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("encodeRestorableStateWithCoder:backgroundQueue:"), coder, queue)
 }
 
 func (r_ Responder) RestoreStateWithCoder(coder foundation.ICoder) {
-	objc.CallMethod[objc.Void](r_, "restoreStateWithCoder:", coder)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("restoreStateWithCoder:"), coder)
 }
 
 func (r_ Responder) InvalidateRestorableState() {
-	objc.CallMethod[objc.Void](r_, "invalidateRestorableState")
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("invalidateRestorableState"))
 }
 
 func (r_ Responder) UpdateUserActivityState(userActivity foundation.IUserActivity) {
-	objc.CallMethod[objc.Void](r_, "updateUserActivityState:", userActivity)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("updateUserActivityState:"), userActivity)
 }
 
 func (r_ Responder) PresentError(error foundation.IError) bool {
-	rv := objc.CallMethod[bool](r_, "presentError:", error)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("presentError:"), error)
 	return rv
 }
 
 func (r_ Responder) PresentError_ModalForWindow_Delegate_DidPresentSelector_ContextInfo(error foundation.IError, window IWindow, delegate objc.IObject, didPresentSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](r_, "presentError:modalForWindow:delegate:didPresentSelector:contextInfo:", error, window, delegate, didPresentSelector, contextInfo)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), error, window, delegate, didPresentSelector, contextInfo)
 }
 
 func (r_ Responder) WillPresentError(error foundation.IError) foundation.Error {
-	rv := objc.CallMethod[foundation.Error](r_, "willPresentError:", error)
+	rv := objc.CallMethod[foundation.Error](r_, objc.GetSelector("willPresentError:"), error)
 	return rv
 }
 
 func (r_ Responder) TryToPerform_With(action objc.Selector, object objc.IObject) bool {
-	rv := objc.CallMethod[bool](r_, "tryToPerform:with:", action, object)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("tryToPerform:with:"), action, object)
 	return rv
 }
 
 func (r_ Responder) ValidRequestorForSendType_ReturnType(sendType PasteboardType, returnType PasteboardType) objc.Object {
-	rv := objc.CallMethod[objc.Object](r_, "validRequestorForSendType:returnType:", sendType, returnType)
+	rv := objc.CallMethod[objc.Object](r_, objc.GetSelector("validRequestorForSendType:returnType:"), sendType, returnType)
 	return rv
 }
 
 func (r_ Responder) ShouldBeTreatedAsInkEvent(event IEvent) bool {
-	rv := objc.CallMethod[bool](r_, "shouldBeTreatedAsInkEvent:", event)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("shouldBeTreatedAsInkEvent:"), event)
 	return rv
 }
 
 func (r_ Responder) NoResponderFor(eventSelector objc.Selector) {
-	objc.CallMethod[objc.Void](r_, "noResponderFor:", eventSelector)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("noResponderFor:"), eventSelector)
 }
 
 // deprecated
 func (r_ Responder) SetInterfaceStyle(interfaceStyle InterfaceStyle) {
-	objc.CallMethod[objc.Void](r_, "setInterfaceStyle:", interfaceStyle)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setInterfaceStyle:"), interfaceStyle)
 }
 
 // deprecated
 func (r_ Responder) InterfaceStyle() InterfaceStyle {
-	rv := objc.CallMethod[InterfaceStyle](r_, "interfaceStyle")
+	rv := objc.CallMethod[InterfaceStyle](r_, objc.GetSelector("interfaceStyle"))
 	return rv
 }
 
 func (r_ Responder) BeginGestureWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "beginGestureWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("beginGestureWithEvent:"), event)
 }
 
 func (r_ Responder) EndGestureWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "endGestureWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("endGestureWithEvent:"), event)
 }
 
 func (r_ Responder) MagnifyWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "magnifyWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("magnifyWithEvent:"), event)
 }
 
 func (r_ Responder) RotateWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "rotateWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("rotateWithEvent:"), event)
 }
 
 func (r_ Responder) SwipeWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "swipeWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("swipeWithEvent:"), event)
 }
 
 func (r_ Responder) TouchesBeganWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "touchesBeganWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("touchesBeganWithEvent:"), event)
 }
 
 func (r_ Responder) TouchesMovedWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "touchesMovedWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("touchesMovedWithEvent:"), event)
 }
 
 func (r_ Responder) TouchesCancelledWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "touchesCancelledWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("touchesCancelledWithEvent:"), event)
 }
 
 func (r_ Responder) TouchesEndedWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "touchesEndedWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("touchesEndedWithEvent:"), event)
 }
 
 func (r_ Responder) WantsForwardedScrollEventsForAxis(axis EventGestureAxis) bool {
-	rv := objc.CallMethod[bool](r_, "wantsForwardedScrollEventsForAxis:", axis)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("wantsForwardedScrollEventsForAxis:"), axis)
 	return rv
 }
 
 func (r_ Responder) SmartMagnifyWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](r_, "smartMagnifyWithEvent:", event)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("smartMagnifyWithEvent:"), event)
 }
 
 func (r_ Responder) WantsScrollEventsForSwipeTrackingOnAxis(axis EventGestureAxis) bool {
-	rv := objc.CallMethod[bool](r_, "wantsScrollEventsForSwipeTrackingOnAxis:", axis)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("wantsScrollEventsForSwipeTrackingOnAxis:"), axis)
 	return rv
 }
 
 func (r_ Responder) MakeTouchBar() TouchBar {
-	rv := objc.CallMethod[TouchBar](r_, "makeTouchBar")
+	rv := objc.CallMethod[TouchBar](r_, objc.GetSelector("makeTouchBar"))
 	return rv
 }
 
 func (r_ Responder) PerformTextFinderAction(sender objc.IObject) {
-	objc.CallMethod[objc.Void](r_, "performTextFinderAction:", sender)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("performTextFinderAction:"), sender)
 }
 
 func (r_ Responder) NewWindowForTab(sender objc.IObject) {
-	objc.CallMethod[objc.Void](r_, "newWindowForTab:", sender)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("newWindowForTab:"), sender)
 }
 
 func (r_ Responder) ShowContextHelp(sender objc.IObject) {
-	objc.CallMethod[objc.Void](r_, "showContextHelp:", sender)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("showContextHelp:"), sender)
 }
 
 func (r_ Responder) AcceptsFirstResponder() bool {
-	rv := objc.CallMethod[bool](r_, "acceptsFirstResponder")
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("acceptsFirstResponder"))
 	return rv
 }
 
 func (r_ Responder) NextResponder() Responder {
-	rv := objc.CallMethod[Responder](r_, "nextResponder")
+	rv := objc.CallMethod[Responder](r_, objc.GetSelector("nextResponder"))
 	return rv
 }
 
 func (r_ Responder) SetNextResponder(value IResponder) {
-	objc.CallMethod[objc.Void](r_, "setNextResponder:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setNextResponder:"), value)
 }
 
 func (rc _ResponderClass) RestorableStateKeyPaths() []string {
-	rv := objc.CallMethod[[]string](rc, "restorableStateKeyPaths")
+	rv := objc.CallMethod[[]string](rc, objc.GetSelector("restorableStateKeyPaths"))
 	return rv
 }
 
 func (r_ Responder) UserActivity() foundation.UserActivity {
-	rv := objc.CallMethod[foundation.UserActivity](r_, "userActivity")
+	rv := objc.CallMethod[foundation.UserActivity](r_, objc.GetSelector("userActivity"))
 	return rv
 }
 
 func (r_ Responder) SetUserActivity(value foundation.IUserActivity) {
-	objc.CallMethod[objc.Void](r_, "setUserActivity:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setUserActivity:"), value)
 }
 
 func (r_ Responder) Menu() Menu {
-	rv := objc.CallMethod[Menu](r_, "menu")
+	rv := objc.CallMethod[Menu](r_, objc.GetSelector("menu"))
 	return rv
 }
 
 func (r_ Responder) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](r_, "setMenu:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setMenu:"), value)
 }
 
 func (r_ Responder) UndoManager() foundation.UndoManager {
-	rv := objc.CallMethod[foundation.UndoManager](r_, "undoManager")
+	rv := objc.CallMethod[foundation.UndoManager](r_, objc.GetSelector("undoManager"))
 	return rv
 }
 
 func (r_ Responder) TouchBar() TouchBar {
-	rv := objc.CallMethod[TouchBar](r_, "touchBar")
+	rv := objc.CallMethod[TouchBar](r_, objc.GetSelector("touchBar"))
 	return rv
 }
 
 func (r_ Responder) SetTouchBar(value ITouchBar) {
-	objc.CallMethod[objc.Void](r_, "setTouchBar:", value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setTouchBar:"), value)
 }

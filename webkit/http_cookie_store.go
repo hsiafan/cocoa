@@ -32,12 +32,12 @@ func MakeHTTPCookieStore(ptr unsafe.Pointer) HTTPCookieStore {
 }
 
 func (hc _HTTPCookieStoreClass) Alloc() HTTPCookieStore {
-	rv := objc.CallMethod[HTTPCookieStore](hc, "alloc")
+	rv := objc.CallMethod[HTTPCookieStore](hc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (hc _HTTPCookieStoreClass) New() HTTPCookieStore {
-	rv := objc.CallMethod[HTTPCookieStore](hc, "new")
+	rv := objc.CallMethod[HTTPCookieStore](hc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,18 +47,18 @@ func NewHTTPCookieStore() HTTPCookieStore {
 }
 
 func (h_ HTTPCookieStore) Init() HTTPCookieStore {
-	rv := objc.CallMethod[HTTPCookieStore](h_, "init")
+	rv := objc.CallMethod[HTTPCookieStore](h_, objc.GetSelector("init"))
 	return rv
 }
 
 func (h_ HTTPCookieStore) GetAllCookies(completionHandler func(param1 []foundation.HTTPCookie)) {
-	objc.CallMethod[objc.Void](h_, "getAllCookies:", completionHandler)
+	objc.CallMethod[objc.Void](h_, objc.GetSelector("getAllCookies:"), completionHandler)
 }
 
 func (h_ HTTPCookieStore) SetCookie_CompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.CallMethod[objc.Void](h_, "setCookie:completionHandler:", cookie, completionHandler)
+	objc.CallMethod[objc.Void](h_, objc.GetSelector("setCookie:completionHandler:"), cookie, completionHandler)
 }
 
 func (h_ HTTPCookieStore) DeleteCookie_CompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.CallMethod[objc.Void](h_, "deleteCookie:completionHandler:", cookie, completionHandler)
+	objc.CallMethod[objc.Void](h_, objc.GetSelector("deleteCookie:completionHandler:"), cookie, completionHandler)
 }

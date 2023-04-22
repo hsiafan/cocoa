@@ -31,37 +31,37 @@ func MakeTiledLayer(ptr unsafe.Pointer) TiledLayer {
 }
 
 func (tc _TiledLayerClass) Layer() TiledLayer {
-	rv := objc.CallMethod[TiledLayer](tc, "layer")
+	rv := objc.CallMethod[TiledLayer](tc, objc.GetSelector("layer"))
 	return rv
 }
 
 func (t_ TiledLayer) Init() TiledLayer {
-	rv := objc.CallMethod[TiledLayer](t_, "init")
+	rv := objc.CallMethod[TiledLayer](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TiledLayer) InitWithLayer(layer objc.IObject) TiledLayer {
-	rv := objc.CallMethod[TiledLayer](t_, "initWithLayer:", layer)
+	rv := objc.CallMethod[TiledLayer](t_, objc.GetSelector("initWithLayer:"), layer)
 	return rv
 }
 
 func (t_ TiledLayer) PresentationLayer() TiledLayer {
-	rv := objc.CallMethod[TiledLayer](t_, "presentationLayer")
+	rv := objc.CallMethod[TiledLayer](t_, objc.GetSelector("presentationLayer"))
 	return rv
 }
 
 func (t_ TiledLayer) ModelLayer() TiledLayer {
-	rv := objc.CallMethod[TiledLayer](t_, "modelLayer")
+	rv := objc.CallMethod[TiledLayer](t_, objc.GetSelector("modelLayer"))
 	return rv
 }
 
 func (tc _TiledLayerClass) Alloc() TiledLayer {
-	rv := objc.CallMethod[TiledLayer](tc, "alloc")
+	rv := objc.CallMethod[TiledLayer](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TiledLayerClass) New() TiledLayer {
-	rv := objc.CallMethod[TiledLayer](tc, "new")
+	rv := objc.CallMethod[TiledLayer](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -71,10 +71,10 @@ func NewTiledLayer() TiledLayer {
 }
 
 func (t_ TiledLayer) TileSize() coregraphics.Size {
-	rv := objc.CallMethod[coregraphics.Size](t_, "tileSize")
+	rv := objc.CallMethod[coregraphics.Size](t_, objc.GetSelector("tileSize"))
 	return rv
 }
 
 func (t_ TiledLayer) SetTileSize(value coregraphics.Size) {
-	objc.CallMethod[objc.Void](t_, "setTileSize:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTileSize:"), value)
 }

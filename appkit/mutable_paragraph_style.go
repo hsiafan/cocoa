@@ -53,12 +53,12 @@ func MakeMutableParagraphStyle(ptr unsafe.Pointer) MutableParagraphStyle {
 }
 
 func (mc _MutableParagraphStyleClass) Alloc() MutableParagraphStyle {
-	rv := objc.CallMethod[MutableParagraphStyle](mc, "alloc")
+	rv := objc.CallMethod[MutableParagraphStyle](mc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (mc _MutableParagraphStyleClass) New() MutableParagraphStyle {
-	rv := objc.CallMethod[MutableParagraphStyle](mc, "new")
+	rv := objc.CallMethod[MutableParagraphStyle](mc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -68,106 +68,106 @@ func NewMutableParagraphStyle() MutableParagraphStyle {
 }
 
 func (m_ MutableParagraphStyle) Init() MutableParagraphStyle {
-	rv := objc.CallMethod[MutableParagraphStyle](m_, "init")
+	rv := objc.CallMethod[MutableParagraphStyle](m_, objc.GetSelector("init"))
 	return rv
 }
 
 func (m_ MutableParagraphStyle) SetParagraphStyle(obj IParagraphStyle) {
-	objc.CallMethod[objc.Void](m_, "setParagraphStyle:", obj)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setParagraphStyle:"), obj)
 }
 
 func (m_ MutableParagraphStyle) AddTabStop(anObject ITextTab) {
-	objc.CallMethod[objc.Void](m_, "addTabStop:", anObject)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("addTabStop:"), anObject)
 }
 
 func (m_ MutableParagraphStyle) RemoveTabStop(anObject ITextTab) {
-	objc.CallMethod[objc.Void](m_, "removeTabStop:", anObject)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeTabStop:"), anObject)
 }
 
 func (m_ MutableParagraphStyle) SetAlignment(value TextAlignment) {
-	objc.CallMethod[objc.Void](m_, "setAlignment:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAlignment:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetFirstLineHeadIndent(value float64) {
-	objc.CallMethod[objc.Void](m_, "setFirstLineHeadIndent:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setFirstLineHeadIndent:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetHeadIndent(value float64) {
-	objc.CallMethod[objc.Void](m_, "setHeadIndent:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHeadIndent:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetTailIndent(value float64) {
-	objc.CallMethod[objc.Void](m_, "setTailIndent:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTailIndent:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetLineHeightMultiple(value float64) {
-	objc.CallMethod[objc.Void](m_, "setLineHeightMultiple:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLineHeightMultiple:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetMaximumLineHeight(value float64) {
-	objc.CallMethod[objc.Void](m_, "setMaximumLineHeight:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMaximumLineHeight:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetMinimumLineHeight(value float64) {
-	objc.CallMethod[objc.Void](m_, "setMinimumLineHeight:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMinimumLineHeight:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetLineSpacing(value float64) {
-	objc.CallMethod[objc.Void](m_, "setLineSpacing:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLineSpacing:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetParagraphSpacing(value float64) {
-	objc.CallMethod[objc.Void](m_, "setParagraphSpacing:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setParagraphSpacing:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetParagraphSpacingBefore(value float64) {
-	objc.CallMethod[objc.Void](m_, "setParagraphSpacingBefore:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setParagraphSpacingBefore:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetBaseWritingDirection(value WritingDirection) {
-	objc.CallMethod[objc.Void](m_, "setBaseWritingDirection:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setBaseWritingDirection:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetTabStops(value []ITextTab) {
-	objc.CallMethod[objc.Void](m_, "setTabStops:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTabStops:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetDefaultTabInterval(value float64) {
-	objc.CallMethod[objc.Void](m_, "setDefaultTabInterval:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDefaultTabInterval:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetTextBlocks(value []ITextBlock) {
-	objc.CallMethod[objc.Void](m_, "setTextBlocks:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTextBlocks:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetTextLists(value []ITextList) {
-	objc.CallMethod[objc.Void](m_, "setTextLists:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTextLists:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetLineBreakMode(value LineBreakMode) {
-	objc.CallMethod[objc.Void](m_, "setLineBreakMode:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLineBreakMode:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetLineBreakStrategy(value LineBreakStrategy) {
-	objc.CallMethod[objc.Void](m_, "setLineBreakStrategy:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLineBreakStrategy:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetHyphenationFactor(value float32) {
-	objc.CallMethod[objc.Void](m_, "setHyphenationFactor:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHyphenationFactor:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetUsesDefaultHyphenation(value bool) {
-	objc.CallMethod[objc.Void](m_, "setUsesDefaultHyphenation:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setUsesDefaultHyphenation:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetTighteningFactorForTruncation(value float32) {
-	objc.CallMethod[objc.Void](m_, "setTighteningFactorForTruncation:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTighteningFactorForTruncation:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetAllowsDefaultTighteningForTruncation(value bool) {
-	objc.CallMethod[objc.Void](m_, "setAllowsDefaultTighteningForTruncation:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsDefaultTighteningForTruncation:"), value)
 }
 
 func (m_ MutableParagraphStyle) SetHeaderLevel(value int) {
-	objc.CallMethod[objc.Void](m_, "setHeaderLevel:", value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHeaderLevel:"), value)
 }

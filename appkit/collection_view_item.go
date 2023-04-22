@@ -39,22 +39,22 @@ func MakeCollectionViewItem(ptr unsafe.Pointer) CollectionViewItem {
 }
 
 func (c_ CollectionViewItem) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, "initWithNibName:bundle:", nibNameOrNil, nibBundleOrNil)
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
 func (c_ CollectionViewItem) Init() CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, "init")
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (cc _CollectionViewItemClass) Alloc() CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionViewItem](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewItemClass) New() CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](cc, "new")
+	rv := objc.CallMethod[CollectionViewItem](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -64,47 +64,47 @@ func NewCollectionViewItem() CollectionViewItem {
 }
 
 func (c_ CollectionViewItem) ImageView() ImageView {
-	rv := objc.CallMethod[ImageView](c_, "imageView")
+	rv := objc.CallMethod[ImageView](c_, objc.GetSelector("imageView"))
 	return rv
 }
 
 func (c_ CollectionViewItem) SetImageView(value IImageView) {
-	objc.CallMethod[objc.Void](c_, "setImageView:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImageView:"), value)
 }
 
 func (c_ CollectionViewItem) TextField() TextField {
-	rv := objc.CallMethod[TextField](c_, "textField")
+	rv := objc.CallMethod[TextField](c_, objc.GetSelector("textField"))
 	return rv
 }
 
 func (c_ CollectionViewItem) SetTextField(value ITextField) {
-	objc.CallMethod[objc.Void](c_, "setTextField:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTextField:"), value)
 }
 
 func (c_ CollectionViewItem) IsSelected() bool {
-	rv := objc.CallMethod[bool](c_, "isSelected")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isSelected"))
 	return rv
 }
 
 func (c_ CollectionViewItem) SetSelected(value bool) {
-	objc.CallMethod[objc.Void](c_, "setSelected:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSelected:"), value)
 }
 
 func (c_ CollectionViewItem) HighlightState() CollectionViewItemHighlightState {
-	rv := objc.CallMethod[CollectionViewItemHighlightState](c_, "highlightState")
+	rv := objc.CallMethod[CollectionViewItemHighlightState](c_, objc.GetSelector("highlightState"))
 	return rv
 }
 
 func (c_ CollectionViewItem) SetHighlightState(value CollectionViewItemHighlightState) {
-	objc.CallMethod[objc.Void](c_, "setHighlightState:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setHighlightState:"), value)
 }
 
 func (c_ CollectionViewItem) CollectionView() CollectionView {
-	rv := objc.CallMethod[CollectionView](c_, "collectionView")
+	rv := objc.CallMethod[CollectionView](c_, objc.GetSelector("collectionView"))
 	return rv
 }
 
 func (c_ CollectionViewItem) DraggingImageComponents() []DraggingImageComponent {
-	rv := objc.CallMethod[[]DraggingImageComponent](c_, "draggingImageComponents")
+	rv := objc.CallMethod[[]DraggingImageComponent](c_, objc.GetSelector("draggingImageComponents"))
 	return rv
 }

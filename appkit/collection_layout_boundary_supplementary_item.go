@@ -35,42 +35,42 @@ func MakeCollectionLayoutBoundarySupplementaryItem(ptr unsafe.Pointer) Collectio
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSize_ElementKind_Alignment(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "boundarySupplementaryItemWithLayoutSize:elementKind:alignment:", layoutSize, elementKind, alignment)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), layoutSize, elementKind, alignment)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSize_ElementKind_Alignment_AbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:", layoutSize, elementKind, alignment, absoluteOffset)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), layoutSize, elementKind, alignment, absoluteOffset)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSize_ElementKind_ContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "supplementaryItemWithLayoutSize:elementKind:containerAnchor:", layoutSize, elementKind, containerAnchor)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), layoutSize, elementKind, containerAnchor)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSize_ElementKind_ContainerAnchor_ItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:", layoutSize, elementKind, containerAnchor, itemAnchor)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), layoutSize, elementKind, containerAnchor, itemAnchor)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "itemWithLayoutSize:", layoutSize)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "itemWithLayoutSize:supplementaryItems:", layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) Alloc() CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "alloc")
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) New() CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, "new")
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -80,34 +80,34 @@ func NewCollectionLayoutBoundarySupplementaryItem() CollectionLayoutBoundarySupp
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) Init() CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](c_, "init")
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](c_, objc.GetSelector("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) PinToVisibleBounds() bool {
-	rv := objc.CallMethod[bool](c_, "pinToVisibleBounds")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("pinToVisibleBounds"))
 	return rv
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) SetPinToVisibleBounds(value bool) {
-	objc.CallMethod[objc.Void](c_, "setPinToVisibleBounds:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPinToVisibleBounds:"), value)
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) Offset() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](c_, "offset")
+	rv := objc.CallMethod[foundation.Point](c_, objc.GetSelector("offset"))
 	return rv
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) Alignment() RectAlignment {
-	rv := objc.CallMethod[RectAlignment](c_, "alignment")
+	rv := objc.CallMethod[RectAlignment](c_, objc.GetSelector("alignment"))
 	return rv
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) ExtendsBoundary() bool {
-	rv := objc.CallMethod[bool](c_, "extendsBoundary")
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("extendsBoundary"))
 	return rv
 }
 
 func (c_ CollectionLayoutBoundarySupplementaryItem) SetExtendsBoundary(value bool) {
-	objc.CallMethod[objc.Void](c_, "setExtendsBoundary:", value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setExtendsBoundary:"), value)
 }

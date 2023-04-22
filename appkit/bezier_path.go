@@ -88,12 +88,12 @@ func MakeBezierPath(ptr unsafe.Pointer) BezierPath {
 }
 
 func (bc _BezierPathClass) Alloc() BezierPath {
-	rv := objc.CallMethod[BezierPath](bc, "alloc")
+	rv := objc.CallMethod[BezierPath](bc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (bc _BezierPathClass) New() BezierPath {
-	rv := objc.CallMethod[BezierPath](bc, "new")
+	rv := objc.CallMethod[BezierPath](bc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -103,334 +103,334 @@ func NewBezierPath() BezierPath {
 }
 
 func (b_ BezierPath) Init() BezierPath {
-	rv := objc.CallMethod[BezierPath](b_, "init")
+	rv := objc.CallMethod[BezierPath](b_, objc.GetSelector("init"))
 	return rv
 }
 
 func (bc _BezierPathClass) BezierPath() BezierPath {
-	rv := objc.CallMethod[BezierPath](bc, "bezierPath")
+	rv := objc.CallMethod[BezierPath](bc, objc.GetSelector("bezierPath"))
 	return rv
 }
 
 func (bc _BezierPathClass) BezierPathWithOvalInRect(rect foundation.Rect) BezierPath {
-	rv := objc.CallMethod[BezierPath](bc, "bezierPathWithOvalInRect:", rect)
+	rv := objc.CallMethod[BezierPath](bc, objc.GetSelector("bezierPathWithOvalInRect:"), rect)
 	return rv
 }
 
 func (bc _BezierPathClass) BezierPathWithRect(rect foundation.Rect) BezierPath {
-	rv := objc.CallMethod[BezierPath](bc, "bezierPathWithRect:", rect)
+	rv := objc.CallMethod[BezierPath](bc, objc.GetSelector("bezierPathWithRect:"), rect)
 	return rv
 }
 
 func (bc _BezierPathClass) BezierPathWithRoundedRect_XRadius_YRadius(rect foundation.Rect, xRadius float64, yRadius float64) BezierPath {
-	rv := objc.CallMethod[BezierPath](bc, "bezierPathWithRoundedRect:xRadius:yRadius:", rect, xRadius, yRadius)
+	rv := objc.CallMethod[BezierPath](bc, objc.GetSelector("bezierPathWithRoundedRect:xRadius:yRadius:"), rect, xRadius, yRadius)
 	return rv
 }
 
 func (b_ BezierPath) MoveToPoint(point foundation.Point) {
-	objc.CallMethod[objc.Void](b_, "moveToPoint:", point)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("moveToPoint:"), point)
 }
 
 func (b_ BezierPath) LineToPoint(point foundation.Point) {
-	objc.CallMethod[objc.Void](b_, "lineToPoint:", point)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("lineToPoint:"), point)
 }
 
 func (b_ BezierPath) CurveToPoint_ControlPoint1_ControlPoint2(endPoint foundation.Point, controlPoint1 foundation.Point, controlPoint2 foundation.Point) {
-	objc.CallMethod[objc.Void](b_, "curveToPoint:controlPoint1:controlPoint2:", endPoint, controlPoint1, controlPoint2)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("curveToPoint:controlPoint1:controlPoint2:"), endPoint, controlPoint1, controlPoint2)
 }
 
 func (b_ BezierPath) ClosePath() {
-	objc.CallMethod[objc.Void](b_, "closePath")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("closePath"))
 }
 
 func (b_ BezierPath) RelativeMoveToPoint(point foundation.Point) {
-	objc.CallMethod[objc.Void](b_, "relativeMoveToPoint:", point)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("relativeMoveToPoint:"), point)
 }
 
 func (b_ BezierPath) RelativeLineToPoint(point foundation.Point) {
-	objc.CallMethod[objc.Void](b_, "relativeLineToPoint:", point)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("relativeLineToPoint:"), point)
 }
 
 func (b_ BezierPath) RelativeCurveToPoint_ControlPoint1_ControlPoint2(endPoint foundation.Point, controlPoint1 foundation.Point, controlPoint2 foundation.Point) {
-	objc.CallMethod[objc.Void](b_, "relativeCurveToPoint:controlPoint1:controlPoint2:", endPoint, controlPoint1, controlPoint2)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("relativeCurveToPoint:controlPoint1:controlPoint2:"), endPoint, controlPoint1, controlPoint2)
 }
 
 func (b_ BezierPath) AppendBezierPath(path IBezierPath) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPath:", path)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPath:"), path)
 }
 
 func (b_ BezierPath) AppendBezierPathWithPoints_Count(points *foundation.Point, count int) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithPoints:count:", points, count)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithPoints:count:"), points, count)
 }
 
 func (b_ BezierPath) AppendBezierPathWithOvalInRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithOvalInRect:", rect)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithOvalInRect:"), rect)
 }
 
 func (b_ BezierPath) AppendBezierPathWithArcFromPoint_ToPoint_Radius(point1 foundation.Point, point2 foundation.Point, radius float64) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithArcFromPoint:toPoint:radius:", point1, point2, radius)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithArcFromPoint:toPoint:radius:"), point1, point2, radius)
 }
 
 func (b_ BezierPath) AppendBezierPathWithArcWithCenter_Radius_StartAngle_EndAngle(center foundation.Point, radius float64, startAngle float64, endAngle float64) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithArcWithCenter:radius:startAngle:endAngle:", center, radius, startAngle, endAngle)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithArcWithCenter:radius:startAngle:endAngle:"), center, radius, startAngle, endAngle)
 }
 
 func (b_ BezierPath) AppendBezierPathWithArcWithCenter_Radius_StartAngle_EndAngle_Clockwise(center foundation.Point, radius float64, startAngle float64, endAngle float64, clockwise bool) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithArcWithCenter:radius:startAngle:endAngle:clockwise:", center, radius, startAngle, endAngle, clockwise)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithArcWithCenter:radius:startAngle:endAngle:clockwise:"), center, radius, startAngle, endAngle, clockwise)
 }
 
 func (b_ BezierPath) AppendBezierPathWithRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithRect:", rect)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithRect:"), rect)
 }
 
 func (b_ BezierPath) AppendBezierPathWithRoundedRect_XRadius_YRadius(rect foundation.Rect, xRadius float64, yRadius float64) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithRoundedRect:xRadius:yRadius:", rect, xRadius, yRadius)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithRoundedRect:xRadius:yRadius:"), rect, xRadius, yRadius)
 }
 
 func (b_ BezierPath) AppendBezierPathWithCGGlyph_InFont(glyph coregraphics.Glyph, font IFont) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithCGGlyph:inFont:", glyph, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithCGGlyph:inFont:"), glyph, font)
 }
 
 func (b_ BezierPath) AppendBezierPathWithCGGlyphs_Count_InFont(glyphs *coregraphics.Glyph, count int, font IFont) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithCGGlyphs:count:inFont:", glyphs, count, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithCGGlyphs:count:inFont:"), glyphs, count, font)
 }
 
 // deprecated
 func (b_ BezierPath) AppendBezierPathWithGlyph_InFont(glyph Glyph, font IFont) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithGlyph:inFont:", glyph, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithGlyph:inFont:"), glyph, font)
 }
 
 // deprecated
 func (b_ BezierPath) AppendBezierPathWithGlyphs_Count_InFont(glyphs *Glyph, count int, font IFont) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithGlyphs:count:inFont:", glyphs, count, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithGlyphs:count:inFont:"), glyphs, count, font)
 }
 
 // deprecated
 func (b_ BezierPath) AppendBezierPathWithPackedGlyphs(packedGlyphs *byte) {
-	objc.CallMethod[objc.Void](b_, "appendBezierPathWithPackedGlyphs:", packedGlyphs)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithPackedGlyphs:"), packedGlyphs)
 }
 
 func (b_ BezierPath) GetLineDash_Count_Phase(pattern *float64, count *int, phase *float64) {
-	objc.CallMethod[objc.Void](b_, "getLineDash:count:phase:", pattern, count, phase)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("getLineDash:count:phase:"), pattern, count, phase)
 }
 
 func (b_ BezierPath) SetLineDash_Count_Phase(pattern *float64, count int, phase float64) {
-	objc.CallMethod[objc.Void](b_, "setLineDash:count:phase:", pattern, count, phase)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLineDash:count:phase:"), pattern, count, phase)
 }
 
 func (b_ BezierPath) Stroke() {
-	objc.CallMethod[objc.Void](b_, "stroke")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("stroke"))
 }
 
 func (b_ BezierPath) Fill() {
-	objc.CallMethod[objc.Void](b_, "fill")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("fill"))
 }
 
 func (bc _BezierPathClass) FillRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](bc, "fillRect:", rect)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("fillRect:"), rect)
 }
 
 func (bc _BezierPathClass) StrokeRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](bc, "strokeRect:", rect)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("strokeRect:"), rect)
 }
 
 func (bc _BezierPathClass) StrokeLineFromPoint_ToPoint(point1 foundation.Point, point2 foundation.Point) {
-	objc.CallMethod[objc.Void](bc, "strokeLineFromPoint:toPoint:", point1, point2)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("strokeLineFromPoint:toPoint:"), point1, point2)
 }
 
 func (bc _BezierPathClass) DrawPackedGlyphs_AtPoint(packedGlyphs *byte, point foundation.Point) {
-	objc.CallMethod[objc.Void](bc, "drawPackedGlyphs:atPoint:", packedGlyphs, point)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("drawPackedGlyphs:atPoint:"), packedGlyphs, point)
 }
 
 func (b_ BezierPath) AddClip() {
-	objc.CallMethod[objc.Void](b_, "addClip")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("addClip"))
 }
 
 func (b_ BezierPath) SetClip() {
-	objc.CallMethod[objc.Void](b_, "setClip")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setClip"))
 }
 
 func (bc _BezierPathClass) ClipRect(rect foundation.Rect) {
-	objc.CallMethod[objc.Void](bc, "clipRect:", rect)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("clipRect:"), rect)
 }
 
 func (b_ BezierPath) ContainsPoint(point foundation.Point) bool {
-	rv := objc.CallMethod[bool](b_, "containsPoint:", point)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("containsPoint:"), point)
 	return rv
 }
 
 func (b_ BezierPath) TransformUsingAffineTransform(transform foundation.IAffineTransform) {
-	objc.CallMethod[objc.Void](b_, "transformUsingAffineTransform:", transform)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("transformUsingAffineTransform:"), transform)
 }
 
 func (b_ BezierPath) ElementAtIndex(index int) BezierPathElement {
-	rv := objc.CallMethod[BezierPathElement](b_, "elementAtIndex:", index)
+	rv := objc.CallMethod[BezierPathElement](b_, objc.GetSelector("elementAtIndex:"), index)
 	return rv
 }
 
 func (b_ BezierPath) ElementAtIndex_AssociatedPoints(index int, points *foundation.Point) BezierPathElement {
-	rv := objc.CallMethod[BezierPathElement](b_, "elementAtIndex:associatedPoints:", index, points)
+	rv := objc.CallMethod[BezierPathElement](b_, objc.GetSelector("elementAtIndex:associatedPoints:"), index, points)
 	return rv
 }
 
 func (b_ BezierPath) RemoveAllPoints() {
-	objc.CallMethod[objc.Void](b_, "removeAllPoints")
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("removeAllPoints"))
 }
 
 func (b_ BezierPath) SetAssociatedPoints_AtIndex(points *foundation.Point, index int) {
-	objc.CallMethod[objc.Void](b_, "setAssociatedPoints:atIndex:", points, index)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAssociatedPoints:atIndex:"), points, index)
 }
 
 // deprecated
 func (b_ BezierPath) CachesBezierPath() bool {
-	rv := objc.CallMethod[bool](b_, "cachesBezierPath")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("cachesBezierPath"))
 	return rv
 }
 
 // deprecated
 func (b_ BezierPath) SetCachesBezierPath(flag bool) {
-	objc.CallMethod[objc.Void](b_, "setCachesBezierPath:", flag)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCachesBezierPath:"), flag)
 }
 
 func (b_ BezierPath) BezierPathByFlatteningPath() BezierPath {
-	rv := objc.CallMethod[BezierPath](b_, "bezierPathByFlatteningPath")
+	rv := objc.CallMethod[BezierPath](b_, objc.GetSelector("bezierPathByFlatteningPath"))
 	return rv
 }
 
 func (b_ BezierPath) BezierPathByReversingPath() BezierPath {
-	rv := objc.CallMethod[BezierPath](b_, "bezierPathByReversingPath")
+	rv := objc.CallMethod[BezierPath](b_, objc.GetSelector("bezierPathByReversingPath"))
 	return rv
 }
 
 func (b_ BezierPath) WindingRule() WindingRule {
-	rv := objc.CallMethod[WindingRule](b_, "windingRule")
+	rv := objc.CallMethod[WindingRule](b_, objc.GetSelector("windingRule"))
 	return rv
 }
 
 func (b_ BezierPath) SetWindingRule(value WindingRule) {
-	objc.CallMethod[objc.Void](b_, "setWindingRule:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setWindingRule:"), value)
 }
 
 func (b_ BezierPath) LineCapStyle() LineCapStyle {
-	rv := objc.CallMethod[LineCapStyle](b_, "lineCapStyle")
+	rv := objc.CallMethod[LineCapStyle](b_, objc.GetSelector("lineCapStyle"))
 	return rv
 }
 
 func (b_ BezierPath) SetLineCapStyle(value LineCapStyle) {
-	objc.CallMethod[objc.Void](b_, "setLineCapStyle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLineCapStyle:"), value)
 }
 
 func (b_ BezierPath) LineJoinStyle() LineJoinStyle {
-	rv := objc.CallMethod[LineJoinStyle](b_, "lineJoinStyle")
+	rv := objc.CallMethod[LineJoinStyle](b_, objc.GetSelector("lineJoinStyle"))
 	return rv
 }
 
 func (b_ BezierPath) SetLineJoinStyle(value LineJoinStyle) {
-	objc.CallMethod[objc.Void](b_, "setLineJoinStyle:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLineJoinStyle:"), value)
 }
 
 func (b_ BezierPath) LineWidth() float64 {
-	rv := objc.CallMethod[float64](b_, "lineWidth")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("lineWidth"))
 	return rv
 }
 
 func (b_ BezierPath) SetLineWidth(value float64) {
-	objc.CallMethod[objc.Void](b_, "setLineWidth:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLineWidth:"), value)
 }
 
 func (b_ BezierPath) MiterLimit() float64 {
-	rv := objc.CallMethod[float64](b_, "miterLimit")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("miterLimit"))
 	return rv
 }
 
 func (b_ BezierPath) SetMiterLimit(value float64) {
-	objc.CallMethod[objc.Void](b_, "setMiterLimit:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMiterLimit:"), value)
 }
 
 func (b_ BezierPath) Flatness() float64 {
-	rv := objc.CallMethod[float64](b_, "flatness")
+	rv := objc.CallMethod[float64](b_, objc.GetSelector("flatness"))
 	return rv
 }
 
 func (b_ BezierPath) SetFlatness(value float64) {
-	objc.CallMethod[objc.Void](b_, "setFlatness:", value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFlatness:"), value)
 }
 
 func (bc _BezierPathClass) DefaultWindingRule() WindingRule {
-	rv := objc.CallMethod[WindingRule](bc, "defaultWindingRule")
+	rv := objc.CallMethod[WindingRule](bc, objc.GetSelector("defaultWindingRule"))
 	return rv
 }
 
 func (bc _BezierPathClass) SetDefaultWindingRule(value WindingRule) {
-	objc.CallMethod[objc.Void](bc, "setDefaultWindingRule:", value)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("setDefaultWindingRule:"), value)
 }
 
 func (bc _BezierPathClass) DefaultLineCapStyle() LineCapStyle {
-	rv := objc.CallMethod[LineCapStyle](bc, "defaultLineCapStyle")
+	rv := objc.CallMethod[LineCapStyle](bc, objc.GetSelector("defaultLineCapStyle"))
 	return rv
 }
 
 func (bc _BezierPathClass) SetDefaultLineCapStyle(value LineCapStyle) {
-	objc.CallMethod[objc.Void](bc, "setDefaultLineCapStyle:", value)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("setDefaultLineCapStyle:"), value)
 }
 
 func (bc _BezierPathClass) DefaultLineJoinStyle() LineJoinStyle {
-	rv := objc.CallMethod[LineJoinStyle](bc, "defaultLineJoinStyle")
+	rv := objc.CallMethod[LineJoinStyle](bc, objc.GetSelector("defaultLineJoinStyle"))
 	return rv
 }
 
 func (bc _BezierPathClass) SetDefaultLineJoinStyle(value LineJoinStyle) {
-	objc.CallMethod[objc.Void](bc, "setDefaultLineJoinStyle:", value)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("setDefaultLineJoinStyle:"), value)
 }
 
 func (bc _BezierPathClass) DefaultLineWidth() float64 {
-	rv := objc.CallMethod[float64](bc, "defaultLineWidth")
+	rv := objc.CallMethod[float64](bc, objc.GetSelector("defaultLineWidth"))
 	return rv
 }
 
 func (bc _BezierPathClass) SetDefaultLineWidth(value float64) {
-	objc.CallMethod[objc.Void](bc, "setDefaultLineWidth:", value)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("setDefaultLineWidth:"), value)
 }
 
 func (bc _BezierPathClass) DefaultMiterLimit() float64 {
-	rv := objc.CallMethod[float64](bc, "defaultMiterLimit")
+	rv := objc.CallMethod[float64](bc, objc.GetSelector("defaultMiterLimit"))
 	return rv
 }
 
 func (bc _BezierPathClass) SetDefaultMiterLimit(value float64) {
-	objc.CallMethod[objc.Void](bc, "setDefaultMiterLimit:", value)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("setDefaultMiterLimit:"), value)
 }
 
 func (bc _BezierPathClass) DefaultFlatness() float64 {
-	rv := objc.CallMethod[float64](bc, "defaultFlatness")
+	rv := objc.CallMethod[float64](bc, objc.GetSelector("defaultFlatness"))
 	return rv
 }
 
 func (bc _BezierPathClass) SetDefaultFlatness(value float64) {
-	objc.CallMethod[objc.Void](bc, "setDefaultFlatness:", value)
+	objc.CallMethod[objc.Void](bc, objc.GetSelector("setDefaultFlatness:"), value)
 }
 
 func (b_ BezierPath) Bounds() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "bounds")
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("bounds"))
 	return rv
 }
 
 func (b_ BezierPath) ControlPointBounds() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, "controlPointBounds")
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("controlPointBounds"))
 	return rv
 }
 
 func (b_ BezierPath) CurrentPoint() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](b_, "currentPoint")
+	rv := objc.CallMethod[foundation.Point](b_, objc.GetSelector("currentPoint"))
 	return rv
 }
 
 func (b_ BezierPath) IsEmpty() bool {
-	rv := objc.CallMethod[bool](b_, "isEmpty")
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isEmpty"))
 	return rv
 }
 
 func (b_ BezierPath) ElementCount() int {
-	rv := objc.CallMethod[int](b_, "elementCount")
+	rv := objc.CallMethod[int](b_, objc.GetSelector("elementCount"))
 	return rv
 }

@@ -35,17 +35,17 @@ func MakeTextElement(ptr unsafe.Pointer) TextElement {
 }
 
 func (t_ TextElement) InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
-	rv := objc.CallMethod[TextElement](t_, "initWithTextContentManager:", textContentManager)
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("initWithTextContentManager:"), textContentManager)
 	return rv
 }
 
 func (tc _TextElementClass) Alloc() TextElement {
-	rv := objc.CallMethod[TextElement](tc, "alloc")
+	rv := objc.CallMethod[TextElement](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextElementClass) New() TextElement {
-	rv := objc.CallMethod[TextElement](tc, "new")
+	rv := objc.CallMethod[TextElement](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,39 +55,39 @@ func NewTextElement() TextElement {
 }
 
 func (t_ TextElement) Init() TextElement {
-	rv := objc.CallMethod[TextElement](t_, "init")
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextElement) TextContentManager() TextContentManager {
-	rv := objc.CallMethod[TextContentManager](t_, "textContentManager")
+	rv := objc.CallMethod[TextContentManager](t_, objc.GetSelector("textContentManager"))
 	return rv
 }
 
 func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
-	objc.CallMethod[objc.Void](t_, "setTextContentManager:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContentManager:"), value)
 }
 
 func (t_ TextElement) ElementRange() TextRange {
-	rv := objc.CallMethod[TextRange](t_, "elementRange")
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("elementRange"))
 	return rv
 }
 
 func (t_ TextElement) SetElementRange(value ITextRange) {
-	objc.CallMethod[objc.Void](t_, "setElementRange:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setElementRange:"), value)
 }
 
 func (t_ TextElement) IsRepresentedElement() bool {
-	rv := objc.CallMethod[bool](t_, "isRepresentedElement")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isRepresentedElement"))
 	return rv
 }
 
 func (t_ TextElement) ParentElement() TextElement {
-	rv := objc.CallMethod[TextElement](t_, "parentElement")
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("parentElement"))
 	return rv
 }
 
 func (t_ TextElement) ChildElements() []TextElement {
-	rv := objc.CallMethod[[]TextElement](t_, "childElements")
+	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("childElements"))
 	return rv
 }

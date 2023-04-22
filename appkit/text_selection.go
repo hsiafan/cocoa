@@ -40,22 +40,22 @@ func MakeTextSelection(ptr unsafe.Pointer) TextSelection {
 }
 
 func (t_ TextSelection) InitWithRange_Affinity_Granularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, "initWithRange:affinity:granularity:", range_, affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("initWithRange:affinity:granularity:"), range_, affinity, granularity)
 	return rv
 }
 
 func (t_ TextSelection) InitWithRanges_Affinity_Granularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, "initWithRanges:affinity:granularity:", textRanges, affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("initWithRanges:affinity:granularity:"), textRanges, affinity, granularity)
 	return rv
 }
 
 func (tc _TextSelectionClass) Alloc() TextSelection {
-	rv := objc.CallMethod[TextSelection](tc, "alloc")
+	rv := objc.CallMethod[TextSelection](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextSelectionClass) New() TextSelection {
-	rv := objc.CallMethod[TextSelection](tc, "new")
+	rv := objc.CallMethod[TextSelection](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,58 +65,58 @@ func NewTextSelection() TextSelection {
 }
 
 func (t_ TextSelection) Init() TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, "init")
+	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextSelection) TextSelectionWithTextRanges(textRanges []ITextRange) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, "textSelectionWithTextRanges:", textRanges)
+	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("textSelectionWithTextRanges:"), textRanges)
 	return rv
 }
 
 func (t_ TextSelection) Affinity() TextSelectionAffinity {
-	rv := objc.CallMethod[TextSelectionAffinity](t_, "affinity")
+	rv := objc.CallMethod[TextSelectionAffinity](t_, objc.GetSelector("affinity"))
 	return rv
 }
 
 func (t_ TextSelection) AnchorPositionOffset() float64 {
-	rv := objc.CallMethod[float64](t_, "anchorPositionOffset")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("anchorPositionOffset"))
 	return rv
 }
 
 func (t_ TextSelection) SetAnchorPositionOffset(value float64) {
-	objc.CallMethod[objc.Void](t_, "setAnchorPositionOffset:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAnchorPositionOffset:"), value)
 }
 
 func (t_ TextSelection) Granularity() TextSelectionGranularity {
-	rv := objc.CallMethod[TextSelectionGranularity](t_, "granularity")
+	rv := objc.CallMethod[TextSelectionGranularity](t_, objc.GetSelector("granularity"))
 	return rv
 }
 
 func (t_ TextSelection) IsLogical() bool {
-	rv := objc.CallMethod[bool](t_, "isLogical")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isLogical"))
 	return rv
 }
 
 func (t_ TextSelection) SetLogical(value bool) {
-	objc.CallMethod[objc.Void](t_, "setLogical:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLogical:"), value)
 }
 
 func (t_ TextSelection) IsTransient() bool {
-	rv := objc.CallMethod[bool](t_, "isTransient")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isTransient"))
 	return rv
 }
 
 func (t_ TextSelection) TextRanges() []TextRange {
-	rv := objc.CallMethod[[]TextRange](t_, "textRanges")
+	rv := objc.CallMethod[[]TextRange](t_, objc.GetSelector("textRanges"))
 	return rv
 }
 
 func (t_ TextSelection) TypingAttributes() map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, "typingAttributes")
+	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, objc.GetSelector("typingAttributes"))
 	return rv
 }
 
 func (t_ TextSelection) SetTypingAttributes(value map[foundation.AttributedStringKey]objc.IObject) {
-	objc.CallMethod[objc.Void](t_, "setTypingAttributes:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTypingAttributes:"), value)
 }

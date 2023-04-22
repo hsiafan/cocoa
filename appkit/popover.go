@@ -51,17 +51,17 @@ func MakePopover(ptr unsafe.Pointer) Popover {
 }
 
 func (p_ Popover) Init() Popover {
-	rv := objc.CallMethod[Popover](p_, "init")
+	rv := objc.CallMethod[Popover](p_, objc.GetSelector("init"))
 	return rv
 }
 
 func (pc _PopoverClass) Alloc() Popover {
-	rv := objc.CallMethod[Popover](pc, "alloc")
+	rv := objc.CallMethod[Popover](pc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (pc _PopoverClass) New() Popover {
-	rv := objc.CallMethod[Popover](pc, "new")
+	rv := objc.CallMethod[Popover](pc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -71,88 +71,88 @@ func NewPopover() Popover {
 }
 
 func (p_ Popover) ShowRelativeToRect_OfView_PreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](p_, "showRelativeToRect:ofView:preferredEdge:", positioningRect, positioningView, preferredEdge)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), positioningRect, positioningView, preferredEdge)
 }
 
 func (p_ Popover) PerformClose(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, "performClose:", sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("performClose:"), sender)
 }
 
 func (p_ Popover) Close() {
-	objc.CallMethod[objc.Void](p_, "close")
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("close"))
 }
 
 func (p_ Popover) ContentViewController() ViewController {
-	rv := objc.CallMethod[ViewController](p_, "contentViewController")
+	rv := objc.CallMethod[ViewController](p_, objc.GetSelector("contentViewController"))
 	return rv
 }
 
 func (p_ Popover) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](p_, "setContentViewController:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setContentViewController:"), value)
 }
 
 func (p_ Popover) Behavior() PopoverBehavior {
-	rv := objc.CallMethod[PopoverBehavior](p_, "behavior")
+	rv := objc.CallMethod[PopoverBehavior](p_, objc.GetSelector("behavior"))
 	return rv
 }
 
 func (p_ Popover) SetBehavior(value PopoverBehavior) {
-	objc.CallMethod[objc.Void](p_, "setBehavior:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBehavior:"), value)
 }
 
 func (p_ Popover) PositioningRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](p_, "positioningRect")
+	rv := objc.CallMethod[foundation.Rect](p_, objc.GetSelector("positioningRect"))
 	return rv
 }
 
 func (p_ Popover) SetPositioningRect(value foundation.Rect) {
-	objc.CallMethod[objc.Void](p_, "setPositioningRect:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPositioningRect:"), value)
 }
 
 func (p_ Popover) Appearance() Appearance {
-	rv := objc.CallMethod[Appearance](p_, "appearance")
+	rv := objc.CallMethod[Appearance](p_, objc.GetSelector("appearance"))
 	return rv
 }
 
 func (p_ Popover) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](p_, "setAppearance:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAppearance:"), value)
 }
 
 func (p_ Popover) EffectiveAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](p_, "effectiveAppearance")
+	rv := objc.CallMethod[Appearance](p_, objc.GetSelector("effectiveAppearance"))
 	return rv
 }
 
 func (p_ Popover) Animates() bool {
-	rv := objc.CallMethod[bool](p_, "animates")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("animates"))
 	return rv
 }
 
 func (p_ Popover) SetAnimates(value bool) {
-	objc.CallMethod[objc.Void](p_, "setAnimates:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAnimates:"), value)
 }
 
 func (p_ Popover) ContentSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](p_, "contentSize")
+	rv := objc.CallMethod[foundation.Size](p_, objc.GetSelector("contentSize"))
 	return rv
 }
 
 func (p_ Popover) SetContentSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](p_, "setContentSize:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setContentSize:"), value)
 }
 
 func (p_ Popover) IsShown() bool {
-	rv := objc.CallMethod[bool](p_, "isShown")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isShown"))
 	return rv
 }
 
 func (p_ Popover) IsDetached() bool {
-	rv := objc.CallMethod[bool](p_, "isDetached")
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("isDetached"))
 	return rv
 }
 
 func (p_ Popover) Delegate() PopoverDelegateWrapper {
-	rv := objc.CallMethod[PopoverDelegateWrapper](p_, "delegate")
+	rv := objc.CallMethod[PopoverDelegateWrapper](p_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -160,9 +160,9 @@ func (p_ Popover) SetDelegate(value PopoverDelegate) {
 	po := objc.CreateProtocol("NSPopoverDelegate", value)
 	defer po.Release()
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](p_, "setDelegate:", po)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
 }
 
 func (p_ Popover) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, "setDelegate:", value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), value)
 }

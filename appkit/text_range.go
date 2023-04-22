@@ -32,22 +32,22 @@ func MakeTextRange(ptr unsafe.Pointer) TextRange {
 }
 
 func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.CallMethod[TextRange](t_, "textRangeByIntersectingWithTextRange:", textRange)
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("textRangeByIntersectingWithTextRange:"), textRange)
 	return rv
 }
 
 func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.CallMethod[TextRange](t_, "textRangeByFormingUnionWithTextRange:", textRange)
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("textRangeByFormingUnionWithTextRange:"), textRange)
 	return rv
 }
 
 func (tc _TextRangeClass) Alloc() TextRange {
-	rv := objc.CallMethod[TextRange](tc, "alloc")
+	rv := objc.CallMethod[TextRange](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextRangeClass) New() TextRange {
-	rv := objc.CallMethod[TextRange](tc, "new")
+	rv := objc.CallMethod[TextRange](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -57,26 +57,26 @@ func NewTextRange() TextRange {
 }
 
 func (t_ TextRange) Init() TextRange {
-	rv := objc.CallMethod[TextRange](t_, "init")
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
-	rv := objc.CallMethod[bool](t_, "intersectsWithTextRange:", textRange)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("intersectsWithTextRange:"), textRange)
 	return rv
 }
 
 func (t_ TextRange) IsEqualToTextRange(textRange ITextRange) bool {
-	rv := objc.CallMethod[bool](t_, "isEqualToTextRange:", textRange)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEqualToTextRange:"), textRange)
 	return rv
 }
 
 func (t_ TextRange) ContainsRange(textRange ITextRange) bool {
-	rv := objc.CallMethod[bool](t_, "containsRange:", textRange)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("containsRange:"), textRange)
 	return rv
 }
 
 func (t_ TextRange) IsEmpty() bool {
-	rv := objc.CallMethod[bool](t_, "isEmpty")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEmpty"))
 	return rv
 }

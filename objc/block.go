@@ -2,16 +2,21 @@ package objc
 
 //#import <stdlib.h>
 //#import <stdint.h>
-//void* wrap_block(uintptr_t goID, const char *typeEncoding);
-// void invocationGetArgs(void* ptr, int begin, int argc, uintptr_t argsPtr);
-// void invocationSetRet(void* ptr, void* loc);
-// void callBlock(void *bp, int argc, uintptr_t argsPtr, void* ret);
+//
+// void* block_get_invoke(void* block);
+// void* block_create_global(const char* signature, void* callable);
+// void* block_create_malloc(const char* signature, void* callable, uintptr_t handle);
+// void block_free(void* _block);
+// void* testBlock();
 import "C"
 import (
 	"reflect"
 	"runtime"
 	"runtime/cgo"
+	"strings"
 	"unsafe"
+
+	"github.com/hsiafan/cocoa/ffi"
 )
 
 func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
@@ -28,11 +33,11 @@ func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
 	fv := reflect.MakeFunc(funcType, func(args []reflect.Value) (results []reflect.Value) {
 		*sentinel = 1
 		if funcType.NumOut() == 0 {
-			callBlock(b, args, nil)
+			callBlock(b, args, voidType)
 			return nil
 		} else {
-			rvs := callBlock(b, args, funcType.Out(0))
-			return rvs
+			rv := callBlock(b, args, funcType.Out(0))
+			return []reflect.Value{rv}
 		}
 	})
 	runtime.SetFinalizer(sentinel, func(v *int) {
@@ -41,75 +46,164 @@ func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
 	return fv
 }
 
-func callBlock(b Block, params []reflect.Value, retType reflect.Type) []reflect.Value {
-	argc := len(params)
+func CallBlock[T any](b Block, params ...any) T {
+	paramsReflect := make([]reflect.Value, len(params))
+	for i := 0; i < len(params); i++ {
+		paramsReflect[i] = reflect.ValueOf(params[i])
+	}
+	var ret T
+	rt := reflect.TypeOf(ret)
+	v := callBlock(b, paramsReflect, rt)
+	return v.Interface().(T)
+}
 
-	var argsPtr C.uintptr_t
-	var args []unsafe.Pointer
-	if argc > 0 {
-		args = make([]unsafe.Pointer, argc)
-		for i := 0; i < argc; i++ {
-			args[i] = convertToObjcValue(params[i].Interface())
-		}
-		argsPtr = toUIntptr(&args[0])
+func callBlock(b Block, params []reflect.Value, rt reflect.Type) reflect.Value {
+	ptr := b.Ptr()
+	if ptr == nil {
+		panic("object is nil")
+	}
+
+	argc := len(params)
+	var args = make([]unsafe.Pointer, argc+1)
+	var argTypes = make([]*ffi.Type, argc+1)
+	args[0] = unsafe.Pointer(&ptr)
+	argTypes[0] = ffi.TypePointer
+	for i := 0; i < argc; i++ {
+		args[i+1] = convertToObjcValue(params[i])
+		argTypes[i+1] = getFFIType(params[i].Interface())
 	}
 
 	var retPtr unsafe.Pointer
-	if retType != nil {
-		rv := reflect.New(retType).Elem()
-		retPtr = convertToObjcValue(rv.Interface())
-	}
-
-	C.callBlock(b.Ptr(), C.int(argc), argsPtr, retPtr)
-
-	runtime.KeepAlive(args)
-	if retType != nil {
-		return []reflect.Value{convertToGoValue(retPtr, retType)}
+	if rt.Kind() == reflect.Struct {
+		size := rt.Size()
+		if size == 0 {
+			var i int64
+			retPtr = unsafe.Pointer(&i)
+		} else {
+			buffer := make([]byte, rt.Size())
+			retPtr = unsafe.Pointer(&buffer[0])
+		}
 	} else {
-		return nil
+		var i int64
+		retPtr = unsafe.Pointer(&i)
 	}
+	retType := toFFIType(rt)
+
+	fn := C.block_get_invoke(ptr)
+	if fn == nil {
+		panic("block imp is nil")
+	}
+
+	cif, status := ffi.PrepCIF(retType, argTypes)
+	if status != ffi.OK {
+		panic("ffi prep cif status not ok")
+	}
+	ffi.Call(cif, fn, retPtr, args)
+
+	return convertToGoValue(retPtr, rt)
 }
 
+// CreateMallocBlock wrap a go function to objc block.
 // f is the go function to wrap as a objc block
-func WrapBlock(f any) Block {
-	ft := reflect.TypeOf(f)
+func CreateMallocBlock(f any) Block {
+	rf := reflect.ValueOf(f)
+	ft := rf.Type()
 	if ft.Kind() != reflect.Func {
 		panic("not func type")
 	}
 
 	typeEncoding := getBlockTypeEncoding(ft)
 	cte := C.CString(typeEncoding)
-	defer C.free(unsafe.Pointer(cte))
-	goId := cgo.NewHandle(f)
-	r := C.wrap_block(C.uintptr_t(goId), cte)
-	return MakeBlock(r)
+	imp, handle := wrapGoFuncAsBlockIMP(rf)
+	bp := C.block_create_malloc(cte, imp.ptr, C.uintptr_t(handle))
+	b := MakeBlock(bp)
+	return b
 }
 
-//export handleBlockInvocation
-func handleBlockInvocation(goID uintptr, invocationPtr unsafe.Pointer) {
-	f := reflect.ValueOf(cgo.Handle(goID).Value())
-	ft := f.Type()
-	args := make([]reflect.Value, ft.NumIn())
+func CreateGlobalBlock(f any) Block {
+	rf := reflect.ValueOf(f)
+	ft := rf.Type()
+	if ft.Kind() != reflect.Func {
+		panic("not func type")
+	}
 
-	argsPtr := make([]unsafe.Pointer, len(args))
+	typeEncoding := getBlockTypeEncoding(ft)
+	cte := C.CString(typeEncoding) // // cte will be freed by oc_dispose_helper
+	imp, _ := wrapGoFuncAsBlockIMP(rf)
+	bp := C.block_create_global(cte, imp.ptr)
+	b := MakeBlock(bp)
+	return b
+}
+
+func wrapGoFuncAsBlockIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
+	if rf.Kind() != reflect.Func {
+		panic("f should be a func")
+	}
+	rt := rf.Type()
+	if rt.NumOut() > 1 {
+		panic("too many return value")
+	}
+
+	goArgc := rf.Type().NumIn()
+	var objcArgTypes = make([]*ffi.Type, goArgc+1)
+	objcArgTypes[0] = ffi.TypePointer // block pointer
+	for i := 0; i < goArgc; i++ {
+		objcArgTypes[i+1] = toFFIType(rt.In(i))
+	}
+
+	var retType *ffi.Type
+	if rt.NumOut() == 0 {
+		retType = ffi.TypeVoid
+	} else {
+		retType = getFFIType(rt.Out(0))
+	}
+
+	cif, status := ffi.PrepCIF(retType, objcArgTypes)
+	if status != ffi.OK {
+		panic("ffi prep cif status not ok")
+	}
+
+	fn, handle, status := ffi.CreateClosure(cif, func(cif *ffi.CIF, ret unsafe.Pointer, objcArgs []unsafe.Pointer) {
+		var goArgs = make([]reflect.Value, len(objcArgs)-1)
+		for i := 0; i < len(goArgs); i++ {
+			goArgs[i] = convertToGoValue(objcArgs[i+1], rt.In(i))
+		}
+		results := rf.Call(goArgs)
+		if len(results) == 1 {
+			setGoValueToObjcPointer(results[0], ret)
+		}
+	})
+	if status != ffi.OK {
+		panic("ffi prep closure status not ok")
+	}
+
+	return MakeIMP(fn), handle
+}
+
+func getBlockTypeEncoding(ft reflect.Type) string {
+	if ft.Kind() != reflect.Func {
+		panic("not func type")
+	}
+	if ft.NumOut() > 1 {
+		panic("to many return values")
+	}
+	var sb strings.Builder
+	if ft.NumOut() == 0 {
+		sb.WriteByte('v')
+	} else {
+		sb.WriteString(getTypeEncoding(ft.Out(0)))
+	}
+	sb.WriteString("@?") // block self as first parameter
 	for i := 0; i < ft.NumIn(); i++ {
-		argsPtr[i] = parseGoType(ft.In(i))
+		sb.WriteString(getTypeEncoding(ft.In(i)))
 	}
+	return sb.String()
+}
 
-	invocation := makeInvocation(invocationPtr)
-	if len(argsPtr) > 0 {
-		invocation.getArguments(1, argsPtr)
-	}
-	for i := 0; i < ft.NumIn(); i++ {
-		args[i] = convertToGoValue(argsPtr[i], ft.In(i))
-	}
+func testBlock() Block {
+	return MakeBlock(C.testBlock())
+}
 
-	rvs := f.Call(args)
-	if len(rvs) > 1 {
-		panic("too many return values")
-	}
-	if len(rvs) == 1 {
-		rp := convertToObjcValue(rvs[0].Interface())
-		invocation.setReturnValue(rp)
-	}
+func toUIntptr[T any](ptr *T) C.uintptr_t {
+	return C.uintptr_t(uintptr(unsafe.Pointer(ptr)))
 }

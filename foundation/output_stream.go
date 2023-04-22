@@ -29,42 +29,42 @@ func MakeOutputStream(ptr unsafe.Pointer) OutputStream {
 }
 
 func (oc _OutputStreamClass) OutputStreamToMemory() OutputStream {
-	rv := objc.CallMethod[OutputStream](oc, "outputStreamToMemory")
+	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("outputStreamToMemory"))
 	return rv
 }
 
 func (oc _OutputStreamClass) OutputStreamToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
-	rv := objc.CallMethod[OutputStream](oc, "outputStreamToFileAtPath:append:", path, shouldAppend)
+	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("outputStreamToFileAtPath:append:"), path, shouldAppend)
 	return rv
 }
 
 func (oc _OutputStreamClass) OutputStreamWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.CallMethod[OutputStream](oc, "outputStreamWithURL:append:", url, shouldAppend)
+	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("outputStreamWithURL:append:"), url, shouldAppend)
 	return rv
 }
 
 func (o_ OutputStream) InitToMemory() OutputStream {
-	rv := objc.CallMethod[OutputStream](o_, "initToMemory")
+	rv := objc.CallMethod[OutputStream](o_, objc.GetSelector("initToMemory"))
 	return rv
 }
 
 func (o_ OutputStream) InitToFileAtPath_Append(path string, shouldAppend bool) OutputStream {
-	rv := objc.CallMethod[OutputStream](o_, "initToFileAtPath:append:", path, shouldAppend)
+	rv := objc.CallMethod[OutputStream](o_, objc.GetSelector("initToFileAtPath:append:"), path, shouldAppend)
 	return rv
 }
 
 func (o_ OutputStream) InitWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.CallMethod[OutputStream](o_, "initWithURL:append:", url, shouldAppend)
+	rv := objc.CallMethod[OutputStream](o_, objc.GetSelector("initWithURL:append:"), url, shouldAppend)
 	return rv
 }
 
 func (oc _OutputStreamClass) Alloc() OutputStream {
-	rv := objc.CallMethod[OutputStream](oc, "alloc")
+	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (oc _OutputStreamClass) New() OutputStream {
-	rv := objc.CallMethod[OutputStream](oc, "new")
+	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -74,11 +74,11 @@ func NewOutputStream() OutputStream {
 }
 
 func (o_ OutputStream) Init() OutputStream {
-	rv := objc.CallMethod[OutputStream](o_, "init")
+	rv := objc.CallMethod[OutputStream](o_, objc.GetSelector("init"))
 	return rv
 }
 
 func (o_ OutputStream) HasSpaceAvailable() bool {
-	rv := objc.CallMethod[bool](o_, "hasSpaceAvailable")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("hasSpaceAvailable"))
 	return rv
 }

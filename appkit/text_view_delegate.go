@@ -372,7 +372,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsUndoManagerForTextView() bool {
 }
 
 func (t_ TextViewDelegateWrapper) UndoManagerForTextView(view ITextView) foundation.UndoManager {
-	rv := objc.CallMethod[foundation.UndoManager](t_, "undoManagerForTextView:", view)
+	rv := objc.CallMethod[foundation.UndoManager](t_, objc.GetSelector("undoManagerForTextView:"), view)
 	return rv
 }
 
@@ -381,7 +381,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_WillDisplayToolTip_ForChar
 }
 
 func (t_ TextViewDelegateWrapper) TextView_WillDisplayToolTip_ForCharacterAtIndex(textView ITextView, tooltip string, characterIndex uint) string {
-	rv := objc.CallMethod[string](t_, "textView:willDisplayToolTip:forCharacterAtIndex:", textView, tooltip, characterIndex)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("textView:willDisplayToolTip:forCharacterAtIndex:"), textView, tooltip, characterIndex)
 	return rv
 }
 
@@ -390,7 +390,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_URLForContentsOfTextAttach
 }
 
 func (t_ TextViewDelegateWrapper) TextView_URLForContentsOfTextAttachment_AtIndex(textView ITextView, textAttachment ITextAttachment, charIndex uint) foundation.URL {
-	rv := objc.CallMethod[foundation.URL](t_, "textView:URLForContentsOfTextAttachment:atIndex:", textView, textAttachment, charIndex)
+	rv := objc.CallMethod[foundation.URL](t_, objc.GetSelector("textView:URLForContentsOfTextAttachment:atIndex:"), textView, textAttachment, charIndex)
 	return rv
 }
 
@@ -399,7 +399,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_WillChangeSelectionFromCha
 }
 
 func (t_ TextViewDelegateWrapper) TextView_WillChangeSelectionFromCharacterRange_ToCharacterRange(textView ITextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range {
-	rv := objc.CallMethod[foundation.Range](t_, "textView:willChangeSelectionFromCharacterRange:toCharacterRange:", textView, oldSelectedCharRange, newSelectedCharRange)
+	rv := objc.CallMethod[foundation.Range](t_, objc.GetSelector("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), textView, oldSelectedCharRange, newSelectedCharRange)
 	return rv
 }
 
@@ -408,7 +408,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_WillChangeSelectionFromCha
 }
 
 func (t_ TextViewDelegateWrapper) TextView_WillChangeSelectionFromCharacterRanges_ToCharacterRanges(textView ITextView, oldSelectedCharRanges []foundation.IValue, newSelectedCharRanges []foundation.IValue) []foundation.Value {
-	rv := objc.CallMethod[[]foundation.Value](t_, "textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:", textView, oldSelectedCharRanges, newSelectedCharRanges)
+	rv := objc.CallMethod[[]foundation.Value](t_, objc.GetSelector("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), textView, oldSelectedCharRanges, newSelectedCharRanges)
 	return rv
 }
 
@@ -417,7 +417,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextViewDidChangeSelection() bool {
 }
 
 func (t_ TextViewDelegateWrapper) TextViewDidChangeSelection(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, "textViewDidChangeSelection:", notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textViewDidChangeSelection:"), notification)
 }
 
 func (t_ *TextViewDelegateWrapper) ImplementsTextView_Candidates_ForSelectedRange() bool {
@@ -425,7 +425,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_Candidates_ForSelectedRang
 }
 
 func (t_ TextViewDelegateWrapper) TextView_Candidates_ForSelectedRange(textView ITextView, candidates []foundation.ITextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
-	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, "textView:candidates:forSelectedRange:", textView, candidates, selectedRange)
+	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, objc.GetSelector("textView:candidates:forSelectedRange:"), textView, candidates, selectedRange)
 	return rv
 }
 
@@ -434,7 +434,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_CandidatesForSelectedRange
 }
 
 func (t_ TextViewDelegateWrapper) TextView_CandidatesForSelectedRange(textView ITextView, selectedRange foundation.Range) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](t_, "textView:candidatesForSelectedRange:", textView, selectedRange)
+	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("textView:candidatesForSelectedRange:"), textView, selectedRange)
 	return rv
 }
 
@@ -443,7 +443,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ShouldSelectCandidateAtInd
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ShouldSelectCandidateAtIndex(textView ITextView, index uint) bool {
-	rv := objc.CallMethod[bool](t_, "textView:shouldSelectCandidateAtIndex:", textView, index)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textView:shouldSelectCandidateAtIndex:"), textView, index)
 	return rv
 }
 
@@ -452,7 +452,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ShouldUpdateTouchBarItemId
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ShouldUpdateTouchBarItemIdentifiers(textView ITextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier {
-	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, "textView:shouldUpdateTouchBarItemIdentifiers:", textView, identifiers)
+	rv := objc.CallMethod[[]TouchBarItemIdentifier](t_, objc.GetSelector("textView:shouldUpdateTouchBarItemIdentifiers:"), textView, identifiers)
 	return rv
 }
 
@@ -461,7 +461,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ShouldChangeTextInRange_Re
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ShouldChangeTextInRange_ReplacementString(textView ITextView, affectedCharRange foundation.Range, replacementString string) bool {
-	rv := objc.CallMethod[bool](t_, "textView:shouldChangeTextInRange:replacementString:", textView, affectedCharRange, replacementString)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textView:shouldChangeTextInRange:replacementString:"), textView, affectedCharRange, replacementString)
 	return rv
 }
 
@@ -470,7 +470,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ShouldChangeTextInRanges_R
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ShouldChangeTextInRanges_ReplacementStrings(textView ITextView, affectedRanges []foundation.IValue, replacementStrings []string) bool {
-	rv := objc.CallMethod[bool](t_, "textView:shouldChangeTextInRanges:replacementStrings:", textView, affectedRanges, replacementStrings)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textView:shouldChangeTextInRanges:replacementStrings:"), textView, affectedRanges, replacementStrings)
 	return rv
 }
 
@@ -479,7 +479,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ShouldChangeTypingAttribut
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ShouldChangeTypingAttributes_ToAttributes(textView ITextView, oldTypingAttributes map[string]objc.IObject, newTypingAttributes map[foundation.AttributedStringKey]objc.IObject) map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, "textView:shouldChangeTypingAttributes:toAttributes:", textView, oldTypingAttributes, newTypingAttributes)
+	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, objc.GetSelector("textView:shouldChangeTypingAttributes:toAttributes:"), textView, oldTypingAttributes, newTypingAttributes)
 	return rv
 }
 
@@ -488,7 +488,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextViewDidChangeTypingAttributes()
 }
 
 func (t_ TextViewDelegateWrapper) TextViewDidChangeTypingAttributes(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, "textViewDidChangeTypingAttributes:", notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textViewDidChangeTypingAttributes:"), notification)
 }
 
 func (t_ *TextViewDelegateWrapper) ImplementsTextView_ClickedOnLink_AtIndex() bool {
@@ -496,7 +496,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ClickedOnLink_AtIndex() bo
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ClickedOnLink_AtIndex(textView ITextView, link objc.IObject, charIndex uint) bool {
-	rv := objc.CallMethod[bool](t_, "textView:clickedOnLink:atIndex:", textView, link, charIndex)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textView:clickedOnLink:atIndex:"), textView, link, charIndex)
 	return rv
 }
 
@@ -505,7 +505,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ShouldSetSpellingState_Ran
 }
 
 func (t_ TextViewDelegateWrapper) TextView_ShouldSetSpellingState_Range(textView ITextView, value int, affectedCharRange foundation.Range) int {
-	rv := objc.CallMethod[int](t_, "textView:shouldSetSpellingState:range:", textView, value, affectedCharRange)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("textView:shouldSetSpellingState:range:"), textView, value, affectedCharRange)
 	return rv
 }
 
@@ -514,7 +514,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_WillCheckTextInRange_Optio
 }
 
 func (t_ TextViewDelegateWrapper) TextView_WillCheckTextInRange_Options_Types(view ITextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.IObject, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object {
-	rv := objc.CallMethod[map[TextCheckingOptionKey]objc.Object](t_, "textView:willCheckTextInRange:options:types:", view, range_, options, checkingTypes)
+	rv := objc.CallMethod[map[TextCheckingOptionKey]objc.Object](t_, objc.GetSelector("textView:willCheckTextInRange:options:types:"), view, range_, options, checkingTypes)
 	return rv
 }
 
@@ -523,7 +523,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_DidCheckTextInRange_Types_
 }
 
 func (t_ TextViewDelegateWrapper) TextView_DidCheckTextInRange_Types_Options_Results_Orthography_WordCount(view ITextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, results []foundation.ITextCheckingResult, orthography foundation.IOrthography, wordCount int) []foundation.TextCheckingResult {
-	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, "textView:didCheckTextInRange:types:options:results:orthography:wordCount:", view, range_, checkingTypes, options, results, orthography, wordCount)
+	rv := objc.CallMethod[[]foundation.TextCheckingResult](t_, objc.GetSelector("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), view, range_, checkingTypes, options, results, orthography, wordCount)
 	return rv
 }
 
@@ -532,7 +532,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_Completions_ForPartialWord
 }
 
 func (t_ TextViewDelegateWrapper) TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(textView ITextView, words []string, charRange foundation.Range, index *int) []string {
-	rv := objc.CallMethod[[]string](t_, "textView:completions:forPartialWordRange:indexOfSelectedItem:", textView, words, charRange, index)
+	rv := objc.CallMethod[[]string](t_, objc.GetSelector("textView:completions:forPartialWordRange:indexOfSelectedItem:"), textView, words, charRange, index)
 	return rv
 }
 
@@ -541,7 +541,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_WillShowSharingServicePick
 }
 
 func (t_ TextViewDelegateWrapper) TextView_WillShowSharingServicePicker_ForItems(textView ITextView, servicePicker ISharingServicePicker, items []objc.IObject) SharingServicePicker {
-	rv := objc.CallMethod[SharingServicePicker](t_, "textView:willShowSharingServicePicker:forItems:", textView, servicePicker, items)
+	rv := objc.CallMethod[SharingServicePicker](t_, objc.GetSelector("textView:willShowSharingServicePicker:forItems:"), textView, servicePicker, items)
 	return rv
 }
 
@@ -550,7 +550,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_DoCommandBySelector() bool
 }
 
 func (t_ TextViewDelegateWrapper) TextView_DoCommandBySelector(textView ITextView, commandSelector objc.Selector) bool {
-	rv := objc.CallMethod[bool](t_, "textView:doCommandBySelector:", textView, commandSelector)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textView:doCommandBySelector:"), textView, commandSelector)
 	return rv
 }
 
@@ -559,7 +559,7 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_Menu_ForEvent_AtIndex() bo
 }
 
 func (t_ TextViewDelegateWrapper) TextView_Menu_ForEvent_AtIndex(view ITextView, menu IMenu, event IEvent, charIndex uint) Menu {
-	rv := objc.CallMethod[Menu](t_, "textView:menu:forEvent:atIndex:", view, menu, event, charIndex)
+	rv := objc.CallMethod[Menu](t_, objc.GetSelector("textView:menu:forEvent:atIndex:"), view, menu, event, charIndex)
 	return rv
 }
 
@@ -569,6 +569,6 @@ func (t_ *TextViewDelegateWrapper) ImplementsTextView_ClickedOnLink() bool {
 
 // deprecated
 func (t_ TextViewDelegateWrapper) TextView_ClickedOnLink(textView ITextView, link objc.IObject) bool {
-	rv := objc.CallMethod[bool](t_, "textView:clickedOnLink:", textView, link)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textView:clickedOnLink:"), textView, link)
 	return rv
 }

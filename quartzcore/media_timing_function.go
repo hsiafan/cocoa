@@ -28,12 +28,12 @@ func MakeMediaTimingFunction(ptr unsafe.Pointer) MediaTimingFunction {
 }
 
 func (mc _MediaTimingFunctionClass) Alloc() MediaTimingFunction {
-	rv := objc.CallMethod[MediaTimingFunction](mc, "alloc")
+	rv := objc.CallMethod[MediaTimingFunction](mc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (mc _MediaTimingFunctionClass) New() MediaTimingFunction {
-	rv := objc.CallMethod[MediaTimingFunction](mc, "new")
+	rv := objc.CallMethod[MediaTimingFunction](mc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -43,6 +43,6 @@ func NewMediaTimingFunction() MediaTimingFunction {
 }
 
 func (m_ MediaTimingFunction) Init() MediaTimingFunction {
-	rv := objc.CallMethod[MediaTimingFunction](m_, "init")
+	rv := objc.CallMethod[MediaTimingFunction](m_, objc.GetSelector("init"))
 	return rv
 }

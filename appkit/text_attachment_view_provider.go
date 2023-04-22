@@ -35,12 +35,12 @@ func MakeTextAttachmentViewProvider(ptr unsafe.Pointer) TextAttachmentViewProvid
 }
 
 func (tc _TextAttachmentViewProviderClass) Alloc() TextAttachmentViewProvider {
-	rv := objc.CallMethod[TextAttachmentViewProvider](tc, "alloc")
+	rv := objc.CallMethod[TextAttachmentViewProvider](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TextAttachmentViewProviderClass) New() TextAttachmentViewProvider {
-	rv := objc.CallMethod[TextAttachmentViewProvider](tc, "new")
+	rv := objc.CallMethod[TextAttachmentViewProvider](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -50,38 +50,38 @@ func NewTextAttachmentViewProvider() TextAttachmentViewProvider {
 }
 
 func (t_ TextAttachmentViewProvider) Init() TextAttachmentViewProvider {
-	rv := objc.CallMethod[TextAttachmentViewProvider](t_, "init")
+	rv := objc.CallMethod[TextAttachmentViewProvider](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (t_ TextAttachmentViewProvider) LoadView() {
-	objc.CallMethod[objc.Void](t_, "loadView")
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("loadView"))
 }
 
 func (t_ TextAttachmentViewProvider) TextAttachment() TextAttachment {
-	rv := objc.CallMethod[TextAttachment](t_, "textAttachment")
+	rv := objc.CallMethod[TextAttachment](t_, objc.GetSelector("textAttachment"))
 	return rv
 }
 
 func (t_ TextAttachmentViewProvider) TextLayoutManager() TextLayoutManager {
-	rv := objc.CallMethod[TextLayoutManager](t_, "textLayoutManager")
+	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv
 }
 
 func (t_ TextAttachmentViewProvider) TracksTextAttachmentViewBounds() bool {
-	rv := objc.CallMethod[bool](t_, "tracksTextAttachmentViewBounds")
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tracksTextAttachmentViewBounds"))
 	return rv
 }
 
 func (t_ TextAttachmentViewProvider) SetTracksTextAttachmentViewBounds(value bool) {
-	objc.CallMethod[objc.Void](t_, "setTracksTextAttachmentViewBounds:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTracksTextAttachmentViewBounds:"), value)
 }
 
 func (t_ TextAttachmentViewProvider) View() View {
-	rv := objc.CallMethod[View](t_, "view")
+	rv := objc.CallMethod[View](t_, objc.GetSelector("view"))
 	return rv
 }
 
 func (t_ TextAttachmentViewProvider) SetView(value IView) {
-	objc.CallMethod[objc.Void](t_, "setView:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), value)
 }

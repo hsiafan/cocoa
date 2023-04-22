@@ -54,32 +54,32 @@ func MakeOpenPanel(ptr unsafe.Pointer) OpenPanel {
 }
 
 func (oc _OpenPanelClass) WindowWithContentViewController(contentViewController IViewController) OpenPanel {
-	rv := objc.CallMethod[OpenPanel](oc, "windowWithContentViewController:", contentViewController)
+	rv := objc.CallMethod[OpenPanel](oc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
 func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) OpenPanel {
-	rv := objc.CallMethod[OpenPanel](o_, "initWithContentRect:styleMask:backing:defer:", contentRect, style, backingStoreType, flag)
+	rv := objc.CallMethod[OpenPanel](o_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
 	return rv
 }
 
 func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) OpenPanel {
-	rv := objc.CallMethod[OpenPanel](o_, "initWithContentRect:styleMask:backing:defer:screen:", contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[OpenPanel](o_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
 func (o_ OpenPanel) Init() OpenPanel {
-	rv := objc.CallMethod[OpenPanel](o_, "init")
+	rv := objc.CallMethod[OpenPanel](o_, objc.GetSelector("init"))
 	return rv
 }
 
 func (oc _OpenPanelClass) Alloc() OpenPanel {
-	rv := objc.CallMethod[OpenPanel](oc, "alloc")
+	rv := objc.CallMethod[OpenPanel](oc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (oc _OpenPanelClass) New() OpenPanel {
-	rv := objc.CallMethod[OpenPanel](oc, "new")
+	rv := objc.CallMethod[OpenPanel](oc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -89,102 +89,102 @@ func NewOpenPanel() OpenPanel {
 }
 
 func (oc _OpenPanelClass) OpenPanel() OpenPanel {
-	rv := objc.CallMethod[OpenPanel](oc, "openPanel")
+	rv := objc.CallMethod[OpenPanel](oc, objc.GetSelector("openPanel"))
 	return rv
 }
 
 // deprecated
 func (o_ OpenPanel) Filenames() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](o_, "filenames")
+	rv := objc.CallMethod[[]objc.Object](o_, objc.GetSelector("filenames"))
 	return rv
 }
 
 // deprecated
 func (o_ OpenPanel) BeginForDirectory_File_Types_ModelessDelegate_DidEndSelector_ContextInfo(path string, name string, fileTypes []objc.IObject, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](o_, "beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:", path, name, fileTypes, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:"), path, name, fileTypes, delegate, didEndSelector, contextInfo)
 }
 
 // deprecated
 func (o_ OpenPanel) BeginSheetForDirectory_File_Types_ModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(path string, name string, fileTypes []objc.IObject, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](o_, "beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:", path, name, fileTypes, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), path, name, fileTypes, docWindow, delegate, didEndSelector, contextInfo)
 }
 
 // deprecated
 func (o_ OpenPanel) RunModalForDirectory_File_Types(path string, name string, fileTypes []objc.IObject) int {
-	rv := objc.CallMethod[int](o_, "runModalForDirectory:file:types:", path, name, fileTypes)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("runModalForDirectory:file:types:"), path, name, fileTypes)
 	return rv
 }
 
 // deprecated
 func (o_ OpenPanel) RunModalForTypes(fileTypes []objc.IObject) int {
-	rv := objc.CallMethod[int](o_, "runModalForTypes:", fileTypes)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("runModalForTypes:"), fileTypes)
 	return rv
 }
 
 func (o_ OpenPanel) CanChooseFiles() bool {
-	rv := objc.CallMethod[bool](o_, "canChooseFiles")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("canChooseFiles"))
 	return rv
 }
 
 func (o_ OpenPanel) SetCanChooseFiles(value bool) {
-	objc.CallMethod[objc.Void](o_, "setCanChooseFiles:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setCanChooseFiles:"), value)
 }
 
 func (o_ OpenPanel) CanChooseDirectories() bool {
-	rv := objc.CallMethod[bool](o_, "canChooseDirectories")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("canChooseDirectories"))
 	return rv
 }
 
 func (o_ OpenPanel) SetCanChooseDirectories(value bool) {
-	objc.CallMethod[objc.Void](o_, "setCanChooseDirectories:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setCanChooseDirectories:"), value)
 }
 
 func (o_ OpenPanel) ResolvesAliases() bool {
-	rv := objc.CallMethod[bool](o_, "resolvesAliases")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("resolvesAliases"))
 	return rv
 }
 
 func (o_ OpenPanel) SetResolvesAliases(value bool) {
-	objc.CallMethod[objc.Void](o_, "setResolvesAliases:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setResolvesAliases:"), value)
 }
 
 func (o_ OpenPanel) AllowsMultipleSelection() bool {
-	rv := objc.CallMethod[bool](o_, "allowsMultipleSelection")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("allowsMultipleSelection"))
 	return rv
 }
 
 func (o_ OpenPanel) SetAllowsMultipleSelection(value bool) {
-	objc.CallMethod[objc.Void](o_, "setAllowsMultipleSelection:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setAllowsMultipleSelection:"), value)
 }
 
 func (o_ OpenPanel) IsAccessoryViewDisclosed() bool {
-	rv := objc.CallMethod[bool](o_, "isAccessoryViewDisclosed")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("isAccessoryViewDisclosed"))
 	return rv
 }
 
 func (o_ OpenPanel) SetAccessoryViewDisclosed(value bool) {
-	objc.CallMethod[objc.Void](o_, "setAccessoryViewDisclosed:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setAccessoryViewDisclosed:"), value)
 }
 
 func (o_ OpenPanel) URLs() []foundation.URL {
-	rv := objc.CallMethod[[]foundation.URL](o_, "URLs")
+	rv := objc.CallMethod[[]foundation.URL](o_, objc.GetSelector("URLs"))
 	return rv
 }
 
 func (o_ OpenPanel) CanDownloadUbiquitousContents() bool {
-	rv := objc.CallMethod[bool](o_, "canDownloadUbiquitousContents")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("canDownloadUbiquitousContents"))
 	return rv
 }
 
 func (o_ OpenPanel) SetCanDownloadUbiquitousContents(value bool) {
-	objc.CallMethod[objc.Void](o_, "setCanDownloadUbiquitousContents:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setCanDownloadUbiquitousContents:"), value)
 }
 
 func (o_ OpenPanel) CanResolveUbiquitousConflicts() bool {
-	rv := objc.CallMethod[bool](o_, "canResolveUbiquitousConflicts")
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("canResolveUbiquitousConflicts"))
 	return rv
 }
 
 func (o_ OpenPanel) SetCanResolveUbiquitousConflicts(value bool) {
-	objc.CallMethod[objc.Void](o_, "setCanResolveUbiquitousConflicts:", value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setCanResolveUbiquitousConflicts:"), value)
 }

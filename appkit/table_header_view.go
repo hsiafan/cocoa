@@ -36,22 +36,22 @@ func MakeTableHeaderView(ptr unsafe.Pointer) TableHeaderView {
 }
 
 func (t_ TableHeaderView) InitWithFrame(frameRect foundation.Rect) TableHeaderView {
-	rv := objc.CallMethod[TableHeaderView](t_, "initWithFrame:", frameRect)
+	rv := objc.CallMethod[TableHeaderView](t_, objc.GetSelector("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (t_ TableHeaderView) Init() TableHeaderView {
-	rv := objc.CallMethod[TableHeaderView](t_, "init")
+	rv := objc.CallMethod[TableHeaderView](t_, objc.GetSelector("init"))
 	return rv
 }
 
 func (tc _TableHeaderViewClass) Alloc() TableHeaderView {
-	rv := objc.CallMethod[TableHeaderView](tc, "alloc")
+	rv := objc.CallMethod[TableHeaderView](tc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (tc _TableHeaderViewClass) New() TableHeaderView {
-	rv := objc.CallMethod[TableHeaderView](tc, "new")
+	rv := objc.CallMethod[TableHeaderView](tc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,35 +61,35 @@ func NewTableHeaderView() TableHeaderView {
 }
 
 func (t_ TableHeaderView) ColumnAtPoint(point foundation.Point) int {
-	rv := objc.CallMethod[int](t_, "columnAtPoint:", point)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("columnAtPoint:"), point)
 	return rv
 }
 
 func (t_ TableHeaderView) HeaderRectOfColumn(column int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, "headerRectOfColumn:", column)
+	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("headerRectOfColumn:"), column)
 	return rv
 }
 
 func (t_ TableHeaderView) TableView() TableView {
-	rv := objc.CallMethod[TableView](t_, "tableView")
+	rv := objc.CallMethod[TableView](t_, objc.GetSelector("tableView"))
 	return rv
 }
 
 func (t_ TableHeaderView) SetTableView(value ITableView) {
-	objc.CallMethod[objc.Void](t_, "setTableView:", value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), value)
 }
 
 func (t_ TableHeaderView) DraggedColumn() int {
-	rv := objc.CallMethod[int](t_, "draggedColumn")
+	rv := objc.CallMethod[int](t_, objc.GetSelector("draggedColumn"))
 	return rv
 }
 
 func (t_ TableHeaderView) DraggedDistance() float64 {
-	rv := objc.CallMethod[float64](t_, "draggedDistance")
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("draggedDistance"))
 	return rv
 }
 
 func (t_ TableHeaderView) ResizedColumn() int {
-	rv := objc.CallMethod[int](t_, "resizedColumn")
+	rv := objc.CallMethod[int](t_, objc.GetSelector("resizedColumn"))
 	return rv
 }

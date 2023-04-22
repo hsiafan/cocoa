@@ -3,6 +3,8 @@ package objc
 import (
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_getBlockTypeEncoding(t *testing.T) {
@@ -13,4 +15,39 @@ func Test_getBlockTypeEncoding(t *testing.T) {
 	if encoding != "v@?Q@" {
 		t.Fail()
 	}
+}
+
+func Test_CallBlock(t *testing.T) {
+	b := testBlock()
+	v := CallBlock[int32](b, 10)
+	assert.Equal(t, int32(5), v)
+}
+
+func Test_CreateGlobalBlock(t *testing.T) {
+	b := CreateGlobalBlock(func(v int) int {
+		return v / 2
+	})
+	v := CallBlock[int](b, 10)
+	assert.Equal(t, 5, v)
+
+	b2 := b.Copy()
+	assert.Equal(t, b2, b)
+	b.Release()
+	b.Release()
+	b.Release()
+	v = CallBlock[int](b, 10)
+	assert.Equal(t, 5, v)
+}
+
+func Test_CreateMallocBlock(t *testing.T) {
+	b := CreateMallocBlock(func(v int) int {
+		return v / 2
+	})
+	v := CallBlock[int](b, 10)
+	assert.Equal(t, 5, v)
+
+	b.Release()
+	assert.Panics(t, func() {
+		v = CallBlock[int](b, 10)
+	})
 }

@@ -30,22 +30,22 @@ func MakeNotification(ptr unsafe.Pointer) Notification {
 }
 
 func (n_ Notification) Init() Notification {
-	rv := objc.CallMethod[Notification](n_, "init")
+	rv := objc.CallMethod[Notification](n_, objc.GetSelector("init"))
 	return rv
 }
 
 func (nc _NotificationClass) NotificationWithName_Object(aName NotificationName, anObject objc.IObject) Notification {
-	rv := objc.CallMethod[Notification](nc, "notificationWithName:object:", aName, anObject)
+	rv := objc.CallMethod[Notification](nc, objc.GetSelector("notificationWithName:object:"), aName, anObject)
 	return rv
 }
 
 func (nc _NotificationClass) Alloc() Notification {
-	rv := objc.CallMethod[Notification](nc, "alloc")
+	rv := objc.CallMethod[Notification](nc, objc.GetSelector("alloc"))
 	return rv
 }
 
 func (nc _NotificationClass) New() Notification {
-	rv := objc.CallMethod[Notification](nc, "new")
+	rv := objc.CallMethod[Notification](nc, objc.GetSelector("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,11 +55,11 @@ func NewNotification() Notification {
 }
 
 func (n_ Notification) Name() NotificationName {
-	rv := objc.CallMethod[NotificationName](n_, "name")
+	rv := objc.CallMethod[NotificationName](n_, objc.GetSelector("name"))
 	return rv
 }
 
 func (n_ Notification) Object_() objc.Object {
-	rv := objc.CallMethod[objc.Object](n_, "object")
+	rv := objc.CallMethod[objc.Object](n_, objc.GetSelector("object"))
 	return rv
 }
