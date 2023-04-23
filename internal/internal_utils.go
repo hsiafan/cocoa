@@ -3,7 +3,6 @@ package internal
 import "C"
 import (
 	"strings"
-	"sync"
 	"unsafe"
 )
 
@@ -29,17 +28,14 @@ func SelectorToGoName(sel string) string {
 	return sb.String()
 }
 
-var associationKeys = map[string]unsafe.Pointer{}
-var associationKeysLock sync.Mutex
+var associationKeyCache = SyncCache[string, unsafe.Pointer]{
+	Compute: func(name string) unsafe.Pointer {
+		associationKey := unsafe.Pointer(C.CString(name))
+		return associationKey
+	},
+}
 
 // AssociationKey return key for  AssociatedObject
 func AssociationKey(name string) unsafe.Pointer {
-	associationKeysLock.Lock()
-	defer associationKeysLock.Unlock()
-	if key, ok := associationKeys[name]; ok {
-		return key
-	}
-	key := unsafe.Pointer(C.CString(name))
-	associationKeys[name] = key
-	return key
+	return associationKeyCache.Load(name)
 }

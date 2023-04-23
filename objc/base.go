@@ -65,7 +65,6 @@ package objc
 import "C"
 import (
 	"runtime/cgo"
-	"sync"
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/internal"
@@ -489,19 +488,15 @@ func MakeSelector(ptr unsafe.Pointer) Selector {
 	return Selector{ptr}
 }
 
-var selectorCache = sync.Map{}
+var selectorCache = internal.SyncCache[string, Selector]{
+	Compute: func(selName string) Selector {
+		return SelectorRegisterName(selName)
+	},
+}
 
 // GetSelector return a method selector by the name. The selector is cached at go side.
 func GetSelector(selName string) Selector {
-	if s, ok := selectorCache.Load(selName); ok {
-		return s.(Selector)
-	}
-	selector := SelectorRegisterName(selName)
-	if selector.ptr == nil {
-		return selector
-	}
-	selectorCache.Store(selName, selector)
-	return selector
+	return selectorCache.Load(selName)
 }
 
 // SelectorRegisterName registers a method with the Objective-C runtime system, maps the method name to a selector, and returns the selector value
