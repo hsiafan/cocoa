@@ -117,6 +117,7 @@ func CreateMallocBlock(f any) Block {
 	imp, handle := wrapGoFuncAsBlockIMP(rf)
 	bp := C.block_create_malloc(cte, imp.ptr, C.uintptr_t(handle))
 	b := MakeBlock(bp)
+	MakeObject(bp).Autorelease()
 	return b
 }
 
