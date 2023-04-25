@@ -493,15 +493,13 @@ func MakeSelector(ptr unsafe.Pointer) Selector {
 	return Selector{ptr}
 }
 
-var selectorCache = internal.SyncCache[string, Selector]{
-	Compute: func(selName string) Selector {
-		return SelectorRegisterName(selName)
-	},
-}
+var selectorCache = internal.SyncCache[string, Selector]{}
 
 // GetSelector return a method selector by the name. The selector is cached at go side.
 func GetSelector(selName string) Selector {
-	return selectorCache.Load(selName)
+	return selectorCache.Load(selName, func(selName string) Selector {
+		return SelectorRegisterName(selName)
+	})
 }
 
 // SelectorRegisterName registers a method with the Objective-C runtime system, maps the method name to a selector, and returns the selector value

@@ -28,14 +28,12 @@ func SelectorToGoName(sel string) string {
 	return sb.String()
 }
 
-var associationKeyCache = SyncCache[string, unsafe.Pointer]{
-	Compute: func(name string) unsafe.Pointer {
-		associationKey := unsafe.Pointer(C.CString(name))
-		return associationKey
-	},
-}
+var associationKeyCache = SyncCache[string, unsafe.Pointer]{}
 
 // AssociationKey return key for  AssociatedObject
 func AssociationKey(name string) unsafe.Pointer {
-	return associationKeyCache.Load(name)
+	return associationKeyCache.Load(name, func(name string) unsafe.Pointer {
+		associationKey := unsafe.Pointer(C.CString(name))
+		return associationKey
+	})
 }

@@ -7,15 +7,13 @@ import "C"
 import (
 	"reflect"
 	"runtime/cgo"
-	"sync"
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/internal"
 )
 
-var classCache = map[string]*classInfo{} //go protocol interface name to ClassInfo
-var classLock sync.Mutex
+var classCache = internal.SyncCache[string, *classInfo]{} //go protocol interface name to ClassInfo
 var baseClass = GetClass("ProtocolImplBase")
 
 type instanceInfo struct {
@@ -53,45 +51,40 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 		panic("should not be interface type")
 	}
 
-	classLock.Lock()
-	defer classLock.Unlock()
-	if ci, ok := classCache[protocolName]; ok {
-		return ci
-	}
-	class := AllocateClassPair(baseClass, protocolName+"Adaptor", 0)
-	protocol := GetProtocol(protocolName)
-	class.AddProtocol(protocol)
+	return classCache.Load(protocolName, func(key string) *classInfo {
+		class := AllocateClassPair(baseClass, protocolName+"Adaptor", 0)
+		protocol := GetProtocol(protocolName)
+		class.AddProtocol(protocol)
 
-	var methodInfos = map[string]*methodInfo{} // selector name to method signature
-	for _, md := range getProtocolMethods(protocol) {
-		selector := md.Name
-		selName := selector.GetName()
-		goFuncName := internal.SelectorToGoName(selName)
-		goMethod, ok := t.MethodByName(goFuncName)
-		if !ok {
-			if md.required {
-				panic("required method not implemented:" + selName)
-			} else {
-				continue
+		var methodInfos = map[string]*methodInfo{} // selector name to method signature
+		for _, md := range getProtocolMethods(protocol) {
+			selector := md.Name
+			selName := selector.GetName()
+			goFuncName := internal.SelectorToGoName(selName)
+			goMethod, ok := t.MethodByName(goFuncName)
+			if !ok {
+				if md.required {
+					panic("required method not implemented:" + selName)
+				} else {
+					continue
+				}
+			}
+			addProtocolMethod(class, md, goMethod)
+			hasFunc, _ := t.MethodByName("Implements" + goFuncName)
+
+			methodInfos[selName] = &methodInfo{
+				required: md.required,
+				hasFunc:  hasFunc.Func,
 			}
 		}
-		addProtocolMethod(class, md, goMethod)
-		hasFunc, _ := t.MethodByName("Implements" + goFuncName)
 
-		methodInfos[selName] = &methodInfo{
-			required: md.required,
-			hasFunc:  hasFunc.Func,
+		RegisterClassPair(class)
+		return &classInfo{
+			class:       class,
+			methodInfos: methodInfos,
 		}
-	}
 
-	RegisterClassPair(class)
-	ci := &classInfo{
-		class:       class,
-		methodInfos: methodInfos,
-	}
-
-	classCache[protocolName] = ci
-	return ci
+	})
 }
 
 type methodDescription struct {

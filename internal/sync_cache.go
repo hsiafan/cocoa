@@ -5,10 +5,9 @@ import "sync"
 type SyncCache[K comparable, V any] struct {
 	m           sync.Map
 	computeLock sync.Mutex
-	Compute     func(key K) V
 }
 
-func (c *SyncCache[K, V]) Load(key K) V {
+func (c *SyncCache[K, V]) Load(key K, Compute func(key K) V) V {
 	v, ok := c.m.Load(key)
 	if ok {
 		return v.(V)
@@ -20,7 +19,7 @@ func (c *SyncCache[K, V]) Load(key K) V {
 		return v.(V)
 	}
 
-	v = c.Compute(key)
+	v = Compute(key)
 	c.m.Store(key, v)
 	return v.(V)
 }
