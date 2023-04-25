@@ -314,7 +314,6 @@ func (g_ GestureRecognizer) Delegate() GestureRecognizerDelegateWrapper {
 
 func (g_ GestureRecognizer) SetDelegate(value GestureRecognizerDelegate) {
 	po := objc.CreateProtocol("NSGestureRecognizerDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(g_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelegate:"), po)
 }

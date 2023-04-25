@@ -148,7 +148,6 @@ func (a_ Alert) Delegate() AlertDelegateWrapper {
 
 func (a_ Alert) SetDelegate(value AlertDelegate) {
 	po := objc.CreateProtocol("NSAlertDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
 }

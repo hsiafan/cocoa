@@ -159,7 +159,6 @@ func (d_ DatePicker) Delegate() DatePickerCellDelegateWrapper {
 
 func (d_ DatePicker) SetDelegate(value DatePickerCellDelegate) {
 	po := objc.CreateProtocol("NSDatePickerCellDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), po)
 }

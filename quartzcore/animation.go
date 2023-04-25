@@ -97,7 +97,6 @@ func (a_ Animation) Delegate() AnimationDelegateWrapper {
 
 func (a_ Animation) SetDelegate(value AnimationDelegate) {
 	po := objc.CreateProtocol("CAAnimationDelegate", value)
-	defer po.Release()
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
 }
 

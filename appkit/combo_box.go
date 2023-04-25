@@ -224,7 +224,6 @@ func (c_ ComboBox) DataSource() ComboBoxDataSourceWrapper {
 
 func (c_ ComboBox) SetDataSource(value ComboBoxDataSource) {
 	po := objc.CreateProtocol("NSComboBoxDataSource", value)
-	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), po)
 }

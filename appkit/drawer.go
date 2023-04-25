@@ -147,7 +147,6 @@ func (d_ Drawer) Delegate() DrawerDelegateWrapper {
 // deprecated
 func (d_ Drawer) SetDelegate(value DrawerDelegate) {
 	po := objc.CreateProtocol("NSDrawerDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), po)
 }

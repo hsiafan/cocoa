@@ -64,7 +64,6 @@ func (p_ PasteboardItem) AvailableTypeFromArray(types []PasteboardType) Pasteboa
 
 func (p_ PasteboardItem) SetDataProvider_ForTypes(dataProvider PasteboardItemDataProvider, types []PasteboardType) bool {
 	po := objc.CreateProtocol("NSPasteboardItemDataProvider", dataProvider)
-	defer po.Release()
 	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), po, types)
 	return rv
 }

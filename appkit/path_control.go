@@ -147,7 +147,6 @@ func (p_ PathControl) Delegate() PathControlDelegateWrapper {
 
 func (p_ PathControl) SetDelegate(value PathControlDelegate) {
 	po := objc.CreateProtocol("NSPathControlDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
 }

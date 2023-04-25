@@ -20,7 +20,7 @@
 
 
 void* New_ProtocolImpl(void* class, uintptr_t goID) {
-    ProtocolImplBase* o =(ProtocolImplBase*)[[(Class)class alloc] init];
+    ProtocolImplBase* o =(ProtocolImplBase*)[[[(Class)class alloc] init] autorelease];
     [o setGoID:goID];
     return o;
 }

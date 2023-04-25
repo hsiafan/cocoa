@@ -121,7 +121,6 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_ValidateDrop() bool 
 
 func (p_ PathControlDelegateWrapper) PathControl_ValidateDrop(pathControl IPathControl, info DraggingInfo) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", info)
-	defer po.Release()
 	rv := objc.CallMethod[DragOperation](p_, objc.GetSelector("pathControl:validateDrop:"), pathControl, po)
 	return rv
 }
@@ -132,7 +131,6 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_AcceptDrop() bool {
 
 func (p_ PathControlDelegateWrapper) PathControl_AcceptDrop(pathControl IPathControl, info DraggingInfo) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", info)
-	defer po.Release()
 	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:acceptDrop:"), pathControl, po)
 	return rv
 }

@@ -18,12 +18,10 @@ type URLSchemeHandlerWrapper struct {
 
 func (u_ URLSchemeHandlerWrapper) WebView_StartURLSchemeTask(webView IWebView, urlSchemeTask URLSchemeTask) {
 	po := objc.CreateProtocol("WKURLSchemeTask", urlSchemeTask)
-	defer po.Release()
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:startURLSchemeTask:"), webView, po)
 }
 
 func (u_ URLSchemeHandlerWrapper) WebView_StopURLSchemeTask(webView IWebView, urlSchemeTask URLSchemeTask) {
 	po := objc.CreateProtocol("WKURLSchemeTask", urlSchemeTask)
-	defer po.Release()
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:stopURLSchemeTask:"), webView, po)
 }

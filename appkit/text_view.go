@@ -527,7 +527,6 @@ func (t_ TextView) DragImageForSelectionWithEvent_Origin(event IEvent, origin *f
 
 func (t_ TextView) DragOperationForDraggingInfo_Type(dragInfo DraggingInfo, type_ PasteboardType) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", dragInfo)
-	defer po.Release()
 	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("dragOperationForDraggingInfo:type:"), po, type_)
 	return rv
 }

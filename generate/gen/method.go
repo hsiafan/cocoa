@@ -99,7 +99,6 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 		switch tt := p.Type.(type) {
 		case *typing.ProtocolType:
 			cw.WriteLineF("po := objc.CreateProtocol(\"%s\", %s)", tt.Name, p.GoName())
-			cw.WriteLine("defer po.Release()")
 			if m.WeakProperty { // weak property setter
 				cw.WriteLineF("objc.SetAssociatedObject(%s, internal.AssociationKey(\"%s\"), %s, objc.ASSOCIATION_RETAIN)",
 					receiver, m.GoName, "po")

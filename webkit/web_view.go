@@ -363,7 +363,6 @@ func (w_ WebView) UIDelegate() UIDelegateWrapper {
 
 func (w_ WebView) SetUIDelegate(value UIDelegate) {
 	po := objc.CreateProtocol("WKUIDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setUIDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUIDelegate:"), po)
 }
@@ -379,7 +378,6 @@ func (w_ WebView) NavigationDelegate() NavigationDelegateWrapper {
 
 func (w_ WebView) SetNavigationDelegate(value NavigationDelegate) {
 	po := objc.CreateProtocol("WKNavigationDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setNavigationDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setNavigationDelegate:"), po)
 }

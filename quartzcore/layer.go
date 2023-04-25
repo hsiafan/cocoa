@@ -420,7 +420,6 @@ func (l_ Layer) Delegate() LayerDelegateWrapper {
 
 func (l_ Layer) SetDelegate(value LayerDelegate) {
 	po := objc.CreateProtocol("CALayerDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(l_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), po)
 }
@@ -846,7 +845,6 @@ func (l_ Layer) LayoutManager() LayoutManagerWrapper {
 
 func (l_ Layer) SetLayoutManager(value LayoutManager) {
 	po := objc.CreateProtocol("CALayoutManager", value)
-	defer po.Release()
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutManager:"), po)
 }
 

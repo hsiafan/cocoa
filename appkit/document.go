@@ -437,7 +437,6 @@ func (d_ Document) UpdateUserActivityState(activity foundation.IUserActivity) {
 
 func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool {
 	po := objc.CreateProtocol("NSValidatedUserInterfaceItem", item)
-	defer po.Release()
 	rv := objc.CallMethod[bool](d_, objc.GetSelector("validateUserInterfaceItem:"), po)
 	return rv
 }

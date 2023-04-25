@@ -627,7 +627,6 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_UpdateDragging
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_UpdateDraggingItemsForDrag(collectionView ICollectionView, draggingInfo DraggingInfo) {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	defer po.Release()
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:updateDraggingItemsForDrag:"), collectionView, po)
 }
 
@@ -637,7 +636,6 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_P
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ValidateDrop_ProposedIndexPath_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, proposedDropIndexPath *foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	defer po.Release()
 	rv := objc.CallMethod[DragOperation](c_, objc.GetSelector("collectionView:validateDrop:proposedIndexPath:dropOperation:"), collectionView, po, unsafe.Pointer(proposedDropIndexPath), proposedDropOperation)
 	return rv
 }
@@ -648,7 +646,6 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_AcceptDrop_Ind
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_AcceptDrop_IndexPath_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, indexPath foundation.IIndexPath, dropOperation CollectionViewDropOperation) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	defer po.Release()
 	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:acceptDrop:indexPath:dropOperation:"), collectionView, po, indexPath, dropOperation)
 	return rv
 }
@@ -714,7 +711,6 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_P
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ValidateDrop_ProposedIndex_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, proposedDropIndex *int, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	defer po.Release()
 	rv := objc.CallMethod[DragOperation](c_, objc.GetSelector("collectionView:validateDrop:proposedIndex:dropOperation:"), collectionView, po, proposedDropIndex, proposedDropOperation)
 	return rv
 }
@@ -725,7 +721,6 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_AcceptDrop_Ind
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_AcceptDrop_Index_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, index int, dropOperation CollectionViewDropOperation) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	defer po.Release()
 	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:acceptDrop:index:dropOperation:"), collectionView, po, index, dropOperation)
 	return rv
 }

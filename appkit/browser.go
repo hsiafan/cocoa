@@ -522,7 +522,6 @@ func (b_ Browser) Delegate() BrowserDelegateWrapper {
 
 func (b_ Browser) SetDelegate(value BrowserDelegate) {
 	po := objc.CreateProtocol("NSBrowserDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(b_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), po)
 }

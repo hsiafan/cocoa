@@ -87,7 +87,6 @@ func (c_ CandidateListTouchBarItem) Delegate() CandidateListTouchBarItemDelegate
 
 func (c_ CandidateListTouchBarItem) SetDelegate(value CandidateListTouchBarItemDelegate) {
 	po := objc.CreateProtocol("NSCandidateListTouchBarItemDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), po)
 }

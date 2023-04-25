@@ -149,7 +149,6 @@ func (s_ SplitView) Delegate() SplitViewDelegateWrapper {
 
 func (s_ SplitView) SetDelegate(value SplitViewDelegate) {
 	po := objc.CreateProtocol("NSSplitViewDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
 }

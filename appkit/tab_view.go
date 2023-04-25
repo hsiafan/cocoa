@@ -167,7 +167,6 @@ func (t_ TabView) Delegate() TabViewDelegateWrapper {
 
 func (t_ TabView) SetDelegate(value TabViewDelegate) {
 	po := objc.CreateProtocol("NSTabViewDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

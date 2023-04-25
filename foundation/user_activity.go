@@ -213,7 +213,6 @@ func (u_ UserActivity) Delegate() UserActivityDelegateWrapper {
 
 func (u_ UserActivity) SetDelegate(value UserActivityDelegate) {
 	po := objc.CreateProtocol("NSUserActivityDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(u_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("setDelegate:"), po)
 }

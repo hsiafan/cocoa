@@ -81,7 +81,6 @@ func (t_ TouchBar) Delegate() TouchBarDelegateWrapper {
 
 func (t_ TouchBar) SetDelegate(value TouchBarDelegate) {
 	po := objc.CreateProtocol("NSTouchBarDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

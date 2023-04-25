@@ -130,7 +130,6 @@ func (t_ Toolbar) Delegate() ToolbarDelegateWrapper {
 
 func (t_ Toolbar) SetDelegate(value ToolbarDelegate) {
 	po := objc.CreateProtocol("NSToolbarDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

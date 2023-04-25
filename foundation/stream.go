@@ -101,7 +101,6 @@ func (s_ Stream) Delegate() StreamDelegateWrapper {
 
 func (s_ Stream) SetDelegate(value StreamDelegate) {
 	po := objc.CreateProtocol("NSStreamDelegate", value)
-	defer po.Release()
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
 }

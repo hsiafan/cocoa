@@ -182,7 +182,6 @@ func (v_ ViewController) PreferredContentSizeDidChangeForViewController(viewCont
 
 func (v_ ViewController) PresentViewController_Animator(viewController IViewController, animator ViewControllerPresentationAnimator) {
 	po := objc.CreateProtocol("NSViewControllerPresentationAnimator", animator)
-	defer po.Release()
 	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), viewController, po)
 }
 
