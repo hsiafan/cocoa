@@ -550,7 +550,7 @@ type StringEncoding uint
 const ASCIIStringEncoding StringEncoding = 1
 const NEXTSTEPStringEncoding StringEncoding = 2
 const JapaneseEUCStringEncoding StringEncoding = 3
-const F8StringEncoding StringEncoding = 4
+const UTF8StringEncoding StringEncoding = 4
 const ISOLatin1StringEncoding StringEncoding = 5
 const SymbolStringEncoding StringEncoding = 6
 const NonLossyASCIIStringEncoding StringEncoding = 7
@@ -564,12 +564,12 @@ const WindowsCP1254StringEncoding StringEncoding = 14
 const WindowsCP1250StringEncoding StringEncoding = 15
 const ISO2022JPStringEncoding StringEncoding = 21
 const MacOSRomanStringEncoding StringEncoding = 30
-const F16StringEncoding StringEncoding = 10
-const F16BigEndianStringEncoding StringEncoding = 2415919360
-const F16LittleEndianStringEncoding StringEncoding = 2483028224
-const F32StringEncoding StringEncoding = 2348810496
-const F32BigEndianStringEncoding StringEncoding = 2550137088
-const F32LittleEndianStringEncoding StringEncoding = 2617245952
+const UTF16StringEncoding StringEncoding = 10
+const UTF16BigEndianStringEncoding StringEncoding = 2415919360
+const UTF16LittleEndianStringEncoding StringEncoding = 2483028224
+const UTF32StringEncoding StringEncoding = 2348810496
+const UTF32BigEndianStringEncoding StringEncoding = 2550137088
+const UTF32LittleEndianStringEncoding StringEncoding = 2617245952
 const ProprietaryStringEncoding StringEncoding = 65536
 
 type TextCheckingKey string

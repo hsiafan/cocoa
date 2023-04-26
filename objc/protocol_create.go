@@ -7,6 +7,7 @@ import "C"
 import (
 	"reflect"
 	"runtime/cgo"
+	"strings"
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/ffi"
@@ -60,7 +61,7 @@ func createClass(t reflect.Type, protocolName string) *classInfo {
 		for _, md := range getProtocolMethods(protocol) {
 			selector := md.Name
 			selName := selector.GetName()
-			goFuncName := internal.SelectorToGoName(selName)
+			goFuncName := selectorToGoName(selName)
 			goMethod, ok := t.MethodByName(goFuncName)
 			if !ok {
 				if md.required {
@@ -192,4 +193,22 @@ func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
 	}
 
 	return mi.hasFunc.Call([]reflect.Value{v})[0].Bool()
+}
+
+// menuWillOpen: -> MenuWillOpen
+// menu:updateItem:atIndex:shouldCancel: -> Menu_UpdateItem_AtIndex_ShouldCancel
+func selectorToGoName(sel string) string {
+	var sb strings.Builder
+	sb.Grow(len(sel))
+	for i, item := range strings.Split(sel, ":") {
+		if len(item) == 0 {
+			continue
+		}
+		if i > 0 {
+			sb.WriteByte('_')
+		}
+		sb.WriteString(strings.ToUpper(item[:1]))
+		sb.WriteString(item[1:])
+	}
+	return sb.String()
 }

@@ -247,12 +247,13 @@ func loadType(module, name string) typing.Type {
 	}
 }
 
+var prefixes = []string{"NS", "CG", "WK", "CA", "kCA", "UT"}
+
 func toGoSymbolName(name string) string {
-	name = strings.TrimPrefix(name, "NS")
-	name = strings.TrimPrefix(name, "CG")
-	name = strings.TrimPrefix(name, "WK")
-	name = strings.TrimPrefix(name, "CA")
-	name = strings.TrimPrefix(name, "kCA")
-	name = strings.TrimPrefix(name, "UT")
+	for _, prefix := range prefixes {
+		if strings.HasPrefix(name, prefix) {
+			return name[len(prefix):]
+		}
+	}
 	return name
 }
