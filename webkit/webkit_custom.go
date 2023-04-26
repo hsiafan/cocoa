@@ -63,14 +63,14 @@ type scriptMessageHandlerWithReply struct {
 // UserContentController_DidReceiveScriptMessage_ReplyHandler implements ScriptMessageHandlerWithReply
 func (h *scriptMessageHandlerWithReply) UserContentController_DidReceiveScriptMessage_ReplyHandler(
 	userContentController UserContentController, message ScriptMessage,
-	replyHandler func(reply objc.IObject, errorMessage string)) {
+	replyHandler func(reply objc.IObject, errorMessage foundation.String)) {
 	message.Retain()
 	go func() {
 		defer message.Release()
 		reply, err := h.handler(message.Body())
-		var errMsg = objc.MagicNilString
+		var errMsg = foundation.String{} // nil
 		if err != nil {
-			errMsg = err.Error()
+			errMsg = foundation.NewString(err.Error())
 		}
 		objc.TryRetain(reply)
 		dispatch.GetMainQueue().DispatchAsync(func() {

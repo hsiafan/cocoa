@@ -55,15 +55,7 @@ type Value struct {
 
 var flagIndir uintptr = 1 << 7
 
-var magicStringPtr uintptr = uintptr(unsafe.Pointer(&flagIndir))
-
-// MagicNilString is a magic string value corresponding to objc nil NSString
-var MagicNilString = "$$__magic_nil_string__$$"
-
 func ToNSString(s string) unsafe.Pointer {
-	if s == MagicNilString {
-		return nil
-	}
 	cs := C.CString(s)
 	defer C.free(unsafe.Pointer(cs))
 	return C.to_ns_string(cs)

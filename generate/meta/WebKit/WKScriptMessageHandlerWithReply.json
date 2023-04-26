@@ -21,7 +21,7 @@
                 {
                     "name": "replyHandler",
                     "variable_name": "replyHandler",
-                    "type": "void (^) (objectivec.NSObject * reply, NSString* errorMessage)"
+                    "type": "void (^) (objectivec.NSObject * reply, NSStringNeedNil* errorMessage)"
                 }
             ],
             "return_type": "void",

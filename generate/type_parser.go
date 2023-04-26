@@ -44,6 +44,9 @@ func ParseType(typeStr string) typing.Type {
 	case "NSString":
 		currentType = &typing.StringType{}
 		t.MustNextTokenIs("*")
+	case "NSStringNeedNil":
+		currentType = &typing.StringType{NeedNil: true}
+		t.MustNextTokenIs("*")
 	case "NSData":
 		currentType = &typing.DataType{}
 		t.MustNextTokenIs("*")
