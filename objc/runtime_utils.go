@@ -2,9 +2,9 @@ package objc
 
 // #import <stdint.h>
 // void* C_NewDeallocListener(uintptr_t id);
+// void Run_WithAutoreleasePool(uintptr_t ptr);
 import "C"
 import (
-	"runtime"
 	"runtime/cgo"
 
 	"github.com/hsiafan/cocoa/internal"
@@ -26,30 +26,16 @@ func SetDeallocListener(o IObject, listener func()) {
 	SetAssociatedObject(o, internal.AssociationKey("deallocListener"), lo, ASSOCIATION_RETAIN)
 }
 
-func TryRetain(objects ...IObject) {
-	for _, o := range objects {
-		if o != nil && !o.IsNil() {
-			o.Retain()
-		}
-	}
+// WithAutoreleasePool run code in a new auto release pool.
+func WithAutoreleasePool(task func()) {
+	id := cgo.NewHandle(task)
+	C.Run_WithAutoreleasePool(C.uintptr_t(id))
 }
 
-func TryRelease(objects ...IObject) {
-	for _, o := range objects {
-		if o != nil && o.Ptr() != nil {
-			o.Release()
-		}
-	}
-}
-
-// RetainObjectUtilGced accept a objc object wrapper struct, and return a pointer to the struct.
-// It retain the objc object, and release when the returned go wrapper pointer is gced.
-// param T: the type of struct that hold a objc pointer
-func RetainObjectUtilGced[T IObject](v T) *T {
-	vp := &v
-	(*vp).Retain()
-	runtime.SetFinalizer(vp, func(p *T) {
-		(*p).Release()
-	})
-	return vp
+//export runTaskAndDeleteHandle
+func runTaskAndDeleteHandle(p C.uintptr_t) {
+	h := cgo.Handle(p)
+	task := h.Value().(func())
+	task()
+	h.Delete()
 }

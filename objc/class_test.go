@@ -6,6 +6,53 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestGetClass(t *testing.T) {
+	cls := GetClass("NSObject")
+
+	version := cls.GetVersion()
+	if version != 0 {
+		t.Failed()
+	}
+
+	if cls.GetName() != "NSObject" {
+		t.Failed()
+	}
+}
+
+func TestGetMethod(t *testing.T) {
+	cls := GetClass("NSObject")
+
+	m := cls.GetClassMethod(SelectorRegisterName("alloc"))
+	name := m.GetName().GetName()
+	if name != "alloc" {
+		t.Failed()
+	}
+	te := m.GetTypeEncoding()
+	if te != "@16@0:8" {
+		t.Failed()
+	}
+}
+
+func TestClass_CopyMethodList(t *testing.T) {
+	cls := GetClass("NSObject")
+	ms := cls.CopyMethodList()
+	for _, m := range ms {
+		if m.ptr == nil {
+			t.Fail()
+		}
+	}
+}
+
+func TestClass_CopyPropertyList(t *testing.T) {
+	oc := GetClass("NSObject")
+	ps := oc.CopyPropertyList()
+	for _, p := range ps {
+		_ = p
+		// fmt.Println(p.GetAttributes())
+		// fmt.Println(p.CopyAttributeList())
+	}
+}
+
 func Test_CallMethod(t *testing.T) {
 	// call method
 	var o = NewObject()

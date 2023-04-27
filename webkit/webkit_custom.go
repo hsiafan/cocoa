@@ -72,9 +72,16 @@ func (h *scriptMessageHandlerWithReply) UserContentController_DidReceiveScriptMe
 		if err != nil {
 			errMsg = foundation.NewString(err.Error())
 		}
-		objc.TryRetain(reply)
+		if !reply.IsNil() {
+			reply.Retain()
+		}
+
 		dispatch.GetMainQueue().DispatchAsync(func() {
-			defer objc.TryRelease(reply)
+			defer func() {
+				if !reply.IsNil() {
+					reply.Release()
+				}
+			}()
 			replyHandler(reply, errMsg)
 		})
 	}()

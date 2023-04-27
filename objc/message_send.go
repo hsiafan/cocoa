@@ -70,14 +70,6 @@ func callMsgSend[T any](receiver Holder, selector Selector, fn unsafe.Pointer, p
 	retType := toFFIType(reflect.TypeOf(ret))
 
 	var imp IMP = MakeIMP(fn)
-	// if ffi.IsStruct(retType) {
-	// 	imp = class.GetMethodImplementationStret(selector)
-	// } else {
-	// 	imp = class.GetMethodImplementation(selector)
-	// }
-	// if imp.ptr == nil {
-	// 	return ret
-	// }
 	cif, status := ffi.PrepCIF(retType, argTypes)
 	if status != ffi.OK {
 		panic("ffi prep cif status not ok")

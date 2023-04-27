@@ -1,6 +1,5 @@
 #import <stdint.h>
-#import <objc/objc-runtime.h>
-#import <ffi/ffi.h>
+#import <Block.h>
 #include "_cgo_export.h"
 
 enum {
@@ -86,6 +85,14 @@ void* block_create_malloc(const char* signature, void* callable, uintptr_t handl
     block->invoke = callable;
     block->handle = handle;
     return (void*)block;
+}
+
+void* block_copy(void *ptr) {
+    return Block_copy(ptr);
+}
+
+void block_release(void *ptr) {
+    Block_release(ptr);
 }
 
 // fost test

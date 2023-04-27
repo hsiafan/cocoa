@@ -21,3 +21,9 @@ void* C_NewDeallocListener(uintptr_t id) {
 	[listener setGoID:id];
 	return listener;
 }
+
+void Run_WithAutoreleasePool(uintptr_t ptr) {
+    @autoreleasepool {
+        runTaskAndDeleteHandle(ptr);
+    }
+}

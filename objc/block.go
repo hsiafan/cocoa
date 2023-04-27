@@ -3,6 +3,8 @@ package objc
 //#import <stdlib.h>
 //#import <stdint.h>
 //
+// void* block_copy(void *ptr);
+// void block_release(void *ptr);
 // void* block_get_invoke(void* block);
 // void* block_create_global(const char* signature, void* callable);
 // void* block_create_malloc(const char* signature, void* callable, uintptr_t handle);
@@ -18,6 +20,26 @@ import (
 
 	"github.com/hsiafan/cocoa/ffi"
 )
+
+type Block struct {
+	ptr unsafe.Pointer
+}
+
+func MakeBlock(ptr unsafe.Pointer) Block {
+	return Block{ptr: ptr}
+}
+
+func (b Block) Ptr() unsafe.Pointer {
+	return b.ptr
+}
+
+func (b Block) Copy() Block {
+	return Block{C.block_copy(b.Ptr())}
+}
+
+func (b Block) Release() {
+	C.block_release(b.Ptr())
+}
 
 func wrapBlockInGoFunc(bp unsafe.Pointer, funcType reflect.Type) reflect.Value {
 	if bp == nil {

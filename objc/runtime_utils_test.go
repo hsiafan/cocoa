@@ -1,9 +1,7 @@
 package objc
 
 import (
-	"runtime"
 	"testing"
-	"time"
 )
 
 func TestSetDeallocListener(t *testing.T) {
@@ -18,14 +16,13 @@ func TestSetDeallocListener(t *testing.T) {
 	}
 }
 
-func Test_RetainObjectUtilGced(t *testing.T) {
-	o := NewObject()
-	op := RetainObjectUtilGced(o)
-	op.Description()
+func TestWithAutoreleasePool(t *testing.T) {
 
-	runtime.GC()
-	time.Sleep(time.Microsecond * 10)
-	if o.RetainCount() != 1 {
-		t.Fail()
-	}
+	var o = NewObject()
+	WithAutoreleasePool(func() {
+		o.Autorelease()
+		if o.RetainCount() != 1 {
+			t.Failed()
+		}
+	})
 }

@@ -1,8 +1,19 @@
 package objc
 
+// #import <stdlib.h>
 // #import <stdint.h>
+// #import <stdbool.h>
+// #import <objc/runtime.h>
 //
 // void* New_ProtocolImpl(void* class, uintptr_t goID);
+// void* Objc_GetProtocol(const char* name);
+// void* Objc_AllocateProtocol(const char* name);
+// const char* Protocol_GetName(void *protocol);
+// struct objc_method_description Protocol_GetMethodDescription(void* protocol, void* sel, bool required, bool instanceMethod);
+// struct objc_method_description* Protocol_CopyMethodDescriptionList(void* protocol, bool required, bool instanceMethod, unsigned int *outCount);
+// void* Protocol_CopyProtocolList(void* protocol, unsigned int *outCount);
+// void* Protocol_GetProperty(void* protocol, const char *name, bool required, bool isInstanceProperty);
+// void* Protocol_CopyPropertyList(void* protocol, unsigned int *outCount);
 import "C"
 import (
 	"reflect"
@@ -13,6 +24,82 @@ import (
 	"github.com/hsiafan/cocoa/ffi"
 	"github.com/hsiafan/cocoa/internal"
 )
+
+type Protocol struct {
+	ptr unsafe.Pointer
+}
+
+func (p Protocol) Ptr() unsafe.Pointer {
+	return p.ptr
+}
+
+func GetProtocol(name string) Protocol {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	return Protocol{
+		ptr: C.Objc_GetProtocol(cname),
+	}
+}
+
+func AllocateProtocol(name string) Protocol {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	return Protocol{
+		ptr: C.Objc_AllocateProtocol(cname),
+	}
+}
+
+func (p Protocol) GetName() string {
+	cname := C.Protocol_GetName(p.ptr)
+	name := C.GoString(cname)
+	return name
+}
+
+func (p Protocol) GetMethodDescription(sel Selector, required bool, instanceMethod bool) MethodDescription {
+	md := C.Protocol_GetMethodDescription(p.ptr, sel.ptr, C.bool(required), C.bool(instanceMethod))
+	return MethodDescription{
+		Name:  Selector{unsafe.Pointer(md.name)},
+		Types: C.GoString(md.types),
+	}
+}
+
+func (p Protocol) CopyMethodDescriptionList(required bool, instanceMethod bool) []MethodDescription {
+	var count C.uint
+	mdp := C.Protocol_CopyMethodDescriptionList(p.ptr, C.bool(required), C.bool(instanceMethod), &count)
+	if mdp == nil {
+		return nil
+	}
+	defer C.free(unsafe.Pointer(mdp))
+	mds := unsafe.Slice(mdp, int(count))
+	r := make([]MethodDescription, int(count))
+	for i := 0; i < int(count); i++ {
+		r[i] = MethodDescription{
+			Name:  Selector{unsafe.Pointer(mds[i].name)},
+			Types: C.GoString(mds[i].types),
+		}
+	}
+	return r
+}
+
+func (p Protocol) CopyProtocolList() []Protocol {
+	var count C.uint
+	pp := C.Protocol_CopyProtocolList(p.Ptr(), &count)
+	return convertToSliceAndFreePointer[Protocol](pp, int(count))
+}
+
+func (p Protocol) GetProperty(name string, required bool, isInstanceProperty bool) Property {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	return Property{
+		ptr: C.Protocol_GetProperty(p.Ptr(), cname, C.bool(required), C.bool(isInstanceProperty)),
+	}
+}
+
+func (p Protocol) CopyPropertyList() []Property {
+	var outCount C.uint
+	pp := C.Protocol_CopyPropertyList(p.Ptr(), &outCount)
+	return convertToSliceAndFreePointer[Property](pp, int(outCount))
+}
 
 var classCache = internal.SyncCache[string, *classInfo]{} //go protocol interface name to ClassInfo
 var baseClass = GetClass("ProtocolImplBase")
