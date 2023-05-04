@@ -38,10 +38,6 @@ var pointerHolderType = reflect.TypeOf((*Holder)(nil)).Elem()
 var selectorType = reflect.TypeOf(Selector{})
 var classType = reflect.TypeOf(Class{})
 
-type holder struct {
-	ptr unsafe.Pointer
-}
-
 type Value struct {
 	// typ holds the type of the value represented by a Value.
 	typ unsafe.Pointer
@@ -104,13 +100,10 @@ func ToGoBytes(p unsafe.Pointer) []byte {
 func objectToGoHolder(ptr unsafe.Pointer, paramType reflect.Type) reflect.Value {
 	v := reflect.Zero(paramType)
 	vp := (*Value)(unsafe.Pointer(&v))
-	h := holder{
-		ptr: ptr,
-	}
 	if vp.flag&flagIndir != 0 {
-		*(*holder)(vp.ptr) = h
+		*(*unsafe.Pointer)(vp.ptr) = ptr
 	} else {
-		vp.ptr = internal.ForceCast[holder, unsafe.Pointer](h)
+		vp.ptr = internal.ForceCast[unsafe.Pointer, unsafe.Pointer](ptr)
 	}
 	return v
 }

@@ -6,6 +6,11 @@ import (
 )
 
 func ForceCast[S any, T any](v S) T {
+	var zeroS S
+	var zeroT T
+	if unsafe.Sizeof(zeroS) != unsafe.Sizeof(zeroT) {
+		panic("types should have same size")
+	}
 	return *(*T)(unsafe.Pointer(&v))
 }
 
