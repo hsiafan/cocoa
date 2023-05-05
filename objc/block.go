@@ -92,7 +92,11 @@ func callBlock(b Block, params []reflect.Value, rt reflect.Type) reflect.Value {
 	argTypes[0] = ffi.TypePointer
 	for i := 0; i < argc; i++ {
 		args[i+1] = convertToObjcValue(params[i])
-		argTypes[i+1] = getFFIType(params[i].Interface())
+		if !params[i].IsValid() {
+			argTypes[i+1] = ffi.TypePointer
+		} else {
+			argTypes[i+1] = toFFIType(params[i].Type())
+		}
 	}
 
 	var retPtr unsafe.Pointer
@@ -178,7 +182,7 @@ func wrapGoFuncAsBlockIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 	if rt.NumOut() == 0 {
 		retType = ffi.TypeVoid
 	} else {
-		retType = getFFIType(rt.Out(0))
+		retType = toFFIType(rt.Out(0))
 	}
 
 	cif, status := ffi.PrepCIF(retType, objcArgTypes)

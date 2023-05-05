@@ -478,21 +478,7 @@ func storeStructValue(value *reflect.Value, ptr unsafe.Pointer) {
 	}
 }
 
-// getFFIType return the ffi type
-func getFFIType(v any) *ffi.Type {
-	if v == nil {
-		return ffi.TypePointer
-	}
-
-	if _, ok := v.(Holder); ok {
-		return ffi.TypePointer
-	}
-
-	rv := reflect.ValueOf(v)
-	rt := rv.Type()
-	return toFFIType(rt)
-}
-
+// toFFIType return the ffi type
 func toFFIType(rt reflect.Type) *ffi.Type {
 	if rt.AssignableTo(pointerHolderType) {
 		return ffi.TypePointer

@@ -35,6 +35,7 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/ffi"
+	"github.com/hsiafan/cocoa/internal"
 )
 
 // make generated code happy
@@ -182,6 +183,19 @@ func (c Class) CopyPropertyList() []Property {
 	return convertToSliceAndFreePointer[Property](pp, int(outCount))
 }
 
+func convertToSliceAndFreePointer[T Holder](p unsafe.Pointer, count int) []T {
+	if p == nil {
+		return nil
+	}
+	defer C.free(p)
+	ps := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(p)), count)
+	slice := make([]T, count)
+	for i := 0; i < int(count); i++ {
+		slice[i] = internal.ForceCast[unsafe.Pointer, T](ps[i])
+	}
+	return slice
+}
+
 func (c Class) AddProperty(name string, attributes []PropertyAttribute) bool {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))
@@ -224,8 +238,13 @@ func CallMethod[T any](o Holder, selector Selector, params ...any) T {
 	args[1] = unsafe.Pointer(&selector.ptr)
 	argTypes[1] = ffi.TypePointer
 	for i := 0; i < argc; i++ {
-		args[i+2] = convertToObjcValue(reflect.ValueOf(params[i]))
-		argTypes[i+2] = getFFIType(params[i])
+		v := reflect.ValueOf(params[i])
+		args[i+2] = convertToObjcValue(v)
+		if !v.IsValid() {
+			argTypes[i+2] = ffi.TypePointer
+		} else {
+			argTypes[i+2] = toFFIType(v.Type())
+		}
 	}
 
 	var ret T
@@ -386,7 +405,7 @@ func wrapGoFuncAsMethodIMP(rf reflect.Value) (imp IMP, handle cgo.Handle) {
 	if rt.NumOut() == 0 {
 		retType = ffi.TypeVoid
 	} else {
-		retType = getFFIType(rt.Out(0))
+		retType = toFFIType(rt.Out(0))
 	}
 
 	cif, status := ffi.PrepCIF(retType, objcArgTypes)

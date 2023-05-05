@@ -55,8 +55,9 @@ func callMsgSend[T any](receiver Holder, selector Selector, fn unsafe.Pointer, p
 	args[1] = unsafe.Pointer(&selector.ptr)
 	argTypes[1] = ffi.TypePointer
 	for i := 0; i < argc; i++ {
-		args[i+2] = convertToObjcValue(reflect.ValueOf(params[i]))
-		argTypes[i+2] = getFFIType(params[i])
+		v := reflect.ValueOf(params[i])
+		args[i+2] = convertToObjcValue(v)
+		argTypes[i+2] = toFFIType(v.Type())
 	}
 
 	var ret T

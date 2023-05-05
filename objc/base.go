@@ -247,16 +247,3 @@ func GetAssociatedObject(o IObject, key unsafe.Pointer) Object {
 func RemoveAssociatedObjects(o IObject) {
 	C.Objc_RemoveAssociatedObjects(o.Ptr())
 }
-
-func convertToSliceAndFreePointer[T Holder](p unsafe.Pointer, count int) []T {
-	if p == nil {
-		return nil
-	}
-	defer C.free(p)
-	ps := unsafe.Slice((*unsafe.Pointer)(unsafe.Pointer(p)), count)
-	slice := make([]T, count)
-	for i := 0; i < int(count); i++ {
-		slice[i] = internal.ForceCast[unsafe.Pointer, T](ps[i])
-	}
-	return slice
-}

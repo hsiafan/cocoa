@@ -231,7 +231,7 @@ func addProtocolMethod(class Class, md methodDescription, method reflect.Method)
 	if rt.NumOut() == 0 {
 		retType = ffi.TypeVoid
 	} else {
-		retType = getFFIType(rt.Out(0))
+		retType = toFFIType(rt.Out(0))
 	}
 
 	cif, status := ffi.PrepCIF(retType, objcArgTypes)
