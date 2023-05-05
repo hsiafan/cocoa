@@ -91,7 +91,7 @@ func NewGridView() GridView {
 }
 
 func (g_ GridView) IndexOfColumn(column IGridColumn) int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("indexOfColumn:"), column)
+	rv := objc.CallMethod[int](g_, objc.GetSelector("indexOfColumn:"), objc.ExtractPtr(column))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (g_ GridView) ColumnAtIndex(index int) GridColumn {
 }
 
 func (g_ GridView) IndexOfRow(row IGridRow) int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("indexOfRow:"), row)
+	rv := objc.CallMethod[int](g_, objc.GetSelector("indexOfRow:"), objc.ExtractPtr(row))
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (g_ GridView) CellAtColumnIndex_RowIndex(columnIndex int, rowIndex int) Gri
 }
 
 func (g_ GridView) CellForView(view IView) GridCell {
-	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("cellForView:"), view)
+	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("cellForView:"), objc.ExtractPtr(view))
 	return rv
 }
 

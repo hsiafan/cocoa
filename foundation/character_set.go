@@ -78,7 +78,7 @@ func (c_ CharacterSet) CharacterIsMember(aCharacter unichar) bool {
 }
 
 func (c_ CharacterSet) IsSupersetOfSet(theOtherSet ICharacterSet) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isSupersetOfSet:"), theOtherSet)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isSupersetOfSet:"), objc.ExtractPtr(theOtherSet))
 	return rv
 }
 

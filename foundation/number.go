@@ -238,17 +238,17 @@ func (n_ Number) InitWithUnsignedShort(value uint16) Number {
 }
 
 func (n_ Number) DescriptionWithLocale(locale objc.IObject) string {
-	rv := objc.CallMethod[string](n_, objc.GetSelector("descriptionWithLocale:"), locale)
+	rv := objc.CallMethod[string](n_, objc.GetSelector("descriptionWithLocale:"), objc.ExtractPtr(locale))
 	return rv
 }
 
 func (n_ Number) Compare(otherNumber INumber) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](n_, objc.GetSelector("compare:"), otherNumber)
+	rv := objc.CallMethod[ComparisonResult](n_, objc.GetSelector("compare:"), objc.ExtractPtr(otherNumber))
 	return rv
 }
 
 func (n_ Number) IsEqualToNumber(number INumber) bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("isEqualToNumber:"), number)
+	rv := objc.CallMethod[bool](n_, objc.GetSelector("isEqualToNumber:"), objc.ExtractPtr(number))
 	return rv
 }
 

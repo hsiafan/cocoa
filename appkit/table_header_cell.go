@@ -36,7 +36,7 @@ func (t_ TableHeaderCell) InitTextCell(string_ string) TableHeaderCell {
 }
 
 func (t_ TableHeaderCell) InitImageCell(image IImage) TableHeaderCell {
-	rv := objc.CallMethod[TableHeaderCell](t_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[TableHeaderCell](t_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -61,7 +61,7 @@ func NewTableHeaderCell() TableHeaderCell {
 }
 
 func (t_ TableHeaderCell) DrawSortIndicatorWithFrame_InView_Ascending_Priority(cellFrame foundation.Rect, controlView IView, ascending bool, priority int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawSortIndicatorWithFrame:inView:ascending:priority:"), cellFrame, controlView, ascending, priority)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawSortIndicatorWithFrame:inView:ascending:priority:"), cellFrame, objc.ExtractPtr(controlView), ascending, priority)
 }
 
 func (t_ TableHeaderCell) SortIndicatorRectForBounds(rect foundation.Rect) foundation.Rect {

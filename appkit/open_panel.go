@@ -54,7 +54,7 @@ func MakeOpenPanel(ptr unsafe.Pointer) OpenPanel {
 }
 
 func (oc _OpenPanelClass) WindowWithContentViewController(contentViewController IViewController) OpenPanel {
-	rv := objc.CallMethod[OpenPanel](oc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
+	rv := objc.CallMethod[OpenPanel](oc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
@@ -64,7 +64,7 @@ func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foun
 }
 
 func (o_ OpenPanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) OpenPanel {
-	rv := objc.CallMethod[OpenPanel](o_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[OpenPanel](o_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -101,12 +101,12 @@ func (o_ OpenPanel) Filenames() []objc.Object {
 
 // deprecated
 func (o_ OpenPanel) BeginForDirectory_File_Types_ModelessDelegate_DidEndSelector_ContextInfo(path string, name string, fileTypes []objc.IObject, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:"), path, name, fileTypes, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:"), path, name, fileTypes, objc.ExtractPtr(delegate), didEndSelector, contextInfo)
 }
 
 // deprecated
 func (o_ OpenPanel) BeginSheetForDirectory_File_Types_ModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(path string, name string, fileTypes []objc.IObject, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), path, name, fileTypes, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), path, name, fileTypes, objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
 }
 
 // deprecated

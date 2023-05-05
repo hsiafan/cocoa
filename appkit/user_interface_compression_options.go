@@ -39,7 +39,7 @@ func (u_ UserInterfaceCompressionOptions) Init() UserInterfaceCompressionOptions
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("initWithCompressionOptions:"), options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("initWithCompressionOptions:"), objc.ExtractPtr(options))
 	return rv
 }
 
@@ -64,22 +64,22 @@ func NewUserInterfaceCompressionOptions() UserInterfaceCompressionOptions {
 }
 
 func (u_ UserInterfaceCompressionOptions) ContainsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("containsOptions:"), options)
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("containsOptions:"), objc.ExtractPtr(options))
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("intersectsOptions:"), options)
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("intersectsOptions:"), objc.ExtractPtr(options))
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) OptionsByAddingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("optionsByAddingOptions:"), options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("optionsByAddingOptions:"), objc.ExtractPtr(options))
 	return rv
 }
 
 func (u_ UserInterfaceCompressionOptions) OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("optionsByRemovingOptions:"), options)
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](u_, objc.GetSelector("optionsByRemovingOptions:"), objc.ExtractPtr(options))
 	return rv
 }
 

@@ -121,7 +121,7 @@ func (r_ RuleEditor) ParentRowForRow(rowIndex int) int {
 }
 
 func (r_ RuleEditor) RowForDisplayValue(displayValue objc.IObject) int {
-	rv := objc.CallMethod[int](r_, objc.GetSelector("rowForDisplayValue:"), displayValue)
+	rv := objc.CallMethod[int](r_, objc.GetSelector("rowForDisplayValue:"), objc.ExtractPtr(displayValue))
 	return rv
 }
 
@@ -136,11 +136,11 @@ func (r_ RuleEditor) SubrowIndexesForRow(rowIndex int) foundation.IndexSet {
 }
 
 func (r_ RuleEditor) SelectRowIndexes_ByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("selectRowIndexes:byExtendingSelection:"), indexes, extend)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("selectRowIndexes:byExtendingSelection:"), objc.ExtractPtr(indexes), extend)
 }
 
 func (r_ RuleEditor) AddRow(sender objc.IObject) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("addRow:"), sender)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("addRow:"), objc.ExtractPtr(sender))
 }
 
 func (r_ RuleEditor) InsertRowAtIndex_WithType_AsSubrowOfRow_Animate(rowIndex int, rowType RuleEditorRowType, parentRow int, shouldAnimate bool) {
@@ -152,7 +152,7 @@ func (r_ RuleEditor) RemoveRowAtIndex(rowIndex int) {
 }
 
 func (r_ RuleEditor) RemoveRowsAtIndexes_IncludeSubrows(rowIndexes foundation.IIndexSet, includeSubrows bool) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("removeRowsAtIndexes:includeSubrows:"), rowIndexes, includeSubrows)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("removeRowsAtIndexes:includeSubrows:"), objc.ExtractPtr(rowIndexes), includeSubrows)
 }
 
 func (r_ RuleEditor) ReloadPredicate() {
@@ -176,7 +176,7 @@ func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
 }
 
 func (r_ RuleEditor) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (r_ RuleEditor) IsEditable() bool {
@@ -254,7 +254,7 @@ func (r_ RuleEditor) RowClass() objc.Class {
 }
 
 func (r_ RuleEditor) SetRowClass(value objc.IClass) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRowClass:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRowClass:"), objc.ExtractPtr(value))
 }
 
 func (r_ RuleEditor) RowTypeKeyPath() string {

@@ -67,7 +67,7 @@ func (h_ HTTPCookie) Init() HTTPCookie {
 }
 
 func (hc _HTTPCookieClass) CookiesWithResponseHeaderFields_ForURL(headerFields map[string]string, URL IURL) []HTTPCookie {
-	rv := objc.CallMethod[[]HTTPCookie](hc, objc.GetSelector("cookiesWithResponseHeaderFields:forURL:"), headerFields, URL)
+	rv := objc.CallMethod[[]HTTPCookie](hc, objc.GetSelector("cookiesWithResponseHeaderFields:forURL:"), headerFields, objc.ExtractPtr(URL))
 	return rv
 }
 

@@ -29,7 +29,7 @@ func MakeCloseCommand(ptr unsafe.Pointer) CloseCommand {
 }
 
 func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
-	rv := objc.CallMethod[CloseCommand](c_, objc.GetSelector("initWithCommandDescription:"), commandDef)
+	rv := objc.CallMethod[CloseCommand](c_, objc.GetSelector("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
 	return rv
 }
 

@@ -24,7 +24,7 @@ func (c_ *CollectionViewSectionHeaderViewWrapper) ImplementsSetSectionCollapseBu
 }
 
 func (c_ CollectionViewSectionHeaderViewWrapper) SetSectionCollapseButton(value IButton) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSectionCollapseButton:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSectionCollapseButton:"), objc.ExtractPtr(value))
 }
 
 func (c_ *CollectionViewSectionHeaderViewWrapper) ImplementsSectionCollapseButton() bool {

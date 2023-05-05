@@ -64,7 +64,7 @@ func (wc _WebsiteDataStoreClass) NonPersistentDataStore() WebsiteDataStore {
 }
 
 func (w_ WebsiteDataStore) FetchDataRecordsOfTypes_CompletionHandler(dataTypes foundation.ISet, completionHandler func(param1 []WebsiteDataRecord)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("fetchDataRecordsOfTypes:completionHandler:"), dataTypes, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("fetchDataRecordsOfTypes:completionHandler:"), objc.ExtractPtr(dataTypes), completionHandler)
 }
 
 func (wc _WebsiteDataStoreClass) AllWebsiteDataTypes() foundation.Set {
@@ -73,11 +73,11 @@ func (wc _WebsiteDataStoreClass) AllWebsiteDataTypes() foundation.Set {
 }
 
 func (w_ WebsiteDataStore) RemoveDataOfTypes_ForDataRecords_CompletionHandler(dataTypes foundation.ISet, dataRecords []IWebsiteDataRecord, completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeDataOfTypes:forDataRecords:completionHandler:"), dataTypes, dataRecords, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeDataOfTypes:forDataRecords:completionHandler:"), objc.ExtractPtr(dataTypes), dataRecords, completionHandler)
 }
 
 func (w_ WebsiteDataStore) RemoveDataOfTypes_ModifiedSince_CompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func()) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeDataOfTypes:modifiedSince:completionHandler:"), dataTypes, date, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeDataOfTypes:modifiedSince:completionHandler:"), objc.ExtractPtr(dataTypes), objc.ExtractPtr(date), completionHandler)
 }
 
 func (w_ WebsiteDataStore) IsPersistent() bool {

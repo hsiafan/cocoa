@@ -128,12 +128,12 @@ func (d_ DateFormatter) DateFromString(string_ string) Date {
 }
 
 func (d_ DateFormatter) StringFromDate(date IDate) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:"), date)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:"), objc.ExtractPtr(date))
 	return rv
 }
 
 func (dc _DateFormatterClass) LocalizedStringFromDate_DateStyle_TimeStyle(date IDate, dstyle DateFormatterStyle, tstyle DateFormatterStyle) string {
-	rv := objc.CallMethod[string](dc, objc.GetSelector("localizedStringFromDate:dateStyle:timeStyle:"), date, dstyle, tstyle)
+	rv := objc.CallMethod[string](dc, objc.GetSelector("localizedStringFromDate:dateStyle:timeStyle:"), objc.ExtractPtr(date), dstyle, tstyle)
 	return rv
 }
 
@@ -142,7 +142,7 @@ func (d_ DateFormatter) SetLocalizedDateFormatFromTemplate(dateFormatTemplate st
 }
 
 func (dc _DateFormatterClass) DateFormatFromTemplate_Options_Locale(tmplate string, opts uint, locale ILocale) string {
-	rv := objc.CallMethod[string](dc, objc.GetSelector("dateFormatFromTemplate:options:locale:"), tmplate, opts, locale)
+	rv := objc.CallMethod[string](dc, objc.GetSelector("dateFormatFromTemplate:options:locale:"), tmplate, opts, objc.ExtractPtr(locale))
 	return rv
 }
 
@@ -200,7 +200,7 @@ func (d_ DateFormatter) Calendar() Calendar {
 }
 
 func (d_ DateFormatter) SetCalendar(value ICalendar) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateFormatter) DefaultDate() Date {
@@ -209,7 +209,7 @@ func (d_ DateFormatter) DefaultDate() Date {
 }
 
 func (d_ DateFormatter) SetDefaultDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDefaultDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDefaultDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateFormatter) Locale() Locale {
@@ -218,7 +218,7 @@ func (d_ DateFormatter) Locale() Locale {
 }
 
 func (d_ DateFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateFormatter) TimeZone() TimeZone {
@@ -227,7 +227,7 @@ func (d_ DateFormatter) TimeZone() TimeZone {
 }
 
 func (d_ DateFormatter) SetTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateFormatter) TwoDigitStartDate() Date {
@@ -236,7 +236,7 @@ func (d_ DateFormatter) TwoDigitStartDate() Date {
 }
 
 func (d_ DateFormatter) SetTwoDigitStartDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTwoDigitStartDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTwoDigitStartDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateFormatter) GregorianStartDate() Date {
@@ -245,7 +245,7 @@ func (d_ DateFormatter) GregorianStartDate() Date {
 }
 
 func (d_ DateFormatter) SetGregorianStartDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setGregorianStartDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setGregorianStartDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateFormatter) FormatterBehavior() DateFormatterBehavior {

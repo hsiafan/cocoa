@@ -90,7 +90,7 @@ func (l_ LayoutGuide) OwningView() View {
 }
 
 func (l_ LayoutGuide) SetOwningView(value IView) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setOwningView:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setOwningView:"), objc.ExtractPtr(value))
 }
 
 func (l_ LayoutGuide) BottomAnchor() LayoutYAxisAnchor {

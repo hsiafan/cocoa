@@ -85,11 +85,11 @@ func (o_ Operation) Cancel() {
 }
 
 func (o_ Operation) AddDependency(op IOperation) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("addDependency:"), op)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("addDependency:"), objc.ExtractPtr(op))
 }
 
 func (o_ Operation) RemoveDependency(op IOperation) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeDependency:"), op)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeDependency:"), objc.ExtractPtr(op))
 }
 
 func (o_ Operation) WaitUntilFinished() {

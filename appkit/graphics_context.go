@@ -76,7 +76,7 @@ func (gc _GraphicsContextClass) GraphicsContextWithAttributes(attributes map[Gra
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithBitmapImageRep(bitmapRep IBitmapImageRep) GraphicsContext {
-	rv := objc.CallMethod[GraphicsContext](gc, objc.GetSelector("graphicsContextWithBitmapImageRep:"), bitmapRep)
+	rv := objc.CallMethod[GraphicsContext](gc, objc.GetSelector("graphicsContextWithBitmapImageRep:"), objc.ExtractPtr(bitmapRep))
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (gc _GraphicsContextClass) GraphicsContextWithCGContext_Flipped(graphicsPor
 }
 
 func (gc _GraphicsContextClass) GraphicsContextWithWindow(window IWindow) GraphicsContext {
-	rv := objc.CallMethod[GraphicsContext](gc, objc.GetSelector("graphicsContextWithWindow:"), window)
+	rv := objc.CallMethod[GraphicsContext](gc, objc.GetSelector("graphicsContextWithWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
@@ -126,7 +126,7 @@ func (g_ GraphicsContext) FocusStack() objc.Object {
 
 // deprecated
 func (g_ GraphicsContext) SetFocusStack(stack objc.IObject) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setFocusStack:"), stack)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setFocusStack:"), objc.ExtractPtr(stack))
 }
 
 func (gc _GraphicsContextClass) CurrentContext() GraphicsContext {
@@ -135,7 +135,7 @@ func (gc _GraphicsContextClass) CurrentContext() GraphicsContext {
 }
 
 func (gc _GraphicsContextClass) SetCurrentContext(value IGraphicsContext) {
-	objc.CallMethod[objc.Void](gc, objc.GetSelector("setCurrentContext:"), value)
+	objc.CallMethod[objc.Void](gc, objc.GetSelector("setCurrentContext:"), objc.ExtractPtr(value))
 }
 
 func (g_ GraphicsContext) CGContext() coregraphics.ContextRef {

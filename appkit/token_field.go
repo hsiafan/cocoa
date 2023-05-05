@@ -35,7 +35,7 @@ func MakeTokenField(ptr unsafe.Pointer) TokenField {
 }
 
 func (tc _TokenFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TokenField {
-	rv := objc.CallMethod[TokenField](tc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
+	rv := objc.CallMethod[TokenField](tc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 
@@ -94,7 +94,7 @@ func (t_ TokenField) TokenizingCharacterSet() foundation.CharacterSet {
 }
 
 func (t_ TokenField) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTokenizingCharacterSet:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTokenizingCharacterSet:"), objc.ExtractPtr(value))
 }
 
 func (tc _TokenFieldClass) DefaultTokenizingCharacterSet() foundation.CharacterSet {

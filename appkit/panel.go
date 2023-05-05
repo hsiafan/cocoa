@@ -33,7 +33,7 @@ func MakePanel(ptr unsafe.Pointer) Panel {
 }
 
 func (pc _PanelClass) WindowWithContentViewController(contentViewController IViewController) Panel {
-	rv := objc.CallMethod[Panel](pc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
+	rv := objc.CallMethod[Panel](pc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
@@ -43,7 +43,7 @@ func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundati
 }
 
 func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Panel {
-	rv := objc.CallMethod[Panel](p_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[Panel](p_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 

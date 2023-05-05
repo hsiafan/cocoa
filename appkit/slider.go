@@ -74,12 +74,12 @@ func MakeSlider(ptr unsafe.Pointer) Slider {
 }
 
 func (sc _SliderClass) SliderWithTarget_Action(target objc.IObject, action objc.Selector) Slider {
-	rv := objc.CallMethod[Slider](sc, objc.GetSelector("sliderWithTarget:action:"), target, action)
+	rv := objc.CallMethod[Slider](sc, objc.GetSelector("sliderWithTarget:action:"), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _SliderClass) SliderWithValue_MinValue_MaxValue_Target_Action(value float64, minValue float64, maxValue float64, target objc.IObject, action objc.Selector) Slider {
-	rv := objc.CallMethod[Slider](sc, objc.GetSelector("sliderWithValue:minValue:maxValue:target:action:"), value, minValue, maxValue, target, action)
+	rv := objc.CallMethod[Slider](sc, objc.GetSelector("sliderWithValue:minValue:maxValue:target:action:"), value, minValue, maxValue, objc.ExtractPtr(target), action)
 	return rv
 }
 
@@ -135,7 +135,7 @@ func (s_ Slider) TickMarkValueAtIndex(index int) float64 {
 
 // deprecated
 func (s_ Slider) SetImage(backgroundImage IImage) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:"), backgroundImage)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:"), objc.ExtractPtr(backgroundImage))
 }
 
 // deprecated
@@ -175,17 +175,17 @@ func (s_ Slider) SetTitle(string_ string) {
 
 // deprecated
 func (s_ Slider) SetTitleCell(cell ICell) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTitleCell:"), cell)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTitleCell:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
 func (s_ Slider) SetTitleColor(newColor IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTitleColor:"), newColor)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTitleColor:"), objc.ExtractPtr(newColor))
 }
 
 // deprecated
 func (s_ Slider) SetTitleFont(fontObj IFont) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTitleFont:"), fontObj)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTitleFont:"), objc.ExtractPtr(fontObj))
 }
 
 func (s_ Slider) SliderType() SliderType {
@@ -226,7 +226,7 @@ func (s_ Slider) TrackFillColor() Color {
 }
 
 func (s_ Slider) SetTrackFillColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTrackFillColor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTrackFillColor:"), objc.ExtractPtr(value))
 }
 
 func (s_ Slider) MaxValue() float64 {

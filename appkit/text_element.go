@@ -35,7 +35,7 @@ func MakeTextElement(ptr unsafe.Pointer) TextElement {
 }
 
 func (t_ TextElement) InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
-	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("initWithTextContentManager:"), textContentManager)
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("initWithTextContentManager:"), objc.ExtractPtr(textContentManager))
 	return rv
 }
 
@@ -65,7 +65,7 @@ func (t_ TextElement) TextContentManager() TextContentManager {
 }
 
 func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContentManager:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContentManager:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextElement) ElementRange() TextRange {
@@ -74,7 +74,7 @@ func (t_ TextElement) ElementRange() TextRange {
 }
 
 func (t_ TextElement) SetElementRange(value ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setElementRange:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setElementRange:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextElement) IsRepresentedElement() bool {

@@ -54,17 +54,17 @@ func NewTextContentStorage() TextContentStorage {
 }
 
 func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("attributedStringForTextElement:"), textElement)
+	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("attributedStringForTextElement:"), objc.ExtractPtr(textElement))
 	return rv
 }
 
 func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
-	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("textElementForAttributedString:"), attributedString)
+	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("textElementForAttributedString:"), objc.ExtractPtr(attributedString))
 	return rv
 }
 
 func (t_ TextContentStorage) AdjustedRangeFromRange_ForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
-	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("adjustedRangeFromRange:forEditingTextSelection:"), textRange, forEditingTextSelection)
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("adjustedRangeFromRange:forEditingTextSelection:"), objc.ExtractPtr(textRange), forEditingTextSelection)
 	return rv
 }
 
@@ -74,5 +74,5 @@ func (t_ TextContentStorage) AttributedString() foundation.AttributedString {
 }
 
 func (t_ TextContentStorage) SetAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributedString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributedString:"), objc.ExtractPtr(value))
 }

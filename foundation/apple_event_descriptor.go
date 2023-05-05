@@ -106,7 +106,7 @@ func (a_ AppleEventDescriptor) DescriptorAtIndex(index int) AppleEventDescriptor
 }
 
 func (a_ AppleEventDescriptor) InsertDescriptor_AtIndex(descriptor IAppleEventDescriptor, index int) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("insertDescriptor:atIndex:"), descriptor, index)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("insertDescriptor:atIndex:"), objc.ExtractPtr(descriptor), index)
 }
 
 func (a_ AppleEventDescriptor) RemoveDescriptorAtIndex(index int) {
@@ -114,7 +114,7 @@ func (a_ AppleEventDescriptor) RemoveDescriptorAtIndex(index int) {
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithApplicationURL(applicationURL IURL) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithApplicationURL:"), applicationURL)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithApplicationURL:"), objc.ExtractPtr(applicationURL))
 	return rv
 }
 
@@ -124,7 +124,7 @@ func (ac _AppleEventDescriptorClass) DescriptorWithBundleIdentifier(bundleIdenti
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithDate(date IDate) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithDate:"), date)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithDate:"), objc.ExtractPtr(date))
 	return rv
 }
 
@@ -134,7 +134,7 @@ func (ac _AppleEventDescriptorClass) DescriptorWithDouble(doubleValue float64) A
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithFileURL(fileURL IURL) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithFileURL:"), fileURL)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithFileURL:"), objc.ExtractPtr(fileURL))
 	return rv
 }
 

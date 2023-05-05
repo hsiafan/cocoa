@@ -99,12 +99,12 @@ func (c_ Color) ColorWithSystemEffect(systemEffect ColorSystemEffect) Color {
 }
 
 func (c_ Color) ColorUsingColorSpace(space IColorSpace) Color {
-	rv := objc.CallMethod[Color](c_, objc.GetSelector("colorUsingColorSpace:"), space)
+	rv := objc.CallMethod[Color](c_, objc.GetSelector("colorUsingColorSpace:"), objc.ExtractPtr(space))
 	return rv
 }
 
 func (c_ Color) BlendedColorWithFraction_OfColor(fraction float64, color IColor) Color {
-	rv := objc.CallMethod[Color](c_, objc.GetSelector("blendedColorWithFraction:ofColor:"), fraction, color)
+	rv := objc.CallMethod[Color](c_, objc.GetSelector("blendedColorWithFraction:ofColor:"), fraction, objc.ExtractPtr(color))
 	return rv
 }
 
@@ -136,12 +136,12 @@ func (c_ Color) ColorUsingColorSpaceName_Device(name ColorSpaceName, deviceDescr
 }
 
 func (cc _ColorClass) ColorFromPasteboard(pasteBoard IPasteboard) Color {
-	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorFromPasteboard:"), pasteBoard)
+	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorFromPasteboard:"), objc.ExtractPtr(pasteBoard))
 	return rv
 }
 
 func (c_ Color) WriteToPasteboard(pasteBoard IPasteboard) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("writeToPasteboard:"), pasteBoard)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("writeToPasteboard:"), objc.ExtractPtr(pasteBoard))
 }
 
 func (c_ Color) GetCyan_Magenta_Yellow_Black_Alpha(cyan *float64, magenta *float64, yellow *float64, black *float64, alpha *float64) {
@@ -191,7 +191,7 @@ func (cc _ColorClass) ColorNamed(name ColorName) Color {
 }
 
 func (cc _ColorClass) ColorNamed_Bundle(name ColorName, bundle foundation.IBundle) Color {
-	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorNamed:bundle:"), name, bundle)
+	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorNamed:bundle:"), name, objc.ExtractPtr(bundle))
 	return rv
 }
 
@@ -241,7 +241,7 @@ func (cc _ColorClass) ColorWithHue_Saturation_Brightness_Alpha(hue float64, satu
 }
 
 func (cc _ColorClass) ColorWithColorSpace_Hue_Saturation_Brightness_Alpha(space IColorSpace, hue float64, saturation float64, brightness float64, alpha float64) Color {
-	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorWithColorSpace:hue:saturation:brightness:alpha:"), space, hue, saturation, brightness, alpha)
+	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorWithColorSpace:hue:saturation:brightness:alpha:"), objc.ExtractPtr(space), hue, saturation, brightness, alpha)
 	return rv
 }
 
@@ -271,7 +271,7 @@ func (cc _ColorClass) ColorWithGenericGamma22White_Alpha(white float64, alpha fl
 }
 
 func (cc _ColorClass) ColorWithPatternImage(image IImage) Color {
-	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorWithPatternImage:"), image)
+	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorWithPatternImage:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -281,7 +281,7 @@ func (cc _ColorClass) ColorWithName_DynamicProvider(colorName ColorName, dynamic
 }
 
 func (cc _ColorClass) ColorWithColorSpace_Components_Count(space IColorSpace, components *float64, numberOfComponents int) Color {
-	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorWithColorSpace:components:count:"), space, components, numberOfComponents)
+	rv := objc.CallMethod[Color](cc, objc.GetSelector("colorWithColorSpace:components:count:"), objc.ExtractPtr(space), components, numberOfComponents)
 	return rv
 }
 

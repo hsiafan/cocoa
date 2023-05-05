@@ -48,7 +48,7 @@ func MakeSharingService(ptr unsafe.Pointer) SharingService {
 }
 
 func (s_ SharingService) InitWithTitle_Image_AlternateImage_Handler(title string, image IImage, alternateImage IImage, block func()) SharingService {
-	rv := objc.CallMethod[SharingService](s_, objc.GetSelector("initWithTitle:image:alternateImage:handler:"), title, image, alternateImage, block)
+	rv := objc.CallMethod[SharingService](s_, objc.GetSelector("initWithTitle:image:alternateImage:handler:"), title, objc.ExtractPtr(image), objc.ExtractPtr(alternateImage), block)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (s_ SharingService) SetDelegate(value SharingServiceDelegate) {
 }
 
 func (s_ SharingService) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ SharingService) AccountName() string {

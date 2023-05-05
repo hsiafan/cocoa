@@ -41,12 +41,12 @@ func (d_ DateInterval) Init() DateInterval {
 }
 
 func (d_ DateInterval) InitWithStartDate_Duration(startDate IDate, duration TimeInterval) DateInterval {
-	rv := objc.CallMethod[DateInterval](d_, objc.GetSelector("initWithStartDate:duration:"), startDate, duration)
+	rv := objc.CallMethod[DateInterval](d_, objc.GetSelector("initWithStartDate:duration:"), objc.ExtractPtr(startDate), duration)
 	return rv
 }
 
 func (d_ DateInterval) InitWithStartDate_EndDate(startDate IDate, endDate IDate) DateInterval {
-	rv := objc.CallMethod[DateInterval](d_, objc.GetSelector("initWithStartDate:endDate:"), startDate, endDate)
+	rv := objc.CallMethod[DateInterval](d_, objc.GetSelector("initWithStartDate:endDate:"), objc.ExtractPtr(startDate), objc.ExtractPtr(endDate))
 	return rv
 }
 
@@ -66,27 +66,27 @@ func NewDateInterval() DateInterval {
 }
 
 func (d_ DateInterval) Compare(dateInterval IDateInterval) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](d_, objc.GetSelector("compare:"), dateInterval)
+	rv := objc.CallMethod[ComparisonResult](d_, objc.GetSelector("compare:"), objc.ExtractPtr(dateInterval))
 	return rv
 }
 
 func (d_ DateInterval) IsEqualToDateInterval(dateInterval IDateInterval) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("isEqualToDateInterval:"), dateInterval)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("isEqualToDateInterval:"), objc.ExtractPtr(dateInterval))
 	return rv
 }
 
 func (d_ DateInterval) IntersectsDateInterval(dateInterval IDateInterval) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("intersectsDateInterval:"), dateInterval)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("intersectsDateInterval:"), objc.ExtractPtr(dateInterval))
 	return rv
 }
 
 func (d_ DateInterval) IntersectionWithDateInterval(dateInterval IDateInterval) DateInterval {
-	rv := objc.CallMethod[DateInterval](d_, objc.GetSelector("intersectionWithDateInterval:"), dateInterval)
+	rv := objc.CallMethod[DateInterval](d_, objc.GetSelector("intersectionWithDateInterval:"), objc.ExtractPtr(dateInterval))
 	return rv
 }
 
 func (d_ DateInterval) ContainsDate(date IDate) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("containsDate:"), date)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("containsDate:"), objc.ExtractPtr(date))
 	return rv
 }
 

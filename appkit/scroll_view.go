@@ -133,17 +133,17 @@ func NewScrollView() ScrollView {
 }
 
 func (sc _ScrollViewClass) FrameSizeForContentSize_HorizontalScrollerClass_VerticalScrollerClass_BorderType_ControlSize_ScrollerStyle(cSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](sc, objc.GetSelector("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), cSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
+	rv := objc.CallMethod[foundation.Size](sc, objc.GetSelector("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), cSize, objc.ExtractPtr(horizontalScrollerClass), objc.ExtractPtr(verticalScrollerClass), type_, controlSize, scrollerStyle)
 	return rv
 }
 
 func (sc _ScrollViewClass) ContentSizeForFrameSize_HorizontalScrollerClass_VerticalScrollerClass_BorderType_ControlSize_ScrollerStyle(fSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](sc, objc.GetSelector("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), fSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
+	rv := objc.CallMethod[foundation.Size](sc, objc.GetSelector("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), fSize, objc.ExtractPtr(horizontalScrollerClass), objc.ExtractPtr(verticalScrollerClass), type_, controlSize, scrollerStyle)
 	return rv
 }
 
 func (s_ ScrollView) AddFloatingSubview_ForAxis(view IView, axis EventGestureAxis) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("addFloatingSubview:forAxis:"), view, axis)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addFloatingSubview:forAxis:"), objc.ExtractPtr(view), axis)
 }
 
 func (s_ ScrollView) Tile() {
@@ -190,7 +190,7 @@ func (s_ ScrollView) BackgroundColor() Color {
 }
 
 func (s_ ScrollView) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) DrawsBackground() bool {
@@ -217,7 +217,7 @@ func (s_ ScrollView) DocumentCursor() Cursor {
 }
 
 func (s_ ScrollView) SetDocumentCursor(value ICursor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDocumentCursor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDocumentCursor:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) ContentView() ClipView {
@@ -226,7 +226,7 @@ func (s_ ScrollView) ContentView() ClipView {
 }
 
 func (s_ ScrollView) SetContentView(value IClipView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContentView:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) DocumentView() View {
@@ -235,7 +235,7 @@ func (s_ ScrollView) DocumentView() View {
 }
 
 func (s_ ScrollView) SetDocumentView(value IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDocumentView:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDocumentView:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) HorizontalScroller() Scroller {
@@ -244,7 +244,7 @@ func (s_ ScrollView) HorizontalScroller() Scroller {
 }
 
 func (s_ ScrollView) SetHorizontalScroller(value IScroller) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHorizontalScroller:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHorizontalScroller:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) HasHorizontalScroller() bool {
@@ -262,7 +262,7 @@ func (s_ ScrollView) VerticalScroller() Scroller {
 }
 
 func (s_ ScrollView) SetVerticalScroller(value IScroller) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVerticalScroller:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVerticalScroller:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) HasVerticalScroller() bool {
@@ -289,7 +289,7 @@ func (sc _ScrollViewClass) RulerViewClass() objc.Class {
 }
 
 func (sc _ScrollViewClass) SetRulerViewClass(value objc.IClass) {
-	objc.CallMethod[objc.Void](sc, objc.GetSelector("setRulerViewClass:"), value)
+	objc.CallMethod[objc.Void](sc, objc.GetSelector("setRulerViewClass:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) HasHorizontalRuler() bool {
@@ -307,7 +307,7 @@ func (s_ ScrollView) HorizontalRulerView() RulerView {
 }
 
 func (s_ ScrollView) SetHorizontalRulerView(value IRulerView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHorizontalRulerView:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHorizontalRulerView:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) HasVerticalRuler() bool {
@@ -325,7 +325,7 @@ func (s_ ScrollView) VerticalRulerView() RulerView {
 }
 
 func (s_ ScrollView) SetVerticalRulerView(value IRulerView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVerticalRulerView:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVerticalRulerView:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScrollView) RulersVisible() bool {

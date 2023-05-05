@@ -167,7 +167,7 @@ func (l_ Locale) ObjectForKey(key LocaleKey) objc.Object {
 }
 
 func (l_ Locale) DisplayNameForKey_Value(key LocaleKey, value objc.IObject) string {
-	rv := objc.CallMethod[string](l_, objc.GetSelector("displayNameForKey:value:"), key, value)
+	rv := objc.CallMethod[string](l_, objc.GetSelector("displayNameForKey:value:"), key, objc.ExtractPtr(value))
 	return rv
 }
 

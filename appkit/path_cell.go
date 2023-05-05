@@ -54,7 +54,7 @@ func MakePathCell(ptr unsafe.Pointer) PathCell {
 }
 
 func (p_ PathCell) InitImageCell(image IImage) PathCell {
-	rv := objc.CallMethod[PathCell](p_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[PathCell](p_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -84,20 +84,20 @@ func NewPathCell() PathCell {
 }
 
 func (p_ PathCell) MouseEntered_WithFrame_InView(event IEvent, frame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("mouseEntered:withFrame:inView:"), event, frame, view)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("mouseEntered:withFrame:inView:"), objc.ExtractPtr(event), frame, objc.ExtractPtr(view))
 }
 
 func (p_ PathCell) MouseExited_WithFrame_InView(event IEvent, frame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("mouseExited:withFrame:inView:"), event, frame, view)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("mouseExited:withFrame:inView:"), objc.ExtractPtr(event), frame, objc.ExtractPtr(view))
 }
 
 func (p_ PathCell) RectOfPathComponentCell_WithFrame_InView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](p_, objc.GetSelector("rectOfPathComponentCell:withFrame:inView:"), cell, frame, view)
+	rv := objc.CallMethod[foundation.Rect](p_, objc.GetSelector("rectOfPathComponentCell:withFrame:inView:"), objc.ExtractPtr(cell), frame, objc.ExtractPtr(view))
 	return rv
 }
 
 func (p_ PathCell) PathComponentCellAtPoint_WithFrame_InView(point foundation.Point, frame foundation.Rect, view IView) PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("pathComponentCellAtPoint:withFrame:inView:"), point, frame, view)
+	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("pathComponentCellAtPoint:withFrame:inView:"), point, frame, objc.ExtractPtr(view))
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (p_ PathCell) PlaceholderAttributedString() foundation.AttributedString {
 }
 
 func (p_ PathCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderAttributedString:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathCell) PlaceholderString() string {
@@ -143,7 +143,7 @@ func (p_ PathCell) BackgroundColor() Color {
 }
 
 func (p_ PathCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (pc _PathCellClass) PathComponentCellClass() objc.Class {
@@ -180,7 +180,7 @@ func (p_ PathCell) URL() foundation.URL {
 }
 
 func (p_ PathCell) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathCell) Delegate() PathCellDelegateWrapper {
@@ -195,5 +195,5 @@ func (p_ PathCell) SetDelegate(value PathCellDelegate) {
 }
 
 func (p_ PathCell) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

@@ -35,7 +35,7 @@ func (n_ Notification) Init() Notification {
 }
 
 func (nc _NotificationClass) NotificationWithName_Object(aName NotificationName, anObject objc.IObject) Notification {
-	rv := objc.CallMethod[Notification](nc, objc.GetSelector("notificationWithName:object:"), aName, anObject)
+	rv := objc.CallMethod[Notification](nc, objc.GetSelector("notificationWithName:object:"), aName, objc.ExtractPtr(anObject))
 	return rv
 }
 

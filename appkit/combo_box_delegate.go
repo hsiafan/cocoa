@@ -84,7 +84,7 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionDidChange() bool {
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxSelectionDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxSelectionDidChange:"), notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxSelectionDidChange:"), objc.ExtractPtr(notification))
 }
 
 func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionIsChanging() bool {
@@ -92,7 +92,7 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionIsChanging() bool 
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxSelectionIsChanging(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxSelectionIsChanging:"), notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxSelectionIsChanging:"), objc.ExtractPtr(notification))
 }
 
 func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillDismiss() bool {
@@ -100,7 +100,7 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillDismiss() bool {
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxWillDismiss(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxWillDismiss:"), notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxWillDismiss:"), objc.ExtractPtr(notification))
 }
 
 func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillPopUp() bool {
@@ -108,5 +108,5 @@ func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillPopUp() bool {
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxWillPopUp(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxWillPopUp:"), notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxWillPopUp:"), objc.ExtractPtr(notification))
 }

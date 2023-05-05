@@ -459,7 +459,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ViewForTableColumn_Row()
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ViewForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) View {
-	rv := objc.CallMethod[View](t_, objc.GetSelector("tableView:viewForTableColumn:row:"), tableView, tableColumn, row)
+	rv := objc.CallMethod[View](t_, objc.GetSelector("tableView:viewForTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
@@ -468,7 +468,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_RowViewForRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_RowViewForRow(tableView ITableView, row int) TableRowView {
-	rv := objc.CallMethod[TableRowView](t_, objc.GetSelector("tableView:rowViewForRow:"), tableView, row)
+	rv := objc.CallMethod[TableRowView](t_, objc.GetSelector("tableView:rowViewForRow:"), objc.ExtractPtr(tableView), row)
 	return rv
 }
 
@@ -477,7 +477,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidAddRowView_ForRow() b
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidAddRowView_ForRow(tableView ITableView, rowView ITableRowView, row int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didAddRowView:forRow:"), tableView, rowView, row)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didAddRowView:forRow:"), objc.ExtractPtr(tableView), objc.ExtractPtr(rowView), row)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidRemoveRowView_ForRow() bool {
@@ -485,7 +485,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidRemoveRowView_ForRow(
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidRemoveRowView_ForRow(tableView ITableView, rowView ITableRowView, row int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didRemoveRowView:forRow:"), tableView, rowView, row)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didRemoveRowView:forRow:"), objc.ExtractPtr(tableView), objc.ExtractPtr(rowView), row)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_IsGroupRow() bool {
@@ -493,7 +493,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_IsGroupRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_IsGroupRow(tableView ITableView, row int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:isGroupRow:"), tableView, row)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:isGroupRow:"), objc.ExtractPtr(tableView), row)
 	return rv
 }
 
@@ -502,7 +502,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_WillDisplayCell_ForTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_WillDisplayCell_ForTableColumn_Row(tableView ITableView, cell objc.IObject, tableColumn ITableColumn, row int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:willDisplayCell:forTableColumn:row:"), tableView, cell, tableColumn, row)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:willDisplayCell:forTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(cell), objc.ExtractPtr(tableColumn), row)
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_DataCellForTableColumn_Row() bool {
@@ -510,7 +510,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DataCellForTableColumn_R
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DataCellForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) Cell {
-	rv := objc.CallMethod[Cell](t_, objc.GetSelector("tableView:dataCellForTableColumn:row:"), tableView, tableColumn, row)
+	rv := objc.CallMethod[Cell](t_, objc.GetSelector("tableView:dataCellForTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
@@ -519,7 +519,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldShowCellExpansionF
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldShowCellExpansionForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldShowCellExpansionForTableColumn:row:"), tableView, tableColumn, row)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldShowCellExpansionForTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
@@ -528,7 +528,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ToolTipForCell_Rect_Tabl
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ToolTipForCell_Rect_TableColumn_Row_MouseLocation(tableView ITableView, cell ICell, rect *foundation.Rect, tableColumn ITableColumn, row int, mouseLocation foundation.Point) string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:"), tableView, cell, rect, tableColumn, row, mouseLocation)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:"), objc.ExtractPtr(tableView), objc.ExtractPtr(cell), rect, objc.ExtractPtr(tableColumn), row, mouseLocation)
 	return rv
 }
 
@@ -537,7 +537,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldEditTableColumn_Ro
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldEditTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldEditTableColumn:row:"), tableView, tableColumn, row)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldEditTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
@@ -546,7 +546,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_HeightOfRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_HeightOfRow(tableView ITableView, row int) float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("tableView:heightOfRow:"), tableView, row)
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("tableView:heightOfRow:"), objc.ExtractPtr(tableView), row)
 	return rv
 }
 
@@ -555,7 +555,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_SizeToFitWidthOfColumn()
 }
 
 func (t_ TableViewDelegateWrapper) TableView_SizeToFitWidthOfColumn(tableView ITableView, column int) float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("tableView:sizeToFitWidthOfColumn:"), tableView, column)
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("tableView:sizeToFitWidthOfColumn:"), objc.ExtractPtr(tableView), column)
 	return rv
 }
 
@@ -564,7 +564,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsSelectionShouldChangeInTableView()
 }
 
 func (t_ TableViewDelegateWrapper) SelectionShouldChangeInTableView(tableView ITableView) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("selectionShouldChangeInTableView:"), tableView)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("selectionShouldChangeInTableView:"), objc.ExtractPtr(tableView))
 	return rv
 }
 
@@ -573,7 +573,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldSelectRow() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldSelectRow(tableView ITableView, row int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldSelectRow:"), tableView, row)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldSelectRow:"), objc.ExtractPtr(tableView), row)
 	return rv
 }
 
@@ -582,7 +582,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_SelectionIndexesForPropo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_SelectionIndexesForProposedSelection(tableView ITableView, proposedSelectionIndexes foundation.IIndexSet) foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](t_, objc.GetSelector("tableView:selectionIndexesForProposedSelection:"), tableView, proposedSelectionIndexes)
+	rv := objc.CallMethod[foundation.IndexSet](t_, objc.GetSelector("tableView:selectionIndexesForProposedSelection:"), objc.ExtractPtr(tableView), objc.ExtractPtr(proposedSelectionIndexes))
 	return rv
 }
 
@@ -591,7 +591,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldSelectTableColumn(
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldSelectTableColumn(tableView ITableView, tableColumn ITableColumn) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldSelectTableColumn:"), tableView, tableColumn)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldSelectTableColumn:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn))
 	return rv
 }
 
@@ -600,7 +600,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewSelectionIsChanging() boo
 }
 
 func (t_ TableViewDelegateWrapper) TableViewSelectionIsChanging(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewSelectionIsChanging:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewSelectionIsChanging:"), objc.ExtractPtr(notification))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableViewSelectionDidChange() bool {
@@ -608,7 +608,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewSelectionDidChange() bool
 }
 
 func (t_ TableViewDelegateWrapper) TableViewSelectionDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewSelectionDidChange:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewSelectionDidChange:"), objc.ExtractPtr(notification))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTypeSelectForEvent_WithCurrentSearchString() bool {
@@ -616,7 +616,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTypeSelectForEvent
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldTypeSelectForEvent_WithCurrentSearchString(tableView ITableView, event IEvent, searchString string) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldTypeSelectForEvent:withCurrentSearchString:"), tableView, event, searchString)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldTypeSelectForEvent:withCurrentSearchString:"), objc.ExtractPtr(tableView), objc.ExtractPtr(event), searchString)
 	return rv
 }
 
@@ -625,7 +625,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_TypeSelectStringForTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_TypeSelectStringForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("tableView:typeSelectStringForTableColumn:row:"), tableView, tableColumn, row)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("tableView:typeSelectStringForTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
@@ -634,7 +634,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_NextTypeSelectMatchFromR
 }
 
 func (t_ TableViewDelegateWrapper) TableView_NextTypeSelectMatchFromRow_ToRow_ForString(tableView ITableView, startRow int, endRow int, searchString string) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("tableView:nextTypeSelectMatchFromRow:toRow:forString:"), tableView, startRow, endRow, searchString)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("tableView:nextTypeSelectMatchFromRow:toRow:forString:"), objc.ExtractPtr(tableView), startRow, endRow, searchString)
 	return rv
 }
 
@@ -643,7 +643,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldReorderColumn_ToCo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldReorderColumn_ToColumn(tableView ITableView, columnIndex int, newColumnIndex int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldReorderColumn:toColumn:"), tableView, columnIndex, newColumnIndex)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldReorderColumn:toColumn:"), objc.ExtractPtr(tableView), columnIndex, newColumnIndex)
 	return rv
 }
 
@@ -652,7 +652,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidDragTableColumn() boo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidDragTableColumn(tableView ITableView, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didDragTableColumn:"), tableView, tableColumn)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didDragTableColumn:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidMove() bool {
@@ -660,7 +660,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidMove() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableViewColumnDidMove(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewColumnDidMove:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewColumnDidMove:"), objc.ExtractPtr(notification))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidResize() bool {
@@ -668,7 +668,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableViewColumnDidResize() bool {
 }
 
 func (t_ TableViewDelegateWrapper) TableViewColumnDidResize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewColumnDidResize:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableViewColumnDidResize:"), objc.ExtractPtr(notification))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidClickTableColumn() bool {
@@ -676,7 +676,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_DidClickTableColumn() bo
 }
 
 func (t_ TableViewDelegateWrapper) TableView_DidClickTableColumn(tableView ITableView, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didClickTableColumn:"), tableView, tableColumn)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:didClickTableColumn:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_MouseDownInHeaderOfTableColumn() bool {
@@ -684,7 +684,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_MouseDownInHeaderOfTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_MouseDownInHeaderOfTableColumn(tableView ITableView, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:mouseDownInHeaderOfTableColumn:"), tableView, tableColumn)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:mouseDownInHeaderOfTableColumn:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn))
 }
 
 func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTrackCell_ForTableColumn_Row() bool {
@@ -692,7 +692,7 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_ShouldTrackCell_ForTable
 }
 
 func (t_ TableViewDelegateWrapper) TableView_ShouldTrackCell_ForTableColumn_Row(tableView ITableView, cell ICell, tableColumn ITableColumn, row int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldTrackCell:forTableColumn:row:"), tableView, cell, tableColumn, row)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:shouldTrackCell:forTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(cell), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
@@ -701,6 +701,6 @@ func (t_ *TableViewDelegateWrapper) ImplementsTableView_RowActionsForRow_Edge() 
 }
 
 func (t_ TableViewDelegateWrapper) TableView_RowActionsForRow_Edge(tableView ITableView, row int, edge TableRowActionEdge) []TableViewRowAction {
-	rv := objc.CallMethod[[]TableViewRowAction](t_, objc.GetSelector("tableView:rowActionsForRow:edge:"), tableView, row, edge)
+	rv := objc.CallMethod[[]TableViewRowAction](t_, objc.GetSelector("tableView:rowActionsForRow:edge:"), objc.ExtractPtr(tableView), row, edge)
 	return rv
 }

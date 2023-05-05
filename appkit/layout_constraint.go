@@ -46,7 +46,7 @@ func MakeLayoutConstraint(ptr unsafe.Pointer) LayoutConstraint {
 }
 
 func (lc _LayoutConstraintClass) ConstraintWithItem_Attribute_RelatedBy_ToItem_Attribute_Multiplier_Constant(view1 objc.IObject, attr1 LayoutAttribute, relation LayoutRelation, view2 objc.IObject, attr2 LayoutAttribute, multiplier float64, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](lc, objc.GetSelector("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:"), view1, attr1, relation, view2, attr2, multiplier, c)
+	rv := objc.CallMethod[LayoutConstraint](lc, objc.GetSelector("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:"), objc.ExtractPtr(view1), attr1, relation, objc.ExtractPtr(view2), attr2, multiplier, c)
 	return rv
 }
 

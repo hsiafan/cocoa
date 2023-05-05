@@ -96,12 +96,12 @@ func (u_ URL) InitWithString(URLString string) URL {
 }
 
 func (uc _URLClass) URLWithString_RelativeToURL(URLString string, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLWithString:relativeToURL:"), URLString, baseURL)
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLWithString:relativeToURL:"), URLString, objc.ExtractPtr(baseURL))
 	return rv
 }
 
 func (u_ URL) InitWithString_RelativeToURL(URLString string, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initWithString:relativeToURL:"), URLString, baseURL)
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initWithString:relativeToURL:"), URLString, objc.ExtractPtr(baseURL))
 	return rv
 }
 
@@ -111,12 +111,12 @@ func (u_ URL) InitFileURLWithPath_IsDirectory(path string, isDir bool) URL {
 }
 
 func (u_ URL) InitFileURLWithPath_RelativeToURL(path string, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initFileURLWithPath:relativeToURL:"), path, baseURL)
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initFileURLWithPath:relativeToURL:"), path, objc.ExtractPtr(baseURL))
 	return rv
 }
 
 func (u_ URL) InitFileURLWithPath_IsDirectory_RelativeToURL(path string, isDir bool, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initFileURLWithPath:isDirectory:relativeToURL:"), path, isDir, baseURL)
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initFileURLWithPath:isDirectory:relativeToURL:"), path, isDir, objc.ExtractPtr(baseURL))
 	return rv
 }
 
@@ -126,32 +126,32 @@ func (u_ URL) InitFileURLWithPath(path string) URL {
 }
 
 func (uc _URLClass) URLByResolvingAliasFileAtURL_Options_Error(url IURL, options URLBookmarkResolutionOptions, error *Error) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLByResolvingAliasFileAtURL:options:error:"), url, options, unsafe.Pointer(error))
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLByResolvingAliasFileAtURL:options:error:"), objc.ExtractPtr(url), options, unsafe.Pointer(error))
 	return rv
 }
 
 func (uc _URLClass) URLByResolvingBookmarkData_Options_RelativeToURL_BookmarkDataIsStale_Error(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error *Error) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, relativeURL, isStale, unsafe.Pointer(error))
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, objc.ExtractPtr(relativeURL), isStale, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) InitByResolvingBookmarkData_Options_RelativeToURL_BookmarkDataIsStale_Error(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error *Error) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, relativeURL, isStale, unsafe.Pointer(error))
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, objc.ExtractPtr(relativeURL), isStale, unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) InitFileURLWithFileSystemRepresentation_IsDirectory_RelativeToURL(path *byte, isDir bool, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, baseURL)
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, objc.ExtractPtr(baseURL))
 	return rv
 }
 
 func (u_ URL) InitAbsoluteURLWithDataRepresentation_RelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initAbsoluteURLWithDataRepresentation:relativeToURL:"), data, baseURL)
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initAbsoluteURLWithDataRepresentation:relativeToURL:"), data, objc.ExtractPtr(baseURL))
 	return rv
 }
 
 func (u_ URL) InitWithDataRepresentation_RelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("initWithDataRepresentation:relativeToURL:"), data, baseURL)
+	rv := objc.CallMethod[URL](u_, objc.GetSelector("initWithDataRepresentation:relativeToURL:"), data, objc.ExtractPtr(baseURL))
 	return rv
 }
 
@@ -186,12 +186,12 @@ func (uc _URLClass) FileURLWithPath_IsDirectory(path string, isDir bool) URL {
 }
 
 func (uc _URLClass) FileURLWithPath_RelativeToURL(path string, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("fileURLWithPath:relativeToURL:"), path, baseURL)
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("fileURLWithPath:relativeToURL:"), path, objc.ExtractPtr(baseURL))
 	return rv
 }
 
 func (uc _URLClass) FileURLWithPath_IsDirectory_RelativeToURL(path string, isDir bool, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("fileURLWithPath:isDirectory:relativeToURL:"), path, isDir, baseURL)
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("fileURLWithPath:isDirectory:relativeToURL:"), path, isDir, objc.ExtractPtr(baseURL))
 	return rv
 }
 
@@ -206,7 +206,7 @@ func (uc _URLClass) FileURLWithPathComponents(components []string) URL {
 }
 
 func (uc _URLClass) FileURLWithFileSystemRepresentation_IsDirectory_RelativeToURL(path *byte, isDir bool, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("fileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, baseURL)
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("fileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, objc.ExtractPtr(baseURL))
 	return rv
 }
 
@@ -216,12 +216,12 @@ func (u_ URL) GetFileSystemRepresentation_MaxLength(buffer *byte, maxBufferLengt
 }
 
 func (uc _URLClass) AbsoluteURLWithDataRepresentation_RelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("absoluteURLWithDataRepresentation:relativeToURL:"), data, baseURL)
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("absoluteURLWithDataRepresentation:relativeToURL:"), data, objc.ExtractPtr(baseURL))
 	return rv
 }
 
 func (uc _URLClass) URLWithDataRepresentation_RelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLWithDataRepresentation:relativeToURL:"), data, baseURL)
+	rv := objc.CallMethod[URL](uc, objc.GetSelector("URLWithDataRepresentation:relativeToURL:"), data, objc.ExtractPtr(baseURL))
 	return rv
 }
 
@@ -241,7 +241,7 @@ func (u_ URL) ResourceValuesForKeys_Error(keys []URLResourceKey, error *Error) m
 }
 
 func (u_ URL) SetResourceValue_ForKey_Error(value objc.IObject, key URLResourceKey, error *Error) bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("setResourceValue:forKey:error:"), value, key, unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("setResourceValue:forKey:error:"), objc.ExtractPtr(value), key, unsafe.Pointer(error))
 	return rv
 }
 
@@ -259,7 +259,7 @@ func (u_ URL) RemoveCachedResourceValueForKey(key URLResourceKey) {
 }
 
 func (u_ URL) SetTemporaryResourceValue_ForKey(value objc.IObject, key URLResourceKey) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setTemporaryResourceValue:forKey:"), value, key)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setTemporaryResourceValue:forKey:"), objc.ExtractPtr(value), key)
 }
 
 func (u_ URL) FileReferenceURL() URL {
@@ -283,12 +283,12 @@ func (u_ URL) URLByAppendingPathExtension(pathExtension string) URL {
 }
 
 func (uc _URLClass) BookmarkDataWithContentsOfURL_Error(bookmarkFileURL IURL, error *Error) []byte {
-	rv := objc.CallMethod[[]byte](uc, objc.GetSelector("bookmarkDataWithContentsOfURL:error:"), bookmarkFileURL, unsafe.Pointer(error))
+	rv := objc.CallMethod[[]byte](uc, objc.GetSelector("bookmarkDataWithContentsOfURL:error:"), objc.ExtractPtr(bookmarkFileURL), unsafe.Pointer(error))
 	return rv
 }
 
 func (u_ URL) BookmarkDataWithOptions_IncludingResourceValuesForKeys_RelativeToURL_Error(options URLBookmarkCreationOptions, keys []URLResourceKey, relativeURL IURL, error *Error) []byte {
-	rv := objc.CallMethod[[]byte](u_, objc.GetSelector("bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:"), options, keys, relativeURL, unsafe.Pointer(error))
+	rv := objc.CallMethod[[]byte](u_, objc.GetSelector("bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:"), options, keys, objc.ExtractPtr(relativeURL), unsafe.Pointer(error))
 	return rv
 }
 
@@ -298,7 +298,7 @@ func (uc _URLClass) ResourceValuesForKeys_FromBookmarkData(keys []URLResourceKey
 }
 
 func (uc _URLClass) WriteBookmarkData_ToURL_Options_Error(bookmarkData []byte, bookmarkFileURL IURL, options URLBookmarkFileCreationOptions, error *Error) bool {
-	rv := objc.CallMethod[bool](uc, objc.GetSelector("writeBookmarkData:toURL:options:error:"), bookmarkData, bookmarkFileURL, options, unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](uc, objc.GetSelector("writeBookmarkData:toURL:options:error:"), bookmarkData, objc.ExtractPtr(bookmarkFileURL), options, unsafe.Pointer(error))
 	return rv
 }
 
@@ -328,7 +328,7 @@ func (u_ URL) PromisedItemResourceValuesForKeys_Error(keys []URLResourceKey, err
 
 // deprecated
 func (u_ URL) LoadResourceDataNotifyingClient_UsingCache(client objc.IObject, shouldUseCache bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("loadResourceDataNotifyingClient:usingCache:"), client, shouldUseCache)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("loadResourceDataNotifyingClient:usingCache:"), objc.ExtractPtr(client), shouldUseCache)
 }
 
 // deprecated
@@ -351,7 +351,7 @@ func (u_ URL) PropertyForKey(propertyKey string) objc.Object {
 
 // deprecated
 func (u_ URL) SetProperty_ForKey(property objc.IObject, propertyKey string) bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("setProperty:forKey:"), property, propertyKey)
+	rv := objc.CallMethod[bool](u_, objc.GetSelector("setProperty:forKey:"), objc.ExtractPtr(property), propertyKey)
 	return rv
 }
 

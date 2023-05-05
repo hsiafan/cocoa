@@ -41,7 +41,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsPreferredLayoutAttributesFitti
 }
 
 func (c_ CollectionViewElementWrapper) PreferredLayoutAttributesFittingAttributes(layoutAttributes ICollectionViewLayoutAttributes) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("preferredLayoutAttributesFittingAttributes:"), layoutAttributes)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("preferredLayoutAttributesFittingAttributes:"), objc.ExtractPtr(layoutAttributes))
 	return rv
 }
 
@@ -50,7 +50,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsApplyLayoutAttributes() bool {
 }
 
 func (c_ CollectionViewElementWrapper) ApplyLayoutAttributes(layoutAttributes ICollectionViewLayoutAttributes) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("applyLayoutAttributes:"), layoutAttributes)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("applyLayoutAttributes:"), objc.ExtractPtr(layoutAttributes))
 }
 
 func (c_ *CollectionViewElementWrapper) ImplementsWillTransitionFromLayout_ToLayout() bool {
@@ -58,7 +58,7 @@ func (c_ *CollectionViewElementWrapper) ImplementsWillTransitionFromLayout_ToLay
 }
 
 func (c_ CollectionViewElementWrapper) WillTransitionFromLayout_ToLayout(oldLayout ICollectionViewLayout, newLayout ICollectionViewLayout) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("willTransitionFromLayout:toLayout:"), oldLayout, newLayout)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("willTransitionFromLayout:toLayout:"), objc.ExtractPtr(oldLayout), objc.ExtractPtr(newLayout))
 }
 
 func (c_ *CollectionViewElementWrapper) ImplementsDidTransitionFromLayout_ToLayout() bool {
@@ -66,5 +66,5 @@ func (c_ *CollectionViewElementWrapper) ImplementsDidTransitionFromLayout_ToLayo
 }
 
 func (c_ CollectionViewElementWrapper) DidTransitionFromLayout_ToLayout(oldLayout ICollectionViewLayout, newLayout ICollectionViewLayout) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("didTransitionFromLayout:toLayout:"), oldLayout, newLayout)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("didTransitionFromLayout:toLayout:"), objc.ExtractPtr(oldLayout), objc.ExtractPtr(newLayout))
 }

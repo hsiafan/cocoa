@@ -51,7 +51,7 @@ func (s_ *StackViewDelegateWrapper) ImplementsStackView_DidReattachViews() bool 
 }
 
 func (s_ StackViewDelegateWrapper) StackView_DidReattachViews(stackView IStackView, views []IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:didReattachViews:"), stackView, views)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:didReattachViews:"), objc.ExtractPtr(stackView), views)
 }
 
 func (s_ *StackViewDelegateWrapper) ImplementsStackView_WillDetachViews() bool {
@@ -59,5 +59,5 @@ func (s_ *StackViewDelegateWrapper) ImplementsStackView_WillDetachViews() bool {
 }
 
 func (s_ StackViewDelegateWrapper) StackView_WillDetachViews(stackView IStackView, views []IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:willDetachViews:"), stackView, views)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:willDetachViews:"), objc.ExtractPtr(stackView), views)
 }

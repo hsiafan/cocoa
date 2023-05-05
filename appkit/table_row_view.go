@@ -191,7 +191,7 @@ func (t_ TableRowView) BackgroundColor() Color {
 }
 
 func (t_ TableRowView) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableRowView) IsNextRowSelected() bool {

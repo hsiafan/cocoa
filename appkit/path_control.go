@@ -119,7 +119,7 @@ func (p_ PathControl) BackgroundColor() Color {
 }
 
 func (p_ PathControl) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) DoubleAction() objc.Selector {
@@ -137,7 +137,7 @@ func (p_ PathControl) URL() foundation.URL {
 }
 
 func (p_ PathControl) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) Delegate() PathControlDelegateWrapper {
@@ -152,7 +152,7 @@ func (p_ PathControl) SetDelegate(value PathControlDelegate) {
 }
 
 func (p_ PathControl) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) AllowedTypes() []string {
@@ -193,7 +193,7 @@ func (p_ PathControl) PlaceholderAttributedString() foundation.AttributedString 
 }
 
 func (p_ PathControl) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderAttributedString:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) PlaceholderString() string {

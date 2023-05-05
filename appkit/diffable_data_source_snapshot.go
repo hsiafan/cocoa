@@ -77,7 +77,7 @@ func (d_ DiffableDataSourceSnapshot) AppendSectionsWithIdentifiers(sectionIdenti
 }
 
 func (d_ DiffableDataSourceSnapshot) AppendItemsWithIdentifiers_IntoSectionWithIdentifier(identifiers []objc.IObject, sectionIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("appendItemsWithIdentifiers:intoSectionWithIdentifier:"), identifiers, sectionIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("appendItemsWithIdentifiers:intoSectionWithIdentifier:"), identifiers, objc.ExtractPtr(sectionIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) AppendItemsWithIdentifiers(identifiers []objc.IObject) {
@@ -85,44 +85,44 @@ func (d_ DiffableDataSourceSnapshot) AppendItemsWithIdentifiers(identifiers []ob
 }
 
 func (d_ DiffableDataSourceSnapshot) NumberOfItemsInSection(sectionIdentifier objc.IObject) int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("numberOfItemsInSection:"), sectionIdentifier)
+	rv := objc.CallMethod[int](d_, objc.GetSelector("numberOfItemsInSection:"), objc.ExtractPtr(sectionIdentifier))
 	return rv
 }
 
 func (d_ DiffableDataSourceSnapshot) IndexOfItemIdentifier(itemIdentifier objc.IObject) int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("indexOfItemIdentifier:"), itemIdentifier)
+	rv := objc.CallMethod[int](d_, objc.GetSelector("indexOfItemIdentifier:"), objc.ExtractPtr(itemIdentifier))
 	return rv
 }
 
 func (d_ DiffableDataSourceSnapshot) IndexOfSectionIdentifier(sectionIdentifier objc.IObject) int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("indexOfSectionIdentifier:"), sectionIdentifier)
+	rv := objc.CallMethod[int](d_, objc.GetSelector("indexOfSectionIdentifier:"), objc.ExtractPtr(sectionIdentifier))
 	return rv
 }
 
 func (d_ DiffableDataSourceSnapshot) ItemIdentifiersInSectionWithIdentifier(sectionIdentifier objc.IObject) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](d_, objc.GetSelector("itemIdentifiersInSectionWithIdentifier:"), sectionIdentifier)
+	rv := objc.CallMethod[[]objc.Object](d_, objc.GetSelector("itemIdentifiersInSectionWithIdentifier:"), objc.ExtractPtr(sectionIdentifier))
 	return rv
 }
 
 func (d_ DiffableDataSourceSnapshot) SectionIdentifierForSectionContainingItemIdentifier(itemIdentifier objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("sectionIdentifierForSectionContainingItemIdentifier:"), itemIdentifier)
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("sectionIdentifierForSectionContainingItemIdentifier:"), objc.ExtractPtr(itemIdentifier))
 	return rv
 }
 
 func (d_ DiffableDataSourceSnapshot) InsertItemsWithIdentifiers_AfterItemWithIdentifier(identifiers []objc.IObject, itemIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertItemsWithIdentifiers:afterItemWithIdentifier:"), identifiers, itemIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertItemsWithIdentifiers:afterItemWithIdentifier:"), identifiers, objc.ExtractPtr(itemIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) InsertItemsWithIdentifiers_BeforeItemWithIdentifier(identifiers []objc.IObject, itemIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertItemsWithIdentifiers:beforeItemWithIdentifier:"), identifiers, itemIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertItemsWithIdentifiers:beforeItemWithIdentifier:"), identifiers, objc.ExtractPtr(itemIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) InsertSectionsWithIdentifiers_AfterSectionWithIdentifier(sectionIdentifiers []objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertSectionsWithIdentifiers:afterSectionWithIdentifier:"), sectionIdentifiers, toSectionIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertSectionsWithIdentifiers:afterSectionWithIdentifier:"), sectionIdentifiers, objc.ExtractPtr(toSectionIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) InsertSectionsWithIdentifiers_BeforeSectionWithIdentifier(sectionIdentifiers []objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertSectionsWithIdentifiers:beforeSectionWithIdentifier:"), sectionIdentifiers, toSectionIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("insertSectionsWithIdentifiers:beforeSectionWithIdentifier:"), sectionIdentifiers, objc.ExtractPtr(toSectionIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) DeleteAllItems() {
@@ -138,19 +138,19 @@ func (d_ DiffableDataSourceSnapshot) DeleteSectionsWithIdentifiers(sectionIdenti
 }
 
 func (d_ DiffableDataSourceSnapshot) MoveItemWithIdentifier_AfterItemWithIdentifier(fromIdentifier objc.IObject, toIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveItemWithIdentifier:afterItemWithIdentifier:"), fromIdentifier, toIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveItemWithIdentifier:afterItemWithIdentifier:"), objc.ExtractPtr(fromIdentifier), objc.ExtractPtr(toIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) MoveItemWithIdentifier_BeforeItemWithIdentifier(fromIdentifier objc.IObject, toIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveItemWithIdentifier:beforeItemWithIdentifier:"), fromIdentifier, toIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveItemWithIdentifier:beforeItemWithIdentifier:"), objc.ExtractPtr(fromIdentifier), objc.ExtractPtr(toIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) MoveSectionWithIdentifier_AfterSectionWithIdentifier(fromSectionIdentifier objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveSectionWithIdentifier:afterSectionWithIdentifier:"), fromSectionIdentifier, toSectionIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveSectionWithIdentifier:afterSectionWithIdentifier:"), objc.ExtractPtr(fromSectionIdentifier), objc.ExtractPtr(toSectionIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) MoveSectionWithIdentifier_BeforeSectionWithIdentifier(fromSectionIdentifier objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveSectionWithIdentifier:beforeSectionWithIdentifier:"), fromSectionIdentifier, toSectionIdentifier)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveSectionWithIdentifier:beforeSectionWithIdentifier:"), objc.ExtractPtr(fromSectionIdentifier), objc.ExtractPtr(toSectionIdentifier))
 }
 
 func (d_ DiffableDataSourceSnapshot) ReloadItemsWithIdentifiers(identifiers []objc.IObject) {

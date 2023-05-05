@@ -34,7 +34,7 @@ func MakeCollectionViewTransitionLayout(ptr unsafe.Pointer) CollectionViewTransi
 }
 
 func (c_ CollectionViewTransitionLayout) InitWithCurrentLayout_NextLayout(currentLayout ICollectionViewLayout, newLayout ICollectionViewLayout) CollectionViewTransitionLayout {
-	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.GetSelector("initWithCurrentLayout:nextLayout:"), currentLayout, newLayout)
+	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.GetSelector("initWithCurrentLayout:nextLayout:"), objc.ExtractPtr(currentLayout), objc.ExtractPtr(newLayout))
 	return rv
 }
 

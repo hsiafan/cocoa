@@ -76,7 +76,7 @@ func (t_ TableHeaderView) TableView() TableView {
 }
 
 func (t_ TableHeaderView) SetTableView(value ITableView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableHeaderView) DraggedColumn() int {

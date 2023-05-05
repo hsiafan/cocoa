@@ -39,7 +39,7 @@ func (oc _OutputStreamClass) OutputStreamToFileAtPath_Append(path string, should
 }
 
 func (oc _OutputStreamClass) OutputStreamWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("outputStreamWithURL:append:"), url, shouldAppend)
+	rv := objc.CallMethod[OutputStream](oc, objc.GetSelector("outputStreamWithURL:append:"), objc.ExtractPtr(url), shouldAppend)
 	return rv
 }
 
@@ -54,7 +54,7 @@ func (o_ OutputStream) InitToFileAtPath_Append(path string, shouldAppend bool) O
 }
 
 func (o_ OutputStream) InitWithURL_Append(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.CallMethod[OutputStream](o_, objc.GetSelector("initWithURL:append:"), url, shouldAppend)
+	rv := objc.CallMethod[OutputStream](o_, objc.GetSelector("initWithURL:append:"), objc.ExtractPtr(url), shouldAppend)
 	return rv
 }
 

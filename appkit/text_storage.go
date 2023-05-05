@@ -66,7 +66,7 @@ func (t_ TextStorage) InitWithString_Attributes(str string, attrs map[foundation
 }
 
 func (t_ TextStorage) InitWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
-	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("initWithAttributedString:"), attrStr)
+	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("initWithAttributedString:"), objc.ExtractPtr(attrStr))
 	return rv
 }
 
@@ -91,11 +91,11 @@ func (t_ TextStorage) Init() TextStorage {
 }
 
 func (t_ TextStorage) AddLayoutManager(aLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("addLayoutManager:"), aLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addLayoutManager:"), objc.ExtractPtr(aLayoutManager))
 }
 
 func (t_ TextStorage) RemoveLayoutManager(aLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeLayoutManager:"), aLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeLayoutManager:"), objc.ExtractPtr(aLayoutManager))
 }
 
 func (t_ TextStorage) Edited_Range_ChangeInLength(editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
@@ -126,7 +126,7 @@ func (t_ TextStorage) SetDelegate(value TextStorageDelegate) {
 }
 
 func (t_ TextStorage) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextStorage) LayoutManagers() []LayoutManager {
@@ -196,7 +196,7 @@ func (t_ TextStorage) Font() Font {
 }
 
 func (t_ TextStorage) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextStorage) ForegroundColor() Color {
@@ -205,5 +205,5 @@ func (t_ TextStorage) ForegroundColor() Color {
 }
 
 func (t_ TextStorage) SetForegroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setForegroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setForegroundColor:"), objc.ExtractPtr(value))
 }

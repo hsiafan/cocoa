@@ -37,7 +37,7 @@ func MakeTitlebarAccessoryViewController(ptr unsafe.Pointer) TitlebarAccessoryVi
 }
 
 func (t_ TitlebarAccessoryViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
-	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
+	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, objc.ExtractPtr(nibBundleOrNil))
 	return rv
 }
 

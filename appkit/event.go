@@ -113,22 +113,22 @@ func (e_ Event) Init() Event {
 }
 
 func (ec _EventClass) KeyEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_Characters_CharactersIgnoringModifiers_IsARepeat_KeyCode(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, keys string, ukeys string, flag bool, code uint16) Event {
-	rv := objc.CallMethod[Event](ec, objc.GetSelector("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:"), type_, location, flags, time, wNum, unusedPassNil, keys, ukeys, flag, code)
+	rv := objc.CallMethod[Event](ec, objc.GetSelector("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:"), type_, location, flags, time, wNum, objc.ExtractPtr(unusedPassNil), keys, ukeys, flag, code)
 	return rv
 }
 
 func (ec _EventClass) MouseEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_EventNumber_ClickCount_Pressure(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, eNum int, cNum int, pressure float32) Event {
-	rv := objc.CallMethod[Event](ec, objc.GetSelector("mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:"), type_, location, flags, time, wNum, unusedPassNil, eNum, cNum, pressure)
+	rv := objc.CallMethod[Event](ec, objc.GetSelector("mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:"), type_, location, flags, time, wNum, objc.ExtractPtr(unusedPassNil), eNum, cNum, pressure)
 	return rv
 }
 
 func (ec _EventClass) EnterExitEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_EventNumber_TrackingNumber_UserData(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, eNum int, tNum int, data unsafe.Pointer) Event {
-	rv := objc.CallMethod[Event](ec, objc.GetSelector("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:"), type_, location, flags, time, wNum, unusedPassNil, eNum, tNum, data)
+	rv := objc.CallMethod[Event](ec, objc.GetSelector("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:"), type_, location, flags, time, wNum, objc.ExtractPtr(unusedPassNil), eNum, tNum, data)
 	return rv
 }
 
 func (ec _EventClass) OtherEventWithType_Location_ModifierFlags_Timestamp_WindowNumber_Context_Subtype_Data1_Data2(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, subtype int16, d1 int, d2 int) Event {
-	rv := objc.CallMethod[Event](ec, objc.GetSelector("otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:"), type_, location, flags, time, wNum, unusedPassNil, subtype, d1, d2)
+	rv := objc.CallMethod[Event](ec, objc.GetSelector("otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:"), type_, location, flags, time, wNum, objc.ExtractPtr(unusedPassNil), subtype, d1, d2)
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (e_ Event) TrackSwipeEventWithOptions_DampenAmountThresholdMin_Max_UsingHan
 }
 
 func (e_ Event) TouchesMatchingPhase_InView(phase TouchPhase, view IView) foundation.Set {
-	rv := objc.CallMethod[foundation.Set](e_, objc.GetSelector("touchesMatchingPhase:inView:"), phase, view)
+	rv := objc.CallMethod[foundation.Set](e_, objc.GetSelector("touchesMatchingPhase:inView:"), phase, objc.ExtractPtr(view))
 	return rv
 }
 
@@ -162,12 +162,12 @@ func (e_ Event) AllTouches() foundation.Set {
 }
 
 func (e_ Event) TouchesForView(view IView) foundation.Set {
-	rv := objc.CallMethod[foundation.Set](e_, objc.GetSelector("touchesForView:"), view)
+	rv := objc.CallMethod[foundation.Set](e_, objc.GetSelector("touchesForView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (e_ Event) CoalescedTouchesForTouch(touch ITouch) []Touch {
-	rv := objc.CallMethod[[]Touch](e_, objc.GetSelector("coalescedTouchesForTouch:"), touch)
+	rv := objc.CallMethod[[]Touch](e_, objc.GetSelector("coalescedTouchesForTouch:"), objc.ExtractPtr(touch))
 	return rv
 }
 
@@ -190,7 +190,7 @@ func (ec _EventClass) AddLocalMonitorForEventsMatchingMask_Handler(mask EventMas
 }
 
 func (ec _EventClass) RemoveMonitor(eventMonitor objc.IObject) {
-	objc.CallMethod[objc.Void](ec, objc.GetSelector("removeMonitor:"), eventMonitor)
+	objc.CallMethod[objc.Void](ec, objc.GetSelector("removeMonitor:"), objc.ExtractPtr(eventMonitor))
 }
 
 func (e_ Event) Type() EventType {

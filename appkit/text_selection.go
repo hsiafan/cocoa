@@ -40,7 +40,7 @@ func MakeTextSelection(ptr unsafe.Pointer) TextSelection {
 }
 
 func (t_ TextSelection) InitWithRange_Affinity_Granularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("initWithRange:affinity:granularity:"), range_, affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("initWithRange:affinity:granularity:"), objc.ExtractPtr(range_), affinity, granularity)
 	return rv
 }
 

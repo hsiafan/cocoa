@@ -102,7 +102,7 @@ func (a_ AnimationContext) TimingFunction() quartzcore.MediaTimingFunction {
 }
 
 func (a_ AnimationContext) SetTimingFunction(value quartzcore.IMediaTimingFunction) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), objc.ExtractPtr(value))
 }
 
 func (a_ AnimationContext) AllowsImplicitAnimation() bool {

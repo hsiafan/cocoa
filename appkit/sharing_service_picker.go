@@ -60,7 +60,7 @@ func (s_ SharingServicePicker) Init() SharingServicePicker {
 }
 
 func (s_ SharingServicePicker) ShowRelativeToRect_OfView_PreferredEdge(rect foundation.Rect, view IView, preferredEdge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), rect, view, preferredEdge)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), rect, objc.ExtractPtr(view), preferredEdge)
 }
 
 func (s_ SharingServicePicker) Delegate() SharingServicePickerDelegateWrapper {
@@ -75,7 +75,7 @@ func (s_ SharingServicePicker) SetDelegate(value SharingServicePickerDelegate) {
 }
 
 func (s_ SharingServicePicker) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ SharingServicePicker) StandardShareMenuItem() MenuItem {

@@ -50,7 +50,7 @@ func (m_ MutableAttributedString) InitWithString_Attributes(str string, attrs ma
 }
 
 func (m_ MutableAttributedString) InitWithAttributedString(attrStr IAttributedString) MutableAttributedString {
-	rv := objc.CallMethod[MutableAttributedString](m_, objc.GetSelector("initWithAttributedString:"), attrStr)
+	rv := objc.CallMethod[MutableAttributedString](m_, objc.GetSelector("initWithAttributedString:"), objc.ExtractPtr(attrStr))
 	return rv
 }
 
@@ -87,7 +87,7 @@ func (m_ MutableAttributedString) SetAttributes_Range(attrs map[AttributedString
 }
 
 func (m_ MutableAttributedString) AddAttribute_Value_Range(name AttributedStringKey, value objc.IObject, range_ Range) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addAttribute:value:range:"), name, value, range_)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("addAttribute:value:range:"), name, objc.ExtractPtr(value), range_)
 }
 
 func (m_ MutableAttributedString) AddAttributes_Range(attrs map[AttributedStringKey]objc.IObject, range_ Range) {
@@ -99,19 +99,19 @@ func (m_ MutableAttributedString) RemoveAttribute_Range(name AttributedStringKey
 }
 
 func (m_ MutableAttributedString) AppendAttributedString(attrString IAttributedString) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("appendAttributedString:"), attrString)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("appendAttributedString:"), objc.ExtractPtr(attrString))
 }
 
 func (m_ MutableAttributedString) InsertAttributedString_AtIndex(attrString IAttributedString, loc uint) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertAttributedString:atIndex:"), attrString, loc)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertAttributedString:atIndex:"), objc.ExtractPtr(attrString), loc)
 }
 
 func (m_ MutableAttributedString) ReplaceCharactersInRange_WithAttributedString(range_ Range, attrString IAttributedString) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("replaceCharactersInRange:withAttributedString:"), range_, attrString)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("replaceCharactersInRange:withAttributedString:"), range_, objc.ExtractPtr(attrString))
 }
 
 func (m_ MutableAttributedString) SetAttributedString(attrString IAttributedString) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttributedString:"), attrString)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttributedString:"), objc.ExtractPtr(attrString))
 }
 
 func (m_ MutableAttributedString) BeginEditing() {

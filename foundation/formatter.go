@@ -53,17 +53,17 @@ func (f_ Formatter) Init() Formatter {
 }
 
 func (f_ Formatter) StringForObjectValue(obj objc.IObject) string {
-	rv := objc.CallMethod[string](f_, objc.GetSelector("stringForObjectValue:"), obj)
+	rv := objc.CallMethod[string](f_, objc.GetSelector("stringForObjectValue:"), objc.ExtractPtr(obj))
 	return rv
 }
 
 func (f_ Formatter) AttributedStringForObjectValue_WithDefaultAttributes(obj objc.IObject, attrs map[AttributedStringKey]objc.IObject) AttributedString {
-	rv := objc.CallMethod[AttributedString](f_, objc.GetSelector("attributedStringForObjectValue:withDefaultAttributes:"), obj, attrs)
+	rv := objc.CallMethod[AttributedString](f_, objc.GetSelector("attributedStringForObjectValue:withDefaultAttributes:"), objc.ExtractPtr(obj), attrs)
 	return rv
 }
 
 func (f_ Formatter) EditingStringForObjectValue(obj objc.IObject) string {
-	rv := objc.CallMethod[string](f_, objc.GetSelector("editingStringForObjectValue:"), obj)
+	rv := objc.CallMethod[string](f_, objc.GetSelector("editingStringForObjectValue:"), objc.ExtractPtr(obj))
 	return rv
 }
 

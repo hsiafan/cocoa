@@ -116,7 +116,7 @@ func (t_ Toolbar) SetConfigurationFromDictionary(configDict map[string]objc.IObj
 }
 
 func (t_ Toolbar) RunCustomizationPalette(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("runCustomizationPalette:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("runCustomizationPalette:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Toolbar) ValidateVisibleItems() {
@@ -135,7 +135,7 @@ func (t_ Toolbar) SetDelegate(value ToolbarDelegate) {
 }
 
 func (t_ Toolbar) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (t_ Toolbar) Identifier() ToolbarIdentifier {
@@ -204,7 +204,7 @@ func (t_ Toolbar) CenteredItemIdentifiers() foundation.Set {
 }
 
 func (t_ Toolbar) SetCenteredItemIdentifiers(value foundation.ISet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCenteredItemIdentifiers:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCenteredItemIdentifiers:"), objc.ExtractPtr(value))
 }
 
 func (t_ Toolbar) SelectedItemIdentifier() ToolbarItemIdentifier {
@@ -254,7 +254,7 @@ func (t_ Toolbar) FullScreenAccessoryView() View {
 
 // deprecated
 func (t_ Toolbar) SetFullScreenAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFullScreenAccessoryView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFullScreenAccessoryView:"), objc.ExtractPtr(value))
 }
 
 // deprecated

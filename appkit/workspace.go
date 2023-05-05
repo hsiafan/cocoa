@@ -157,7 +157,7 @@ func (w_ Workspace) Init() Workspace {
 }
 
 func (w_ Workspace) OpenURL(url foundation.IURL) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("openURL:"), url)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("openURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -216,7 +216,7 @@ func (w_ Workspace) GetInfoForFile_Application_Type(fullPath string, appName *fo
 }
 
 func (w_ Workspace) URLForApplicationToOpenURL(url foundation.IURL) foundation.URL {
-	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("URLForApplicationToOpenURL:"), url)
+	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("URLForApplicationToOpenURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -241,12 +241,12 @@ func (w_ Workspace) IconForFiles(fullPaths []string) Image {
 }
 
 func (w_ Workspace) IconForContentType(contentType uniformtypeidentifiers.IType) Image {
-	rv := objc.CallMethod[Image](w_, objc.GetSelector("iconForContentType:"), contentType)
+	rv := objc.CallMethod[Image](w_, objc.GetSelector("iconForContentType:"), objc.ExtractPtr(contentType))
 	return rv
 }
 
 func (w_ Workspace) SetIcon_ForFile_Options(image IImage, fullPath string, options WorkspaceIconCreationOptions) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("setIcon:forFile:options:"), image, fullPath, options)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("setIcon:forFile:options:"), objc.ExtractPtr(image), fullPath, options)
 	return rv
 }
 
@@ -256,22 +256,22 @@ func (w_ Workspace) UnmountAndEjectDeviceAtPath(path string) bool {
 }
 
 func (w_ Workspace) UnmountAndEjectDeviceAtURL_Error(url foundation.IURL, error *foundation.Error) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("unmountAndEjectDeviceAtURL:error:"), url, unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("unmountAndEjectDeviceAtURL:error:"), objc.ExtractPtr(url), unsafe.Pointer(error))
 	return rv
 }
 
 func (w_ Workspace) DesktopImageURLForScreen(screen IScreen) foundation.URL {
-	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("desktopImageURLForScreen:"), screen)
+	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("desktopImageURLForScreen:"), objc.ExtractPtr(screen))
 	return rv
 }
 
 func (w_ Workspace) SetDesktopImageURL_ForScreen_Options_Error(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error *foundation.Error) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("setDesktopImageURL:forScreen:options:error:"), url, screen, options, unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("setDesktopImageURL:forScreen:options:error:"), objc.ExtractPtr(url), objc.ExtractPtr(screen), options, unsafe.Pointer(error))
 	return rv
 }
 
 func (w_ Workspace) DesktopImageOptionsForScreen(screen IScreen) map[WorkspaceDesktopImageOptionKey]objc.Object {
-	rv := objc.CallMethod[map[WorkspaceDesktopImageOptionKey]objc.Object](w_, objc.GetSelector("desktopImageOptionsForScreen:"), screen)
+	rv := objc.CallMethod[map[WorkspaceDesktopImageOptionKey]objc.Object](w_, objc.GetSelector("desktopImageOptionsForScreen:"), objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -290,33 +290,33 @@ func (w_ Workspace) ExtendPowerOffBy(requested int) int {
 }
 
 func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenContentType_CompletionHandler(applicationURL foundation.IURL, contentType uniformtypeidentifiers.IType, completionHandler func(error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenContentType:completionHandler:"), applicationURL, contentType, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenContentType:completionHandler:"), objc.ExtractPtr(applicationURL), objc.ExtractPtr(contentType), completionHandler)
 }
 
 func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenContentTypeOfFileAtURL_CompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenContentTypeOfFileAtURL:completionHandler:"), applicationURL, url, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenContentTypeOfFileAtURL:completionHandler:"), objc.ExtractPtr(applicationURL), objc.ExtractPtr(url), completionHandler)
 }
 
 func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenFileAtURL_CompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenFileAtURL:completionHandler:"), applicationURL, url, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenFileAtURL:completionHandler:"), objc.ExtractPtr(applicationURL), objc.ExtractPtr(url), completionHandler)
 }
 
 func (w_ Workspace) SetDefaultApplicationAtURL_ToOpenURLsWithScheme_CompletionHandler(applicationURL foundation.IURL, urlScheme string, completionHandler func(error foundation.Error)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenURLsWithScheme:completionHandler:"), applicationURL, urlScheme, completionHandler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultApplicationAtURL:toOpenURLsWithScheme:completionHandler:"), objc.ExtractPtr(applicationURL), urlScheme, completionHandler)
 }
 
 func (w_ Workspace) URLForApplicationToOpenContentType(contentType uniformtypeidentifiers.IType) foundation.URL {
-	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("URLForApplicationToOpenContentType:"), contentType)
+	rv := objc.CallMethod[foundation.URL](w_, objc.GetSelector("URLForApplicationToOpenContentType:"), objc.ExtractPtr(contentType))
 	return rv
 }
 
 func (w_ Workspace) URLsForApplicationsToOpenContentType(contentType uniformtypeidentifiers.IType) []foundation.URL {
-	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsToOpenContentType:"), contentType)
+	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsToOpenContentType:"), objc.ExtractPtr(contentType))
 	return rv
 }
 
 func (w_ Workspace) URLsForApplicationsToOpenURL(url foundation.IURL) []foundation.URL {
-	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsToOpenURL:"), url)
+	rv := objc.CallMethod[[]foundation.URL](w_, objc.GetSelector("URLsForApplicationsToOpenURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -327,13 +327,13 @@ func (w_ Workspace) URLsForApplicationsWithBundleIdentifier(bundleIdentifier str
 
 // deprecated
 func (w_ Workspace) OpenURL_Options_Configuration_Error(url foundation.IURL, options WorkspaceLaunchOptions, configuration map[WorkspaceLaunchConfigurationKey]objc.IObject, error *foundation.Error) RunningApplication {
-	rv := objc.CallMethod[RunningApplication](w_, objc.GetSelector("openURL:options:configuration:error:"), url, options, configuration, unsafe.Pointer(error))
+	rv := objc.CallMethod[RunningApplication](w_, objc.GetSelector("openURL:options:configuration:error:"), objc.ExtractPtr(url), options, configuration, unsafe.Pointer(error))
 	return rv
 }
 
 // deprecated
 func (w_ Workspace) OpenURLs_WithApplicationAtURL_Options_Configuration_Error(urls []foundation.IURL, applicationURL foundation.IURL, options WorkspaceLaunchOptions, configuration map[WorkspaceLaunchConfigurationKey]objc.IObject, error *foundation.Error) RunningApplication {
-	rv := objc.CallMethod[RunningApplication](w_, objc.GetSelector("openURLs:withApplicationAtURL:options:configuration:error:"), urls, applicationURL, options, configuration, unsafe.Pointer(error))
+	rv := objc.CallMethod[RunningApplication](w_, objc.GetSelector("openURLs:withApplicationAtURL:options:configuration:error:"), urls, objc.ExtractPtr(applicationURL), options, configuration, unsafe.Pointer(error))
 	return rv
 }
 
@@ -357,7 +357,7 @@ func (w_ Workspace) OpenFile_WithApplication_AndDeactivate(fullPath string, appN
 
 // deprecated
 func (w_ Workspace) OpenFile_FromImage_At_InView(fullPath string, image IImage, point foundation.Point, view IView) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("openFile:fromImage:at:inView:"), fullPath, image, point, view)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("openFile:fromImage:at:inView:"), fullPath, objc.ExtractPtr(image), point, objc.ExtractPtr(view))
 	return rv
 }
 
@@ -375,7 +375,7 @@ func (w_ Workspace) LaunchApplication_ShowIcon_Autolaunch(appName string, showIc
 
 // deprecated
 func (w_ Workspace) LaunchApplicationAtURL_Options_Configuration_Error(url foundation.IURL, options WorkspaceLaunchOptions, configuration map[WorkspaceLaunchConfigurationKey]objc.IObject, error *foundation.Error) RunningApplication {
-	rv := objc.CallMethod[RunningApplication](w_, objc.GetSelector("launchApplicationAtURL:options:configuration:error:"), url, options, configuration, unsafe.Pointer(error))
+	rv := objc.CallMethod[RunningApplication](w_, objc.GetSelector("launchApplicationAtURL:options:configuration:error:"), objc.ExtractPtr(url), options, configuration, unsafe.Pointer(error))
 	return rv
 }
 
@@ -399,13 +399,13 @@ func (w_ Workspace) AbsolutePathForAppBundleWithIdentifier(bundleIdentifier stri
 
 // deprecated
 func (w_ Workspace) LaunchAppWithBundleIdentifier_Options_AdditionalEventParamDescriptor_LaunchIdentifier(bundleIdentifier string, options WorkspaceLaunchOptions, descriptor foundation.IAppleEventDescriptor, identifier *foundation.Number) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("launchAppWithBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifier:"), bundleIdentifier, options, descriptor, unsafe.Pointer(identifier))
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("launchAppWithBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifier:"), bundleIdentifier, options, objc.ExtractPtr(descriptor), unsafe.Pointer(identifier))
 	return rv
 }
 
 // deprecated
 func (w_ Workspace) OpenURLs_WithAppBundleIdentifier_Options_AdditionalEventParamDescriptor_LaunchIdentifiers(urls []foundation.IURL, bundleIdentifier string, options WorkspaceLaunchOptions, descriptor foundation.IAppleEventDescriptor, identifiers *foundation.Array) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("openURLs:withAppBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifiers:"), urls, bundleIdentifier, options, descriptor, identifiers)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("openURLs:withAppBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifiers:"), urls, bundleIdentifier, options, objc.ExtractPtr(descriptor), identifiers)
 	return rv
 }
 
@@ -427,7 +427,7 @@ func (w_ Workspace) NoteUserDefaultsChanged() {
 
 // deprecated
 func (w_ Workspace) SlideImage_From_To(image IImage, fromPoint foundation.Point, toPoint foundation.Point) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("slideImage:from:to:"), image, fromPoint, toPoint)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("slideImage:from:to:"), objc.ExtractPtr(image), fromPoint, toPoint)
 }
 
 // deprecated

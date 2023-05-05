@@ -53,22 +53,22 @@ func (m_ Measurement) Init() Measurement {
 }
 
 func (m_ Measurement) CanBeConvertedToUnit(unit IUnit) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("canBeConvertedToUnit:"), unit)
+	rv := objc.CallMethod[bool](m_, objc.GetSelector("canBeConvertedToUnit:"), objc.ExtractPtr(unit))
 	return rv
 }
 
 func (m_ Measurement) MeasurementByConvertingToUnit(unit IUnit) Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByConvertingToUnit:"), unit)
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByConvertingToUnit:"), objc.ExtractPtr(unit))
 	return rv
 }
 
 func (m_ Measurement) MeasurementByAddingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByAddingMeasurement:"), measurement)
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByAddingMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 
 func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementBySubtractingMeasurement:"), measurement)
+	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementBySubtractingMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 

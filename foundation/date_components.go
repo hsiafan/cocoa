@@ -91,7 +91,7 @@ func (d_ DateComponents) Init() DateComponents {
 }
 
 func (d_ DateComponents) IsValidDateInCalendar(calendar ICalendar) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("isValidDateInCalendar:"), calendar)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("isValidDateInCalendar:"), objc.ExtractPtr(calendar))
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (d_ DateComponents) Calendar() Calendar {
 }
 
 func (d_ DateComponents) SetCalendar(value ICalendar) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateComponents) TimeZone() TimeZone {
@@ -130,7 +130,7 @@ func (d_ DateComponents) TimeZone() TimeZone {
 }
 
 func (d_ DateComponents) SetTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateComponents) IsValidDate() bool {

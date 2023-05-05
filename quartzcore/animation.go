@@ -87,7 +87,7 @@ func (a_ Animation) TimingFunction() MediaTimingFunction {
 }
 
 func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), objc.ExtractPtr(value))
 }
 
 func (a_ Animation) Delegate() AnimationDelegateWrapper {
@@ -101,7 +101,7 @@ func (a_ Animation) SetDelegate(value AnimationDelegate) {
 }
 
 func (a_ Animation) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (a_ Animation) PreferredFrameRateRange() FrameRateRange {

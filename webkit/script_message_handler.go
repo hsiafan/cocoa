@@ -15,5 +15,5 @@ type ScriptMessageHandlerWrapper struct {
 }
 
 func (s_ ScriptMessageHandlerWrapper) UserContentController_DidReceiveScriptMessage(userContentController IUserContentController, message IScriptMessage) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("userContentController:didReceiveScriptMessage:"), userContentController, message)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("userContentController:didReceiveScriptMessage:"), objc.ExtractPtr(userContentController), objc.ExtractPtr(message))
 }

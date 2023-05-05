@@ -79,11 +79,11 @@ func (ec _ErrorClass) UserInfoValueProviderForDomain(errorDomain ErrorDomain) fu
 }
 
 func (e_ Error) AttemptRecoveryFromError_OptionIndex_Delegate_DidRecoverSelector_ContextInfo(error IError, recoveryOptionIndex uint, delegate objc.IObject, didRecoverSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](e_, objc.GetSelector("attemptRecoveryFromError:optionIndex:delegate:didRecoverSelector:contextInfo:"), error, recoveryOptionIndex, delegate, didRecoverSelector, contextInfo)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("attemptRecoveryFromError:optionIndex:delegate:didRecoverSelector:contextInfo:"), objc.ExtractPtr(error), recoveryOptionIndex, objc.ExtractPtr(delegate), didRecoverSelector, contextInfo)
 }
 
 func (e_ Error) AttemptRecoveryFromError_OptionIndex(error IError, recoveryOptionIndex uint) bool {
-	rv := objc.CallMethod[bool](e_, objc.GetSelector("attemptRecoveryFromError:optionIndex:"), error, recoveryOptionIndex)
+	rv := objc.CallMethod[bool](e_, objc.GetSelector("attemptRecoveryFromError:optionIndex:"), objc.ExtractPtr(error), recoveryOptionIndex)
 	return rv
 }
 

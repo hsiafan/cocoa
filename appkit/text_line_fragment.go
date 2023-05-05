@@ -38,7 +38,7 @@ func MakeTextLineFragment(ptr unsafe.Pointer) TextLineFragment {
 }
 
 func (t_ TextLineFragment) InitWithAttributedString_Range(attributedString foundation.IAttributedString, range_ foundation.Range) TextLineFragment {
-	rv := objc.CallMethod[TextLineFragment](t_, objc.GetSelector("initWithAttributedString:range:"), attributedString, range_)
+	rv := objc.CallMethod[TextLineFragment](t_, objc.GetSelector("initWithAttributedString:range:"), objc.ExtractPtr(attributedString), range_)
 	return rv
 }
 

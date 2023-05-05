@@ -149,27 +149,27 @@ func NewControl() Control {
 }
 
 func (c_ Control) TakeDoubleValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeDoubleValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeDoubleValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Control) TakeFloatValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeFloatValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeFloatValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Control) TakeIntValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Control) TakeIntegerValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntegerValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntegerValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Control) TakeObjectValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeObjectValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeObjectValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Control) TakeStringValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeStringValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeStringValueFrom:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -178,7 +178,7 @@ func (c_ Control) SetFloatingPointFormat_Left_Right(autoRange bool, leftDigits u
 }
 
 func (c_ Control) DrawWithExpansionFrame_InView(contentFrame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithExpansionFrame:inView:"), contentFrame, view)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithExpansionFrame:inView:"), contentFrame, objc.ExtractPtr(view))
 }
 
 func (c_ Control) ExpansionFrameWithFrame(contentFrame foundation.Rect) foundation.Rect {
@@ -201,15 +201,15 @@ func (c_ Control) ValidateEditing() {
 }
 
 func (c_ Control) EditWithFrame_Editor_Delegate_Event(rect foundation.Rect, textObj IText, delegate objc.IObject, event IEvent) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("editWithFrame:editor:delegate:event:"), rect, textObj, delegate, event)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("editWithFrame:editor:delegate:event:"), rect, objc.ExtractPtr(textObj), objc.ExtractPtr(delegate), objc.ExtractPtr(event))
 }
 
 func (c_ Control) EndEditing(textObj IText) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("endEditing:"), textObj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("endEditing:"), objc.ExtractPtr(textObj))
 }
 
 func (c_ Control) SelectWithFrame_Editor_Delegate_Start_Length(rect foundation.Rect, textObj IText, delegate objc.IObject, selStart int, selLength int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectWithFrame:editor:delegate:start:length:"), rect, textObj, delegate, selStart, selLength)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectWithFrame:editor:delegate:start:length:"), rect, objc.ExtractPtr(textObj), objc.ExtractPtr(delegate), selStart, selLength)
 }
 
 func (c_ Control) SizeThatFits(size foundation.Size) foundation.Size {
@@ -222,7 +222,7 @@ func (c_ Control) SizeToFit() {
 }
 
 func (c_ Control) SendAction_To(action objc.Selector, target objc.IObject) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("sendAction:to:"), action, target)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("sendAction:to:"), action, objc.ExtractPtr(target))
 	return rv
 }
 
@@ -232,11 +232,11 @@ func (c_ Control) SendActionOn(mask EventMask) int {
 }
 
 func (c_ Control) PerformClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("performClick:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("performClick:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Control) InvalidateIntrinsicContentSizeForCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateIntrinsicContentSizeForCell:"), cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateIntrinsicContentSizeForCell:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
@@ -263,42 +263,42 @@ func (c_ Control) CalcSize() {
 
 // deprecated
 func (c_ Control) SelectCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectCell:"), cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectCell:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
 func (c_ Control) DrawCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawCell:"), cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawCell:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
 func (c_ Control) DrawCellInside(cell ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawCellInside:"), cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawCellInside:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
 func (c_ Control) UpdateCell(cell ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateCell:"), cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateCell:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
 func (c_ Control) UpdateCellInside(cell ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateCellInside:"), cell)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateCellInside:"), objc.ExtractPtr(cell))
 }
 
 // deprecated
 func (c_ Control) ControlTextDidBeginEditing(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidBeginEditing:"), obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidBeginEditing:"), objc.ExtractPtr(obj))
 }
 
 // deprecated
 func (c_ Control) ControlTextDidChange(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidChange:"), obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidChange:"), objc.ExtractPtr(obj))
 }
 
 // deprecated
 func (c_ Control) ControlTextDidEndEditing(obj foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidEndEditing:"), obj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidEndEditing:"), objc.ExtractPtr(obj))
 }
 
 func (c_ Control) IsEnabled() bool {
@@ -352,7 +352,7 @@ func (c_ Control) ObjectValue() objc.Object {
 }
 
 func (c_ Control) SetObjectValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setObjectValue:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setObjectValue:"), objc.ExtractPtr(value))
 }
 
 func (c_ Control) StringValue() string {
@@ -370,7 +370,7 @@ func (c_ Control) AttributedStringValue() foundation.AttributedString {
 }
 
 func (c_ Control) SetAttributedStringValue(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAttributedStringValue:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAttributedStringValue:"), objc.ExtractPtr(value))
 }
 
 func (c_ Control) Alignment() TextAlignment {
@@ -388,7 +388,7 @@ func (c_ Control) Font() Font {
 }
 
 func (c_ Control) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFont:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFont:"), objc.ExtractPtr(value))
 }
 
 func (c_ Control) LineBreakMode() LineBreakMode {
@@ -415,7 +415,7 @@ func (c_ Control) Formatter() foundation.Formatter {
 }
 
 func (c_ Control) SetFormatter(value foundation.IFormatter) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFormatter:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFormatter:"), objc.ExtractPtr(value))
 }
 
 func (c_ Control) BaseWritingDirection() WritingDirection {
@@ -469,7 +469,7 @@ func (c_ Control) Target() objc.Object {
 }
 
 func (c_ Control) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
 
 func (c_ Control) IsContinuous() bool {
@@ -511,7 +511,7 @@ func (c_ Control) Cell() Cell {
 
 // deprecated
 func (c_ Control) SetCell(value ICell) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCell:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCell:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -522,5 +522,5 @@ func (cc _ControlClass) CellClass() objc.Class {
 
 // deprecated
 func (cc _ControlClass) SetCellClass(value objc.IClass) {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("setCellClass:"), value)
+	objc.CallMethod[objc.Void](cc, objc.GetSelector("setCellClass:"), objc.ExtractPtr(value))
 }

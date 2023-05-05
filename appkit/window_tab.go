@@ -71,7 +71,7 @@ func (w_ WindowTab) AttributedTitle() foundation.AttributedString {
 }
 
 func (w_ WindowTab) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAttributedTitle:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 func (w_ WindowTab) ToolTip() string {
@@ -89,5 +89,5 @@ func (w_ WindowTab) AccessoryView() View {
 }
 
 func (w_ WindowTab) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAccessoryView:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
 }

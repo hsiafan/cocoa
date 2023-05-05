@@ -83,5 +83,5 @@ func (s_ Shadow) ShadowColor() Color {
 }
 
 func (s_ Shadow) SetShadowColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowColor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowColor:"), objc.ExtractPtr(value))
 }

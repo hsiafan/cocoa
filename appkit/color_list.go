@@ -80,7 +80,7 @@ func (c_ ColorList) ColorWithKey(key ColorName) Color {
 }
 
 func (c_ ColorList) InsertColor_Key_AtIndex(color IColor, key ColorName, loc uint) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertColor:key:atIndex:"), color, key, loc)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertColor:key:atIndex:"), objc.ExtractPtr(color), key, loc)
 }
 
 func (c_ ColorList) RemoveColorWithKey(key ColorName) {
@@ -88,11 +88,11 @@ func (c_ ColorList) RemoveColorWithKey(key ColorName) {
 }
 
 func (c_ ColorList) SetColor_ForKey(color IColor, key ColorName) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:forKey:"), color, key)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:forKey:"), objc.ExtractPtr(color), key)
 }
 
 func (c_ ColorList) WriteToURL_Error(url foundation.IURL, errPtr *foundation.Error) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("writeToURL:error:"), url, unsafe.Pointer(errPtr))
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("writeToURL:error:"), objc.ExtractPtr(url), unsafe.Pointer(errPtr))
 	return rv
 }
 

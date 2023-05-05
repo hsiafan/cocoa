@@ -78,7 +78,7 @@ func (a_ Alert) Init() Alert {
 }
 
 func (ac _AlertClass) AlertWithError(error foundation.IError) Alert {
-	rv := objc.CallMethod[Alert](ac, objc.GetSelector("alertWithError:"), error)
+	rv := objc.CallMethod[Alert](ac, objc.GetSelector("alertWithError:"), objc.ExtractPtr(error))
 	return rv
 }
 
@@ -92,12 +92,12 @@ func (a_ Alert) RunModal() ModalResponse {
 }
 
 func (a_ Alert) BeginSheetModalForWindow_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheetModalForWindow:completionHandler:"), sheetWindow, handler)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheetModalForWindow:completionHandler:"), objc.ExtractPtr(sheetWindow), handler)
 }
 
 // deprecated
 func (a_ Alert) BeginSheetModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(window IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:"), window, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:"), objc.ExtractPtr(window), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
 }
 
 func (a_ Alert) AddButtonWithTitle(title string) Button {
@@ -120,7 +120,7 @@ func (a_ Alert) AccessoryView() View {
 }
 
 func (a_ Alert) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAccessoryView:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
 }
 
 func (a_ Alert) ShowsHelp() bool {
@@ -153,7 +153,7 @@ func (a_ Alert) SetDelegate(value AlertDelegate) {
 }
 
 func (a_ Alert) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (a_ Alert) SuppressionButton() Button {
@@ -194,7 +194,7 @@ func (a_ Alert) Icon() Image {
 }
 
 func (a_ Alert) SetIcon(value IImage) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setIcon:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setIcon:"), objc.ExtractPtr(value))
 }
 
 func (a_ Alert) Buttons() []Button {

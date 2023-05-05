@@ -143,7 +143,7 @@ func (mc _MenuClass) SetMenuBarVisible(visible bool) {
 }
 
 func (m_ Menu) InsertItem_AtIndex(newItem IMenuItem, index int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertItem:atIndex:"), newItem, index)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertItem:atIndex:"), objc.ExtractPtr(newItem), index)
 }
 
 func (m_ Menu) InsertItemWithTitle_Action_KeyEquivalent_AtIndex(string_ string, selector objc.Selector, charCode string, index int) MenuItem {
@@ -152,7 +152,7 @@ func (m_ Menu) InsertItemWithTitle_Action_KeyEquivalent_AtIndex(string_ string, 
 }
 
 func (m_ Menu) AddItem(newItem IMenuItem) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addItem:"), newItem)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("addItem:"), objc.ExtractPtr(newItem))
 }
 
 func (m_ Menu) AddItemWithTitle_Action_KeyEquivalent(string_ string, selector objc.Selector, charCode string) MenuItem {
@@ -161,7 +161,7 @@ func (m_ Menu) AddItemWithTitle_Action_KeyEquivalent(string_ string, selector ob
 }
 
 func (m_ Menu) RemoveItem(item IMenuItem) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeItem:"), item)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeItem:"), objc.ExtractPtr(item))
 }
 
 func (m_ Menu) RemoveItemAtIndex(index int) {
@@ -169,7 +169,7 @@ func (m_ Menu) RemoveItemAtIndex(index int) {
 }
 
 func (m_ Menu) ItemChanged(item IMenuItem) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("itemChanged:"), item)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("itemChanged:"), objc.ExtractPtr(item))
 }
 
 func (m_ Menu) RemoveAllItems() {
@@ -192,7 +192,7 @@ func (m_ Menu) ItemAtIndex(index int) MenuItem {
 }
 
 func (m_ Menu) IndexOfItem(item IMenuItem) int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItem:"), item)
+	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -207,26 +207,26 @@ func (m_ Menu) IndexOfItemWithTag(tag int) int {
 }
 
 func (m_ Menu) IndexOfItemWithTarget_AndAction(target objc.IObject, actionSelector objc.Selector) int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItemWithTarget:andAction:"), target, actionSelector)
+	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItemWithTarget:andAction:"), objc.ExtractPtr(target), actionSelector)
 	return rv
 }
 
 func (m_ Menu) IndexOfItemWithRepresentedObject(object objc.IObject) int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItemWithRepresentedObject:"), object)
+	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItemWithRepresentedObject:"), objc.ExtractPtr(object))
 	return rv
 }
 
 func (m_ Menu) IndexOfItemWithSubmenu(submenu IMenu) int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItemWithSubmenu:"), submenu)
+	rv := objc.CallMethod[int](m_, objc.GetSelector("indexOfItemWithSubmenu:"), objc.ExtractPtr(submenu))
 	return rv
 }
 
 func (m_ Menu) SetSubmenu_ForItem(menu IMenu, item IMenuItem) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSubmenu:forItem:"), menu, item)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSubmenu:forItem:"), objc.ExtractPtr(menu), objc.ExtractPtr(item))
 }
 
 func (m_ Menu) SubmenuAction(sender objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("submenuAction:"), sender)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("submenuAction:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -243,7 +243,7 @@ func (m_ Menu) IsAttached() bool {
 
 // deprecated
 func (m_ Menu) LocationForSubmenu(submenu IMenu) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](m_, objc.GetSelector("locationForSubmenu:"), submenu)
+	rv := objc.CallMethod[foundation.Point](m_, objc.GetSelector("locationForSubmenu:"), objc.ExtractPtr(submenu))
 	return rv
 }
 
@@ -252,7 +252,7 @@ func (m_ Menu) Update() {
 }
 
 func (m_ Menu) PerformKeyEquivalent(event IEvent) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("performKeyEquivalent:"), event)
+	rv := objc.CallMethod[bool](m_, objc.GetSelector("performKeyEquivalent:"), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -266,20 +266,20 @@ func (m_ Menu) SizeToFit() {
 }
 
 func (mc _MenuClass) PopUpContextMenu_WithEvent_ForView(menu IMenu, event IEvent, view IView) {
-	objc.CallMethod[objc.Void](mc, objc.GetSelector("popUpContextMenu:withEvent:forView:"), menu, event, view)
+	objc.CallMethod[objc.Void](mc, objc.GetSelector("popUpContextMenu:withEvent:forView:"), objc.ExtractPtr(menu), objc.ExtractPtr(event), objc.ExtractPtr(view))
 }
 
 func (mc _MenuClass) PopUpContextMenu_WithEvent_ForView_WithFont(menu IMenu, event IEvent, view IView, font IFont) {
-	objc.CallMethod[objc.Void](mc, objc.GetSelector("popUpContextMenu:withEvent:forView:withFont:"), menu, event, view, font)
+	objc.CallMethod[objc.Void](mc, objc.GetSelector("popUpContextMenu:withEvent:forView:withFont:"), objc.ExtractPtr(menu), objc.ExtractPtr(event), objc.ExtractPtr(view), objc.ExtractPtr(font))
 }
 
 // deprecated
 func (m_ Menu) HelpRequested(eventPtr IEvent) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("helpRequested:"), eventPtr)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("helpRequested:"), objc.ExtractPtr(eventPtr))
 }
 
 func (m_ Menu) PopUpMenuPositioningItem_AtLocation_InView(item IMenuItem, location foundation.Point, view IView) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("popUpMenuPositioningItem:atLocation:inView:"), item, location, view)
+	rv := objc.CallMethod[bool](m_, objc.GetSelector("popUpMenuPositioningItem:atLocation:inView:"), objc.ExtractPtr(item), location, objc.ExtractPtr(view))
 	return rv
 }
 
@@ -299,7 +299,7 @@ func (m_ Menu) ContextMenuRepresentation() objc.Object {
 
 // deprecated
 func (m_ Menu) SetContextMenuRepresentation(menuRep objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setContextMenuRepresentation:"), menuRep)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setContextMenuRepresentation:"), objc.ExtractPtr(menuRep))
 }
 
 // deprecated
@@ -310,12 +310,12 @@ func (m_ Menu) TearOffMenuRepresentation() objc.Object {
 
 // deprecated
 func (m_ Menu) SetTearOffMenuRepresentation(menuRep objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTearOffMenuRepresentation:"), menuRep)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTearOffMenuRepresentation:"), objc.ExtractPtr(menuRep))
 }
 
 // deprecated
 func (m_ Menu) SetMenuRepresentation(menuRep objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenuRepresentation:"), menuRep)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenuRepresentation:"), objc.ExtractPtr(menuRep))
 }
 
 // deprecated
@@ -349,7 +349,7 @@ func (m_ Menu) Supermenu() Menu {
 }
 
 func (m_ Menu) SetSupermenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSupermenu:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSupermenu:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -373,7 +373,7 @@ func (m_ Menu) Font() Font {
 }
 
 func (m_ Menu) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setFont:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setFont:"), objc.ExtractPtr(value))
 }
 
 func (m_ Menu) Title() string {
@@ -459,5 +459,5 @@ func (m_ Menu) SetDelegate(value MenuDelegate) {
 }
 
 func (m_ Menu) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

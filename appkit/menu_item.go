@@ -171,7 +171,7 @@ func (m_ MenuItem) Target() objc.Object {
 }
 
 func (m_ MenuItem) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTarget:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) Action() objc.Selector {
@@ -198,7 +198,7 @@ func (m_ MenuItem) AttributedTitle() foundation.AttributedString {
 }
 
 func (m_ MenuItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttributedTitle:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) Tag() int {
@@ -225,7 +225,7 @@ func (m_ MenuItem) Image() Image {
 }
 
 func (m_ MenuItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) OnStateImage() Image {
@@ -234,7 +234,7 @@ func (m_ MenuItem) OnStateImage() Image {
 }
 
 func (m_ MenuItem) SetOnStateImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setOnStateImage:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setOnStateImage:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) OffStateImage() Image {
@@ -243,7 +243,7 @@ func (m_ MenuItem) OffStateImage() Image {
 }
 
 func (m_ MenuItem) SetOffStateImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setOffStateImage:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setOffStateImage:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) MixedStateImage() Image {
@@ -252,7 +252,7 @@ func (m_ MenuItem) MixedStateImage() Image {
 }
 
 func (m_ MenuItem) SetMixedStateImage(value IImage) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMixedStateImage:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMixedStateImage:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) Submenu() Menu {
@@ -261,7 +261,7 @@ func (m_ MenuItem) Submenu() Menu {
 }
 
 func (m_ MenuItem) SetSubmenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSubmenu:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSubmenu:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) HasSubmenu() bool {
@@ -285,7 +285,7 @@ func (m_ MenuItem) Menu() Menu {
 }
 
 func (m_ MenuItem) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) KeyEquivalent() string {
@@ -380,7 +380,7 @@ func (m_ MenuItem) RepresentedObject() objc.Object {
 }
 
 func (m_ MenuItem) SetRepresentedObject(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setRepresentedObject:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setRepresentedObject:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) View() View {
@@ -389,7 +389,7 @@ func (m_ MenuItem) View() View {
 }
 
 func (m_ MenuItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setView:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }
 
 func (m_ MenuItem) IsHighlighted() bool {

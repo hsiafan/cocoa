@@ -74,7 +74,7 @@ func (ec _ExpressionClass) ExpressionWithFormat_ArgumentArray(expressionFormat s
 }
 
 func (ec _ExpressionClass) ExpressionForConstantValue(obj objc.IObject) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForConstantValue:"), obj)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForConstantValue:"), objc.ExtractPtr(obj))
 	return rv
 }
 
@@ -104,27 +104,27 @@ func (ec _ExpressionClass) ExpressionForAggregate(subexpressions []IExpression) 
 }
 
 func (ec _ExpressionClass) ExpressionForUnionSet_With(left IExpression, right IExpression) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForUnionSet:with:"), left, right)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForUnionSet:with:"), objc.ExtractPtr(left), objc.ExtractPtr(right))
 	return rv
 }
 
 func (ec _ExpressionClass) ExpressionForIntersectSet_With(left IExpression, right IExpression) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForIntersectSet:with:"), left, right)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForIntersectSet:with:"), objc.ExtractPtr(left), objc.ExtractPtr(right))
 	return rv
 }
 
 func (ec _ExpressionClass) ExpressionForMinusSet_With(left IExpression, right IExpression) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForMinusSet:with:"), left, right)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForMinusSet:with:"), objc.ExtractPtr(left), objc.ExtractPtr(right))
 	return rv
 }
 
 func (ec _ExpressionClass) ExpressionForSubquery_UsingIteratorVariable_Predicate(expression IExpression, variable string, predicate IPredicate) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForSubquery:usingIteratorVariable:predicate:"), expression, variable, predicate)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForSubquery:usingIteratorVariable:predicate:"), objc.ExtractPtr(expression), variable, objc.ExtractPtr(predicate))
 	return rv
 }
 
 func (ec _ExpressionClass) ExpressionForConditional_TrueExpression_FalseExpression(predicate IPredicate, trueExpression IExpression, falseExpression IExpression) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForConditional:trueExpression:falseExpression:"), predicate, trueExpression, falseExpression)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForConditional:trueExpression:falseExpression:"), objc.ExtractPtr(predicate), objc.ExtractPtr(trueExpression), objc.ExtractPtr(falseExpression))
 	return rv
 }
 
@@ -139,12 +139,12 @@ func (ec _ExpressionClass) ExpressionForFunction_Arguments(name string, paramete
 }
 
 func (ec _ExpressionClass) ExpressionForFunction_SelectorName_Arguments(target IExpression, name string, parameters []objc.IObject) Expression {
-	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForFunction:selectorName:arguments:"), target, name, parameters)
+	rv := objc.CallMethod[Expression](ec, objc.GetSelector("expressionForFunction:selectorName:arguments:"), objc.ExtractPtr(target), name, parameters)
 	return rv
 }
 
 func (e_ Expression) ExpressionValueWithObject_Context(object objc.IObject, context IMutableDictionary) objc.Object {
-	rv := objc.CallMethod[objc.Object](e_, objc.GetSelector("expressionValueWithObject:context:"), object, context)
+	rv := objc.CallMethod[objc.Object](e_, objc.GetSelector("expressionValueWithObject:context:"), objc.ExtractPtr(object), objc.ExtractPtr(context))
 	return rv
 }
 

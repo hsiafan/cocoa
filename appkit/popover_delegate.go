@@ -142,7 +142,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsDetachableWindowForPopover() bool {
 }
 
 func (p_ PopoverDelegateWrapper) DetachableWindowForPopover(popover IPopover) Window {
-	rv := objc.CallMethod[Window](p_, objc.GetSelector("detachableWindowForPopover:"), popover)
+	rv := objc.CallMethod[Window](p_, objc.GetSelector("detachableWindowForPopover:"), objc.ExtractPtr(popover))
 	return rv
 }
 
@@ -151,7 +151,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldClose() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverShouldClose(popover IPopover) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("popoverShouldClose:"), popover)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("popoverShouldClose:"), objc.ExtractPtr(popover))
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillShow() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverWillShow(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverWillShow:"), notification)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverWillShow:"), objc.ExtractPtr(notification))
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidShow() bool {
@@ -168,7 +168,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidShow() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverDidShow(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidShow:"), notification)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidShow:"), objc.ExtractPtr(notification))
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillClose() bool {
@@ -176,7 +176,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillClose() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverWillClose(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverWillClose:"), notification)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverWillClose:"), objc.ExtractPtr(notification))
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidClose() bool {
@@ -184,7 +184,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidClose() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverDidClose(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidClose:"), notification)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidClose:"), objc.ExtractPtr(notification))
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidDetach() bool {
@@ -192,7 +192,7 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidDetach() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverDidDetach(popover IPopover) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidDetach:"), popover)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidDetach:"), objc.ExtractPtr(popover))
 }
 
 func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldDetach() bool {
@@ -200,6 +200,6 @@ func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldDetach() bool {
 }
 
 func (p_ PopoverDelegateWrapper) PopoverShouldDetach(popover IPopover) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("popoverShouldDetach:"), popover)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("popoverShouldDetach:"), objc.ExtractPtr(popover))
 	return rv
 }

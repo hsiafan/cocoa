@@ -77,7 +77,7 @@ func MakeTextField(ptr unsafe.Pointer) TextField {
 }
 
 func (tc _TextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
+	rv := objc.CallMethod[TextField](tc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 
@@ -122,7 +122,7 @@ func NewTextField() TextField {
 }
 
 func (t_ TextField) SelectText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectText:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectText:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -131,25 +131,25 @@ func (t_ TextField) SetTitleWithMnemonic(stringWithAmpersand string) {
 }
 
 func (t_ TextField) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), textObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TextField) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TextField) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), textObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 func (t_ TextField) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TextField) IsSelectable() bool {
@@ -203,7 +203,7 @@ func (t_ TextField) PlaceholderAttributedString() foundation.AttributedString {
 }
 
 func (t_ TextField) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderAttributedString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextField) LineBreakStrategy() LineBreakStrategy {
@@ -248,7 +248,7 @@ func (t_ TextField) TextColor() Color {
 }
 
 func (t_ TextField) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextField) BackgroundColor() Color {
@@ -257,7 +257,7 @@ func (t_ TextField) BackgroundColor() Color {
 }
 
 func (t_ TextField) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextField) DrawsBackground() bool {
@@ -326,5 +326,5 @@ func (t_ TextField) SetDelegate(value TextFieldDelegate) {
 }
 
 func (t_ TextField) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

@@ -98,5 +98,5 @@ func (p_ PropertyAnimation) ValueFunction() ValueFunction {
 }
 
 func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setValueFunction:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setValueFunction:"), objc.ExtractPtr(value))
 }

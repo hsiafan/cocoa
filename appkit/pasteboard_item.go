@@ -69,7 +69,7 @@ func (p_ PasteboardItem) SetDataProvider_ForTypes(dataProvider PasteboardItemDat
 }
 
 func (p_ PasteboardItem) SetDataProvider0_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), dataProvider, types)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), objc.ExtractPtr(dataProvider), types)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func (p_ PasteboardItem) SetString_ForType(string_ string, type_ PasteboardType)
 }
 
 func (p_ PasteboardItem) SetPropertyList_ForType(propertyList objc.IObject, type_ PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setPropertyList:forType:"), propertyList, type_)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setPropertyList:forType:"), objc.ExtractPtr(propertyList), type_)
 	return rv
 }
 

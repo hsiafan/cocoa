@@ -79,7 +79,7 @@ func (d_ DraggingImageComponent) Contents() objc.Object {
 }
 
 func (d_ DraggingImageComponent) SetContents(value objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContents:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContents:"), objc.ExtractPtr(value))
 }
 
 func (d_ DraggingImageComponent) Frame() foundation.Rect {

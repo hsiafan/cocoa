@@ -194,12 +194,12 @@ func (n_ NumberFormatter) NumberFromString(string_ string) Number {
 }
 
 func (n_ NumberFormatter) StringFromNumber(number INumber) string {
-	rv := objc.CallMethod[string](n_, objc.GetSelector("stringFromNumber:"), number)
+	rv := objc.CallMethod[string](n_, objc.GetSelector("stringFromNumber:"), objc.ExtractPtr(number))
 	return rv
 }
 
 func (nc _NumberFormatterClass) LocalizedStringFromNumber_NumberStyle(num INumber, nstyle NumberFormatterStyle) string {
-	rv := objc.CallMethod[string](nc, objc.GetSelector("localizedStringFromNumber:numberStyle:"), num, nstyle)
+	rv := objc.CallMethod[string](nc, objc.GetSelector("localizedStringFromNumber:numberStyle:"), objc.ExtractPtr(num), nstyle)
 	return rv
 }
 
@@ -245,7 +245,7 @@ func (n_ NumberFormatter) Locale() Locale {
 }
 
 func (n_ NumberFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) RoundingBehavior() DecimalNumberHandler {
@@ -254,7 +254,7 @@ func (n_ NumberFormatter) RoundingBehavior() DecimalNumberHandler {
 }
 
 func (n_ NumberFormatter) SetRoundingBehavior(value IDecimalNumberHandler) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setRoundingBehavior:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setRoundingBehavior:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) RoundingIncrement() Number {
@@ -263,7 +263,7 @@ func (n_ NumberFormatter) RoundingIncrement() Number {
 }
 
 func (n_ NumberFormatter) SetRoundingIncrement(value INumber) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setRoundingIncrement:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setRoundingIncrement:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) RoundingMode() NumberFormatterRoundingMode {
@@ -389,7 +389,7 @@ func (n_ NumberFormatter) Multiplier() Number {
 }
 
 func (n_ NumberFormatter) SetMultiplier(value INumber) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setMultiplier:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setMultiplier:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) PercentSymbol() string {
@@ -578,7 +578,7 @@ func (n_ NumberFormatter) AttributedStringForZero() AttributedString {
 }
 
 func (n_ NumberFormatter) SetAttributedStringForZero(value IAttributedString) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setAttributedStringForZero:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setAttributedStringForZero:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) TextAttributesForZero() map[string]objc.Object {
@@ -596,7 +596,7 @@ func (n_ NumberFormatter) AttributedStringForNil() AttributedString {
 }
 
 func (n_ NumberFormatter) SetAttributedStringForNil(value IAttributedString) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setAttributedStringForNil:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setAttributedStringForNil:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) TextAttributesForNil() map[string]objc.Object {
@@ -614,7 +614,7 @@ func (n_ NumberFormatter) AttributedStringForNotANumber() AttributedString {
 }
 
 func (n_ NumberFormatter) SetAttributedStringForNotANumber(value IAttributedString) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setAttributedStringForNotANumber:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setAttributedStringForNotANumber:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) TextAttributesForNotANumber() map[string]objc.Object {
@@ -758,7 +758,7 @@ func (n_ NumberFormatter) Minimum() Number {
 }
 
 func (n_ NumberFormatter) SetMinimum(value INumber) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setMinimum:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setMinimum:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) Maximum() Number {
@@ -767,7 +767,7 @@ func (n_ NumberFormatter) Maximum() Number {
 }
 
 func (n_ NumberFormatter) SetMaximum(value INumber) {
-	objc.CallMethod[objc.Void](n_, objc.GetSelector("setMaximum:"), value)
+	objc.CallMethod[objc.Void](n_, objc.GetSelector("setMaximum:"), objc.ExtractPtr(value))
 }
 
 func (n_ NumberFormatter) IsLenient() bool {

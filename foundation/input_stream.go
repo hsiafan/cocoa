@@ -39,7 +39,7 @@ func (ic _InputStreamClass) InputStreamWithFileAtPath(path string) InputStream {
 }
 
 func (ic _InputStreamClass) InputStreamWithURL(url IURL) InputStream {
-	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("inputStreamWithURL:"), url)
+	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("inputStreamWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -54,7 +54,7 @@ func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
 }
 
 func (i_ InputStream) InitWithURL(url IURL) InputStream {
-	rv := objc.CallMethod[InputStream](i_, objc.GetSelector("initWithURL:"), url)
+	rv := objc.CallMethod[InputStream](i_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 

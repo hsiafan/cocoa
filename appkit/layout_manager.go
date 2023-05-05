@@ -225,15 +225,15 @@ func NewLayoutManager() LayoutManager {
 }
 
 func (l_ LayoutManager) ReplaceTextStorage(newTextStorage ITextStorage) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("replaceTextStorage:"), newTextStorage)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("replaceTextStorage:"), objc.ExtractPtr(newTextStorage))
 }
 
 func (l_ LayoutManager) AddTextContainer(container ITextContainer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addTextContainer:"), container)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("addTextContainer:"), objc.ExtractPtr(container))
 }
 
 func (l_ LayoutManager) InsertTextContainer_AtIndex(container ITextContainer, index uint) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertTextContainer:atIndex:"), container, index)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertTextContainer:atIndex:"), objc.ExtractPtr(container), index)
 }
 
 func (l_ LayoutManager) RemoveTextContainerAtIndex(index uint) {
@@ -241,15 +241,15 @@ func (l_ LayoutManager) RemoveTextContainerAtIndex(index uint) {
 }
 
 func (l_ LayoutManager) SetTextContainer_ForGlyphRange(container ITextContainer, glyphRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTextContainer:forGlyphRange:"), container, glyphRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTextContainer:forGlyphRange:"), objc.ExtractPtr(container), glyphRange)
 }
 
 func (l_ LayoutManager) TextContainerChangedGeometry(container ITextContainer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("textContainerChangedGeometry:"), container)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("textContainerChangedGeometry:"), objc.ExtractPtr(container))
 }
 
 func (l_ LayoutManager) TextContainerChangedTextView(container ITextContainer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("textContainerChangedTextView:"), container)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("textContainerChangedTextView:"), objc.ExtractPtr(container))
 }
 
 func (l_ LayoutManager) TextContainerForGlyphAtIndex_EffectiveRange(glyphIndex uint, effectiveGlyphRange *foundation.Range) TextContainer {
@@ -263,7 +263,7 @@ func (l_ LayoutManager) TextContainerForGlyphAtIndex_EffectiveRange_WithoutAddit
 }
 
 func (l_ LayoutManager) UsedRectForTextContainer(container ITextContainer) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("usedRectForTextContainer:"), container)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("usedRectForTextContainer:"), objc.ExtractPtr(container))
 	return rv
 }
 
@@ -284,7 +284,7 @@ func (l_ LayoutManager) InvalidateLayoutForCharacterRange_ActualCharacterRange(c
 }
 
 func (l_ LayoutManager) ProcessEditingForTextStorage_Edited_Range_ChangeInLength_InvalidatedRange(textStorage ITextStorage, editMask TextStorageEditActions, newCharRange foundation.Range, delta int, invalidatedCharRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:"), textStorage, editMask, newCharRange, delta, invalidatedCharRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:"), objc.ExtractPtr(textStorage), editMask, newCharRange, delta, invalidatedCharRange)
 }
 
 func (l_ LayoutManager) EnsureGlyphsForCharacterRange(charRange foundation.Range) {
@@ -296,7 +296,7 @@ func (l_ LayoutManager) EnsureGlyphsForGlyphRange(glyphRange foundation.Range) {
 }
 
 func (l_ LayoutManager) EnsureLayoutForBoundingRect_InTextContainer(bounds foundation.Rect, container ITextContainer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("ensureLayoutForBoundingRect:inTextContainer:"), bounds, container)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("ensureLayoutForBoundingRect:inTextContainer:"), bounds, objc.ExtractPtr(container))
 }
 
 func (l_ LayoutManager) EnsureLayoutForCharacterRange(charRange foundation.Range) {
@@ -308,7 +308,7 @@ func (l_ LayoutManager) EnsureLayoutForGlyphRange(glyphRange foundation.Range) {
 }
 
 func (l_ LayoutManager) EnsureLayoutForTextContainer(container ITextContainer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("ensureLayoutForTextContainer:"), container)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("ensureLayoutForTextContainer:"), objc.ExtractPtr(container))
 }
 
 func (l_ LayoutManager) GetGlyphsInRange_Glyphs_Properties_CharacterIndexes_BidiLevels(glyphRange foundation.Range, glyphBuffer *coregraphics.Glyph, props *GlyphProperty, charIndexBuffer *uint, bidiLevelBuffer *byte) uint {
@@ -327,7 +327,7 @@ func (l_ LayoutManager) CGGlyphAtIndex_IsValidIndex(glyphIndex uint, isValidInde
 }
 
 func (l_ LayoutManager) SetGlyphs_Properties_CharacterIndexes_Font_ForGlyphRange(glyphs *coregraphics.Glyph, props *GlyphProperty, charIndexes *uint, aFont IFont, glyphRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setGlyphs:properties:characterIndexes:font:forGlyphRange:"), glyphs, props, charIndexes, aFont, glyphRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setGlyphs:properties:characterIndexes:font:forGlyphRange:"), glyphs, props, charIndexes, objc.ExtractPtr(aFont), glyphRange)
 }
 
 func (l_ LayoutManager) CharacterIndexForGlyphAtIndex(glyphIndex uint) uint {
@@ -359,7 +359,7 @@ func (l_ LayoutManager) SetDrawsOutsideLineFragment_ForGlyphAtIndex(flag bool, g
 }
 
 func (l_ LayoutManager) SetExtraLineFragmentRect_UsedRect_TextContainer(fragmentRect foundation.Rect, usedRect foundation.Rect, container ITextContainer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setExtraLineFragmentRect:usedRect:textContainer:"), fragmentRect, usedRect, container)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setExtraLineFragmentRect:usedRect:textContainer:"), fragmentRect, usedRect, objc.ExtractPtr(container))
 }
 
 func (l_ LayoutManager) SetLineFragmentRect_ForGlyphRange_UsedRect(fragmentRect foundation.Rect, glyphRange foundation.Range, usedRect foundation.Rect) {
@@ -434,12 +434,12 @@ func (l_ LayoutManager) TruncatedGlyphRangeInLineFragmentForGlyphAtIndex(glyphIn
 }
 
 func (l_ LayoutManager) BoundingRectForGlyphRange_InTextContainer(glyphRange foundation.Range, container ITextContainer) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("boundingRectForGlyphRange:inTextContainer:"), glyphRange, container)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("boundingRectForGlyphRange:inTextContainer:"), glyphRange, objc.ExtractPtr(container))
 	return rv
 }
 
 func (l_ LayoutManager) CharacterIndexForPoint_InTextContainer_FractionOfDistanceBetweenInsertionPoints(point foundation.Point, container ITextContainer, partialFraction *float64) uint {
-	rv := objc.CallMethod[uint](l_, objc.GetSelector("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:"), point, container, partialFraction)
+	rv := objc.CallMethod[uint](l_, objc.GetSelector("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:"), point, objc.ExtractPtr(container), partialFraction)
 	return rv
 }
 
@@ -449,7 +449,7 @@ func (l_ LayoutManager) CharacterRangeForGlyphRange_ActualGlyphRange(glyphRange 
 }
 
 func (l_ LayoutManager) EnumerateEnclosingRectsForGlyphRange_WithinSelectedGlyphRange_InTextContainer_UsingBlock(glyphRange foundation.Range, selectedRange foundation.Range, textContainer ITextContainer, block func(rect foundation.Rect, stop *bool)) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("enumerateEnclosingRectsForGlyphRange:withinSelectedGlyphRange:inTextContainer:usingBlock:"), glyphRange, selectedRange, textContainer, block)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("enumerateEnclosingRectsForGlyphRange:withinSelectedGlyphRange:inTextContainer:usingBlock:"), glyphRange, selectedRange, objc.ExtractPtr(textContainer), block)
 }
 
 func (l_ LayoutManager) EnumerateLineFragmentsForGlyphRange_UsingBlock(glyphRange foundation.Range, block func(rect foundation.Rect, usedRect foundation.Rect, textContainer TextContainer, glyphRange foundation.Range, stop *bool)) {
@@ -457,7 +457,7 @@ func (l_ LayoutManager) EnumerateLineFragmentsForGlyphRange_UsingBlock(glyphRang
 }
 
 func (l_ LayoutManager) FractionOfDistanceThroughGlyphForPoint_InTextContainer(point foundation.Point, container ITextContainer) float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("fractionOfDistanceThroughGlyphForPoint:inTextContainer:"), point, container)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("fractionOfDistanceThroughGlyphForPoint:inTextContainer:"), point, objc.ExtractPtr(container))
 	return rv
 }
 
@@ -467,27 +467,27 @@ func (l_ LayoutManager) GetLineFragmentInsertionPointsForCharacterAtIndex_Altern
 }
 
 func (l_ LayoutManager) GlyphIndexForPoint_InTextContainer(point foundation.Point, container ITextContainer) uint {
-	rv := objc.CallMethod[uint](l_, objc.GetSelector("glyphIndexForPoint:inTextContainer:"), point, container)
+	rv := objc.CallMethod[uint](l_, objc.GetSelector("glyphIndexForPoint:inTextContainer:"), point, objc.ExtractPtr(container))
 	return rv
 }
 
 func (l_ LayoutManager) GlyphIndexForPoint_InTextContainer_FractionOfDistanceThroughGlyph(point foundation.Point, container ITextContainer, partialFraction *float64) uint {
-	rv := objc.CallMethod[uint](l_, objc.GetSelector("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:"), point, container, partialFraction)
+	rv := objc.CallMethod[uint](l_, objc.GetSelector("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:"), point, objc.ExtractPtr(container), partialFraction)
 	return rv
 }
 
 func (l_ LayoutManager) GlyphRangeForBoundingRect_InTextContainer(bounds foundation.Rect, container ITextContainer) foundation.Range {
-	rv := objc.CallMethod[foundation.Range](l_, objc.GetSelector("glyphRangeForBoundingRect:inTextContainer:"), bounds, container)
+	rv := objc.CallMethod[foundation.Range](l_, objc.GetSelector("glyphRangeForBoundingRect:inTextContainer:"), bounds, objc.ExtractPtr(container))
 	return rv
 }
 
 func (l_ LayoutManager) GlyphRangeForBoundingRectWithoutAdditionalLayout_InTextContainer(bounds foundation.Rect, container ITextContainer) foundation.Range {
-	rv := objc.CallMethod[foundation.Range](l_, objc.GetSelector("glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:"), bounds, container)
+	rv := objc.CallMethod[foundation.Range](l_, objc.GetSelector("glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:"), bounds, objc.ExtractPtr(container))
 	return rv
 }
 
 func (l_ LayoutManager) GlyphRangeForTextContainer(container ITextContainer) foundation.Range {
-	rv := objc.CallMethod[foundation.Range](l_, objc.GetSelector("glyphRangeForTextContainer:"), container)
+	rv := objc.CallMethod[foundation.Range](l_, objc.GetSelector("glyphRangeForTextContainer:"), objc.ExtractPtr(container))
 	return rv
 }
 
@@ -518,11 +518,11 @@ func (l_ LayoutManager) DrawUnderlineForGlyphRange_UnderlineType_BaselineOffset_
 }
 
 func (l_ LayoutManager) FillBackgroundRectArray_Count_ForCharacterRange_Color(rectArray *foundation.Rect, rectCount uint, charRange foundation.Range, color IColor) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("fillBackgroundRectArray:count:forCharacterRange:color:"), rectArray, rectCount, charRange, color)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("fillBackgroundRectArray:count:forCharacterRange:color:"), rectArray, rectCount, charRange, objc.ExtractPtr(color))
 }
 
 func (l_ LayoutManager) ShowCGGlyphs_Positions_Count_Font_TextMatrix_Attributes_InContext(glyphs *coregraphics.Glyph, positions *coregraphics.Point, glyphCount int, font IFont, textMatrix coregraphics.AffineTransform, attributes map[foundation.AttributedStringKey]objc.IObject, CGContext coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("showCGGlyphs:positions:count:font:textMatrix:attributes:inContext:"), glyphs, positions, glyphCount, font, textMatrix, attributes, CGContext)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("showCGGlyphs:positions:count:font:textMatrix:attributes:inContext:"), glyphs, positions, glyphCount, objc.ExtractPtr(font), textMatrix, attributes, CGContext)
 }
 
 func (l_ LayoutManager) StrikethroughGlyphRange_StrikethroughType_LineFragmentRect_LineFragmentGlyphRange_ContainerOrigin(glyphRange foundation.Range, strikethroughVal UnderlineStyle, lineRect foundation.Rect, lineGlyphRange foundation.Range, containerOrigin foundation.Point) {
@@ -534,59 +534,59 @@ func (l_ LayoutManager) UnderlineGlyphRange_UnderlineType_LineFragmentRect_LineF
 }
 
 func (l_ LayoutManager) SetLayoutRect_ForTextBlock_GlyphRange(rect foundation.Rect, block ITextBlock, glyphRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutRect:forTextBlock:glyphRange:"), rect, block, glyphRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutRect:forTextBlock:glyphRange:"), rect, objc.ExtractPtr(block), glyphRange)
 }
 
 func (l_ LayoutManager) LayoutRectForTextBlock_GlyphRange(block ITextBlock, glyphRange foundation.Range) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("layoutRectForTextBlock:glyphRange:"), block, glyphRange)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("layoutRectForTextBlock:glyphRange:"), objc.ExtractPtr(block), glyphRange)
 	return rv
 }
 
 func (l_ LayoutManager) SetBoundsRect_ForTextBlock_GlyphRange(rect foundation.Rect, block ITextBlock, glyphRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBoundsRect:forTextBlock:glyphRange:"), rect, block, glyphRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBoundsRect:forTextBlock:glyphRange:"), rect, objc.ExtractPtr(block), glyphRange)
 }
 
 func (l_ LayoutManager) BoundsRectForTextBlock_GlyphRange(block ITextBlock, glyphRange foundation.Range) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("boundsRectForTextBlock:glyphRange:"), block, glyphRange)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("boundsRectForTextBlock:glyphRange:"), objc.ExtractPtr(block), glyphRange)
 	return rv
 }
 
 func (l_ LayoutManager) LayoutRectForTextBlock_AtIndex_EffectiveRange(block ITextBlock, glyphIndex uint, effectiveGlyphRange *foundation.Range) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("layoutRectForTextBlock:atIndex:effectiveRange:"), block, glyphIndex, effectiveGlyphRange)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("layoutRectForTextBlock:atIndex:effectiveRange:"), objc.ExtractPtr(block), glyphIndex, effectiveGlyphRange)
 	return rv
 }
 
 func (l_ LayoutManager) BoundsRectForTextBlock_AtIndex_EffectiveRange(block ITextBlock, glyphIndex uint, effectiveGlyphRange *foundation.Range) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("boundsRectForTextBlock:atIndex:effectiveRange:"), block, glyphIndex, effectiveGlyphRange)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("boundsRectForTextBlock:atIndex:effectiveRange:"), objc.ExtractPtr(block), glyphIndex, effectiveGlyphRange)
 	return rv
 }
 
 func (l_ LayoutManager) ShowAttachmentCell_InRect_CharacterIndex(cell ICell, rect foundation.Rect, attachmentIndex uint) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("showAttachmentCell:inRect:characterIndex:"), cell, rect, attachmentIndex)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("showAttachmentCell:inRect:characterIndex:"), objc.ExtractPtr(cell), rect, attachmentIndex)
 }
 
 func (l_ LayoutManager) RulerAccessoryViewForTextView_ParagraphStyle_Ruler_Enabled(view ITextView, style IParagraphStyle, ruler IRulerView, isEnabled bool) View {
-	rv := objc.CallMethod[View](l_, objc.GetSelector("rulerAccessoryViewForTextView:paragraphStyle:ruler:enabled:"), view, style, ruler, isEnabled)
+	rv := objc.CallMethod[View](l_, objc.GetSelector("rulerAccessoryViewForTextView:paragraphStyle:ruler:enabled:"), objc.ExtractPtr(view), objc.ExtractPtr(style), objc.ExtractPtr(ruler), isEnabled)
 	return rv
 }
 
 func (l_ LayoutManager) RulerMarkersForTextView_ParagraphStyle_Ruler(view ITextView, style IParagraphStyle, ruler IRulerView) []RulerMarker {
-	rv := objc.CallMethod[[]RulerMarker](l_, objc.GetSelector("rulerMarkersForTextView:paragraphStyle:ruler:"), view, style, ruler)
+	rv := objc.CallMethod[[]RulerMarker](l_, objc.GetSelector("rulerMarkersForTextView:paragraphStyle:ruler:"), objc.ExtractPtr(view), objc.ExtractPtr(style), objc.ExtractPtr(ruler))
 	return rv
 }
 
 func (l_ LayoutManager) LayoutManagerOwnsFirstResponderInWindow(window IWindow) bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("layoutManagerOwnsFirstResponderInWindow:"), window)
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("layoutManagerOwnsFirstResponderInWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
 func (l_ LayoutManager) DefaultLineHeightForFont(theFont IFont) float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("defaultLineHeightForFont:"), theFont)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("defaultLineHeightForFont:"), objc.ExtractPtr(theFont))
 	return rv
 }
 
 func (l_ LayoutManager) DefaultBaselineOffsetForFont(theFont IFont) float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("defaultBaselineOffsetForFont:"), theFont)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("defaultBaselineOffsetForFont:"), objc.ExtractPtr(theFont))
 	return rv
 }
 
@@ -595,7 +595,7 @@ func (l_ LayoutManager) AddTemporaryAttributes_ForCharacterRange(attrs map[found
 }
 
 func (l_ LayoutManager) AddTemporaryAttribute_Value_ForCharacterRange(attrName foundation.AttributedStringKey, value objc.IObject, charRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addTemporaryAttribute:value:forCharacterRange:"), attrName, value, charRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("addTemporaryAttribute:value:forCharacterRange:"), attrName, objc.ExtractPtr(value), charRange)
 }
 
 func (l_ LayoutManager) SetTemporaryAttributes_ForCharacterRange(attrs map[foundation.AttributedStringKey]objc.IObject, charRange foundation.Range) {
@@ -628,7 +628,7 @@ func (l_ LayoutManager) TemporaryAttributesAtCharacterIndex_LongestEffectiveRang
 
 // deprecated
 func (l_ LayoutManager) ShowCGGlyphs_Positions_Count_Font_Matrix_Attributes_InContext(glyphs *coregraphics.Glyph, positions *foundation.Point, glyphCount uint, font IFont, textMatrix foundation.IAffineTransform, attributes map[foundation.AttributedStringKey]objc.IObject, graphicsContext IGraphicsContext) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("showCGGlyphs:positions:count:font:matrix:attributes:inContext:"), glyphs, positions, glyphCount, font, textMatrix, attributes, graphicsContext)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("showCGGlyphs:positions:count:font:matrix:attributes:inContext:"), glyphs, positions, glyphCount, objc.ExtractPtr(font), objc.ExtractPtr(textMatrix), attributes, objc.ExtractPtr(graphicsContext))
 }
 
 // deprecated
@@ -643,7 +643,7 @@ func (l_ LayoutManager) InvalidateLayoutForCharacterRange_IsSoft_ActualCharacter
 
 // deprecated
 func (l_ LayoutManager) TextStorage_Edited_Range_ChangeInLength_InvalidatedRange(str ITextStorage, editedMask TextStorageEditedOptions, newCharRange foundation.Range, delta int, invalidatedCharRange foundation.Range) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("textStorage:edited:range:changeInLength:invalidatedRange:"), str, editedMask, newCharRange, delta, invalidatedCharRange)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("textStorage:edited:range:changeInLength:invalidatedRange:"), objc.ExtractPtr(str), editedMask, newCharRange, delta, invalidatedCharRange)
 }
 
 // deprecated
@@ -719,25 +719,25 @@ func (l_ LayoutManager) SetLocations_StartingGlyphIndexes_Count_ForGlyphRange(lo
 
 // deprecated
 func (l_ LayoutManager) RectArrayForCharacterRange_WithinSelectedCharacterRange_InTextContainer_RectCount(charRange foundation.Range, selCharRange foundation.Range, container ITextContainer, rectCount *uint) *foundation.Rect {
-	rv := objc.CallMethod[*foundation.Rect](l_, objc.GetSelector("rectArrayForCharacterRange:withinSelectedCharacterRange:inTextContainer:rectCount:"), charRange, selCharRange, container, rectCount)
+	rv := objc.CallMethod[*foundation.Rect](l_, objc.GetSelector("rectArrayForCharacterRange:withinSelectedCharacterRange:inTextContainer:rectCount:"), charRange, selCharRange, objc.ExtractPtr(container), rectCount)
 	return rv
 }
 
 // deprecated
 func (l_ LayoutManager) RectArrayForGlyphRange_WithinSelectedGlyphRange_InTextContainer_RectCount(glyphRange foundation.Range, selGlyphRange foundation.Range, container ITextContainer, rectCount *uint) *foundation.Rect {
-	rv := objc.CallMethod[*foundation.Rect](l_, objc.GetSelector("rectArrayForGlyphRange:withinSelectedGlyphRange:inTextContainer:rectCount:"), glyphRange, selGlyphRange, container, rectCount)
+	rv := objc.CallMethod[*foundation.Rect](l_, objc.GetSelector("rectArrayForGlyphRange:withinSelectedGlyphRange:inTextContainer:rectCount:"), glyphRange, selGlyphRange, objc.ExtractPtr(container), rectCount)
 	return rv
 }
 
 // deprecated
 func (l_ LayoutManager) SubstituteFontForFont(originalFont IFont) Font {
-	rv := objc.CallMethod[Font](l_, objc.GetSelector("substituteFontForFont:"), originalFont)
+	rv := objc.CallMethod[Font](l_, objc.GetSelector("substituteFontForFont:"), objc.ExtractPtr(originalFont))
 	return rv
 }
 
 // deprecated
 func (l_ LayoutManager) ShowPackedGlyphs_Length_GlyphRange_AtPoint_Font_Color_PrintingAdjustment(glyphs *byte, glyphLen uint, glyphRange foundation.Range, point foundation.Point, font IFont, color IColor, printingAdjustment foundation.Size) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("showPackedGlyphs:length:glyphRange:atPoint:font:color:printingAdjustment:"), glyphs, glyphLen, glyphRange, point, font, color, printingAdjustment)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("showPackedGlyphs:length:glyphRange:atPoint:font:color:printingAdjustment:"), glyphs, glyphLen, glyphRange, point, objc.ExtractPtr(font), objc.ExtractPtr(color), printingAdjustment)
 }
 
 func (l_ LayoutManager) Delegate() LayoutManagerDelegateWrapper {
@@ -752,7 +752,7 @@ func (l_ LayoutManager) SetDelegate(value LayoutManagerDelegate) {
 }
 
 func (l_ LayoutManager) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (l_ LayoutManager) TextStorage() TextStorage {
@@ -761,7 +761,7 @@ func (l_ LayoutManager) TextStorage() TextStorage {
 }
 
 func (l_ LayoutManager) SetTextStorage(value ITextStorage) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTextStorage:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTextStorage:"), objc.ExtractPtr(value))
 }
 
 func (l_ LayoutManager) AllowsNonContiguousLayout() bool {
@@ -843,7 +843,7 @@ func (l_ LayoutManager) GlyphGenerator() GlyphGenerator {
 }
 
 func (l_ LayoutManager) SetGlyphGenerator(value IGlyphGenerator) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setGlyphGenerator:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setGlyphGenerator:"), objc.ExtractPtr(value))
 }
 
 func (l_ LayoutManager) NumberOfGlyphs() uint {
@@ -891,7 +891,7 @@ func (l_ LayoutManager) Typesetter() Typesetter {
 }
 
 func (l_ LayoutManager) SetTypesetter(value ITypesetter) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTypesetter:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTypesetter:"), objc.ExtractPtr(value))
 }
 
 func (l_ LayoutManager) TypesetterBehavior() TypesetterBehavior {

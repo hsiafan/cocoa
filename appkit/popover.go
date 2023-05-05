@@ -71,11 +71,11 @@ func NewPopover() Popover {
 }
 
 func (p_ Popover) ShowRelativeToRect_OfView_PreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), positioningRect, positioningView, preferredEdge)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), positioningRect, objc.ExtractPtr(positioningView), preferredEdge)
 }
 
 func (p_ Popover) PerformClose(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("performClose:"), sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("performClose:"), objc.ExtractPtr(sender))
 }
 
 func (p_ Popover) Close() {
@@ -88,7 +88,7 @@ func (p_ Popover) ContentViewController() ViewController {
 }
 
 func (p_ Popover) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setContentViewController:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setContentViewController:"), objc.ExtractPtr(value))
 }
 
 func (p_ Popover) Behavior() PopoverBehavior {
@@ -115,7 +115,7 @@ func (p_ Popover) Appearance() Appearance {
 }
 
 func (p_ Popover) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAppearance:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
 }
 
 func (p_ Popover) EffectiveAppearance() Appearance {
@@ -163,5 +163,5 @@ func (p_ Popover) SetDelegate(value PopoverDelegate) {
 }
 
 func (p_ Popover) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

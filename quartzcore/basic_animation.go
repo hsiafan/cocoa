@@ -69,7 +69,7 @@ func (b_ BasicAnimation) FromValue() objc.Object {
 }
 
 func (b_ BasicAnimation) SetFromValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFromValue:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFromValue:"), objc.ExtractPtr(value))
 }
 
 func (b_ BasicAnimation) ToValue() objc.Object {
@@ -78,7 +78,7 @@ func (b_ BasicAnimation) ToValue() objc.Object {
 }
 
 func (b_ BasicAnimation) SetToValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setToValue:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setToValue:"), objc.ExtractPtr(value))
 }
 
 func (b_ BasicAnimation) ByValue() objc.Object {
@@ -87,5 +87,5 @@ func (b_ BasicAnimation) ByValue() objc.Object {
 }
 
 func (b_ BasicAnimation) SetByValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setByValue:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setByValue:"), objc.ExtractPtr(value))
 }

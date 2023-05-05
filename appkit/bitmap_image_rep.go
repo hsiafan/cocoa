@@ -106,7 +106,7 @@ func (bc _BitmapImageRepClass) ImageRepsWithData(data []byte) []ImageRep {
 }
 
 func (b_ BitmapImageRep) ColorizeByMappingGray_ToColor_BlackMapping_WhiteMapping(midPoint float64, midPointColor IColor, shadowColor IColor, lightColor IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("colorizeByMappingGray:toColor:blackMapping:whiteMapping:"), midPoint, midPointColor, shadowColor, lightColor)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("colorizeByMappingGray:toColor:blackMapping:whiteMapping:"), midPoint, objc.ExtractPtr(midPointColor), objc.ExtractPtr(shadowColor), objc.ExtractPtr(lightColor))
 }
 
 func (bc _BitmapImageRepClass) TIFFRepresentationOfImageRepsInArray(array []IImageRep) []byte {
@@ -153,7 +153,7 @@ func (b_ BitmapImageRep) GetCompression_Factor(compression *TIFFCompression, fac
 }
 
 func (b_ BitmapImageRep) SetProperty_WithValue(property BitmapImageRepPropertyKey, value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setProperty:withValue:"), property, value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setProperty:withValue:"), property, objc.ExtractPtr(value))
 }
 
 func (b_ BitmapImageRep) ValueForProperty(property BitmapImageRepPropertyKey) objc.Object {
@@ -167,7 +167,7 @@ func (b_ BitmapImageRep) IncrementalLoadFromData_Complete(data []byte, complete 
 }
 
 func (b_ BitmapImageRep) SetColor_AtX_Y(color IColor, x int, y int) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setColor:atX:y:"), color, x, y)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setColor:atX:y:"), objc.ExtractPtr(color), x, y)
 }
 
 func (b_ BitmapImageRep) ColorAtX_Y(x int, y int) Color {
@@ -184,12 +184,12 @@ func (b_ BitmapImageRep) GetPixel_AtX_Y(p *uint, x int, y int) {
 }
 
 func (b_ BitmapImageRep) BitmapImageRepByConvertingToColorSpace_RenderingIntent(targetSpace IColorSpace, renderingIntent ColorRenderingIntent) BitmapImageRep {
-	rv := objc.CallMethod[BitmapImageRep](b_, objc.GetSelector("bitmapImageRepByConvertingToColorSpace:renderingIntent:"), targetSpace, renderingIntent)
+	rv := objc.CallMethod[BitmapImageRep](b_, objc.GetSelector("bitmapImageRepByConvertingToColorSpace:renderingIntent:"), objc.ExtractPtr(targetSpace), renderingIntent)
 	return rv
 }
 
 func (b_ BitmapImageRep) BitmapImageRepByRetaggingWithColorSpace(newSpace IColorSpace) BitmapImageRep {
-	rv := objc.CallMethod[BitmapImageRep](b_, objc.GetSelector("bitmapImageRepByRetaggingWithColorSpace:"), newSpace)
+	rv := objc.CallMethod[BitmapImageRep](b_, objc.GetSelector("bitmapImageRepByRetaggingWithColorSpace:"), objc.ExtractPtr(newSpace))
 	return rv
 }
 

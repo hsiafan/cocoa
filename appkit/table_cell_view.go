@@ -70,7 +70,7 @@ func (t_ TableCellView) ObjectValue() objc.Object {
 }
 
 func (t_ TableCellView) SetObjectValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setObjectValue:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setObjectValue:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableCellView) ImageView() ImageView {
@@ -79,7 +79,7 @@ func (t_ TableCellView) ImageView() ImageView {
 }
 
 func (t_ TableCellView) SetImageView(value IImageView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImageView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImageView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableCellView) TextField() TextField {
@@ -88,7 +88,7 @@ func (t_ TableCellView) TextField() TextField {
 }
 
 func (t_ TableCellView) SetTextField(value ITextField) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextField:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextField:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableCellView) BackgroundStyle() BackgroundStyle {

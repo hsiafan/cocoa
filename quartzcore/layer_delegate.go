@@ -97,7 +97,7 @@ func (l_ *LayerDelegateWrapper) ImplementsDisplayLayer() bool {
 }
 
 func (l_ LayerDelegateWrapper) DisplayLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("displayLayer:"), layer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("displayLayer:"), objc.ExtractPtr(layer))
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsDrawLayer_InContext() bool {
@@ -105,7 +105,7 @@ func (l_ *LayerDelegateWrapper) ImplementsDrawLayer_InContext() bool {
 }
 
 func (l_ LayerDelegateWrapper) DrawLayer_InContext(layer ILayer, ctx coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("drawLayer:inContext:"), layer, ctx)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("drawLayer:inContext:"), objc.ExtractPtr(layer), ctx)
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsLayerWillDraw() bool {
@@ -113,7 +113,7 @@ func (l_ *LayerDelegateWrapper) ImplementsLayerWillDraw() bool {
 }
 
 func (l_ LayerDelegateWrapper) LayerWillDraw(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layerWillDraw:"), layer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("layerWillDraw:"), objc.ExtractPtr(layer))
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsLayoutSublayersOfLayer() bool {
@@ -121,7 +121,7 @@ func (l_ *LayerDelegateWrapper) ImplementsLayoutSublayersOfLayer() bool {
 }
 
 func (l_ LayerDelegateWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), layer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
 }
 
 func (l_ *LayerDelegateWrapper) ImplementsActionForLayer_ForKey() bool {
@@ -129,6 +129,6 @@ func (l_ *LayerDelegateWrapper) ImplementsActionForLayer_ForKey() bool {
 }
 
 func (l_ LayerDelegateWrapper) ActionForLayer_ForKey(layer ILayer, event string) ActionWrapper {
-	rv := objc.CallMethod[ActionWrapper](l_, objc.GetSelector("actionForLayer:forKey:"), layer, event)
+	rv := objc.CallMethod[ActionWrapper](l_, objc.GetSelector("actionForLayer:forKey:"), objc.ExtractPtr(layer), event)
 	return rv
 }

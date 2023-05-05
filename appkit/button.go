@@ -87,27 +87,27 @@ func MakeButton(ptr unsafe.Pointer) Button {
 }
 
 func (bc _ButtonClass) CheckboxWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, objc.GetSelector("checkboxWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("checkboxWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithImage_Target_Action(image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithImage:target:action:"), image, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithImage:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (bc _ButtonClass) RadioButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithTitle_Image_Target_Action(title string, image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, image, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (bc _ButtonClass) ButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) Button {
-	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[Button](bc, objc.GetSelector("buttonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
@@ -176,7 +176,7 @@ func (b_ Button) ContentTintColor() Color {
 }
 
 func (b_ Button) SetContentTintColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentTintColor:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentTintColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) HasDestructiveAction() bool {
@@ -203,7 +203,7 @@ func (b_ Button) AttributedTitle() foundation.AttributedString {
 }
 
 func (b_ Button) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedTitle:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
@@ -212,7 +212,7 @@ func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
 }
 
 func (b_ Button) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedAlternateTitle:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedAlternateTitle:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) Title() string {
@@ -230,7 +230,7 @@ func (b_ Button) SymbolConfiguration() ImageSymbolConfiguration {
 }
 
 func (b_ Button) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSymbolConfiguration:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSymbolConfiguration:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) Sound() Sound {
@@ -239,7 +239,7 @@ func (b_ Button) Sound() Sound {
 }
 
 func (b_ Button) SetSound(value ISound) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSound:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSound:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) IsSpringLoaded() bool {
@@ -266,7 +266,7 @@ func (b_ Button) Image() Image {
 }
 
 func (b_ Button) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) AlternateImage() Image {
@@ -275,7 +275,7 @@ func (b_ Button) AlternateImage() Image {
 }
 
 func (b_ Button) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) ImagePosition() CellImagePosition {
@@ -320,7 +320,7 @@ func (b_ Button) BezelColor() Color {
 }
 
 func (b_ Button) SetBezelColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBezelColor:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBezelColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Button) ShowsBorderOnlyWhileMouseInside() bool {

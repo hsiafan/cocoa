@@ -45,7 +45,7 @@ func MakeTextAttachment(ptr unsafe.Pointer) TextAttachment {
 }
 
 func (t_ TextAttachment) InitWithFileWrapper(fileWrapper foundation.IFileWrapper) TextAttachment {
-	rv := objc.CallMethod[TextAttachment](t_, objc.GetSelector("initWithFileWrapper:"), fileWrapper)
+	rv := objc.CallMethod[TextAttachment](t_, objc.GetSelector("initWithFileWrapper:"), objc.ExtractPtr(fileWrapper))
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (t_ TextAttachment) Init() TextAttachment {
 }
 
 func (tc _TextAttachmentClass) RegisterTextAttachmentViewProviderClass_ForFileType(textAttachmentViewProviderClass objc.IClass, fileType string) {
-	objc.CallMethod[objc.Void](tc, objc.GetSelector("registerTextAttachmentViewProviderClass:forFileType:"), textAttachmentViewProviderClass, fileType)
+	objc.CallMethod[objc.Void](tc, objc.GetSelector("registerTextAttachmentViewProviderClass:forFileType:"), objc.ExtractPtr(textAttachmentViewProviderClass), fileType)
 }
 
 func (tc _TextAttachmentClass) TextAttachmentViewProviderClassForFileType(fileType string) objc.Class {
@@ -116,7 +116,7 @@ func (t_ TextAttachment) Image() Image {
 }
 
 func (t_ TextAttachment) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextAttachment) FileWrapper() foundation.FileWrapper {
@@ -125,7 +125,7 @@ func (t_ TextAttachment) FileWrapper() foundation.FileWrapper {
 }
 
 func (t_ TextAttachment) SetFileWrapper(value foundation.IFileWrapper) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFileWrapper:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFileWrapper:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextAttachment) AllowsTextAttachmentView() bool {

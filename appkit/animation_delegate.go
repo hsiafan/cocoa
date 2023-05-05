@@ -96,7 +96,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidEnd() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidEnd(animation IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidEnd:"), animation)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidEnd:"), objc.ExtractPtr(animation))
 }
 
 func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop() bool {
@@ -104,7 +104,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStop(animation IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:"), animation)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:"), objc.ExtractPtr(animation))
 }
 
 func (a_ *AnimationDelegateWrapper) ImplementsAnimationShouldStart() bool {
@@ -112,7 +112,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationShouldStart() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("animationShouldStart:"), animation)
+	rv := objc.CallMethod[bool](a_, objc.GetSelector("animationShouldStart:"), objc.ExtractPtr(animation))
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimation_ValueForProgress() bool 
 }
 
 func (a_ AnimationDelegateWrapper) Animation_ValueForProgress(animation IAnimation, progress AnimationProgress) float32 {
-	rv := objc.CallMethod[float32](a_, objc.GetSelector("animation:valueForProgress:"), animation, progress)
+	rv := objc.CallMethod[float32](a_, objc.GetSelector("animation:valueForProgress:"), objc.ExtractPtr(animation), progress)
 	return rv
 }
 
@@ -130,5 +130,5 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimation_DidReachProgressMark() b
 }
 
 func (a_ AnimationDelegateWrapper) Animation_DidReachProgressMark(animation IAnimation, progress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animation:didReachProgressMark:"), animation, progress)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("animation:didReachProgressMark:"), objc.ExtractPtr(animation), progress)
 }

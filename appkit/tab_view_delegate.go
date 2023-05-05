@@ -81,7 +81,7 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabViewDidChangeNumberOfTabViewItems
 }
 
 func (t_ TabViewDelegateWrapper) TabViewDidChangeNumberOfTabViewItems(tabView ITabView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"), tabView)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"), objc.ExtractPtr(tabView))
 }
 
 func (t_ *TabViewDelegateWrapper) ImplementsTabView_ShouldSelectTabViewItem() bool {
@@ -89,7 +89,7 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabView_ShouldSelectTabViewItem() bo
 }
 
 func (t_ TabViewDelegateWrapper) TabView_ShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tabView:shouldSelectTabViewItem:"), tabView, tabViewItem)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tabView:shouldSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabView_WillSelectTabViewItem() bool
 }
 
 func (t_ TabViewDelegateWrapper) TabView_WillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:willSelectTabViewItem:"), tabView, tabViewItem)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:willSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
 }
 
 func (t_ *TabViewDelegateWrapper) ImplementsTabView_DidSelectTabViewItem() bool {
@@ -106,5 +106,5 @@ func (t_ *TabViewDelegateWrapper) ImplementsTabView_DidSelectTabViewItem() bool 
 }
 
 func (t_ TabViewDelegateWrapper) TabView_DidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:didSelectTabViewItem:"), tabView, tabViewItem)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:didSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
 }

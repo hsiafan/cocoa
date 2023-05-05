@@ -48,7 +48,7 @@ func MakeRulerMarker(ptr unsafe.Pointer) RulerMarker {
 }
 
 func (r_ RulerMarker) InitWithRulerView_MarkerLocation_Image_ImageOrigin(ruler IRulerView, location float64, image IImage, imageOrigin foundation.Point) RulerMarker {
-	rv := objc.CallMethod[RulerMarker](r_, objc.GetSelector("initWithRulerView:markerLocation:image:imageOrigin:"), ruler, location, image, imageOrigin)
+	rv := objc.CallMethod[RulerMarker](r_, objc.GetSelector("initWithRulerView:markerLocation:image:imageOrigin:"), objc.ExtractPtr(ruler), location, objc.ExtractPtr(image), imageOrigin)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func (r_ RulerMarker) DrawRect(rect foundation.Rect) {
 }
 
 func (r_ RulerMarker) TrackMouse_Adding(mouseDownEvent IEvent, isAdding bool) bool {
-	rv := objc.CallMethod[bool](r_, objc.GetSelector("trackMouse:adding:"), mouseDownEvent, isAdding)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("trackMouse:adding:"), objc.ExtractPtr(mouseDownEvent), isAdding)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func (r_ RulerMarker) Image() Image {
 }
 
 func (r_ RulerMarker) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (r_ RulerMarker) ImageOrigin() foundation.Point {
@@ -152,7 +152,7 @@ func (r_ RulerMarker) SetRepresentedObject(value Copying) {
 }
 
 func (r_ RulerMarker) SetRepresentedObject0(value objc.IObject) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), objc.ExtractPtr(value))
 }
 
 func (r_ RulerMarker) IsDragging() bool {

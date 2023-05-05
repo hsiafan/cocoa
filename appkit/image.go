@@ -146,7 +146,7 @@ func (i_ Image) InitByReferencingFile(fileName string) Image {
 }
 
 func (i_ Image) InitByReferencingURL(url foundation.IURL) Image {
-	rv := objc.CallMethod[Image](i_, objc.GetSelector("initByReferencingURL:"), url)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initByReferencingURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -156,7 +156,7 @@ func (i_ Image) InitWithContentsOfFile(fileName string) Image {
 }
 
 func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithContentsOfURL:"), url)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithContentsOfURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -176,7 +176,7 @@ func (i_ Image) InitWithCGImage_Size(cgImage coregraphics.ImageRef, size foundat
 }
 
 func (i_ Image) InitWithPasteboard(pasteboard IPasteboard) Image {
-	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("initWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -221,17 +221,17 @@ func (i_ Image) Name() ImageName {
 }
 
 func (i_ Image) ImageWithSymbolConfiguration(configuration IImageSymbolConfiguration) Image {
-	rv := objc.CallMethod[Image](i_, objc.GetSelector("imageWithSymbolConfiguration:"), configuration)
+	rv := objc.CallMethod[Image](i_, objc.GetSelector("imageWithSymbolConfiguration:"), objc.ExtractPtr(configuration))
 	return rv
 }
 
 func (ic _ImageClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](ic, objc.GetSelector("canInitWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[bool](ic, objc.GetSelector("canInitWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
 func (i_ Image) AddRepresentation(imageRep IImageRep) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("addRepresentation:"), imageRep)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("addRepresentation:"), objc.ExtractPtr(imageRep))
 }
 
 func (i_ Image) AddRepresentations(imageReps []IImageRep) {
@@ -239,11 +239,11 @@ func (i_ Image) AddRepresentations(imageReps []IImageRep) {
 }
 
 func (i_ Image) RemoveRepresentation(imageRep IImageRep) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("removeRepresentation:"), imageRep)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("removeRepresentation:"), objc.ExtractPtr(imageRep))
 }
 
 func (i_ Image) BestRepresentationForRect_Context_Hints(rect foundation.Rect, referenceContext IGraphicsContext, hints map[ImageHintKey]objc.IObject) ImageRep {
-	rv := objc.CallMethod[ImageRep](i_, objc.GetSelector("bestRepresentationForRect:context:hints:"), rect, referenceContext, hints)
+	rv := objc.CallMethod[ImageRep](i_, objc.GetSelector("bestRepresentationForRect:context:hints:"), rect, objc.ExtractPtr(referenceContext), hints)
 	return rv
 }
 
@@ -264,7 +264,7 @@ func (i_ Image) DrawInRect_FromRect_Operation_Fraction_RespectFlipped_Hints(dstS
 }
 
 func (i_ Image) DrawRepresentation_InRect(imageRep IImageRep, rect foundation.Rect) bool {
-	rv := objc.CallMethod[bool](i_, objc.GetSelector("drawRepresentation:inRect:"), imageRep, rect)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("drawRepresentation:inRect:"), objc.ExtractPtr(imageRep), rect)
 	return rv
 }
 
@@ -278,7 +278,7 @@ func (i_ Image) TIFFRepresentationUsingCompression_Factor(comp TIFFCompression, 
 }
 
 func (i_ Image) CGImageForProposedRect_Context_Hints(proposedDestRect *foundation.Rect, referenceContext IGraphicsContext, hints map[ImageHintKey]objc.IObject) coregraphics.ImageRef {
-	rv := objc.CallMethod[coregraphics.ImageRef](i_, objc.GetSelector("CGImageForProposedRect:context:hints:"), proposedDestRect, referenceContext, hints)
+	rv := objc.CallMethod[coregraphics.ImageRef](i_, objc.GetSelector("CGImageForProposedRect:context:hints:"), proposedDestRect, objc.ExtractPtr(referenceContext), hints)
 	return rv
 }
 
@@ -287,7 +287,7 @@ func (i_ Image) CancelIncrementalLoad() {
 }
 
 func (i_ Image) HitTestRect_WithImageDestinationRect_Context_Hints_Flipped(testRectDestSpace foundation.Rect, imageRectDestSpace foundation.Rect, context IGraphicsContext, hints map[ImageHintKey]objc.IObject, flipped bool) bool {
-	rv := objc.CallMethod[bool](i_, objc.GetSelector("hitTestRect:withImageDestinationRect:context:hints:flipped:"), testRectDestSpace, imageRectDestSpace, context, hints, flipped)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("hitTestRect:withImageDestinationRect:context:hints:flipped:"), testRectDestSpace, imageRectDestSpace, objc.ExtractPtr(context), hints, flipped)
 	return rv
 }
 
@@ -342,7 +342,7 @@ func (i_ Image) UnlockFocus() {
 
 // deprecated
 func (i_ Image) LockFocusOnRepresentation(imageRepresentation IImageRep) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("lockFocusOnRepresentation:"), imageRepresentation)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("lockFocusOnRepresentation:"), objc.ExtractPtr(imageRepresentation))
 }
 
 // deprecated
@@ -447,7 +447,7 @@ func (i_ Image) SetDelegate(value ImageDelegate) {
 }
 
 func (i_ Image) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (i_ Image) Size() foundation.Size {
@@ -521,7 +521,7 @@ func (i_ Image) BackgroundColor() Color {
 }
 
 func (i_ Image) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (i_ Image) CapInsets() foundation.EdgeInsets {

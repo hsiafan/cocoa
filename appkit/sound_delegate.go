@@ -36,5 +36,5 @@ func (s_ *SoundDelegateWrapper) ImplementsSound_DidFinishPlaying() bool {
 }
 
 func (s_ SoundDelegateWrapper) Sound_DidFinishPlaying(sound ISound, flag bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("sound:didFinishPlaying:"), sound, flag)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("sound:didFinishPlaying:"), objc.ExtractPtr(sound), flag)
 }

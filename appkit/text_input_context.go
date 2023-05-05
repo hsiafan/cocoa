@@ -68,7 +68,7 @@ func (t_ TextInputContext) Deactivate() {
 }
 
 func (t_ TextInputContext) HandleEvent(event IEvent) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("handleEvent:"), event)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("handleEvent:"), objc.ExtractPtr(event))
 	return rv
 }
 

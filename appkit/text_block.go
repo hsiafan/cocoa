@@ -105,11 +105,11 @@ func (t_ TextBlock) WidthValueTypeForLayer_Edge(layer TextBlockLayer, edge found
 }
 
 func (t_ TextBlock) SetBorderColor_ForEdge(color IColor, edge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBorderColor:forEdge:"), color, edge)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBorderColor:forEdge:"), objc.ExtractPtr(color), edge)
 }
 
 func (t_ TextBlock) SetBorderColor(color IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBorderColor:"), color)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBorderColor:"), objc.ExtractPtr(color))
 }
 
 func (t_ TextBlock) BorderColorForEdge(edge foundation.RectEdge) Color {
@@ -118,17 +118,17 @@ func (t_ TextBlock) BorderColorForEdge(edge foundation.RectEdge) Color {
 }
 
 func (t_ TextBlock) RectForLayoutAtPoint_InRect_TextContainer_CharacterRange(startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("rectForLayoutAtPoint:inRect:textContainer:characterRange:"), startingPoint, rect, textContainer, charRange)
+	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("rectForLayoutAtPoint:inRect:textContainer:characterRange:"), startingPoint, rect, objc.ExtractPtr(textContainer), charRange)
 	return rv
 }
 
 func (t_ TextBlock) BoundsRectForContentRect_InRect_TextContainer_CharacterRange(contentRect foundation.Rect, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("boundsRectForContentRect:inRect:textContainer:characterRange:"), contentRect, rect, textContainer, charRange)
+	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("boundsRectForContentRect:inRect:textContainer:characterRange:"), contentRect, rect, objc.ExtractPtr(textContainer), charRange)
 	return rv
 }
 
 func (t_ TextBlock) DrawBackgroundWithFrame_InView_CharacterRange_LayoutManager(frameRect foundation.Rect, controlView IView, charRange foundation.Range, layoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawBackgroundWithFrame:inView:characterRange:layoutManager:"), frameRect, controlView, charRange, layoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawBackgroundWithFrame:inView:characterRange:layoutManager:"), frameRect, objc.ExtractPtr(controlView), charRange, objc.ExtractPtr(layoutManager))
 }
 
 func (t_ TextBlock) ContentWidth() float64 {
@@ -156,5 +156,5 @@ func (t_ TextBlock) BackgroundColor() Color {
 }
 
 func (t_ TextBlock) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }

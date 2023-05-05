@@ -237,11 +237,11 @@ func (t_ TableView) ReloadData() {
 }
 
 func (t_ TableView) ReloadDataForRowIndexes_ColumnIndexes(rowIndexes foundation.IIndexSet, columnIndexes foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("reloadDataForRowIndexes:columnIndexes:"), rowIndexes, columnIndexes)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("reloadDataForRowIndexes:columnIndexes:"), objc.ExtractPtr(rowIndexes), objc.ExtractPtr(columnIndexes))
 }
 
 func (t_ TableView) MakeViewWithIdentifier_Owner(identifier UserInterfaceItemIdentifier, owner objc.IObject) View {
-	rv := objc.CallMethod[View](t_, objc.GetSelector("makeViewWithIdentifier:owner:"), identifier, owner)
+	rv := objc.CallMethod[View](t_, objc.GetSelector("makeViewWithIdentifier:owner:"), identifier, objc.ExtractPtr(owner))
 	return rv
 }
 
@@ -268,42 +268,42 @@ func (t_ TableView) MoveRowAtIndex_ToIndex(oldIndex int, newIndex int) {
 }
 
 func (t_ TableView) InsertRowsAtIndexes_WithAnimation(indexes foundation.IIndexSet, animationOptions TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("insertRowsAtIndexes:withAnimation:"), indexes, animationOptions)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("insertRowsAtIndexes:withAnimation:"), objc.ExtractPtr(indexes), animationOptions)
 }
 
 func (t_ TableView) RemoveRowsAtIndexes_WithAnimation(indexes foundation.IIndexSet, animationOptions TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeRowsAtIndexes:withAnimation:"), indexes, animationOptions)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeRowsAtIndexes:withAnimation:"), objc.ExtractPtr(indexes), animationOptions)
 }
 
 func (t_ TableView) RowForView(view IView) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("rowForView:"), view)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("rowForView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (t_ TableView) ColumnForView(view IView) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("columnForView:"), view)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("columnForView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (t_ TableView) RegisterNib_ForIdentifier(nib INib, identifier UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("registerNib:forIdentifier:"), nib, identifier)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("registerNib:forIdentifier:"), objc.ExtractPtr(nib), identifier)
 }
 
 func (t_ TableView) IndicatorImageInTableColumn(tableColumn ITableColumn) Image {
-	rv := objc.CallMethod[Image](t_, objc.GetSelector("indicatorImageInTableColumn:"), tableColumn)
+	rv := objc.CallMethod[Image](t_, objc.GetSelector("indicatorImageInTableColumn:"), objc.ExtractPtr(tableColumn))
 	return rv
 }
 
 func (t_ TableView) SetIndicatorImage_InTableColumn(image IImage, tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setIndicatorImage:inTableColumn:"), image, tableColumn)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setIndicatorImage:inTableColumn:"), objc.ExtractPtr(image), objc.ExtractPtr(tableColumn))
 }
 
 func (t_ TableView) AddTableColumn(tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTableColumn:"), tableColumn)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTableColumn:"), objc.ExtractPtr(tableColumn))
 }
 
 func (t_ TableView) RemoveTableColumn(tableColumn ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTableColumn:"), tableColumn)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTableColumn:"), objc.ExtractPtr(tableColumn))
 }
 
 func (t_ TableView) MoveColumn_ToColumn(oldIndex int, newIndex int) {
@@ -321,7 +321,7 @@ func (t_ TableView) TableColumnWithIdentifier(identifier UserInterfaceItemIdenti
 }
 
 func (t_ TableView) SelectColumnIndexes_ByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectColumnIndexes:byExtendingSelection:"), indexes, extend)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectColumnIndexes:byExtendingSelection:"), objc.ExtractPtr(indexes), extend)
 }
 
 func (t_ TableView) DeselectColumn(column int) {
@@ -334,7 +334,7 @@ func (t_ TableView) IsColumnSelected(column int) bool {
 }
 
 func (t_ TableView) SelectRowIndexes_ByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectRowIndexes:byExtendingSelection:"), indexes, extend)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectRowIndexes:byExtendingSelection:"), objc.ExtractPtr(indexes), extend)
 }
 
 func (t_ TableView) DeselectRow(row int) {
@@ -347,11 +347,11 @@ func (t_ TableView) IsRowSelected(row int) bool {
 }
 
 func (t_ TableView) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectAll:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectAll:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TableView) DeselectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("deselectAll:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("deselectAll:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TableView) EnumerateAvailableRowViewsUsingBlock(handler func(rowView TableRowView, row int)) {
@@ -359,15 +359,15 @@ func (t_ TableView) EnumerateAvailableRowViewsUsingBlock(handler func(rowView Ta
 }
 
 func (t_ TableView) EditColumn_Row_WithEvent_Select(column int, row int, event IEvent, select_ bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("editColumn:row:withEvent:select:"), column, row, event, select_)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("editColumn:row:withEvent:select:"), column, row, objc.ExtractPtr(event), select_)
 }
 
 func (t_ TableView) DidAddRowView_ForRow(rowView ITableRowView, row int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("didAddRowView:forRow:"), rowView, row)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("didAddRowView:forRow:"), objc.ExtractPtr(rowView), row)
 }
 
 func (t_ TableView) DidRemoveRowView_ForRow(rowView ITableRowView, row int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("didRemoveRowView:forRow:"), rowView, row)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("didRemoveRowView:forRow:"), objc.ExtractPtr(rowView), row)
 }
 
 func (t_ TableView) RectOfColumn(column int) foundation.Rect {
@@ -418,7 +418,7 @@ func (t_ TableView) Tile() {
 }
 
 func (t_ TableView) NoteHeightOfRowsWithIndexesChanged(indexSet foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("noteHeightOfRowsWithIndexesChanged:"), indexSet)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("noteHeightOfRowsWithIndexesChanged:"), objc.ExtractPtr(indexSet))
 }
 
 func (t_ TableView) DrawRow_ClipRect(row int, clipRect foundation.Rect) {
@@ -446,12 +446,12 @@ func (t_ TableView) ScrollColumnToVisible(column int) {
 }
 
 func (t_ TableView) DragImageForRowsWithIndexes_TableColumns_Event_Offset(dragRows foundation.IIndexSet, tableColumns []ITableColumn, dragEvent IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](t_, objc.GetSelector("dragImageForRowsWithIndexes:tableColumns:event:offset:"), dragRows, tableColumns, dragEvent, dragImageOffset)
+	rv := objc.CallMethod[Image](t_, objc.GetSelector("dragImageForRowsWithIndexes:tableColumns:event:offset:"), objc.ExtractPtr(dragRows), tableColumns, objc.ExtractPtr(dragEvent), dragImageOffset)
 	return rv
 }
 
 func (t_ TableView) CanDragRowsWithIndexes_AtPoint(rowIndexes foundation.IIndexSet, mouseDownPoint foundation.Point) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("canDragRowsWithIndexes:atPoint:"), rowIndexes, mouseDownPoint)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("canDragRowsWithIndexes:atPoint:"), objc.ExtractPtr(rowIndexes), mouseDownPoint)
 	return rv
 }
 
@@ -464,16 +464,16 @@ func (t_ TableView) SetDropRow_DropOperation(row int, dropOperation TableViewDro
 }
 
 func (t_ TableView) HideRowsAtIndexes_WithAnimation(indexes foundation.IIndexSet, rowAnimation TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("hideRowsAtIndexes:withAnimation:"), indexes, rowAnimation)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("hideRowsAtIndexes:withAnimation:"), objc.ExtractPtr(indexes), rowAnimation)
 }
 
 func (t_ TableView) UnhideRowsAtIndexes_WithAnimation(indexes foundation.IIndexSet, rowAnimation TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("unhideRowsAtIndexes:withAnimation:"), indexes, rowAnimation)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("unhideRowsAtIndexes:withAnimation:"), objc.ExtractPtr(indexes), rowAnimation)
 }
 
 // deprecated
 func (t_ TableView) DragImageForRows_Event_DragImageOffset(dragRows []objc.IObject, dragEvent IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](t_, objc.GetSelector("dragImageForRows:event:dragImageOffset:"), dragRows, dragEvent, dragImageOffset)
+	rv := objc.CallMethod[Image](t_, objc.GetSelector("dragImageForRows:event:dragImageOffset:"), dragRows, objc.ExtractPtr(dragEvent), dragImageOffset)
 	return rv
 }
 
@@ -500,7 +500,7 @@ func (t_ TableView) SelectRow_ByExtendingSelection(row int, extend bool) {
 
 // deprecated
 func (t_ TableView) TableView_WriteRows_ToPasteboard(tableView ITableView, rows []objc.IObject, pboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:writeRows:toPasteboard:"), tableView, rows, pboard)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:writeRows:toPasteboard:"), objc.ExtractPtr(tableView), rows, objc.ExtractPtr(pboard))
 	return rv
 }
 
@@ -540,7 +540,7 @@ func (t_ TableView) SetFocusedColumn(focusedColumn int) {
 
 // deprecated
 func (t_ TableView) ShouldFocusCell_AtColumn_Row(cell ICell, column int, row int) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("shouldFocusCell:atColumn:row:"), cell, column, row)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("shouldFocusCell:atColumn:row:"), objc.ExtractPtr(cell), column, row)
 	return rv
 }
 
@@ -563,29 +563,29 @@ func (t_ TableView) ColumnsInRect(rect foundation.Rect) foundation.Range {
 
 // deprecated
 func (t_ TableView) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), textObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 // deprecated
 func (t_ TableView) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), objc.ExtractPtr(notification))
 }
 
 // deprecated
 func (t_ TableView) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), objc.ExtractPtr(notification))
 }
 
 // deprecated
 func (t_ TableView) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), textObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 // deprecated
 func (t_ TableView) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), notification)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TableView) DataSource() TableViewDataSourceWrapper {
@@ -600,7 +600,7 @@ func (t_ TableView) SetDataSource(value TableViewDataSource) {
 }
 
 func (t_ TableView) SetDataSource0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataSource:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataSource:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) UsesStaticContents() bool {
@@ -714,7 +714,7 @@ func (t_ TableView) BackgroundColor() Color {
 }
 
 func (t_ TableView) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) UsesAlternatingRowBackgroundColors() bool {
@@ -755,7 +755,7 @@ func (t_ TableView) GridColor() Color {
 }
 
 func (t_ TableView) SetGridColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setGridColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setGridColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) GridStyleMask() TableViewGridLineStyle {
@@ -860,7 +860,7 @@ func (t_ TableView) HeaderView() TableHeaderView {
 }
 
 func (t_ TableView) SetHeaderView(value ITableHeaderView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeaderView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeaderView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) CornerView() View {
@@ -869,7 +869,7 @@ func (t_ TableView) CornerView() View {
 }
 
 func (t_ TableView) SetCornerView(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCornerView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setCornerView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) ColumnAutoresizingStyle() TableViewColumnAutoresizingStyle {
@@ -911,7 +911,7 @@ func (t_ TableView) SetDelegate(value TableViewDelegate) {
 }
 
 func (t_ TableView) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) HighlightedTableColumn() TableColumn {
@@ -920,7 +920,7 @@ func (t_ TableView) HighlightedTableColumn() TableColumn {
 }
 
 func (t_ TableView) SetHighlightedTableColumn(value ITableColumn) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHighlightedTableColumn:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHighlightedTableColumn:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableView) VerticalMotionCanBeginDrag() bool {

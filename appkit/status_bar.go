@@ -57,7 +57,7 @@ func (s_ StatusBar) StatusItemWithLength(length float64) StatusItem {
 }
 
 func (s_ StatusBar) RemoveStatusItem(item IStatusItem) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeStatusItem:"), item)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeStatusItem:"), objc.ExtractPtr(item))
 }
 
 func (sc _StatusBarClass) SystemStatusBar() StatusBar {

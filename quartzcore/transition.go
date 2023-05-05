@@ -104,5 +104,5 @@ func (t_ Transition) Filter() objc.Object {
 }
 
 func (t_ Transition) SetFilter(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFilter:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFilter:"), objc.ExtractPtr(value))
 }

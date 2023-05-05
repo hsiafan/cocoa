@@ -97,11 +97,11 @@ func (a_ Animation) RemoveProgressMark(progressMark AnimationProgress) {
 }
 
 func (a_ Animation) StartWhenAnimation_ReachesProgress(animation IAnimation, startProgress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("startWhenAnimation:reachesProgress:"), animation, startProgress)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("startWhenAnimation:reachesProgress:"), objc.ExtractPtr(animation), startProgress)
 }
 
 func (a_ Animation) StopWhenAnimation_ReachesProgress(animation IAnimation, stopProgress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("stopWhenAnimation:reachesProgress:"), animation, stopProgress)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("stopWhenAnimation:reachesProgress:"), objc.ExtractPtr(animation), stopProgress)
 }
 
 func (a_ Animation) ClearStartAnimation() {
@@ -165,7 +165,7 @@ func (a_ Animation) SetDelegate(value AnimationDelegate) {
 }
 
 func (a_ Animation) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (a_ Animation) IsAnimating() bool {

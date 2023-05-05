@@ -93,11 +93,11 @@ func (c_ ClipView) ConstrainBoundsRect(proposedBounds foundation.Rect) foundatio
 }
 
 func (c_ ClipView) ViewBoundsChanged(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("viewBoundsChanged:"), notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("viewBoundsChanged:"), objc.ExtractPtr(notification))
 }
 
 func (c_ ClipView) ViewFrameChanged(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("viewFrameChanged:"), notification)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("viewFrameChanged:"), objc.ExtractPtr(notification))
 }
 
 func (c_ ClipView) DocumentView() View {
@@ -106,7 +106,7 @@ func (c_ ClipView) DocumentView() View {
 }
 
 func (c_ ClipView) SetDocumentView(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDocumentView:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDocumentView:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -154,7 +154,7 @@ func (c_ ClipView) DocumentCursor() Cursor {
 }
 
 func (c_ ClipView) SetDocumentCursor(value ICursor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDocumentCursor:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDocumentCursor:"), objc.ExtractPtr(value))
 }
 
 func (c_ ClipView) DrawsBackground() bool {
@@ -172,5 +172,5 @@ func (c_ ClipView) BackgroundColor() Color {
 }
 
 func (c_ ClipView) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }

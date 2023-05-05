@@ -118,32 +118,32 @@ func (c_ Calendar) InitWithCalendarIdentifier(ident CalendarIdentifier) objc.Obj
 }
 
 func (c_ Calendar) Date_MatchesComponents(date IDate, components IDateComponents) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("date:matchesComponents:"), date, components)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("date:matchesComponents:"), objc.ExtractPtr(date), objc.ExtractPtr(components))
 	return rv
 }
 
 func (c_ Calendar) Component_FromDate(unit CalendarUnit, date IDate) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("component:fromDate:"), unit, date)
+	rv := objc.CallMethod[int](c_, objc.GetSelector("component:fromDate:"), unit, objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) Components_FromDate(unitFlags CalendarUnit, date IDate) DateComponents {
-	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("components:fromDate:"), unitFlags, date)
+	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("components:fromDate:"), unitFlags, objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) Components_FromDate_ToDate_Options(unitFlags CalendarUnit, startingDate IDate, resultDate IDate, opts CalendarOptions) DateComponents {
-	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("components:fromDate:toDate:options:"), unitFlags, startingDate, resultDate, opts)
+	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("components:fromDate:toDate:options:"), unitFlags, objc.ExtractPtr(startingDate), objc.ExtractPtr(resultDate), opts)
 	return rv
 }
 
 func (c_ Calendar) Components_FromDateComponents_ToDateComponents_Options(unitFlags CalendarUnit, startingDateComp IDateComponents, resultDateComp IDateComponents, options CalendarOptions) DateComponents {
-	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("components:fromDateComponents:toDateComponents:options:"), unitFlags, startingDateComp, resultDateComp, options)
+	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("components:fromDateComponents:toDateComponents:options:"), unitFlags, objc.ExtractPtr(startingDateComp), objc.ExtractPtr(resultDateComp), options)
 	return rv
 }
 
 func (c_ Calendar) ComponentsInTimeZone_FromDate(timezone ITimeZone, date IDate) DateComponents {
-	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("componentsInTimeZone:fromDate:"), timezone, date)
+	rv := objc.CallMethod[DateComponents](c_, objc.GetSelector("componentsInTimeZone:fromDate:"), objc.ExtractPtr(timezone), objc.ExtractPtr(date))
 	return rv
 }
 
@@ -158,66 +158,66 @@ func (c_ Calendar) MinimumRangeOfUnit(unit CalendarUnit) Range {
 }
 
 func (c_ Calendar) OrdinalityOfUnit_InUnit_ForDate(smaller CalendarUnit, larger CalendarUnit, date IDate) uint {
-	rv := objc.CallMethod[uint](c_, objc.GetSelector("ordinalityOfUnit:inUnit:forDate:"), smaller, larger, date)
+	rv := objc.CallMethod[uint](c_, objc.GetSelector("ordinalityOfUnit:inUnit:forDate:"), smaller, larger, objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) RangeOfUnit_InUnit_ForDate(smaller CalendarUnit, larger CalendarUnit, date IDate) Range {
-	rv := objc.CallMethod[Range](c_, objc.GetSelector("rangeOfUnit:inUnit:forDate:"), smaller, larger, date)
+	rv := objc.CallMethod[Range](c_, objc.GetSelector("rangeOfUnit:inUnit:forDate:"), smaller, larger, objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) RangeOfUnit_StartDate_Interval_ForDate(unit CalendarUnit, datep *Date, tip *TimeInterval, date IDate) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("rangeOfUnit:startDate:interval:forDate:"), unit, unsafe.Pointer(datep), tip, date)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("rangeOfUnit:startDate:interval:forDate:"), unit, unsafe.Pointer(datep), tip, objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) StartOfDayForDate(date IDate) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("startOfDayForDate:"), date)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("startOfDayForDate:"), objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) EnumerateDatesStartingAfterDate_MatchingComponents_Options_UsingBlock(start IDate, comps IDateComponents, opts CalendarOptions, block func(date Date, exactMatch bool, stop *bool)) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("enumerateDatesStartingAfterDate:matchingComponents:options:usingBlock:"), start, comps, opts, block)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("enumerateDatesStartingAfterDate:matchingComponents:options:usingBlock:"), objc.ExtractPtr(start), objc.ExtractPtr(comps), opts, block)
 }
 
 func (c_ Calendar) NextDateAfterDate_MatchingComponents_Options(date IDate, comps IDateComponents, options CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("nextDateAfterDate:matchingComponents:options:"), date, comps, options)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("nextDateAfterDate:matchingComponents:options:"), objc.ExtractPtr(date), objc.ExtractPtr(comps), options)
 	return rv
 }
 
 func (c_ Calendar) NextDateAfterDate_MatchingHour_Minute_Second_Options(date IDate, hourValue int, minuteValue int, secondValue int, options CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("nextDateAfterDate:matchingHour:minute:second:options:"), date, hourValue, minuteValue, secondValue, options)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("nextDateAfterDate:matchingHour:minute:second:options:"), objc.ExtractPtr(date), hourValue, minuteValue, secondValue, options)
 	return rv
 }
 
 func (c_ Calendar) NextDateAfterDate_MatchingUnit_Value_Options(date IDate, unit CalendarUnit, value int, options CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("nextDateAfterDate:matchingUnit:value:options:"), date, unit, value, options)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("nextDateAfterDate:matchingUnit:value:options:"), objc.ExtractPtr(date), unit, value, options)
 	return rv
 }
 
 func (c_ Calendar) DateFromComponents(comps IDateComponents) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateFromComponents:"), comps)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateFromComponents:"), objc.ExtractPtr(comps))
 	return rv
 }
 
 func (c_ Calendar) DateByAddingComponents_ToDate_Options(comps IDateComponents, date IDate, opts CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateByAddingComponents:toDate:options:"), comps, date, opts)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateByAddingComponents:toDate:options:"), objc.ExtractPtr(comps), objc.ExtractPtr(date), opts)
 	return rv
 }
 
 func (c_ Calendar) DateByAddingUnit_Value_ToDate_Options(unit CalendarUnit, value int, date IDate, options CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateByAddingUnit:value:toDate:options:"), unit, value, date, options)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateByAddingUnit:value:toDate:options:"), unit, value, objc.ExtractPtr(date), options)
 	return rv
 }
 
 func (c_ Calendar) DateBySettingHour_Minute_Second_OfDate_Options(h int, m int, s int, date IDate, opts CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateBySettingHour:minute:second:ofDate:options:"), h, m, s, date, opts)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateBySettingHour:minute:second:ofDate:options:"), h, m, s, objc.ExtractPtr(date), opts)
 	return rv
 }
 
 func (c_ Calendar) DateBySettingUnit_Value_OfDate_Options(unit CalendarUnit, v int, date IDate, opts CalendarOptions) Date {
-	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateBySettingUnit:value:ofDate:options:"), unit, v, date, opts)
+	rv := objc.CallMethod[Date](c_, objc.GetSelector("dateBySettingUnit:value:ofDate:options:"), unit, v, objc.ExtractPtr(date), opts)
 	return rv
 }
 
@@ -232,37 +232,37 @@ func (c_ Calendar) DateWithEra_YearForWeekOfYear_WeekOfYear_Weekday_Hour_Minute_
 }
 
 func (c_ Calendar) CompareDate_ToDate_ToUnitGranularity(date1 IDate, date2 IDate, unit CalendarUnit) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](c_, objc.GetSelector("compareDate:toDate:toUnitGranularity:"), date1, date2, unit)
+	rv := objc.CallMethod[ComparisonResult](c_, objc.GetSelector("compareDate:toDate:toUnitGranularity:"), objc.ExtractPtr(date1), objc.ExtractPtr(date2), unit)
 	return rv
 }
 
 func (c_ Calendar) IsDate_EqualToDate_ToUnitGranularity(date1 IDate, date2 IDate, unit CalendarUnit) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDate:equalToDate:toUnitGranularity:"), date1, date2, unit)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDate:equalToDate:toUnitGranularity:"), objc.ExtractPtr(date1), objc.ExtractPtr(date2), unit)
 	return rv
 }
 
 func (c_ Calendar) IsDate_InSameDayAsDate(date1 IDate, date2 IDate) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDate:inSameDayAsDate:"), date1, date2)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDate:inSameDayAsDate:"), objc.ExtractPtr(date1), objc.ExtractPtr(date2))
 	return rv
 }
 
 func (c_ Calendar) IsDateInToday(date IDate) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInToday:"), date)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInToday:"), objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) IsDateInTomorrow(date IDate) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInTomorrow:"), date)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInTomorrow:"), objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) IsDateInWeekend(date IDate) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInWeekend:"), date)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInWeekend:"), objc.ExtractPtr(date))
 	return rv
 }
 
 func (c_ Calendar) IsDateInYesterday(date IDate) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInYesterday:"), date)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("isDateInYesterday:"), objc.ExtractPtr(date))
 	return rv
 }
 
@@ -296,7 +296,7 @@ func (c_ Calendar) Locale() Locale {
 }
 
 func (c_ Calendar) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (c_ Calendar) TimeZone() TimeZone {
@@ -305,7 +305,7 @@ func (c_ Calendar) TimeZone() TimeZone {
 }
 
 func (c_ Calendar) SetTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTimeZone:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTimeZone:"), objc.ExtractPtr(value))
 }
 
 func (c_ Calendar) MinimumDaysInFirstWeek() uint {

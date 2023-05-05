@@ -57,12 +57,12 @@ func (l_ LayoutDimension) Init() LayoutDimension {
 }
 
 func (l_ LayoutDimension) ConstraintEqualToAnchor_Multiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToAnchor:multiplier:"), anchor, m)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToAnchor:multiplier:"), objc.ExtractPtr(anchor), m)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintEqualToAnchor_Multiplier_Constant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToAnchor:multiplier:constant:"), anchor, m, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToAnchor:multiplier:constant:"), objc.ExtractPtr(anchor), m, c)
 	return rv
 }
 
@@ -72,12 +72,12 @@ func (l_ LayoutDimension) ConstraintEqualToConstant(c float64) LayoutConstraint 
 }
 
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchor_Multiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToAnchor:multiplier:"), anchor, m)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToAnchor:multiplier:"), objc.ExtractPtr(anchor), m)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchor_Multiplier_Constant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToAnchor:multiplier:constant:"), anchor, m, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToAnchor:multiplier:constant:"), objc.ExtractPtr(anchor), m, c)
 	return rv
 }
 
@@ -87,12 +87,12 @@ func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToConstant(c float64) Layo
 }
 
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchor_Multiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToAnchor:multiplier:"), anchor, m)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToAnchor:multiplier:"), objc.ExtractPtr(anchor), m)
 	return rv
 }
 
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchor_Multiplier_Constant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToAnchor:multiplier:constant:"), anchor, m, c)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToAnchor:multiplier:constant:"), objc.ExtractPtr(anchor), m, c)
 	return rv
 }
 

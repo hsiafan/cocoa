@@ -54,7 +54,7 @@ func MakeSearchField(ptr unsafe.Pointer) SearchField {
 }
 
 func (sc _SearchFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SearchField {
-	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
+	rv := objc.CallMethod[SearchField](sc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 
@@ -122,7 +122,7 @@ func (s_ SearchField) SearchMenuTemplate() Menu {
 }
 
 func (s_ SearchField) SetSearchMenuTemplate(value IMenu) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchMenuTemplate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchMenuTemplate:"), objc.ExtractPtr(value))
 }
 
 func (s_ SearchField) SendsSearchStringImmediately() bool {

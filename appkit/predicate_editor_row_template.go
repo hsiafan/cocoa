@@ -70,16 +70,16 @@ func (p_ PredicateEditorRowTemplate) Init() PredicateEditorRowTemplate {
 }
 
 func (p_ PredicateEditorRowTemplate) MatchForPredicate(predicate foundation.IPredicate) float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("matchForPredicate:"), predicate)
+	rv := objc.CallMethod[float64](p_, objc.GetSelector("matchForPredicate:"), objc.ExtractPtr(predicate))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) SetPredicate(predicate foundation.IPredicate) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPredicate:"), predicate)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPredicate:"), objc.ExtractPtr(predicate))
 }
 
 func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate {
-	rv := objc.CallMethod[[]foundation.Predicate](p_, objc.GetSelector("displayableSubpredicatesOfPredicate:"), predicate)
+	rv := objc.CallMethod[[]foundation.Predicate](p_, objc.GetSelector("displayableSubpredicatesOfPredicate:"), objc.ExtractPtr(predicate))
 	return rv
 }
 

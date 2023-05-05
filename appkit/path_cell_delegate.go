@@ -51,7 +51,7 @@ func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillDisplayOpenPanel() boo
 }
 
 func (p_ PathCellDelegateWrapper) PathCell_WillDisplayOpenPanel(pathCell IPathCell, openPanel IOpenPanel) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willDisplayOpenPanel:"), pathCell, openPanel)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willDisplayOpenPanel:"), objc.ExtractPtr(pathCell), objc.ExtractPtr(openPanel))
 }
 
 func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillPopUpMenu() bool {
@@ -59,5 +59,5 @@ func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillPopUpMenu() bool {
 }
 
 func (p_ PathCellDelegateWrapper) PathCell_WillPopUpMenu(pathCell IPathCell, menu IMenu) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willPopUpMenu:"), pathCell, menu)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willPopUpMenu:"), objc.ExtractPtr(pathCell), objc.ExtractPtr(menu))
 }

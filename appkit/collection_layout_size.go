@@ -30,7 +30,7 @@ func MakeCollectionLayoutSize(ptr unsafe.Pointer) CollectionLayoutSize {
 }
 
 func (cc _CollectionLayoutSizeClass) SizeWithWidthDimension_HeightDimension(width ICollectionLayoutDimension, height ICollectionLayoutDimension) CollectionLayoutSize {
-	rv := objc.CallMethod[CollectionLayoutSize](cc, objc.GetSelector("sizeWithWidthDimension:heightDimension:"), width, height)
+	rv := objc.CallMethod[CollectionLayoutSize](cc, objc.GetSelector("sizeWithWidthDimension:heightDimension:"), objc.ExtractPtr(width), objc.ExtractPtr(height))
 	return rv
 }
 

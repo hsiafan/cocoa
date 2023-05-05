@@ -85,7 +85,7 @@ func (vc _ValueClass) ValueWithPointer(pointer unsafe.Pointer) Value {
 }
 
 func (vc _ValueClass) ValueWithNonretainedObject(anObject objc.IObject) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithNonretainedObject:"), anObject)
+	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithNonretainedObject:"), objc.ExtractPtr(anObject))
 	return rv
 }
 
@@ -110,7 +110,7 @@ func (vc _ValueClass) ValueWithRect(rect Rect) Value {
 }
 
 func (v_ Value) IsEqualToValue(value IValue) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("isEqualToValue:"), value)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("isEqualToValue:"), objc.ExtractPtr(value))
 	return rv
 }
 

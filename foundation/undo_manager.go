@@ -82,15 +82,15 @@ func (u_ UndoManager) Init() UndoManager {
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Handler(target objc.IObject, undoHandler func(target objc.Object)) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("registerUndoWithTarget:handler:"), target, undoHandler)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("registerUndoWithTarget:handler:"), objc.ExtractPtr(target), undoHandler)
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Selector_Object(target objc.IObject, selector objc.Selector, anObject objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("registerUndoWithTarget:selector:object:"), target, selector, anObject)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("registerUndoWithTarget:selector:object:"), objc.ExtractPtr(target), selector, objc.ExtractPtr(anObject))
 }
 
 func (u_ UndoManager) PrepareWithInvocationTarget(target objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](u_, objc.GetSelector("prepareWithInvocationTarget:"), target)
+	rv := objc.CallMethod[objc.Object](u_, objc.GetSelector("prepareWithInvocationTarget:"), objc.ExtractPtr(target))
 	return rv
 }
 
@@ -127,7 +127,7 @@ func (u_ UndoManager) RemoveAllActions() {
 }
 
 func (u_ UndoManager) RemoveAllActionsWithTarget(target objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllActionsWithTarget:"), target)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllActionsWithTarget:"), objc.ExtractPtr(target))
 }
 
 func (u_ UndoManager) SetActionName(actionName string) {

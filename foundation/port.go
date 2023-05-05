@@ -70,7 +70,7 @@ func (p_ Port) SetDelegate(anObject PortDelegate) {
 }
 
 func (p_ Port) SetDelegate0(anObject objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), anObject)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(anObject))
 }
 
 func (p_ Port) Delegate() PortDelegateWrapper {
@@ -79,11 +79,11 @@ func (p_ Port) Delegate() PortDelegateWrapper {
 }
 
 func (p_ Port) RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeFromRunLoop:forMode:"), runLoop, mode)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeFromRunLoop:forMode:"), objc.ExtractPtr(runLoop), mode)
 }
 
 func (p_ Port) ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("scheduleInRunLoop:forMode:"), runLoop, mode)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("scheduleInRunLoop:forMode:"), objc.ExtractPtr(runLoop), mode)
 }
 
 func (p_ Port) IsValid() bool {

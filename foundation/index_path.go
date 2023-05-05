@@ -86,7 +86,7 @@ func (i_ IndexPath) IndexPathByRemovingLastIndex() IndexPath {
 }
 
 func (i_ IndexPath) Compare(otherObject IIndexPath) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](i_, objc.GetSelector("compare:"), otherObject)
+	rv := objc.CallMethod[ComparisonResult](i_, objc.GetSelector("compare:"), objc.ExtractPtr(otherObject))
 	return rv
 }
 

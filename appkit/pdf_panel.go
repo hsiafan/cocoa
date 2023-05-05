@@ -60,7 +60,7 @@ func (pc _PDFPanelClass) Panel() PDFPanel {
 }
 
 func (p_ PDFPanel) BeginSheetWithPDFInfo_ModalForWindow_CompletionHandler(pdfInfo IPDFInfo, docWindow IWindow, completionHandler func(param1 int)) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPDFInfo:modalForWindow:completionHandler:"), pdfInfo, docWindow, completionHandler)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPDFInfo:modalForWindow:completionHandler:"), objc.ExtractPtr(pdfInfo), objc.ExtractPtr(docWindow), completionHandler)
 }
 
 func (p_ PDFPanel) AccessoryController() ViewController {
@@ -69,7 +69,7 @@ func (p_ PDFPanel) AccessoryController() ViewController {
 }
 
 func (p_ PDFPanel) SetAccessoryController(value IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryController:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryController:"), objc.ExtractPtr(value))
 }
 
 func (p_ PDFPanel) Options() PDFPanelOptions {

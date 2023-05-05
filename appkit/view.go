@@ -400,21 +400,21 @@ func (v_ View) PrepareForReuse() {
 }
 
 func (v_ View) IsDescendantOf(view IView) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("isDescendantOf:"), view)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("isDescendantOf:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) AncestorSharedWithView(view IView) View {
-	rv := objc.CallMethod[View](v_, objc.GetSelector("ancestorSharedWithView:"), view)
+	rv := objc.CallMethod[View](v_, objc.GetSelector("ancestorSharedWithView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) AddSubview(view IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addSubview:"), view)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addSubview:"), objc.ExtractPtr(view))
 }
 
 func (v_ View) AddSubview_Positioned_RelativeTo(view IView, place WindowOrderingMode, otherView IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addSubview:positioned:relativeTo:"), view, place, otherView)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addSubview:positioned:relativeTo:"), objc.ExtractPtr(view), place, objc.ExtractPtr(otherView))
 }
 
 func (v_ View) RemoveFromSuperview() {
@@ -426,11 +426,11 @@ func (v_ View) RemoveFromSuperviewWithoutNeedingDisplay() {
 }
 
 func (v_ View) ReplaceSubview_With(oldView IView, newView IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("replaceSubview:with:"), oldView, newView)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("replaceSubview:with:"), objc.ExtractPtr(oldView), objc.ExtractPtr(newView))
 }
 
 func (v_ View) DidAddSubview(subview IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("didAddSubview:"), subview)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("didAddSubview:"), objc.ExtractPtr(subview))
 }
 
 func (v_ View) ViewDidMoveToSuperview() {
@@ -442,15 +442,15 @@ func (v_ View) ViewDidMoveToWindow() {
 }
 
 func (v_ View) ViewWillMoveToSuperview(newSuperview IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("viewWillMoveToSuperview:"), newSuperview)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("viewWillMoveToSuperview:"), objc.ExtractPtr(newSuperview))
 }
 
 func (v_ View) ViewWillMoveToWindow(newWindow IWindow) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("viewWillMoveToWindow:"), newWindow)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("viewWillMoveToWindow:"), objc.ExtractPtr(newWindow))
 }
 
 func (v_ View) WillRemoveSubview(subview IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("willRemoveSubview:"), subview)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("willRemoveSubview:"), objc.ExtractPtr(subview))
 }
 
 func (v_ View) ViewWithTag(tag int) View {
@@ -552,32 +552,32 @@ func (v_ View) ConvertSizeToLayer(size foundation.Size) foundation.Size {
 }
 
 func (v_ View) ConvertPoint_FromView(point foundation.Point, view IView) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](v_, objc.GetSelector("convertPoint:fromView:"), point, view)
+	rv := objc.CallMethod[foundation.Point](v_, objc.GetSelector("convertPoint:fromView:"), point, objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) ConvertPoint_ToView(point foundation.Point, view IView) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](v_, objc.GetSelector("convertPoint:toView:"), point, view)
+	rv := objc.CallMethod[foundation.Point](v_, objc.GetSelector("convertPoint:toView:"), point, objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) ConvertSize_FromView(size foundation.Size, view IView) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](v_, objc.GetSelector("convertSize:fromView:"), size, view)
+	rv := objc.CallMethod[foundation.Size](v_, objc.GetSelector("convertSize:fromView:"), size, objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) ConvertSize_ToView(size foundation.Size, view IView) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](v_, objc.GetSelector("convertSize:toView:"), size, view)
+	rv := objc.CallMethod[foundation.Size](v_, objc.GetSelector("convertSize:toView:"), size, objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) ConvertRect_FromView(rect foundation.Rect, view IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](v_, objc.GetSelector("convertRect:fromView:"), rect, view)
+	rv := objc.CallMethod[foundation.Rect](v_, objc.GetSelector("convertRect:fromView:"), rect, objc.ExtractPtr(view))
 	return rv
 }
 
 func (v_ View) ConvertRect_ToView(rect foundation.Rect, view IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](v_, objc.GetSelector("convertRect:toView:"), rect, view)
+	rv := objc.CallMethod[foundation.Rect](v_, objc.GetSelector("convertRect:toView:"), rect, objc.ExtractPtr(view))
 	return rv
 }
 
@@ -620,24 +620,24 @@ func (v_ View) MakeBackingLayer() quartzcore.Layer {
 }
 
 func (v_ View) MenuForEvent(event IEvent) Menu {
-	rv := objc.CallMethod[Menu](v_, objc.GetSelector("menuForEvent:"), event)
+	rv := objc.CallMethod[Menu](v_, objc.GetSelector("menuForEvent:"), objc.ExtractPtr(event))
 	return rv
 }
 
 func (v_ View) WillOpenMenu_WithEvent(menu IMenu, event IEvent) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("willOpenMenu:withEvent:"), menu, event)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("willOpenMenu:withEvent:"), objc.ExtractPtr(menu), objc.ExtractPtr(event))
 }
 
 func (v_ View) DidCloseMenu_WithEvent(menu IMenu, event IEvent) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("didCloseMenu:withEvent:"), menu, event)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("didCloseMenu:withEvent:"), objc.ExtractPtr(menu), objc.ExtractPtr(event))
 }
 
 func (v_ View) AddCursorRect_Cursor(rect foundation.Rect, object ICursor) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addCursorRect:cursor:"), rect, object)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addCursorRect:cursor:"), rect, objc.ExtractPtr(object))
 }
 
 func (v_ View) RemoveCursorRect_Cursor(rect foundation.Rect, object ICursor) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeCursorRect:cursor:"), rect, object)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeCursorRect:cursor:"), rect, objc.ExtractPtr(object))
 }
 
 func (v_ View) DiscardCursorRects() {
@@ -649,7 +649,7 @@ func (v_ View) ResetCursorRects() {
 }
 
 func (v_ View) AddToolTipRect_Owner_UserData(rect foundation.Rect, owner objc.IObject, data unsafe.Pointer) ToolTipTag {
-	rv := objc.CallMethod[ToolTipTag](v_, objc.GetSelector("addToolTipRect:owner:userData:"), rect, owner, data)
+	rv := objc.CallMethod[ToolTipTag](v_, objc.GetSelector("addToolTipRect:owner:userData:"), rect, objc.ExtractPtr(owner), data)
 	return rv
 }
 
@@ -662,70 +662,70 @@ func (v_ View) RemoveToolTip(tag ToolTipTag) {
 }
 
 func (v_ View) ShowDefinitionForAttributedString_AtPoint(attrString foundation.IAttributedString, textBaselineOrigin foundation.Point) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("showDefinitionForAttributedString:atPoint:"), attrString, textBaselineOrigin)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("showDefinitionForAttributedString:atPoint:"), objc.ExtractPtr(attrString), textBaselineOrigin)
 }
 
 func (v_ View) ShowDefinitionForAttributedString_Range_Options_BaselineOriginProvider(attrString foundation.IAttributedString, targetRange foundation.Range, options map[DefinitionOptionKey]objc.IObject, originProvider func(adjustedRange foundation.Range) foundation.Point) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("showDefinitionForAttributedString:range:options:baselineOriginProvider:"), attrString, targetRange, options, originProvider)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("showDefinitionForAttributedString:range:options:baselineOriginProvider:"), objc.ExtractPtr(attrString), targetRange, options, originProvider)
 }
 
 func (v_ View) RulerView_DidAddMarker(ruler IRulerView, marker IRulerMarker) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:didAddMarker:"), ruler, marker)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:didAddMarker:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker))
 }
 
 func (v_ View) RulerView_DidMoveMarker(ruler IRulerView, marker IRulerMarker) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:didMoveMarker:"), ruler, marker)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:didMoveMarker:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker))
 }
 
 func (v_ View) RulerView_DidRemoveMarker(ruler IRulerView, marker IRulerMarker) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:didRemoveMarker:"), ruler, marker)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:didRemoveMarker:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker))
 }
 
 func (v_ View) RulerView_HandleMouseDown(ruler IRulerView, event IEvent) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:handleMouseDown:"), ruler, event)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:handleMouseDown:"), objc.ExtractPtr(ruler), objc.ExtractPtr(event))
 }
 
 func (v_ View) RulerView_LocationForPoint(ruler IRulerView, point foundation.Point) float64 {
-	rv := objc.CallMethod[float64](v_, objc.GetSelector("rulerView:locationForPoint:"), ruler, point)
+	rv := objc.CallMethod[float64](v_, objc.GetSelector("rulerView:locationForPoint:"), objc.ExtractPtr(ruler), point)
 	return rv
 }
 
 func (v_ View) RulerView_PointForLocation(ruler IRulerView, point float64) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](v_, objc.GetSelector("rulerView:pointForLocation:"), ruler, point)
+	rv := objc.CallMethod[foundation.Point](v_, objc.GetSelector("rulerView:pointForLocation:"), objc.ExtractPtr(ruler), point)
 	return rv
 }
 
 func (v_ View) RulerView_ShouldAddMarker(ruler IRulerView, marker IRulerMarker) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("rulerView:shouldAddMarker:"), ruler, marker)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("rulerView:shouldAddMarker:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker))
 	return rv
 }
 
 func (v_ View) RulerView_ShouldMoveMarker(ruler IRulerView, marker IRulerMarker) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("rulerView:shouldMoveMarker:"), ruler, marker)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("rulerView:shouldMoveMarker:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker))
 	return rv
 }
 
 func (v_ View) RulerView_ShouldRemoveMarker(ruler IRulerView, marker IRulerMarker) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("rulerView:shouldRemoveMarker:"), ruler, marker)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("rulerView:shouldRemoveMarker:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker))
 	return rv
 }
 
 func (v_ View) RulerView_WillAddMarker_AtLocation(ruler IRulerView, marker IRulerMarker, location float64) float64 {
-	rv := objc.CallMethod[float64](v_, objc.GetSelector("rulerView:willAddMarker:atLocation:"), ruler, marker, location)
+	rv := objc.CallMethod[float64](v_, objc.GetSelector("rulerView:willAddMarker:atLocation:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker), location)
 	return rv
 }
 
 func (v_ View) RulerView_WillMoveMarker_ToLocation(ruler IRulerView, marker IRulerMarker, location float64) float64 {
-	rv := objc.CallMethod[float64](v_, objc.GetSelector("rulerView:willMoveMarker:toLocation:"), ruler, marker, location)
+	rv := objc.CallMethod[float64](v_, objc.GetSelector("rulerView:willMoveMarker:toLocation:"), objc.ExtractPtr(ruler), objc.ExtractPtr(marker), location)
 	return rv
 }
 
 func (v_ View) RulerView_WillSetClientView(ruler IRulerView, newClient IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:willSetClientView:"), ruler, newClient)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("rulerView:willSetClientView:"), objc.ExtractPtr(ruler), objc.ExtractPtr(newClient))
 }
 
 func (v_ View) AddConstraint(constraint ILayoutConstraint) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addConstraint:"), constraint)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addConstraint:"), objc.ExtractPtr(constraint))
 }
 
 func (v_ View) AddConstraints(constraints []ILayoutConstraint) {
@@ -733,7 +733,7 @@ func (v_ View) AddConstraints(constraints []ILayoutConstraint) {
 }
 
 func (v_ View) RemoveConstraint(constraint ILayoutConstraint) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeConstraint:"), constraint)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeConstraint:"), objc.ExtractPtr(constraint))
 }
 
 func (v_ View) RemoveConstraints(constraints []ILayoutConstraint) {
@@ -763,11 +763,11 @@ func (v_ View) SetContentHuggingPriority_ForOrientation(priority LayoutPriority,
 }
 
 func (v_ View) AddLayoutGuide(guide ILayoutGuide) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addLayoutGuide:"), guide)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addLayoutGuide:"), objc.ExtractPtr(guide))
 }
 
 func (v_ View) RemoveLayoutGuide(guide ILayoutGuide) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeLayoutGuide:"), guide)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeLayoutGuide:"), objc.ExtractPtr(guide))
 }
 
 func (v_ View) AlignmentRectForFrame(frame foundation.Rect) foundation.Rect {
@@ -832,11 +832,11 @@ func (v_ View) BitmapImageRepForCachingDisplayInRect(rect foundation.Rect) Bitma
 }
 
 func (v_ View) CacheDisplayInRect_ToBitmapImageRep(rect foundation.Rect, bitmapImageRep IBitmapImageRep) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("cacheDisplayInRect:toBitmapImageRep:"), rect, bitmapImageRep)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("cacheDisplayInRect:toBitmapImageRep:"), rect, objc.ExtractPtr(bitmapImageRep))
 }
 
 func (v_ View) EnterFullScreenMode_WithOptions(screen IScreen, options map[ViewFullScreenModeOptionKey]objc.IObject) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("enterFullScreenMode:withOptions:"), screen, options)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("enterFullScreenMode:withOptions:"), objc.ExtractPtr(screen), options)
 	return rv
 }
 
@@ -861,7 +861,7 @@ func (v_ View) DisplayRectIgnoringOpacity(rect foundation.Rect) {
 }
 
 func (v_ View) DisplayRectIgnoringOpacity_InContext(rect foundation.Rect, context IGraphicsContext) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("displayRectIgnoringOpacity:inContext:"), rect, context)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("displayRectIgnoringOpacity:inContext:"), rect, objc.ExtractPtr(context))
 }
 
 func (v_ View) DisplayIfNeeded() {
@@ -901,7 +901,7 @@ func (v_ View) ViewDidEndLiveResize() {
 }
 
 func (v_ View) Print(sender objc.IObject) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("print:"), sender)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("print:"), objc.ExtractPtr(sender))
 }
 
 func (v_ View) BeginPageInRect_AtPlacement(rect foundation.Rect, location foundation.Point) {
@@ -919,11 +919,11 @@ func (v_ View) DataWithPDFInsideRect(rect foundation.Rect) []byte {
 }
 
 func (v_ View) WriteEPSInsideRect_ToPasteboard(rect foundation.Rect, pasteboard IPasteboard) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("writeEPSInsideRect:toPasteboard:"), rect, pasteboard)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("writeEPSInsideRect:toPasteboard:"), rect, objc.ExtractPtr(pasteboard))
 }
 
 func (v_ View) WritePDFInsideRect_ToPasteboard(rect foundation.Rect, pasteboard IPasteboard) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("writePDFInsideRect:toPasteboard:"), rect, pasteboard)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("writePDFInsideRect:toPasteboard:"), rect, objc.ExtractPtr(pasteboard))
 }
 
 func (v_ View) DrawPageBorderWithSize(borderSize foundation.Size) {
@@ -971,7 +971,7 @@ func (v_ View) EndPage() {
 }
 
 func (v_ View) AcceptsFirstMouse(event IEvent) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("acceptsFirstMouse:"), event)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("acceptsFirstMouse:"), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -986,11 +986,11 @@ func (v_ View) Mouse_InRect(point foundation.Point, rect foundation.Rect) bool {
 }
 
 func (v_ View) AddGestureRecognizer(gestureRecognizer IGestureRecognizer) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addGestureRecognizer:"), gestureRecognizer)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer))
 }
 
 func (v_ View) RemoveGestureRecognizer(gestureRecognizer IGestureRecognizer) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeGestureRecognizer:"), gestureRecognizer)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer))
 }
 
 func (v_ View) RectForSmartMagnificationAtPoint_InRect(location foundation.Point, visibleRect foundation.Rect) foundation.Rect {
@@ -999,11 +999,11 @@ func (v_ View) RectForSmartMagnificationAtPoint_InRect(location foundation.Point
 }
 
 func (v_ View) AddTrackingArea(trackingArea ITrackingArea) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addTrackingArea:"), trackingArea)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addTrackingArea:"), objc.ExtractPtr(trackingArea))
 }
 
 func (v_ View) RemoveTrackingArea(trackingArea ITrackingArea) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeTrackingArea:"), trackingArea)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("removeTrackingArea:"), objc.ExtractPtr(trackingArea))
 }
 
 func (v_ View) UpdateTrackingAreas() {
@@ -1011,7 +1011,7 @@ func (v_ View) UpdateTrackingAreas() {
 }
 
 func (v_ View) AddTrackingRect_Owner_UserData_AssumeInside(rect foundation.Rect, owner objc.IObject, data unsafe.Pointer, flag bool) TrackingRectTag {
-	rv := objc.CallMethod[TrackingRectTag](v_, objc.GetSelector("addTrackingRect:owner:userData:assumeInside:"), rect, owner, data, flag)
+	rv := objc.CallMethod[TrackingRectTag](v_, objc.GetSelector("addTrackingRect:owner:userData:assumeInside:"), rect, objc.ExtractPtr(owner), data, flag)
 	return rv
 }
 
@@ -1033,7 +1033,7 @@ func (v_ View) ScrollRectToVisible(rect foundation.Rect) bool {
 }
 
 func (v_ View) Autoscroll(event IEvent) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("autoscroll:"), event)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("autoscroll:"), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -1043,11 +1043,11 @@ func (v_ View) AdjustScroll(newVisible foundation.Rect) foundation.Rect {
 }
 
 func (v_ View) ScrollClipView_ToPoint(clipView IClipView, point foundation.Point) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("scrollClipView:toPoint:"), clipView, point)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("scrollClipView:toPoint:"), objc.ExtractPtr(clipView), point)
 }
 
 func (v_ View) ReflectScrolledClipView(clipView IClipView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("reflectScrolledClipView:"), clipView)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("reflectScrolledClipView:"), objc.ExtractPtr(clipView))
 }
 
 func (v_ View) RegisterForDraggedTypes(newTypes []PasteboardType) {
@@ -1060,17 +1060,17 @@ func (v_ View) UnregisterDraggedTypes() {
 
 func (v_ View) BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source DraggingSource) DraggingSession {
 	po := objc.CreateProtocol("NSDraggingSource", source)
-	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, event, po)
+	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, objc.ExtractPtr(event), po)
 	return rv
 }
 
 func (v_ View) BeginDraggingSessionWithItems0_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession {
-	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, event, source)
+	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, objc.ExtractPtr(event), objc.ExtractPtr(source))
 	return rv
 }
 
 func (v_ View) ShouldDelayWindowOrderingForEvent(event IEvent) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("shouldDelayWindowOrderingForEvent:"), event)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("shouldDelayWindowOrderingForEvent:"), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -1087,7 +1087,7 @@ func (v_ View) LockFocusIfCanDraw() bool {
 
 // deprecated
 func (v_ View) LockFocusIfCanDrawInContext(context IGraphicsContext) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("lockFocusIfCanDrawInContext:"), context)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("lockFocusIfCanDrawInContext:"), objc.ExtractPtr(context))
 	return rv
 }
 
@@ -1166,18 +1166,18 @@ func (v_ View) RenewGState() {
 
 // deprecated
 func (v_ View) DragImage_At_Offset_Event_Pasteboard_Source_SlideBack(image IImage, viewLocation foundation.Point, initialOffset foundation.Size, event IEvent, pboard IPasteboard, sourceObj objc.IObject, slideFlag bool) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("dragImage:at:offset:event:pasteboard:source:slideBack:"), image, viewLocation, initialOffset, event, pboard, sourceObj, slideFlag)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("dragImage:at:offset:event:pasteboard:source:slideBack:"), objc.ExtractPtr(image), viewLocation, initialOffset, objc.ExtractPtr(event), objc.ExtractPtr(pboard), objc.ExtractPtr(sourceObj), slideFlag)
 }
 
 // deprecated
 func (v_ View) DragFile_FromRect_SlideBack_Event(filename string, rect foundation.Rect, flag bool, event IEvent) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("dragFile:fromRect:slideBack:event:"), filename, rect, flag, event)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("dragFile:fromRect:slideBack:event:"), filename, rect, flag, objc.ExtractPtr(event))
 	return rv
 }
 
 // deprecated
 func (v_ View) DragPromisedFilesOfTypes_FromRect_Source_SlideBack_Event(typeArray []string, rect foundation.Rect, sourceObject objc.IObject, flag bool, event IEvent) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:"), typeArray, rect, sourceObject, flag, event)
+	rv := objc.CallMethod[bool](v_, objc.GetSelector("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:"), typeArray, rect, objc.ExtractPtr(sourceObject), flag, objc.ExtractPtr(event))
 	return rv
 }
 
@@ -1352,7 +1352,7 @@ func (v_ View) Layer() quartzcore.Layer {
 }
 
 func (v_ View) SetLayer(value quartzcore.ILayer) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setLayer:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setLayer:"), objc.ExtractPtr(value))
 }
 
 func (v_ View) LayerContentsPlacement() ViewLayerContentsPlacement {
@@ -1415,7 +1415,7 @@ func (v_ View) Shadow() Shadow {
 }
 
 func (v_ View) SetShadow(value IShadow) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setShadow:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setShadow:"), objc.ExtractPtr(value))
 }
 
 func (vc _ViewClass) DefaultMenu() Menu {
@@ -1784,7 +1784,7 @@ func (v_ View) NextKeyView() View {
 }
 
 func (v_ View) SetNextKeyView(value IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setNextKeyView:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setNextKeyView:"), objc.ExtractPtr(value))
 }
 
 func (v_ View) NextValidKeyView() View {
@@ -1827,7 +1827,7 @@ func (v_ View) PressureConfiguration() PressureConfiguration {
 }
 
 func (v_ View) SetPressureConfiguration(value IPressureConfiguration) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setPressureConfiguration:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setPressureConfiguration:"), objc.ExtractPtr(value))
 }
 
 func (v_ View) RegisteredDraggedTypes() []PasteboardType {

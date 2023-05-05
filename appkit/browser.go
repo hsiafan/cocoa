@@ -191,7 +191,7 @@ func (b_ Browser) SelectedRowIndexesInColumn(column int) foundation.IndexSet {
 }
 
 func (b_ Browser) SelectRowIndexes_InColumn(indexes foundation.IIndexSet, column int) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectRowIndexes:inColumn:"), indexes, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectRowIndexes:inColumn:"), objc.ExtractPtr(indexes), column)
 }
 
 func (b_ Browser) SelectedCellInColumn(column int) objc.Object {
@@ -200,7 +200,7 @@ func (b_ Browser) SelectedCellInColumn(column int) objc.Object {
 }
 
 func (b_ Browser) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectAll:"), sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("selectAll:"), objc.ExtractPtr(sender))
 }
 
 func (b_ Browser) SelectedRowInColumn(column int) int {
@@ -218,11 +218,11 @@ func (b_ Browser) LoadedCellAtRow_Column(row int, col int) objc.Object {
 }
 
 func (b_ Browser) EditItemAtIndexPath_WithEvent_Select(indexPath foundation.IIndexPath, event IEvent, select_ bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("editItemAtIndexPath:withEvent:select:"), indexPath, event, select_)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("editItemAtIndexPath:withEvent:select:"), objc.ExtractPtr(indexPath), objc.ExtractPtr(event), select_)
 }
 
 func (b_ Browser) ItemAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("itemAtIndexPath:"), indexPath)
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("itemAtIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
@@ -237,7 +237,7 @@ func (b_ Browser) IndexPathForColumn(column int) foundation.IndexPath {
 }
 
 func (b_ Browser) IsLeafItem(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLeafItem:"), item)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLeafItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -296,11 +296,11 @@ func (b_ Browser) TitleFrameOfColumn(column int) foundation.Rect {
 }
 
 func (b_ Browser) NoteHeightOfRowsWithIndexesChanged_InColumn(indexSet foundation.IIndexSet, columnIndex int) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("noteHeightOfRowsWithIndexesChanged:inColumn:"), indexSet, columnIndex)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("noteHeightOfRowsWithIndexesChanged:inColumn:"), objc.ExtractPtr(indexSet), columnIndex)
 }
 
 func (b_ Browser) ReloadDataForRowIndexes_InColumn(rowIndexes foundation.IIndexSet, column int) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("reloadDataForRowIndexes:inColumn:"), rowIndexes, column)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("reloadDataForRowIndexes:inColumn:"), objc.ExtractPtr(rowIndexes), column)
 }
 
 func (b_ Browser) ScrollColumnToVisible(column int) {
@@ -324,12 +324,12 @@ func (b_ Browser) SetDraggingSourceOperationMask_ForLocal(mask DragOperation, is
 }
 
 func (b_ Browser) CanDragRowsWithIndexes_InColumn_WithEvent(rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("canDragRowsWithIndexes:inColumn:withEvent:"), rowIndexes, column, event)
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("canDragRowsWithIndexes:inColumn:withEvent:"), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(event))
 	return rv
 }
 
 func (b_ Browser) DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](b_, objc.GetSelector("draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), rowIndexes, column, event, dragImageOffset)
+	rv := objc.CallMethod[Image](b_, objc.GetSelector("draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(event), dragImageOffset)
 	return rv
 }
 
@@ -359,11 +359,11 @@ func (b_ Browser) SendAction() bool {
 }
 
 func (b_ Browser) DoClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("doClick:"), sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("doClick:"), objc.ExtractPtr(sender))
 }
 
 func (b_ Browser) DoDoubleClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("doDoubleClick:"), sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("doDoubleClick:"), objc.ExtractPtr(sender))
 }
 
 func (bc _BrowserClass) RemoveSavedColumnsWithAutosaveName(name BrowserColumnsAutosaveName) {
@@ -405,7 +405,7 @@ func (b_ Browser) UpdateScroller() {
 
 // deprecated
 func (b_ Browser) ScrollViaScroller(sender IScroller) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollViaScroller:"), sender)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("scrollViaScroller:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -420,7 +420,7 @@ func (b_ Browser) DisplayColumn(column int) {
 
 // deprecated
 func (b_ Browser) ColumnOfMatrix(matrix IMatrix) int {
-	rv := objc.CallMethod[int](b_, objc.GetSelector("columnOfMatrix:"), matrix)
+	rv := objc.CallMethod[int](b_, objc.GetSelector("columnOfMatrix:"), objc.ExtractPtr(matrix))
 	return rv
 }
 
@@ -438,7 +438,7 @@ func (b_ Browser) MatrixClass() objc.Class {
 
 // deprecated
 func (b_ Browser) SetMatrixClass(factoryId objc.IClass) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMatrixClass:"), factoryId)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setMatrixClass:"), objc.ExtractPtr(factoryId))
 }
 
 // deprecated
@@ -485,7 +485,7 @@ func (b_ Browser) BackgroundColor() Color {
 }
 
 func (b_ Browser) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Browser) MinColumnWidth() float64 {
@@ -527,7 +527,7 @@ func (b_ Browser) SetDelegate(value BrowserDelegate) {
 }
 
 func (b_ Browser) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (b_ Browser) CellPrototype() objc.Object {
@@ -536,7 +536,7 @@ func (b_ Browser) CellPrototype() objc.Object {
 }
 
 func (b_ Browser) SetCellPrototype(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCellPrototype:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCellPrototype:"), objc.ExtractPtr(value))
 }
 
 func (b_ Browser) AllowsBranchSelection() bool {
@@ -586,7 +586,7 @@ func (b_ Browser) SelectionIndexPath() foundation.IndexPath {
 }
 
 func (b_ Browser) SetSelectionIndexPath(value foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSelectionIndexPath:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSelectionIndexPath:"), objc.ExtractPtr(value))
 }
 
 func (b_ Browser) SelectionIndexPaths() []foundation.IndexPath {

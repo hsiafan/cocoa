@@ -26,7 +26,7 @@ func (a_ *AppearanceCustomizationWrapper) ImplementsSetAppearance() bool {
 }
 
 func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), value)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
 }
 
 func (a_ *AppearanceCustomizationWrapper) ImplementsAppearance() bool {

@@ -148,7 +148,7 @@ func (b_ Box) TitleFont() Font {
 }
 
 func (b_ Box) SetTitleFont(value IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitleFont:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitleFont:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) TitlePosition() TitlePosition {
@@ -176,7 +176,7 @@ func (b_ Box) BorderColor() Color {
 }
 
 func (b_ Box) SetBorderColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderColor:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) BorderWidth() float64 {
@@ -203,7 +203,7 @@ func (b_ Box) FillColor() Color {
 }
 
 func (b_ Box) SetFillColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFillColor:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFillColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) ContentView() View {
@@ -212,7 +212,7 @@ func (b_ Box) ContentView() View {
 }
 
 func (b_ Box) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentView:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) ContentViewMargins() foundation.Size {

@@ -28,7 +28,7 @@ func MakeActionCell(ptr unsafe.Pointer) ActionCell {
 }
 
 func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 

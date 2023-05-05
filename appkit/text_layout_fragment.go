@@ -46,7 +46,7 @@ func MakeTextLayoutFragment(ptr unsafe.Pointer) TextLayoutFragment {
 }
 
 func (t_ TextLayoutFragment) InitWithTextElement_Range(textElement ITextElement, rangeInElement ITextRange) TextLayoutFragment {
-	rv := objc.CallMethod[TextLayoutFragment](t_, objc.GetSelector("initWithTextElement:range:"), textElement, rangeInElement)
+	rv := objc.CallMethod[TextLayoutFragment](t_, objc.GetSelector("initWithTextElement:range:"), objc.ExtractPtr(textElement), objc.ExtractPtr(rangeInElement))
 	return rv
 }
 
@@ -109,7 +109,7 @@ func (t_ TextLayoutFragment) LayoutQueue() foundation.OperationQueue {
 }
 
 func (t_ TextLayoutFragment) SetLayoutQueue(value foundation.IOperationQueue) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutQueue:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutQueue:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextLayoutFragment) LayoutFragmentFrame() coregraphics.Rect {

@@ -82,7 +82,7 @@ func (pc _PasteboardClass) PasteboardByFilteringFile(filename string) Pasteboard
 }
 
 func (pc _PasteboardClass) PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardByFilteringTypesInPasteboard:"), pboard)
+	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardByFilteringTypesInPasteboard:"), objc.ExtractPtr(pboard))
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (p_ Pasteboard) SetData_ForType(data []byte, dataType PasteboardType) bool 
 }
 
 func (p_ Pasteboard) SetPropertyList_ForType(plist objc.IObject, dataType PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setPropertyList:forType:"), plist, dataType)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("setPropertyList:forType:"), objc.ExtractPtr(plist), dataType)
 	return rv
 }
 
@@ -122,7 +122,7 @@ func (p_ Pasteboard) ReadObjectsForClasses_Options(classArray []objc.IClass, opt
 }
 
 func (p_ Pasteboard) IndexOfPasteboardItem(pasteboardItem IPasteboardItem) uint {
-	rv := objc.CallMethod[uint](p_, objc.GetSelector("indexOfPasteboardItem:"), pasteboardItem)
+	rv := objc.CallMethod[uint](p_, objc.GetSelector("indexOfPasteboardItem:"), objc.ExtractPtr(pasteboardItem))
 	return rv
 }
 
@@ -167,12 +167,12 @@ func (p_ Pasteboard) PrepareForNewContentsWithOptions(options PasteboardContents
 }
 
 func (p_ Pasteboard) DeclareTypes_Owner(newTypes []PasteboardType, newOwner objc.IObject) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("declareTypes:owner:"), newTypes, newOwner)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("declareTypes:owner:"), newTypes, objc.ExtractPtr(newOwner))
 	return rv
 }
 
 func (p_ Pasteboard) AddTypes_Owner(newTypes []PasteboardType, newOwner objc.IObject) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("addTypes:owner:"), newTypes, newOwner)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("addTypes:owner:"), newTypes, objc.ExtractPtr(newOwner))
 	return rv
 }
 
@@ -182,7 +182,7 @@ func (p_ Pasteboard) WriteFileContents(filename string) bool {
 }
 
 func (p_ Pasteboard) WriteFileWrapper(wrapper foundation.IFileWrapper) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("writeFileWrapper:"), wrapper)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("writeFileWrapper:"), objc.ExtractPtr(wrapper))
 	return rv
 }
 

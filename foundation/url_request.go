@@ -45,22 +45,22 @@ func MakeURLRequest(ptr unsafe.Pointer) URLRequest {
 }
 
 func (uc _URLRequestClass) RequestWithURL(URL IURL) URLRequest {
-	rv := objc.CallMethod[URLRequest](uc, objc.GetSelector("requestWithURL:"), URL)
+	rv := objc.CallMethod[URLRequest](uc, objc.GetSelector("requestWithURL:"), objc.ExtractPtr(URL))
 	return rv
 }
 
 func (u_ URLRequest) InitWithURL(URL IURL) URLRequest {
-	rv := objc.CallMethod[URLRequest](u_, objc.GetSelector("initWithURL:"), URL)
+	rv := objc.CallMethod[URLRequest](u_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(URL))
 	return rv
 }
 
 func (uc _URLRequestClass) RequestWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
-	rv := objc.CallMethod[URLRequest](uc, objc.GetSelector("requestWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[URLRequest](uc, objc.GetSelector("requestWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
 	return rv
 }
 
 func (u_ URLRequest) InitWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) URLRequest {
-	rv := objc.CallMethod[URLRequest](u_, objc.GetSelector("initWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[URLRequest](u_, objc.GetSelector("initWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
 	return rv
 }
 

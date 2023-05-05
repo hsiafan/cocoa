@@ -46,7 +46,7 @@ func MakeColorPanel(ptr unsafe.Pointer) ColorPanel {
 }
 
 func (cc _ColorPanelClass) WindowWithContentViewController(contentViewController IViewController) ColorPanel {
-	rv := objc.CallMethod[ColorPanel](cc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
+	rv := objc.CallMethod[ColorPanel](cc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
@@ -56,7 +56,7 @@ func (c_ ColorPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect fou
 }
 
 func (c_ ColorPanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) ColorPanel {
-	rv := objc.CallMethod[ColorPanel](c_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[ColorPanel](c_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -93,25 +93,25 @@ func (c_ ColorPanel) SetAction(selector objc.Selector) {
 }
 
 func (c_ ColorPanel) SetTarget(target objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), target)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), objc.ExtractPtr(target))
 }
 
 func (c_ ColorPanel) AttachColorList(colorList IColorList) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("attachColorList:"), colorList)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("attachColorList:"), objc.ExtractPtr(colorList))
 }
 
 func (c_ ColorPanel) DetachColorList(colorList IColorList) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("detachColorList:"), colorList)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("detachColorList:"), objc.ExtractPtr(colorList))
 }
 
 func (cc _ColorPanelClass) DragColor_WithEvent_FromView(color IColor, event IEvent, sourceView IView) bool {
-	rv := objc.CallMethod[bool](cc, objc.GetSelector("dragColor:withEvent:fromView:"), color, event, sourceView)
+	rv := objc.CallMethod[bool](cc, objc.GetSelector("dragColor:withEvent:fromView:"), objc.ExtractPtr(color), objc.ExtractPtr(event), objc.ExtractPtr(sourceView))
 	return rv
 }
 
 // deprecated
 func (c_ ColorPanel) ChangeColor(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("changeColor:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("changeColor:"), objc.ExtractPtr(sender))
 }
 
 func (cc _ColorPanelClass) SharedColorPanel() ColorPanel {
@@ -139,7 +139,7 @@ func (c_ ColorPanel) AccessoryView() View {
 }
 
 func (c_ ColorPanel) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAccessoryView:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
 }
 
 func (c_ ColorPanel) IsContinuous() bool {
@@ -166,7 +166,7 @@ func (c_ ColorPanel) Color() Color {
 }
 
 func (c_ ColorPanel) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
 }
 
 func (c_ ColorPanel) Alpha() float64 {

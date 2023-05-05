@@ -77,7 +77,7 @@ func (c_ CandidateListTouchBarItem) Client() View {
 }
 
 func (c_ CandidateListTouchBarItem) SetClient(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setClient:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setClient:"), objc.ExtractPtr(value))
 }
 
 func (c_ CandidateListTouchBarItem) Delegate() CandidateListTouchBarItemDelegateWrapper {
@@ -92,7 +92,7 @@ func (c_ CandidateListTouchBarItem) SetDelegate(value CandidateListTouchBarItemD
 }
 
 func (c_ CandidateListTouchBarItem) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (c_ CandidateListTouchBarItem) AllowsTextInputContextCandidates() bool {

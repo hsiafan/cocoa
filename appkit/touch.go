@@ -57,12 +57,12 @@ func (t_ Touch) Init() Touch {
 }
 
 func (t_ Touch) LocationInView(view IView) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](t_, objc.GetSelector("locationInView:"), view)
+	rv := objc.CallMethod[foundation.Point](t_, objc.GetSelector("locationInView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (t_ Touch) PreviousLocationInView(view IView) foundation.Point {
-	rv := objc.CallMethod[foundation.Point](t_, objc.GetSelector("previousLocationInView:"), view)
+	rv := objc.CallMethod[foundation.Point](t_, objc.GetSelector("previousLocationInView:"), objc.ExtractPtr(view))
 	return rv
 }
 

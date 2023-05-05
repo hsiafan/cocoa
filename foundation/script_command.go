@@ -51,7 +51,7 @@ func MakeScriptCommand(ptr unsafe.Pointer) ScriptCommand {
 }
 
 func (s_ ScriptCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](s_, objc.GetSelector("initWithCommandDescription:"), commandDef)
+	rv := objc.CallMethod[ScriptCommand](s_, objc.GetSelector("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (s_ ScriptCommand) SuspendExecution() {
 }
 
 func (s_ ScriptCommand) ResumeExecutionWithResult(result objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("resumeExecutionWithResult:"), result)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("resumeExecutionWithResult:"), objc.ExtractPtr(result))
 }
 
 func (s_ ScriptCommand) AppleEvent() AppleEventDescriptor {
@@ -114,7 +114,7 @@ func (s_ ScriptCommand) ReceiversSpecifier() ScriptObjectSpecifier {
 }
 
 func (s_ ScriptCommand) SetReceiversSpecifier(value IScriptObjectSpecifier) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setReceiversSpecifier:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setReceiversSpecifier:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) Arguments() map[string]objc.Object {
@@ -137,7 +137,7 @@ func (s_ ScriptCommand) DirectParameter() objc.Object {
 }
 
 func (s_ ScriptCommand) SetDirectParameter(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDirectParameter:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDirectParameter:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) CommandDescription() ScriptCommandDescription {
@@ -151,7 +151,7 @@ func (s_ ScriptCommand) ScriptErrorExpectedTypeDescriptor() AppleEventDescriptor
 }
 
 func (s_ ScriptCommand) SetScriptErrorExpectedTypeDescriptor(value IAppleEventDescriptor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorExpectedTypeDescriptor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorExpectedTypeDescriptor:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) ScriptErrorNumber() int {
@@ -169,7 +169,7 @@ func (s_ ScriptCommand) ScriptErrorOffendingObjectDescriptor() AppleEventDescrip
 }
 
 func (s_ ScriptCommand) SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorOffendingObjectDescriptor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorOffendingObjectDescriptor:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) ScriptErrorString() string {

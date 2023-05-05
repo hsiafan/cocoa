@@ -57,17 +57,17 @@ func (p_ PersonNameComponentsFormatter) Init() PersonNameComponentsFormatter {
 }
 
 func (pc _PersonNameComponentsFormatterClass) LocalizedStringFromPersonNameComponents_Style_Options(components IPersonNameComponents, nameFormatStyle PersonNameComponentsFormatterStyle, nameOptions PersonNameComponentsFormatterOptions) string {
-	rv := objc.CallMethod[string](pc, objc.GetSelector("localizedStringFromPersonNameComponents:style:options:"), components, nameFormatStyle, nameOptions)
+	rv := objc.CallMethod[string](pc, objc.GetSelector("localizedStringFromPersonNameComponents:style:options:"), objc.ExtractPtr(components), nameFormatStyle, nameOptions)
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) StringFromPersonNameComponents(components IPersonNameComponents) string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("stringFromPersonNameComponents:"), components)
+	rv := objc.CallMethod[string](p_, objc.GetSelector("stringFromPersonNameComponents:"), objc.ExtractPtr(components))
 	return rv
 }
 
 func (p_ PersonNameComponentsFormatter) AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString {
-	rv := objc.CallMethod[AttributedString](p_, objc.GetSelector("annotatedStringFromPersonNameComponents:"), components)
+	rv := objc.CallMethod[AttributedString](p_, objc.GetSelector("annotatedStringFromPersonNameComponents:"), objc.ExtractPtr(components))
 	return rv
 }
 
@@ -100,5 +100,5 @@ func (p_ PersonNameComponentsFormatter) Locale() Locale {
 }
 
 func (p_ PersonNameComponentsFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }

@@ -32,7 +32,7 @@ func MakeTrackingSeparatorToolbarItem(ptr unsafe.Pointer) TrackingSeparatorToolb
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) TrackingSeparatorToolbarItemWithIdentifier_SplitView_DividerIndex(identifier ToolbarItemIdentifier, splitView ISplitView, dividerIndex int) TrackingSeparatorToolbarItem {
-	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.GetSelector("trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:"), identifier, splitView, dividerIndex)
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.GetSelector("trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:"), identifier, objc.ExtractPtr(splitView), dividerIndex)
 	return rv
 }
 
@@ -76,5 +76,5 @@ func (t_ TrackingSeparatorToolbarItem) SplitView() SplitView {
 }
 
 func (t_ TrackingSeparatorToolbarItem) SetSplitView(value ISplitView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSplitView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSplitView:"), objc.ExtractPtr(value))
 }

@@ -149,7 +149,7 @@ func (u_ UserDefaults) DictionaryRepresentation() map[string]objc.Object {
 }
 
 func (u_ UserDefaults) SetObject_ForKey(value objc.IObject, defaultName string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setObject:forKey:"), value, defaultName)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setObject:forKey:"), objc.ExtractPtr(value), defaultName)
 }
 
 func (u_ UserDefaults) SetFloat_ForKey(value float32, defaultName string) {
@@ -169,7 +169,7 @@ func (u_ UserDefaults) SetBool_ForKey(value bool, defaultName string) {
 }
 
 func (u_ UserDefaults) SetURL_ForKey(url IURL, defaultName string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setURL:forKey:"), url, defaultName)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setURL:forKey:"), objc.ExtractPtr(url), defaultName)
 }
 
 func (u_ UserDefaults) RemoveObjectForKey(defaultName string) {

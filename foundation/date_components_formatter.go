@@ -73,12 +73,12 @@ func (d_ DateComponentsFormatter) Init() DateComponentsFormatter {
 }
 
 func (d_ DateComponentsFormatter) StringFromDateComponents(components IDateComponents) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDateComponents:"), components)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDateComponents:"), objc.ExtractPtr(components))
 	return rv
 }
 
 func (d_ DateComponentsFormatter) StringFromDate_ToDate(startDate IDate, endDate IDate) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:toDate:"), startDate, endDate)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:toDate:"), objc.ExtractPtr(startDate), objc.ExtractPtr(endDate))
 	return rv
 }
 
@@ -88,7 +88,7 @@ func (d_ DateComponentsFormatter) StringFromTimeInterval(ti TimeInterval) string
 }
 
 func (dc _DateComponentsFormatterClass) LocalizedStringFromDateComponents_UnitsStyle(components IDateComponents, unitsStyle DateComponentsFormatterUnitsStyle) string {
-	rv := objc.CallMethod[string](dc, objc.GetSelector("localizedStringFromDateComponents:unitsStyle:"), components, unitsStyle)
+	rv := objc.CallMethod[string](dc, objc.GetSelector("localizedStringFromDateComponents:unitsStyle:"), objc.ExtractPtr(components), unitsStyle)
 	return rv
 }
 
@@ -116,7 +116,7 @@ func (d_ DateComponentsFormatter) Calendar() Calendar {
 }
 
 func (d_ DateComponentsFormatter) SetCalendar(value ICalendar) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateComponentsFormatter) CollapsesLargestUnit() bool {
@@ -188,5 +188,5 @@ func (d_ DateComponentsFormatter) ReferenceDate() Date {
 }
 
 func (d_ DateComponentsFormatter) SetReferenceDate(value IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setReferenceDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setReferenceDate:"), objc.ExtractPtr(value))
 }

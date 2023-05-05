@@ -127,12 +127,12 @@ func (p_ PrintInfo) UpdateFromPMPrintSettings() {
 }
 
 func (p_ PrintInfo) TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("takeSettingsFromPDFInfo:"), inPDFInfo)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("takeSettingsFromPDFInfo:"), objc.ExtractPtr(inPDFInfo))
 }
 
 // deprecated
 func (pc _PrintInfoClass) SetDefaultPrinter(printer IPrinter) {
-	objc.CallMethod[objc.Void](pc, objc.GetSelector("setDefaultPrinter:"), printer)
+	objc.CallMethod[objc.Void](pc, objc.GetSelector("setDefaultPrinter:"), objc.ExtractPtr(printer))
 }
 
 // deprecated
@@ -147,7 +147,7 @@ func (pc _PrintInfoClass) SharedPrintInfo() PrintInfo {
 }
 
 func (pc _PrintInfoClass) SetSharedPrintInfo(value IPrintInfo) {
-	objc.CallMethod[objc.Void](pc, objc.GetSelector("setSharedPrintInfo:"), value)
+	objc.CallMethod[objc.Void](pc, objc.GetSelector("setSharedPrintInfo:"), objc.ExtractPtr(value))
 }
 
 func (p_ PrintInfo) PaperSize() foundation.Size {
@@ -265,7 +265,7 @@ func (p_ PrintInfo) Printer() Printer {
 }
 
 func (p_ PrintInfo) SetPrinter(value IPrinter) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrinter:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrinter:"), objc.ExtractPtr(value))
 }
 
 func (p_ PrintInfo) JobDisposition() PrintJobDispositionValue {

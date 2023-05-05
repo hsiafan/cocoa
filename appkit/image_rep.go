@@ -76,12 +76,12 @@ func (ic _ImageRepClass) ImageRepsWithContentsOfFile(filename string) []ImageRep
 }
 
 func (ic _ImageRepClass) ImageRepsWithPasteboard(pasteboard IPasteboard) []ImageRep {
-	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
 func (ic _ImageRepClass) ImageRepsWithContentsOfURL(url foundation.IURL) []ImageRep {
-	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithContentsOfURL:"), url)
+	rv := objc.CallMethod[[]ImageRep](ic, objc.GetSelector("imageRepsWithContentsOfURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -91,12 +91,12 @@ func (ic _ImageRepClass) ImageRepWithContentsOfFile(filename string) ImageRep {
 }
 
 func (ic _ImageRepClass) ImageRepWithPasteboard(pasteboard IPasteboard) ImageRep {
-	rv := objc.CallMethod[ImageRep](ic, objc.GetSelector("imageRepWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[ImageRep](ic, objc.GetSelector("imageRepWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
 func (ic _ImageRepClass) ImageRepWithContentsOfURL(url foundation.IURL) ImageRep {
-	rv := objc.CallMethod[ImageRep](ic, objc.GetSelector("imageRepWithContentsOfURL:"), url)
+	rv := objc.CallMethod[ImageRep](ic, objc.GetSelector("imageRepWithContentsOfURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (ic _ImageRepClass) CanInitWithData(data []byte) bool {
 }
 
 func (ic _ImageRepClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](ic, objc.GetSelector("canInitWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[bool](ic, objc.GetSelector("canInitWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -135,7 +135,7 @@ func (ic _ImageRepClass) ImageUnfilteredPasteboardTypes() []PasteboardType {
 }
 
 func (i_ ImageRep) CGImageForProposedRect_Context_Hints(proposedDestRect *foundation.Rect, context IGraphicsContext, hints map[ImageHintKey]objc.IObject) coregraphics.ImageRef {
-	rv := objc.CallMethod[coregraphics.ImageRef](i_, objc.GetSelector("CGImageForProposedRect:context:hints:"), proposedDestRect, context, hints)
+	rv := objc.CallMethod[coregraphics.ImageRef](i_, objc.GetSelector("CGImageForProposedRect:context:hints:"), proposedDestRect, objc.ExtractPtr(context), hints)
 	return rv
 }
 
@@ -170,11 +170,11 @@ func (ic _ImageRepClass) ImageRepClassForData(data []byte) objc.Class {
 }
 
 func (ic _ImageRepClass) RegisterImageRepClass(imageRepClass objc.IClass) {
-	objc.CallMethod[objc.Void](ic, objc.GetSelector("registerImageRepClass:"), imageRepClass)
+	objc.CallMethod[objc.Void](ic, objc.GetSelector("registerImageRepClass:"), objc.ExtractPtr(imageRepClass))
 }
 
 func (ic _ImageRepClass) UnregisterImageRepClass(imageRepClass objc.IClass) {
-	objc.CallMethod[objc.Void](ic, objc.GetSelector("unregisterImageRepClass:"), imageRepClass)
+	objc.CallMethod[objc.Void](ic, objc.GetSelector("unregisterImageRepClass:"), objc.ExtractPtr(imageRepClass))
 }
 
 // deprecated

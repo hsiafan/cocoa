@@ -97,6 +97,8 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 	for _, p := range m.Params {
 		sb.WriteString(", ")
 		switch tt := p.Type.(type) {
+		case *typing.ClassType:
+			sb.WriteString("objc.ExtractPtr(" + p.GoName() + ")")
 		case *typing.ProtocolType:
 			cw.WriteLineF("po := objc.CreateProtocol(\"%s\", %s)", tt.Name, p.GoName())
 			if m.WeakProperty { // weak property setter
@@ -117,9 +119,10 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 	}
 	callCode += sb.String() + ")"
 
-	if _, ok := m.ReturnType.(*typing.VoidType); ok {
+	switch rt.(type) {
+	case *typing.VoidType:
 		cw.WriteLine(callCode)
-	} else {
+	default:
 		var resultName = "rv"
 		cw.WriteLine(resultName + " := " + callCode)
 		if m.needRelease() {

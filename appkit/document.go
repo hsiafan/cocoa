@@ -203,12 +203,12 @@ func (d_ Document) Init() Document {
 }
 
 func (d_ Document) InitWithContentsOfURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) Document {
-	rv := objc.CallMethod[Document](d_, objc.GetSelector("initWithContentsOfURL:ofType:error:"), url, typeName, unsafe.Pointer(outError))
+	rv := objc.CallMethod[Document](d_, objc.GetSelector("initWithContentsOfURL:ofType:error:"), objc.ExtractPtr(url), typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) InitForURL_WithContentsOfURL_OfType_Error(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError *foundation.Error) Document {
-	rv := objc.CallMethod[Document](d_, objc.GetSelector("initForURL:withContentsOfURL:ofType:error:"), urlOrNil, contentsURL, typeName, unsafe.Pointer(outError))
+	rv := objc.CallMethod[Document](d_, objc.GetSelector("initForURL:withContentsOfURL:ofType:error:"), objc.ExtractPtr(urlOrNil), objc.ExtractPtr(contentsURL), typeName, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -238,12 +238,12 @@ func (dc _DocumentClass) CanConcurrentlyReadDocumentsOfType(typeName string) boo
 }
 
 func (d_ Document) ReadFromURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("readFromURL:ofType:error:"), url, typeName, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("readFromURL:ofType:error:"), objc.ExtractPtr(url), typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) ReadFromFileWrapper_OfType_Error(fileWrapper foundation.IFileWrapper, typeName string, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("readFromFileWrapper:ofType:error:"), fileWrapper, typeName, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("readFromFileWrapper:ofType:error:"), objc.ExtractPtr(fileWrapper), typeName, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -253,7 +253,7 @@ func (d_ Document) ReadFromData_OfType_Error(data []byte, typeName string, outEr
 }
 
 func (d_ Document) CanAsynchronouslyWriteToURL_OfType_ForSaveOperation(url foundation.IURL, typeName string, saveOperation SaveOperationType) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("canAsynchronouslyWriteToURL:ofType:forSaveOperation:"), url, typeName, saveOperation)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("canAsynchronouslyWriteToURL:ofType:forSaveOperation:"), objc.ExtractPtr(url), typeName, saveOperation)
 	return rv
 }
 
@@ -262,12 +262,12 @@ func (d_ Document) UnblockUserInteraction() {
 }
 
 func (d_ Document) WriteToURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeToURL:ofType:error:"), url, typeName, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeToURL:ofType:error:"), objc.ExtractPtr(url), typeName, unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) WriteSafelyToURL_OfType_ForSaveOperation_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeSafelyToURL:ofType:forSaveOperation:error:"), url, typeName, saveOperation, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeSafelyToURL:ofType:forSaveOperation:error:"), objc.ExtractPtr(url), typeName, saveOperation, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -282,20 +282,20 @@ func (d_ Document) DataOfType_Error(typeName string, outError *foundation.Error)
 }
 
 func (d_ Document) WriteToURL_OfType_ForSaveOperation_OriginalContentsURL_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeToURL:ofType:forSaveOperation:originalContentsURL:error:"), url, typeName, saveOperation, absoluteOriginalContentsURL, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeToURL:ofType:forSaveOperation:originalContentsURL:error:"), objc.ExtractPtr(url), typeName, saveOperation, objc.ExtractPtr(absoluteOriginalContentsURL), unsafe.Pointer(outError))
 	return rv
 }
 
 func (d_ Document) SaveToURL_OfType_ForSaveOperation_Delegate_DidSaveSelector_ContextInfo(url foundation.IURL, typeName string, saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:"), url, typeName, saveOperation, delegate, didSaveSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:"), objc.ExtractPtr(url), typeName, saveOperation, objc.ExtractPtr(delegate), didSaveSelector, contextInfo)
 }
 
 func (d_ Document) SaveToURL_OfType_ForSaveOperation_CompletionHandler(url foundation.IURL, typeName string, saveOperation SaveOperationType, completionHandler func(errorOrNil foundation.Error)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveToURL:ofType:forSaveOperation:completionHandler:"), url, typeName, saveOperation, completionHandler)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveToURL:ofType:forSaveOperation:completionHandler:"), objc.ExtractPtr(url), typeName, saveOperation, completionHandler)
 }
 
 func (d_ Document) FileAttributesToWriteToURL_OfType_ForSaveOperation_OriginalContentsURL_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError *foundation.Error) map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](d_, objc.GetSelector("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:"), url, typeName, saveOperation, absoluteOriginalContentsURL, unsafe.Pointer(outError))
+	rv := objc.CallMethod[map[string]objc.Object](d_, objc.GetSelector("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:"), objc.ExtractPtr(url), typeName, saveOperation, objc.ExtractPtr(absoluteOriginalContentsURL), unsafe.Pointer(outError))
 	return rv
 }
 
@@ -319,23 +319,23 @@ func (d_ Document) MakeWindowControllers() {
 }
 
 func (d_ Document) AddWindowController(windowController IWindowController) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("addWindowController:"), windowController)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("addWindowController:"), objc.ExtractPtr(windowController))
 }
 
 func (d_ Document) RemoveWindowController(windowController IWindowController) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("removeWindowController:"), windowController)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("removeWindowController:"), objc.ExtractPtr(windowController))
 }
 
 func (d_ Document) WindowControllerDidLoadNib(windowController IWindowController) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("windowControllerDidLoadNib:"), windowController)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("windowControllerDidLoadNib:"), objc.ExtractPtr(windowController))
 }
 
 func (d_ Document) WindowControllerWillLoadNib(windowController IWindowController) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("windowControllerWillLoadNib:"), windowController)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("windowControllerWillLoadNib:"), objc.ExtractPtr(windowController))
 }
 
 func (d_ Document) ShouldCloseWindowController_Delegate_ShouldCloseSelector_ContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("shouldCloseWindowController:delegate:shouldCloseSelector:contextInfo:"), windowController, delegate, shouldCloseSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("shouldCloseWindowController:delegate:shouldCloseSelector:contextInfo:"), objc.ExtractPtr(windowController), objc.ExtractPtr(delegate), shouldCloseSelector, contextInfo)
 }
 
 func (d_ Document) ShowWindows() {
@@ -343,7 +343,7 @@ func (d_ Document) ShowWindows() {
 }
 
 func (d_ Document) SetWindow(window IWindow) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setWindow:"), window)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setWindow:"), objc.ExtractPtr(window))
 }
 
 func (d_ Document) SetDisplayName(displayNameOrNil string) {
@@ -356,7 +356,7 @@ func (d_ Document) DefaultDraftName() string {
 }
 
 func (d_ Document) EncodeRestorableStateWithCoder_BackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("encodeRestorableStateWithCoder:backgroundQueue:"), coder, queue)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("encodeRestorableStateWithCoder:backgroundQueue:"), objc.ExtractPtr(coder), objc.ExtractPtr(queue))
 }
 
 func (d_ Document) CheckAutosavingSafetyAndReturnError(outError *foundation.Error) bool {
@@ -369,7 +369,7 @@ func (d_ Document) ScheduleAutosaving() {
 }
 
 func (d_ Document) AutosaveDocumentWithDelegate_DidAutosaveSelector_ContextInfo(delegate objc.IObject, didAutosaveSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("autosaveDocumentWithDelegate:didAutosaveSelector:contextInfo:"), delegate, didAutosaveSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("autosaveDocumentWithDelegate:didAutosaveSelector:contextInfo:"), objc.ExtractPtr(delegate), didAutosaveSelector, contextInfo)
 }
 
 func (d_ Document) AutosaveWithImplicitCancellability_CompletionHandler(autosavingIsImplicitlyCancellable bool, completionHandler func(errorOrNil foundation.Error)) {
@@ -377,7 +377,7 @@ func (d_ Document) AutosaveWithImplicitCancellability_CompletionHandler(autosavi
 }
 
 func (d_ Document) BrowseDocumentVersions(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("browseDocumentVersions:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("browseDocumentVersions:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) StopBrowsingVersionsWithCompletionHandler(completionHandler func()) {
@@ -385,11 +385,11 @@ func (d_ Document) StopBrowsingVersionsWithCompletionHandler(completionHandler f
 }
 
 func (d_ Document) MoveDocumentToUbiquityContainer(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveDocumentToUbiquityContainer:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveDocumentToUbiquityContainer:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) UpdateChangeCountWithToken_ForSaveOperation(changeCountToken objc.IObject, saveOperation SaveOperationType) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateChangeCountWithToken:forSaveOperation:"), changeCountToken, saveOperation)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateChangeCountWithToken:forSaveOperation:"), objc.ExtractPtr(changeCountToken), saveOperation)
 }
 
 func (d_ Document) UpdateChangeCount(change DocumentChangeType) {
@@ -407,11 +407,11 @@ func (dc _DocumentClass) AllowedClassesForRestorableStateKeyPath(keyPath string)
 }
 
 func (d_ Document) EncodeRestorableStateWithCoder(coder foundation.ICoder) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("encodeRestorableStateWithCoder:"), coder)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("encodeRestorableStateWithCoder:"), objc.ExtractPtr(coder))
 }
 
 func (d_ Document) RestoreStateWithCoder(coder foundation.ICoder) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("restoreStateWithCoder:"), coder)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("restoreStateWithCoder:"), objc.ExtractPtr(coder))
 }
 
 func (d_ Document) InvalidateRestorableState() {
@@ -419,20 +419,20 @@ func (d_ Document) InvalidateRestorableState() {
 }
 
 func (d_ Document) RestoreDocumentWindowWithIdentifier_State_CompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(param1 Window, param2 foundation.Error)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("restoreDocumentWindowWithIdentifier:state:completionHandler:"), identifier, state, completionHandler)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("restoreDocumentWindowWithIdentifier:state:completionHandler:"), identifier, objc.ExtractPtr(state), completionHandler)
 }
 
 func (d_ Document) RunModalSavePanelForSaveOperation_Delegate_DidSaveSelector_ContextInfo(saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("runModalSavePanelForSaveOperation:delegate:didSaveSelector:contextInfo:"), saveOperation, delegate, didSaveSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("runModalSavePanelForSaveOperation:delegate:didSaveSelector:contextInfo:"), saveOperation, objc.ExtractPtr(delegate), didSaveSelector, contextInfo)
 }
 
 func (d_ Document) PrepareSavePanel(savePanel ISavePanel) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("prepareSavePanel:"), savePanel)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("prepareSavePanel:"), objc.ExtractPtr(savePanel))
 	return rv
 }
 
 func (d_ Document) UpdateUserActivityState(activity foundation.IUserActivity) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateUserActivityState:"), activity)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateUserActivityState:"), objc.ExtractPtr(activity))
 }
 
 func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool {
@@ -442,7 +442,7 @@ func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bo
 }
 
 func (d_ Document) ValidateUserInterfaceItem0(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("validateUserInterfaceItem:"), item)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("validateUserInterfaceItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -467,35 +467,35 @@ func (d_ Document) ContinueAsynchronousWorkOnMainThreadUsingBlock(block func()) 
 }
 
 func (d_ Document) PrintDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("printDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("printDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) RunPageLayout(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("runPageLayout:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("runPageLayout:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) RevertDocumentToSaved(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("revertDocumentToSaved:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("revertDocumentToSaved:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) SaveDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) SaveDocumentAs(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentAs:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentAs:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) SaveDocumentTo(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentTo:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentTo:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) SaveDocumentWithDelegate_DidSaveSelector_ContextInfo(delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentWithDelegate:didSaveSelector:contextInfo:"), delegate, didSaveSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentWithDelegate:didSaveSelector:contextInfo:"), objc.ExtractPtr(delegate), didSaveSelector, contextInfo)
 }
 
 func (d_ Document) CanCloseDocumentWithDelegate_ShouldCloseSelector_ContextInfo(delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("canCloseDocumentWithDelegate:shouldCloseSelector:contextInfo:"), delegate, shouldCloseSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("canCloseDocumentWithDelegate:shouldCloseSelector:contextInfo:"), objc.ExtractPtr(delegate), shouldCloseSelector, contextInfo)
 }
 
 func (d_ Document) Close() {
@@ -503,7 +503,7 @@ func (d_ Document) Close() {
 }
 
 func (d_ Document) RevertToContentsOfURL_OfType_Error(url foundation.IURL, typeName string, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("revertToContentsOfURL:ofType:error:"), url, typeName, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("revertToContentsOfURL:ofType:error:"), objc.ExtractPtr(url), typeName, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -513,19 +513,19 @@ func (d_ Document) DuplicateAndReturnError(outError *foundation.Error) Document 
 }
 
 func (d_ Document) DuplicateDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("duplicateDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("duplicateDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) DuplicateDocumentWithDelegate_DidDuplicateSelector_ContextInfo(delegate objc.IObject, didDuplicateSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("duplicateDocumentWithDelegate:didDuplicateSelector:contextInfo:"), delegate, didDuplicateSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("duplicateDocumentWithDelegate:didDuplicateSelector:contextInfo:"), objc.ExtractPtr(delegate), didDuplicateSelector, contextInfo)
 }
 
 func (d_ Document) RenameDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("renameDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("renameDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) MoveDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) MoveDocumentWithCompletionHandler(completionHandler func(didMove bool)) {
@@ -533,15 +533,15 @@ func (d_ Document) MoveDocumentWithCompletionHandler(completionHandler func(didM
 }
 
 func (d_ Document) MoveToURL_CompletionHandler(url foundation.IURL, completionHandler func(param1 foundation.Error)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveToURL:completionHandler:"), url, completionHandler)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("moveToURL:completionHandler:"), objc.ExtractPtr(url), completionHandler)
 }
 
 func (d_ Document) LockDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("lockDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("lockDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) UnlockDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("unlockDocument:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("unlockDocument:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) LockDocumentWithCompletionHandler(completionHandler func(didLock bool)) {
@@ -561,25 +561,25 @@ func (d_ Document) UnlockWithCompletionHandler(completionHandler func(param1 fou
 }
 
 func (d_ Document) PreparePageLayout(pageLayout IPageLayout) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("preparePageLayout:"), pageLayout)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("preparePageLayout:"), objc.ExtractPtr(pageLayout))
 	return rv
 }
 
 func (d_ Document) RunModalPageLayoutWithPrintInfo_Delegate_DidRunSelector_ContextInfo(printInfo IPrintInfo, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("runModalPageLayoutWithPrintInfo:delegate:didRunSelector:contextInfo:"), printInfo, delegate, didRunSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("runModalPageLayoutWithPrintInfo:delegate:didRunSelector:contextInfo:"), objc.ExtractPtr(printInfo), objc.ExtractPtr(delegate), didRunSelector, contextInfo)
 }
 
 func (d_ Document) RunModalPrintOperation_Delegate_DidRunSelector_ContextInfo(printOperation IPrintOperation, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("runModalPrintOperation:delegate:didRunSelector:contextInfo:"), printOperation, delegate, didRunSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("runModalPrintOperation:delegate:didRunSelector:contextInfo:"), objc.ExtractPtr(printOperation), objc.ExtractPtr(delegate), didRunSelector, contextInfo)
 }
 
 func (d_ Document) ShouldChangePrintInfo(newPrintInfo IPrintInfo) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("shouldChangePrintInfo:"), newPrintInfo)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("shouldChangePrintInfo:"), objc.ExtractPtr(newPrintInfo))
 	return rv
 }
 
 func (d_ Document) PrintDocumentWithSettings_ShowPrintPanel_Delegate_DidPrintSelector_ContextInfo(printSettings map[PrintInfoAttributeKey]objc.IObject, showPrintPanel bool, delegate objc.IObject, didPrintSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("printDocumentWithSettings:showPrintPanel:delegate:didPrintSelector:contextInfo:"), printSettings, showPrintPanel, delegate, didPrintSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("printDocumentWithSettings:showPrintPanel:delegate:didPrintSelector:contextInfo:"), printSettings, showPrintPanel, objc.ExtractPtr(delegate), didPrintSelector, contextInfo)
 }
 
 func (d_ Document) PrintOperationWithSettings_Error(printSettings map[PrintInfoAttributeKey]objc.IObject, outError *foundation.Error) PrintOperation {
@@ -588,48 +588,48 @@ func (d_ Document) PrintOperationWithSettings_Error(printSettings map[PrintInfoA
 }
 
 func (d_ Document) SaveDocumentToPDF(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentToPDF:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveDocumentToPDF:"), objc.ExtractPtr(sender))
 }
 
 func (d_ Document) PrepareSharingServicePicker(sharingServicePicker ISharingServicePicker) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("prepareSharingServicePicker:"), sharingServicePicker)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("prepareSharingServicePicker:"), objc.ExtractPtr(sharingServicePicker))
 }
 
 func (d_ Document) ShareDocumentWithSharingService_CompletionHandler(sharingService ISharingService, completionHandler func(success bool)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("shareDocumentWithSharingService:completionHandler:"), sharingService, completionHandler)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("shareDocumentWithSharingService:completionHandler:"), objc.ExtractPtr(sharingService), completionHandler)
 }
 
 func (d_ Document) HandleCloseScriptCommand(command foundation.ICloseCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("handleCloseScriptCommand:"), command)
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("handleCloseScriptCommand:"), objc.ExtractPtr(command))
 	return rv
 }
 
 func (d_ Document) HandlePrintScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("handlePrintScriptCommand:"), command)
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("handlePrintScriptCommand:"), objc.ExtractPtr(command))
 	return rv
 }
 
 func (d_ Document) HandleSaveScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("handleSaveScriptCommand:"), command)
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("handleSaveScriptCommand:"), objc.ExtractPtr(command))
 	return rv
 }
 
 func (d_ Document) PresentError_ModalForWindow_Delegate_DidPresentSelector_ContextInfo(error foundation.IError, window IWindow, delegate objc.IObject, didPresentSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), error, window, delegate, didPresentSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), objc.ExtractPtr(error), objc.ExtractPtr(window), objc.ExtractPtr(delegate), didPresentSelector, contextInfo)
 }
 
 func (d_ Document) PresentError(error foundation.IError) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("presentError:"), error)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("presentError:"), objc.ExtractPtr(error))
 	return rv
 }
 
 func (d_ Document) WillPresentError(error foundation.IError) foundation.Error {
-	rv := objc.CallMethod[foundation.Error](d_, objc.GetSelector("willPresentError:"), error)
+	rv := objc.CallMethod[foundation.Error](d_, objc.GetSelector("willPresentError:"), objc.ExtractPtr(error))
 	return rv
 }
 
 func (d_ Document) WillNotPresentError(error foundation.IError) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("willNotPresentError:"), error)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("willNotPresentError:"), objc.ExtractPtr(error))
 }
 
 // deprecated
@@ -658,7 +658,7 @@ func (d_ Document) InitWithContentsOfFile_OfType(absolutePath string, typeName s
 
 // deprecated
 func (d_ Document) InitWithContentsOfURL_OfType(url foundation.IURL, typeName string) objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("initWithContentsOfURL:ofType:"), url, typeName)
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("initWithContentsOfURL:ofType:"), objc.ExtractPtr(url), typeName)
 	return rv
 }
 
@@ -670,7 +670,7 @@ func (d_ Document) LoadDataRepresentation_OfType(data []byte, type_ string) bool
 
 // deprecated
 func (d_ Document) LoadFileWrapperRepresentation_OfType(wrapper foundation.IFileWrapper, type_ string) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("loadFileWrapperRepresentation:ofType:"), wrapper, type_)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("loadFileWrapperRepresentation:ofType:"), objc.ExtractPtr(wrapper), type_)
 	return rv
 }
 
@@ -687,7 +687,7 @@ func (d_ Document) ReadFromFile_OfType(fileName string, type_ string) bool {
 
 // deprecated
 func (d_ Document) ReadFromURL_OfType(url foundation.IURL, type_ string) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("readFromURL:ofType:"), url, type_)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("readFromURL:ofType:"), objc.ExtractPtr(url), type_)
 	return rv
 }
 
@@ -699,24 +699,24 @@ func (d_ Document) RevertToSavedFromFile_OfType(fileName string, type_ string) b
 
 // deprecated
 func (d_ Document) RevertToSavedFromURL_OfType(url foundation.IURL, type_ string) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("revertToSavedFromURL:ofType:"), url, type_)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("revertToSavedFromURL:ofType:"), objc.ExtractPtr(url), type_)
 	return rv
 }
 
 // deprecated
 func (d_ Document) RunModalPageLayoutWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("runModalPageLayoutWithPrintInfo:"), printInfo)
+	rv := objc.CallMethod[int](d_, objc.GetSelector("runModalPageLayoutWithPrintInfo:"), objc.ExtractPtr(printInfo))
 	return rv
 }
 
 // deprecated
 func (d_ Document) SaveToFile_SaveOperation_Delegate_DidSaveSelector_ContextInfo(fileName string, saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveToFile:saveOperation:delegate:didSaveSelector:contextInfo:"), fileName, saveOperation, delegate, didSaveSelector, contextInfo)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("saveToFile:saveOperation:delegate:didSaveSelector:contextInfo:"), fileName, saveOperation, objc.ExtractPtr(delegate), didSaveSelector, contextInfo)
 }
 
 // deprecated
 func (d_ Document) SaveToURL_OfType_ForSaveOperation_Error(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError *foundation.Error) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("saveToURL:ofType:forSaveOperation:error:"), url, typeName, saveOperation, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("saveToURL:ofType:forSaveOperation:error:"), objc.ExtractPtr(url), typeName, saveOperation, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -739,7 +739,7 @@ func (d_ Document) WriteToFile_OfType_OriginalFile_SaveOperation(fullDocumentPat
 
 // deprecated
 func (d_ Document) WriteToURL_OfType(url foundation.IURL, type_ string) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeToURL:ofType:"), url, type_)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("writeToURL:ofType:"), objc.ExtractPtr(url), type_)
 	return rv
 }
 
@@ -755,7 +755,7 @@ func (d_ Document) FileURL() foundation.URL {
 }
 
 func (d_ Document) SetFileURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFileURL:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFileURL:"), objc.ExtractPtr(value))
 }
 
 func (d_ Document) IsEntireFileLoaded() bool {
@@ -769,7 +769,7 @@ func (d_ Document) FileModificationDate() foundation.Date {
 }
 
 func (d_ Document) SetFileModificationDate(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFileModificationDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFileModificationDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ Document) KeepBackupFile() bool {
@@ -856,7 +856,7 @@ func (d_ Document) AutosavedContentsFileURL() foundation.URL {
 }
 
 func (d_ Document) SetAutosavedContentsFileURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAutosavedContentsFileURL:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAutosavedContentsFileURL:"), objc.ExtractPtr(value))
 }
 
 func (d_ Document) AutosavingFileType() string {
@@ -895,7 +895,7 @@ func (d_ Document) UndoManager() foundation.UndoManager {
 }
 
 func (d_ Document) SetUndoManager(value foundation.IUndoManager) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setUndoManager:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setUndoManager:"), objc.ExtractPtr(value))
 }
 
 func (d_ Document) HasUndoManager() bool {
@@ -933,7 +933,7 @@ func (d_ Document) UserActivity() foundation.UserActivity {
 }
 
 func (d_ Document) SetUserActivity(value foundation.IUserActivity) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setUserActivity:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setUserActivity:"), objc.ExtractPtr(value))
 }
 
 func (d_ Document) IsLocked() bool {
@@ -947,7 +947,7 @@ func (d_ Document) PrintInfo() PrintInfo {
 }
 
 func (d_ Document) SetPrintInfo(value IPrintInfo) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setPrintInfo:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setPrintInfo:"), objc.ExtractPtr(value))
 }
 
 func (d_ Document) PDFPrintOperation() PrintOperation {

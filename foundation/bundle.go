@@ -72,7 +72,7 @@ func MakeBundle(ptr unsafe.Pointer) Bundle {
 }
 
 func (bc _BundleClass) BundleWithURL(url IURL) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithURL:"), url)
+	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (bc _BundleClass) BundleWithPath(path string) Bundle {
 }
 
 func (b_ Bundle) InitWithURL(url IURL) Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("initWithURL:"), url)
+	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -112,7 +112,7 @@ func (b_ Bundle) Init() Bundle {
 }
 
 func (bc _BundleClass) BundleForClass(aClass objc.IClass) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleForClass:"), aClass)
+	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleForClass:"), objc.ExtractPtr(aClass))
 	return rv
 }
 
@@ -147,12 +147,12 @@ func (b_ Bundle) URLsForResourcesWithExtension_Subdirectory_Localization(ext str
 }
 
 func (bc _BundleClass) URLForResource_WithExtension_Subdirectory_InBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
-	rv := objc.CallMethod[URL](bc, objc.GetSelector("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, bundleURL)
+	rv := objc.CallMethod[URL](bc, objc.GetSelector("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, objc.ExtractPtr(bundleURL))
 	return rv
 }
 
 func (bc _BundleClass) URLsForResourcesWithExtension_Subdirectory_InBundleWithURL(ext string, subpath string, bundleURL IURL) []URL {
-	rv := objc.CallMethod[[]URL](bc, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, bundleURL)
+	rv := objc.CallMethod[[]URL](bc, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, objc.ExtractPtr(bundleURL))
 	return rv
 }
 

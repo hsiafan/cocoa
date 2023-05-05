@@ -121,5 +121,5 @@ func (p_ PersonNameComponents) PhoneticRepresentation() PersonNameComponents {
 }
 
 func (p_ PersonNameComponents) SetPhoneticRepresentation(value IPersonNameComponents) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPhoneticRepresentation:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPhoneticRepresentation:"), objc.ExtractPtr(value))
 }

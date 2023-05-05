@@ -98,11 +98,11 @@ func NewStackView() StackView {
 }
 
 func (s_ StackView) AddView_InGravity(view IView, gravity StackViewGravity) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("addView:inGravity:"), view, gravity)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addView:inGravity:"), objc.ExtractPtr(view), gravity)
 }
 
 func (s_ StackView) InsertView_AtIndex_InGravity(view IView, index uint, gravity StackViewGravity) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertView:atIndex:inGravity:"), view, index, gravity)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertView:atIndex:inGravity:"), objc.ExtractPtr(view), index, gravity)
 }
 
 func (s_ StackView) SetViews_InGravity(views []IView, gravity StackViewGravity) {
@@ -110,19 +110,19 @@ func (s_ StackView) SetViews_InGravity(views []IView, gravity StackViewGravity) 
 }
 
 func (s_ StackView) RemoveView(view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeView:"), view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeView:"), objc.ExtractPtr(view))
 }
 
 func (s_ StackView) AddArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("addArrangedSubview:"), view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addArrangedSubview:"), objc.ExtractPtr(view))
 }
 
 func (s_ StackView) InsertArrangedSubview_AtIndex(view IView, index int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertArrangedSubview:atIndex:"), view, index)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertArrangedSubview:atIndex:"), objc.ExtractPtr(view), index)
 }
 
 func (s_ StackView) RemoveArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeArrangedSubview:"), view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeArrangedSubview:"), objc.ExtractPtr(view))
 }
 
 func (s_ StackView) ViewsInGravity(gravity StackViewGravity) []View {
@@ -141,21 +141,21 @@ func (s_ StackView) HuggingPriorityForOrientation(orientation LayoutConstraintOr
 }
 
 func (s_ StackView) CustomSpacingAfterView(view IView) float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("customSpacingAfterView:"), view)
+	rv := objc.CallMethod[float64](s_, objc.GetSelector("customSpacingAfterView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (s_ StackView) SetCustomSpacing_AfterView(spacing float64, view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCustomSpacing:afterView:"), spacing, view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCustomSpacing:afterView:"), spacing, objc.ExtractPtr(view))
 }
 
 func (s_ StackView) VisibilityPriorityForView(view IView) StackViewVisibilityPriority {
-	rv := objc.CallMethod[StackViewVisibilityPriority](s_, objc.GetSelector("visibilityPriorityForView:"), view)
+	rv := objc.CallMethod[StackViewVisibilityPriority](s_, objc.GetSelector("visibilityPriorityForView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (s_ StackView) SetVisibilityPriority_ForView(priority StackViewVisibilityPriority, view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVisibilityPriority:forView:"), priority, view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVisibilityPriority:forView:"), priority, objc.ExtractPtr(view))
 }
 
 func (s_ StackView) SetClippingResistancePriority_ForOrientation(clippingResistancePriority LayoutPriority, orientation LayoutConstraintOrientation) {
@@ -178,7 +178,7 @@ func (s_ StackView) SetDelegate(value StackViewDelegate) {
 }
 
 func (s_ StackView) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ StackView) ArrangedSubviews() []View {

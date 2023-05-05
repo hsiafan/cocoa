@@ -105,12 +105,12 @@ func (s_ ScriptClassDescription) TypeForKey(key string) string {
 }
 
 func (s_ ScriptClassDescription) SelectorForCommand(commandDescription IScriptCommandDescription) objc.Selector {
-	rv := objc.CallMethod[objc.Selector](s_, objc.GetSelector("selectorForCommand:"), commandDescription)
+	rv := objc.CallMethod[objc.Selector](s_, objc.GetSelector("selectorForCommand:"), objc.ExtractPtr(commandDescription))
 	return rv
 }
 
 func (s_ ScriptClassDescription) SupportsCommand(commandDescription IScriptCommandDescription) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("supportsCommand:"), commandDescription)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("supportsCommand:"), objc.ExtractPtr(commandDescription))
 	return rv
 }
 

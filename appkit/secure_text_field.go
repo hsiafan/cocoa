@@ -29,7 +29,7 @@ func MakeSecureTextField(ptr unsafe.Pointer) SecureTextField {
 }
 
 func (sc _SecureTextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
+	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 

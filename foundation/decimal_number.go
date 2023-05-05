@@ -49,7 +49,7 @@ func (d_ DecimalNumber) InitWithString(numberValue string) DecimalNumber {
 }
 
 func (d_ DecimalNumber) InitWithString_Locale(numberValue string, locale objc.IObject) DecimalNumber {
-	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("initWithString:locale:"), numberValue, locale)
+	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("initWithString:locale:"), numberValue, objc.ExtractPtr(locale))
 	return rv
 }
 
@@ -94,27 +94,27 @@ func (dc _DecimalNumberClass) DecimalNumberWithString(numberValue string) Decima
 }
 
 func (dc _DecimalNumberClass) DecimalNumberWithString_Locale(numberValue string, locale objc.IObject) DecimalNumber {
-	rv := objc.CallMethod[DecimalNumber](dc, objc.GetSelector("decimalNumberWithString:locale:"), numberValue, locale)
+	rv := objc.CallMethod[DecimalNumber](dc, objc.GetSelector("decimalNumberWithString:locale:"), numberValue, objc.ExtractPtr(locale))
 	return rv
 }
 
 func (d_ DecimalNumber) DecimalNumberByAdding(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberByAdding:"), decimalNumber)
+	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberByAdding:"), objc.ExtractPtr(decimalNumber))
 	return rv
 }
 
 func (d_ DecimalNumber) DecimalNumberBySubtracting(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberBySubtracting:"), decimalNumber)
+	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberBySubtracting:"), objc.ExtractPtr(decimalNumber))
 	return rv
 }
 
 func (d_ DecimalNumber) DecimalNumberByMultiplyingBy(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberByMultiplyingBy:"), decimalNumber)
+	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberByMultiplyingBy:"), objc.ExtractPtr(decimalNumber))
 	return rv
 }
 
 func (d_ DecimalNumber) DecimalNumberByDividingBy(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberByDividingBy:"), decimalNumber)
+	rv := objc.CallMethod[DecimalNumber](d_, objc.GetSelector("decimalNumberByDividingBy:"), objc.ExtractPtr(decimalNumber))
 	return rv
 }
 

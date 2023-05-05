@@ -50,7 +50,7 @@ func (g_ GradientLayer) Init() GradientLayer {
 }
 
 func (g_ GradientLayer) InitWithLayer(layer objc.IObject) GradientLayer {
-	rv := objc.CallMethod[GradientLayer](g_, objc.GetSelector("initWithLayer:"), layer)
+	rv := objc.CallMethod[GradientLayer](g_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 

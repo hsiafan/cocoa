@@ -30,12 +30,12 @@ func MakeCollectionViewCompositionalLayout(ptr unsafe.Pointer) CollectionViewCom
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSection:"), section)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSection:"), objc.ExtractPtr(section))
 	return rv
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection_Configuration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSection:configuration:"), section, configuration)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSection:configuration:"), objc.ExtractPtr(section), objc.ExtractPtr(configuration))
 	return rv
 }
 
@@ -45,7 +45,7 @@ func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvi
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider_Configuration(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSectionProvider:configuration:"), sectionProvider, configuration)
+	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSectionProvider:configuration:"), sectionProvider, objc.ExtractPtr(configuration))
 	return rv
 }
 
@@ -75,5 +75,5 @@ func (c_ CollectionViewCompositionalLayout) Configuration() CollectionViewCompos
 }
 
 func (c_ CollectionViewCompositionalLayout) SetConfiguration(value ICollectionViewCompositionalLayoutConfiguration) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setConfiguration:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setConfiguration:"), objc.ExtractPtr(value))
 }

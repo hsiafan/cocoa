@@ -54,7 +54,7 @@ func MakeWindowController(ptr unsafe.Pointer) WindowController {
 }
 
 func (w_ WindowController) InitWithWindow(window IWindow) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindow:"), window)
+	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
@@ -64,12 +64,12 @@ func (w_ WindowController) InitWithWindowNibName(windowNibName NibName) WindowCo
 }
 
 func (w_ WindowController) InitWithWindowNibName_Owner(windowNibName NibName, owner objc.IObject) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibName:owner:"), windowNibName, owner)
+	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibName:owner:"), windowNibName, objc.ExtractPtr(owner))
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibPath_Owner(windowNibPath string, owner objc.IObject) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibPath:owner:"), windowNibPath, owner)
+	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibPath:owner:"), windowNibPath, objc.ExtractPtr(owner))
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (w_ WindowController) LoadWindow() {
 }
 
 func (w_ WindowController) ShowWindow(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("showWindow:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("showWindow:"), objc.ExtractPtr(sender))
 }
 
 func (w_ WindowController) WindowDidLoad() {
@@ -127,7 +127,7 @@ func (w_ WindowController) WindowTitleForDocumentDisplayName(displayName string)
 }
 
 func (w_ WindowController) DismissController(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("dismissController:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("dismissController:"), objc.ExtractPtr(sender))
 }
 
 func (w_ WindowController) IsWindowLoaded() bool {
@@ -141,7 +141,7 @@ func (w_ WindowController) Window() Window {
 }
 
 func (w_ WindowController) SetWindow(value IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindow:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindow:"), objc.ExtractPtr(value))
 }
 
 func (w_ WindowController) Document() objc.Object {
@@ -150,7 +150,7 @@ func (w_ WindowController) Document() objc.Object {
 }
 
 func (w_ WindowController) SetDocument(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDocument:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDocument:"), objc.ExtractPtr(value))
 }
 
 func (w_ WindowController) ShouldCloseDocument() bool {
@@ -206,5 +206,5 @@ func (w_ WindowController) ContentViewController() ViewController {
 }
 
 func (w_ WindowController) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentViewController:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentViewController:"), objc.ExtractPtr(value))
 }

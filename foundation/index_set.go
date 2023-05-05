@@ -79,7 +79,7 @@ func (i_ IndexSet) InitWithIndexesInRange(range_ Range) IndexSet {
 }
 
 func (i_ IndexSet) InitWithIndexSet(indexSet IIndexSet) IndexSet {
-	rv := objc.CallMethod[IndexSet](i_, objc.GetSelector("initWithIndexSet:"), indexSet)
+	rv := objc.CallMethod[IndexSet](i_, objc.GetSelector("initWithIndexSet:"), objc.ExtractPtr(indexSet))
 	return rv
 }
 
@@ -109,7 +109,7 @@ func (i_ IndexSet) ContainsIndex(value uint) bool {
 }
 
 func (i_ IndexSet) ContainsIndexes(indexSet IIndexSet) bool {
-	rv := objc.CallMethod[bool](i_, objc.GetSelector("containsIndexes:"), indexSet)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("containsIndexes:"), objc.ExtractPtr(indexSet))
 	return rv
 }
 
@@ -171,7 +171,7 @@ func (i_ IndexSet) EnumerateRangesWithOptions_UsingBlock(opts EnumerationOptions
 }
 
 func (i_ IndexSet) IsEqualToIndexSet(indexSet IIndexSet) bool {
-	rv := objc.CallMethod[bool](i_, objc.GetSelector("isEqualToIndexSet:"), indexSet)
+	rv := objc.CallMethod[bool](i_, objc.GetSelector("isEqualToIndexSet:"), objc.ExtractPtr(indexSet))
 	return rv
 }
 

@@ -64,7 +64,7 @@ func (d_ DatePickerCell) InitTextCell(string_ string) DatePickerCell {
 }
 
 func (d_ DatePickerCell) InitImageCell(image IImage) DatePickerCell {
-	rv := objc.CallMethod[DatePickerCell](d_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[DatePickerCell](d_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -94,7 +94,7 @@ func (d_ DatePickerCell) BackgroundColor() Color {
 }
 
 func (d_ DatePickerCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) DrawsBackground() bool {
@@ -112,7 +112,7 @@ func (d_ DatePickerCell) TextColor() Color {
 }
 
 func (d_ DatePickerCell) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTextColor:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTextColor:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) DatePickerStyle() DatePickerStyle {
@@ -148,7 +148,7 @@ func (d_ DatePickerCell) DateValue() foundation.Date {
 }
 
 func (d_ DatePickerCell) SetDateValue(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDateValue:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDateValue:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) TimeInterval() foundation.TimeInterval {
@@ -166,7 +166,7 @@ func (d_ DatePickerCell) Calendar() foundation.Calendar {
 }
 
 func (d_ DatePickerCell) SetCalendar(value foundation.ICalendar) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) Locale() foundation.Locale {
@@ -175,7 +175,7 @@ func (d_ DatePickerCell) Locale() foundation.Locale {
 }
 
 func (d_ DatePickerCell) SetLocale(value foundation.ILocale) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) TimeZone() foundation.TimeZone {
@@ -184,7 +184,7 @@ func (d_ DatePickerCell) TimeZone() foundation.TimeZone {
 }
 
 func (d_ DatePickerCell) SetTimeZone(value foundation.ITimeZone) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) MinDate() foundation.Date {
@@ -193,7 +193,7 @@ func (d_ DatePickerCell) MinDate() foundation.Date {
 }
 
 func (d_ DatePickerCell) SetMinDate(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMinDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMinDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) MaxDate() foundation.Date {
@@ -202,7 +202,7 @@ func (d_ DatePickerCell) MaxDate() foundation.Date {
 }
 
 func (d_ DatePickerCell) SetMaxDate(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMaxDate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMaxDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) Delegate() DatePickerCellDelegateWrapper {
@@ -217,5 +217,5 @@ func (d_ DatePickerCell) SetDelegate(value DatePickerCellDelegate) {
 }
 
 func (d_ DatePickerCell) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

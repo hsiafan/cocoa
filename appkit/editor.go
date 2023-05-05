@@ -29,7 +29,7 @@ func (e_ EditorWrapper) CommitEditing() bool {
 }
 
 func (e_ EditorWrapper) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](e_, objc.GetSelector("commitEditingWithDelegate:didCommitSelector:contextInfo:"), delegate, didCommitSelector, contextInfo)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("commitEditingWithDelegate:didCommitSelector:contextInfo:"), objc.ExtractPtr(delegate), didCommitSelector, contextInfo)
 }
 
 func (e_ EditorWrapper) CommitEditingAndReturnError(error *foundation.Error) bool {

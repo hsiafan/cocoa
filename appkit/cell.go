@@ -185,7 +185,7 @@ func MakeCell(ptr unsafe.Pointer) Cell {
 }
 
 func (c_ Cell) InitImageCell(image IImage) Cell {
-	rv := objc.CallMethod[Cell](c_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[Cell](c_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -228,7 +228,7 @@ func (c_ Cell) SetNextState() {
 }
 
 func (c_ Cell) SetUpFieldEditorAttributes(textObj IText) Text {
-	rv := objc.CallMethod[Text](c_, objc.GetSelector("setUpFieldEditorAttributes:"), textObj)
+	rv := objc.CallMethod[Text](c_, objc.GetSelector("setUpFieldEditorAttributes:"), objc.ExtractPtr(textObj))
 	return rv
 }
 
@@ -238,60 +238,60 @@ func (c_ Cell) SendActionOn(mask EventMask) int {
 }
 
 func (c_ Cell) MenuForEvent_InRect_OfView(event IEvent, cellFrame foundation.Rect, view IView) Menu {
-	rv := objc.CallMethod[Menu](c_, objc.GetSelector("menuForEvent:inRect:ofView:"), event, cellFrame, view)
+	rv := objc.CallMethod[Menu](c_, objc.GetSelector("menuForEvent:inRect:ofView:"), objc.ExtractPtr(event), cellFrame, objc.ExtractPtr(view))
 	return rv
 }
 
 func (c_ Cell) Compare(otherCell objc.IObject) foundation.ComparisonResult {
-	rv := objc.CallMethod[foundation.ComparisonResult](c_, objc.GetSelector("compare:"), otherCell)
+	rv := objc.CallMethod[foundation.ComparisonResult](c_, objc.GetSelector("compare:"), objc.ExtractPtr(otherCell))
 	return rv
 }
 
 func (c_ Cell) PerformClick(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("performClick:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("performClick:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TakeObjectValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeObjectValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeObjectValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TakeIntegerValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntegerValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntegerValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TakeIntValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeIntValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TakeStringValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeStringValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeStringValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TakeDoubleValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeDoubleValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeDoubleValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TakeFloatValueFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeFloatValueFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeFloatValueFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ Cell) TrackMouse_InRect_OfView_UntilMouseUp(event IEvent, cellFrame foundation.Rect, controlView IView, flag bool) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("trackMouse:inRect:ofView:untilMouseUp:"), event, cellFrame, controlView, flag)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("trackMouse:inRect:ofView:untilMouseUp:"), objc.ExtractPtr(event), cellFrame, objc.ExtractPtr(controlView), flag)
 	return rv
 }
 
 func (c_ Cell) StartTrackingAt_InView(startPoint foundation.Point, controlView IView) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("startTrackingAt:inView:"), startPoint, controlView)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("startTrackingAt:inView:"), startPoint, objc.ExtractPtr(controlView))
 	return rv
 }
 
 func (c_ Cell) ContinueTracking_At_InView(lastPoint foundation.Point, currentPoint foundation.Point, controlView IView) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("continueTracking:at:inView:"), lastPoint, currentPoint, controlView)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("continueTracking:at:inView:"), lastPoint, currentPoint, objc.ExtractPtr(controlView))
 	return rv
 }
 
 func (c_ Cell) StopTracking_At_InView_MouseIsUp(lastPoint foundation.Point, stopPoint foundation.Point, controlView IView, flag bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("stopTracking:at:inView:mouseIsUp:"), lastPoint, stopPoint, controlView, flag)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("stopTracking:at:inView:mouseIsUp:"), lastPoint, stopPoint, objc.ExtractPtr(controlView), flag)
 }
 
 func (c_ Cell) GetPeriodicDelay_Interval(delay *float32, interval *float32) {
@@ -299,25 +299,25 @@ func (c_ Cell) GetPeriodicDelay_Interval(delay *float32, interval *float32) {
 }
 
 func (c_ Cell) HitTestForEvent_InRect_OfView(event IEvent, cellFrame foundation.Rect, controlView IView) CellHitResult {
-	rv := objc.CallMethod[CellHitResult](c_, objc.GetSelector("hitTestForEvent:inRect:ofView:"), event, cellFrame, controlView)
+	rv := objc.CallMethod[CellHitResult](c_, objc.GetSelector("hitTestForEvent:inRect:ofView:"), objc.ExtractPtr(event), cellFrame, objc.ExtractPtr(controlView))
 	return rv
 }
 
 func (c_ Cell) ResetCursorRect_InView(cellFrame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("resetCursorRect:inView:"), cellFrame, controlView)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("resetCursorRect:inView:"), cellFrame, objc.ExtractPtr(controlView))
 }
 
 func (c_ Cell) DraggingImageComponentsWithFrame_InView(frame foundation.Rect, view IView) []DraggingImageComponent {
-	rv := objc.CallMethod[[]DraggingImageComponent](c_, objc.GetSelector("draggingImageComponentsWithFrame:inView:"), frame, view)
+	rv := objc.CallMethod[[]DraggingImageComponent](c_, objc.GetSelector("draggingImageComponentsWithFrame:inView:"), frame, objc.ExtractPtr(view))
 	return rv
 }
 
 func (c_ Cell) DrawFocusRingMaskWithFrame_InView(cellFrame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawFocusRingMaskWithFrame:inView:"), cellFrame, controlView)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawFocusRingMaskWithFrame:inView:"), cellFrame, objc.ExtractPtr(controlView))
 }
 
 func (c_ Cell) FocusRingMaskBoundsForFrame_InView(cellFrame foundation.Rect, controlView IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("focusRingMaskBoundsForFrame:inView:"), cellFrame, controlView)
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("focusRingMaskBoundsForFrame:inView:"), cellFrame, objc.ExtractPtr(controlView))
 	return rv
 }
 
@@ -346,46 +346,46 @@ func (c_ Cell) TitleRectForBounds(rect foundation.Rect) foundation.Rect {
 }
 
 func (c_ Cell) DrawWithFrame_InView(cellFrame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithFrame:inView:"), cellFrame, controlView)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithFrame:inView:"), cellFrame, objc.ExtractPtr(controlView))
 }
 
 func (c_ Cell) HighlightColorWithFrame_InView(cellFrame foundation.Rect, controlView IView) Color {
-	rv := objc.CallMethod[Color](c_, objc.GetSelector("highlightColorWithFrame:inView:"), cellFrame, controlView)
+	rv := objc.CallMethod[Color](c_, objc.GetSelector("highlightColorWithFrame:inView:"), cellFrame, objc.ExtractPtr(controlView))
 	return rv
 }
 
 func (c_ Cell) DrawInteriorWithFrame_InView(cellFrame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawInteriorWithFrame:inView:"), cellFrame, controlView)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawInteriorWithFrame:inView:"), cellFrame, objc.ExtractPtr(controlView))
 }
 
 func (c_ Cell) Highlight_WithFrame_InView(flag bool, cellFrame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("highlight:withFrame:inView:"), flag, cellFrame, controlView)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("highlight:withFrame:inView:"), flag, cellFrame, objc.ExtractPtr(controlView))
 }
 
 func (c_ Cell) EditWithFrame_InView_Editor_Delegate_Event(rect foundation.Rect, controlView IView, textObj IText, delegate objc.IObject, event IEvent) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("editWithFrame:inView:editor:delegate:event:"), rect, controlView, textObj, delegate, event)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("editWithFrame:inView:editor:delegate:event:"), rect, objc.ExtractPtr(controlView), objc.ExtractPtr(textObj), objc.ExtractPtr(delegate), objc.ExtractPtr(event))
 }
 
 func (c_ Cell) SelectWithFrame_InView_Editor_Delegate_Start_Length(rect foundation.Rect, controlView IView, textObj IText, delegate objc.IObject, selStart int, selLength int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectWithFrame:inView:editor:delegate:start:length:"), rect, controlView, textObj, delegate, selStart, selLength)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectWithFrame:inView:editor:delegate:start:length:"), rect, objc.ExtractPtr(controlView), objc.ExtractPtr(textObj), objc.ExtractPtr(delegate), selStart, selLength)
 }
 
 func (c_ Cell) EndEditing(textObj IText) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("endEditing:"), textObj)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("endEditing:"), objc.ExtractPtr(textObj))
 }
 
 func (c_ Cell) FieldEditorForView(controlView IView) TextView {
-	rv := objc.CallMethod[TextView](c_, objc.GetSelector("fieldEditorForView:"), controlView)
+	rv := objc.CallMethod[TextView](c_, objc.GetSelector("fieldEditorForView:"), objc.ExtractPtr(controlView))
 	return rv
 }
 
 func (c_ Cell) ExpansionFrameWithFrame_InView(cellFrame foundation.Rect, view IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("expansionFrameWithFrame:inView:"), cellFrame, view)
+	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("expansionFrameWithFrame:inView:"), cellFrame, objc.ExtractPtr(view))
 	return rv
 }
 
 func (c_ Cell) DrawWithExpansionFrame_InView(cellFrame foundation.Rect, view IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithExpansionFrame:inView:"), cellFrame, view)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("drawWithExpansionFrame:inView:"), cellFrame, objc.ExtractPtr(view))
 }
 
 // deprecated
@@ -438,7 +438,7 @@ func (c_ Cell) ObjectValue() objc.Object {
 }
 
 func (c_ Cell) SetObjectValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setObjectValue:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setObjectValue:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) HasValidObjectValue() bool {
@@ -631,7 +631,7 @@ func (c_ Cell) Font() Font {
 }
 
 func (c_ Cell) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFont:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFont:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) LineBreakMode() LineBreakMode {
@@ -676,7 +676,7 @@ func (c_ Cell) AttributedStringValue() foundation.AttributedString {
 }
 
 func (c_ Cell) SetAttributedStringValue(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAttributedStringValue:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAttributedStringValue:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) AllowsEditingTextAttributes() bool {
@@ -721,7 +721,7 @@ func (c_ Cell) Target() objc.Object {
 }
 
 func (c_ Cell) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) IsContinuous() bool {
@@ -739,7 +739,7 @@ func (c_ Cell) Image() Image {
 }
 
 func (c_ Cell) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) Tag() int {
@@ -757,7 +757,7 @@ func (c_ Cell) Formatter() foundation.Formatter {
 }
 
 func (c_ Cell) SetFormatter(value foundation.IFormatter) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFormatter:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setFormatter:"), objc.ExtractPtr(value))
 }
 
 func (cc _CellClass) DefaultMenu() Menu {
@@ -771,7 +771,7 @@ func (c_ Cell) Menu() Menu {
 }
 
 func (c_ Cell) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMenu:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) AcceptsFirstResponder() bool {
@@ -803,7 +803,7 @@ func (c_ Cell) RepresentedObject() objc.Object {
 }
 
 func (c_ Cell) SetRepresentedObject(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setRepresentedObject:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setRepresentedObject:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) MouseDownFlags() int {
@@ -855,7 +855,7 @@ func (c_ Cell) ControlView() View {
 }
 
 func (c_ Cell) SetControlView(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setControlView:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setControlView:"), objc.ExtractPtr(value))
 }
 
 func (c_ Cell) IsHighlighted() bool {

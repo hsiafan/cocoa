@@ -48,7 +48,7 @@ func (a_ AttributedString) InitWithString_Attributes(str string, attrs map[Attri
 }
 
 func (a_ AttributedString) InitWithAttributedString(attrStr IAttributedString) AttributedString {
-	rv := objc.CallMethod[AttributedString](a_, objc.GetSelector("initWithAttributedString:"), attrStr)
+	rv := objc.CallMethod[AttributedString](a_, objc.GetSelector("initWithAttributedString:"), objc.ExtractPtr(attrStr))
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (a_ AttributedString) Attribute_AtIndex_LongestEffectiveRange_InRange(attrN
 }
 
 func (a_ AttributedString) IsEqualToAttributedString(other IAttributedString) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isEqualToAttributedString:"), other)
+	rv := objc.CallMethod[bool](a_, objc.GetSelector("isEqualToAttributedString:"), objc.ExtractPtr(other))
 	return rv
 }
 

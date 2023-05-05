@@ -115,17 +115,17 @@ func (tc _TypesetterClass) SharedSystemTypesetterForBehavior(behavior Typesetter
 }
 
 func (tc _TypesetterClass) PrintingAdjustmentInLayoutManager_ForNominallySpacedGlyphRange_PackedGlyphs_Count(layoutMgr ILayoutManager, nominallySpacedGlyphsRange foundation.Range, packedGlyphs *byte, packedGlyphsCount uint) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](tc, objc.GetSelector("printingAdjustmentInLayoutManager:forNominallySpacedGlyphRange:packedGlyphs:count:"), layoutMgr, nominallySpacedGlyphsRange, packedGlyphs, packedGlyphsCount)
+	rv := objc.CallMethod[foundation.Size](tc, objc.GetSelector("printingAdjustmentInLayoutManager:forNominallySpacedGlyphRange:packedGlyphs:count:"), objc.ExtractPtr(layoutMgr), nominallySpacedGlyphsRange, packedGlyphs, packedGlyphsCount)
 	return rv
 }
 
 func (t_ Typesetter) BaselineOffsetInLayoutManager_GlyphIndex(layoutMgr ILayoutManager, glyphIndex uint) float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("baselineOffsetInLayoutManager:glyphIndex:"), layoutMgr, glyphIndex)
+	rv := objc.CallMethod[float64](t_, objc.GetSelector("baselineOffsetInLayoutManager:glyphIndex:"), objc.ExtractPtr(layoutMgr), glyphIndex)
 	return rv
 }
 
 func (t_ Typesetter) SubstituteFontForFont(originalFont IFont) Font {
-	rv := objc.CallMethod[Font](t_, objc.GetSelector("substituteFontForFont:"), originalFont)
+	rv := objc.CallMethod[Font](t_, objc.GetSelector("substituteFontForFont:"), objc.ExtractPtr(originalFont))
 	return rv
 }
 
@@ -175,16 +175,16 @@ func (t_ Typesetter) EndLineWithGlyphRange(lineGlyphRange foundation.Range) {
 }
 
 func (t_ Typesetter) LayoutCharactersInRange_ForLayoutManager_MaximumNumberOfLineFragments(characterRange foundation.Range, layoutManager ILayoutManager, maxNumLines uint) foundation.Range {
-	rv := objc.CallMethod[foundation.Range](t_, objc.GetSelector("layoutCharactersInRange:forLayoutManager:maximumNumberOfLineFragments:"), characterRange, layoutManager, maxNumLines)
+	rv := objc.CallMethod[foundation.Range](t_, objc.GetSelector("layoutCharactersInRange:forLayoutManager:maximumNumberOfLineFragments:"), characterRange, objc.ExtractPtr(layoutManager), maxNumLines)
 	return rv
 }
 
 func (t_ Typesetter) LayoutGlyphsInLayoutManager_StartingAtGlyphIndex_MaxNumberOfLineFragments_NextGlyphIndex(layoutManager ILayoutManager, startGlyphIndex uint, maxNumLines uint, nextGlyph *uint) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("layoutGlyphsInLayoutManager:startingAtGlyphIndex:maxNumberOfLineFragments:nextGlyphIndex:"), layoutManager, startGlyphIndex, maxNumLines, nextGlyph)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("layoutGlyphsInLayoutManager:startingAtGlyphIndex:maxNumberOfLineFragments:nextGlyphIndex:"), objc.ExtractPtr(layoutManager), startGlyphIndex, maxNumLines, nextGlyph)
 }
 
 func (t_ Typesetter) BoundingBoxForControlGlyphAtIndex_ForTextContainer_ProposedLineFragment_GlyphPosition_CharacterIndex(glyphIndex uint, textContainer ITextContainer, proposedRect foundation.Rect, glyphPosition foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), glyphIndex, textContainer, proposedRect, glyphPosition, charIndex)
+	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), glyphIndex, objc.ExtractPtr(textContainer), proposedRect, glyphPosition, charIndex)
 	return rv
 }
 
@@ -362,7 +362,7 @@ func (t_ Typesetter) AttributedString() foundation.AttributedString {
 }
 
 func (t_ Typesetter) SetAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributedString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (t_ Typesetter) ParagraphGlyphRange() foundation.Range {

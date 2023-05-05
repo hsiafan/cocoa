@@ -32,12 +32,12 @@ func MakeNib(ptr unsafe.Pointer) Nib {
 }
 
 func (n_ Nib) InitWithNibNamed_Bundle(nibName NibName, bundle foundation.IBundle) Nib {
-	rv := objc.CallMethod[Nib](n_, objc.GetSelector("initWithNibNamed:bundle:"), nibName, bundle)
+	rv := objc.CallMethod[Nib](n_, objc.GetSelector("initWithNibNamed:bundle:"), nibName, objc.ExtractPtr(bundle))
 	return rv
 }
 
 func (n_ Nib) InitWithNibData_Bundle(nibData []byte, bundle foundation.IBundle) Nib {
-	rv := objc.CallMethod[Nib](n_, objc.GetSelector("initWithNibData:bundle:"), nibData, bundle)
+	rv := objc.CallMethod[Nib](n_, objc.GetSelector("initWithNibData:bundle:"), nibData, objc.ExtractPtr(bundle))
 	return rv
 }
 
@@ -63,11 +63,11 @@ func (n_ Nib) Init() Nib {
 
 // deprecated
 func (n_ Nib) InitWithContentsOfURL(nibFileURL foundation.IURL) objc.Object {
-	rv := objc.CallMethod[objc.Object](n_, objc.GetSelector("initWithContentsOfURL:"), nibFileURL)
+	rv := objc.CallMethod[objc.Object](n_, objc.GetSelector("initWithContentsOfURL:"), objc.ExtractPtr(nibFileURL))
 	return rv
 }
 
 func (n_ Nib) InstantiateWithOwner_TopLevelObjects(owner objc.IObject, topLevelObjects *foundation.Array) bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("instantiateWithOwner:topLevelObjects:"), owner, topLevelObjects)
+	rv := objc.CallMethod[bool](n_, objc.GetSelector("instantiateWithOwner:topLevelObjects:"), objc.ExtractPtr(owner), topLevelObjects)
 	return rv
 }

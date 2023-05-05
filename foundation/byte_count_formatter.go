@@ -78,12 +78,12 @@ func (b_ ByteCountFormatter) StringFromByteCount(byteCount int64) string {
 }
 
 func (b_ ByteCountFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("stringFromMeasurement:"), measurement)
+	rv := objc.CallMethod[string](b_, objc.GetSelector("stringFromMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 
 func (bc _ByteCountFormatterClass) StringFromMeasurement_CountStyle(measurement IMeasurement, countStyle ByteCountFormatterCountStyle) string {
-	rv := objc.CallMethod[string](bc, objc.GetSelector("stringFromMeasurement:countStyle:"), measurement, countStyle)
+	rv := objc.CallMethod[string](bc, objc.GetSelector("stringFromMeasurement:countStyle:"), objc.ExtractPtr(measurement), countStyle)
 	return rv
 }
 

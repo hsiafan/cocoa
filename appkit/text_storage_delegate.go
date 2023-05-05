@@ -52,7 +52,7 @@ func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_WillProcessEditing_R
 }
 
 func (t_ TextStorageDelegateWrapper) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textStorage:willProcessEditing:range:changeInLength:"), textStorage, editedMask, editedRange, delta)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textStorage:willProcessEditing:range:changeInLength:"), objc.ExtractPtr(textStorage), editedMask, editedRange, delta)
 }
 
 func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
@@ -60,5 +60,5 @@ func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_DidProcessEditing_Ra
 }
 
 func (t_ TextStorageDelegateWrapper) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textStorage:didProcessEditing:range:changeInLength:"), textStorage, editedMask, editedRange, delta)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("textStorage:didProcessEditing:range:changeInLength:"), objc.ExtractPtr(textStorage), editedMask, editedRange, delta)
 }

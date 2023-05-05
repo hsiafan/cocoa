@@ -71,5 +71,5 @@ func (m_ MenuToolbarItem) Menu() Menu {
 }
 
 func (m_ MenuToolbarItem) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
 }

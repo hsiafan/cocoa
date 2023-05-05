@@ -36,6 +36,6 @@ func (a_ *AlertDelegateWrapper) ImplementsAlertShowHelp() bool {
 }
 
 func (a_ AlertDelegateWrapper) AlertShowHelp(alert IAlert) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("alertShowHelp:"), alert)
+	rv := objc.CallMethod[bool](a_, objc.GetSelector("alertShowHelp:"), objc.ExtractPtr(alert))
 	return rv
 }

@@ -97,37 +97,37 @@ func (tc _TimeZoneClass) ResetSystemTimeZone() {
 }
 
 func (t_ TimeZone) AbbreviationForDate(aDate IDate) string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("abbreviationForDate:"), aDate)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("abbreviationForDate:"), objc.ExtractPtr(aDate))
 	return rv
 }
 
 func (t_ TimeZone) SecondsFromGMTForDate(aDate IDate) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("secondsFromGMTForDate:"), aDate)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("secondsFromGMTForDate:"), objc.ExtractPtr(aDate))
 	return rv
 }
 
 func (t_ TimeZone) IsDaylightSavingTimeForDate(aDate IDate) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isDaylightSavingTimeForDate:"), aDate)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isDaylightSavingTimeForDate:"), objc.ExtractPtr(aDate))
 	return rv
 }
 
 func (t_ TimeZone) DaylightSavingTimeOffsetForDate(aDate IDate) TimeInterval {
-	rv := objc.CallMethod[TimeInterval](t_, objc.GetSelector("daylightSavingTimeOffsetForDate:"), aDate)
+	rv := objc.CallMethod[TimeInterval](t_, objc.GetSelector("daylightSavingTimeOffsetForDate:"), objc.ExtractPtr(aDate))
 	return rv
 }
 
 func (t_ TimeZone) NextDaylightSavingTimeTransitionAfterDate(aDate IDate) Date {
-	rv := objc.CallMethod[Date](t_, objc.GetSelector("nextDaylightSavingTimeTransitionAfterDate:"), aDate)
+	rv := objc.CallMethod[Date](t_, objc.GetSelector("nextDaylightSavingTimeTransitionAfterDate:"), objc.ExtractPtr(aDate))
 	return rv
 }
 
 func (t_ TimeZone) IsEqualToTimeZone(aTimeZone ITimeZone) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEqualToTimeZone:"), aTimeZone)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEqualToTimeZone:"), objc.ExtractPtr(aTimeZone))
 	return rv
 }
 
 func (t_ TimeZone) LocalizedName_Locale(style TimeZoneNameStyle, locale ILocale) string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("localizedName:locale:"), style, locale)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("localizedName:locale:"), style, objc.ExtractPtr(locale))
 	return rv
 }
 
@@ -147,7 +147,7 @@ func (tc _TimeZoneClass) DefaultTimeZone() TimeZone {
 }
 
 func (tc _TimeZoneClass) SetDefaultTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](tc, objc.GetSelector("setDefaultTimeZone:"), value)
+	objc.CallMethod[objc.Void](tc, objc.GetSelector("setDefaultTimeZone:"), objc.ExtractPtr(value))
 }
 
 func (tc _TimeZoneClass) KnownTimeZoneNames() []string {

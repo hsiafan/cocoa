@@ -35,32 +35,32 @@ func MakeCollectionLayoutBoundarySupplementaryItem(ptr unsafe.Pointer) Collectio
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSize_ElementKind_Alignment(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), layoutSize, elementKind, alignment)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), objc.ExtractPtr(layoutSize), elementKind, alignment)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSize_ElementKind_Alignment_AbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), layoutSize, elementKind, alignment, absoluteOffset)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), objc.ExtractPtr(layoutSize), elementKind, alignment, absoluteOffset)
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSize_ElementKind_ContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), layoutSize, elementKind, containerAnchor)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), objc.ExtractPtr(layoutSize), elementKind, objc.ExtractPtr(containerAnchor))
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSize_ElementKind_ContainerAnchor_ItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), layoutSize, elementKind, containerAnchor, itemAnchor)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), objc.ExtractPtr(layoutSize), elementKind, objc.ExtractPtr(containerAnchor), objc.ExtractPtr(itemAnchor))
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:"), objc.ExtractPtr(layoutSize))
 	return rv
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutBoundarySupplementaryItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), objc.ExtractPtr(layoutSize), supplementaryItems)
 	return rv
 }
 

@@ -115,7 +115,7 @@ func (t_ TableColumn) TableView() TableView {
 }
 
 func (t_ TableColumn) SetTableView(value ITableView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableColumn) Width() float64 {
@@ -169,7 +169,7 @@ func (t_ TableColumn) HeaderCell() TableHeaderCell {
 }
 
 func (t_ TableColumn) SetHeaderCell(value ITableHeaderCell) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeaderCell:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeaderCell:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableColumn) Identifier() UserInterfaceItemIdentifier {
@@ -196,7 +196,7 @@ func (t_ TableColumn) SortDescriptorPrototype() foundation.SortDescriptor {
 }
 
 func (t_ TableColumn) SetSortDescriptorPrototype(value foundation.ISortDescriptor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSortDescriptorPrototype:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSortDescriptorPrototype:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableColumn) IsHidden() bool {
@@ -225,5 +225,5 @@ func (t_ TableColumn) DataCell() objc.Object {
 
 // deprecated
 func (t_ TableColumn) SetDataCell(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataCell:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataCell:"), objc.ExtractPtr(value))
 }

@@ -49,12 +49,12 @@ func MakeTabViewItem(ptr unsafe.Pointer) TabViewItem {
 }
 
 func (t_ TabViewItem) InitWithIdentifier(identifier objc.IObject) TabViewItem {
-	rv := objc.CallMethod[TabViewItem](t_, objc.GetSelector("initWithIdentifier:"), identifier)
+	rv := objc.CallMethod[TabViewItem](t_, objc.GetSelector("initWithIdentifier:"), objc.ExtractPtr(identifier))
 	return rv
 }
 
 func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	rv := objc.CallMethod[TabViewItem](tc, objc.GetSelector("tabViewItemWithViewController:"), viewController)
+	rv := objc.CallMethod[TabViewItem](tc, objc.GetSelector("tabViewItemWithViewController:"), objc.ExtractPtr(viewController))
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (t_ TabViewItem) Identifier() objc.Object {
 }
 
 func (t_ TabViewItem) SetIdentifier(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setIdentifier:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setIdentifier:"), objc.ExtractPtr(value))
 }
 
 func (t_ TabViewItem) Color() Color {
@@ -116,7 +116,7 @@ func (t_ TabViewItem) Color() Color {
 }
 
 func (t_ TabViewItem) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TabViewItem) View() View {
@@ -125,7 +125,7 @@ func (t_ TabViewItem) View() View {
 }
 
 func (t_ TabViewItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TabViewItem) InitialFirstResponder() View {
@@ -134,7 +134,7 @@ func (t_ TabViewItem) InitialFirstResponder() View {
 }
 
 func (t_ TabViewItem) SetInitialFirstResponder(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setInitialFirstResponder:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setInitialFirstResponder:"), objc.ExtractPtr(value))
 }
 
 func (t_ TabViewItem) TabView() TabView {
@@ -157,7 +157,7 @@ func (t_ TabViewItem) Image() Image {
 }
 
 func (t_ TabViewItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (t_ TabViewItem) ViewController() ViewController {
@@ -166,5 +166,5 @@ func (t_ TabViewItem) ViewController() ViewController {
 }
 
 func (t_ TabViewItem) SetViewController(value IViewController) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setViewController:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setViewController:"), objc.ExtractPtr(value))
 }

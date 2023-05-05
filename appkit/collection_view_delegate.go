@@ -471,7 +471,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ShouldSelectIt
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ShouldSelectItemsAtIndexPaths(collectionView ICollectionView, indexPaths foundation.ISet) foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("collectionView:shouldSelectItemsAtIndexPaths:"), collectionView, indexPaths)
+	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("collectionView:shouldSelectItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths))
 	return rv
 }
 
@@ -480,7 +480,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidSelectItems
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DidSelectItemsAtIndexPaths(collectionView ICollectionView, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didSelectItemsAtIndexPaths:"), collectionView, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didSelectItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ShouldDeselectItemsAtIndexPaths() bool {
@@ -488,7 +488,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ShouldDeselect
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ShouldDeselectItemsAtIndexPaths(collectionView ICollectionView, indexPaths foundation.ISet) foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("collectionView:shouldDeselectItemsAtIndexPaths:"), collectionView, indexPaths)
+	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("collectionView:shouldDeselectItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths))
 	return rv
 }
 
@@ -497,7 +497,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidDeselectIte
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DidDeselectItemsAtIndexPaths(collectionView ICollectionView, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didDeselectItemsAtIndexPaths:"), collectionView, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didDeselectItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ShouldChangeItemsAtIndexPaths_ToHighlightState() bool {
@@ -505,7 +505,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ShouldChangeIt
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ShouldChangeItemsAtIndexPaths_ToHighlightState(collectionView ICollectionView, indexPaths foundation.ISet, highlightState CollectionViewItemHighlightState) foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:"), collectionView, indexPaths, highlightState)
+	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths), highlightState)
 	return rv
 }
 
@@ -514,7 +514,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidChangeItems
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DidChangeItemsAtIndexPaths_ToHighlightState(collectionView ICollectionView, indexPaths foundation.ISet, highlightState CollectionViewItemHighlightState) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didChangeItemsAtIndexPaths:toHighlightState:"), collectionView, indexPaths, highlightState)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didChangeItemsAtIndexPaths:toHighlightState:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths), highlightState)
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath() bool {
@@ -522,7 +522,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WillDisplayIte
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(collectionView ICollectionView, item ICollectionViewItem, indexPath foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"), collectionView, item, indexPath)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(item), objc.ExtractPtr(indexPath))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath() bool {
@@ -530,7 +530,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidEndDisplayi
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(collectionView ICollectionView, item ICollectionViewItem, indexPath foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"), collectionView, item, indexPath)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(item), objc.ExtractPtr(indexPath))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath() bool {
@@ -538,7 +538,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WillDisplaySup
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath(collectionView ICollectionView, view IView, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"), collectionView, view, elementKind, indexPath)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(view), elementKind, objc.ExtractPtr(indexPath))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidEndDisplayingSupplementaryView_ForElementOfKind_AtIndexPath() bool {
@@ -546,7 +546,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DidEndDisplayi
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DidEndDisplayingSupplementaryView_ForElementOfKind_AtIndexPath(collectionView ICollectionView, view IView, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:"), collectionView, view, elementKind, indexPath)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(view), elementKind, objc.ExtractPtr(indexPath))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_TransitionLayoutForOldLayout_NewLayout() bool {
@@ -554,7 +554,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_TransitionLayo
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_TransitionLayoutForOldLayout_NewLayout(collectionView ICollectionView, fromLayout ICollectionViewLayout, toLayout ICollectionViewLayout) CollectionViewTransitionLayout {
-	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.GetSelector("collectionView:transitionLayoutForOldLayout:newLayout:"), collectionView, fromLayout, toLayout)
+	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.GetSelector("collectionView:transitionLayoutForOldLayout:newLayout:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(fromLayout), objc.ExtractPtr(toLayout))
 	return rv
 }
 
@@ -563,7 +563,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_CanDragItemsAt
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_CanDragItemsAtIndexPaths_WithEvent(collectionView ICollectionView, indexPaths foundation.ISet, event IEvent) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:canDragItemsAtIndexPaths:withEvent:"), collectionView, indexPaths, event)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:canDragItemsAtIndexPaths:withEvent:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -572,7 +572,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_PasteboardWrit
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_PasteboardWriterForItemAtIndexPath(collectionView ICollectionView, indexPath foundation.IIndexPath) PasteboardWritingWrapper {
-	rv := objc.CallMethod[PasteboardWritingWrapper](c_, objc.GetSelector("collectionView:pasteboardWriterForItemAtIndexPath:"), collectionView, indexPath)
+	rv := objc.CallMethod[PasteboardWritingWrapper](c_, objc.GetSelector("collectionView:pasteboardWriterForItemAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPath))
 	return rv
 }
 
@@ -582,7 +582,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WriteItemsAtIn
 
 // deprecated
 func (c_ CollectionViewDelegateWrapper) CollectionView_WriteItemsAtIndexPaths_ToPasteboard(collectionView ICollectionView, indexPaths foundation.ISet, pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:writeItemsAtIndexPaths:toPasteboard:"), collectionView, indexPaths, pasteboard)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:writeItemsAtIndexPaths:toPasteboard:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -592,7 +592,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_NamesOfPromise
 
 // deprecated
 func (c_ CollectionViewDelegateWrapper) CollectionView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItemsAtIndexPaths(collectionView ICollectionView, dropURL foundation.IURL, indexPaths foundation.ISet) []string {
-	rv := objc.CallMethod[[]string](c_, objc.GetSelector("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexPaths:"), collectionView, dropURL, indexPaths)
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(dropURL), objc.ExtractPtr(indexPaths))
 	return rv
 }
 
@@ -601,7 +601,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DraggingImageF
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DraggingImageForItemsAtIndexPaths_WithEvent_Offset(collectionView ICollectionView, indexPaths foundation.ISet, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](c_, objc.GetSelector("collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:"), collectionView, indexPaths, event, dragImageOffset)
+	rv := objc.CallMethod[Image](c_, objc.GetSelector("collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPaths), objc.ExtractPtr(event), dragImageOffset)
 	return rv
 }
 
@@ -610,7 +610,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DraggingSessio
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DraggingSession_WillBeginAtPoint_ForItemsAtIndexPaths(collectionView ICollectionView, session IDraggingSession, screenPoint foundation.Point, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:"), collectionView, session, screenPoint, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(session), screenPoint, objc.ExtractPtr(indexPaths))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DraggingSession_EndedAtPoint_DragOperation() bool {
@@ -618,7 +618,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DraggingSessio
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DraggingSession_EndedAtPoint_DragOperation(collectionView ICollectionView, session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:draggingSession:endedAtPoint:dragOperation:"), collectionView, session, screenPoint, operation)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:draggingSession:endedAtPoint:dragOperation:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(session), screenPoint, operation)
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_UpdateDraggingItemsForDrag() bool {
@@ -627,7 +627,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_UpdateDragging
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_UpdateDraggingItemsForDrag(collectionView ICollectionView, draggingInfo DraggingInfo) {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:updateDraggingItemsForDrag:"), collectionView, po)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:updateDraggingItemsForDrag:"), objc.ExtractPtr(collectionView), po)
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_ProposedIndexPath_DropOperation() bool {
@@ -636,7 +636,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_P
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ValidateDrop_ProposedIndexPath_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, proposedDropIndexPath *foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.CallMethod[DragOperation](c_, objc.GetSelector("collectionView:validateDrop:proposedIndexPath:dropOperation:"), collectionView, po, unsafe.Pointer(proposedDropIndexPath), proposedDropOperation)
+	rv := objc.CallMethod[DragOperation](c_, objc.GetSelector("collectionView:validateDrop:proposedIndexPath:dropOperation:"), objc.ExtractPtr(collectionView), po, unsafe.Pointer(proposedDropIndexPath), proposedDropOperation)
 	return rv
 }
 
@@ -646,7 +646,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_AcceptDrop_Ind
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_AcceptDrop_IndexPath_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, indexPath foundation.IIndexPath, dropOperation CollectionViewDropOperation) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:acceptDrop:indexPath:dropOperation:"), collectionView, po, indexPath, dropOperation)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:acceptDrop:indexPath:dropOperation:"), objc.ExtractPtr(collectionView), po, objc.ExtractPtr(indexPath), dropOperation)
 	return rv
 }
 
@@ -655,7 +655,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_CanDragItemsAt
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_CanDragItemsAtIndexes_WithEvent(collectionView ICollectionView, indexes foundation.IIndexSet, event IEvent) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:canDragItemsAtIndexes:withEvent:"), collectionView, indexes, event)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:canDragItemsAtIndexes:withEvent:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexes), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -664,7 +664,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_PasteboardWrit
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_PasteboardWriterForItemAtIndex(collectionView ICollectionView, index uint) PasteboardWritingWrapper {
-	rv := objc.CallMethod[PasteboardWritingWrapper](c_, objc.GetSelector("collectionView:pasteboardWriterForItemAtIndex:"), collectionView, index)
+	rv := objc.CallMethod[PasteboardWritingWrapper](c_, objc.GetSelector("collectionView:pasteboardWriterForItemAtIndex:"), objc.ExtractPtr(collectionView), index)
 	return rv
 }
 
@@ -674,7 +674,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_WriteItemsAtIn
 
 // deprecated
 func (c_ CollectionViewDelegateWrapper) CollectionView_WriteItemsAtIndexes_ToPasteboard(collectionView ICollectionView, indexes foundation.IIndexSet, pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:writeItemsAtIndexes:toPasteboard:"), collectionView, indexes, pasteboard)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:writeItemsAtIndexes:toPasteboard:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexes), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -684,7 +684,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_NamesOfPromise
 
 // deprecated
 func (c_ CollectionViewDelegateWrapper) CollectionView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItemsAtIndexes(collectionView ICollectionView, dropURL foundation.IURL, indexes foundation.IIndexSet) []string {
-	rv := objc.CallMethod[[]string](c_, objc.GetSelector("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:"), collectionView, dropURL, indexes)
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(dropURL), objc.ExtractPtr(indexes))
 	return rv
 }
 
@@ -693,7 +693,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DraggingImageF
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DraggingImageForItemsAtIndexes_WithEvent_Offset(collectionView ICollectionView, indexes foundation.IIndexSet, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](c_, objc.GetSelector("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:"), collectionView, indexes, event, dragImageOffset)
+	rv := objc.CallMethod[Image](c_, objc.GetSelector("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexes), objc.ExtractPtr(event), dragImageOffset)
 	return rv
 }
 
@@ -702,7 +702,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_DraggingSessio
 }
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_DraggingSession_WillBeginAtPoint_ForItemsAtIndexes(collectionView ICollectionView, session IDraggingSession, screenPoint foundation.Point, indexes foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:"), collectionView, session, screenPoint, indexes)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(session), screenPoint, objc.ExtractPtr(indexes))
 }
 
 func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_ProposedIndex_DropOperation() bool {
@@ -711,7 +711,7 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_ValidateDrop_P
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_ValidateDrop_ProposedIndex_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, proposedDropIndex *int, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.CallMethod[DragOperation](c_, objc.GetSelector("collectionView:validateDrop:proposedIndex:dropOperation:"), collectionView, po, proposedDropIndex, proposedDropOperation)
+	rv := objc.CallMethod[DragOperation](c_, objc.GetSelector("collectionView:validateDrop:proposedIndex:dropOperation:"), objc.ExtractPtr(collectionView), po, proposedDropIndex, proposedDropOperation)
 	return rv
 }
 
@@ -721,6 +721,6 @@ func (c_ *CollectionViewDelegateWrapper) ImplementsCollectionView_AcceptDrop_Ind
 
 func (c_ CollectionViewDelegateWrapper) CollectionView_AcceptDrop_Index_DropOperation(collectionView ICollectionView, draggingInfo DraggingInfo, index int, dropOperation CollectionViewDropOperation) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:acceptDrop:index:dropOperation:"), collectionView, po, index, dropOperation)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("collectionView:acceptDrop:index:dropOperation:"), objc.ExtractPtr(collectionView), po, index, dropOperation)
 	return rv
 }

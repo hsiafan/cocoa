@@ -73,15 +73,15 @@ func (m_ MutableParagraphStyle) Init() MutableParagraphStyle {
 }
 
 func (m_ MutableParagraphStyle) SetParagraphStyle(obj IParagraphStyle) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setParagraphStyle:"), obj)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setParagraphStyle:"), objc.ExtractPtr(obj))
 }
 
 func (m_ MutableParagraphStyle) AddTabStop(anObject ITextTab) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addTabStop:"), anObject)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("addTabStop:"), objc.ExtractPtr(anObject))
 }
 
 func (m_ MutableParagraphStyle) RemoveTabStop(anObject ITextTab) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeTabStop:"), anObject)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeTabStop:"), objc.ExtractPtr(anObject))
 }
 
 func (m_ MutableParagraphStyle) SetAlignment(value TextAlignment) {

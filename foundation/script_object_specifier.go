@@ -48,12 +48,12 @@ func MakeScriptObjectSpecifier(ptr unsafe.Pointer) ScriptObjectSpecifier {
 }
 
 func (s_ ScriptObjectSpecifier) InitWithContainerClassDescription_ContainerSpecifier_Key(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
-	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.GetSelector("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
+	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.GetSelector("initWithContainerClassDescription:containerSpecifier:key:"), objc.ExtractPtr(classDesc), objc.ExtractPtr(container), property)
 	return rv
 }
 
 func (s_ ScriptObjectSpecifier) InitWithContainerSpecifier_Key(container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
-	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.GetSelector("initWithContainerSpecifier:key:"), container, property)
+	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.GetSelector("initWithContainerSpecifier:key:"), objc.ExtractPtr(container), property)
 	return rv
 }
 
@@ -78,17 +78,17 @@ func (s_ ScriptObjectSpecifier) Init() ScriptObjectSpecifier {
 }
 
 func (sc _ScriptObjectSpecifierClass) ObjectSpecifierWithDescriptor(descriptor IAppleEventDescriptor) ScriptObjectSpecifier {
-	rv := objc.CallMethod[ScriptObjectSpecifier](sc, objc.GetSelector("objectSpecifierWithDescriptor:"), descriptor)
+	rv := objc.CallMethod[ScriptObjectSpecifier](sc, objc.GetSelector("objectSpecifierWithDescriptor:"), objc.ExtractPtr(descriptor))
 	return rv
 }
 
 func (s_ ScriptObjectSpecifier) IndicesOfObjectsByEvaluatingWithContainer_Count(container objc.IObject, count *int) *int {
-	rv := objc.CallMethod[*int](s_, objc.GetSelector("indicesOfObjectsByEvaluatingWithContainer:count:"), container, count)
+	rv := objc.CallMethod[*int](s_, objc.GetSelector("indicesOfObjectsByEvaluatingWithContainer:count:"), objc.ExtractPtr(container), count)
 	return rv
 }
 
 func (s_ ScriptObjectSpecifier) ObjectsByEvaluatingWithContainers(containers objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("objectsByEvaluatingWithContainers:"), containers)
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("objectsByEvaluatingWithContainers:"), objc.ExtractPtr(containers))
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (s_ ScriptObjectSpecifier) ContainerClassDescription() ScriptClassDescripti
 }
 
 func (s_ ScriptObjectSpecifier) SetContainerClassDescription(value IScriptClassDescription) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContainerClassDescription:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContainerClassDescription:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptObjectSpecifier) ContainerIsObjectBeingTested() bool {
@@ -130,7 +130,7 @@ func (s_ ScriptObjectSpecifier) ContainerSpecifier() ScriptObjectSpecifier {
 }
 
 func (s_ ScriptObjectSpecifier) SetContainerSpecifier(value IScriptObjectSpecifier) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContainerSpecifier:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContainerSpecifier:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptObjectSpecifier) ChildSpecifier() ScriptObjectSpecifier {
@@ -139,7 +139,7 @@ func (s_ ScriptObjectSpecifier) ChildSpecifier() ScriptObjectSpecifier {
 }
 
 func (s_ ScriptObjectSpecifier) SetChildSpecifier(value IScriptObjectSpecifier) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setChildSpecifier:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setChildSpecifier:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptObjectSpecifier) Key() string {

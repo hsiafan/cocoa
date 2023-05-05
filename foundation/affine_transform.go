@@ -45,7 +45,7 @@ func (a_ AffineTransform) Init() AffineTransform {
 }
 
 func (a_ AffineTransform) InitWithTransform(transform IAffineTransform) AffineTransform {
-	rv := objc.CallMethod[AffineTransform](a_, objc.GetSelector("initWithTransform:"), transform)
+	rv := objc.CallMethod[AffineTransform](a_, objc.GetSelector("initWithTransform:"), objc.ExtractPtr(transform))
 	return rv
 }
 
@@ -90,11 +90,11 @@ func (a_ AffineTransform) TranslateXBy_YBy(deltaX float64, deltaY float64) {
 }
 
 func (a_ AffineTransform) AppendTransform(transform IAffineTransform) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("appendTransform:"), transform)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("appendTransform:"), objc.ExtractPtr(transform))
 }
 
 func (a_ AffineTransform) PrependTransform(transform IAffineTransform) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("prependTransform:"), transform)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("prependTransform:"), objc.ExtractPtr(transform))
 }
 
 func (a_ AffineTransform) Invert() {

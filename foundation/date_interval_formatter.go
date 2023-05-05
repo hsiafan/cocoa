@@ -62,12 +62,12 @@ func (d_ DateIntervalFormatter) Init() DateIntervalFormatter {
 }
 
 func (d_ DateIntervalFormatter) StringFromDate_ToDate(fromDate IDate, toDate IDate) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:toDate:"), fromDate, toDate)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDate:toDate:"), objc.ExtractPtr(fromDate), objc.ExtractPtr(toDate))
 	return rv
 }
 
 func (d_ DateIntervalFormatter) StringFromDateInterval(dateInterval IDateInterval) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDateInterval:"), dateInterval)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("stringFromDateInterval:"), objc.ExtractPtr(dateInterval))
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (d_ DateIntervalFormatter) Calendar() Calendar {
 }
 
 func (d_ DateIntervalFormatter) SetCalendar(value ICalendar) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateIntervalFormatter) Locale() Locale {
@@ -113,7 +113,7 @@ func (d_ DateIntervalFormatter) Locale() Locale {
 }
 
 func (d_ DateIntervalFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (d_ DateIntervalFormatter) TimeZone() TimeZone {
@@ -122,5 +122,5 @@ func (d_ DateIntervalFormatter) TimeZone() TimeZone {
 }
 
 func (d_ DateIntervalFormatter) SetTimeZone(value ITimeZone) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), objc.ExtractPtr(value))
 }

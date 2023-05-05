@@ -68,7 +68,7 @@ func (pc _PageLayoutClass) PageLayout() PageLayout {
 }
 
 func (p_ PageLayout) BeginSheetWithPrintInfo_ModalForWindow_Delegate_DidEndSelector_ContextInfo(printInfo IPrintInfo, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:"), printInfo, docWindow, delegate, didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:"), objc.ExtractPtr(printInfo), objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
 }
 
 func (p_ PageLayout) RunModal() int {
@@ -77,16 +77,16 @@ func (p_ PageLayout) RunModal() int {
 }
 
 func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("runModalWithPrintInfo:"), printInfo)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("runModalWithPrintInfo:"), objc.ExtractPtr(printInfo))
 	return rv
 }
 
 func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("addAccessoryController:"), accessoryController)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("addAccessoryController:"), objc.ExtractPtr(accessoryController))
 }
 
 func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAccessoryController:"), accessoryController)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAccessoryController:"), objc.ExtractPtr(accessoryController))
 }
 
 // deprecated
@@ -97,7 +97,7 @@ func (p_ PageLayout) AccessoryView() View {
 
 // deprecated
 func (p_ PageLayout) SetAccessoryView(accessoryView IView) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryView:"), accessoryView)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(accessoryView))
 }
 
 // deprecated

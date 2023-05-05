@@ -77,7 +77,7 @@ func MakeProgress(ptr unsafe.Pointer) Progress {
 }
 
 func (p_ Progress) InitWithParent_UserInfo(parentProgressOrNil IProgress, userInfoOrNil map[ProgressUserInfoKey]objc.IObject) Progress {
-	rv := objc.CallMethod[Progress](p_, objc.GetSelector("initWithParent:userInfo:"), parentProgressOrNil, userInfoOrNil)
+	rv := objc.CallMethod[Progress](p_, objc.GetSelector("initWithParent:userInfo:"), objc.ExtractPtr(parentProgressOrNil), userInfoOrNil)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func (pc _ProgressClass) ProgressWithTotalUnitCount(unitCount int64) Progress {
 }
 
 func (pc _ProgressClass) ProgressWithTotalUnitCount_Parent_PendingUnitCount(unitCount int64, parent IProgress, portionOfParentTotalUnitCount int64) Progress {
-	rv := objc.CallMethod[Progress](pc, objc.GetSelector("progressWithTotalUnitCount:parent:pendingUnitCount:"), unitCount, parent, portionOfParentTotalUnitCount)
+	rv := objc.CallMethod[Progress](pc, objc.GetSelector("progressWithTotalUnitCount:parent:pendingUnitCount:"), unitCount, objc.ExtractPtr(parent), portionOfParentTotalUnitCount)
 	return rv
 }
 
@@ -126,7 +126,7 @@ func (p_ Progress) BecomeCurrentWithPendingUnitCount(unitCount int64) {
 }
 
 func (p_ Progress) AddChild_WithPendingUnitCount(child IProgress, inUnitCount int64) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("addChild:withPendingUnitCount:"), child, inUnitCount)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("addChild:withPendingUnitCount:"), objc.ExtractPtr(child), inUnitCount)
 }
 
 func (p_ Progress) PerformAsCurrentWithPendingUnitCount_UsingBlock(unitCount int64, work func()) {
@@ -150,7 +150,7 @@ func (p_ Progress) Resume() {
 }
 
 func (p_ Progress) SetUserInfoObject_ForKey(objectOrNil objc.IObject, key ProgressUserInfoKey) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setUserInfoObject:forKey:"), objectOrNil, key)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setUserInfoObject:forKey:"), objc.ExtractPtr(objectOrNil), key)
 }
 
 func (p_ Progress) Publish() {
@@ -162,7 +162,7 @@ func (p_ Progress) Unpublish() {
 }
 
 func (pc _ProgressClass) RemoveSubscriber(subscriber objc.IObject) {
-	objc.CallMethod[objc.Void](pc, objc.GetSelector("removeSubscriber:"), subscriber)
+	objc.CallMethod[objc.Void](pc, objc.GetSelector("removeSubscriber:"), objc.ExtractPtr(subscriber))
 }
 
 func (p_ Progress) TotalUnitCount() int64 {
@@ -286,7 +286,7 @@ func (p_ Progress) EstimatedTimeRemaining() Number {
 }
 
 func (p_ Progress) SetEstimatedTimeRemaining(value INumber) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setEstimatedTimeRemaining:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setEstimatedTimeRemaining:"), objc.ExtractPtr(value))
 }
 
 func (p_ Progress) Throughput() Number {
@@ -295,7 +295,7 @@ func (p_ Progress) Throughput() Number {
 }
 
 func (p_ Progress) SetThroughput(value INumber) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setThroughput:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setThroughput:"), objc.ExtractPtr(value))
 }
 
 func (p_ Progress) UserInfo() map[ProgressUserInfoKey]objc.Object {
@@ -318,7 +318,7 @@ func (p_ Progress) FileURL() URL {
 }
 
 func (p_ Progress) SetFileURL(value IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileURL:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileURL:"), objc.ExtractPtr(value))
 }
 
 func (p_ Progress) FileTotalCount() Number {
@@ -327,7 +327,7 @@ func (p_ Progress) FileTotalCount() Number {
 }
 
 func (p_ Progress) SetFileTotalCount(value INumber) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileTotalCount:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileTotalCount:"), objc.ExtractPtr(value))
 }
 
 func (p_ Progress) FileCompletedCount() Number {
@@ -336,7 +336,7 @@ func (p_ Progress) FileCompletedCount() Number {
 }
 
 func (p_ Progress) SetFileCompletedCount(value INumber) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileCompletedCount:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFileCompletedCount:"), objc.ExtractPtr(value))
 }
 
 func (p_ Progress) IsOld() bool {

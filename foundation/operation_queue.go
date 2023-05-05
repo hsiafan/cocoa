@@ -67,7 +67,7 @@ func (o_ OperationQueue) Init() OperationQueue {
 }
 
 func (o_ OperationQueue) AddOperation(op IOperation) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("addOperation:"), op)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("addOperation:"), objc.ExtractPtr(op))
 }
 
 func (o_ OperationQueue) AddOperations_WaitUntilFinished(ops []IOperation, wait bool) {

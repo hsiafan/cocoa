@@ -55,7 +55,7 @@ func (s_ SearchFieldCell) InitTextCell(string_ string) SearchFieldCell {
 }
 
 func (s_ SearchFieldCell) InitImageCell(image IImage) SearchFieldCell {
-	rv := objc.CallMethod[SearchFieldCell](s_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[SearchFieldCell](s_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -108,7 +108,7 @@ func (s_ SearchFieldCell) SearchButtonCell() ButtonCell {
 }
 
 func (s_ SearchFieldCell) SetSearchButtonCell(value IButtonCell) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchButtonCell:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchButtonCell:"), objc.ExtractPtr(value))
 }
 
 func (s_ SearchFieldCell) CancelButtonCell() ButtonCell {
@@ -117,7 +117,7 @@ func (s_ SearchFieldCell) CancelButtonCell() ButtonCell {
 }
 
 func (s_ SearchFieldCell) SetCancelButtonCell(value IButtonCell) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCancelButtonCell:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCancelButtonCell:"), objc.ExtractPtr(value))
 }
 
 func (s_ SearchFieldCell) SearchMenuTemplate() Menu {
@@ -126,7 +126,7 @@ func (s_ SearchFieldCell) SearchMenuTemplate() Menu {
 }
 
 func (s_ SearchFieldCell) SetSearchMenuTemplate(value IMenu) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchMenuTemplate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchMenuTemplate:"), objc.ExtractPtr(value))
 }
 
 func (s_ SearchFieldCell) SendsWholeSearchString() bool {

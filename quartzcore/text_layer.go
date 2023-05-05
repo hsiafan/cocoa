@@ -53,7 +53,7 @@ func (t_ TextLayer) Init() TextLayer {
 }
 
 func (t_ TextLayer) InitWithLayer(layer objc.IObject) TextLayer {
-	rv := objc.CallMethod[TextLayer](t_, objc.GetSelector("initWithLayer:"), layer)
+	rv := objc.CallMethod[TextLayer](t_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 
@@ -88,7 +88,7 @@ func (t_ TextLayer) String() objc.Object {
 }
 
 func (t_ TextLayer) SetString(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setString:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextLayer) FontSize() float64 {

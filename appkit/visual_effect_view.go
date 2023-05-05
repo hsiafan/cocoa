@@ -102,7 +102,7 @@ func (v_ VisualEffectView) MaskImage() Image {
 }
 
 func (v_ VisualEffectView) SetMaskImage(value IImage) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setMaskImage:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setMaskImage:"), objc.ExtractPtr(value))
 }
 
 func (v_ VisualEffectView) State() VisualEffectState {

@@ -23,7 +23,7 @@ type UserInterfaceItemSearchingWrapper struct {
 }
 
 func (u_ UserInterfaceItemSearchingWrapper) LocalizedTitlesForItem(item objc.IObject) []string {
-	rv := objc.CallMethod[[]string](u_, objc.GetSelector("localizedTitlesForItem:"), item)
+	rv := objc.CallMethod[[]string](u_, objc.GetSelector("localizedTitlesForItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -44,5 +44,5 @@ func (u_ *UserInterfaceItemSearchingWrapper) ImplementsPerformActionForItem() bo
 }
 
 func (u_ UserInterfaceItemSearchingWrapper) PerformActionForItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("performActionForItem:"), item)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("performActionForItem:"), objc.ExtractPtr(item))
 }

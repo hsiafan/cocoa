@@ -36,7 +36,7 @@ func (p_ PathComponentCell) InitTextCell(string_ string) PathComponentCell {
 }
 
 func (p_ PathComponentCell) InitImageCell(image IImage) PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -66,5 +66,5 @@ func (p_ PathComponentCell) URL() foundation.URL {
 }
 
 func (p_ PathComponentCell) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }

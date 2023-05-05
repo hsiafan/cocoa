@@ -84,16 +84,16 @@ func NewProgressIndicator() ProgressIndicator {
 }
 
 func (p_ ProgressIndicator) StartAnimation(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("startAnimation:"), sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("startAnimation:"), objc.ExtractPtr(sender))
 }
 
 func (p_ ProgressIndicator) StopAnimation(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("stopAnimation:"), sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("stopAnimation:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
 func (p_ ProgressIndicator) Animate(sender objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("animate:"), sender)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("animate:"), objc.ExtractPtr(sender))
 }
 
 // deprecated

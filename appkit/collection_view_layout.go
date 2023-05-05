@@ -94,17 +94,17 @@ func (c_ CollectionViewLayout) LayoutAttributesForElementsInRect(rect foundation
 }
 
 func (c_ CollectionViewLayout) LayoutAttributesForItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForItemAtIndexPath:"), indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForItemAtIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionViewLayout) LayoutAttributesForSupplementaryViewOfKind_AtIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForSupplementaryViewOfKind:atIndexPath:"), elementKind, indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForSupplementaryViewOfKind:atIndexPath:"), elementKind, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionViewLayout) LayoutAttributesForDecorationViewOfKind_AtIndexPath(elementKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForDecorationViewOfKind:atIndexPath:"), elementKind, indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForDecorationViewOfKind:atIndexPath:"), elementKind, objc.ExtractPtr(indexPath))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (c_ CollectionViewLayout) LayoutAttributesForDropTargetAtPoint(pointInColle
 }
 
 func (c_ CollectionViewLayout) LayoutAttributesForInterItemGapBeforeIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForInterItemGapBeforeIndexPath:"), indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForInterItemGapBeforeIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
@@ -147,17 +147,17 @@ func (c_ CollectionViewLayout) IndexPathsToInsertForDecorationViewOfKind(element
 }
 
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("initialLayoutAttributesForAppearingItemAtIndexPath:"), itemIndexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("initialLayoutAttributesForAppearingItemAtIndexPath:"), objc.ExtractPtr(itemIndexPath))
 	return rv
 }
 
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingSupplementaryElementOfKind_AtIndexPath(elementKind CollectionViewSupplementaryElementKind, elementIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("initialLayoutAttributesForAppearingSupplementaryElementOfKind:atIndexPath:"), elementKind, elementIndexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("initialLayoutAttributesForAppearingSupplementaryElementOfKind:atIndexPath:"), elementKind, objc.ExtractPtr(elementIndexPath))
 	return rv
 }
 
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingDecorationElementOfKind_AtIndexPath(elementKind CollectionViewDecorationElementKind, decorationIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("initialLayoutAttributesForAppearingDecorationElementOfKind:atIndexPath:"), elementKind, decorationIndexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("initialLayoutAttributesForAppearingDecorationElementOfKind:atIndexPath:"), elementKind, objc.ExtractPtr(decorationIndexPath))
 	return rv
 }
 
@@ -172,17 +172,17 @@ func (c_ CollectionViewLayout) IndexPathsToDeleteForDecorationViewOfKind(element
 }
 
 func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingItemAtIndexPath(itemIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("finalLayoutAttributesForDisappearingItemAtIndexPath:"), itemIndexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("finalLayoutAttributesForDisappearingItemAtIndexPath:"), objc.ExtractPtr(itemIndexPath))
 	return rv
 }
 
 func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingSupplementaryElementOfKind_AtIndexPath(elementKind CollectionViewSupplementaryElementKind, elementIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("finalLayoutAttributesForDisappearingSupplementaryElementOfKind:atIndexPath:"), elementKind, elementIndexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("finalLayoutAttributesForDisappearingSupplementaryElementOfKind:atIndexPath:"), elementKind, objc.ExtractPtr(elementIndexPath))
 	return rv
 }
 
 func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingDecorationElementOfKind_AtIndexPath(elementKind CollectionViewDecorationElementKind, decorationIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath:"), elementKind, decorationIndexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath:"), elementKind, objc.ExtractPtr(decorationIndexPath))
 	return rv
 }
 
@@ -191,7 +191,7 @@ func (c_ CollectionViewLayout) InvalidateLayout() {
 }
 
 func (c_ CollectionViewLayout) InvalidateLayoutWithContext(context ICollectionViewLayoutInvalidationContext) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateLayoutWithContext:"), context)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateLayoutWithContext:"), objc.ExtractPtr(context))
 }
 
 func (c_ CollectionViewLayout) ShouldInvalidateLayoutForBoundsChange(newBounds foundation.Rect) bool {
@@ -200,7 +200,7 @@ func (c_ CollectionViewLayout) ShouldInvalidateLayoutForBoundsChange(newBounds f
 }
 
 func (c_ CollectionViewLayout) ShouldInvalidateLayoutForPreferredLayoutAttributes_WithOriginalAttributes(preferredAttributes ICollectionViewLayoutAttributes, originalAttributes ICollectionViewLayoutAttributes) bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("shouldInvalidateLayoutForPreferredLayoutAttributes:withOriginalAttributes:"), preferredAttributes, originalAttributes)
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("shouldInvalidateLayoutForPreferredLayoutAttributes:withOriginalAttributes:"), objc.ExtractPtr(preferredAttributes), objc.ExtractPtr(originalAttributes))
 	return rv
 }
 
@@ -210,7 +210,7 @@ func (c_ CollectionViewLayout) InvalidationContextForBoundsChange(newBounds foun
 }
 
 func (c_ CollectionViewLayout) InvalidationContextForPreferredLayoutAttributes_WithOriginalAttributes(preferredAttributes ICollectionViewLayoutAttributes, originalAttributes ICollectionViewLayoutAttributes) CollectionViewLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](c_, objc.GetSelector("invalidationContextForPreferredLayoutAttributes:withOriginalAttributes:"), preferredAttributes, originalAttributes)
+	rv := objc.CallMethod[CollectionViewLayoutInvalidationContext](c_, objc.GetSelector("invalidationContextForPreferredLayoutAttributes:withOriginalAttributes:"), objc.ExtractPtr(preferredAttributes), objc.ExtractPtr(originalAttributes))
 	return rv
 }
 
@@ -223,19 +223,19 @@ func (c_ CollectionViewLayout) FinalizeAnimatedBoundsChange() {
 }
 
 func (c_ CollectionViewLayout) RegisterClass_ForDecorationViewOfKind(viewClass objc.IClass, elementKind CollectionViewDecorationElementKind) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerClass:forDecorationViewOfKind:"), viewClass, elementKind)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerClass:forDecorationViewOfKind:"), objc.ExtractPtr(viewClass), elementKind)
 }
 
 func (c_ CollectionViewLayout) RegisterNib_ForDecorationViewOfKind(nib INib, elementKind CollectionViewDecorationElementKind) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerNib:forDecorationViewOfKind:"), nib, elementKind)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerNib:forDecorationViewOfKind:"), objc.ExtractPtr(nib), elementKind)
 }
 
 func (c_ CollectionViewLayout) PrepareForTransitionFromLayout(oldLayout ICollectionViewLayout) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("prepareForTransitionFromLayout:"), oldLayout)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("prepareForTransitionFromLayout:"), objc.ExtractPtr(oldLayout))
 }
 
 func (c_ CollectionViewLayout) PrepareForTransitionToLayout(newLayout ICollectionViewLayout) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("prepareForTransitionToLayout:"), newLayout)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("prepareForTransitionToLayout:"), objc.ExtractPtr(newLayout))
 }
 
 func (c_ CollectionViewLayout) FinalizeLayoutTransition() {

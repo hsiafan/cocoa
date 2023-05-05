@@ -83,5 +83,5 @@ func (t_ TextAttachmentViewProvider) View() View {
 }
 
 func (t_ TextAttachmentViewProvider) SetView(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }

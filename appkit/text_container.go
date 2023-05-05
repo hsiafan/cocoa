@@ -89,7 +89,7 @@ func (t_ TextContainer) Init() TextContainer {
 }
 
 func (t_ TextContainer) ReplaceLayoutManager(newLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceLayoutManager:"), newLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceLayoutManager:"), objc.ExtractPtr(newLayoutManager))
 }
 
 func (t_ TextContainer) LineFragmentRectForProposedRect_AtIndex_WritingDirection_RemainingRect(proposedRect foundation.Rect, characterIndex uint, baseWritingDirection WritingDirection, remainingRect *foundation.Rect) foundation.Rect {
@@ -115,7 +115,7 @@ func (t_ TextContainer) LayoutManager() LayoutManager {
 }
 
 func (t_ TextContainer) SetLayoutManager(value ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutManager:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextContainer) TextLayoutManager() TextLayoutManager {
@@ -129,7 +129,7 @@ func (t_ TextContainer) TextView() TextView {
 }
 
 func (t_ TextContainer) SetTextView(value ITextView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextContainer) Size() foundation.Size {

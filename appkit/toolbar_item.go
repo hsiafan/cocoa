@@ -113,7 +113,7 @@ func (t_ ToolbarItem) PossibleLabels() foundation.Set {
 }
 
 func (t_ ToolbarItem) SetPossibleLabels(value foundation.ISet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPossibleLabels:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPossibleLabels:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) Label() string {
@@ -158,7 +158,7 @@ func (t_ ToolbarItem) Image() Image {
 }
 
 func (t_ ToolbarItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) View() View {
@@ -167,7 +167,7 @@ func (t_ ToolbarItem) View() View {
 }
 
 func (t_ ToolbarItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) Target() objc.Object {
@@ -176,7 +176,7 @@ func (t_ ToolbarItem) Target() objc.Object {
 }
 
 func (t_ ToolbarItem) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTarget:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) Action() objc.Selector {
@@ -194,7 +194,7 @@ func (t_ ToolbarItem) MenuFormRepresentation() MenuItem {
 }
 
 func (t_ ToolbarItem) SetMenuFormRepresentation(value IMenuItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMenuFormRepresentation:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMenuFormRepresentation:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) IsVisible() bool {

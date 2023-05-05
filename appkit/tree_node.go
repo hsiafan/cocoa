@@ -36,12 +36,12 @@ func MakeTreeNode(ptr unsafe.Pointer) TreeNode {
 }
 
 func (tc _TreeNodeClass) TreeNodeWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("treeNodeWithRepresentedObject:"), modelObject)
+	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("treeNodeWithRepresentedObject:"), objc.ExtractPtr(modelObject))
 	return rv
 }
 
 func (t_ TreeNode) InitWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("initWithRepresentedObject:"), modelObject)
+	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("initWithRepresentedObject:"), objc.ExtractPtr(modelObject))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (t_ TreeNode) Init() TreeNode {
 }
 
 func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("descendantNodeAtIndexPath:"), indexPath)
+	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("descendantNodeAtIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 

@@ -66,27 +66,27 @@ func (p_ PopUpButton) InitWithFrame_PullsDown(buttonFrame foundation.Rect, flag 
 }
 
 func (pc _PopUpButtonClass) CheckboxWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("checkboxWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("checkboxWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) ButtonWithImage_Target_Action(image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithImage:target:action:"), image, target, action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithImage:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) RadioButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) ButtonWithTitle_Image_Target_Action(title string, image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, image, target, action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) ButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func (p_ PopUpButton) RemoveItemAtIndex(index int) {
 }
 
 func (p_ PopUpButton) SelectItem(item IMenuItem) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("selectItem:"), item)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("selectItem:"), objc.ExtractPtr(item))
 }
 
 func (p_ PopUpButton) SelectItemAtIndex(index int) {
@@ -172,7 +172,7 @@ func (p_ PopUpButton) ItemWithTitle(title string) MenuItem {
 }
 
 func (p_ PopUpButton) IndexOfItem(item IMenuItem) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItem:"), item)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -187,12 +187,12 @@ func (p_ PopUpButton) IndexOfItemWithTitle(title string) int {
 }
 
 func (p_ PopUpButton) IndexOfItemWithRepresentedObject(obj objc.IObject) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithRepresentedObject:"), obj)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithRepresentedObject:"), objc.ExtractPtr(obj))
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfItemWithTarget_AndAction(target objc.IObject, actionSelector objc.Selector) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithTarget:andAction:"), target, actionSelector)
+	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithTarget:andAction:"), objc.ExtractPtr(target), actionSelector)
 	return rv
 }
 

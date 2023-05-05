@@ -149,12 +149,12 @@ func (s_ Scroller) Highlight(flag bool) {
 }
 
 func (s_ Scroller) TrackKnob(event IEvent) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("trackKnob:"), event)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("trackKnob:"), objc.ExtractPtr(event))
 }
 
 // deprecated
 func (s_ Scroller) TrackScrollButtons(event IEvent) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("trackScrollButtons:"), event)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("trackScrollButtons:"), objc.ExtractPtr(event))
 }
 
 // deprecated

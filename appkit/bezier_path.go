@@ -156,7 +156,7 @@ func (b_ BezierPath) RelativeCurveToPoint_ControlPoint1_ControlPoint2(endPoint f
 }
 
 func (b_ BezierPath) AppendBezierPath(path IBezierPath) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPath:"), path)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPath:"), objc.ExtractPtr(path))
 }
 
 func (b_ BezierPath) AppendBezierPathWithPoints_Count(points *foundation.Point, count int) {
@@ -188,21 +188,21 @@ func (b_ BezierPath) AppendBezierPathWithRoundedRect_XRadius_YRadius(rect founda
 }
 
 func (b_ BezierPath) AppendBezierPathWithCGGlyph_InFont(glyph coregraphics.Glyph, font IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithCGGlyph:inFont:"), glyph, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithCGGlyph:inFont:"), glyph, objc.ExtractPtr(font))
 }
 
 func (b_ BezierPath) AppendBezierPathWithCGGlyphs_Count_InFont(glyphs *coregraphics.Glyph, count int, font IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithCGGlyphs:count:inFont:"), glyphs, count, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithCGGlyphs:count:inFont:"), glyphs, count, objc.ExtractPtr(font))
 }
 
 // deprecated
 func (b_ BezierPath) AppendBezierPathWithGlyph_InFont(glyph Glyph, font IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithGlyph:inFont:"), glyph, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithGlyph:inFont:"), glyph, objc.ExtractPtr(font))
 }
 
 // deprecated
 func (b_ BezierPath) AppendBezierPathWithGlyphs_Count_InFont(glyphs *Glyph, count int, font IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithGlyphs:count:inFont:"), glyphs, count, font)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("appendBezierPathWithGlyphs:count:inFont:"), glyphs, count, objc.ExtractPtr(font))
 }
 
 // deprecated
@@ -260,7 +260,7 @@ func (b_ BezierPath) ContainsPoint(point foundation.Point) bool {
 }
 
 func (b_ BezierPath) TransformUsingAffineTransform(transform foundation.IAffineTransform) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("transformUsingAffineTransform:"), transform)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("transformUsingAffineTransform:"), objc.ExtractPtr(transform))
 }
 
 func (b_ BezierPath) ElementAtIndex(index int) BezierPathElement {

@@ -64,7 +64,7 @@ func (u_ UserContentController) Init() UserContentController {
 }
 
 func (u_ UserContentController) AddUserScript(userScript IUserScript) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addUserScript:"), userScript)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addUserScript:"), objc.ExtractPtr(userScript))
 }
 
 func (u_ UserContentController) RemoveAllUserScripts() {
@@ -77,25 +77,25 @@ func (u_ UserContentController) AddScriptMessageHandler_Name(scriptMessageHandle
 }
 
 func (u_ UserContentController) AddScriptMessageHandler0_Name(scriptMessageHandler objc.IObject, name string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:name:"), scriptMessageHandler, name)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:name:"), objc.ExtractPtr(scriptMessageHandler), name)
 }
 
 func (u_ UserContentController) AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string) {
 	po := objc.CreateProtocol("WKScriptMessageHandler", scriptMessageHandler)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), po, world, name)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), po, objc.ExtractPtr(world), name)
 }
 
 func (u_ UserContentController) AddScriptMessageHandler0_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), scriptMessageHandler, world, name)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), objc.ExtractPtr(scriptMessageHandler), objc.ExtractPtr(world), name)
 }
 
 func (u_ UserContentController) AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string) {
 	po := objc.CreateProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), po, contentWorld, name)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), po, objc.ExtractPtr(contentWorld), name)
 }
 
 func (u_ UserContentController) AddScriptMessageHandlerWithReply0_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), scriptMessageHandlerWithReply, contentWorld, name)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), objc.ExtractPtr(scriptMessageHandlerWithReply), objc.ExtractPtr(contentWorld), name)
 }
 
 func (u_ UserContentController) RemoveScriptMessageHandlerForName(name string) {
@@ -103,11 +103,11 @@ func (u_ UserContentController) RemoveScriptMessageHandlerForName(name string) {
 }
 
 func (u_ UserContentController) RemoveScriptMessageHandlerForName_ContentWorld(name string, contentWorld IContentWorld) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeScriptMessageHandlerForName:contentWorld:"), name, contentWorld)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeScriptMessageHandlerForName:contentWorld:"), name, objc.ExtractPtr(contentWorld))
 }
 
 func (u_ UserContentController) RemoveAllScriptMessageHandlersFromContentWorld(contentWorld IContentWorld) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllScriptMessageHandlersFromContentWorld:"), contentWorld)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllScriptMessageHandlersFromContentWorld:"), objc.ExtractPtr(contentWorld))
 }
 
 func (u_ UserContentController) RemoveAllScriptMessageHandlers() {
@@ -115,11 +115,11 @@ func (u_ UserContentController) RemoveAllScriptMessageHandlers() {
 }
 
 func (u_ UserContentController) AddContentRuleList(contentRuleList IContentRuleList) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addContentRuleList:"), contentRuleList)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("addContentRuleList:"), objc.ExtractPtr(contentRuleList))
 }
 
 func (u_ UserContentController) RemoveContentRuleList(contentRuleList IContentRuleList) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeContentRuleList:"), contentRuleList)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeContentRuleList:"), objc.ExtractPtr(contentRuleList))
 }
 
 func (u_ UserContentController) RemoveAllContentRuleLists() {

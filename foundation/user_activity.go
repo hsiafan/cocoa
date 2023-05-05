@@ -131,7 +131,7 @@ func (u_ UserActivity) RequiredUserInfoKeys() Set {
 }
 
 func (u_ UserActivity) SetRequiredUserInfoKeys(value ISet) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setRequiredUserInfoKeys:"), value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setRequiredUserInfoKeys:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) TargetContentIdentifier() string {
@@ -158,7 +158,7 @@ func (u_ UserActivity) Keywords() Set {
 }
 
 func (u_ UserActivity) SetKeywords(value ISet) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setKeywords:"), value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setKeywords:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) PersistentIdentifier() UserActivityPersistentIdentifier {
@@ -203,7 +203,7 @@ func (u_ UserActivity) ExpirationDate() Date {
 }
 
 func (u_ UserActivity) SetExpirationDate(value IDate) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setExpirationDate:"), value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setExpirationDate:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) Delegate() UserActivityDelegateWrapper {
@@ -218,7 +218,7 @@ func (u_ UserActivity) SetDelegate(value UserActivityDelegate) {
 }
 
 func (u_ UserActivity) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) SupportsContinuationStreams() bool {
@@ -236,7 +236,7 @@ func (u_ UserActivity) WebpageURL() URL {
 }
 
 func (u_ UserActivity) SetWebpageURL(value IURL) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setWebpageURL:"), value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setWebpageURL:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) ReferrerURL() URL {
@@ -245,5 +245,5 @@ func (u_ UserActivity) ReferrerURL() URL {
 }
 
 func (u_ UserActivity) SetReferrerURL(value IURL) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setReferrerURL:"), value)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("setReferrerURL:"), objc.ExtractPtr(value))
 }

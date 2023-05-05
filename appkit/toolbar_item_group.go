@@ -38,12 +38,12 @@ func MakeToolbarItemGroup(ptr unsafe.Pointer) ToolbarItemGroup {
 }
 
 func (tc _ToolbarItemGroupClass) GroupWithItemIdentifier_Images_SelectionMode_Labels_Target_Action(itemIdentifier ToolbarItemIdentifier, images []IImage, selectionMode ToolbarItemGroupSelectionMode, labels []string, target objc.IObject, action objc.Selector) ToolbarItemGroup {
-	rv := objc.CallMethod[ToolbarItemGroup](tc, objc.GetSelector("groupWithItemIdentifier:images:selectionMode:labels:target:action:"), itemIdentifier, images, selectionMode, labels, target, action)
+	rv := objc.CallMethod[ToolbarItemGroup](tc, objc.GetSelector("groupWithItemIdentifier:images:selectionMode:labels:target:action:"), itemIdentifier, images, selectionMode, labels, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (tc _ToolbarItemGroupClass) GroupWithItemIdentifier_Titles_SelectionMode_Labels_Target_Action(itemIdentifier ToolbarItemIdentifier, titles []string, selectionMode ToolbarItemGroupSelectionMode, labels []string, target objc.IObject, action objc.Selector) ToolbarItemGroup {
-	rv := objc.CallMethod[ToolbarItemGroup](tc, objc.GetSelector("groupWithItemIdentifier:titles:selectionMode:labels:target:action:"), itemIdentifier, titles, selectionMode, labels, target, action)
+	rv := objc.CallMethod[ToolbarItemGroup](tc, objc.GetSelector("groupWithItemIdentifier:titles:selectionMode:labels:target:action:"), itemIdentifier, titles, selectionMode, labels, objc.ExtractPtr(target), action)
 	return rv
 }
 

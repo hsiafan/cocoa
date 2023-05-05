@@ -31,12 +31,12 @@ func MakeTintConfiguration(ptr unsafe.Pointer) TintConfiguration {
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithFixedColor(color IColor) TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("tintConfigurationWithFixedColor:"), color)
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("tintConfigurationWithFixedColor:"), objc.ExtractPtr(color))
 	return rv
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithPreferredColor(color IColor) TintConfiguration {
-	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("tintConfigurationWithPreferredColor:"), color)
+	rv := objc.CallMethod[TintConfiguration](tc, objc.GetSelector("tintConfigurationWithPreferredColor:"), objc.ExtractPtr(color))
 	return rv
 }
 

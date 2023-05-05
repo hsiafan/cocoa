@@ -115,7 +115,7 @@ func (d_ Drawer) Close() {
 
 // deprecated
 func (d_ Drawer) Close1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("close:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("close:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -125,7 +125,7 @@ func (d_ Drawer) Open() {
 
 // deprecated
 func (d_ Drawer) Open1(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("open:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("open:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -135,7 +135,7 @@ func (d_ Drawer) OpenOnEdge(edge foundation.RectEdge) {
 
 // deprecated
 func (d_ Drawer) Toggle(sender objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("toggle:"), sender)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("toggle:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
@@ -153,7 +153,7 @@ func (d_ Drawer) SetDelegate(value DrawerDelegate) {
 
 // deprecated
 func (d_ Drawer) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -242,7 +242,7 @@ func (d_ Drawer) ContentView() View {
 
 // deprecated
 func (d_ Drawer) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -253,5 +253,5 @@ func (d_ Drawer) ParentWindow() Window {
 
 // deprecated
 func (d_ Drawer) SetParentWindow(value IWindow) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setParentWindow:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setParentWindow:"), objc.ExtractPtr(value))
 }

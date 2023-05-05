@@ -33,7 +33,7 @@ func MakeAppearance(ptr unsafe.Pointer) Appearance {
 }
 
 func (a_ Appearance) InitWithAppearanceNamed_Bundle(name AppearanceName, bundle foundation.IBundle) Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("initWithAppearanceNamed:bundle:"), name, bundle)
+	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("initWithAppearanceNamed:bundle:"), name, objc.ExtractPtr(bundle))
 	return rv
 }
 
@@ -89,7 +89,7 @@ func (ac _AppearanceClass) CurrentAppearance() Appearance {
 
 // deprecated
 func (ac _AppearanceClass) SetCurrentAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](ac, objc.GetSelector("setCurrentAppearance:"), value)
+	objc.CallMethod[objc.Void](ac, objc.GetSelector("setCurrentAppearance:"), objc.ExtractPtr(value))
 }
 
 func (a_ Appearance) AllowsVibrancy() bool {

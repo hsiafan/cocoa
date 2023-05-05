@@ -203,7 +203,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManagerDidInvalidateLayo
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManagerDidInvalidateLayout(sender ILayoutManager) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutManagerDidInvalidateLayout:"), sender)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutManagerDidInvalidateLayout:"), objc.ExtractPtr(sender))
 }
 
 func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldGenerateGlyphs_Properties_CharacterIndexes_Font_ForGlyphRange() bool {
@@ -211,7 +211,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldGenerateGl
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ShouldGenerateGlyphs_Properties_CharacterIndexes_Font_ForGlyphRange(layoutManager ILayoutManager, glyphs *coregraphics.Glyph, props *GlyphProperty, charIndexes *uint, aFont IFont, glyphRange foundation.Range) uint {
-	rv := objc.CallMethod[uint](l_, objc.GetSelector("layoutManager:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:"), layoutManager, glyphs, props, charIndexes, aFont, glyphRange)
+	rv := objc.CallMethod[uint](l_, objc.GetSelector("layoutManager:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:"), objc.ExtractPtr(layoutManager), glyphs, props, charIndexes, objc.ExtractPtr(aFont), glyphRange)
 	return rv
 }
 
@@ -220,7 +220,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldUseAction_
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ShouldUseAction_ForControlCharacterAtIndex(layoutManager ILayoutManager, action ControlCharacterAction, charIndex uint) ControlCharacterAction {
-	rv := objc.CallMethod[ControlCharacterAction](l_, objc.GetSelector("layoutManager:shouldUseAction:forControlCharacterAtIndex:"), layoutManager, action, charIndex)
+	rv := objc.CallMethod[ControlCharacterAction](l_, objc.GetSelector("layoutManager:shouldUseAction:forControlCharacterAtIndex:"), objc.ExtractPtr(layoutManager), action, charIndex)
 	return rv
 }
 
@@ -229,7 +229,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_DidCompleteLayou
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_DidCompleteLayoutForTextContainer_AtEnd(layoutManager ILayoutManager, textContainer ITextContainer, layoutFinishedFlag bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutManager:didCompleteLayoutForTextContainer:atEnd:"), layoutManager, textContainer, layoutFinishedFlag)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutManager:didCompleteLayoutForTextContainer:atEnd:"), objc.ExtractPtr(layoutManager), objc.ExtractPtr(textContainer), layoutFinishedFlag)
 }
 
 func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_TextContainer_DidChangeGeometryFromSize() bool {
@@ -237,7 +237,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_TextContainer_Di
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_TextContainer_DidChangeGeometryFromSize(layoutManager ILayoutManager, textContainer ITextContainer, oldSize foundation.Size) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutManager:textContainer:didChangeGeometryFromSize:"), layoutManager, textContainer, oldSize)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutManager:textContainer:didChangeGeometryFromSize:"), objc.ExtractPtr(layoutManager), objc.ExtractPtr(textContainer), oldSize)
 }
 
 func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldBreakLineByHyphenatingBeforeCharacterAtIndex() bool {
@@ -245,7 +245,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldBreakLineB
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ShouldBreakLineByHyphenatingBeforeCharacterAtIndex(layoutManager ILayoutManager, charIndex uint) bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("layoutManager:shouldBreakLineByHyphenatingBeforeCharacterAtIndex:"), layoutManager, charIndex)
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("layoutManager:shouldBreakLineByHyphenatingBeforeCharacterAtIndex:"), objc.ExtractPtr(layoutManager), charIndex)
 	return rv
 }
 
@@ -254,7 +254,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldBreakLineB
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ShouldBreakLineByWordBeforeCharacterAtIndex(layoutManager ILayoutManager, charIndex uint) bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("layoutManager:shouldBreakLineByWordBeforeCharacterAtIndex:"), layoutManager, charIndex)
+	rv := objc.CallMethod[bool](l_, objc.GetSelector("layoutManager:shouldBreakLineByWordBeforeCharacterAtIndex:"), objc.ExtractPtr(layoutManager), charIndex)
 	return rv
 }
 
@@ -263,7 +263,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_LineSpacingAfter
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_LineSpacingAfterGlyphAtIndex_WithProposedLineFragmentRect(layoutManager ILayoutManager, glyphIndex uint, rect foundation.Rect) float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("layoutManager:lineSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), layoutManager, glyphIndex, rect)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("layoutManager:lineSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), objc.ExtractPtr(layoutManager), glyphIndex, rect)
 	return rv
 }
 
@@ -272,7 +272,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ParagraphSpacing
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ParagraphSpacingAfterGlyphAtIndex_WithProposedLineFragmentRect(layoutManager ILayoutManager, glyphIndex uint, rect foundation.Rect) float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("layoutManager:paragraphSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), layoutManager, glyphIndex, rect)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("layoutManager:paragraphSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), objc.ExtractPtr(layoutManager), glyphIndex, rect)
 	return rv
 }
 
@@ -281,7 +281,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ParagraphSpacing
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ParagraphSpacingBeforeGlyphAtIndex_WithProposedLineFragmentRect(layoutManager ILayoutManager, glyphIndex uint, rect foundation.Rect) float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("layoutManager:paragraphSpacingBeforeGlyphAtIndex:withProposedLineFragmentRect:"), layoutManager, glyphIndex, rect)
+	rv := objc.CallMethod[float64](l_, objc.GetSelector("layoutManager:paragraphSpacingBeforeGlyphAtIndex:withProposedLineFragmentRect:"), objc.ExtractPtr(layoutManager), glyphIndex, rect)
 	return rv
 }
 
@@ -290,7 +290,7 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_BoundingBoxForCo
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_BoundingBoxForControlGlyphAtIndex_ForTextContainer_ProposedLineFragment_GlyphPosition_CharacterIndex(layoutManager ILayoutManager, glyphIndex uint, textContainer ITextContainer, proposedRect foundation.Rect, glyphPosition foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("layoutManager:boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), layoutManager, glyphIndex, textContainer, proposedRect, glyphPosition, charIndex)
+	rv := objc.CallMethod[foundation.Rect](l_, objc.GetSelector("layoutManager:boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), objc.ExtractPtr(layoutManager), glyphIndex, objc.ExtractPtr(textContainer), proposedRect, glyphPosition, charIndex)
 	return rv
 }
 
@@ -299,6 +299,6 @@ func (l_ *LayoutManagerDelegateWrapper) ImplementsLayoutManager_ShouldUseTempora
 }
 
 func (l_ LayoutManagerDelegateWrapper) LayoutManager_ShouldUseTemporaryAttributes_ForDrawingToScreen_AtCharacterIndex_EffectiveRange(layoutManager ILayoutManager, attrs map[foundation.AttributedStringKey]objc.IObject, toScreen bool, charIndex uint, effectiveCharRange *foundation.Range) map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](l_, objc.GetSelector("layoutManager:shouldUseTemporaryAttributes:forDrawingToScreen:atCharacterIndex:effectiveRange:"), layoutManager, attrs, toScreen, charIndex, effectiveCharRange)
+	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](l_, objc.GetSelector("layoutManager:shouldUseTemporaryAttributes:forDrawingToScreen:atCharacterIndex:effectiveRange:"), objc.ExtractPtr(layoutManager), attrs, toScreen, charIndex, effectiveCharRange)
 	return rv
 }

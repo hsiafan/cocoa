@@ -64,7 +64,7 @@ func (s_ ShapeLayer) Init() ShapeLayer {
 }
 
 func (s_ ShapeLayer) InitWithLayer(layer objc.IObject) ShapeLayer {
-	rv := objc.CallMethod[ShapeLayer](s_, objc.GetSelector("initWithLayer:"), layer)
+	rv := objc.CallMethod[ShapeLayer](s_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 

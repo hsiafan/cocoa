@@ -109,11 +109,11 @@ func (f_ FontManager) Init() FontManager {
 }
 
 func (fc _FontManagerClass) SetFontManagerFactory(factoryId objc.IClass) {
-	objc.CallMethod[objc.Void](fc, objc.GetSelector("setFontManagerFactory:"), factoryId)
+	objc.CallMethod[objc.Void](fc, objc.GetSelector("setFontManagerFactory:"), objc.ExtractPtr(factoryId))
 }
 
 func (fc _FontManagerClass) SetFontPanelFactory(factoryId objc.IClass) {
-	objc.CallMethod[objc.Void](fc, objc.GetSelector("setFontPanelFactory:"), factoryId)
+	objc.CallMethod[objc.Void](fc, objc.GetSelector("setFontPanelFactory:"), objc.ExtractPtr(factoryId))
 }
 
 func (f_ FontManager) AvailableFontNamesWithTraits(someTraits FontTraitMask) []string {
@@ -127,7 +127,7 @@ func (f_ FontManager) AvailableMembersOfFontFamily(fam string) [][]objc.Object {
 }
 
 func (f_ FontManager) SetSelectedFont_IsMultiple(fontObj IFont, flag bool) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setSelectedFont:isMultiple:"), fontObj, flag)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setSelectedFont:isMultiple:"), objc.ExtractPtr(fontObj), flag)
 }
 
 func (f_ FontManager) SendAction() bool {
@@ -141,66 +141,66 @@ func (f_ FontManager) LocalizedNameForFamily_Face(family string, faceKey string)
 }
 
 func (f_ FontManager) AddFontTrait(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("addFontTrait:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("addFontTrait:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) RemoveFontTrait(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("removeFontTrait:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("removeFontTrait:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) ModifyFont(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("modifyFont:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("modifyFont:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) ModifyFontViaPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("modifyFontViaPanel:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("modifyFontViaPanel:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) OrderFrontStylesPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("orderFrontStylesPanel:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("orderFrontStylesPanel:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) OrderFrontFontPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("orderFrontFontPanel:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("orderFrontFontPanel:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) ConvertFont(fontObj IFont) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:"), fontObj)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:"), objc.ExtractPtr(fontObj))
 	return rv
 }
 
 // deprecated
 func (f_ FontManager) ChangeFont(sender objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("changeFont:"), sender)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("changeFont:"), objc.ExtractPtr(sender))
 }
 
 func (f_ FontManager) ConvertFont_ToFace(fontObj IFont, typeface string) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toFace:"), fontObj, typeface)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toFace:"), objc.ExtractPtr(fontObj), typeface)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToFamily(fontObj IFont, family string) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toFamily:"), fontObj, family)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toFamily:"), objc.ExtractPtr(fontObj), family)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toHaveTrait:"), fontObj, trait)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toHaveTrait:"), objc.ExtractPtr(fontObj), trait)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToNotHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toNotHaveTrait:"), fontObj, trait)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toNotHaveTrait:"), objc.ExtractPtr(fontObj), trait)
 	return rv
 }
 
 func (f_ FontManager) ConvertFont_ToSize(fontObj IFont, size float64) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toSize:"), fontObj, size)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertFont:toSize:"), objc.ExtractPtr(fontObj), size)
 	return rv
 }
 
 func (f_ FontManager) ConvertWeight_OfFont(upFlag bool, fontObj IFont) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertWeight:ofFont:"), upFlag, fontObj)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("convertWeight:ofFont:"), upFlag, objc.ExtractPtr(fontObj))
 	return rv
 }
 
@@ -215,7 +215,7 @@ func (f_ FontManager) FontWithFamily_Traits_Weight_Size(family string, traits Fo
 }
 
 func (f_ FontManager) TraitsOfFont(fontObj IFont) FontTraitMask {
-	rv := objc.CallMethod[FontTraitMask](f_, objc.GetSelector("traitsOfFont:"), fontObj)
+	rv := objc.CallMethod[FontTraitMask](f_, objc.GetSelector("traitsOfFont:"), objc.ExtractPtr(fontObj))
 	return rv
 }
 
@@ -225,7 +225,7 @@ func (f_ FontManager) FontNamed_HasTraits(fName string, someTraits FontTraitMask
 }
 
 func (f_ FontManager) WeightOfFont(fontObj IFont) int {
-	rv := objc.CallMethod[int](f_, objc.GetSelector("weightOfFont:"), fontObj)
+	rv := objc.CallMethod[int](f_, objc.GetSelector("weightOfFont:"), objc.ExtractPtr(fontObj))
 	return rv
 }
 
@@ -235,7 +235,7 @@ func (f_ FontManager) FontPanel(create bool) FontPanel {
 }
 
 func (f_ FontManager) SetFontMenu(newMenu IMenu) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setFontMenu:"), newMenu)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setFontMenu:"), objc.ExtractPtr(newMenu))
 }
 
 func (f_ FontManager) FontMenu(create bool) Menu {
@@ -254,7 +254,7 @@ func (f_ FontManager) ConvertAttributes(attributes map[string]objc.IObject) map[
 
 // deprecated
 func (f_ FontManager) AvailableFontNamesMatchingFontDescriptor(descriptor IFontDescriptor) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](f_, objc.GetSelector("availableFontNamesMatchingFontDescriptor:"), descriptor)
+	rv := objc.CallMethod[[]objc.Object](f_, objc.GetSelector("availableFontNamesMatchingFontDescriptor:"), objc.ExtractPtr(descriptor))
 	return rv
 }
 
@@ -283,12 +283,12 @@ func (f_ FontManager) AddFontDescriptors_ToCollection(descriptors []objc.IObject
 
 // deprecated
 func (f_ FontManager) RemoveFontDescriptor_FromCollection(descriptor IFontDescriptor, collection string) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("removeFontDescriptor:fromCollection:"), descriptor, collection)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("removeFontDescriptor:fromCollection:"), objc.ExtractPtr(descriptor), collection)
 }
 
 // deprecated
 func (f_ FontManager) FontManager_WillIncludeFont(sender objc.IObject, fontName string) bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("fontManager:willIncludeFont:"), sender, fontName)
+	rv := objc.CallMethod[bool](f_, objc.GetSelector("fontManager:willIncludeFont:"), objc.ExtractPtr(sender), fontName)
 	return rv
 }
 
@@ -346,7 +346,7 @@ func (f_ FontManager) Target() objc.Object {
 }
 
 func (f_ FontManager) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setTarget:"), value)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -363,5 +363,5 @@ func (f_ FontManager) Delegate() objc.Object {
 
 // deprecated
 func (f_ FontManager) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

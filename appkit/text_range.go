@@ -32,12 +32,12 @@ func MakeTextRange(ptr unsafe.Pointer) TextRange {
 }
 
 func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("textRangeByIntersectingWithTextRange:"), textRange)
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("textRangeByIntersectingWithTextRange:"), objc.ExtractPtr(textRange))
 	return rv
 }
 
 func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("textRangeByFormingUnionWithTextRange:"), textRange)
+	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("textRangeByFormingUnionWithTextRange:"), objc.ExtractPtr(textRange))
 	return rv
 }
 
@@ -62,17 +62,17 @@ func (t_ TextRange) Init() TextRange {
 }
 
 func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("intersectsWithTextRange:"), textRange)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("intersectsWithTextRange:"), objc.ExtractPtr(textRange))
 	return rv
 }
 
 func (t_ TextRange) IsEqualToTextRange(textRange ITextRange) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEqualToTextRange:"), textRange)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEqualToTextRange:"), objc.ExtractPtr(textRange))
 	return rv
 }
 
 func (t_ TextRange) ContainsRange(textRange ITextRange) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("containsRange:"), textRange)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("containsRange:"), objc.ExtractPtr(textRange))
 	return rv
 }
 

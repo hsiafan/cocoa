@@ -84,15 +84,15 @@ func NewSplitView() SplitView {
 }
 
 func (s_ SplitView) AddArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("addArrangedSubview:"), view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("addArrangedSubview:"), objc.ExtractPtr(view))
 }
 
 func (s_ SplitView) InsertArrangedSubview_AtIndex(view IView, index int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertArrangedSubview:atIndex:"), view, index)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("insertArrangedSubview:atIndex:"), objc.ExtractPtr(view), index)
 }
 
 func (s_ SplitView) RemoveArrangedSubview(view IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeArrangedSubview:"), view)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeArrangedSubview:"), objc.ExtractPtr(view))
 }
 
 func (s_ SplitView) AdjustSubviews() {
@@ -100,7 +100,7 @@ func (s_ SplitView) AdjustSubviews() {
 }
 
 func (s_ SplitView) IsSubviewCollapsed(subview IView) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSubviewCollapsed:"), subview)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSubviewCollapsed:"), objc.ExtractPtr(subview))
 	return rv
 }
 
@@ -154,7 +154,7 @@ func (s_ SplitView) SetDelegate(value SplitViewDelegate) {
 }
 
 func (s_ SplitView) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ SplitView) ArrangesAllSubviews() bool {

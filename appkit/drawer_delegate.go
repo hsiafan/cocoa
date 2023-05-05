@@ -149,7 +149,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerShouldOpen() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerShouldOpen(sender IDrawer) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("drawerShouldOpen:"), sender)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("drawerShouldOpen:"), objc.ExtractPtr(sender))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillOpen() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerWillOpen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerWillOpen:"), notification)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerWillOpen:"), objc.ExtractPtr(notification))
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidOpen() bool {
@@ -168,7 +168,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidOpen() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerDidOpen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerDidOpen:"), notification)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerDidOpen:"), objc.ExtractPtr(notification))
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerShouldClose() bool {
@@ -177,7 +177,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerShouldClose() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerShouldClose(sender IDrawer) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("drawerShouldClose:"), sender)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("drawerShouldClose:"), objc.ExtractPtr(sender))
 	return rv
 }
 
@@ -187,7 +187,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillClose() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerWillClose(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerWillClose:"), notification)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerWillClose:"), objc.ExtractPtr(notification))
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidClose() bool {
@@ -196,7 +196,7 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerDidClose() bool {
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerDidClose(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerDidClose:"), notification)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("drawerDidClose:"), objc.ExtractPtr(notification))
 }
 
 func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillResizeContents_ToSize() bool {
@@ -205,6 +205,6 @@ func (d_ *DrawerDelegateWrapper) ImplementsDrawerWillResizeContents_ToSize() boo
 
 // deprecated
 func (d_ DrawerDelegateWrapper) DrawerWillResizeContents_ToSize(sender IDrawer, contentSize foundation.Size) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](d_, objc.GetSelector("drawerWillResizeContents:toSize:"), sender, contentSize)
+	rv := objc.CallMethod[foundation.Size](d_, objc.GetSelector("drawerWillResizeContents:toSize:"), objc.ExtractPtr(sender), contentSize)
 	return rv
 }

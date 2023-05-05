@@ -88,37 +88,37 @@ func NewOutlineView() OutlineView {
 }
 
 func (o_ OutlineView) IsExpandable(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isExpandable:"), item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("isExpandable:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ OutlineView) IsItemExpanded(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isItemExpanded:"), item)
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("isItemExpanded:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ OutlineView) ExpandItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("expandItem:"), item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("expandItem:"), objc.ExtractPtr(item))
 }
 
 func (o_ OutlineView) ExpandItem_ExpandChildren(item objc.IObject, expandChildren bool) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("expandItem:expandChildren:"), item, expandChildren)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("expandItem:expandChildren:"), objc.ExtractPtr(item), expandChildren)
 }
 
 func (o_ OutlineView) CollapseItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("collapseItem:"), item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("collapseItem:"), objc.ExtractPtr(item))
 }
 
 func (o_ OutlineView) CollapseItem_CollapseChildren(item objc.IObject, collapseChildren bool) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("collapseItem:collapseChildren:"), item, collapseChildren)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("collapseItem:collapseChildren:"), objc.ExtractPtr(item), collapseChildren)
 }
 
 func (o_ OutlineView) ReloadItem(item objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("reloadItem:"), item)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("reloadItem:"), objc.ExtractPtr(item))
 }
 
 func (o_ OutlineView) ReloadItem_ReloadChildren(item objc.IObject, reloadChildren bool) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("reloadItem:reloadChildren:"), item, reloadChildren)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("reloadItem:reloadChildren:"), objc.ExtractPtr(item), reloadChildren)
 }
 
 func (o_ OutlineView) ItemAtRow(row int) objc.Object {
@@ -127,12 +127,12 @@ func (o_ OutlineView) ItemAtRow(row int) objc.Object {
 }
 
 func (o_ OutlineView) RowForItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, objc.GetSelector("rowForItem:"), item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("rowForItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ OutlineView) LevelForItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, objc.GetSelector("levelForItem:"), item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("levelForItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -142,7 +142,7 @@ func (o_ OutlineView) LevelForRow(row int) int {
 }
 
 func (o_ OutlineView) SetDropItem_DropChildIndex(item objc.IObject, index int) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setDropItem:dropChildIndex:"), item, index)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setDropItem:dropChildIndex:"), objc.ExtractPtr(item), index)
 }
 
 func (o_ OutlineView) ShouldCollapseAutoExpandedItemsForDeposited(deposited bool) bool {
@@ -151,22 +151,22 @@ func (o_ OutlineView) ShouldCollapseAutoExpandedItemsForDeposited(deposited bool
 }
 
 func (o_ OutlineView) ParentForItem(item objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("parentForItem:"), item)
+	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("parentForItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ OutlineView) ChildIndexForItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, objc.GetSelector("childIndexForItem:"), item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("childIndexForItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ OutlineView) Child_OfItem(index int, item objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("child:ofItem:"), index, item)
+	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("child:ofItem:"), index, objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ OutlineView) NumberOfChildrenOfItem(item objc.IObject) int {
-	rv := objc.CallMethod[int](o_, objc.GetSelector("numberOfChildrenOfItem:"), item)
+	rv := objc.CallMethod[int](o_, objc.GetSelector("numberOfChildrenOfItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
@@ -176,15 +176,15 @@ func (o_ OutlineView) FrameOfOutlineCellAtRow(row int) foundation.Rect {
 }
 
 func (o_ OutlineView) InsertItemsAtIndexes_InParent_WithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("insertItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("insertItemsAtIndexes:inParent:withAnimation:"), objc.ExtractPtr(indexes), objc.ExtractPtr(parent), animationOptions)
 }
 
 func (o_ OutlineView) MoveItemAtIndex_InParent_ToIndex_InParent(fromIndex int, oldParent objc.IObject, toIndex int, newParent objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("moveItemAtIndex:inParent:toIndex:inParent:"), fromIndex, oldParent, toIndex, newParent)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("moveItemAtIndex:inParent:toIndex:inParent:"), fromIndex, objc.ExtractPtr(oldParent), toIndex, objc.ExtractPtr(newParent))
 }
 
 func (o_ OutlineView) RemoveItemsAtIndexes_InParent_WithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeItemsAtIndexes:inParent:withAnimation:"), objc.ExtractPtr(indexes), objc.ExtractPtr(parent), animationOptions)
 }
 
 func (o_ OutlineView) StronglyReferencesItems() bool {
@@ -202,7 +202,7 @@ func (o_ OutlineView) OutlineTableColumn() TableColumn {
 }
 
 func (o_ OutlineView) SetOutlineTableColumn(value ITableColumn) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setOutlineTableColumn:"), value)
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("setOutlineTableColumn:"), objc.ExtractPtr(value))
 }
 
 func (o_ OutlineView) AutoresizesOutlineColumn() bool {

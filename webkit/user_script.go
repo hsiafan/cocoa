@@ -36,7 +36,7 @@ func (u_ UserScript) InitWithSource_InjectionTime_ForMainFrameOnly(source string
 }
 
 func (u_ UserScript) InitWithSource_InjectionTime_ForMainFrameOnly_InContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, contentWorld)
+	rv := objc.CallMethod[UserScript](u_, objc.GetSelector("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, objc.ExtractPtr(contentWorld))
 	return rv
 }
 

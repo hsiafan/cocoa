@@ -107,7 +107,7 @@ func (rc _RegularExpressionClass) EscapedPatternForString(string_ string) string
 }
 
 func (r_ RegularExpression) ReplacementStringForResult_InString_Offset_Template(result ITextCheckingResult, string_ string, offset int, templ string) string {
-	rv := objc.CallMethod[string](r_, objc.GetSelector("replacementStringForResult:inString:offset:template:"), result, string_, offset, templ)
+	rv := objc.CallMethod[string](r_, objc.GetSelector("replacementStringForResult:inString:offset:template:"), objc.ExtractPtr(result), string_, offset, templ)
 	return rv
 }
 

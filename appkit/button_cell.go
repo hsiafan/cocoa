@@ -85,7 +85,7 @@ func MakeButtonCell(ptr unsafe.Pointer) ButtonCell {
 }
 
 func (b_ ButtonCell) InitImageCell(image IImage) ButtonCell {
-	rv := objc.CallMethod[ButtonCell](b_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[ButtonCell](b_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -150,23 +150,23 @@ func (b_ ButtonCell) SetButtonType(type_ ButtonType) {
 }
 
 func (b_ ButtonCell) MouseEntered(event IEvent) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("mouseEntered:"), event)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("mouseEntered:"), objc.ExtractPtr(event))
 }
 
 func (b_ ButtonCell) MouseExited(event IEvent) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("mouseExited:"), event)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("mouseExited:"), objc.ExtractPtr(event))
 }
 
 func (b_ ButtonCell) DrawBezelWithFrame_InView(frame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawBezelWithFrame:inView:"), frame, controlView)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawBezelWithFrame:inView:"), frame, objc.ExtractPtr(controlView))
 }
 
 func (b_ ButtonCell) DrawImage_WithFrame_InView(image IImage, frame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawImage:withFrame:inView:"), image, frame, controlView)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("drawImage:withFrame:inView:"), objc.ExtractPtr(image), frame, objc.ExtractPtr(controlView))
 }
 
 func (b_ ButtonCell) DrawTitle_WithFrame_InView(title foundation.IAttributedString, frame foundation.Rect, controlView IView) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("drawTitle:withFrame:inView:"), title, frame, controlView)
+	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("drawTitle:withFrame:inView:"), objc.ExtractPtr(title), frame, objc.ExtractPtr(controlView))
 	return rv
 }
 
@@ -185,7 +185,7 @@ func (b_ ButtonCell) AttributedAlternateTitle() foundation.AttributedString {
 }
 
 func (b_ ButtonCell) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedAlternateTitle:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedAlternateTitle:"), objc.ExtractPtr(value))
 }
 
 func (b_ ButtonCell) AttributedTitle() foundation.AttributedString {
@@ -194,7 +194,7 @@ func (b_ ButtonCell) AttributedTitle() foundation.AttributedString {
 }
 
 func (b_ ButtonCell) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedTitle:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 func (b_ ButtonCell) AlternateImage() Image {
@@ -203,7 +203,7 @@ func (b_ ButtonCell) AlternateImage() Image {
 }
 
 func (b_ ButtonCell) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), objc.ExtractPtr(value))
 }
 
 func (b_ ButtonCell) ImagePosition() CellImagePosition {
@@ -236,7 +236,7 @@ func (b_ ButtonCell) KeyEquivalentFont() Font {
 
 // deprecated
 func (b_ ButtonCell) SetKeyEquivalentFont(value IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalentFont:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setKeyEquivalentFont:"), objc.ExtractPtr(value))
 }
 
 func (b_ ButtonCell) KeyEquivalentModifierMask() EventModifierFlags {
@@ -254,7 +254,7 @@ func (b_ ButtonCell) BackgroundColor() Color {
 }
 
 func (b_ ButtonCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ ButtonCell) BezelStyle() BezelStyle {
@@ -328,5 +328,5 @@ func (b_ ButtonCell) Sound() Sound {
 }
 
 func (b_ ButtonCell) SetSound(value ISound) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSound:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setSound:"), objc.ExtractPtr(value))
 }

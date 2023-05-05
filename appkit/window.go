@@ -373,7 +373,7 @@ func MakeWindow(ptr unsafe.Pointer) Window {
 }
 
 func (wc _WindowClass) WindowWithContentViewController(contentViewController IViewController) Window {
-	rv := objc.CallMethod[Window](wc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
+	rv := objc.CallMethod[Window](wc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
@@ -383,7 +383,7 @@ func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundat
 }
 
 func (w_ Window) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Window {
-	rv := objc.CallMethod[Window](w_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[Window](w_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -408,7 +408,7 @@ func NewWindow() Window {
 }
 
 func (w_ Window) ToggleFullScreen(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleFullScreen:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleFullScreen:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) SetDynamicDepthLimit(flag bool) {
@@ -468,19 +468,19 @@ func (w_ Window) FrameRectForContentRect(contentRect foundation.Rect) foundation
 }
 
 func (w_ Window) BeginSheet_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("beginSheet:completionHandler:"), sheetWindow, handler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("beginSheet:completionHandler:"), objc.ExtractPtr(sheetWindow), handler)
 }
 
 func (w_ Window) BeginCriticalSheet_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("beginCriticalSheet:completionHandler:"), sheetWindow, handler)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("beginCriticalSheet:completionHandler:"), objc.ExtractPtr(sheetWindow), handler)
 }
 
 func (w_ Window) EndSheet(sheetWindow IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("endSheet:"), sheetWindow)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("endSheet:"), objc.ExtractPtr(sheetWindow))
 }
 
 func (w_ Window) EndSheet_ReturnCode(sheetWindow IWindow, returnCode ModalResponse) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("endSheet:returnCode:"), sheetWindow, returnCode)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("endSheet:returnCode:"), objc.ExtractPtr(sheetWindow), returnCode)
 }
 
 func (w_ Window) SetFrameOrigin(point foundation.Point) {
@@ -492,7 +492,7 @@ func (w_ Window) SetFrameTopLeftPoint(point foundation.Point) {
 }
 
 func (w_ Window) ConstrainFrameRect_ToScreen(frameRect foundation.Rect, screen IScreen) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("constrainFrameRect:toScreen:"), frameRect, screen)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("constrainFrameRect:toScreen:"), frameRect, objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -515,11 +515,11 @@ func (w_ Window) AnimationResizeTime(newFrame foundation.Rect) foundation.TimeIn
 }
 
 func (w_ Window) PerformZoom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("performZoom:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performZoom:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) Zoom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("zoom:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("zoom:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) SetContentSize(size foundation.Size) {
@@ -527,15 +527,15 @@ func (w_ Window) SetContentSize(size foundation.Size) {
 }
 
 func (w_ Window) OrderOut(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderOut:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderOut:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) OrderBack(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderBack:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderBack:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) OrderFront(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderFront:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("orderFront:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) OrderFrontRegardless() {
@@ -578,7 +578,7 @@ func (w_ Window) MakeKeyWindow() {
 }
 
 func (w_ Window) MakeKeyAndOrderFront(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("makeKeyAndOrderFront:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("makeKeyAndOrderFront:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) BecomeKeyWindow() {
@@ -602,19 +602,19 @@ func (w_ Window) ResignMainWindow() {
 }
 
 func (w_ Window) ToggleToolbarShown(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleToolbarShown:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleToolbarShown:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) RunToolbarCustomizationPalette(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("runToolbarCustomizationPalette:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("runToolbarCustomizationPalette:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) AddChildWindow_Ordered(childWin IWindow, place WindowOrderingMode) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("addChildWindow:ordered:"), childWin, place)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addChildWindow:ordered:"), objc.ExtractPtr(childWin), place)
 }
 
 func (w_ Window) RemoveChildWindow(childWin IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeChildWindow:"), childWin)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeChildWindow:"), objc.ExtractPtr(childWin))
 }
 
 func (w_ Window) EnableKeyEquivalentForDefaultButtonCell() {
@@ -626,12 +626,12 @@ func (w_ Window) DisableKeyEquivalentForDefaultButtonCell() {
 }
 
 func (w_ Window) FieldEditor_ForObject(createFlag bool, object objc.IObject) Text {
-	rv := objc.CallMethod[Text](w_, objc.GetSelector("fieldEditor:forObject:"), createFlag, object)
+	rv := objc.CallMethod[Text](w_, objc.GetSelector("fieldEditor:forObject:"), createFlag, objc.ExtractPtr(object))
 	return rv
 }
 
 func (w_ Window) EndEditingFor(object objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("endEditingFor:"), object)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("endEditingFor:"), objc.ExtractPtr(object))
 }
 
 func (w_ Window) EnableCursorRects() {
@@ -647,7 +647,7 @@ func (w_ Window) DiscardCursorRects() {
 }
 
 func (w_ Window) InvalidateCursorRectsForView(view IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("invalidateCursorRectsForView:"), view)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("invalidateCursorRectsForView:"), objc.ExtractPtr(view))
 }
 
 func (w_ Window) ResetCursorRects() {
@@ -665,11 +665,11 @@ func (w_ Window) StandardWindowButton(b WindowButton) Button {
 }
 
 func (w_ Window) AddTitlebarAccessoryViewController(childViewController ITitlebarAccessoryViewController) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("addTitlebarAccessoryViewController:"), childViewController)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addTitlebarAccessoryViewController:"), objc.ExtractPtr(childViewController))
 }
 
 func (w_ Window) InsertTitlebarAccessoryViewController_AtIndex(childViewController ITitlebarAccessoryViewController, index int) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("insertTitlebarAccessoryViewController:atIndex:"), childViewController, index)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("insertTitlebarAccessoryViewController:atIndex:"), objc.ExtractPtr(childViewController), index)
 }
 
 func (w_ Window) RemoveTitlebarAccessoryViewControllerAtIndex(index int) {
@@ -677,31 +677,31 @@ func (w_ Window) RemoveTitlebarAccessoryViewControllerAtIndex(index int) {
 }
 
 func (w_ Window) AddTabbedWindow_Ordered(window IWindow, ordered WindowOrderingMode) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("addTabbedWindow:ordered:"), window, ordered)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addTabbedWindow:ordered:"), objc.ExtractPtr(window), ordered)
 }
 
 func (w_ Window) MergeAllWindows(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("mergeAllWindows:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("mergeAllWindows:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) SelectNextTab(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectNextTab:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectNextTab:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) SelectPreviousTab(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectPreviousTab:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectPreviousTab:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) MoveTabToNewWindow(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("moveTabToNewWindow:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("moveTabToNewWindow:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) ToggleTabBar(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleTabBar:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleTabBar:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) ToggleTabOverview(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleTabOverview:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("toggleTabOverview:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) NextEventMatchingMask(mask EventMask) Event {
@@ -710,41 +710,41 @@ func (w_ Window) NextEventMatchingMask(mask EventMask) Event {
 }
 
 func (w_ Window) NextEventMatchingMask_UntilDate_InMode_Dequeue(mask EventMask, expiration foundation.IDate, mode foundation.RunLoopMode, deqFlag bool) Event {
-	rv := objc.CallMethod[Event](w_, objc.GetSelector("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, expiration, mode, deqFlag)
+	rv := objc.CallMethod[Event](w_, objc.GetSelector("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, objc.ExtractPtr(expiration), mode, deqFlag)
 	return rv
 }
 
 func (w_ Window) DiscardEventsMatchingMask_BeforeEvent(mask EventMask, lastEvent IEvent) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("discardEventsMatchingMask:beforeEvent:"), mask, lastEvent)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("discardEventsMatchingMask:beforeEvent:"), mask, objc.ExtractPtr(lastEvent))
 }
 
 func (w_ Window) PostEvent_AtStart(event IEvent, flag bool) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("postEvent:atStart:"), event, flag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("postEvent:atStart:"), objc.ExtractPtr(event), flag)
 }
 
 func (w_ Window) SendEvent(event IEvent) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("sendEvent:"), event)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("sendEvent:"), objc.ExtractPtr(event))
 }
 
 func (w_ Window) MakeFirstResponder(responder IResponder) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("makeFirstResponder:"), responder)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("makeFirstResponder:"), objc.ExtractPtr(responder))
 	return rv
 }
 
 func (w_ Window) SelectKeyViewPrecedingView(view IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectKeyViewPrecedingView:"), view)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectKeyViewPrecedingView:"), objc.ExtractPtr(view))
 }
 
 func (w_ Window) SelectKeyViewFollowingView(view IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectKeyViewFollowingView:"), view)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectKeyViewFollowingView:"), objc.ExtractPtr(view))
 }
 
 func (w_ Window) SelectPreviousKeyView(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectPreviousKeyView:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectPreviousKeyView:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) SelectNextKeyView(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectNextKeyView:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("selectNextKeyView:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) RecalculateKeyViewLoop() {
@@ -761,7 +761,7 @@ func (w_ Window) TrackEventsMatchingMask_Timeout_Mode_Handler(mask EventMask, ti
 }
 
 func (w_ Window) PerformWindowDragWithEvent(event IEvent) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("performWindowDragWithEvent:"), event)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performWindowDragWithEvent:"), objc.ExtractPtr(event))
 }
 
 func (w_ Window) DisableSnapshotRestoration() {
@@ -789,7 +789,7 @@ func (w_ Window) Update() {
 }
 
 func (w_ Window) DragImage_At_Offset_Event_Pasteboard_Source_SlideBack(image IImage, baseLocation foundation.Point, initialOffset foundation.Size, event IEvent, pboard IPasteboard, sourceObj objc.IObject, slideFlag bool) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("dragImage:at:offset:event:pasteboard:source:slideBack:"), image, baseLocation, initialOffset, event, pboard, sourceObj, slideFlag)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("dragImage:at:offset:event:pasteboard:source:slideBack:"), objc.ExtractPtr(image), baseLocation, initialOffset, objc.ExtractPtr(event), objc.ExtractPtr(pboard), objc.ExtractPtr(sourceObj), slideFlag)
 }
 
 func (w_ Window) RegisterForDraggedTypes(newTypes []PasteboardType) {
@@ -854,7 +854,7 @@ func (w_ Window) Center() {
 }
 
 func (w_ Window) PerformClose(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("performClose:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performClose:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) Close() {
@@ -862,19 +862,19 @@ func (w_ Window) Close() {
 }
 
 func (w_ Window) PerformMiniaturize(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("performMiniaturize:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("performMiniaturize:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) Miniaturize(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("miniaturize:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("miniaturize:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) Deminiaturize(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("deminiaturize:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("deminiaturize:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) Print(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("print:"), sender)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("print:"), objc.ExtractPtr(sender))
 }
 
 func (w_ Window) DataWithEPSInsideRect(rect foundation.Rect) []byte {
@@ -926,17 +926,17 @@ func (w_ Window) SetIsZoomed(flag bool) {
 }
 
 func (w_ Window) HandleCloseScriptCommand(command foundation.ICloseCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handleCloseScriptCommand:"), command)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handleCloseScriptCommand:"), objc.ExtractPtr(command))
 	return rv
 }
 
 func (w_ Window) HandlePrintScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handlePrintScriptCommand:"), command)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handlePrintScriptCommand:"), objc.ExtractPtr(command))
 	return rv
 }
 
 func (w_ Window) HandleSaveScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handleSaveScriptCommand:"), command)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("handleSaveScriptCommand:"), objc.ExtractPtr(command))
 	return rv
 }
 
@@ -974,7 +974,7 @@ func (w_ Window) FlushWindowIfNeeded() {
 
 // deprecated
 func (wc _WindowClass) MenuChanged(menu IMenu) {
-	objc.CallMethod[objc.Void](wc, objc.GetSelector("menuChanged:"), menu)
+	objc.CallMethod[objc.Void](wc, objc.GetSelector("menuChanged:"), objc.ExtractPtr(menu))
 }
 
 // deprecated
@@ -1032,7 +1032,7 @@ func (w_ Window) SetDelegate(value WindowDelegate) {
 }
 
 func (w_ Window) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) ContentViewController() ViewController {
@@ -1041,7 +1041,7 @@ func (w_ Window) ContentViewController() ViewController {
 }
 
 func (w_ Window) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentViewController:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentViewController:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) ContentView() View {
@@ -1050,7 +1050,7 @@ func (w_ Window) ContentView() View {
 }
 
 func (w_ Window) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentView:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) StyleMask() WindowStyleMask {
@@ -1082,7 +1082,7 @@ func (w_ Window) BackgroundColor() Color {
 }
 
 func (w_ Window) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) ColorSpace() ColorSpace {
@@ -1091,7 +1091,7 @@ func (w_ Window) ColorSpace() ColorSpace {
 }
 
 func (w_ Window) SetColorSpace(value IColorSpace) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setColorSpace:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setColorSpace:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) CanHide() bool {
@@ -1215,7 +1215,7 @@ func (w_ Window) WindowController() WindowController {
 }
 
 func (w_ Window) SetWindowController(value IWindowController) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindowController:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindowController:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) AttachedSheet() Window {
@@ -1422,7 +1422,7 @@ func (w_ Window) Toolbar() Toolbar {
 }
 
 func (w_ Window) SetToolbar(value IToolbar) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setToolbar:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setToolbar:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) ChildWindows() []Window {
@@ -1436,7 +1436,7 @@ func (w_ Window) ParentWindow() Window {
 }
 
 func (w_ Window) SetParentWindow(value IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setParentWindow:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setParentWindow:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) DefaultButtonCell() ButtonCell {
@@ -1445,7 +1445,7 @@ func (w_ Window) DefaultButtonCell() ButtonCell {
 }
 
 func (w_ Window) SetDefaultButtonCell(value IButtonCell) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultButtonCell:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultButtonCell:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) IsExcludedFromWindowsMenu() bool {
@@ -1581,7 +1581,7 @@ func (w_ Window) InitialFirstResponder() View {
 }
 
 func (w_ Window) SetInitialFirstResponder(value IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setInitialFirstResponder:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setInitialFirstResponder:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) FirstResponder() Responder {
@@ -1718,7 +1718,7 @@ func (w_ Window) RepresentedURL() foundation.URL {
 }
 
 func (w_ Window) SetRepresentedURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setRepresentedURL:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setRepresentedURL:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) Screen() Screen {
@@ -1778,7 +1778,7 @@ func (w_ Window) MiniwindowImage() Image {
 }
 
 func (w_ Window) SetMiniwindowImage(value IImage) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMiniwindowImage:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setMiniwindowImage:"), objc.ExtractPtr(value))
 }
 
 func (w_ Window) MiniwindowTitle() string {

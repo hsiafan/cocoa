@@ -43,22 +43,22 @@ func MakeCollectionViewLayoutAttributes(ptr unsafe.Pointer) CollectionViewLayout
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForItemWithIndexPath:"), indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForItemWithIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForSupplementaryViewOfKind_WithIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForSupplementaryViewOfKind:withIndexPath:"), elementKind, indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForSupplementaryViewOfKind:withIndexPath:"), elementKind, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForDecorationViewOfKind_WithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForInterItemGapBeforeIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForInterItemGapBeforeIndexPath:"), indexPath)
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](cc, objc.GetSelector("layoutAttributesForInterItemGapBeforeIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (c_ CollectionViewLayoutAttributes) IndexPath() foundation.IndexPath {
 }
 
 func (c_ CollectionViewLayoutAttributes) SetIndexPath(value foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIndexPath:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setIndexPath:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionViewLayoutAttributes) RepresentedElementKind() string {

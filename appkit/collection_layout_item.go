@@ -34,12 +34,12 @@ func MakeCollectionLayoutItem(ptr unsafe.Pointer) CollectionLayoutItem {
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
+	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("itemWithLayoutSize:"), objc.ExtractPtr(layoutSize))
 	return rv
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutItem {
-	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), objc.ExtractPtr(layoutSize), supplementaryItems)
 	return rv
 }
 
@@ -79,7 +79,7 @@ func (c_ CollectionLayoutItem) EdgeSpacing() CollectionLayoutEdgeSpacing {
 }
 
 func (c_ CollectionLayoutItem) SetEdgeSpacing(value ICollectionLayoutEdgeSpacing) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setEdgeSpacing:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setEdgeSpacing:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionLayoutItem) ContentInsets() DirectionalEdgeInsets {

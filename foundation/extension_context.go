@@ -52,7 +52,7 @@ func (e_ ExtensionContext) Init() ExtensionContext {
 }
 
 func (e_ ExtensionContext) CancelRequestWithError(error IError) {
-	objc.CallMethod[objc.Void](e_, objc.GetSelector("cancelRequestWithError:"), error)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("cancelRequestWithError:"), objc.ExtractPtr(error))
 }
 
 func (e_ ExtensionContext) CompleteRequestReturningItems_CompletionHandler(items []objc.IObject, completionHandler func(expired bool)) {
@@ -60,7 +60,7 @@ func (e_ ExtensionContext) CompleteRequestReturningItems_CompletionHandler(items
 }
 
 func (e_ ExtensionContext) OpenURL_CompletionHandler(URL IURL, completionHandler func(success bool)) {
-	objc.CallMethod[objc.Void](e_, objc.GetSelector("openURL:completionHandler:"), URL, completionHandler)
+	objc.CallMethod[objc.Void](e_, objc.GetSelector("openURL:completionHandler:"), objc.ExtractPtr(URL), completionHandler)
 }
 
 func (e_ ExtensionContext) InputItems() []objc.Object {

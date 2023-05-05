@@ -80,7 +80,7 @@ func (w_ WebViewConfiguration) SetURLSchemeHandler_ForURLScheme(urlSchemeHandler
 }
 
 func (w_ WebViewConfiguration) SetURLSchemeHandler0_ForURLScheme(urlSchemeHandler objc.IObject, urlScheme string) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setURLSchemeHandler:forURLScheme:"), urlSchemeHandler, urlScheme)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setURLSchemeHandler:forURLScheme:"), objc.ExtractPtr(urlSchemeHandler), urlScheme)
 }
 
 func (w_ WebViewConfiguration) UrlSchemeHandlerForURLScheme(urlScheme string) URLSchemeHandlerWrapper {
@@ -94,7 +94,7 @@ func (w_ WebViewConfiguration) WebsiteDataStore() WebsiteDataStore {
 }
 
 func (w_ WebViewConfiguration) SetWebsiteDataStore(value IWebsiteDataStore) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWebsiteDataStore:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWebsiteDataStore:"), objc.ExtractPtr(value))
 }
 
 func (w_ WebViewConfiguration) UserContentController() UserContentController {
@@ -103,7 +103,7 @@ func (w_ WebViewConfiguration) UserContentController() UserContentController {
 }
 
 func (w_ WebViewConfiguration) SetUserContentController(value IUserContentController) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUserContentController:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUserContentController:"), objc.ExtractPtr(value))
 }
 
 func (w_ WebViewConfiguration) ProcessPool() ProcessPool {
@@ -112,7 +112,7 @@ func (w_ WebViewConfiguration) ProcessPool() ProcessPool {
 }
 
 func (w_ WebViewConfiguration) SetProcessPool(value IProcessPool) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setProcessPool:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setProcessPool:"), objc.ExtractPtr(value))
 }
 
 func (w_ WebViewConfiguration) ApplicationNameForUserAgent() string {
@@ -139,7 +139,7 @@ func (w_ WebViewConfiguration) Preferences() Preferences {
 }
 
 func (w_ WebViewConfiguration) SetPreferences(value IPreferences) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreferences:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setPreferences:"), objc.ExtractPtr(value))
 }
 
 func (w_ WebViewConfiguration) DefaultWebpagePreferences() WebpagePreferences {
@@ -148,7 +148,7 @@ func (w_ WebViewConfiguration) DefaultWebpagePreferences() WebpagePreferences {
 }
 
 func (w_ WebViewConfiguration) SetDefaultWebpagePreferences(value IWebpagePreferences) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultWebpagePreferences:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDefaultWebpagePreferences:"), objc.ExtractPtr(value))
 }
 
 func (w_ WebViewConfiguration) SuppressesIncrementalRendering() bool {

@@ -36,6 +36,6 @@ func (t_ *TouchBarDelegateWrapper) ImplementsTouchBar_MakeItemForIdentifier() bo
 }
 
 func (t_ TouchBarDelegateWrapper) TouchBar_MakeItemForIdentifier(touchBar ITouchBar, identifier TouchBarItemIdentifier) TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](t_, objc.GetSelector("touchBar:makeItemForIdentifier:"), touchBar, identifier)
+	rv := objc.CallMethod[TouchBarItem](t_, objc.GetSelector("touchBar:makeItemForIdentifier:"), objc.ExtractPtr(touchBar), identifier)
 	return rv
 }

@@ -56,9 +56,9 @@ func (h_ HTTPCookieStore) GetAllCookies(completionHandler func(param1 []foundati
 }
 
 func (h_ HTTPCookieStore) SetCookie_CompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.CallMethod[objc.Void](h_, objc.GetSelector("setCookie:completionHandler:"), cookie, completionHandler)
+	objc.CallMethod[objc.Void](h_, objc.GetSelector("setCookie:completionHandler:"), objc.ExtractPtr(cookie), completionHandler)
 }
 
 func (h_ HTTPCookieStore) DeleteCookie_CompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.CallMethod[objc.Void](h_, objc.GetSelector("deleteCookie:completionHandler:"), cookie, completionHandler)
+	objc.CallMethod[objc.Void](h_, objc.GetSelector("deleteCookie:completionHandler:"), objc.ExtractPtr(cookie), completionHandler)
 }

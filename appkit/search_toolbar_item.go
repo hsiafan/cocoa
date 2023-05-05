@@ -92,5 +92,5 @@ func (s_ SearchToolbarItem) SearchField() SearchField {
 }
 
 func (s_ SearchToolbarItem) SetSearchField(value ISearchField) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchField:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchField:"), objc.ExtractPtr(value))
 }

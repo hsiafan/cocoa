@@ -33,7 +33,7 @@ func MakeTrackingArea(ptr unsafe.Pointer) TrackingArea {
 }
 
 func (t_ TrackingArea) InitWithRect_Options_Owner_UserInfo(rect foundation.Rect, options TrackingAreaOptions, owner objc.IObject, userInfo foundation.IDictionary) TrackingArea {
-	rv := objc.CallMethod[TrackingArea](t_, objc.GetSelector("initWithRect:options:owner:userInfo:"), rect, options, owner, userInfo)
+	rv := objc.CallMethod[TrackingArea](t_, objc.GetSelector("initWithRect:options:owner:userInfo:"), rect, options, objc.ExtractPtr(owner), userInfo)
 	return rv
 }
 

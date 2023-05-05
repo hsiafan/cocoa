@@ -58,12 +58,12 @@ func (m_ MeasurementFormatter) Init() MeasurementFormatter {
 }
 
 func (m_ MeasurementFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("stringFromMeasurement:"), measurement)
+	rv := objc.CallMethod[string](m_, objc.GetSelector("stringFromMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 
 func (m_ MeasurementFormatter) StringFromUnit(unit IUnit) string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("stringFromUnit:"), unit)
+	rv := objc.CallMethod[string](m_, objc.GetSelector("stringFromUnit:"), objc.ExtractPtr(unit))
 	return rv
 }
 
@@ -91,7 +91,7 @@ func (m_ MeasurementFormatter) Locale() Locale {
 }
 
 func (m_ MeasurementFormatter) SetLocale(value ILocale) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLocale:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (m_ MeasurementFormatter) NumberFormatter() NumberFormatter {
@@ -100,5 +100,5 @@ func (m_ MeasurementFormatter) NumberFormatter() NumberFormatter {
 }
 
 func (m_ MeasurementFormatter) SetNumberFormatter(value INumberFormatter) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setNumberFormatter:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setNumberFormatter:"), objc.ExtractPtr(value))
 }

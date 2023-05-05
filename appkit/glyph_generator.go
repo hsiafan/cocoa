@@ -55,7 +55,7 @@ func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters
 }
 
 func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage0_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), glyphStorage, nChars, glyphIndex, charIndex)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.ExtractPtr(glyphStorage), nChars, glyphIndex, charIndex)
 }
 
 func (gc _GlyphGeneratorClass) SharedGlyphGenerator() GlyphGenerator {

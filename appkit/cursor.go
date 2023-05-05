@@ -45,12 +45,12 @@ func MakeCursor(ptr unsafe.Pointer) Cursor {
 }
 
 func (c_ Cursor) InitWithImage_HotSpot(newImage IImage, point foundation.Point) Cursor {
-	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("initWithImage:hotSpot:"), newImage, point)
+	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("initWithImage:hotSpot:"), objc.ExtractPtr(newImage), point)
 	return rv
 }
 
 func (c_ Cursor) InitWithImage_ForegroundColorHint_BackgroundColorHint_HotSpot(newImage IImage, fg IColor, bg IColor, hotSpot foundation.Point) Cursor {
-	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:"), newImage, fg, bg, hotSpot)
+	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:"), objc.ExtractPtr(newImage), objc.ExtractPtr(fg), objc.ExtractPtr(bg), hotSpot)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func (c_ Cursor) Set() {
 
 // deprecated
 func (c_ Cursor) MouseEntered(event IEvent) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("mouseEntered:"), event)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("mouseEntered:"), objc.ExtractPtr(event))
 }
 
 // deprecated
@@ -110,7 +110,7 @@ func (c_ Cursor) SetOnMouseEntered(flag bool) {
 
 // deprecated
 func (c_ Cursor) MouseExited(event IEvent) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("mouseExited:"), event)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("mouseExited:"), objc.ExtractPtr(event))
 }
 
 // deprecated

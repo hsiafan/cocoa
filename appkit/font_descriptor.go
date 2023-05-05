@@ -84,7 +84,7 @@ func (fc _FontDescriptorClass) FontDescriptorWithFontAttributes(attributes map[F
 }
 
 func (fc _FontDescriptorClass) FontDescriptorWithName_Matrix(fontName string, matrix foundation.IAffineTransform) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("fontDescriptorWithName:matrix:"), fontName, matrix)
+	rv := objc.CallMethod[FontDescriptor](fc, objc.GetSelector("fontDescriptorWithName:matrix:"), fontName, objc.ExtractPtr(matrix))
 	return rv
 }
 
@@ -109,7 +109,7 @@ func (f_ FontDescriptor) FontDescriptorWithFamily(newFamily string) FontDescript
 }
 
 func (f_ FontDescriptor) FontDescriptorWithMatrix(matrix foundation.IAffineTransform) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithMatrix:"), matrix)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("fontDescriptorWithMatrix:"), objc.ExtractPtr(matrix))
 	return rv
 }
 
@@ -124,12 +124,12 @@ func (f_ FontDescriptor) FontDescriptorWithSymbolicTraits(symbolicTraits FontDes
 }
 
 func (f_ FontDescriptor) MatchingFontDescriptorsWithMandatoryKeys(mandatoryKeys foundation.ISet) []FontDescriptor {
-	rv := objc.CallMethod[[]FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorsWithMandatoryKeys:"), mandatoryKeys)
+	rv := objc.CallMethod[[]FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorsWithMandatoryKeys:"), objc.ExtractPtr(mandatoryKeys))
 	return rv
 }
 
 func (f_ FontDescriptor) MatchingFontDescriptorWithMandatoryKeys(mandatoryKeys foundation.ISet) FontDescriptor {
-	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorWithMandatoryKeys:"), mandatoryKeys)
+	rv := objc.CallMethod[FontDescriptor](f_, objc.GetSelector("matchingFontDescriptorWithMandatoryKeys:"), objc.ExtractPtr(mandatoryKeys))
 	return rv
 }
 

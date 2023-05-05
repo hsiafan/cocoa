@@ -61,15 +61,15 @@ func (c_ CollectionViewLayoutInvalidationContext) Init() CollectionViewLayoutInv
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateItemsAtIndexPaths:"), indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateSupplementaryElementsOfKind_AtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateDecorationElementsOfKind_AtIndexPaths(elementKind CollectionViewDecorationElementKind, indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateDecorationElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("invalidateDecorationElementsOfKind:atIndexPaths:"), elementKind, objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateEverything() bool {

@@ -79,7 +79,7 @@ func MakeViewController(ptr unsafe.Pointer) ViewController {
 }
 
 func (v_ ViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) ViewController {
-	rv := objc.CallMethod[ViewController](v_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
+	rv := objc.CallMethod[ViewController](v_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, objc.ExtractPtr(nibBundleOrNil))
 	return rv
 }
 
@@ -108,7 +108,7 @@ func (v_ ViewController) LoadView() {
 }
 
 func (v_ ViewController) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("commitEditingWithDelegate:didCommitSelector:contextInfo:"), delegate, didCommitSelector, contextInfo)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("commitEditingWithDelegate:didCommitSelector:contextInfo:"), objc.ExtractPtr(delegate), didCommitSelector, contextInfo)
 }
 
 func (v_ ViewController) CommitEditing() bool {
@@ -121,7 +121,7 @@ func (v_ ViewController) DiscardEditing() {
 }
 
 func (v_ ViewController) DismissController(sender objc.IObject) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("dismissController:"), sender)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("dismissController:"), objc.ExtractPtr(sender))
 }
 
 func (v_ ViewController) ViewDidLoad() {
@@ -157,15 +157,15 @@ func (v_ ViewController) ViewDidLayout() {
 }
 
 func (v_ ViewController) AddChildViewController(childViewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("addChildViewController:"), childViewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("addChildViewController:"), objc.ExtractPtr(childViewController))
 }
 
 func (v_ ViewController) TransitionFromViewController_ToViewController_Options_CompletionHandler(fromViewController IViewController, toViewController IViewController, options ViewControllerTransitionOptions, completion func()) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("transitionFromViewController:toViewController:options:completionHandler:"), fromViewController, toViewController, options, completion)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("transitionFromViewController:toViewController:options:completionHandler:"), objc.ExtractPtr(fromViewController), objc.ExtractPtr(toViewController), options, completion)
 }
 
 func (v_ ViewController) InsertChildViewController_AtIndex(childViewController IViewController, index int) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("insertChildViewController:atIndex:"), childViewController, index)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("insertChildViewController:atIndex:"), objc.ExtractPtr(childViewController), index)
 }
 
 func (v_ ViewController) RemoveChildViewControllerAtIndex(index int) {
@@ -177,32 +177,32 @@ func (v_ ViewController) RemoveFromParentViewController() {
 }
 
 func (v_ ViewController) PreferredContentSizeDidChangeForViewController(viewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("preferredContentSizeDidChangeForViewController:"), viewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("preferredContentSizeDidChangeForViewController:"), objc.ExtractPtr(viewController))
 }
 
 func (v_ ViewController) PresentViewController_Animator(viewController IViewController, animator ViewControllerPresentationAnimator) {
 	po := objc.CreateProtocol("NSViewControllerPresentationAnimator", animator)
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), viewController, po)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), objc.ExtractPtr(viewController), po)
 }
 
 func (v_ ViewController) PresentViewController0_Animator(viewController IViewController, animator objc.IObject) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), viewController, animator)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), objc.ExtractPtr(viewController), objc.ExtractPtr(animator))
 }
 
 func (v_ ViewController) DismissViewController(viewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("dismissViewController:"), viewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("dismissViewController:"), objc.ExtractPtr(viewController))
 }
 
 func (v_ ViewController) PresentViewController_AsPopoverRelativeToRect_OfView_PreferredEdge_Behavior(viewController IViewController, positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge, behavior PopoverBehavior) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:"), viewController, positioningRect, positioningView, preferredEdge, behavior)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:"), objc.ExtractPtr(viewController), positioningRect, objc.ExtractPtr(positioningView), preferredEdge, behavior)
 }
 
 func (v_ ViewController) PresentViewControllerAsModalWindow(viewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewControllerAsModalWindow:"), viewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewControllerAsModalWindow:"), objc.ExtractPtr(viewController))
 }
 
 func (v_ ViewController) PresentViewControllerAsSheet(viewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewControllerAsSheet:"), viewController)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewControllerAsSheet:"), objc.ExtractPtr(viewController))
 }
 
 func (v_ ViewController) ViewWillTransitionToSize(newSize foundation.Size) {
@@ -215,7 +215,7 @@ func (v_ ViewController) RepresentedObject() objc.Object {
 }
 
 func (v_ ViewController) SetRepresentedObject(value objc.IObject) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setRepresentedObject:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setRepresentedObject:"), objc.ExtractPtr(value))
 }
 
 func (v_ ViewController) NibBundle() foundation.Bundle {
@@ -234,7 +234,7 @@ func (v_ ViewController) View() View {
 }
 
 func (v_ ViewController) SetView(value IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setView:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }
 
 func (v_ ViewController) Title() string {
@@ -319,5 +319,5 @@ func (v_ ViewController) SourceItemView() View {
 }
 
 func (v_ ViewController) SetSourceItemView(value IView) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setSourceItemView:"), value)
+	objc.CallMethod[objc.Void](v_, objc.GetSelector("setSourceItemView:"), objc.ExtractPtr(value))
 }

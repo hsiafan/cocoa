@@ -39,7 +39,7 @@ func MakeCollectionViewItem(ptr unsafe.Pointer) CollectionViewItem {
 }
 
 func (c_ CollectionViewItem) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, objc.ExtractPtr(nibBundleOrNil))
 	return rv
 }
 
@@ -69,7 +69,7 @@ func (c_ CollectionViewItem) ImageView() ImageView {
 }
 
 func (c_ CollectionViewItem) SetImageView(value IImageView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImageView:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImageView:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionViewItem) TextField() TextField {
@@ -78,7 +78,7 @@ func (c_ CollectionViewItem) TextField() TextField {
 }
 
 func (c_ CollectionViewItem) SetTextField(value ITextField) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTextField:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTextField:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionViewItem) IsSelected() bool {

@@ -64,7 +64,7 @@ func MakeFileWrapper(ptr unsafe.Pointer) FileWrapper {
 }
 
 func (f_ FileWrapper) InitWithURL_Options_Error(url IURL, options FileWrapperReadingOptions, outError *Error) FileWrapper {
-	rv := objc.CallMethod[FileWrapper](f_, objc.GetSelector("initWithURL:options:error:"), url, options, unsafe.Pointer(outError))
+	rv := objc.CallMethod[FileWrapper](f_, objc.GetSelector("initWithURL:options:error:"), objc.ExtractPtr(url), options, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -79,7 +79,7 @@ func (f_ FileWrapper) InitRegularFileWithContents(contents []byte) FileWrapper {
 }
 
 func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
-	rv := objc.CallMethod[FileWrapper](f_, objc.GetSelector("initSymbolicLinkWithDestinationURL:"), url)
+	rv := objc.CallMethod[FileWrapper](f_, objc.GetSelector("initSymbolicLinkWithDestinationURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -121,12 +121,12 @@ func (f_ FileWrapper) InitSymbolicLinkWithDestination(path string) objc.Object {
 }
 
 func (f_ FileWrapper) AddFileWrapper(child IFileWrapper) string {
-	rv := objc.CallMethod[string](f_, objc.GetSelector("addFileWrapper:"), child)
+	rv := objc.CallMethod[string](f_, objc.GetSelector("addFileWrapper:"), objc.ExtractPtr(child))
 	return rv
 }
 
 func (f_ FileWrapper) RemoveFileWrapper(child IFileWrapper) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("removeFileWrapper:"), child)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("removeFileWrapper:"), objc.ExtractPtr(child))
 }
 
 // deprecated
@@ -147,7 +147,7 @@ func (f_ FileWrapper) AddSymbolicLinkWithDestination_PreferredFilename(path stri
 }
 
 func (f_ FileWrapper) KeyForFileWrapper(child IFileWrapper) string {
-	rv := objc.CallMethod[string](f_, objc.GetSelector("keyForFileWrapper:"), child)
+	rv := objc.CallMethod[string](f_, objc.GetSelector("keyForFileWrapper:"), objc.ExtractPtr(child))
 	return rv
 }
 
@@ -164,7 +164,7 @@ func (f_ FileWrapper) NeedsToBeUpdatedFromPath(path string) bool {
 }
 
 func (f_ FileWrapper) MatchesContentsOfURL(url IURL) bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("matchesContentsOfURL:"), url)
+	rv := objc.CallMethod[bool](f_, objc.GetSelector("matchesContentsOfURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (f_ FileWrapper) UpdateFromPath(path string) bool {
 }
 
 func (f_ FileWrapper) ReadFromURL_Options_Error(url IURL, options FileWrapperReadingOptions, outError *Error) bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("readFromURL:options:error:"), url, options, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](f_, objc.GetSelector("readFromURL:options:error:"), objc.ExtractPtr(url), options, unsafe.Pointer(outError))
 	return rv
 }
 
@@ -186,7 +186,7 @@ func (f_ FileWrapper) WriteToFile_Atomically_UpdateFilenames(path string, atomic
 }
 
 func (f_ FileWrapper) WriteToURL_Options_OriginalContentsURL_Error(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError *Error) bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("writeToURL:options:originalContentsURL:error:"), url, options, originalContentsURL, unsafe.Pointer(outError))
+	rv := objc.CallMethod[bool](f_, objc.GetSelector("writeToURL:options:originalContentsURL:error:"), objc.ExtractPtr(url), options, objc.ExtractPtr(originalContentsURL), unsafe.Pointer(outError))
 	return rv
 }
 

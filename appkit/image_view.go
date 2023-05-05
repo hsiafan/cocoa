@@ -47,7 +47,7 @@ func MakeImageView(ptr unsafe.Pointer) ImageView {
 }
 
 func (ic _ImageViewClass) ImageViewWithImage(image IImage) ImageView {
-	rv := objc.CallMethod[ImageView](ic, objc.GetSelector("imageViewWithImage:"), image)
+	rv := objc.CallMethod[ImageView](ic, objc.GetSelector("imageViewWithImage:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (i_ ImageView) Image() Image {
 }
 
 func (i_ ImageView) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (i_ ImageView) ImageFrameStyle() ImageFrameStyle {
@@ -145,7 +145,7 @@ func (i_ ImageView) ContentTintColor() Color {
 }
 
 func (i_ ImageView) SetContentTintColor(value IColor) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("setContentTintColor:"), value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setContentTintColor:"), objc.ExtractPtr(value))
 }
 
 func (i_ ImageView) SymbolConfiguration() ImageSymbolConfiguration {
@@ -154,5 +154,5 @@ func (i_ ImageView) SymbolConfiguration() ImageSymbolConfiguration {
 }
 
 func (i_ ImageView) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("setSymbolConfiguration:"), value)
+	objc.CallMethod[objc.Void](i_, objc.GetSelector("setSymbolConfiguration:"), objc.ExtractPtr(value))
 }

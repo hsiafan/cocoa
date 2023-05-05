@@ -171,7 +171,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_DisplayStringF
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_DisplayStringForRepresentedObject(tokenFieldCell ITokenFieldCell, representedObject objc.IObject) string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("tokenFieldCell:displayStringForRepresentedObject:"), tokenFieldCell, representedObject)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("tokenFieldCell:displayStringForRepresentedObject:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(representedObject))
 	return rv
 }
 
@@ -180,7 +180,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_StyleForRepres
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_StyleForRepresentedObject(tokenFieldCell ITokenFieldCell, representedObject objc.IObject) TokenStyle {
-	rv := objc.CallMethod[TokenStyle](t_, objc.GetSelector("tokenFieldCell:styleForRepresentedObject:"), tokenFieldCell, representedObject)
+	rv := objc.CallMethod[TokenStyle](t_, objc.GetSelector("tokenFieldCell:styleForRepresentedObject:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(representedObject))
 	return rv
 }
 
@@ -189,7 +189,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_CompletionsFor
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_CompletionsForSubstring_IndexOfToken_IndexOfSelectedItem(tokenFieldCell ITokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), tokenFieldCell, substring, tokenIndex, selectedIndex)
+	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), objc.ExtractPtr(tokenFieldCell), substring, tokenIndex, selectedIndex)
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_EditingStringF
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_EditingStringForRepresentedObject(tokenFieldCell ITokenFieldCell, representedObject objc.IObject) string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("tokenFieldCell:editingStringForRepresentedObject:"), tokenFieldCell, representedObject)
+	rv := objc.CallMethod[string](t_, objc.GetSelector("tokenFieldCell:editingStringForRepresentedObject:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(representedObject))
 	return rv
 }
 
@@ -207,7 +207,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_RepresentedObj
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_RepresentedObjectForEditingString(tokenFieldCell ITokenFieldCell, editingString string) objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("tokenFieldCell:representedObjectForEditingString:"), tokenFieldCell, editingString)
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("tokenFieldCell:representedObjectForEditingString:"), objc.ExtractPtr(tokenFieldCell), editingString)
 	return rv
 }
 
@@ -216,7 +216,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_ShouldAddObjec
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_ShouldAddObjects_AtIndex(tokenFieldCell ITokenFieldCell, tokens []objc.IObject, index uint) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:shouldAddObjects:atIndex:"), tokenFieldCell, tokens, index)
+	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:shouldAddObjects:atIndex:"), objc.ExtractPtr(tokenFieldCell), tokens, index)
 	return rv
 }
 
@@ -225,7 +225,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_ReadFromPasteb
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_ReadFromPasteboard(tokenFieldCell ITokenFieldCell, pboard IPasteboard) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:readFromPasteboard:"), tokenFieldCell, pboard)
+	rv := objc.CallMethod[[]objc.Object](t_, objc.GetSelector("tokenFieldCell:readFromPasteboard:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(pboard))
 	return rv
 }
 
@@ -234,7 +234,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_WriteRepresent
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_WriteRepresentedObjects_ToPasteboard(tokenFieldCell ITokenFieldCell, objects []objc.IObject, pboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), tokenFieldCell, objects, pboard)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), objc.ExtractPtr(tokenFieldCell), objects, objc.ExtractPtr(pboard))
 	return rv
 }
 
@@ -243,7 +243,7 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_HasMenuForRepr
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_HasMenuForRepresentedObject(tokenFieldCell ITokenFieldCell, representedObject objc.IObject) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tokenFieldCell:hasMenuForRepresentedObject:"), tokenFieldCell, representedObject)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tokenFieldCell:hasMenuForRepresentedObject:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(representedObject))
 	return rv
 }
 
@@ -252,6 +252,6 @@ func (t_ *TokenFieldCellDelegateWrapper) ImplementsTokenFieldCell_MenuForReprese
 }
 
 func (t_ TokenFieldCellDelegateWrapper) TokenFieldCell_MenuForRepresentedObject(tokenFieldCell ITokenFieldCell, representedObject objc.IObject) Menu {
-	rv := objc.CallMethod[Menu](t_, objc.GetSelector("tokenFieldCell:menuForRepresentedObject:"), tokenFieldCell, representedObject)
+	rv := objc.CallMethod[Menu](t_, objc.GetSelector("tokenFieldCell:menuForRepresentedObject:"), objc.ExtractPtr(tokenFieldCell), objc.ExtractPtr(representedObject))
 	return rv
 }

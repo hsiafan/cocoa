@@ -36,12 +36,12 @@ func (cc _CollectionLayoutDecorationItemClass) BackgroundDecorationItemWithEleme
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("itemWithLayoutSize:"), objc.ExtractPtr(layoutSize))
 	return rv
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutDecorationItem {
-	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutDecorationItem](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), objc.ExtractPtr(layoutSize), supplementaryItems)
 	return rv
 }
 

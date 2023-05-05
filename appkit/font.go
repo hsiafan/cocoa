@@ -105,12 +105,12 @@ func (fc _FontClass) FontWithName_Size(fontName string, fontSize float64) Font {
 }
 
 func (fc _FontClass) FontWithDescriptor_Size(fontDescriptor IFontDescriptor, fontSize float64) Font {
-	rv := objc.CallMethod[Font](fc, objc.GetSelector("fontWithDescriptor:size:"), fontDescriptor, fontSize)
+	rv := objc.CallMethod[Font](fc, objc.GetSelector("fontWithDescriptor:size:"), objc.ExtractPtr(fontDescriptor), fontSize)
 	return rv
 }
 
 func (fc _FontClass) FontWithDescriptor_TextTransform(fontDescriptor IFontDescriptor, textTransform foundation.IAffineTransform) Font {
-	rv := objc.CallMethod[Font](fc, objc.GetSelector("fontWithDescriptor:textTransform:"), fontDescriptor, textTransform)
+	rv := objc.CallMethod[Font](fc, objc.GetSelector("fontWithDescriptor:textTransform:"), objc.ExtractPtr(fontDescriptor), objc.ExtractPtr(textTransform))
 	return rv
 }
 
@@ -209,15 +209,15 @@ func (f_ Font) Set() {
 }
 
 func (f_ Font) SetInContext(graphicsContext IGraphicsContext) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setInContext:"), graphicsContext)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setInContext:"), objc.ExtractPtr(graphicsContext))
 }
 
 func (fc _FontClass) SetUserFont(font IFont) {
-	objc.CallMethod[objc.Void](fc, objc.GetSelector("setUserFont:"), font)
+	objc.CallMethod[objc.Void](fc, objc.GetSelector("setUserFont:"), objc.ExtractPtr(font))
 }
 
 func (fc _FontClass) SetUserFixedPitchFont(font IFont) {
-	objc.CallMethod[objc.Void](fc, objc.GetSelector("setUserFixedPitchFont:"), font)
+	objc.CallMethod[objc.Void](fc, objc.GetSelector("setUserFixedPitchFont:"), objc.ExtractPtr(font))
 }
 
 func (f_ Font) FontWithSize(fontSize float64) Font {

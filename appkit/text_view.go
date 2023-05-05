@@ -212,7 +212,7 @@ func MakeTextView(ptr unsafe.Pointer) TextView {
 }
 
 func (t_ TextView) InitWithFrame_TextContainer(frameRect foundation.Rect, container ITextContainer) TextView {
-	rv := objc.CallMethod[TextView](t_, objc.GetSelector("initWithFrame:textContainer:"), frameRect, container)
+	rv := objc.CallMethod[TextView](t_, objc.GetSelector("initWithFrame:textContainer:"), frameRect, objc.ExtractPtr(container))
 	return rv
 }
 
@@ -251,7 +251,7 @@ func (tc _TextViewClass) RegisterForServices() {
 }
 
 func (t_ TextView) ReplaceTextContainer(newContainer ITextContainer) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceTextContainer:"), newContainer)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceTextContainer:"), objc.ExtractPtr(newContainer))
 }
 
 func (t_ TextView) InvalidateTextContainerOrigin() {
@@ -259,7 +259,7 @@ func (t_ TextView) InvalidateTextContainerOrigin() {
 }
 
 func (t_ TextView) ChangeDocumentBackgroundColor(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeDocumentBackgroundColor:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeDocumentBackgroundColor:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) SetNeedsDisplayInRect_AvoidAdditionalLayout(rect foundation.Rect, flag bool) {
@@ -267,7 +267,7 @@ func (t_ TextView) SetNeedsDisplayInRect_AvoidAdditionalLayout(rect foundation.R
 }
 
 func (t_ TextView) DrawInsertionPointInRect_Color_TurnedOn(rect foundation.Rect, color IColor, flag bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawInsertionPointInRect:color:turnedOn:"), rect, color, flag)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawInsertionPointInRect:color:turnedOn:"), rect, objc.ExtractPtr(color), flag)
 }
 
 func (t_ TextView) DrawViewBackgroundInRect(rect foundation.Rect) {
@@ -303,7 +303,7 @@ func (tc _TextViewClass) ScrollableTextView() ScrollView {
 
 // deprecated
 func (t_ TextView) InsertText(insertString objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("insertText:"), insertString)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("insertText:"), objc.ExtractPtr(insertString))
 }
 
 func (t_ TextView) SetBaseWritingDirection_Range(writingDirection WritingDirection, range_ foundation.Range) {
@@ -312,23 +312,23 @@ func (t_ TextView) SetBaseWritingDirection_Range(writingDirection WritingDirecti
 
 // deprecated
 func (t_ TextView) ToggleBaseWritingDirection(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleBaseWritingDirection:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleBaseWritingDirection:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) Outline(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("outline:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("outline:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleAutomaticQuoteSubstitution(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticQuoteSubstitution:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticQuoteSubstitution:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleAutomaticLinkDetection(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticLinkDetection:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticLinkDetection:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleAutomaticTextCompletion(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticTextCompletion:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticTextCompletion:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) SetSelectedRange_Affinity_StillSelecting(charRange foundation.Range, affinity SelectionAffinity, stillSelectingFlag bool) {
@@ -358,35 +358,35 @@ func (t_ TextView) PreferredPasteboardTypeFromArray_RestrictedToTypesFromArray(a
 }
 
 func (t_ TextView) ReadSelectionFromPasteboard(pboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("readSelectionFromPasteboard:"), pboard)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("readSelectionFromPasteboard:"), objc.ExtractPtr(pboard))
 	return rv
 }
 
 func (t_ TextView) ReadSelectionFromPasteboard_Type(pboard IPasteboard, type_ PasteboardType) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("readSelectionFromPasteboard:type:"), pboard, type_)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("readSelectionFromPasteboard:type:"), objc.ExtractPtr(pboard), type_)
 	return rv
 }
 
 func (t_ TextView) WriteSelectionToPasteboard_Type(pboard IPasteboard, type_ PasteboardType) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("writeSelectionToPasteboard:type:"), pboard, type_)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("writeSelectionToPasteboard:type:"), objc.ExtractPtr(pboard), type_)
 	return rv
 }
 
 func (t_ TextView) WriteSelectionToPasteboard_Types(pboard IPasteboard, types []PasteboardType) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("writeSelectionToPasteboard:types:"), pboard, types)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("writeSelectionToPasteboard:types:"), objc.ExtractPtr(pboard), types)
 	return rv
 }
 
 func (t_ TextView) AlignJustified(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("alignJustified:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("alignJustified:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ChangeAttributes(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeAttributes:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeAttributes:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ChangeColor(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeColor:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeColor:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) SetAlignment_Range(alignment TextAlignment, range_ foundation.Range) {
@@ -394,56 +394,56 @@ func (t_ TextView) SetAlignment_Range(alignment TextAlignment, range_ foundation
 }
 
 func (t_ TextView) UseStandardKerning(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("useStandardKerning:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("useStandardKerning:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) LowerBaseline(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("lowerBaseline:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("lowerBaseline:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) RaiseBaseline(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("raiseBaseline:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("raiseBaseline:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) TurnOffKerning(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("turnOffKerning:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("turnOffKerning:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) LoosenKerning(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("loosenKerning:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("loosenKerning:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) TightenKerning(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tightenKerning:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tightenKerning:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) UseStandardLigatures(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("useStandardLigatures:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("useStandardLigatures:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) TurnOffLigatures(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("turnOffLigatures:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("turnOffLigatures:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) UseAllLigatures(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("useAllLigatures:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("useAllLigatures:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
 func (t_ TextView) ToggleTraditionalCharacterShape(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleTraditionalCharacterShape:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleTraditionalCharacterShape:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ClickedOnLink_AtIndex(link objc.IObject, charIndex uint) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("clickedOnLink:atIndex:"), link, charIndex)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("clickedOnLink:atIndex:"), objc.ExtractPtr(link), charIndex)
 }
 
 func (t_ TextView) PasteAsPlainText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("pasteAsPlainText:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("pasteAsPlainText:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) PasteAsRichText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("pasteAsRichText:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("pasteAsRichText:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) BreakUndoCoalescing() {
@@ -501,15 +501,15 @@ func (t_ TextView) SmartInsertForString_ReplacingRange_BeforeString_AfterString(
 }
 
 func (t_ TextView) ToggleSmartInsertDelete(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleSmartInsertDelete:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleSmartInsertDelete:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleContinuousSpellChecking(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleContinuousSpellChecking:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleContinuousSpellChecking:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleGrammarChecking(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleGrammarChecking:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleGrammarChecking:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) SetSpellingState_Range(value int, charRange foundation.Range) {
@@ -517,11 +517,11 @@ func (t_ TextView) SetSpellingState_Range(value int, charRange foundation.Range)
 }
 
 func (t_ TextView) OrderFrontSharingServicePicker(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontSharingServicePicker:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontSharingServicePicker:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) DragImageForSelectionWithEvent_Origin(event IEvent, origin *foundation.Point) Image {
-	rv := objc.CallMethod[Image](t_, objc.GetSelector("dragImageForSelectionWithEvent:origin:"), event, origin)
+	rv := objc.CallMethod[Image](t_, objc.GetSelector("dragImageForSelectionWithEvent:origin:"), objc.ExtractPtr(event), origin)
 	return rv
 }
 
@@ -532,49 +532,49 @@ func (t_ TextView) DragOperationForDraggingInfo_Type(dragInfo DraggingInfo, type
 }
 
 func (t_ TextView) DragOperationForDraggingInfo0_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation {
-	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("dragOperationForDraggingInfo:type:"), dragInfo, type_)
+	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("dragOperationForDraggingInfo:type:"), objc.ExtractPtr(dragInfo), type_)
 	return rv
 }
 
 func (t_ TextView) DragSelectionWithEvent_Offset_SlideBack(event IEvent, mouseOffset foundation.Size, slideBack bool) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("dragSelectionWithEvent:offset:slideBack:"), event, mouseOffset, slideBack)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("dragSelectionWithEvent:offset:slideBack:"), objc.ExtractPtr(event), mouseOffset, slideBack)
 	return rv
 }
 
 func (t_ TextView) StartSpeaking(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("startSpeaking:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("startSpeaking:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) StopSpeaking(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("stopSpeaking:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("stopSpeaking:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) PerformFindPanelAction(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("performFindPanelAction:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("performFindPanelAction:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) OrderFrontLinkPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontLinkPanel:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontLinkPanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) OrderFrontListPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontListPanel:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontListPanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) OrderFrontSpacingPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontSpacingPanel:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontSpacingPanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) OrderFrontTablePanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontTablePanel:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontTablePanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) OrderFrontSubstitutionsPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontSubstitutionsPanel:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("orderFrontSubstitutionsPanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) Complete(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("complete:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("complete:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) CompletionsForPartialWordRange_IndexOfSelectedItem(charRange foundation.Range, index *int) []string {
@@ -587,11 +587,11 @@ func (t_ TextView) InsertCompletion_ForPartialWordRange_Movement_IsFinal(word st
 }
 
 func (t_ TextView) CheckTextInDocument(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("checkTextInDocument:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("checkTextInDocument:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) CheckTextInSelection(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("checkTextInSelection:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("checkTextInSelection:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) CheckTextInRange_Types_Options(range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject) {
@@ -599,27 +599,27 @@ func (t_ TextView) CheckTextInRange_Types_Options(range_ foundation.Range, check
 }
 
 func (t_ TextView) HandleTextCheckingResults_ForRange_Types_Options_Orthography_WordCount(results []foundation.ITextCheckingResult, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, orthography foundation.IOrthography, wordCount int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("handleTextCheckingResults:forRange:types:options:orthography:wordCount:"), results, range_, checkingTypes, options, orthography, wordCount)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("handleTextCheckingResults:forRange:types:options:orthography:wordCount:"), results, range_, checkingTypes, options, objc.ExtractPtr(orthography), wordCount)
 }
 
 func (t_ TextView) ToggleAutomaticDashSubstitution(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticDashSubstitution:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticDashSubstitution:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleAutomaticDataDetection(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticDataDetection:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticDataDetection:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleAutomaticSpellingCorrection(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticSpellingCorrection:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticSpellingCorrection:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ToggleAutomaticTextReplacement(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticTextReplacement:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleAutomaticTextReplacement:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) PerformValidatedReplacementInRange_WithAttributedString(range_ foundation.Range, attributedString foundation.IAttributedString) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("performValidatedReplacementInRange:withAttributedString:"), range_, attributedString)
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("performValidatedReplacementInRange:withAttributedString:"), range_, objc.ExtractPtr(attributedString))
 	return rv
 }
 
@@ -628,11 +628,11 @@ func (t_ TextView) UpdateQuickLookPreviewPanel() {
 }
 
 func (t_ TextView) ToggleQuickLookPreviewPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleQuickLookPreviewPanel:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleQuickLookPreviewPanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) ChangeLayoutOrientation(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeLayoutOrientation:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeLayoutOrientation:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TextView) SetLayoutOrientation(orientation TextLayoutOrientation) {
@@ -658,7 +658,7 @@ func (t_ TextView) TextContainer() TextContainer {
 }
 
 func (t_ TextView) SetTextContainer(value ITextContainer) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContainer:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContainer:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextView) TextContainerInset() foundation.Size {
@@ -733,7 +733,7 @@ func (t_ TextView) DefaultParagraphStyle() ParagraphStyle {
 }
 
 func (t_ TextView) SetDefaultParagraphStyle(value IParagraphStyle) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDefaultParagraphStyle:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDefaultParagraphStyle:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextView) AllowsImageEditing() bool {
@@ -850,7 +850,7 @@ func (t_ TextView) InsertionPointColor() Color {
 }
 
 func (t_ TextView) SetInsertionPointColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setInsertionPointColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setInsertionPointColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextView) SelectedTextAttributes() map[foundation.AttributedStringKey]objc.Object {

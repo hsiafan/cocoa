@@ -53,7 +53,7 @@ func (ic _ImageSymbolConfigurationClass) ConfigurationWithScale(scale ImageSymbo
 }
 
 func (i_ ImageSymbolConfiguration) ConfigurationByApplyingConfiguration(configuration IImageSymbolConfiguration) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](i_, objc.GetSelector("configurationByApplyingConfiguration:"), configuration)
+	rv := objc.CallMethod[ImageSymbolConfiguration](i_, objc.GetSelector("configurationByApplyingConfiguration:"), objc.ExtractPtr(configuration))
 	return rv
 }
 
@@ -63,7 +63,7 @@ func (ic _ImageSymbolConfigurationClass) ConfigurationWithPaletteColors(paletteC
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithHierarchicalColor(hierarchicalColor IColor) ImageSymbolConfiguration {
-	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithHierarchicalColor:"), hierarchicalColor)
+	rv := objc.CallMethod[ImageSymbolConfiguration](ic, objc.GetSelector("configurationWithHierarchicalColor:"), objc.ExtractPtr(hierarchicalColor))
 	return rv
 }
 

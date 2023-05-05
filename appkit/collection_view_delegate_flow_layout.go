@@ -114,7 +114,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_SizeForItemAtIndexPath(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, indexPath foundation.IIndexPath) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:sizeForItemAtIndexPath:"), collectionView, collectionViewLayout, indexPath)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:sizeForItemAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(collectionViewLayout), objc.ExtractPtr(indexPath))
 	return rv
 }
 
@@ -123,7 +123,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_InsetForSectionAtIndex(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](c_, objc.GetSelector("collectionView:layout:insetForSectionAtIndex:"), collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[foundation.EdgeInsets](c_, objc.GetSelector("collectionView:layout:insetForSectionAtIndex:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(collectionViewLayout), section)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_MinimumLineSpacingForSectionAtIndex(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(collectionViewLayout), section)
 	return rv
 }
 
@@ -141,7 +141,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_MinimumInteritemSpacingForSectionAtIndex(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[float64](c_, objc.GetSelector("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(collectionViewLayout), section)
 	return rv
 }
 
@@ -150,7 +150,7 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_ReferenceSizeForHeaderInSection(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:referenceSizeForHeaderInSection:"), collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:referenceSizeForHeaderInSection:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(collectionViewLayout), section)
 	return rv
 }
 
@@ -159,6 +159,6 @@ func (c_ *CollectionViewDelegateFlowLayoutWrapper) ImplementsCollectionView_Layo
 }
 
 func (c_ CollectionViewDelegateFlowLayoutWrapper) CollectionView_Layout_ReferenceSizeForFooterInSection(collectionView ICollectionView, collectionViewLayout ICollectionViewLayout, section int) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:referenceSizeForFooterInSection:"), collectionView, collectionViewLayout, section)
+	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("collectionView:layout:referenceSizeForFooterInSection:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(collectionViewLayout), section)
 	return rv
 }

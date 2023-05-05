@@ -67,15 +67,15 @@ func (t_ TextContentManager) PerformEditingTransactionUsingBlock(transaction fun
 }
 
 func (t_ TextContentManager) RecordEditActionInRange_NewTextRange(originalTextRange ITextRange, newTextRange ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("recordEditActionInRange:newTextRange:"), originalTextRange, newTextRange)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("recordEditActionInRange:newTextRange:"), objc.ExtractPtr(originalTextRange), objc.ExtractPtr(newTextRange))
 }
 
 func (t_ TextContentManager) AddTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTextLayoutManager:"), textLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTextLayoutManager:"), objc.ExtractPtr(textLayoutManager))
 }
 
 func (t_ TextContentManager) RemoveTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTextLayoutManager:"), textLayoutManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTextLayoutManager:"), objc.ExtractPtr(textLayoutManager))
 }
 
 func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler func(error foundation.Error)) {
@@ -83,7 +83,7 @@ func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler fun
 }
 
 func (t_ TextContentManager) TextElementsForRange(range_ ITextRange) []TextElement {
-	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("textElementsForRange:"), range_)
+	rv := objc.CallMethod[[]TextElement](t_, objc.GetSelector("textElementsForRange:"), objc.ExtractPtr(range_))
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (t_ TextContentManager) PrimaryTextLayoutManager() TextLayoutManager {
 }
 
 func (t_ TextContentManager) SetPrimaryTextLayoutManager(value ITextLayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPrimaryTextLayoutManager:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPrimaryTextLayoutManager:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextContentManager) TextLayoutManagers() []TextLayoutManager {

@@ -36,7 +36,7 @@ func MakeFontPanel(ptr unsafe.Pointer) FontPanel {
 }
 
 func (fc _FontPanelClass) WindowWithContentViewController(contentViewController IViewController) FontPanel {
-	rv := objc.CallMethod[FontPanel](fc, objc.GetSelector("windowWithContentViewController:"), contentViewController)
+	rv := objc.CallMethod[FontPanel](fc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
@@ -46,7 +46,7 @@ func (f_ FontPanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foun
 }
 
 func (f_ FontPanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) FontPanel {
-	rv := objc.CallMethod[FontPanel](f_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
+	rv := objc.CallMethod[FontPanel](f_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -75,11 +75,11 @@ func (f_ FontPanel) ReloadDefaultFontFamilies() {
 }
 
 func (f_ FontPanel) SetPanelFont_IsMultiple(fontObj IFont, flag bool) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setPanelFont:isMultiple:"), fontObj, flag)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setPanelFont:isMultiple:"), objc.ExtractPtr(fontObj), flag)
 }
 
 func (f_ FontPanel) PanelConvertFont(fontObj IFont) Font {
-	rv := objc.CallMethod[Font](f_, objc.GetSelector("panelConvertFont:"), fontObj)
+	rv := objc.CallMethod[Font](f_, objc.GetSelector("panelConvertFont:"), objc.ExtractPtr(fontObj))
 	return rv
 }
 
@@ -108,5 +108,5 @@ func (f_ FontPanel) AccessoryView() View {
 }
 
 func (f_ FontPanel) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setAccessoryView:"), value)
+	objc.CallMethod[objc.Void](f_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
 }

@@ -89,42 +89,42 @@ func (p_ PrintOperation) Init() PrintOperation {
 }
 
 func (pc _PrintOperationClass) EPSOperationWithView_InsideRect_ToData(view IView, rect foundation.Rect, data foundation.IMutableData) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("EPSOperationWithView:insideRect:toData:"), view, rect, data)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("EPSOperationWithView:insideRect:toData:"), objc.ExtractPtr(view), rect, objc.ExtractPtr(data))
 	return rv
 }
 
 func (pc _PrintOperationClass) EPSOperationWithView_InsideRect_ToData_PrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("EPSOperationWithView:insideRect:toData:printInfo:"), view, rect, data, printInfo)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("EPSOperationWithView:insideRect:toData:printInfo:"), objc.ExtractPtr(view), rect, objc.ExtractPtr(data), objc.ExtractPtr(printInfo))
 	return rv
 }
 
 func (pc _PrintOperationClass) EPSOperationWithView_InsideRect_ToPath_PrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("EPSOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("EPSOperationWithView:insideRect:toPath:printInfo:"), objc.ExtractPtr(view), rect, path, objc.ExtractPtr(printInfo))
 	return rv
 }
 
 func (pc _PrintOperationClass) PDFOperationWithView_InsideRect_ToData(view IView, rect foundation.Rect, data foundation.IMutableData) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("PDFOperationWithView:insideRect:toData:"), view, rect, data)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("PDFOperationWithView:insideRect:toData:"), objc.ExtractPtr(view), rect, objc.ExtractPtr(data))
 	return rv
 }
 
 func (pc _PrintOperationClass) PDFOperationWithView_InsideRect_ToData_PrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("PDFOperationWithView:insideRect:toData:printInfo:"), view, rect, data, printInfo)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("PDFOperationWithView:insideRect:toData:printInfo:"), objc.ExtractPtr(view), rect, objc.ExtractPtr(data), objc.ExtractPtr(printInfo))
 	return rv
 }
 
 func (pc _PrintOperationClass) PDFOperationWithView_InsideRect_ToPath_PrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("PDFOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("PDFOperationWithView:insideRect:toPath:printInfo:"), objc.ExtractPtr(view), rect, path, objc.ExtractPtr(printInfo))
 	return rv
 }
 
 func (pc _PrintOperationClass) PrintOperationWithView(view IView) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("printOperationWithView:"), view)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("printOperationWithView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (pc _PrintOperationClass) PrintOperationWithView_PrintInfo(view IView, printInfo IPrintInfo) PrintOperation {
-	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("printOperationWithView:printInfo:"), view, printInfo)
+	rv := objc.CallMethod[PrintOperation](pc, objc.GetSelector("printOperationWithView:printInfo:"), objc.ExtractPtr(view), objc.ExtractPtr(printInfo))
 	return rv
 }
 
@@ -134,7 +134,7 @@ func (p_ PrintOperation) RunOperation() bool {
 }
 
 func (p_ PrintOperation) RunOperationModalForWindow_Delegate_DidRunSelector_ContextInfo(docWindow IWindow, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("runOperationModalForWindow:delegate:didRunSelector:contextInfo:"), docWindow, delegate, didRunSelector, contextInfo)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("runOperationModalForWindow:delegate:didRunSelector:contextInfo:"), objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didRunSelector, contextInfo)
 }
 
 func (p_ PrintOperation) CleanUpOperation() {
@@ -174,7 +174,7 @@ func (p_ PrintOperation) AccessoryView() View {
 
 // deprecated
 func (p_ PrintOperation) SetAccessoryView(view IView) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryView:"), view)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(view))
 }
 
 // deprecated
@@ -194,7 +194,7 @@ func (pc _PrintOperationClass) CurrentOperation() PrintOperation {
 }
 
 func (pc _PrintOperationClass) SetCurrentOperation(value IPrintOperation) {
-	objc.CallMethod[objc.Void](pc, objc.GetSelector("setCurrentOperation:"), value)
+	objc.CallMethod[objc.Void](pc, objc.GetSelector("setCurrentOperation:"), objc.ExtractPtr(value))
 }
 
 func (p_ PrintOperation) IsCopyingOperation() bool {
@@ -208,7 +208,7 @@ func (p_ PrintOperation) PrintInfo() PrintInfo {
 }
 
 func (p_ PrintOperation) SetPrintInfo(value IPrintInfo) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrintInfo:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrintInfo:"), objc.ExtractPtr(value))
 }
 
 func (p_ PrintOperation) View() View {
@@ -254,7 +254,7 @@ func (p_ PrintOperation) PrintPanel() PrintPanel {
 }
 
 func (p_ PrintOperation) SetPrintPanel(value IPrintPanel) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrintPanel:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPrintPanel:"), objc.ExtractPtr(value))
 }
 
 func (p_ PrintOperation) PDFPanel() PDFPanel {
@@ -263,7 +263,7 @@ func (p_ PrintOperation) PDFPanel() PDFPanel {
 }
 
 func (p_ PrintOperation) SetPDFPanel(value IPDFPanel) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPDFPanel:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPDFPanel:"), objc.ExtractPtr(value))
 }
 
 func (p_ PrintOperation) Context() GraphicsContext {

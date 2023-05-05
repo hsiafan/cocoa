@@ -43,7 +43,7 @@ func (s_ ScrollLayer) Init() ScrollLayer {
 }
 
 func (s_ ScrollLayer) InitWithLayer(layer objc.IObject) ScrollLayer {
-	rv := objc.CallMethod[ScrollLayer](s_, objc.GetSelector("initWithLayer:"), layer)
+	rv := objc.CallMethod[ScrollLayer](s_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 

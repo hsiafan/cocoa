@@ -37,7 +37,7 @@ func MakeBrowserCell(ptr unsafe.Pointer) BrowserCell {
 }
 
 func (b_ BrowserCell) InitImageCell(image IImage) BrowserCell {
-	rv := objc.CallMethod[BrowserCell](b_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[BrowserCell](b_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (b_ BrowserCell) Set() {
 }
 
 func (b_ BrowserCell) HighlightColorInView(controlView IView) Color {
-	rv := objc.CallMethod[Color](b_, objc.GetSelector("highlightColorInView:"), controlView)
+	rv := objc.CallMethod[Color](b_, objc.GetSelector("highlightColorInView:"), objc.ExtractPtr(controlView))
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (b_ BrowserCell) AlternateImage() Image {
 }
 
 func (b_ BrowserCell) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), value)
+	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), objc.ExtractPtr(value))
 }
 
 func (b_ BrowserCell) IsLeaf() bool {

@@ -25,7 +25,7 @@ type URLSchemeTaskWrapper struct {
 }
 
 func (u_ URLSchemeTaskWrapper) DidReceiveResponse(response foundation.IURLResponse) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("didReceiveResponse:"), response)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("didReceiveResponse:"), objc.ExtractPtr(response))
 }
 
 func (u_ URLSchemeTaskWrapper) DidReceiveData(data []byte) {
@@ -37,7 +37,7 @@ func (u_ URLSchemeTaskWrapper) DidFinish() {
 }
 
 func (u_ URLSchemeTaskWrapper) DidFailWithError(error foundation.IError) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFailWithError:"), error)
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFailWithError:"), objc.ExtractPtr(error))
 }
 
 func (u_ *URLSchemeTaskWrapper) ImplementsRequest() bool {

@@ -79,7 +79,7 @@ func (t_ TableViewRowAction) BackgroundColor() Color {
 }
 
 func (t_ TableViewRowAction) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TableViewRowAction) Image() Image {
@@ -88,5 +88,5 @@ func (t_ TableViewRowAction) Image() Image {
 }
 
 func (t_ TableViewRowAction) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }

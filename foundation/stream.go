@@ -65,7 +65,7 @@ func (s_ Stream) PropertyForKey(key StreamPropertyKey) objc.Object {
 }
 
 func (s_ Stream) SetProperty_ForKey(property objc.IObject, key StreamPropertyKey) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("setProperty:forKey:"), property, key)
+	rv := objc.CallMethod[bool](s_, objc.GetSelector("setProperty:forKey:"), objc.ExtractPtr(property), key)
 	return rv
 }
 
@@ -78,11 +78,11 @@ func (s_ Stream) Close() {
 }
 
 func (s_ Stream) ScheduleInRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("scheduleInRunLoop:forMode:"), aRunLoop, mode)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("scheduleInRunLoop:forMode:"), objc.ExtractPtr(aRunLoop), mode)
 }
 
 func (s_ Stream) RemoveFromRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeFromRunLoop:forMode:"), aRunLoop, mode)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeFromRunLoop:forMode:"), objc.ExtractPtr(aRunLoop), mode)
 }
 
 func (sc _StreamClass) GetBoundStreamsWithBufferSize_InputStream_OutputStream(bufferSize uint, inputStream *InputStream, outputStream *OutputStream) {
@@ -106,7 +106,7 @@ func (s_ Stream) SetDelegate(value StreamDelegate) {
 }
 
 func (s_ Stream) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ Stream) StreamStatus() StreamStatus {

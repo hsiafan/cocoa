@@ -59,7 +59,7 @@ func (s_ Sound) InitWithContentsOfFile_ByReference(path string, byRef bool) Soun
 }
 
 func (s_ Sound) InitWithContentsOfURL_ByReference(url foundation.IURL, byRef bool) Sound {
-	rv := objc.CallMethod[Sound](s_, objc.GetSelector("initWithContentsOfURL:byReference:"), url, byRef)
+	rv := objc.CallMethod[Sound](s_, objc.GetSelector("initWithContentsOfURL:byReference:"), objc.ExtractPtr(url), byRef)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func (s_ Sound) InitWithData(data []byte) Sound {
 }
 
 func (s_ Sound) InitWithPasteboard(pasteboard IPasteboard) Sound {
-	rv := objc.CallMethod[Sound](s_, objc.GetSelector("initWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[Sound](s_, objc.GetSelector("initWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -94,7 +94,7 @@ func (s_ Sound) Init() Sound {
 }
 
 func (sc _SoundClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](sc, objc.GetSelector("canInitWithPasteboard:"), pasteboard)
+	rv := objc.CallMethod[bool](sc, objc.GetSelector("canInitWithPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (s_ Sound) Stop() bool {
 }
 
 func (s_ Sound) WriteToPasteboard(pasteboard IPasteboard) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("writeToPasteboard:"), pasteboard)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("writeToPasteboard:"), objc.ExtractPtr(pasteboard))
 }
 
 // deprecated
@@ -167,7 +167,7 @@ func (s_ Sound) SetDelegate(value SoundDelegate) {
 }
 
 func (s_ Sound) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ Sound) Name() SoundName {

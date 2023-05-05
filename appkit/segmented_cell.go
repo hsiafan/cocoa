@@ -60,7 +60,7 @@ func MakeSegmentedCell(ptr unsafe.Pointer) SegmentedCell {
 }
 
 func (s_ SegmentedCell) InitImageCell(image IImage) SegmentedCell {
-	rv := objc.CallMethod[SegmentedCell](s_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[SegmentedCell](s_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (s_ SegmentedCell) LabelForSegment(segment int) string {
 }
 
 func (s_ SegmentedCell) SetImage_ForSegment(image IImage, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), image, segment)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), objc.ExtractPtr(image), segment)
 }
 
 func (s_ SegmentedCell) ImageForSegment(segment int) Image {
@@ -157,7 +157,7 @@ func (s_ SegmentedCell) IsEnabledForSegment(segment int) bool {
 }
 
 func (s_ SegmentedCell) SetMenu_ForSegment(menu IMenu, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), menu, segment)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), objc.ExtractPtr(menu), segment)
 }
 
 func (s_ SegmentedCell) MenuForSegment(segment int) Menu {
@@ -184,7 +184,7 @@ func (s_ SegmentedCell) TagForSegment(segment int) int {
 }
 
 func (s_ SegmentedCell) DrawSegment_InFrame_WithView(segment int, frame foundation.Rect, controlView IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawSegment:inFrame:withView:"), segment, frame, controlView)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawSegment:inFrame:withView:"), segment, frame, objc.ExtractPtr(controlView))
 }
 
 func (s_ SegmentedCell) InteriorBackgroundStyleForSegment(segment int) BackgroundStyle {

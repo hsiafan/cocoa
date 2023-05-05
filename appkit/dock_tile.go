@@ -67,7 +67,7 @@ func (d_ DockTile) ContentView() View {
 }
 
 func (d_ DockTile) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), value)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (d_ DockTile) Size() foundation.Size {

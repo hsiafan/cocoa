@@ -52,7 +52,7 @@ func (c_ ClassDescription) Init() ClassDescription {
 }
 
 func (cc _ClassDescriptionClass) ClassDescriptionForClass(aClass objc.IClass) ClassDescription {
-	rv := objc.CallMethod[ClassDescription](cc, objc.GetSelector("classDescriptionForClass:"), aClass)
+	rv := objc.CallMethod[ClassDescription](cc, objc.GetSelector("classDescriptionForClass:"), objc.ExtractPtr(aClass))
 	return rv
 }
 
@@ -61,7 +61,7 @@ func (cc _ClassDescriptionClass) InvalidateClassDescriptionCache() {
 }
 
 func (cc _ClassDescriptionClass) RegisterClassDescription_ForClass(description IClassDescription, aClass objc.IClass) {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("registerClassDescription:forClass:"), description, aClass)
+	objc.CallMethod[objc.Void](cc, objc.GetSelector("registerClassDescription:forClass:"), objc.ExtractPtr(description), objc.ExtractPtr(aClass))
 }
 
 func (c_ ClassDescription) InverseForRelationshipKey(relationshipKey string) string {

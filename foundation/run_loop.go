@@ -69,15 +69,15 @@ func (r_ RunLoop) LimitDateForMode(mode RunLoopMode) Date {
 }
 
 func (r_ RunLoop) AddTimer_ForMode(timer ITimer, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("addTimer:forMode:"), timer, mode)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("addTimer:forMode:"), objc.ExtractPtr(timer), mode)
 }
 
 func (r_ RunLoop) AddPort_ForMode(aPort IPort, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("addPort:forMode:"), aPort, mode)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("addPort:forMode:"), objc.ExtractPtr(aPort), mode)
 }
 
 func (r_ RunLoop) RemovePort_ForMode(aPort IPort, mode RunLoopMode) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("removePort:forMode:"), aPort, mode)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("removePort:forMode:"), objc.ExtractPtr(aPort), mode)
 }
 
 // deprecated
@@ -90,16 +90,16 @@ func (r_ RunLoop) Run() {
 }
 
 func (r_ RunLoop) RunMode_BeforeDate(mode RunLoopMode, limitDate IDate) bool {
-	rv := objc.CallMethod[bool](r_, objc.GetSelector("runMode:beforeDate:"), mode, limitDate)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("runMode:beforeDate:"), mode, objc.ExtractPtr(limitDate))
 	return rv
 }
 
 func (r_ RunLoop) RunUntilDate(limitDate IDate) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("runUntilDate:"), limitDate)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("runUntilDate:"), objc.ExtractPtr(limitDate))
 }
 
 func (r_ RunLoop) AcceptInputForMode_BeforeDate(mode RunLoopMode, limitDate IDate) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("acceptInputForMode:beforeDate:"), mode, limitDate)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("acceptInputForMode:beforeDate:"), mode, objc.ExtractPtr(limitDate))
 }
 
 func (r_ RunLoop) PerformBlock(block func()) {
@@ -111,15 +111,15 @@ func (r_ RunLoop) PerformInModes_Block(modes []RunLoopMode, block func()) {
 }
 
 func (r_ RunLoop) PerformSelector_Target_Argument_Order_Modes(aSelector objc.Selector, target objc.IObject, arg objc.IObject, order uint, modes []RunLoopMode) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("performSelector:target:argument:order:modes:"), aSelector, target, arg, order, modes)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("performSelector:target:argument:order:modes:"), aSelector, objc.ExtractPtr(target), objc.ExtractPtr(arg), order, modes)
 }
 
 func (r_ RunLoop) CancelPerformSelector_Target_Argument(aSelector objc.Selector, target objc.IObject, arg objc.IObject) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("cancelPerformSelector:target:argument:"), aSelector, target, arg)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("cancelPerformSelector:target:argument:"), aSelector, objc.ExtractPtr(target), objc.ExtractPtr(arg))
 }
 
 func (r_ RunLoop) CancelPerformSelectorsWithTarget(target objc.IObject) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("cancelPerformSelectorsWithTarget:"), target)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("cancelPerformSelectorsWithTarget:"), objc.ExtractPtr(target))
 }
 
 func (rc _RunLoopClass) CurrentRunLoop() RunLoop {

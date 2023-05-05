@@ -81,39 +81,39 @@ func NewTextLayoutManager() TextLayoutManager {
 }
 
 func (t_ TextLayoutManager) EnumerateTextSegmentsInRange_Type_Options_UsingBlock(textRange ITextRange, type_ TextLayoutManagerSegmentType, options TextLayoutManagerSegmentOptions, block func(textSegmentRange TextRange, textSegmentFrame coregraphics.Rect, baselinePosition float64, textContainer TextContainer) bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("enumerateTextSegmentsInRange:type:options:usingBlock:"), textRange, type_, options, block)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("enumerateTextSegmentsInRange:type:options:usingBlock:"), objc.ExtractPtr(textRange), type_, options, block)
 }
 
 func (t_ TextLayoutManager) ReplaceTextContentManager(textContentManager ITextContentManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceTextContentManager:"), textContentManager)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceTextContentManager:"), objc.ExtractPtr(textContentManager))
 }
 
 func (t_ TextLayoutManager) ReplaceContentsInRange_WithAttributedString(range_ ITextRange, attributedString foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceContentsInRange:withAttributedString:"), range_, attributedString)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceContentsInRange:withAttributedString:"), objc.ExtractPtr(range_), objc.ExtractPtr(attributedString))
 }
 
 func (t_ TextLayoutManager) ReplaceContentsInRange_WithTextElements(range_ ITextRange, textElements []ITextElement) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceContentsInRange:withTextElements:"), range_, textElements)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceContentsInRange:withTextElements:"), objc.ExtractPtr(range_), textElements)
 }
 
 func (t_ TextLayoutManager) AddRenderingAttribute_Value_ForTextRange(renderingAttribute foundation.AttributedStringKey, value objc.IObject, textRange ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("addRenderingAttribute:value:forTextRange:"), renderingAttribute, value, textRange)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addRenderingAttribute:value:forTextRange:"), renderingAttribute, objc.ExtractPtr(value), objc.ExtractPtr(textRange))
 }
 
 func (t_ TextLayoutManager) InvalidateRenderingAttributesForTextRange(textRange ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("invalidateRenderingAttributesForTextRange:"), textRange)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("invalidateRenderingAttributesForTextRange:"), objc.ExtractPtr(textRange))
 }
 
 func (t_ TextLayoutManager) RemoveRenderingAttribute_ForTextRange(renderingAttribute foundation.AttributedStringKey, textRange ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeRenderingAttribute:forTextRange:"), renderingAttribute, textRange)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeRenderingAttribute:forTextRange:"), renderingAttribute, objc.ExtractPtr(textRange))
 }
 
 func (t_ TextLayoutManager) SetRenderingAttributes_ForTextRange(renderingAttributes map[foundation.AttributedStringKey]objc.IObject, textRange ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setRenderingAttributes:forTextRange:"), renderingAttributes, textRange)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setRenderingAttributes:forTextRange:"), renderingAttributes, objc.ExtractPtr(textRange))
 }
 
 func (t_ TextLayoutManager) InvalidateLayoutForRange(range_ ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("invalidateLayoutForRange:"), range_)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("invalidateLayoutForRange:"), objc.ExtractPtr(range_))
 }
 
 func (t_ TextLayoutManager) TextLayoutFragmentForPosition(position coregraphics.Point) TextLayoutFragment {
@@ -126,7 +126,7 @@ func (t_ TextLayoutManager) EnsureLayoutForBounds(bounds coregraphics.Rect) {
 }
 
 func (t_ TextLayoutManager) EnsureLayoutForRange(range_ ITextRange) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("ensureLayoutForRange:"), range_)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("ensureLayoutForRange:"), objc.ExtractPtr(range_))
 }
 
 func (t_ TextLayoutManager) LayoutQueue() foundation.OperationQueue {
@@ -135,7 +135,7 @@ func (t_ TextLayoutManager) LayoutQueue() foundation.OperationQueue {
 }
 
 func (t_ TextLayoutManager) SetLayoutQueue(value foundation.IOperationQueue) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutQueue:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutQueue:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextLayoutManager) RenderingAttributesValidator() func(textLayoutManager ITextLayoutManager, textLayoutFragment ITextLayoutFragment) {
@@ -185,7 +185,7 @@ func (t_ TextLayoutManager) TextContainer() TextContainer {
 }
 
 func (t_ TextLayoutManager) SetTextContainer(value ITextContainer) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContainer:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContainer:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextLayoutManager) TextSelectionNavigation() TextSelectionNavigation {
@@ -194,7 +194,7 @@ func (t_ TextLayoutManager) TextSelectionNavigation() TextSelectionNavigation {
 }
 
 func (t_ TextLayoutManager) SetTextSelectionNavigation(value ITextSelectionNavigation) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextSelectionNavigation:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextSelectionNavigation:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextLayoutManager) TextSelections() []TextSelection {

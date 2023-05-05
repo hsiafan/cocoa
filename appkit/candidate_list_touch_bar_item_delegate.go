@@ -81,7 +81,7 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_BeginSelectingCandidateAtIndex(anItem ICandidateListTouchBarItem, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), anItem, index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), objc.ExtractPtr(anItem), index)
 }
 
 func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex() bool {
@@ -89,7 +89,7 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(anItem ICandidateListTouchBarItem, previousIndex int, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), anItem, previousIndex, index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), objc.ExtractPtr(anItem), previousIndex, index)
 }
 
 func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouchBarItem_EndSelectingCandidateAtIndex() bool {
@@ -97,7 +97,7 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_EndSelectingCandidateAtIndex(anItem ICandidateListTouchBarItem, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), anItem, index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), objc.ExtractPtr(anItem), index)
 }
 
 func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouchBarItem_ChangedCandidateListVisibility() bool {
@@ -105,5 +105,5 @@ func (c_ *CandidateListTouchBarItemDelegateWrapper) ImplementsCandidateListTouch
 }
 
 func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_ChangedCandidateListVisibility(anItem ICandidateListTouchBarItem, isVisible bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:changedCandidateListVisibility:"), anItem, isVisible)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:changedCandidateListVisibility:"), objc.ExtractPtr(anItem), isVisible)
 }

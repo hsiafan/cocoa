@@ -85,7 +85,7 @@ func (s_ SortDescriptor) Init() SortDescriptor {
 }
 
 func (s_ SortDescriptor) CompareObject_ToObject(object1 objc.IObject, object2 objc.IObject) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](s_, objc.GetSelector("compareObject:toObject:"), object1, object2)
+	rv := objc.CallMethod[ComparisonResult](s_, objc.GetSelector("compareObject:toObject:"), objc.ExtractPtr(object1), objc.ExtractPtr(object2))
 	return rv
 }
 

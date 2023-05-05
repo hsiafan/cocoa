@@ -86,7 +86,7 @@ func (t_ TouchBar) SetDelegate(value TouchBarDelegate) {
 }
 
 func (t_ TouchBar) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (t_ TouchBar) TemplateItems() foundation.Set {
@@ -95,7 +95,7 @@ func (t_ TouchBar) TemplateItems() foundation.Set {
 }
 
 func (t_ TouchBar) SetTemplateItems(value foundation.ISet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTemplateItems:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTemplateItems:"), objc.ExtractPtr(value))
 }
 
 func (t_ TouchBar) DefaultItemIdentifiers() []TouchBarItemIdentifier {

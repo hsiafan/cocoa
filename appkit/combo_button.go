@@ -37,17 +37,17 @@ func MakeComboButton(ptr unsafe.Pointer) ComboButton {
 }
 
 func (cc _ComboButtonClass) ComboButtonWithTitle_Image_Menu_Target_Action(title string, image IImage, menu IMenu, target objc.IObject, action objc.Selector) ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithTitle:image:menu:target:action:"), title, image, menu, target, action)
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithTitle:image:menu:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(menu), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (cc _ComboButtonClass) ComboButtonWithTitle_Menu_Target_Action(title string, menu IMenu, target objc.IObject, action objc.Selector) ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithTitle:menu:target:action:"), title, menu, target, action)
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithTitle:menu:target:action:"), title, objc.ExtractPtr(menu), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (cc _ComboButtonClass) ComboButtonWithImage_Menu_Target_Action(image IImage, menu IMenu, target objc.IObject, action objc.Selector) ComboButton {
-	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithImage:menu:target:action:"), image, menu, target, action)
+	rv := objc.CallMethod[ComboButton](cc, objc.GetSelector("comboButtonWithImage:menu:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(menu), objc.ExtractPtr(target), action)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func (c_ ComboButton) Image() Image {
 }
 
 func (c_ ComboButton) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (c_ ComboButton) ImageScaling() ImageScaling {

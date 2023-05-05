@@ -34,7 +34,7 @@ func MakeTextViewportLayoutController(ptr unsafe.Pointer) TextViewportLayoutCont
 }
 
 func (t_ TextViewportLayoutController) InitWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
-	rv := objc.CallMethod[TextViewportLayoutController](t_, objc.GetSelector("initWithTextLayoutManager:"), textLayoutManager)
+	rv := objc.CallMethod[TextViewportLayoutController](t_, objc.GetSelector("initWithTextLayoutManager:"), objc.ExtractPtr(textLayoutManager))
 	return rv
 }
 

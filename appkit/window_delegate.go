@@ -787,7 +787,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_WillPositionSheet_UsingRect() 
 }
 
 func (w_ WindowDelegateWrapper) Window_WillPositionSheet_UsingRect(window IWindow, sheet IWindow, rect foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("window:willPositionSheet:usingRect:"), window, sheet, rect)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("window:willPositionSheet:usingRect:"), objc.ExtractPtr(window), objc.ExtractPtr(sheet), rect)
 	return rv
 }
 
@@ -796,7 +796,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillBeginSheet() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillBeginSheet(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillBeginSheet:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillBeginSheet:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidEndSheet() bool {
@@ -804,7 +804,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidEndSheet() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidEndSheet(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEndSheet:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEndSheet:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillResize_ToSize() bool {
@@ -812,7 +812,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillResize_ToSize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillResize_ToSize(sender IWindow, frameSize foundation.Size) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("windowWillResize:toSize:"), sender, frameSize)
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("windowWillResize:toSize:"), objc.ExtractPtr(sender), frameSize)
 	return rv
 }
 
@@ -821,7 +821,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidResize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidResize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResize:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResize:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillStartLiveResize() bool {
@@ -829,7 +829,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillStartLiveResize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillStartLiveResize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillStartLiveResize:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillStartLiveResize:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidEndLiveResize() bool {
@@ -837,7 +837,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidEndLiveResize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidEndLiveResize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEndLiveResize:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEndLiveResize:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillMiniaturize() bool {
@@ -845,7 +845,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillMiniaturize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillMiniaturize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillMiniaturize:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillMiniaturize:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidMiniaturize() bool {
@@ -853,7 +853,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidMiniaturize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidMiniaturize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidMiniaturize:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidMiniaturize:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidDeminiaturize() bool {
@@ -861,7 +861,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidDeminiaturize() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidDeminiaturize(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidDeminiaturize:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidDeminiaturize:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillUseStandardFrame_DefaultFrame() bool {
@@ -869,7 +869,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillUseStandardFrame_DefaultFra
 }
 
 func (w_ WindowDelegateWrapper) WindowWillUseStandardFrame_DefaultFrame(window IWindow, newFrame foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("windowWillUseStandardFrame:defaultFrame:"), window, newFrame)
+	rv := objc.CallMethod[foundation.Rect](w_, objc.GetSelector("windowWillUseStandardFrame:defaultFrame:"), objc.ExtractPtr(window), newFrame)
 	return rv
 }
 
@@ -878,7 +878,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowShouldZoom_ToFrame() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowShouldZoom_ToFrame(window IWindow, newFrame foundation.Rect) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("windowShouldZoom:toFrame:"), window, newFrame)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("windowShouldZoom:toFrame:"), objc.ExtractPtr(window), newFrame)
 	return rv
 }
 
@@ -887,7 +887,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_WillUseFullScreenContentSize()
 }
 
 func (w_ WindowDelegateWrapper) Window_WillUseFullScreenContentSize(window IWindow, proposedSize foundation.Size) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("window:willUseFullScreenContentSize:"), window, proposedSize)
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("window:willUseFullScreenContentSize:"), objc.ExtractPtr(window), proposedSize)
 	return rv
 }
 
@@ -896,7 +896,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_WillUseFullScreenPresentationO
 }
 
 func (w_ WindowDelegateWrapper) Window_WillUseFullScreenPresentationOptions(window IWindow, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions {
-	rv := objc.CallMethod[ApplicationPresentationOptions](w_, objc.GetSelector("window:willUseFullScreenPresentationOptions:"), window, proposedOptions)
+	rv := objc.CallMethod[ApplicationPresentationOptions](w_, objc.GetSelector("window:willUseFullScreenPresentationOptions:"), objc.ExtractPtr(window), proposedOptions)
 	return rv
 }
 
@@ -905,7 +905,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillEnterFullScreen() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillEnterFullScreen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillEnterFullScreen:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillEnterFullScreen:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidEnterFullScreen() bool {
@@ -913,7 +913,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidEnterFullScreen() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidEnterFullScreen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEnterFullScreen:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEnterFullScreen:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillExitFullScreen() bool {
@@ -921,7 +921,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillExitFullScreen() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillExitFullScreen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillExitFullScreen:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillExitFullScreen:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidExitFullScreen() bool {
@@ -929,7 +929,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidExitFullScreen() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidExitFullScreen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExitFullScreen:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExitFullScreen:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWindow() bool {
@@ -937,7 +937,7 @@ func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWind
 }
 
 func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindow(window IWindow) []Window {
-	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:"), window)
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
@@ -946,7 +946,7 @@ func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWind
 }
 
 func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindow_OnScreen(window IWindow, screen IScreen) []Window {
-	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:onScreen:"), window, screen)
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:onScreen:"), objc.ExtractPtr(window), objc.ExtractPtr(screen))
 	return rv
 }
 
@@ -955,7 +955,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToEnterFul
 }
 
 func (w_ WindowDelegateWrapper) Window_StartCustomAnimationToEnterFullScreenWithDuration(window IWindow, duration foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToEnterFullScreenWithDuration:"), window, duration)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToEnterFullScreenWithDuration:"), objc.ExtractPtr(window), duration)
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration() bool {
@@ -963,7 +963,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToEnterFul
 }
 
 func (w_ WindowDelegateWrapper) Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(window IWindow, screen IScreen, duration foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), window, screen, duration)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), objc.ExtractPtr(window), objc.ExtractPtr(screen), duration)
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidFailToEnterFullScreen() bool {
@@ -971,7 +971,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidFailToEnterFullScreen() bool
 }
 
 func (w_ WindowDelegateWrapper) WindowDidFailToEnterFullScreen(window IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidFailToEnterFullScreen:"), window)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidFailToEnterFullScreen:"), objc.ExtractPtr(window))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToExitFullScreenForWindow() bool {
@@ -979,7 +979,7 @@ func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToExitFullScreenForWindo
 }
 
 func (w_ WindowDelegateWrapper) CustomWindowsToExitFullScreenForWindow(window IWindow) []Window {
-	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToExitFullScreenForWindow:"), window)
+	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToExitFullScreenForWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
@@ -988,7 +988,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToExitFull
 }
 
 func (w_ WindowDelegateWrapper) Window_StartCustomAnimationToExitFullScreenWithDuration(window IWindow, duration foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToExitFullScreenWithDuration:"), window, duration)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToExitFullScreenWithDuration:"), objc.ExtractPtr(window), duration)
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidFailToExitFullScreen() bool {
@@ -996,7 +996,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidFailToExitFullScreen() bool 
 }
 
 func (w_ WindowDelegateWrapper) WindowDidFailToExitFullScreen(window IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidFailToExitFullScreen:"), window)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidFailToExitFullScreen:"), objc.ExtractPtr(window))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillMove() bool {
@@ -1004,7 +1004,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillMove() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillMove(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillMove:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillMove:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidMove() bool {
@@ -1012,7 +1012,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidMove() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidMove(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidMove:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidMove:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeScreen() bool {
@@ -1020,7 +1020,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeScreen() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidChangeScreen(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeScreen:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeScreen:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeScreenProfile() bool {
@@ -1028,7 +1028,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeScreenProfile() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidChangeScreenProfile(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeScreenProfile:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeScreenProfile:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeBackingProperties() bool {
@@ -1036,7 +1036,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeBackingProperties() bo
 }
 
 func (w_ WindowDelegateWrapper) WindowDidChangeBackingProperties(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeBackingProperties:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeBackingProperties:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowShouldClose() bool {
@@ -1044,7 +1044,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowShouldClose() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowShouldClose(sender IWindow) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("windowShouldClose:"), sender)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("windowShouldClose:"), objc.ExtractPtr(sender))
 	return rv
 }
 
@@ -1053,7 +1053,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillClose() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillClose(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillClose:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillClose:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidBecomeKey() bool {
@@ -1061,7 +1061,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidBecomeKey() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidBecomeKey(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidBecomeKey:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidBecomeKey:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidResignKey() bool {
@@ -1069,7 +1069,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidResignKey() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidResignKey(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResignKey:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResignKey:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidBecomeMain() bool {
@@ -1077,7 +1077,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidBecomeMain() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidBecomeMain(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidBecomeMain:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidBecomeMain:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidResignMain() bool {
@@ -1085,7 +1085,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidResignMain() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidResignMain(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResignMain:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResignMain:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillReturnFieldEditor_ToObject() bool {
@@ -1093,7 +1093,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillReturnFieldEditor_ToObject(
 }
 
 func (w_ WindowDelegateWrapper) WindowWillReturnFieldEditor_ToObject(sender IWindow, client objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("windowWillReturnFieldEditor:toObject:"), sender, client)
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("windowWillReturnFieldEditor:toObject:"), objc.ExtractPtr(sender), objc.ExtractPtr(client))
 	return rv
 }
 
@@ -1102,7 +1102,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidUpdate() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidUpdate(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidUpdate:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidUpdate:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidExpose() bool {
@@ -1110,7 +1110,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidExpose() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidExpose(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExpose:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExpose:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeOcclusionState() bool {
@@ -1118,7 +1118,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeOcclusionState() bool 
 }
 
 func (w_ WindowDelegateWrapper) WindowDidChangeOcclusionState(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeOcclusionState:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeOcclusionState:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindow_ShouldDragDocumentWithEvent_From_WithPasteboard() bool {
@@ -1126,7 +1126,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_ShouldDragDocumentWithEvent_Fr
 }
 
 func (w_ WindowDelegateWrapper) Window_ShouldDragDocumentWithEvent_From_WithPasteboard(window IWindow, event IEvent, dragImageLocation foundation.Point, pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("window:shouldDragDocumentWithEvent:from:withPasteboard:"), window, event, dragImageLocation, pasteboard)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("window:shouldDragDocumentWithEvent:from:withPasteboard:"), objc.ExtractPtr(window), objc.ExtractPtr(event), dragImageLocation, objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -1135,7 +1135,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillReturnUndoManager() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillReturnUndoManager(window IWindow) foundation.UndoManager {
-	rv := objc.CallMethod[foundation.UndoManager](w_, objc.GetSelector("windowWillReturnUndoManager:"), window)
+	rv := objc.CallMethod[foundation.UndoManager](w_, objc.GetSelector("windowWillReturnUndoManager:"), objc.ExtractPtr(window))
 	return rv
 }
 
@@ -1144,7 +1144,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_ShouldPopUpDocumentPathMenu() 
 }
 
 func (w_ WindowDelegateWrapper) Window_ShouldPopUpDocumentPathMenu(window IWindow, menu IMenu) bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("window:shouldPopUpDocumentPathMenu:"), window, menu)
+	rv := objc.CallMethod[bool](w_, objc.GetSelector("window:shouldPopUpDocumentPathMenu:"), objc.ExtractPtr(window), objc.ExtractPtr(menu))
 	return rv
 }
 
@@ -1153,7 +1153,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_WillEncodeRestorableState() bo
 }
 
 func (w_ WindowDelegateWrapper) Window_WillEncodeRestorableState(window IWindow, state foundation.ICoder) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:willEncodeRestorableState:"), window, state)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:willEncodeRestorableState:"), objc.ExtractPtr(window), objc.ExtractPtr(state))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindow_DidDecodeRestorableState() bool {
@@ -1161,7 +1161,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_DidDecodeRestorableState() boo
 }
 
 func (w_ WindowDelegateWrapper) Window_DidDecodeRestorableState(window IWindow, state foundation.ICoder) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:didDecodeRestorableState:"), window, state)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:didDecodeRestorableState:"), objc.ExtractPtr(window), objc.ExtractPtr(state))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindow_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize() bool {
@@ -1169,7 +1169,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindow_WillResizeForVersionBrowserWit
 }
 
 func (w_ WindowDelegateWrapper) Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(window IWindow, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), window, maxPreferredFrameSize, maxAllowedFrameSize)
+	rv := objc.CallMethod[foundation.Size](w_, objc.GetSelector("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), objc.ExtractPtr(window), maxPreferredFrameSize, maxAllowedFrameSize)
 	return rv
 }
 
@@ -1178,7 +1178,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillEnterVersionBrowser() bool 
 }
 
 func (w_ WindowDelegateWrapper) WindowWillEnterVersionBrowser(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillEnterVersionBrowser:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillEnterVersionBrowser:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidEnterVersionBrowser() bool {
@@ -1186,7 +1186,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidEnterVersionBrowser() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidEnterVersionBrowser(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEnterVersionBrowser:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEnterVersionBrowser:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowWillExitVersionBrowser() bool {
@@ -1194,7 +1194,7 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowWillExitVersionBrowser() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowWillExitVersionBrowser(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillExitVersionBrowser:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillExitVersionBrowser:"), objc.ExtractPtr(notification))
 }
 
 func (w_ *WindowDelegateWrapper) ImplementsWindowDidExitVersionBrowser() bool {
@@ -1202,5 +1202,5 @@ func (w_ *WindowDelegateWrapper) ImplementsWindowDidExitVersionBrowser() bool {
 }
 
 func (w_ WindowDelegateWrapper) WindowDidExitVersionBrowser(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExitVersionBrowser:"), notification)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExitVersionBrowser:"), objc.ExtractPtr(notification))
 }

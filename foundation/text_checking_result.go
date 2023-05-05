@@ -76,12 +76,12 @@ func (tc _TextCheckingResultClass) ReplacementCheckingResultWithRange_Replacemen
 }
 
 func (tc _TextCheckingResultClass) RegularExpressionCheckingResultWithRanges_Count_RegularExpression(ranges *Range, count uint, regularExpression IRegularExpression) TextCheckingResult {
-	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("regularExpressionCheckingResultWithRanges:count:regularExpression:"), ranges, count, regularExpression)
+	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("regularExpressionCheckingResultWithRanges:count:regularExpression:"), ranges, count, objc.ExtractPtr(regularExpression))
 	return rv
 }
 
 func (tc _TextCheckingResultClass) LinkCheckingResultWithRange_URL(range_ Range, url IURL) TextCheckingResult {
-	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("linkCheckingResultWithRange:URL:"), range_, url)
+	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("linkCheckingResultWithRange:URL:"), range_, objc.ExtractPtr(url))
 	return rv
 }
 
@@ -101,12 +101,12 @@ func (tc _TextCheckingResultClass) PhoneNumberCheckingResultWithRange_PhoneNumbe
 }
 
 func (tc _TextCheckingResultClass) DateCheckingResultWithRange_Date(range_ Range, date IDate) TextCheckingResult {
-	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("dateCheckingResultWithRange:date:"), range_, date)
+	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("dateCheckingResultWithRange:date:"), range_, objc.ExtractPtr(date))
 	return rv
 }
 
 func (tc _TextCheckingResultClass) DateCheckingResultWithRange_Date_TimeZone_Duration(range_ Range, date IDate, timeZone ITimeZone, duration TimeInterval) TextCheckingResult {
-	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("dateCheckingResultWithRange:date:timeZone:duration:"), range_, date, timeZone, duration)
+	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("dateCheckingResultWithRange:date:timeZone:duration:"), range_, objc.ExtractPtr(date), objc.ExtractPtr(timeZone), duration)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func (tc _TextCheckingResultClass) CorrectionCheckingResultWithRange_Replacement
 }
 
 func (tc _TextCheckingResultClass) OrthographyCheckingResultWithRange_Orthography(range_ Range, orthography IOrthography) TextCheckingResult {
-	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("orthographyCheckingResultWithRange:orthography:"), range_, orthography)
+	rv := objc.CallMethod[TextCheckingResult](tc, objc.GetSelector("orthographyCheckingResultWithRange:orthography:"), range_, objc.ExtractPtr(orthography))
 	return rv
 }
 

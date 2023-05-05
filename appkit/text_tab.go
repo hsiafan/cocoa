@@ -64,7 +64,7 @@ func (t_ TextTab) Init() TextTab {
 }
 
 func (tc _TextTabClass) ColumnTerminatorsForLocale(aLocale foundation.ILocale) foundation.CharacterSet {
-	rv := objc.CallMethod[foundation.CharacterSet](tc, objc.GetSelector("columnTerminatorsForLocale:"), aLocale)
+	rv := objc.CallMethod[foundation.CharacterSet](tc, objc.GetSelector("columnTerminatorsForLocale:"), objc.ExtractPtr(aLocale))
 	return rv
 }
 

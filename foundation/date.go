@@ -54,7 +54,7 @@ func (dc _DateClass) DateWithTimeIntervalSinceNow(secs TimeInterval) Date {
 }
 
 func (dc _DateClass) DateWithTimeInterval_SinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	rv := objc.CallMethod[Date](dc, objc.GetSelector("dateWithTimeInterval:sinceDate:"), secsToBeAdded, date)
+	rv := objc.CallMethod[Date](dc, objc.GetSelector("dateWithTimeInterval:sinceDate:"), secsToBeAdded, objc.ExtractPtr(date))
 	return rv
 }
 
@@ -79,7 +79,7 @@ func (d_ Date) InitWithTimeIntervalSinceNow(secs TimeInterval) Date {
 }
 
 func (d_ Date) InitWithTimeInterval_SinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	rv := objc.CallMethod[Date](d_, objc.GetSelector("initWithTimeInterval:sinceDate:"), secsToBeAdded, date)
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("initWithTimeInterval:sinceDate:"), secsToBeAdded, objc.ExtractPtr(date))
 	return rv
 }
 
@@ -114,32 +114,32 @@ func NewDate() Date {
 }
 
 func (d_ Date) IsEqualToDate(otherDate IDate) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("isEqualToDate:"), otherDate)
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("isEqualToDate:"), objc.ExtractPtr(otherDate))
 	return rv
 }
 
 func (d_ Date) EarlierDate(anotherDate IDate) Date {
-	rv := objc.CallMethod[Date](d_, objc.GetSelector("earlierDate:"), anotherDate)
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("earlierDate:"), objc.ExtractPtr(anotherDate))
 	return rv
 }
 
 func (d_ Date) LaterDate(anotherDate IDate) Date {
-	rv := objc.CallMethod[Date](d_, objc.GetSelector("laterDate:"), anotherDate)
+	rv := objc.CallMethod[Date](d_, objc.GetSelector("laterDate:"), objc.ExtractPtr(anotherDate))
 	return rv
 }
 
 func (d_ Date) Compare(other IDate) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](d_, objc.GetSelector("compare:"), other)
+	rv := objc.CallMethod[ComparisonResult](d_, objc.GetSelector("compare:"), objc.ExtractPtr(other))
 	return rv
 }
 
 func (d_ Date) TimeIntervalSinceDate(anotherDate IDate) TimeInterval {
-	rv := objc.CallMethod[TimeInterval](d_, objc.GetSelector("timeIntervalSinceDate:"), anotherDate)
+	rv := objc.CallMethod[TimeInterval](d_, objc.GetSelector("timeIntervalSinceDate:"), objc.ExtractPtr(anotherDate))
 	return rv
 }
 
 func (d_ Date) DescriptionWithLocale(locale objc.IObject) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("descriptionWithLocale:"), locale)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("descriptionWithLocale:"), objc.ExtractPtr(locale))
 	return rv
 }
 
@@ -151,7 +151,7 @@ func (dc _DateClass) DateWithNaturalLanguageString(string_ string) objc.Object {
 
 // deprecated
 func (dc _DateClass) DateWithNaturalLanguageString_Locale(string_ string, locale objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](dc, objc.GetSelector("dateWithNaturalLanguageString:locale:"), string_, locale)
+	rv := objc.CallMethod[objc.Object](dc, objc.GetSelector("dateWithNaturalLanguageString:locale:"), string_, objc.ExtractPtr(locale))
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (d_ Date) AddTimeInterval(seconds TimeInterval) objc.Object {
 
 // deprecated
 func (d_ Date) DescriptionWithCalendarFormat_TimeZone_Locale(format string, aTimeZone ITimeZone, locale objc.IObject) string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("descriptionWithCalendarFormat:timeZone:locale:"), format, aTimeZone, locale)
+	rv := objc.CallMethod[string](d_, objc.GetSelector("descriptionWithCalendarFormat:timeZone:locale:"), format, objc.ExtractPtr(aTimeZone), objc.ExtractPtr(locale))
 	return rv
 }
 

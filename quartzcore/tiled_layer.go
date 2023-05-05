@@ -41,7 +41,7 @@ func (t_ TiledLayer) Init() TiledLayer {
 }
 
 func (t_ TiledLayer) InitWithLayer(layer objc.IObject) TiledLayer {
-	rv := objc.CallMethod[TiledLayer](t_, objc.GetSelector("initWithLayer:"), layer)
+	rv := objc.CallMethod[TiledLayer](t_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 

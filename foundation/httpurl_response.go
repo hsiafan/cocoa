@@ -30,12 +30,12 @@ func MakeHTTPURLResponse(ptr unsafe.Pointer) HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) InitWithURL_StatusCode_HTTPVersion_HeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("initWithURL:statusCode:HTTPVersion:headerFields:"), url, statusCode, HTTPVersion, headerFields)
+	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("initWithURL:statusCode:HTTPVersion:headerFields:"), objc.ExtractPtr(url), statusCode, HTTPVersion, headerFields)
 	return rv
 }
 
 func (h_ HTTPURLResponse) InitWithURL_MIMEType_ExpectedContentLength_TextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), URL, MIMEType, length, name)
+	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), objc.ExtractPtr(URL), MIMEType, length, name)
 	return rv
 }
 

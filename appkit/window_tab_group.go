@@ -58,15 +58,15 @@ func (w_ WindowTabGroup) Init() WindowTabGroup {
 }
 
 func (w_ WindowTabGroup) AddWindow(window IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("addWindow:"), window)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("addWindow:"), objc.ExtractPtr(window))
 }
 
 func (w_ WindowTabGroup) InsertWindow_AtIndex(window IWindow, index int) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("insertWindow:atIndex:"), window, index)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("insertWindow:atIndex:"), objc.ExtractPtr(window), index)
 }
 
 func (w_ WindowTabGroup) RemoveWindow(window IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeWindow:"), window)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("removeWindow:"), objc.ExtractPtr(window))
 }
 
 func (w_ WindowTabGroup) Identifier() WindowTabbingIdentifier {
@@ -99,5 +99,5 @@ func (w_ WindowTabGroup) SelectedWindow() Window {
 }
 
 func (w_ WindowTabGroup) SetSelectedWindow(value IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSelectedWindow:"), value)
+	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSelectedWindow:"), objc.ExtractPtr(value))
 }

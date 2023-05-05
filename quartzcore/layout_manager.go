@@ -27,7 +27,7 @@ func (l_ *LayoutManagerWrapper) ImplementsInvalidateLayoutOfLayer() bool {
 }
 
 func (l_ LayoutManagerWrapper) InvalidateLayoutOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("invalidateLayoutOfLayer:"), layer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("invalidateLayoutOfLayer:"), objc.ExtractPtr(layer))
 }
 
 func (l_ *LayoutManagerWrapper) ImplementsLayoutSublayersOfLayer() bool {
@@ -35,7 +35,7 @@ func (l_ *LayoutManagerWrapper) ImplementsLayoutSublayersOfLayer() bool {
 }
 
 func (l_ LayoutManagerWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), layer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
 }
 
 func (l_ *LayoutManagerWrapper) ImplementsPreferredSizeOfLayer() bool {
@@ -43,6 +43,6 @@ func (l_ *LayoutManagerWrapper) ImplementsPreferredSizeOfLayer() bool {
 }
 
 func (l_ LayoutManagerWrapper) PreferredSizeOfLayer(layer ILayer) coregraphics.Size {
-	rv := objc.CallMethod[coregraphics.Size](l_, objc.GetSelector("preferredSizeOfLayer:"), layer)
+	rv := objc.CallMethod[coregraphics.Size](l_, objc.GetSelector("preferredSizeOfLayer:"), objc.ExtractPtr(layer))
 	return rv
 }

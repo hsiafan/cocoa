@@ -118,7 +118,7 @@ func (s_ StatusItem) SendActionOn(mask EventMask) int {
 
 // deprecated
 func (s_ StatusItem) PopUpStatusItemMenu(menu IMenu) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("popUpStatusItemMenu:"), menu)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("popUpStatusItemMenu:"), objc.ExtractPtr(menu))
 }
 
 // deprecated
@@ -151,7 +151,7 @@ func (s_ StatusItem) Menu() Menu {
 }
 
 func (s_ StatusItem) SetMenu(value IMenu) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
 }
 
 func (s_ StatusItem) IsVisible() bool {
@@ -200,7 +200,7 @@ func (s_ StatusItem) Target() objc.Object {
 
 // deprecated
 func (s_ StatusItem) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTarget:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -244,7 +244,7 @@ func (s_ StatusItem) AttributedTitle() foundation.AttributedString {
 
 // deprecated
 func (s_ StatusItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAttributedTitle:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -255,7 +255,7 @@ func (s_ StatusItem) Image() Image {
 
 // deprecated
 func (s_ StatusItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -266,7 +266,7 @@ func (s_ StatusItem) AlternateImage() Image {
 
 // deprecated
 func (s_ StatusItem) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAlternateImage:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAlternateImage:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -299,5 +299,5 @@ func (s_ StatusItem) View() View {
 
 // deprecated
 func (s_ StatusItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setView:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }

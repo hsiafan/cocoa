@@ -72,12 +72,12 @@ func (pc _PredicateClass) PredicateFromMetadataQueryString(queryString string) P
 }
 
 func (p_ Predicate) EvaluateWithObject(object objc.IObject) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("evaluateWithObject:"), object)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("evaluateWithObject:"), objc.ExtractPtr(object))
 	return rv
 }
 
 func (p_ Predicate) EvaluateWithObject_SubstitutionVariables(object objc.IObject, bindings map[string]objc.IObject) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("evaluateWithObject:substitutionVariables:"), object, bindings)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("evaluateWithObject:substitutionVariables:"), objc.ExtractPtr(object), bindings)
 	return rv
 }
 

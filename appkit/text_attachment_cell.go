@@ -28,7 +28,7 @@ func MakeTextAttachmentCell(ptr unsafe.Pointer) TextAttachmentCell {
 }
 
 func (t_ TextAttachmentCell) InitImageCell(image IImage) TextAttachmentCell {
-	rv := objc.CallMethod[TextAttachmentCell](t_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[TextAttachmentCell](t_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 

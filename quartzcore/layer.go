@@ -188,7 +188,7 @@ func (l_ Layer) Init() Layer {
 }
 
 func (l_ Layer) InitWithLayer(layer objc.IObject) Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("initWithLayer:"), layer)
+	rv := objc.CallMethod[Layer](l_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 
@@ -249,7 +249,7 @@ func (l_ Layer) SetAffineTransform(m coregraphics.AffineTransform) {
 }
 
 func (l_ Layer) AddSublayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addSublayer:"), layer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("addSublayer:"), objc.ExtractPtr(layer))
 }
 
 func (l_ Layer) RemoveFromSuperlayer() {
@@ -257,19 +257,19 @@ func (l_ Layer) RemoveFromSuperlayer() {
 }
 
 func (l_ Layer) InsertSublayer_AtIndex(layer ILayer, idx uint32) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:atIndex:"), layer, idx)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:atIndex:"), objc.ExtractPtr(layer), idx)
 }
 
 func (l_ Layer) InsertSublayer_Below(layer ILayer, sibling ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:below:"), layer, sibling)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:below:"), objc.ExtractPtr(layer), objc.ExtractPtr(sibling))
 }
 
 func (l_ Layer) InsertSublayer_Above(layer ILayer, sibling ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:above:"), layer, sibling)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:above:"), objc.ExtractPtr(layer), objc.ExtractPtr(sibling))
 }
 
 func (l_ Layer) ReplaceSublayer_With(oldLayer ILayer, newLayer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("replaceSublayer:with:"), oldLayer, newLayer)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("replaceSublayer:with:"), objc.ExtractPtr(oldLayer), objc.ExtractPtr(newLayer))
 }
 
 func (l_ Layer) SetNeedsDisplay() {
@@ -295,7 +295,7 @@ func (lc _LayerClass) NeedsDisplayForKey(key string) bool {
 }
 
 func (l_ Layer) AddAnimation_ForKey(anim IAnimation, key string) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addAnimation:forKey:"), anim, key)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("addAnimation:forKey:"), objc.ExtractPtr(anim), key)
 }
 
 func (l_ Layer) AnimationForKey(key string) Animation {
@@ -347,7 +347,7 @@ func (l_ Layer) PreferredFrameSize() coregraphics.Size {
 }
 
 func (l_ Layer) AddConstraint(c IConstraint) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addConstraint:"), c)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("addConstraint:"), objc.ExtractPtr(c))
 }
 
 func (l_ Layer) ActionForKey(event string) ActionWrapper {
@@ -361,22 +361,22 @@ func (lc _LayerClass) DefaultActionForKey(event string) ActionWrapper {
 }
 
 func (l_ Layer) ConvertPoint_FromLayer(p coregraphics.Point, l ILayer) coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("convertPoint:fromLayer:"), p, l)
+	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("convertPoint:fromLayer:"), p, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) ConvertPoint_ToLayer(p coregraphics.Point, l ILayer) coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("convertPoint:toLayer:"), p, l)
+	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("convertPoint:toLayer:"), p, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) ConvertRect_FromLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("convertRect:fromLayer:"), r, l)
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("convertRect:fromLayer:"), r, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) ConvertRect_ToLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("convertRect:toLayer:"), r, l)
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("convertRect:toLayer:"), r, objc.ExtractPtr(l))
 	return rv
 }
 
@@ -425,7 +425,7 @@ func (l_ Layer) SetDelegate(value LayerDelegate) {
 }
 
 func (l_ Layer) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) Contents() objc.Object {
@@ -434,7 +434,7 @@ func (l_ Layer) Contents() objc.Object {
 }
 
 func (l_ Layer) SetContents(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContents:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContents:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) ContentsRect() coregraphics.Rect {
@@ -497,7 +497,7 @@ func (l_ Layer) Mask() Layer {
 }
 
 func (l_ Layer) SetMask(value ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMask:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMask:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) IsDoubleSided() bool {
@@ -632,7 +632,7 @@ func (l_ Layer) CompositingFilter() objc.Object {
 }
 
 func (l_ Layer) SetCompositingFilter(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCompositingFilter:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCompositingFilter:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) BackgroundFilters() []objc.Object {
@@ -849,7 +849,7 @@ func (l_ Layer) SetLayoutManager(value LayoutManager) {
 }
 
 func (l_ Layer) SetLayoutManager0(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutManager:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) AutoresizingMask() AutoresizingMask {

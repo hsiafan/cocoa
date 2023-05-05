@@ -61,7 +61,7 @@ func (p_ PathControlItem) AttributedTitle() foundation.AttributedString {
 }
 
 func (p_ PathControlItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAttributedTitle:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControlItem) Image() Image {
@@ -70,7 +70,7 @@ func (p_ PathControlItem) Image() Image {
 }
 
 func (p_ PathControlItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControlItem) Title() string {

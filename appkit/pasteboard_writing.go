@@ -20,7 +20,7 @@ type PasteboardWritingWrapper struct {
 }
 
 func (p_ PasteboardWritingWrapper) WritableTypesForPasteboard(pasteboard IPasteboard) []PasteboardType {
-	rv := objc.CallMethod[[]PasteboardType](p_, objc.GetSelector("writableTypesForPasteboard:"), pasteboard)
+	rv := objc.CallMethod[[]PasteboardType](p_, objc.GetSelector("writableTypesForPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -29,7 +29,7 @@ func (p_ *PasteboardWritingWrapper) ImplementsWritingOptionsForType_Pasteboard()
 }
 
 func (p_ PasteboardWritingWrapper) WritingOptionsForType_Pasteboard(type_ PasteboardType, pasteboard IPasteboard) PasteboardWritingOptions {
-	rv := objc.CallMethod[PasteboardWritingOptions](p_, objc.GetSelector("writingOptionsForType:pasteboard:"), type_, pasteboard)
+	rv := objc.CallMethod[PasteboardWritingOptions](p_, objc.GetSelector("writingOptionsForType:pasteboard:"), type_, objc.ExtractPtr(pasteboard))
 	return rv
 }
 

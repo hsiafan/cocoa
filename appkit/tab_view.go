@@ -97,24 +97,24 @@ func NewTabView() TabView {
 }
 
 func (t_ TabView) AddTabViewItem(tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTabViewItem:"), tabViewItem)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("addTabViewItem:"), objc.ExtractPtr(tabViewItem))
 }
 
 func (t_ TabView) InsertTabViewItem_AtIndex(tabViewItem ITabViewItem, index int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("insertTabViewItem:atIndex:"), tabViewItem, index)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("insertTabViewItem:atIndex:"), objc.ExtractPtr(tabViewItem), index)
 }
 
 func (t_ TabView) RemoveTabViewItem(tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTabViewItem:"), tabViewItem)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("removeTabViewItem:"), objc.ExtractPtr(tabViewItem))
 }
 
 func (t_ TabView) IndexOfTabViewItem(tabViewItem ITabViewItem) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("indexOfTabViewItem:"), tabViewItem)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("indexOfTabViewItem:"), objc.ExtractPtr(tabViewItem))
 	return rv
 }
 
 func (t_ TabView) IndexOfTabViewItemWithIdentifier(identifier objc.IObject) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("indexOfTabViewItemWithIdentifier:"), identifier)
+	rv := objc.CallMethod[int](t_, objc.GetSelector("indexOfTabViewItemWithIdentifier:"), objc.ExtractPtr(identifier))
 	return rv
 }
 
@@ -124,23 +124,23 @@ func (t_ TabView) TabViewItemAtIndex(index int) TabViewItem {
 }
 
 func (t_ TabView) SelectFirstTabViewItem(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectFirstTabViewItem:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectFirstTabViewItem:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TabView) SelectLastTabViewItem(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectLastTabViewItem:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectLastTabViewItem:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TabView) SelectNextTabViewItem(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectNextTabViewItem:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectNextTabViewItem:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TabView) SelectPreviousTabViewItem(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectPreviousTabViewItem:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectPreviousTabViewItem:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TabView) SelectTabViewItem(tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectTabViewItem:"), tabViewItem)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectTabViewItem:"), objc.ExtractPtr(tabViewItem))
 }
 
 func (t_ TabView) SelectTabViewItemAtIndex(index int) {
@@ -148,11 +148,11 @@ func (t_ TabView) SelectTabViewItemAtIndex(index int) {
 }
 
 func (t_ TabView) SelectTabViewItemWithIdentifier(identifier objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectTabViewItemWithIdentifier:"), identifier)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectTabViewItemWithIdentifier:"), objc.ExtractPtr(identifier))
 }
 
 func (t_ TabView) TakeSelectedTabViewItemFromSender(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("takeSelectedTabViewItemFromSender:"), sender)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("takeSelectedTabViewItemFromSender:"), objc.ExtractPtr(sender))
 }
 
 func (t_ TabView) TabViewItemAtPoint(point foundation.Point) TabViewItem {
@@ -172,7 +172,7 @@ func (t_ TabView) SetDelegate(value TabViewDelegate) {
 }
 
 func (t_ TabView) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (t_ TabView) NumberOfTabViewItems() int {
@@ -227,7 +227,7 @@ func (t_ TabView) Font() Font {
 }
 
 func (t_ TabView) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:"), objc.ExtractPtr(value))
 }
 
 // deprecated

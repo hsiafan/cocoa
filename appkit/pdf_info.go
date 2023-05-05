@@ -65,7 +65,7 @@ func (p_ PDFInfo) URL() foundation.URL {
 }
 
 func (p_ PDFInfo) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), value)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }
 
 func (p_ PDFInfo) IsFileExtensionHidden() bool {

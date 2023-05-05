@@ -44,7 +44,7 @@ func (t_ TokenFieldCell) InitTextCell(string_ string) TokenFieldCell {
 }
 
 func (t_ TokenFieldCell) InitImageCell(image IImage) TokenFieldCell {
-	rv := objc.CallMethod[TokenFieldCell](t_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[TokenFieldCell](t_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -88,7 +88,7 @@ func (t_ TokenFieldCell) TokenizingCharacterSet() foundation.CharacterSet {
 }
 
 func (t_ TokenFieldCell) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTokenizingCharacterSet:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTokenizingCharacterSet:"), objc.ExtractPtr(value))
 }
 
 func (t_ TokenFieldCell) CompletionDelay() foundation.TimeInterval {
@@ -117,5 +117,5 @@ func (t_ TokenFieldCell) SetDelegate(value TokenFieldCellDelegate) {
 }
 
 func (t_ TokenFieldCell) SetDelegate0(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

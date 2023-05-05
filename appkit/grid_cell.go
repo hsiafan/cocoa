@@ -75,7 +75,7 @@ func (g_ GridCell) ContentView() View {
 }
 
 func (g_ GridCell) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setContentView:"), value)
+	objc.CallMethod[objc.Void](g_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (gc _GridCellClass) EmptyContentView() View {

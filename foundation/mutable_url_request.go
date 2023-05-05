@@ -48,22 +48,22 @@ func MakeMutableURLRequest(ptr unsafe.Pointer) MutableURLRequest {
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:"), URL)
+	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:"), objc.ExtractPtr(URL))
 	return rv
 }
 
 func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:"), URL)
+	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(URL))
 	return rv
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
 	return rv
 }
 
 func (m_ MutableURLRequest) InitWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (m_ MutableURLRequest) SetHTTPMethod(value string) {
 }
 
 func (m_ MutableURLRequest) SetURL(value IURL) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setURL:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }
 
 func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
@@ -112,11 +112,11 @@ func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
 }
 
 func (m_ MutableURLRequest) SetHTTPBodyStream(value IInputStream) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPBodyStream:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPBodyStream:"), objc.ExtractPtr(value))
 }
 
 func (m_ MutableURLRequest) SetMainDocumentURL(value IURL) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMainDocumentURL:"), value)
+	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMainDocumentURL:"), objc.ExtractPtr(value))
 }
 
 func (m_ MutableURLRequest) SetAllHTTPHeaderFields(value map[string]string) {

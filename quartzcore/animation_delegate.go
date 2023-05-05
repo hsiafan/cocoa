@@ -51,7 +51,7 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStart() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStart(anim IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStart:"), anim)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStart:"), objc.ExtractPtr(anim))
 }
 
 func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop_Finished() bool {
@@ -59,5 +59,5 @@ func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop_Finished() bool {
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStop_Finished(anim IAnimation, flag bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:finished:"), anim, flag)
+	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:finished:"), objc.ExtractPtr(anim), flag)
 }

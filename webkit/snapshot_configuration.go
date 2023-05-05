@@ -70,7 +70,7 @@ func (s_ SnapshotConfiguration) SnapshotWidth() foundation.Number {
 }
 
 func (s_ SnapshotConfiguration) SetSnapshotWidth(value foundation.INumber) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSnapshotWidth:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSnapshotWidth:"), objc.ExtractPtr(value))
 }
 
 func (s_ SnapshotConfiguration) AfterScreenUpdates() bool {

@@ -33,37 +33,37 @@ func MakeCollectionLayoutGroup(ptr unsafe.Pointer) CollectionLayoutGroup {
 }
 
 func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSize_Subitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("horizontalGroupWithLayoutSize:subitems:"), layoutSize, subitems)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("horizontalGroupWithLayoutSize:subitems:"), objc.ExtractPtr(layoutSize), subitems)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSize_Subitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("verticalGroupWithLayoutSize:subitems:"), layoutSize, subitems)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("verticalGroupWithLayoutSize:subitems:"), objc.ExtractPtr(layoutSize), subitems)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSize_ItemProvider(layoutSize ICollectionLayoutSize, itemProvider func(layoutEnvironment CollectionLayoutEnvironmentWrapper) []ICollectionLayoutGroupCustomItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("customGroupWithLayoutSize:itemProvider:"), layoutSize, itemProvider)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("customGroupWithLayoutSize:itemProvider:"), objc.ExtractPtr(layoutSize), itemProvider)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSize_Subitem_Count(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("horizontalGroupWithLayoutSize:subitem:count:"), layoutSize, subitem, count)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("horizontalGroupWithLayoutSize:subitem:count:"), objc.ExtractPtr(layoutSize), objc.ExtractPtr(subitem), count)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSize_Subitem_Count(layoutSize ICollectionLayoutSize, subitem ICollectionLayoutItem, count int) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("verticalGroupWithLayoutSize:subitem:count:"), layoutSize, subitem, count)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("verticalGroupWithLayoutSize:subitem:count:"), objc.ExtractPtr(layoutSize), objc.ExtractPtr(subitem), count)
 	return rv
 }
 
 func (cc _CollectionLayoutGroupClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("itemWithLayoutSize:"), layoutSize)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("itemWithLayoutSize:"), objc.ExtractPtr(layoutSize))
 	return rv
 }
 
 func (cc _CollectionLayoutGroupClass) ItemWithLayoutSize_SupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutGroup {
-	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
+	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("itemWithLayoutSize:supplementaryItems:"), objc.ExtractPtr(layoutSize), supplementaryItems)
 	return rv
 }
 
@@ -107,5 +107,5 @@ func (c_ CollectionLayoutGroup) InterItemSpacing() CollectionLayoutSpacing {
 }
 
 func (c_ CollectionLayoutGroup) SetInterItemSpacing(value ICollectionLayoutSpacing) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInterItemSpacing:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInterItemSpacing:"), objc.ExtractPtr(value))
 }

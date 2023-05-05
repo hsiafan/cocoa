@@ -31,27 +31,27 @@ func MakeStatusBarButton(ptr unsafe.Pointer) StatusBarButton {
 }
 
 func (sc _StatusBarButtonClass) CheckboxWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("checkboxWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("checkboxWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _StatusBarButtonClass) ButtonWithImage_Target_Action(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithImage:target:action:"), image, target, action)
+	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithImage:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _StatusBarButtonClass) RadioButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _StatusBarButtonClass) ButtonWithTitle_Image_Target_Action(title string, image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, image, target, action)
+	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _StatusBarButtonClass) ButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithTitle:target:action:"), title, target, action)
+	rv := objc.CallMethod[StatusBarButton](sc, objc.GetSelector("buttonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 

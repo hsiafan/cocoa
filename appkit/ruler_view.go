@@ -58,7 +58,7 @@ func MakeRulerView(ptr unsafe.Pointer) RulerView {
 }
 
 func (r_ RulerView) InitWithScrollView_Orientation(scrollView IScrollView, orientation RulerOrientation) RulerView {
-	rv := objc.CallMethod[RulerView](r_, objc.GetSelector("initWithScrollView:orientation:"), scrollView, orientation)
+	rv := objc.CallMethod[RulerView](r_, objc.GetSelector("initWithScrollView:orientation:"), objc.ExtractPtr(scrollView), orientation)
 	return rv
 }
 
@@ -92,15 +92,15 @@ func (rc _RulerViewClass) RegisterUnitWithName_Abbreviation_UnitToPointsConversi
 }
 
 func (r_ RulerView) AddMarker(marker IRulerMarker) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("addMarker:"), marker)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("addMarker:"), objc.ExtractPtr(marker))
 }
 
 func (r_ RulerView) RemoveMarker(marker IRulerMarker) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("removeMarker:"), marker)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("removeMarker:"), objc.ExtractPtr(marker))
 }
 
 func (r_ RulerView) TrackMarker_WithMouseEvent(marker IRulerMarker, event IEvent) bool {
-	rv := objc.CallMethod[bool](r_, objc.GetSelector("trackMarker:withMouseEvent:"), marker, event)
+	rv := objc.CallMethod[bool](r_, objc.GetSelector("trackMarker:withMouseEvent:"), objc.ExtractPtr(marker), objc.ExtractPtr(event))
 	return rv
 }
 
@@ -135,7 +135,7 @@ func (r_ RulerView) ClientView() View {
 }
 
 func (r_ RulerView) SetClientView(value IView) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setClientView:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setClientView:"), objc.ExtractPtr(value))
 }
 
 func (r_ RulerView) AccessoryView() View {
@@ -144,7 +144,7 @@ func (r_ RulerView) AccessoryView() View {
 }
 
 func (r_ RulerView) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setAccessoryView:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
 }
 
 func (r_ RulerView) OriginOffset() float64 {
@@ -171,7 +171,7 @@ func (r_ RulerView) ScrollView() ScrollView {
 }
 
 func (r_ RulerView) SetScrollView(value IScrollView) {
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setScrollView:"), value)
+	objc.CallMethod[objc.Void](r_, objc.GetSelector("setScrollView:"), objc.ExtractPtr(value))
 }
 
 func (r_ RulerView) Orientation() RulerOrientation {

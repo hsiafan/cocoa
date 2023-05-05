@@ -111,7 +111,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_ShouldDragPathCompon
 }
 
 func (p_ PathControlDelegateWrapper) PathControl_ShouldDragPathComponentCell_WithPasteboard(pathControl IPathControl, pathComponentCell IPathComponentCell, pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:shouldDragPathComponentCell:withPasteboard:"), pathControl, pathComponentCell, pasteboard)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:shouldDragPathComponentCell:withPasteboard:"), objc.ExtractPtr(pathControl), objc.ExtractPtr(pathComponentCell), objc.ExtractPtr(pasteboard))
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_ValidateDrop() bool 
 
 func (p_ PathControlDelegateWrapper) PathControl_ValidateDrop(pathControl IPathControl, info DraggingInfo) DragOperation {
 	po := objc.CreateProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[DragOperation](p_, objc.GetSelector("pathControl:validateDrop:"), pathControl, po)
+	rv := objc.CallMethod[DragOperation](p_, objc.GetSelector("pathControl:validateDrop:"), objc.ExtractPtr(pathControl), po)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_AcceptDrop() bool {
 
 func (p_ PathControlDelegateWrapper) PathControl_AcceptDrop(pathControl IPathControl, info DraggingInfo) bool {
 	po := objc.CreateProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:acceptDrop:"), pathControl, po)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:acceptDrop:"), objc.ExtractPtr(pathControl), po)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_WillDisplayOpenPanel
 }
 
 func (p_ PathControlDelegateWrapper) PathControl_WillDisplayOpenPanel(pathControl IPathControl, openPanel IOpenPanel) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathControl:willDisplayOpenPanel:"), pathControl, openPanel)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathControl:willDisplayOpenPanel:"), objc.ExtractPtr(pathControl), objc.ExtractPtr(openPanel))
 }
 
 func (p_ *PathControlDelegateWrapper) ImplementsPathControl_WillPopUpMenu() bool {
@@ -148,7 +148,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_WillPopUpMenu() bool
 }
 
 func (p_ PathControlDelegateWrapper) PathControl_WillPopUpMenu(pathControl IPathControl, menu IMenu) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathControl:willPopUpMenu:"), pathControl, menu)
+	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathControl:willPopUpMenu:"), objc.ExtractPtr(pathControl), objc.ExtractPtr(menu))
 }
 
 func (p_ *PathControlDelegateWrapper) ImplementsPathControl_ShouldDragItem_WithPasteboard() bool {
@@ -156,6 +156,6 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_ShouldDragItem_WithP
 }
 
 func (p_ PathControlDelegateWrapper) PathControl_ShouldDragItem_WithPasteboard(pathControl IPathControl, pathItem IPathControlItem, pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:shouldDragItem:withPasteboard:"), pathControl, pathItem, pasteboard)
+	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:shouldDragItem:withPasteboard:"), objc.ExtractPtr(pathControl), objc.ExtractPtr(pathItem), objc.ExtractPtr(pasteboard))
 	return rv
 }

@@ -49,7 +49,7 @@ func (t_ TextFieldCell) InitTextCell(string_ string) TextFieldCell {
 }
 
 func (t_ TextFieldCell) InitImageCell(image IImage) TextFieldCell {
-	rv := objc.CallMethod[TextFieldCell](t_, objc.GetSelector("initImageCell:"), image)
+	rv := objc.CallMethod[TextFieldCell](t_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (t_ TextFieldCell) TextColor() Color {
 }
 
 func (t_ TextFieldCell) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextFieldCell) BezelStyle() TextFieldBezelStyle {
@@ -101,7 +101,7 @@ func (t_ TextFieldCell) BackgroundColor() Color {
 }
 
 func (t_ TextFieldCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextFieldCell) DrawsBackground() bool {
@@ -128,7 +128,7 @@ func (t_ TextFieldCell) PlaceholderAttributedString() foundation.AttributedStrin
 }
 
 func (t_ TextFieldCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderAttributedString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextFieldCell) AllowedInputSourceLocales() []string {

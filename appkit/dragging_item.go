@@ -62,7 +62,7 @@ func (d_ DraggingItem) Init() DraggingItem {
 }
 
 func (d_ DraggingItem) SetDraggingFrame_Contents(frame foundation.Rect, contents objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFrame:contents:"), frame, contents)
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFrame:contents:"), frame, objc.ExtractPtr(contents))
 }
 
 func (d_ DraggingItem) DraggingFrame() foundation.Rect {

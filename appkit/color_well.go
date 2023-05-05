@@ -78,7 +78,7 @@ func NewColorWell() ColorWell {
 }
 
 func (c_ ColorWell) TakeColorFrom(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeColorFrom:"), sender)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("takeColorFrom:"), objc.ExtractPtr(sender))
 }
 
 func (c_ ColorWell) Activate(exclusive bool) {
@@ -99,7 +99,7 @@ func (c_ ColorWell) Color() Color {
 }
 
 func (c_ ColorWell) SetColor(value IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
 }
 
 func (c_ ColorWell) ColorWellStyle() ColorWellStyle {
@@ -117,7 +117,7 @@ func (c_ ColorWell) Image() Image {
 }
 
 func (c_ ColorWell) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
 }
 
 // deprecated
@@ -151,5 +151,5 @@ func (c_ ColorWell) PulldownTarget() objc.Object {
 }
 
 func (c_ ColorWell) SetPulldownTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownTarget:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownTarget:"), objc.ExtractPtr(value))
 }

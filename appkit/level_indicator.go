@@ -175,7 +175,7 @@ func (l_ LevelIndicator) RatingImage() Image {
 }
 
 func (l_ LevelIndicator) SetRatingImage(value IImage) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRatingImage:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRatingImage:"), objc.ExtractPtr(value))
 }
 
 func (l_ LevelIndicator) DrawsTieredCapacityLevels() bool {
@@ -193,7 +193,7 @@ func (l_ LevelIndicator) FillColor() Color {
 }
 
 func (l_ LevelIndicator) SetFillColor(value IColor) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setFillColor:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setFillColor:"), objc.ExtractPtr(value))
 }
 
 func (l_ LevelIndicator) WarningFillColor() Color {
@@ -202,7 +202,7 @@ func (l_ LevelIndicator) WarningFillColor() Color {
 }
 
 func (l_ LevelIndicator) SetWarningFillColor(value IColor) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setWarningFillColor:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setWarningFillColor:"), objc.ExtractPtr(value))
 }
 
 func (l_ LevelIndicator) CriticalFillColor() Color {
@@ -211,7 +211,7 @@ func (l_ LevelIndicator) CriticalFillColor() Color {
 }
 
 func (l_ LevelIndicator) SetCriticalFillColor(value IColor) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCriticalFillColor:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCriticalFillColor:"), objc.ExtractPtr(value))
 }
 
 func (l_ LevelIndicator) RatingPlaceholderImage() Image {
@@ -220,7 +220,7 @@ func (l_ LevelIndicator) RatingPlaceholderImage() Image {
 }
 
 func (l_ LevelIndicator) SetRatingPlaceholderImage(value IImage) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRatingPlaceholderImage:"), value)
+	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRatingPlaceholderImage:"), objc.ExtractPtr(value))
 }
 
 func (l_ LevelIndicator) PlaceholderVisibility() LevelIndicatorPlaceholderVisibility {

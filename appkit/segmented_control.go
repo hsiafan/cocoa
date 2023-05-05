@@ -71,12 +71,12 @@ func MakeSegmentedControl(ptr unsafe.Pointer) SegmentedControl {
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithImages_TrackingMode_Target_Action(images []IImage, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithImages:trackingMode:target:action:"), images, trackingMode, target, action)
+	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithImages:trackingMode:target:action:"), images, trackingMode, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithLabels_TrackingMode_Target_Action(labels []string, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithLabels:trackingMode:target:action:"), labels, trackingMode, target, action)
+	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithLabels:trackingMode:target:action:"), labels, trackingMode, objc.ExtractPtr(target), action)
 	return rv
 }
 
@@ -124,7 +124,7 @@ func (s_ SegmentedControl) AlignmentForSegment(segment int) TextAlignment {
 }
 
 func (s_ SegmentedControl) SetImage_ForSegment(image IImage, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), image, segment)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), objc.ExtractPtr(image), segment)
 }
 
 func (s_ SegmentedControl) ImageForSegment(segment int) Image {
@@ -142,7 +142,7 @@ func (s_ SegmentedControl) ImageScalingForSegment(segment int) ImageScaling {
 }
 
 func (s_ SegmentedControl) SetMenu_ForSegment(menu IMenu, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), menu, segment)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), objc.ExtractPtr(menu), segment)
 }
 
 func (s_ SegmentedControl) MenuForSegment(segment int) Menu {
@@ -274,7 +274,7 @@ func (s_ SegmentedControl) SelectedSegmentBezelColor() Color {
 }
 
 func (s_ SegmentedControl) SetSelectedSegmentBezelColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegmentBezelColor:"), value)
+	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegmentBezelColor:"), objc.ExtractPtr(value))
 }
 
 func (s_ SegmentedControl) DoubleValueForSelectedSegment() float64 {

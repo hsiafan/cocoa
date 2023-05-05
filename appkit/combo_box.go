@@ -66,7 +66,7 @@ func MakeComboBox(ptr unsafe.Pointer) ComboBox {
 }
 
 func (cc _ComboBoxClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) ComboBox {
-	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("labelWithAttributedString:"), attributedStringValue)
+	rv := objc.CallMethod[ComboBox](cc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 
@@ -115,11 +115,11 @@ func (c_ ComboBox) AddItemsWithObjectValues(objects []objc.IObject) {
 }
 
 func (c_ ComboBox) AddItemWithObjectValue(object objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("addItemWithObjectValue:"), object)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("addItemWithObjectValue:"), objc.ExtractPtr(object))
 }
 
 func (c_ ComboBox) InsertItemWithObjectValue_AtIndex(object objc.IObject, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertItemWithObjectValue:atIndex:"), object, index)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertItemWithObjectValue:atIndex:"), objc.ExtractPtr(object), index)
 }
 
 func (c_ ComboBox) RemoveAllItems() {
@@ -131,11 +131,11 @@ func (c_ ComboBox) RemoveItemAtIndex(index int) {
 }
 
 func (c_ ComboBox) RemoveItemWithObjectValue(object objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("removeItemWithObjectValue:"), object)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("removeItemWithObjectValue:"), objc.ExtractPtr(object))
 }
 
 func (c_ ComboBox) IndexOfItemWithObjectValue(object objc.IObject) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("indexOfItemWithObjectValue:"), object)
+	rv := objc.CallMethod[int](c_, objc.GetSelector("indexOfItemWithObjectValue:"), objc.ExtractPtr(object))
 	return rv
 }
 
@@ -169,7 +169,7 @@ func (c_ ComboBox) SelectItemAtIndex(index int) {
 }
 
 func (c_ ComboBox) SelectItemWithObjectValue(object objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectItemWithObjectValue:"), object)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectItemWithObjectValue:"), objc.ExtractPtr(object))
 }
 
 func (c_ ComboBox) HasVerticalScroller() bool {
@@ -229,7 +229,7 @@ func (c_ ComboBox) SetDataSource(value ComboBoxDataSource) {
 }
 
 func (c_ ComboBox) SetDataSource0(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), value)
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), objc.ExtractPtr(value))
 }
 
 func (c_ ComboBox) UsesDataSource() bool {
