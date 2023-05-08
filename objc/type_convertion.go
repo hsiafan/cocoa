@@ -120,7 +120,11 @@ func toNSElement(v reflect.Value) unsafe.Pointer {
 			return ToNSArray(v)
 		}
 	case reflect.Interface:
-		if t.ConvertibleTo(pointerHolderType) {
+		if t.AssignableTo(pointerHolderType) {
+			return v.Interface().(Holder).Ptr()
+		}
+	case reflect.Struct:
+		if t.Implements(pointerHolderType) {
 			return v.Interface().(Holder).Ptr()
 		}
 	default:
@@ -140,7 +144,7 @@ func toGoElement(ptr unsafe.Pointer, t reflect.Type) reflect.Value {
 			return ToGoSlice(ptr, t)
 		}
 	case reflect.Struct:
-		if t.ConvertibleTo(pointerHolderType) {
+		if t.Implements(pointerHolderType) {
 			return objectToGoHolder(ptr, t)
 		}
 	default:
@@ -220,47 +224,6 @@ func ToGoMap(ptr unsafe.Pointer, mapType reflect.Type) reflect.Value {
 	return m
 }
 
-// parseGoType return a pointer to receive objc value, for given go type
-func parseGoType(t reflect.Type) unsafe.Pointer {
-	switch t.Kind() {
-	case reflect.Bool, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Uint8, reflect.Uint16, reflect.Uint32:
-		var cv C.int32_t
-		return unsafe.Pointer(&cv)
-	case reflect.Int, reflect.Uint, reflect.Int64, reflect.Uint64:
-		var cv C.int64_t
-		return unsafe.Pointer(&cv)
-	case reflect.Float32:
-		var cv C.float
-		return unsafe.Pointer(&cv)
-	case reflect.Float64:
-		var cv C.double
-		return unsafe.Pointer(&cv)
-	case reflect.UnsafePointer, reflect.Pointer:
-		var cv unsafe.Pointer
-		return unsafe.Pointer(&cv)
-	case reflect.String:
-		var cv unsafe.Pointer
-		return unsafe.Pointer(&cv)
-	case reflect.Slice, reflect.Map:
-		var cv unsafe.Pointer
-		return unsafe.Pointer(&cv)
-	case reflect.Struct:
-		if t.Implements(pointerHolderType) {
-			var cv unsafe.Pointer
-			return unsafe.Pointer(&cv)
-		} else {
-			rv := reflect.New(t).Elem()
-			return getStructPointer(rv)
-		}
-	case reflect.Func:
-		// a pointer to Block
-		var cv unsafe.Pointer
-		return unsafe.Pointer(&cv)
-	default:
-		panic(fmt.Sprintf("not support type: %v", t.Name()))
-	}
-}
-
 // convertToGoValue convert objc value to go value.
 // param p: the pointer to objc value
 // param t: the go value type
@@ -323,11 +286,6 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 		return unsafe.Pointer(&p)
 	}
 
-	if v.Type().AssignableTo(pointerHolderType) {
-		cv := v.Interface().(Holder).Ptr()
-		return unsafe.Pointer(&cv)
-	}
-
 	rt := v.Type()
 	switch rt.Kind() {
 	case reflect.Bool:
@@ -370,8 +328,16 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 		cv := v.UnsafePointer()
 		return unsafe.Pointer(&cv)
 	case reflect.Interface:
+		if v.Type().AssignableTo(pointerHolderType) {
+			cv := v.Interface().(Holder).Ptr()
+			return unsafe.Pointer(&cv)
+		}
 		panic(fmt.Sprintf("not support type: %T", v))
 	case reflect.Struct:
+		if v.Type().Implements(pointerHolderType) {
+			cv := v.Interface().(Holder).Ptr()
+			return unsafe.Pointer(&cv)
+		}
 		return getStructPointer(v)
 	case reflect.String:
 		sp := ToNSString(v.String())
@@ -396,9 +362,6 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 }
 
 func setGoValueToObjcPointer(rv reflect.Value, p unsafe.Pointer) {
-	if rv.Type().AssignableTo(pointerHolderType) {
-		*(*unsafe.Pointer)(p) = rv.Interface().(Holder).Ptr()
-	}
 
 	rt := rv.Type()
 	switch rt.Kind() {
@@ -431,11 +394,19 @@ func setGoValueToObjcPointer(rv reflect.Value, p unsafe.Pointer) {
 	case reflect.UnsafePointer, reflect.Pointer:
 		*(*unsafe.Pointer)(p) = rv.UnsafePointer()
 	case reflect.Interface:
-		panic(fmt.Sprintf("not support type: %v", rv.Type()))
+		if rv.Type().AssignableTo(pointerHolderType) {
+			*(*unsafe.Pointer)(p) = rv.Interface().(Holder).Ptr()
+		} else {
+			panic(fmt.Sprintf("not support type: %v", rv.Type()))
+		}
 	case reflect.Struct:
-		sp := getStructPointer(rv)
-		size := rv.Type().Size()
-		copy(unsafe.Slice((*byte)(p), size), unsafe.Slice((*byte)(sp), size))
+		if rv.Type().Implements(pointerHolderType) {
+			*(*unsafe.Pointer)(p) = rv.Interface().(Holder).Ptr()
+		} else {
+			sp := getStructPointer(rv)
+			size := rv.Type().Size()
+			copy(unsafe.Slice((*byte)(p), size), unsafe.Slice((*byte)(sp), size))
+		}
 	case reflect.String:
 		sp := ToNSString(rv.String())
 		*(*unsafe.Pointer)(p) = sp
@@ -480,9 +451,6 @@ func storeStructValue(value *reflect.Value, ptr unsafe.Pointer) {
 
 // toFFIType return the ffi type
 func toFFIType(rt reflect.Type) *ffi.Type {
-	if rt.AssignableTo(pointerHolderType) {
-		return ffi.TypePointer
-	}
 	switch rt.Kind() {
 	case reflect.Bool:
 		return ffi.TypeUint8
@@ -509,10 +477,16 @@ func toFFIType(rt reflect.Type) *ffi.Type {
 	case reflect.UnsafePointer, reflect.Pointer:
 		return ffi.TypePointer
 	case reflect.Interface:
+		if rt.AssignableTo(pointerHolderType) {
+			return ffi.TypePointer
+		}
 		panic(fmt.Sprintf("not support type: %v", rt))
 	case reflect.Struct:
 		if rt.Size() == 0 {
 			return ffi.TypeVoid
+		}
+		if rt.Implements(pointerHolderType) {
+			return ffi.TypePointer
 		}
 		return getStructFFIType(rt)
 	case reflect.String:

@@ -44,6 +44,11 @@ func getTypeEncoding(t reflect.Type) string {
 		return "@"
 	case reflect.Array:
 		return "[" + strconv.Itoa(t.Len()) + getTypeEncoding(t.Elem()) + "]"
+	case reflect.Interface:
+		if t.AssignableTo(pointerHolderType) {
+			return "@"
+		}
+		panic("unsupported type:" + t.Name())
 	case reflect.Struct:
 		if t == classType {
 			return "#"
