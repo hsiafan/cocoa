@@ -230,27 +230,27 @@ func ToGoMap(ptr unsafe.Pointer, mapType reflect.Type) reflect.Value {
 func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 	switch t.Kind() {
 	case reflect.Bool:
-		return reflect.ValueOf(int(*((*C.uint8_t)(p))) == 1).Convert(t)
+		return reflect.ValueOf(*((*uint8)(p)) == 1).Convert(t)
 	case reflect.Int8:
-		return reflect.ValueOf(int8(*((*C.int8_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*int8)(p))).Convert(t)
 	case reflect.Int16:
-		return reflect.ValueOf(int16(*((*C.int16_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*int16)(p))).Convert(t)
 	case reflect.Int32:
-		return reflect.ValueOf(int32(*((*C.int32_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*int32)(p))).Convert(t)
 	case reflect.Int, reflect.Int64:
-		return reflect.ValueOf(int64(*((*C.int64_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*int64)(p))).Convert(t)
 	case reflect.Uint8:
-		return reflect.ValueOf(uint8(*((*C.uint8_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*uint8)(p))).Convert(t)
 	case reflect.Uint16:
-		return reflect.ValueOf(uint16(*((*C.uint16_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*uint16)(p))).Convert(t)
 	case reflect.Uint32:
-		return reflect.ValueOf(uint32(*((*C.uint32_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*uint32)(p))).Convert(t)
 	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
-		return reflect.ValueOf(uint64(*((*C.uint64_t)(p)))).Convert(t)
+		return reflect.ValueOf(*((*uint64)(p))).Convert(t)
 	case reflect.Float32:
-		return reflect.ValueOf(float32(*((*C.float)(p)))).Convert(t)
+		return reflect.ValueOf(*((*float32)(p))).Convert(t)
 	case reflect.Float64:
-		return reflect.ValueOf(float64(*((*C.double)(p)))).Convert(t)
+		return reflect.ValueOf(*((*float64)(p))).Convert(t)
 	case reflect.Pointer, reflect.UnsafePointer:
 		return reflect.ValueOf(*(*unsafe.Pointer)(p)).Convert(t)
 	case reflect.String:
@@ -289,40 +289,40 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 	rt := v.Type()
 	switch rt.Kind() {
 	case reflect.Bool:
-		var cv C.uint8_t = 0
+		var cv uint8 = 0
 		if v.Bool() {
 			cv = 1
 		}
 		return unsafe.Pointer(&cv)
 	case reflect.Int8:
-		cv := C.int8_t(v.Int())
+		cv := int8(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Int16:
-		cv := C.int16_t(v.Int())
+		cv := int16(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Int32:
-		cv := C.int32_t(v.Int())
+		cv := int32(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Int, reflect.Int64:
-		cv := C.int64_t(v.Int())
+		cv := int64(v.Int())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint8:
-		cv := C.uint8_t(v.Uint())
+		cv := uint8(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint16:
-		cv := C.uint16_t(v.Uint())
+		cv := uint16(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint32:
-		cv := C.uint32_t(v.Uint())
+		cv := uint32(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
-		cv := C.uint64_t(v.Uint())
+		cv := uint64(v.Uint())
 		return unsafe.Pointer(&cv)
 	case reflect.Float32:
-		cv := C.float(v.Float())
+		cv := float32(v.Float())
 		return unsafe.Pointer(&cv)
 	case reflect.Float64:
-		cv := C.double(v.Float())
+		cv := float64(v.Float())
 		return unsafe.Pointer(&cv)
 	case reflect.UnsafePointer, reflect.Pointer:
 		cv := v.UnsafePointer()
@@ -516,5 +516,5 @@ func getStructFFIType(t reflect.Type) *ffi.Type {
 			fts = append(fts, toFFIType(ft))
 		}
 	}
-	return ffi.StructType(fts)
+	return ffi.MakeStructType(fts)
 }

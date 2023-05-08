@@ -49,7 +49,7 @@ func IsStruct(t *Type) bool {
 	return t._type == C.FFI_TYPE_STRUCT
 }
 
-func StructType(types []*Type) *Type {
+func MakeStructType(types []*Type) *Type {
 	nullTerminated := make([]*Type, len(types)+1)
 	copy(nullTerminated, types)
 	nullTerminated[len(types)] = nil
@@ -75,10 +75,6 @@ func Call(cif *CIF, fn unsafe.Pointer, rvalue unsafe.Pointer, avalues []unsafe.P
 	runtime.KeepAlive(rvalue)
 }
 
-func toCString(s string) unsafe.Pointer {
-	return unsafe.Pointer(C.CString(s))
-}
-
 func toUintptrT[T any](p *T) C.uintptr_t {
 	return C.uintptr_t(uintptr(unsafe.Pointer(p)))
 }
@@ -91,7 +87,7 @@ type UserData struct {
 	guard  *int          // used to free resource when is gced
 }
 
-func CreateClosure(cif *CIF, f ClosureHandle) (codeloc unsafe.Pointer, handle cgo.Handle, status Status) {
+func CreateClosure(cif *CIF, f ClosureHandle) (codeloc unsafe.Pointer, udHandle cgo.Handle, status Status) {
 	closure := C.ffi_closure_alloc0(toUintptrT(&codeloc))
 	guard := new(int)
 	userData := UserData{
@@ -102,8 +98,8 @@ func CreateClosure(cif *CIF, f ClosureHandle) (codeloc unsafe.Pointer, handle cg
 	runtime.SetFinalizer(guard, func(v *int) {
 		C.ffi_closure_free(closure)
 	})
-	handle = cgo.NewHandle(userData)
-	status = C.ffi_prep_closure_loc0(closure, toUintptrT(cif), C.forward_to_go, C.uintptr_t(handle), codeloc)
+	udHandle = cgo.NewHandle(userData)
+	status = C.ffi_prep_closure_loc0(closure, toUintptrT(cif), C.forward_to_go, C.uintptr_t(udHandle), codeloc)
 	return
 }
 

@@ -22,6 +22,7 @@ func Test_closure(t *testing.T) {
 	var arg1 int
 	var arg2 int
 	Call(cif, fn, unsafe.Pointer(&ret), []unsafe.Pointer{unsafe.Pointer(&arg1), unsafe.Pointer(&arg2)})
+	assert.Equal(t, 10, ret)
 
 	handle.Delete()
 	runtime.GC()
