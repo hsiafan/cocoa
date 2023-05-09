@@ -147,7 +147,7 @@ func (r_ RulerMarker) RepresentedObject() CopyingWrapper {
 }
 
 func (r_ RulerMarker) SetRepresentedObject(value Copying) {
-	po := objc.CreateProtocol("NSCopying", value)
+	po := objc.WrapAsProtocol("NSCopying", value)
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), po)
 }
 

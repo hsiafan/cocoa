@@ -68,7 +68,7 @@ func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_AcceptDrop_Item_Ch
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_AcceptDrop_Item_ChildIndex(outlineView IOutlineView, info DraggingInfo, item objc.IObject, index int) bool {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:acceptDrop:item:childIndex:"), objc.ExtractPtr(outlineView), po, objc.ExtractPtr(item), index)
 	return rv
 }
@@ -183,7 +183,7 @@ func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_UpdateDraggingItem
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_UpdateDraggingItemsForDrag(outlineView IOutlineView, draggingInfo DraggingInfo) {
-	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
+	po := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:updateDraggingItemsForDrag:"), objc.ExtractPtr(outlineView), po)
 }
 
@@ -192,7 +192,7 @@ func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_ValidateDrop_Propo
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_ValidateDrop_ProposedItem_ProposedChildIndex(outlineView IOutlineView, info DraggingInfo, item objc.IObject, index int) DragOperation {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[DragOperation](o_, objc.GetSelector("outlineView:validateDrop:proposedItem:proposedChildIndex:"), objc.ExtractPtr(outlineView), po, objc.ExtractPtr(item), index)
 	return rv
 }

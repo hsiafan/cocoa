@@ -75,7 +75,7 @@ func (w_ WebViewConfiguration) Init() WebViewConfiguration {
 }
 
 func (w_ WebViewConfiguration) SetURLSchemeHandler_ForURLScheme(urlSchemeHandler URLSchemeHandler, urlScheme string) {
-	po := objc.CreateProtocol("WKURLSchemeHandler", urlSchemeHandler)
+	po := objc.WrapAsProtocol("WKURLSchemeHandler", urlSchemeHandler)
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setURLSchemeHandler:forURLScheme:"), po, urlScheme)
 }
 

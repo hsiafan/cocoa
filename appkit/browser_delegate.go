@@ -754,7 +754,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ValidateDrop_ProposedRow_Col
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser IBrowser, info DraggingInfo, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[DragOperation](b_, objc.GetSelector("browser:validateDrop:proposedRow:column:dropOperation:"), objc.ExtractPtr(browser), po, row, column, dropOperation)
 	return rv
 }
@@ -764,7 +764,7 @@ func (b_ *BrowserDelegateWrapper) ImplementsBrowser_AcceptDrop_AtRow_Column_Drop
 }
 
 func (b_ BrowserDelegateWrapper) Browser_AcceptDrop_AtRow_Column_DropOperation(browser IBrowser, info DraggingInfo, row int, column int, dropOperation BrowserDropOperation) bool {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:acceptDrop:atRow:column:dropOperation:"), objc.ExtractPtr(browser), po, row, column, dropOperation)
 	return rv
 }

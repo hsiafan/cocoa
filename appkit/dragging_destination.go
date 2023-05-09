@@ -44,7 +44,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingEntered() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingEntered(sender DraggingInfo) DragOperation {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingEntered:"), po)
 	return rv
 }
@@ -63,7 +63,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingUpdated() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingUpdated(sender DraggingInfo) DragOperation {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingUpdated:"), po)
 	return rv
 }
@@ -73,7 +73,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingEnded() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingEnded(sender DraggingInfo) {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingEnded:"), po)
 }
 
@@ -82,7 +82,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsDraggingExited() bool {
 }
 
 func (d_ DraggingDestinationWrapper) DraggingExited(sender DraggingInfo) {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingExited:"), po)
 }
 
@@ -91,7 +91,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsPrepareForDragOperation() bool {
 }
 
 func (d_ DraggingDestinationWrapper) PrepareForDragOperation(sender DraggingInfo) bool {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	rv := objc.CallMethod[bool](d_, objc.GetSelector("prepareForDragOperation:"), po)
 	return rv
 }
@@ -101,7 +101,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsPerformDragOperation() bool {
 }
 
 func (d_ DraggingDestinationWrapper) PerformDragOperation(sender DraggingInfo) bool {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	rv := objc.CallMethod[bool](d_, objc.GetSelector("performDragOperation:"), po)
 	return rv
 }
@@ -111,7 +111,7 @@ func (d_ *DraggingDestinationWrapper) ImplementsConcludeDragOperation() bool {
 }
 
 func (d_ DraggingDestinationWrapper) ConcludeDragOperation(sender DraggingInfo) {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("concludeDragOperation:"), po)
 }
 
@@ -120,6 +120,6 @@ func (d_ *DraggingDestinationWrapper) ImplementsUpdateDraggingItemsForDrag() boo
 }
 
 func (d_ DraggingDestinationWrapper) UpdateDraggingItemsForDrag(sender DraggingInfo) {
-	po := objc.CreateProtocol("NSDraggingInfo", sender)
+	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateDraggingItemsForDrag:"), po)
 }

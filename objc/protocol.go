@@ -120,9 +120,16 @@ type methodInfo struct {
 	hasFunc  reflect.Value // the hasXXX func for this method
 }
 
+// WrapAsProtocol wrap go interface to protocol implement instance.
+//
 // param protocolName: the delegate go interface name
 // param d: the delegate go implementaion
-func CreateProtocol[T any](protocolName string, d T) Object {
+func WrapAsProtocol[T any](protocolName string, d T) Object {
+	t := reflect.TypeOf((*T)(nil)).Elem()
+	if t.Kind() != reflect.Interface {
+		panic("generic type T should be interface type")
+	}
+
 	dv := reflect.ValueOf(d)
 	ci := createClass(dv.Type(), protocolName)
 	ii := &instanceInfo{

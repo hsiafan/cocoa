@@ -594,7 +594,7 @@ func (t_ TableView) DataSource() TableViewDataSourceWrapper {
 }
 
 func (t_ TableView) SetDataSource(value TableViewDataSource) {
-	po := objc.CreateProtocol("NSTableViewDataSource", value)
+	po := objc.WrapAsProtocol("NSTableViewDataSource", value)
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataSource:"), po)
 }
@@ -905,7 +905,7 @@ func (t_ TableView) Delegate() TableViewDelegateWrapper {
 }
 
 func (t_ TableView) SetDelegate(value TableViewDelegate) {
-	po := objc.CreateProtocol("NSTableViewDelegate", value)
+	po := objc.WrapAsProtocol("NSTableViewDelegate", value)
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

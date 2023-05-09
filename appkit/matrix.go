@@ -496,7 +496,7 @@ func (m_ Matrix) Delegate() MatrixDelegateWrapper {
 }
 
 func (m_ Matrix) SetDelegate(value MatrixDelegate) {
-	po := objc.CreateProtocol("NSMatrixDelegate", value)
+	po := objc.WrapAsProtocol("NSMatrixDelegate", value)
 	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), po)
 }

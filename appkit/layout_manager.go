@@ -746,7 +746,7 @@ func (l_ LayoutManager) Delegate() LayoutManagerDelegateWrapper {
 }
 
 func (l_ LayoutManager) SetDelegate(value LayoutManagerDelegate) {
-	po := objc.CreateProtocol("NSLayoutManagerDelegate", value)
+	po := objc.WrapAsProtocol("NSLayoutManagerDelegate", value)
 	objc.SetAssociatedObject(l_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), po)
 }

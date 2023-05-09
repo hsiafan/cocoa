@@ -36,7 +36,7 @@ func MakeDraggingItem(ptr unsafe.Pointer) DraggingItem {
 }
 
 func (d_ DraggingItem) InitWithPasteboardWriter(pasteboardWriter PasteboardWriting) DraggingItem {
-	po := objc.CreateProtocol("NSPasteboardWriting", pasteboardWriter)
+	po := objc.WrapAsProtocol("NSPasteboardWriting", pasteboardWriter)
 	rv := objc.CallMethod[DraggingItem](d_, objc.GetSelector("initWithPasteboardWriter:"), po)
 	return rv
 }

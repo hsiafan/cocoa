@@ -333,7 +333,7 @@ func (c_ CollectionView) DataSource() CollectionViewDataSourceWrapper {
 }
 
 func (c_ CollectionView) SetDataSource(value CollectionViewDataSource) {
-	po := objc.CreateProtocol("NSCollectionViewDataSource", value)
+	po := objc.WrapAsProtocol("NSCollectionViewDataSource", value)
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), po)
 }
@@ -348,7 +348,7 @@ func (c_ CollectionView) Delegate() CollectionViewDelegateWrapper {
 }
 
 func (c_ CollectionView) SetDelegate(value CollectionViewDelegate) {
-	po := objc.CreateProtocol("NSCollectionViewDelegate", value)
+	po := objc.WrapAsProtocol("NSCollectionViewDelegate", value)
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), po)
 }
@@ -408,7 +408,7 @@ func (c_ CollectionView) PrefetchDataSource() CollectionViewPrefetchingWrapper {
 }
 
 func (c_ CollectionView) SetPrefetchDataSource(value CollectionViewPrefetching) {
-	po := objc.CreateProtocol("NSCollectionViewPrefetching", value)
+	po := objc.WrapAsProtocol("NSCollectionViewPrefetching", value)
 	objc.SetAssociatedObject(c_, internal.AssociationKey("setPrefetchDataSource"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPrefetchDataSource:"), po)
 }

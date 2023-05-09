@@ -69,7 +69,7 @@ func (s_ SharingServicePicker) Delegate() SharingServicePickerDelegateWrapper {
 }
 
 func (s_ SharingServicePicker) SetDelegate(value SharingServicePickerDelegate) {
-	po := objc.CreateProtocol("NSSharingServicePickerDelegate", value)
+	po := objc.WrapAsProtocol("NSSharingServicePickerDelegate", value)
 	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
 }

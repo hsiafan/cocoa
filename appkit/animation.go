@@ -159,7 +159,7 @@ func (a_ Animation) Delegate() AnimationDelegateWrapper {
 }
 
 func (a_ Animation) SetDelegate(value AnimationDelegate) {
-	po := objc.CreateProtocol("NSAnimationDelegate", value)
+	po := objc.WrapAsProtocol("NSAnimationDelegate", value)
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
 }

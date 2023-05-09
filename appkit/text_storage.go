@@ -120,7 +120,7 @@ func (t_ TextStorage) Delegate() TextStorageDelegateWrapper {
 }
 
 func (t_ TextStorage) SetDelegate(value TextStorageDelegate) {
-	po := objc.CreateProtocol("NSTextStorageDelegate", value)
+	po := objc.WrapAsProtocol("NSTextStorageDelegate", value)
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

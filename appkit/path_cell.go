@@ -189,7 +189,7 @@ func (p_ PathCell) Delegate() PathCellDelegateWrapper {
 }
 
 func (p_ PathCell) SetDelegate(value PathCellDelegate) {
-	po := objc.CreateProtocol("NSPathCellDelegate", value)
+	po := objc.WrapAsProtocol("NSPathCellDelegate", value)
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
 }

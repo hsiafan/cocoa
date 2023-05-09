@@ -157,7 +157,7 @@ func (p_ Popover) Delegate() PopoverDelegateWrapper {
 }
 
 func (p_ Popover) SetDelegate(value PopoverDelegate) {
-	po := objc.CreateProtocol("NSPopoverDelegate", value)
+	po := objc.WrapAsProtocol("NSPopoverDelegate", value)
 	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
 }

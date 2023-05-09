@@ -320,7 +320,7 @@ func (t_ TextField) Delegate() TextFieldDelegateWrapper {
 }
 
 func (t_ TextField) SetDelegate(value TextFieldDelegate) {
-	po := objc.CreateProtocol("NSTextFieldDelegate", value)
+	po := objc.WrapAsProtocol("NSTextFieldDelegate", value)
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

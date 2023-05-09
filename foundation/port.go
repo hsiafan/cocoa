@@ -65,7 +65,7 @@ func (p_ Port) Invalidate() {
 }
 
 func (p_ Port) SetDelegate(anObject PortDelegate) {
-	po := objc.CreateProtocol("NSPortDelegate", anObject)
+	po := objc.WrapAsProtocol("NSPortDelegate", anObject)
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
 }
 

@@ -120,7 +120,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_ValidateDrop() bool 
 }
 
 func (p_ PathControlDelegateWrapper) PathControl_ValidateDrop(pathControl IPathControl, info DraggingInfo) DragOperation {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[DragOperation](p_, objc.GetSelector("pathControl:validateDrop:"), objc.ExtractPtr(pathControl), po)
 	return rv
 }
@@ -130,7 +130,7 @@ func (p_ *PathControlDelegateWrapper) ImplementsPathControl_AcceptDrop() bool {
 }
 
 func (p_ PathControlDelegateWrapper) PathControl_AcceptDrop(pathControl IPathControl, info DraggingInfo) bool {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[bool](p_, objc.GetSelector("pathControl:acceptDrop:"), objc.ExtractPtr(pathControl), po)
 	return rv
 }

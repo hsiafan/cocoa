@@ -426,7 +426,7 @@ func (t_ Text) Delegate() TextDelegateWrapper {
 }
 
 func (t_ Text) SetDelegate(value TextDelegate) {
-	po := objc.CreateProtocol("NSTextDelegate", value)
+	po := objc.WrapAsProtocol("NSTextDelegate", value)
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

@@ -1059,7 +1059,7 @@ func (v_ View) UnregisterDraggedTypes() {
 }
 
 func (v_ View) BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source DraggingSource) DraggingSession {
-	po := objc.CreateProtocol("NSDraggingSource", source)
+	po := objc.WrapAsProtocol("NSDraggingSource", source)
 	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, objc.ExtractPtr(event), po)
 	return rv
 }

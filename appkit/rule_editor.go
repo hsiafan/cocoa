@@ -170,7 +170,7 @@ func (r_ RuleEditor) Delegate() RuleEditorDelegateWrapper {
 }
 
 func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
-	po := objc.CreateProtocol("NSRuleEditorDelegate", value)
+	po := objc.WrapAsProtocol("NSRuleEditorDelegate", value)
 	objc.SetAssociatedObject(r_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), po)
 }

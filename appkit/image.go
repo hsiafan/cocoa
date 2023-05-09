@@ -441,7 +441,7 @@ func (i_ Image) Delegate() ImageDelegateWrapper {
 }
 
 func (i_ Image) SetDelegate(value ImageDelegate) {
-	po := objc.CreateProtocol("NSImageDelegate", value)
+	po := objc.WrapAsProtocol("NSImageDelegate", value)
 	objc.SetAssociatedObject(i_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), po)
 }

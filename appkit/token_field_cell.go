@@ -111,7 +111,7 @@ func (t_ TokenFieldCell) Delegate() TokenFieldCellDelegateWrapper {
 }
 
 func (t_ TokenFieldCell) SetDelegate(value TokenFieldCellDelegate) {
-	po := objc.CreateProtocol("NSTokenFieldCellDelegate", value)
+	po := objc.WrapAsProtocol("NSTokenFieldCellDelegate", value)
 	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
 }

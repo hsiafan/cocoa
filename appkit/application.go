@@ -270,7 +270,7 @@ func (a_ Application) ReplyToOpenOrPrint(reply ApplicationDelegateReply) {
 }
 
 func (a_ Application) RegisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching) {
-	po := objc.CreateProtocol("NSUserInterfaceItemSearching", handler)
+	po := objc.WrapAsProtocol("NSUserInterfaceItemSearching", handler)
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerUserInterfaceItemSearchHandler:"), po)
 }
 
@@ -284,7 +284,7 @@ func (a_ Application) SearchString_InUserInterfaceItemString_SearchRange_FoundRa
 }
 
 func (a_ Application) UnregisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching) {
-	po := objc.CreateProtocol("NSUserInterfaceItemSearching", handler)
+	po := objc.WrapAsProtocol("NSUserInterfaceItemSearching", handler)
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("unregisterUserInterfaceItemSearchHandler:"), po)
 }
 
@@ -506,7 +506,7 @@ func (a_ Application) Delegate() ApplicationDelegateWrapper {
 }
 
 func (a_ Application) SetDelegate(value ApplicationDelegate) {
-	po := objc.CreateProtocol("NSApplicationDelegate", value)
+	po := objc.WrapAsProtocol("NSApplicationDelegate", value)
 	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
 }

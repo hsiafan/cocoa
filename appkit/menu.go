@@ -453,7 +453,7 @@ func (m_ Menu) Delegate() MenuDelegateWrapper {
 }
 
 func (m_ Menu) SetDelegate(value MenuDelegate) {
-	po := objc.CreateProtocol("NSMenuDelegate", value)
+	po := objc.WrapAsProtocol("NSMenuDelegate", value)
 	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), po)
 }

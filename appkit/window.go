@@ -1026,7 +1026,7 @@ func (w_ Window) Delegate() WindowDelegateWrapper {
 }
 
 func (w_ Window) SetDelegate(value WindowDelegate) {
-	po := objc.CreateProtocol("NSWindowDelegate", value)
+	po := objc.WrapAsProtocol("NSWindowDelegate", value)
 	objc.SetAssociatedObject(w_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), po)
 }

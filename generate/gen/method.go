@@ -100,7 +100,7 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 		case *typing.ClassType:
 			sb.WriteString("objc.ExtractPtr(" + p.GoName() + ")")
 		case *typing.ProtocolType:
-			cw.WriteLineF("po := objc.CreateProtocol(\"%s\", %s)", tt.Name, p.GoName())
+			cw.WriteLineF("po := objc.WrapAsProtocol(\"%s\", %s)", tt.Name, p.GoName())
 			if m.WeakProperty { // weak property setter
 				cw.WriteLineF("objc.SetAssociatedObject(%s, internal.AssociationKey(\"%s\"), %s, objc.ASSOCIATION_RETAIN)",
 					receiver, m.GoName, "po")

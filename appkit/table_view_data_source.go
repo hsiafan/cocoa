@@ -91,7 +91,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_AcceptDrop_Row_DropOpe
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_AcceptDrop_Row_DropOperation(tableView ITableView, info DraggingInfo, row int, dropOperation TableViewDropOperation) bool {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:acceptDrop:row:dropOperation:"), objc.ExtractPtr(tableView), po, row, dropOperation)
 	return rv
 }
@@ -111,7 +111,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_ValidateDrop_ProposedR
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_ValidateDrop_ProposedRow_ProposedDropOperation(tableView ITableView, info DraggingInfo, row int, dropOperation TableViewDropOperation) DragOperation {
-	po := objc.CreateProtocol("NSDraggingInfo", info)
+	po := objc.WrapAsProtocol("NSDraggingInfo", info)
 	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("tableView:validateDrop:proposedRow:proposedDropOperation:"), objc.ExtractPtr(tableView), po, row, dropOperation)
 	return rv
 }
@@ -139,7 +139,7 @@ func (t_ *TableViewDataSourceWrapper) ImplementsTableView_UpdateDraggingItemsFor
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_UpdateDraggingItemsForDrag(tableView ITableView, draggingInfo DraggingInfo) {
-	po := objc.CreateProtocol("NSDraggingInfo", draggingInfo)
+	po := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:updateDraggingItemsForDrag:"), objc.ExtractPtr(tableView), po)
 }
 

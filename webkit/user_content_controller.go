@@ -72,7 +72,7 @@ func (u_ UserContentController) RemoveAllUserScripts() {
 }
 
 func (u_ UserContentController) AddScriptMessageHandler_Name(scriptMessageHandler ScriptMessageHandler, name string) {
-	po := objc.CreateProtocol("WKScriptMessageHandler", scriptMessageHandler)
+	po := objc.WrapAsProtocol("WKScriptMessageHandler", scriptMessageHandler)
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:name:"), po, name)
 }
 
@@ -81,7 +81,7 @@ func (u_ UserContentController) AddScriptMessageHandler0_Name(scriptMessageHandl
 }
 
 func (u_ UserContentController) AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string) {
-	po := objc.CreateProtocol("WKScriptMessageHandler", scriptMessageHandler)
+	po := objc.WrapAsProtocol("WKScriptMessageHandler", scriptMessageHandler)
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), po, objc.ExtractPtr(world), name)
 }
 
@@ -90,7 +90,7 @@ func (u_ UserContentController) AddScriptMessageHandler0_ContentWorld_Name(scrip
 }
 
 func (u_ UserContentController) AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string) {
-	po := objc.CreateProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
+	po := objc.WrapAsProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), po, objc.ExtractPtr(contentWorld), name)
 }
 
