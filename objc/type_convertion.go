@@ -21,24 +21,14 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/ffi"
-	"github.com/hsiafan/cocoa/internal"
 )
 
-var intType = reflect.TypeOf(0)
-var uintType = reflect.TypeOf(uint(0))
-var int32Type = reflect.TypeOf(int32(0))
-var uint32Type = reflect.TypeOf(uint32(0))
-var int64Type = reflect.TypeOf(int64(0))
-var uint64Type = reflect.TypeOf(uint64(0))
-var float32Type = reflect.TypeOf(float32(0))
-var float64Type = reflect.TypeOf(float64(0))
 var bytesType = reflect.TypeOf([]byte{})
-var unsafePointerType = reflect.TypeOf(unsafe.Pointer(nil))
 var pointerHolderType = reflect.TypeOf((*Holder)(nil)).Elem()
 var selectorType = reflect.TypeOf(Selector{})
 var classType = reflect.TypeOf(Class{})
 
-type Value struct {
+type reValue struct {
 	// typ holds the type of the value represented by a Value.
 	typ unsafe.Pointer
 
@@ -49,6 +39,7 @@ type Value struct {
 	flag uintptr
 }
 
+// flagIndir: val holds a pointer to the data
 var flagIndir uintptr = 1 << 7
 
 func ToNSString(s string) unsafe.Pointer {
@@ -97,17 +88,7 @@ func ToGoBytes(p unsafe.Pointer) []byte {
 	return newBytes
 }
 
-func objectToGoHolder(ptr unsafe.Pointer, paramType reflect.Type) reflect.Value {
-	v := reflect.Zero(paramType)
-	vp := (*Value)(unsafe.Pointer(&v))
-	if vp.flag&flagIndir != 0 {
-		*(*unsafe.Pointer)(vp.ptr) = ptr
-	} else {
-		vp.ptr = internal.ForceCast[unsafe.Pointer, unsafe.Pointer](ptr)
-	}
-	return v
-}
-
+// slice/dict elements convert
 func toNSElement(v reflect.Value) unsafe.Pointer {
 	var t = v.Type()
 	switch t.Kind() {
@@ -133,6 +114,7 @@ func toNSElement(v reflect.Value) unsafe.Pointer {
 	panic("not supported types: " + t.Name())
 }
 
+// slice/dict elements convert
 func toGoElement(ptr unsafe.Pointer, t reflect.Type) reflect.Value {
 	switch t.Kind() {
 	case reflect.String:
@@ -145,7 +127,8 @@ func toGoElement(ptr unsafe.Pointer, t reflect.Type) reflect.Value {
 		}
 	case reflect.Struct:
 		if t.Implements(pointerHolderType) {
-			return objectToGoHolder(ptr, t)
+			// objc object pointer holder struct should have same layout as a pointer
+			return reflect.NewAt(t, unsafe.Pointer(&ptr)).Elem()
 		}
 	default:
 
@@ -265,11 +248,10 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 		return reflect.ValueOf(ToGoMap(*(*unsafe.Pointer)(p), t))
 	case reflect.Struct:
 		if t.Implements(pointerHolderType) {
-			return objectToGoHolder(*(*unsafe.Pointer)(p), t)
+			// objc object pointer holder struct should have same layout as a pointer
+			return reflect.NewAt(t, p).Elem()
 		} else {
-			rv := reflect.New(t).Elem()
-			storeStructValue(&rv, p)
-			return rv
+			return reflect.NewAt(t, p).Elem()
 		}
 	case reflect.Func:
 		rv := wrapBlockInGoFunc(*(*unsafe.Pointer)(p), t)
@@ -338,7 +320,7 @@ func convertToObjcValue(v reflect.Value) unsafe.Pointer {
 			cv := v.Interface().(Holder).Ptr()
 			return unsafe.Pointer(&cv)
 		}
-		return getStructPointer(v)
+		return getStructValuePointer(v)
 	case reflect.String:
 		sp := ToNSString(v.String())
 		return unsafe.Pointer(&sp)
@@ -403,7 +385,7 @@ func setGoValueToObjcPointer(rv reflect.Value, p unsafe.Pointer) {
 		if rv.Type().Implements(pointerHolderType) {
 			*(*unsafe.Pointer)(p) = rv.Interface().(Holder).Ptr()
 		} else {
-			sp := getStructPointer(rv)
+			sp := getStructValuePointer(rv)
 			size := rv.Type().Size()
 			copy(unsafe.Slice((*byte)(p), size), unsafe.Slice((*byte)(sp), size))
 		}
@@ -429,23 +411,13 @@ func setGoValueToObjcPointer(rv reflect.Value, p unsafe.Pointer) {
 	}
 }
 
-func getStructPointer(value reflect.Value) unsafe.Pointer {
-	vsp := (*Value)(unsafe.Pointer(&value))
+func getStructValuePointer(value reflect.Value) unsafe.Pointer {
+	vsp := (*reValue)(unsafe.Pointer(&value))
 
 	if vsp.flag&flagIndir == 0 {
 		return unsafe.Pointer(&vsp.ptr)
 	} else {
 		return vsp.ptr
-	}
-}
-
-func storeStructValue(value *reflect.Value, ptr unsafe.Pointer) {
-	vsp := (*Value)(unsafe.Pointer(value))
-
-	if vsp.flag&flagIndir == 0 {
-		vsp.ptr = *(*unsafe.Pointer)(ptr)
-	} else {
-		vsp.ptr = ptr
 	}
 }
 

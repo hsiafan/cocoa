@@ -9,6 +9,8 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// for more array/dict tests, see foundation/foundation_custom_test.go
+
 type TestStruct struct {
 	A int64
 	B int64

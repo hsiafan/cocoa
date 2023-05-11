@@ -14,15 +14,35 @@ type _CoderClass struct {
 }
 
 type ICoder interface {
-	IObject
+	objc.IObject
 }
 
 type Coder struct {
-	Object
+	objc.Object
 }
 
 func MakeCoder(ptr unsafe.Pointer) Coder {
 	return Coder{
-		Object: MakeObject(ptr),
+		Object: objc.MakeObject(ptr),
 	}
+}
+
+func (cc _CoderClass) Alloc() Coder {
+	rv := objc.CallMethod[Coder](cc, objc.GetSelector("alloc"))
+	return rv
+}
+
+func (cc _CoderClass) New() Coder {
+	rv := objc.CallMethod[Coder](cc, objc.GetSelector("new"))
+	rv.Autorelease()
+	return rv
+}
+
+func NewCoder() Coder {
+	return CoderClass.New()
+}
+
+func (c_ Coder) Init() Coder {
+	rv := objc.CallMethod[Coder](c_, objc.GetSelector("init"))
+	return rv
 }
