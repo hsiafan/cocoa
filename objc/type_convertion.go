@@ -213,27 +213,27 @@ func ToGoMap(ptr unsafe.Pointer, mapType reflect.Type) reflect.Value {
 func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 	switch t.Kind() {
 	case reflect.Bool:
-		return reflect.ValueOf(*((*uint8)(p)) == 1).Convert(t)
+		return reflect.ValueOf(*(*uint8)(p) == 1).Convert(t)
 	case reflect.Int8:
-		return reflect.ValueOf(*((*int8)(p))).Convert(t)
+		return reflect.ValueOf(*(*int8)(p)).Convert(t)
 	case reflect.Int16:
-		return reflect.ValueOf(*((*int16)(p))).Convert(t)
+		return reflect.ValueOf(*(*int16)(p)).Convert(t)
 	case reflect.Int32:
-		return reflect.ValueOf(*((*int32)(p))).Convert(t)
+		return reflect.ValueOf(*(*int32)(p)).Convert(t)
 	case reflect.Int, reflect.Int64:
-		return reflect.ValueOf(*((*int64)(p))).Convert(t)
+		return reflect.ValueOf(*(*int64)(p)).Convert(t)
 	case reflect.Uint8:
-		return reflect.ValueOf(*((*uint8)(p))).Convert(t)
+		return reflect.ValueOf(*(*uint8)(p)).Convert(t)
 	case reflect.Uint16:
-		return reflect.ValueOf(*((*uint16)(p))).Convert(t)
+		return reflect.ValueOf(*(*uint16)(p)).Convert(t)
 	case reflect.Uint32:
-		return reflect.ValueOf(*((*uint32)(p))).Convert(t)
+		return reflect.ValueOf(*(*uint32)(p)).Convert(t)
 	case reflect.Uint, reflect.Uint64, reflect.Uintptr:
-		return reflect.ValueOf(*((*uint64)(p))).Convert(t)
+		return reflect.ValueOf(*(*uint64)(p)).Convert(t)
 	case reflect.Float32:
-		return reflect.ValueOf(*((*float32)(p))).Convert(t)
+		return reflect.ValueOf(*(*float32)(p)).Convert(t)
 	case reflect.Float64:
-		return reflect.ValueOf(*((*float64)(p))).Convert(t)
+		return reflect.ValueOf(*(*float64)(p)).Convert(t)
 	case reflect.Pointer, reflect.UnsafePointer:
 		return reflect.ValueOf(*(*unsafe.Pointer)(p)).Convert(t)
 	case reflect.String:

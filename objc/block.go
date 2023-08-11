@@ -230,7 +230,3 @@ func getBlockTypeEncoding(ft reflect.Type) string {
 func testBlock() Block {
 	return MakeBlock(C.testBlock())
 }
-
-func toUIntptr[T any](ptr *T) C.uintptr_t {
-	return C.uintptr_t(uintptr(unsafe.Pointer(ptr)))
-}
