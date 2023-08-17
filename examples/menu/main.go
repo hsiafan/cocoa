@@ -60,14 +60,17 @@ func setMainMenu(app appkit.Application) {
 	menu := appkit.MenuClass.Alloc().InitWithTitle("main")
 	app.SetMainMenu(menu)
 
-	mainMenuItem := appkit.NewMenuItemWithSelector("", "", objc.Selector{})
-	mainMenuMenu := appkit.MenuClass.Alloc().InitWithTitle("App")
-	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Hide", "h", app.Hide))
-	mainMenuMenu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", app.Terminate))
-	mainMenuItem.SetSubmenu(mainMenuMenu)
-	menu.AddItem(mainMenuItem)
+	mainMenu := appkit.NewMenu()
+	mainMenu.SetTitle("App")
+	mainMenu.AddItem(appkit.NewMenuItemWithAction("Hide Test", "h", app.Hide))
+	hideOthersItem := appkit.NewMenuItemWithAction("Hide Others", "h", app.HideOtherApplications)
+	hideOthersItem.SetKeyEquivalentModifierMask(appkit.EventModifierFlagOption | appkit.EventModifierFlagCommand)
+	mainMenu.AddItem(hideOthersItem)
+	mainMenu.AddItem(appkit.NewMenuItemWithAction("Show All", "", app.UnhideAllApplications))
+	mainMenu.AddItem(appkit.MenuItemClass.SeparatorItem())
+	mainMenu.AddItem(appkit.NewMenuItemWithAction("Quit", "q", app.Terminate))
+	menu.AddItem(appkit.NewSubMenuItem(mainMenu))
 
-	testMenuItem := appkit.NewMenuItemWithSelector("", "", objc.Selector{})
 	testMenu := appkit.MenuClass.Alloc().InitWithTitle("Edit")
 	testMenu.AddItem(appkit.NewMenuItemWithSelector("Select All", "a", objc.GetSelector("selectAll:")))
 	testMenu.AddItem(appkit.MenuItemClass.SeparatorItem())
@@ -76,8 +79,7 @@ func setMainMenu(app appkit.Application) {
 	testMenu.AddItem(appkit.NewMenuItemWithSelector("Cut", "x", objc.GetSelector("cut:")))
 	testMenu.AddItem(appkit.NewMenuItemWithSelector("Undo", "z", objc.GetSelector("undo:")))
 	testMenu.AddItem(appkit.NewMenuItemWithSelector("Redo", "Z", objc.GetSelector("redo:")))
-	testMenuItem.SetSubmenu(testMenu)
-	menu.AddItem(testMenuItem)
+	menu.AddItem(appkit.NewSubMenuItem(testMenu))
 }
 
 func setSystemBar(app appkit.Application) {
