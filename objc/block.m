@@ -1,4 +1,6 @@
 #import <stdint.h>
+#import <stdlib.h>
+#import <objc/runtime.h>
 #import <Block.h>
 #include "_cgo_export.h"
 

@@ -272,23 +272,6 @@ func addProtocolMethod(class Class, md methodDescription, method reflect.Method)
 	}
 }
 
-//export respondsTo
-func respondsTo(goID uintptr, sel unsafe.Pointer) bool {
-	selName := MakeSelector(sel).GetName()
-	ii := cgo.Handle(goID).Value().(*instanceInfo)
-	mi := ii.classInfo.methodInfos[selName]
-	if mi == nil {
-		return false
-	}
-
-	v := reflect.ValueOf(ii.instance)
-	if mi.required {
-		return true
-	}
-
-	return mi.hasFunc.Call([]reflect.Value{v})[0].Bool()
-}
-
 // menuWillOpen: -> MenuWillOpen
 // menu:updateItem:atIndex:shouldCancel: -> Menu_UpdateItem_AtIndex_ShouldCancel
 func selectorToGoName(sel string) string {

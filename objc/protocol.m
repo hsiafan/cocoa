@@ -1,4 +1,5 @@
 #import <objc/NSObject.h>
+#import <objc/runtime.h>
 #include "_cgo_export.h"
 
 

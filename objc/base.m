@@ -1,6 +1,7 @@
 #import <stdlib.h>
 #import <stdint.h>
 #import <stdbool.h>
+#import <objc/runtime.h>
 #include "_cgo_export.h"
 
 void* IMP_ImplementationWithBlock(void* bp) {
