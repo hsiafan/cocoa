@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -34,8 +33,7 @@ type IStackView interface {
 	SetClippingResistancePriority_ForOrientation(clippingResistancePriority LayoutPriority, orientation LayoutConstraintOrientation)
 	SetHuggingPriority_ForOrientation(huggingPriority LayoutPriority, orientation LayoutConstraintOrientation)
 	Delegate() StackViewDelegateWrapper
-	SetDelegate(value StackViewDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	ArrangedSubviews() []View
 	Views() []View
 	DetachedViews() []View
@@ -166,18 +164,14 @@ func (s_ StackView) SetHuggingPriority_ForOrientation(huggingPriority LayoutPrio
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setHuggingPriority:forOrientation:"), huggingPriority, orientation)
 }
 
+// weak property
 func (s_ StackView) Delegate() StackViewDelegateWrapper {
 	rv := objc.CallMethod[StackViewDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (s_ StackView) SetDelegate(value StackViewDelegate) {
-	po := objc.WrapAsProtocol("NSStackViewDelegate", value)
-	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (s_ StackView) SetDelegate0(value objc.IObject) {
+// weak property
+func (s_ StackView) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

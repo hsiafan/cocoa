@@ -144,11 +144,13 @@ func (w_ WindowController) SetWindow(value IWindow) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindow:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (w_ WindowController) Document() objc.Object {
 	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("document"))
 	return rv
 }
 
+// weak property
 func (w_ WindowController) SetDocument(value objc.IObject) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDocument:"), objc.ExtractPtr(value))
 }
@@ -162,6 +164,7 @@ func (w_ WindowController) SetShouldCloseDocument(value bool) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setShouldCloseDocument:"), value)
 }
 
+// weak property
 func (w_ WindowController) Owner() objc.Object {
 	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("owner"))
 	return rv

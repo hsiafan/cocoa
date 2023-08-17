@@ -66,6 +66,7 @@ func (t_ TextViewportLayoutController) LayoutViewport() {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("layoutViewport"))
 }
 
+// weak property
 func (t_ TextViewportLayoutController) TextLayoutManager() TextLayoutManager {
 	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv

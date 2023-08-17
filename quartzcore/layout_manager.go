@@ -18,28 +18,47 @@ type LayoutManager interface {
 	PreferredSizeOfLayer(layer Layer) coregraphics.Size
 }
 
-type LayoutManagerWrapper struct {
-	objc.Object
+func WrapLayoutManager(v LayoutManager) objc.Object {
+	return objc.WrapAsProtocol("CALayoutManager", v)
 }
 
-func (l_ *LayoutManagerWrapper) ImplementsInvalidateLayoutOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("invalidateLayoutOfLayer:"))
+type LayoutManagerBase struct {
+}
+
+func (p *LayoutManagerBase) ImplementsInvalidateLayoutOfLayer() bool {
+	return false
+}
+
+func (p *LayoutManagerBase) InvalidateLayoutOfLayer(layer Layer) {
+	panic("unimpemented protocol method")
+}
+
+func (p *LayoutManagerBase) ImplementsLayoutSublayersOfLayer() bool {
+	return false
+}
+
+func (p *LayoutManagerBase) LayoutSublayersOfLayer(layer Layer) {
+	panic("unimpemented protocol method")
+}
+
+func (p *LayoutManagerBase) ImplementsPreferredSizeOfLayer() bool {
+	return false
+}
+
+func (p *LayoutManagerBase) PreferredSizeOfLayer(layer Layer) coregraphics.Size {
+	panic("unimpemented protocol method")
+}
+
+type LayoutManagerWrapper struct {
+	objc.Object
 }
 
 func (l_ LayoutManagerWrapper) InvalidateLayoutOfLayer(layer ILayer) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("invalidateLayoutOfLayer:"), objc.ExtractPtr(layer))
 }
 
-func (l_ *LayoutManagerWrapper) ImplementsLayoutSublayersOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("layoutSublayersOfLayer:"))
-}
-
 func (l_ LayoutManagerWrapper) LayoutSublayersOfLayer(layer ILayer) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ *LayoutManagerWrapper) ImplementsPreferredSizeOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("preferredSizeOfLayer:"))
 }
 
 func (l_ LayoutManagerWrapper) PreferredSizeOfLayer(layer ILayer) coregraphics.Size {

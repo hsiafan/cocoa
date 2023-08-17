@@ -26,88 +26,63 @@ type GestureRecognizerDelegate interface {
 	GestureRecognizer_ShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool
 }
 
-type GestureRecognizerDelegateImpl struct {
-	_GestureRecognizer_ShouldAttemptToRecognizeWithEvent                  func(gestureRecognizer GestureRecognizer, event Event) bool
-	_GestureRecognizerShouldBegin                                         func(gestureRecognizer GestureRecognizer) bool
-	_GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	_GestureRecognizer_ShouldRequireFailureOfGestureRecognizer            func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	_GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer          func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool
-	_GestureRecognizer_ShouldReceiveTouch                                 func(gestureRecognizer GestureRecognizer, touch Touch) bool
+func WrapGestureRecognizerDelegate(v GestureRecognizerDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSGestureRecognizerDelegate", v)
 }
 
-func (di *GestureRecognizerDelegateImpl) ImplementsGestureRecognizer_ShouldAttemptToRecognizeWithEvent() bool {
-	return di._GestureRecognizer_ShouldAttemptToRecognizeWithEvent != nil
+type GestureRecognizerDelegateBase struct {
 }
 
-func (di *GestureRecognizerDelegateImpl) SetGestureRecognizer_ShouldAttemptToRecognizeWithEvent(f func(gestureRecognizer GestureRecognizer, event Event) bool) {
-	di._GestureRecognizer_ShouldAttemptToRecognizeWithEvent = f
+func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizer_ShouldAttemptToRecognizeWithEvent() bool {
+	return false
 }
 
-func (di *GestureRecognizerDelegateImpl) GestureRecognizer_ShouldAttemptToRecognizeWithEvent(gestureRecognizer GestureRecognizer, event Event) bool {
-	return di._GestureRecognizer_ShouldAttemptToRecognizeWithEvent(gestureRecognizer, event)
-}
-func (di *GestureRecognizerDelegateImpl) ImplementsGestureRecognizerShouldBegin() bool {
-	return di._GestureRecognizerShouldBegin != nil
+func (p *GestureRecognizerDelegateBase) GestureRecognizer_ShouldAttemptToRecognizeWithEvent(gestureRecognizer GestureRecognizer, event Event) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *GestureRecognizerDelegateImpl) SetGestureRecognizerShouldBegin(f func(gestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizerShouldBegin = f
+func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizerShouldBegin() bool {
+	return false
 }
 
-func (di *GestureRecognizerDelegateImpl) GestureRecognizerShouldBegin(gestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizerShouldBegin(gestureRecognizer)
-}
-func (di *GestureRecognizerDelegateImpl) ImplementsGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer() bool {
-	return di._GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer != nil
+func (p *GestureRecognizerDelegateBase) GestureRecognizerShouldBegin(gestureRecognizer GestureRecognizer) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *GestureRecognizerDelegateImpl) SetGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(f func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer = f
+func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer() bool {
+	return false
 }
 
-func (di *GestureRecognizerDelegateImpl) GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer, otherGestureRecognizer)
-}
-func (di *GestureRecognizerDelegateImpl) ImplementsGestureRecognizer_ShouldRequireFailureOfGestureRecognizer() bool {
-	return di._GestureRecognizer_ShouldRequireFailureOfGestureRecognizer != nil
+func (p *GestureRecognizerDelegateBase) GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *GestureRecognizerDelegateImpl) SetGestureRecognizer_ShouldRequireFailureOfGestureRecognizer(f func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizer_ShouldRequireFailureOfGestureRecognizer = f
+func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizer_ShouldRequireFailureOfGestureRecognizer() bool {
+	return false
 }
 
-func (di *GestureRecognizerDelegateImpl) GestureRecognizer_ShouldRequireFailureOfGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizer_ShouldRequireFailureOfGestureRecognizer(gestureRecognizer, otherGestureRecognizer)
-}
-func (di *GestureRecognizerDelegateImpl) ImplementsGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer() bool {
-	return di._GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer != nil
+func (p *GestureRecognizerDelegateBase) GestureRecognizer_ShouldRequireFailureOfGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *GestureRecognizerDelegateImpl) SetGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(f func(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	di._GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer = f
+func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer() bool {
+	return false
 }
 
-func (di *GestureRecognizerDelegateImpl) GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	return di._GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer, otherGestureRecognizer)
-}
-func (di *GestureRecognizerDelegateImpl) ImplementsGestureRecognizer_ShouldReceiveTouch() bool {
-	return di._GestureRecognizer_ShouldReceiveTouch != nil
+func (p *GestureRecognizerDelegateBase) GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *GestureRecognizerDelegateImpl) SetGestureRecognizer_ShouldReceiveTouch(f func(gestureRecognizer GestureRecognizer, touch Touch) bool) {
-	di._GestureRecognizer_ShouldReceiveTouch = f
+func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizer_ShouldReceiveTouch() bool {
+	return false
 }
 
-func (di *GestureRecognizerDelegateImpl) GestureRecognizer_ShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
-	return di._GestureRecognizer_ShouldReceiveTouch(gestureRecognizer, touch)
+func (p *GestureRecognizerDelegateBase) GestureRecognizer_ShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
+	panic("unimpemented protocol method")
 }
 
 type GestureRecognizerDelegateWrapper struct {
 	objc.Object
-}
-
-func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldAttemptToRecognizeWithEvent() bool {
-	return g_.RespondsToSelector(objc.GetSelector("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"))
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldAttemptToRecognizeWithEvent(gestureRecognizer IGestureRecognizer, event IEvent) bool {
@@ -115,17 +90,9 @@ func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldAttemptToReco
 	return rv
 }
 
-func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizerShouldBegin() bool {
-	return g_.RespondsToSelector(objc.GetSelector("gestureRecognizerShouldBegin:"))
-}
-
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizerShouldBegin(gestureRecognizer IGestureRecognizer) bool {
 	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizerShouldBegin:"), objc.ExtractPtr(gestureRecognizer))
 	return rv
-}
-
-func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer() bool {
-	return g_.RespondsToSelector(objc.GetSelector("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"))
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
@@ -133,26 +100,14 @@ func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRecognizeSimu
 	return rv
 }
 
-func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldRequireFailureOfGestureRecognizer() bool {
-	return g_.RespondsToSelector(objc.GetSelector("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"))
-}
-
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRequireFailureOfGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
 	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(otherGestureRecognizer))
 	return rv
 }
 
-func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer() bool {
-	return g_.RespondsToSelector(objc.GetSelector("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"))
-}
-
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
 	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(otherGestureRecognizer))
 	return rv
-}
-
-func (g_ *GestureRecognizerDelegateWrapper) ImplementsGestureRecognizer_ShouldReceiveTouch() bool {
-	return g_.RespondsToSelector(objc.GetSelector("gestureRecognizer:shouldReceiveTouch:"))
 }
 
 func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldReceiveTouch(gestureRecognizer IGestureRecognizer, touch ITouch) bool {

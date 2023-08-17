@@ -92,6 +92,7 @@ func (l_ LayoutConstraint) SetActive(value bool) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setActive:"), value)
 }
 
+// weak property
 func (l_ LayoutConstraint) FirstItem() objc.Object {
 	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("firstItem"))
 	return rv
@@ -107,6 +108,7 @@ func (l_ LayoutConstraint) Relation() LayoutRelation {
 	return rv
 }
 
+// weak property
 func (l_ LayoutConstraint) SecondItem() objc.Object {
 	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("secondItem"))
 	return rv

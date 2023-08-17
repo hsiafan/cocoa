@@ -19,6 +19,13 @@ type Editor interface {
 	DiscardEditing()
 }
 
+func WrapEditor(v Editor) objc.Object {
+	return objc.WrapAsProtocol("NSEditor", v)
+}
+
+type EditorBase struct {
+}
+
 type EditorWrapper struct {
 	objc.Object
 }

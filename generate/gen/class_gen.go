@@ -81,9 +81,6 @@ func (c *Class) Init() {
 			}
 			c.methodIdentifiers.Add(m.Selector())
 			finalMethods = append(finalMethods, m)
-			if m.HasProtocolParam() {
-				finalMethods = append(finalMethods, m.ToProtocolParamAsObjectMethod())
-			}
 		}
 	}
 

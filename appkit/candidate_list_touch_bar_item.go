@@ -4,7 +4,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -20,8 +19,7 @@ type ICandidateListTouchBarItem interface {
 	Client() View
 	SetClient(value IView)
 	Delegate() CandidateListTouchBarItemDelegateWrapper
-	SetDelegate(value CandidateListTouchBarItemDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	AllowsTextInputContextCandidates() bool
 	SetAllowsTextInputContextCandidates(value bool)
 	AllowsCollapsing() bool
@@ -71,27 +69,25 @@ func (c_ CandidateListTouchBarItem) UpdateWithInsertionPointVisibility(isVisible
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateWithInsertionPointVisibility:"), isVisible)
 }
 
+// weak property
 func (c_ CandidateListTouchBarItem) Client() View {
 	rv := objc.CallMethod[View](c_, objc.GetSelector("client"))
 	return rv
 }
 
+// weak property
 func (c_ CandidateListTouchBarItem) SetClient(value IView) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setClient:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (c_ CandidateListTouchBarItem) Delegate() CandidateListTouchBarItemDelegateWrapper {
 	rv := objc.CallMethod[CandidateListTouchBarItemDelegateWrapper](c_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (c_ CandidateListTouchBarItem) SetDelegate(value CandidateListTouchBarItemDelegate) {
-	po := objc.WrapAsProtocol("NSCandidateListTouchBarItemDelegate", value)
-	objc.SetAssociatedObject(c_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (c_ CandidateListTouchBarItem) SetDelegate0(value objc.IObject) {
+// weak property
+func (c_ CandidateListTouchBarItem) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

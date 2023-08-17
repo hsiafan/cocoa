@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,8 +31,7 @@ type IDatePicker interface {
 	PresentsCalendarOverlay() bool
 	SetPresentsCalendarOverlay(value bool)
 	Delegate() DatePickerCellDelegateWrapper
-	SetDelegate(value DatePickerCellDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	DatePickerElements() DatePickerElementFlags
 	SetDatePickerElements(value DatePickerElementFlags)
 	Calendar() foundation.Calendar
@@ -152,18 +150,14 @@ func (d_ DatePicker) SetPresentsCalendarOverlay(value bool) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setPresentsCalendarOverlay:"), value)
 }
 
+// weak property
 func (d_ DatePicker) Delegate() DatePickerCellDelegateWrapper {
 	rv := objc.CallMethod[DatePickerCellDelegateWrapper](d_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (d_ DatePicker) SetDelegate(value DatePickerCellDelegate) {
-	po := objc.WrapAsProtocol("NSDatePickerCellDelegate", value)
-	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (d_ DatePicker) SetDelegate0(value objc.IObject) {
+// weak property
+func (d_ DatePicker) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

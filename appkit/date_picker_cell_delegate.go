@@ -14,28 +14,23 @@ type DatePickerCellDelegate interface {
 	DatePickerCell_ValidateProposedDateValue_TimeInterval(datePickerCell DatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval)
 }
 
-type DatePickerCellDelegateImpl struct {
-	_DatePickerCell_ValidateProposedDateValue_TimeInterval func(datePickerCell DatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval)
+func WrapDatePickerCellDelegate(v DatePickerCellDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSDatePickerCellDelegate", v)
 }
 
-func (di *DatePickerCellDelegateImpl) ImplementsDatePickerCell_ValidateProposedDateValue_TimeInterval() bool {
-	return di._DatePickerCell_ValidateProposedDateValue_TimeInterval != nil
+type DatePickerCellDelegateBase struct {
 }
 
-func (di *DatePickerCellDelegateImpl) SetDatePickerCell_ValidateProposedDateValue_TimeInterval(f func(datePickerCell DatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval)) {
-	di._DatePickerCell_ValidateProposedDateValue_TimeInterval = f
+func (p *DatePickerCellDelegateBase) ImplementsDatePickerCell_ValidateProposedDateValue_TimeInterval() bool {
+	return false
 }
 
-func (di *DatePickerCellDelegateImpl) DatePickerCell_ValidateProposedDateValue_TimeInterval(datePickerCell DatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval) {
-	di._DatePickerCell_ValidateProposedDateValue_TimeInterval(datePickerCell, proposedDateValue, proposedTimeInterval)
+func (p *DatePickerCellDelegateBase) DatePickerCell_ValidateProposedDateValue_TimeInterval(datePickerCell DatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval) {
+	panic("unimpemented protocol method")
 }
 
 type DatePickerCellDelegateWrapper struct {
 	objc.Object
-}
-
-func (d_ *DatePickerCellDelegateWrapper) ImplementsDatePickerCell_ValidateProposedDateValue_TimeInterval() bool {
-	return d_.RespondsToSelector(objc.GetSelector("datePickerCell:validateProposedDateValue:timeInterval:"))
 }
 
 func (d_ DatePickerCellDelegateWrapper) DatePickerCell_ValidateProposedDateValue_TimeInterval(datePickerCell IDatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval) {

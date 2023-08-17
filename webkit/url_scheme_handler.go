@@ -12,16 +12,21 @@ type URLSchemeHandler interface {
 	WebView_StopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper)
 }
 
+func WrapURLSchemeHandler(v URLSchemeHandler) objc.Object {
+	return objc.WrapAsProtocol("WKURLSchemeHandler", v)
+}
+
+type URLSchemeHandlerBase struct {
+}
+
 type URLSchemeHandlerWrapper struct {
 	objc.Object
 }
 
-func (u_ URLSchemeHandlerWrapper) WebView_StartURLSchemeTask(webView IWebView, urlSchemeTask URLSchemeTask) {
-	po := objc.WrapAsProtocol("WKURLSchemeTask", urlSchemeTask)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:startURLSchemeTask:"), objc.ExtractPtr(webView), po)
+func (u_ URLSchemeHandlerWrapper) WebView_StartURLSchemeTask(webView IWebView, urlSchemeTask objc.IObject) {
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:startURLSchemeTask:"), objc.ExtractPtr(webView), objc.ExtractPtr(urlSchemeTask))
 }
 
-func (u_ URLSchemeHandlerWrapper) WebView_StopURLSchemeTask(webView IWebView, urlSchemeTask URLSchemeTask) {
-	po := objc.WrapAsProtocol("WKURLSchemeTask", urlSchemeTask)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:stopURLSchemeTask:"), objc.ExtractPtr(webView), po)
+func (u_ URLSchemeHandlerWrapper) WebView_StopURLSchemeTask(webView IWebView, urlSchemeTask objc.IObject) {
+	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:stopURLSchemeTask:"), objc.ExtractPtr(webView), objc.ExtractPtr(urlSchemeTask))
 }

@@ -16,6 +16,21 @@ type UserInterfaceCompression interface {
 	ActiveCompressionOptions() IUserInterfaceCompressionOptions
 }
 
+func WrapUserInterfaceCompression(v UserInterfaceCompression) objc.Object {
+	return objc.WrapAsProtocol("NSUserInterfaceCompression", v)
+}
+
+type UserInterfaceCompressionBase struct {
+}
+
+func (p *UserInterfaceCompressionBase) ImplementsActiveCompressionOptions() bool {
+	return false
+}
+
+func (p *UserInterfaceCompressionBase) ActiveCompressionOptions() IUserInterfaceCompressionOptions {
+	panic("unimpemented protocol method")
+}
+
 type UserInterfaceCompressionWrapper struct {
 	objc.Object
 }
@@ -27,10 +42,6 @@ func (u_ UserInterfaceCompressionWrapper) CompressWithPrioritizedCompressionOpti
 func (u_ UserInterfaceCompressionWrapper) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
 	rv := objc.CallMethod[foundation.Size](u_, objc.GetSelector("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
 	return rv
-}
-
-func (u_ *UserInterfaceCompressionWrapper) ImplementsActiveCompressionOptions() bool {
-	return u_.RespondsToSelector(objc.GetSelector("activeCompressionOptions"))
 }
 
 func (u_ UserInterfaceCompressionWrapper) ActiveCompressionOptions() UserInterfaceCompressionOptions {

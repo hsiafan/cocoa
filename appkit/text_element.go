@@ -59,11 +59,13 @@ func (t_ TextElement) Init() TextElement {
 	return rv
 }
 
+// weak property
 func (t_ TextElement) TextContentManager() TextContentManager {
 	rv := objc.CallMethod[TextContentManager](t_, objc.GetSelector("textContentManager"))
 	return rv
 }
 
+// weak property
 func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContentManager:"), objc.ExtractPtr(value))
 }
@@ -82,6 +84,7 @@ func (t_ TextElement) IsRepresentedElement() bool {
 	return rv
 }
 
+// weak property
 func (t_ TextElement) ParentElement() TextElement {
 	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("parentElement"))
 	return rv

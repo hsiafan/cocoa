@@ -20,72 +20,51 @@ type TabViewDelegate interface {
 	TabView_DidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem)
 }
 
-type TabViewDelegateImpl struct {
-	_TabViewDidChangeNumberOfTabViewItems func(tabView TabView)
-	_TabView_ShouldSelectTabViewItem      func(tabView TabView, tabViewItem TabViewItem) bool
-	_TabView_WillSelectTabViewItem        func(tabView TabView, tabViewItem TabViewItem)
-	_TabView_DidSelectTabViewItem         func(tabView TabView, tabViewItem TabViewItem)
+func WrapTabViewDelegate(v TabViewDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSTabViewDelegate", v)
 }
 
-func (di *TabViewDelegateImpl) ImplementsTabViewDidChangeNumberOfTabViewItems() bool {
-	return di._TabViewDidChangeNumberOfTabViewItems != nil
+type TabViewDelegateBase struct {
 }
 
-func (di *TabViewDelegateImpl) SetTabViewDidChangeNumberOfTabViewItems(f func(tabView TabView)) {
-	di._TabViewDidChangeNumberOfTabViewItems = f
+func (p *TabViewDelegateBase) ImplementsTabViewDidChangeNumberOfTabViewItems() bool {
+	return false
 }
 
-func (di *TabViewDelegateImpl) TabViewDidChangeNumberOfTabViewItems(tabView TabView) {
-	di._TabViewDidChangeNumberOfTabViewItems(tabView)
-}
-func (di *TabViewDelegateImpl) ImplementsTabView_ShouldSelectTabViewItem() bool {
-	return di._TabView_ShouldSelectTabViewItem != nil
+func (p *TabViewDelegateBase) TabViewDidChangeNumberOfTabViewItems(tabView TabView) {
+	panic("unimpemented protocol method")
 }
 
-func (di *TabViewDelegateImpl) SetTabView_ShouldSelectTabViewItem(f func(tabView TabView, tabViewItem TabViewItem) bool) {
-	di._TabView_ShouldSelectTabViewItem = f
+func (p *TabViewDelegateBase) ImplementsTabView_ShouldSelectTabViewItem() bool {
+	return false
 }
 
-func (di *TabViewDelegateImpl) TabView_ShouldSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) bool {
-	return di._TabView_ShouldSelectTabViewItem(tabView, tabViewItem)
-}
-func (di *TabViewDelegateImpl) ImplementsTabView_WillSelectTabViewItem() bool {
-	return di._TabView_WillSelectTabViewItem != nil
+func (p *TabViewDelegateBase) TabView_ShouldSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *TabViewDelegateImpl) SetTabView_WillSelectTabViewItem(f func(tabView TabView, tabViewItem TabViewItem)) {
-	di._TabView_WillSelectTabViewItem = f
+func (p *TabViewDelegateBase) ImplementsTabView_WillSelectTabViewItem() bool {
+	return false
 }
 
-func (di *TabViewDelegateImpl) TabView_WillSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
-	di._TabView_WillSelectTabViewItem(tabView, tabViewItem)
-}
-func (di *TabViewDelegateImpl) ImplementsTabView_DidSelectTabViewItem() bool {
-	return di._TabView_DidSelectTabViewItem != nil
+func (p *TabViewDelegateBase) TabView_WillSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
+	panic("unimpemented protocol method")
 }
 
-func (di *TabViewDelegateImpl) SetTabView_DidSelectTabViewItem(f func(tabView TabView, tabViewItem TabViewItem)) {
-	di._TabView_DidSelectTabViewItem = f
+func (p *TabViewDelegateBase) ImplementsTabView_DidSelectTabViewItem() bool {
+	return false
 }
 
-func (di *TabViewDelegateImpl) TabView_DidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
-	di._TabView_DidSelectTabViewItem(tabView, tabViewItem)
+func (p *TabViewDelegateBase) TabView_DidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
+	panic("unimpemented protocol method")
 }
 
 type TabViewDelegateWrapper struct {
 	objc.Object
 }
 
-func (t_ *TabViewDelegateWrapper) ImplementsTabViewDidChangeNumberOfTabViewItems() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"))
-}
-
 func (t_ TabViewDelegateWrapper) TabViewDidChangeNumberOfTabViewItems(tabView ITabView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"), objc.ExtractPtr(tabView))
-}
-
-func (t_ *TabViewDelegateWrapper) ImplementsTabView_ShouldSelectTabViewItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabView:shouldSelectTabViewItem:"))
 }
 
 func (t_ TabViewDelegateWrapper) TabView_ShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
@@ -93,16 +72,8 @@ func (t_ TabViewDelegateWrapper) TabView_ShouldSelectTabViewItem(tabView ITabVie
 	return rv
 }
 
-func (t_ *TabViewDelegateWrapper) ImplementsTabView_WillSelectTabViewItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabView:willSelectTabViewItem:"))
-}
-
 func (t_ TabViewDelegateWrapper) TabView_WillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:willSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
-}
-
-func (t_ *TabViewDelegateWrapper) ImplementsTabView_DidSelectTabViewItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tabView:didSelectTabViewItem:"))
 }
 
 func (t_ TabViewDelegateWrapper) TabView_DidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {

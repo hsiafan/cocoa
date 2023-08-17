@@ -111,13 +111,7 @@ func initAndRun() {
 	label := appkit.NewLabel("")
 	label.SetFrame(rectOf(170, 100, 150, 25))
 	w.ContentView().AddSubview(label)
-	tfd := &appkit.TextFieldDelegateImpl{}
-	tfd.SetControlTextDidChange(func(obj foundation.Notification) {
-		dispatch.GetMainQueue().DispatchAsync(func() {
-			label.SetStringValue(tf.StringValue())
-		})
-	})
-	tf.SetDelegate(tfd)
+	tf.SetDelegate(appkit.WrapTextFieldDelegate(&myTextFieldDelegate{label: label, tf: tf}))
 	action.Set(btn, func(sender objc.IObject) {
 		label.SetTextColor(appkit.ColorClass.RedColor())
 	})
@@ -125,13 +119,7 @@ func initAndRun() {
 	// password
 	stf := appkit.NewSecureTextField()
 	stf.SetFrame(rectOf(340, 100, 150, 25))
-	tfd2 := &appkit.TextFieldDelegateImpl{}
-	tfd2.SetControlTextDidChange(func(obj foundation.Notification) {
-		dispatch.GetMainQueue().DispatchAsync(func() {
-			label.SetStringValue(stf.StringValue())
-		})
-	})
-	stf.SetDelegate(tfd2)
+	stf.SetDelegate(appkit.WrapTextFieldDelegate(&myTextFieldDelegate{label: label, tf: stf}))
 	w.ContentView().AddSubview(stf)
 
 	// progress indicator
@@ -167,27 +155,66 @@ func initAndRun() {
 	appkit.MakeTextView(sv2.DocumentView().Ptr()).SetAllowsUndo(true)
 	w.ContentView().AddSubview(sv2)
 
-	wd := &appkit.WindowDelegateImpl{}
-	wd.SetWindowDidMove(func(notification foundation.Notification) {
-		frame := w.Frame()
-		origin := frame.Origin
-		fmt.Println("window move to ", origin.X, origin.Y)
-	})
-	w.SetDelegate(wd)
+	w.SetDelegate(appkit.WrapWindowDelegate(&myWindowDelegate{w: w}))
 	w.Center()
 	w.MakeKeyAndOrderFront(nil)
 
-	ad := &appkit.ApplicationDelegateImpl{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
-		return true
-	})
-	app.SetDelegate(ad)
+	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app}))
 
 	app.Run()
+}
+
+type myTextFieldDelegate struct {
+	appkit.TextFieldDelegateBase
+	tf    appkit.ITextField
+	label appkit.TextField
+}
+
+func (p *myTextFieldDelegate) ImplementsControlTextDidChange() bool {
+	return true
+}
+
+func (p *myTextFieldDelegate) ControlTextDidChange(obj foundation.Notification) {
+	dispatch.GetMainQueue().DispatchAsync(func() {
+		p.label.SetStringValue(p.tf.StringValue())
+	})
+}
+
+type myWindowDelegate struct {
+	appkit.WindowDelegateBase
+	w appkit.Window
+}
+
+func (p *myWindowDelegate) ImplementsWindowDidMove() bool {
+	return true
+}
+
+func (p *myWindowDelegate) WindowDidMove(notification foundation.Notification) {
+	frame := p.w.Frame()
+	origin := frame.Origin
+	fmt.Println("window move to ", origin.X, origin.Y)
+}
+
+type myApplicationDelegate struct {
+	appkit.ApplicationDelegateBase
+	app appkit.Application
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	p.app.ActivateIgnoringOtherApps(true)
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
+	return true
 }
 
 func main() {

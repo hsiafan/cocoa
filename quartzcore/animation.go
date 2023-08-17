@@ -21,8 +21,7 @@ type IAnimation interface {
 	TimingFunction() MediaTimingFunction
 	SetTimingFunction(value IMediaTimingFunction)
 	Delegate() AnimationDelegateWrapper
-	SetDelegate(value AnimationDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	PreferredFrameRateRange() FrameRateRange
 	SetPreferredFrameRateRange(value FrameRateRange)
 }
@@ -95,12 +94,7 @@ func (a_ Animation) Delegate() AnimationDelegateWrapper {
 	return rv
 }
 
-func (a_ Animation) SetDelegate(value AnimationDelegate) {
-	po := objc.WrapAsProtocol("CAAnimationDelegate", value)
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (a_ Animation) SetDelegate0(value objc.IObject) {
+func (a_ Animation) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

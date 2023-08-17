@@ -165,11 +165,13 @@ func (m_ MenuItem) IsHiddenOrHasHiddenAncestor() bool {
 	return rv
 }
 
+// weak property
 func (m_ MenuItem) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](m_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 func (m_ MenuItem) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
@@ -269,6 +271,7 @@ func (m_ MenuItem) HasSubmenu() bool {
 	return rv
 }
 
+// weak property
 func (m_ MenuItem) ParentItem() MenuItem {
 	rv := objc.CallMethod[MenuItem](m_, objc.GetSelector("parentItem"))
 	return rv
@@ -279,11 +282,13 @@ func (m_ MenuItem) IsSeparatorItem() bool {
 	return rv
 }
 
+// weak property
 func (m_ MenuItem) Menu() Menu {
 	rv := objc.CallMethod[Menu](m_, objc.GetSelector("menu"))
 	return rv
 }
 
+// weak property
 func (m_ MenuItem) SetMenu(value IMenu) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
 }

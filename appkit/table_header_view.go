@@ -70,11 +70,13 @@ func (t_ TableHeaderView) HeaderRectOfColumn(column int) foundation.Rect {
 	return rv
 }
 
+// weak property
 func (t_ TableHeaderView) TableView() TableView {
 	rv := objc.CallMethod[TableView](t_, objc.GetSelector("tableView"))
 	return rv
 }
 
+// weak property
 func (t_ TableHeaderView) SetTableView(value ITableView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), objc.ExtractPtr(value))
 }

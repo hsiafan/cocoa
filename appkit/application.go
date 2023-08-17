@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -40,11 +39,9 @@ type IApplication interface {
 	RequestUserAttention(requestType RequestUserAttentionType) int
 	CancelUserAttentionRequest(request int)
 	ReplyToOpenOrPrint(reply ApplicationDelegateReply)
-	RegisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching)
-	RegisterUserInterfaceItemSearchHandler0(handler objc.IObject)
+	RegisterUserInterfaceItemSearchHandler(handler objc.IObject)
 	SearchString_InUserInterfaceItemString_SearchRange_FoundRange(searchString string, stringToSearch string, searchRange foundation.Range, foundRange *foundation.Range) bool
-	UnregisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching)
-	UnregisterUserInterfaceItemSearchHandler0(handler objc.IObject)
+	UnregisterUserInterfaceItemSearchHandler(handler objc.IObject)
 	ShowHelp(sender objc.IObject)
 	ActivateContextHelpMode(sender objc.IObject)
 	HideOtherApplications(sender objc.IObject)
@@ -99,8 +96,7 @@ type IApplication interface {
 	// deprecated
 	Application_DelegateHandlesKey(sender IApplication, key string) bool
 	Delegate() ApplicationDelegateWrapper
-	SetDelegate(value ApplicationDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	CurrentEvent() Event
 	IsRunning() bool
 	IsActive() bool
@@ -269,12 +265,7 @@ func (a_ Application) ReplyToOpenOrPrint(reply ApplicationDelegateReply) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("replyToOpenOrPrint:"), reply)
 }
 
-func (a_ Application) RegisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching) {
-	po := objc.WrapAsProtocol("NSUserInterfaceItemSearching", handler)
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerUserInterfaceItemSearchHandler:"), po)
-}
-
-func (a_ Application) RegisterUserInterfaceItemSearchHandler0(handler objc.IObject) {
+func (a_ Application) RegisterUserInterfaceItemSearchHandler(handler objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerUserInterfaceItemSearchHandler:"), objc.ExtractPtr(handler))
 }
 
@@ -283,12 +274,7 @@ func (a_ Application) SearchString_InUserInterfaceItemString_SearchRange_FoundRa
 	return rv
 }
 
-func (a_ Application) UnregisterUserInterfaceItemSearchHandler(handler UserInterfaceItemSearching) {
-	po := objc.WrapAsProtocol("NSUserInterfaceItemSearching", handler)
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("unregisterUserInterfaceItemSearchHandler:"), po)
-}
-
-func (a_ Application) UnregisterUserInterfaceItemSearchHandler0(handler objc.IObject) {
+func (a_ Application) UnregisterUserInterfaceItemSearchHandler(handler objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("unregisterUserInterfaceItemSearchHandler:"), objc.ExtractPtr(handler))
 }
 
@@ -500,18 +486,14 @@ func (ac _ApplicationClass) SharedApplication() Application {
 	return rv
 }
 
+// weak property
 func (a_ Application) Delegate() ApplicationDelegateWrapper {
 	rv := objc.CallMethod[ApplicationDelegateWrapper](a_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (a_ Application) SetDelegate(value ApplicationDelegate) {
-	po := objc.WrapAsProtocol("NSApplicationDelegate", value)
-	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (a_ Application) SetDelegate0(value objc.IObject) {
+// weak property
+func (a_ Application) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
@@ -620,11 +602,13 @@ func (a_ Application) OrderedWindows() []Window {
 	return rv
 }
 
+// weak property
 func (a_ Application) KeyWindow() Window {
 	rv := objc.CallMethod[Window](a_, objc.GetSelector("keyWindow"))
 	return rv
 }
 
+// weak property
 func (a_ Application) MainWindow() Window {
 	rv := objc.CallMethod[Window](a_, objc.GetSelector("mainWindow"))
 	return rv

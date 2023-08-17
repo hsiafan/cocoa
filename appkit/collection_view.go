@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -59,11 +58,9 @@ type ICollectionView interface {
 	DraggingImageForItemsAtIndexes_WithEvent_Offset(indexes foundation.IIndexSet, event IEvent, dragImageOffset *foundation.Point) Image
 	SetDraggingSourceOperationMask_ForLocal(dragOperationMask DragOperation, localDestination bool)
 	DataSource() CollectionViewDataSourceWrapper
-	SetDataSource(value CollectionViewDataSource)
-	SetDataSource0(value objc.IObject)
+	SetDataSource(value objc.IObject)
 	Delegate() CollectionViewDelegateWrapper
-	SetDelegate(value CollectionViewDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	Content() []objc.Object
 	SetContent(value []objc.IObject)
 	BackgroundView() View
@@ -75,8 +72,7 @@ type ICollectionView interface {
 	CollectionViewLayout() CollectionViewLayout
 	SetCollectionViewLayout(value ICollectionViewLayout)
 	PrefetchDataSource() CollectionViewPrefetchingWrapper
-	SetPrefetchDataSource(value CollectionViewPrefetching)
-	SetPrefetchDataSource0(value objc.IObject)
+	SetPrefetchDataSource(value objc.IObject)
 	NumberOfSections() int
 	IsSelectable() bool
 	SetSelectable(value bool)
@@ -327,33 +323,25 @@ func (c_ CollectionView) SetDraggingSourceOperationMask_ForLocal(dragOperationMa
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDraggingSourceOperationMask:forLocal:"), dragOperationMask, localDestination)
 }
 
+// weak property
 func (c_ CollectionView) DataSource() CollectionViewDataSourceWrapper {
 	rv := objc.CallMethod[CollectionViewDataSourceWrapper](c_, objc.GetSelector("dataSource"))
 	return rv
 }
 
-func (c_ CollectionView) SetDataSource(value CollectionViewDataSource) {
-	po := objc.WrapAsProtocol("NSCollectionViewDataSource", value)
-	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), po)
-}
-
-func (c_ CollectionView) SetDataSource0(value objc.IObject) {
+// weak property
+func (c_ CollectionView) SetDataSource(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (c_ CollectionView) Delegate() CollectionViewDelegateWrapper {
 	rv := objc.CallMethod[CollectionViewDelegateWrapper](c_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (c_ CollectionView) SetDelegate(value CollectionViewDelegate) {
-	po := objc.WrapAsProtocol("NSCollectionViewDelegate", value)
-	objc.SetAssociatedObject(c_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (c_ CollectionView) SetDelegate0(value objc.IObject) {
+// weak property
+func (c_ CollectionView) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
@@ -402,18 +390,14 @@ func (c_ CollectionView) SetCollectionViewLayout(value ICollectionViewLayout) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCollectionViewLayout:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (c_ CollectionView) PrefetchDataSource() CollectionViewPrefetchingWrapper {
 	rv := objc.CallMethod[CollectionViewPrefetchingWrapper](c_, objc.GetSelector("prefetchDataSource"))
 	return rv
 }
 
-func (c_ CollectionView) SetPrefetchDataSource(value CollectionViewPrefetching) {
-	po := objc.WrapAsProtocol("NSCollectionViewPrefetching", value)
-	objc.SetAssociatedObject(c_, internal.AssociationKey("setPrefetchDataSource"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPrefetchDataSource:"), po)
-}
-
-func (c_ CollectionView) SetPrefetchDataSource0(value objc.IObject) {
+// weak property
+func (c_ CollectionView) SetPrefetchDataSource(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPrefetchDataSource:"), objc.ExtractPtr(value))
 }
 

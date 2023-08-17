@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,8 +32,7 @@ type ISplitView interface {
 	// deprecated
 	SetIsPaneSplitter(flag bool)
 	Delegate() SplitViewDelegateWrapper
-	SetDelegate(value SplitViewDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	ArrangesAllSubviews() bool
 	SetArrangesAllSubviews(value bool)
 	ArrangedSubviews() []View
@@ -142,18 +140,14 @@ func (s_ SplitView) SetIsPaneSplitter(flag bool) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setIsPaneSplitter:"), flag)
 }
 
+// weak property
 func (s_ SplitView) Delegate() SplitViewDelegateWrapper {
 	rv := objc.CallMethod[SplitViewDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (s_ SplitView) SetDelegate(value SplitViewDelegate) {
-	po := objc.WrapAsProtocol("NSSplitViewDelegate", value)
-	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (s_ SplitView) SetDelegate0(value objc.IObject) {
+// weak property
+func (s_ SplitView) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

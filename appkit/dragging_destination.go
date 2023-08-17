@@ -35,22 +35,92 @@ type DraggingDestination interface {
 	UpdateDraggingItemsForDrag(sender DraggingInfoWrapper)
 }
 
+func WrapDraggingDestination(v DraggingDestination) objc.Object {
+	return objc.WrapAsProtocol("NSDraggingDestination", v)
+}
+
+type DraggingDestinationBase struct {
+}
+
+func (p *DraggingDestinationBase) ImplementsDraggingEntered() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) DraggingEntered(sender DraggingInfoWrapper) DragOperation {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsWantsPeriodicDraggingUpdates() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) WantsPeriodicDraggingUpdates() bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsDraggingUpdated() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) DraggingUpdated(sender DraggingInfoWrapper) DragOperation {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsDraggingEnded() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) DraggingEnded(sender DraggingInfoWrapper) {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsDraggingExited() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) DraggingExited(sender DraggingInfoWrapper) {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsPrepareForDragOperation() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) PrepareForDragOperation(sender DraggingInfoWrapper) bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsPerformDragOperation() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) PerformDragOperation(sender DraggingInfoWrapper) bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsConcludeDragOperation() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) ConcludeDragOperation(sender DraggingInfoWrapper) {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingDestinationBase) ImplementsUpdateDraggingItemsForDrag() bool {
+	return false
+}
+
+func (p *DraggingDestinationBase) UpdateDraggingItemsForDrag(sender DraggingInfoWrapper) {
+	panic("unimpemented protocol method")
+}
+
 type DraggingDestinationWrapper struct {
 	objc.Object
 }
 
-func (d_ *DraggingDestinationWrapper) ImplementsDraggingEntered() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingEntered:"))
-}
-
-func (d_ DraggingDestinationWrapper) DraggingEntered(sender DraggingInfo) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingEntered:"), po)
+func (d_ DraggingDestinationWrapper) DraggingEntered(sender objc.IObject) DragOperation {
+	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingEntered:"), objc.ExtractPtr(sender))
 	return rv
-}
-
-func (d_ *DraggingDestinationWrapper) ImplementsWantsPeriodicDraggingUpdates() bool {
-	return d_.RespondsToSelector(objc.GetSelector("wantsPeriodicDraggingUpdates"))
 }
 
 func (d_ DraggingDestinationWrapper) WantsPeriodicDraggingUpdates() bool {
@@ -58,68 +128,33 @@ func (d_ DraggingDestinationWrapper) WantsPeriodicDraggingUpdates() bool {
 	return rv
 }
 
-func (d_ *DraggingDestinationWrapper) ImplementsDraggingUpdated() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingUpdated:"))
-}
-
-func (d_ DraggingDestinationWrapper) DraggingUpdated(sender DraggingInfo) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingUpdated:"), po)
+func (d_ DraggingDestinationWrapper) DraggingUpdated(sender objc.IObject) DragOperation {
+	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingUpdated:"), objc.ExtractPtr(sender))
 	return rv
 }
 
-func (d_ *DraggingDestinationWrapper) ImplementsDraggingEnded() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingEnded:"))
+func (d_ DraggingDestinationWrapper) DraggingEnded(sender objc.IObject) {
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingEnded:"), objc.ExtractPtr(sender))
 }
 
-func (d_ DraggingDestinationWrapper) DraggingEnded(sender DraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingEnded:"), po)
+func (d_ DraggingDestinationWrapper) DraggingExited(sender objc.IObject) {
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingExited:"), objc.ExtractPtr(sender))
 }
 
-func (d_ *DraggingDestinationWrapper) ImplementsDraggingExited() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingExited:"))
-}
-
-func (d_ DraggingDestinationWrapper) DraggingExited(sender DraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingExited:"), po)
-}
-
-func (d_ *DraggingDestinationWrapper) ImplementsPrepareForDragOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("prepareForDragOperation:"))
-}
-
-func (d_ DraggingDestinationWrapper) PrepareForDragOperation(sender DraggingInfo) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("prepareForDragOperation:"), po)
+func (d_ DraggingDestinationWrapper) PrepareForDragOperation(sender objc.IObject) bool {
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("prepareForDragOperation:"), objc.ExtractPtr(sender))
 	return rv
 }
 
-func (d_ *DraggingDestinationWrapper) ImplementsPerformDragOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("performDragOperation:"))
-}
-
-func (d_ DraggingDestinationWrapper) PerformDragOperation(sender DraggingInfo) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("performDragOperation:"), po)
+func (d_ DraggingDestinationWrapper) PerformDragOperation(sender objc.IObject) bool {
+	rv := objc.CallMethod[bool](d_, objc.GetSelector("performDragOperation:"), objc.ExtractPtr(sender))
 	return rv
 }
 
-func (d_ *DraggingDestinationWrapper) ImplementsConcludeDragOperation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("concludeDragOperation:"))
+func (d_ DraggingDestinationWrapper) ConcludeDragOperation(sender objc.IObject) {
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("concludeDragOperation:"), objc.ExtractPtr(sender))
 }
 
-func (d_ DraggingDestinationWrapper) ConcludeDragOperation(sender DraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("concludeDragOperation:"), po)
-}
-
-func (d_ *DraggingDestinationWrapper) ImplementsUpdateDraggingItemsForDrag() bool {
-	return d_.RespondsToSelector(objc.GetSelector("updateDraggingItemsForDrag:"))
-}
-
-func (d_ DraggingDestinationWrapper) UpdateDraggingItemsForDrag(sender DraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", sender)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateDraggingItemsForDrag:"), po)
+func (d_ DraggingDestinationWrapper) UpdateDraggingItemsForDrag(sender objc.IObject) {
+	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateDraggingItemsForDrag:"), objc.ExtractPtr(sender))
 }

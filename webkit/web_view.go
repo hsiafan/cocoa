@@ -7,7 +7,6 @@ import (
 	"github.com/hsiafan/cocoa/appkit"
 	"github.com/hsiafan/cocoa/coregraphics"
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -71,11 +70,9 @@ type IWebView interface {
 	LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation
 	Configuration() WebViewConfiguration
 	UIDelegate() UIDelegateWrapper
-	SetUIDelegate(value UIDelegate)
-	SetUIDelegate0(value objc.IObject)
+	SetUIDelegate(value objc.IObject)
 	NavigationDelegate() NavigationDelegateWrapper
-	SetNavigationDelegate(value NavigationDelegate)
-	SetNavigationDelegate0(value objc.IObject)
+	SetNavigationDelegate(value objc.IObject)
 	IsLoading() bool
 	EstimatedProgress() float64
 	Title() string
@@ -356,33 +353,25 @@ func (w_ WebView) Configuration() WebViewConfiguration {
 	return rv
 }
 
+// weak property
 func (w_ WebView) UIDelegate() UIDelegateWrapper {
 	rv := objc.CallMethod[UIDelegateWrapper](w_, objc.GetSelector("UIDelegate"))
 	return rv
 }
 
-func (w_ WebView) SetUIDelegate(value UIDelegate) {
-	po := objc.WrapAsProtocol("WKUIDelegate", value)
-	objc.SetAssociatedObject(w_, internal.AssociationKey("setUIDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUIDelegate:"), po)
-}
-
-func (w_ WebView) SetUIDelegate0(value objc.IObject) {
+// weak property
+func (w_ WebView) SetUIDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setUIDelegate:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (w_ WebView) NavigationDelegate() NavigationDelegateWrapper {
 	rv := objc.CallMethod[NavigationDelegateWrapper](w_, objc.GetSelector("navigationDelegate"))
 	return rv
 }
 
-func (w_ WebView) SetNavigationDelegate(value NavigationDelegate) {
-	po := objc.WrapAsProtocol("WKNavigationDelegate", value)
-	objc.SetAssociatedObject(w_, internal.AssociationKey("setNavigationDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setNavigationDelegate:"), po)
-}
-
-func (w_ WebView) SetNavigationDelegate0(value objc.IObject) {
+// weak property
+func (w_ WebView) SetNavigationDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setNavigationDelegate:"), objc.ExtractPtr(value))
 }
 

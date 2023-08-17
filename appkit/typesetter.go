@@ -291,6 +291,7 @@ func (tc _TypesetterClass) DefaultTypesetterBehavior() TypesetterBehavior {
 	return rv
 }
 
+// weak property
 func (t_ Typesetter) LayoutManager() LayoutManager {
 	rv := objc.CallMethod[LayoutManager](t_, objc.GetSelector("layoutManager"))
 	return rv
@@ -323,11 +324,13 @@ func (t_ Typesetter) SetHyphenationFactor(value float32) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHyphenationFactor:"), value)
 }
 
+// weak property
 func (t_ Typesetter) CurrentTextContainer() TextContainer {
 	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("currentTextContainer"))
 	return rv
 }
 
+// weak property
 func (t_ Typesetter) TextContainers() []TextContainer {
 	rv := objc.CallMethod[[]TextContainer](t_, objc.GetSelector("textContainers"))
 	return rv
@@ -356,11 +359,13 @@ func (t_ Typesetter) CurrentParagraphStyle() ParagraphStyle {
 	return rv
 }
 
+// weak property
 func (t_ Typesetter) AttributedString() foundation.AttributedString {
 	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("attributedString"))
 	return rv
 }
 
+// weak property
 func (t_ Typesetter) SetAttributedString(value foundation.IAttributedString) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAttributedString:"), objc.ExtractPtr(value))
 }

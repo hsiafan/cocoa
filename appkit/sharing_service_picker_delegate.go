@@ -14,55 +14,42 @@ type SharingServicePickerDelegate interface {
 	SharingServicePicker_DidChooseSharingService(sharingServicePicker SharingServicePicker, service SharingService)
 	ImplementsSharingServicePicker_DelegateForSharingService() bool
 	// optional
-	SharingServicePicker_DelegateForSharingService(sharingServicePicker SharingServicePicker, sharingService SharingService) SharingServiceDelegate
+	SharingServicePicker_DelegateForSharingService(sharingServicePicker SharingServicePicker, sharingService SharingService) objc.IObject
 }
 
-type SharingServicePickerDelegateImpl struct {
-	_SharingServicePicker_SharingServicesForItems_ProposedSharingServices func(sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService
-	_SharingServicePicker_DidChooseSharingService                         func(sharingServicePicker SharingServicePicker, service SharingService)
-	_SharingServicePicker_DelegateForSharingService                       func(sharingServicePicker SharingServicePicker, sharingService SharingService) SharingServiceDelegate
+func WrapSharingServicePickerDelegate(v SharingServicePickerDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSSharingServicePickerDelegate", v)
 }
 
-func (di *SharingServicePickerDelegateImpl) ImplementsSharingServicePicker_SharingServicesForItems_ProposedSharingServices() bool {
-	return di._SharingServicePicker_SharingServicesForItems_ProposedSharingServices != nil
+type SharingServicePickerDelegateBase struct {
 }
 
-func (di *SharingServicePickerDelegateImpl) SetSharingServicePicker_SharingServicesForItems_ProposedSharingServices(f func(sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService) {
-	di._SharingServicePicker_SharingServicesForItems_ProposedSharingServices = f
+func (p *SharingServicePickerDelegateBase) ImplementsSharingServicePicker_SharingServicesForItems_ProposedSharingServices() bool {
+	return false
 }
 
-func (di *SharingServicePickerDelegateImpl) SharingServicePicker_SharingServicesForItems_ProposedSharingServices(sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService {
-	return di._SharingServicePicker_SharingServicesForItems_ProposedSharingServices(sharingServicePicker, items, proposedServices)
-}
-func (di *SharingServicePickerDelegateImpl) ImplementsSharingServicePicker_DidChooseSharingService() bool {
-	return di._SharingServicePicker_DidChooseSharingService != nil
+func (p *SharingServicePickerDelegateBase) SharingServicePicker_SharingServicesForItems_ProposedSharingServices(sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService {
+	panic("unimpemented protocol method")
 }
 
-func (di *SharingServicePickerDelegateImpl) SetSharingServicePicker_DidChooseSharingService(f func(sharingServicePicker SharingServicePicker, service SharingService)) {
-	di._SharingServicePicker_DidChooseSharingService = f
+func (p *SharingServicePickerDelegateBase) ImplementsSharingServicePicker_DidChooseSharingService() bool {
+	return false
 }
 
-func (di *SharingServicePickerDelegateImpl) SharingServicePicker_DidChooseSharingService(sharingServicePicker SharingServicePicker, service SharingService) {
-	di._SharingServicePicker_DidChooseSharingService(sharingServicePicker, service)
-}
-func (di *SharingServicePickerDelegateImpl) ImplementsSharingServicePicker_DelegateForSharingService() bool {
-	return di._SharingServicePicker_DelegateForSharingService != nil
+func (p *SharingServicePickerDelegateBase) SharingServicePicker_DidChooseSharingService(sharingServicePicker SharingServicePicker, service SharingService) {
+	panic("unimpemented protocol method")
 }
 
-func (di *SharingServicePickerDelegateImpl) SetSharingServicePicker_DelegateForSharingService(f func(sharingServicePicker SharingServicePicker, sharingService SharingService) SharingServiceDelegate) {
-	di._SharingServicePicker_DelegateForSharingService = f
+func (p *SharingServicePickerDelegateBase) ImplementsSharingServicePicker_DelegateForSharingService() bool {
+	return false
 }
 
-func (di *SharingServicePickerDelegateImpl) SharingServicePicker_DelegateForSharingService(sharingServicePicker SharingServicePicker, sharingService SharingService) SharingServiceDelegate {
-	return di._SharingServicePicker_DelegateForSharingService(sharingServicePicker, sharingService)
+func (p *SharingServicePickerDelegateBase) SharingServicePicker_DelegateForSharingService(sharingServicePicker SharingServicePicker, sharingService SharingService) objc.IObject {
+	panic("unimpemented protocol method")
 }
 
 type SharingServicePickerDelegateWrapper struct {
 	objc.Object
-}
-
-func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_SharingServicesForItems_ProposedSharingServices() bool {
-	return s_.RespondsToSelector(objc.GetSelector("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"))
 }
 
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_SharingServicesForItems_ProposedSharingServices(sharingServicePicker ISharingServicePicker, items []objc.IObject, proposedServices []ISharingService) []SharingService {
@@ -70,16 +57,8 @@ func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_SharingServic
 	return rv
 }
 
-func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_DidChooseSharingService() bool {
-	return s_.RespondsToSelector(objc.GetSelector("sharingServicePicker:didChooseSharingService:"))
-}
-
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_DidChooseSharingService(sharingServicePicker ISharingServicePicker, service ISharingService) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingServicePicker:didChooseSharingService:"), objc.ExtractPtr(sharingServicePicker), objc.ExtractPtr(service))
-}
-
-func (s_ *SharingServicePickerDelegateWrapper) ImplementsSharingServicePicker_DelegateForSharingService() bool {
-	return s_.RespondsToSelector(objc.GetSelector("sharingServicePicker:delegateForSharingService:"))
 }
 
 func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_DelegateForSharingService(sharingServicePicker ISharingServicePicker, sharingService ISharingService) SharingServiceDelegateWrapper {

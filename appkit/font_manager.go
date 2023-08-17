@@ -340,11 +340,13 @@ func (f_ FontManager) SetAction(value objc.Selector) {
 	objc.CallMethod[objc.Void](f_, objc.GetSelector("setAction:"), value)
 }
 
+// weak property
 func (f_ FontManager) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](f_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 func (f_ FontManager) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](f_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
@@ -355,12 +357,14 @@ func (f_ FontManager) CollectionNames() []objc.Object {
 	return rv
 }
 
+// weak property
 // deprecated
 func (f_ FontManager) Delegate() objc.Object {
 	rv := objc.CallMethod[objc.Object](f_, objc.GetSelector("delegate"))
 	return rv
 }
 
+// weak property
 // deprecated
 func (f_ FontManager) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](f_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))

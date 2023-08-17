@@ -17,6 +17,13 @@ type GlyphStorage interface {
 	SetIntAttribute_Value_ForGlyphAtIndex(attributeTag int, val int, glyphIndex uint)
 }
 
+func WrapGlyphStorage(v GlyphStorage) objc.Object {
+	return objc.WrapAsProtocol("NSGlyphStorage", v)
+}
+
+type GlyphStorageBase struct {
+}
+
 type GlyphStorageWrapper struct {
 	objc.Object
 }

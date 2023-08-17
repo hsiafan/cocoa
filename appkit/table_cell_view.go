@@ -73,20 +73,24 @@ func (t_ TableCellView) SetObjectValue(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setObjectValue:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (t_ TableCellView) ImageView() ImageView {
 	rv := objc.CallMethod[ImageView](t_, objc.GetSelector("imageView"))
 	return rv
 }
 
+// weak property
 func (t_ TableCellView) SetImageView(value IImageView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImageView:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (t_ TableCellView) TextField() TextField {
 	rv := objc.CallMethod[TextField](t_, objc.GetSelector("textField"))
 	return rv
 }
 
+// weak property
 func (t_ TableCellView) SetTextField(value ITextField) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextField:"), objc.ExtractPtr(value))
 }

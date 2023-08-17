@@ -17,10 +17,10 @@ func (p *ProtocolType) GoName(currentModule *Module, receiveFromObjc bool) strin
 	name := FullGoName(*p.Module, p.GName, *currentModule)
 	if receiveFromObjc {
 		if p.GName != "Object" {
-			name += "Wrapper"
+			return name + "Wrapper"
 		}
 	}
-	return name
+	return Object.GoName(currentModule, receiveFromObjc)
 }
 
 func (p *ProtocolType) ObjcName() string {

@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -28,8 +27,7 @@ type ISound interface {
 	// deprecated
 	SetChannelMapping(channelMapping []objc.IObject)
 	Delegate() SoundDelegateWrapper
-	SetDelegate(value SoundDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	Name() SoundName
 	Volume() float32
 	SetVolume(value float32)
@@ -155,18 +153,14 @@ func (sc _SoundClass) SoundUnfilteredPasteboardTypes() []objc.Object {
 	return rv
 }
 
+// weak property
 func (s_ Sound) Delegate() SoundDelegateWrapper {
 	rv := objc.CallMethod[SoundDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (s_ Sound) SetDelegate(value SoundDelegate) {
-	po := objc.WrapAsProtocol("NSSoundDelegate", value)
-	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (s_ Sound) SetDelegate0(value objc.IObject) {
+// weak property
+func (s_ Sound) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

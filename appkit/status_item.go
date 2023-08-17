@@ -126,16 +126,19 @@ func (s_ StatusItem) DrawStatusBarBackgroundInRect_WithHighlight(rect foundation
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("drawStatusBarBackgroundInRect:withHighlight:"), rect, highlight)
 }
 
+// weak property
 func (s_ StatusItem) StatusBar() StatusBar {
 	rv := objc.CallMethod[StatusBar](s_, objc.GetSelector("statusBar"))
 	return rv
 }
 
+// weak property
 func (s_ StatusItem) Behavior() StatusItemBehavior {
 	rv := objc.CallMethod[StatusItemBehavior](s_, objc.GetSelector("behavior"))
 	return rv
 }
 
+// weak property
 func (s_ StatusItem) SetBehavior(value StatusItemBehavior) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setBehavior:"), value)
 }
@@ -154,11 +157,13 @@ func (s_ StatusItem) SetMenu(value IMenu) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (s_ StatusItem) IsVisible() bool {
 	rv := objc.CallMethod[bool](s_, objc.GetSelector("isVisible"))
 	return rv
 }
 
+// weak property
 func (s_ StatusItem) SetVisible(value bool) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setVisible:"), value)
 }
@@ -192,12 +197,14 @@ func (s_ StatusItem) SetEnabled(value bool) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setEnabled:"), value)
 }
 
+// weak property
 // deprecated
 func (s_ StatusItem) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 // deprecated
 func (s_ StatusItem) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))

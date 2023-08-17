@@ -58,11 +58,13 @@ func (t_ TextAttachmentViewProvider) LoadView() {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("loadView"))
 }
 
+// weak property
 func (t_ TextAttachmentViewProvider) TextAttachment() TextAttachment {
 	rv := objc.CallMethod[TextAttachment](t_, objc.GetSelector("textAttachment"))
 	return rv
 }
 
+// weak property
 func (t_ TextAttachmentViewProvider) TextLayoutManager() TextLayoutManager {
 	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv

@@ -240,6 +240,10 @@ func SetAssociatedObject(o IObject, key unsafe.Pointer, value IObject, policy As
 	C.Objc_SetAssociatedObject(o.Ptr(), key, value.Ptr(), C.uintptr_t(policy))
 }
 
+func SetRetainDelegateAssociated(o IObject, delegate IObject) {
+	SetAssociatedObject(o, internal.AssociationKey("delegate"), delegate, ASSOCIATION_RETAIN)
+}
+
 func GetAssociatedObject(o IObject, key unsafe.Pointer) Object {
 	return MakeObject(C.Objc_GetAssociatedObject(o.Ptr(), key))
 }

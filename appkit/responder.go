@@ -394,11 +394,13 @@ func (r_ Responder) AcceptsFirstResponder() bool {
 	return rv
 }
 
+// weak property
 func (r_ Responder) NextResponder() Responder {
 	rv := objc.CallMethod[Responder](r_, objc.GetSelector("nextResponder"))
 	return rv
 }
 
+// weak property
 func (r_ Responder) SetNextResponder(value IResponder) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setNextResponder:"), objc.ExtractPtr(value))
 }

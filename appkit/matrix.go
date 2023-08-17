@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -95,8 +94,7 @@ type IMatrix interface {
 	TabKeyTraversesCells() bool
 	SetTabKeyTraversesCells(value bool)
 	Delegate() MatrixDelegateWrapper
-	SetDelegate(value MatrixDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	AutosizesCells() bool
 	SetAutosizesCells(value bool)
 	IsAutoscroll() bool
@@ -490,18 +488,14 @@ func (m_ Matrix) SetTabKeyTraversesCells(value bool) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTabKeyTraversesCells:"), value)
 }
 
+// weak property
 func (m_ Matrix) Delegate() MatrixDelegateWrapper {
 	rv := objc.CallMethod[MatrixDelegateWrapper](m_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (m_ Matrix) SetDelegate(value MatrixDelegate) {
-	po := objc.WrapAsProtocol("NSMatrixDelegate", value)
-	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (m_ Matrix) SetDelegate0(value objc.IObject) {
+// weak property
+func (m_ Matrix) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,8 +32,7 @@ type ITabView interface {
 	TakeSelectedTabViewItemFromSender(sender objc.IObject)
 	TabViewItemAtPoint(point foundation.Point) TabViewItem
 	Delegate() TabViewDelegateWrapper
-	SetDelegate(value TabViewDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	NumberOfTabViewItems() int
 	TabViewItems() []TabViewItem
 	SetTabViewItems(value []ITabViewItem)
@@ -160,18 +158,14 @@ func (t_ TabView) TabViewItemAtPoint(point foundation.Point) TabViewItem {
 	return rv
 }
 
+// weak property
 func (t_ TabView) Delegate() TabViewDelegateWrapper {
 	rv := objc.CallMethod[TabViewDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ TabView) SetDelegate(value TabViewDelegate) {
-	po := objc.WrapAsProtocol("NSTabViewDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ TabView) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ TabView) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

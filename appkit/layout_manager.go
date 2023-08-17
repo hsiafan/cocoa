@@ -6,7 +6,6 @@ import (
 
 	"github.com/hsiafan/cocoa/coregraphics"
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -150,8 +149,7 @@ type ILayoutManager interface {
 	// deprecated
 	ShowPackedGlyphs_Length_GlyphRange_AtPoint_Font_Color_PrintingAdjustment(glyphs *byte, glyphLen uint, glyphRange foundation.Range, point foundation.Point, font IFont, color IColor, printingAdjustment foundation.Size)
 	Delegate() LayoutManagerDelegateWrapper
-	SetDelegate(value LayoutManagerDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	TextStorage() TextStorage
 	SetTextStorage(value ITextStorage)
 	AllowsNonContiguousLayout() bool
@@ -740,26 +738,24 @@ func (l_ LayoutManager) ShowPackedGlyphs_Length_GlyphRange_AtPoint_Font_Color_Pr
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("showPackedGlyphs:length:glyphRange:atPoint:font:color:printingAdjustment:"), glyphs, glyphLen, glyphRange, point, objc.ExtractPtr(font), objc.ExtractPtr(color), printingAdjustment)
 }
 
+// weak property
 func (l_ LayoutManager) Delegate() LayoutManagerDelegateWrapper {
 	rv := objc.CallMethod[LayoutManagerDelegateWrapper](l_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (l_ LayoutManager) SetDelegate(value LayoutManagerDelegate) {
-	po := objc.WrapAsProtocol("NSLayoutManagerDelegate", value)
-	objc.SetAssociatedObject(l_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (l_ LayoutManager) SetDelegate0(value objc.IObject) {
+// weak property
+func (l_ LayoutManager) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (l_ LayoutManager) TextStorage() TextStorage {
 	rv := objc.CallMethod[TextStorage](l_, objc.GetSelector("textStorage"))
 	return rv
 }
 
+// weak property
 func (l_ LayoutManager) SetTextStorage(value ITextStorage) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTextStorage:"), objc.ExtractPtr(value))
 }
@@ -875,11 +871,13 @@ func (l_ LayoutManager) SetDefaultAttachmentScaling(value ImageScaling) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDefaultAttachmentScaling:"), value)
 }
 
+// weak property
 func (l_ LayoutManager) FirstTextView() TextView {
 	rv := objc.CallMethod[TextView](l_, objc.GetSelector("firstTextView"))
 	return rv
 }
 
+// weak property
 func (l_ LayoutManager) TextViewForBeginningOfSelection() TextView {
 	rv := objc.CallMethod[TextView](l_, objc.GetSelector("textViewForBeginningOfSelection"))
 	return rv

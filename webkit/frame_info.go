@@ -67,6 +67,7 @@ func (f_ FrameInfo) SecurityOrigin() SecurityOrigin {
 	return rv
 }
 
+// weak property
 func (f_ FrameInfo) WebView() WebView {
 	rv := objc.CallMethod[WebView](f_, objc.GetSelector("webView"))
 	return rv

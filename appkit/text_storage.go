@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -24,8 +23,7 @@ type ITextStorage interface {
 	InvalidateAttributesInRange(range_ foundation.Range)
 	EnsureAttributesAreFixedInRange(range_ foundation.Range)
 	Delegate() TextStorageDelegateWrapper
-	SetDelegate(value TextStorageDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	LayoutManagers() []LayoutManager
 	FixesAttributesLazily() bool
 	EditedMask() TextStorageEditActions
@@ -114,18 +112,14 @@ func (t_ TextStorage) EnsureAttributesAreFixedInRange(range_ foundation.Range) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("ensureAttributesAreFixedInRange:"), range_)
 }
 
+// weak property
 func (t_ TextStorage) Delegate() TextStorageDelegateWrapper {
 	rv := objc.CallMethod[TextStorageDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ TextStorage) SetDelegate(value TextStorageDelegate) {
-	po := objc.WrapAsProtocol("NSTextStorageDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ TextStorage) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ TextStorage) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

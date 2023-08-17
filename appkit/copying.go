@@ -8,6 +8,13 @@ import (
 type Copying interface {
 }
 
+func WrapCopying(v Copying) objc.Object {
+	return objc.WrapAsProtocol("NSCopying", v)
+}
+
+type CopyingBase struct {
+}
+
 type CopyingWrapper struct {
 	objc.Object
 }

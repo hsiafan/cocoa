@@ -213,6 +213,7 @@ func (e_ Event) Timestamp() foundation.TimeInterval {
 	return rv
 }
 
+// weak property
 func (e_ Event) Window() Window {
 	rv := objc.CallMethod[Window](e_, objc.GetSelector("window"))
 	return rv

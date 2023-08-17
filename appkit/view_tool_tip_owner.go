@@ -13,6 +13,13 @@ type ViewToolTipOwner interface {
 	View_StringForToolTip_Point_UserData(view View, tag ToolTipTag, point foundation.Point, data unsafe.Pointer) string
 }
 
+func WrapViewToolTipOwner(v ViewToolTipOwner) objc.Object {
+	return objc.WrapAsProtocol("NSViewToolTipOwner", v)
+}
+
+type ViewToolTipOwnerBase struct {
+}
+
 type ViewToolTipOwnerWrapper struct {
 	objc.Object
 }

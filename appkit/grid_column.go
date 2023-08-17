@@ -71,6 +71,7 @@ func (g_ GridColumn) MergeCellsInRange(range_ foundation.Range) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("mergeCellsInRange:"), range_)
 }
 
+// weak property
 func (g_ GridColumn) GridView() GridView {
 	rv := objc.CallMethod[GridView](g_, objc.GetSelector("gridView"))
 	return rv

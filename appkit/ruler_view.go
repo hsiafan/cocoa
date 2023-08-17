@@ -129,11 +129,13 @@ func (r_ RulerView) SetMeasurementUnits(value RulerViewUnitName) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setMeasurementUnits:"), value)
 }
 
+// weak property
 func (r_ RulerView) ClientView() View {
 	rv := objc.CallMethod[View](r_, objc.GetSelector("clientView"))
 	return rv
 }
 
+// weak property
 func (r_ RulerView) SetClientView(value IView) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setClientView:"), objc.ExtractPtr(value))
 }
@@ -165,11 +167,13 @@ func (r_ RulerView) SetMarkers(value []IRulerMarker) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setMarkers:"), value)
 }
 
+// weak property
 func (r_ RulerView) ScrollView() ScrollView {
 	rv := objc.CallMethod[ScrollView](r_, objc.GetSelector("scrollView"))
 	return rv
 }
 
+// weak property
 func (r_ RulerView) SetScrollView(value IScrollView) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setScrollView:"), objc.ExtractPtr(value))
 }

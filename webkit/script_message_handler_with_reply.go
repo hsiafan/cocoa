@@ -11,6 +11,13 @@ type ScriptMessageHandlerWithReply interface {
 	UserContentController_DidReceiveScriptMessage_ReplyHandler(userContentController UserContentController, message ScriptMessage, replyHandler func(reply objc.IObject, errorMessage foundation.String))
 }
 
+func WrapScriptMessageHandlerWithReply(v ScriptMessageHandlerWithReply) objc.Object {
+	return objc.WrapAsProtocol("WKScriptMessageHandlerWithReply", v)
+}
+
+type ScriptMessageHandlerWithReplyBase struct {
+}
+
 type ScriptMessageHandlerWithReplyWrapper struct {
 	objc.Object
 }

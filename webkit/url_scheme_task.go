@@ -20,6 +20,21 @@ type URLSchemeTask interface {
 	Request() foundation.IURLRequest
 }
 
+func WrapURLSchemeTask(v URLSchemeTask) objc.Object {
+	return objc.WrapAsProtocol("WKURLSchemeTask", v)
+}
+
+type URLSchemeTaskBase struct {
+}
+
+func (p *URLSchemeTaskBase) ImplementsRequest() bool {
+	return false
+}
+
+func (p *URLSchemeTaskBase) Request() foundation.IURLRequest {
+	panic("unimpemented protocol method")
+}
+
 type URLSchemeTaskWrapper struct {
 	objc.Object
 }
@@ -38,10 +53,6 @@ func (u_ URLSchemeTaskWrapper) DidFinish() {
 
 func (u_ URLSchemeTaskWrapper) DidFailWithError(error foundation.IError) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFailWithError:"), objc.ExtractPtr(error))
-}
-
-func (u_ *URLSchemeTaskWrapper) ImplementsRequest() bool {
-	return u_.RespondsToSelector(objc.GetSelector("request"))
 }
 
 func (u_ URLSchemeTaskWrapper) Request() foundation.URLRequest {

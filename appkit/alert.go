@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,8 +31,7 @@ type IAlert interface {
 	HelpAnchor() HelpAnchorName
 	SetHelpAnchor(value HelpAnchorName)
 	Delegate() AlertDelegateWrapper
-	SetDelegate(value AlertDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	SuppressionButton() Button
 	ShowsSuppressionButton() bool
 	SetShowsSuppressionButton(value bool)
@@ -141,18 +139,14 @@ func (a_ Alert) SetHelpAnchor(value HelpAnchorName) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setHelpAnchor:"), value)
 }
 
+// weak property
 func (a_ Alert) Delegate() AlertDelegateWrapper {
 	rv := objc.CallMethod[AlertDelegateWrapper](a_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (a_ Alert) SetDelegate(value AlertDelegate) {
-	po := objc.WrapAsProtocol("NSAlertDelegate", value)
-	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (a_ Alert) SetDelegate0(value objc.IObject) {
+// weak property
+func (a_ Alert) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

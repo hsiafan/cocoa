@@ -14,48 +14,35 @@ type AnimationDelegate interface {
 	AnimationDidStop_Finished(anim Animation, flag bool)
 }
 
-type AnimationDelegateImpl struct {
-	_AnimationDidStart         func(anim Animation)
-	_AnimationDidStop_Finished func(anim Animation, flag bool)
+func WrapAnimationDelegate(v AnimationDelegate) objc.Object {
+	return objc.WrapAsProtocol("CAAnimationDelegate", v)
 }
 
-func (di *AnimationDelegateImpl) ImplementsAnimationDidStart() bool {
-	return di._AnimationDidStart != nil
+type AnimationDelegateBase struct {
 }
 
-func (di *AnimationDelegateImpl) SetAnimationDidStart(f func(anim Animation)) {
-	di._AnimationDidStart = f
+func (p *AnimationDelegateBase) ImplementsAnimationDidStart() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) AnimationDidStart(anim Animation) {
-	di._AnimationDidStart(anim)
-}
-func (di *AnimationDelegateImpl) ImplementsAnimationDidStop_Finished() bool {
-	return di._AnimationDidStop_Finished != nil
+func (p *AnimationDelegateBase) AnimationDidStart(anim Animation) {
+	panic("unimpemented protocol method")
 }
 
-func (di *AnimationDelegateImpl) SetAnimationDidStop_Finished(f func(anim Animation, flag bool)) {
-	di._AnimationDidStop_Finished = f
+func (p *AnimationDelegateBase) ImplementsAnimationDidStop_Finished() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) AnimationDidStop_Finished(anim Animation, flag bool) {
-	di._AnimationDidStop_Finished(anim, flag)
+func (p *AnimationDelegateBase) AnimationDidStop_Finished(anim Animation, flag bool) {
+	panic("unimpemented protocol method")
 }
 
 type AnimationDelegateWrapper struct {
 	objc.Object
 }
 
-func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStart() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationDidStart:"))
-}
-
 func (a_ AnimationDelegateWrapper) AnimationDidStart(anim IAnimation) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStart:"), objc.ExtractPtr(anim))
-}
-
-func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop_Finished() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationDidStop:finished:"))
 }
 
 func (a_ AnimationDelegateWrapper) AnimationDidStop_Finished(anim IAnimation, flag bool) {

@@ -63,20 +63,24 @@ func NewCollectionViewItem() CollectionViewItem {
 	return CollectionViewItemClass.New()
 }
 
+// weak property
 func (c_ CollectionViewItem) ImageView() ImageView {
 	rv := objc.CallMethod[ImageView](c_, objc.GetSelector("imageView"))
 	return rv
 }
 
+// weak property
 func (c_ CollectionViewItem) SetImageView(value IImageView) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setImageView:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (c_ CollectionViewItem) TextField() TextField {
 	rv := objc.CallMethod[TextField](c_, objc.GetSelector("textField"))
 	return rv
 }
 
+// weak property
 func (c_ CollectionViewItem) SetTextField(value ITextField) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTextField:"), objc.ExtractPtr(value))
 }
@@ -99,6 +103,7 @@ func (c_ CollectionViewItem) SetHighlightState(value CollectionViewItemHighlight
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setHighlightState:"), value)
 }
 
+// weak property
 func (c_ CollectionViewItem) CollectionView() CollectionView {
 	rv := objc.CallMethod[CollectionView](c_, objc.GetSelector("collectionView"))
 	return rv

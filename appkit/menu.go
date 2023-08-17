@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -94,8 +93,7 @@ type IMenu interface {
 	UserInterfaceLayoutDirection() UserInterfaceLayoutDirection
 	SetUserInterfaceLayoutDirection(value UserInterfaceLayoutDirection)
 	Delegate() MenuDelegateWrapper
-	SetDelegate(value MenuDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 }
 
 type Menu struct {
@@ -343,11 +341,13 @@ func (m_ Menu) SetItemArray(value []IMenuItem) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setItemArray:"), value)
 }
 
+// weak property
 func (m_ Menu) Supermenu() Menu {
 	rv := objc.CallMethod[Menu](m_, objc.GetSelector("supermenu"))
 	return rv
 }
 
+// weak property
 func (m_ Menu) SetSupermenu(value IMenu) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSupermenu:"), objc.ExtractPtr(value))
 }
@@ -447,17 +447,13 @@ func (m_ Menu) SetUserInterfaceLayoutDirection(value UserInterfaceLayoutDirectio
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setUserInterfaceLayoutDirection:"), value)
 }
 
+// weak property
 func (m_ Menu) Delegate() MenuDelegateWrapper {
 	rv := objc.CallMethod[MenuDelegateWrapper](m_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (m_ Menu) SetDelegate(value MenuDelegate) {
-	po := objc.WrapAsProtocol("NSMenuDelegate", value)
-	objc.SetAssociatedObject(m_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (m_ Menu) SetDelegate0(value objc.IObject) {
+// weak property
+func (m_ Menu) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

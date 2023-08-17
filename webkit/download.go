@@ -60,6 +60,7 @@ func (d_ Download) OriginalRequest() foundation.URLRequest {
 	return rv
 }
 
+// weak property
 func (d_ Download) WebView() WebView {
 	rv := objc.CallMethod[WebView](d_, objc.GetSelector("webView"))
 	return rv

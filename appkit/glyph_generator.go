@@ -15,8 +15,7 @@ type _GlyphGeneratorClass struct {
 
 type IGlyphGenerator interface {
 	objc.IObject
-	GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage GlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint)
-	GenerateGlyphsForGlyphStorage0_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint)
+	GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint)
 }
 
 type GlyphGenerator struct {
@@ -49,12 +48,7 @@ func (g_ GlyphGenerator) Init() GlyphGenerator {
 	return rv
 }
 
-func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage GlyphStorage, nChars uint, glyphIndex *uint, charIndex *uint) {
-	po := objc.WrapAsProtocol("NSGlyphStorage", glyphStorage)
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), po, nChars, glyphIndex, charIndex)
-}
-
-func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage0_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
+func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.ExtractPtr(glyphStorage), nChars, glyphIndex, charIndex)
 }
 

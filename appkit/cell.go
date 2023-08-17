@@ -715,11 +715,13 @@ func (c_ Cell) SetAction(value objc.Selector) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAction:"), value)
 }
 
+// weak property
 func (c_ Cell) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 func (c_ Cell) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
@@ -849,11 +851,13 @@ func (c_ Cell) SetControlSize(value ControlSize) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setControlSize:"), value)
 }
 
+// weak property
 func (c_ Cell) ControlView() View {
 	rv := objc.CallMethod[View](c_, objc.GetSelector("controlView"))
 	return rv
 }
 
+// weak property
 func (c_ Cell) SetControlView(value IView) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setControlView:"), objc.ExtractPtr(value))
 }

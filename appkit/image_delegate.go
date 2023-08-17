@@ -24,76 +24,55 @@ type ImageDelegate interface {
 	Image_WillLoadRepresentation(image Image, rep ImageRep)
 }
 
-type ImageDelegateImpl struct {
-	_ImageDidNotDraw_InRect                          func(sender Image, rect foundation.Rect) IImage
-	_Image_DidLoadPartOfRepresentation_WithValidRows func(image Image, rep ImageRep, rows int)
-	_Image_DidLoadRepresentation_WithStatus          func(image Image, rep ImageRep, status ImageLoadStatus)
-	_Image_DidLoadRepresentationHeader               func(image Image, rep ImageRep)
-	_Image_WillLoadRepresentation                    func(image Image, rep ImageRep)
+func WrapImageDelegate(v ImageDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSImageDelegate", v)
 }
 
-func (di *ImageDelegateImpl) ImplementsImageDidNotDraw_InRect() bool {
-	return di._ImageDidNotDraw_InRect != nil
+type ImageDelegateBase struct {
 }
 
-func (di *ImageDelegateImpl) SetImageDidNotDraw_InRect(f func(sender Image, rect foundation.Rect) IImage) {
-	di._ImageDidNotDraw_InRect = f
+func (p *ImageDelegateBase) ImplementsImageDidNotDraw_InRect() bool {
+	return false
 }
 
-func (di *ImageDelegateImpl) ImageDidNotDraw_InRect(sender Image, rect foundation.Rect) IImage {
-	return di._ImageDidNotDraw_InRect(sender, rect)
-}
-func (di *ImageDelegateImpl) ImplementsImage_DidLoadPartOfRepresentation_WithValidRows() bool {
-	return di._Image_DidLoadPartOfRepresentation_WithValidRows != nil
+func (p *ImageDelegateBase) ImageDidNotDraw_InRect(sender Image, rect foundation.Rect) IImage {
+	panic("unimpemented protocol method")
 }
 
-func (di *ImageDelegateImpl) SetImage_DidLoadPartOfRepresentation_WithValidRows(f func(image Image, rep ImageRep, rows int)) {
-	di._Image_DidLoadPartOfRepresentation_WithValidRows = f
+func (p *ImageDelegateBase) ImplementsImage_DidLoadPartOfRepresentation_WithValidRows() bool {
+	return false
 }
 
-func (di *ImageDelegateImpl) Image_DidLoadPartOfRepresentation_WithValidRows(image Image, rep ImageRep, rows int) {
-	di._Image_DidLoadPartOfRepresentation_WithValidRows(image, rep, rows)
-}
-func (di *ImageDelegateImpl) ImplementsImage_DidLoadRepresentation_WithStatus() bool {
-	return di._Image_DidLoadRepresentation_WithStatus != nil
+func (p *ImageDelegateBase) Image_DidLoadPartOfRepresentation_WithValidRows(image Image, rep ImageRep, rows int) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ImageDelegateImpl) SetImage_DidLoadRepresentation_WithStatus(f func(image Image, rep ImageRep, status ImageLoadStatus)) {
-	di._Image_DidLoadRepresentation_WithStatus = f
+func (p *ImageDelegateBase) ImplementsImage_DidLoadRepresentation_WithStatus() bool {
+	return false
 }
 
-func (di *ImageDelegateImpl) Image_DidLoadRepresentation_WithStatus(image Image, rep ImageRep, status ImageLoadStatus) {
-	di._Image_DidLoadRepresentation_WithStatus(image, rep, status)
-}
-func (di *ImageDelegateImpl) ImplementsImage_DidLoadRepresentationHeader() bool {
-	return di._Image_DidLoadRepresentationHeader != nil
+func (p *ImageDelegateBase) Image_DidLoadRepresentation_WithStatus(image Image, rep ImageRep, status ImageLoadStatus) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ImageDelegateImpl) SetImage_DidLoadRepresentationHeader(f func(image Image, rep ImageRep)) {
-	di._Image_DidLoadRepresentationHeader = f
+func (p *ImageDelegateBase) ImplementsImage_DidLoadRepresentationHeader() bool {
+	return false
 }
 
-func (di *ImageDelegateImpl) Image_DidLoadRepresentationHeader(image Image, rep ImageRep) {
-	di._Image_DidLoadRepresentationHeader(image, rep)
-}
-func (di *ImageDelegateImpl) ImplementsImage_WillLoadRepresentation() bool {
-	return di._Image_WillLoadRepresentation != nil
+func (p *ImageDelegateBase) Image_DidLoadRepresentationHeader(image Image, rep ImageRep) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ImageDelegateImpl) SetImage_WillLoadRepresentation(f func(image Image, rep ImageRep)) {
-	di._Image_WillLoadRepresentation = f
+func (p *ImageDelegateBase) ImplementsImage_WillLoadRepresentation() bool {
+	return false
 }
 
-func (di *ImageDelegateImpl) Image_WillLoadRepresentation(image Image, rep ImageRep) {
-	di._Image_WillLoadRepresentation(image, rep)
+func (p *ImageDelegateBase) Image_WillLoadRepresentation(image Image, rep ImageRep) {
+	panic("unimpemented protocol method")
 }
 
 type ImageDelegateWrapper struct {
 	objc.Object
-}
-
-func (i_ *ImageDelegateWrapper) ImplementsImageDidNotDraw_InRect() bool {
-	return i_.RespondsToSelector(objc.GetSelector("imageDidNotDraw:inRect:"))
 }
 
 func (i_ ImageDelegateWrapper) ImageDidNotDraw_InRect(sender IImage, rect foundation.Rect) Image {
@@ -101,32 +80,16 @@ func (i_ ImageDelegateWrapper) ImageDidNotDraw_InRect(sender IImage, rect founda
 	return rv
 }
 
-func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadPartOfRepresentation_WithValidRows() bool {
-	return i_.RespondsToSelector(objc.GetSelector("image:didLoadPartOfRepresentation:withValidRows:"))
-}
-
 func (i_ ImageDelegateWrapper) Image_DidLoadPartOfRepresentation_WithValidRows(image IImage, rep IImageRep, rows int) {
 	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:didLoadPartOfRepresentation:withValidRows:"), objc.ExtractPtr(image), objc.ExtractPtr(rep), rows)
-}
-
-func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadRepresentation_WithStatus() bool {
-	return i_.RespondsToSelector(objc.GetSelector("image:didLoadRepresentation:withStatus:"))
 }
 
 func (i_ ImageDelegateWrapper) Image_DidLoadRepresentation_WithStatus(image IImage, rep IImageRep, status ImageLoadStatus) {
 	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:didLoadRepresentation:withStatus:"), objc.ExtractPtr(image), objc.ExtractPtr(rep), status)
 }
 
-func (i_ *ImageDelegateWrapper) ImplementsImage_DidLoadRepresentationHeader() bool {
-	return i_.RespondsToSelector(objc.GetSelector("image:didLoadRepresentationHeader:"))
-}
-
 func (i_ ImageDelegateWrapper) Image_DidLoadRepresentationHeader(image IImage, rep IImageRep) {
 	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:didLoadRepresentationHeader:"), objc.ExtractPtr(image), objc.ExtractPtr(rep))
-}
-
-func (i_ *ImageDelegateWrapper) ImplementsImage_WillLoadRepresentation() bool {
-	return i_.RespondsToSelector(objc.GetSelector("image:willLoadRepresentation:"))
 }
 
 func (i_ ImageDelegateWrapper) Image_WillLoadRepresentation(image IImage, rep IImageRep) {

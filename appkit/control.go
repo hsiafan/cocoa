@@ -463,11 +463,13 @@ func (c_ Control) SetAction(value objc.Selector) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAction:"), value)
 }
 
+// weak property
 func (c_ Control) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 func (c_ Control) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }

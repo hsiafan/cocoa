@@ -27,22 +27,42 @@ func initAndRun() {
 
 	w.SetContentView(tabView)
 
-	ad := &appkit.ApplicationDelegateImpl{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationWillFinishLaunching(func(foundation.Notification) {
-		w.SetFrameAutosaveName("tab-test")
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
-		return true
-	})
-	app.SetDelegate(ad)
+	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app, w: w}))
 
 	w.Center()
 	w.MakeKeyAndOrderFront(nil)
 	app.Run()
+}
+
+type myApplicationDelegate struct {
+	appkit.ApplicationDelegateBase
+	app appkit.Application
+	w   appkit.Window
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	p.app.ActivateIgnoringOtherApps(true)
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationWillFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationWillFinishLaunching(notification foundation.Notification) {
+	p.w.SetFrameAutosaveName("tab-test")
 }
 
 func createNewView(idx int) appkit.ITabViewItem {

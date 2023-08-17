@@ -17,7 +17,7 @@ import (
 	"github.com/hsiafan/cocoa/generate/typing"
 )
 
-var rootDir = "/Users/clear/code/cocoa"
+var rootDir = "."
 
 func main() {
 	log.SetFlags(log.Lshortfile | log.Ldate | log.Ltime)

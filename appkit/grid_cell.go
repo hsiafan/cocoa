@@ -59,11 +59,13 @@ func (g_ GridCell) Init() GridCell {
 	return rv
 }
 
+// weak property
 func (g_ GridCell) Column() GridColumn {
 	rv := objc.CallMethod[GridColumn](g_, objc.GetSelector("column"))
 	return rv
 }
 
+// weak property
 func (g_ GridCell) Row() GridRow {
 	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("row"))
 	return rv

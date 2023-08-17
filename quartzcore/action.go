@@ -8,6 +8,13 @@ import (
 type Action interface {
 }
 
+func WrapAction(v Action) objc.Object {
+	return objc.WrapAsProtocol("CAAction", v)
+}
+
+type ActionBase struct {
+}
+
 type ActionWrapper struct {
 	objc.Object
 }

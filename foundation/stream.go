@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -23,8 +22,7 @@ type IStream interface {
 	ScheduleInRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode)
 	RemoveFromRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode)
 	Delegate() StreamDelegateWrapper
-	SetDelegate(value StreamDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	StreamStatus() StreamStatus
 	StreamError() Error
 }
@@ -94,18 +92,14 @@ func (sc _StreamClass) GetStreamsToHostWithName_Port_InputStream_OutputStream(ho
 	objc.CallMethod[objc.Void](sc, objc.GetSelector("getStreamsToHostWithName:port:inputStream:outputStream:"), hostname, port, unsafe.Pointer(inputStream), unsafe.Pointer(outputStream))
 }
 
+// weak property
 func (s_ Stream) Delegate() StreamDelegateWrapper {
 	rv := objc.CallMethod[StreamDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (s_ Stream) SetDelegate(value StreamDelegate) {
-	po := objc.WrapAsProtocol("NSStreamDelegate", value)
-	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (s_ Stream) SetDelegate0(value objc.IObject) {
+// weak property
+func (s_ Stream) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

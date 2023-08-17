@@ -112,426 +112,288 @@ type BrowserDelegate interface {
 	Browser_ShouldShowCellExpansionForRow_Column(browser Browser, row int, column int) bool
 }
 
-type BrowserDelegateImpl struct {
-	_Browser_IsColumnValid                                                               func(sender Browser, column int) bool
-	_Browser_NumberOfRowsInColumn                                                        func(sender Browser, column int) int
-	_Browser_NumberOfChildrenOfItem                                                      func(browser Browser, item objc.Object) int
-	_Browser_TitleOfColumn                                                               func(sender Browser, column int) string
-	_Browser_ShouldTypeSelectForEvent_WithCurrentSearchString                            func(browser Browser, event Event, searchString string) bool
-	_Browser_TypeSelectStringForRow_InColumn                                             func(browser Browser, row int, column int) string
-	_Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString                         func(browser Browser, startRow int, endRow int, column int, searchString string) int
-	_Browser_SelectCellWithString_InColumn                                               func(sender Browser, title string, column int) bool
-	_Browser_SelectRow_InColumn                                                          func(sender Browser, row int, column int) bool
-	_Browser_SelectionIndexesForProposedSelection_InColumn                               func(browser Browser, proposedSelectionIndexes foundation.IndexSet, column int) foundation.IIndexSet
-	_Browser_Child_OfItem                                                                func(browser Browser, index int, item objc.Object) objc.IObject
-	_Browser_IsLeafItem                                                                  func(browser Browser, item objc.Object) bool
-	_Browser_ShouldEditItem                                                              func(browser Browser, item objc.Object) bool
-	_Browser_ObjectValueForItem                                                          func(browser Browser, item objc.Object) objc.IObject
-	_Browser_SetObjectValue_ForItem                                                      func(browser Browser, object objc.Object, item objc.Object)
-	_RootItemForBrowser                                                                  func(browser Browser) objc.IObject
-	_Browser_PreviewViewControllerForLeafItem                                            func(browser Browser, item objc.Object) IViewController
-	_Browser_HeaderViewControllerForItem                                                 func(browser Browser, item objc.Object) IViewController
-	_Browser_CreateRowsForColumn_InMatrix                                                func(sender Browser, column int, matrix Matrix)
-	_Browser_WillDisplayCell_AtRow_Column                                                func(sender Browser, cell objc.Object, row int, column int)
-	_Browser_DidChangeLastColumn_ToColumn                                                func(browser Browser, oldLastColumn int, column int)
-	_BrowserWillScroll                                                                   func(sender Browser)
-	_BrowserDidScroll                                                                    func(sender Browser)
-	_Browser_CanDragRowsWithIndexes_InColumn_WithEvent                                   func(browser Browser, rowIndexes foundation.IndexSet, column int, event Event) bool
-	_Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset                   func(browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset *foundation.Point) IImage
-	_Browser_ValidateDrop_ProposedRow_Column_DropOperation                               func(browser Browser, info DraggingInfoWrapper, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation
-	_Browser_AcceptDrop_AtRow_Column_DropOperation                                       func(browser Browser, info DraggingInfoWrapper, row int, column int, dropOperation BrowserDropOperation) bool
-	_Browser_WriteRowsWithIndexes_InColumn_ToPasteboard                                  func(browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool
-	_Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn func(browser Browser, dropDestination foundation.URL, rowIndexes foundation.IndexSet, column int) []string
-	_Browser_ShouldSizeColumn_ForUserResize_ToWidth                                      func(browser Browser, columnIndex int, forUserResize bool, suggestedWidth float64) float64
-	_Browser_SizeToFitWidthOfColumn                                                      func(browser Browser, columnIndex int) float64
-	_BrowserColumnConfigurationDidChange                                                 func(notification foundation.Notification)
-	_Browser_HeightOfRow_InColumn                                                        func(browser Browser, row int, columnIndex int) float64
-	_Browser_ShouldShowCellExpansionForRow_Column                                        func(browser Browser, row int, column int) bool
+func WrapBrowserDelegate(v BrowserDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSBrowserDelegate", v)
 }
 
-func (di *BrowserDelegateImpl) ImplementsBrowser_IsColumnValid() bool {
-	return di._Browser_IsColumnValid != nil
+type BrowserDelegateBase struct {
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_IsColumnValid(f func(sender Browser, column int) bool) {
-	di._Browser_IsColumnValid = f
+func (p *BrowserDelegateBase) ImplementsBrowser_IsColumnValid() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_IsColumnValid(sender Browser, column int) bool {
-	return di._Browser_IsColumnValid(sender, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_NumberOfRowsInColumn() bool {
-	return di._Browser_NumberOfRowsInColumn != nil
+func (p *BrowserDelegateBase) Browser_IsColumnValid(sender Browser, column int) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_NumberOfRowsInColumn(f func(sender Browser, column int) int) {
-	di._Browser_NumberOfRowsInColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_NumberOfRowsInColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_NumberOfRowsInColumn(sender Browser, column int) int {
-	return di._Browser_NumberOfRowsInColumn(sender, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_NumberOfChildrenOfItem() bool {
-	return di._Browser_NumberOfChildrenOfItem != nil
+func (p *BrowserDelegateBase) Browser_NumberOfRowsInColumn(sender Browser, column int) int {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_NumberOfChildrenOfItem(f func(browser Browser, item objc.Object) int) {
-	di._Browser_NumberOfChildrenOfItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_NumberOfChildrenOfItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_NumberOfChildrenOfItem(browser Browser, item objc.Object) int {
-	return di._Browser_NumberOfChildrenOfItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_TitleOfColumn() bool {
-	return di._Browser_TitleOfColumn != nil
+func (p *BrowserDelegateBase) Browser_NumberOfChildrenOfItem(browser Browser, item objc.Object) int {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_TitleOfColumn(f func(sender Browser, column int) string) {
-	di._Browser_TitleOfColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_TitleOfColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_TitleOfColumn(sender Browser, column int) string {
-	return di._Browser_TitleOfColumn(sender, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_ShouldTypeSelectForEvent_WithCurrentSearchString() bool {
-	return di._Browser_ShouldTypeSelectForEvent_WithCurrentSearchString != nil
+func (p *BrowserDelegateBase) Browser_TitleOfColumn(sender Browser, column int) string {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_ShouldTypeSelectForEvent_WithCurrentSearchString(f func(browser Browser, event Event, searchString string) bool) {
-	di._Browser_ShouldTypeSelectForEvent_WithCurrentSearchString = f
+func (p *BrowserDelegateBase) ImplementsBrowser_ShouldTypeSelectForEvent_WithCurrentSearchString() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_ShouldTypeSelectForEvent_WithCurrentSearchString(browser Browser, event Event, searchString string) bool {
-	return di._Browser_ShouldTypeSelectForEvent_WithCurrentSearchString(browser, event, searchString)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_TypeSelectStringForRow_InColumn() bool {
-	return di._Browser_TypeSelectStringForRow_InColumn != nil
+func (p *BrowserDelegateBase) Browser_ShouldTypeSelectForEvent_WithCurrentSearchString(browser Browser, event Event, searchString string) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_TypeSelectStringForRow_InColumn(f func(browser Browser, row int, column int) string) {
-	di._Browser_TypeSelectStringForRow_InColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_TypeSelectStringForRow_InColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_TypeSelectStringForRow_InColumn(browser Browser, row int, column int) string {
-	return di._Browser_TypeSelectStringForRow_InColumn(browser, row, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString() bool {
-	return di._Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString != nil
+func (p *BrowserDelegateBase) Browser_TypeSelectStringForRow_InColumn(browser Browser, row int, column int) string {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(f func(browser Browser, startRow int, endRow int, column int, searchString string) int) {
-	di._Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString = f
+func (p *BrowserDelegateBase) ImplementsBrowser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(browser Browser, startRow int, endRow int, column int, searchString string) int {
-	return di._Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(browser, startRow, endRow, column, searchString)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_SelectCellWithString_InColumn() bool {
-	return di._Browser_SelectCellWithString_InColumn != nil
+func (p *BrowserDelegateBase) Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(browser Browser, startRow int, endRow int, column int, searchString string) int {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_SelectCellWithString_InColumn(f func(sender Browser, title string, column int) bool) {
-	di._Browser_SelectCellWithString_InColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_SelectCellWithString_InColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_SelectCellWithString_InColumn(sender Browser, title string, column int) bool {
-	return di._Browser_SelectCellWithString_InColumn(sender, title, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_SelectRow_InColumn() bool {
-	return di._Browser_SelectRow_InColumn != nil
+func (p *BrowserDelegateBase) Browser_SelectCellWithString_InColumn(sender Browser, title string, column int) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_SelectRow_InColumn(f func(sender Browser, row int, column int) bool) {
-	di._Browser_SelectRow_InColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_SelectRow_InColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_SelectRow_InColumn(sender Browser, row int, column int) bool {
-	return di._Browser_SelectRow_InColumn(sender, row, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_SelectionIndexesForProposedSelection_InColumn() bool {
-	return di._Browser_SelectionIndexesForProposedSelection_InColumn != nil
+func (p *BrowserDelegateBase) Browser_SelectRow_InColumn(sender Browser, row int, column int) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_SelectionIndexesForProposedSelection_InColumn(f func(browser Browser, proposedSelectionIndexes foundation.IndexSet, column int) foundation.IIndexSet) {
-	di._Browser_SelectionIndexesForProposedSelection_InColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_SelectionIndexesForProposedSelection_InColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_SelectionIndexesForProposedSelection_InColumn(browser Browser, proposedSelectionIndexes foundation.IndexSet, column int) foundation.IIndexSet {
-	return di._Browser_SelectionIndexesForProposedSelection_InColumn(browser, proposedSelectionIndexes, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_Child_OfItem() bool {
-	return di._Browser_Child_OfItem != nil
+func (p *BrowserDelegateBase) Browser_SelectionIndexesForProposedSelection_InColumn(browser Browser, proposedSelectionIndexes foundation.IndexSet, column int) foundation.IIndexSet {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_Child_OfItem(f func(browser Browser, index int, item objc.Object) objc.IObject) {
-	di._Browser_Child_OfItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_Child_OfItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_Child_OfItem(browser Browser, index int, item objc.Object) objc.IObject {
-	return di._Browser_Child_OfItem(browser, index, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_IsLeafItem() bool {
-	return di._Browser_IsLeafItem != nil
+func (p *BrowserDelegateBase) Browser_Child_OfItem(browser Browser, index int, item objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_IsLeafItem(f func(browser Browser, item objc.Object) bool) {
-	di._Browser_IsLeafItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_IsLeafItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_IsLeafItem(browser Browser, item objc.Object) bool {
-	return di._Browser_IsLeafItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_ShouldEditItem() bool {
-	return di._Browser_ShouldEditItem != nil
+func (p *BrowserDelegateBase) Browser_IsLeafItem(browser Browser, item objc.Object) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_ShouldEditItem(f func(browser Browser, item objc.Object) bool) {
-	di._Browser_ShouldEditItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_ShouldEditItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_ShouldEditItem(browser Browser, item objc.Object) bool {
-	return di._Browser_ShouldEditItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_ObjectValueForItem() bool {
-	return di._Browser_ObjectValueForItem != nil
+func (p *BrowserDelegateBase) Browser_ShouldEditItem(browser Browser, item objc.Object) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_ObjectValueForItem(f func(browser Browser, item objc.Object) objc.IObject) {
-	di._Browser_ObjectValueForItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_ObjectValueForItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_ObjectValueForItem(browser Browser, item objc.Object) objc.IObject {
-	return di._Browser_ObjectValueForItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_SetObjectValue_ForItem() bool {
-	return di._Browser_SetObjectValue_ForItem != nil
+func (p *BrowserDelegateBase) Browser_ObjectValueForItem(browser Browser, item objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_SetObjectValue_ForItem(f func(browser Browser, object objc.Object, item objc.Object)) {
-	di._Browser_SetObjectValue_ForItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_SetObjectValue_ForItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_SetObjectValue_ForItem(browser Browser, object objc.Object, item objc.Object) {
-	di._Browser_SetObjectValue_ForItem(browser, object, item)
-}
-func (di *BrowserDelegateImpl) ImplementsRootItemForBrowser() bool {
-	return di._RootItemForBrowser != nil
+func (p *BrowserDelegateBase) Browser_SetObjectValue_ForItem(browser Browser, object objc.Object, item objc.Object) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetRootItemForBrowser(f func(browser Browser) objc.IObject) {
-	di._RootItemForBrowser = f
+func (p *BrowserDelegateBase) ImplementsRootItemForBrowser() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) RootItemForBrowser(browser Browser) objc.IObject {
-	return di._RootItemForBrowser(browser)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_PreviewViewControllerForLeafItem() bool {
-	return di._Browser_PreviewViewControllerForLeafItem != nil
+func (p *BrowserDelegateBase) RootItemForBrowser(browser Browser) objc.IObject {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_PreviewViewControllerForLeafItem(f func(browser Browser, item objc.Object) IViewController) {
-	di._Browser_PreviewViewControllerForLeafItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_PreviewViewControllerForLeafItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_PreviewViewControllerForLeafItem(browser Browser, item objc.Object) IViewController {
-	return di._Browser_PreviewViewControllerForLeafItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_HeaderViewControllerForItem() bool {
-	return di._Browser_HeaderViewControllerForItem != nil
+func (p *BrowserDelegateBase) Browser_PreviewViewControllerForLeafItem(browser Browser, item objc.Object) IViewController {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_HeaderViewControllerForItem(f func(browser Browser, item objc.Object) IViewController) {
-	di._Browser_HeaderViewControllerForItem = f
+func (p *BrowserDelegateBase) ImplementsBrowser_HeaderViewControllerForItem() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_HeaderViewControllerForItem(browser Browser, item objc.Object) IViewController {
-	return di._Browser_HeaderViewControllerForItem(browser, item)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_CreateRowsForColumn_InMatrix() bool {
-	return di._Browser_CreateRowsForColumn_InMatrix != nil
+func (p *BrowserDelegateBase) Browser_HeaderViewControllerForItem(browser Browser, item objc.Object) IViewController {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_CreateRowsForColumn_InMatrix(f func(sender Browser, column int, matrix Matrix)) {
-	di._Browser_CreateRowsForColumn_InMatrix = f
+func (p *BrowserDelegateBase) ImplementsBrowser_CreateRowsForColumn_InMatrix() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_CreateRowsForColumn_InMatrix(sender Browser, column int, matrix Matrix) {
-	di._Browser_CreateRowsForColumn_InMatrix(sender, column, matrix)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_WillDisplayCell_AtRow_Column() bool {
-	return di._Browser_WillDisplayCell_AtRow_Column != nil
+func (p *BrowserDelegateBase) Browser_CreateRowsForColumn_InMatrix(sender Browser, column int, matrix Matrix) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_WillDisplayCell_AtRow_Column(f func(sender Browser, cell objc.Object, row int, column int)) {
-	di._Browser_WillDisplayCell_AtRow_Column = f
+func (p *BrowserDelegateBase) ImplementsBrowser_WillDisplayCell_AtRow_Column() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_WillDisplayCell_AtRow_Column(sender Browser, cell objc.Object, row int, column int) {
-	di._Browser_WillDisplayCell_AtRow_Column(sender, cell, row, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_DidChangeLastColumn_ToColumn() bool {
-	return di._Browser_DidChangeLastColumn_ToColumn != nil
+func (p *BrowserDelegateBase) Browser_WillDisplayCell_AtRow_Column(sender Browser, cell objc.Object, row int, column int) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_DidChangeLastColumn_ToColumn(f func(browser Browser, oldLastColumn int, column int)) {
-	di._Browser_DidChangeLastColumn_ToColumn = f
+func (p *BrowserDelegateBase) ImplementsBrowser_DidChangeLastColumn_ToColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_DidChangeLastColumn_ToColumn(browser Browser, oldLastColumn int, column int) {
-	di._Browser_DidChangeLastColumn_ToColumn(browser, oldLastColumn, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowserWillScroll() bool {
-	return di._BrowserWillScroll != nil
+func (p *BrowserDelegateBase) Browser_DidChangeLastColumn_ToColumn(browser Browser, oldLastColumn int, column int) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowserWillScroll(f func(sender Browser)) {
-	di._BrowserWillScroll = f
+func (p *BrowserDelegateBase) ImplementsBrowserWillScroll() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) BrowserWillScroll(sender Browser) {
-	di._BrowserWillScroll(sender)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowserDidScroll() bool {
-	return di._BrowserDidScroll != nil
+func (p *BrowserDelegateBase) BrowserWillScroll(sender Browser) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowserDidScroll(f func(sender Browser)) {
-	di._BrowserDidScroll = f
+func (p *BrowserDelegateBase) ImplementsBrowserDidScroll() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) BrowserDidScroll(sender Browser) {
-	di._BrowserDidScroll(sender)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_CanDragRowsWithIndexes_InColumn_WithEvent() bool {
-	return di._Browser_CanDragRowsWithIndexes_InColumn_WithEvent != nil
+func (p *BrowserDelegateBase) BrowserDidScroll(sender Browser) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_CanDragRowsWithIndexes_InColumn_WithEvent(f func(browser Browser, rowIndexes foundation.IndexSet, column int, event Event) bool) {
-	di._Browser_CanDragRowsWithIndexes_InColumn_WithEvent = f
+func (p *BrowserDelegateBase) ImplementsBrowser_CanDragRowsWithIndexes_InColumn_WithEvent() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_CanDragRowsWithIndexes_InColumn_WithEvent(browser Browser, rowIndexes foundation.IndexSet, column int, event Event) bool {
-	return di._Browser_CanDragRowsWithIndexes_InColumn_WithEvent(browser, rowIndexes, column, event)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset() bool {
-	return di._Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset != nil
+func (p *BrowserDelegateBase) Browser_CanDragRowsWithIndexes_InColumn_WithEvent(browser Browser, rowIndexes foundation.IndexSet, column int, event Event) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(f func(browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset *foundation.Point) IImage) {
-	di._Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset = f
+func (p *BrowserDelegateBase) ImplementsBrowser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset *foundation.Point) IImage {
-	return di._Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser, rowIndexes, column, event, dragImageOffset)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_ValidateDrop_ProposedRow_Column_DropOperation() bool {
-	return di._Browser_ValidateDrop_ProposedRow_Column_DropOperation != nil
+func (p *BrowserDelegateBase) Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset *foundation.Point) IImage {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_ValidateDrop_ProposedRow_Column_DropOperation(f func(browser Browser, info DraggingInfoWrapper, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation) {
-	di._Browser_ValidateDrop_ProposedRow_Column_DropOperation = f
+func (p *BrowserDelegateBase) ImplementsBrowser_ValidateDrop_ProposedRow_Column_DropOperation() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
-	return di._Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser, info, row, column, dropOperation)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_AcceptDrop_AtRow_Column_DropOperation() bool {
-	return di._Browser_AcceptDrop_AtRow_Column_DropOperation != nil
+func (p *BrowserDelegateBase) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_AcceptDrop_AtRow_Column_DropOperation(f func(browser Browser, info DraggingInfoWrapper, row int, column int, dropOperation BrowserDropOperation) bool) {
-	di._Browser_AcceptDrop_AtRow_Column_DropOperation = f
+func (p *BrowserDelegateBase) ImplementsBrowser_AcceptDrop_AtRow_Column_DropOperation() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_AcceptDrop_AtRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row int, column int, dropOperation BrowserDropOperation) bool {
-	return di._Browser_AcceptDrop_AtRow_Column_DropOperation(browser, info, row, column, dropOperation)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_WriteRowsWithIndexes_InColumn_ToPasteboard() bool {
-	return di._Browser_WriteRowsWithIndexes_InColumn_ToPasteboard != nil
+func (p *BrowserDelegateBase) Browser_AcceptDrop_AtRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row int, column int, dropOperation BrowserDropOperation) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_WriteRowsWithIndexes_InColumn_ToPasteboard(f func(browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool) {
-	di._Browser_WriteRowsWithIndexes_InColumn_ToPasteboard = f
+func (p *BrowserDelegateBase) ImplementsBrowser_WriteRowsWithIndexes_InColumn_ToPasteboard() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool {
-	return di._Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser, rowIndexes, column, pasteboard)
+func (p *BrowserDelegateBase) Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool {
+	panic("unimpemented protocol method")
 }
-func (di *BrowserDelegateImpl) ImplementsBrowser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn() bool {
-	return di._Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn != nil
+
+func (p *BrowserDelegateBase) ImplementsBrowser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn() bool {
+	return false
 }
 
 // deprecated
-func (di *BrowserDelegateImpl) SetBrowser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(f func(browser Browser, dropDestination foundation.URL, rowIndexes foundation.IndexSet, column int) []string) {
-	di._Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn = f
+func (p *BrowserDelegateBase) Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(browser Browser, dropDestination foundation.URL, rowIndexes foundation.IndexSet, column int) []string {
+	panic("unimpemented protocol method")
 }
 
-// deprecated
-func (di *BrowserDelegateImpl) Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(browser Browser, dropDestination foundation.URL, rowIndexes foundation.IndexSet, column int) []string {
-	return di._Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(browser, dropDestination, rowIndexes, column)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_ShouldSizeColumn_ForUserResize_ToWidth() bool {
-	return di._Browser_ShouldSizeColumn_ForUserResize_ToWidth != nil
+func (p *BrowserDelegateBase) ImplementsBrowser_ShouldSizeColumn_ForUserResize_ToWidth() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_ShouldSizeColumn_ForUserResize_ToWidth(f func(browser Browser, columnIndex int, forUserResize bool, suggestedWidth float64) float64) {
-	di._Browser_ShouldSizeColumn_ForUserResize_ToWidth = f
+func (p *BrowserDelegateBase) Browser_ShouldSizeColumn_ForUserResize_ToWidth(browser Browser, columnIndex int, forUserResize bool, suggestedWidth float64) float64 {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) Browser_ShouldSizeColumn_ForUserResize_ToWidth(browser Browser, columnIndex int, forUserResize bool, suggestedWidth float64) float64 {
-	return di._Browser_ShouldSizeColumn_ForUserResize_ToWidth(browser, columnIndex, forUserResize, suggestedWidth)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_SizeToFitWidthOfColumn() bool {
-	return di._Browser_SizeToFitWidthOfColumn != nil
+func (p *BrowserDelegateBase) ImplementsBrowser_SizeToFitWidthOfColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_SizeToFitWidthOfColumn(f func(browser Browser, columnIndex int) float64) {
-	di._Browser_SizeToFitWidthOfColumn = f
+func (p *BrowserDelegateBase) Browser_SizeToFitWidthOfColumn(browser Browser, columnIndex int) float64 {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) Browser_SizeToFitWidthOfColumn(browser Browser, columnIndex int) float64 {
-	return di._Browser_SizeToFitWidthOfColumn(browser, columnIndex)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowserColumnConfigurationDidChange() bool {
-	return di._BrowserColumnConfigurationDidChange != nil
+func (p *BrowserDelegateBase) ImplementsBrowserColumnConfigurationDidChange() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) SetBrowserColumnConfigurationDidChange(f func(notification foundation.Notification)) {
-	di._BrowserColumnConfigurationDidChange = f
+func (p *BrowserDelegateBase) BrowserColumnConfigurationDidChange(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) BrowserColumnConfigurationDidChange(notification foundation.Notification) {
-	di._BrowserColumnConfigurationDidChange(notification)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_HeightOfRow_InColumn() bool {
-	return di._Browser_HeightOfRow_InColumn != nil
+func (p *BrowserDelegateBase) ImplementsBrowser_HeightOfRow_InColumn() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_HeightOfRow_InColumn(f func(browser Browser, row int, columnIndex int) float64) {
-	di._Browser_HeightOfRow_InColumn = f
+func (p *BrowserDelegateBase) Browser_HeightOfRow_InColumn(browser Browser, row int, columnIndex int) float64 {
+	panic("unimpemented protocol method")
 }
 
-func (di *BrowserDelegateImpl) Browser_HeightOfRow_InColumn(browser Browser, row int, columnIndex int) float64 {
-	return di._Browser_HeightOfRow_InColumn(browser, row, columnIndex)
-}
-func (di *BrowserDelegateImpl) ImplementsBrowser_ShouldShowCellExpansionForRow_Column() bool {
-	return di._Browser_ShouldShowCellExpansionForRow_Column != nil
+func (p *BrowserDelegateBase) ImplementsBrowser_ShouldShowCellExpansionForRow_Column() bool {
+	return false
 }
 
-func (di *BrowserDelegateImpl) SetBrowser_ShouldShowCellExpansionForRow_Column(f func(browser Browser, row int, column int) bool) {
-	di._Browser_ShouldShowCellExpansionForRow_Column = f
-}
-
-func (di *BrowserDelegateImpl) Browser_ShouldShowCellExpansionForRow_Column(browser Browser, row int, column int) bool {
-	return di._Browser_ShouldShowCellExpansionForRow_Column(browser, row, column)
+func (p *BrowserDelegateBase) Browser_ShouldShowCellExpansionForRow_Column(browser Browser, row int, column int) bool {
+	panic("unimpemented protocol method")
 }
 
 type BrowserDelegateWrapper struct {
 	objc.Object
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_IsColumnValid() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:isColumnValid:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_IsColumnValid(sender IBrowser, column int) bool {
@@ -539,17 +401,9 @@ func (b_ BrowserDelegateWrapper) Browser_IsColumnValid(sender IBrowser, column i
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NumberOfRowsInColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:numberOfRowsInColumn:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_NumberOfRowsInColumn(sender IBrowser, column int) int {
 	rv := objc.CallMethod[int](b_, objc.GetSelector("browser:numberOfRowsInColumn:"), objc.ExtractPtr(sender), column)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NumberOfChildrenOfItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:numberOfChildrenOfItem:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_NumberOfChildrenOfItem(browser IBrowser, item objc.IObject) int {
@@ -557,17 +411,9 @@ func (b_ BrowserDelegateWrapper) Browser_NumberOfChildrenOfItem(browser IBrowser
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_TitleOfColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:titleOfColumn:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_TitleOfColumn(sender IBrowser, column int) string {
 	rv := objc.CallMethod[string](b_, objc.GetSelector("browser:titleOfColumn:"), objc.ExtractPtr(sender), column)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldTypeSelectForEvent_WithCurrentSearchString() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:shouldTypeSelectForEvent:withCurrentSearchString:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldTypeSelectForEvent_WithCurrentSearchString(browser IBrowser, event IEvent, searchString string) bool {
@@ -575,17 +421,9 @@ func (b_ BrowserDelegateWrapper) Browser_ShouldTypeSelectForEvent_WithCurrentSea
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_TypeSelectStringForRow_InColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:typeSelectStringForRow:inColumn:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_TypeSelectStringForRow_InColumn(browser IBrowser, row int, column int) string {
 	rv := objc.CallMethod[string](b_, objc.GetSelector("browser:typeSelectStringForRow:inColumn:"), objc.ExtractPtr(browser), row, column)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(browser IBrowser, startRow int, endRow int, column int, searchString string) int {
@@ -593,17 +431,9 @@ func (b_ BrowserDelegateWrapper) Browser_NextTypeSelectMatchFromRow_ToRow_InColu
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SelectCellWithString_InColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:selectCellWithString:inColumn:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_SelectCellWithString_InColumn(sender IBrowser, title string, column int) bool {
 	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:selectCellWithString:inColumn:"), objc.ExtractPtr(sender), title, column)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SelectRow_InColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:selectRow:inColumn:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SelectRow_InColumn(sender IBrowser, row int, column int) bool {
@@ -611,17 +441,9 @@ func (b_ BrowserDelegateWrapper) Browser_SelectRow_InColumn(sender IBrowser, row
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SelectionIndexesForProposedSelection_InColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:selectionIndexesForProposedSelection:inColumn:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_SelectionIndexesForProposedSelection_InColumn(browser IBrowser, proposedSelectionIndexes foundation.IIndexSet, column int) foundation.IndexSet {
 	rv := objc.CallMethod[foundation.IndexSet](b_, objc.GetSelector("browser:selectionIndexesForProposedSelection:inColumn:"), objc.ExtractPtr(browser), objc.ExtractPtr(proposedSelectionIndexes), column)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_Child_OfItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:child:ofItem:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_Child_OfItem(browser IBrowser, index int, item objc.IObject) objc.Object {
@@ -629,17 +451,9 @@ func (b_ BrowserDelegateWrapper) Browser_Child_OfItem(browser IBrowser, index in
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_IsLeafItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:isLeafItem:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_IsLeafItem(browser IBrowser, item objc.IObject) bool {
 	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:isLeafItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldEditItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:shouldEditItem:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldEditItem(browser IBrowser, item objc.IObject) bool {
@@ -647,25 +461,13 @@ func (b_ BrowserDelegateWrapper) Browser_ShouldEditItem(browser IBrowser, item o
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ObjectValueForItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:objectValueForItem:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_ObjectValueForItem(browser IBrowser, item objc.IObject) objc.Object {
 	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("browser:objectValueForItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SetObjectValue_ForItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:setObjectValue:forItem:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_SetObjectValue_ForItem(browser IBrowser, object objc.IObject, item objc.IObject) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:setObjectValue:forItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(object), objc.ExtractPtr(item))
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsRootItemForBrowser() bool {
-	return b_.RespondsToSelector(objc.GetSelector("rootItemForBrowser:"))
 }
 
 func (b_ BrowserDelegateWrapper) RootItemForBrowser(browser IBrowser) objc.Object {
@@ -673,17 +475,9 @@ func (b_ BrowserDelegateWrapper) RootItemForBrowser(browser IBrowser) objc.Objec
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_PreviewViewControllerForLeafItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:previewViewControllerForLeafItem:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_PreviewViewControllerForLeafItem(browser IBrowser, item objc.IObject) ViewController {
 	rv := objc.CallMethod[ViewController](b_, objc.GetSelector("browser:previewViewControllerForLeafItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_HeaderViewControllerForItem() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:headerViewControllerForItem:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_HeaderViewControllerForItem(browser IBrowser, item objc.IObject) ViewController {
@@ -691,48 +485,24 @@ func (b_ BrowserDelegateWrapper) Browser_HeaderViewControllerForItem(browser IBr
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_CreateRowsForColumn_InMatrix() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:createRowsForColumn:inMatrix:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_CreateRowsForColumn_InMatrix(sender IBrowser, column int, matrix IMatrix) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:createRowsForColumn:inMatrix:"), objc.ExtractPtr(sender), column, objc.ExtractPtr(matrix))
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_WillDisplayCell_AtRow_Column() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:willDisplayCell:atRow:column:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_WillDisplayCell_AtRow_Column(sender IBrowser, cell objc.IObject, row int, column int) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:willDisplayCell:atRow:column:"), objc.ExtractPtr(sender), objc.ExtractPtr(cell), row, column)
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_DidChangeLastColumn_ToColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:didChangeLastColumn:toColumn:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_DidChangeLastColumn_ToColumn(browser IBrowser, oldLastColumn int, column int) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:didChangeLastColumn:toColumn:"), objc.ExtractPtr(browser), oldLastColumn, column)
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowserWillScroll() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browserWillScroll:"))
 }
 
 func (b_ BrowserDelegateWrapper) BrowserWillScroll(sender IBrowser) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browserWillScroll:"), objc.ExtractPtr(sender))
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowserDidScroll() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browserDidScroll:"))
-}
-
 func (b_ BrowserDelegateWrapper) BrowserDidScroll(sender IBrowser) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browserDidScroll:"), objc.ExtractPtr(sender))
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_CanDragRowsWithIndexes_InColumn_WithEvent() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:canDragRowsWithIndexes:inColumn:withEvent:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_CanDragRowsWithIndexes_InColumn_WithEvent(browser IBrowser, rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
@@ -740,46 +510,24 @@ func (b_ BrowserDelegateWrapper) Browser_CanDragRowsWithIndexes_InColumn_WithEve
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser IBrowser, rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset *foundation.Point) Image {
 	rv := objc.CallMethod[Image](b_, objc.GetSelector("browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), objc.ExtractPtr(browser), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(event), dragImageOffset)
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ValidateDrop_ProposedRow_Column_DropOperation() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:validateDrop:proposedRow:column:dropOperation:"))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser IBrowser, info DraggingInfo, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[DragOperation](b_, objc.GetSelector("browser:validateDrop:proposedRow:column:dropOperation:"), objc.ExtractPtr(browser), po, row, column, dropOperation)
+func (b_ BrowserDelegateWrapper) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser IBrowser, info objc.IObject, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
+	rv := objc.CallMethod[DragOperation](b_, objc.GetSelector("browser:validateDrop:proposedRow:column:dropOperation:"), objc.ExtractPtr(browser), objc.ExtractPtr(info), row, column, dropOperation)
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_AcceptDrop_AtRow_Column_DropOperation() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:acceptDrop:atRow:column:dropOperation:"))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_AcceptDrop_AtRow_Column_DropOperation(browser IBrowser, info DraggingInfo, row int, column int, dropOperation BrowserDropOperation) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:acceptDrop:atRow:column:dropOperation:"), objc.ExtractPtr(browser), po, row, column, dropOperation)
+func (b_ BrowserDelegateWrapper) Browser_AcceptDrop_AtRow_Column_DropOperation(browser IBrowser, info objc.IObject, row int, column int, dropOperation BrowserDropOperation) bool {
+	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:acceptDrop:atRow:column:dropOperation:"), objc.ExtractPtr(browser), objc.ExtractPtr(info), row, column, dropOperation)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_WriteRowsWithIndexes_InColumn_ToPasteboard() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:writeRowsWithIndexes:inColumn:toPasteboard:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser IBrowser, rowIndexes foundation.IIndexSet, column int, pasteboard IPasteboard) bool {
 	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:writeRowsWithIndexes:inColumn:toPasteboard:"), objc.ExtractPtr(browser), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(pasteboard))
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:inColumn:"))
 }
 
 // deprecated
@@ -788,17 +536,9 @@ func (b_ BrowserDelegateWrapper) Browser_NamesOfPromisedFilesDroppedAtDestinatio
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldSizeColumn_ForUserResize_ToWidth() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:shouldSizeColumn:forUserResize:toWidth:"))
-}
-
 func (b_ BrowserDelegateWrapper) Browser_ShouldSizeColumn_ForUserResize_ToWidth(browser IBrowser, columnIndex int, forUserResize bool, suggestedWidth float64) float64 {
 	rv := objc.CallMethod[float64](b_, objc.GetSelector("browser:shouldSizeColumn:forUserResize:toWidth:"), objc.ExtractPtr(browser), columnIndex, forUserResize, suggestedWidth)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_SizeToFitWidthOfColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:sizeToFitWidthOfColumn:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_SizeToFitWidthOfColumn(browser IBrowser, columnIndex int) float64 {
@@ -806,25 +546,13 @@ func (b_ BrowserDelegateWrapper) Browser_SizeToFitWidthOfColumn(browser IBrowser
 	return rv
 }
 
-func (b_ *BrowserDelegateWrapper) ImplementsBrowserColumnConfigurationDidChange() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browserColumnConfigurationDidChange:"))
-}
-
 func (b_ BrowserDelegateWrapper) BrowserColumnConfigurationDidChange(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("browserColumnConfigurationDidChange:"), objc.ExtractPtr(notification))
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_HeightOfRow_InColumn() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:heightOfRow:inColumn:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_HeightOfRow_InColumn(browser IBrowser, row int, columnIndex int) float64 {
 	rv := objc.CallMethod[float64](b_, objc.GetSelector("browser:heightOfRow:inColumn:"), objc.ExtractPtr(browser), row, columnIndex)
 	return rv
-}
-
-func (b_ *BrowserDelegateWrapper) ImplementsBrowser_ShouldShowCellExpansionForRow_Column() bool {
-	return b_.RespondsToSelector(objc.GetSelector("browser:shouldShowCellExpansionForRow:column:"))
 }
 
 func (b_ BrowserDelegateWrapper) Browser_ShouldShowCellExpansionForRow_Column(browser IBrowser, row int, column int) bool {

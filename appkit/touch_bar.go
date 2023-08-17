@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -19,8 +18,7 @@ type ITouchBar interface {
 	objc.IObject
 	ItemForIdentifier(identifier TouchBarItemIdentifier) TouchBarItem
 	Delegate() TouchBarDelegateWrapper
-	SetDelegate(value TouchBarDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	TemplateItems() foundation.Set
 	SetTemplateItems(value foundation.ISet)
 	DefaultItemIdentifiers() []TouchBarItemIdentifier
@@ -74,18 +72,14 @@ func (t_ TouchBar) ItemForIdentifier(identifier TouchBarItemIdentifier) TouchBar
 	return rv
 }
 
+// weak property
 func (t_ TouchBar) Delegate() TouchBarDelegateWrapper {
 	rv := objc.CallMethod[TouchBarDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ TouchBar) SetDelegate(value TouchBarDelegate) {
-	po := objc.WrapAsProtocol("NSTouchBarDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ TouchBar) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ TouchBar) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

@@ -67,11 +67,13 @@ func (c_ CollectionViewTransitionLayout) ValueForAnimatedKey(key CollectionViewT
 	return rv
 }
 
+// weak property
 func (c_ CollectionViewTransitionLayout) TransitionProgress() float64 {
 	rv := objc.CallMethod[float64](c_, objc.GetSelector("transitionProgress"))
 	return rv
 }
 
+// weak property
 func (c_ CollectionViewTransitionLayout) SetTransitionProgress(value float64) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTransitionProgress:"), value)
 }

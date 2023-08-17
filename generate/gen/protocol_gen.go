@@ -2,9 +2,6 @@ package gen
 
 import "C"
 import (
-	"fmt"
-	"strings"
-
 	"github.com/hsiafan/cocoa/generate/internal/set"
 	"github.com/hsiafan/cocoa/generate/typing"
 )
@@ -103,11 +100,9 @@ func (p *Protocol) WriteGoCode(w *CodeWriter) {
 	// Protocol Interface
 	p.writeProtocolInterface(w)
 
-	// Delegate Prototol impl struct
+	// Prototol base impl struct
 	w.WriteLine("")
-	if strings.Contains(p.Type.GName, "Delegate") {
-		p.writeDelegateStruct(w)
-	}
+	p.writeProtocolBaseStruct(w)
 
 	// Protocol Wrapper
 	w.WriteLine("")
@@ -119,7 +114,7 @@ func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
 	w.Indent()
 	for _, pp := range p.Parents {
 		if pp.Type.Name != "NSObject" {
-			w.WriteLine(pp.Type.GoName(p.Type.Module, false))
+			w.WriteLine(typing.FullGoName(*pp.Type.Module, pp.Type.GName, *p.Type.Module))
 		}
 	}
 	for _, m := range p.allMethods() {
@@ -134,63 +129,45 @@ func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
 		}
 		w.WriteLine(m.ProtocolGoFuncName() + m.ProtocolGoFuncFieldType(p.Type.Module))
 	}
+
+	w.UnIndent()
+	w.WriteLine("}")
+
+	// a convert method
+	w.WriteLine("")
+	w.WriteLineF("func Wrap%v(v %v) objc.Object {", p.Type.GName, p.Type.GName)
+	w.Indent()
+	w.WriteLineF("return objc.WrapAsProtocol(\"%v\", v)", p.Type.Name)
 	w.UnIndent()
 	w.WriteLine("}")
 }
 
-func (p *Protocol) writeDelegateStruct(w *CodeWriter) {
-	implStructName := p.Type.GName + "Impl"
-	w.WriteLine("type " + implStructName + " struct {")
+// Protocol base struct for all optional methods. Make implement protocol interface easier.
+func (p *Protocol) writeProtocolBaseStruct(w *CodeWriter) {
+	protocolBaseName := p.Type.GName + "Base"
+	w.WriteLine("type " + protocolBaseName + " struct {")
 	for _, pp := range p.Parents {
 		if pp.Type.Name != "NSObject" {
-			w.WriteLine(pp.Type.GoName(p.Type.Module, false) + "Impl")
+			w.WriteLine(typing.FullGoName(*pp.Type.Module, pp.Type.GName, *p.Type.Module) + "Base")
 		}
 	}
-	w.Indent()
-	for _, m := range p.allMethods() {
-		w.WriteLine(fmt.Sprintf("_%s func %s", m.ProtocolGoFuncName(), m.ProtocolGoFuncFieldType(p.Type.Module)))
-	}
-	w.UnIndent()
 	w.WriteLine("}")
 
-	receiver := "di"
+	receiver := "p"
 	for _, m := range p.allMethods() {
 		if !m.Required {
-			w.WriteLine(fmt.Sprintf("func (%s *%s) Implements%s() bool {", receiver, implStructName, m.ProtocolGoFuncName()))
-			w.WriteLine(fmt.Sprintf("\t return %s._%s != nil", receiver, m.ProtocolGoFuncName()))
+			w.WriteLine("")
+			w.WriteLineF("func (%s *%s) Implements%s() bool {", receiver, protocolBaseName, m.ProtocolGoFuncName())
+			w.WriteLine("\t return false")
+			w.WriteLine("}")
+			w.WriteLine("")
+			if m.Deprecated {
+				w.WriteLine("// deprecated")
+			}
+			w.WriteLineF("func (%s *%s) %s%s {", receiver, protocolBaseName, m.ProtocolGoFuncName(), m.ProtocolGoFuncFieldType(p.Type.Module))
+			w.WriteLine("\tpanic(\"unimpemented protocol method\")")
 			w.WriteLine("}")
 		}
-
-		w.WriteLine("")
-		if m.Deprecated {
-			w.WriteLine("// deprecated")
-		}
-		w.WriteLine(fmt.Sprintf("func (%s *%s) Set%s(f func %s) {", receiver, implStructName, m.ProtocolGoFuncName(), m.ProtocolGoFuncFieldType(p.Type.Module)))
-		w.WriteLine(fmt.Sprintf("\t%s._%s = f", receiver, m.ProtocolGoFuncName()))
-		w.WriteLine("}")
-
-		if m.Required {
-			w.WriteLine("// required")
-		}
-		w.WriteLine("")
-		if m.Deprecated {
-			w.WriteLine("// deprecated")
-		}
-		w.WriteLine(fmt.Sprintf("func (%s *%s) %s%s {", receiver, implStructName, m.ProtocolGoFuncName(), m.ProtocolGoFuncFieldType(p.Type.Module)))
-		var sb strings.Builder
-		for i, p := range m.Params {
-			if i != 0 {
-				sb.WriteByte(',')
-			}
-			sb.WriteString(p.GoName())
-		}
-		callArgs := sb.String()
-		if _, ok := m.ReturnType.(*typing.VoidType); ok {
-			w.WriteLine(fmt.Sprintf("\t%s._%s(%s)", receiver, m.ProtocolGoFuncName(), callArgs))
-		} else {
-			w.WriteLine(fmt.Sprintf("\treturn %s._%s(%s)", receiver, m.ProtocolGoFuncName(), callArgs))
-		}
-		w.WriteLine("}")
 	}
 }
 
@@ -198,27 +175,11 @@ func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
 	typeName := p.Type.GName + "Wrapper"
 	w.WriteLine("type " + typeName + " struct {")
 	w.Indent()
-	if len(p.Parents) == 0 {
-		w.WriteLine("objc.Object")
-	}
-	for _, pp := range p.Parents {
-		if pp.Type.Name != "NSObject" {
-			w.WriteLine(pp.Type.GoName(p.Type.Module, true))
-		} else {
-			w.WriteLine("objc.Object")
-		}
-	}
+	w.WriteLine("objc.Object")
 	w.UnIndent()
 	w.WriteLine("}")
 
-	for _, m := range p.allMethods() {
-		w.WriteLine("")
-		if !m.Required {
-			receiver := strings.ToLower(typeName[0:1] + "_")
-			w.WriteLine(fmt.Sprintf("func (%s *%s) Implements%s() bool {", receiver, typeName, m.ProtocolGoFuncName()))
-			w.WriteLine(fmt.Sprintf("\t return %s.RespondsToSelector(objc.GetSelector(\"%s\"))", receiver, m.Selector()))
-			w.WriteLine("}")
-		}
+	for _, m := range p.allMethodsRecursively() {
 		w.WriteLine("")
 		m.WriteGoCallCode(p.Type.Module, typeName, w)
 	}
@@ -235,6 +196,17 @@ func (p *Protocol) allMethods() []*Method {
 		}
 
 		allMethods = append(allMethods, (*Method)(pp.getter()))
+	}
+	return allMethods
+}
+
+// method include parents..
+func (p *Protocol) allMethodsRecursively() []*Method {
+	var allMethods = p.allMethods()
+	for _, pp := range p.Parents {
+		if pp.Type.Name != "NSObject" {
+			allMethods = append(allMethods, pp.allMethodsRecursively()...)
+		}
 	}
 	return allMethods
 }

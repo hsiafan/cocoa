@@ -93,11 +93,13 @@ func (w_ WindowTabGroup) Windows() []Window {
 	return rv
 }
 
+// weak property
 func (w_ WindowTabGroup) SelectedWindow() Window {
 	rv := objc.CallMethod[Window](w_, objc.GetSelector("selectedWindow"))
 	return rv
 }
 
+// weak property
 func (w_ WindowTabGroup) SetSelectedWindow(value IWindow) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setSelectedWindow:"), objc.ExtractPtr(value))
 }

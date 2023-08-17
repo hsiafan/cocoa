@@ -10,6 +10,13 @@ type ToolbarItemValidation interface {
 	ValidateToolbarItem(item ToolbarItem) bool
 }
 
+func WrapToolbarItemValidation(v ToolbarItemValidation) objc.Object {
+	return objc.WrapAsProtocol("NSToolbarItemValidation", v)
+}
+
+type ToolbarItemValidationBase struct {
+}
+
 type ToolbarItemValidationWrapper struct {
 	objc.Object
 }

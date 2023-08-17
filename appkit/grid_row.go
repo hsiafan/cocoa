@@ -132,6 +132,7 @@ func (g_ GridRow) SetYPlacement(value GridCellPlacement) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("setYPlacement:"), value)
 }
 
+// weak property
 func (g_ GridRow) GridView() GridView {
 	rv := objc.CallMethod[GridView](g_, objc.GetSelector("gridView"))
 	return rv

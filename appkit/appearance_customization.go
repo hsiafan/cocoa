@@ -17,29 +17,48 @@ type AppearanceCustomization interface {
 	EffectiveAppearance() IAppearance
 }
 
-type AppearanceCustomizationWrapper struct {
-	objc.Object
+func WrapAppearanceCustomization(v AppearanceCustomization) objc.Object {
+	return objc.WrapAsProtocol("NSAppearanceCustomization", v)
 }
 
-func (a_ *AppearanceCustomizationWrapper) ImplementsSetAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("setAppearance:"))
+type AppearanceCustomizationBase struct {
+}
+
+func (p *AppearanceCustomizationBase) ImplementsSetAppearance() bool {
+	return false
+}
+
+func (p *AppearanceCustomizationBase) SetAppearance(value Appearance) {
+	panic("unimpemented protocol method")
+}
+
+func (p *AppearanceCustomizationBase) ImplementsAppearance() bool {
+	return false
+}
+
+func (p *AppearanceCustomizationBase) Appearance() IAppearance {
+	panic("unimpemented protocol method")
+}
+
+func (p *AppearanceCustomizationBase) ImplementsEffectiveAppearance() bool {
+	return false
+}
+
+func (p *AppearanceCustomizationBase) EffectiveAppearance() IAppearance {
+	panic("unimpemented protocol method")
+}
+
+type AppearanceCustomizationWrapper struct {
+	objc.Object
 }
 
 func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
 }
 
-func (a_ *AppearanceCustomizationWrapper) ImplementsAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("appearance"))
-}
-
 func (a_ AppearanceCustomizationWrapper) Appearance() Appearance {
 	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("appearance"))
 	return rv
-}
-
-func (a_ *AppearanceCustomizationWrapper) ImplementsEffectiveAppearance() bool {
-	return a_.RespondsToSelector(objc.GetSelector("effectiveAppearance"))
 }
 
 func (a_ AppearanceCustomizationWrapper) EffectiveAppearance() Appearance {

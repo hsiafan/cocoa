@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -32,9 +31,7 @@ type IDrawer interface {
 	// deprecated
 	Delegate() DrawerDelegateWrapper
 	// deprecated
-	SetDelegate(value DrawerDelegate)
-	// deprecated
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	// deprecated
 	State() int
 	// deprecated
@@ -138,21 +135,16 @@ func (d_ Drawer) Toggle(sender objc.IObject) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("toggle:"), objc.ExtractPtr(sender))
 }
 
+// weak property
 // deprecated
 func (d_ Drawer) Delegate() DrawerDelegateWrapper {
 	rv := objc.CallMethod[DrawerDelegateWrapper](d_, objc.GetSelector("delegate"))
 	return rv
 }
 
+// weak property
 // deprecated
-func (d_ Drawer) SetDelegate(value DrawerDelegate) {
-	po := objc.WrapAsProtocol("NSDrawerDelegate", value)
-	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), po)
-}
-
-// deprecated
-func (d_ Drawer) SetDelegate0(value objc.IObject) {
+func (d_ Drawer) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
@@ -245,12 +237,14 @@ func (d_ Drawer) SetContentView(value IView) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
 }
 
+// weak property
 // deprecated
 func (d_ Drawer) ParentWindow() Window {
 	rv := objc.CallMethod[Window](d_, objc.GetSelector("parentWindow"))
 	return rv
 }
 
+// weak property
 // deprecated
 func (d_ Drawer) SetParentWindow(value IWindow) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setParentWindow:"), objc.ExtractPtr(value))

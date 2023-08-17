@@ -174,6 +174,7 @@ func (t_ TextLayoutManager) SetLimitsLayoutForSuspiciousContents(value bool) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLimitsLayoutForSuspiciousContents:"), value)
 }
 
+// weak property
 func (t_ TextLayoutManager) TextContentManager() TextContentManager {
 	rv := objc.CallMethod[TextContentManager](t_, objc.GetSelector("textContentManager"))
 	return rv

@@ -14,20 +14,35 @@ type FontChanging interface {
 	ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask
 }
 
+func WrapFontChanging(v FontChanging) objc.Object {
+	return objc.WrapAsProtocol("NSFontChanging", v)
+}
+
+type FontChangingBase struct {
+}
+
+func (p *FontChangingBase) ImplementsChangeFont() bool {
+	return false
+}
+
+func (p *FontChangingBase) ChangeFont(sender FontManager) {
+	panic("unimpemented protocol method")
+}
+
+func (p *FontChangingBase) ImplementsValidModesForFontPanel() bool {
+	return false
+}
+
+func (p *FontChangingBase) ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask {
+	panic("unimpemented protocol method")
+}
+
 type FontChangingWrapper struct {
 	objc.Object
 }
 
-func (f_ *FontChangingWrapper) ImplementsChangeFont() bool {
-	return f_.RespondsToSelector(objc.GetSelector("changeFont:"))
-}
-
 func (f_ FontChangingWrapper) ChangeFont(sender IFontManager) {
 	objc.CallMethod[objc.Void](f_, objc.GetSelector("changeFont:"), objc.ExtractPtr(sender))
-}
-
-func (f_ *FontChangingWrapper) ImplementsValidModesForFontPanel() bool {
-	return f_.RespondsToSelector(objc.GetSelector("validModesForFontPanel:"))
 }
 
 func (f_ FontChangingWrapper) ValidModesForFontPanel(fontPanel IFontPanel) FontPanelModeMask {

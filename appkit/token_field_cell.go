@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -24,8 +23,7 @@ type ITokenFieldCell interface {
 	CompletionDelay() foundation.TimeInterval
 	SetCompletionDelay(value foundation.TimeInterval)
 	Delegate() TokenFieldCellDelegateWrapper
-	SetDelegate(value TokenFieldCellDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 }
 
 type TokenFieldCell struct {
@@ -105,17 +103,13 @@ func (tc _TokenFieldCellClass) DefaultCompletionDelay() foundation.TimeInterval 
 	return rv
 }
 
+// weak property
 func (t_ TokenFieldCell) Delegate() TokenFieldCellDelegateWrapper {
 	rv := objc.CallMethod[TokenFieldCellDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ TokenFieldCell) SetDelegate(value TokenFieldCellDelegate) {
-	po := objc.WrapAsProtocol("NSTokenFieldCellDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ TokenFieldCell) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ TokenFieldCell) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

@@ -36,24 +36,42 @@ func initAndRun() {
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	ad := &appkit.ApplicationDelegateImpl{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationWillFinishLaunching(func(foundation.Notification) {
-		// should set menu bar at ApplicationWillFinishLaunching
-		setMainMenu(app)
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
-		return true
-	})
-	app.SetDelegate(ad)
+	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app}))
 
 	// should set system bar after window show
 	setSystemBar(app)
 
 	app.Run()
+}
+
+type myApplicationDelegate struct {
+	appkit.ApplicationDelegateBase
+	app appkit.Application
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationWillFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationWillFinishLaunching(notification foundation.Notification) {
+	setMainMenu(p.app)
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	p.app.ActivateIgnoringOtherApps(true)
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
+	return true
 }
 
 func setMainMenu(app appkit.Application) {

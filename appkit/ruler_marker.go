@@ -32,8 +32,7 @@ type IRulerMarker interface {
 	MarkerLocation() float64
 	SetMarkerLocation(value float64)
 	RepresentedObject() CopyingWrapper
-	SetRepresentedObject(value Copying)
-	SetRepresentedObject0(value objc.IObject)
+	SetRepresentedObject(value objc.IObject)
 	IsDragging() bool
 }
 
@@ -81,6 +80,7 @@ func (r_ RulerMarker) TrackMouse_Adding(mouseDownEvent IEvent, isAdding bool) bo
 	return rv
 }
 
+// weak property
 func (r_ RulerMarker) Ruler() RulerView {
 	rv := objc.CallMethod[RulerView](r_, objc.GetSelector("ruler"))
 	return rv
@@ -146,12 +146,7 @@ func (r_ RulerMarker) RepresentedObject() CopyingWrapper {
 	return rv
 }
 
-func (r_ RulerMarker) SetRepresentedObject(value Copying) {
-	po := objc.WrapAsProtocol("NSCopying", value)
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), po)
-}
-
-func (r_ RulerMarker) SetRepresentedObject0(value objc.IObject) {
+func (r_ RulerMarker) SetRepresentedObject(value objc.IObject) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRepresentedObject:"), objc.ExtractPtr(value))
 }
 

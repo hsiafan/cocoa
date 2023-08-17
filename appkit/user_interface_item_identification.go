@@ -14,20 +14,35 @@ type UserInterfaceItemIdentification interface {
 	Identifier() UserInterfaceItemIdentifier
 }
 
+func WrapUserInterfaceItemIdentification(v UserInterfaceItemIdentification) objc.Object {
+	return objc.WrapAsProtocol("NSUserInterfaceItemIdentification", v)
+}
+
+type UserInterfaceItemIdentificationBase struct {
+}
+
+func (p *UserInterfaceItemIdentificationBase) ImplementsSetIdentifier() bool {
+	return false
+}
+
+func (p *UserInterfaceItemIdentificationBase) SetIdentifier(value UserInterfaceItemIdentifier) {
+	panic("unimpemented protocol method")
+}
+
+func (p *UserInterfaceItemIdentificationBase) ImplementsIdentifier() bool {
+	return false
+}
+
+func (p *UserInterfaceItemIdentificationBase) Identifier() UserInterfaceItemIdentifier {
+	panic("unimpemented protocol method")
+}
+
 type UserInterfaceItemIdentificationWrapper struct {
 	objc.Object
 }
 
-func (u_ *UserInterfaceItemIdentificationWrapper) ImplementsSetIdentifier() bool {
-	return u_.RespondsToSelector(objc.GetSelector("setIdentifier:"))
-}
-
 func (u_ UserInterfaceItemIdentificationWrapper) SetIdentifier(value UserInterfaceItemIdentifier) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("setIdentifier:"), value)
-}
-
-func (u_ *UserInterfaceItemIdentificationWrapper) ImplementsIdentifier() bool {
-	return u_.RespondsToSelector(objc.GetSelector("identifier"))
 }
 
 func (u_ UserInterfaceItemIdentificationWrapper) Identifier() UserInterfaceItemIdentifier {

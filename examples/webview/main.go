@@ -25,7 +25,7 @@ func main() {
 	configuration := webkit.NewWebViewConfiguration()
 	configuration.Preferences().SetJavaScriptEnabled(true)
 	gofsHandler := &webkit.FileSystemURLSchemeHandler{FS: _fs}
-	configuration.SetURLSchemeHandler_ForURLScheme(gofsHandler, "gofs")
+	configuration.SetURLSchemeHandler_ForURLScheme(webkit.WrapURLSchemeHandler(gofsHandler), "gofs")
 
 	view := webkit.WebViewClass.Alloc().InitWithFrame_Configuration(foundation.Rect{}, configuration)
 	webkit.AddScriptMessageHandlerWithReply(view, "greet", func(message objc.Object) (objc.IObject, error) {
@@ -37,20 +37,35 @@ func main() {
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	ad := &appkit.ApplicationDelegateImpl{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-		webkit.LoadURL(view, "gofs:/index.html")
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
-		return true
-	})
-	app.SetDelegate(ad)
+	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app, webView: view}))
 
 	go func() {
 		time.Sleep(time.Second * 1)
 		runtime.GC()
 	}()
 	app.Run()
+}
+
+type myApplicationDelegate struct {
+	appkit.ApplicationDelegateBase
+	app     appkit.Application
+	webView webkit.WebView
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	p.app.ActivateIgnoringOtherApps(true)
+	webkit.LoadURL(p.webView, "gofs:/index.html")
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
+	return true
 }

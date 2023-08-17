@@ -59,8 +59,7 @@ type IDocument interface {
 	RunModalSavePanelForSaveOperation_Delegate_DidSaveSelector_ContextInfo(saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer)
 	PrepareSavePanel(savePanel ISavePanel) bool
 	UpdateUserActivityState(activity foundation.IUserActivity)
-	ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool
-	ValidateUserInterfaceItem0(item objc.IObject) bool
+	ValidateUserInterfaceItem(item objc.IObject) bool
 	PerformSynchronousFileAccessUsingBlock(block func())
 	PerformAsynchronousFileAccessUsingBlock(block func(param1 func()))
 	PerformActivityWithSynchronousWaiting_UsingBlock(waitSynchronously bool, block func(param1 func()))
@@ -435,13 +434,7 @@ func (d_ Document) UpdateUserActivityState(activity foundation.IUserActivity) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("updateUserActivityState:"), objc.ExtractPtr(activity))
 }
 
-func (d_ Document) ValidateUserInterfaceItem(item ValidatedUserInterfaceItem) bool {
-	po := objc.WrapAsProtocol("NSValidatedUserInterfaceItem", item)
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("validateUserInterfaceItem:"), po)
-	return rv
-}
-
-func (d_ Document) ValidateUserInterfaceItem0(item objc.IObject) bool {
+func (d_ Document) ValidateUserInterfaceItem(item objc.IObject) bool {
 	rv := objc.CallMethod[bool](d_, objc.GetSelector("validateUserInterfaceItem:"), objc.ExtractPtr(item))
 	return rv
 }

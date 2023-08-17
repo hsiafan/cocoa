@@ -17,12 +17,9 @@ type IUserContentController interface {
 	objc.IObject
 	AddUserScript(userScript IUserScript)
 	RemoveAllUserScripts()
-	AddScriptMessageHandler_Name(scriptMessageHandler ScriptMessageHandler, name string)
-	AddScriptMessageHandler0_Name(scriptMessageHandler objc.IObject, name string)
-	AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string)
-	AddScriptMessageHandler0_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string)
-	AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string)
-	AddScriptMessageHandlerWithReply0_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string)
+	AddScriptMessageHandler_Name(scriptMessageHandler objc.IObject, name string)
+	AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string)
+	AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string)
 	RemoveScriptMessageHandlerForName(name string)
 	RemoveScriptMessageHandlerForName_ContentWorld(name string, contentWorld IContentWorld)
 	RemoveAllScriptMessageHandlersFromContentWorld(contentWorld IContentWorld)
@@ -71,30 +68,15 @@ func (u_ UserContentController) RemoveAllUserScripts() {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllUserScripts"))
 }
 
-func (u_ UserContentController) AddScriptMessageHandler_Name(scriptMessageHandler ScriptMessageHandler, name string) {
-	po := objc.WrapAsProtocol("WKScriptMessageHandler", scriptMessageHandler)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:name:"), po, name)
-}
-
-func (u_ UserContentController) AddScriptMessageHandler0_Name(scriptMessageHandler objc.IObject, name string) {
+func (u_ UserContentController) AddScriptMessageHandler_Name(scriptMessageHandler objc.IObject, name string) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:name:"), objc.ExtractPtr(scriptMessageHandler), name)
 }
 
-func (u_ UserContentController) AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler ScriptMessageHandler, world IContentWorld, name string) {
-	po := objc.WrapAsProtocol("WKScriptMessageHandler", scriptMessageHandler)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), po, objc.ExtractPtr(world), name)
-}
-
-func (u_ UserContentController) AddScriptMessageHandler0_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string) {
+func (u_ UserContentController) AddScriptMessageHandler_ContentWorld_Name(scriptMessageHandler objc.IObject, world IContentWorld, name string) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandler:contentWorld:name:"), objc.ExtractPtr(scriptMessageHandler), objc.ExtractPtr(world), name)
 }
 
-func (u_ UserContentController) AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply ScriptMessageHandlerWithReply, contentWorld IContentWorld, name string) {
-	po := objc.WrapAsProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), po, objc.ExtractPtr(contentWorld), name)
-}
-
-func (u_ UserContentController) AddScriptMessageHandlerWithReply0_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string) {
+func (u_ UserContentController) AddScriptMessageHandlerWithReply_ContentWorld_Name(scriptMessageHandlerWithReply objc.IObject, contentWorld IContentWorld, name string) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("addScriptMessageHandlerWithReply:contentWorld:name:"), objc.ExtractPtr(scriptMessageHandlerWithReply), objc.ExtractPtr(contentWorld), name)
 }
 

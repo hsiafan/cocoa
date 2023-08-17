@@ -4,7 +4,6 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -42,8 +41,7 @@ type IUserActivity interface {
 	ExpirationDate() Date
 	SetExpirationDate(value IDate)
 	Delegate() UserActivityDelegateWrapper
-	SetDelegate(value UserActivityDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	SupportsContinuationStreams() bool
 	SetSupportsContinuationStreams(value bool)
 	WebpageURL() URL
@@ -143,11 +141,13 @@ func (u_ UserActivity) SetTargetContentIdentifier(value string) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("setTargetContentIdentifier:"), value)
 }
 
+// weak property
 func (u_ UserActivity) NeedsSave() bool {
 	rv := objc.CallMethod[bool](u_, objc.GetSelector("needsSave"))
 	return rv
 }
 
+// weak property
 func (u_ UserActivity) SetNeedsSave(value bool) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("setNeedsSave:"), value)
 }
@@ -206,18 +206,14 @@ func (u_ UserActivity) SetExpirationDate(value IDate) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("setExpirationDate:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (u_ UserActivity) Delegate() UserActivityDelegateWrapper {
 	rv := objc.CallMethod[UserActivityDelegateWrapper](u_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (u_ UserActivity) SetDelegate(value UserActivityDelegate) {
-	po := objc.WrapAsProtocol("NSUserActivityDelegate", value)
-	objc.SetAssociatedObject(u_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (u_ UserActivity) SetDelegate0(value objc.IObject) {
+// weak property
+func (u_ UserActivity) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](u_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

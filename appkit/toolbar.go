@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -23,8 +22,7 @@ type IToolbar interface {
 	RunCustomizationPalette(sender objc.IObject)
 	ValidateVisibleItems()
 	Delegate() ToolbarDelegateWrapper
-	SetDelegate(value ToolbarDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	Identifier() ToolbarIdentifier
 	IsVisible() bool
 	SetVisible(value bool)
@@ -123,18 +121,14 @@ func (t_ Toolbar) ValidateVisibleItems() {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("validateVisibleItems"))
 }
 
+// weak property
 func (t_ Toolbar) Delegate() ToolbarDelegateWrapper {
 	rv := objc.CallMethod[ToolbarDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ Toolbar) SetDelegate(value ToolbarDelegate) {
-	po := objc.WrapAsProtocol("NSToolbarDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ Toolbar) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ Toolbar) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

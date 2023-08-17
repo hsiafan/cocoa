@@ -21,12 +21,47 @@ type CollectionLayoutContainer interface {
 	EffectiveContentInsets() DirectionalEdgeInsets
 }
 
-type CollectionLayoutContainerWrapper struct {
-	objc.Object
+func WrapCollectionLayoutContainer(v CollectionLayoutContainer) objc.Object {
+	return objc.WrapAsProtocol("NSCollectionLayoutContainer", v)
 }
 
-func (c_ *CollectionLayoutContainerWrapper) ImplementsContentSize() bool {
-	return c_.RespondsToSelector(objc.GetSelector("contentSize"))
+type CollectionLayoutContainerBase struct {
+}
+
+func (p *CollectionLayoutContainerBase) ImplementsContentSize() bool {
+	return false
+}
+
+func (p *CollectionLayoutContainerBase) ContentSize() foundation.Size {
+	panic("unimpemented protocol method")
+}
+
+func (p *CollectionLayoutContainerBase) ImplementsEffectiveContentSize() bool {
+	return false
+}
+
+func (p *CollectionLayoutContainerBase) EffectiveContentSize() foundation.Size {
+	panic("unimpemented protocol method")
+}
+
+func (p *CollectionLayoutContainerBase) ImplementsContentInsets() bool {
+	return false
+}
+
+func (p *CollectionLayoutContainerBase) ContentInsets() DirectionalEdgeInsets {
+	panic("unimpemented protocol method")
+}
+
+func (p *CollectionLayoutContainerBase) ImplementsEffectiveContentInsets() bool {
+	return false
+}
+
+func (p *CollectionLayoutContainerBase) EffectiveContentInsets() DirectionalEdgeInsets {
+	panic("unimpemented protocol method")
+}
+
+type CollectionLayoutContainerWrapper struct {
+	objc.Object
 }
 
 func (c_ CollectionLayoutContainerWrapper) ContentSize() foundation.Size {
@@ -34,26 +69,14 @@ func (c_ CollectionLayoutContainerWrapper) ContentSize() foundation.Size {
 	return rv
 }
 
-func (c_ *CollectionLayoutContainerWrapper) ImplementsEffectiveContentSize() bool {
-	return c_.RespondsToSelector(objc.GetSelector("effectiveContentSize"))
-}
-
 func (c_ CollectionLayoutContainerWrapper) EffectiveContentSize() foundation.Size {
 	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("effectiveContentSize"))
 	return rv
 }
 
-func (c_ *CollectionLayoutContainerWrapper) ImplementsContentInsets() bool {
-	return c_.RespondsToSelector(objc.GetSelector("contentInsets"))
-}
-
 func (c_ CollectionLayoutContainerWrapper) ContentInsets() DirectionalEdgeInsets {
 	rv := objc.CallMethod[DirectionalEdgeInsets](c_, objc.GetSelector("contentInsets"))
 	return rv
-}
-
-func (c_ *CollectionLayoutContainerWrapper) ImplementsEffectiveContentInsets() bool {
-	return c_.RespondsToSelector(objc.GetSelector("effectiveContentInsets"))
 }
 
 func (c_ CollectionLayoutContainerWrapper) EffectiveContentInsets() DirectionalEdgeInsets {

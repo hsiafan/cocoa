@@ -8,7 +8,11 @@ import (
 type PortDelegate interface {
 }
 
-type PortDelegateImpl struct {
+func WrapPortDelegate(v PortDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSPortDelegate", v)
+}
+
+type PortDelegateBase struct {
 }
 
 type PortDelegateWrapper struct {

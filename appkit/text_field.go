@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -62,8 +61,7 @@ type ITextField interface {
 	IsAutomaticTextCompletionEnabled() bool
 	SetAutomaticTextCompletionEnabled(value bool)
 	Delegate() TextFieldDelegateWrapper
-	SetDelegate(value TextFieldDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 }
 
 type TextField struct {
@@ -314,17 +312,13 @@ func (t_ TextField) SetAutomaticTextCompletionEnabled(value bool) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutomaticTextCompletionEnabled:"), value)
 }
 
+// weak property
 func (t_ TextField) Delegate() TextFieldDelegateWrapper {
 	rv := objc.CallMethod[TextFieldDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ TextField) SetDelegate(value TextFieldDelegate) {
-	po := objc.WrapAsProtocol("NSTextFieldDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ TextField) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ TextField) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

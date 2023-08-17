@@ -6,7 +6,6 @@ import (
 
 	"github.com/hsiafan/cocoa/coregraphics"
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -79,8 +78,7 @@ type IImage interface {
 	IsFlipped() bool
 	SymbolConfiguration() ImageSymbolConfiguration
 	Delegate() ImageDelegateWrapper
-	SetDelegate(value ImageDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	Size() foundation.Size
 	SetSize(value foundation.Size)
 	IsTemplate() bool
@@ -435,18 +433,14 @@ func (i_ Image) SymbolConfiguration() ImageSymbolConfiguration {
 	return rv
 }
 
+// weak property
 func (i_ Image) Delegate() ImageDelegateWrapper {
 	rv := objc.CallMethod[ImageDelegateWrapper](i_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (i_ Image) SetDelegate(value ImageDelegate) {
-	po := objc.WrapAsProtocol("NSImageDelegate", value)
-	objc.SetAssociatedObject(i_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (i_ Image) SetDelegate0(value objc.IObject) {
+// weak property
+func (i_ Image) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](i_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

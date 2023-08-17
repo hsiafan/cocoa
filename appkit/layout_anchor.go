@@ -102,6 +102,7 @@ func (l_ LayoutAnchor) Name() string {
 	return rv
 }
 
+// weak property
 func (l_ LayoutAnchor) Item() objc.Object {
 	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("item"))
 	return rv

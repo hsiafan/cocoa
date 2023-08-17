@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,8 +32,7 @@ type IRuleEditor interface {
 	ReloadPredicate()
 	PredicateForRow(row int) foundation.Predicate
 	Delegate() RuleEditorDelegateWrapper
-	SetDelegate(value RuleEditorDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	IsEditable() bool
 	SetEditable(value bool)
 	NestingMode() RuleEditorNestingMode
@@ -164,18 +162,14 @@ func (r_ RuleEditor) PredicateForRow(row int) foundation.Predicate {
 	return rv
 }
 
+// weak property
 func (r_ RuleEditor) Delegate() RuleEditorDelegateWrapper {
 	rv := objc.CallMethod[RuleEditorDelegateWrapper](r_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (r_ RuleEditor) SetDelegate(value RuleEditorDelegate) {
-	po := objc.WrapAsProtocol("NSRuleEditorDelegate", value)
-	objc.SetAssociatedObject(r_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (r_ RuleEditor) SetDelegate0(value objc.IObject) {
+// weak property
+func (r_ RuleEditor) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
@@ -248,11 +242,13 @@ func (r_ RuleEditor) Predicate() foundation.Predicate {
 	return rv
 }
 
+// weak property
 func (r_ RuleEditor) RowClass() objc.Class {
 	rv := objc.CallMethod[objc.Class](r_, objc.GetSelector("rowClass"))
 	return rv
 }
 
+// weak property
 func (r_ RuleEditor) SetRowClass(value objc.IClass) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setRowClass:"), objc.ExtractPtr(value))
 }

@@ -20,12 +20,47 @@ type ComboBoxDataSource interface {
 	NumberOfItemsInComboBox(comboBox ComboBox) int
 }
 
-type ComboBoxDataSourceWrapper struct {
-	objc.Object
+func WrapComboBoxDataSource(v ComboBoxDataSource) objc.Object {
+	return objc.WrapAsProtocol("NSComboBoxDataSource", v)
 }
 
-func (c_ *ComboBoxDataSourceWrapper) ImplementsComboBox_CompletedString() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBox:completedString:"))
+type ComboBoxDataSourceBase struct {
+}
+
+func (p *ComboBoxDataSourceBase) ImplementsComboBox_CompletedString() bool {
+	return false
+}
+
+func (p *ComboBoxDataSourceBase) ComboBox_CompletedString(comboBox ComboBox, string_ string) string {
+	panic("unimpemented protocol method")
+}
+
+func (p *ComboBoxDataSourceBase) ImplementsComboBox_IndexOfItemWithStringValue() bool {
+	return false
+}
+
+func (p *ComboBoxDataSourceBase) ComboBox_IndexOfItemWithStringValue(comboBox ComboBox, string_ string) uint {
+	panic("unimpemented protocol method")
+}
+
+func (p *ComboBoxDataSourceBase) ImplementsComboBox_ObjectValueForItemAtIndex() bool {
+	return false
+}
+
+func (p *ComboBoxDataSourceBase) ComboBox_ObjectValueForItemAtIndex(comboBox ComboBox, index int) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *ComboBoxDataSourceBase) ImplementsNumberOfItemsInComboBox() bool {
+	return false
+}
+
+func (p *ComboBoxDataSourceBase) NumberOfItemsInComboBox(comboBox ComboBox) int {
+	panic("unimpemented protocol method")
+}
+
+type ComboBoxDataSourceWrapper struct {
+	objc.Object
 }
 
 func (c_ ComboBoxDataSourceWrapper) ComboBox_CompletedString(comboBox IComboBox, string_ string) string {
@@ -33,26 +68,14 @@ func (c_ ComboBoxDataSourceWrapper) ComboBox_CompletedString(comboBox IComboBox,
 	return rv
 }
 
-func (c_ *ComboBoxDataSourceWrapper) ImplementsComboBox_IndexOfItemWithStringValue() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBox:indexOfItemWithStringValue:"))
-}
-
 func (c_ ComboBoxDataSourceWrapper) ComboBox_IndexOfItemWithStringValue(comboBox IComboBox, string_ string) uint {
 	rv := objc.CallMethod[uint](c_, objc.GetSelector("comboBox:indexOfItemWithStringValue:"), objc.ExtractPtr(comboBox), string_)
 	return rv
 }
 
-func (c_ *ComboBoxDataSourceWrapper) ImplementsComboBox_ObjectValueForItemAtIndex() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBox:objectValueForItemAtIndex:"))
-}
-
 func (c_ ComboBoxDataSourceWrapper) ComboBox_ObjectValueForItemAtIndex(comboBox IComboBox, index int) objc.Object {
 	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("comboBox:objectValueForItemAtIndex:"), objc.ExtractPtr(comboBox), index)
 	return rv
-}
-
-func (c_ *ComboBoxDataSourceWrapper) ImplementsNumberOfItemsInComboBox() bool {
-	return c_.RespondsToSelector(objc.GetSelector("numberOfItemsInComboBox:"))
 }
 
 func (c_ ComboBoxDataSourceWrapper) NumberOfItemsInComboBox(comboBox IComboBox) int {

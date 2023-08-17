@@ -162,628 +162,423 @@ type WindowDelegate interface {
 	WindowDidExitVersionBrowser(notification foundation.Notification)
 }
 
-type WindowDelegateImpl struct {
-	_Window_WillPositionSheet_UsingRect                                    func(window Window, sheet Window, rect foundation.Rect) foundation.Rect
-	_WindowWillBeginSheet                                                  func(notification foundation.Notification)
-	_WindowDidEndSheet                                                     func(notification foundation.Notification)
-	_WindowWillResize_ToSize                                               func(sender Window, frameSize foundation.Size) foundation.Size
-	_WindowDidResize                                                       func(notification foundation.Notification)
-	_WindowWillStartLiveResize                                             func(notification foundation.Notification)
-	_WindowDidEndLiveResize                                                func(notification foundation.Notification)
-	_WindowWillMiniaturize                                                 func(notification foundation.Notification)
-	_WindowDidMiniaturize                                                  func(notification foundation.Notification)
-	_WindowDidDeminiaturize                                                func(notification foundation.Notification)
-	_WindowWillUseStandardFrame_DefaultFrame                               func(window Window, newFrame foundation.Rect) foundation.Rect
-	_WindowShouldZoom_ToFrame                                              func(window Window, newFrame foundation.Rect) bool
-	_Window_WillUseFullScreenContentSize                                   func(window Window, proposedSize foundation.Size) foundation.Size
-	_Window_WillUseFullScreenPresentationOptions                           func(window Window, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions
-	_WindowWillEnterFullScreen                                             func(notification foundation.Notification)
-	_WindowDidEnterFullScreen                                              func(notification foundation.Notification)
-	_WindowWillExitFullScreen                                              func(notification foundation.Notification)
-	_WindowDidExitFullScreen                                               func(notification foundation.Notification)
-	_CustomWindowsToEnterFullScreenForWindow                               func(window Window) []IWindow
-	_CustomWindowsToEnterFullScreenForWindow_OnScreen                      func(window Window, screen Screen) []IWindow
-	_Window_StartCustomAnimationToEnterFullScreenWithDuration              func(window Window, duration foundation.TimeInterval)
-	_Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration     func(window Window, screen Screen, duration foundation.TimeInterval)
-	_WindowDidFailToEnterFullScreen                                        func(window Window)
-	_CustomWindowsToExitFullScreenForWindow                                func(window Window) []IWindow
-	_Window_StartCustomAnimationToExitFullScreenWithDuration               func(window Window, duration foundation.TimeInterval)
-	_WindowDidFailToExitFullScreen                                         func(window Window)
-	_WindowWillMove                                                        func(notification foundation.Notification)
-	_WindowDidMove                                                         func(notification foundation.Notification)
-	_WindowDidChangeScreen                                                 func(notification foundation.Notification)
-	_WindowDidChangeScreenProfile                                          func(notification foundation.Notification)
-	_WindowDidChangeBackingProperties                                      func(notification foundation.Notification)
-	_WindowShouldClose                                                     func(sender Window) bool
-	_WindowWillClose                                                       func(notification foundation.Notification)
-	_WindowDidBecomeKey                                                    func(notification foundation.Notification)
-	_WindowDidResignKey                                                    func(notification foundation.Notification)
-	_WindowDidBecomeMain                                                   func(notification foundation.Notification)
-	_WindowDidResignMain                                                   func(notification foundation.Notification)
-	_WindowWillReturnFieldEditor_ToObject                                  func(sender Window, client objc.Object) objc.IObject
-	_WindowDidUpdate                                                       func(notification foundation.Notification)
-	_WindowDidExpose                                                       func(notification foundation.Notification)
-	_WindowDidChangeOcclusionState                                         func(notification foundation.Notification)
-	_Window_ShouldDragDocumentWithEvent_From_WithPasteboard                func(window Window, event Event, dragImageLocation foundation.Point, pasteboard Pasteboard) bool
-	_WindowWillReturnUndoManager                                           func(window Window) foundation.IUndoManager
-	_Window_ShouldPopUpDocumentPathMenu                                    func(window Window, menu Menu) bool
-	_Window_WillEncodeRestorableState                                      func(window Window, state foundation.Coder)
-	_Window_DidDecodeRestorableState                                       func(window Window, state foundation.Coder)
-	_Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize func(window Window, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size
-	_WindowWillEnterVersionBrowser                                         func(notification foundation.Notification)
-	_WindowDidEnterVersionBrowser                                          func(notification foundation.Notification)
-	_WindowWillExitVersionBrowser                                          func(notification foundation.Notification)
-	_WindowDidExitVersionBrowser                                           func(notification foundation.Notification)
+func WrapWindowDelegate(v WindowDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSWindowDelegate", v)
 }
 
-func (di *WindowDelegateImpl) ImplementsWindow_WillPositionSheet_UsingRect() bool {
-	return di._Window_WillPositionSheet_UsingRect != nil
+type WindowDelegateBase struct {
 }
 
-func (di *WindowDelegateImpl) SetWindow_WillPositionSheet_UsingRect(f func(window Window, sheet Window, rect foundation.Rect) foundation.Rect) {
-	di._Window_WillPositionSheet_UsingRect = f
+func (p *WindowDelegateBase) ImplementsWindow_WillPositionSheet_UsingRect() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_WillPositionSheet_UsingRect(window Window, sheet Window, rect foundation.Rect) foundation.Rect {
-	return di._Window_WillPositionSheet_UsingRect(window, sheet, rect)
+func (p *WindowDelegateBase) Window_WillPositionSheet_UsingRect(window Window, sheet Window, rect foundation.Rect) foundation.Rect {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillBeginSheet() bool {
-	return di._WindowWillBeginSheet != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillBeginSheet(f func(notification foundation.Notification)) {
-	di._WindowWillBeginSheet = f
+func (p *WindowDelegateBase) ImplementsWindowWillBeginSheet() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillBeginSheet(notification foundation.Notification) {
-	di._WindowWillBeginSheet(notification)
+func (p *WindowDelegateBase) WindowWillBeginSheet(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidEndSheet() bool {
-	return di._WindowDidEndSheet != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidEndSheet(f func(notification foundation.Notification)) {
-	di._WindowDidEndSheet = f
+func (p *WindowDelegateBase) ImplementsWindowDidEndSheet() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidEndSheet(notification foundation.Notification) {
-	di._WindowDidEndSheet(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowWillResize_ToSize() bool {
-	return di._WindowWillResize_ToSize != nil
+func (p *WindowDelegateBase) WindowDidEndSheet(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowWillResize_ToSize(f func(sender Window, frameSize foundation.Size) foundation.Size) {
-	di._WindowWillResize_ToSize = f
+func (p *WindowDelegateBase) ImplementsWindowWillResize_ToSize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillResize_ToSize(sender Window, frameSize foundation.Size) foundation.Size {
-	return di._WindowWillResize_ToSize(sender, frameSize)
+func (p *WindowDelegateBase) WindowWillResize_ToSize(sender Window, frameSize foundation.Size) foundation.Size {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidResize() bool {
-	return di._WindowDidResize != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidResize(f func(notification foundation.Notification)) {
-	di._WindowDidResize = f
+func (p *WindowDelegateBase) ImplementsWindowDidResize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidResize(notification foundation.Notification) {
-	di._WindowDidResize(notification)
+func (p *WindowDelegateBase) WindowDidResize(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillStartLiveResize() bool {
-	return di._WindowWillStartLiveResize != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillStartLiveResize(f func(notification foundation.Notification)) {
-	di._WindowWillStartLiveResize = f
+func (p *WindowDelegateBase) ImplementsWindowWillStartLiveResize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillStartLiveResize(notification foundation.Notification) {
-	di._WindowWillStartLiveResize(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidEndLiveResize() bool {
-	return di._WindowDidEndLiveResize != nil
+func (p *WindowDelegateBase) WindowWillStartLiveResize(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidEndLiveResize(f func(notification foundation.Notification)) {
-	di._WindowDidEndLiveResize = f
+func (p *WindowDelegateBase) ImplementsWindowDidEndLiveResize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidEndLiveResize(notification foundation.Notification) {
-	di._WindowDidEndLiveResize(notification)
+func (p *WindowDelegateBase) WindowDidEndLiveResize(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillMiniaturize() bool {
-	return di._WindowWillMiniaturize != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillMiniaturize(f func(notification foundation.Notification)) {
-	di._WindowWillMiniaturize = f
+func (p *WindowDelegateBase) ImplementsWindowWillMiniaturize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillMiniaturize(notification foundation.Notification) {
-	di._WindowWillMiniaturize(notification)
+func (p *WindowDelegateBase) WindowWillMiniaturize(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidMiniaturize() bool {
-	return di._WindowDidMiniaturize != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidMiniaturize(f func(notification foundation.Notification)) {
-	di._WindowDidMiniaturize = f
+func (p *WindowDelegateBase) ImplementsWindowDidMiniaturize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidMiniaturize(notification foundation.Notification) {
-	di._WindowDidMiniaturize(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidDeminiaturize() bool {
-	return di._WindowDidDeminiaturize != nil
+func (p *WindowDelegateBase) WindowDidMiniaturize(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidDeminiaturize(f func(notification foundation.Notification)) {
-	di._WindowDidDeminiaturize = f
+func (p *WindowDelegateBase) ImplementsWindowDidDeminiaturize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidDeminiaturize(notification foundation.Notification) {
-	di._WindowDidDeminiaturize(notification)
+func (p *WindowDelegateBase) WindowDidDeminiaturize(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillUseStandardFrame_DefaultFrame() bool {
-	return di._WindowWillUseStandardFrame_DefaultFrame != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillUseStandardFrame_DefaultFrame(f func(window Window, newFrame foundation.Rect) foundation.Rect) {
-	di._WindowWillUseStandardFrame_DefaultFrame = f
+func (p *WindowDelegateBase) ImplementsWindowWillUseStandardFrame_DefaultFrame() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillUseStandardFrame_DefaultFrame(window Window, newFrame foundation.Rect) foundation.Rect {
-	return di._WindowWillUseStandardFrame_DefaultFrame(window, newFrame)
+func (p *WindowDelegateBase) WindowWillUseStandardFrame_DefaultFrame(window Window, newFrame foundation.Rect) foundation.Rect {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowShouldZoom_ToFrame() bool {
-	return di._WindowShouldZoom_ToFrame != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowShouldZoom_ToFrame(f func(window Window, newFrame foundation.Rect) bool) {
-	di._WindowShouldZoom_ToFrame = f
+func (p *WindowDelegateBase) ImplementsWindowShouldZoom_ToFrame() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowShouldZoom_ToFrame(window Window, newFrame foundation.Rect) bool {
-	return di._WindowShouldZoom_ToFrame(window, newFrame)
-}
-func (di *WindowDelegateImpl) ImplementsWindow_WillUseFullScreenContentSize() bool {
-	return di._Window_WillUseFullScreenContentSize != nil
+func (p *WindowDelegateBase) WindowShouldZoom_ToFrame(window Window, newFrame foundation.Rect) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindow_WillUseFullScreenContentSize(f func(window Window, proposedSize foundation.Size) foundation.Size) {
-	di._Window_WillUseFullScreenContentSize = f
+func (p *WindowDelegateBase) ImplementsWindow_WillUseFullScreenContentSize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_WillUseFullScreenContentSize(window Window, proposedSize foundation.Size) foundation.Size {
-	return di._Window_WillUseFullScreenContentSize(window, proposedSize)
+func (p *WindowDelegateBase) Window_WillUseFullScreenContentSize(window Window, proposedSize foundation.Size) foundation.Size {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindow_WillUseFullScreenPresentationOptions() bool {
-	return di._Window_WillUseFullScreenPresentationOptions != nil
-}
 
-func (di *WindowDelegateImpl) SetWindow_WillUseFullScreenPresentationOptions(f func(window Window, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions) {
-	di._Window_WillUseFullScreenPresentationOptions = f
+func (p *WindowDelegateBase) ImplementsWindow_WillUseFullScreenPresentationOptions() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_WillUseFullScreenPresentationOptions(window Window, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions {
-	return di._Window_WillUseFullScreenPresentationOptions(window, proposedOptions)
+func (p *WindowDelegateBase) Window_WillUseFullScreenPresentationOptions(window Window, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillEnterFullScreen() bool {
-	return di._WindowWillEnterFullScreen != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillEnterFullScreen(f func(notification foundation.Notification)) {
-	di._WindowWillEnterFullScreen = f
+func (p *WindowDelegateBase) ImplementsWindowWillEnterFullScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillEnterFullScreen(notification foundation.Notification) {
-	di._WindowWillEnterFullScreen(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidEnterFullScreen() bool {
-	return di._WindowDidEnterFullScreen != nil
+func (p *WindowDelegateBase) WindowWillEnterFullScreen(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidEnterFullScreen(f func(notification foundation.Notification)) {
-	di._WindowDidEnterFullScreen = f
+func (p *WindowDelegateBase) ImplementsWindowDidEnterFullScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidEnterFullScreen(notification foundation.Notification) {
-	di._WindowDidEnterFullScreen(notification)
+func (p *WindowDelegateBase) WindowDidEnterFullScreen(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillExitFullScreen() bool {
-	return di._WindowWillExitFullScreen != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillExitFullScreen(f func(notification foundation.Notification)) {
-	di._WindowWillExitFullScreen = f
+func (p *WindowDelegateBase) ImplementsWindowWillExitFullScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillExitFullScreen(notification foundation.Notification) {
-	di._WindowWillExitFullScreen(notification)
+func (p *WindowDelegateBase) WindowWillExitFullScreen(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidExitFullScreen() bool {
-	return di._WindowDidExitFullScreen != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidExitFullScreen(f func(notification foundation.Notification)) {
-	di._WindowDidExitFullScreen = f
+func (p *WindowDelegateBase) ImplementsWindowDidExitFullScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidExitFullScreen(notification foundation.Notification) {
-	di._WindowDidExitFullScreen(notification)
-}
-func (di *WindowDelegateImpl) ImplementsCustomWindowsToEnterFullScreenForWindow() bool {
-	return di._CustomWindowsToEnterFullScreenForWindow != nil
+func (p *WindowDelegateBase) WindowDidExitFullScreen(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetCustomWindowsToEnterFullScreenForWindow(f func(window Window) []IWindow) {
-	di._CustomWindowsToEnterFullScreenForWindow = f
+func (p *WindowDelegateBase) ImplementsCustomWindowsToEnterFullScreenForWindow() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) CustomWindowsToEnterFullScreenForWindow(window Window) []IWindow {
-	return di._CustomWindowsToEnterFullScreenForWindow(window)
+func (p *WindowDelegateBase) CustomWindowsToEnterFullScreenForWindow(window Window) []IWindow {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsCustomWindowsToEnterFullScreenForWindow_OnScreen() bool {
-	return di._CustomWindowsToEnterFullScreenForWindow_OnScreen != nil
-}
 
-func (di *WindowDelegateImpl) SetCustomWindowsToEnterFullScreenForWindow_OnScreen(f func(window Window, screen Screen) []IWindow) {
-	di._CustomWindowsToEnterFullScreenForWindow_OnScreen = f
+func (p *WindowDelegateBase) ImplementsCustomWindowsToEnterFullScreenForWindow_OnScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) CustomWindowsToEnterFullScreenForWindow_OnScreen(window Window, screen Screen) []IWindow {
-	return di._CustomWindowsToEnterFullScreenForWindow_OnScreen(window, screen)
+func (p *WindowDelegateBase) CustomWindowsToEnterFullScreenForWindow_OnScreen(window Window, screen Screen) []IWindow {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindow_StartCustomAnimationToEnterFullScreenWithDuration() bool {
-	return di._Window_StartCustomAnimationToEnterFullScreenWithDuration != nil
-}
 
-func (di *WindowDelegateImpl) SetWindow_StartCustomAnimationToEnterFullScreenWithDuration(f func(window Window, duration foundation.TimeInterval)) {
-	di._Window_StartCustomAnimationToEnterFullScreenWithDuration = f
+func (p *WindowDelegateBase) ImplementsWindow_StartCustomAnimationToEnterFullScreenWithDuration() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_StartCustomAnimationToEnterFullScreenWithDuration(window Window, duration foundation.TimeInterval) {
-	di._Window_StartCustomAnimationToEnterFullScreenWithDuration(window, duration)
-}
-func (di *WindowDelegateImpl) ImplementsWindow_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration() bool {
-	return di._Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration != nil
+func (p *WindowDelegateBase) Window_StartCustomAnimationToEnterFullScreenWithDuration(window Window, duration foundation.TimeInterval) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindow_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(f func(window Window, screen Screen, duration foundation.TimeInterval)) {
-	di._Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration = f
+func (p *WindowDelegateBase) ImplementsWindow_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(window Window, screen Screen, duration foundation.TimeInterval) {
-	di._Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(window, screen, duration)
+func (p *WindowDelegateBase) Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(window Window, screen Screen, duration foundation.TimeInterval) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidFailToEnterFullScreen() bool {
-	return di._WindowDidFailToEnterFullScreen != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidFailToEnterFullScreen(f func(window Window)) {
-	di._WindowDidFailToEnterFullScreen = f
+func (p *WindowDelegateBase) ImplementsWindowDidFailToEnterFullScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidFailToEnterFullScreen(window Window) {
-	di._WindowDidFailToEnterFullScreen(window)
-}
-func (di *WindowDelegateImpl) ImplementsCustomWindowsToExitFullScreenForWindow() bool {
-	return di._CustomWindowsToExitFullScreenForWindow != nil
+func (p *WindowDelegateBase) WindowDidFailToEnterFullScreen(window Window) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetCustomWindowsToExitFullScreenForWindow(f func(window Window) []IWindow) {
-	di._CustomWindowsToExitFullScreenForWindow = f
+func (p *WindowDelegateBase) ImplementsCustomWindowsToExitFullScreenForWindow() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) CustomWindowsToExitFullScreenForWindow(window Window) []IWindow {
-	return di._CustomWindowsToExitFullScreenForWindow(window)
+func (p *WindowDelegateBase) CustomWindowsToExitFullScreenForWindow(window Window) []IWindow {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindow_StartCustomAnimationToExitFullScreenWithDuration() bool {
-	return di._Window_StartCustomAnimationToExitFullScreenWithDuration != nil
-}
 
-func (di *WindowDelegateImpl) SetWindow_StartCustomAnimationToExitFullScreenWithDuration(f func(window Window, duration foundation.TimeInterval)) {
-	di._Window_StartCustomAnimationToExitFullScreenWithDuration = f
+func (p *WindowDelegateBase) ImplementsWindow_StartCustomAnimationToExitFullScreenWithDuration() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_StartCustomAnimationToExitFullScreenWithDuration(window Window, duration foundation.TimeInterval) {
-	di._Window_StartCustomAnimationToExitFullScreenWithDuration(window, duration)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidFailToExitFullScreen() bool {
-	return di._WindowDidFailToExitFullScreen != nil
+func (p *WindowDelegateBase) Window_StartCustomAnimationToExitFullScreenWithDuration(window Window, duration foundation.TimeInterval) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidFailToExitFullScreen(f func(window Window)) {
-	di._WindowDidFailToExitFullScreen = f
+func (p *WindowDelegateBase) ImplementsWindowDidFailToExitFullScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidFailToExitFullScreen(window Window) {
-	di._WindowDidFailToExitFullScreen(window)
+func (p *WindowDelegateBase) WindowDidFailToExitFullScreen(window Window) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillMove() bool {
-	return di._WindowWillMove != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillMove(f func(notification foundation.Notification)) {
-	di._WindowWillMove = f
+func (p *WindowDelegateBase) ImplementsWindowWillMove() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillMove(notification foundation.Notification) {
-	di._WindowWillMove(notification)
+func (p *WindowDelegateBase) WindowWillMove(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidMove() bool {
-	return di._WindowDidMove != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidMove(f func(notification foundation.Notification)) {
-	di._WindowDidMove = f
+func (p *WindowDelegateBase) ImplementsWindowDidMove() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidMove(notification foundation.Notification) {
-	di._WindowDidMove(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidChangeScreen() bool {
-	return di._WindowDidChangeScreen != nil
+func (p *WindowDelegateBase) WindowDidMove(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidChangeScreen(f func(notification foundation.Notification)) {
-	di._WindowDidChangeScreen = f
+func (p *WindowDelegateBase) ImplementsWindowDidChangeScreen() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidChangeScreen(notification foundation.Notification) {
-	di._WindowDidChangeScreen(notification)
+func (p *WindowDelegateBase) WindowDidChangeScreen(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidChangeScreenProfile() bool {
-	return di._WindowDidChangeScreenProfile != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidChangeScreenProfile(f func(notification foundation.Notification)) {
-	di._WindowDidChangeScreenProfile = f
+func (p *WindowDelegateBase) ImplementsWindowDidChangeScreenProfile() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidChangeScreenProfile(notification foundation.Notification) {
-	di._WindowDidChangeScreenProfile(notification)
+func (p *WindowDelegateBase) WindowDidChangeScreenProfile(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidChangeBackingProperties() bool {
-	return di._WindowDidChangeBackingProperties != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidChangeBackingProperties(f func(notification foundation.Notification)) {
-	di._WindowDidChangeBackingProperties = f
+func (p *WindowDelegateBase) ImplementsWindowDidChangeBackingProperties() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidChangeBackingProperties(notification foundation.Notification) {
-	di._WindowDidChangeBackingProperties(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowShouldClose() bool {
-	return di._WindowShouldClose != nil
+func (p *WindowDelegateBase) WindowDidChangeBackingProperties(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowShouldClose(f func(sender Window) bool) {
-	di._WindowShouldClose = f
+func (p *WindowDelegateBase) ImplementsWindowShouldClose() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowShouldClose(sender Window) bool {
-	return di._WindowShouldClose(sender)
+func (p *WindowDelegateBase) WindowShouldClose(sender Window) bool {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillClose() bool {
-	return di._WindowWillClose != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillClose(f func(notification foundation.Notification)) {
-	di._WindowWillClose = f
+func (p *WindowDelegateBase) ImplementsWindowWillClose() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillClose(notification foundation.Notification) {
-	di._WindowWillClose(notification)
+func (p *WindowDelegateBase) WindowWillClose(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidBecomeKey() bool {
-	return di._WindowDidBecomeKey != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidBecomeKey(f func(notification foundation.Notification)) {
-	di._WindowDidBecomeKey = f
+func (p *WindowDelegateBase) ImplementsWindowDidBecomeKey() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidBecomeKey(notification foundation.Notification) {
-	di._WindowDidBecomeKey(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidResignKey() bool {
-	return di._WindowDidResignKey != nil
+func (p *WindowDelegateBase) WindowDidBecomeKey(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidResignKey(f func(notification foundation.Notification)) {
-	di._WindowDidResignKey = f
+func (p *WindowDelegateBase) ImplementsWindowDidResignKey() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidResignKey(notification foundation.Notification) {
-	di._WindowDidResignKey(notification)
+func (p *WindowDelegateBase) WindowDidResignKey(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidBecomeMain() bool {
-	return di._WindowDidBecomeMain != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidBecomeMain(f func(notification foundation.Notification)) {
-	di._WindowDidBecomeMain = f
+func (p *WindowDelegateBase) ImplementsWindowDidBecomeMain() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidBecomeMain(notification foundation.Notification) {
-	di._WindowDidBecomeMain(notification)
+func (p *WindowDelegateBase) WindowDidBecomeMain(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidResignMain() bool {
-	return di._WindowDidResignMain != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidResignMain(f func(notification foundation.Notification)) {
-	di._WindowDidResignMain = f
+func (p *WindowDelegateBase) ImplementsWindowDidResignMain() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidResignMain(notification foundation.Notification) {
-	di._WindowDidResignMain(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowWillReturnFieldEditor_ToObject() bool {
-	return di._WindowWillReturnFieldEditor_ToObject != nil
+func (p *WindowDelegateBase) WindowDidResignMain(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowWillReturnFieldEditor_ToObject(f func(sender Window, client objc.Object) objc.IObject) {
-	di._WindowWillReturnFieldEditor_ToObject = f
+func (p *WindowDelegateBase) ImplementsWindowWillReturnFieldEditor_ToObject() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillReturnFieldEditor_ToObject(sender Window, client objc.Object) objc.IObject {
-	return di._WindowWillReturnFieldEditor_ToObject(sender, client)
+func (p *WindowDelegateBase) WindowWillReturnFieldEditor_ToObject(sender Window, client objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidUpdate() bool {
-	return di._WindowDidUpdate != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidUpdate(f func(notification foundation.Notification)) {
-	di._WindowDidUpdate = f
+func (p *WindowDelegateBase) ImplementsWindowDidUpdate() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidUpdate(notification foundation.Notification) {
-	di._WindowDidUpdate(notification)
+func (p *WindowDelegateBase) WindowDidUpdate(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowDidExpose() bool {
-	return di._WindowDidExpose != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowDidExpose(f func(notification foundation.Notification)) {
-	di._WindowDidExpose = f
+func (p *WindowDelegateBase) ImplementsWindowDidExpose() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidExpose(notification foundation.Notification) {
-	di._WindowDidExpose(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidChangeOcclusionState() bool {
-	return di._WindowDidChangeOcclusionState != nil
+func (p *WindowDelegateBase) WindowDidExpose(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidChangeOcclusionState(f func(notification foundation.Notification)) {
-	di._WindowDidChangeOcclusionState = f
+func (p *WindowDelegateBase) ImplementsWindowDidChangeOcclusionState() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidChangeOcclusionState(notification foundation.Notification) {
-	di._WindowDidChangeOcclusionState(notification)
+func (p *WindowDelegateBase) WindowDidChangeOcclusionState(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindow_ShouldDragDocumentWithEvent_From_WithPasteboard() bool {
-	return di._Window_ShouldDragDocumentWithEvent_From_WithPasteboard != nil
-}
 
-func (di *WindowDelegateImpl) SetWindow_ShouldDragDocumentWithEvent_From_WithPasteboard(f func(window Window, event Event, dragImageLocation foundation.Point, pasteboard Pasteboard) bool) {
-	di._Window_ShouldDragDocumentWithEvent_From_WithPasteboard = f
+func (p *WindowDelegateBase) ImplementsWindow_ShouldDragDocumentWithEvent_From_WithPasteboard() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_ShouldDragDocumentWithEvent_From_WithPasteboard(window Window, event Event, dragImageLocation foundation.Point, pasteboard Pasteboard) bool {
-	return di._Window_ShouldDragDocumentWithEvent_From_WithPasteboard(window, event, dragImageLocation, pasteboard)
+func (p *WindowDelegateBase) Window_ShouldDragDocumentWithEvent_From_WithPasteboard(window Window, event Event, dragImageLocation foundation.Point, pasteboard Pasteboard) bool {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillReturnUndoManager() bool {
-	return di._WindowWillReturnUndoManager != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillReturnUndoManager(f func(window Window) foundation.IUndoManager) {
-	di._WindowWillReturnUndoManager = f
+func (p *WindowDelegateBase) ImplementsWindowWillReturnUndoManager() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillReturnUndoManager(window Window) foundation.IUndoManager {
-	return di._WindowWillReturnUndoManager(window)
-}
-func (di *WindowDelegateImpl) ImplementsWindow_ShouldPopUpDocumentPathMenu() bool {
-	return di._Window_ShouldPopUpDocumentPathMenu != nil
+func (p *WindowDelegateBase) WindowWillReturnUndoManager(window Window) foundation.IUndoManager {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindow_ShouldPopUpDocumentPathMenu(f func(window Window, menu Menu) bool) {
-	di._Window_ShouldPopUpDocumentPathMenu = f
+func (p *WindowDelegateBase) ImplementsWindow_ShouldPopUpDocumentPathMenu() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_ShouldPopUpDocumentPathMenu(window Window, menu Menu) bool {
-	return di._Window_ShouldPopUpDocumentPathMenu(window, menu)
+func (p *WindowDelegateBase) Window_ShouldPopUpDocumentPathMenu(window Window, menu Menu) bool {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindow_WillEncodeRestorableState() bool {
-	return di._Window_WillEncodeRestorableState != nil
-}
 
-func (di *WindowDelegateImpl) SetWindow_WillEncodeRestorableState(f func(window Window, state foundation.Coder)) {
-	di._Window_WillEncodeRestorableState = f
+func (p *WindowDelegateBase) ImplementsWindow_WillEncodeRestorableState() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_WillEncodeRestorableState(window Window, state foundation.Coder) {
-	di._Window_WillEncodeRestorableState(window, state)
+func (p *WindowDelegateBase) Window_WillEncodeRestorableState(window Window, state foundation.Coder) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindow_DidDecodeRestorableState() bool {
-	return di._Window_DidDecodeRestorableState != nil
-}
 
-func (di *WindowDelegateImpl) SetWindow_DidDecodeRestorableState(f func(window Window, state foundation.Coder)) {
-	di._Window_DidDecodeRestorableState = f
+func (p *WindowDelegateBase) ImplementsWindow_DidDecodeRestorableState() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_DidDecodeRestorableState(window Window, state foundation.Coder) {
-	di._Window_DidDecodeRestorableState(window, state)
-}
-func (di *WindowDelegateImpl) ImplementsWindow_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize() bool {
-	return di._Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize != nil
+func (p *WindowDelegateBase) Window_DidDecodeRestorableState(window Window, state foundation.Coder) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindow_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(f func(window Window, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size) {
-	di._Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize = f
+func (p *WindowDelegateBase) ImplementsWindow_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(window Window, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size {
-	return di._Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(window, maxPreferredFrameSize, maxAllowedFrameSize)
+func (p *WindowDelegateBase) Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(window Window, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillEnterVersionBrowser() bool {
-	return di._WindowWillEnterVersionBrowser != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillEnterVersionBrowser(f func(notification foundation.Notification)) {
-	di._WindowWillEnterVersionBrowser = f
+func (p *WindowDelegateBase) ImplementsWindowWillEnterVersionBrowser() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillEnterVersionBrowser(notification foundation.Notification) {
-	di._WindowWillEnterVersionBrowser(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidEnterVersionBrowser() bool {
-	return di._WindowDidEnterVersionBrowser != nil
+func (p *WindowDelegateBase) WindowWillEnterVersionBrowser(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidEnterVersionBrowser(f func(notification foundation.Notification)) {
-	di._WindowDidEnterVersionBrowser = f
+func (p *WindowDelegateBase) ImplementsWindowDidEnterVersionBrowser() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidEnterVersionBrowser(notification foundation.Notification) {
-	di._WindowDidEnterVersionBrowser(notification)
+func (p *WindowDelegateBase) WindowDidEnterVersionBrowser(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *WindowDelegateImpl) ImplementsWindowWillExitVersionBrowser() bool {
-	return di._WindowWillExitVersionBrowser != nil
-}
 
-func (di *WindowDelegateImpl) SetWindowWillExitVersionBrowser(f func(notification foundation.Notification)) {
-	di._WindowWillExitVersionBrowser = f
+func (p *WindowDelegateBase) ImplementsWindowWillExitVersionBrowser() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowWillExitVersionBrowser(notification foundation.Notification) {
-	di._WindowWillExitVersionBrowser(notification)
-}
-func (di *WindowDelegateImpl) ImplementsWindowDidExitVersionBrowser() bool {
-	return di._WindowDidExitVersionBrowser != nil
+func (p *WindowDelegateBase) WindowWillExitVersionBrowser(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *WindowDelegateImpl) SetWindowDidExitVersionBrowser(f func(notification foundation.Notification)) {
-	di._WindowDidExitVersionBrowser = f
+func (p *WindowDelegateBase) ImplementsWindowDidExitVersionBrowser() bool {
+	return false
 }
 
-func (di *WindowDelegateImpl) WindowDidExitVersionBrowser(notification foundation.Notification) {
-	di._WindowDidExitVersionBrowser(notification)
+func (p *WindowDelegateBase) WindowDidExitVersionBrowser(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
 type WindowDelegateWrapper struct {
 	objc.Object
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindow_WillPositionSheet_UsingRect() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:willPositionSheet:usingRect:"))
 }
 
 func (w_ WindowDelegateWrapper) Window_WillPositionSheet_UsingRect(window IWindow, sheet IWindow, rect foundation.Rect) foundation.Rect {
@@ -791,24 +586,12 @@ func (w_ WindowDelegateWrapper) Window_WillPositionSheet_UsingRect(window IWindo
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillBeginSheet() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillBeginSheet:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowWillBeginSheet(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillBeginSheet:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidEndSheet() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidEndSheet:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidEndSheet(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEndSheet:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillResize_ToSize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillResize:toSize:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillResize_ToSize(sender IWindow, frameSize foundation.Size) foundation.Size {
@@ -816,56 +599,28 @@ func (w_ WindowDelegateWrapper) WindowWillResize_ToSize(sender IWindow, frameSiz
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidResize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidResize:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidResize(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResize:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillStartLiveResize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillStartLiveResize:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillStartLiveResize(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillStartLiveResize:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidEndLiveResize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidEndLiveResize:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidEndLiveResize(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEndLiveResize:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillMiniaturize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillMiniaturize:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillMiniaturize(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillMiniaturize:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidMiniaturize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidMiniaturize:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidMiniaturize(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidMiniaturize:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidDeminiaturize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidDeminiaturize:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidDeminiaturize(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidDeminiaturize:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillUseStandardFrame_DefaultFrame() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillUseStandardFrame:defaultFrame:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillUseStandardFrame_DefaultFrame(window IWindow, newFrame foundation.Rect) foundation.Rect {
@@ -873,17 +628,9 @@ func (w_ WindowDelegateWrapper) WindowWillUseStandardFrame_DefaultFrame(window I
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowShouldZoom_ToFrame() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowShouldZoom:toFrame:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowShouldZoom_ToFrame(window IWindow, newFrame foundation.Rect) bool {
 	rv := objc.CallMethod[bool](w_, objc.GetSelector("windowShouldZoom:toFrame:"), objc.ExtractPtr(window), newFrame)
 	return rv
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindow_WillUseFullScreenContentSize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:willUseFullScreenContentSize:"))
 }
 
 func (w_ WindowDelegateWrapper) Window_WillUseFullScreenContentSize(window IWindow, proposedSize foundation.Size) foundation.Size {
@@ -891,49 +638,25 @@ func (w_ WindowDelegateWrapper) Window_WillUseFullScreenContentSize(window IWind
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindow_WillUseFullScreenPresentationOptions() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:willUseFullScreenPresentationOptions:"))
-}
-
 func (w_ WindowDelegateWrapper) Window_WillUseFullScreenPresentationOptions(window IWindow, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions {
 	rv := objc.CallMethod[ApplicationPresentationOptions](w_, objc.GetSelector("window:willUseFullScreenPresentationOptions:"), objc.ExtractPtr(window), proposedOptions)
 	return rv
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillEnterFullScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillEnterFullScreen:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillEnterFullScreen(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillEnterFullScreen:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidEnterFullScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidEnterFullScreen:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidEnterFullScreen(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEnterFullScreen:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillExitFullScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillExitFullScreen:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillExitFullScreen(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillExitFullScreen:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidExitFullScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidExitFullScreen:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidExitFullScreen(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExitFullScreen:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWindow() bool {
-	return w_.RespondsToSelector(objc.GetSelector("customWindowsToEnterFullScreenForWindow:"))
 }
 
 func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindow(window IWindow) []Window {
@@ -941,41 +664,21 @@ func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindow(window I
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToEnterFullScreenForWindow_OnScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("customWindowsToEnterFullScreenForWindow:onScreen:"))
-}
-
 func (w_ WindowDelegateWrapper) CustomWindowsToEnterFullScreenForWindow_OnScreen(window IWindow, screen IScreen) []Window {
 	rv := objc.CallMethod[[]Window](w_, objc.GetSelector("customWindowsToEnterFullScreenForWindow:onScreen:"), objc.ExtractPtr(window), objc.ExtractPtr(screen))
 	return rv
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToEnterFullScreenWithDuration() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:startCustomAnimationToEnterFullScreenWithDuration:"))
 }
 
 func (w_ WindowDelegateWrapper) Window_StartCustomAnimationToEnterFullScreenWithDuration(window IWindow, duration foundation.TimeInterval) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToEnterFullScreenWithDuration:"), objc.ExtractPtr(window), duration)
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"))
-}
-
 func (w_ WindowDelegateWrapper) Window_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(window IWindow, screen IScreen, duration foundation.TimeInterval) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), objc.ExtractPtr(window), objc.ExtractPtr(screen), duration)
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidFailToEnterFullScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidFailToEnterFullScreen:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidFailToEnterFullScreen(window IWindow) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidFailToEnterFullScreen:"), objc.ExtractPtr(window))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsCustomWindowsToExitFullScreenForWindow() bool {
-	return w_.RespondsToSelector(objc.GetSelector("customWindowsToExitFullScreenForWindow:"))
 }
 
 func (w_ WindowDelegateWrapper) CustomWindowsToExitFullScreenForWindow(window IWindow) []Window {
@@ -983,64 +686,32 @@ func (w_ WindowDelegateWrapper) CustomWindowsToExitFullScreenForWindow(window IW
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindow_StartCustomAnimationToExitFullScreenWithDuration() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:startCustomAnimationToExitFullScreenWithDuration:"))
-}
-
 func (w_ WindowDelegateWrapper) Window_StartCustomAnimationToExitFullScreenWithDuration(window IWindow, duration foundation.TimeInterval) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:startCustomAnimationToExitFullScreenWithDuration:"), objc.ExtractPtr(window), duration)
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidFailToExitFullScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidFailToExitFullScreen:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidFailToExitFullScreen(window IWindow) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidFailToExitFullScreen:"), objc.ExtractPtr(window))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillMove() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillMove:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowWillMove(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillMove:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidMove() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidMove:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidMove(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidMove:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeScreen() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidChangeScreen:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidChangeScreen(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeScreen:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeScreenProfile() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidChangeScreenProfile:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidChangeScreenProfile(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeScreenProfile:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeBackingProperties() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidChangeBackingProperties:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidChangeBackingProperties(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeBackingProperties:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowShouldClose() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowShouldClose:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowShouldClose(sender IWindow) bool {
@@ -1048,48 +719,24 @@ func (w_ WindowDelegateWrapper) WindowShouldClose(sender IWindow) bool {
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillClose() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillClose:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowWillClose(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillClose:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidBecomeKey() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidBecomeKey:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidBecomeKey(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidBecomeKey:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidResignKey() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidResignKey:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidResignKey(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResignKey:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidBecomeMain() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidBecomeMain:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidBecomeMain(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidBecomeMain:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidResignMain() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidResignMain:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidResignMain(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidResignMain:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillReturnFieldEditor_ToObject() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillReturnFieldEditor:toObject:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowWillReturnFieldEditor_ToObject(sender IWindow, client objc.IObject) objc.Object {
@@ -1097,32 +744,16 @@ func (w_ WindowDelegateWrapper) WindowWillReturnFieldEditor_ToObject(sender IWin
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidUpdate() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidUpdate:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidUpdate(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidUpdate:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidExpose() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidExpose:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidExpose(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidExpose:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidChangeOcclusionState() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidChangeOcclusionState:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowDidChangeOcclusionState(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidChangeOcclusionState:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindow_ShouldDragDocumentWithEvent_From_WithPasteboard() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:shouldDragDocumentWithEvent:from:withPasteboard:"))
 }
 
 func (w_ WindowDelegateWrapper) Window_ShouldDragDocumentWithEvent_From_WithPasteboard(window IWindow, event IEvent, dragImageLocation foundation.Point, pasteboard IPasteboard) bool {
@@ -1130,17 +761,9 @@ func (w_ WindowDelegateWrapper) Window_ShouldDragDocumentWithEvent_From_WithPast
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillReturnUndoManager() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillReturnUndoManager:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowWillReturnUndoManager(window IWindow) foundation.UndoManager {
 	rv := objc.CallMethod[foundation.UndoManager](w_, objc.GetSelector("windowWillReturnUndoManager:"), objc.ExtractPtr(window))
 	return rv
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindow_ShouldPopUpDocumentPathMenu() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:shouldPopUpDocumentPathMenu:"))
 }
 
 func (w_ WindowDelegateWrapper) Window_ShouldPopUpDocumentPathMenu(window IWindow, menu IMenu) bool {
@@ -1148,24 +771,12 @@ func (w_ WindowDelegateWrapper) Window_ShouldPopUpDocumentPathMenu(window IWindo
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindow_WillEncodeRestorableState() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:willEncodeRestorableState:"))
-}
-
 func (w_ WindowDelegateWrapper) Window_WillEncodeRestorableState(window IWindow, state foundation.ICoder) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:willEncodeRestorableState:"), objc.ExtractPtr(window), objc.ExtractPtr(state))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindow_DidDecodeRestorableState() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:didDecodeRestorableState:"))
-}
-
 func (w_ WindowDelegateWrapper) Window_DidDecodeRestorableState(window IWindow, state foundation.ICoder) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("window:didDecodeRestorableState:"), objc.ExtractPtr(window), objc.ExtractPtr(state))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindow_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize() bool {
-	return w_.RespondsToSelector(objc.GetSelector("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"))
 }
 
 func (w_ WindowDelegateWrapper) Window_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(window IWindow, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size {
@@ -1173,32 +784,16 @@ func (w_ WindowDelegateWrapper) Window_WillResizeForVersionBrowserWithMaxPreferr
 	return rv
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillEnterVersionBrowser() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillEnterVersionBrowser:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowWillEnterVersionBrowser(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillEnterVersionBrowser:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidEnterVersionBrowser() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidEnterVersionBrowser:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidEnterVersionBrowser(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidEnterVersionBrowser:"), objc.ExtractPtr(notification))
 }
 
-func (w_ *WindowDelegateWrapper) ImplementsWindowWillExitVersionBrowser() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowWillExitVersionBrowser:"))
-}
-
 func (w_ WindowDelegateWrapper) WindowWillExitVersionBrowser(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillExitVersionBrowser:"), objc.ExtractPtr(notification))
-}
-
-func (w_ *WindowDelegateWrapper) ImplementsWindowDidExitVersionBrowser() bool {
-	return w_.RespondsToSelector(objc.GetSelector("windowDidExitVersionBrowser:"))
 }
 
 func (w_ WindowDelegateWrapper) WindowDidExitVersionBrowser(notification foundation.INotification) {

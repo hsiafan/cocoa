@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -43,8 +42,7 @@ type IComboBox interface {
 	NumberOfVisibleItems() int
 	SetNumberOfVisibleItems(value int)
 	DataSource() ComboBoxDataSourceWrapper
-	SetDataSource(value ComboBoxDataSource)
-	SetDataSource0(value objc.IObject)
+	SetDataSource(value objc.IObject)
 	UsesDataSource() bool
 	SetUsesDataSource(value bool)
 	ObjectValues() []objc.Object
@@ -217,18 +215,14 @@ func (c_ ComboBox) SetNumberOfVisibleItems(value int) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setNumberOfVisibleItems:"), value)
 }
 
+// weak property
 func (c_ ComboBox) DataSource() ComboBoxDataSourceWrapper {
 	rv := objc.CallMethod[ComboBoxDataSourceWrapper](c_, objc.GetSelector("dataSource"))
 	return rv
 }
 
-func (c_ ComboBox) SetDataSource(value ComboBoxDataSource) {
-	po := objc.WrapAsProtocol("NSComboBoxDataSource", value)
-	objc.SetAssociatedObject(c_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), po)
-}
-
-func (c_ ComboBox) SetDataSource0(value objc.IObject) {
+// weak property
+func (c_ ComboBox) SetDataSource(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), objc.ExtractPtr(value))
 }
 

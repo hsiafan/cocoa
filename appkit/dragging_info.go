@@ -64,6 +64,134 @@ type DraggingInfo interface {
 	SpringLoadingHighlight() SpringLoadingHighlight
 }
 
+func WrapDraggingInfo(v DraggingInfo) objc.Object {
+	return objc.WrapAsProtocol("NSDraggingInfo", v)
+}
+
+type DraggingInfoBase struct {
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingPasteboard() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingPasteboard() IPasteboard {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingSequenceNumber() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingSequenceNumber() int {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingSource() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingSource() objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingSourceOperationMask() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingSourceOperationMask() DragOperation {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingLocation() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingLocation() foundation.Point {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingDestinationWindow() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingDestinationWindow() IWindow {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsSetNumberOfValidItemsForDrop() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) SetNumberOfValidItemsForDrop(value int) {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsNumberOfValidItemsForDrop() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) NumberOfValidItemsForDrop() int {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggedImage() bool {
+	return false
+}
+
+// deprecated
+func (p *DraggingInfoBase) DraggedImage() IImage {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggedImageLocation() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggedImageLocation() foundation.Point {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsSetAnimatesToDestination() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) SetAnimatesToDestination(value bool) {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsAnimatesToDestination() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) AnimatesToDestination() bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsSetDraggingFormation() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) SetDraggingFormation(value DraggingFormation) {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsDraggingFormation() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) DraggingFormation() DraggingFormation {
+	panic("unimpemented protocol method")
+}
+
+func (p *DraggingInfoBase) ImplementsSpringLoadingHighlight() bool {
+	return false
+}
+
+func (p *DraggingInfoBase) SpringLoadingHighlight() SpringLoadingHighlight {
+	panic("unimpemented protocol method")
+}
+
 type DraggingInfoWrapper struct {
 	objc.Object
 }
@@ -86,17 +214,9 @@ func (d_ DraggingInfoWrapper) ResetSpringLoading() {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("resetSpringLoading"))
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsDraggingPasteboard() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingPasteboard"))
-}
-
 func (d_ DraggingInfoWrapper) DraggingPasteboard() Pasteboard {
 	rv := objc.CallMethod[Pasteboard](d_, objc.GetSelector("draggingPasteboard"))
 	return rv
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsDraggingSequenceNumber() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSequenceNumber"))
 }
 
 func (d_ DraggingInfoWrapper) DraggingSequenceNumber() int {
@@ -104,17 +224,9 @@ func (d_ DraggingInfoWrapper) DraggingSequenceNumber() int {
 	return rv
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsDraggingSource() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSource"))
-}
-
 func (d_ DraggingInfoWrapper) DraggingSource() objc.Object {
 	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("draggingSource"))
 	return rv
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsDraggingSourceOperationMask() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingSourceOperationMask"))
 }
 
 func (d_ DraggingInfoWrapper) DraggingSourceOperationMask() DragOperation {
@@ -122,17 +234,9 @@ func (d_ DraggingInfoWrapper) DraggingSourceOperationMask() DragOperation {
 	return rv
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsDraggingLocation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingLocation"))
-}
-
 func (d_ DraggingInfoWrapper) DraggingLocation() foundation.Point {
 	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggingLocation"))
 	return rv
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsDraggingDestinationWindow() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingDestinationWindow"))
 }
 
 func (d_ DraggingInfoWrapper) DraggingDestinationWindow() Window {
@@ -140,25 +244,13 @@ func (d_ DraggingInfoWrapper) DraggingDestinationWindow() Window {
 	return rv
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsSetNumberOfValidItemsForDrop() bool {
-	return d_.RespondsToSelector(objc.GetSelector("setNumberOfValidItemsForDrop:"))
-}
-
 func (d_ DraggingInfoWrapper) SetNumberOfValidItemsForDrop(value int) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setNumberOfValidItemsForDrop:"), value)
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsNumberOfValidItemsForDrop() bool {
-	return d_.RespondsToSelector(objc.GetSelector("numberOfValidItemsForDrop"))
 }
 
 func (d_ DraggingInfoWrapper) NumberOfValidItemsForDrop() int {
 	rv := objc.CallMethod[int](d_, objc.GetSelector("numberOfValidItemsForDrop"))
 	return rv
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsDraggedImage() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggedImage"))
 }
 
 // deprecated
@@ -167,25 +259,13 @@ func (d_ DraggingInfoWrapper) DraggedImage() Image {
 	return rv
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsDraggedImageLocation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggedImageLocation"))
-}
-
 func (d_ DraggingInfoWrapper) DraggedImageLocation() foundation.Point {
 	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggedImageLocation"))
 	return rv
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsSetAnimatesToDestination() bool {
-	return d_.RespondsToSelector(objc.GetSelector("setAnimatesToDestination:"))
-}
-
 func (d_ DraggingInfoWrapper) SetAnimatesToDestination(value bool) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAnimatesToDestination:"), value)
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsAnimatesToDestination() bool {
-	return d_.RespondsToSelector(objc.GetSelector("animatesToDestination"))
 }
 
 func (d_ DraggingInfoWrapper) AnimatesToDestination() bool {
@@ -193,25 +273,13 @@ func (d_ DraggingInfoWrapper) AnimatesToDestination() bool {
 	return rv
 }
 
-func (d_ *DraggingInfoWrapper) ImplementsSetDraggingFormation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("setDraggingFormation:"))
-}
-
 func (d_ DraggingInfoWrapper) SetDraggingFormation(value DraggingFormation) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFormation:"), value)
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsDraggingFormation() bool {
-	return d_.RespondsToSelector(objc.GetSelector("draggingFormation"))
 }
 
 func (d_ DraggingInfoWrapper) DraggingFormation() DraggingFormation {
 	rv := objc.CallMethod[DraggingFormation](d_, objc.GetSelector("draggingFormation"))
 	return rv
-}
-
-func (d_ *DraggingInfoWrapper) ImplementsSpringLoadingHighlight() bool {
-	return d_.RespondsToSelector(objc.GetSelector("springLoadingHighlight"))
 }
 
 func (d_ DraggingInfoWrapper) SpringLoadingHighlight() SpringLoadingHighlight {

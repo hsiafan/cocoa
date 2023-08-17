@@ -16,8 +16,7 @@ type _PasteboardItemClass struct {
 type IPasteboardItem interface {
 	objc.IObject
 	AvailableTypeFromArray(types []PasteboardType) PasteboardType
-	SetDataProvider_ForTypes(dataProvider PasteboardItemDataProvider, types []PasteboardType) bool
-	SetDataProvider0_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool
+	SetDataProvider_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool
 	SetData_ForType(data []byte, type_ PasteboardType) bool
 	SetString_ForType(string_ string, type_ PasteboardType) bool
 	SetPropertyList_ForType(propertyList objc.IObject, type_ PasteboardType) bool
@@ -62,13 +61,7 @@ func (p_ PasteboardItem) AvailableTypeFromArray(types []PasteboardType) Pasteboa
 	return rv
 }
 
-func (p_ PasteboardItem) SetDataProvider_ForTypes(dataProvider PasteboardItemDataProvider, types []PasteboardType) bool {
-	po := objc.WrapAsProtocol("NSPasteboardItemDataProvider", dataProvider)
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), po, types)
-	return rv
-}
-
-func (p_ PasteboardItem) SetDataProvider0_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool {
+func (p_ PasteboardItem) SetDataProvider_ForTypes(dataProvider objc.IObject, types []PasteboardType) bool {
 	rv := objc.CallMethod[bool](p_, objc.GetSelector("setDataProvider:forTypes:"), objc.ExtractPtr(dataProvider), types)
 	return rv
 }

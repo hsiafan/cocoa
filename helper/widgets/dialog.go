@@ -98,13 +98,23 @@ func (d *Dialog) RunModal() appkit.ModalResponse {
 		d.Close()
 	})
 
-	dialogDelegate := &appkit.WindowDelegateImpl{}
-	dialogDelegate.SetWindowShouldClose(func(sender appkit.Window) bool {
-		app.StopModalWithCode(appkit.ModalResponseCancel)
-		return true
-	})
-
-	d.SetDelegate(dialogDelegate)
+	dwdo := appkit.WrapWindowDelegate(&DialogWindowDelegate{app: app})
+	d.SetDelegate(dwdo)
+	objc.SetRetainDelegateAssociated(d, dwdo)
 
 	return app.RunModalForWindow(d)
+}
+
+type DialogWindowDelegate struct {
+	appkit.WindowDelegateBase
+	app appkit.Application
+}
+
+func (p *DialogWindowDelegate) ImplementsWindowShouldClose() bool {
+	return true
+}
+
+func (p *DialogWindowDelegate) WindowShouldClose(sender appkit.Window) bool {
+	p.app.StopModalWithCode(appkit.ModalResponseCancel)
+	return true
 }

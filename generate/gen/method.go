@@ -69,6 +69,9 @@ func (m *Method) NormalizeInstanceTypeMethod(returnType *typing.ClassType) *Meth
 func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, cw *CodeWriter) {
 	funcDeclare := m.GoFuncDeclare(currentModule, typeName)
 
+	if m.WeakProperty {
+		cw.WriteLine("// weak property")
+	}
 	if m.Deprecated {
 		cw.WriteLine("// deprecated")
 	}
@@ -100,12 +103,7 @@ func (m *Method) WriteGoCallCode(currentModule *typing.Module, typeName string, 
 		case *typing.ClassType:
 			sb.WriteString("objc.ExtractPtr(" + p.GoName() + ")")
 		case *typing.ProtocolType:
-			cw.WriteLineF("po := objc.WrapAsProtocol(\"%s\", %s)", tt.Name, p.GoName())
-			if m.WeakProperty { // weak property setter
-				cw.WriteLineF("objc.SetAssociatedObject(%s, internal.AssociationKey(\"%s\"), %s, objc.ASSOCIATION_RETAIN)",
-					receiver, m.GoName, "po")
-			}
-			sb.WriteString("po")
+			sb.WriteString("objc.ExtractPtr(" + p.GoName() + ")")
 		case *typing.PointerType:
 			switch tt.Type.(type) {
 			case *typing.ClassType: //object pointer convert to unsafe.Pointer, avoiding ffi treat it as PointerHolder
@@ -218,40 +216,4 @@ func (m *Method) GoImports() set.Set[string] {
 	}
 	imports.AddSet(m.ReturnType.GoImports())
 	return imports
-}
-
-func (m *Method) HasProtocolParam() bool {
-	for _, p := range m.Params {
-		switch p.Type.(type) {
-		case *typing.ProtocolType:
-			return true
-		}
-	}
-	return false
-}
-
-func (m *Method) ToProtocolParamAsObjectMethod() *Method {
-	var newParams = make([]*Param, len(m.Params))
-	for i, p := range m.Params {
-		switch p.Type.(type) {
-		case *typing.ProtocolType:
-			newParams[i] = &Param{
-				Name:      p.Name,
-				Type:      typing.Object,
-				FieldName: p.FieldName,
-			}
-		default:
-			newParams[i] = p
-		}
-	}
-	return &Method{
-		Name:         m.Name,
-		GoName:       m.GoName + "0",
-		Params:       newParams,
-		ReturnType:   m.ReturnType,
-		ClassMethod:  m.ClassMethod,
-		WeakProperty: m.WeakProperty,
-		Deprecated:   m.Deprecated,
-		Required:     m.Required,
-	}
 }

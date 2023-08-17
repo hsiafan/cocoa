@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -115,8 +114,7 @@ type ITableView interface {
 	// deprecated
 	TextDidEndEditing(notification foundation.INotification)
 	DataSource() TableViewDataSourceWrapper
-	SetDataSource(value TableViewDataSource)
-	SetDataSource0(value objc.IObject)
+	SetDataSource(value objc.IObject)
 	UsesStaticContents() bool
 	SetUsesStaticContents(value bool)
 	RegisteredNibsByIdentifier() map[UserInterfaceItemIdentifier]Nib
@@ -182,8 +180,7 @@ type ITableView interface {
 	AutosaveName() TableViewAutosaveName
 	SetAutosaveName(value TableViewAutosaveName)
 	Delegate() TableViewDelegateWrapper
-	SetDelegate(value TableViewDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	HighlightedTableColumn() TableColumn
 	SetHighlightedTableColumn(value ITableColumn)
 	VerticalMotionCanBeginDrag() bool
@@ -588,18 +585,14 @@ func (t_ TableView) TextDidEndEditing(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
 }
 
+// weak property
 func (t_ TableView) DataSource() TableViewDataSourceWrapper {
 	rv := objc.CallMethod[TableViewDataSourceWrapper](t_, objc.GetSelector("dataSource"))
 	return rv
 }
 
-func (t_ TableView) SetDataSource(value TableViewDataSource) {
-	po := objc.WrapAsProtocol("NSTableViewDataSource", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDataSource"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataSource:"), po)
-}
-
-func (t_ TableView) SetDataSource0(value objc.IObject) {
+// weak property
+func (t_ TableView) SetDataSource(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDataSource:"), objc.ExtractPtr(value))
 }
 
@@ -899,26 +892,24 @@ func (t_ TableView) SetAutosaveName(value TableViewAutosaveName) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutosaveName:"), value)
 }
 
+// weak property
 func (t_ TableView) Delegate() TableViewDelegateWrapper {
 	rv := objc.CallMethod[TableViewDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ TableView) SetDelegate(value TableViewDelegate) {
-	po := objc.WrapAsProtocol("NSTableViewDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ TableView) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ TableView) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (t_ TableView) HighlightedTableColumn() TableColumn {
 	rv := objc.CallMethod[TableColumn](t_, objc.GetSelector("highlightedTableColumn"))
 	return rv
 }
 
+// weak property
 func (t_ TableView) SetHighlightedTableColumn(value ITableColumn) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHighlightedTableColumn:"), objc.ExtractPtr(value))
 }

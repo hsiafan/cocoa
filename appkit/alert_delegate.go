@@ -11,28 +11,23 @@ type AlertDelegate interface {
 	AlertShowHelp(alert Alert) bool
 }
 
-type AlertDelegateImpl struct {
-	_AlertShowHelp func(alert Alert) bool
+func WrapAlertDelegate(v AlertDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSAlertDelegate", v)
 }
 
-func (di *AlertDelegateImpl) ImplementsAlertShowHelp() bool {
-	return di._AlertShowHelp != nil
+type AlertDelegateBase struct {
 }
 
-func (di *AlertDelegateImpl) SetAlertShowHelp(f func(alert Alert) bool) {
-	di._AlertShowHelp = f
+func (p *AlertDelegateBase) ImplementsAlertShowHelp() bool {
+	return false
 }
 
-func (di *AlertDelegateImpl) AlertShowHelp(alert Alert) bool {
-	return di._AlertShowHelp(alert)
+func (p *AlertDelegateBase) AlertShowHelp(alert Alert) bool {
+	panic("unimpemented protocol method")
 }
 
 type AlertDelegateWrapper struct {
 	objc.Object
-}
-
-func (a_ *AlertDelegateWrapper) ImplementsAlertShowHelp() bool {
-	return a_.RespondsToSelector(objc.GetSelector("alertShowHelp:"))
 }
 
 func (a_ AlertDelegateWrapper) AlertShowHelp(alert IAlert) bool {

@@ -14,48 +14,35 @@ type PathCellDelegate interface {
 	PathCell_WillPopUpMenu(pathCell PathCell, menu Menu)
 }
 
-type PathCellDelegateImpl struct {
-	_PathCell_WillDisplayOpenPanel func(pathCell PathCell, openPanel OpenPanel)
-	_PathCell_WillPopUpMenu        func(pathCell PathCell, menu Menu)
+func WrapPathCellDelegate(v PathCellDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSPathCellDelegate", v)
 }
 
-func (di *PathCellDelegateImpl) ImplementsPathCell_WillDisplayOpenPanel() bool {
-	return di._PathCell_WillDisplayOpenPanel != nil
+type PathCellDelegateBase struct {
 }
 
-func (di *PathCellDelegateImpl) SetPathCell_WillDisplayOpenPanel(f func(pathCell PathCell, openPanel OpenPanel)) {
-	di._PathCell_WillDisplayOpenPanel = f
+func (p *PathCellDelegateBase) ImplementsPathCell_WillDisplayOpenPanel() bool {
+	return false
 }
 
-func (di *PathCellDelegateImpl) PathCell_WillDisplayOpenPanel(pathCell PathCell, openPanel OpenPanel) {
-	di._PathCell_WillDisplayOpenPanel(pathCell, openPanel)
-}
-func (di *PathCellDelegateImpl) ImplementsPathCell_WillPopUpMenu() bool {
-	return di._PathCell_WillPopUpMenu != nil
+func (p *PathCellDelegateBase) PathCell_WillDisplayOpenPanel(pathCell PathCell, openPanel OpenPanel) {
+	panic("unimpemented protocol method")
 }
 
-func (di *PathCellDelegateImpl) SetPathCell_WillPopUpMenu(f func(pathCell PathCell, menu Menu)) {
-	di._PathCell_WillPopUpMenu = f
+func (p *PathCellDelegateBase) ImplementsPathCell_WillPopUpMenu() bool {
+	return false
 }
 
-func (di *PathCellDelegateImpl) PathCell_WillPopUpMenu(pathCell PathCell, menu Menu) {
-	di._PathCell_WillPopUpMenu(pathCell, menu)
+func (p *PathCellDelegateBase) PathCell_WillPopUpMenu(pathCell PathCell, menu Menu) {
+	panic("unimpemented protocol method")
 }
 
 type PathCellDelegateWrapper struct {
 	objc.Object
 }
 
-func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillDisplayOpenPanel() bool {
-	return p_.RespondsToSelector(objc.GetSelector("pathCell:willDisplayOpenPanel:"))
-}
-
 func (p_ PathCellDelegateWrapper) PathCell_WillDisplayOpenPanel(pathCell IPathCell, openPanel IOpenPanel) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willDisplayOpenPanel:"), objc.ExtractPtr(pathCell), objc.ExtractPtr(openPanel))
-}
-
-func (p_ *PathCellDelegateWrapper) ImplementsPathCell_WillPopUpMenu() bool {
-	return p_.RespondsToSelector(objc.GetSelector("pathCell:willPopUpMenu:"))
 }
 
 func (p_ PathCellDelegateWrapper) PathCell_WillPopUpMenu(pathCell IPathCell, menu IMenu) {

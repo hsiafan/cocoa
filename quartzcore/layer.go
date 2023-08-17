@@ -6,7 +6,6 @@ import (
 
 	"github.com/hsiafan/cocoa/coregraphics"
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -58,8 +57,7 @@ type ILayer interface {
 	ScrollRectToVisible(r coregraphics.Rect)
 	ShouldArchiveValueForKey(key string) bool
 	Delegate() LayerDelegateWrapper
-	SetDelegate(value LayerDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	Contents() objc.Object
 	SetContents(value objc.IObject)
 	ContentsRect() coregraphics.Rect
@@ -152,8 +150,7 @@ type ILayer interface {
 	NeedsDisplayOnBoundsChange() bool
 	SetNeedsDisplayOnBoundsChange(value bool)
 	LayoutManager() LayoutManagerWrapper
-	SetLayoutManager(value LayoutManager)
-	SetLayoutManager0(value objc.IObject)
+	SetLayoutManager(value objc.IObject)
 	AutoresizingMask() AutoresizingMask
 	SetAutoresizingMask(value AutoresizingMask)
 	Constraints() []Constraint
@@ -413,18 +410,14 @@ func (lc _LayerClass) CornerCurveExpansionFactor(curve LayerCornerCurve) float64
 	return rv
 }
 
+// weak property
 func (l_ Layer) Delegate() LayerDelegateWrapper {
 	rv := objc.CallMethod[LayerDelegateWrapper](l_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (l_ Layer) SetDelegate(value LayerDelegate) {
-	po := objc.WrapAsProtocol("CALayerDelegate", value)
-	objc.SetAssociatedObject(l_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (l_ Layer) SetDelegate0(value objc.IObject) {
+// weak property
+func (l_ Layer) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
@@ -843,12 +836,7 @@ func (l_ Layer) LayoutManager() LayoutManagerWrapper {
 	return rv
 }
 
-func (l_ Layer) SetLayoutManager(value LayoutManager) {
-	po := objc.WrapAsProtocol("CALayoutManager", value)
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutManager:"), po)
-}
-
-func (l_ Layer) SetLayoutManager0(value objc.IObject) {
+func (l_ Layer) SetLayoutManager(value objc.IObject) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
 }
 

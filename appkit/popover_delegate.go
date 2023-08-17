@@ -33,112 +33,79 @@ type PopoverDelegate interface {
 	PopoverShouldDetach(popover Popover) bool
 }
 
-type PopoverDelegateImpl struct {
-	_DetachableWindowForPopover func(popover Popover) IWindow
-	_PopoverShouldClose         func(popover Popover) bool
-	_PopoverWillShow            func(notification foundation.Notification)
-	_PopoverDidShow             func(notification foundation.Notification)
-	_PopoverWillClose           func(notification foundation.Notification)
-	_PopoverDidClose            func(notification foundation.Notification)
-	_PopoverDidDetach           func(popover Popover)
-	_PopoverShouldDetach        func(popover Popover) bool
+func WrapPopoverDelegate(v PopoverDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSPopoverDelegate", v)
 }
 
-func (di *PopoverDelegateImpl) ImplementsDetachableWindowForPopover() bool {
-	return di._DetachableWindowForPopover != nil
+type PopoverDelegateBase struct {
 }
 
-func (di *PopoverDelegateImpl) SetDetachableWindowForPopover(f func(popover Popover) IWindow) {
-	di._DetachableWindowForPopover = f
+func (p *PopoverDelegateBase) ImplementsDetachableWindowForPopover() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) DetachableWindowForPopover(popover Popover) IWindow {
-	return di._DetachableWindowForPopover(popover)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverShouldClose() bool {
-	return di._PopoverShouldClose != nil
+func (p *PopoverDelegateBase) DetachableWindowForPopover(popover Popover) IWindow {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverShouldClose(f func(popover Popover) bool) {
-	di._PopoverShouldClose = f
+func (p *PopoverDelegateBase) ImplementsPopoverShouldClose() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverShouldClose(popover Popover) bool {
-	return di._PopoverShouldClose(popover)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverWillShow() bool {
-	return di._PopoverWillShow != nil
+func (p *PopoverDelegateBase) PopoverShouldClose(popover Popover) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverWillShow(f func(notification foundation.Notification)) {
-	di._PopoverWillShow = f
+func (p *PopoverDelegateBase) ImplementsPopoverWillShow() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverWillShow(notification foundation.Notification) {
-	di._PopoverWillShow(notification)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverDidShow() bool {
-	return di._PopoverDidShow != nil
+func (p *PopoverDelegateBase) PopoverWillShow(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverDidShow(f func(notification foundation.Notification)) {
-	di._PopoverDidShow = f
+func (p *PopoverDelegateBase) ImplementsPopoverDidShow() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverDidShow(notification foundation.Notification) {
-	di._PopoverDidShow(notification)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverWillClose() bool {
-	return di._PopoverWillClose != nil
+func (p *PopoverDelegateBase) PopoverDidShow(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverWillClose(f func(notification foundation.Notification)) {
-	di._PopoverWillClose = f
+func (p *PopoverDelegateBase) ImplementsPopoverWillClose() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverWillClose(notification foundation.Notification) {
-	di._PopoverWillClose(notification)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverDidClose() bool {
-	return di._PopoverDidClose != nil
+func (p *PopoverDelegateBase) PopoverWillClose(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverDidClose(f func(notification foundation.Notification)) {
-	di._PopoverDidClose = f
+func (p *PopoverDelegateBase) ImplementsPopoverDidClose() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverDidClose(notification foundation.Notification) {
-	di._PopoverDidClose(notification)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverDidDetach() bool {
-	return di._PopoverDidDetach != nil
+func (p *PopoverDelegateBase) PopoverDidClose(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverDidDetach(f func(popover Popover)) {
-	di._PopoverDidDetach = f
+func (p *PopoverDelegateBase) ImplementsPopoverDidDetach() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverDidDetach(popover Popover) {
-	di._PopoverDidDetach(popover)
-}
-func (di *PopoverDelegateImpl) ImplementsPopoverShouldDetach() bool {
-	return di._PopoverShouldDetach != nil
+func (p *PopoverDelegateBase) PopoverDidDetach(popover Popover) {
+	panic("unimpemented protocol method")
 }
 
-func (di *PopoverDelegateImpl) SetPopoverShouldDetach(f func(popover Popover) bool) {
-	di._PopoverShouldDetach = f
+func (p *PopoverDelegateBase) ImplementsPopoverShouldDetach() bool {
+	return false
 }
 
-func (di *PopoverDelegateImpl) PopoverShouldDetach(popover Popover) bool {
-	return di._PopoverShouldDetach(popover)
+func (p *PopoverDelegateBase) PopoverShouldDetach(popover Popover) bool {
+	panic("unimpemented protocol method")
 }
 
 type PopoverDelegateWrapper struct {
 	objc.Object
-}
-
-func (p_ *PopoverDelegateWrapper) ImplementsDetachableWindowForPopover() bool {
-	return p_.RespondsToSelector(objc.GetSelector("detachableWindowForPopover:"))
 }
 
 func (p_ PopoverDelegateWrapper) DetachableWindowForPopover(popover IPopover) Window {
@@ -146,57 +113,29 @@ func (p_ PopoverDelegateWrapper) DetachableWindowForPopover(popover IPopover) Wi
 	return rv
 }
 
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldClose() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverShouldClose:"))
-}
-
 func (p_ PopoverDelegateWrapper) PopoverShouldClose(popover IPopover) bool {
 	rv := objc.CallMethod[bool](p_, objc.GetSelector("popoverShouldClose:"), objc.ExtractPtr(popover))
 	return rv
-}
-
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillShow() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverWillShow:"))
 }
 
 func (p_ PopoverDelegateWrapper) PopoverWillShow(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverWillShow:"), objc.ExtractPtr(notification))
 }
 
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidShow() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverDidShow:"))
-}
-
 func (p_ PopoverDelegateWrapper) PopoverDidShow(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidShow:"), objc.ExtractPtr(notification))
-}
-
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverWillClose() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverWillClose:"))
 }
 
 func (p_ PopoverDelegateWrapper) PopoverWillClose(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverWillClose:"), objc.ExtractPtr(notification))
 }
 
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidClose() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverDidClose:"))
-}
-
 func (p_ PopoverDelegateWrapper) PopoverDidClose(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidClose:"), objc.ExtractPtr(notification))
 }
 
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverDidDetach() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverDidDetach:"))
-}
-
 func (p_ PopoverDelegateWrapper) PopoverDidDetach(popover IPopover) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("popoverDidDetach:"), objc.ExtractPtr(popover))
-}
-
-func (p_ *PopoverDelegateWrapper) ImplementsPopoverShouldDetach() bool {
-	return p_.RespondsToSelector(objc.GetSelector("popoverShouldDetach:"))
 }
 
 func (p_ PopoverDelegateWrapper) PopoverShouldDetach(popover IPopover) bool {

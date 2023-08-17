@@ -8,15 +8,26 @@ import (
 type CollectionLayoutEnvironment interface {
 	ImplementsContainer() bool
 	// optional
-	Container() CollectionLayoutContainer
+	Container() objc.IObject
+}
+
+func WrapCollectionLayoutEnvironment(v CollectionLayoutEnvironment) objc.Object {
+	return objc.WrapAsProtocol("NSCollectionLayoutEnvironment", v)
+}
+
+type CollectionLayoutEnvironmentBase struct {
+}
+
+func (p *CollectionLayoutEnvironmentBase) ImplementsContainer() bool {
+	return false
+}
+
+func (p *CollectionLayoutEnvironmentBase) Container() objc.IObject {
+	panic("unimpemented protocol method")
 }
 
 type CollectionLayoutEnvironmentWrapper struct {
 	objc.Object
-}
-
-func (c_ *CollectionLayoutEnvironmentWrapper) ImplementsContainer() bool {
-	return c_.RespondsToSelector(objc.GetSelector("container"))
 }
 
 func (c_ CollectionLayoutEnvironmentWrapper) Container() CollectionLayoutContainerWrapper {

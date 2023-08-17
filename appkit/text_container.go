@@ -109,25 +109,30 @@ func (t_ TextContainer) ContainsPoint(point foundation.Point) bool {
 	return rv
 }
 
+// weak property
 func (t_ TextContainer) LayoutManager() LayoutManager {
 	rv := objc.CallMethod[LayoutManager](t_, objc.GetSelector("layoutManager"))
 	return rv
 }
 
+// weak property
 func (t_ TextContainer) SetLayoutManager(value ILayoutManager) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (t_ TextContainer) TextLayoutManager() TextLayoutManager {
 	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv
 }
 
+// weak property
 func (t_ TextContainer) TextView() TextView {
 	rv := objc.CallMethod[TextView](t_, objc.GetSelector("textView"))
 	return rv
 }
 
+// weak property
 func (t_ TextContainer) SetTextView(value ITextView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextView:"), objc.ExtractPtr(value))
 }

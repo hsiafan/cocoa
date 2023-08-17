@@ -62,6 +62,7 @@ func (s_ ScriptMessage) FrameInfo() FrameInfo {
 	return rv
 }
 
+// weak property
 func (s_ ScriptMessage) WebView() WebView {
 	rv := objc.CallMethod[WebView](s_, objc.GetSelector("webView"))
 	return rv

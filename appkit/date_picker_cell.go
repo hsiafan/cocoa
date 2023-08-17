@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -44,8 +43,7 @@ type IDatePickerCell interface {
 	MaxDate() foundation.Date
 	SetMaxDate(value foundation.IDate)
 	Delegate() DatePickerCellDelegateWrapper
-	SetDelegate(value DatePickerCellDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 }
 
 type DatePickerCell struct {
@@ -205,17 +203,13 @@ func (d_ DatePickerCell) SetMaxDate(value foundation.IDate) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMaxDate:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (d_ DatePickerCell) Delegate() DatePickerCellDelegateWrapper {
 	rv := objc.CallMethod[DatePickerCellDelegateWrapper](d_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (d_ DatePickerCell) SetDelegate(value DatePickerCellDelegate) {
-	po := objc.WrapAsProtocol("NSDatePickerCellDelegate", value)
-	objc.SetAssociatedObject(d_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (d_ DatePickerCell) SetDelegate0(value objc.IObject) {
+// weak property
+func (d_ DatePickerCell) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

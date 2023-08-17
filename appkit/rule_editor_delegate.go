@@ -21,64 +21,27 @@ type RuleEditorDelegate interface {
 	RuleEditorRowsDidChange(notification foundation.Notification)
 }
 
-type RuleEditorDelegateImpl struct {
-	_RuleEditor_Child_ForCriterion_WithRowType                    func(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject
-	_RuleEditor_DisplayValueForCriterion_InRow                    func(editor RuleEditor, criterion objc.Object, row int) objc.IObject
-	_RuleEditor_NumberOfChildrenForCriterion_WithRowType          func(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int
-	_RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow func(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject
-	_RuleEditorRowsDidChange                                      func(notification foundation.Notification)
+func WrapRuleEditorDelegate(v RuleEditorDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSRuleEditorDelegate", v)
 }
 
-func (di *RuleEditorDelegateImpl) SetRuleEditor_Child_ForCriterion_WithRowType(f func(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject) {
-	di._RuleEditor_Child_ForCriterion_WithRowType = f
+type RuleEditorDelegateBase struct {
 }
 
-// required
-
-func (di *RuleEditorDelegateImpl) RuleEditor_Child_ForCriterion_WithRowType(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.IObject {
-	return di._RuleEditor_Child_ForCriterion_WithRowType(editor, index, criterion, rowType)
+func (p *RuleEditorDelegateBase) ImplementsRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow() bool {
+	return false
 }
 
-func (di *RuleEditorDelegateImpl) SetRuleEditor_DisplayValueForCriterion_InRow(f func(editor RuleEditor, criterion objc.Object, row int) objc.IObject) {
-	di._RuleEditor_DisplayValueForCriterion_InRow = f
+func (p *RuleEditorDelegateBase) RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject {
+	panic("unimpemented protocol method")
 }
 
-// required
-
-func (di *RuleEditorDelegateImpl) RuleEditor_DisplayValueForCriterion_InRow(editor RuleEditor, criterion objc.Object, row int) objc.IObject {
-	return di._RuleEditor_DisplayValueForCriterion_InRow(editor, criterion, row)
+func (p *RuleEditorDelegateBase) ImplementsRuleEditorRowsDidChange() bool {
+	return false
 }
 
-func (di *RuleEditorDelegateImpl) SetRuleEditor_NumberOfChildrenForCriterion_WithRowType(f func(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int) {
-	di._RuleEditor_NumberOfChildrenForCriterion_WithRowType = f
-}
-
-// required
-
-func (di *RuleEditorDelegateImpl) RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int {
-	return di._RuleEditor_NumberOfChildrenForCriterion_WithRowType(editor, criterion, rowType)
-}
-func (di *RuleEditorDelegateImpl) ImplementsRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow() bool {
-	return di._RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow != nil
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(f func(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject) {
-	di._RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow = f
-}
-
-func (di *RuleEditorDelegateImpl) RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject {
-	return di._RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor, criterion, value, row)
-}
-func (di *RuleEditorDelegateImpl) ImplementsRuleEditorRowsDidChange() bool {
-	return di._RuleEditorRowsDidChange != nil
-}
-
-func (di *RuleEditorDelegateImpl) SetRuleEditorRowsDidChange(f func(notification foundation.Notification)) {
-	di._RuleEditorRowsDidChange = f
-}
-
-func (di *RuleEditorDelegateImpl) RuleEditorRowsDidChange(notification foundation.Notification) {
-	di._RuleEditorRowsDidChange(notification)
+func (p *RuleEditorDelegateBase) RuleEditorRowsDidChange(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
 type RuleEditorDelegateWrapper struct {
@@ -100,17 +63,9 @@ func (r_ RuleEditorDelegateWrapper) RuleEditor_NumberOfChildrenForCriterion_With
 	return rv
 }
 
-func (r_ *RuleEditorDelegateWrapper) ImplementsRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow() bool {
-	return r_.RespondsToSelector(objc.GetSelector("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"))
-}
-
 func (r_ RuleEditorDelegateWrapper) RuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(editor IRuleEditor, criterion objc.IObject, value objc.IObject, row int) map[RuleEditorPredicatePartKey]objc.Object {
 	rv := objc.CallMethod[map[RuleEditorPredicatePartKey]objc.Object](r_, objc.GetSelector("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), objc.ExtractPtr(editor), objc.ExtractPtr(criterion), objc.ExtractPtr(value), row)
 	return rv
-}
-
-func (r_ *RuleEditorDelegateWrapper) ImplementsRuleEditorRowsDidChange() bool {
-	return r_.RespondsToSelector(objc.GetSelector("ruleEditorRowsDidChange:"))
 }
 
 func (r_ RuleEditorDelegateWrapper) RuleEditorRowsDidChange(notification foundation.INotification) {

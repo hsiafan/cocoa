@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -64,8 +63,7 @@ type IGestureRecognizer interface {
 	DelaysRotationEvents() bool
 	SetDelaysRotationEvents(value bool)
 	Delegate() GestureRecognizerDelegateWrapper
-	SetDelegate(value GestureRecognizerDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	PressureConfiguration() PressureConfiguration
 	SetPressureConfiguration(value IPressureConfiguration)
 	AllowedTouchTypes() TouchTypeMask
@@ -225,11 +223,13 @@ func (g_ GestureRecognizer) SetAction(value objc.Selector) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("setAction:"), value)
 }
 
+// weak property
 func (g_ GestureRecognizer) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](g_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 func (g_ GestureRecognizer) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
@@ -307,18 +307,14 @@ func (g_ GestureRecognizer) SetDelaysRotationEvents(value bool) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelaysRotationEvents:"), value)
 }
 
+// weak property
 func (g_ GestureRecognizer) Delegate() GestureRecognizerDelegateWrapper {
 	rv := objc.CallMethod[GestureRecognizerDelegateWrapper](g_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (g_ GestureRecognizer) SetDelegate(value GestureRecognizerDelegate) {
-	po := objc.WrapAsProtocol("NSGestureRecognizerDelegate", value)
-	objc.SetAssociatedObject(g_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (g_ GestureRecognizer) SetDelegate0(value objc.IObject) {
+// weak property
+func (g_ GestureRecognizer) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](g_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

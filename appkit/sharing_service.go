@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -20,8 +19,7 @@ type ISharingService interface {
 	CanPerformWithItems(items []objc.IObject) bool
 	PerformWithItems(items []objc.IObject)
 	Delegate() SharingServiceDelegateWrapper
-	SetDelegate(value SharingServiceDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	AccountName() string
 	AlternateImage() Image
 	Image() Image
@@ -92,18 +90,14 @@ func (s_ SharingService) PerformWithItems(items []objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("performWithItems:"), items)
 }
 
+// weak property
 func (s_ SharingService) Delegate() SharingServiceDelegateWrapper {
 	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (s_ SharingService) SetDelegate(value SharingServiceDelegate) {
-	po := objc.WrapAsProtocol("NSSharingServiceDelegate", value)
-	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (s_ SharingService) SetDelegate0(value objc.IObject) {
+// weak property
+func (s_ SharingService) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

@@ -15,6 +15,21 @@ type PasteboardWriting interface {
 	PasteboardPropertyListForType(type_ PasteboardType) objc.IObject
 }
 
+func WrapPasteboardWriting(v PasteboardWriting) objc.Object {
+	return objc.WrapAsProtocol("NSPasteboardWriting", v)
+}
+
+type PasteboardWritingBase struct {
+}
+
+func (p *PasteboardWritingBase) ImplementsWritingOptionsForType_Pasteboard() bool {
+	return false
+}
+
+func (p *PasteboardWritingBase) WritingOptionsForType_Pasteboard(type_ PasteboardType, pasteboard Pasteboard) PasteboardWritingOptions {
+	panic("unimpemented protocol method")
+}
+
 type PasteboardWritingWrapper struct {
 	objc.Object
 }
@@ -22,10 +37,6 @@ type PasteboardWritingWrapper struct {
 func (p_ PasteboardWritingWrapper) WritableTypesForPasteboard(pasteboard IPasteboard) []PasteboardType {
 	rv := objc.CallMethod[[]PasteboardType](p_, objc.GetSelector("writableTypesForPasteboard:"), objc.ExtractPtr(pasteboard))
 	return rv
-}
-
-func (p_ *PasteboardWritingWrapper) ImplementsWritingOptionsForType_Pasteboard() bool {
-	return p_.RespondsToSelector(objc.GetSelector("writingOptionsForType:pasteboard:"))
 }
 
 func (p_ PasteboardWritingWrapper) WritingOptionsForType_Pasteboard(type_ PasteboardType, pasteboard IPasteboard) PasteboardWritingOptions {

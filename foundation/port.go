@@ -16,8 +16,7 @@ type _PortClass struct {
 type IPort interface {
 	objc.IObject
 	Invalidate()
-	SetDelegate(anObject PortDelegate)
-	SetDelegate0(anObject objc.IObject)
+	SetDelegate(anObject objc.IObject)
 	Delegate() PortDelegateWrapper
 	RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
 	ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
@@ -64,12 +63,7 @@ func (p_ Port) Invalidate() {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("invalidate"))
 }
 
-func (p_ Port) SetDelegate(anObject PortDelegate) {
-	po := objc.WrapAsProtocol("NSPortDelegate", anObject)
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (p_ Port) SetDelegate0(anObject objc.IObject) {
+func (p_ Port) SetDelegate(anObject objc.IObject) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(anObject))
 }
 

@@ -133,11 +133,13 @@ func (s_ ScriptObjectSpecifier) SetContainerSpecifier(value IScriptObjectSpecifi
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setContainerSpecifier:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (s_ ScriptObjectSpecifier) ChildSpecifier() ScriptObjectSpecifier {
 	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.GetSelector("childSpecifier"))
 	return rv
 }
 
+// weak property
 func (s_ ScriptObjectSpecifier) SetChildSpecifier(value IScriptObjectSpecifier) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setChildSpecifier:"), objc.ExtractPtr(value))
 }

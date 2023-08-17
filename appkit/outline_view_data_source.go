@@ -37,7 +37,7 @@ type OutlineViewDataSource interface {
 	OutlineView_ObjectValueForTableColumn_ByItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) objc.IObject
 	ImplementsOutlineView_PasteboardWriterForItem() bool
 	// optional
-	OutlineView_PasteboardWriterForItem(outlineView OutlineView, item objc.Object) PasteboardWriting
+	OutlineView_PasteboardWriterForItem(outlineView OutlineView, item objc.Object) objc.IObject
 	ImplementsOutlineView_PersistentObjectForItem() bool
 	// optional
 	OutlineView_PersistentObjectForItem(outlineView OutlineView, item objc.Object) objc.IObject
@@ -59,22 +59,150 @@ type OutlineViewDataSource interface {
 	OutlineView_WriteItems_ToPasteboard(outlineView OutlineView, items []objc.Object, pasteboard Pasteboard) bool
 }
 
+func WrapOutlineViewDataSource(v OutlineViewDataSource) objc.Object {
+	return objc.WrapAsProtocol("NSOutlineViewDataSource", v)
+}
+
+type OutlineViewDataSourceBase struct {
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_AcceptDrop_Item_ChildIndex() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_AcceptDrop_Item_ChildIndex(outlineView OutlineView, info DraggingInfoWrapper, item objc.Object, index int) bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_Child_OfItem() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_Child_OfItem(outlineView OutlineView, index int, item objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_DraggingSession_EndedAtPoint_Operation() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_DraggingSession_EndedAtPoint_Operation(outlineView OutlineView, session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_DraggingSession_WillBeginAtPoint_ForItems() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_DraggingSession_WillBeginAtPoint_ForItems(outlineView OutlineView, session DraggingSession, screenPoint foundation.Point, draggedItems []objc.Object) {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_IsItemExpandable() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_IsItemExpandable(outlineView OutlineView, item objc.Object) bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_ItemForPersistentObject() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_ItemForPersistentObject(outlineView OutlineView, object objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItems() bool {
+	return false
+}
+
+// deprecated
+func (p *OutlineViewDataSourceBase) OutlineView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItems(outlineView OutlineView, dropDestination foundation.URL, items []objc.Object) []string {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_NumberOfChildrenOfItem() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_NumberOfChildrenOfItem(outlineView OutlineView, item objc.Object) int {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_ObjectValueForTableColumn_ByItem() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_ObjectValueForTableColumn_ByItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_PasteboardWriterForItem() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_PasteboardWriterForItem(outlineView OutlineView, item objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_PersistentObjectForItem() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_PersistentObjectForItem(outlineView OutlineView, item objc.Object) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_SetObjectValue_ForTableColumn_ByItem() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_SetObjectValue_ForTableColumn_ByItem(outlineView OutlineView, object objc.Object, tableColumn TableColumn, item objc.Object) {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_SortDescriptorsDidChange() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_SortDescriptorsDidChange(outlineView OutlineView, oldDescriptors []foundation.SortDescriptor) {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_UpdateDraggingItemsForDrag() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_UpdateDraggingItemsForDrag(outlineView OutlineView, draggingInfo DraggingInfoWrapper) {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_ValidateDrop_ProposedItem_ProposedChildIndex() bool {
+	return false
+}
+
+func (p *OutlineViewDataSourceBase) OutlineView_ValidateDrop_ProposedItem_ProposedChildIndex(outlineView OutlineView, info DraggingInfoWrapper, item objc.Object, index int) DragOperation {
+	panic("unimpemented protocol method")
+}
+
+func (p *OutlineViewDataSourceBase) ImplementsOutlineView_WriteItems_ToPasteboard() bool {
+	return false
+}
+
+// deprecated
+func (p *OutlineViewDataSourceBase) OutlineView_WriteItems_ToPasteboard(outlineView OutlineView, items []objc.Object, pasteboard Pasteboard) bool {
+	panic("unimpemented protocol method")
+}
+
 type OutlineViewDataSourceWrapper struct {
 	objc.Object
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_AcceptDrop_Item_ChildIndex() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:acceptDrop:item:childIndex:"))
-}
-
-func (o_ OutlineViewDataSourceWrapper) OutlineView_AcceptDrop_Item_ChildIndex(outlineView IOutlineView, info DraggingInfo, item objc.IObject, index int) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:acceptDrop:item:childIndex:"), objc.ExtractPtr(outlineView), po, objc.ExtractPtr(item), index)
+func (o_ OutlineViewDataSourceWrapper) OutlineView_AcceptDrop_Item_ChildIndex(outlineView IOutlineView, info objc.IObject, item objc.IObject, index int) bool {
+	rv := objc.CallMethod[bool](o_, objc.GetSelector("outlineView:acceptDrop:item:childIndex:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(info), objc.ExtractPtr(item), index)
 	return rv
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_Child_OfItem() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:child:ofItem:"))
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_Child_OfItem(outlineView IOutlineView, index int, item objc.IObject) objc.Object {
@@ -82,24 +210,12 @@ func (o_ OutlineViewDataSourceWrapper) OutlineView_Child_OfItem(outlineView IOut
 	return rv
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_DraggingSession_EndedAtPoint_Operation() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:draggingSession:endedAtPoint:operation:"))
-}
-
 func (o_ OutlineViewDataSourceWrapper) OutlineView_DraggingSession_EndedAtPoint_Operation(outlineView IOutlineView, session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:draggingSession:endedAtPoint:operation:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(session), screenPoint, operation)
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_DraggingSession_WillBeginAtPoint_ForItems() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:draggingSession:willBeginAtPoint:forItems:"))
-}
-
 func (o_ OutlineViewDataSourceWrapper) OutlineView_DraggingSession_WillBeginAtPoint_ForItems(outlineView IOutlineView, session IDraggingSession, screenPoint foundation.Point, draggedItems []objc.IObject) {
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:draggingSession:willBeginAtPoint:forItems:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(session), screenPoint, draggedItems)
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_IsItemExpandable() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:isItemExpandable:"))
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_IsItemExpandable(outlineView IOutlineView, item objc.IObject) bool {
@@ -107,17 +223,9 @@ func (o_ OutlineViewDataSourceWrapper) OutlineView_IsItemExpandable(outlineView 
 	return rv
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_ItemForPersistentObject() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:itemForPersistentObject:"))
-}
-
 func (o_ OutlineViewDataSourceWrapper) OutlineView_ItemForPersistentObject(outlineView IOutlineView, object objc.IObject) objc.Object {
 	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("outlineView:itemForPersistentObject:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(object))
 	return rv
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItems() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:namesOfPromisedFilesDroppedAtDestination:forDraggedItems:"))
 }
 
 // deprecated
@@ -126,17 +234,9 @@ func (o_ OutlineViewDataSourceWrapper) OutlineView_NamesOfPromisedFilesDroppedAt
 	return rv
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_NumberOfChildrenOfItem() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:numberOfChildrenOfItem:"))
-}
-
 func (o_ OutlineViewDataSourceWrapper) OutlineView_NumberOfChildrenOfItem(outlineView IOutlineView, item objc.IObject) int {
 	rv := objc.CallMethod[int](o_, objc.GetSelector("outlineView:numberOfChildrenOfItem:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(item))
 	return rv
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_ObjectValueForTableColumn_ByItem() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:objectValueForTableColumn:byItem:"))
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_ObjectValueForTableColumn_ByItem(outlineView IOutlineView, tableColumn ITableColumn, item objc.IObject) objc.Object {
@@ -144,17 +244,9 @@ func (o_ OutlineViewDataSourceWrapper) OutlineView_ObjectValueForTableColumn_ByI
 	return rv
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_PasteboardWriterForItem() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:pasteboardWriterForItem:"))
-}
-
 func (o_ OutlineViewDataSourceWrapper) OutlineView_PasteboardWriterForItem(outlineView IOutlineView, item objc.IObject) PasteboardWritingWrapper {
 	rv := objc.CallMethod[PasteboardWritingWrapper](o_, objc.GetSelector("outlineView:pasteboardWriterForItem:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(item))
 	return rv
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_PersistentObjectForItem() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:persistentObjectForItem:"))
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_PersistentObjectForItem(outlineView IOutlineView, item objc.IObject) objc.Object {
@@ -162,43 +254,21 @@ func (o_ OutlineViewDataSourceWrapper) OutlineView_PersistentObjectForItem(outli
 	return rv
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_SetObjectValue_ForTableColumn_ByItem() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:setObjectValue:forTableColumn:byItem:"))
-}
-
 func (o_ OutlineViewDataSourceWrapper) OutlineView_SetObjectValue_ForTableColumn_ByItem(outlineView IOutlineView, object objc.IObject, tableColumn ITableColumn, item objc.IObject) {
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:setObjectValue:forTableColumn:byItem:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(object), objc.ExtractPtr(tableColumn), objc.ExtractPtr(item))
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_SortDescriptorsDidChange() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:sortDescriptorsDidChange:"))
 }
 
 func (o_ OutlineViewDataSourceWrapper) OutlineView_SortDescriptorsDidChange(outlineView IOutlineView, oldDescriptors []foundation.ISortDescriptor) {
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:sortDescriptorsDidChange:"), objc.ExtractPtr(outlineView), oldDescriptors)
 }
 
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_UpdateDraggingItemsForDrag() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:updateDraggingItemsForDrag:"))
+func (o_ OutlineViewDataSourceWrapper) OutlineView_UpdateDraggingItemsForDrag(outlineView IOutlineView, draggingInfo objc.IObject) {
+	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:updateDraggingItemsForDrag:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(draggingInfo))
 }
 
-func (o_ OutlineViewDataSourceWrapper) OutlineView_UpdateDraggingItemsForDrag(outlineView IOutlineView, draggingInfo DraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("outlineView:updateDraggingItemsForDrag:"), objc.ExtractPtr(outlineView), po)
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_ValidateDrop_ProposedItem_ProposedChildIndex() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:validateDrop:proposedItem:proposedChildIndex:"))
-}
-
-func (o_ OutlineViewDataSourceWrapper) OutlineView_ValidateDrop_ProposedItem_ProposedChildIndex(outlineView IOutlineView, info DraggingInfo, item objc.IObject, index int) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[DragOperation](o_, objc.GetSelector("outlineView:validateDrop:proposedItem:proposedChildIndex:"), objc.ExtractPtr(outlineView), po, objc.ExtractPtr(item), index)
+func (o_ OutlineViewDataSourceWrapper) OutlineView_ValidateDrop_ProposedItem_ProposedChildIndex(outlineView IOutlineView, info objc.IObject, item objc.IObject, index int) DragOperation {
+	rv := objc.CallMethod[DragOperation](o_, objc.GetSelector("outlineView:validateDrop:proposedItem:proposedChildIndex:"), objc.ExtractPtr(outlineView), objc.ExtractPtr(info), objc.ExtractPtr(item), index)
 	return rv
-}
-
-func (o_ *OutlineViewDataSourceWrapper) ImplementsOutlineView_WriteItems_ToPasteboard() bool {
-	return o_.RespondsToSelector(objc.GetSelector("outlineView:writeItems:toPasteboard:"))
 }
 
 // deprecated

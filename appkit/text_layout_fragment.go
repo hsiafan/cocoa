@@ -98,6 +98,7 @@ func (t_ TextLayoutFragment) TrailingPadding() float64 {
 	return rv
 }
 
+// weak property
 func (t_ TextLayoutFragment) TextLayoutManager() TextLayoutManager {
 	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv
@@ -137,6 +138,7 @@ func (t_ TextLayoutFragment) RangeInElement() TextRange {
 	return rv
 }
 
+// weak property
 func (t_ TextLayoutFragment) TextElement() TextElement {
 	rv := objc.CallMethod[TextElement](t_, objc.GetSelector("textElement"))
 	return rv

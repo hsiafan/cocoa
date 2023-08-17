@@ -102,11 +102,13 @@ func (c_ ColorWell) SetColor(value IColor) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColor:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (c_ ColorWell) ColorWellStyle() ColorWellStyle {
 	rv := objc.CallMethod[ColorWellStyle](c_, objc.GetSelector("colorWellStyle"))
 	return rv
 }
 
+// weak property
 func (c_ ColorWell) SetColorWellStyle(value ColorWellStyle) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setColorWellStyle:"), value)
 }
@@ -145,11 +147,13 @@ func (c_ ColorWell) SetPulldownAction(value objc.Selector) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownAction:"), value)
 }
 
+// weak property
 func (c_ ColorWell) PulldownTarget() objc.Object {
 	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("pulldownTarget"))
 	return rv
 }
 
+// weak property
 func (c_ ColorWell) SetPulldownTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPulldownTarget:"), objc.ExtractPtr(value))
 }

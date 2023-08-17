@@ -11,28 +11,23 @@ type SoundDelegate interface {
 	Sound_DidFinishPlaying(sound Sound, flag bool)
 }
 
-type SoundDelegateImpl struct {
-	_Sound_DidFinishPlaying func(sound Sound, flag bool)
+func WrapSoundDelegate(v SoundDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSSoundDelegate", v)
 }
 
-func (di *SoundDelegateImpl) ImplementsSound_DidFinishPlaying() bool {
-	return di._Sound_DidFinishPlaying != nil
+type SoundDelegateBase struct {
 }
 
-func (di *SoundDelegateImpl) SetSound_DidFinishPlaying(f func(sound Sound, flag bool)) {
-	di._Sound_DidFinishPlaying = f
+func (p *SoundDelegateBase) ImplementsSound_DidFinishPlaying() bool {
+	return false
 }
 
-func (di *SoundDelegateImpl) Sound_DidFinishPlaying(sound Sound, flag bool) {
-	di._Sound_DidFinishPlaying(sound, flag)
+func (p *SoundDelegateBase) Sound_DidFinishPlaying(sound Sound, flag bool) {
+	panic("unimpemented protocol method")
 }
 
 type SoundDelegateWrapper struct {
 	objc.Object
-}
-
-func (s_ *SoundDelegateWrapper) ImplementsSound_DidFinishPlaying() bool {
-	return s_.RespondsToSelector(objc.GetSelector("sound:didFinishPlaying:"))
 }
 
 func (s_ SoundDelegateWrapper) Sound_DidFinishPlaying(sound ISound, flag bool) {

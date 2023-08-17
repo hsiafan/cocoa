@@ -22,91 +22,123 @@ type ComboBoxDelegate interface {
 	ComboBoxWillPopUp(notification foundation.Notification)
 }
 
-type ComboBoxDelegateImpl struct {
-	TextFieldDelegateImpl
-	_ComboBoxSelectionDidChange  func(notification foundation.Notification)
-	_ComboBoxSelectionIsChanging func(notification foundation.Notification)
-	_ComboBoxWillDismiss         func(notification foundation.Notification)
-	_ComboBoxWillPopUp           func(notification foundation.Notification)
+func WrapComboBoxDelegate(v ComboBoxDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSComboBoxDelegate", v)
 }
 
-func (di *ComboBoxDelegateImpl) ImplementsComboBoxSelectionDidChange() bool {
-	return di._ComboBoxSelectionDidChange != nil
+type ComboBoxDelegateBase struct {
+	TextFieldDelegateBase
 }
 
-func (di *ComboBoxDelegateImpl) SetComboBoxSelectionDidChange(f func(notification foundation.Notification)) {
-	di._ComboBoxSelectionDidChange = f
+func (p *ComboBoxDelegateBase) ImplementsComboBoxSelectionDidChange() bool {
+	return false
 }
 
-func (di *ComboBoxDelegateImpl) ComboBoxSelectionDidChange(notification foundation.Notification) {
-	di._ComboBoxSelectionDidChange(notification)
-}
-func (di *ComboBoxDelegateImpl) ImplementsComboBoxSelectionIsChanging() bool {
-	return di._ComboBoxSelectionIsChanging != nil
+func (p *ComboBoxDelegateBase) ComboBoxSelectionDidChange(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ComboBoxDelegateImpl) SetComboBoxSelectionIsChanging(f func(notification foundation.Notification)) {
-	di._ComboBoxSelectionIsChanging = f
+func (p *ComboBoxDelegateBase) ImplementsComboBoxSelectionIsChanging() bool {
+	return false
 }
 
-func (di *ComboBoxDelegateImpl) ComboBoxSelectionIsChanging(notification foundation.Notification) {
-	di._ComboBoxSelectionIsChanging(notification)
-}
-func (di *ComboBoxDelegateImpl) ImplementsComboBoxWillDismiss() bool {
-	return di._ComboBoxWillDismiss != nil
+func (p *ComboBoxDelegateBase) ComboBoxSelectionIsChanging(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ComboBoxDelegateImpl) SetComboBoxWillDismiss(f func(notification foundation.Notification)) {
-	di._ComboBoxWillDismiss = f
+func (p *ComboBoxDelegateBase) ImplementsComboBoxWillDismiss() bool {
+	return false
 }
 
-func (di *ComboBoxDelegateImpl) ComboBoxWillDismiss(notification foundation.Notification) {
-	di._ComboBoxWillDismiss(notification)
-}
-func (di *ComboBoxDelegateImpl) ImplementsComboBoxWillPopUp() bool {
-	return di._ComboBoxWillPopUp != nil
+func (p *ComboBoxDelegateBase) ComboBoxWillDismiss(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ComboBoxDelegateImpl) SetComboBoxWillPopUp(f func(notification foundation.Notification)) {
-	di._ComboBoxWillPopUp = f
+func (p *ComboBoxDelegateBase) ImplementsComboBoxWillPopUp() bool {
+	return false
 }
 
-func (di *ComboBoxDelegateImpl) ComboBoxWillPopUp(notification foundation.Notification) {
-	di._ComboBoxWillPopUp(notification)
+func (p *ComboBoxDelegateBase) ComboBoxWillPopUp(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
 type ComboBoxDelegateWrapper struct {
-	TextFieldDelegateWrapper
-}
-
-func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionDidChange() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBoxSelectionDidChange:"))
+	objc.Object
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxSelectionDidChange(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxSelectionDidChange:"), objc.ExtractPtr(notification))
 }
 
-func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxSelectionIsChanging() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBoxSelectionIsChanging:"))
-}
-
 func (c_ ComboBoxDelegateWrapper) ComboBoxSelectionIsChanging(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxSelectionIsChanging:"), objc.ExtractPtr(notification))
-}
-
-func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillDismiss() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBoxWillDismiss:"))
 }
 
 func (c_ ComboBoxDelegateWrapper) ComboBoxWillDismiss(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxWillDismiss:"), objc.ExtractPtr(notification))
 }
 
-func (c_ *ComboBoxDelegateWrapper) ImplementsComboBoxWillPopUp() bool {
-	return c_.RespondsToSelector(objc.GetSelector("comboBoxWillPopUp:"))
-}
-
 func (c_ ComboBoxDelegateWrapper) ComboBoxWillPopUp(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("comboBoxWillPopUp:"), objc.ExtractPtr(notification))
+}
+
+func (c_ ComboBoxDelegateWrapper) TextField_TextView_Candidates_ForSelectedRange(textField ITextField, textView ITextView, candidates []foundation.ITextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
+	rv := objc.CallMethod[[]foundation.TextCheckingResult](c_, objc.GetSelector("textField:textView:candidates:forSelectedRange:"), objc.ExtractPtr(textField), objc.ExtractPtr(textView), candidates, selectedRange)
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) TextField_TextView_CandidatesForSelectedRange(textField ITextField, textView ITextView, selectedRange foundation.Range) []objc.Object {
+	rv := objc.CallMethod[[]objc.Object](c_, objc.GetSelector("textField:textView:candidatesForSelectedRange:"), objc.ExtractPtr(textField), objc.ExtractPtr(textView), selectedRange)
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) TextField_TextView_ShouldSelectCandidateAtIndex(textField ITextField, textView ITextView, index uint) bool {
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("textField:textView:shouldSelectCandidateAtIndex:"), objc.ExtractPtr(textField), objc.ExtractPtr(textView), index)
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_IsValidObject(control IControl, obj objc.IObject) bool {
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:isValidObject:"), objc.ExtractPtr(control), objc.ExtractPtr(obj))
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_DidFailToValidatePartialString_ErrorDescription(control IControl, string_ string, error string) {
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("control:didFailToValidatePartialString:errorDescription:"), objc.ExtractPtr(control), string_, error)
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_DidFailToFormatString_ErrorDescription(control IControl, string_ string, error string) bool {
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:didFailToFormatString:errorDescription:"), objc.ExtractPtr(control), string_, error)
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_TextShouldBeginEditing(control IControl, fieldEditor IText) bool {
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:textShouldBeginEditing:"), objc.ExtractPtr(control), objc.ExtractPtr(fieldEditor))
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_TextShouldEndEditing(control IControl, fieldEditor IText) bool {
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:textShouldEndEditing:"), objc.ExtractPtr(control), objc.ExtractPtr(fieldEditor))
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(control IControl, textView ITextView, words []string, charRange foundation.Range, index *int) []string {
+	rv := objc.CallMethod[[]string](c_, objc.GetSelector("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), objc.ExtractPtr(control), objc.ExtractPtr(textView), words, charRange, index)
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) Control_TextView_DoCommandBySelector(control IControl, textView ITextView, commandSelector objc.Selector) bool {
+	rv := objc.CallMethod[bool](c_, objc.GetSelector("control:textView:doCommandBySelector:"), objc.ExtractPtr(control), objc.ExtractPtr(textView), commandSelector)
+	return rv
+}
+
+func (c_ ComboBoxDelegateWrapper) ControlTextDidBeginEditing(obj foundation.INotification) {
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidBeginEditing:"), objc.ExtractPtr(obj))
+}
+
+func (c_ ComboBoxDelegateWrapper) ControlTextDidChange(obj foundation.INotification) {
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidChange:"), objc.ExtractPtr(obj))
+}
+
+func (c_ ComboBoxDelegateWrapper) ControlTextDidEndEditing(obj foundation.INotification) {
+	objc.CallMethod[objc.Void](c_, objc.GetSelector("controlTextDidEndEditing:"), objc.ExtractPtr(obj))
 }

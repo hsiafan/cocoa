@@ -135,568 +135,375 @@ type ApplicationDelegate interface {
 	Application_DelegateHandlesKey(sender Application, key string) bool
 }
 
-type ApplicationDelegateImpl struct {
-	_ApplicationWillFinishLaunching                               func(notification foundation.Notification)
-	_ApplicationDidFinishLaunching                                func(notification foundation.Notification)
-	_ApplicationWillBecomeActive                                  func(notification foundation.Notification)
-	_ApplicationDidBecomeActive                                   func(notification foundation.Notification)
-	_ApplicationWillResignActive                                  func(notification foundation.Notification)
-	_ApplicationDidResignActive                                   func(notification foundation.Notification)
-	_ApplicationShouldTerminate                                   func(sender Application) ApplicationTerminateReply
-	_ApplicationShouldTerminateAfterLastWindowClosed              func(sender Application) bool
-	_ApplicationWillTerminate                                     func(notification foundation.Notification)
-	_ApplicationWillHide                                          func(notification foundation.Notification)
-	_ApplicationDidHide                                           func(notification foundation.Notification)
-	_ApplicationWillUnhide                                        func(notification foundation.Notification)
-	_ApplicationDidUnhide                                         func(notification foundation.Notification)
-	_ApplicationWillUpdate                                        func(notification foundation.Notification)
-	_ApplicationDidUpdate                                         func(notification foundation.Notification)
-	_ApplicationShouldHandleReopen_HasVisibleWindows              func(sender Application, flag bool) bool
-	_ApplicationDockMenu                                          func(sender Application) IMenu
-	_ApplicationShouldAutomaticallyLocalizeKeyEquivalents         func(application Application) bool
-	_Application_WillPresentError                                 func(application Application, error foundation.Error) foundation.IError
-	_ApplicationDidChangeScreenParameters                         func(notification foundation.Notification)
-	_Application_WillContinueUserActivityWithType                 func(application Application, userActivityType string) bool
-	_Application_DidFailToContinueUserActivityWithType_Error      func(application Application, userActivityType string, error foundation.Error)
-	_Application_DidUpdateUserActivity                            func(application Application, userActivity foundation.UserActivity)
-	_Application_DidRegisterForRemoteNotificationsWithDeviceToken func(application Application, deviceToken []byte)
-	_Application_DidFailToRegisterForRemoteNotificationsWithError func(application Application, error foundation.Error)
-	_Application_DidReceiveRemoteNotification                     func(application Application, userInfo map[string]objc.Object)
-	_Application_OpenURLs                                         func(application Application, urls []foundation.URL)
-	_Application_OpenFile                                         func(sender Application, filename string) bool
-	_Application_OpenFileWithoutUI                                func(sender objc.Object, filename string) bool
-	_Application_OpenTempFile                                     func(sender Application, filename string) bool
-	_Application_OpenFiles                                        func(sender Application, filenames []string)
-	_ApplicationShouldOpenUntitledFile                            func(sender Application) bool
-	_ApplicationOpenUntitledFile                                  func(sender Application) bool
-	_Application_PrintFile                                        func(sender Application, filename string) bool
-	_Application_PrintFiles_WithSettings_ShowPrintPanels          func(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply
-	_ApplicationSupportsSecureRestorableState                     func(app Application) bool
-	_ApplicationProtectedDataDidBecomeAvailable                   func(notification foundation.Notification)
-	_ApplicationProtectedDataWillBecomeUnavailable                func(notification foundation.Notification)
-	_Application_WillEncodeRestorableState                        func(app Application, coder foundation.Coder)
-	_Application_DidDecodeRestorableState                         func(app Application, coder foundation.Coder)
-	_ApplicationDidChangeOcclusionState                           func(notification foundation.Notification)
-	_Application_DelegateHandlesKey                               func(sender Application, key string) bool
+func WrapApplicationDelegate(v ApplicationDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSApplicationDelegate", v)
 }
 
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillFinishLaunching() bool {
-	return di._ApplicationWillFinishLaunching != nil
+type ApplicationDelegateBase struct {
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationWillFinishLaunching(f func(notification foundation.Notification)) {
-	di._ApplicationWillFinishLaunching = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillFinishLaunching() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillFinishLaunching(notification foundation.Notification) {
-	di._ApplicationWillFinishLaunching(notification)
+func (p *ApplicationDelegateBase) ApplicationWillFinishLaunching(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidFinishLaunching() bool {
-	return di._ApplicationDidFinishLaunching != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationDidFinishLaunching(f func(notification foundation.Notification)) {
-	di._ApplicationDidFinishLaunching = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidFinishLaunching() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	di._ApplicationDidFinishLaunching(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillBecomeActive() bool {
-	return di._ApplicationWillBecomeActive != nil
+func (p *ApplicationDelegateBase) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationWillBecomeActive(f func(notification foundation.Notification)) {
-	di._ApplicationWillBecomeActive = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillBecomeActive() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillBecomeActive(notification foundation.Notification) {
-	di._ApplicationWillBecomeActive(notification)
+func (p *ApplicationDelegateBase) ApplicationWillBecomeActive(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidBecomeActive() bool {
-	return di._ApplicationDidBecomeActive != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationDidBecomeActive(f func(notification foundation.Notification)) {
-	di._ApplicationDidBecomeActive = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidBecomeActive() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidBecomeActive(notification foundation.Notification) {
-	di._ApplicationDidBecomeActive(notification)
+func (p *ApplicationDelegateBase) ApplicationDidBecomeActive(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillResignActive() bool {
-	return di._ApplicationWillResignActive != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationWillResignActive(f func(notification foundation.Notification)) {
-	di._ApplicationWillResignActive = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillResignActive() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillResignActive(notification foundation.Notification) {
-	di._ApplicationWillResignActive(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidResignActive() bool {
-	return di._ApplicationDidResignActive != nil
+func (p *ApplicationDelegateBase) ApplicationWillResignActive(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationDidResignActive(f func(notification foundation.Notification)) {
-	di._ApplicationDidResignActive = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidResignActive() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidResignActive(notification foundation.Notification) {
-	di._ApplicationDidResignActive(notification)
+func (p *ApplicationDelegateBase) ApplicationDidResignActive(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationShouldTerminate() bool {
-	return di._ApplicationShouldTerminate != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationShouldTerminate(f func(sender Application) ApplicationTerminateReply) {
-	di._ApplicationShouldTerminate = f
+func (p *ApplicationDelegateBase) ImplementsApplicationShouldTerminate() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationShouldTerminate(sender Application) ApplicationTerminateReply {
-	return di._ApplicationShouldTerminate(sender)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return di._ApplicationShouldTerminateAfterLastWindowClosed != nil
+func (p *ApplicationDelegateBase) ApplicationShouldTerminate(sender Application) ApplicationTerminateReply {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationShouldTerminateAfterLastWindowClosed(f func(sender Application) bool) {
-	di._ApplicationShouldTerminateAfterLastWindowClosed = f
+func (p *ApplicationDelegateBase) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
-	return di._ApplicationShouldTerminateAfterLastWindowClosed(sender)
+func (p *ApplicationDelegateBase) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillTerminate() bool {
-	return di._ApplicationWillTerminate != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationWillTerminate(f func(notification foundation.Notification)) {
-	di._ApplicationWillTerminate = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillTerminate() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillTerminate(notification foundation.Notification) {
-	di._ApplicationWillTerminate(notification)
+func (p *ApplicationDelegateBase) ApplicationWillTerminate(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillHide() bool {
-	return di._ApplicationWillHide != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationWillHide(f func(notification foundation.Notification)) {
-	di._ApplicationWillHide = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillHide() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillHide(notification foundation.Notification) {
-	di._ApplicationWillHide(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidHide() bool {
-	return di._ApplicationDidHide != nil
+func (p *ApplicationDelegateBase) ApplicationWillHide(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationDidHide(f func(notification foundation.Notification)) {
-	di._ApplicationDidHide = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidHide() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidHide(notification foundation.Notification) {
-	di._ApplicationDidHide(notification)
+func (p *ApplicationDelegateBase) ApplicationDidHide(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillUnhide() bool {
-	return di._ApplicationWillUnhide != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationWillUnhide(f func(notification foundation.Notification)) {
-	di._ApplicationWillUnhide = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillUnhide() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillUnhide(notification foundation.Notification) {
-	di._ApplicationWillUnhide(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidUnhide() bool {
-	return di._ApplicationDidUnhide != nil
+func (p *ApplicationDelegateBase) ApplicationWillUnhide(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationDidUnhide(f func(notification foundation.Notification)) {
-	di._ApplicationDidUnhide = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidUnhide() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidUnhide(notification foundation.Notification) {
-	di._ApplicationDidUnhide(notification)
+func (p *ApplicationDelegateBase) ApplicationDidUnhide(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationWillUpdate() bool {
-	return di._ApplicationWillUpdate != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationWillUpdate(f func(notification foundation.Notification)) {
-	di._ApplicationWillUpdate = f
+func (p *ApplicationDelegateBase) ImplementsApplicationWillUpdate() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationWillUpdate(notification foundation.Notification) {
-	di._ApplicationWillUpdate(notification)
+func (p *ApplicationDelegateBase) ApplicationWillUpdate(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidUpdate() bool {
-	return di._ApplicationDidUpdate != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationDidUpdate(f func(notification foundation.Notification)) {
-	di._ApplicationDidUpdate = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidUpdate() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidUpdate(notification foundation.Notification) {
-	di._ApplicationDidUpdate(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationShouldHandleReopen_HasVisibleWindows() bool {
-	return di._ApplicationShouldHandleReopen_HasVisibleWindows != nil
+func (p *ApplicationDelegateBase) ApplicationDidUpdate(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationShouldHandleReopen_HasVisibleWindows(f func(sender Application, flag bool) bool) {
-	di._ApplicationShouldHandleReopen_HasVisibleWindows = f
+func (p *ApplicationDelegateBase) ImplementsApplicationShouldHandleReopen_HasVisibleWindows() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationShouldHandleReopen_HasVisibleWindows(sender Application, flag bool) bool {
-	return di._ApplicationShouldHandleReopen_HasVisibleWindows(sender, flag)
+func (p *ApplicationDelegateBase) ApplicationShouldHandleReopen_HasVisibleWindows(sender Application, flag bool) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationDockMenu() bool {
-	return di._ApplicationDockMenu != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationDockMenu(f func(sender Application) IMenu) {
-	di._ApplicationDockMenu = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDockMenu() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDockMenu(sender Application) IMenu {
-	return di._ApplicationDockMenu(sender)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
-	return di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents != nil
+func (p *ApplicationDelegateBase) ApplicationDockMenu(sender Application) IMenu {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationShouldAutomaticallyLocalizeKeyEquivalents(f func(application Application) bool) {
-	di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents = f
+func (p *ApplicationDelegateBase) ImplementsApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
-	return di._ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application)
+func (p *ApplicationDelegateBase) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_WillPresentError() bool {
-	return di._Application_WillPresentError != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_WillPresentError(f func(application Application, error foundation.Error) foundation.IError) {
-	di._Application_WillPresentError = f
+func (p *ApplicationDelegateBase) ImplementsApplication_WillPresentError() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_WillPresentError(application Application, error foundation.Error) foundation.IError {
-	return di._Application_WillPresentError(application, error)
+func (p *ApplicationDelegateBase) Application_WillPresentError(application Application, error foundation.Error) foundation.IError {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidChangeScreenParameters() bool {
-	return di._ApplicationDidChangeScreenParameters != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationDidChangeScreenParameters(f func(notification foundation.Notification)) {
-	di._ApplicationDidChangeScreenParameters = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidChangeScreenParameters() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
-	di._ApplicationDidChangeScreenParameters(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_WillContinueUserActivityWithType() bool {
-	return di._Application_WillContinueUserActivityWithType != nil
+func (p *ApplicationDelegateBase) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_WillContinueUserActivityWithType(f func(application Application, userActivityType string) bool) {
-	di._Application_WillContinueUserActivityWithType = f
+func (p *ApplicationDelegateBase) ImplementsApplication_WillContinueUserActivityWithType() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_WillContinueUserActivityWithType(application Application, userActivityType string) bool {
-	return di._Application_WillContinueUserActivityWithType(application, userActivityType)
+func (p *ApplicationDelegateBase) Application_WillContinueUserActivityWithType(application Application, userActivityType string) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_DidFailToContinueUserActivityWithType_Error() bool {
-	return di._Application_DidFailToContinueUserActivityWithType_Error != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_DidFailToContinueUserActivityWithType_Error(f func(application Application, userActivityType string, error foundation.Error)) {
-	di._Application_DidFailToContinueUserActivityWithType_Error = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DidFailToContinueUserActivityWithType_Error() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DidFailToContinueUserActivityWithType_Error(application Application, userActivityType string, error foundation.Error) {
-	di._Application_DidFailToContinueUserActivityWithType_Error(application, userActivityType, error)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_DidUpdateUserActivity() bool {
-	return di._Application_DidUpdateUserActivity != nil
+func (p *ApplicationDelegateBase) Application_DidFailToContinueUserActivityWithType_Error(application Application, userActivityType string, error foundation.Error) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_DidUpdateUserActivity(f func(application Application, userActivity foundation.UserActivity)) {
-	di._Application_DidUpdateUserActivity = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DidUpdateUserActivity() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DidUpdateUserActivity(application Application, userActivity foundation.UserActivity) {
-	di._Application_DidUpdateUserActivity(application, userActivity)
+func (p *ApplicationDelegateBase) Application_DidUpdateUserActivity(application Application, userActivity foundation.UserActivity) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_DidRegisterForRemoteNotificationsWithDeviceToken() bool {
-	return di._Application_DidRegisterForRemoteNotificationsWithDeviceToken != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_DidRegisterForRemoteNotificationsWithDeviceToken(f func(application Application, deviceToken []byte)) {
-	di._Application_DidRegisterForRemoteNotificationsWithDeviceToken = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DidRegisterForRemoteNotificationsWithDeviceToken() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DidRegisterForRemoteNotificationsWithDeviceToken(application Application, deviceToken []byte) {
-	di._Application_DidRegisterForRemoteNotificationsWithDeviceToken(application, deviceToken)
+func (p *ApplicationDelegateBase) Application_DidRegisterForRemoteNotificationsWithDeviceToken(application Application, deviceToken []byte) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_DidFailToRegisterForRemoteNotificationsWithError() bool {
-	return di._Application_DidFailToRegisterForRemoteNotificationsWithError != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_DidFailToRegisterForRemoteNotificationsWithError(f func(application Application, error foundation.Error)) {
-	di._Application_DidFailToRegisterForRemoteNotificationsWithError = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DidFailToRegisterForRemoteNotificationsWithError() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DidFailToRegisterForRemoteNotificationsWithError(application Application, error foundation.Error) {
-	di._Application_DidFailToRegisterForRemoteNotificationsWithError(application, error)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_DidReceiveRemoteNotification() bool {
-	return di._Application_DidReceiveRemoteNotification != nil
+func (p *ApplicationDelegateBase) Application_DidFailToRegisterForRemoteNotificationsWithError(application Application, error foundation.Error) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_DidReceiveRemoteNotification(f func(application Application, userInfo map[string]objc.Object)) {
-	di._Application_DidReceiveRemoteNotification = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DidReceiveRemoteNotification() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DidReceiveRemoteNotification(application Application, userInfo map[string]objc.Object) {
-	di._Application_DidReceiveRemoteNotification(application, userInfo)
+func (p *ApplicationDelegateBase) Application_DidReceiveRemoteNotification(application Application, userInfo map[string]objc.Object) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_OpenURLs() bool {
-	return di._Application_OpenURLs != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_OpenURLs(f func(application Application, urls []foundation.URL)) {
-	di._Application_OpenURLs = f
+func (p *ApplicationDelegateBase) ImplementsApplication_OpenURLs() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_OpenURLs(application Application, urls []foundation.URL) {
-	di._Application_OpenURLs(application, urls)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_OpenFile() bool {
-	return di._Application_OpenFile != nil
+func (p *ApplicationDelegateBase) Application_OpenURLs(application Application, urls []foundation.URL) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_OpenFile(f func(sender Application, filename string) bool) {
-	di._Application_OpenFile = f
+func (p *ApplicationDelegateBase) ImplementsApplication_OpenFile() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_OpenFile(sender Application, filename string) bool {
-	return di._Application_OpenFile(sender, filename)
+func (p *ApplicationDelegateBase) Application_OpenFile(sender Application, filename string) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_OpenFileWithoutUI() bool {
-	return di._Application_OpenFileWithoutUI != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_OpenFileWithoutUI(f func(sender objc.Object, filename string) bool) {
-	di._Application_OpenFileWithoutUI = f
+func (p *ApplicationDelegateBase) ImplementsApplication_OpenFileWithoutUI() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_OpenFileWithoutUI(sender objc.Object, filename string) bool {
-	return di._Application_OpenFileWithoutUI(sender, filename)
+func (p *ApplicationDelegateBase) Application_OpenFileWithoutUI(sender objc.Object, filename string) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_OpenTempFile() bool {
-	return di._Application_OpenTempFile != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_OpenTempFile(f func(sender Application, filename string) bool) {
-	di._Application_OpenTempFile = f
+func (p *ApplicationDelegateBase) ImplementsApplication_OpenTempFile() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_OpenTempFile(sender Application, filename string) bool {
-	return di._Application_OpenTempFile(sender, filename)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_OpenFiles() bool {
-	return di._Application_OpenFiles != nil
+func (p *ApplicationDelegateBase) Application_OpenTempFile(sender Application, filename string) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_OpenFiles(f func(sender Application, filenames []string)) {
-	di._Application_OpenFiles = f
+func (p *ApplicationDelegateBase) ImplementsApplication_OpenFiles() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_OpenFiles(sender Application, filenames []string) {
-	di._Application_OpenFiles(sender, filenames)
+func (p *ApplicationDelegateBase) Application_OpenFiles(sender Application, filenames []string) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationShouldOpenUntitledFile() bool {
-	return di._ApplicationShouldOpenUntitledFile != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationShouldOpenUntitledFile(f func(sender Application) bool) {
-	di._ApplicationShouldOpenUntitledFile = f
+func (p *ApplicationDelegateBase) ImplementsApplicationShouldOpenUntitledFile() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationShouldOpenUntitledFile(sender Application) bool {
-	return di._ApplicationShouldOpenUntitledFile(sender)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationOpenUntitledFile() bool {
-	return di._ApplicationOpenUntitledFile != nil
+func (p *ApplicationDelegateBase) ApplicationShouldOpenUntitledFile(sender Application) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationOpenUntitledFile(f func(sender Application) bool) {
-	di._ApplicationOpenUntitledFile = f
+func (p *ApplicationDelegateBase) ImplementsApplicationOpenUntitledFile() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationOpenUntitledFile(sender Application) bool {
-	return di._ApplicationOpenUntitledFile(sender)
+func (p *ApplicationDelegateBase) ApplicationOpenUntitledFile(sender Application) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_PrintFile() bool {
-	return di._Application_PrintFile != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_PrintFile(f func(sender Application, filename string) bool) {
-	di._Application_PrintFile = f
+func (p *ApplicationDelegateBase) ImplementsApplication_PrintFile() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_PrintFile(sender Application, filename string) bool {
-	return di._Application_PrintFile(sender, filename)
+func (p *ApplicationDelegateBase) Application_PrintFile(sender Application, filename string) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_PrintFiles_WithSettings_ShowPrintPanels() bool {
-	return di._Application_PrintFiles_WithSettings_ShowPrintPanels != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_PrintFiles_WithSettings_ShowPrintPanels(f func(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply) {
-	di._Application_PrintFiles_WithSettings_ShowPrintPanels = f
+func (p *ApplicationDelegateBase) ImplementsApplication_PrintFiles_WithSettings_ShowPrintPanels() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_PrintFiles_WithSettings_ShowPrintPanels(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply {
-	return di._Application_PrintFiles_WithSettings_ShowPrintPanels(application, fileNames, printSettings, showPrintPanels)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplicationSupportsSecureRestorableState() bool {
-	return di._ApplicationSupportsSecureRestorableState != nil
+func (p *ApplicationDelegateBase) Application_PrintFiles_WithSettings_ShowPrintPanels(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplicationSupportsSecureRestorableState(f func(app Application) bool) {
-	di._ApplicationSupportsSecureRestorableState = f
+func (p *ApplicationDelegateBase) ImplementsApplicationSupportsSecureRestorableState() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationSupportsSecureRestorableState(app Application) bool {
-	return di._ApplicationSupportsSecureRestorableState(app)
+func (p *ApplicationDelegateBase) ApplicationSupportsSecureRestorableState(app Application) bool {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationProtectedDataDidBecomeAvailable() bool {
-	return di._ApplicationProtectedDataDidBecomeAvailable != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationProtectedDataDidBecomeAvailable(f func(notification foundation.Notification)) {
-	di._ApplicationProtectedDataDidBecomeAvailable = f
+func (p *ApplicationDelegateBase) ImplementsApplicationProtectedDataDidBecomeAvailable() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
-	di._ApplicationProtectedDataDidBecomeAvailable(notification)
+func (p *ApplicationDelegateBase) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationProtectedDataWillBecomeUnavailable() bool {
-	return di._ApplicationProtectedDataWillBecomeUnavailable != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationProtectedDataWillBecomeUnavailable(f func(notification foundation.Notification)) {
-	di._ApplicationProtectedDataWillBecomeUnavailable = f
+func (p *ApplicationDelegateBase) ImplementsApplicationProtectedDataWillBecomeUnavailable() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification) {
-	di._ApplicationProtectedDataWillBecomeUnavailable(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_WillEncodeRestorableState() bool {
-	return di._Application_WillEncodeRestorableState != nil
+func (p *ApplicationDelegateBase) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_WillEncodeRestorableState(f func(app Application, coder foundation.Coder)) {
-	di._Application_WillEncodeRestorableState = f
+func (p *ApplicationDelegateBase) ImplementsApplication_WillEncodeRestorableState() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_WillEncodeRestorableState(app Application, coder foundation.Coder) {
-	di._Application_WillEncodeRestorableState(app, coder)
+func (p *ApplicationDelegateBase) Application_WillEncodeRestorableState(app Application, coder foundation.Coder) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplication_DidDecodeRestorableState() bool {
-	return di._Application_DidDecodeRestorableState != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplication_DidDecodeRestorableState(f func(app Application, coder foundation.Coder)) {
-	di._Application_DidDecodeRestorableState = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DidDecodeRestorableState() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DidDecodeRestorableState(app Application, coder foundation.Coder) {
-	di._Application_DidDecodeRestorableState(app, coder)
+func (p *ApplicationDelegateBase) Application_DidDecodeRestorableState(app Application, coder foundation.Coder) {
+	panic("unimpemented protocol method")
 }
-func (di *ApplicationDelegateImpl) ImplementsApplicationDidChangeOcclusionState() bool {
-	return di._ApplicationDidChangeOcclusionState != nil
-}
 
-func (di *ApplicationDelegateImpl) SetApplicationDidChangeOcclusionState(f func(notification foundation.Notification)) {
-	di._ApplicationDidChangeOcclusionState = f
+func (p *ApplicationDelegateBase) ImplementsApplicationDidChangeOcclusionState() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
-	di._ApplicationDidChangeOcclusionState(notification)
-}
-func (di *ApplicationDelegateImpl) ImplementsApplication_DelegateHandlesKey() bool {
-	return di._Application_DelegateHandlesKey != nil
+func (p *ApplicationDelegateBase) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ApplicationDelegateImpl) SetApplication_DelegateHandlesKey(f func(sender Application, key string) bool) {
-	di._Application_DelegateHandlesKey = f
+func (p *ApplicationDelegateBase) ImplementsApplication_DelegateHandlesKey() bool {
+	return false
 }
 
-func (di *ApplicationDelegateImpl) Application_DelegateHandlesKey(sender Application, key string) bool {
-	return di._Application_DelegateHandlesKey(sender, key)
+func (p *ApplicationDelegateBase) Application_DelegateHandlesKey(sender Application, key string) bool {
+	panic("unimpemented protocol method")
 }
 
 type ApplicationDelegateWrapper struct {
 	objc.Object
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillFinishLaunching() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillFinishLaunching:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationWillFinishLaunching(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillFinishLaunching:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidFinishLaunching() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidFinishLaunching:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidFinishLaunching(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidFinishLaunching:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillBecomeActive() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillBecomeActive:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationWillBecomeActive(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillBecomeActive:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidBecomeActive() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidBecomeActive:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidBecomeActive(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidBecomeActive:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillResignActive() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillResignActive:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationWillResignActive(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillResignActive:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidResignActive() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidResignActive:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationDidResignActive(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidResignActive:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldTerminate() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationShouldTerminate:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldTerminate(sender IApplication) ApplicationTerminateReply {
@@ -704,73 +511,37 @@ func (a_ ApplicationDelegateWrapper) ApplicationShouldTerminate(sender IApplicat
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationShouldTerminateAfterLastWindowClosed:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationShouldTerminateAfterLastWindowClosed(sender IApplication) bool {
 	rv := objc.CallMethod[bool](a_, objc.GetSelector("applicationShouldTerminateAfterLastWindowClosed:"), objc.ExtractPtr(sender))
 	return rv
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillTerminate() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillTerminate:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationWillTerminate(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillTerminate:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillHide() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillHide:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationWillHide(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillHide:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidHide() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidHide:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidHide(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidHide:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillUnhide() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillUnhide:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationWillUnhide(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillUnhide:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidUnhide() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidUnhide:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationDidUnhide(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidUnhide:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationWillUpdate() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationWillUpdate:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationWillUpdate(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationWillUpdate:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidUpdate() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidUpdate:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationDidUpdate(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidUpdate:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldHandleReopen_HasVisibleWindows() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationShouldHandleReopen:hasVisibleWindows:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldHandleReopen_HasVisibleWindows(sender IApplication, flag bool) bool {
@@ -778,17 +549,9 @@ func (a_ ApplicationDelegateWrapper) ApplicationShouldHandleReopen_HasVisibleWin
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDockMenu() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDockMenu:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationDockMenu(sender IApplication) Menu {
 	rv := objc.CallMethod[Menu](a_, objc.GetSelector("applicationDockMenu:"), objc.ExtractPtr(sender))
 	return rv
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldAutomaticallyLocalizeKeyEquivalents() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationShouldAutomaticallyLocalizeKeyEquivalents:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application IApplication) bool {
@@ -796,25 +559,13 @@ func (a_ ApplicationDelegateWrapper) ApplicationShouldAutomaticallyLocalizeKeyEq
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillPresentError() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:willPresentError:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_WillPresentError(application IApplication, error foundation.IError) foundation.Error {
 	rv := objc.CallMethod[foundation.Error](a_, objc.GetSelector("application:willPresentError:"), objc.ExtractPtr(application), objc.ExtractPtr(error))
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidChangeScreenParameters() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidChangeScreenParameters:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationDidChangeScreenParameters(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidChangeScreenParameters:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillContinueUserActivityWithType() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:willContinueUserActivityWithType:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_WillContinueUserActivityWithType(application IApplication, userActivityType string) bool {
@@ -822,56 +573,28 @@ func (a_ ApplicationDelegateWrapper) Application_WillContinueUserActivityWithTyp
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidFailToContinueUserActivityWithType_Error() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:didFailToContinueUserActivityWithType:error:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_DidFailToContinueUserActivityWithType_Error(application IApplication, userActivityType string, error foundation.IError) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:didFailToContinueUserActivityWithType:error:"), objc.ExtractPtr(application), userActivityType, objc.ExtractPtr(error))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidUpdateUserActivity() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:didUpdateUserActivity:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidUpdateUserActivity(application IApplication, userActivity foundation.IUserActivity) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:didUpdateUserActivity:"), objc.ExtractPtr(application), objc.ExtractPtr(userActivity))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidRegisterForRemoteNotificationsWithDeviceToken() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:didRegisterForRemoteNotificationsWithDeviceToken:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_DidRegisterForRemoteNotificationsWithDeviceToken(application IApplication, deviceToken []byte) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:didRegisterForRemoteNotificationsWithDeviceToken:"), objc.ExtractPtr(application), deviceToken)
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidFailToRegisterForRemoteNotificationsWithError() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:didFailToRegisterForRemoteNotificationsWithError:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidFailToRegisterForRemoteNotificationsWithError(application IApplication, error foundation.IError) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:didFailToRegisterForRemoteNotificationsWithError:"), objc.ExtractPtr(application), objc.ExtractPtr(error))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidReceiveRemoteNotification() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:didReceiveRemoteNotification:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_DidReceiveRemoteNotification(application IApplication, userInfo map[string]objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:didReceiveRemoteNotification:"), objc.ExtractPtr(application), userInfo)
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenURLs() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:openURLs:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_OpenURLs(application IApplication, urls []foundation.IURL) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:openURLs:"), objc.ExtractPtr(application), urls)
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFile() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:openFile:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenFile(sender IApplication, filename string) bool {
@@ -879,17 +602,9 @@ func (a_ ApplicationDelegateWrapper) Application_OpenFile(sender IApplication, f
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFileWithoutUI() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:openFileWithoutUI:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_OpenFileWithoutUI(sender objc.IObject, filename string) bool {
 	rv := objc.CallMethod[bool](a_, objc.GetSelector("application:openFileWithoutUI:"), objc.ExtractPtr(sender), filename)
 	return rv
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenTempFile() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:openTempFile:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_OpenTempFile(sender IApplication, filename string) bool {
@@ -897,16 +612,8 @@ func (a_ ApplicationDelegateWrapper) Application_OpenTempFile(sender IApplicatio
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_OpenFiles() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:openFiles:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_OpenFiles(sender IApplication, filenames []string) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:openFiles:"), objc.ExtractPtr(sender), filenames)
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationShouldOpenUntitledFile() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationShouldOpenUntitledFile:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationShouldOpenUntitledFile(sender IApplication) bool {
@@ -914,17 +621,9 @@ func (a_ ApplicationDelegateWrapper) ApplicationShouldOpenUntitledFile(sender IA
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationOpenUntitledFile() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationOpenUntitledFile:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationOpenUntitledFile(sender IApplication) bool {
 	rv := objc.CallMethod[bool](a_, objc.GetSelector("applicationOpenUntitledFile:"), objc.ExtractPtr(sender))
 	return rv
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_PrintFile() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:printFile:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_PrintFile(sender IApplication, filename string) bool {
@@ -932,17 +631,9 @@ func (a_ ApplicationDelegateWrapper) Application_PrintFile(sender IApplication, 
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_PrintFiles_WithSettings_ShowPrintPanels() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:printFiles:withSettings:showPrintPanels:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_PrintFiles_WithSettings_ShowPrintPanels(application IApplication, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.IObject, showPrintPanels bool) ApplicationPrintReply {
 	rv := objc.CallMethod[ApplicationPrintReply](a_, objc.GetSelector("application:printFiles:withSettings:showPrintPanels:"), objc.ExtractPtr(application), fileNames, printSettings, showPrintPanels)
 	return rv
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationSupportsSecureRestorableState() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationSupportsSecureRestorableState:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationSupportsSecureRestorableState(app IApplication) bool {
@@ -950,48 +641,24 @@ func (a_ ApplicationDelegateWrapper) ApplicationSupportsSecureRestorableState(ap
 	return rv
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationProtectedDataDidBecomeAvailable() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationProtectedDataDidBecomeAvailable:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationProtectedDataDidBecomeAvailable(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationProtectedDataDidBecomeAvailable:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationProtectedDataWillBecomeUnavailable() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationProtectedDataWillBecomeUnavailable:"))
 }
 
 func (a_ ApplicationDelegateWrapper) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationProtectedDataWillBecomeUnavailable:"), objc.ExtractPtr(notification))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_WillEncodeRestorableState() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:willEncodeRestorableState:"))
-}
-
 func (a_ ApplicationDelegateWrapper) Application_WillEncodeRestorableState(app IApplication, coder foundation.ICoder) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:willEncodeRestorableState:"), objc.ExtractPtr(app), objc.ExtractPtr(coder))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DidDecodeRestorableState() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:didDecodeRestorableState:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DidDecodeRestorableState(app IApplication, coder foundation.ICoder) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:didDecodeRestorableState:"), objc.ExtractPtr(app), objc.ExtractPtr(coder))
 }
 
-func (a_ *ApplicationDelegateWrapper) ImplementsApplicationDidChangeOcclusionState() bool {
-	return a_.RespondsToSelector(objc.GetSelector("applicationDidChangeOcclusionState:"))
-}
-
 func (a_ ApplicationDelegateWrapper) ApplicationDidChangeOcclusionState(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("applicationDidChangeOcclusionState:"), objc.ExtractPtr(notification))
-}
-
-func (a_ *ApplicationDelegateWrapper) ImplementsApplication_DelegateHandlesKey() bool {
-	return a_.RespondsToSelector(objc.GetSelector("application:delegateHandlesKey:"))
 }
 
 func (a_ ApplicationDelegateWrapper) Application_DelegateHandlesKey(sender IApplication, key string) bool {

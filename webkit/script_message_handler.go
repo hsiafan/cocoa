@@ -10,6 +10,13 @@ type ScriptMessageHandler interface {
 	UserContentController_DidReceiveScriptMessage(userContentController UserContentController, message ScriptMessage)
 }
 
+func WrapScriptMessageHandler(v ScriptMessageHandler) objc.Object {
+	return objc.WrapAsProtocol("WKScriptMessageHandler", v)
+}
+
+type ScriptMessageHandlerBase struct {
+}
+
 type ScriptMessageHandlerWrapper struct {
 	objc.Object
 }

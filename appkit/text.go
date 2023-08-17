@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -86,8 +85,7 @@ type IText interface {
 	IsHorizontallyResizable() bool
 	SetHorizontallyResizable(value bool)
 	Delegate() TextDelegateWrapper
-	SetDelegate(value TextDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 }
 
 type Text struct {
@@ -420,17 +418,13 @@ func (t_ Text) SetHorizontallyResizable(value bool) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHorizontallyResizable:"), value)
 }
 
+// weak property
 func (t_ Text) Delegate() TextDelegateWrapper {
 	rv := objc.CallMethod[TextDelegateWrapper](t_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (t_ Text) SetDelegate(value TextDelegate) {
-	po := objc.WrapAsProtocol("NSTextDelegate", value)
-	objc.SetAssociatedObject(t_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (t_ Text) SetDelegate0(value objc.IObject) {
+// weak property
+func (t_ Text) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

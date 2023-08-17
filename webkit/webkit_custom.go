@@ -23,7 +23,7 @@ func AddScriptMessageHandler(v IWebView, name string, handler func(message objc.
 	h := &scriptMessageHandler{
 		handler: handler,
 	}
-	v.Configuration().UserContentController().AddScriptMessageHandler_Name(h, name)
+	v.Configuration().UserContentController().AddScriptMessageHandler_Name(WrapScriptMessageHandler(h), name)
 }
 
 // AddScriptMessageHandlerWithReply is convinent method for adding ScriptMessageHandlerWithReply to WebView ContentController
@@ -31,8 +31,8 @@ func AddScriptMessageHandlerWithReply(v IWebView, name string, handler func(mess
 	h := &scriptMessageHandlerWithReply{
 		handler: handler,
 	}
-	v.Configuration().UserContentController().AddScriptMessageHandlerWithReply_ContentWorld_Name(h,
-		ContentWorldClass.PageWorld(), name)
+	v.Configuration().UserContentController().AddScriptMessageHandlerWithReply_ContentWorld_Name(
+		WrapScriptMessageHandlerWithReply(h), ContentWorldClass.PageWorld(), name)
 }
 
 var _ ScriptMessageHandler = (*scriptMessageHandler)(nil)

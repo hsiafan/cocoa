@@ -15,48 +15,35 @@ type TextStorageDelegate interface {
 	TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
 }
 
-type TextStorageDelegateImpl struct {
-	_TextStorage_WillProcessEditing_Range_ChangeInLength func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
-	_TextStorage_DidProcessEditing_Range_ChangeInLength  func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)
+func WrapTextStorageDelegate(v TextStorageDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSTextStorageDelegate", v)
 }
 
-func (di *TextStorageDelegateImpl) ImplementsTextStorage_WillProcessEditing_Range_ChangeInLength() bool {
-	return di._TextStorage_WillProcessEditing_Range_ChangeInLength != nil
+type TextStorageDelegateBase struct {
 }
 
-func (di *TextStorageDelegateImpl) SetTextStorage_WillProcessEditing_Range_ChangeInLength(f func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
-	di._TextStorage_WillProcessEditing_Range_ChangeInLength = f
+func (p *TextStorageDelegateBase) ImplementsTextStorage_WillProcessEditing_Range_ChangeInLength() bool {
+	return false
 }
 
-func (di *TextStorageDelegateImpl) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	di._TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage, editedMask, editedRange, delta)
-}
-func (di *TextStorageDelegateImpl) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
-	return di._TextStorage_DidProcessEditing_Range_ChangeInLength != nil
+func (p *TextStorageDelegateBase) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
+	panic("unimpemented protocol method")
 }
 
-func (di *TextStorageDelegateImpl) SetTextStorage_DidProcessEditing_Range_ChangeInLength(f func(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
-	di._TextStorage_DidProcessEditing_Range_ChangeInLength = f
+func (p *TextStorageDelegateBase) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
+	return false
 }
 
-func (di *TextStorageDelegateImpl) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	di._TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage, editedMask, editedRange, delta)
+func (p *TextStorageDelegateBase) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
+	panic("unimpemented protocol method")
 }
 
 type TextStorageDelegateWrapper struct {
 	objc.Object
 }
 
-func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_WillProcessEditing_Range_ChangeInLength() bool {
-	return t_.RespondsToSelector(objc.GetSelector("textStorage:willProcessEditing:range:changeInLength:"))
-}
-
 func (t_ TextStorageDelegateWrapper) TextStorage_WillProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("textStorage:willProcessEditing:range:changeInLength:"), objc.ExtractPtr(textStorage), editedMask, editedRange, delta)
-}
-
-func (t_ *TextStorageDelegateWrapper) ImplementsTextStorage_DidProcessEditing_Range_ChangeInLength() bool {
-	return t_.RespondsToSelector(objc.GetSelector("textStorage:didProcessEditing:range:changeInLength:"))
 }
 
 func (t_ TextStorageDelegateWrapper) TextStorage_DidProcessEditing_Range_ChangeInLength(textStorage ITextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {

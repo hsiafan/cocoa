@@ -42,24 +42,24 @@ func initAndRun() {
 	snapshotWebView.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	snapshotWin.SetContentView(snapshotWebView)
 
-	navigationDelegate := &webkit.NavigationDelegateImpl{}
-	navigationDelegate.SetWebView_DidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
-		script := `var rect = {"width":document.body.scrollWidth, "height":document.body.scrollHeight}; rect`
-		webView.EvaluateJavaScript_CompletionHandler(script, func(value objc.Object, err foundation.Error) {
-			rect := foundation.DictToMap[string, foundation.Number](foundation.MakeDictionary(value.Ptr()))
-			width := rect["width"].DoubleValue()
-			height := rect["height"].DoubleValue()
-			snapshotWin.SetFrame_Display(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
-			snapshotWebView.LoadHTMLString_BaseURL(html, foundation.URLClass.URLWithString(url))
-		})
-	})
-	webView.SetNavigationDelegate(navigationDelegate)
+	webView.SetNavigationDelegate(webkit.WrapNavigationDelegate(&myNavigationDelegate{
+		onFinishNavigation: func(webView webkit.WebView, navigation webkit.Navigation) {
+			script := `var rect = {"width":document.body.scrollWidth, "height":document.body.scrollHeight}; rect`
+			webView.EvaluateJavaScript_CompletionHandler(script, func(value objc.Object, err foundation.Error) {
+				rect := foundation.DictToMap[string, foundation.Number](foundation.MakeDictionary(value.Ptr()))
+				width := rect["width"].DoubleValue()
+				height := rect["height"].DoubleValue()
+				snapshotWin.SetFrame_Display(foundation.Rect{Size: foundation.Size{Width: width, Height: height}}, true)
+				snapshotWebView.LoadHTMLString_BaseURL(html, foundation.URLClass.URLWithString(url))
+			})
+		},
+	}))
 
-	ssnd := &webkit.NavigationDelegateImpl{}
-	ssnd.SetWebView_DidFinishNavigation(func(webView webkit.WebView, navigation webkit.Navigation) {
-		snapshotButton.SetEnabled(true)
-	})
-	snapshotWebView.SetNavigationDelegate(ssnd)
+	snapshotWebView.SetNavigationDelegate(webkit.WrapNavigationDelegate(&myNavigationDelegate{
+		onFinishNavigation: func(webView webkit.WebView, navigation webkit.Navigation) {
+			snapshotButton.SetEnabled(true)
+		},
+	}))
 
 	action.Set(snapshotButton, func(sender objc.IObject) {
 		snapshotWebView.TakeSnapshotWithConfiguration_CompletionHandler(nil, func(image appkit.Image, err foundation.Error) {
@@ -78,27 +78,62 @@ func initAndRun() {
 	snapshotButton.SetEnabled(false)
 
 	sv.AddView_InGravity(snapshotButton, appkit.StackViewGravityTop)
-
-	wd := &appkit.WindowDelegateImpl{}
-	wd.SetWindowWillClose(func(notification foundation.Notification) {
-		snapshotWin.Close()
-	})
-	w.SetDelegate(wd)
+	w.SetDelegate(appkit.WrapWindowDelegate(&myWindowDelegate{snapshotWin: snapshotWin}))
 
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	ad := &appkit.ApplicationDelegateImpl{}
-	ad.SetApplicationDidFinishLaunching(func(foundation.Notification) {
-		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-		app.ActivateIgnoringOtherApps(true)
-	})
-	ad.SetApplicationShouldTerminateAfterLastWindowClosed(func(appkit.Application) bool {
-		return true
-	})
-	app.SetDelegate(ad)
+	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app}))
 
 	app.Run()
+}
+
+type myNavigationDelegate struct {
+	webkit.NavigationDelegateBase
+	onFinishNavigation func(webView webkit.WebView, navigation webkit.Navigation)
+}
+
+func (p *myNavigationDelegate) ImplementsWebView_DidFinishNavigation() bool {
+	return true
+}
+
+func (p *myNavigationDelegate) WebView_DidFinishNavigation(webView webkit.WebView, navigation webkit.Navigation) {
+	p.onFinishNavigation(webView, navigation)
+}
+
+type myWindowDelegate struct {
+	appkit.WindowDelegateBase
+	snapshotWin appkit.Window
+}
+
+func (p *myWindowDelegate) ImplementsWindowWillClose() bool {
+	return true
+}
+
+func (p *myWindowDelegate) WindowWillClose(notification foundation.Notification) {
+	p.snapshotWin.Close()
+}
+
+type myApplicationDelegate struct {
+	appkit.ApplicationDelegateBase
+	app appkit.Application
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
+	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+	p.app.ActivateIgnoringOtherApps(true)
+}
+
+func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
+	return true
+}
+
+func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
+	return true
 }
 
 func main() {

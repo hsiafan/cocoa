@@ -35,8 +35,7 @@ type IViewController interface {
 	RemoveChildViewControllerAtIndex(index int)
 	RemoveFromParentViewController()
 	PreferredContentSizeDidChangeForViewController(viewController IViewController)
-	PresentViewController_Animator(viewController IViewController, animator ViewControllerPresentationAnimator)
-	PresentViewController0_Animator(viewController IViewController, animator objc.IObject)
+	PresentViewController_Animator(viewController IViewController, animator objc.IObject)
 	DismissViewController(viewController IViewController)
 	PresentViewController_AsPopoverRelativeToRect_OfView_PreferredEdge_Behavior(viewController IViewController, positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge, behavior PopoverBehavior)
 	PresentViewControllerAsModalWindow(viewController IViewController)
@@ -180,12 +179,7 @@ func (v_ ViewController) PreferredContentSizeDidChangeForViewController(viewCont
 	objc.CallMethod[objc.Void](v_, objc.GetSelector("preferredContentSizeDidChangeForViewController:"), objc.ExtractPtr(viewController))
 }
 
-func (v_ ViewController) PresentViewController_Animator(viewController IViewController, animator ViewControllerPresentationAnimator) {
-	po := objc.WrapAsProtocol("NSViewControllerPresentationAnimator", animator)
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), objc.ExtractPtr(viewController), po)
-}
-
-func (v_ ViewController) PresentViewController0_Animator(viewController IViewController, animator objc.IObject) {
+func (v_ ViewController) PresentViewController_Animator(viewController IViewController, animator objc.IObject) {
 	objc.CallMethod[objc.Void](v_, objc.GetSelector("presentViewController:animator:"), objc.ExtractPtr(viewController), objc.ExtractPtr(animator))
 }
 
@@ -284,6 +278,7 @@ func (v_ ViewController) PresentedViewControllers() []ViewController {
 	return rv
 }
 
+// weak property
 func (v_ ViewController) PresentingViewController() ViewController {
 	rv := objc.CallMethod[ViewController](v_, objc.GetSelector("presentingViewController"))
 	return rv

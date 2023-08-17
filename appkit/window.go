@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -162,8 +161,7 @@ type IWindow interface {
 	UserSpaceScaleFactor() float64
 	InitWithWindowRef(windowRef unsafe.Pointer) Window
 	Delegate() WindowDelegateWrapper
-	SetDelegate(value WindowDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	ContentViewController() ViewController
 	SetContentViewController(value IViewController)
 	ContentView() View
@@ -1020,18 +1018,14 @@ func (w_ Window) InitWithWindowRef(windowRef unsafe.Pointer) Window {
 	return rv
 }
 
+// weak property
 func (w_ Window) Delegate() WindowDelegateWrapper {
 	rv := objc.CallMethod[WindowDelegateWrapper](w_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (w_ Window) SetDelegate(value WindowDelegate) {
-	po := objc.WrapAsProtocol("NSWindowDelegate", value)
-	objc.SetAssociatedObject(w_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (w_ Window) SetDelegate0(value objc.IObject) {
+// weak property
+func (w_ Window) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
@@ -1209,11 +1203,13 @@ func (w_ Window) SetBackingType(value BackingStoreType) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setBackingType:"), value)
 }
 
+// weak property
 func (w_ Window) WindowController() WindowController {
 	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("windowController"))
 	return rv
 }
 
+// weak property
 func (w_ Window) SetWindowController(value IWindowController) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindowController:"), objc.ExtractPtr(value))
 }
@@ -1430,11 +1426,13 @@ func (w_ Window) ChildWindows() []Window {
 	return rv
 }
 
+// weak property
 func (w_ Window) ParentWindow() Window {
 	rv := objc.CallMethod[Window](w_, objc.GetSelector("parentWindow"))
 	return rv
 }
 
+// weak property
 func (w_ Window) SetParentWindow(value IWindow) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setParentWindow:"), objc.ExtractPtr(value))
 }
@@ -1556,6 +1554,7 @@ func (w_ Window) TabbedWindows() []Window {
 	return rv
 }
 
+// weak property
 func (w_ Window) TabGroup() WindowTabGroup {
 	rv := objc.CallMethod[WindowTabGroup](w_, objc.GetSelector("tabGroup"))
 	return rv
@@ -1575,15 +1574,18 @@ func (w_ Window) CurrentEvent() Event {
 	return rv
 }
 
+// weak property
 func (w_ Window) InitialFirstResponder() View {
 	rv := objc.CallMethod[View](w_, objc.GetSelector("initialFirstResponder"))
 	return rv
 }
 
+// weak property
 func (w_ Window) SetInitialFirstResponder(value IView) {
 	objc.CallMethod[objc.Void](w_, objc.GetSelector("setInitialFirstResponder:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (w_ Window) FirstResponder() Responder {
 	rv := objc.CallMethod[Responder](w_, objc.GetSelector("firstResponder"))
 	return rv

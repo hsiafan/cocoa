@@ -80,8 +80,7 @@ type ITextView interface {
 	SetSpellingState_Range(value int, charRange foundation.Range)
 	OrderFrontSharingServicePicker(sender objc.IObject)
 	DragImageForSelectionWithEvent_Origin(event IEvent, origin *foundation.Point) Image
-	DragOperationForDraggingInfo_Type(dragInfo DraggingInfo, type_ PasteboardType) DragOperation
-	DragOperationForDraggingInfo0_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation
+	DragOperationForDraggingInfo_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation
 	DragSelectionWithEvent_Offset_SlideBack(event IEvent, mouseOffset foundation.Size, slideBack bool) bool
 	StartSpeaking(sender objc.IObject)
 	StopSpeaking(sender objc.IObject)
@@ -525,13 +524,7 @@ func (t_ TextView) DragImageForSelectionWithEvent_Origin(event IEvent, origin *f
 	return rv
 }
 
-func (t_ TextView) DragOperationForDraggingInfo_Type(dragInfo DraggingInfo, type_ PasteboardType) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", dragInfo)
-	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("dragOperationForDraggingInfo:type:"), po, type_)
-	return rv
-}
-
-func (t_ TextView) DragOperationForDraggingInfo0_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation {
+func (t_ TextView) DragOperationForDraggingInfo_Type(dragInfo objc.IObject, type_ PasteboardType) DragOperation {
 	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("dragOperationForDraggingInfo:type:"), objc.ExtractPtr(dragInfo), type_)
 	return rv
 }
@@ -652,11 +645,13 @@ func (tc _TextViewClass) StronglyReferencesTextStorage() bool {
 	return rv
 }
 
+// weak property
 func (t_ TextView) TextContainer() TextContainer {
 	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("textContainer"))
 	return rv
 }
 
+// weak property
 func (t_ TextView) SetTextContainer(value ITextContainer) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextContainer:"), objc.ExtractPtr(value))
 }
@@ -675,21 +670,25 @@ func (t_ TextView) TextContainerOrigin() foundation.Point {
 	return rv
 }
 
+// weak property
 func (t_ TextView) TextLayoutManager() TextLayoutManager {
 	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
 	return rv
 }
 
+// weak property
 func (t_ TextView) LayoutManager() LayoutManager {
 	rv := objc.CallMethod[LayoutManager](t_, objc.GetSelector("layoutManager"))
 	return rv
 }
 
+// weak property
 func (t_ TextView) TextContentStorage() TextContentStorage {
 	rv := objc.CallMethod[TextContentStorage](t_, objc.GetSelector("textContentStorage"))
 	return rv
 }
 
+// weak property
 func (t_ TextView) TextStorage() TextStorage {
 	rv := objc.CallMethod[TextStorage](t_, objc.GetSelector("textStorage"))
 	return rv

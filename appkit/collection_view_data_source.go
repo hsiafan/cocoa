@@ -19,12 +19,31 @@ type CollectionViewDataSource interface {
 	CollectionView_ViewForSupplementaryElementOfKind_AtIndexPath(collectionView CollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) IView
 }
 
-type CollectionViewDataSourceWrapper struct {
-	objc.Object
+func WrapCollectionViewDataSource(v CollectionViewDataSource) objc.Object {
+	return objc.WrapAsProtocol("NSCollectionViewDataSource", v)
 }
 
-func (c_ *CollectionViewDataSourceWrapper) ImplementsNumberOfSectionsInCollectionView() bool {
-	return c_.RespondsToSelector(objc.GetSelector("numberOfSectionsInCollectionView:"))
+type CollectionViewDataSourceBase struct {
+}
+
+func (p *CollectionViewDataSourceBase) ImplementsNumberOfSectionsInCollectionView() bool {
+	return false
+}
+
+func (p *CollectionViewDataSourceBase) NumberOfSectionsInCollectionView(collectionView CollectionView) int {
+	panic("unimpemented protocol method")
+}
+
+func (p *CollectionViewDataSourceBase) ImplementsCollectionView_ViewForSupplementaryElementOfKind_AtIndexPath() bool {
+	return false
+}
+
+func (p *CollectionViewDataSourceBase) CollectionView_ViewForSupplementaryElementOfKind_AtIndexPath(collectionView CollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) IView {
+	panic("unimpemented protocol method")
+}
+
+type CollectionViewDataSourceWrapper struct {
+	objc.Object
 }
 
 func (c_ CollectionViewDataSourceWrapper) NumberOfSectionsInCollectionView(collectionView ICollectionView) int {
@@ -40,10 +59,6 @@ func (c_ CollectionViewDataSourceWrapper) CollectionView_NumberOfItemsInSection(
 func (c_ CollectionViewDataSourceWrapper) CollectionView_ItemForRepresentedObjectAtIndexPath(collectionView ICollectionView, indexPath foundation.IIndexPath) CollectionViewItem {
 	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("collectionView:itemForRepresentedObjectAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPath))
 	return rv
-}
-
-func (c_ *CollectionViewDataSourceWrapper) ImplementsCollectionView_ViewForSupplementaryElementOfKind_AtIndexPath() bool {
-	return c_.RespondsToSelector(objc.GetSelector("collectionView:viewForSupplementaryElementOfKind:atIndexPath:"))
 }
 
 func (c_ CollectionViewDataSourceWrapper) CollectionView_ViewForSupplementaryElementOfKind_AtIndexPath(collectionView ICollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) View {

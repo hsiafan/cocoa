@@ -170,11 +170,13 @@ func (t_ ToolbarItem) SetView(value IView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (t_ ToolbarItem) Target() objc.Object {
 	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("target"))
 	return rv
 }
 
+// weak property
 func (t_ ToolbarItem) SetTarget(value objc.IObject) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
 }
@@ -252,6 +254,7 @@ func (t_ ToolbarItem) SetTag(value int) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTag:"), value)
 }
 
+// weak property
 func (t_ ToolbarItem) Toolbar() Toolbar {
 	rv := objc.CallMethod[Toolbar](t_, objc.GetSelector("toolbar"))
 	return rv

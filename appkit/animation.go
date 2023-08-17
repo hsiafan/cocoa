@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -35,8 +34,7 @@ type IAnimation interface {
 	FrameRate() float32
 	SetFrameRate(value float32)
 	Delegate() AnimationDelegateWrapper
-	SetDelegate(value AnimationDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	IsAnimating() bool
 	CurrentProgress() AnimationProgress
 	SetCurrentProgress(value AnimationProgress)
@@ -153,18 +151,14 @@ func (a_ Animation) SetFrameRate(value float32) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setFrameRate:"), value)
 }
 
+// weak property
 func (a_ Animation) Delegate() AnimationDelegateWrapper {
 	rv := objc.CallMethod[AnimationDelegateWrapper](a_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (a_ Animation) SetDelegate(value AnimationDelegate) {
-	po := objc.WrapAsProtocol("NSAnimationDelegate", value)
-	objc.SetAssociatedObject(a_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (a_ Animation) SetDelegate0(value objc.IObject) {
+// weak property
+func (a_ Animation) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

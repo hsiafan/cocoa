@@ -242,6 +242,7 @@ func (c_ CollectionViewLayout) FinalizeLayoutTransition() {
 	objc.CallMethod[objc.Void](c_, objc.GetSelector("finalizeLayoutTransition"))
 }
 
+// weak property
 func (c_ CollectionViewLayout) CollectionView() CollectionView {
 	rv := objc.CallMethod[CollectionView](c_, objc.GetSelector("collectionView"))
 	return rv

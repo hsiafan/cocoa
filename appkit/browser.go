@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -99,8 +98,7 @@ type IBrowser interface {
 	TakesTitleFromPreviousColumn() bool
 	SetTakesTitleFromPreviousColumn(value bool)
 	Delegate() BrowserDelegateWrapper
-	SetDelegate(value BrowserDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	CellPrototype() objc.Object
 	SetCellPrototype(value objc.IObject)
 	AllowsBranchSelection() bool
@@ -515,18 +513,14 @@ func (b_ Browser) SetTakesTitleFromPreviousColumn(value bool) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTakesTitleFromPreviousColumn:"), value)
 }
 
+// weak property
 func (b_ Browser) Delegate() BrowserDelegateWrapper {
 	rv := objc.CallMethod[BrowserDelegateWrapper](b_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (b_ Browser) SetDelegate(value BrowserDelegate) {
-	po := objc.WrapAsProtocol("NSBrowserDelegate", value)
-	objc.SetAssociatedObject(b_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (b_ Browser) SetDelegate0(value objc.IObject) {
+// weak property
+func (b_ Browser) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](b_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

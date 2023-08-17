@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -39,8 +38,7 @@ type IPathCell interface {
 	URL() foundation.URL
 	SetURL(value foundation.IURL)
 	Delegate() PathCellDelegateWrapper
-	SetDelegate(value PathCellDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 }
 
 type PathCell struct {
@@ -183,17 +181,13 @@ func (p_ PathCell) SetURL(value foundation.IURL) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (p_ PathCell) Delegate() PathCellDelegateWrapper {
 	rv := objc.CallMethod[PathCellDelegateWrapper](p_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (p_ PathCell) SetDelegate(value PathCellDelegate) {
-	po := objc.WrapAsProtocol("NSPathCellDelegate", value)
-	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (p_ PathCell) SetDelegate0(value objc.IObject) {
+// weak property
+func (p_ PathCell) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }

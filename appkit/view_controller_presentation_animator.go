@@ -12,6 +12,13 @@ type ViewControllerPresentationAnimator interface {
 	AnimateDismissalOfViewController_FromViewController(viewController ViewController, fromViewController ViewController)
 }
 
+func WrapViewControllerPresentationAnimator(v ViewControllerPresentationAnimator) objc.Object {
+	return objc.WrapAsProtocol("NSViewControllerPresentationAnimator", v)
+}
+
+type ViewControllerPresentationAnimatorBase struct {
+}
+
 type ViewControllerPresentationAnimatorWrapper struct {
 	objc.Object
 }

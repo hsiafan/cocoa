@@ -14,21 +14,36 @@ type ValidatedUserInterfaceItem interface {
 	Tag() int
 }
 
-type ValidatedUserInterfaceItemWrapper struct {
-	objc.Object
+func WrapValidatedUserInterfaceItem(v ValidatedUserInterfaceItem) objc.Object {
+	return objc.WrapAsProtocol("NSValidatedUserInterfaceItem", v)
 }
 
-func (v_ *ValidatedUserInterfaceItemWrapper) ImplementsAction() bool {
-	return v_.RespondsToSelector(objc.GetSelector("action"))
+type ValidatedUserInterfaceItemBase struct {
+}
+
+func (p *ValidatedUserInterfaceItemBase) ImplementsAction() bool {
+	return false
+}
+
+func (p *ValidatedUserInterfaceItemBase) Action() objc.Selector {
+	panic("unimpemented protocol method")
+}
+
+func (p *ValidatedUserInterfaceItemBase) ImplementsTag() bool {
+	return false
+}
+
+func (p *ValidatedUserInterfaceItemBase) Tag() int {
+	panic("unimpemented protocol method")
+}
+
+type ValidatedUserInterfaceItemWrapper struct {
+	objc.Object
 }
 
 func (v_ ValidatedUserInterfaceItemWrapper) Action() objc.Selector {
 	rv := objc.CallMethod[objc.Selector](v_, objc.GetSelector("action"))
 	return rv
-}
-
-func (v_ *ValidatedUserInterfaceItemWrapper) ImplementsTag() bool {
-	return v_.RespondsToSelector(objc.GetSelector("tag"))
 }
 
 func (v_ ValidatedUserInterfaceItemWrapper) Tag() int {

@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -33,8 +32,7 @@ type IPathControl interface {
 	URL() foundation.URL
 	SetURL(value foundation.IURL)
 	Delegate() PathControlDelegateWrapper
-	SetDelegate(value PathControlDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	AllowedTypes() []string
 	SetAllowedTypes(value []string)
 	ClickedPathItem() PathControlItem
@@ -140,18 +138,14 @@ func (p_ PathControl) SetURL(value foundation.IURL) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (p_ PathControl) Delegate() PathControlDelegateWrapper {
 	rv := objc.CallMethod[PathControlDelegateWrapper](p_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (p_ PathControl) SetDelegate(value PathControlDelegate) {
-	po := objc.WrapAsProtocol("NSPathControlDelegate", value)
-	objc.SetAssociatedObject(p_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (p_ PathControl) SetDelegate0(value objc.IObject) {
+// weak property
+func (p_ PathControl) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 

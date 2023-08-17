@@ -33,112 +33,79 @@ type ToolbarDelegate interface {
 	Toolbar_ItemIdentifier_CanBeInsertedAtIndex(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, index int) bool
 }
 
-type ToolbarDelegateImpl struct {
-	_Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) IToolbarItem
-	_ToolbarWillAddItem                                      func(notification foundation.Notification)
-	_ToolbarDidRemoveItem                                    func(notification foundation.Notification)
-	_ToolbarAllowedItemIdentifiers                           func(toolbar Toolbar) []ToolbarItemIdentifier
-	_ToolbarDefaultItemIdentifiers                           func(toolbar Toolbar) []ToolbarItemIdentifier
-	_ToolbarImmovableItemIdentifiers                         func(toolbar Toolbar) foundation.ISet
-	_ToolbarSelectableItemIdentifiers                        func(toolbar Toolbar) []ToolbarItemIdentifier
-	_Toolbar_ItemIdentifier_CanBeInsertedAtIndex             func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, index int) bool
+func WrapToolbarDelegate(v ToolbarDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSToolbarDelegate", v)
 }
 
-func (di *ToolbarDelegateImpl) ImplementsToolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar() bool {
-	return di._Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar != nil
+type ToolbarDelegateBase struct {
 }
 
-func (di *ToolbarDelegateImpl) SetToolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(f func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) IToolbarItem) {
-	di._Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar = f
+func (p *ToolbarDelegateBase) ImplementsToolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) IToolbarItem {
-	return di._Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(toolbar, itemIdentifier, flag)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbarWillAddItem() bool {
-	return di._ToolbarWillAddItem != nil
+func (p *ToolbarDelegateBase) Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) IToolbarItem {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbarWillAddItem(f func(notification foundation.Notification)) {
-	di._ToolbarWillAddItem = f
+func (p *ToolbarDelegateBase) ImplementsToolbarWillAddItem() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) ToolbarWillAddItem(notification foundation.Notification) {
-	di._ToolbarWillAddItem(notification)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbarDidRemoveItem() bool {
-	return di._ToolbarDidRemoveItem != nil
+func (p *ToolbarDelegateBase) ToolbarWillAddItem(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbarDidRemoveItem(f func(notification foundation.Notification)) {
-	di._ToolbarDidRemoveItem = f
+func (p *ToolbarDelegateBase) ImplementsToolbarDidRemoveItem() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) ToolbarDidRemoveItem(notification foundation.Notification) {
-	di._ToolbarDidRemoveItem(notification)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbarAllowedItemIdentifiers() bool {
-	return di._ToolbarAllowedItemIdentifiers != nil
+func (p *ToolbarDelegateBase) ToolbarDidRemoveItem(notification foundation.Notification) {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbarAllowedItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
-	di._ToolbarAllowedItemIdentifiers = f
+func (p *ToolbarDelegateBase) ImplementsToolbarAllowedItemIdentifiers() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	return di._ToolbarAllowedItemIdentifiers(toolbar)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbarDefaultItemIdentifiers() bool {
-	return di._ToolbarDefaultItemIdentifiers != nil
+func (p *ToolbarDelegateBase) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbarDefaultItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
-	di._ToolbarDefaultItemIdentifiers = f
+func (p *ToolbarDelegateBase) ImplementsToolbarDefaultItemIdentifiers() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	return di._ToolbarDefaultItemIdentifiers(toolbar)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbarImmovableItemIdentifiers() bool {
-	return di._ToolbarImmovableItemIdentifiers != nil
+func (p *ToolbarDelegateBase) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbarImmovableItemIdentifiers(f func(toolbar Toolbar) foundation.ISet) {
-	di._ToolbarImmovableItemIdentifiers = f
+func (p *ToolbarDelegateBase) ImplementsToolbarImmovableItemIdentifiers() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) ToolbarImmovableItemIdentifiers(toolbar Toolbar) foundation.ISet {
-	return di._ToolbarImmovableItemIdentifiers(toolbar)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbarSelectableItemIdentifiers() bool {
-	return di._ToolbarSelectableItemIdentifiers != nil
+func (p *ToolbarDelegateBase) ToolbarImmovableItemIdentifiers(toolbar Toolbar) foundation.ISet {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbarSelectableItemIdentifiers(f func(toolbar Toolbar) []ToolbarItemIdentifier) {
-	di._ToolbarSelectableItemIdentifiers = f
+func (p *ToolbarDelegateBase) ImplementsToolbarSelectableItemIdentifiers() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) ToolbarSelectableItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	return di._ToolbarSelectableItemIdentifiers(toolbar)
-}
-func (di *ToolbarDelegateImpl) ImplementsToolbar_ItemIdentifier_CanBeInsertedAtIndex() bool {
-	return di._Toolbar_ItemIdentifier_CanBeInsertedAtIndex != nil
+func (p *ToolbarDelegateBase) ToolbarSelectableItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
+	panic("unimpemented protocol method")
 }
 
-func (di *ToolbarDelegateImpl) SetToolbar_ItemIdentifier_CanBeInsertedAtIndex(f func(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, index int) bool) {
-	di._Toolbar_ItemIdentifier_CanBeInsertedAtIndex = f
+func (p *ToolbarDelegateBase) ImplementsToolbar_ItemIdentifier_CanBeInsertedAtIndex() bool {
+	return false
 }
 
-func (di *ToolbarDelegateImpl) Toolbar_ItemIdentifier_CanBeInsertedAtIndex(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, index int) bool {
-	return di._Toolbar_ItemIdentifier_CanBeInsertedAtIndex(toolbar, itemIdentifier, index)
+func (p *ToolbarDelegateBase) Toolbar_ItemIdentifier_CanBeInsertedAtIndex(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, index int) bool {
+	panic("unimpemented protocol method")
 }
 
 type ToolbarDelegateWrapper struct {
 	objc.Object
-}
-
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"))
 }
 
 func (t_ ToolbarDelegateWrapper) Toolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(toolbar IToolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
@@ -146,24 +113,12 @@ func (t_ ToolbarDelegateWrapper) Toolbar_ItemForItemIdentifier_WillBeInsertedInt
 	return rv
 }
 
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbarWillAddItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbarWillAddItem:"))
-}
-
 func (t_ ToolbarDelegateWrapper) ToolbarWillAddItem(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("toolbarWillAddItem:"), objc.ExtractPtr(notification))
 }
 
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbarDidRemoveItem() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbarDidRemoveItem:"))
-}
-
 func (t_ ToolbarDelegateWrapper) ToolbarDidRemoveItem(notification foundation.INotification) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("toolbarDidRemoveItem:"), objc.ExtractPtr(notification))
-}
-
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbarAllowedItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbarAllowedItemIdentifiers:"))
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
@@ -171,17 +126,9 @@ func (t_ ToolbarDelegateWrapper) ToolbarAllowedItemIdentifiers(toolbar IToolbar)
 	return rv
 }
 
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbarDefaultItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbarDefaultItemIdentifiers:"))
-}
-
 func (t_ ToolbarDelegateWrapper) ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
 	rv := objc.CallMethod[[]ToolbarItemIdentifier](t_, objc.GetSelector("toolbarDefaultItemIdentifiers:"), objc.ExtractPtr(toolbar))
 	return rv
-}
-
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbarImmovableItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbarImmovableItemIdentifiers:"))
 }
 
 func (t_ ToolbarDelegateWrapper) ToolbarImmovableItemIdentifiers(toolbar IToolbar) foundation.Set {
@@ -189,17 +136,9 @@ func (t_ ToolbarDelegateWrapper) ToolbarImmovableItemIdentifiers(toolbar IToolba
 	return rv
 }
 
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbarSelectableItemIdentifiers() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbarSelectableItemIdentifiers:"))
-}
-
 func (t_ ToolbarDelegateWrapper) ToolbarSelectableItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
 	rv := objc.CallMethod[[]ToolbarItemIdentifier](t_, objc.GetSelector("toolbarSelectableItemIdentifiers:"), objc.ExtractPtr(toolbar))
 	return rv
-}
-
-func (t_ *ToolbarDelegateWrapper) ImplementsToolbar_ItemIdentifier_CanBeInsertedAtIndex() bool {
-	return t_.RespondsToSelector(objc.GetSelector("toolbar:itemIdentifier:canBeInsertedAtIndex:"))
 }
 
 func (t_ ToolbarDelegateWrapper) Toolbar_ItemIdentifier_CanBeInsertedAtIndex(toolbar IToolbar, itemIdentifier ToolbarItemIdentifier, index int) bool {

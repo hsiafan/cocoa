@@ -11,28 +11,23 @@ type TouchBarDelegate interface {
 	TouchBar_MakeItemForIdentifier(touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem
 }
 
-type TouchBarDelegateImpl struct {
-	_TouchBar_MakeItemForIdentifier func(touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem
+func WrapTouchBarDelegate(v TouchBarDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSTouchBarDelegate", v)
 }
 
-func (di *TouchBarDelegateImpl) ImplementsTouchBar_MakeItemForIdentifier() bool {
-	return di._TouchBar_MakeItemForIdentifier != nil
+type TouchBarDelegateBase struct {
 }
 
-func (di *TouchBarDelegateImpl) SetTouchBar_MakeItemForIdentifier(f func(touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem) {
-	di._TouchBar_MakeItemForIdentifier = f
+func (p *TouchBarDelegateBase) ImplementsTouchBar_MakeItemForIdentifier() bool {
+	return false
 }
 
-func (di *TouchBarDelegateImpl) TouchBar_MakeItemForIdentifier(touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem {
-	return di._TouchBar_MakeItemForIdentifier(touchBar, identifier)
+func (p *TouchBarDelegateBase) TouchBar_MakeItemForIdentifier(touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem {
+	panic("unimpemented protocol method")
 }
 
 type TouchBarDelegateWrapper struct {
 	objc.Object
-}
-
-func (t_ *TouchBarDelegateWrapper) ImplementsTouchBar_MakeItemForIdentifier() bool {
-	return t_.RespondsToSelector(objc.GetSelector("touchBar:makeItemForIdentifier:"))
 }
 
 func (t_ TouchBarDelegateWrapper) TouchBar_MakeItemForIdentifier(touchBar ITouchBar, identifier TouchBarItemIdentifier) TouchBarItem {

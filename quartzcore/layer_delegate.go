@@ -21,111 +21,74 @@ type LayerDelegate interface {
 	LayoutSublayersOfLayer(layer Layer)
 	ImplementsActionForLayer_ForKey() bool
 	// optional
-	ActionForLayer_ForKey(layer Layer, event string) Action
+	ActionForLayer_ForKey(layer Layer, event string) objc.IObject
 }
 
-type LayerDelegateImpl struct {
-	_DisplayLayer           func(layer Layer)
-	_DrawLayer_InContext    func(layer Layer, ctx coregraphics.ContextRef)
-	_LayerWillDraw          func(layer Layer)
-	_LayoutSublayersOfLayer func(layer Layer)
-	_ActionForLayer_ForKey  func(layer Layer, event string) Action
+func WrapLayerDelegate(v LayerDelegate) objc.Object {
+	return objc.WrapAsProtocol("CALayerDelegate", v)
 }
 
-func (di *LayerDelegateImpl) ImplementsDisplayLayer() bool {
-	return di._DisplayLayer != nil
+type LayerDelegateBase struct {
 }
 
-func (di *LayerDelegateImpl) SetDisplayLayer(f func(layer Layer)) {
-	di._DisplayLayer = f
+func (p *LayerDelegateBase) ImplementsDisplayLayer() bool {
+	return false
 }
 
-func (di *LayerDelegateImpl) DisplayLayer(layer Layer) {
-	di._DisplayLayer(layer)
-}
-func (di *LayerDelegateImpl) ImplementsDrawLayer_InContext() bool {
-	return di._DrawLayer_InContext != nil
+func (p *LayerDelegateBase) DisplayLayer(layer Layer) {
+	panic("unimpemented protocol method")
 }
 
-func (di *LayerDelegateImpl) SetDrawLayer_InContext(f func(layer Layer, ctx coregraphics.ContextRef)) {
-	di._DrawLayer_InContext = f
+func (p *LayerDelegateBase) ImplementsDrawLayer_InContext() bool {
+	return false
 }
 
-func (di *LayerDelegateImpl) DrawLayer_InContext(layer Layer, ctx coregraphics.ContextRef) {
-	di._DrawLayer_InContext(layer, ctx)
-}
-func (di *LayerDelegateImpl) ImplementsLayerWillDraw() bool {
-	return di._LayerWillDraw != nil
+func (p *LayerDelegateBase) DrawLayer_InContext(layer Layer, ctx coregraphics.ContextRef) {
+	panic("unimpemented protocol method")
 }
 
-func (di *LayerDelegateImpl) SetLayerWillDraw(f func(layer Layer)) {
-	di._LayerWillDraw = f
+func (p *LayerDelegateBase) ImplementsLayerWillDraw() bool {
+	return false
 }
 
-func (di *LayerDelegateImpl) LayerWillDraw(layer Layer) {
-	di._LayerWillDraw(layer)
-}
-func (di *LayerDelegateImpl) ImplementsLayoutSublayersOfLayer() bool {
-	return di._LayoutSublayersOfLayer != nil
+func (p *LayerDelegateBase) LayerWillDraw(layer Layer) {
+	panic("unimpemented protocol method")
 }
 
-func (di *LayerDelegateImpl) SetLayoutSublayersOfLayer(f func(layer Layer)) {
-	di._LayoutSublayersOfLayer = f
+func (p *LayerDelegateBase) ImplementsLayoutSublayersOfLayer() bool {
+	return false
 }
 
-func (di *LayerDelegateImpl) LayoutSublayersOfLayer(layer Layer) {
-	di._LayoutSublayersOfLayer(layer)
-}
-func (di *LayerDelegateImpl) ImplementsActionForLayer_ForKey() bool {
-	return di._ActionForLayer_ForKey != nil
+func (p *LayerDelegateBase) LayoutSublayersOfLayer(layer Layer) {
+	panic("unimpemented protocol method")
 }
 
-func (di *LayerDelegateImpl) SetActionForLayer_ForKey(f func(layer Layer, event string) Action) {
-	di._ActionForLayer_ForKey = f
+func (p *LayerDelegateBase) ImplementsActionForLayer_ForKey() bool {
+	return false
 }
 
-func (di *LayerDelegateImpl) ActionForLayer_ForKey(layer Layer, event string) Action {
-	return di._ActionForLayer_ForKey(layer, event)
+func (p *LayerDelegateBase) ActionForLayer_ForKey(layer Layer, event string) objc.IObject {
+	panic("unimpemented protocol method")
 }
 
 type LayerDelegateWrapper struct {
 	objc.Object
 }
 
-func (l_ *LayerDelegateWrapper) ImplementsDisplayLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("displayLayer:"))
-}
-
 func (l_ LayerDelegateWrapper) DisplayLayer(layer ILayer) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("displayLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ *LayerDelegateWrapper) ImplementsDrawLayer_InContext() bool {
-	return l_.RespondsToSelector(objc.GetSelector("drawLayer:inContext:"))
 }
 
 func (l_ LayerDelegateWrapper) DrawLayer_InContext(layer ILayer, ctx coregraphics.ContextRef) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("drawLayer:inContext:"), objc.ExtractPtr(layer), ctx)
 }
 
-func (l_ *LayerDelegateWrapper) ImplementsLayerWillDraw() bool {
-	return l_.RespondsToSelector(objc.GetSelector("layerWillDraw:"))
-}
-
 func (l_ LayerDelegateWrapper) LayerWillDraw(layer ILayer) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("layerWillDraw:"), objc.ExtractPtr(layer))
 }
 
-func (l_ *LayerDelegateWrapper) ImplementsLayoutSublayersOfLayer() bool {
-	return l_.RespondsToSelector(objc.GetSelector("layoutSublayersOfLayer:"))
-}
-
 func (l_ LayerDelegateWrapper) LayoutSublayersOfLayer(layer ILayer) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ *LayerDelegateWrapper) ImplementsActionForLayer_ForKey() bool {
-	return l_.RespondsToSelector(objc.GetSelector("actionForLayer:forKey:"))
 }
 
 func (l_ LayerDelegateWrapper) ActionForLayer_ForKey(layer ILayer, event string) ActionWrapper {

@@ -14,48 +14,35 @@ type StackViewDelegate interface {
 	StackView_WillDetachViews(stackView StackView, views []View)
 }
 
-type StackViewDelegateImpl struct {
-	_StackView_DidReattachViews func(stackView StackView, views []View)
-	_StackView_WillDetachViews  func(stackView StackView, views []View)
+func WrapStackViewDelegate(v StackViewDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSStackViewDelegate", v)
 }
 
-func (di *StackViewDelegateImpl) ImplementsStackView_DidReattachViews() bool {
-	return di._StackView_DidReattachViews != nil
+type StackViewDelegateBase struct {
 }
 
-func (di *StackViewDelegateImpl) SetStackView_DidReattachViews(f func(stackView StackView, views []View)) {
-	di._StackView_DidReattachViews = f
+func (p *StackViewDelegateBase) ImplementsStackView_DidReattachViews() bool {
+	return false
 }
 
-func (di *StackViewDelegateImpl) StackView_DidReattachViews(stackView StackView, views []View) {
-	di._StackView_DidReattachViews(stackView, views)
-}
-func (di *StackViewDelegateImpl) ImplementsStackView_WillDetachViews() bool {
-	return di._StackView_WillDetachViews != nil
+func (p *StackViewDelegateBase) StackView_DidReattachViews(stackView StackView, views []View) {
+	panic("unimpemented protocol method")
 }
 
-func (di *StackViewDelegateImpl) SetStackView_WillDetachViews(f func(stackView StackView, views []View)) {
-	di._StackView_WillDetachViews = f
+func (p *StackViewDelegateBase) ImplementsStackView_WillDetachViews() bool {
+	return false
 }
 
-func (di *StackViewDelegateImpl) StackView_WillDetachViews(stackView StackView, views []View) {
-	di._StackView_WillDetachViews(stackView, views)
+func (p *StackViewDelegateBase) StackView_WillDetachViews(stackView StackView, views []View) {
+	panic("unimpemented protocol method")
 }
 
 type StackViewDelegateWrapper struct {
 	objc.Object
 }
 
-func (s_ *StackViewDelegateWrapper) ImplementsStackView_DidReattachViews() bool {
-	return s_.RespondsToSelector(objc.GetSelector("stackView:didReattachViews:"))
-}
-
 func (s_ StackViewDelegateWrapper) StackView_DidReattachViews(stackView IStackView, views []IView) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:didReattachViews:"), objc.ExtractPtr(stackView), views)
-}
-
-func (s_ *StackViewDelegateWrapper) ImplementsStackView_WillDetachViews() bool {
-	return s_.RespondsToSelector(objc.GetSelector("stackView:willDetachViews:"))
 }
 
 func (s_ StackViewDelegateWrapper) StackView_WillDetachViews(stackView IStackView, views []IView) {

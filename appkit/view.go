@@ -170,8 +170,7 @@ type IView interface {
 	ReflectScrolledClipView(clipView IClipView)
 	RegisterForDraggedTypes(newTypes []PasteboardType)
 	UnregisterDraggedTypes()
-	BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source DraggingSource) DraggingSession
-	BeginDraggingSessionWithItems0_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession
+	BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession
 	ShouldDelayWindowOrderingForEvent(event IEvent) bool
 	// deprecated
 	LockFocus()
@@ -1058,13 +1057,7 @@ func (v_ View) UnregisterDraggedTypes() {
 	objc.CallMethod[objc.Void](v_, objc.GetSelector("unregisterDraggedTypes"))
 }
 
-func (v_ View) BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source DraggingSource) DraggingSession {
-	po := objc.WrapAsProtocol("NSDraggingSource", source)
-	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, objc.ExtractPtr(event), po)
-	return rv
-}
-
-func (v_ View) BeginDraggingSessionWithItems0_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession {
+func (v_ View) BeginDraggingSessionWithItems_Event_Source(items []IDraggingItem, event IEvent, source objc.IObject) DraggingSession {
 	rv := objc.CallMethod[DraggingSession](v_, objc.GetSelector("beginDraggingSessionWithItems:event:source:"), items, objc.ExtractPtr(event), objc.ExtractPtr(source))
 	return rv
 }
@@ -1181,6 +1174,7 @@ func (v_ View) DragPromisedFilesOfTypes_FromRect_Source_SlideBack_Event(typeArra
 	return rv
 }
 
+// weak property
 func (v_ View) Superview() View {
 	rv := objc.CallMethod[View](v_, objc.GetSelector("superview"))
 	return rv
@@ -1195,11 +1189,13 @@ func (v_ View) SetSubviews(value []IView) {
 	objc.CallMethod[objc.Void](v_, objc.GetSelector("setSubviews:"), value)
 }
 
+// weak property
 func (v_ View) Window() Window {
 	rv := objc.CallMethod[Window](v_, objc.GetSelector("window"))
 	return rv
 }
 
+// weak property
 func (v_ View) OpaqueAncestor() View {
 	rv := objc.CallMethod[View](v_, objc.GetSelector("opaqueAncestor"))
 	return rv
@@ -1778,25 +1774,30 @@ func (v_ View) NeedsPanelToBecomeKey() bool {
 	return rv
 }
 
+// weak property
 func (v_ View) NextKeyView() View {
 	rv := objc.CallMethod[View](v_, objc.GetSelector("nextKeyView"))
 	return rv
 }
 
+// weak property
 func (v_ View) SetNextKeyView(value IView) {
 	objc.CallMethod[objc.Void](v_, objc.GetSelector("setNextKeyView:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (v_ View) NextValidKeyView() View {
 	rv := objc.CallMethod[View](v_, objc.GetSelector("nextValidKeyView"))
 	return rv
 }
 
+// weak property
 func (v_ View) PreviousKeyView() View {
 	rv := objc.CallMethod[View](v_, objc.GetSelector("previousKeyView"))
 	return rv
 }
 
+// weak property
 func (v_ View) PreviousValidKeyView() View {
 	rv := objc.CallMethod[View](v_, objc.GetSelector("previousValidKeyView"))
 	return rv

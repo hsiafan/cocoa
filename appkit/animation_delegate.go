@@ -23,92 +23,63 @@ type AnimationDelegate interface {
 	Animation_DidReachProgressMark(animation Animation, progress AnimationProgress)
 }
 
-type AnimationDelegateImpl struct {
-	_AnimationDidEnd                func(animation Animation)
-	_AnimationDidStop               func(animation Animation)
-	_AnimationShouldStart           func(animation Animation) bool
-	_Animation_ValueForProgress     func(animation Animation, progress AnimationProgress) float32
-	_Animation_DidReachProgressMark func(animation Animation, progress AnimationProgress)
+func WrapAnimationDelegate(v AnimationDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSAnimationDelegate", v)
 }
 
-func (di *AnimationDelegateImpl) ImplementsAnimationDidEnd() bool {
-	return di._AnimationDidEnd != nil
+type AnimationDelegateBase struct {
 }
 
-func (di *AnimationDelegateImpl) SetAnimationDidEnd(f func(animation Animation)) {
-	di._AnimationDidEnd = f
+func (p *AnimationDelegateBase) ImplementsAnimationDidEnd() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) AnimationDidEnd(animation Animation) {
-	di._AnimationDidEnd(animation)
-}
-func (di *AnimationDelegateImpl) ImplementsAnimationDidStop() bool {
-	return di._AnimationDidStop != nil
+func (p *AnimationDelegateBase) AnimationDidEnd(animation Animation) {
+	panic("unimpemented protocol method")
 }
 
-func (di *AnimationDelegateImpl) SetAnimationDidStop(f func(animation Animation)) {
-	di._AnimationDidStop = f
+func (p *AnimationDelegateBase) ImplementsAnimationDidStop() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) AnimationDidStop(animation Animation) {
-	di._AnimationDidStop(animation)
-}
-func (di *AnimationDelegateImpl) ImplementsAnimationShouldStart() bool {
-	return di._AnimationShouldStart != nil
+func (p *AnimationDelegateBase) AnimationDidStop(animation Animation) {
+	panic("unimpemented protocol method")
 }
 
-func (di *AnimationDelegateImpl) SetAnimationShouldStart(f func(animation Animation) bool) {
-	di._AnimationShouldStart = f
+func (p *AnimationDelegateBase) ImplementsAnimationShouldStart() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) AnimationShouldStart(animation Animation) bool {
-	return di._AnimationShouldStart(animation)
-}
-func (di *AnimationDelegateImpl) ImplementsAnimation_ValueForProgress() bool {
-	return di._Animation_ValueForProgress != nil
+func (p *AnimationDelegateBase) AnimationShouldStart(animation Animation) bool {
+	panic("unimpemented protocol method")
 }
 
-func (di *AnimationDelegateImpl) SetAnimation_ValueForProgress(f func(animation Animation, progress AnimationProgress) float32) {
-	di._Animation_ValueForProgress = f
+func (p *AnimationDelegateBase) ImplementsAnimation_ValueForProgress() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) Animation_ValueForProgress(animation Animation, progress AnimationProgress) float32 {
-	return di._Animation_ValueForProgress(animation, progress)
-}
-func (di *AnimationDelegateImpl) ImplementsAnimation_DidReachProgressMark() bool {
-	return di._Animation_DidReachProgressMark != nil
+func (p *AnimationDelegateBase) Animation_ValueForProgress(animation Animation, progress AnimationProgress) float32 {
+	panic("unimpemented protocol method")
 }
 
-func (di *AnimationDelegateImpl) SetAnimation_DidReachProgressMark(f func(animation Animation, progress AnimationProgress)) {
-	di._Animation_DidReachProgressMark = f
+func (p *AnimationDelegateBase) ImplementsAnimation_DidReachProgressMark() bool {
+	return false
 }
 
-func (di *AnimationDelegateImpl) Animation_DidReachProgressMark(animation Animation, progress AnimationProgress) {
-	di._Animation_DidReachProgressMark(animation, progress)
+func (p *AnimationDelegateBase) Animation_DidReachProgressMark(animation Animation, progress AnimationProgress) {
+	panic("unimpemented protocol method")
 }
 
 type AnimationDelegateWrapper struct {
 	objc.Object
 }
 
-func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidEnd() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationDidEnd:"))
-}
-
 func (a_ AnimationDelegateWrapper) AnimationDidEnd(animation IAnimation) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidEnd:"), objc.ExtractPtr(animation))
 }
 
-func (a_ *AnimationDelegateWrapper) ImplementsAnimationDidStop() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationDidStop:"))
-}
-
 func (a_ AnimationDelegateWrapper) AnimationDidStop(animation IAnimation) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:"), objc.ExtractPtr(animation))
-}
-
-func (a_ *AnimationDelegateWrapper) ImplementsAnimationShouldStart() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animationShouldStart:"))
 }
 
 func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bool {
@@ -116,17 +87,9 @@ func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bo
 	return rv
 }
 
-func (a_ *AnimationDelegateWrapper) ImplementsAnimation_ValueForProgress() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animation:valueForProgress:"))
-}
-
 func (a_ AnimationDelegateWrapper) Animation_ValueForProgress(animation IAnimation, progress AnimationProgress) float32 {
 	rv := objc.CallMethod[float32](a_, objc.GetSelector("animation:valueForProgress:"), objc.ExtractPtr(animation), progress)
 	return rv
-}
-
-func (a_ *AnimationDelegateWrapper) ImplementsAnimation_DidReachProgressMark() bool {
-	return a_.RespondsToSelector(objc.GetSelector("animation:didReachProgressMark:"))
 }
 
 func (a_ AnimationDelegateWrapper) Animation_DidReachProgressMark(animation IAnimation, progress AnimationProgress) {

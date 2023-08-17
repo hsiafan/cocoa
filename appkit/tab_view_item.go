@@ -128,11 +128,13 @@ func (t_ TabViewItem) SetView(value IView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
 }
 
+// weak property
 func (t_ TabViewItem) InitialFirstResponder() View {
 	rv := objc.CallMethod[View](t_, objc.GetSelector("initialFirstResponder"))
 	return rv
 }
 
+// weak property
 func (t_ TabViewItem) SetInitialFirstResponder(value IView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setInitialFirstResponder:"), objc.ExtractPtr(value))
 }

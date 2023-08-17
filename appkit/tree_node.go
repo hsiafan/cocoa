@@ -94,6 +94,7 @@ func (t_ TreeNode) ChildNodes() []TreeNode {
 	return rv
 }
 
+// weak property
 func (t_ TreeNode) ParentNode() TreeNode {
 	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("parentNode"))
 	return rv

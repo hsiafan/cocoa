@@ -109,11 +109,13 @@ func (t_ TableColumn) DataCellForRow(row int) objc.Object {
 	return rv
 }
 
+// weak property
 func (t_ TableColumn) TableView() TableView {
 	rv := objc.CallMethod[TableView](t_, objc.GetSelector("tableView"))
 	return rv
 }
 
+// weak property
 func (t_ TableColumn) SetTableView(value ITableView) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTableView:"), objc.ExtractPtr(value))
 }

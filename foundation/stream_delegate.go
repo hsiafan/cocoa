@@ -11,28 +11,23 @@ type StreamDelegate interface {
 	Stream_HandleEvent(aStream Stream, eventCode StreamEvent)
 }
 
-type StreamDelegateImpl struct {
-	_Stream_HandleEvent func(aStream Stream, eventCode StreamEvent)
+func WrapStreamDelegate(v StreamDelegate) objc.Object {
+	return objc.WrapAsProtocol("NSStreamDelegate", v)
 }
 
-func (di *StreamDelegateImpl) ImplementsStream_HandleEvent() bool {
-	return di._Stream_HandleEvent != nil
+type StreamDelegateBase struct {
 }
 
-func (di *StreamDelegateImpl) SetStream_HandleEvent(f func(aStream Stream, eventCode StreamEvent)) {
-	di._Stream_HandleEvent = f
+func (p *StreamDelegateBase) ImplementsStream_HandleEvent() bool {
+	return false
 }
 
-func (di *StreamDelegateImpl) Stream_HandleEvent(aStream Stream, eventCode StreamEvent) {
-	di._Stream_HandleEvent(aStream, eventCode)
+func (p *StreamDelegateBase) Stream_HandleEvent(aStream Stream, eventCode StreamEvent) {
+	panic("unimpemented protocol method")
 }
 
 type StreamDelegateWrapper struct {
 	objc.Object
-}
-
-func (s_ *StreamDelegateWrapper) ImplementsStream_HandleEvent() bool {
-	return s_.RespondsToSelector(objc.GetSelector("stream:handleEvent:"))
 }
 
 func (s_ StreamDelegateWrapper) Stream_HandleEvent(aStream IStream, eventCode StreamEvent) {

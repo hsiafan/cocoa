@@ -75,6 +75,7 @@ func (d_ DockTile) Size() foundation.Size {
 	return rv
 }
 
+// weak property
 func (d_ DockTile) Owner() objc.Object {
 	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("owner"))
 	return rv

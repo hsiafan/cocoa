@@ -35,9 +35,8 @@ func MakeDraggingItem(ptr unsafe.Pointer) DraggingItem {
 	}
 }
 
-func (d_ DraggingItem) InitWithPasteboardWriter(pasteboardWriter PasteboardWriting) DraggingItem {
-	po := objc.WrapAsProtocol("NSPasteboardWriting", pasteboardWriter)
-	rv := objc.CallMethod[DraggingItem](d_, objc.GetSelector("initWithPasteboardWriter:"), po)
+func (d_ DraggingItem) InitWithPasteboardWriter(pasteboardWriter objc.IObject) DraggingItem {
+	rv := objc.CallMethod[DraggingItem](d_, objc.GetSelector("initWithPasteboardWriter:"), objc.ExtractPtr(pasteboardWriter))
 	return rv
 }
 

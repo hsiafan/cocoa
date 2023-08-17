@@ -62,6 +62,7 @@ func (t_ TrackingArea) Options() TrackingAreaOptions {
 	return rv
 }
 
+// weak property
 func (t_ TrackingArea) Owner() objc.Object {
 	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("owner"))
 	return rv

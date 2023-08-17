@@ -196,11 +196,13 @@ func (o_ OutlineView) SetStronglyReferencesItems(value bool) {
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("setStronglyReferencesItems:"), value)
 }
 
+// weak property
 func (o_ OutlineView) OutlineTableColumn() TableColumn {
 	rv := objc.CallMethod[TableColumn](o_, objc.GetSelector("outlineTableColumn"))
 	return rv
 }
 
+// weak property
 func (o_ OutlineView) SetOutlineTableColumn(value ITableColumn) {
 	objc.CallMethod[objc.Void](o_, objc.GetSelector("setOutlineTableColumn:"), objc.ExtractPtr(value))
 }

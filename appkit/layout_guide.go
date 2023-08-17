@@ -84,11 +84,13 @@ func (l_ LayoutGuide) Frame() foundation.Rect {
 	return rv
 }
 
+// weak property
 func (l_ LayoutGuide) OwningView() View {
 	rv := objc.CallMethod[View](l_, objc.GetSelector("owningView"))
 	return rv
 }
 
+// weak property
 func (l_ LayoutGuide) SetOwningView(value IView) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setOwningView:"), objc.ExtractPtr(value))
 }

@@ -18,7 +18,7 @@ type TableViewDataSource interface {
 	TableView_SetObjectValue_ForTableColumn_Row(tableView TableView, object objc.Object, tableColumn TableColumn, row int)
 	ImplementsTableView_PasteboardWriterForRow() bool
 	// optional
-	TableView_PasteboardWriterForRow(tableView TableView, row int) PasteboardWriting
+	TableView_PasteboardWriterForRow(tableView TableView, row int) objc.IObject
 	ImplementsTableView_AcceptDrop_Row_DropOperation() bool
 	// optional
 	TableView_AcceptDrop_Row_DropOperation(tableView TableView, info DraggingInfoWrapper, row int, dropOperation TableViewDropOperation) bool
@@ -47,12 +47,113 @@ type TableViewDataSource interface {
 	TableView_SortDescriptorsDidChange(tableView TableView, oldDescriptors []foundation.SortDescriptor)
 }
 
-type TableViewDataSourceWrapper struct {
-	objc.Object
+func WrapTableViewDataSource(v TableViewDataSource) objc.Object {
+	return objc.WrapAsProtocol("NSTableViewDataSource", v)
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsNumberOfRowsInTableView() bool {
-	return t_.RespondsToSelector(objc.GetSelector("numberOfRowsInTableView:"))
+type TableViewDataSourceBase struct {
+}
+
+func (p *TableViewDataSourceBase) ImplementsNumberOfRowsInTableView() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) NumberOfRowsInTableView(tableView TableView) int {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_ObjectValueForTableColumn_Row() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_ObjectValueForTableColumn_Row(tableView TableView, tableColumn TableColumn, row int) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_SetObjectValue_ForTableColumn_Row() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_SetObjectValue_ForTableColumn_Row(tableView TableView, object objc.Object, tableColumn TableColumn, row int) {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_PasteboardWriterForRow() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_PasteboardWriterForRow(tableView TableView, row int) objc.IObject {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_AcceptDrop_Row_DropOperation() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_AcceptDrop_Row_DropOperation(tableView TableView, info DraggingInfoWrapper, row int, dropOperation TableViewDropOperation) bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes() bool {
+	return false
+}
+
+// deprecated
+func (p *TableViewDataSourceBase) TableView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes(tableView TableView, dropDestination foundation.URL, indexSet foundation.IndexSet) []string {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_ValidateDrop_ProposedRow_ProposedDropOperation() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_ValidateDrop_ProposedRow_ProposedDropOperation(tableView TableView, info DraggingInfoWrapper, row int, dropOperation TableViewDropOperation) DragOperation {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_WriteRowsWithIndexes_ToPasteboard() bool {
+	return false
+}
+
+// deprecated
+func (p *TableViewDataSourceBase) TableView_WriteRowsWithIndexes_ToPasteboard(tableView TableView, rowIndexes foundation.IndexSet, pboard Pasteboard) bool {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_DraggingSession_WillBeginAtPoint_ForRowIndexes() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_DraggingSession_WillBeginAtPoint_ForRowIndexes(tableView TableView, session DraggingSession, screenPoint foundation.Point, rowIndexes foundation.IndexSet) {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_UpdateDraggingItemsForDrag() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_UpdateDraggingItemsForDrag(tableView TableView, draggingInfo DraggingInfoWrapper) {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_DraggingSession_EndedAtPoint_Operation() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_DraggingSession_EndedAtPoint_Operation(tableView TableView, session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
+	panic("unimpemented protocol method")
+}
+
+func (p *TableViewDataSourceBase) ImplementsTableView_SortDescriptorsDidChange() bool {
+	return false
+}
+
+func (p *TableViewDataSourceBase) TableView_SortDescriptorsDidChange(tableView TableView, oldDescriptors []foundation.SortDescriptor) {
+	panic("unimpemented protocol method")
+}
+
+type TableViewDataSourceWrapper struct {
+	objc.Object
 }
 
 func (t_ TableViewDataSourceWrapper) NumberOfRowsInTableView(tableView ITableView) int {
@@ -60,25 +161,13 @@ func (t_ TableViewDataSourceWrapper) NumberOfRowsInTableView(tableView ITableVie
 	return rv
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_ObjectValueForTableColumn_Row() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:objectValueForTableColumn:row:"))
-}
-
 func (t_ TableViewDataSourceWrapper) TableView_ObjectValueForTableColumn_Row(tableView ITableView, tableColumn ITableColumn, row int) objc.Object {
 	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("tableView:objectValueForTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(tableColumn), row)
 	return rv
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_SetObjectValue_ForTableColumn_Row() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:setObjectValue:forTableColumn:row:"))
-}
-
 func (t_ TableViewDataSourceWrapper) TableView_SetObjectValue_ForTableColumn_Row(tableView ITableView, object objc.IObject, tableColumn ITableColumn, row int) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:setObjectValue:forTableColumn:row:"), objc.ExtractPtr(tableView), objc.ExtractPtr(object), objc.ExtractPtr(tableColumn), row)
-}
-
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_PasteboardWriterForRow() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:pasteboardWriterForRow:"))
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_PasteboardWriterForRow(tableView ITableView, row int) PasteboardWritingWrapper {
@@ -86,18 +175,9 @@ func (t_ TableViewDataSourceWrapper) TableView_PasteboardWriterForRow(tableView 
 	return rv
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_AcceptDrop_Row_DropOperation() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:acceptDrop:row:dropOperation:"))
-}
-
-func (t_ TableViewDataSourceWrapper) TableView_AcceptDrop_Row_DropOperation(tableView ITableView, info DraggingInfo, row int, dropOperation TableViewDropOperation) bool {
-	po := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:acceptDrop:row:dropOperation:"), objc.ExtractPtr(tableView), po, row, dropOperation)
+func (t_ TableViewDataSourceWrapper) TableView_AcceptDrop_Row_DropOperation(tableView ITableView, info objc.IObject, row int, dropOperation TableViewDropOperation) bool {
+	rv := objc.CallMethod[bool](t_, objc.GetSelector("tableView:acceptDrop:row:dropOperation:"), objc.ExtractPtr(tableView), objc.ExtractPtr(info), row, dropOperation)
 	return rv
-}
-
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:"))
 }
 
 // deprecated
@@ -106,18 +186,9 @@ func (t_ TableViewDataSourceWrapper) TableView_NamesOfPromisedFilesDroppedAtDest
 	return rv
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_ValidateDrop_ProposedRow_ProposedDropOperation() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:validateDrop:proposedRow:proposedDropOperation:"))
-}
-
-func (t_ TableViewDataSourceWrapper) TableView_ValidateDrop_ProposedRow_ProposedDropOperation(tableView ITableView, info DraggingInfo, row int, dropOperation TableViewDropOperation) DragOperation {
-	po := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("tableView:validateDrop:proposedRow:proposedDropOperation:"), objc.ExtractPtr(tableView), po, row, dropOperation)
+func (t_ TableViewDataSourceWrapper) TableView_ValidateDrop_ProposedRow_ProposedDropOperation(tableView ITableView, info objc.IObject, row int, dropOperation TableViewDropOperation) DragOperation {
+	rv := objc.CallMethod[DragOperation](t_, objc.GetSelector("tableView:validateDrop:proposedRow:proposedDropOperation:"), objc.ExtractPtr(tableView), objc.ExtractPtr(info), row, dropOperation)
 	return rv
-}
-
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_WriteRowsWithIndexes_ToPasteboard() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:writeRowsWithIndexes:toPasteboard:"))
 }
 
 // deprecated
@@ -126,33 +197,16 @@ func (t_ TableViewDataSourceWrapper) TableView_WriteRowsWithIndexes_ToPasteboard
 	return rv
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_DraggingSession_WillBeginAtPoint_ForRowIndexes() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"))
-}
-
 func (t_ TableViewDataSourceWrapper) TableView_DraggingSession_WillBeginAtPoint_ForRowIndexes(tableView ITableView, session IDraggingSession, screenPoint foundation.Point, rowIndexes foundation.IIndexSet) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"), objc.ExtractPtr(tableView), objc.ExtractPtr(session), screenPoint, objc.ExtractPtr(rowIndexes))
 }
 
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_UpdateDraggingItemsForDrag() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:updateDraggingItemsForDrag:"))
-}
-
-func (t_ TableViewDataSourceWrapper) TableView_UpdateDraggingItemsForDrag(tableView ITableView, draggingInfo DraggingInfo) {
-	po := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:updateDraggingItemsForDrag:"), objc.ExtractPtr(tableView), po)
-}
-
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_DraggingSession_EndedAtPoint_Operation() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:draggingSession:endedAtPoint:operation:"))
+func (t_ TableViewDataSourceWrapper) TableView_UpdateDraggingItemsForDrag(tableView ITableView, draggingInfo objc.IObject) {
+	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:updateDraggingItemsForDrag:"), objc.ExtractPtr(tableView), objc.ExtractPtr(draggingInfo))
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_DraggingSession_EndedAtPoint_Operation(tableView ITableView, session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
 	objc.CallMethod[objc.Void](t_, objc.GetSelector("tableView:draggingSession:endedAtPoint:operation:"), objc.ExtractPtr(tableView), objc.ExtractPtr(session), screenPoint, operation)
-}
-
-func (t_ *TableViewDataSourceWrapper) ImplementsTableView_SortDescriptorsDidChange() bool {
-	return t_.RespondsToSelector(objc.GetSelector("tableView:sortDescriptorsDidChange:"))
 }
 
 func (t_ TableViewDataSourceWrapper) TableView_SortDescriptorsDidChange(tableView ITableView, oldDescriptors []foundation.ISortDescriptor) {

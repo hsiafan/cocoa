@@ -5,7 +5,6 @@ import (
 	"unsafe"
 
 	"github.com/hsiafan/cocoa/foundation"
-	"github.com/hsiafan/cocoa/internal"
 	"github.com/hsiafan/cocoa/objc"
 )
 
@@ -19,8 +18,7 @@ type ISharingServicePicker interface {
 	objc.IObject
 	ShowRelativeToRect_OfView_PreferredEdge(rect foundation.Rect, view IView, preferredEdge foundation.RectEdge)
 	Delegate() SharingServicePickerDelegateWrapper
-	SetDelegate(value SharingServicePickerDelegate)
-	SetDelegate0(value objc.IObject)
+	SetDelegate(value objc.IObject)
 	StandardShareMenuItem() MenuItem
 }
 
@@ -63,18 +61,14 @@ func (s_ SharingServicePicker) ShowRelativeToRect_OfView_PreferredEdge(rect foun
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), rect, objc.ExtractPtr(view), preferredEdge)
 }
 
+// weak property
 func (s_ SharingServicePicker) Delegate() SharingServicePickerDelegateWrapper {
 	rv := objc.CallMethod[SharingServicePickerDelegateWrapper](s_, objc.GetSelector("delegate"))
 	return rv
 }
 
-func (s_ SharingServicePicker) SetDelegate(value SharingServicePickerDelegate) {
-	po := objc.WrapAsProtocol("NSSharingServicePickerDelegate", value)
-	objc.SetAssociatedObject(s_, internal.AssociationKey("setDelegate"), po, objc.ASSOCIATION_RETAIN)
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), po)
-}
-
-func (s_ SharingServicePicker) SetDelegate0(value objc.IObject) {
+// weak property
+func (s_ SharingServicePicker) SetDelegate(value objc.IObject) {
 	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
 }
 
