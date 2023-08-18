@@ -1,92 +1,63 @@
-#import "type_convertion.h"
-#import <Foundation/NSString.h>
-#import <Foundation/NSData.h>
-#import <Foundation/NSArray.h>
-#import <Foundation/NSDictionary.h>
+#import <stdint.h>
+#import <stdlib.h>
+#import <stdbool.h>
+#import <CoreFoundation/CFString.h>
+#import <CoreFoundation/CFData.h>
+#import <CoreFoundation/CFArray.h>
+#import <CoreFoundation/CFDictionary.h>
 
-void* to_ns_string(const char* str) {
-    return [NSString stringWithUTF8String:str];
+
+void* to_ns_string(void* str, unsigned long len) {
+    return (void*)CFStringCreateWithBytes(kCFAllocatorDefault, (const UInt8 *)str, len, kCFStringEncodingUTF8, false);
 }
 
-const char* to_c_string(void* ptr) {
-    return [((NSString*)ptr) UTF8String];
-}
-
-void* to_ns_data(data d) {
-    if (d.len <= 0) {
-        return [NSData data];
+const char* to_c_string(void* ptr, bool* shouldFree) {
+    const char * cstr = CFStringGetCStringPtr(ptr, kCFStringEncodingUTF8);
+    if (cstr != NULL) {
+        return cstr;
     }
-    return [NSData dataWithBytes:(Byte *)d.data length:d.len];
-}
-
-data to_c_bytes(void* ptr) {
-    NSData* nsData = (NSData*)ptr;
-    data array = {
-        .data = [nsData bytes],
-        .len = nsData.length
-    };
-    return array;
-}
-
-void* to_ns_array(array array) {
-    NSMutableArray* nsArray = [NSMutableArray arrayWithCapacity:array.len];
-    if (array.len > 0) {
-        void** arrayData = (void**)array.data;
-        for (int i = 0; i < array.len; i++) {
-            void* p = arrayData[i];
-            [nsArray addObject:(NSObject*)p];
-        }
+    CFIndex length = CFStringGetLength(ptr);
+    CFIndex maxSize = CFStringGetMaximumSizeForEncoding(length, kCFStringEncodingUTF8) + 1;
+    char *buffer = (char *)malloc(maxSize);
+    if (CFStringGetCString(ptr, buffer, maxSize, kCFStringEncodingUTF8)) {
+        *shouldFree = true;
+        return buffer;
     }
-    return nsArray;
+    free(buffer); // If we failed
+    return NULL;
 }
 
-array to_c_array(void* ptr) {
-    NSArray* result_ = (NSArray*)ptr;
-    array result_Array;
-    int result_count = [result_ count];
-    if (result_count > 0) {
-        void** result_Data = malloc(result_count * sizeof(void*));
-        for (int i = 0; i < result_count; i++) {
-             void* p = [result_ objectAtIndex:i];
-             result_Data[i] = p;
-        }
-        result_Array.data = result_Data;
-        result_Array.len = result_count;
-    }
-    return result_Array;
+void* to_ns_data(void* data, unsigned long len) {
+    return (void *)CFDataCreate(kCFAllocatorDefault, (const UInt8 *)data, len);
 }
 
-dict to_c_items(void* ptr) {
-    NSDictionary* result_ = (NSDictionary*)ptr;
-    dict c_dict;
-    NSArray * keys = [result_ allKeys];
-    int size = [keys count];
-    if (size > 0) {
-        void** key_data = malloc(size * sizeof(void*));
-        void** value_data = malloc(size * sizeof(void*));
-        for (int i = 0; i < size; i++) {
-            NSString* kp = [keys objectAtIndex:i];
-            id vp = result_[kp];
-            key_data[i] = kp;
-            value_data[i] = vp;
-        }
-        c_dict.key_data = key_data;
-        c_dict.value_data = value_data;
-        c_dict.len = size;
-    }
-    return c_dict;
+void* to_c_bytes(void* ptr, unsigned long *len) {
+    *len = CFDataGetLength(ptr);
+    const UInt8 * bytesPtr = CFDataGetBytePtr(ptr);
+    return (void*)bytesPtr;
 }
 
-void* to_ns_dict(dict cDict) {
-    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithCapacity:cDict.len];
-    if (cDict.len > 0) {
-        void** key_data = (void**)cDict.key_data;
-        void** value_data = (void**)cDict.value_data;
-        for (int i = 0; i < cDict.len; i++) {
-            void* kp = key_data[i];
-            void* vp = value_data[i];
-            [dict setObject:(id)vp forKey:(id<NSCopying>)(NSString*)kp];
-        }
-    }
-    return dict;
+void* to_ns_array(void** items, unsigned long len) {
+    return (void*)CFArrayCreate(kCFAllocatorDefault, (const void**)items, len, &kCFTypeArrayCallBacks);
+}
+
+unsigned long ns_array_len(void* ptr) {
+    return CFArrayGetCount(ptr);
+}
+
+void ns_array_get(void* ptr, const void** item, unsigned long len) {
+    CFArrayGetValues(ptr, CFRangeMake(0, len), item);
+}
+
+
+void* to_ns_dict(const void** keys, const void** values, unsigned long size) {
+    return (void*)CFDictionaryCreate(kCFAllocatorDefault, keys, values, size, &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+}
+
+unsigned long ns_dict_size(void* ptr) {
+    return CFDictionaryGetCount(ptr);
+}
+
+void ns_dict_get(void* ptr, const void** keys, const void** values) {
+    CFDictionaryGetKeysAndValues(ptr, keys, values);
 }

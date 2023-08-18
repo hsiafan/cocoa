@@ -1,18 +1,21 @@
 package objc
 
 // #import <stdint.h>
-// #include "type_convertion.h"
-// void* to_ns_string(const char* str);
-// const char* to_c_string(void* ptr);
+// #import <stdlib.h>
+// #import <stdbool.h>
+// void* to_ns_string(void* str, unsigned long len);
+// const char* to_c_string(void* ptr, bool* shouldFree);
 //
-// void* to_ns_data(data);
-// data to_c_bytes(void* ptr);
+// void* to_ns_data(void* data, unsigned long len);
+// void* to_c_bytes(void* ptr, unsigned long *len);
 //
-// void* to_ns_array(array array);
-// array to_c_array(void* ptr);
+// void* to_ns_array(void** items, unsigned long len);
+// unsigned long ns_array_len(void* ptr);
+// void ns_array_get(void* ptr, void** item, unsigned long len);
 //
-// dict to_c_items(void* ptr);
-// void* to_ns_dict(dict cDict);
+// void* to_ns_dict(void** keys, void** values, unsigned long size);
+// unsigned long ns_dict_size(void* ptr);
+// void ns_dict_get(void* ptr, void** keys, void** values);
 import "C"
 
 import (
@@ -42,17 +45,28 @@ type reValue struct {
 // flagIndir: val holds a pointer to the data
 var flagIndir uintptr = 1 << 7
 
+func autoRelease(p unsafe.Pointer) unsafe.Pointer {
+	MakeObject(p).Autorelease()
+	return p
+}
+
 func ToNSString(s string) unsafe.Pointer {
-	cs := C.CString(s)
-	defer C.free(unsafe.Pointer(cs))
-	return C.to_ns_string(cs)
+	sp := unsafe.StringData(s)
+	p := C.to_ns_string(unsafe.Pointer(sp), C.ulong(len(s)))
+	return autoRelease(p)
 }
 
 func ToGoString(p unsafe.Pointer) string {
 	if p == nil {
 		return ""
 	}
-	return C.GoString(C.to_c_string(p))
+	var shouldFree C.bool
+	cstr := C.to_c_string(p, &shouldFree)
+	str := C.GoString(cstr)
+	if shouldFree {
+		C.free(unsafe.Pointer(cstr))
+	}
+	return str
 }
 
 func ToNSData(bytes []byte) unsafe.Pointer {
@@ -61,28 +75,25 @@ func ToNSData(bytes []byte) unsafe.Pointer {
 	}
 	size := len(bytes)
 	var p unsafe.Pointer
-	var d C.data
 	if size == 0 {
-		p = C.to_ns_data(d)
+		p = C.to_ns_data(nil, C.ulong(0))
 	} else {
-		p = C.to_ns_data(C.data{
-			len:  C.ulong(size),
-			data: unsafe.Pointer(&bytes[0]),
-		})
+		p = C.to_ns_data(unsafe.Pointer(&bytes[0]), C.ulong(size))
 	}
-	return p
+	return autoRelease(p)
 }
 
 func ToGoBytes(p unsafe.Pointer) []byte {
 	if p == nil {
 		return nil
 	}
-	d := C.to_c_bytes(p)
-	size := int(d.len)
+	var len C.ulong
+	data := C.to_c_bytes(p, &len)
+	size := int(len)
 	if size <= 0 {
 		return nil
 	}
-	bytes := unsafe.Slice((*byte)(d.data), size)
+	bytes := unsafe.Slice((*byte)(data), size)
 	newBytes := make([]byte, size)
 	copy(newBytes, bytes)
 	return newBytes
@@ -140,27 +151,26 @@ func ToNSArray(slice reflect.Value) unsafe.Pointer {
 	if slice.IsNil() {
 		return nil
 	}
-	var cArray C.array
-	if slice.Len() > 0 {
-		cArrayData := make([]unsafe.Pointer, slice.Len())
-		for i := 0; i < slice.Len(); i++ {
-			cArrayData[i] = toNSElement(slice.Index(i))
-		}
-		cArray.data = unsafe.Pointer(&cArrayData[0])
-		cArray.len = C.ulong(len(cArrayData))
+	if slice.Len() == 0 {
+		return autoRelease(C.to_ns_array(nil, C.ulong(0)))
 	}
-	return C.to_ns_array(cArray)
+	cArrayData := make([]unsafe.Pointer, slice.Len())
+	for i := 0; i < slice.Len(); i++ {
+		cArrayData[i] = toNSElement(slice.Index(i))
+	}
+	return autoRelease(C.to_ns_array((*unsafe.Pointer)(&cArrayData[0]), C.ulong(len(cArrayData))))
 }
 
 func ToGoSlice(ptr unsafe.Pointer, sliceType reflect.Type) reflect.Value {
 	if ptr == nil {
 		return reflect.New(sliceType).Elem()
 	}
-	ca := C.to_c_array(ptr)
-	if ca.len > 0 {
-		defer C.free(ca.data)
+	length := int(C.ns_array_len(ptr))
+	if length == 0 {
+		return reflect.MakeSlice(sliceType, 0, 0)
 	}
-	ptrSlice := unsafe.Slice((*unsafe.Pointer)(ca.data), int(ca.len))
+	ptrSlice := make([]unsafe.Pointer, length)
+	C.ns_array_get(ptr, (*unsafe.Pointer)(&ptrSlice[0]), C.ulong(length))
 	var slice = reflect.MakeSlice(sliceType, len(ptrSlice), len(ptrSlice))
 	for idx, ptr := range ptrSlice {
 		slice.Index(idx).Set(toGoElement(ptr, sliceType.Elem()))
@@ -172,33 +182,31 @@ func ToNSDict(m reflect.Value) unsafe.Pointer {
 	if m.IsNil() {
 		return nil
 	}
-	var cDict C.dict
-	if m.Len() > 0 {
-		keyData := make([]unsafe.Pointer, m.Len())
-		valueData := make([]unsafe.Pointer, m.Len())
-		for idx, k := range m.MapKeys() {
-			v := m.MapIndex(k)
-			keyData[idx] = toNSElement(k)
-			valueData[idx] = toNSElement(v)
-		}
-		cDict.key_data = unsafe.Pointer(&keyData[0])
-		cDict.value_data = unsafe.Pointer(&valueData[0])
-		cDict.len = C.ulong(m.Len())
+	if m.Len() == 0 {
+		return C.to_ns_dict(nil, nil, 0)
 	}
-	return C.to_ns_dict(cDict)
+	keys := make([]unsafe.Pointer, m.Len())
+	values := make([]unsafe.Pointer, m.Len())
+	for idx, k := range m.MapKeys() {
+		v := m.MapIndex(k)
+		keys[idx] = toNSElement(k)
+		values[idx] = toNSElement(v)
+	}
+	rp := C.to_ns_dict((*unsafe.Pointer)(&keys[0]), (*unsafe.Pointer)(&values[0]), C.ulong(m.Len()))
+	return autoRelease(rp)
 }
 
 func ToGoMap(ptr unsafe.Pointer, mapType reflect.Type) reflect.Value {
 	if ptr == nil {
 		return reflect.New(mapType).Elem()
 	}
-	cDict := C.to_c_items(ptr)
-	if cDict.len > 0 {
-		defer C.free(cDict.key_data)
-		defer C.free(cDict.value_data)
+	size := int(C.ns_dict_size(ptr))
+	if size == 0 {
+		return reflect.MakeMap(mapType)
 	}
-	keys := unsafe.Slice((*unsafe.Pointer)(cDict.key_data), int(cDict.len))
-	values := unsafe.Slice((*unsafe.Pointer)(cDict.value_data), int(cDict.len))
+	keys := make([]unsafe.Pointer, size)
+	values := make([]unsafe.Pointer, size)
+	C.ns_dict_get(ptr, (*unsafe.Pointer)(&keys[0]), (*unsafe.Pointer)(&values[0]))
 	var m = reflect.MakeMap(mapType)
 	for idx, k := range keys {
 		v := values[idx]

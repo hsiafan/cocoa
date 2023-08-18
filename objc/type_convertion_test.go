@@ -61,3 +61,65 @@ func Test_setGoValueToObjcPointer(t *testing.T) {
 	setGoValueToObjcPointer(drv, unsafe.Pointer(&nds))
 	assert.Equal(t, ds, nds)
 }
+
+func Test_convertString(t *testing.T) {
+	s := "this is a test string, and never duplicated with others。这是一个测试🐶"
+	var o Object
+
+	WithAutoreleasePool(func() {
+		p := ToNSString(s)
+		o = MakeObject(p)
+		o.Retain()
+	})
+	assert.Equal(t, uint(1), o.RetainCount())
+	gs := ToGoString(o.Ptr())
+	assert.Equal(t, s, gs)
+	o.Release()
+}
+
+func Test_convertData(t *testing.T) {
+	var o Object
+	WithAutoreleasePool(func() {
+		p := ToNSData([]byte("this is a byte array data"))
+		o = MakeObject(p)
+		o.Retain()
+	})
+
+	assert.Equal(t, uint(1), o.RetainCount())
+	var data = ToGoBytes(o.Ptr())
+	assert.Equal(t, []byte("this is a byte array data"), data)
+
+	o.Release()
+}
+
+func Test_convertArray(t *testing.T) {
+	slice := []string{"test1", "test2"}
+	var o Object
+	WithAutoreleasePool(func() {
+		p := ToNSArray(reflect.ValueOf(slice))
+		o = MakeObject(p)
+		o.Retain()
+	})
+
+	assert.Equal(t, uint(1), o.RetainCount())
+	var newSlice = ToGoSlice(o.Ptr(), reflect.TypeOf(slice)).Interface().([]string)
+	assert.Equal(t, slice, newSlice)
+
+	o.Release()
+}
+
+func Test_convertDict(t *testing.T) {
+	m := map[string]string{"test1": "1", "test2": "2"}
+	var o Object
+	WithAutoreleasePool(func() {
+		p := ToNSDict(reflect.ValueOf(m))
+		o = MakeObject(p)
+		o.Retain()
+	})
+
+	assert.Equal(t, uint(1), o.RetainCount())
+	var nm = ToGoMap(o.Ptr(), reflect.TypeOf(m)).Interface().(map[string]string)
+	assert.Equal(t, m, nm)
+
+	o.Release()
+}
