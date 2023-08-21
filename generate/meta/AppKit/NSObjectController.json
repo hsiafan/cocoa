@@ -1,0 +1,148 @@
+{
+    "kind": "class",
+    "name": "NSObjectController",
+    "module": "AppKit",
+    "parent": "AppKit.NSController *",
+    "properties": [
+        {
+            "name": "content",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "automaticallyPreparesContent",
+            "type": "BOOL"
+        },
+        {
+            "name": "objectClass",
+            "type": "objectivec.Class *",
+            "weak": true
+        },
+        {
+            "name": "canAdd",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "canRemove",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "editable",
+            "getter_name": "isEditable",
+            "type": "BOOL"
+        },
+        {
+            "name": "entityName",
+            "type": "NSString*"
+        },
+        {
+            "name": "usesLazyFetching",
+            "type": "BOOL"
+        },
+        {
+            "name": "fetchPredicate",
+            "type": "Foundation.NSPredicate *"
+        },
+        {
+            "name": "selectedObjects",
+            "read_only": true,
+            "type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "selection",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "initWithContent",
+            "params": [
+                {
+                    "variable_name": "content",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "instance"
+        },
+        {
+            "name": "prepareContent",
+            "return_type": "void"
+        },
+        {
+            "name": "newObject",
+            "return_type": "objectivec.NSObject *"
+        },
+        {
+            "name": "addObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "add",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "remove",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "fetch",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "validateUserInterfaceItem",
+            "params": [
+                {
+                    "variable_name": "item",
+                    "type": "id<AppKit.NSValidatedUserInterfaceItem>"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

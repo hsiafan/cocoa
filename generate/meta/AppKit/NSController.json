@@ -1,0 +1,78 @@
+{
+    "kind": "class",
+    "name": "NSController",
+    "module": "AppKit",
+    "parent": "objectivec.NSObject *",
+    "properties": [
+        {
+            "name": "editing",
+            "read_only": true,
+            "getter_name": "isEditing",
+            "type": "BOOL"
+        }
+    ],
+    "methods": [
+        {
+            "name": "objectDidBeginEditing",
+            "params": [
+                {
+                    "variable_name": "editor",
+                    "type": "id<AppKit.NSEditor>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "objectDidEndEditing",
+            "params": [
+                {
+                    "variable_name": "editor",
+                    "type": "id<AppKit.NSEditor>"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "commitEditing",
+            "return_type": "BOOL"
+        },
+        {
+            "name": "commitEditingWithDelegate",
+            "params": [
+                {
+                    "variable_name": "delegate",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "didCommitSelector",
+                    "variable_name": "didCommitSelector",
+                    "type": "SEL"
+                },
+                {
+                    "name": "contextInfo",
+                    "variable_name": "contextInfo",
+                    "type": "void *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "discardEditing",
+            "return_type": "void"
+        },
+        {
+            "name": "init",
+            "return_type": "instance"
+        },
+        {
+            "name": "initWithCoder",
+            "params": [
+                {
+                    "variable_name": "coder",
+                    "type": "Foundation.NSCoder *"
+                }
+            ],
+            "return_type": "instance"
+        }
+    ]
+}

@@ -1,0 +1,290 @@
+{
+    "kind": "class",
+    "name": "NSTreeController",
+    "module": "AppKit",
+    "parent": "AppKit.NSObjectController *",
+    "properties": [
+        {
+            "name": "sortDescriptors",
+            "type": "NSArray<Foundation.NSSortDescriptor *> *"
+        },
+        {
+            "name": "content",
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "arrangedObjects",
+            "read_only": true,
+            "type": "AppKit.NSTreeNode *"
+        },
+        {
+            "name": "selectionIndexPath",
+            "read_only": true,
+            "type": "Foundation.NSIndexPath *"
+        },
+        {
+            "name": "selectionIndexPaths",
+            "read_only": true,
+            "type": "NSArray<Foundation.NSIndexPath *> *"
+        },
+        {
+            "name": "selectedObjects",
+            "read_only": true,
+            "type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "selectedNodes",
+            "read_only": true,
+            "type": "NSArray<AppKit.NSTreeNode *> *"
+        },
+        {
+            "name": "selectsInsertedObjects",
+            "type": "BOOL"
+        },
+        {
+            "name": "avoidsEmptySelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "preservesSelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "alwaysUsesMultipleValuesMarker",
+            "type": "BOOL"
+        },
+        {
+            "name": "canAddChild",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "canInsert",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "canInsertChild",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "childrenKeyPath",
+            "type": "NSString*"
+        },
+        {
+            "name": "countKeyPath",
+            "type": "NSString*"
+        },
+        {
+            "name": "leafKeyPath",
+            "type": "NSString*"
+        }
+    ],
+    "methods": [
+        {
+            "name": "rearrangeObjects",
+            "return_type": "void"
+        },
+        {
+            "name": "setSelectionIndexPath",
+            "params": [
+                {
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setSelectionIndexPaths",
+            "params": [
+                {
+                    "variable_name": "indexPaths",
+                    "type": "NSArray<Foundation.NSIndexPath *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "addSelectionIndexPaths",
+            "params": [
+                {
+                    "variable_name": "indexPaths",
+                    "type": "NSArray<Foundation.NSIndexPath *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "removeSelectionIndexPaths",
+            "params": [
+                {
+                    "variable_name": "indexPaths",
+                    "type": "NSArray<Foundation.NSIndexPath *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "add",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addChild",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insert",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertChild",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "atArrangedObjectIndexPath",
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "atArrangedObjectIndexPaths",
+                    "variable_name": "indexPaths",
+                    "type": "NSArray<Foundation.NSIndexPath *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "remove",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObjectAtArrangedObjectIndexPath",
+            "params": [
+                {
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObjectsAtArrangedObjectIndexPaths",
+            "params": [
+                {
+                    "variable_name": "indexPaths",
+                    "type": "NSArray<Foundation.NSIndexPath *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "moveNode",
+            "params": [
+                {
+                    "variable_name": "node",
+                    "type": "AppKit.NSTreeNode *"
+                },
+                {
+                    "name": "toIndexPath",
+                    "variable_name": "indexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "moveNodes",
+            "params": [
+                {
+                    "variable_name": "nodes",
+                    "type": "NSArray<AppKit.NSTreeNode *> *"
+                },
+                {
+                    "name": "toIndexPath",
+                    "variable_name": "startingIndexPath",
+                    "type": "Foundation.NSIndexPath *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "childrenKeyPathForNode",
+            "params": [
+                {
+                    "variable_name": "node",
+                    "type": "AppKit.NSTreeNode *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "countKeyPathForNode",
+            "params": [
+                {
+                    "variable_name": "node",
+                    "type": "AppKit.NSTreeNode *"
+                }
+            ],
+            "return_type": "NSString*"
+        },
+        {
+            "name": "leafKeyPathForNode",
+            "params": [
+                {
+                    "variable_name": "node",
+                    "type": "AppKit.NSTreeNode *"
+                }
+            ],
+            "return_type": "NSString*"
+        }
+    ]
+}
