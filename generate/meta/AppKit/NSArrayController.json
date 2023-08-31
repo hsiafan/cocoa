@@ -1,0 +1,310 @@
+{
+    "kind": "class",
+    "name": "NSArrayController",
+    "module": "AppKit",
+    "parent": "AppKit.NSObjectController *",
+    "properties": [
+        {
+            "name": "sortDescriptors",
+            "type": "NSArray<Foundation.NSSortDescriptor *> *"
+        },
+        {
+            "name": "arrangedObjects",
+            "read_only": true,
+            "type": "objectivec.NSObject *"
+        },
+        {
+            "name": "avoidsEmptySelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "preservesSelection",
+            "type": "BOOL"
+        },
+        {
+            "name": "alwaysUsesMultipleValuesMarker",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectionIndex",
+            "read_only": true,
+            "type": "NSUInteger"
+        },
+        {
+            "name": "selectsInsertedObjects",
+            "type": "BOOL"
+        },
+        {
+            "name": "selectionIndexes",
+            "read_only": true,
+            "type": "Foundation.NSIndexSet *"
+        },
+        {
+            "name": "selectedObjects",
+            "read_only": true,
+            "type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "canSelectNext",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "canSelectPrevious",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "canInsert",
+            "read_only": true,
+            "type": "BOOL"
+        },
+        {
+            "name": "clearsFilterPredicateOnInsertion",
+            "type": "BOOL"
+        },
+        {
+            "name": "filterPredicate",
+            "type": "Foundation.NSPredicate *"
+        },
+        {
+            "name": "automaticallyRearrangesObjects",
+            "type": "BOOL"
+        },
+        {
+            "name": "automaticRearrangementKeyPaths",
+            "read_only": true,
+            "type": "NSArray<NSString*> *"
+        }
+    ],
+    "methods": [
+        {
+            "name": "arrangeObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "NSArray<objectivec.NSObject *> *"
+        },
+        {
+            "name": "rearrangeObjects",
+            "return_type": "void"
+        },
+        {
+            "name": "add",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "setSelectionIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setSelectionIndexes",
+            "params": [
+                {
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "addSelectionIndexes",
+            "params": [
+                {
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "removeSelectionIndexes",
+            "params": [
+                {
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "setSelectedObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "addSelectedObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "removeSelectedObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "BOOL"
+        },
+        {
+            "name": "selectNext",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "selectPrevious",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insert",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "addObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                },
+                {
+                    "name": "atArrangedObjectIndex",
+                    "variable_name": "index",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "insertObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                },
+                {
+                    "name": "atArrangedObjectIndexes",
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObjectAtArrangedObjectIndex",
+            "params": [
+                {
+                    "variable_name": "index",
+                    "type": "NSUInteger"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObjectsAtArrangedObjectIndexes",
+            "params": [
+                {
+                    "variable_name": "indexes",
+                    "type": "Foundation.NSIndexSet *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "remove",
+            "params": [
+                {
+                    "variable_name": "sender",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObject",
+            "params": [
+                {
+                    "variable_name": "object",
+                    "type": "objectivec.NSObject *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "removeObjects",
+            "params": [
+                {
+                    "variable_name": "objects",
+                    "type": "NSArray<objectivec.NSObject *> *"
+                }
+            ],
+            "return_type": "void"
+        },
+        {
+            "name": "didChangeArrangementCriteria",
+            "return_type": "void"
+        }
+    ]
+}

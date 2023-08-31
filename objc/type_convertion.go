@@ -250,10 +250,10 @@ func convertToGoValue(p unsafe.Pointer, t reflect.Type) reflect.Value {
 		if t.Elem().Kind() == reflect.Uint8 {
 			return reflect.ValueOf(ToGoBytes(*(*unsafe.Pointer)(p)))
 		} else {
-			return reflect.ValueOf(ToGoSlice(*(*unsafe.Pointer)(p), t))
+			return ToGoSlice(*(*unsafe.Pointer)(p), t)
 		}
 	case reflect.Map:
-		return reflect.ValueOf(ToGoMap(*(*unsafe.Pointer)(p), t))
+		return ToGoMap(*(*unsafe.Pointer)(p), t)
 	case reflect.Struct:
 		if t.Implements(pointerHolderType) {
 			// objc object pointer holder struct should have same layout as a pointer

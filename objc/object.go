@@ -44,6 +44,8 @@ type IObject interface {
 	RespondsToSelector(sel Selector) bool
 	ConformsToProtocol(protocol Protocol) bool
 
+	Bind(binding string, toObject IObject, keyPath string, options map[string]IObject)
+
 	IsProxy() bool
 
 	Retain() Object
@@ -71,22 +73,6 @@ type Object struct {
 	ptr unsafe.Pointer
 }
 
-func (o Object) IsKindOfClass(class Class) bool {
-	return bool(C.Object_IsKindOfClass(o.Ptr(), class.ptr))
-}
-
-func (o Object) IsMemberOfClass(class Class) bool {
-	return bool(C.Object_IsMemberOfClass(o.Ptr(), class.ptr))
-}
-
-func (o Object) RespondsToSelector(sel Selector) bool {
-	return bool(C.Object_RespondsToSelector(o.Ptr(), sel.ptr))
-}
-
-func (o Object) ConformsToProtocol(protocol Protocol) bool {
-	return bool(C.Object_ConformsToProtocol(o.Ptr(), protocol.ptr))
-}
-
 func MakeObject(ptr unsafe.Pointer) Object {
 	return Object{ptr}
 }
@@ -107,6 +93,26 @@ func NewObject() Object {
 
 func (o Object) GetClass() Class {
 	return Class{C.Object_GetClass(o.Ptr())}
+}
+
+func (o Object) IsKindOfClass(class Class) bool {
+	return bool(C.Object_IsKindOfClass(o.Ptr(), class.ptr))
+}
+
+func (o Object) IsMemberOfClass(class Class) bool {
+	return bool(C.Object_IsMemberOfClass(o.Ptr(), class.ptr))
+}
+
+func (o Object) RespondsToSelector(sel Selector) bool {
+	return bool(C.Object_RespondsToSelector(o.Ptr(), sel.ptr))
+}
+
+func (o Object) ConformsToProtocol(protocol Protocol) bool {
+	return bool(C.Object_ConformsToProtocol(o.Ptr(), protocol.ptr))
+}
+
+func (o Object) Bind(binding string, toObject IObject, keyPath string, options map[string]IObject) {
+	CallMethod[Void](o, GetSelector("bind:toObject:withKeyPath:options:"), binding, toObject, keyPath, options)
 }
 
 func (o Object) IsProxy() bool {

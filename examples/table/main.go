@@ -16,13 +16,11 @@ func init() {
 	runtime.LockOSThread()
 }
 
-// https://gist.github.com/wozuo/53a475e67dd11c60cfb1e4f62ea91d32
 func initAndRun() {
 	app := appkit.ApplicationClass.SharedApplication()
 	w := appkit.NewWindowWithSize(600, 400)
 	w.SetTitle("Test")
 
-	// text field
 	sv := appkit.NewScrollView()
 	sv.SetTranslatesAutoresizingMaskIntoConstraints(false)
 	sv.SetBackgroundColor(appkit.ColorClass.ClearColor())
@@ -88,6 +86,8 @@ func (d *myTableDataSource) ImplementsNumberOfRowsInTableView() bool {
 func (d *myTableDataSource) NumberOfRowsInTableView(tableView appkit.TableView) int {
 	return 100
 }
+
+// cell based table
 
 func (d *myTableDataSource) ImplementsTableView_ObjectValueForTableColumn_Row() bool {
 	return true
