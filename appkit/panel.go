@@ -33,32 +33,32 @@ func MakePanel(ptr unsafe.Pointer) Panel {
 }
 
 func (pc _PanelClass) WindowWithContentViewController(contentViewController IViewController) Panel {
-	rv := objc.CallMethod[Panel](pc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
+	rv := objc.CallMethod[Panel](pc, objc.SEL("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
 func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) Panel {
-	rv := objc.CallMethod[Panel](p_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
+	rv := objc.CallMethod[Panel](p_, objc.SEL("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
 	return rv
 }
 
 func (p_ Panel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Panel {
-	rv := objc.CallMethod[Panel](p_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
+	rv := objc.CallMethod[Panel](p_, objc.SEL("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 
 func (p_ Panel) Init() Panel {
-	rv := objc.CallMethod[Panel](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Panel](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PanelClass) Alloc() Panel {
-	rv := objc.CallMethod[Panel](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Panel](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PanelClass) New() Panel {
-	rv := objc.CallMethod[Panel](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Panel](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -68,18 +68,18 @@ func NewPanel() Panel {
 }
 
 func (p_ Panel) SetFloatingPanel(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFloatingPanel:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setFloatingPanel:"), value)
 }
 
 func (p_ Panel) BecomesKeyOnlyIfNeeded() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("becomesKeyOnlyIfNeeded"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("becomesKeyOnlyIfNeeded"))
 	return rv
 }
 
 func (p_ Panel) SetBecomesKeyOnlyIfNeeded(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBecomesKeyOnlyIfNeeded:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setBecomesKeyOnlyIfNeeded:"), value)
 }
 
 func (p_ Panel) SetWorksWhenModal(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setWorksWhenModal:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setWorksWhenModal:"), value)
 }

@@ -61,22 +61,22 @@ func MakeUserActivity(ptr unsafe.Pointer) UserActivity {
 }
 
 func (u_ UserActivity) InitWithActivityType(activityType string) UserActivity {
-	rv := objc.CallMethod[UserActivity](u_, objc.GetSelector("initWithActivityType:"), activityType)
+	rv := objc.CallMethod[UserActivity](u_, objc.SEL("initWithActivityType:"), activityType)
 	return rv
 }
 
 func (u_ UserActivity) Init() UserActivity {
-	rv := objc.CallMethod[UserActivity](u_, objc.GetSelector("init"))
+	rv := objc.CallMethod[UserActivity](u_, objc.SEL("init"))
 	return rv
 }
 
 func (uc _UserActivityClass) Alloc() UserActivity {
-	rv := objc.CallMethod[UserActivity](uc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[UserActivity](uc, objc.SEL("alloc"))
 	return rv
 }
 
 func (uc _UserActivityClass) New() UserActivity {
-	rv := objc.CallMethod[UserActivity](uc, objc.GetSelector("new"))
+	rv := objc.CallMethod[UserActivity](uc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -86,160 +86,160 @@ func NewUserActivity() UserActivity {
 }
 
 func (u_ UserActivity) BecomeCurrent() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("becomeCurrent"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("becomeCurrent"))
 }
 
 func (u_ UserActivity) ResignCurrent() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("resignCurrent"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("resignCurrent"))
 }
 
 func (u_ UserActivity) Invalidate() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("invalidate"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("invalidate"))
 }
 
 func (uc _UserActivityClass) DeleteAllSavedUserActivitiesWithCompletionHandler(handler func()) {
-	objc.CallMethod[objc.Void](uc, objc.GetSelector("deleteAllSavedUserActivitiesWithCompletionHandler:"), handler)
+	objc.CallMethod[objc.Void](uc, objc.SEL("deleteAllSavedUserActivitiesWithCompletionHandler:"), handler)
 }
 
 func (uc _UserActivityClass) DeleteSavedUserActivitiesWithPersistentIdentifiers_CompletionHandler(persistentIdentifiers []UserActivityPersistentIdentifier, handler func()) {
-	objc.CallMethod[objc.Void](uc, objc.GetSelector("deleteSavedUserActivitiesWithPersistentIdentifiers:completionHandler:"), persistentIdentifiers, handler)
+	objc.CallMethod[objc.Void](uc, objc.SEL("deleteSavedUserActivitiesWithPersistentIdentifiers:completionHandler:"), persistentIdentifiers, handler)
 }
 
 func (u_ UserActivity) GetContinuationStreamsWithCompletionHandler(completionHandler func(inputStream InputStream, outputStream OutputStream, error Error)) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("getContinuationStreamsWithCompletionHandler:"), completionHandler)
+	objc.CallMethod[objc.Void](u_, objc.SEL("getContinuationStreamsWithCompletionHandler:"), completionHandler)
 }
 
 func (u_ UserActivity) ActivityType() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("activityType"))
+	rv := objc.CallMethod[string](u_, objc.SEL("activityType"))
 	return rv
 }
 
 func (u_ UserActivity) Title() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("title"))
+	rv := objc.CallMethod[string](u_, objc.SEL("title"))
 	return rv
 }
 
 func (u_ UserActivity) SetTitle(value string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setTitle:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setTitle:"), value)
 }
 
 func (u_ UserActivity) RequiredUserInfoKeys() Set {
-	rv := objc.CallMethod[Set](u_, objc.GetSelector("requiredUserInfoKeys"))
+	rv := objc.CallMethod[Set](u_, objc.SEL("requiredUserInfoKeys"))
 	return rv
 }
 
 func (u_ UserActivity) SetRequiredUserInfoKeys(value ISet) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setRequiredUserInfoKeys:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](u_, objc.SEL("setRequiredUserInfoKeys:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) TargetContentIdentifier() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("targetContentIdentifier"))
+	rv := objc.CallMethod[string](u_, objc.SEL("targetContentIdentifier"))
 	return rv
 }
 
 func (u_ UserActivity) SetTargetContentIdentifier(value string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setTargetContentIdentifier:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setTargetContentIdentifier:"), value)
 }
 
 // weak property
 func (u_ UserActivity) NeedsSave() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("needsSave"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("needsSave"))
 	return rv
 }
 
 // weak property
 func (u_ UserActivity) SetNeedsSave(value bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setNeedsSave:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setNeedsSave:"), value)
 }
 
 func (u_ UserActivity) Keywords() Set {
-	rv := objc.CallMethod[Set](u_, objc.GetSelector("keywords"))
+	rv := objc.CallMethod[Set](u_, objc.SEL("keywords"))
 	return rv
 }
 
 func (u_ UserActivity) SetKeywords(value ISet) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setKeywords:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](u_, objc.SEL("setKeywords:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) PersistentIdentifier() UserActivityPersistentIdentifier {
-	rv := objc.CallMethod[UserActivityPersistentIdentifier](u_, objc.GetSelector("persistentIdentifier"))
+	rv := objc.CallMethod[UserActivityPersistentIdentifier](u_, objc.SEL("persistentIdentifier"))
 	return rv
 }
 
 func (u_ UserActivity) SetPersistentIdentifier(value UserActivityPersistentIdentifier) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setPersistentIdentifier:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setPersistentIdentifier:"), value)
 }
 
 func (u_ UserActivity) IsEligibleForHandoff() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isEligibleForHandoff"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("isEligibleForHandoff"))
 	return rv
 }
 
 func (u_ UserActivity) SetEligibleForHandoff(value bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setEligibleForHandoff:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setEligibleForHandoff:"), value)
 }
 
 func (u_ UserActivity) IsEligibleForSearch() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isEligibleForSearch"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("isEligibleForSearch"))
 	return rv
 }
 
 func (u_ UserActivity) SetEligibleForSearch(value bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setEligibleForSearch:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setEligibleForSearch:"), value)
 }
 
 func (u_ UserActivity) IsEligibleForPublicIndexing() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isEligibleForPublicIndexing"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("isEligibleForPublicIndexing"))
 	return rv
 }
 
 func (u_ UserActivity) SetEligibleForPublicIndexing(value bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setEligibleForPublicIndexing:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setEligibleForPublicIndexing:"), value)
 }
 
 func (u_ UserActivity) ExpirationDate() Date {
-	rv := objc.CallMethod[Date](u_, objc.GetSelector("expirationDate"))
+	rv := objc.CallMethod[Date](u_, objc.SEL("expirationDate"))
 	return rv
 }
 
 func (u_ UserActivity) SetExpirationDate(value IDate) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setExpirationDate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](u_, objc.SEL("setExpirationDate:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (u_ UserActivity) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](u_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](u_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (u_ UserActivity) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](u_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) SupportsContinuationStreams() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("supportsContinuationStreams"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("supportsContinuationStreams"))
 	return rv
 }
 
 func (u_ UserActivity) SetSupportsContinuationStreams(value bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setSupportsContinuationStreams:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setSupportsContinuationStreams:"), value)
 }
 
 func (u_ UserActivity) WebpageURL() URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("webpageURL"))
+	rv := objc.CallMethod[URL](u_, objc.SEL("webpageURL"))
 	return rv
 }
 
 func (u_ UserActivity) SetWebpageURL(value IURL) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setWebpageURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](u_, objc.SEL("setWebpageURL:"), objc.ExtractPtr(value))
 }
 
 func (u_ UserActivity) ReferrerURL() URL {
-	rv := objc.CallMethod[URL](u_, objc.GetSelector("referrerURL"))
+	rv := objc.CallMethod[URL](u_, objc.SEL("referrerURL"))
 	return rv
 }
 
 func (u_ UserActivity) SetReferrerURL(value IURL) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setReferrerURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](u_, objc.SEL("setReferrerURL:"), objc.ExtractPtr(value))
 }

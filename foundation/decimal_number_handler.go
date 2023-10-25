@@ -28,22 +28,22 @@ func MakeDecimalNumberHandler(ptr unsafe.Pointer) DecimalNumberHandler {
 }
 
 func (dc _DecimalNumberHandlerClass) DecimalNumberHandlerWithRoundingMode_Scale_RaiseOnExactness_RaiseOnOverflow_RaiseOnUnderflow_RaiseOnDivideByZero(roundingMode RoundingMode, scale int16, exact bool, overflow bool, underflow bool, divideByZero bool) DecimalNumberHandler {
-	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.GetSelector("decimalNumberHandlerWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:"), roundingMode, scale, exact, overflow, underflow, divideByZero)
+	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.SEL("decimalNumberHandlerWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:"), roundingMode, scale, exact, overflow, underflow, divideByZero)
 	return rv
 }
 
 func (d_ DecimalNumberHandler) InitWithRoundingMode_Scale_RaiseOnExactness_RaiseOnOverflow_RaiseOnUnderflow_RaiseOnDivideByZero(roundingMode RoundingMode, scale int16, exact bool, overflow bool, underflow bool, divideByZero bool) DecimalNumberHandler {
-	rv := objc.CallMethod[DecimalNumberHandler](d_, objc.GetSelector("initWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:"), roundingMode, scale, exact, overflow, underflow, divideByZero)
+	rv := objc.CallMethod[DecimalNumberHandler](d_, objc.SEL("initWithRoundingMode:scale:raiseOnExactness:raiseOnOverflow:raiseOnUnderflow:raiseOnDivideByZero:"), roundingMode, scale, exact, overflow, underflow, divideByZero)
 	return rv
 }
 
 func (dc _DecimalNumberHandlerClass) Alloc() DecimalNumberHandler {
-	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.SEL("alloc"))
 	return rv
 }
 
 func (dc _DecimalNumberHandlerClass) New() DecimalNumberHandler {
-	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.GetSelector("new"))
+	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,11 +53,11 @@ func NewDecimalNumberHandler() DecimalNumberHandler {
 }
 
 func (d_ DecimalNumberHandler) Init() DecimalNumberHandler {
-	rv := objc.CallMethod[DecimalNumberHandler](d_, objc.GetSelector("init"))
+	rv := objc.CallMethod[DecimalNumberHandler](d_, objc.SEL("init"))
 	return rv
 }
 
 func (dc _DecimalNumberHandlerClass) DefaultDecimalNumberHandler() DecimalNumberHandler {
-	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.GetSelector("defaultDecimalNumberHandler"))
+	rv := objc.CallMethod[DecimalNumberHandler](dc, objc.SEL("defaultDecimalNumberHandler"))
 	return rv
 }

@@ -38,7 +38,7 @@ func NewTouchBarDelegateCreator(name string) *TouchBarDelegateCreator {
 }
 
 func (c *TouchBarDelegateCreator) SetTouchBar_MakeItemForIdentifier(handle func(o objc.Object, touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem) {
-	objc.AddMethod(c.class, objc.GetSelector("touchBar:makeItemForIdentifier:"), handle)
+	objc.AddMethod(c.class, objc.SEL("touchBar:makeItemForIdentifier:"), handle)
 }
 
 func (c *TouchBarDelegateCreator) Create() objc.Object {

@@ -51,11 +51,11 @@ func NewSearchFieldDelegateCreator(name string) *SearchFieldDelegateCreator {
 }
 
 func (c *SearchFieldDelegateCreator) SetSearchFieldDidStartSearching(handle func(o objc.Object, sender SearchField)) {
-	objc.AddMethod(c.class, objc.GetSelector("searchFieldDidStartSearching:"), handle)
+	objc.AddMethod(c.class, objc.SEL("searchFieldDidStartSearching:"), handle)
 }
 
 func (c *SearchFieldDelegateCreator) SetSearchFieldDidEndSearching(handle func(o objc.Object, sender SearchField)) {
-	objc.AddMethod(c.class, objc.GetSelector("searchFieldDidEndSearching:"), handle)
+	objc.AddMethod(c.class, objc.SEL("searchFieldDidEndSearching:"), handle)
 }
 
 func (c *SearchFieldDelegateCreator) Create() objc.Object {

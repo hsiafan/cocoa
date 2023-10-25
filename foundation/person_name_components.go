@@ -42,12 +42,12 @@ func MakePersonNameComponents(ptr unsafe.Pointer) PersonNameComponents {
 }
 
 func (pc _PersonNameComponentsClass) Alloc() PersonNameComponents {
-	rv := objc.CallMethod[PersonNameComponents](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PersonNameComponents](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PersonNameComponentsClass) New() PersonNameComponents {
-	rv := objc.CallMethod[PersonNameComponents](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PersonNameComponents](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -57,69 +57,69 @@ func NewPersonNameComponents() PersonNameComponents {
 }
 
 func (p_ PersonNameComponents) Init() PersonNameComponents {
-	rv := objc.CallMethod[PersonNameComponents](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PersonNameComponents](p_, objc.SEL("init"))
 	return rv
 }
 
 func (p_ PersonNameComponents) NamePrefix() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("namePrefix"))
+	rv := objc.CallMethod[string](p_, objc.SEL("namePrefix"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetNamePrefix(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setNamePrefix:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setNamePrefix:"), value)
 }
 
 func (p_ PersonNameComponents) GivenName() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("givenName"))
+	rv := objc.CallMethod[string](p_, objc.SEL("givenName"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetGivenName(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setGivenName:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setGivenName:"), value)
 }
 
 func (p_ PersonNameComponents) MiddleName() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("middleName"))
+	rv := objc.CallMethod[string](p_, objc.SEL("middleName"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetMiddleName(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setMiddleName:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setMiddleName:"), value)
 }
 
 func (p_ PersonNameComponents) FamilyName() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("familyName"))
+	rv := objc.CallMethod[string](p_, objc.SEL("familyName"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetFamilyName(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setFamilyName:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setFamilyName:"), value)
 }
 
 func (p_ PersonNameComponents) NameSuffix() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("nameSuffix"))
+	rv := objc.CallMethod[string](p_, objc.SEL("nameSuffix"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetNameSuffix(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setNameSuffix:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setNameSuffix:"), value)
 }
 
 func (p_ PersonNameComponents) Nickname() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("nickname"))
+	rv := objc.CallMethod[string](p_, objc.SEL("nickname"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetNickname(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setNickname:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setNickname:"), value)
 }
 
 func (p_ PersonNameComponents) PhoneticRepresentation() PersonNameComponents {
-	rv := objc.CallMethod[PersonNameComponents](p_, objc.GetSelector("phoneticRepresentation"))
+	rv := objc.CallMethod[PersonNameComponents](p_, objc.SEL("phoneticRepresentation"))
 	return rv
 }
 
 func (p_ PersonNameComponents) SetPhoneticRepresentation(value IPersonNameComponents) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPhoneticRepresentation:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPhoneticRepresentation:"), objc.ExtractPtr(value))
 }

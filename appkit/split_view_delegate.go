@@ -162,52 +162,52 @@ func NewSplitViewDelegateCreator(name string) *SplitViewDelegateCreator {
 }
 
 func (c *SplitViewDelegateCreator) SetSplitViewWillResizeSubviews(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("splitViewWillResizeSubviews:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitViewWillResizeSubviews:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitViewDidResizeSubviews(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("splitViewDidResizeSubviews:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitViewDidResizeSubviews:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_CanCollapseSubview(handle func(o objc.Object, splitView SplitView, subview View) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:canCollapseSubview:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:canCollapseSubview:"), handle)
 }
 
 // deprecated
 func (c *SplitViewDelegateCreator) SetSplitView_ShouldCollapseSubview_ForDoubleClickOnDividerAtIndex(handle func(o objc.Object, splitView SplitView, subview View, dividerIndex int) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:shouldCollapseSubview:forDoubleClickOnDividerAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:shouldCollapseSubview:forDoubleClickOnDividerAtIndex:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_EffectiveRect_ForDrawnRect_OfDividerAtIndex(handle func(o objc.Object, splitView SplitView, proposedEffectiveRect foundation.Rect, drawnRect foundation.Rect, dividerIndex int) foundation.Rect) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_ShouldHideDividerAtIndex(handle func(o objc.Object, splitView SplitView, dividerIndex int) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:shouldHideDividerAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:shouldHideDividerAtIndex:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_AdditionalEffectiveRectOfDividerAtIndex(handle func(o objc.Object, splitView SplitView, dividerIndex int) foundation.Rect) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:additionalEffectiveRectOfDividerAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:additionalEffectiveRectOfDividerAtIndex:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_ConstrainSplitPosition_OfSubviewAt(handle func(o objc.Object, splitView SplitView, proposedPosition float64, dividerIndex int) float64) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:constrainSplitPosition:ofSubviewAt:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:constrainSplitPosition:ofSubviewAt:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_ConstrainMinCoordinate_OfSubviewAt(handle func(o objc.Object, splitView SplitView, proposedMinimumPosition float64, dividerIndex int) float64) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:constrainMinCoordinate:ofSubviewAt:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:constrainMinCoordinate:ofSubviewAt:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_ConstrainMaxCoordinate_OfSubviewAt(handle func(o objc.Object, splitView SplitView, proposedMaximumPosition float64, dividerIndex int) float64) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:constrainMaxCoordinate:ofSubviewAt:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:constrainMaxCoordinate:ofSubviewAt:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_ResizeSubviewsWithOldSize(handle func(o objc.Object, splitView SplitView, oldSize foundation.Size)) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:resizeSubviewsWithOldSize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:resizeSubviewsWithOldSize:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) SetSplitView_ShouldAdjustSizeOfSubview(handle func(o objc.Object, splitView SplitView, view View) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("splitView:shouldAdjustSizeOfSubview:"), handle)
+	objc.AddMethod(c.class, objc.SEL("splitView:shouldAdjustSizeOfSubview:"), handle)
 }
 
 func (c *SplitViewDelegateCreator) Create() objc.Object {

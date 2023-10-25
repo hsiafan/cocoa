@@ -37,12 +37,12 @@ func MakeWindowFeatures(ptr unsafe.Pointer) WindowFeatures {
 }
 
 func (wc _WindowFeaturesClass) Alloc() WindowFeatures {
-	rv := objc.CallMethod[WindowFeatures](wc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[WindowFeatures](wc, objc.SEL("alloc"))
 	return rv
 }
 
 func (wc _WindowFeaturesClass) New() WindowFeatures {
-	rv := objc.CallMethod[WindowFeatures](wc, objc.GetSelector("new"))
+	rv := objc.CallMethod[WindowFeatures](wc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,46 +52,46 @@ func NewWindowFeatures() WindowFeatures {
 }
 
 func (w_ WindowFeatures) Init() WindowFeatures {
-	rv := objc.CallMethod[WindowFeatures](w_, objc.GetSelector("init"))
+	rv := objc.CallMethod[WindowFeatures](w_, objc.SEL("init"))
 	return rv
 }
 
 func (w_ WindowFeatures) AllowsResizing() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("allowsResizing"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("allowsResizing"))
 	return rv
 }
 
 func (w_ WindowFeatures) Height() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("height"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("height"))
 	return rv
 }
 
 func (w_ WindowFeatures) Width() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("width"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("width"))
 	return rv
 }
 
 func (w_ WindowFeatures) X() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("x"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("x"))
 	return rv
 }
 
 func (w_ WindowFeatures) Y() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("y"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("y"))
 	return rv
 }
 
 func (w_ WindowFeatures) MenuBarVisibility() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("menuBarVisibility"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("menuBarVisibility"))
 	return rv
 }
 
 func (w_ WindowFeatures) StatusBarVisibility() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("statusBarVisibility"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("statusBarVisibility"))
 	return rv
 }
 
 func (w_ WindowFeatures) ToolbarsVisibility() foundation.Number {
-	rv := objc.CallMethod[foundation.Number](w_, objc.GetSelector("toolbarsVisibility"))
+	rv := objc.CallMethod[foundation.Number](w_, objc.SEL("toolbarsVisibility"))
 	return rv
 }

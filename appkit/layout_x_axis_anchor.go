@@ -32,12 +32,12 @@ func MakeLayoutXAxisAnchor(ptr unsafe.Pointer) LayoutXAxisAnchor {
 }
 
 func (lc _LayoutXAxisAnchorClass) Alloc() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](lc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[LayoutXAxisAnchor](lc, objc.SEL("alloc"))
 	return rv
 }
 
 func (lc _LayoutXAxisAnchorClass) New() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](lc, objc.GetSelector("new"))
+	rv := objc.CallMethod[LayoutXAxisAnchor](lc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,26 +47,26 @@ func NewLayoutXAxisAnchor() LayoutXAxisAnchor {
 }
 
 func (l_ LayoutXAxisAnchor) Init() LayoutXAxisAnchor {
-	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.GetSelector("init"))
+	rv := objc.CallMethod[LayoutXAxisAnchor](l_, objc.SEL("init"))
 	return rv
 }
 
 func (l_ LayoutXAxisAnchor) ConstraintEqualToSystemSpacingAfterAnchor_Multiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintEqualToSystemSpacingAfterAnchor:multiplier:"), objc.ExtractPtr(anchor), multiplier)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.SEL("constraintEqualToSystemSpacingAfterAnchor:multiplier:"), objc.ExtractPtr(anchor), multiplier)
 	return rv
 }
 
 func (l_ LayoutXAxisAnchor) ConstraintGreaterThanOrEqualToSystemSpacingAfterAnchor_Multiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintGreaterThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), objc.ExtractPtr(anchor), multiplier)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.SEL("constraintGreaterThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), objc.ExtractPtr(anchor), multiplier)
 	return rv
 }
 
 func (l_ LayoutXAxisAnchor) ConstraintLessThanOrEqualToSystemSpacingAfterAnchor_Multiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.CallMethod[LayoutConstraint](l_, objc.GetSelector("constraintLessThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), objc.ExtractPtr(anchor), multiplier)
+	rv := objc.CallMethod[LayoutConstraint](l_, objc.SEL("constraintLessThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), objc.ExtractPtr(anchor), multiplier)
 	return rv
 }
 
 func (l_ LayoutXAxisAnchor) AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnchor) LayoutDimension {
-	rv := objc.CallMethod[LayoutDimension](l_, objc.GetSelector("anchorWithOffsetToAnchor:"), objc.ExtractPtr(otherAnchor))
+	rv := objc.CallMethod[LayoutDimension](l_, objc.SEL("anchorWithOffsetToAnchor:"), objc.ExtractPtr(otherAnchor))
 	return rv
 }

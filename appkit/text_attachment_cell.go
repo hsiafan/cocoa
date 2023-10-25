@@ -28,27 +28,27 @@ func MakeTextAttachmentCell(ptr unsafe.Pointer) TextAttachmentCell {
 }
 
 func (t_ TextAttachmentCell) InitImageCell(image IImage) TextAttachmentCell {
-	rv := objc.CallMethod[TextAttachmentCell](t_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
+	rv := objc.CallMethod[TextAttachmentCell](t_, objc.SEL("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
 func (t_ TextAttachmentCell) InitTextCell(string_ string) TextAttachmentCell {
-	rv := objc.CallMethod[TextAttachmentCell](t_, objc.GetSelector("initTextCell:"), string_)
+	rv := objc.CallMethod[TextAttachmentCell](t_, objc.SEL("initTextCell:"), string_)
 	return rv
 }
 
 func (t_ TextAttachmentCell) Init() TextAttachmentCell {
-	rv := objc.CallMethod[TextAttachmentCell](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TextAttachmentCell](t_, objc.SEL("init"))
 	return rv
 }
 
 func (tc _TextAttachmentCellClass) Alloc() TextAttachmentCell {
-	rv := objc.CallMethod[TextAttachmentCell](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TextAttachmentCell](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextAttachmentCellClass) New() TextAttachmentCell {
-	rv := objc.CallMethod[TextAttachmentCell](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TextAttachmentCell](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }

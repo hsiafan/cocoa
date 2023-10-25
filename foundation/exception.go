@@ -33,12 +33,12 @@ func MakeException(ptr unsafe.Pointer) Exception {
 }
 
 func (ec _ExceptionClass) Alloc() Exception {
-	rv := objc.CallMethod[Exception](ec, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Exception](ec, objc.SEL("alloc"))
 	return rv
 }
 
 func (ec _ExceptionClass) New() Exception {
-	rv := objc.CallMethod[Exception](ec, objc.GetSelector("new"))
+	rv := objc.CallMethod[Exception](ec, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,30 +48,30 @@ func NewException() Exception {
 }
 
 func (e_ Exception) Init() Exception {
-	rv := objc.CallMethod[Exception](e_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Exception](e_, objc.SEL("init"))
 	return rv
 }
 
 func (e_ Exception) Raise() {
-	objc.CallMethod[objc.Void](e_, objc.GetSelector("raise"))
+	objc.CallMethod[objc.Void](e_, objc.SEL("raise"))
 }
 
 func (e_ Exception) Name() ExceptionName {
-	rv := objc.CallMethod[ExceptionName](e_, objc.GetSelector("name"))
+	rv := objc.CallMethod[ExceptionName](e_, objc.SEL("name"))
 	return rv
 }
 
 func (e_ Exception) Reason() string {
-	rv := objc.CallMethod[string](e_, objc.GetSelector("reason"))
+	rv := objc.CallMethod[string](e_, objc.SEL("reason"))
 	return rv
 }
 
 func (e_ Exception) CallStackReturnAddresses() []Number {
-	rv := objc.CallMethod[[]Number](e_, objc.GetSelector("callStackReturnAddresses"))
+	rv := objc.CallMethod[[]Number](e_, objc.SEL("callStackReturnAddresses"))
 	return rv
 }
 
 func (e_ Exception) CallStackSymbols() []string {
-	rv := objc.CallMethod[[]string](e_, objc.GetSelector("callStackSymbols"))
+	rv := objc.CallMethod[[]string](e_, objc.SEL("callStackSymbols"))
 	return rv
 }

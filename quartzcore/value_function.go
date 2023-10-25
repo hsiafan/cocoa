@@ -29,17 +29,17 @@ func MakeValueFunction(ptr unsafe.Pointer) ValueFunction {
 }
 
 func (vc _ValueFunctionClass) FunctionWithName(name ValueFunctionName) ValueFunction {
-	rv := objc.CallMethod[ValueFunction](vc, objc.GetSelector("functionWithName:"), name)
+	rv := objc.CallMethod[ValueFunction](vc, objc.SEL("functionWithName:"), name)
 	return rv
 }
 
 func (vc _ValueFunctionClass) Alloc() ValueFunction {
-	rv := objc.CallMethod[ValueFunction](vc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ValueFunction](vc, objc.SEL("alloc"))
 	return rv
 }
 
 func (vc _ValueFunctionClass) New() ValueFunction {
-	rv := objc.CallMethod[ValueFunction](vc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ValueFunction](vc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,11 +49,11 @@ func NewValueFunction() ValueFunction {
 }
 
 func (v_ ValueFunction) Init() ValueFunction {
-	rv := objc.CallMethod[ValueFunction](v_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ValueFunction](v_, objc.SEL("init"))
 	return rv
 }
 
 func (v_ ValueFunction) Name() ValueFunctionName {
-	rv := objc.CallMethod[ValueFunctionName](v_, objc.GetSelector("name"))
+	rv := objc.CallMethod[ValueFunctionName](v_, objc.SEL("name"))
 	return rv
 }

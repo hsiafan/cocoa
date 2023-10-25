@@ -41,22 +41,22 @@ func MakeAppleEventDescriptor(ptr unsafe.Pointer) AppleEventDescriptor {
 }
 
 func (a_ AppleEventDescriptor) InitListDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.GetSelector("initListDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.SEL("initListDescriptor"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) InitRecordDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.GetSelector("initRecordDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.SEL("initRecordDescriptor"))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) Alloc() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("alloc"))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) New() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("new"))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -66,129 +66,129 @@ func NewAppleEventDescriptor() AppleEventDescriptor {
 }
 
 func (a_ AppleEventDescriptor) Init() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.GetSelector("init"))
+	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.SEL("init"))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithBoolean(boolean bool) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithBoolean:"), boolean)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithBoolean:"), boolean)
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithInt32(signedInt int32) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithInt32:"), signedInt)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithInt32:"), signedInt)
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithString(string_ string) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithString:"), string_)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithString:"), string_)
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) ListDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("listDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("listDescriptor"))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) NullDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("nullDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("nullDescriptor"))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) RecordDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("recordDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("recordDescriptor"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) DescriptorAtIndex(index int) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.GetSelector("descriptorAtIndex:"), index)
+	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.SEL("descriptorAtIndex:"), index)
 	return rv
 }
 
 func (a_ AppleEventDescriptor) InsertDescriptor_AtIndex(descriptor IAppleEventDescriptor, index int) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("insertDescriptor:atIndex:"), objc.ExtractPtr(descriptor), index)
+	objc.CallMethod[objc.Void](a_, objc.SEL("insertDescriptor:atIndex:"), objc.ExtractPtr(descriptor), index)
 }
 
 func (a_ AppleEventDescriptor) RemoveDescriptorAtIndex(index int) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("removeDescriptorAtIndex:"), index)
+	objc.CallMethod[objc.Void](a_, objc.SEL("removeDescriptorAtIndex:"), index)
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithApplicationURL(applicationURL IURL) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithApplicationURL:"), objc.ExtractPtr(applicationURL))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithApplicationURL:"), objc.ExtractPtr(applicationURL))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithBundleIdentifier(bundleIdentifier string) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithBundleIdentifier:"), bundleIdentifier)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithBundleIdentifier:"), bundleIdentifier)
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithDate(date IDate) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithDate:"), objc.ExtractPtr(date))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithDate:"), objc.ExtractPtr(date))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithDouble(doubleValue float64) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithDouble:"), doubleValue)
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithDouble:"), doubleValue)
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) DescriptorWithFileURL(fileURL IURL) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("descriptorWithFileURL:"), objc.ExtractPtr(fileURL))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("descriptorWithFileURL:"), objc.ExtractPtr(fileURL))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) SendEventWithOptions_Timeout_Error(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error *Error) AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.GetSelector("sendEventWithOptions:timeout:error:"), sendOptions, timeoutInSeconds, unsafe.Pointer(error))
+	rv := objc.CallMethod[AppleEventDescriptor](a_, objc.SEL("sendEventWithOptions:timeout:error:"), sendOptions, timeoutInSeconds, unsafe.Pointer(error))
 	return rv
 }
 
 func (ac _AppleEventDescriptorClass) CurrentProcessDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.GetSelector("currentProcessDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](ac, objc.SEL("currentProcessDescriptor"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) BooleanValue() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("booleanValue"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("booleanValue"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) Data() []byte {
-	rv := objc.CallMethod[[]byte](a_, objc.GetSelector("data"))
+	rv := objc.CallMethod[[]byte](a_, objc.SEL("data"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) Int32Value() int32 {
-	rv := objc.CallMethod[int32](a_, objc.GetSelector("int32Value"))
+	rv := objc.CallMethod[int32](a_, objc.SEL("int32Value"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) NumberOfItems() int {
-	rv := objc.CallMethod[int](a_, objc.GetSelector("numberOfItems"))
+	rv := objc.CallMethod[int](a_, objc.SEL("numberOfItems"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) StringValue() string {
-	rv := objc.CallMethod[string](a_, objc.GetSelector("stringValue"))
+	rv := objc.CallMethod[string](a_, objc.SEL("stringValue"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) DateValue() Date {
-	rv := objc.CallMethod[Date](a_, objc.GetSelector("dateValue"))
+	rv := objc.CallMethod[Date](a_, objc.SEL("dateValue"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](a_, objc.GetSelector("doubleValue"))
+	rv := objc.CallMethod[float64](a_, objc.SEL("doubleValue"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) FileURLValue() URL {
-	rv := objc.CallMethod[URL](a_, objc.GetSelector("fileURLValue"))
+	rv := objc.CallMethod[URL](a_, objc.SEL("fileURLValue"))
 	return rv
 }
 
 func (a_ AppleEventDescriptor) IsRecordDescriptor() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isRecordDescriptor"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isRecordDescriptor"))
 	return rv
 }

@@ -60,15 +60,15 @@ func NewSharingServicePickerDelegateCreator(name string) *SharingServicePickerDe
 }
 
 func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_SharingServicesForItems_ProposedSharingServices(handle func(o objc.Object, sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService) {
-	objc.AddMethod(c.class, objc.GetSelector("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), handle)
+	objc.AddMethod(c.class, objc.SEL("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), handle)
 }
 
 func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_DidChooseSharingService(handle func(o objc.Object, sharingServicePicker SharingServicePicker, service SharingService)) {
-	objc.AddMethod(c.class, objc.GetSelector("sharingServicePicker:didChooseSharingService:"), handle)
+	objc.AddMethod(c.class, objc.SEL("sharingServicePicker:didChooseSharingService:"), handle)
 }
 
 func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_DelegateForSharingService(handle func(o objc.Object, sharingServicePicker SharingServicePicker, sharingService SharingService) objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("sharingServicePicker:delegateForSharingService:"), handle)
+	objc.AddMethod(c.class, objc.SEL("sharingServicePicker:delegateForSharingService:"), handle)
 }
 
 func (c *SharingServicePickerDelegateCreator) Create() objc.Object {

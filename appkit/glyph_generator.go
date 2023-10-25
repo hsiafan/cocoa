@@ -29,12 +29,12 @@ func MakeGlyphGenerator(ptr unsafe.Pointer) GlyphGenerator {
 }
 
 func (gc _GlyphGeneratorClass) Alloc() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](gc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[GlyphGenerator](gc, objc.SEL("alloc"))
 	return rv
 }
 
 func (gc _GlyphGeneratorClass) New() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](gc, objc.GetSelector("new"))
+	rv := objc.CallMethod[GlyphGenerator](gc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -44,15 +44,15 @@ func NewGlyphGenerator() GlyphGenerator {
 }
 
 func (g_ GlyphGenerator) Init() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](g_, objc.GetSelector("init"))
+	rv := objc.CallMethod[GlyphGenerator](g_, objc.SEL("init"))
 	return rv
 }
 
 func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorage_DesiredNumberOfCharacters_GlyphIndex_CharacterIndex(glyphStorage objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.ExtractPtr(glyphStorage), nChars, glyphIndex, charIndex)
+	objc.CallMethod[objc.Void](g_, objc.SEL("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.ExtractPtr(glyphStorage), nChars, glyphIndex, charIndex)
 }
 
 func (gc _GlyphGeneratorClass) SharedGlyphGenerator() GlyphGenerator {
-	rv := objc.CallMethod[GlyphGenerator](gc, objc.GetSelector("sharedGlyphGenerator"))
+	rv := objc.CallMethod[GlyphGenerator](gc, objc.SEL("sharedGlyphGenerator"))
 	return rv
 }

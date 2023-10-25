@@ -63,17 +63,17 @@ func MakeNumber(ptr unsafe.Pointer) Number {
 }
 
 func (n_ Number) InitWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithBytes:objCType:"), value, type_)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithBytes:objCType:"), value, type_)
 	return rv
 }
 
 func (nc _NumberClass) Alloc() Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Number](nc, objc.SEL("alloc"))
 	return rv
 }
 
 func (nc _NumberClass) New() Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Number](nc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -83,256 +83,256 @@ func NewNumber() Number {
 }
 
 func (n_ Number) Init() Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Number](n_, objc.SEL("init"))
 	return rv
 }
 
 func (nc _NumberClass) NumberWithBool(value bool) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithBool:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithBool:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithChar(value byte) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithChar:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithChar:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithDouble(value float64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithDouble:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithDouble:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithFloat(value float32) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithFloat:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithFloat:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithInt(value int32) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithInt:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithInt:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithInteger(value int) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithInteger:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithInteger:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithLong(value int64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithLong:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithLong:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithLongLong(value int64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithLongLong:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithLongLong:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithShort(value int16) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithShort:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithShort:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithUnsignedChar(value byte) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedChar:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithUnsignedChar:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithUnsignedInt(value uint32) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedInt:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithUnsignedInt:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithUnsignedInteger(value uint) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedInteger:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithUnsignedInteger:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithUnsignedLong(value uint64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedLong:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithUnsignedLong:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithUnsignedLongLong(value uint64) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedLongLong:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithUnsignedLongLong:"), value)
 	return rv
 }
 
 func (nc _NumberClass) NumberWithUnsignedShort(value uint16) Number {
-	rv := objc.CallMethod[Number](nc, objc.GetSelector("numberWithUnsignedShort:"), value)
+	rv := objc.CallMethod[Number](nc, objc.SEL("numberWithUnsignedShort:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithBool(value bool) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithBool:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithBool:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithChar(value byte) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithChar:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithChar:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithDouble(value float64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithDouble:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithDouble:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithFloat(value float32) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithFloat:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithFloat:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithInt(value int32) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithInt:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithInt:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithInteger(value int) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithInteger:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithInteger:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithLong(value int64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithLong:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithLong:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithLongLong(value int64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithLongLong:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithLongLong:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithShort(value int16) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithShort:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithShort:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedChar(value byte) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedChar:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithUnsignedChar:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedInt(value uint32) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedInt:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithUnsignedInt:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedInteger(value uint) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedInteger:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithUnsignedInteger:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedLong(value uint64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedLong:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithUnsignedLong:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedLongLong(value uint64) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedLongLong:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithUnsignedLongLong:"), value)
 	return rv
 }
 
 func (n_ Number) InitWithUnsignedShort(value uint16) Number {
-	rv := objc.CallMethod[Number](n_, objc.GetSelector("initWithUnsignedShort:"), value)
+	rv := objc.CallMethod[Number](n_, objc.SEL("initWithUnsignedShort:"), value)
 	return rv
 }
 
 func (n_ Number) DescriptionWithLocale(locale objc.IObject) string {
-	rv := objc.CallMethod[string](n_, objc.GetSelector("descriptionWithLocale:"), objc.ExtractPtr(locale))
+	rv := objc.CallMethod[string](n_, objc.SEL("descriptionWithLocale:"), objc.ExtractPtr(locale))
 	return rv
 }
 
 func (n_ Number) Compare(otherNumber INumber) ComparisonResult {
-	rv := objc.CallMethod[ComparisonResult](n_, objc.GetSelector("compare:"), objc.ExtractPtr(otherNumber))
+	rv := objc.CallMethod[ComparisonResult](n_, objc.SEL("compare:"), objc.ExtractPtr(otherNumber))
 	return rv
 }
 
 func (n_ Number) IsEqualToNumber(number INumber) bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("isEqualToNumber:"), objc.ExtractPtr(number))
+	rv := objc.CallMethod[bool](n_, objc.SEL("isEqualToNumber:"), objc.ExtractPtr(number))
 	return rv
 }
 
 func (n_ Number) BoolValue() bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("boolValue"))
+	rv := objc.CallMethod[bool](n_, objc.SEL("boolValue"))
 	return rv
 }
 
 func (n_ Number) CharValue() byte {
-	rv := objc.CallMethod[byte](n_, objc.GetSelector("charValue"))
+	rv := objc.CallMethod[byte](n_, objc.SEL("charValue"))
 	return rv
 }
 
 func (n_ Number) DecimalValue() Decimal {
-	rv := objc.CallMethod[Decimal](n_, objc.GetSelector("decimalValue"))
+	rv := objc.CallMethod[Decimal](n_, objc.SEL("decimalValue"))
 	return rv
 }
 
 func (n_ Number) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](n_, objc.GetSelector("doubleValue"))
+	rv := objc.CallMethod[float64](n_, objc.SEL("doubleValue"))
 	return rv
 }
 
 func (n_ Number) FloatValue() float32 {
-	rv := objc.CallMethod[float32](n_, objc.GetSelector("floatValue"))
+	rv := objc.CallMethod[float32](n_, objc.SEL("floatValue"))
 	return rv
 }
 
 func (n_ Number) IntValue() int32 {
-	rv := objc.CallMethod[int32](n_, objc.GetSelector("intValue"))
+	rv := objc.CallMethod[int32](n_, objc.SEL("intValue"))
 	return rv
 }
 
 func (n_ Number) IntegerValue() int {
-	rv := objc.CallMethod[int](n_, objc.GetSelector("integerValue"))
+	rv := objc.CallMethod[int](n_, objc.SEL("integerValue"))
 	return rv
 }
 
 func (n_ Number) LongLongValue() int64 {
-	rv := objc.CallMethod[int64](n_, objc.GetSelector("longLongValue"))
+	rv := objc.CallMethod[int64](n_, objc.SEL("longLongValue"))
 	return rv
 }
 
 func (n_ Number) LongValue() int64 {
-	rv := objc.CallMethod[int64](n_, objc.GetSelector("longValue"))
+	rv := objc.CallMethod[int64](n_, objc.SEL("longValue"))
 	return rv
 }
 
 func (n_ Number) ShortValue() int16 {
-	rv := objc.CallMethod[int16](n_, objc.GetSelector("shortValue"))
+	rv := objc.CallMethod[int16](n_, objc.SEL("shortValue"))
 	return rv
 }
 
 func (n_ Number) UnsignedCharValue() byte {
-	rv := objc.CallMethod[byte](n_, objc.GetSelector("unsignedCharValue"))
+	rv := objc.CallMethod[byte](n_, objc.SEL("unsignedCharValue"))
 	return rv
 }
 
 func (n_ Number) UnsignedIntegerValue() uint {
-	rv := objc.CallMethod[uint](n_, objc.GetSelector("unsignedIntegerValue"))
+	rv := objc.CallMethod[uint](n_, objc.SEL("unsignedIntegerValue"))
 	return rv
 }
 
 func (n_ Number) UnsignedIntValue() uint32 {
-	rv := objc.CallMethod[uint32](n_, objc.GetSelector("unsignedIntValue"))
+	rv := objc.CallMethod[uint32](n_, objc.SEL("unsignedIntValue"))
 	return rv
 }
 
 func (n_ Number) UnsignedLongLongValue() uint64 {
-	rv := objc.CallMethod[uint64](n_, objc.GetSelector("unsignedLongLongValue"))
+	rv := objc.CallMethod[uint64](n_, objc.SEL("unsignedLongLongValue"))
 	return rv
 }
 
 func (n_ Number) UnsignedLongValue() uint64 {
-	rv := objc.CallMethod[uint64](n_, objc.GetSelector("unsignedLongValue"))
+	rv := objc.CallMethod[uint64](n_, objc.SEL("unsignedLongValue"))
 	return rv
 }
 
 func (n_ Number) UnsignedShortValue() uint16 {
-	rv := objc.CallMethod[uint16](n_, objc.GetSelector("unsignedShortValue"))
+	rv := objc.CallMethod[uint16](n_, objc.SEL("unsignedShortValue"))
 	return rv
 }
 
 func (n_ Number) StringValue() string {
-	rv := objc.CallMethod[string](n_, objc.GetSelector("stringValue"))
+	rv := objc.CallMethod[string](n_, objc.SEL("stringValue"))
 	return rv
 }

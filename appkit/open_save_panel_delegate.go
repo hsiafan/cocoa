@@ -94,27 +94,27 @@ func NewOpenSavePanelDelegateCreator(name string) *OpenSavePanelDelegateCreator 
 }
 
 func (c *OpenSavePanelDelegateCreator) SetPanel_UserEnteredFilename_Confirmed(handle func(o objc.Object, sender objc.Object, filename string, okFlag bool) string) {
-	objc.AddMethod(c.class, objc.GetSelector("panel:userEnteredFilename:confirmed:"), handle)
+	objc.AddMethod(c.class, objc.SEL("panel:userEnteredFilename:confirmed:"), handle)
 }
 
 func (c *OpenSavePanelDelegateCreator) SetPanelSelectionDidChange(handle func(o objc.Object, sender objc.Object)) {
-	objc.AddMethod(c.class, objc.GetSelector("panelSelectionDidChange:"), handle)
+	objc.AddMethod(c.class, objc.SEL("panelSelectionDidChange:"), handle)
 }
 
 func (c *OpenSavePanelDelegateCreator) SetPanel_DidChangeToDirectoryURL(handle func(o objc.Object, sender objc.Object, url foundation.URL)) {
-	objc.AddMethod(c.class, objc.GetSelector("panel:didChangeToDirectoryURL:"), handle)
+	objc.AddMethod(c.class, objc.SEL("panel:didChangeToDirectoryURL:"), handle)
 }
 
 func (c *OpenSavePanelDelegateCreator) SetPanel_WillExpand(handle func(o objc.Object, sender objc.Object, expanding bool)) {
-	objc.AddMethod(c.class, objc.GetSelector("panel:willExpand:"), handle)
+	objc.AddMethod(c.class, objc.SEL("panel:willExpand:"), handle)
 }
 
 func (c *OpenSavePanelDelegateCreator) SetPanel_ShouldEnableURL(handle func(o objc.Object, sender objc.Object, url foundation.URL) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("panel:shouldEnableURL:"), handle)
+	objc.AddMethod(c.class, objc.SEL("panel:shouldEnableURL:"), handle)
 }
 
 func (c *OpenSavePanelDelegateCreator) SetPanel_ValidateURL_Error(handle func(o objc.Object, sender objc.Object, url foundation.URL, outError *foundation.Error) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("panel:validateURL:error:"), handle)
+	objc.AddMethod(c.class, objc.SEL("panel:validateURL:error:"), handle)
 }
 
 func (c *OpenSavePanelDelegateCreator) Create() objc.Object {

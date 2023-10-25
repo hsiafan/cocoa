@@ -35,17 +35,17 @@ func MakeDraggingImageComponent(ptr unsafe.Pointer) DraggingImageComponent {
 }
 
 func (d_ DraggingImageComponent) InitWithKey(key DraggingImageComponentKey) DraggingImageComponent {
-	rv := objc.CallMethod[DraggingImageComponent](d_, objc.GetSelector("initWithKey:"), key)
+	rv := objc.CallMethod[DraggingImageComponent](d_, objc.SEL("initWithKey:"), key)
 	return rv
 }
 
 func (dc _DraggingImageComponentClass) Alloc() DraggingImageComponent {
-	rv := objc.CallMethod[DraggingImageComponent](dc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[DraggingImageComponent](dc, objc.SEL("alloc"))
 	return rv
 }
 
 func (dc _DraggingImageComponentClass) New() DraggingImageComponent {
-	rv := objc.CallMethod[DraggingImageComponent](dc, objc.GetSelector("new"))
+	rv := objc.CallMethod[DraggingImageComponent](dc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,38 +55,38 @@ func NewDraggingImageComponent() DraggingImageComponent {
 }
 
 func (d_ DraggingImageComponent) Init() DraggingImageComponent {
-	rv := objc.CallMethod[DraggingImageComponent](d_, objc.GetSelector("init"))
+	rv := objc.CallMethod[DraggingImageComponent](d_, objc.SEL("init"))
 	return rv
 }
 
 func (dc _DraggingImageComponentClass) DraggingImageComponentWithKey(key DraggingImageComponentKey) DraggingImageComponent {
-	rv := objc.CallMethod[DraggingImageComponent](dc, objc.GetSelector("draggingImageComponentWithKey:"), key)
+	rv := objc.CallMethod[DraggingImageComponent](dc, objc.SEL("draggingImageComponentWithKey:"), key)
 	return rv
 }
 
 func (d_ DraggingImageComponent) Key() DraggingImageComponentKey {
-	rv := objc.CallMethod[DraggingImageComponentKey](d_, objc.GetSelector("key"))
+	rv := objc.CallMethod[DraggingImageComponentKey](d_, objc.SEL("key"))
 	return rv
 }
 
 func (d_ DraggingImageComponent) SetKey(value DraggingImageComponentKey) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setKey:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setKey:"), value)
 }
 
 func (d_ DraggingImageComponent) Contents() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("contents"))
+	rv := objc.CallMethod[objc.Object](d_, objc.SEL("contents"))
 	return rv
 }
 
 func (d_ DraggingImageComponent) SetContents(value objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContents:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setContents:"), objc.ExtractPtr(value))
 }
 
 func (d_ DraggingImageComponent) Frame() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](d_, objc.GetSelector("frame"))
+	rv := objc.CallMethod[foundation.Rect](d_, objc.SEL("frame"))
 	return rv
 }
 
 func (d_ DraggingImageComponent) SetFrame(value foundation.Rect) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setFrame:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setFrame:"), value)
 }

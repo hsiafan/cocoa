@@ -28,27 +28,27 @@ func MakeActionCell(ptr unsafe.Pointer) ActionCell {
 }
 
 func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
+	rv := objc.CallMethod[ActionCell](a_, objc.SEL("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
 func (a_ ActionCell) InitTextCell(string_ string) ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("initTextCell:"), string_)
+	rv := objc.CallMethod[ActionCell](a_, objc.SEL("initTextCell:"), string_)
 	return rv
 }
 
 func (a_ ActionCell) Init() ActionCell {
-	rv := objc.CallMethod[ActionCell](a_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ActionCell](a_, objc.SEL("init"))
 	return rv
 }
 
 func (ac _ActionCellClass) Alloc() ActionCell {
-	rv := objc.CallMethod[ActionCell](ac, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ActionCell](ac, objc.SEL("alloc"))
 	return rv
 }
 
 func (ac _ActionCellClass) New() ActionCell {
-	rv := objc.CallMethod[ActionCell](ac, objc.GetSelector("new"))
+	rv := objc.CallMethod[ActionCell](ac, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }

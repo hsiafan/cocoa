@@ -34,17 +34,17 @@ func MakeTextViewportLayoutController(ptr unsafe.Pointer) TextViewportLayoutCont
 }
 
 func (t_ TextViewportLayoutController) InitWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
-	rv := objc.CallMethod[TextViewportLayoutController](t_, objc.GetSelector("initWithTextLayoutManager:"), objc.ExtractPtr(textLayoutManager))
+	rv := objc.CallMethod[TextViewportLayoutController](t_, objc.SEL("initWithTextLayoutManager:"), objc.ExtractPtr(textLayoutManager))
 	return rv
 }
 
 func (tc _TextViewportLayoutControllerClass) Alloc() TextViewportLayoutController {
-	rv := objc.CallMethod[TextViewportLayoutController](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TextViewportLayoutController](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextViewportLayoutControllerClass) New() TextViewportLayoutController {
-	rv := objc.CallMethod[TextViewportLayoutController](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TextViewportLayoutController](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -54,30 +54,30 @@ func NewTextViewportLayoutController() TextViewportLayoutController {
 }
 
 func (t_ TextViewportLayoutController) Init() TextViewportLayoutController {
-	rv := objc.CallMethod[TextViewportLayoutController](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TextViewportLayoutController](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TextViewportLayoutController) AdjustViewportByVerticalOffset(verticalOffset float64) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("adjustViewportByVerticalOffset:"), verticalOffset)
+	objc.CallMethod[objc.Void](t_, objc.SEL("adjustViewportByVerticalOffset:"), verticalOffset)
 }
 
 func (t_ TextViewportLayoutController) LayoutViewport() {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("layoutViewport"))
+	objc.CallMethod[objc.Void](t_, objc.SEL("layoutViewport"))
 }
 
 // weak property
 func (t_ TextViewportLayoutController) TextLayoutManager() TextLayoutManager {
-	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
+	rv := objc.CallMethod[TextLayoutManager](t_, objc.SEL("textLayoutManager"))
 	return rv
 }
 
 func (t_ TextViewportLayoutController) ViewportBounds() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](t_, objc.GetSelector("viewportBounds"))
+	rv := objc.CallMethod[coregraphics.Rect](t_, objc.SEL("viewportBounds"))
 	return rv
 }
 
 func (t_ TextViewportLayoutController) ViewportRange() TextRange {
-	rv := objc.CallMethod[TextRange](t_, objc.GetSelector("viewportRange"))
+	rv := objc.CallMethod[TextRange](t_, objc.SEL("viewportRange"))
 	return rv
 }

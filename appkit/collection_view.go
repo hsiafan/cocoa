@@ -118,22 +118,22 @@ func MakeCollectionView(ptr unsafe.Pointer) CollectionView {
 }
 
 func (c_ CollectionView) InitWithFrame(frameRect foundation.Rect) CollectionView {
-	rv := objc.CallMethod[CollectionView](c_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[CollectionView](c_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (c_ CollectionView) Init() CollectionView {
-	rv := objc.CallMethod[CollectionView](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CollectionView](c_, objc.SEL("init"))
 	return rv
 }
 
 func (cc _CollectionViewClass) Alloc() CollectionView {
-	rv := objc.CallMethod[CollectionView](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CollectionView](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewClass) New() CollectionView {
-	rv := objc.CallMethod[CollectionView](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CollectionView](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -143,370 +143,370 @@ func NewCollectionView() CollectionView {
 }
 
 func (c_ CollectionView) MakeItemWithIdentifier_ForIndexPath(identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("makeItemWithIdentifier:forIndexPath:"), identifier, objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.SEL("makeItemWithIdentifier:forIndexPath:"), identifier, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionView) RegisterClass_ForItemWithIdentifier(itemClass objc.IClass, identifier UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerClass:forItemWithIdentifier:"), objc.ExtractPtr(itemClass), identifier)
+	objc.CallMethod[objc.Void](c_, objc.SEL("registerClass:forItemWithIdentifier:"), objc.ExtractPtr(itemClass), identifier)
 }
 
 func (c_ CollectionView) RegisterNib_ForItemWithIdentifier(nib INib, identifier UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerNib:forItemWithIdentifier:"), objc.ExtractPtr(nib), identifier)
+	objc.CallMethod[objc.Void](c_, objc.SEL("registerNib:forItemWithIdentifier:"), objc.ExtractPtr(nib), identifier)
 }
 
 func (c_ CollectionView) MakeSupplementaryViewOfKind_WithIdentifier_ForIndexPath(elementKind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("makeSupplementaryViewOfKind:withIdentifier:forIndexPath:"), elementKind, identifier, objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[View](c_, objc.SEL("makeSupplementaryViewOfKind:withIdentifier:forIndexPath:"), elementKind, identifier, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionView) RegisterClass_ForSupplementaryViewOfKind_WithIdentifier(viewClass objc.IClass, kind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerClass:forSupplementaryViewOfKind:withIdentifier:"), objc.ExtractPtr(viewClass), kind, identifier)
+	objc.CallMethod[objc.Void](c_, objc.SEL("registerClass:forSupplementaryViewOfKind:withIdentifier:"), objc.ExtractPtr(viewClass), kind, identifier)
 }
 
 func (c_ CollectionView) RegisterNib_ForSupplementaryViewOfKind_WithIdentifier(nib INib, kind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("registerNib:forSupplementaryViewOfKind:withIdentifier:"), objc.ExtractPtr(nib), kind, identifier)
+	objc.CallMethod[objc.Void](c_, objc.SEL("registerNib:forSupplementaryViewOfKind:withIdentifier:"), objc.ExtractPtr(nib), kind, identifier)
 }
 
 func (c_ CollectionView) ReloadData() {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("reloadData"))
+	objc.CallMethod[objc.Void](c_, objc.SEL("reloadData"))
 }
 
 func (c_ CollectionView) ReloadSections(sections foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("reloadSections:"), objc.ExtractPtr(sections))
+	objc.CallMethod[objc.Void](c_, objc.SEL("reloadSections:"), objc.ExtractPtr(sections))
 }
 
 func (c_ CollectionView) ReloadItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("reloadItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
+	objc.CallMethod[objc.Void](c_, objc.SEL("reloadItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionView) NumberOfItemsInSection(section int) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfItemsInSection:"), section)
+	rv := objc.CallMethod[int](c_, objc.SEL("numberOfItemsInSection:"), section)
 	return rv
 }
 
 func (c_ CollectionView) InsertItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
+	objc.CallMethod[objc.Void](c_, objc.SEL("insertItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionView) MoveItemAtIndexPath_ToIndexPath(indexPath foundation.IIndexPath, newIndexPath foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("moveItemAtIndexPath:toIndexPath:"), objc.ExtractPtr(indexPath), objc.ExtractPtr(newIndexPath))
+	objc.CallMethod[objc.Void](c_, objc.SEL("moveItemAtIndexPath:toIndexPath:"), objc.ExtractPtr(indexPath), objc.ExtractPtr(newIndexPath))
 }
 
 func (c_ CollectionView) DeleteItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("deleteItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
+	objc.CallMethod[objc.Void](c_, objc.SEL("deleteItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionView) InsertSections(sections foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("insertSections:"), objc.ExtractPtr(sections))
+	objc.CallMethod[objc.Void](c_, objc.SEL("insertSections:"), objc.ExtractPtr(sections))
 }
 
 func (c_ CollectionView) MoveSection_ToSection(section int, newSection int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("moveSection:toSection:"), section, newSection)
+	objc.CallMethod[objc.Void](c_, objc.SEL("moveSection:toSection:"), section, newSection)
 }
 
 func (c_ CollectionView) DeleteSections(sections foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("deleteSections:"), objc.ExtractPtr(sections))
+	objc.CallMethod[objc.Void](c_, objc.SEL("deleteSections:"), objc.ExtractPtr(sections))
 }
 
 func (c_ CollectionView) ToggleSectionCollapse(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("toggleSectionCollapse:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](c_, objc.SEL("toggleSectionCollapse:"), objc.ExtractPtr(sender))
 }
 
 func (c_ CollectionView) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectAll:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](c_, objc.SEL("selectAll:"), objc.ExtractPtr(sender))
 }
 
 func (c_ CollectionView) DeselectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("deselectAll:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](c_, objc.SEL("deselectAll:"), objc.ExtractPtr(sender))
 }
 
 func (c_ CollectionView) SelectItemsAtIndexPaths_ScrollPosition(indexPaths foundation.ISet, scrollPosition CollectionViewScrollPosition) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("selectItemsAtIndexPaths:scrollPosition:"), objc.ExtractPtr(indexPaths), scrollPosition)
+	objc.CallMethod[objc.Void](c_, objc.SEL("selectItemsAtIndexPaths:scrollPosition:"), objc.ExtractPtr(indexPaths), scrollPosition)
 }
 
 func (c_ CollectionView) DeselectItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("deselectItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
+	objc.CallMethod[objc.Void](c_, objc.SEL("deselectItemsAtIndexPaths:"), objc.ExtractPtr(indexPaths))
 }
 
 func (c_ CollectionView) VisibleItems() []CollectionViewItem {
-	rv := objc.CallMethod[[]CollectionViewItem](c_, objc.GetSelector("visibleItems"))
+	rv := objc.CallMethod[[]CollectionViewItem](c_, objc.SEL("visibleItems"))
 	return rv
 }
 
 func (c_ CollectionView) IndexPathsForVisibleItems() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("indexPathsForVisibleItems"))
+	rv := objc.CallMethod[foundation.Set](c_, objc.SEL("indexPathsForVisibleItems"))
 	return rv
 }
 
 func (c_ CollectionView) VisibleSupplementaryViewsOfKind(elementKind CollectionViewSupplementaryElementKind) []View {
-	rv := objc.CallMethod[[]View](c_, objc.GetSelector("visibleSupplementaryViewsOfKind:"), elementKind)
+	rv := objc.CallMethod[[]View](c_, objc.SEL("visibleSupplementaryViewsOfKind:"), elementKind)
 	return rv
 }
 
 func (c_ CollectionView) IndexPathsForVisibleSupplementaryElementsOfKind(elementKind CollectionViewSupplementaryElementKind) foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("indexPathsForVisibleSupplementaryElementsOfKind:"), elementKind)
+	rv := objc.CallMethod[foundation.Set](c_, objc.SEL("indexPathsForVisibleSupplementaryElementsOfKind:"), elementKind)
 	return rv
 }
 
 func (c_ CollectionView) IndexPathForItem(item ICollectionViewItem) foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](c_, objc.GetSelector("indexPathForItem:"), objc.ExtractPtr(item))
+	rv := objc.CallMethod[foundation.IndexPath](c_, objc.SEL("indexPathForItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (c_ CollectionView) IndexPathForItemAtPoint(point foundation.Point) foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](c_, objc.GetSelector("indexPathForItemAtPoint:"), point)
+	rv := objc.CallMethod[foundation.IndexPath](c_, objc.SEL("indexPathForItemAtPoint:"), point)
 	return rv
 }
 
 func (c_ CollectionView) ItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("itemAtIndexPath:"), objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.SEL("itemAtIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionView) SupplementaryViewForElementKind_AtIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("supplementaryViewForElementKind:atIndexPath:"), elementKind, objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[View](c_, objc.SEL("supplementaryViewForElementKind:atIndexPath:"), elementKind, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionView) ScrollToItemsAtIndexPaths_ScrollPosition(indexPaths foundation.ISet, scrollPosition CollectionViewScrollPosition) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("scrollToItemsAtIndexPaths:scrollPosition:"), objc.ExtractPtr(indexPaths), scrollPosition)
+	objc.CallMethod[objc.Void](c_, objc.SEL("scrollToItemsAtIndexPaths:scrollPosition:"), objc.ExtractPtr(indexPaths), scrollPosition)
 }
 
 func (c_ CollectionView) LayoutAttributesForItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForItemAtIndexPath:"), objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.SEL("layoutAttributesForItemAtIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionView) LayoutAttributesForSupplementaryElementOfKind_AtIndexPath(kind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.GetSelector("layoutAttributesForSupplementaryElementOfKind:atIndexPath:"), kind, objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[CollectionViewLayoutAttributes](c_, objc.SEL("layoutAttributesForSupplementaryElementOfKind:atIndexPath:"), kind, objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionView) PerformBatchUpdates_CompletionHandler(updates func(), completionHandler func(finished bool)) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("performBatchUpdates:completionHandler:"), updates, completionHandler)
+	objc.CallMethod[objc.Void](c_, objc.SEL("performBatchUpdates:completionHandler:"), updates, completionHandler)
 }
 
 func (c_ CollectionView) DraggingImageForItemsAtIndexPaths_WithEvent_Offset(indexPaths foundation.ISet, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](c_, objc.GetSelector("draggingImageForItemsAtIndexPaths:withEvent:offset:"), objc.ExtractPtr(indexPaths), objc.ExtractPtr(event), dragImageOffset)
+	rv := objc.CallMethod[Image](c_, objc.SEL("draggingImageForItemsAtIndexPaths:withEvent:offset:"), objc.ExtractPtr(indexPaths), objc.ExtractPtr(event), dragImageOffset)
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) NewItemForRepresentedObject(object objc.IObject) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("newItemForRepresentedObject:"), objc.ExtractPtr(object))
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.SEL("newItemForRepresentedObject:"), objc.ExtractPtr(object))
 	rv.Autorelease()
 	return rv
 }
 
 func (c_ CollectionView) ItemAtIndex(index uint) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("itemAtIndex:"), index)
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.SEL("itemAtIndex:"), index)
 	return rv
 }
 
 func (c_ CollectionView) FrameForItemAtIndex(index uint) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("frameForItemAtIndex:"), index)
+	rv := objc.CallMethod[foundation.Rect](c_, objc.SEL("frameForItemAtIndex:"), index)
 	return rv
 }
 
 func (c_ CollectionView) FrameForItemAtIndex_WithNumberOfItems(index uint, numberOfItems uint) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](c_, objc.GetSelector("frameForItemAtIndex:withNumberOfItems:"), index, numberOfItems)
+	rv := objc.CallMethod[foundation.Rect](c_, objc.SEL("frameForItemAtIndex:withNumberOfItems:"), index, numberOfItems)
 	return rv
 }
 
 func (c_ CollectionView) DraggingImageForItemsAtIndexes_WithEvent_Offset(indexes foundation.IIndexSet, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](c_, objc.GetSelector("draggingImageForItemsAtIndexes:withEvent:offset:"), objc.ExtractPtr(indexes), objc.ExtractPtr(event), dragImageOffset)
+	rv := objc.CallMethod[Image](c_, objc.SEL("draggingImageForItemsAtIndexes:withEvent:offset:"), objc.ExtractPtr(indexes), objc.ExtractPtr(event), dragImageOffset)
 	return rv
 }
 
 func (c_ CollectionView) SetDraggingSourceOperationMask_ForLocal(dragOperationMask DragOperation, localDestination bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDraggingSourceOperationMask:forLocal:"), dragOperationMask, localDestination)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setDraggingSourceOperationMask:forLocal:"), dragOperationMask, localDestination)
 }
 
 // weak property
 func (c_ CollectionView) DataSource() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("dataSource"))
+	rv := objc.CallMethod[objc.Object](c_, objc.SEL("dataSource"))
 	return rv
 }
 
 // weak property
 func (c_ CollectionView) SetDataSource(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDataSource:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setDataSource:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (c_ CollectionView) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](c_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (c_ CollectionView) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionView) Content() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](c_, objc.GetSelector("content"))
+	rv := objc.CallMethod[[]objc.Object](c_, objc.SEL("content"))
 	return rv
 }
 
 func (c_ CollectionView) SetContent(value []objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setContent:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setContent:"), value)
 }
 
 func (c_ CollectionView) BackgroundView() View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("backgroundView"))
+	rv := objc.CallMethod[View](c_, objc.SEL("backgroundView"))
 	return rv
 }
 
 func (c_ CollectionView) SetBackgroundView(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setBackgroundView:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionView) BackgroundColors() []Color {
-	rv := objc.CallMethod[[]Color](c_, objc.GetSelector("backgroundColors"))
+	rv := objc.CallMethod[[]Color](c_, objc.SEL("backgroundColors"))
 	return rv
 }
 
 func (c_ CollectionView) SetBackgroundColors(value []IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundColors:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setBackgroundColors:"), value)
 }
 
 func (c_ CollectionView) BackgroundViewScrollsWithContent() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("backgroundViewScrollsWithContent"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("backgroundViewScrollsWithContent"))
 	return rv
 }
 
 func (c_ CollectionView) SetBackgroundViewScrollsWithContent(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundViewScrollsWithContent:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setBackgroundViewScrollsWithContent:"), value)
 }
 
 func (c_ CollectionView) CollectionViewLayout() CollectionViewLayout {
-	rv := objc.CallMethod[CollectionViewLayout](c_, objc.GetSelector("collectionViewLayout"))
+	rv := objc.CallMethod[CollectionViewLayout](c_, objc.SEL("collectionViewLayout"))
 	return rv
 }
 
 func (c_ CollectionView) SetCollectionViewLayout(value ICollectionViewLayout) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCollectionViewLayout:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setCollectionViewLayout:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (c_ CollectionView) PrefetchDataSource() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("prefetchDataSource"))
+	rv := objc.CallMethod[objc.Object](c_, objc.SEL("prefetchDataSource"))
 	return rv
 }
 
 // weak property
 func (c_ CollectionView) SetPrefetchDataSource(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setPrefetchDataSource:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setPrefetchDataSource:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionView) NumberOfSections() int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfSections"))
+	rv := objc.CallMethod[int](c_, objc.SEL("numberOfSections"))
 	return rv
 }
 
 func (c_ CollectionView) IsSelectable() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isSelectable"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isSelectable"))
 	return rv
 }
 
 func (c_ CollectionView) SetSelectable(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSelectable:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setSelectable:"), value)
 }
 
 func (c_ CollectionView) AllowsMultipleSelection() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("allowsMultipleSelection"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("allowsMultipleSelection"))
 	return rv
 }
 
 func (c_ CollectionView) SetAllowsMultipleSelection(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAllowsMultipleSelection:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setAllowsMultipleSelection:"), value)
 }
 
 func (c_ CollectionView) AllowsEmptySelection() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("allowsEmptySelection"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("allowsEmptySelection"))
 	return rv
 }
 
 func (c_ CollectionView) SetAllowsEmptySelection(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAllowsEmptySelection:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setAllowsEmptySelection:"), value)
 }
 
 func (c_ CollectionView) SelectionIndexPaths() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](c_, objc.GetSelector("selectionIndexPaths"))
+	rv := objc.CallMethod[foundation.Set](c_, objc.SEL("selectionIndexPaths"))
 	return rv
 }
 
 func (c_ CollectionView) SetSelectionIndexPaths(value foundation.ISet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSelectionIndexPaths:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setSelectionIndexPaths:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionView) IsFirstResponder() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isFirstResponder"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isFirstResponder"))
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) ItemPrototype() CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("itemPrototype"))
+	rv := objc.CallMethod[CollectionViewItem](c_, objc.SEL("itemPrototype"))
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) SetItemPrototype(value ICollectionViewItem) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setItemPrototype:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setItemPrototype:"), objc.ExtractPtr(value))
 }
 
 func (c_ CollectionView) SelectionIndexes() foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](c_, objc.GetSelector("selectionIndexes"))
+	rv := objc.CallMethod[foundation.IndexSet](c_, objc.SEL("selectionIndexes"))
 	return rv
 }
 
 func (c_ CollectionView) SetSelectionIndexes(value foundation.IIndexSet) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSelectionIndexes:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setSelectionIndexes:"), objc.ExtractPtr(value))
 }
 
 // deprecated
 func (c_ CollectionView) MaxNumberOfRows() uint {
-	rv := objc.CallMethod[uint](c_, objc.GetSelector("maxNumberOfRows"))
+	rv := objc.CallMethod[uint](c_, objc.SEL("maxNumberOfRows"))
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) SetMaxNumberOfRows(value uint) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMaxNumberOfRows:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMaxNumberOfRows:"), value)
 }
 
 // deprecated
 func (c_ CollectionView) MaxNumberOfColumns() uint {
-	rv := objc.CallMethod[uint](c_, objc.GetSelector("maxNumberOfColumns"))
+	rv := objc.CallMethod[uint](c_, objc.SEL("maxNumberOfColumns"))
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) SetMaxNumberOfColumns(value uint) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMaxNumberOfColumns:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMaxNumberOfColumns:"), value)
 }
 
 // deprecated
 func (c_ CollectionView) MinItemSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("minItemSize"))
+	rv := objc.CallMethod[foundation.Size](c_, objc.SEL("minItemSize"))
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) SetMinItemSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMinItemSize:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMinItemSize:"), value)
 }
 
 // deprecated
 func (c_ CollectionView) MaxItemSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("maxItemSize"))
+	rv := objc.CallMethod[foundation.Size](c_, objc.SEL("maxItemSize"))
 	return rv
 }
 
 // deprecated
 func (c_ CollectionView) SetMaxItemSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMaxItemSize:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMaxItemSize:"), value)
 }

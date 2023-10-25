@@ -39,12 +39,12 @@ func MakeDraggingSession(ptr unsafe.Pointer) DraggingSession {
 }
 
 func (dc _DraggingSessionClass) Alloc() DraggingSession {
-	rv := objc.CallMethod[DraggingSession](dc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[DraggingSession](dc, objc.SEL("alloc"))
 	return rv
 }
 
 func (dc _DraggingSessionClass) New() DraggingSession {
-	rv := objc.CallMethod[DraggingSession](dc, objc.GetSelector("new"))
+	rv := objc.CallMethod[DraggingSession](dc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -54,52 +54,52 @@ func NewDraggingSession() DraggingSession {
 }
 
 func (d_ DraggingSession) Init() DraggingSession {
-	rv := objc.CallMethod[DraggingSession](d_, objc.GetSelector("init"))
+	rv := objc.CallMethod[DraggingSession](d_, objc.SEL("init"))
 	return rv
 }
 
 func (d_ DraggingSession) EnumerateDraggingItemsWithOptions_ForView_Classes_SearchOptions_UsingBlock(enumOpts DraggingItemEnumerationOptions, view IView, classArray []objc.IClass, searchOptions map[PasteboardReadingOptionKey]objc.IObject, block func(draggingItem DraggingItem, idx int, stop *bool)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, objc.ExtractPtr(view), classArray, searchOptions, block)
+	objc.CallMethod[objc.Void](d_, objc.SEL("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, objc.ExtractPtr(view), classArray, searchOptions, block)
 }
 
 func (d_ DraggingSession) DraggingPasteboard() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](d_, objc.GetSelector("draggingPasteboard"))
+	rv := objc.CallMethod[Pasteboard](d_, objc.SEL("draggingPasteboard"))
 	return rv
 }
 
 func (d_ DraggingSession) AnimatesToStartingPositionsOnCancelOrFail() bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("animatesToStartingPositionsOnCancelOrFail"))
+	rv := objc.CallMethod[bool](d_, objc.SEL("animatesToStartingPositionsOnCancelOrFail"))
 	return rv
 }
 
 func (d_ DraggingSession) SetAnimatesToStartingPositionsOnCancelOrFail(value bool) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setAnimatesToStartingPositionsOnCancelOrFail:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setAnimatesToStartingPositionsOnCancelOrFail:"), value)
 }
 
 func (d_ DraggingSession) DraggingFormation() DraggingFormation {
-	rv := objc.CallMethod[DraggingFormation](d_, objc.GetSelector("draggingFormation"))
+	rv := objc.CallMethod[DraggingFormation](d_, objc.SEL("draggingFormation"))
 	return rv
 }
 
 func (d_ DraggingSession) SetDraggingFormation(value DraggingFormation) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingFormation:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDraggingFormation:"), value)
 }
 
 func (d_ DraggingSession) DraggingSequenceNumber() int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("draggingSequenceNumber"))
+	rv := objc.CallMethod[int](d_, objc.SEL("draggingSequenceNumber"))
 	return rv
 }
 
 func (d_ DraggingSession) DraggingLocation() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](d_, objc.GetSelector("draggingLocation"))
+	rv := objc.CallMethod[foundation.Point](d_, objc.SEL("draggingLocation"))
 	return rv
 }
 
 func (d_ DraggingSession) DraggingLeaderIndex() int {
-	rv := objc.CallMethod[int](d_, objc.GetSelector("draggingLeaderIndex"))
+	rv := objc.CallMethod[int](d_, objc.SEL("draggingLeaderIndex"))
 	return rv
 }
 
 func (d_ DraggingSession) SetDraggingLeaderIndex(value int) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDraggingLeaderIndex:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDraggingLeaderIndex:"), value)
 }

@@ -38,22 +38,22 @@ func MakeTextLineFragment(ptr unsafe.Pointer) TextLineFragment {
 }
 
 func (t_ TextLineFragment) InitWithAttributedString_Range(attributedString foundation.IAttributedString, range_ foundation.Range) TextLineFragment {
-	rv := objc.CallMethod[TextLineFragment](t_, objc.GetSelector("initWithAttributedString:range:"), objc.ExtractPtr(attributedString), range_)
+	rv := objc.CallMethod[TextLineFragment](t_, objc.SEL("initWithAttributedString:range:"), objc.ExtractPtr(attributedString), range_)
 	return rv
 }
 
 func (t_ TextLineFragment) InitWithString_Attributes_Range(string_ string, attributes map[foundation.AttributedStringKey]objc.IObject, range_ foundation.Range) TextLineFragment {
-	rv := objc.CallMethod[TextLineFragment](t_, objc.GetSelector("initWithString:attributes:range:"), string_, attributes, range_)
+	rv := objc.CallMethod[TextLineFragment](t_, objc.SEL("initWithString:attributes:range:"), string_, attributes, range_)
 	return rv
 }
 
 func (tc _TextLineFragmentClass) Alloc() TextLineFragment {
-	rv := objc.CallMethod[TextLineFragment](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TextLineFragment](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextLineFragmentClass) New() TextLineFragment {
-	rv := objc.CallMethod[TextLineFragment](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TextLineFragment](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -63,45 +63,45 @@ func NewTextLineFragment() TextLineFragment {
 }
 
 func (t_ TextLineFragment) Init() TextLineFragment {
-	rv := objc.CallMethod[TextLineFragment](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TextLineFragment](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TextLineFragment) CharacterIndexForPoint(point coregraphics.Point) int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("characterIndexForPoint:"), point)
+	rv := objc.CallMethod[int](t_, objc.SEL("characterIndexForPoint:"), point)
 	return rv
 }
 
 func (t_ TextLineFragment) FractionOfDistanceThroughGlyphForPoint(point coregraphics.Point) float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("fractionOfDistanceThroughGlyphForPoint:"), point)
+	rv := objc.CallMethod[float64](t_, objc.SEL("fractionOfDistanceThroughGlyphForPoint:"), point)
 	return rv
 }
 
 func (t_ TextLineFragment) LocationForCharacterAtIndex(index int) coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](t_, objc.GetSelector("locationForCharacterAtIndex:"), index)
+	rv := objc.CallMethod[coregraphics.Point](t_, objc.SEL("locationForCharacterAtIndex:"), index)
 	return rv
 }
 
 func (t_ TextLineFragment) DrawAtPoint_InContext(point coregraphics.Point, context coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("drawAtPoint:inContext:"), point, context)
+	objc.CallMethod[objc.Void](t_, objc.SEL("drawAtPoint:inContext:"), point, context)
 }
 
 func (t_ TextLineFragment) AttributedString() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("attributedString"))
+	rv := objc.CallMethod[foundation.AttributedString](t_, objc.SEL("attributedString"))
 	return rv
 }
 
 func (t_ TextLineFragment) CharacterRange() foundation.Range {
-	rv := objc.CallMethod[foundation.Range](t_, objc.GetSelector("characterRange"))
+	rv := objc.CallMethod[foundation.Range](t_, objc.SEL("characterRange"))
 	return rv
 }
 
 func (t_ TextLineFragment) GlyphOrigin() coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](t_, objc.GetSelector("glyphOrigin"))
+	rv := objc.CallMethod[coregraphics.Point](t_, objc.SEL("glyphOrigin"))
 	return rv
 }
 
 func (t_ TextLineFragment) TypographicBounds() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](t_, objc.GetSelector("typographicBounds"))
+	rv := objc.CallMethod[coregraphics.Rect](t_, objc.SEL("typographicBounds"))
 	return rv
 }

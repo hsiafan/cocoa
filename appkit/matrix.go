@@ -115,32 +115,32 @@ func MakeMatrix(ptr unsafe.Pointer) Matrix {
 }
 
 func (m_ Matrix) InitWithFrame(frameRect foundation.Rect) Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[Matrix](m_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (m_ Matrix) InitWithFrame_Mode_CellClass_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, objc.ExtractPtr(factoryId), rowsHigh, colsWide)
+	rv := objc.CallMethod[Matrix](m_, objc.SEL("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, objc.ExtractPtr(factoryId), rowsHigh, colsWide)
 	return rv
 }
 
 func (m_ Matrix) InitWithFrame_Mode_Prototype_NumberOfRows_NumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, objc.ExtractPtr(cell), rowsHigh, colsWide)
+	rv := objc.CallMethod[Matrix](m_, objc.SEL("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, objc.ExtractPtr(cell), rowsHigh, colsWide)
 	return rv
 }
 
 func (m_ Matrix) Init() Matrix {
-	rv := objc.CallMethod[Matrix](m_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Matrix](m_, objc.SEL("init"))
 	return rv
 }
 
 func (mc _MatrixClass) Alloc() Matrix {
-	rv := objc.CallMethod[Matrix](mc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Matrix](mc, objc.SEL("alloc"))
 	return rv
 }
 
 func (mc _MatrixClass) New() Matrix {
-	rv := objc.CallMethod[Matrix](mc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Matrix](mc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -150,383 +150,383 @@ func NewMatrix() Matrix {
 }
 
 func (m_ Matrix) AddColumn() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addColumn"))
+	objc.CallMethod[objc.Void](m_, objc.SEL("addColumn"))
 }
 
 func (m_ Matrix) AddColumnWithCells(newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addColumnWithCells:"), newCells)
+	objc.CallMethod[objc.Void](m_, objc.SEL("addColumnWithCells:"), newCells)
 }
 
 func (m_ Matrix) AddRow() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addRow"))
+	objc.CallMethod[objc.Void](m_, objc.SEL("addRow"))
 }
 
 func (m_ Matrix) AddRowWithCells(newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addRowWithCells:"), newCells)
+	objc.CallMethod[objc.Void](m_, objc.SEL("addRowWithCells:"), newCells)
 }
 
 func (m_ Matrix) CellFrameAtRow_Column(row int, col int) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](m_, objc.GetSelector("cellFrameAtRow:column:"), row, col)
+	rv := objc.CallMethod[foundation.Rect](m_, objc.SEL("cellFrameAtRow:column:"), row, col)
 	return rv
 }
 
 func (m_ Matrix) GetNumberOfRows_Columns(rowCount *int, colCount *int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("getNumberOfRows:columns:"), rowCount, colCount)
+	objc.CallMethod[objc.Void](m_, objc.SEL("getNumberOfRows:columns:"), rowCount, colCount)
 }
 
 func (m_ Matrix) InsertColumn(column int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertColumn:"), column)
+	objc.CallMethod[objc.Void](m_, objc.SEL("insertColumn:"), column)
 }
 
 func (m_ Matrix) InsertColumn_WithCells(column int, newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertColumn:withCells:"), column, newCells)
+	objc.CallMethod[objc.Void](m_, objc.SEL("insertColumn:withCells:"), column, newCells)
 }
 
 func (m_ Matrix) InsertRow(row int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertRow:"), row)
+	objc.CallMethod[objc.Void](m_, objc.SEL("insertRow:"), row)
 }
 
 func (m_ Matrix) InsertRow_WithCells(row int, newCells []ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("insertRow:withCells:"), row, newCells)
+	objc.CallMethod[objc.Void](m_, objc.SEL("insertRow:withCells:"), row, newCells)
 }
 
 func (m_ Matrix) MakeCellAtRow_Column(row int, col int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("makeCellAtRow:column:"), row, col)
+	rv := objc.CallMethod[Cell](m_, objc.SEL("makeCellAtRow:column:"), row, col)
 	return rv
 }
 
 func (m_ Matrix) PutCell_AtRow_Column(newCell ICell, row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("putCell:atRow:column:"), objc.ExtractPtr(newCell), row, col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("putCell:atRow:column:"), objc.ExtractPtr(newCell), row, col)
 }
 
 func (m_ Matrix) RemoveColumn(col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeColumn:"), col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("removeColumn:"), col)
 }
 
 func (m_ Matrix) RemoveRow(row int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("removeRow:"), row)
+	objc.CallMethod[objc.Void](m_, objc.SEL("removeRow:"), row)
 }
 
 func (m_ Matrix) RenewRows_Columns(newRows int, newCols int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("renewRows:columns:"), newRows, newCols)
+	objc.CallMethod[objc.Void](m_, objc.SEL("renewRows:columns:"), newRows, newCols)
 }
 
 func (m_ Matrix) SortUsingSelector(comparator objc.Selector) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sortUsingSelector:"), comparator)
+	objc.CallMethod[objc.Void](m_, objc.SEL("sortUsingSelector:"), comparator)
 }
 
 func (m_ Matrix) GetRow_Column_ForPoint(row *int, col *int, point foundation.Point) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("getRow:column:forPoint:"), row, col, point)
+	rv := objc.CallMethod[bool](m_, objc.SEL("getRow:column:forPoint:"), row, col, point)
 	return rv
 }
 
 func (m_ Matrix) GetRow_Column_OfCell(row *int, col *int, cell ICell) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("getRow:column:ofCell:"), row, col, objc.ExtractPtr(cell))
+	rv := objc.CallMethod[bool](m_, objc.SEL("getRow:column:ofCell:"), row, col, objc.ExtractPtr(cell))
 	return rv
 }
 
 func (m_ Matrix) SetState_AtRow_Column(value int, row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setState:atRow:column:"), value, row, col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setState:atRow:column:"), value, row, col)
 }
 
 func (m_ Matrix) SetToolTip_ForCell(toolTipString string, cell ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setToolTip:forCell:"), toolTipString, objc.ExtractPtr(cell))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setToolTip:forCell:"), toolTipString, objc.ExtractPtr(cell))
 }
 
 func (m_ Matrix) ToolTipForCell(cell ICell) string {
-	rv := objc.CallMethod[string](m_, objc.GetSelector("toolTipForCell:"), objc.ExtractPtr(cell))
+	rv := objc.CallMethod[string](m_, objc.SEL("toolTipForCell:"), objc.ExtractPtr(cell))
 	return rv
 }
 
 func (m_ Matrix) SelectCellAtRow_Column(row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("selectCellAtRow:column:"), row, col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("selectCellAtRow:column:"), row, col)
 }
 
 func (m_ Matrix) SelectCellWithTag(tag int) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("selectCellWithTag:"), tag)
+	rv := objc.CallMethod[bool](m_, objc.SEL("selectCellWithTag:"), tag)
 	return rv
 }
 
 func (m_ Matrix) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("selectAll:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](m_, objc.SEL("selectAll:"), objc.ExtractPtr(sender))
 }
 
 func (m_ Matrix) SetSelectionFrom_To_Anchor_Highlight(startPos int, endPos int, anchorPos int, lit bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSelectionFrom:to:anchor:highlight:"), startPos, endPos, anchorPos, lit)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setSelectionFrom:to:anchor:highlight:"), startPos, endPos, anchorPos, lit)
 }
 
 func (m_ Matrix) DeselectAllCells() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("deselectAllCells"))
+	objc.CallMethod[objc.Void](m_, objc.SEL("deselectAllCells"))
 }
 
 func (m_ Matrix) DeselectSelectedCell() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("deselectSelectedCell"))
+	objc.CallMethod[objc.Void](m_, objc.SEL("deselectSelectedCell"))
 }
 
 func (m_ Matrix) CellAtRow_Column(row int, col int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("cellAtRow:column:"), row, col)
+	rv := objc.CallMethod[Cell](m_, objc.SEL("cellAtRow:column:"), row, col)
 	return rv
 }
 
 func (m_ Matrix) CellWithTag(tag int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("cellWithTag:"), tag)
+	rv := objc.CallMethod[Cell](m_, objc.SEL("cellWithTag:"), tag)
 	return rv
 }
 
 func (m_ Matrix) SelectText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("selectText:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](m_, objc.SEL("selectText:"), objc.ExtractPtr(sender))
 }
 
 func (m_ Matrix) SelectTextAtRow_Column(row int, col int) Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("selectTextAtRow:column:"), row, col)
+	rv := objc.CallMethod[Cell](m_, objc.SEL("selectTextAtRow:column:"), row, col)
 	return rv
 }
 
 func (m_ Matrix) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
+	rv := objc.CallMethod[bool](m_, objc.SEL("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 func (m_ Matrix) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("textDidBeginEditing:"), objc.ExtractPtr(notification))
+	objc.CallMethod[objc.Void](m_, objc.SEL("textDidBeginEditing:"), objc.ExtractPtr(notification))
 }
 
 func (m_ Matrix) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("textDidChange:"), objc.ExtractPtr(notification))
+	objc.CallMethod[objc.Void](m_, objc.SEL("textDidChange:"), objc.ExtractPtr(notification))
 }
 
 func (m_ Matrix) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("textShouldEndEditing:"), objc.ExtractPtr(textObject))
+	rv := objc.CallMethod[bool](m_, objc.SEL("textShouldEndEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 func (m_ Matrix) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
+	objc.CallMethod[objc.Void](m_, objc.SEL("textDidEndEditing:"), objc.ExtractPtr(notification))
 }
 
 func (m_ Matrix) SetValidateSize(flag bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setValidateSize:"), flag)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setValidateSize:"), flag)
 }
 
 func (m_ Matrix) SizeToCells() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sizeToCells"))
+	objc.CallMethod[objc.Void](m_, objc.SEL("sizeToCells"))
 }
 
 func (m_ Matrix) SetScrollable(flag bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setScrollable:"), flag)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setScrollable:"), flag)
 }
 
 func (m_ Matrix) ScrollCellToVisibleAtRow_Column(row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("scrollCellToVisibleAtRow:column:"), row, col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("scrollCellToVisibleAtRow:column:"), row, col)
 }
 
 func (m_ Matrix) DrawCellAtRow_Column(row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("drawCellAtRow:column:"), row, col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("drawCellAtRow:column:"), row, col)
 }
 
 func (m_ Matrix) HighlightCell_AtRow_Column(flag bool, row int, col int) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("highlightCell:atRow:column:"), flag, row, col)
+	objc.CallMethod[objc.Void](m_, objc.SEL("highlightCell:atRow:column:"), flag, row, col)
 }
 
 func (m_ Matrix) SendAction() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("sendAction"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("sendAction"))
 	return rv
 }
 
 func (m_ Matrix) SendAction_To_ForAllCells(selector objc.Selector, object objc.IObject, flag bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sendAction:to:forAllCells:"), selector, objc.ExtractPtr(object), flag)
+	objc.CallMethod[objc.Void](m_, objc.SEL("sendAction:to:forAllCells:"), selector, objc.ExtractPtr(object), flag)
 }
 
 func (m_ Matrix) SendDoubleAction() {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("sendDoubleAction"))
+	objc.CallMethod[objc.Void](m_, objc.SEL("sendDoubleAction"))
 }
 
 func (m_ Matrix) Mode() MatrixMode {
-	rv := objc.CallMethod[MatrixMode](m_, objc.GetSelector("mode"))
+	rv := objc.CallMethod[MatrixMode](m_, objc.SEL("mode"))
 	return rv
 }
 
 func (m_ Matrix) SetMode(value MatrixMode) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMode:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setMode:"), value)
 }
 
 func (m_ Matrix) AllowsEmptySelection() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("allowsEmptySelection"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("allowsEmptySelection"))
 	return rv
 }
 
 func (m_ Matrix) SetAllowsEmptySelection(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsEmptySelection:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAllowsEmptySelection:"), value)
 }
 
 func (m_ Matrix) IsSelectionByRect() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isSelectionByRect"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("isSelectionByRect"))
 	return rv
 }
 
 func (m_ Matrix) SetSelectionByRect(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setSelectionByRect:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setSelectionByRect:"), value)
 }
 
 func (m_ Matrix) Prototype() Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("prototype"))
+	rv := objc.CallMethod[Cell](m_, objc.SEL("prototype"))
 	return rv
 }
 
 func (m_ Matrix) SetPrototype(value ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setPrototype:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setPrototype:"), objc.ExtractPtr(value))
 }
 
 func (m_ Matrix) CellSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](m_, objc.GetSelector("cellSize"))
+	rv := objc.CallMethod[foundation.Size](m_, objc.SEL("cellSize"))
 	return rv
 }
 
 func (m_ Matrix) SetCellSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setCellSize:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setCellSize:"), value)
 }
 
 func (m_ Matrix) IntercellSpacing() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](m_, objc.GetSelector("intercellSpacing"))
+	rv := objc.CallMethod[foundation.Size](m_, objc.SEL("intercellSpacing"))
 	return rv
 }
 
 func (m_ Matrix) SetIntercellSpacing(value foundation.Size) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setIntercellSpacing:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setIntercellSpacing:"), value)
 }
 
 func (m_ Matrix) NumberOfColumns() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("numberOfColumns"))
+	rv := objc.CallMethod[int](m_, objc.SEL("numberOfColumns"))
 	return rv
 }
 
 func (m_ Matrix) NumberOfRows() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("numberOfRows"))
+	rv := objc.CallMethod[int](m_, objc.SEL("numberOfRows"))
 	return rv
 }
 
 func (m_ Matrix) AutorecalculatesCellSize() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("autorecalculatesCellSize"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("autorecalculatesCellSize"))
 	return rv
 }
 
 func (m_ Matrix) SetAutorecalculatesCellSize(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAutorecalculatesCellSize:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAutorecalculatesCellSize:"), value)
 }
 
 func (m_ Matrix) KeyCell() Cell {
-	rv := objc.CallMethod[Cell](m_, objc.GetSelector("keyCell"))
+	rv := objc.CallMethod[Cell](m_, objc.SEL("keyCell"))
 	return rv
 }
 
 func (m_ Matrix) SetKeyCell(value ICell) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setKeyCell:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setKeyCell:"), objc.ExtractPtr(value))
 }
 
 func (m_ Matrix) SelectedCells() []Cell {
-	rv := objc.CallMethod[[]Cell](m_, objc.GetSelector("selectedCells"))
+	rv := objc.CallMethod[[]Cell](m_, objc.SEL("selectedCells"))
 	return rv
 }
 
 func (m_ Matrix) SelectedColumn() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("selectedColumn"))
+	rv := objc.CallMethod[int](m_, objc.SEL("selectedColumn"))
 	return rv
 }
 
 func (m_ Matrix) SelectedRow() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("selectedRow"))
+	rv := objc.CallMethod[int](m_, objc.SEL("selectedRow"))
 	return rv
 }
 
 func (m_ Matrix) Cells() []Cell {
-	rv := objc.CallMethod[[]Cell](m_, objc.GetSelector("cells"))
+	rv := objc.CallMethod[[]Cell](m_, objc.SEL("cells"))
 	return rv
 }
 
 func (m_ Matrix) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](m_, objc.GetSelector("backgroundColor"))
+	rv := objc.CallMethod[Color](m_, objc.SEL("backgroundColor"))
 	return rv
 }
 
 func (m_ Matrix) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (m_ Matrix) CellBackgroundColor() Color {
-	rv := objc.CallMethod[Color](m_, objc.GetSelector("cellBackgroundColor"))
+	rv := objc.CallMethod[Color](m_, objc.SEL("cellBackgroundColor"))
 	return rv
 }
 
 func (m_ Matrix) SetCellBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setCellBackgroundColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setCellBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (m_ Matrix) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("drawsBackground"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("drawsBackground"))
 	return rv
 }
 
 func (m_ Matrix) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDrawsBackground:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setDrawsBackground:"), value)
 }
 
 func (m_ Matrix) DrawsCellBackground() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("drawsCellBackground"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("drawsCellBackground"))
 	return rv
 }
 
 func (m_ Matrix) SetDrawsCellBackground(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDrawsCellBackground:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setDrawsCellBackground:"), value)
 }
 
 func (m_ Matrix) TabKeyTraversesCells() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("tabKeyTraversesCells"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("tabKeyTraversesCells"))
 	return rv
 }
 
 func (m_ Matrix) SetTabKeyTraversesCells(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTabKeyTraversesCells:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setTabKeyTraversesCells:"), value)
 }
 
 // weak property
 func (m_ Matrix) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](m_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](m_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (m_ Matrix) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (m_ Matrix) AutosizesCells() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("autosizesCells"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("autosizesCells"))
 	return rv
 }
 
 func (m_ Matrix) SetAutosizesCells(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAutosizesCells:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAutosizesCells:"), value)
 }
 
 func (m_ Matrix) IsAutoscroll() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("isAutoscroll"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("isAutoscroll"))
 	return rv
 }
 
 func (m_ Matrix) SetAutoscroll(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAutoscroll:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAutoscroll:"), value)
 }
 
 func (m_ Matrix) DoubleAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](m_, objc.GetSelector("doubleAction"))
+	rv := objc.CallMethod[objc.Selector](m_, objc.SEL("doubleAction"))
 	return rv
 }
 
 func (m_ Matrix) SetDoubleAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setDoubleAction:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setDoubleAction:"), value)
 }
 
 func (m_ Matrix) MouseDownFlags() int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("mouseDownFlags"))
+	rv := objc.CallMethod[int](m_, objc.SEL("mouseDownFlags"))
 	return rv
 }

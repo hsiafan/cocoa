@@ -32,12 +32,12 @@ func MakeCollectionViewFlowLayoutInvalidationContext(ptr unsafe.Pointer) Collect
 }
 
 func (cc _CollectionViewFlowLayoutInvalidationContextClass) Alloc() CollectionViewFlowLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewFlowLayoutInvalidationContextClass) New() CollectionViewFlowLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,24 +47,24 @@ func NewCollectionViewFlowLayoutInvalidationContext() CollectionViewFlowLayoutIn
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) Init() CollectionViewFlowLayoutInvalidationContext {
-	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CollectionViewFlowLayoutInvalidationContext](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutAttributes() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("invalidateFlowLayoutAttributes"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("invalidateFlowLayoutAttributes"))
 	return rv
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutAttributes(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInvalidateFlowLayoutAttributes:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setInvalidateFlowLayoutAttributes:"), value)
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) InvalidateFlowLayoutDelegateMetrics() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("invalidateFlowLayoutDelegateMetrics"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("invalidateFlowLayoutDelegateMetrics"))
 	return rv
 }
 
 func (c_ CollectionViewFlowLayoutInvalidationContext) SetInvalidateFlowLayoutDelegateMetrics(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setInvalidateFlowLayoutDelegateMetrics:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setInvalidateFlowLayoutDelegateMetrics:"), value)
 }

@@ -116,35 +116,35 @@ func NewPopoverDelegateCreator(name string) *PopoverDelegateCreator {
 }
 
 func (c *PopoverDelegateCreator) SetDetachableWindowForPopover(handle func(o objc.Object, popover Popover) IWindow) {
-	objc.AddMethod(c.class, objc.GetSelector("detachableWindowForPopover:"), handle)
+	objc.AddMethod(c.class, objc.SEL("detachableWindowForPopover:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverShouldClose(handle func(o objc.Object, popover Popover) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverShouldClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverShouldClose:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverWillShow(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverWillShow:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverWillShow:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverDidShow(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverDidShow:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverDidShow:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverWillClose(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverWillClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverWillClose:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverDidClose(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverDidClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverDidClose:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverDidDetach(handle func(o objc.Object, popover Popover)) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverDidDetach:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverDidDetach:"), handle)
 }
 
 func (c *PopoverDelegateCreator) SetPopoverShouldDetach(handle func(o objc.Object, popover Popover) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("popoverShouldDetach:"), handle)
+	objc.AddMethod(c.class, objc.SEL("popoverShouldDetach:"), handle)
 }
 
 func (c *PopoverDelegateCreator) Create() objc.Object {

@@ -36,22 +36,22 @@ func MakePropertyAnimation(ptr unsafe.Pointer) PropertyAnimation {
 }
 
 func (pc _PropertyAnimationClass) AnimationWithKeyPath(path string) PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("animationWithKeyPath:"), path)
+	rv := objc.CallMethod[PropertyAnimation](pc, objc.SEL("animationWithKeyPath:"), path)
 	return rv
 }
 
 func (pc _PropertyAnimationClass) Animation() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("animation"))
+	rv := objc.CallMethod[PropertyAnimation](pc, objc.SEL("animation"))
 	return rv
 }
 
 func (pc _PropertyAnimationClass) Alloc() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PropertyAnimation](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PropertyAnimationClass) New() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PropertyAnimation](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,42 +61,42 @@ func NewPropertyAnimation() PropertyAnimation {
 }
 
 func (p_ PropertyAnimation) Init() PropertyAnimation {
-	rv := objc.CallMethod[PropertyAnimation](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PropertyAnimation](p_, objc.SEL("init"))
 	return rv
 }
 
 func (p_ PropertyAnimation) KeyPath() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("keyPath"))
+	rv := objc.CallMethod[string](p_, objc.SEL("keyPath"))
 	return rv
 }
 
 func (p_ PropertyAnimation) SetKeyPath(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setKeyPath:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setKeyPath:"), value)
 }
 
 func (p_ PropertyAnimation) IsCumulative() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isCumulative"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("isCumulative"))
 	return rv
 }
 
 func (p_ PropertyAnimation) SetCumulative(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setCumulative:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setCumulative:"), value)
 }
 
 func (p_ PropertyAnimation) IsAdditive() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isAdditive"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("isAdditive"))
 	return rv
 }
 
 func (p_ PropertyAnimation) SetAdditive(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAdditive:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setAdditive:"), value)
 }
 
 func (p_ PropertyAnimation) ValueFunction() ValueFunction {
-	rv := objc.CallMethod[ValueFunction](p_, objc.GetSelector("valueFunction"))
+	rv := objc.CallMethod[ValueFunction](p_, objc.SEL("valueFunction"))
 	return rv
 }
 
 func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setValueFunction:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setValueFunction:"), objc.ExtractPtr(value))
 }

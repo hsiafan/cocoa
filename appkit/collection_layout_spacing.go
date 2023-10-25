@@ -31,22 +31,22 @@ func MakeCollectionLayoutSpacing(ptr unsafe.Pointer) CollectionLayoutSpacing {
 }
 
 func (cc _CollectionLayoutSpacingClass) FixedSpacing(fixedSpacing float64) CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.GetSelector("fixedSpacing:"), fixedSpacing)
+	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.SEL("fixedSpacing:"), fixedSpacing)
 	return rv
 }
 
 func (cc _CollectionLayoutSpacingClass) FlexibleSpacing(flexibleSpacing float64) CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.GetSelector("flexibleSpacing:"), flexibleSpacing)
+	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.SEL("flexibleSpacing:"), flexibleSpacing)
 	return rv
 }
 
 func (cc _CollectionLayoutSpacingClass) Alloc() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CollectionLayoutSpacingClass) New() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CollectionLayoutSpacing](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,21 +56,21 @@ func NewCollectionLayoutSpacing() CollectionLayoutSpacing {
 }
 
 func (c_ CollectionLayoutSpacing) Init() CollectionLayoutSpacing {
-	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CollectionLayoutSpacing](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CollectionLayoutSpacing) Spacing() float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("spacing"))
+	rv := objc.CallMethod[float64](c_, objc.SEL("spacing"))
 	return rv
 }
 
 func (c_ CollectionLayoutSpacing) IsFixedSpacing() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isFixedSpacing"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isFixedSpacing"))
 	return rv
 }
 
 func (c_ CollectionLayoutSpacing) IsFlexibleSpacing() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isFlexibleSpacing"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isFlexibleSpacing"))
 	return rv
 }

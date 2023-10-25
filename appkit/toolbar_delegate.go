@@ -116,35 +116,35 @@ func NewToolbarDelegateCreator(name string) *ToolbarDelegateCreator {
 }
 
 func (c *ToolbarDelegateCreator) SetToolbar_ItemForItemIdentifier_WillBeInsertedIntoToolbar(handle func(o objc.Object, toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) IToolbarItem) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbarWillAddItem(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbarWillAddItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbarWillAddItem:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbarDidRemoveItem(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbarDidRemoveItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbarDidRemoveItem:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbarAllowedItemIdentifiers(handle func(o objc.Object, toolbar Toolbar) []ToolbarItemIdentifier) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbarAllowedItemIdentifiers:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbarAllowedItemIdentifiers:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbarDefaultItemIdentifiers(handle func(o objc.Object, toolbar Toolbar) []ToolbarItemIdentifier) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbarDefaultItemIdentifiers:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbarDefaultItemIdentifiers:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbarImmovableItemIdentifiers(handle func(o objc.Object, toolbar Toolbar) foundation.ISet) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbarImmovableItemIdentifiers:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbarImmovableItemIdentifiers:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbarSelectableItemIdentifiers(handle func(o objc.Object, toolbar Toolbar) []ToolbarItemIdentifier) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbarSelectableItemIdentifiers:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbarSelectableItemIdentifiers:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) SetToolbar_ItemIdentifier_CanBeInsertedAtIndex(handle func(o objc.Object, toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, index int) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("toolbar:itemIdentifier:canBeInsertedAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("toolbar:itemIdentifier:canBeInsertedAtIndex:"), handle)
 }
 
 func (c *ToolbarDelegateCreator) Create() objc.Object {

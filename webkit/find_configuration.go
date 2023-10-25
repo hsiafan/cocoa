@@ -34,12 +34,12 @@ func MakeFindConfiguration(ptr unsafe.Pointer) FindConfiguration {
 }
 
 func (fc _FindConfigurationClass) Alloc() FindConfiguration {
-	rv := objc.CallMethod[FindConfiguration](fc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[FindConfiguration](fc, objc.SEL("alloc"))
 	return rv
 }
 
 func (fc _FindConfigurationClass) New() FindConfiguration {
-	rv := objc.CallMethod[FindConfiguration](fc, objc.GetSelector("new"))
+	rv := objc.CallMethod[FindConfiguration](fc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,33 +49,33 @@ func NewFindConfiguration() FindConfiguration {
 }
 
 func (f_ FindConfiguration) Init() FindConfiguration {
-	rv := objc.CallMethod[FindConfiguration](f_, objc.GetSelector("init"))
+	rv := objc.CallMethod[FindConfiguration](f_, objc.SEL("init"))
 	return rv
 }
 
 func (f_ FindConfiguration) Backwards() bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("backwards"))
+	rv := objc.CallMethod[bool](f_, objc.SEL("backwards"))
 	return rv
 }
 
 func (f_ FindConfiguration) SetBackwards(value bool) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setBackwards:"), value)
+	objc.CallMethod[objc.Void](f_, objc.SEL("setBackwards:"), value)
 }
 
 func (f_ FindConfiguration) CaseSensitive() bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("caseSensitive"))
+	rv := objc.CallMethod[bool](f_, objc.SEL("caseSensitive"))
 	return rv
 }
 
 func (f_ FindConfiguration) SetCaseSensitive(value bool) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setCaseSensitive:"), value)
+	objc.CallMethod[objc.Void](f_, objc.SEL("setCaseSensitive:"), value)
 }
 
 func (f_ FindConfiguration) Wraps() bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("wraps"))
+	rv := objc.CallMethod[bool](f_, objc.SEL("wraps"))
 	return rv
 }
 
 func (f_ FindConfiguration) SetWraps(value bool) {
-	objc.CallMethod[objc.Void](f_, objc.GetSelector("setWraps:"), value)
+	objc.CallMethod[objc.Void](f_, objc.SEL("setWraps:"), value)
 }

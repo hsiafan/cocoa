@@ -39,22 +39,22 @@ func MakeStepper(ptr unsafe.Pointer) Stepper {
 }
 
 func (s_ Stepper) InitWithFrame(frameRect foundation.Rect) Stepper {
-	rv := objc.CallMethod[Stepper](s_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[Stepper](s_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ Stepper) Init() Stepper {
-	rv := objc.CallMethod[Stepper](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Stepper](s_, objc.SEL("init"))
 	return rv
 }
 
 func (sc _StepperClass) Alloc() Stepper {
-	rv := objc.CallMethod[Stepper](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Stepper](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _StepperClass) New() Stepper {
-	rv := objc.CallMethod[Stepper](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Stepper](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -64,46 +64,46 @@ func NewStepper() Stepper {
 }
 
 func (s_ Stepper) MaxValue() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("maxValue"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("maxValue"))
 	return rv
 }
 
 func (s_ Stepper) SetMaxValue(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMaxValue:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setMaxValue:"), value)
 }
 
 func (s_ Stepper) MinValue() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("minValue"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("minValue"))
 	return rv
 }
 
 func (s_ Stepper) SetMinValue(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMinValue:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setMinValue:"), value)
 }
 
 func (s_ Stepper) Increment() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("increment"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("increment"))
 	return rv
 }
 
 func (s_ Stepper) SetIncrement(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setIncrement:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setIncrement:"), value)
 }
 
 func (s_ Stepper) Autorepeat() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("autorepeat"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("autorepeat"))
 	return rv
 }
 
 func (s_ Stepper) SetAutorepeat(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAutorepeat:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setAutorepeat:"), value)
 }
 
 func (s_ Stepper) ValueWraps() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("valueWraps"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("valueWraps"))
 	return rv
 }
 
 func (s_ Stepper) SetValueWraps(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setValueWraps:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setValueWraps:"), value)
 }

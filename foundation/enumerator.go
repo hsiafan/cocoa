@@ -30,12 +30,12 @@ func MakeEnumerator(ptr unsafe.Pointer) Enumerator {
 }
 
 func (ec _EnumeratorClass) Alloc() Enumerator {
-	rv := objc.CallMethod[Enumerator](ec, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Enumerator](ec, objc.SEL("alloc"))
 	return rv
 }
 
 func (ec _EnumeratorClass) New() Enumerator {
-	rv := objc.CallMethod[Enumerator](ec, objc.GetSelector("new"))
+	rv := objc.CallMethod[Enumerator](ec, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -45,16 +45,16 @@ func NewEnumerator() Enumerator {
 }
 
 func (e_ Enumerator) Init() Enumerator {
-	rv := objc.CallMethod[Enumerator](e_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Enumerator](e_, objc.SEL("init"))
 	return rv
 }
 
 func (e_ Enumerator) NextObject() objc.Object {
-	rv := objc.CallMethod[objc.Object](e_, objc.GetSelector("nextObject"))
+	rv := objc.CallMethod[objc.Object](e_, objc.SEL("nextObject"))
 	return rv
 }
 
 func (e_ Enumerator) AllObjects() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](e_, objc.GetSelector("allObjects"))
+	rv := objc.CallMethod[[]objc.Object](e_, objc.SEL("allObjects"))
 	return rv
 }

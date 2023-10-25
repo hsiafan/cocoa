@@ -33,17 +33,17 @@ func MakeAppearance(ptr unsafe.Pointer) Appearance {
 }
 
 func (a_ Appearance) InitWithAppearanceNamed_Bundle(name AppearanceName, bundle foundation.IBundle) Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("initWithAppearanceNamed:bundle:"), name, objc.ExtractPtr(bundle))
+	rv := objc.CallMethod[Appearance](a_, objc.SEL("initWithAppearanceNamed:bundle:"), name, objc.ExtractPtr(bundle))
 	return rv
 }
 
 func (ac _AppearanceClass) Alloc() Appearance {
-	rv := objc.CallMethod[Appearance](ac, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Appearance](ac, objc.SEL("alloc"))
 	return rv
 }
 
 func (ac _AppearanceClass) New() Appearance {
-	rv := objc.CallMethod[Appearance](ac, objc.GetSelector("new"))
+	rv := objc.CallMethod[Appearance](ac, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,46 +53,46 @@ func NewAppearance() Appearance {
 }
 
 func (a_ Appearance) Init() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Appearance](a_, objc.SEL("init"))
 	return rv
 }
 
 func (ac _AppearanceClass) AppearanceNamed(name AppearanceName) Appearance {
-	rv := objc.CallMethod[Appearance](ac, objc.GetSelector("appearanceNamed:"), name)
+	rv := objc.CallMethod[Appearance](ac, objc.SEL("appearanceNamed:"), name)
 	return rv
 }
 
 func (a_ Appearance) BestMatchFromAppearancesWithNames(appearances []AppearanceName) AppearanceName {
-	rv := objc.CallMethod[AppearanceName](a_, objc.GetSelector("bestMatchFromAppearancesWithNames:"), appearances)
+	rv := objc.CallMethod[AppearanceName](a_, objc.SEL("bestMatchFromAppearancesWithNames:"), appearances)
 	return rv
 }
 
 func (a_ Appearance) PerformAsCurrentDrawingAppearance(block func()) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("performAsCurrentDrawingAppearance:"), block)
+	objc.CallMethod[objc.Void](a_, objc.SEL("performAsCurrentDrawingAppearance:"), block)
 }
 
 func (a_ Appearance) Name() AppearanceName {
-	rv := objc.CallMethod[AppearanceName](a_, objc.GetSelector("name"))
+	rv := objc.CallMethod[AppearanceName](a_, objc.SEL("name"))
 	return rv
 }
 
 func (ac _AppearanceClass) CurrentDrawingAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](ac, objc.GetSelector("currentDrawingAppearance"))
+	rv := objc.CallMethod[Appearance](ac, objc.SEL("currentDrawingAppearance"))
 	return rv
 }
 
 // deprecated
 func (ac _AppearanceClass) CurrentAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](ac, objc.GetSelector("currentAppearance"))
+	rv := objc.CallMethod[Appearance](ac, objc.SEL("currentAppearance"))
 	return rv
 }
 
 // deprecated
 func (ac _AppearanceClass) SetCurrentAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](ac, objc.GetSelector("setCurrentAppearance:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](ac, objc.SEL("setCurrentAppearance:"), objc.ExtractPtr(value))
 }
 
 func (a_ Appearance) AllowsVibrancy() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("allowsVibrancy"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("allowsVibrancy"))
 	return rv
 }

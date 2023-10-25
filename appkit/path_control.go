@@ -57,22 +57,22 @@ func MakePathControl(ptr unsafe.Pointer) PathControl {
 }
 
 func (p_ PathControl) InitWithFrame(frameRect foundation.Rect) PathControl {
-	rv := objc.CallMethod[PathControl](p_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[PathControl](p_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (p_ PathControl) Init() PathControl {
-	rv := objc.CallMethod[PathControl](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PathControl](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PathControlClass) Alloc() PathControl {
-	rv := objc.CallMethod[PathControl](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PathControl](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PathControlClass) New() PathControl {
-	rv := objc.CallMethod[PathControl](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PathControl](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -83,118 +83,118 @@ func NewPathControl() PathControl {
 
 // deprecated
 func (p_ PathControl) ClickedPathComponentCell() PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("clickedPathComponentCell"))
+	rv := objc.CallMethod[PathComponentCell](p_, objc.SEL("clickedPathComponentCell"))
 	return rv
 }
 
 // deprecated
 func (p_ PathControl) PathComponentCells() []PathComponentCell {
-	rv := objc.CallMethod[[]PathComponentCell](p_, objc.GetSelector("pathComponentCells"))
+	rv := objc.CallMethod[[]PathComponentCell](p_, objc.SEL("pathComponentCells"))
 	return rv
 }
 
 // deprecated
 func (p_ PathControl) SetPathComponentCells(cells []IPathComponentCell) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPathComponentCells:"), cells)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPathComponentCells:"), cells)
 }
 
 func (p_ PathControl) SetDraggingSourceOperationMask_ForLocal(mask DragOperation, isLocal bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDraggingSourceOperationMask:forLocal:"), mask, isLocal)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setDraggingSourceOperationMask:forLocal:"), mask, isLocal)
 }
 
 func (p_ PathControl) PathStyle() PathStyle {
-	rv := objc.CallMethod[PathStyle](p_, objc.GetSelector("pathStyle"))
+	rv := objc.CallMethod[PathStyle](p_, objc.SEL("pathStyle"))
 	return rv
 }
 
 func (p_ PathControl) SetPathStyle(value PathStyle) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPathStyle:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPathStyle:"), value)
 }
 
 func (p_ PathControl) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](p_, objc.GetSelector("backgroundColor"))
+	rv := objc.CallMethod[Color](p_, objc.SEL("backgroundColor"))
 	return rv
 }
 
 func (p_ PathControl) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) DoubleAction() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](p_, objc.GetSelector("doubleAction"))
+	rv := objc.CallMethod[objc.Selector](p_, objc.SEL("doubleAction"))
 	return rv
 }
 
 func (p_ PathControl) SetDoubleAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDoubleAction:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setDoubleAction:"), value)
 }
 
 func (p_ PathControl) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](p_, objc.GetSelector("URL"))
+	rv := objc.CallMethod[foundation.URL](p_, objc.SEL("URL"))
 	return rv
 }
 
 func (p_ PathControl) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setURL:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (p_ PathControl) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](p_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (p_ PathControl) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) AllowedTypes() []string {
-	rv := objc.CallMethod[[]string](p_, objc.GetSelector("allowedTypes"))
+	rv := objc.CallMethod[[]string](p_, objc.SEL("allowedTypes"))
 	return rv
 }
 
 func (p_ PathControl) SetAllowedTypes(value []string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAllowedTypes:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setAllowedTypes:"), value)
 }
 
 func (p_ PathControl) ClickedPathItem() PathControlItem {
-	rv := objc.CallMethod[PathControlItem](p_, objc.GetSelector("clickedPathItem"))
+	rv := objc.CallMethod[PathControlItem](p_, objc.SEL("clickedPathItem"))
 	return rv
 }
 
 func (p_ PathControl) IsEditable() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("isEditable"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("isEditable"))
 	return rv
 }
 
 func (p_ PathControl) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setEditable:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setEditable:"), value)
 }
 
 func (p_ PathControl) PathItems() []PathControlItem {
-	rv := objc.CallMethod[[]PathControlItem](p_, objc.GetSelector("pathItems"))
+	rv := objc.CallMethod[[]PathControlItem](p_, objc.SEL("pathItems"))
 	return rv
 }
 
 func (p_ PathControl) SetPathItems(value []IPathControlItem) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPathItems:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPathItems:"), value)
 }
 
 func (p_ PathControl) PlaceholderAttributedString() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](p_, objc.GetSelector("placeholderAttributedString"))
+	rv := objc.CallMethod[foundation.AttributedString](p_, objc.SEL("placeholderAttributedString"))
 	return rv
 }
 
 func (p_ PathControl) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (p_ PathControl) PlaceholderString() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("placeholderString"))
+	rv := objc.CallMethod[string](p_, objc.SEL("placeholderString"))
 	return rv
 }
 
 func (p_ PathControl) SetPlaceholderString(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPlaceholderString:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPlaceholderString:"), value)
 }

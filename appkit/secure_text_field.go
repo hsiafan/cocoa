@@ -29,42 +29,42 @@ func MakeSecureTextField(ptr unsafe.Pointer) SecureTextField {
 }
 
 func (sc _SecureTextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
+	rv := objc.CallMethod[SecureTextField](sc, objc.SEL("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 
 func (sc _SecureTextFieldClass) LabelWithString(stringValue string) SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("labelWithString:"), stringValue)
+	rv := objc.CallMethod[SecureTextField](sc, objc.SEL("labelWithString:"), stringValue)
 	return rv
 }
 
 func (sc _SecureTextFieldClass) TextFieldWithString(stringValue string) SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("textFieldWithString:"), stringValue)
+	rv := objc.CallMethod[SecureTextField](sc, objc.SEL("textFieldWithString:"), stringValue)
 	return rv
 }
 
 func (sc _SecureTextFieldClass) WrappingLabelWithString(stringValue string) SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("wrappingLabelWithString:"), stringValue)
+	rv := objc.CallMethod[SecureTextField](sc, objc.SEL("wrappingLabelWithString:"), stringValue)
 	return rv
 }
 
 func (s_ SecureTextField) InitWithFrame(frameRect foundation.Rect) SecureTextField {
-	rv := objc.CallMethod[SecureTextField](s_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[SecureTextField](s_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ SecureTextField) Init() SecureTextField {
-	rv := objc.CallMethod[SecureTextField](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[SecureTextField](s_, objc.SEL("init"))
 	return rv
 }
 
 func (sc _SecureTextFieldClass) Alloc() SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[SecureTextField](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _SecureTextFieldClass) New() SecureTextField {
-	rv := objc.CallMethod[SecureTextField](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[SecureTextField](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }

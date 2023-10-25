@@ -40,22 +40,22 @@ func MakeTextSelection(ptr unsafe.Pointer) TextSelection {
 }
 
 func (t_ TextSelection) InitWithRange_Affinity_Granularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("initWithRange:affinity:granularity:"), objc.ExtractPtr(range_), affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, objc.SEL("initWithRange:affinity:granularity:"), objc.ExtractPtr(range_), affinity, granularity)
 	return rv
 }
 
 func (t_ TextSelection) InitWithRanges_Affinity_Granularity(textRanges []ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("initWithRanges:affinity:granularity:"), textRanges, affinity, granularity)
+	rv := objc.CallMethod[TextSelection](t_, objc.SEL("initWithRanges:affinity:granularity:"), textRanges, affinity, granularity)
 	return rv
 }
 
 func (tc _TextSelectionClass) Alloc() TextSelection {
-	rv := objc.CallMethod[TextSelection](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TextSelection](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextSelectionClass) New() TextSelection {
-	rv := objc.CallMethod[TextSelection](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TextSelection](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,58 +65,58 @@ func NewTextSelection() TextSelection {
 }
 
 func (t_ TextSelection) Init() TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TextSelection](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TextSelection) TextSelectionWithTextRanges(textRanges []ITextRange) TextSelection {
-	rv := objc.CallMethod[TextSelection](t_, objc.GetSelector("textSelectionWithTextRanges:"), textRanges)
+	rv := objc.CallMethod[TextSelection](t_, objc.SEL("textSelectionWithTextRanges:"), textRanges)
 	return rv
 }
 
 func (t_ TextSelection) Affinity() TextSelectionAffinity {
-	rv := objc.CallMethod[TextSelectionAffinity](t_, objc.GetSelector("affinity"))
+	rv := objc.CallMethod[TextSelectionAffinity](t_, objc.SEL("affinity"))
 	return rv
 }
 
 func (t_ TextSelection) AnchorPositionOffset() float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("anchorPositionOffset"))
+	rv := objc.CallMethod[float64](t_, objc.SEL("anchorPositionOffset"))
 	return rv
 }
 
 func (t_ TextSelection) SetAnchorPositionOffset(value float64) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAnchorPositionOffset:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAnchorPositionOffset:"), value)
 }
 
 func (t_ TextSelection) Granularity() TextSelectionGranularity {
-	rv := objc.CallMethod[TextSelectionGranularity](t_, objc.GetSelector("granularity"))
+	rv := objc.CallMethod[TextSelectionGranularity](t_, objc.SEL("granularity"))
 	return rv
 }
 
 func (t_ TextSelection) IsLogical() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isLogical"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isLogical"))
 	return rv
 }
 
 func (t_ TextSelection) SetLogical(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLogical:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLogical:"), value)
 }
 
 func (t_ TextSelection) IsTransient() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isTransient"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isTransient"))
 	return rv
 }
 
 func (t_ TextSelection) TextRanges() []TextRange {
-	rv := objc.CallMethod[[]TextRange](t_, objc.GetSelector("textRanges"))
+	rv := objc.CallMethod[[]TextRange](t_, objc.SEL("textRanges"))
 	return rv
 }
 
 func (t_ TextSelection) TypingAttributes() map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, objc.GetSelector("typingAttributes"))
+	rv := objc.CallMethod[map[foundation.AttributedStringKey]objc.Object](t_, objc.SEL("typingAttributes"))
 	return rv
 }
 
 func (t_ TextSelection) SetTypingAttributes(value map[foundation.AttributedStringKey]objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTypingAttributes:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTypingAttributes:"), value)
 }

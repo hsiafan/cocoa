@@ -120,37 +120,37 @@ func NewDrawerDelegateCreator(name string) *DrawerDelegateCreator {
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerShouldOpen(handle func(o objc.Object, sender Drawer) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerShouldOpen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerShouldOpen:"), handle)
 }
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerWillOpen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerWillOpen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerWillOpen:"), handle)
 }
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerDidOpen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerDidOpen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerDidOpen:"), handle)
 }
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerShouldClose(handle func(o objc.Object, sender Drawer) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerShouldClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerShouldClose:"), handle)
 }
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerWillClose(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerWillClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerWillClose:"), handle)
 }
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerDidClose(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerDidClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerDidClose:"), handle)
 }
 
 // deprecated
 func (c *DrawerDelegateCreator) SetDrawerWillResizeContents_ToSize(handle func(o objc.Object, sender Drawer, contentSize foundation.Size) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("drawerWillResizeContents:toSize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("drawerWillResizeContents:toSize:"), handle)
 }
 
 func (c *DrawerDelegateCreator) Create() objc.Object {

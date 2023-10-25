@@ -53,12 +53,12 @@ func MakeOperation(ptr unsafe.Pointer) Operation {
 }
 
 func (oc _OperationClass) Alloc() Operation {
-	rv := objc.CallMethod[Operation](oc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Operation](oc, objc.SEL("alloc"))
 	return rv
 }
 
 func (oc _OperationClass) New() Operation {
-	rv := objc.CallMethod[Operation](oc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Operation](oc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -68,112 +68,112 @@ func NewOperation() Operation {
 }
 
 func (o_ Operation) Init() Operation {
-	rv := objc.CallMethod[Operation](o_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Operation](o_, objc.SEL("init"))
 	return rv
 }
 
 func (o_ Operation) Start() {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("start"))
+	objc.CallMethod[objc.Void](o_, objc.SEL("start"))
 }
 
 func (o_ Operation) Main() {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("main"))
+	objc.CallMethod[objc.Void](o_, objc.SEL("main"))
 }
 
 func (o_ Operation) Cancel() {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("cancel"))
+	objc.CallMethod[objc.Void](o_, objc.SEL("cancel"))
 }
 
 func (o_ Operation) AddDependency(op IOperation) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("addDependency:"), objc.ExtractPtr(op))
+	objc.CallMethod[objc.Void](o_, objc.SEL("addDependency:"), objc.ExtractPtr(op))
 }
 
 func (o_ Operation) RemoveDependency(op IOperation) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeDependency:"), objc.ExtractPtr(op))
+	objc.CallMethod[objc.Void](o_, objc.SEL("removeDependency:"), objc.ExtractPtr(op))
 }
 
 func (o_ Operation) WaitUntilFinished() {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("waitUntilFinished"))
+	objc.CallMethod[objc.Void](o_, objc.SEL("waitUntilFinished"))
 }
 
 func (o_ Operation) CompletionBlock() func() {
-	rv := objc.CallMethod[func()](o_, objc.GetSelector("completionBlock"))
+	rv := objc.CallMethod[func()](o_, objc.SEL("completionBlock"))
 	return rv
 }
 
 func (o_ Operation) SetCompletionBlock(value func()) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setCompletionBlock:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setCompletionBlock:"), value)
 }
 
 func (o_ Operation) IsCancelled() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isCancelled"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isCancelled"))
 	return rv
 }
 
 func (o_ Operation) IsExecuting() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isExecuting"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isExecuting"))
 	return rv
 }
 
 func (o_ Operation) IsFinished() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isFinished"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isFinished"))
 	return rv
 }
 
 func (o_ Operation) IsConcurrent() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isConcurrent"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isConcurrent"))
 	return rv
 }
 
 func (o_ Operation) IsAsynchronous() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isAsynchronous"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isAsynchronous"))
 	return rv
 }
 
 func (o_ Operation) IsReady() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isReady"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isReady"))
 	return rv
 }
 
 func (o_ Operation) Name() string {
-	rv := objc.CallMethod[string](o_, objc.GetSelector("name"))
+	rv := objc.CallMethod[string](o_, objc.SEL("name"))
 	return rv
 }
 
 func (o_ Operation) SetName(value string) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setName:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setName:"), value)
 }
 
 func (o_ Operation) Dependencies() []Operation {
-	rv := objc.CallMethod[[]Operation](o_, objc.GetSelector("dependencies"))
+	rv := objc.CallMethod[[]Operation](o_, objc.SEL("dependencies"))
 	return rv
 }
 
 func (o_ Operation) QualityOfService() QualityOfService {
-	rv := objc.CallMethod[QualityOfService](o_, objc.GetSelector("qualityOfService"))
+	rv := objc.CallMethod[QualityOfService](o_, objc.SEL("qualityOfService"))
 	return rv
 }
 
 func (o_ Operation) SetQualityOfService(value QualityOfService) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setQualityOfService:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setQualityOfService:"), value)
 }
 
 // deprecated
 func (o_ Operation) ThreadPriority() float64 {
-	rv := objc.CallMethod[float64](o_, objc.GetSelector("threadPriority"))
+	rv := objc.CallMethod[float64](o_, objc.SEL("threadPriority"))
 	return rv
 }
 
 // deprecated
 func (o_ Operation) SetThreadPriority(value float64) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setThreadPriority:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setThreadPriority:"), value)
 }
 
 func (o_ Operation) QueuePriority() OperationQueuePriority {
-	rv := objc.CallMethod[OperationQueuePriority](o_, objc.GetSelector("queuePriority"))
+	rv := objc.CallMethod[OperationQueuePriority](o_, objc.SEL("queuePriority"))
 	return rv
 }
 
 func (o_ Operation) SetQueuePriority(value OperationQueuePriority) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setQueuePriority:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setQueuePriority:"), value)
 }

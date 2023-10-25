@@ -137,43 +137,43 @@ func NewTokenFieldCellDelegateCreator(name string) *TokenFieldCellDelegateCreato
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_DisplayStringForRepresentedObject(handle func(o objc.Object, tokenFieldCell TokenFieldCell, representedObject objc.Object) string) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:displayStringForRepresentedObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:displayStringForRepresentedObject:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_StyleForRepresentedObject(handle func(o objc.Object, tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:styleForRepresentedObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:styleForRepresentedObject:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_CompletionsForSubstring_IndexOfToken_IndexOfSelectedItem(handle func(o objc.Object, tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_EditingStringForRepresentedObject(handle func(o objc.Object, tokenFieldCell TokenFieldCell, representedObject objc.Object) string) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:editingStringForRepresentedObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:editingStringForRepresentedObject:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_RepresentedObjectForEditingString(handle func(o objc.Object, tokenFieldCell TokenFieldCell, editingString string) objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:representedObjectForEditingString:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:representedObjectForEditingString:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_ShouldAddObjects_AtIndex(handle func(o objc.Object, tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:shouldAddObjects:atIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:shouldAddObjects:atIndex:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_ReadFromPasteboard(handle func(o objc.Object, tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:readFromPasteboard:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:readFromPasteboard:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_WriteRepresentedObjects_ToPasteboard(handle func(o objc.Object, tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_HasMenuForRepresentedObject(handle func(o objc.Object, tokenFieldCell TokenFieldCell, representedObject objc.Object) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:hasMenuForRepresentedObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:hasMenuForRepresentedObject:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) SetTokenFieldCell_MenuForRepresentedObject(handle func(o objc.Object, tokenFieldCell TokenFieldCell, representedObject objc.Object) IMenu) {
-	objc.AddMethod(c.class, objc.GetSelector("tokenFieldCell:menuForRepresentedObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tokenFieldCell:menuForRepresentedObject:"), handle)
 }
 
 func (c *TokenFieldCellDelegateCreator) Create() objc.Object {

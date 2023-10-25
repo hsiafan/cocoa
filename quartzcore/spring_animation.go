@@ -36,22 +36,22 @@ func MakeSpringAnimation(ptr unsafe.Pointer) SpringAnimation {
 }
 
 func (sc _SpringAnimationClass) AnimationWithKeyPath(path string) SpringAnimation {
-	rv := objc.CallMethod[SpringAnimation](sc, objc.GetSelector("animationWithKeyPath:"), path)
+	rv := objc.CallMethod[SpringAnimation](sc, objc.SEL("animationWithKeyPath:"), path)
 	return rv
 }
 
 func (sc _SpringAnimationClass) Animation() SpringAnimation {
-	rv := objc.CallMethod[SpringAnimation](sc, objc.GetSelector("animation"))
+	rv := objc.CallMethod[SpringAnimation](sc, objc.SEL("animation"))
 	return rv
 }
 
 func (sc _SpringAnimationClass) Alloc() SpringAnimation {
-	rv := objc.CallMethod[SpringAnimation](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[SpringAnimation](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _SpringAnimationClass) New() SpringAnimation {
-	rv := objc.CallMethod[SpringAnimation](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[SpringAnimation](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,42 +61,42 @@ func NewSpringAnimation() SpringAnimation {
 }
 
 func (s_ SpringAnimation) Init() SpringAnimation {
-	rv := objc.CallMethod[SpringAnimation](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[SpringAnimation](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ SpringAnimation) Damping() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("damping"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("damping"))
 	return rv
 }
 
 func (s_ SpringAnimation) SetDamping(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDamping:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setDamping:"), value)
 }
 
 func (s_ SpringAnimation) InitialVelocity() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("initialVelocity"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("initialVelocity"))
 	return rv
 }
 
 func (s_ SpringAnimation) SetInitialVelocity(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setInitialVelocity:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setInitialVelocity:"), value)
 }
 
 func (s_ SpringAnimation) Mass() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("mass"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("mass"))
 	return rv
 }
 
 func (s_ SpringAnimation) SetMass(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMass:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setMass:"), value)
 }
 
 func (s_ SpringAnimation) Stiffness() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("stiffness"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("stiffness"))
 	return rv
 }
 
 func (s_ SpringAnimation) SetStiffness(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setStiffness:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setStiffness:"), value)
 }

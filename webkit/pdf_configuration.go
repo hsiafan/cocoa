@@ -31,12 +31,12 @@ func MakePDFConfiguration(ptr unsafe.Pointer) PDFConfiguration {
 }
 
 func (pc _PDFConfigurationClass) Alloc() PDFConfiguration {
-	rv := objc.CallMethod[PDFConfiguration](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PDFConfiguration](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PDFConfigurationClass) New() PDFConfiguration {
-	rv := objc.CallMethod[PDFConfiguration](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PDFConfiguration](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -46,15 +46,15 @@ func NewPDFConfiguration() PDFConfiguration {
 }
 
 func (p_ PDFConfiguration) Init() PDFConfiguration {
-	rv := objc.CallMethod[PDFConfiguration](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PDFConfiguration](p_, objc.SEL("init"))
 	return rv
 }
 
 func (p_ PDFConfiguration) Rect() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](p_, objc.GetSelector("rect"))
+	rv := objc.CallMethod[coregraphics.Rect](p_, objc.SEL("rect"))
 	return rv
 }
 
 func (p_ PDFConfiguration) SetRect(value coregraphics.Rect) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setRect:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setRect:"), value)
 }

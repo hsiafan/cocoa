@@ -37,27 +37,27 @@ func MakeBrowserCell(ptr unsafe.Pointer) BrowserCell {
 }
 
 func (b_ BrowserCell) InitImageCell(image IImage) BrowserCell {
-	rv := objc.CallMethod[BrowserCell](b_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
+	rv := objc.CallMethod[BrowserCell](b_, objc.SEL("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
 func (b_ BrowserCell) InitTextCell(string_ string) BrowserCell {
-	rv := objc.CallMethod[BrowserCell](b_, objc.GetSelector("initTextCell:"), string_)
+	rv := objc.CallMethod[BrowserCell](b_, objc.SEL("initTextCell:"), string_)
 	return rv
 }
 
 func (b_ BrowserCell) Init() BrowserCell {
-	rv := objc.CallMethod[BrowserCell](b_, objc.GetSelector("init"))
+	rv := objc.CallMethod[BrowserCell](b_, objc.SEL("init"))
 	return rv
 }
 
 func (bc _BrowserCellClass) Alloc() BrowserCell {
-	rv := objc.CallMethod[BrowserCell](bc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[BrowserCell](bc, objc.SEL("alloc"))
 	return rv
 }
 
 func (bc _BrowserCellClass) New() BrowserCell {
-	rv := objc.CallMethod[BrowserCell](bc, objc.GetSelector("new"))
+	rv := objc.CallMethod[BrowserCell](bc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -67,51 +67,51 @@ func NewBrowserCell() BrowserCell {
 }
 
 func (b_ BrowserCell) Reset() {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("reset"))
+	objc.CallMethod[objc.Void](b_, objc.SEL("reset"))
 }
 
 func (b_ BrowserCell) Set() {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("set"))
+	objc.CallMethod[objc.Void](b_, objc.SEL("set"))
 }
 
 func (b_ BrowserCell) HighlightColorInView(controlView IView) Color {
-	rv := objc.CallMethod[Color](b_, objc.GetSelector("highlightColorInView:"), objc.ExtractPtr(controlView))
+	rv := objc.CallMethod[Color](b_, objc.SEL("highlightColorInView:"), objc.ExtractPtr(controlView))
 	return rv
 }
 
 func (bc _BrowserCellClass) BranchImage() Image {
-	rv := objc.CallMethod[Image](bc, objc.GetSelector("branchImage"))
+	rv := objc.CallMethod[Image](bc, objc.SEL("branchImage"))
 	return rv
 }
 
 func (bc _BrowserCellClass) HighlightedBranchImage() Image {
-	rv := objc.CallMethod[Image](bc, objc.GetSelector("highlightedBranchImage"))
+	rv := objc.CallMethod[Image](bc, objc.SEL("highlightedBranchImage"))
 	return rv
 }
 
 func (b_ BrowserCell) AlternateImage() Image {
-	rv := objc.CallMethod[Image](b_, objc.GetSelector("alternateImage"))
+	rv := objc.CallMethod[Image](b_, objc.SEL("alternateImage"))
 	return rv
 }
 
 func (b_ BrowserCell) SetAlternateImage(value IImage) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAlternateImage:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setAlternateImage:"), objc.ExtractPtr(value))
 }
 
 func (b_ BrowserCell) IsLeaf() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLeaf"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("isLeaf"))
 	return rv
 }
 
 func (b_ BrowserCell) SetLeaf(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLeaf:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setLeaf:"), value)
 }
 
 func (b_ BrowserCell) IsLoaded() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLoaded"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("isLoaded"))
 	return rv
 }
 
 func (b_ BrowserCell) SetLoaded(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setLoaded:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setLoaded:"), value)
 }

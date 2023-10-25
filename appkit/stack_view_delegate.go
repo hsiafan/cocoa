@@ -49,11 +49,11 @@ func NewStackViewDelegateCreator(name string) *StackViewDelegateCreator {
 }
 
 func (c *StackViewDelegateCreator) SetStackView_DidReattachViews(handle func(o objc.Object, stackView StackView, views []View)) {
-	objc.AddMethod(c.class, objc.GetSelector("stackView:didReattachViews:"), handle)
+	objc.AddMethod(c.class, objc.SEL("stackView:didReattachViews:"), handle)
 }
 
 func (c *StackViewDelegateCreator) SetStackView_WillDetachViews(handle func(o objc.Object, stackView StackView, views []View)) {
-	objc.AddMethod(c.class, objc.GetSelector("stackView:willDetachViews:"), handle)
+	objc.AddMethod(c.class, objc.SEL("stackView:willDetachViews:"), handle)
 }
 
 func (c *StackViewDelegateCreator) Create() objc.Object {

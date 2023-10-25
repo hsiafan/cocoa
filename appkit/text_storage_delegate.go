@@ -50,11 +50,11 @@ func NewTextStorageDelegateCreator(name string) *TextStorageDelegateCreator {
 }
 
 func (c *TextStorageDelegateCreator) SetTextStorage_WillProcessEditing_Range_ChangeInLength(handle func(o objc.Object, textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
-	objc.AddMethod(c.class, objc.GetSelector("textStorage:willProcessEditing:range:changeInLength:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textStorage:willProcessEditing:range:changeInLength:"), handle)
 }
 
 func (c *TextStorageDelegateCreator) SetTextStorage_DidProcessEditing_Range_ChangeInLength(handle func(o objc.Object, textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
-	objc.AddMethod(c.class, objc.GetSelector("textStorage:didProcessEditing:range:changeInLength:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textStorage:didProcessEditing:range:changeInLength:"), handle)
 }
 
 func (c *TextStorageDelegateCreator) Create() objc.Object {

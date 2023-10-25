@@ -33,17 +33,17 @@ func MakeStoryboard(ptr unsafe.Pointer) Storyboard {
 }
 
 func (sc _StoryboardClass) StoryboardWithName_Bundle(name StoryboardName, storyboardBundleOrNil foundation.IBundle) Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("storyboardWithName:bundle:"), name, objc.ExtractPtr(storyboardBundleOrNil))
+	rv := objc.CallMethod[Storyboard](sc, objc.SEL("storyboardWithName:bundle:"), name, objc.ExtractPtr(storyboardBundleOrNil))
 	return rv
 }
 
 func (sc _StoryboardClass) Alloc() Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Storyboard](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _StoryboardClass) New() Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Storyboard](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,31 +53,31 @@ func NewStoryboard() Storyboard {
 }
 
 func (s_ Storyboard) Init() Storyboard {
-	rv := objc.CallMethod[Storyboard](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Storyboard](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ Storyboard) InstantiateInitialController() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateInitialController"))
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("instantiateInitialController"))
 	return rv
 }
 
 func (s_ Storyboard) InstantiateControllerWithIdentifier(identifier StoryboardSceneIdentifier) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateControllerWithIdentifier:"), identifier)
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("instantiateControllerWithIdentifier:"), identifier)
 	return rv
 }
 
 func (s_ Storyboard) InstantiateControllerWithIdentifier_Creator(identifier StoryboardSceneIdentifier, block func(coder foundation.Coder) objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateControllerWithIdentifier:creator:"), identifier, block)
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("instantiateControllerWithIdentifier:creator:"), identifier, block)
 	return rv
 }
 
 func (s_ Storyboard) InstantiateInitialControllerWithCreator(block func(coder foundation.Coder) objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("instantiateInitialControllerWithCreator:"), block)
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("instantiateInitialControllerWithCreator:"), block)
 	return rv
 }
 
 func (sc _StoryboardClass) MainStoryboard() Storyboard {
-	rv := objc.CallMethod[Storyboard](sc, objc.GetSelector("mainStoryboard"))
+	rv := objc.CallMethod[Storyboard](sc, objc.SEL("mainStoryboard"))
 	return rv
 }

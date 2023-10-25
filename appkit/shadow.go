@@ -36,17 +36,17 @@ func MakeShadow(ptr unsafe.Pointer) Shadow {
 }
 
 func (s_ Shadow) Init() Shadow {
-	rv := objc.CallMethod[Shadow](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Shadow](s_, objc.SEL("init"))
 	return rv
 }
 
 func (sc _ShadowClass) Alloc() Shadow {
-	rv := objc.CallMethod[Shadow](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Shadow](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _ShadowClass) New() Shadow {
-	rv := objc.CallMethod[Shadow](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Shadow](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,32 +56,32 @@ func NewShadow() Shadow {
 }
 
 func (s_ Shadow) Set() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("set"))
+	objc.CallMethod[objc.Void](s_, objc.SEL("set"))
 }
 
 func (s_ Shadow) ShadowOffset() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](s_, objc.GetSelector("shadowOffset"))
+	rv := objc.CallMethod[foundation.Size](s_, objc.SEL("shadowOffset"))
 	return rv
 }
 
 func (s_ Shadow) SetShadowOffset(value foundation.Size) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowOffset:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setShadowOffset:"), value)
 }
 
 func (s_ Shadow) ShadowBlurRadius() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("shadowBlurRadius"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("shadowBlurRadius"))
 	return rv
 }
 
 func (s_ Shadow) SetShadowBlurRadius(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowBlurRadius:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setShadowBlurRadius:"), value)
 }
 
 func (s_ Shadow) ShadowColor() Color {
-	rv := objc.CallMethod[Color](s_, objc.GetSelector("shadowColor"))
+	rv := objc.CallMethod[Color](s_, objc.SEL("shadowColor"))
 	return rv
 }
 
 func (s_ Shadow) SetShadowColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShadowColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setShadowColor:"), objc.ExtractPtr(value))
 }

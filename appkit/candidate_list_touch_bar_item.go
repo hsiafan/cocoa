@@ -41,17 +41,17 @@ func MakeCandidateListTouchBarItem(ptr unsafe.Pointer) CandidateListTouchBarItem
 }
 
 func (c_ CandidateListTouchBarItem) InitWithIdentifier(identifier TouchBarItemIdentifier) CandidateListTouchBarItem {
-	rv := objc.CallMethod[CandidateListTouchBarItem](c_, objc.GetSelector("initWithIdentifier:"), identifier)
+	rv := objc.CallMethod[CandidateListTouchBarItem](c_, objc.SEL("initWithIdentifier:"), identifier)
 	return rv
 }
 
 func (cc _CandidateListTouchBarItemClass) Alloc() CandidateListTouchBarItem {
-	rv := objc.CallMethod[CandidateListTouchBarItem](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CandidateListTouchBarItem](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CandidateListTouchBarItemClass) New() CandidateListTouchBarItem {
-	rv := objc.CallMethod[CandidateListTouchBarItem](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CandidateListTouchBarItem](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,68 +61,68 @@ func NewCandidateListTouchBarItem() CandidateListTouchBarItem {
 }
 
 func (c_ CandidateListTouchBarItem) Init() CandidateListTouchBarItem {
-	rv := objc.CallMethod[CandidateListTouchBarItem](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CandidateListTouchBarItem](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CandidateListTouchBarItem) UpdateWithInsertionPointVisibility(isVisible bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateWithInsertionPointVisibility:"), isVisible)
+	objc.CallMethod[objc.Void](c_, objc.SEL("updateWithInsertionPointVisibility:"), isVisible)
 }
 
 // weak property
 func (c_ CandidateListTouchBarItem) Client() View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("client"))
+	rv := objc.CallMethod[View](c_, objc.SEL("client"))
 	return rv
 }
 
 // weak property
 func (c_ CandidateListTouchBarItem) SetClient(value IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setClient:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setClient:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (c_ CandidateListTouchBarItem) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](c_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (c_ CandidateListTouchBarItem) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](c_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (c_ CandidateListTouchBarItem) AllowsTextInputContextCandidates() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("allowsTextInputContextCandidates"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("allowsTextInputContextCandidates"))
 	return rv
 }
 
 func (c_ CandidateListTouchBarItem) SetAllowsTextInputContextCandidates(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAllowsTextInputContextCandidates:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setAllowsTextInputContextCandidates:"), value)
 }
 
 func (c_ CandidateListTouchBarItem) AllowsCollapsing() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("allowsCollapsing"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("allowsCollapsing"))
 	return rv
 }
 
 func (c_ CandidateListTouchBarItem) SetAllowsCollapsing(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setAllowsCollapsing:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setAllowsCollapsing:"), value)
 }
 
 func (c_ CandidateListTouchBarItem) IsCollapsed() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isCollapsed"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isCollapsed"))
 	return rv
 }
 
 func (c_ CandidateListTouchBarItem) SetCollapsed(value bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCollapsed:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setCollapsed:"), value)
 }
 
 func (c_ CandidateListTouchBarItem) IsCandidateListVisible() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isCandidateListVisible"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isCandidateListVisible"))
 	return rv
 }
 
 func (c_ CandidateListTouchBarItem) SetCustomizationLabel(value string) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setCustomizationLabel:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setCustomizationLabel:"), value)
 }

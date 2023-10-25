@@ -38,7 +38,7 @@ func NewAlertDelegateCreator(name string) *AlertDelegateCreator {
 }
 
 func (c *AlertDelegateCreator) SetAlertShowHelp(handle func(o objc.Object, alert Alert) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("alertShowHelp:"), handle)
+	objc.AddMethod(c.class, objc.SEL("alertShowHelp:"), handle)
 }
 
 func (c *AlertDelegateCreator) Create() objc.Object {

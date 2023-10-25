@@ -37,22 +37,22 @@ func MakeTitlebarAccessoryViewController(ptr unsafe.Pointer) TitlebarAccessoryVi
 }
 
 func (t_ TitlebarAccessoryViewController) InitWithNibName_Bundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
-	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, objc.GetSelector("initWithNibName:bundle:"), nibNameOrNil, objc.ExtractPtr(nibBundleOrNil))
+	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, objc.SEL("initWithNibName:bundle:"), nibNameOrNil, objc.ExtractPtr(nibBundleOrNil))
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) Init() TitlebarAccessoryViewController {
-	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TitlebarAccessoryViewController](t_, objc.SEL("init"))
 	return rv
 }
 
 func (tc _TitlebarAccessoryViewControllerClass) Alloc() TitlebarAccessoryViewController {
-	rv := objc.CallMethod[TitlebarAccessoryViewController](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TitlebarAccessoryViewController](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TitlebarAccessoryViewControllerClass) New() TitlebarAccessoryViewController {
-	rv := objc.CallMethod[TitlebarAccessoryViewController](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TitlebarAccessoryViewController](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -62,37 +62,37 @@ func NewTitlebarAccessoryViewController() TitlebarAccessoryViewController {
 }
 
 func (t_ TitlebarAccessoryViewController) FullScreenMinHeight() float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("fullScreenMinHeight"))
+	rv := objc.CallMethod[float64](t_, objc.SEL("fullScreenMinHeight"))
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetFullScreenMinHeight(value float64) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFullScreenMinHeight:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setFullScreenMinHeight:"), value)
 }
 
 func (t_ TitlebarAccessoryViewController) LayoutAttribute() LayoutAttribute {
-	rv := objc.CallMethod[LayoutAttribute](t_, objc.GetSelector("layoutAttribute"))
+	rv := objc.CallMethod[LayoutAttribute](t_, objc.SEL("layoutAttribute"))
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetLayoutAttribute(value LayoutAttribute) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutAttribute:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLayoutAttribute:"), value)
 }
 
 func (t_ TitlebarAccessoryViewController) AutomaticallyAdjustsSize() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("automaticallyAdjustsSize"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("automaticallyAdjustsSize"))
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetAutomaticallyAdjustsSize(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutomaticallyAdjustsSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAutomaticallyAdjustsSize:"), value)
 }
 
 func (t_ TitlebarAccessoryViewController) IsHidden() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isHidden"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isHidden"))
 	return rv
 }
 
 func (t_ TitlebarAccessoryViewController) SetHidden(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHidden:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setHidden:"), value)
 }

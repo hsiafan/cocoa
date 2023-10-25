@@ -96,27 +96,27 @@ func NewCollectionViewDelegateFlowLayoutCreator(name string) *CollectionViewDele
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_SizeForItemAtIndexPath(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, indexPath foundation.IndexPath) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:layout:sizeForItemAtIndexPath:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:layout:sizeForItemAtIndexPath:"), handle)
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_InsetForSectionAtIndex(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.EdgeInsets) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:layout:insetForSectionAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:layout:insetForSectionAtIndex:"), handle)
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_MinimumLineSpacingForSectionAtIndex(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), handle)
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_MinimumInteritemSpacingForSectionAtIndex(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), handle)
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_ReferenceSizeForHeaderInSection(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:layout:referenceSizeForHeaderInSection:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:layout:referenceSizeForHeaderInSection:"), handle)
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_ReferenceSizeForFooterInSection(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:layout:referenceSizeForFooterInSection:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:layout:referenceSizeForFooterInSection:"), handle)
 }
 
 func (c *CollectionViewDelegateFlowLayoutCreator) Create() objc.Object {

@@ -112,7 +112,7 @@ func (o Object) ConformsToProtocol(protocol Protocol) bool {
 }
 
 func (o Object) Bind(binding string, toObject IObject, keyPath string, options map[string]IObject) {
-	CallMethod[Void](o, GetSelector("bind:toObject:withKeyPath:options:"), binding, toObject, keyPath, options)
+	CallMethod[Void](o, SEL("bind:toObject:withKeyPath:options:"), binding, toObject, keyPath, options)
 }
 
 func (o Object) IsProxy() bool {

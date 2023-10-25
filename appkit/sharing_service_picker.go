@@ -33,17 +33,17 @@ func MakeSharingServicePicker(ptr unsafe.Pointer) SharingServicePicker {
 }
 
 func (s_ SharingServicePicker) InitWithItems(items []objc.IObject) SharingServicePicker {
-	rv := objc.CallMethod[SharingServicePicker](s_, objc.GetSelector("initWithItems:"), items)
+	rv := objc.CallMethod[SharingServicePicker](s_, objc.SEL("initWithItems:"), items)
 	return rv
 }
 
 func (sc _SharingServicePickerClass) Alloc() SharingServicePicker {
-	rv := objc.CallMethod[SharingServicePicker](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[SharingServicePicker](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _SharingServicePickerClass) New() SharingServicePicker {
-	rv := objc.CallMethod[SharingServicePicker](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[SharingServicePicker](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,26 +53,26 @@ func NewSharingServicePicker() SharingServicePicker {
 }
 
 func (s_ SharingServicePicker) Init() SharingServicePicker {
-	rv := objc.CallMethod[SharingServicePicker](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[SharingServicePicker](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ SharingServicePicker) ShowRelativeToRect_OfView_PreferredEdge(rect foundation.Rect, view IView, preferredEdge foundation.RectEdge) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("showRelativeToRect:ofView:preferredEdge:"), rect, objc.ExtractPtr(view), preferredEdge)
+	objc.CallMethod[objc.Void](s_, objc.SEL("showRelativeToRect:ofView:preferredEdge:"), rect, objc.ExtractPtr(view), preferredEdge)
 }
 
 // weak property
 func (s_ SharingServicePicker) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (s_ SharingServicePicker) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (s_ SharingServicePicker) StandardShareMenuItem() MenuItem {
-	rv := objc.CallMethod[MenuItem](s_, objc.GetSelector("standardShareMenuItem"))
+	rv := objc.CallMethod[MenuItem](s_, objc.SEL("standardShareMenuItem"))
 	return rv
 }

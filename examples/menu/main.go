@@ -71,13 +71,13 @@ func setMainMenu(app appkit.Application) {
 	menu.AddItem(appkit.NewSubMenuItem(mainMenu))
 
 	testMenu := appkit.MenuClass.Alloc().InitWithTitle("Edit")
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Select All", "a", objc.GetSelector("selectAll:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Select All", "a", objc.SEL("selectAll:")))
 	testMenu.AddItem(appkit.MenuItemClass.SeparatorItem())
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Copy", "c", objc.GetSelector("copy:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Paste", "v", objc.GetSelector("paste:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Cut", "x", objc.GetSelector("cut:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Undo", "z", objc.GetSelector("undo:")))
-	testMenu.AddItem(appkit.NewMenuItemWithSelector("Redo", "Z", objc.GetSelector("redo:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Copy", "c", objc.SEL("copy:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Paste", "v", objc.SEL("paste:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Cut", "x", objc.SEL("cut:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Undo", "z", objc.SEL("undo:")))
+	testMenu.AddItem(appkit.NewMenuItemWithSelector("Redo", "Z", objc.SEL("redo:")))
 	menu.AddItem(appkit.NewSubMenuItem(testMenu))
 }
 

@@ -72,32 +72,32 @@ func MakeBundle(ptr unsafe.Pointer) Bundle {
 }
 
 func (bc _BundleClass) BundleWithURL(url IURL) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithURL:"), objc.ExtractPtr(url))
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("bundleWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
 func (bc _BundleClass) BundleWithPath(path string) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithPath:"), path)
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("bundleWithPath:"), path)
 	return rv
 }
 
 func (b_ Bundle) InitWithURL(url IURL) Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(url))
+	rv := objc.CallMethod[Bundle](b_, objc.SEL("initWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
 func (b_ Bundle) InitWithPath(path string) Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("initWithPath:"), path)
+	rv := objc.CallMethod[Bundle](b_, objc.SEL("initWithPath:"), path)
 	return rv
 }
 
 func (bc _BundleClass) Alloc() Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("alloc"))
 	return rv
 }
 
 func (bc _BundleClass) New() Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -107,271 +107,271 @@ func NewBundle() Bundle {
 }
 
 func (b_ Bundle) Init() Bundle {
-	rv := objc.CallMethod[Bundle](b_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Bundle](b_, objc.SEL("init"))
 	return rv
 }
 
 func (bc _BundleClass) BundleForClass(aClass objc.IClass) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleForClass:"), objc.ExtractPtr(aClass))
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("bundleForClass:"), objc.ExtractPtr(aClass))
 	return rv
 }
 
 func (bc _BundleClass) BundleWithIdentifier(identifier string) Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("bundleWithIdentifier:"), identifier)
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("bundleWithIdentifier:"), identifier)
 	return rv
 }
 
 func (b_ Bundle) URLForResource_WithExtension_Subdirectory(name string, ext string, subpath string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForResource:withExtension:subdirectory:"), name, ext, subpath)
+	rv := objc.CallMethod[URL](b_, objc.SEL("URLForResource:withExtension:subdirectory:"), name, ext, subpath)
 	return rv
 }
 
 func (b_ Bundle) URLForResource_WithExtension(name string, ext string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForResource:withExtension:"), name, ext)
+	rv := objc.CallMethod[URL](b_, objc.SEL("URLForResource:withExtension:"), name, ext)
 	return rv
 }
 
 func (b_ Bundle) URLsForResourcesWithExtension_Subdirectory(ext string, subpath string) []URL {
-	rv := objc.CallMethod[[]URL](b_, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:"), ext, subpath)
+	rv := objc.CallMethod[[]URL](b_, objc.SEL("URLsForResourcesWithExtension:subdirectory:"), ext, subpath)
 	return rv
 }
 
 func (b_ Bundle) URLForResource_WithExtension_Subdirectory_Localization(name string, ext string, subpath string, localizationName string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForResource:withExtension:subdirectory:localization:"), name, ext, subpath, localizationName)
+	rv := objc.CallMethod[URL](b_, objc.SEL("URLForResource:withExtension:subdirectory:localization:"), name, ext, subpath, localizationName)
 	return rv
 }
 
 func (b_ Bundle) URLsForResourcesWithExtension_Subdirectory_Localization(ext string, subpath string, localizationName string) []URL {
-	rv := objc.CallMethod[[]URL](b_, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:localization:"), ext, subpath, localizationName)
+	rv := objc.CallMethod[[]URL](b_, objc.SEL("URLsForResourcesWithExtension:subdirectory:localization:"), ext, subpath, localizationName)
 	return rv
 }
 
 func (bc _BundleClass) URLForResource_WithExtension_Subdirectory_InBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
-	rv := objc.CallMethod[URL](bc, objc.GetSelector("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, objc.ExtractPtr(bundleURL))
+	rv := objc.CallMethod[URL](bc, objc.SEL("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, objc.ExtractPtr(bundleURL))
 	return rv
 }
 
 func (bc _BundleClass) URLsForResourcesWithExtension_Subdirectory_InBundleWithURL(ext string, subpath string, bundleURL IURL) []URL {
-	rv := objc.CallMethod[[]URL](bc, objc.GetSelector("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, objc.ExtractPtr(bundleURL))
+	rv := objc.CallMethod[[]URL](bc, objc.SEL("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, objc.ExtractPtr(bundleURL))
 	return rv
 }
 
 func (b_ Bundle) PathForResource_OfType(name string, ext string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForResource:ofType:"), name, ext)
+	rv := objc.CallMethod[string](b_, objc.SEL("pathForResource:ofType:"), name, ext)
 	return rv
 }
 
 func (b_ Bundle) PathForResource_OfType_InDirectory(name string, ext string, subpath string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForResource:ofType:inDirectory:"), name, ext, subpath)
+	rv := objc.CallMethod[string](b_, objc.SEL("pathForResource:ofType:inDirectory:"), name, ext, subpath)
 	return rv
 }
 
 func (b_ Bundle) PathForResource_OfType_InDirectory_ForLocalization(name string, ext string, subpath string, localizationName string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForResource:ofType:inDirectory:forLocalization:"), name, ext, subpath, localizationName)
+	rv := objc.CallMethod[string](b_, objc.SEL("pathForResource:ofType:inDirectory:forLocalization:"), name, ext, subpath, localizationName)
 	return rv
 }
 
 func (b_ Bundle) PathsForResourcesOfType_InDirectory(ext string, subpath string) []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("pathsForResourcesOfType:inDirectory:"), ext, subpath)
+	rv := objc.CallMethod[[]string](b_, objc.SEL("pathsForResourcesOfType:inDirectory:"), ext, subpath)
 	return rv
 }
 
 func (b_ Bundle) PathsForResourcesOfType_InDirectory_ForLocalization(ext string, subpath string, localizationName string) []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("pathsForResourcesOfType:inDirectory:forLocalization:"), ext, subpath, localizationName)
+	rv := objc.CallMethod[[]string](b_, objc.SEL("pathsForResourcesOfType:inDirectory:forLocalization:"), ext, subpath, localizationName)
 	return rv
 }
 
 func (b_ Bundle) LocalizedStringForKey_Value_Table(key string, value string, tableName string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("localizedStringForKey:value:table:"), key, value, tableName)
+	rv := objc.CallMethod[string](b_, objc.SEL("localizedStringForKey:value:table:"), key, value, tableName)
 	return rv
 }
 
 func (b_ Bundle) URLForAuxiliaryExecutable(executableName string) URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("URLForAuxiliaryExecutable:"), executableName)
+	rv := objc.CallMethod[URL](b_, objc.SEL("URLForAuxiliaryExecutable:"), executableName)
 	return rv
 }
 
 func (b_ Bundle) PathForAuxiliaryExecutable(executableName string) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("pathForAuxiliaryExecutable:"), executableName)
+	rv := objc.CallMethod[string](b_, objc.SEL("pathForAuxiliaryExecutable:"), executableName)
 	return rv
 }
 
 func (b_ Bundle) ObjectForInfoDictionaryKey(key string) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("objectForInfoDictionaryKey:"), key)
+	rv := objc.CallMethod[objc.Object](b_, objc.SEL("objectForInfoDictionaryKey:"), key)
 	return rv
 }
 
 func (bc _BundleClass) PreferredLocalizationsFromArray(localizationsArray []string) []string {
-	rv := objc.CallMethod[[]string](bc, objc.GetSelector("preferredLocalizationsFromArray:"), localizationsArray)
+	rv := objc.CallMethod[[]string](bc, objc.SEL("preferredLocalizationsFromArray:"), localizationsArray)
 	return rv
 }
 
 func (bc _BundleClass) PreferredLocalizationsFromArray_ForPreferences(localizationsArray []string, preferencesArray []string) []string {
-	rv := objc.CallMethod[[]string](bc, objc.GetSelector("preferredLocalizationsFromArray:forPreferences:"), localizationsArray, preferencesArray)
+	rv := objc.CallMethod[[]string](bc, objc.SEL("preferredLocalizationsFromArray:forPreferences:"), localizationsArray, preferencesArray)
 	return rv
 }
 
 func (b_ Bundle) ClassNamed(className string) objc.Class {
-	rv := objc.CallMethod[objc.Class](b_, objc.GetSelector("classNamed:"), className)
+	rv := objc.CallMethod[objc.Class](b_, objc.SEL("classNamed:"), className)
 	return rv
 }
 
 func (b_ Bundle) PreflightAndReturnError(error *Error) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("preflightAndReturnError:"), unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](b_, objc.SEL("preflightAndReturnError:"), unsafe.Pointer(error))
 	return rv
 }
 
 func (b_ Bundle) Load() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("load"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("load"))
 	return rv
 }
 
 func (b_ Bundle) LoadAndReturnError(error *Error) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("loadAndReturnError:"), unsafe.Pointer(error))
+	rv := objc.CallMethod[bool](b_, objc.SEL("loadAndReturnError:"), unsafe.Pointer(error))
 	return rv
 }
 
 func (b_ Bundle) Unload() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("unload"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("unload"))
 	return rv
 }
 
 func (b_ Bundle) LocalizedAttributedStringForKey_Value_Table(key string, value string, tableName string) AttributedString {
-	rv := objc.CallMethod[AttributedString](b_, objc.GetSelector("localizedAttributedStringForKey:value:table:"), key, value, tableName)
+	rv := objc.CallMethod[AttributedString](b_, objc.SEL("localizedAttributedStringForKey:value:table:"), key, value, tableName)
 	return rv
 }
 
 func (bc _BundleClass) MainBundle() Bundle {
-	rv := objc.CallMethod[Bundle](bc, objc.GetSelector("mainBundle"))
+	rv := objc.CallMethod[Bundle](bc, objc.SEL("mainBundle"))
 	return rv
 }
 
 func (bc _BundleClass) AllFrameworks() []Bundle {
-	rv := objc.CallMethod[[]Bundle](bc, objc.GetSelector("allFrameworks"))
+	rv := objc.CallMethod[[]Bundle](bc, objc.SEL("allFrameworks"))
 	return rv
 }
 
 func (bc _BundleClass) AllBundles() []Bundle {
-	rv := objc.CallMethod[[]Bundle](bc, objc.GetSelector("allBundles"))
+	rv := objc.CallMethod[[]Bundle](bc, objc.SEL("allBundles"))
 	return rv
 }
 
 func (b_ Bundle) ResourceURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("resourceURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("resourceURL"))
 	return rv
 }
 
 func (b_ Bundle) ExecutableURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("executableURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("executableURL"))
 	return rv
 }
 
 func (b_ Bundle) PrivateFrameworksURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("privateFrameworksURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("privateFrameworksURL"))
 	return rv
 }
 
 func (b_ Bundle) SharedFrameworksURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("sharedFrameworksURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("sharedFrameworksURL"))
 	return rv
 }
 
 func (b_ Bundle) BuiltInPlugInsURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("builtInPlugInsURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("builtInPlugInsURL"))
 	return rv
 }
 
 func (b_ Bundle) SharedSupportURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("sharedSupportURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("sharedSupportURL"))
 	return rv
 }
 
 func (b_ Bundle) AppStoreReceiptURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("appStoreReceiptURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("appStoreReceiptURL"))
 	return rv
 }
 
 func (b_ Bundle) ResourcePath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("resourcePath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("resourcePath"))
 	return rv
 }
 
 func (b_ Bundle) ExecutablePath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("executablePath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("executablePath"))
 	return rv
 }
 
 func (b_ Bundle) PrivateFrameworksPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("privateFrameworksPath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("privateFrameworksPath"))
 	return rv
 }
 
 func (b_ Bundle) SharedFrameworksPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("sharedFrameworksPath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("sharedFrameworksPath"))
 	return rv
 }
 
 func (b_ Bundle) BuiltInPlugInsPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("builtInPlugInsPath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("builtInPlugInsPath"))
 	return rv
 }
 
 func (b_ Bundle) SharedSupportPath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("sharedSupportPath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("sharedSupportPath"))
 	return rv
 }
 
 func (b_ Bundle) BundleURL() URL {
-	rv := objc.CallMethod[URL](b_, objc.GetSelector("bundleURL"))
+	rv := objc.CallMethod[URL](b_, objc.SEL("bundleURL"))
 	return rv
 }
 
 func (b_ Bundle) BundlePath() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("bundlePath"))
+	rv := objc.CallMethod[string](b_, objc.SEL("bundlePath"))
 	return rv
 }
 
 func (b_ Bundle) BundleIdentifier() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("bundleIdentifier"))
+	rv := objc.CallMethod[string](b_, objc.SEL("bundleIdentifier"))
 	return rv
 }
 
 func (b_ Bundle) InfoDictionary() map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](b_, objc.GetSelector("infoDictionary"))
+	rv := objc.CallMethod[map[string]objc.Object](b_, objc.SEL("infoDictionary"))
 	return rv
 }
 
 func (b_ Bundle) Localizations() []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("localizations"))
+	rv := objc.CallMethod[[]string](b_, objc.SEL("localizations"))
 	return rv
 }
 
 func (b_ Bundle) PreferredLocalizations() []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("preferredLocalizations"))
+	rv := objc.CallMethod[[]string](b_, objc.SEL("preferredLocalizations"))
 	return rv
 }
 
 func (b_ Bundle) DevelopmentLocalization() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("developmentLocalization"))
+	rv := objc.CallMethod[string](b_, objc.SEL("developmentLocalization"))
 	return rv
 }
 
 func (b_ Bundle) LocalizedInfoDictionary() map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](b_, objc.GetSelector("localizedInfoDictionary"))
+	rv := objc.CallMethod[map[string]objc.Object](b_, objc.SEL("localizedInfoDictionary"))
 	return rv
 }
 
 func (b_ Bundle) PrincipalClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](b_, objc.GetSelector("principalClass"))
+	rv := objc.CallMethod[objc.Class](b_, objc.SEL("principalClass"))
 	return rv
 }
 
 func (b_ Bundle) ExecutableArchitectures() []Number {
-	rv := objc.CallMethod[[]Number](b_, objc.GetSelector("executableArchitectures"))
+	rv := objc.CallMethod[[]Number](b_, objc.SEL("executableArchitectures"))
 	return rv
 }
 
 func (b_ Bundle) IsLoaded() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isLoaded"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("isLoaded"))
 	return rv
 }

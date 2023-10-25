@@ -29,17 +29,17 @@ func MakeCloseCommand(ptr unsafe.Pointer) CloseCommand {
 }
 
 func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
-	rv := objc.CallMethod[CloseCommand](c_, objc.GetSelector("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
+	rv := objc.CallMethod[CloseCommand](c_, objc.SEL("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
 	return rv
 }
 
 func (cc _CloseCommandClass) Alloc() CloseCommand {
-	rv := objc.CallMethod[CloseCommand](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CloseCommand](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CloseCommandClass) New() CloseCommand {
-	rv := objc.CallMethod[CloseCommand](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CloseCommand](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -49,11 +49,11 @@ func NewCloseCommand() CloseCommand {
 }
 
 func (c_ CloseCommand) Init() CloseCommand {
-	rv := objc.CallMethod[CloseCommand](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CloseCommand](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CloseCommand) SaveOptions() SaveOptions {
-	rv := objc.CallMethod[SaveOptions](c_, objc.GetSelector("saveOptions"))
+	rv := objc.CallMethod[SaveOptions](c_, objc.SEL("saveOptions"))
 	return rv
 }

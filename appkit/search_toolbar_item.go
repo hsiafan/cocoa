@@ -36,17 +36,17 @@ func MakeSearchToolbarItem(ptr unsafe.Pointer) SearchToolbarItem {
 }
 
 func (s_ SearchToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) SearchToolbarItem {
-	rv := objc.CallMethod[SearchToolbarItem](s_, objc.GetSelector("initWithItemIdentifier:"), itemIdentifier)
+	rv := objc.CallMethod[SearchToolbarItem](s_, objc.SEL("initWithItemIdentifier:"), itemIdentifier)
 	return rv
 }
 
 func (sc _SearchToolbarItemClass) Alloc() SearchToolbarItem {
-	rv := objc.CallMethod[SearchToolbarItem](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[SearchToolbarItem](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _SearchToolbarItemClass) New() SearchToolbarItem {
-	rv := objc.CallMethod[SearchToolbarItem](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[SearchToolbarItem](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,41 +56,41 @@ func NewSearchToolbarItem() SearchToolbarItem {
 }
 
 func (s_ SearchToolbarItem) Init() SearchToolbarItem {
-	rv := objc.CallMethod[SearchToolbarItem](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[SearchToolbarItem](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ SearchToolbarItem) BeginSearchInteraction() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("beginSearchInteraction"))
+	objc.CallMethod[objc.Void](s_, objc.SEL("beginSearchInteraction"))
 }
 
 func (s_ SearchToolbarItem) EndSearchInteraction() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("endSearchInteraction"))
+	objc.CallMethod[objc.Void](s_, objc.SEL("endSearchInteraction"))
 }
 
 func (s_ SearchToolbarItem) PreferredWidthForSearchField() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("preferredWidthForSearchField"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("preferredWidthForSearchField"))
 	return rv
 }
 
 func (s_ SearchToolbarItem) SetPreferredWidthForSearchField(value float64) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setPreferredWidthForSearchField:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setPreferredWidthForSearchField:"), value)
 }
 
 func (s_ SearchToolbarItem) ResignsFirstResponderWithCancel() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("resignsFirstResponderWithCancel"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("resignsFirstResponderWithCancel"))
 	return rv
 }
 
 func (s_ SearchToolbarItem) SetResignsFirstResponderWithCancel(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setResignsFirstResponderWithCancel:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setResignsFirstResponderWithCancel:"), value)
 }
 
 func (s_ SearchToolbarItem) SearchField() SearchField {
-	rv := objc.CallMethod[SearchField](s_, objc.GetSelector("searchField"))
+	rv := objc.CallMethod[SearchField](s_, objc.SEL("searchField"))
 	return rv
 }
 
 func (s_ SearchToolbarItem) SetSearchField(value ISearchField) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSearchField:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSearchField:"), objc.ExtractPtr(value))
 }

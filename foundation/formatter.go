@@ -33,12 +33,12 @@ func MakeFormatter(ptr unsafe.Pointer) Formatter {
 }
 
 func (fc _FormatterClass) Alloc() Formatter {
-	rv := objc.CallMethod[Formatter](fc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Formatter](fc, objc.SEL("alloc"))
 	return rv
 }
 
 func (fc _FormatterClass) New() Formatter {
-	rv := objc.CallMethod[Formatter](fc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Formatter](fc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,31 +48,31 @@ func NewFormatter() Formatter {
 }
 
 func (f_ Formatter) Init() Formatter {
-	rv := objc.CallMethod[Formatter](f_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Formatter](f_, objc.SEL("init"))
 	return rv
 }
 
 func (f_ Formatter) StringForObjectValue(obj objc.IObject) string {
-	rv := objc.CallMethod[string](f_, objc.GetSelector("stringForObjectValue:"), objc.ExtractPtr(obj))
+	rv := objc.CallMethod[string](f_, objc.SEL("stringForObjectValue:"), objc.ExtractPtr(obj))
 	return rv
 }
 
 func (f_ Formatter) AttributedStringForObjectValue_WithDefaultAttributes(obj objc.IObject, attrs map[AttributedStringKey]objc.IObject) AttributedString {
-	rv := objc.CallMethod[AttributedString](f_, objc.GetSelector("attributedStringForObjectValue:withDefaultAttributes:"), objc.ExtractPtr(obj), attrs)
+	rv := objc.CallMethod[AttributedString](f_, objc.SEL("attributedStringForObjectValue:withDefaultAttributes:"), objc.ExtractPtr(obj), attrs)
 	return rv
 }
 
 func (f_ Formatter) EditingStringForObjectValue(obj objc.IObject) string {
-	rv := objc.CallMethod[string](f_, objc.GetSelector("editingStringForObjectValue:"), objc.ExtractPtr(obj))
+	rv := objc.CallMethod[string](f_, objc.SEL("editingStringForObjectValue:"), objc.ExtractPtr(obj))
 	return rv
 }
 
 func (f_ Formatter) IsPartialStringValid_NewEditingString_ErrorDescription(partialString string, newString *String, error *String) bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("isPartialStringValid:newEditingString:errorDescription:"), partialString, newString, error)
+	rv := objc.CallMethod[bool](f_, objc.SEL("isPartialStringValid:newEditingString:errorDescription:"), partialString, newString, error)
 	return rv
 }
 
 func (f_ Formatter) IsPartialStringValid_ProposedSelectedRange_OriginalString_OriginalSelectedRange_ErrorDescription(partialStringPtr *String, proposedSelRangePtr *Range, origString string, origSelRange Range, error *String) bool {
-	rv := objc.CallMethod[bool](f_, objc.GetSelector("isPartialStringValid:proposedSelectedRange:originalString:originalSelectedRange:errorDescription:"), partialStringPtr, proposedSelRangePtr, origString, origSelRange, error)
+	rv := objc.CallMethod[bool](f_, objc.SEL("isPartialStringValid:proposedSelectedRange:originalString:originalSelectedRange:errorDescription:"), partialStringPtr, proposedSelRangePtr, origString, origSelRange, error)
 	return rv
 }

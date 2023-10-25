@@ -33,17 +33,17 @@ func MakeTrackingArea(ptr unsafe.Pointer) TrackingArea {
 }
 
 func (t_ TrackingArea) InitWithRect_Options_Owner_UserInfo(rect foundation.Rect, options TrackingAreaOptions, owner objc.IObject, userInfo foundation.IDictionary) TrackingArea {
-	rv := objc.CallMethod[TrackingArea](t_, objc.GetSelector("initWithRect:options:owner:userInfo:"), rect, options, objc.ExtractPtr(owner), userInfo)
+	rv := objc.CallMethod[TrackingArea](t_, objc.SEL("initWithRect:options:owner:userInfo:"), rect, options, objc.ExtractPtr(owner), userInfo)
 	return rv
 }
 
 func (tc _TrackingAreaClass) Alloc() TrackingArea {
-	rv := objc.CallMethod[TrackingArea](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TrackingArea](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TrackingAreaClass) New() TrackingArea {
-	rv := objc.CallMethod[TrackingArea](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TrackingArea](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,27 +53,27 @@ func NewTrackingArea() TrackingArea {
 }
 
 func (t_ TrackingArea) Init() TrackingArea {
-	rv := objc.CallMethod[TrackingArea](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TrackingArea](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TrackingArea) Options() TrackingAreaOptions {
-	rv := objc.CallMethod[TrackingAreaOptions](t_, objc.GetSelector("options"))
+	rv := objc.CallMethod[TrackingAreaOptions](t_, objc.SEL("options"))
 	return rv
 }
 
 // weak property
 func (t_ TrackingArea) Owner() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("owner"))
+	rv := objc.CallMethod[objc.Object](t_, objc.SEL("owner"))
 	return rv
 }
 
 func (t_ TrackingArea) Rect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("rect"))
+	rv := objc.CallMethod[foundation.Rect](t_, objc.SEL("rect"))
 	return rv
 }
 
 func (t_ TrackingArea) UserInfo() foundation.Dictionary {
-	rv := objc.CallMethod[foundation.Dictionary](t_, objc.GetSelector("userInfo"))
+	rv := objc.CallMethod[foundation.Dictionary](t_, objc.SEL("userInfo"))
 	return rv
 }

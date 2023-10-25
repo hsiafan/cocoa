@@ -74,19 +74,19 @@ func NewComboBoxDelegateCreator(name string) *ComboBoxDelegateCreator {
 }
 
 func (c *ComboBoxDelegateCreator) SetComboBoxSelectionDidChange(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("comboBoxSelectionDidChange:"), handle)
+	objc.AddMethod(c.class, objc.SEL("comboBoxSelectionDidChange:"), handle)
 }
 
 func (c *ComboBoxDelegateCreator) SetComboBoxSelectionIsChanging(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("comboBoxSelectionIsChanging:"), handle)
+	objc.AddMethod(c.class, objc.SEL("comboBoxSelectionIsChanging:"), handle)
 }
 
 func (c *ComboBoxDelegateCreator) SetComboBoxWillDismiss(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("comboBoxWillDismiss:"), handle)
+	objc.AddMethod(c.class, objc.SEL("comboBoxWillDismiss:"), handle)
 }
 
 func (c *ComboBoxDelegateCreator) SetComboBoxWillPopUp(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("comboBoxWillPopUp:"), handle)
+	objc.AddMethod(c.class, objc.SEL("comboBoxWillPopUp:"), handle)
 }
 
 func (c *ComboBoxDelegateCreator) Create() objc.Object {

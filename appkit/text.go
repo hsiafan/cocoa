@@ -99,22 +99,22 @@ func MakeText(ptr unsafe.Pointer) Text {
 }
 
 func (t_ Text) InitWithFrame(frameRect foundation.Rect) Text {
-	rv := objc.CallMethod[Text](t_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[Text](t_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (t_ Text) Init() Text {
-	rv := objc.CallMethod[Text](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Text](t_, objc.SEL("init"))
 	return rv
 }
 
 func (tc _TextClass) Alloc() Text {
-	rv := objc.CallMethod[Text](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Text](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextClass) New() Text {
-	rv := objc.CallMethod[Text](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Text](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -124,307 +124,307 @@ func NewText() Text {
 }
 
 func (t_ Text) ToggleRuler(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("toggleRuler:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("toggleRuler:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) ReplaceCharactersInRange_WithRTF(range_ foundation.Range, rtfData []byte) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceCharactersInRange:withRTF:"), range_, rtfData)
+	objc.CallMethod[objc.Void](t_, objc.SEL("replaceCharactersInRange:withRTF:"), range_, rtfData)
 }
 
 func (t_ Text) ReplaceCharactersInRange_WithRTFD(range_ foundation.Range, rtfdData []byte) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceCharactersInRange:withRTFD:"), range_, rtfdData)
+	objc.CallMethod[objc.Void](t_, objc.SEL("replaceCharactersInRange:withRTFD:"), range_, rtfdData)
 }
 
 func (t_ Text) ReplaceCharactersInRange_WithString(range_ foundation.Range, string_ string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceCharactersInRange:withString:"), range_, string_)
+	objc.CallMethod[objc.Void](t_, objc.SEL("replaceCharactersInRange:withString:"), range_, string_)
 }
 
 func (t_ Text) SelectAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectAll:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("selectAll:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Copy(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("copy:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("copy:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Cut(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("cut:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("cut:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Paste(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("paste:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("paste:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) CopyFont(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("copyFont:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("copyFont:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) PasteFont(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("pasteFont:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("pasteFont:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) CopyRuler(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("copyRuler:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("copyRuler:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) PasteRuler(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("pasteRuler:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("pasteRuler:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Delete(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("delete:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("delete:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) ChangeFont(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("changeFont:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("changeFont:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) SetFont_Range(font IFont, range_ foundation.Range) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:range:"), objc.ExtractPtr(font), range_)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setFont:range:"), objc.ExtractPtr(font), range_)
 }
 
 func (t_ Text) AlignCenter(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("alignCenter:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("alignCenter:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) AlignLeft(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("alignLeft:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("alignLeft:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) AlignRight(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("alignRight:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("alignRight:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) SetTextColor_Range(color IColor, range_ foundation.Range) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:range:"), objc.ExtractPtr(color), range_)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTextColor:range:"), objc.ExtractPtr(color), range_)
 }
 
 func (t_ Text) Superscript(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("superscript:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("superscript:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Subscript(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("subscript:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("subscript:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Unscript(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("unscript:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("unscript:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) Underline(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("underline:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("underline:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) ReadRTFDFromFile(path string) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("readRTFDFromFile:"), path)
+	rv := objc.CallMethod[bool](t_, objc.SEL("readRTFDFromFile:"), path)
 	return rv
 }
 
 func (t_ Text) WriteRTFDToFile_Atomically(path string, flag bool) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("writeRTFDToFile:atomically:"), path, flag)
+	rv := objc.CallMethod[bool](t_, objc.SEL("writeRTFDToFile:atomically:"), path, flag)
 	return rv
 }
 
 func (t_ Text) RTFDFromRange(range_ foundation.Range) []byte {
-	rv := objc.CallMethod[[]byte](t_, objc.GetSelector("RTFDFromRange:"), range_)
+	rv := objc.CallMethod[[]byte](t_, objc.SEL("RTFDFromRange:"), range_)
 	return rv
 }
 
 func (t_ Text) RTFFromRange(range_ foundation.Range) []byte {
-	rv := objc.CallMethod[[]byte](t_, objc.GetSelector("RTFFromRange:"), range_)
+	rv := objc.CallMethod[[]byte](t_, objc.SEL("RTFFromRange:"), range_)
 	return rv
 }
 
 func (t_ Text) CheckSpelling(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("checkSpelling:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("checkSpelling:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) ShowGuessPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("showGuessPanel:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("showGuessPanel:"), objc.ExtractPtr(sender))
 }
 
 func (t_ Text) SizeToFit() {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("sizeToFit"))
+	objc.CallMethod[objc.Void](t_, objc.SEL("sizeToFit"))
 }
 
 func (t_ Text) ScrollRangeToVisible(range_ foundation.Range) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("scrollRangeToVisible:"), range_)
+	objc.CallMethod[objc.Void](t_, objc.SEL("scrollRangeToVisible:"), range_)
 }
 
 func (t_ Text) String() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("string"))
+	rv := objc.CallMethod[string](t_, objc.SEL("string"))
 	return rv
 }
 
 func (t_ Text) SetString(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setString:"), value)
 }
 
 func (t_ Text) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](t_, objc.GetSelector("backgroundColor"))
+	rv := objc.CallMethod[Color](t_, objc.SEL("backgroundColor"))
 	return rv
 }
 
 func (t_ Text) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ Text) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("drawsBackground"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("drawsBackground"))
 	return rv
 }
 
 func (t_ Text) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDrawsBackground:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setDrawsBackground:"), value)
 }
 
 func (t_ Text) IsEditable() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEditable"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isEditable"))
 	return rv
 }
 
 func (t_ Text) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setEditable:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setEditable:"), value)
 }
 
 func (t_ Text) IsSelectable() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isSelectable"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isSelectable"))
 	return rv
 }
 
 func (t_ Text) SetSelectable(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSelectable:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setSelectable:"), value)
 }
 
 func (t_ Text) IsFieldEditor() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isFieldEditor"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isFieldEditor"))
 	return rv
 }
 
 func (t_ Text) SetFieldEditor(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFieldEditor:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setFieldEditor:"), value)
 }
 
 func (t_ Text) IsRichText() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isRichText"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isRichText"))
 	return rv
 }
 
 func (t_ Text) SetRichText(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setRichText:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setRichText:"), value)
 }
 
 func (t_ Text) ImportsGraphics() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("importsGraphics"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("importsGraphics"))
 	return rv
 }
 
 func (t_ Text) SetImportsGraphics(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImportsGraphics:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setImportsGraphics:"), value)
 }
 
 func (t_ Text) UsesFontPanel() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("usesFontPanel"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("usesFontPanel"))
 	return rv
 }
 
 func (t_ Text) SetUsesFontPanel(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setUsesFontPanel:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setUsesFontPanel:"), value)
 }
 
 func (t_ Text) IsRulerVisible() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isRulerVisible"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isRulerVisible"))
 	return rv
 }
 
 func (t_ Text) SelectedRange() foundation.Range {
-	rv := objc.CallMethod[foundation.Range](t_, objc.GetSelector("selectedRange"))
+	rv := objc.CallMethod[foundation.Range](t_, objc.SEL("selectedRange"))
 	return rv
 }
 
 func (t_ Text) SetSelectedRange(value foundation.Range) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSelectedRange:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setSelectedRange:"), value)
 }
 
 func (t_ Text) Font() Font {
-	rv := objc.CallMethod[Font](t_, objc.GetSelector("font"))
+	rv := objc.CallMethod[Font](t_, objc.SEL("font"))
 	return rv
 }
 
 func (t_ Text) SetFont(value IFont) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setFont:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setFont:"), objc.ExtractPtr(value))
 }
 
 func (t_ Text) Alignment() TextAlignment {
-	rv := objc.CallMethod[TextAlignment](t_, objc.GetSelector("alignment"))
+	rv := objc.CallMethod[TextAlignment](t_, objc.SEL("alignment"))
 	return rv
 }
 
 func (t_ Text) SetAlignment(value TextAlignment) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAlignment:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAlignment:"), value)
 }
 
 func (t_ Text) TextColor() Color {
-	rv := objc.CallMethod[Color](t_, objc.GetSelector("textColor"))
+	rv := objc.CallMethod[Color](t_, objc.SEL("textColor"))
 	return rv
 }
 
 func (t_ Text) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTextColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ Text) BaseWritingDirection() WritingDirection {
-	rv := objc.CallMethod[WritingDirection](t_, objc.GetSelector("baseWritingDirection"))
+	rv := objc.CallMethod[WritingDirection](t_, objc.SEL("baseWritingDirection"))
 	return rv
 }
 
 func (t_ Text) SetBaseWritingDirection(value WritingDirection) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBaseWritingDirection:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBaseWritingDirection:"), value)
 }
 
 func (t_ Text) MaxSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("maxSize"))
+	rv := objc.CallMethod[foundation.Size](t_, objc.SEL("maxSize"))
 	return rv
 }
 
 func (t_ Text) SetMaxSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMaxSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMaxSize:"), value)
 }
 
 func (t_ Text) MinSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("minSize"))
+	rv := objc.CallMethod[foundation.Size](t_, objc.SEL("minSize"))
 	return rv
 }
 
 func (t_ Text) SetMinSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMinSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMinSize:"), value)
 }
 
 func (t_ Text) IsVerticallyResizable() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isVerticallyResizable"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isVerticallyResizable"))
 	return rv
 }
 
 func (t_ Text) SetVerticallyResizable(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setVerticallyResizable:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setVerticallyResizable:"), value)
 }
 
 func (t_ Text) IsHorizontallyResizable() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isHorizontallyResizable"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isHorizontallyResizable"))
 	return rv
 }
 
 func (t_ Text) SetHorizontallyResizable(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHorizontallyResizable:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setHorizontallyResizable:"), value)
 }
 
 // weak property
 func (t_ Text) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](t_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (t_ Text) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }

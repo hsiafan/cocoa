@@ -59,22 +59,22 @@ func MakeTextContainer(ptr unsafe.Pointer) TextContainer {
 }
 
 func (t_ TextContainer) InitWithSize(size foundation.Size) TextContainer {
-	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("initWithSize:"), size)
+	rv := objc.CallMethod[TextContainer](t_, objc.SEL("initWithSize:"), size)
 	return rv
 }
 
 func (t_ TextContainer) InitWithContainerSize(aContainerSize foundation.Size) TextContainer {
-	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("initWithContainerSize:"), aContainerSize)
+	rv := objc.CallMethod[TextContainer](t_, objc.SEL("initWithContainerSize:"), aContainerSize)
 	return rv
 }
 
 func (tc _TextContainerClass) Alloc() TextContainer {
-	rv := objc.CallMethod[TextContainer](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TextContainer](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextContainerClass) New() TextContainer {
-	rv := objc.CallMethod[TextContainer](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TextContainer](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -84,134 +84,134 @@ func NewTextContainer() TextContainer {
 }
 
 func (t_ TextContainer) Init() TextContainer {
-	rv := objc.CallMethod[TextContainer](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TextContainer](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TextContainer) ReplaceLayoutManager(newLayoutManager ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("replaceLayoutManager:"), objc.ExtractPtr(newLayoutManager))
+	objc.CallMethod[objc.Void](t_, objc.SEL("replaceLayoutManager:"), objc.ExtractPtr(newLayoutManager))
 }
 
 func (t_ TextContainer) LineFragmentRectForProposedRect_AtIndex_WritingDirection_RemainingRect(proposedRect foundation.Rect, characterIndex uint, baseWritingDirection WritingDirection, remainingRect *foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect:"), proposedRect, characterIndex, baseWritingDirection, remainingRect)
+	rv := objc.CallMethod[foundation.Rect](t_, objc.SEL("lineFragmentRectForProposedRect:atIndex:writingDirection:remainingRect:"), proposedRect, characterIndex, baseWritingDirection, remainingRect)
 	return rv
 }
 
 // deprecated
 func (t_ TextContainer) LineFragmentRectForProposedRect_SweepDirection_MovementDirection_RemainingRect(proposedRect foundation.Rect, sweepDirection LineSweepDirection, movementDirection LineMovementDirection, remainingRect *foundation.Rect) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](t_, objc.GetSelector("lineFragmentRectForProposedRect:sweepDirection:movementDirection:remainingRect:"), proposedRect, sweepDirection, movementDirection, remainingRect)
+	rv := objc.CallMethod[foundation.Rect](t_, objc.SEL("lineFragmentRectForProposedRect:sweepDirection:movementDirection:remainingRect:"), proposedRect, sweepDirection, movementDirection, remainingRect)
 	return rv
 }
 
 // deprecated
 func (t_ TextContainer) ContainsPoint(point foundation.Point) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("containsPoint:"), point)
+	rv := objc.CallMethod[bool](t_, objc.SEL("containsPoint:"), point)
 	return rv
 }
 
 // weak property
 func (t_ TextContainer) LayoutManager() LayoutManager {
-	rv := objc.CallMethod[LayoutManager](t_, objc.GetSelector("layoutManager"))
+	rv := objc.CallMethod[LayoutManager](t_, objc.SEL("layoutManager"))
 	return rv
 }
 
 // weak property
 func (t_ TextContainer) SetLayoutManager(value ILayoutManager) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLayoutManager:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (t_ TextContainer) TextLayoutManager() TextLayoutManager {
-	rv := objc.CallMethod[TextLayoutManager](t_, objc.GetSelector("textLayoutManager"))
+	rv := objc.CallMethod[TextLayoutManager](t_, objc.SEL("textLayoutManager"))
 	return rv
 }
 
 // weak property
 func (t_ TextContainer) TextView() TextView {
-	rv := objc.CallMethod[TextView](t_, objc.GetSelector("textView"))
+	rv := objc.CallMethod[TextView](t_, objc.SEL("textView"))
 	return rv
 }
 
 // weak property
 func (t_ TextContainer) SetTextView(value ITextView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTextView:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextContainer) Size() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("size"))
+	rv := objc.CallMethod[foundation.Size](t_, objc.SEL("size"))
 	return rv
 }
 
 func (t_ TextContainer) SetSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setSize:"), value)
 }
 
 func (t_ TextContainer) ExclusionPaths() []BezierPath {
-	rv := objc.CallMethod[[]BezierPath](t_, objc.GetSelector("exclusionPaths"))
+	rv := objc.CallMethod[[]BezierPath](t_, objc.SEL("exclusionPaths"))
 	return rv
 }
 
 func (t_ TextContainer) SetExclusionPaths(value []IBezierPath) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setExclusionPaths:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setExclusionPaths:"), value)
 }
 
 func (t_ TextContainer) LineBreakMode() LineBreakMode {
-	rv := objc.CallMethod[LineBreakMode](t_, objc.GetSelector("lineBreakMode"))
+	rv := objc.CallMethod[LineBreakMode](t_, objc.SEL("lineBreakMode"))
 	return rv
 }
 
 func (t_ TextContainer) SetLineBreakMode(value LineBreakMode) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLineBreakMode:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLineBreakMode:"), value)
 }
 
 func (t_ TextContainer) WidthTracksTextView() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("widthTracksTextView"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("widthTracksTextView"))
 	return rv
 }
 
 func (t_ TextContainer) SetWidthTracksTextView(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setWidthTracksTextView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setWidthTracksTextView:"), value)
 }
 
 func (t_ TextContainer) HeightTracksTextView() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("heightTracksTextView"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("heightTracksTextView"))
 	return rv
 }
 
 func (t_ TextContainer) SetHeightTracksTextView(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setHeightTracksTextView:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setHeightTracksTextView:"), value)
 }
 
 func (t_ TextContainer) MaximumNumberOfLines() uint {
-	rv := objc.CallMethod[uint](t_, objc.GetSelector("maximumNumberOfLines"))
+	rv := objc.CallMethod[uint](t_, objc.SEL("maximumNumberOfLines"))
 	return rv
 }
 
 func (t_ TextContainer) SetMaximumNumberOfLines(value uint) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMaximumNumberOfLines:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMaximumNumberOfLines:"), value)
 }
 
 func (t_ TextContainer) LineFragmentPadding() float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("lineFragmentPadding"))
+	rv := objc.CallMethod[float64](t_, objc.SEL("lineFragmentPadding"))
 	return rv
 }
 
 func (t_ TextContainer) SetLineFragmentPadding(value float64) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLineFragmentPadding:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLineFragmentPadding:"), value)
 }
 
 func (t_ TextContainer) IsSimpleRectangularTextContainer() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isSimpleRectangularTextContainer"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isSimpleRectangularTextContainer"))
 	return rv
 }
 
 // deprecated
 func (t_ TextContainer) ContainerSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("containerSize"))
+	rv := objc.CallMethod[foundation.Size](t_, objc.SEL("containerSize"))
 	return rv
 }
 
 // deprecated
 func (t_ TextContainer) SetContainerSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setContainerSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setContainerSize:"), value)
 }

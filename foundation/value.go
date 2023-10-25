@@ -40,17 +40,17 @@ func MakeValue(ptr unsafe.Pointer) Value {
 }
 
 func (v_ Value) InitWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Value {
-	rv := objc.CallMethod[Value](v_, objc.GetSelector("initWithBytes:objCType:"), value, type_)
+	rv := objc.CallMethod[Value](v_, objc.SEL("initWithBytes:objCType:"), value, type_)
 	return rv
 }
 
 func (vc _ValueClass) Alloc() Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Value](vc, objc.SEL("alloc"))
 	return rv
 }
 
 func (vc _ValueClass) New() Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Value](vc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -60,105 +60,105 @@ func NewValue() Value {
 }
 
 func (v_ Value) Init() Value {
-	rv := objc.CallMethod[Value](v_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Value](v_, objc.SEL("init"))
 	return rv
 }
 
 func (vc _ValueClass) ValueWithBytes_ObjCType(value unsafe.Pointer, type_ *byte) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithBytes:objCType:"), value, type_)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithBytes:objCType:"), value, type_)
 	return rv
 }
 
 func (vc _ValueClass) Value_WithObjCType(value unsafe.Pointer, type_ *byte) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("value:withObjCType:"), value, type_)
+	rv := objc.CallMethod[Value](vc, objc.SEL("value:withObjCType:"), value, type_)
 	return rv
 }
 
 // deprecated
 func (v_ Value) GetValue(value unsafe.Pointer) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("getValue:"), value)
+	objc.CallMethod[objc.Void](v_, objc.SEL("getValue:"), value)
 }
 
 func (vc _ValueClass) ValueWithPointer(pointer unsafe.Pointer) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithPointer:"), pointer)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithPointer:"), pointer)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithNonretainedObject(anObject objc.IObject) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithNonretainedObject:"), objc.ExtractPtr(anObject))
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithNonretainedObject:"), objc.ExtractPtr(anObject))
 	return rv
 }
 
 func (vc _ValueClass) ValueWithRange(range_ Range) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithRange:"), range_)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithRange:"), range_)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithPoint(point Point) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithPoint:"), point)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithPoint:"), point)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithSize(size Size) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithSize:"), size)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithSize:"), size)
 	return rv
 }
 
 func (vc _ValueClass) ValueWithRect(rect Rect) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithRect:"), rect)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithRect:"), rect)
 	return rv
 }
 
 func (v_ Value) IsEqualToValue(value IValue) bool {
-	rv := objc.CallMethod[bool](v_, objc.GetSelector("isEqualToValue:"), objc.ExtractPtr(value))
+	rv := objc.CallMethod[bool](v_, objc.SEL("isEqualToValue:"), objc.ExtractPtr(value))
 	return rv
 }
 
 func (vc _ValueClass) ValueWithEdgeInsets(insets EdgeInsets) Value {
-	rv := objc.CallMethod[Value](vc, objc.GetSelector("valueWithEdgeInsets:"), insets)
+	rv := objc.CallMethod[Value](vc, objc.SEL("valueWithEdgeInsets:"), insets)
 	return rv
 }
 
 func (v_ Value) GetValue_Size(value unsafe.Pointer, size uint) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("getValue:size:"), value, size)
+	objc.CallMethod[objc.Void](v_, objc.SEL("getValue:size:"), value, size)
 }
 
 func (v_ Value) ObjCType() *byte {
-	rv := objc.CallMethod[*byte](v_, objc.GetSelector("objCType"))
+	rv := objc.CallMethod[*byte](v_, objc.SEL("objCType"))
 	return rv
 }
 
 func (v_ Value) PointerValue() unsafe.Pointer {
-	rv := objc.CallMethod[unsafe.Pointer](v_, objc.GetSelector("pointerValue"))
+	rv := objc.CallMethod[unsafe.Pointer](v_, objc.SEL("pointerValue"))
 	return rv
 }
 
 func (v_ Value) NonretainedObjectValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](v_, objc.GetSelector("nonretainedObjectValue"))
+	rv := objc.CallMethod[objc.Object](v_, objc.SEL("nonretainedObjectValue"))
 	return rv
 }
 
 func (v_ Value) RangeValue() Range {
-	rv := objc.CallMethod[Range](v_, objc.GetSelector("rangeValue"))
+	rv := objc.CallMethod[Range](v_, objc.SEL("rangeValue"))
 	return rv
 }
 
 func (v_ Value) PointValue() Point {
-	rv := objc.CallMethod[Point](v_, objc.GetSelector("pointValue"))
+	rv := objc.CallMethod[Point](v_, objc.SEL("pointValue"))
 	return rv
 }
 
 func (v_ Value) SizeValue() Size {
-	rv := objc.CallMethod[Size](v_, objc.GetSelector("sizeValue"))
+	rv := objc.CallMethod[Size](v_, objc.SEL("sizeValue"))
 	return rv
 }
 
 func (v_ Value) RectValue() Rect {
-	rv := objc.CallMethod[Rect](v_, objc.GetSelector("rectValue"))
+	rv := objc.CallMethod[Rect](v_, objc.SEL("rectValue"))
 	return rv
 }
 
 func (v_ Value) EdgeInsetsValue() EdgeInsets {
-	rv := objc.CallMethod[EdgeInsets](v_, objc.GetSelector("edgeInsetsValue"))
+	rv := objc.CallMethod[EdgeInsets](v_, objc.SEL("edgeInsetsValue"))
 	return rv
 }

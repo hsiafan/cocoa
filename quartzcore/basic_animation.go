@@ -34,22 +34,22 @@ func MakeBasicAnimation(ptr unsafe.Pointer) BasicAnimation {
 }
 
 func (bc _BasicAnimationClass) AnimationWithKeyPath(path string) BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("animationWithKeyPath:"), path)
+	rv := objc.CallMethod[BasicAnimation](bc, objc.SEL("animationWithKeyPath:"), path)
 	return rv
 }
 
 func (bc _BasicAnimationClass) Animation() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("animation"))
+	rv := objc.CallMethod[BasicAnimation](bc, objc.SEL("animation"))
 	return rv
 }
 
 func (bc _BasicAnimationClass) Alloc() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[BasicAnimation](bc, objc.SEL("alloc"))
 	return rv
 }
 
 func (bc _BasicAnimationClass) New() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](bc, objc.GetSelector("new"))
+	rv := objc.CallMethod[BasicAnimation](bc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -59,33 +59,33 @@ func NewBasicAnimation() BasicAnimation {
 }
 
 func (b_ BasicAnimation) Init() BasicAnimation {
-	rv := objc.CallMethod[BasicAnimation](b_, objc.GetSelector("init"))
+	rv := objc.CallMethod[BasicAnimation](b_, objc.SEL("init"))
 	return rv
 }
 
 func (b_ BasicAnimation) FromValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("fromValue"))
+	rv := objc.CallMethod[objc.Object](b_, objc.SEL("fromValue"))
 	return rv
 }
 
 func (b_ BasicAnimation) SetFromValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFromValue:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setFromValue:"), objc.ExtractPtr(value))
 }
 
 func (b_ BasicAnimation) ToValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("toValue"))
+	rv := objc.CallMethod[objc.Object](b_, objc.SEL("toValue"))
 	return rv
 }
 
 func (b_ BasicAnimation) SetToValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setToValue:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setToValue:"), objc.ExtractPtr(value))
 }
 
 func (b_ BasicAnimation) ByValue() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("byValue"))
+	rv := objc.CallMethod[objc.Object](b_, objc.SEL("byValue"))
 	return rv
 }
 
 func (b_ BasicAnimation) SetByValue(value objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setByValue:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setByValue:"), objc.ExtractPtr(value))
 }

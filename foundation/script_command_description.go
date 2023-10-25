@@ -36,12 +36,12 @@ func MakeScriptCommandDescription(ptr unsafe.Pointer) ScriptCommandDescription {
 }
 
 func (sc _ScriptCommandDescriptionClass) Alloc() ScriptCommandDescription {
-	rv := objc.CallMethod[ScriptCommandDescription](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ScriptCommandDescription](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _ScriptCommandDescriptionClass) New() ScriptCommandDescription {
-	rv := objc.CallMethod[ScriptCommandDescription](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ScriptCommandDescription](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -51,46 +51,46 @@ func NewScriptCommandDescription() ScriptCommandDescription {
 }
 
 func (s_ ScriptCommandDescription) Init() ScriptCommandDescription {
-	rv := objc.CallMethod[ScriptCommandDescription](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ScriptCommandDescription](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ ScriptCommandDescription) IsOptionalArgumentWithName(argumentName string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isOptionalArgumentWithName:"), argumentName)
+	rv := objc.CallMethod[bool](s_, objc.SEL("isOptionalArgumentWithName:"), argumentName)
 	return rv
 }
 
 func (s_ ScriptCommandDescription) TypeForArgumentWithName(argumentName string) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("typeForArgumentWithName:"), argumentName)
+	rv := objc.CallMethod[string](s_, objc.SEL("typeForArgumentWithName:"), argumentName)
 	return rv
 }
 
 func (s_ ScriptCommandDescription) CreateCommandInstance() ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](s_, objc.GetSelector("createCommandInstance"))
+	rv := objc.CallMethod[ScriptCommand](s_, objc.SEL("createCommandInstance"))
 	return rv
 }
 
 func (s_ ScriptCommandDescription) CommandClassName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("commandClassName"))
+	rv := objc.CallMethod[string](s_, objc.SEL("commandClassName"))
 	return rv
 }
 
 func (s_ ScriptCommandDescription) CommandName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("commandName"))
+	rv := objc.CallMethod[string](s_, objc.SEL("commandName"))
 	return rv
 }
 
 func (s_ ScriptCommandDescription) SuiteName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("suiteName"))
+	rv := objc.CallMethod[string](s_, objc.SEL("suiteName"))
 	return rv
 }
 
 func (s_ ScriptCommandDescription) ArgumentNames() []string {
-	rv := objc.CallMethod[[]string](s_, objc.GetSelector("argumentNames"))
+	rv := objc.CallMethod[[]string](s_, objc.SEL("argumentNames"))
 	return rv
 }
 
 func (s_ ScriptCommandDescription) ReturnType() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("returnType"))
+	rv := objc.CallMethod[string](s_, objc.SEL("returnType"))
 	return rv
 }

@@ -56,32 +56,32 @@ func MakeGridView(ptr unsafe.Pointer) GridView {
 }
 
 func (gc _GridViewClass) GridViewWithNumberOfColumns_Rows(columnCount int, rowCount int) GridView {
-	rv := objc.CallMethod[GridView](gc, objc.GetSelector("gridViewWithNumberOfColumns:rows:"), columnCount, rowCount)
+	rv := objc.CallMethod[GridView](gc, objc.SEL("gridViewWithNumberOfColumns:rows:"), columnCount, rowCount)
 	return rv
 }
 
 func (gc _GridViewClass) GridViewWithViews(rows [][]IView) GridView {
-	rv := objc.CallMethod[GridView](gc, objc.GetSelector("gridViewWithViews:"), rows)
+	rv := objc.CallMethod[GridView](gc, objc.SEL("gridViewWithViews:"), rows)
 	return rv
 }
 
 func (g_ GridView) InitWithFrame(frameRect foundation.Rect) GridView {
-	rv := objc.CallMethod[GridView](g_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[GridView](g_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (g_ GridView) Init() GridView {
-	rv := objc.CallMethod[GridView](g_, objc.GetSelector("init"))
+	rv := objc.CallMethod[GridView](g_, objc.SEL("init"))
 	return rv
 }
 
 func (gc _GridViewClass) Alloc() GridView {
-	rv := objc.CallMethod[GridView](gc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[GridView](gc, objc.SEL("alloc"))
 	return rv
 }
 
 func (gc _GridViewClass) New() GridView {
-	rv := objc.CallMethod[GridView](gc, objc.GetSelector("new"))
+	rv := objc.CallMethod[GridView](gc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -91,126 +91,126 @@ func NewGridView() GridView {
 }
 
 func (g_ GridView) IndexOfColumn(column IGridColumn) int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("indexOfColumn:"), objc.ExtractPtr(column))
+	rv := objc.CallMethod[int](g_, objc.SEL("indexOfColumn:"), objc.ExtractPtr(column))
 	return rv
 }
 
 func (g_ GridView) RowAtIndex(index int) GridRow {
-	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("rowAtIndex:"), index)
+	rv := objc.CallMethod[GridRow](g_, objc.SEL("rowAtIndex:"), index)
 	return rv
 }
 
 func (g_ GridView) ColumnAtIndex(index int) GridColumn {
-	rv := objc.CallMethod[GridColumn](g_, objc.GetSelector("columnAtIndex:"), index)
+	rv := objc.CallMethod[GridColumn](g_, objc.SEL("columnAtIndex:"), index)
 	return rv
 }
 
 func (g_ GridView) IndexOfRow(row IGridRow) int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("indexOfRow:"), objc.ExtractPtr(row))
+	rv := objc.CallMethod[int](g_, objc.SEL("indexOfRow:"), objc.ExtractPtr(row))
 	return rv
 }
 
 func (g_ GridView) AddRowWithViews(views []IView) GridRow {
-	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("addRowWithViews:"), views)
+	rv := objc.CallMethod[GridRow](g_, objc.SEL("addRowWithViews:"), views)
 	return rv
 }
 
 func (g_ GridView) InsertRowAtIndex_WithViews(index int, views []IView) GridRow {
-	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("insertRowAtIndex:withViews:"), index, views)
+	rv := objc.CallMethod[GridRow](g_, objc.SEL("insertRowAtIndex:withViews:"), index, views)
 	return rv
 }
 
 func (g_ GridView) RemoveRowAtIndex(index int) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("removeRowAtIndex:"), index)
+	objc.CallMethod[objc.Void](g_, objc.SEL("removeRowAtIndex:"), index)
 }
 
 func (g_ GridView) MoveRowAtIndex_ToIndex(fromIndex int, toIndex int) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("moveRowAtIndex:toIndex:"), fromIndex, toIndex)
+	objc.CallMethod[objc.Void](g_, objc.SEL("moveRowAtIndex:toIndex:"), fromIndex, toIndex)
 }
 
 func (g_ GridView) AddColumnWithViews(views []IView) GridColumn {
-	rv := objc.CallMethod[GridColumn](g_, objc.GetSelector("addColumnWithViews:"), views)
+	rv := objc.CallMethod[GridColumn](g_, objc.SEL("addColumnWithViews:"), views)
 	return rv
 }
 
 func (g_ GridView) InsertColumnAtIndex_WithViews(index int, views []IView) GridColumn {
-	rv := objc.CallMethod[GridColumn](g_, objc.GetSelector("insertColumnAtIndex:withViews:"), index, views)
+	rv := objc.CallMethod[GridColumn](g_, objc.SEL("insertColumnAtIndex:withViews:"), index, views)
 	return rv
 }
 
 func (g_ GridView) RemoveColumnAtIndex(index int) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("removeColumnAtIndex:"), index)
+	objc.CallMethod[objc.Void](g_, objc.SEL("removeColumnAtIndex:"), index)
 }
 
 func (g_ GridView) MoveColumnAtIndex_ToIndex(fromIndex int, toIndex int) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("moveColumnAtIndex:toIndex:"), fromIndex, toIndex)
+	objc.CallMethod[objc.Void](g_, objc.SEL("moveColumnAtIndex:toIndex:"), fromIndex, toIndex)
 }
 
 func (g_ GridView) CellAtColumnIndex_RowIndex(columnIndex int, rowIndex int) GridCell {
-	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("cellAtColumnIndex:rowIndex:"), columnIndex, rowIndex)
+	rv := objc.CallMethod[GridCell](g_, objc.SEL("cellAtColumnIndex:rowIndex:"), columnIndex, rowIndex)
 	return rv
 }
 
 func (g_ GridView) CellForView(view IView) GridCell {
-	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("cellForView:"), objc.ExtractPtr(view))
+	rv := objc.CallMethod[GridCell](g_, objc.SEL("cellForView:"), objc.ExtractPtr(view))
 	return rv
 }
 
 func (g_ GridView) MergeCellsInHorizontalRange_VerticalRange(hRange foundation.Range, vRange foundation.Range) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("mergeCellsInHorizontalRange:verticalRange:"), hRange, vRange)
+	objc.CallMethod[objc.Void](g_, objc.SEL("mergeCellsInHorizontalRange:verticalRange:"), hRange, vRange)
 }
 
 func (g_ GridView) NumberOfRows() int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("numberOfRows"))
+	rv := objc.CallMethod[int](g_, objc.SEL("numberOfRows"))
 	return rv
 }
 
 func (g_ GridView) NumberOfColumns() int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("numberOfColumns"))
+	rv := objc.CallMethod[int](g_, objc.SEL("numberOfColumns"))
 	return rv
 }
 
 func (g_ GridView) ColumnSpacing() float64 {
-	rv := objc.CallMethod[float64](g_, objc.GetSelector("columnSpacing"))
+	rv := objc.CallMethod[float64](g_, objc.SEL("columnSpacing"))
 	return rv
 }
 
 func (g_ GridView) SetColumnSpacing(value float64) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setColumnSpacing:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setColumnSpacing:"), value)
 }
 
 func (g_ GridView) RowSpacing() float64 {
-	rv := objc.CallMethod[float64](g_, objc.GetSelector("rowSpacing"))
+	rv := objc.CallMethod[float64](g_, objc.SEL("rowSpacing"))
 	return rv
 }
 
 func (g_ GridView) SetRowSpacing(value float64) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setRowSpacing:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setRowSpacing:"), value)
 }
 
 func (g_ GridView) RowAlignment() GridRowAlignment {
-	rv := objc.CallMethod[GridRowAlignment](g_, objc.GetSelector("rowAlignment"))
+	rv := objc.CallMethod[GridRowAlignment](g_, objc.SEL("rowAlignment"))
 	return rv
 }
 
 func (g_ GridView) SetRowAlignment(value GridRowAlignment) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setRowAlignment:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setRowAlignment:"), value)
 }
 
 func (g_ GridView) XPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("xPlacement"))
+	rv := objc.CallMethod[GridCellPlacement](g_, objc.SEL("xPlacement"))
 	return rv
 }
 
 func (g_ GridView) SetXPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setXPlacement:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setXPlacement:"), value)
 }
 
 func (g_ GridView) YPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("yPlacement"))
+	rv := objc.CallMethod[GridCellPlacement](g_, objc.SEL("yPlacement"))
 	return rv
 }
 
 func (g_ GridView) SetYPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setYPlacement:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setYPlacement:"), value)
 }

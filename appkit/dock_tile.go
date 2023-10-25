@@ -38,12 +38,12 @@ func MakeDockTile(ptr unsafe.Pointer) DockTile {
 }
 
 func (dc _DockTileClass) Alloc() DockTile {
-	rv := objc.CallMethod[DockTile](dc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[DockTile](dc, objc.SEL("alloc"))
 	return rv
 }
 
 func (dc _DockTileClass) New() DockTile {
-	rv := objc.CallMethod[DockTile](dc, objc.GetSelector("new"))
+	rv := objc.CallMethod[DockTile](dc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -53,48 +53,48 @@ func NewDockTile() DockTile {
 }
 
 func (d_ DockTile) Init() DockTile {
-	rv := objc.CallMethod[DockTile](d_, objc.GetSelector("init"))
+	rv := objc.CallMethod[DockTile](d_, objc.SEL("init"))
 	return rv
 }
 
 func (d_ DockTile) Display() {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("display"))
+	objc.CallMethod[objc.Void](d_, objc.SEL("display"))
 }
 
 func (d_ DockTile) ContentView() View {
-	rv := objc.CallMethod[View](d_, objc.GetSelector("contentView"))
+	rv := objc.CallMethod[View](d_, objc.SEL("contentView"))
 	return rv
 }
 
 func (d_ DockTile) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (d_ DockTile) Size() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](d_, objc.GetSelector("size"))
+	rv := objc.CallMethod[foundation.Size](d_, objc.SEL("size"))
 	return rv
 }
 
 // weak property
 func (d_ DockTile) Owner() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("owner"))
+	rv := objc.CallMethod[objc.Object](d_, objc.SEL("owner"))
 	return rv
 }
 
 func (d_ DockTile) ShowsApplicationBadge() bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("showsApplicationBadge"))
+	rv := objc.CallMethod[bool](d_, objc.SEL("showsApplicationBadge"))
 	return rv
 }
 
 func (d_ DockTile) SetShowsApplicationBadge(value bool) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setShowsApplicationBadge:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setShowsApplicationBadge:"), value)
 }
 
 func (d_ DockTile) BadgeLabel() string {
-	rv := objc.CallMethod[string](d_, objc.GetSelector("badgeLabel"))
+	rv := objc.CallMethod[string](d_, objc.SEL("badgeLabel"))
 	return rv
 }
 
 func (d_ DockTile) SetBadgeLabel(value string) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setBadgeLabel:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setBadgeLabel:"), value)
 }

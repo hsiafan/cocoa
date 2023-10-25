@@ -589,207 +589,207 @@ func NewWindowDelegateCreator(name string) *WindowDelegateCreator {
 }
 
 func (c *WindowDelegateCreator) SetWindow_WillPositionSheet_UsingRect(handle func(o objc.Object, window Window, sheet Window, rect foundation.Rect) foundation.Rect) {
-	objc.AddMethod(c.class, objc.GetSelector("window:willPositionSheet:usingRect:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:willPositionSheet:usingRect:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillBeginSheet(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillBeginSheet:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillBeginSheet:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidEndSheet(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidEndSheet:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidEndSheet:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillResize_ToSize(handle func(o objc.Object, sender Window, frameSize foundation.Size) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillResize:toSize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillResize:toSize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidResize(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidResize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidResize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillStartLiveResize(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillStartLiveResize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillStartLiveResize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidEndLiveResize(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidEndLiveResize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidEndLiveResize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillMiniaturize(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillMiniaturize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillMiniaturize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidMiniaturize(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidMiniaturize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidMiniaturize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidDeminiaturize(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidDeminiaturize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidDeminiaturize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillUseStandardFrame_DefaultFrame(handle func(o objc.Object, window Window, newFrame foundation.Rect) foundation.Rect) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillUseStandardFrame:defaultFrame:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillUseStandardFrame:defaultFrame:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowShouldZoom_ToFrame(handle func(o objc.Object, window Window, newFrame foundation.Rect) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("windowShouldZoom:toFrame:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowShouldZoom:toFrame:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_WillUseFullScreenContentSize(handle func(o objc.Object, window Window, proposedSize foundation.Size) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("window:willUseFullScreenContentSize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:willUseFullScreenContentSize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_WillUseFullScreenPresentationOptions(handle func(o objc.Object, window Window, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions) {
-	objc.AddMethod(c.class, objc.GetSelector("window:willUseFullScreenPresentationOptions:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:willUseFullScreenPresentationOptions:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillEnterFullScreen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillEnterFullScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillEnterFullScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidEnterFullScreen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidEnterFullScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidEnterFullScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillExitFullScreen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillExitFullScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillExitFullScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidExitFullScreen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidExitFullScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidExitFullScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetCustomWindowsToEnterFullScreenForWindow(handle func(o objc.Object, window Window) []IWindow) {
-	objc.AddMethod(c.class, objc.GetSelector("customWindowsToEnterFullScreenForWindow:"), handle)
+	objc.AddMethod(c.class, objc.SEL("customWindowsToEnterFullScreenForWindow:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetCustomWindowsToEnterFullScreenForWindow_OnScreen(handle func(o objc.Object, window Window, screen Screen) []IWindow) {
-	objc.AddMethod(c.class, objc.GetSelector("customWindowsToEnterFullScreenForWindow:onScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("customWindowsToEnterFullScreenForWindow:onScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_StartCustomAnimationToEnterFullScreenWithDuration(handle func(o objc.Object, window Window, duration foundation.TimeInterval)) {
-	objc.AddMethod(c.class, objc.GetSelector("window:startCustomAnimationToEnterFullScreenWithDuration:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:startCustomAnimationToEnterFullScreenWithDuration:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_StartCustomAnimationToEnterFullScreenOnScreen_WithDuration(handle func(o objc.Object, window Window, screen Screen, duration foundation.TimeInterval)) {
-	objc.AddMethod(c.class, objc.GetSelector("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidFailToEnterFullScreen(handle func(o objc.Object, window Window)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidFailToEnterFullScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidFailToEnterFullScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetCustomWindowsToExitFullScreenForWindow(handle func(o objc.Object, window Window) []IWindow) {
-	objc.AddMethod(c.class, objc.GetSelector("customWindowsToExitFullScreenForWindow:"), handle)
+	objc.AddMethod(c.class, objc.SEL("customWindowsToExitFullScreenForWindow:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_StartCustomAnimationToExitFullScreenWithDuration(handle func(o objc.Object, window Window, duration foundation.TimeInterval)) {
-	objc.AddMethod(c.class, objc.GetSelector("window:startCustomAnimationToExitFullScreenWithDuration:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:startCustomAnimationToExitFullScreenWithDuration:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidFailToExitFullScreen(handle func(o objc.Object, window Window)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidFailToExitFullScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidFailToExitFullScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillMove(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillMove:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillMove:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidMove(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidMove:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidMove:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidChangeScreen(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidChangeScreen:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidChangeScreen:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidChangeScreenProfile(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidChangeScreenProfile:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidChangeScreenProfile:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidChangeBackingProperties(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidChangeBackingProperties:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidChangeBackingProperties:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowShouldClose(handle func(o objc.Object, sender Window) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("windowShouldClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowShouldClose:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillClose(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillClose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillClose:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidBecomeKey(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidBecomeKey:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidBecomeKey:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidResignKey(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidResignKey:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidResignKey:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidBecomeMain(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidBecomeMain:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidBecomeMain:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidResignMain(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidResignMain:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidResignMain:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillReturnFieldEditor_ToObject(handle func(o objc.Object, sender Window, client objc.Object) objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillReturnFieldEditor:toObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillReturnFieldEditor:toObject:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidUpdate(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidUpdate:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidUpdate:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidExpose(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidExpose:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidExpose:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidChangeOcclusionState(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidChangeOcclusionState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidChangeOcclusionState:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_ShouldDragDocumentWithEvent_From_WithPasteboard(handle func(o objc.Object, window Window, event Event, dragImageLocation foundation.Point, pasteboard Pasteboard) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("window:shouldDragDocumentWithEvent:from:withPasteboard:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:shouldDragDocumentWithEvent:from:withPasteboard:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillReturnUndoManager(handle func(o objc.Object, window Window) foundation.IUndoManager) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillReturnUndoManager:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillReturnUndoManager:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_ShouldPopUpDocumentPathMenu(handle func(o objc.Object, window Window, menu Menu) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("window:shouldPopUpDocumentPathMenu:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:shouldPopUpDocumentPathMenu:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_WillEncodeRestorableState(handle func(o objc.Object, window Window, state foundation.Coder)) {
-	objc.AddMethod(c.class, objc.GetSelector("window:willEncodeRestorableState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:willEncodeRestorableState:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_DidDecodeRestorableState(handle func(o objc.Object, window Window, state foundation.Coder)) {
-	objc.AddMethod(c.class, objc.GetSelector("window:didDecodeRestorableState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:didDecodeRestorableState:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindow_WillResizeForVersionBrowserWithMaxPreferredSize_MaxAllowedSize(handle func(o objc.Object, window Window, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size) {
-	objc.AddMethod(c.class, objc.GetSelector("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), handle)
+	objc.AddMethod(c.class, objc.SEL("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillEnterVersionBrowser(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillEnterVersionBrowser:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillEnterVersionBrowser:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidEnterVersionBrowser(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidEnterVersionBrowser:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidEnterVersionBrowser:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowWillExitVersionBrowser(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowWillExitVersionBrowser:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowWillExitVersionBrowser:"), handle)
 }
 
 func (c *WindowDelegateCreator) SetWindowDidExitVersionBrowser(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("windowDidExitVersionBrowser:"), handle)
+	objc.AddMethod(c.class, objc.SEL("windowDidExitVersionBrowser:"), handle)
 }
 
 func (c *WindowDelegateCreator) Create() objc.Object {

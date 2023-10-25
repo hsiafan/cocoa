@@ -48,32 +48,32 @@ func MakeMutableURLRequest(ptr unsafe.Pointer) MutableURLRequest {
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:"), objc.ExtractPtr(URL))
+	rv := objc.CallMethod[MutableURLRequest](mc, objc.SEL("requestWithURL:"), objc.ExtractPtr(URL))
 	return rv
 }
 
 func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(URL))
+	rv := objc.CallMethod[MutableURLRequest](m_, objc.SEL("initWithURL:"), objc.ExtractPtr(URL))
 	return rv
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("requestWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[MutableURLRequest](mc, objc.SEL("requestWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
 	return rv
 }
 
 func (m_ MutableURLRequest) InitWithURL_CachePolicy_TimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("initWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
+	rv := objc.CallMethod[MutableURLRequest](m_, objc.SEL("initWithURL:cachePolicy:timeoutInterval:"), objc.ExtractPtr(URL), cachePolicy, timeoutInterval)
 	return rv
 }
 
 func (mc _MutableURLRequestClass) Alloc() MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[MutableURLRequest](mc, objc.SEL("alloc"))
 	return rv
 }
 
 func (mc _MutableURLRequestClass) New() MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](mc, objc.GetSelector("new"))
+	rv := objc.CallMethod[MutableURLRequest](mc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -83,87 +83,87 @@ func NewMutableURLRequest() MutableURLRequest {
 }
 
 func (m_ MutableURLRequest) Init() MutableURLRequest {
-	rv := objc.CallMethod[MutableURLRequest](m_, objc.GetSelector("init"))
+	rv := objc.CallMethod[MutableURLRequest](m_, objc.SEL("init"))
 	return rv
 }
 
 func (m_ MutableURLRequest) AddValue_ForHTTPHeaderField(value string, field string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("addValue:forHTTPHeaderField:"), value, field)
+	objc.CallMethod[objc.Void](m_, objc.SEL("addValue:forHTTPHeaderField:"), value, field)
 }
 
 func (m_ MutableURLRequest) SetValue_ForHTTPHeaderField(value string, field string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setValue:forHTTPHeaderField:"), value, field)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setValue:forHTTPHeaderField:"), value, field)
 }
 
 func (m_ MutableURLRequest) SetCachePolicy(value URLRequestCachePolicy) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setCachePolicy:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setCachePolicy:"), value)
 }
 
 func (m_ MutableURLRequest) SetHTTPMethod(value string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPMethod:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setHTTPMethod:"), value)
 }
 
 func (m_ MutableURLRequest) SetURL(value IURL) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setURL:"), objc.ExtractPtr(value))
 }
 
 func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPBody:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setHTTPBody:"), value)
 }
 
 func (m_ MutableURLRequest) SetHTTPBodyStream(value IInputStream) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPBodyStream:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setHTTPBodyStream:"), objc.ExtractPtr(value))
 }
 
 func (m_ MutableURLRequest) SetMainDocumentURL(value IURL) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setMainDocumentURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](m_, objc.SEL("setMainDocumentURL:"), objc.ExtractPtr(value))
 }
 
 func (m_ MutableURLRequest) SetAllHTTPHeaderFields(value map[string]string) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllHTTPHeaderFields:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAllHTTPHeaderFields:"), value)
 }
 
 func (m_ MutableURLRequest) SetTimeoutInterval(value TimeInterval) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setTimeoutInterval:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setTimeoutInterval:"), value)
 }
 
 func (m_ MutableURLRequest) SetHTTPShouldHandleCookies(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPShouldHandleCookies:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setHTTPShouldHandleCookies:"), value)
 }
 
 func (m_ MutableURLRequest) SetHTTPShouldUsePipelining(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setHTTPShouldUsePipelining:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setHTTPShouldUsePipelining:"), value)
 }
 
 func (m_ MutableURLRequest) SetAllowsCellularAccess(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsCellularAccess:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAllowsCellularAccess:"), value)
 }
 
 func (m_ MutableURLRequest) SetAllowsConstrainedNetworkAccess(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsConstrainedNetworkAccess:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAllowsConstrainedNetworkAccess:"), value)
 }
 
 func (m_ MutableURLRequest) SetAllowsExpensiveNetworkAccess(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAllowsExpensiveNetworkAccess:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAllowsExpensiveNetworkAccess:"), value)
 }
 
 func (m_ MutableURLRequest) SetNetworkServiceType(value URLRequestNetworkServiceType) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setNetworkServiceType:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setNetworkServiceType:"), value)
 }
 
 func (m_ MutableURLRequest) SetAttribution(value URLRequestAttribution) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAttribution:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAttribution:"), value)
 }
 
 func (m_ MutableURLRequest) SetAssumesHTTP3Capable(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setAssumesHTTP3Capable:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setAssumesHTTP3Capable:"), value)
 }
 
 func (m_ MutableURLRequest) RequiresDNSSECValidation() bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("requiresDNSSECValidation"))
+	rv := objc.CallMethod[bool](m_, objc.SEL("requiresDNSSECValidation"))
 	return rv
 }
 
 func (m_ MutableURLRequest) SetRequiresDNSSECValidation(value bool) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("setRequiresDNSSECValidation:"), value)
+	objc.CallMethod[objc.Void](m_, objc.SEL("setRequiresDNSSECValidation:"), value)
 }

@@ -28,12 +28,12 @@ func MakeProcessPool(ptr unsafe.Pointer) ProcessPool {
 }
 
 func (pc _ProcessPoolClass) Alloc() ProcessPool {
-	rv := objc.CallMethod[ProcessPool](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ProcessPool](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _ProcessPoolClass) New() ProcessPool {
-	rv := objc.CallMethod[ProcessPool](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ProcessPool](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -43,6 +43,6 @@ func NewProcessPool() ProcessPool {
 }
 
 func (p_ ProcessPool) Init() ProcessPool {
-	rv := objc.CallMethod[ProcessPool](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ProcessPool](p_, objc.SEL("init"))
 	return rv
 }

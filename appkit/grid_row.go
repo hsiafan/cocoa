@@ -45,12 +45,12 @@ func MakeGridRow(ptr unsafe.Pointer) GridRow {
 }
 
 func (gc _GridRowClass) Alloc() GridRow {
-	rv := objc.CallMethod[GridRow](gc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[GridRow](gc, objc.SEL("alloc"))
 	return rv
 }
 
 func (gc _GridRowClass) New() GridRow {
-	rv := objc.CallMethod[GridRow](gc, objc.GetSelector("new"))
+	rv := objc.CallMethod[GridRow](gc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -60,80 +60,80 @@ func NewGridRow() GridRow {
 }
 
 func (g_ GridRow) Init() GridRow {
-	rv := objc.CallMethod[GridRow](g_, objc.GetSelector("init"))
+	rv := objc.CallMethod[GridRow](g_, objc.SEL("init"))
 	return rv
 }
 
 func (g_ GridRow) CellAtIndex(index int) GridCell {
-	rv := objc.CallMethod[GridCell](g_, objc.GetSelector("cellAtIndex:"), index)
+	rv := objc.CallMethod[GridCell](g_, objc.SEL("cellAtIndex:"), index)
 	return rv
 }
 
 func (g_ GridRow) MergeCellsInRange(range_ foundation.Range) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("mergeCellsInRange:"), range_)
+	objc.CallMethod[objc.Void](g_, objc.SEL("mergeCellsInRange:"), range_)
 }
 
 func (g_ GridRow) NumberOfCells() int {
-	rv := objc.CallMethod[int](g_, objc.GetSelector("numberOfCells"))
+	rv := objc.CallMethod[int](g_, objc.SEL("numberOfCells"))
 	return rv
 }
 
 func (g_ GridRow) IsHidden() bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("isHidden"))
+	rv := objc.CallMethod[bool](g_, objc.SEL("isHidden"))
 	return rv
 }
 
 func (g_ GridRow) SetHidden(value bool) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setHidden:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setHidden:"), value)
 }
 
 func (g_ GridRow) TopPadding() float64 {
-	rv := objc.CallMethod[float64](g_, objc.GetSelector("topPadding"))
+	rv := objc.CallMethod[float64](g_, objc.SEL("topPadding"))
 	return rv
 }
 
 func (g_ GridRow) SetTopPadding(value float64) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setTopPadding:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setTopPadding:"), value)
 }
 
 func (g_ GridRow) BottomPadding() float64 {
-	rv := objc.CallMethod[float64](g_, objc.GetSelector("bottomPadding"))
+	rv := objc.CallMethod[float64](g_, objc.SEL("bottomPadding"))
 	return rv
 }
 
 func (g_ GridRow) SetBottomPadding(value float64) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setBottomPadding:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setBottomPadding:"), value)
 }
 
 func (g_ GridRow) Height() float64 {
-	rv := objc.CallMethod[float64](g_, objc.GetSelector("height"))
+	rv := objc.CallMethod[float64](g_, objc.SEL("height"))
 	return rv
 }
 
 func (g_ GridRow) SetHeight(value float64) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setHeight:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setHeight:"), value)
 }
 
 func (g_ GridRow) RowAlignment() GridRowAlignment {
-	rv := objc.CallMethod[GridRowAlignment](g_, objc.GetSelector("rowAlignment"))
+	rv := objc.CallMethod[GridRowAlignment](g_, objc.SEL("rowAlignment"))
 	return rv
 }
 
 func (g_ GridRow) SetRowAlignment(value GridRowAlignment) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setRowAlignment:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setRowAlignment:"), value)
 }
 
 func (g_ GridRow) YPlacement() GridCellPlacement {
-	rv := objc.CallMethod[GridCellPlacement](g_, objc.GetSelector("yPlacement"))
+	rv := objc.CallMethod[GridCellPlacement](g_, objc.SEL("yPlacement"))
 	return rv
 }
 
 func (g_ GridRow) SetYPlacement(value GridCellPlacement) {
-	objc.CallMethod[objc.Void](g_, objc.GetSelector("setYPlacement:"), value)
+	objc.CallMethod[objc.Void](g_, objc.SEL("setYPlacement:"), value)
 }
 
 // weak property
 func (g_ GridRow) GridView() GridView {
-	rv := objc.CallMethod[GridView](g_, objc.GetSelector("gridView"))
+	rv := objc.CallMethod[GridView](g_, objc.SEL("gridView"))
 	return rv
 }

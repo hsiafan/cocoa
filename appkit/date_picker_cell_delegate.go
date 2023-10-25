@@ -39,7 +39,7 @@ func NewDatePickerCellDelegateCreator(name string) *DatePickerCellDelegateCreato
 }
 
 func (c *DatePickerCellDelegateCreator) SetDatePickerCell_ValidateProposedDateValue_TimeInterval(handle func(o objc.Object, datePickerCell DatePickerCell, proposedDateValue *foundation.Date, proposedTimeInterval *foundation.TimeInterval)) {
-	objc.AddMethod(c.class, objc.GetSelector("datePickerCell:validateProposedDateValue:timeInterval:"), handle)
+	objc.AddMethod(c.class, objc.SEL("datePickerCell:validateProposedDateValue:timeInterval:"), handle)
 }
 
 func (c *DatePickerCellDelegateCreator) Create() objc.Object {

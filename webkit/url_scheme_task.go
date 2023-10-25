@@ -11,22 +11,22 @@ type URLSchemeTask struct {
 }
 
 func (u_ URLSchemeTask) DidReceiveResponse(response foundation.IURLResponse) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("didReceiveResponse:"), objc.ExtractPtr(response))
+	objc.CallMethod[objc.Void](u_, objc.SEL("didReceiveResponse:"), objc.ExtractPtr(response))
 }
 
 func (u_ URLSchemeTask) DidReceiveData(data []byte) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("didReceiveData:"), data)
+	objc.CallMethod[objc.Void](u_, objc.SEL("didReceiveData:"), data)
 }
 
 func (u_ URLSchemeTask) DidFinish() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFinish"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("didFinish"))
 }
 
 func (u_ URLSchemeTask) DidFailWithError(error foundation.IError) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("didFailWithError:"), objc.ExtractPtr(error))
+	objc.CallMethod[objc.Void](u_, objc.SEL("didFailWithError:"), objc.ExtractPtr(error))
 }
 
 func (u_ URLSchemeTask) Request() foundation.URLRequest {
-	rv := objc.CallMethod[foundation.URLRequest](u_, objc.GetSelector("request"))
+	rv := objc.CallMethod[foundation.URLRequest](u_, objc.SEL("request"))
 	return rv
 }

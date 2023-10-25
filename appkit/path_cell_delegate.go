@@ -49,11 +49,11 @@ func NewPathCellDelegateCreator(name string) *PathCellDelegateCreator {
 }
 
 func (c *PathCellDelegateCreator) SetPathCell_WillDisplayOpenPanel(handle func(o objc.Object, pathCell PathCell, openPanel OpenPanel)) {
-	objc.AddMethod(c.class, objc.GetSelector("pathCell:willDisplayOpenPanel:"), handle)
+	objc.AddMethod(c.class, objc.SEL("pathCell:willDisplayOpenPanel:"), handle)
 }
 
 func (c *PathCellDelegateCreator) SetPathCell_WillPopUpMenu(handle func(o objc.Object, pathCell PathCell, menu Menu)) {
-	objc.AddMethod(c.class, objc.GetSelector("pathCell:willPopUpMenu:"), handle)
+	objc.AddMethod(c.class, objc.SEL("pathCell:willPopUpMenu:"), handle)
 }
 
 func (c *PathCellDelegateCreator) Create() objc.Object {

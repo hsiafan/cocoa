@@ -44,12 +44,12 @@ func MakeScriptClassDescription(ptr unsafe.Pointer) ScriptClassDescription {
 }
 
 func (sc _ScriptClassDescriptionClass) Alloc() ScriptClassDescription {
-	rv := objc.CallMethod[ScriptClassDescription](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ScriptClassDescription](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _ScriptClassDescriptionClass) New() ScriptClassDescription {
-	rv := objc.CallMethod[ScriptClassDescription](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ScriptClassDescription](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -59,82 +59,82 @@ func NewScriptClassDescription() ScriptClassDescription {
 }
 
 func (s_ ScriptClassDescription) Init() ScriptClassDescription {
-	rv := objc.CallMethod[ScriptClassDescription](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ScriptClassDescription](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ ScriptClassDescription) ClassDescriptionForKey(key string) ScriptClassDescription {
-	rv := objc.CallMethod[ScriptClassDescription](s_, objc.GetSelector("classDescriptionForKey:"), key)
+	rv := objc.CallMethod[ScriptClassDescription](s_, objc.SEL("classDescriptionForKey:"), key)
 	return rv
 }
 
 func (s_ ScriptClassDescription) IsLocationRequiredToCreateForKey(toManyRelationshipKey string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isLocationRequiredToCreateForKey:"), toManyRelationshipKey)
+	rv := objc.CallMethod[bool](s_, objc.SEL("isLocationRequiredToCreateForKey:"), toManyRelationshipKey)
 	return rv
 }
 
 func (s_ ScriptClassDescription) HasOrderedToManyRelationshipForKey(key string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("hasOrderedToManyRelationshipForKey:"), key)
+	rv := objc.CallMethod[bool](s_, objc.SEL("hasOrderedToManyRelationshipForKey:"), key)
 	return rv
 }
 
 func (s_ ScriptClassDescription) HasPropertyForKey(key string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("hasPropertyForKey:"), key)
+	rv := objc.CallMethod[bool](s_, objc.SEL("hasPropertyForKey:"), key)
 	return rv
 }
 
 func (s_ ScriptClassDescription) HasReadablePropertyForKey(key string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("hasReadablePropertyForKey:"), key)
+	rv := objc.CallMethod[bool](s_, objc.SEL("hasReadablePropertyForKey:"), key)
 	return rv
 }
 
 func (s_ ScriptClassDescription) HasWritablePropertyForKey(key string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("hasWritablePropertyForKey:"), key)
+	rv := objc.CallMethod[bool](s_, objc.SEL("hasWritablePropertyForKey:"), key)
 	return rv
 }
 
 // deprecated
 func (s_ ScriptClassDescription) IsReadOnlyKey(key string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isReadOnlyKey:"), key)
+	rv := objc.CallMethod[bool](s_, objc.SEL("isReadOnlyKey:"), key)
 	return rv
 }
 
 func (s_ ScriptClassDescription) TypeForKey(key string) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("typeForKey:"), key)
+	rv := objc.CallMethod[string](s_, objc.SEL("typeForKey:"), key)
 	return rv
 }
 
 func (s_ ScriptClassDescription) SelectorForCommand(commandDescription IScriptCommandDescription) objc.Selector {
-	rv := objc.CallMethod[objc.Selector](s_, objc.GetSelector("selectorForCommand:"), objc.ExtractPtr(commandDescription))
+	rv := objc.CallMethod[objc.Selector](s_, objc.SEL("selectorForCommand:"), objc.ExtractPtr(commandDescription))
 	return rv
 }
 
 func (s_ ScriptClassDescription) SupportsCommand(commandDescription IScriptCommandDescription) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("supportsCommand:"), objc.ExtractPtr(commandDescription))
+	rv := objc.CallMethod[bool](s_, objc.SEL("supportsCommand:"), objc.ExtractPtr(commandDescription))
 	return rv
 }
 
 func (s_ ScriptClassDescription) SuperclassDescription() ScriptClassDescription {
-	rv := objc.CallMethod[ScriptClassDescription](s_, objc.GetSelector("superclassDescription"))
+	rv := objc.CallMethod[ScriptClassDescription](s_, objc.SEL("superclassDescription"))
 	return rv
 }
 
 func (s_ ScriptClassDescription) ClassName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("className"))
+	rv := objc.CallMethod[string](s_, objc.SEL("className"))
 	return rv
 }
 
 func (s_ ScriptClassDescription) DefaultSubcontainerAttributeKey() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("defaultSubcontainerAttributeKey"))
+	rv := objc.CallMethod[string](s_, objc.SEL("defaultSubcontainerAttributeKey"))
 	return rv
 }
 
 func (s_ ScriptClassDescription) ImplementationClassName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("implementationClassName"))
+	rv := objc.CallMethod[string](s_, objc.SEL("implementationClassName"))
 	return rv
 }
 
 func (s_ ScriptClassDescription) SuiteName() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("suiteName"))
+	rv := objc.CallMethod[string](s_, objc.SEL("suiteName"))
 	return rv
 }

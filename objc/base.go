@@ -202,8 +202,8 @@ func MakeSelector(ptr unsafe.Pointer) Selector {
 
 var selectorCache = internal.SyncCache[string, Selector]{}
 
-// GetSelector return a method selector by the name. The selector is cached at go side.
-func GetSelector(selName string) Selector {
+// SEL return a method selector by the name. The selector is cached at go side.
+func SEL(selName string) Selector {
 	return selectorCache.Load(selName, func(selName string) Selector {
 		return SelectorRegisterName(selName)
 	})

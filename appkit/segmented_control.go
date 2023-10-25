@@ -71,32 +71,32 @@ func MakeSegmentedControl(ptr unsafe.Pointer) SegmentedControl {
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithImages_TrackingMode_Target_Action(images []IImage, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithImages:trackingMode:target:action:"), images, trackingMode, objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[SegmentedControl](sc, objc.SEL("segmentedControlWithImages:trackingMode:target:action:"), images, trackingMode, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (sc _SegmentedControlClass) SegmentedControlWithLabels_TrackingMode_Target_Action(labels []string, trackingMode SegmentSwitchTracking, target objc.IObject, action objc.Selector) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("segmentedControlWithLabels:trackingMode:target:action:"), labels, trackingMode, objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[SegmentedControl](sc, objc.SEL("segmentedControlWithLabels:trackingMode:target:action:"), labels, trackingMode, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (s_ SegmentedControl) InitWithFrame(frameRect foundation.Rect) SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](s_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[SegmentedControl](s_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (s_ SegmentedControl) Init() SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[SegmentedControl](s_, objc.SEL("init"))
 	return rv
 }
 
 func (sc _SegmentedControlClass) Alloc() SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[SegmentedControl](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _SegmentedControlClass) New() SegmentedControl {
-	rv := objc.CallMethod[SegmentedControl](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[SegmentedControl](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -106,192 +106,192 @@ func NewSegmentedControl() SegmentedControl {
 }
 
 func (s_ SegmentedControl) LabelForSegment(segment int) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("labelForSegment:"), segment)
+	rv := objc.CallMethod[string](s_, objc.SEL("labelForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetLabel_ForSegment(label string, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setLabel:forSegment:"), label, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setLabel:forSegment:"), label, segment)
 }
 
 func (s_ SegmentedControl) SetAlignment_ForSegment(alignment TextAlignment, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAlignment:forSegment:"), alignment, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setAlignment:forSegment:"), alignment, segment)
 }
 
 func (s_ SegmentedControl) AlignmentForSegment(segment int) TextAlignment {
-	rv := objc.CallMethod[TextAlignment](s_, objc.GetSelector("alignmentForSegment:"), segment)
+	rv := objc.CallMethod[TextAlignment](s_, objc.SEL("alignmentForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetImage_ForSegment(image IImage, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImage:forSegment:"), objc.ExtractPtr(image), segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setImage:forSegment:"), objc.ExtractPtr(image), segment)
 }
 
 func (s_ SegmentedControl) ImageForSegment(segment int) Image {
-	rv := objc.CallMethod[Image](s_, objc.GetSelector("imageForSegment:"), segment)
+	rv := objc.CallMethod[Image](s_, objc.SEL("imageForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetImageScaling_ForSegment(scaling ImageScaling, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setImageScaling:forSegment:"), scaling, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setImageScaling:forSegment:"), scaling, segment)
 }
 
 func (s_ SegmentedControl) ImageScalingForSegment(segment int) ImageScaling {
-	rv := objc.CallMethod[ImageScaling](s_, objc.GetSelector("imageScalingForSegment:"), segment)
+	rv := objc.CallMethod[ImageScaling](s_, objc.SEL("imageScalingForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetMenu_ForSegment(menu IMenu, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMenu:forSegment:"), objc.ExtractPtr(menu), segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setMenu:forSegment:"), objc.ExtractPtr(menu), segment)
 }
 
 func (s_ SegmentedControl) MenuForSegment(segment int) Menu {
-	rv := objc.CallMethod[Menu](s_, objc.GetSelector("menuForSegment:"), segment)
+	rv := objc.CallMethod[Menu](s_, objc.SEL("menuForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetShowsMenuIndicator_ForSegment(showsMenuIndicator bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShowsMenuIndicator:forSegment:"), showsMenuIndicator, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setShowsMenuIndicator:forSegment:"), showsMenuIndicator, segment)
 }
 
 func (s_ SegmentedControl) ShowsMenuIndicatorForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("showsMenuIndicatorForSegment:"), segment)
+	rv := objc.CallMethod[bool](s_, objc.SEL("showsMenuIndicatorForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SelectSegmentWithTag(tag int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("selectSegmentWithTag:"), tag)
+	rv := objc.CallMethod[bool](s_, objc.SEL("selectSegmentWithTag:"), tag)
 	return rv
 }
 
 func (s_ SegmentedControl) SetSelected_ForSegment(selected bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelected:forSegment:"), selected, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSelected:forSegment:"), selected, segment)
 }
 
 func (s_ SegmentedControl) IsSelectedForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSelectedForSegment:"), segment)
+	rv := objc.CallMethod[bool](s_, objc.SEL("isSelectedForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetWidth_ForSegment(width float64, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setWidth:forSegment:"), width, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setWidth:forSegment:"), width, segment)
 }
 
 func (s_ SegmentedControl) WidthForSegment(segment int) float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("widthForSegment:"), segment)
+	rv := objc.CallMethod[float64](s_, objc.SEL("widthForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
+	objc.CallMethod[objc.Void](s_, objc.SEL("compressWithPrioritizedCompressionOptions:"), prioritizedOptions)
 }
 
 func (s_ SegmentedControl) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size {
-	rv := objc.CallMethod[foundation.Size](s_, objc.GetSelector("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
+	rv := objc.CallMethod[foundation.Size](s_, objc.SEL("minimumSizeWithPrioritizedCompressionOptions:"), prioritizedOptions)
 	return rv
 }
 
 func (s_ SegmentedControl) SetEnabled_ForSegment(enabled bool, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setEnabled:forSegment:"), enabled, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setEnabled:forSegment:"), enabled, segment)
 }
 
 func (s_ SegmentedControl) IsEnabledForSegment(segment int) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isEnabledForSegment:"), segment)
+	rv := objc.CallMethod[bool](s_, objc.SEL("isEnabledForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) TagForSegment(segment int) int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("tagForSegment:"), segment)
+	rv := objc.CallMethod[int](s_, objc.SEL("tagForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) SetTag_ForSegment(tag int, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTag:forSegment:"), tag, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setTag:forSegment:"), tag, segment)
 }
 
 func (s_ SegmentedControl) SetToolTip_ForSegment(toolTip string, segment int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setToolTip:forSegment:"), toolTip, segment)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setToolTip:forSegment:"), toolTip, segment)
 }
 
 func (s_ SegmentedControl) ToolTipForSegment(segment int) string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("toolTipForSegment:"), segment)
+	rv := objc.CallMethod[string](s_, objc.SEL("toolTipForSegment:"), segment)
 	return rv
 }
 
 func (s_ SegmentedControl) TrackingMode() SegmentSwitchTracking {
-	rv := objc.CallMethod[SegmentSwitchTracking](s_, objc.GetSelector("trackingMode"))
+	rv := objc.CallMethod[SegmentSwitchTracking](s_, objc.SEL("trackingMode"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetTrackingMode(value SegmentSwitchTracking) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTrackingMode:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setTrackingMode:"), value)
 }
 
 func (s_ SegmentedControl) SegmentStyle() SegmentStyle {
-	rv := objc.CallMethod[SegmentStyle](s_, objc.GetSelector("segmentStyle"))
+	rv := objc.CallMethod[SegmentStyle](s_, objc.SEL("segmentStyle"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetSegmentStyle(value SegmentStyle) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentStyle:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSegmentStyle:"), value)
 }
 
 func (s_ SegmentedControl) SegmentCount() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("segmentCount"))
+	rv := objc.CallMethod[int](s_, objc.SEL("segmentCount"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetSegmentCount(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentCount:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSegmentCount:"), value)
 }
 
 func (s_ SegmentedControl) IsSpringLoaded() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isSpringLoaded"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("isSpringLoaded"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetSpringLoaded(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSpringLoaded:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSpringLoaded:"), value)
 }
 
 func (s_ SegmentedControl) SelectedSegment() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("selectedSegment"))
+	rv := objc.CallMethod[int](s_, objc.SEL("selectedSegment"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetSelectedSegment(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegment:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSelectedSegment:"), value)
 }
 
 func (s_ SegmentedControl) IndexOfSelectedItem() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("indexOfSelectedItem"))
+	rv := objc.CallMethod[int](s_, objc.SEL("indexOfSelectedItem"))
 	return rv
 }
 
 func (s_ SegmentedControl) SelectedSegmentBezelColor() Color {
-	rv := objc.CallMethod[Color](s_, objc.GetSelector("selectedSegmentBezelColor"))
+	rv := objc.CallMethod[Color](s_, objc.SEL("selectedSegmentBezelColor"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetSelectedSegmentBezelColor(value IColor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSelectedSegmentBezelColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSelectedSegmentBezelColor:"), objc.ExtractPtr(value))
 }
 
 func (s_ SegmentedControl) DoubleValueForSelectedSegment() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("doubleValueForSelectedSegment"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("doubleValueForSelectedSegment"))
 	return rv
 }
 
 func (s_ SegmentedControl) SegmentDistribution() SegmentDistribution {
-	rv := objc.CallMethod[SegmentDistribution](s_, objc.GetSelector("segmentDistribution"))
+	rv := objc.CallMethod[SegmentDistribution](s_, objc.SEL("segmentDistribution"))
 	return rv
 }
 
 func (s_ SegmentedControl) SetSegmentDistribution(value SegmentDistribution) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setSegmentDistribution:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setSegmentDistribution:"), value)
 }
 
 func (s_ SegmentedControl) ActiveCompressionOptions() UserInterfaceCompressionOptions {
-	rv := objc.CallMethod[UserInterfaceCompressionOptions](s_, objc.GetSelector("activeCompressionOptions"))
+	rv := objc.CallMethod[UserInterfaceCompressionOptions](s_, objc.SEL("activeCompressionOptions"))
 	return rv
 }

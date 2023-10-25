@@ -32,12 +32,12 @@ func MakeDownload(ptr unsafe.Pointer) Download {
 }
 
 func (dc _DownloadClass) Alloc() Download {
-	rv := objc.CallMethod[Download](dc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Download](dc, objc.SEL("alloc"))
 	return rv
 }
 
 func (dc _DownloadClass) New() Download {
-	rv := objc.CallMethod[Download](dc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Download](dc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,21 +47,21 @@ func NewDownload() Download {
 }
 
 func (d_ Download) Init() Download {
-	rv := objc.CallMethod[Download](d_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Download](d_, objc.SEL("init"))
 	return rv
 }
 
 func (d_ Download) Cancel(completionHandler func(resumeData []byte)) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("cancel:"), completionHandler)
+	objc.CallMethod[objc.Void](d_, objc.SEL("cancel:"), completionHandler)
 }
 
 func (d_ Download) OriginalRequest() foundation.URLRequest {
-	rv := objc.CallMethod[foundation.URLRequest](d_, objc.GetSelector("originalRequest"))
+	rv := objc.CallMethod[foundation.URLRequest](d_, objc.SEL("originalRequest"))
 	return rv
 }
 
 // weak property
 func (d_ Download) WebView() WebView {
-	rv := objc.CallMethod[WebView](d_, objc.GetSelector("webView"))
+	rv := objc.CallMethod[WebView](d_, objc.SEL("webView"))
 	return rv
 }

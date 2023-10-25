@@ -38,7 +38,7 @@ func NewStreamDelegateCreator(name string) *StreamDelegateCreator {
 }
 
 func (c *StreamDelegateCreator) SetStream_HandleEvent(handle func(o objc.Object, aStream Stream, eventCode StreamEvent)) {
-	objc.AddMethod(c.class, objc.GetSelector("stream:handleEvent:"), handle)
+	objc.AddMethod(c.class, objc.SEL("stream:handleEvent:"), handle)
 }
 
 func (c *StreamDelegateCreator) Create() objc.Object {

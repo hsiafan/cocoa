@@ -31,12 +31,12 @@ func MakeWebsiteDataRecord(ptr unsafe.Pointer) WebsiteDataRecord {
 }
 
 func (wc _WebsiteDataRecordClass) Alloc() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.SEL("alloc"))
 	return rv
 }
 
 func (wc _WebsiteDataRecordClass) New() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.GetSelector("new"))
+	rv := objc.CallMethod[WebsiteDataRecord](wc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -46,16 +46,16 @@ func NewWebsiteDataRecord() WebsiteDataRecord {
 }
 
 func (w_ WebsiteDataRecord) Init() WebsiteDataRecord {
-	rv := objc.CallMethod[WebsiteDataRecord](w_, objc.GetSelector("init"))
+	rv := objc.CallMethod[WebsiteDataRecord](w_, objc.SEL("init"))
 	return rv
 }
 
 func (w_ WebsiteDataRecord) DisplayName() string {
-	rv := objc.CallMethod[string](w_, objc.GetSelector("displayName"))
+	rv := objc.CallMethod[string](w_, objc.SEL("displayName"))
 	return rv
 }
 
 func (w_ WebsiteDataRecord) DataTypes() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](w_, objc.GetSelector("dataTypes"))
+	rv := objc.CallMethod[foundation.Set](w_, objc.SEL("dataTypes"))
 	return rv
 }

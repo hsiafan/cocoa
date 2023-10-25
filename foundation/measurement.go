@@ -33,12 +33,12 @@ func MakeMeasurement(ptr unsafe.Pointer) Measurement {
 }
 
 func (mc _MeasurementClass) Alloc() Measurement {
-	rv := objc.CallMethod[Measurement](mc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Measurement](mc, objc.SEL("alloc"))
 	return rv
 }
 
 func (mc _MeasurementClass) New() Measurement {
-	rv := objc.CallMethod[Measurement](mc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Measurement](mc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -48,31 +48,31 @@ func NewMeasurement() Measurement {
 }
 
 func (m_ Measurement) Init() Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Measurement](m_, objc.SEL("init"))
 	return rv
 }
 
 func (m_ Measurement) CanBeConvertedToUnit(unit IUnit) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("canBeConvertedToUnit:"), objc.ExtractPtr(unit))
+	rv := objc.CallMethod[bool](m_, objc.SEL("canBeConvertedToUnit:"), objc.ExtractPtr(unit))
 	return rv
 }
 
 func (m_ Measurement) MeasurementByConvertingToUnit(unit IUnit) Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByConvertingToUnit:"), objc.ExtractPtr(unit))
+	rv := objc.CallMethod[Measurement](m_, objc.SEL("measurementByConvertingToUnit:"), objc.ExtractPtr(unit))
 	return rv
 }
 
 func (m_ Measurement) MeasurementByAddingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementByAddingMeasurement:"), objc.ExtractPtr(measurement))
+	rv := objc.CallMethod[Measurement](m_, objc.SEL("measurementByAddingMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 
 func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.CallMethod[Measurement](m_, objc.GetSelector("measurementBySubtractingMeasurement:"), objc.ExtractPtr(measurement))
+	rv := objc.CallMethod[Measurement](m_, objc.SEL("measurementBySubtractingMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 
 func (m_ Measurement) DoubleValue() float64 {
-	rv := objc.CallMethod[float64](m_, objc.GetSelector("doubleValue"))
+	rv := objc.CallMethod[float64](m_, objc.SEL("doubleValue"))
 	return rv
 }

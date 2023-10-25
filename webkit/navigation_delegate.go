@@ -160,51 +160,51 @@ func NewNavigationDelegateCreator(name string) *NavigationDelegateCreator {
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationAction_Preferences_DecisionHandler(handle func(o objc.Object, webView WebView, navigationAction NavigationAction, preferences WebpagePreferences, decisionHandler func(param1 NavigationActionPolicy, param2 IWebpagePreferences))) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:decidePolicyForNavigationAction:preferences:decisionHandler:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:decidePolicyForNavigationAction:preferences:decisionHandler:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationAction_DecisionHandler(handle func(o objc.Object, webView WebView, navigationAction NavigationAction, decisionHandler func(param1 NavigationActionPolicy))) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:decidePolicyForNavigationAction:decisionHandler:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:decidePolicyForNavigationAction:decisionHandler:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationResponse_DecisionHandler(handle func(o objc.Object, webView WebView, navigationResponse NavigationResponse, decisionHandler func(param1 NavigationResponsePolicy))) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:decidePolicyForNavigationResponse:decisionHandler:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:decidePolicyForNavigationResponse:decisionHandler:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DidStartProvisionalNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:didStartProvisionalNavigation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:didStartProvisionalNavigation:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DidReceiveServerRedirectForProvisionalNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:didReceiveServerRedirectForProvisionalNavigation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:didReceiveServerRedirectForProvisionalNavigation:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DidCommitNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:didCommitNavigation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:didCommitNavigation:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DidFinishNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:didFinishNavigation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:didFinishNavigation:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DidFailNavigation_WithError(handle func(o objc.Object, webView WebView, navigation Navigation, error foundation.Error)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:didFailNavigation:withError:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:didFailNavigation:withError:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_DidFailProvisionalNavigation_WithError(handle func(o objc.Object, webView WebView, navigation Navigation, error foundation.Error)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:didFailProvisionalNavigation:withError:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:didFailProvisionalNavigation:withError:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebViewWebContentProcessDidTerminate(handle func(o objc.Object, webView WebView)) {
-	objc.AddMethod(c.class, objc.GetSelector("webViewWebContentProcessDidTerminate:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webViewWebContentProcessDidTerminate:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_NavigationResponse_DidBecomeDownload(handle func(o objc.Object, webView WebView, navigationResponse NavigationResponse, download Download)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:navigationResponse:didBecomeDownload:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:navigationResponse:didBecomeDownload:"), handle)
 }
 
 func (c *NavigationDelegateCreator) SetWebView_NavigationAction_DidBecomeDownload(handle func(o objc.Object, webView WebView, navigationAction NavigationAction, download Download)) {
-	objc.AddMethod(c.class, objc.GetSelector("webView:navigationAction:didBecomeDownload:"), handle)
+	objc.AddMethod(c.class, objc.SEL("webView:navigationAction:didBecomeDownload:"), handle)
 }
 
 func (c *NavigationDelegateCreator) Create() objc.Object {

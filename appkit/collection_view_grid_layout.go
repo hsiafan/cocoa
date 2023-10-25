@@ -45,12 +45,12 @@ func MakeCollectionViewGridLayout(ptr unsafe.Pointer) CollectionViewGridLayout {
 }
 
 func (cc _CollectionViewGridLayoutClass) Alloc() CollectionViewGridLayout {
-	rv := objc.CallMethod[CollectionViewGridLayout](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CollectionViewGridLayout](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewGridLayoutClass) New() CollectionViewGridLayout {
-	rv := objc.CallMethod[CollectionViewGridLayout](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CollectionViewGridLayout](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -60,78 +60,78 @@ func NewCollectionViewGridLayout() CollectionViewGridLayout {
 }
 
 func (c_ CollectionViewGridLayout) Init() CollectionViewGridLayout {
-	rv := objc.CallMethod[CollectionViewGridLayout](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CollectionViewGridLayout](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) MaximumNumberOfRows() uint {
-	rv := objc.CallMethod[uint](c_, objc.GetSelector("maximumNumberOfRows"))
+	rv := objc.CallMethod[uint](c_, objc.SEL("maximumNumberOfRows"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMaximumNumberOfRows(value uint) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMaximumNumberOfRows:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMaximumNumberOfRows:"), value)
 }
 
 func (c_ CollectionViewGridLayout) MaximumNumberOfColumns() uint {
-	rv := objc.CallMethod[uint](c_, objc.GetSelector("maximumNumberOfColumns"))
+	rv := objc.CallMethod[uint](c_, objc.SEL("maximumNumberOfColumns"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMaximumNumberOfColumns(value uint) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMaximumNumberOfColumns:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMaximumNumberOfColumns:"), value)
 }
 
 func (c_ CollectionViewGridLayout) MinimumItemSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("minimumItemSize"))
+	rv := objc.CallMethod[foundation.Size](c_, objc.SEL("minimumItemSize"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMinimumItemSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMinimumItemSize:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMinimumItemSize:"), value)
 }
 
 func (c_ CollectionViewGridLayout) MaximumItemSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](c_, objc.GetSelector("maximumItemSize"))
+	rv := objc.CallMethod[foundation.Size](c_, objc.SEL("maximumItemSize"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMaximumItemSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMaximumItemSize:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMaximumItemSize:"), value)
 }
 
 func (c_ CollectionViewGridLayout) MinimumInteritemSpacing() float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("minimumInteritemSpacing"))
+	rv := objc.CallMethod[float64](c_, objc.SEL("minimumInteritemSpacing"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMinimumInteritemSpacing(value float64) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMinimumInteritemSpacing:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMinimumInteritemSpacing:"), value)
 }
 
 func (c_ CollectionViewGridLayout) MinimumLineSpacing() float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("minimumLineSpacing"))
+	rv := objc.CallMethod[float64](c_, objc.SEL("minimumLineSpacing"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMinimumLineSpacing(value float64) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMinimumLineSpacing:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMinimumLineSpacing:"), value)
 }
 
 func (c_ CollectionViewGridLayout) Margins() foundation.EdgeInsets {
-	rv := objc.CallMethod[foundation.EdgeInsets](c_, objc.GetSelector("margins"))
+	rv := objc.CallMethod[foundation.EdgeInsets](c_, objc.SEL("margins"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetMargins(value foundation.EdgeInsets) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setMargins:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setMargins:"), value)
 }
 
 func (c_ CollectionViewGridLayout) BackgroundColors() []Color {
-	rv := objc.CallMethod[[]Color](c_, objc.GetSelector("backgroundColors"))
+	rv := objc.CallMethod[[]Color](c_, objc.SEL("backgroundColors"))
 	return rv
 }
 
 func (c_ CollectionViewGridLayout) SetBackgroundColors(value []IColor) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setBackgroundColors:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setBackgroundColors:"), value)
 }

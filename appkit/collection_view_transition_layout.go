@@ -34,17 +34,17 @@ func MakeCollectionViewTransitionLayout(ptr unsafe.Pointer) CollectionViewTransi
 }
 
 func (c_ CollectionViewTransitionLayout) InitWithCurrentLayout_NextLayout(currentLayout ICollectionViewLayout, newLayout ICollectionViewLayout) CollectionViewTransitionLayout {
-	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.GetSelector("initWithCurrentLayout:nextLayout:"), objc.ExtractPtr(currentLayout), objc.ExtractPtr(newLayout))
+	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.SEL("initWithCurrentLayout:nextLayout:"), objc.ExtractPtr(currentLayout), objc.ExtractPtr(newLayout))
 	return rv
 }
 
 func (cc _CollectionViewTransitionLayoutClass) Alloc() CollectionViewTransitionLayout {
-	rv := objc.CallMethod[CollectionViewTransitionLayout](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CollectionViewTransitionLayout](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewTransitionLayoutClass) New() CollectionViewTransitionLayout {
-	rv := objc.CallMethod[CollectionViewTransitionLayout](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CollectionViewTransitionLayout](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -54,36 +54,36 @@ func NewCollectionViewTransitionLayout() CollectionViewTransitionLayout {
 }
 
 func (c_ CollectionViewTransitionLayout) Init() CollectionViewTransitionLayout {
-	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CollectionViewTransitionLayout](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CollectionViewTransitionLayout) UpdateValue_ForAnimatedKey(value float64, key CollectionViewTransitionLayoutAnimatedKey) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("updateValue:forAnimatedKey:"), value, key)
+	objc.CallMethod[objc.Void](c_, objc.SEL("updateValue:forAnimatedKey:"), value, key)
 }
 
 func (c_ CollectionViewTransitionLayout) ValueForAnimatedKey(key CollectionViewTransitionLayoutAnimatedKey) float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("valueForAnimatedKey:"), key)
+	rv := objc.CallMethod[float64](c_, objc.SEL("valueForAnimatedKey:"), key)
 	return rv
 }
 
 // weak property
 func (c_ CollectionViewTransitionLayout) TransitionProgress() float64 {
-	rv := objc.CallMethod[float64](c_, objc.GetSelector("transitionProgress"))
+	rv := objc.CallMethod[float64](c_, objc.SEL("transitionProgress"))
 	return rv
 }
 
 // weak property
 func (c_ CollectionViewTransitionLayout) SetTransitionProgress(value float64) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setTransitionProgress:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setTransitionProgress:"), value)
 }
 
 func (c_ CollectionViewTransitionLayout) CurrentLayout() CollectionViewLayout {
-	rv := objc.CallMethod[CollectionViewLayout](c_, objc.GetSelector("currentLayout"))
+	rv := objc.CallMethod[CollectionViewLayout](c_, objc.SEL("currentLayout"))
 	return rv
 }
 
 func (c_ CollectionViewTransitionLayout) NextLayout() CollectionViewLayout {
-	rv := objc.CallMethod[CollectionViewLayout](c_, objc.GetSelector("nextLayout"))
+	rv := objc.CallMethod[CollectionViewLayout](c_, objc.SEL("nextLayout"))
 	return rv
 }

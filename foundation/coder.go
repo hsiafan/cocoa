@@ -28,12 +28,12 @@ func MakeCoder(ptr unsafe.Pointer) Coder {
 }
 
 func (cc _CoderClass) Alloc() Coder {
-	rv := objc.CallMethod[Coder](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Coder](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CoderClass) New() Coder {
-	rv := objc.CallMethod[Coder](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Coder](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -43,6 +43,6 @@ func NewCoder() Coder {
 }
 
 func (c_ Coder) Init() Coder {
-	rv := objc.CallMethod[Coder](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Coder](c_, objc.SEL("init"))
 	return rv
 }

@@ -32,12 +32,12 @@ func MakeStatusBar(ptr unsafe.Pointer) StatusBar {
 }
 
 func (sc _StatusBarClass) Alloc() StatusBar {
-	rv := objc.CallMethod[StatusBar](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[StatusBar](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _StatusBarClass) New() StatusBar {
-	rv := objc.CallMethod[StatusBar](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[StatusBar](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,30 +47,30 @@ func NewStatusBar() StatusBar {
 }
 
 func (s_ StatusBar) Init() StatusBar {
-	rv := objc.CallMethod[StatusBar](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[StatusBar](s_, objc.SEL("init"))
 	return rv
 }
 
 func (s_ StatusBar) StatusItemWithLength(length float64) StatusItem {
-	rv := objc.CallMethod[StatusItem](s_, objc.GetSelector("statusItemWithLength:"), length)
+	rv := objc.CallMethod[StatusItem](s_, objc.SEL("statusItemWithLength:"), length)
 	return rv
 }
 
 func (s_ StatusBar) RemoveStatusItem(item IStatusItem) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("removeStatusItem:"), objc.ExtractPtr(item))
+	objc.CallMethod[objc.Void](s_, objc.SEL("removeStatusItem:"), objc.ExtractPtr(item))
 }
 
 func (sc _StatusBarClass) SystemStatusBar() StatusBar {
-	rv := objc.CallMethod[StatusBar](sc, objc.GetSelector("systemStatusBar"))
+	rv := objc.CallMethod[StatusBar](sc, objc.SEL("systemStatusBar"))
 	return rv
 }
 
 func (s_ StatusBar) IsVertical() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isVertical"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("isVertical"))
 	return rv
 }
 
 func (s_ StatusBar) Thickness() float64 {
-	rv := objc.CallMethod[float64](s_, objc.GetSelector("thickness"))
+	rv := objc.CallMethod[float64](s_, objc.SEL("thickness"))
 	return rv
 }

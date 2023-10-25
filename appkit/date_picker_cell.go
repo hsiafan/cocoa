@@ -57,27 +57,27 @@ func MakeDatePickerCell(ptr unsafe.Pointer) DatePickerCell {
 }
 
 func (d_ DatePickerCell) InitTextCell(string_ string) DatePickerCell {
-	rv := objc.CallMethod[DatePickerCell](d_, objc.GetSelector("initTextCell:"), string_)
+	rv := objc.CallMethod[DatePickerCell](d_, objc.SEL("initTextCell:"), string_)
 	return rv
 }
 
 func (d_ DatePickerCell) InitImageCell(image IImage) DatePickerCell {
-	rv := objc.CallMethod[DatePickerCell](d_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
+	rv := objc.CallMethod[DatePickerCell](d_, objc.SEL("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
 func (d_ DatePickerCell) Init() DatePickerCell {
-	rv := objc.CallMethod[DatePickerCell](d_, objc.GetSelector("init"))
+	rv := objc.CallMethod[DatePickerCell](d_, objc.SEL("init"))
 	return rv
 }
 
 func (dc _DatePickerCellClass) Alloc() DatePickerCell {
-	rv := objc.CallMethod[DatePickerCell](dc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[DatePickerCell](dc, objc.SEL("alloc"))
 	return rv
 }
 
 func (dc _DatePickerCellClass) New() DatePickerCell {
-	rv := objc.CallMethod[DatePickerCell](dc, objc.GetSelector("new"))
+	rv := objc.CallMethod[DatePickerCell](dc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -87,129 +87,129 @@ func NewDatePickerCell() DatePickerCell {
 }
 
 func (d_ DatePickerCell) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](d_, objc.GetSelector("backgroundColor"))
+	rv := objc.CallMethod[Color](d_, objc.SEL("backgroundColor"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("drawsBackground"))
+	rv := objc.CallMethod[bool](d_, objc.SEL("drawsBackground"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDrawsBackground:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDrawsBackground:"), value)
 }
 
 func (d_ DatePickerCell) TextColor() Color {
-	rv := objc.CallMethod[Color](d_, objc.GetSelector("textColor"))
+	rv := objc.CallMethod[Color](d_, objc.SEL("textColor"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTextColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setTextColor:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) DatePickerStyle() DatePickerStyle {
-	rv := objc.CallMethod[DatePickerStyle](d_, objc.GetSelector("datePickerStyle"))
+	rv := objc.CallMethod[DatePickerStyle](d_, objc.SEL("datePickerStyle"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetDatePickerStyle(value DatePickerStyle) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDatePickerStyle:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDatePickerStyle:"), value)
 }
 
 func (d_ DatePickerCell) DatePickerElements() DatePickerElementFlags {
-	rv := objc.CallMethod[DatePickerElementFlags](d_, objc.GetSelector("datePickerElements"))
+	rv := objc.CallMethod[DatePickerElementFlags](d_, objc.SEL("datePickerElements"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetDatePickerElements(value DatePickerElementFlags) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDatePickerElements:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDatePickerElements:"), value)
 }
 
 func (d_ DatePickerCell) DatePickerMode() DatePickerMode {
-	rv := objc.CallMethod[DatePickerMode](d_, objc.GetSelector("datePickerMode"))
+	rv := objc.CallMethod[DatePickerMode](d_, objc.SEL("datePickerMode"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetDatePickerMode(value DatePickerMode) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDatePickerMode:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDatePickerMode:"), value)
 }
 
 func (d_ DatePickerCell) DateValue() foundation.Date {
-	rv := objc.CallMethod[foundation.Date](d_, objc.GetSelector("dateValue"))
+	rv := objc.CallMethod[foundation.Date](d_, objc.SEL("dateValue"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetDateValue(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDateValue:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDateValue:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) TimeInterval() foundation.TimeInterval {
-	rv := objc.CallMethod[foundation.TimeInterval](d_, objc.GetSelector("timeInterval"))
+	rv := objc.CallMethod[foundation.TimeInterval](d_, objc.SEL("timeInterval"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetTimeInterval(value foundation.TimeInterval) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeInterval:"), value)
+	objc.CallMethod[objc.Void](d_, objc.SEL("setTimeInterval:"), value)
 }
 
 func (d_ DatePickerCell) Calendar() foundation.Calendar {
-	rv := objc.CallMethod[foundation.Calendar](d_, objc.GetSelector("calendar"))
+	rv := objc.CallMethod[foundation.Calendar](d_, objc.SEL("calendar"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetCalendar(value foundation.ICalendar) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setCalendar:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setCalendar:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) Locale() foundation.Locale {
-	rv := objc.CallMethod[foundation.Locale](d_, objc.GetSelector("locale"))
+	rv := objc.CallMethod[foundation.Locale](d_, objc.SEL("locale"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetLocale(value foundation.ILocale) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setLocale:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setLocale:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) TimeZone() foundation.TimeZone {
-	rv := objc.CallMethod[foundation.TimeZone](d_, objc.GetSelector("timeZone"))
+	rv := objc.CallMethod[foundation.TimeZone](d_, objc.SEL("timeZone"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetTimeZone(value foundation.ITimeZone) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setTimeZone:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setTimeZone:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) MinDate() foundation.Date {
-	rv := objc.CallMethod[foundation.Date](d_, objc.GetSelector("minDate"))
+	rv := objc.CallMethod[foundation.Date](d_, objc.SEL("minDate"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetMinDate(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMinDate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setMinDate:"), objc.ExtractPtr(value))
 }
 
 func (d_ DatePickerCell) MaxDate() foundation.Date {
-	rv := objc.CallMethod[foundation.Date](d_, objc.GetSelector("maxDate"))
+	rv := objc.CallMethod[foundation.Date](d_, objc.SEL("maxDate"))
 	return rv
 }
 
 func (d_ DatePickerCell) SetMaxDate(value foundation.IDate) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setMaxDate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setMaxDate:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (d_ DatePickerCell) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](d_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (d_ DatePickerCell) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](d_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }

@@ -52,12 +52,12 @@ func MakePasteboard(ptr unsafe.Pointer) Pasteboard {
 }
 
 func (pc _PasteboardClass) Alloc() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PasteboardClass) New() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -67,156 +67,156 @@ func NewPasteboard() Pasteboard {
 }
 
 func (p_ Pasteboard) Init() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Pasteboard](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PasteboardClass) PasteboardByFilteringData_OfType(data []byte, type_ PasteboardType) Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardByFilteringData:ofType:"), data, type_)
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("pasteboardByFilteringData:ofType:"), data, type_)
 	return rv
 }
 
 func (pc _PasteboardClass) PasteboardByFilteringFile(filename string) Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardByFilteringFile:"), filename)
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("pasteboardByFilteringFile:"), filename)
 	return rv
 }
 
 func (pc _PasteboardClass) PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardByFilteringTypesInPasteboard:"), objc.ExtractPtr(pboard))
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("pasteboardByFilteringTypesInPasteboard:"), objc.ExtractPtr(pboard))
 	return rv
 }
 
 func (pc _PasteboardClass) PasteboardWithName(name PasteboardName) Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardWithName:"), name)
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("pasteboardWithName:"), name)
 	return rv
 }
 
 func (pc _PasteboardClass) PasteboardWithUniqueName() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("pasteboardWithUniqueName"))
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("pasteboardWithUniqueName"))
 	return rv
 }
 
 func (p_ Pasteboard) ClearContents() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("clearContents"))
+	rv := objc.CallMethod[int](p_, objc.SEL("clearContents"))
 	return rv
 }
 
 func (p_ Pasteboard) SetData_ForType(data []byte, dataType PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setData:forType:"), data, dataType)
+	rv := objc.CallMethod[bool](p_, objc.SEL("setData:forType:"), data, dataType)
 	return rv
 }
 
 func (p_ Pasteboard) SetPropertyList_ForType(plist objc.IObject, dataType PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setPropertyList:forType:"), objc.ExtractPtr(plist), dataType)
+	rv := objc.CallMethod[bool](p_, objc.SEL("setPropertyList:forType:"), objc.ExtractPtr(plist), dataType)
 	return rv
 }
 
 func (p_ Pasteboard) SetString_ForType(string_ string, dataType PasteboardType) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("setString:forType:"), string_, dataType)
+	rv := objc.CallMethod[bool](p_, objc.SEL("setString:forType:"), string_, dataType)
 	return rv
 }
 
 func (p_ Pasteboard) ReadObjectsForClasses_Options(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](p_, objc.GetSelector("readObjectsForClasses:options:"), classArray, options)
+	rv := objc.CallMethod[[]objc.Object](p_, objc.SEL("readObjectsForClasses:options:"), classArray, options)
 	return rv
 }
 
 func (p_ Pasteboard) IndexOfPasteboardItem(pasteboardItem IPasteboardItem) uint {
-	rv := objc.CallMethod[uint](p_, objc.GetSelector("indexOfPasteboardItem:"), objc.ExtractPtr(pasteboardItem))
+	rv := objc.CallMethod[uint](p_, objc.SEL("indexOfPasteboardItem:"), objc.ExtractPtr(pasteboardItem))
 	return rv
 }
 
 func (p_ Pasteboard) DataForType(dataType PasteboardType) []byte {
-	rv := objc.CallMethod[[]byte](p_, objc.GetSelector("dataForType:"), dataType)
+	rv := objc.CallMethod[[]byte](p_, objc.SEL("dataForType:"), dataType)
 	return rv
 }
 
 func (p_ Pasteboard) PropertyListForType(dataType PasteboardType) objc.Object {
-	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("propertyListForType:"), dataType)
+	rv := objc.CallMethod[objc.Object](p_, objc.SEL("propertyListForType:"), dataType)
 	return rv
 }
 
 func (p_ Pasteboard) StringForType(dataType PasteboardType) string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("stringForType:"), dataType)
+	rv := objc.CallMethod[string](p_, objc.SEL("stringForType:"), dataType)
 	return rv
 }
 
 func (p_ Pasteboard) AvailableTypeFromArray(types []PasteboardType) PasteboardType {
-	rv := objc.CallMethod[PasteboardType](p_, objc.GetSelector("availableTypeFromArray:"), types)
+	rv := objc.CallMethod[PasteboardType](p_, objc.SEL("availableTypeFromArray:"), types)
 	return rv
 }
 
 func (p_ Pasteboard) CanReadItemWithDataConformingToTypes(types []string) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("canReadItemWithDataConformingToTypes:"), types)
+	rv := objc.CallMethod[bool](p_, objc.SEL("canReadItemWithDataConformingToTypes:"), types)
 	return rv
 }
 
 func (p_ Pasteboard) CanReadObjectForClasses_Options(classArray []objc.IClass, options map[PasteboardReadingOptionKey]objc.IObject) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("canReadObjectForClasses:options:"), classArray, options)
+	rv := objc.CallMethod[bool](p_, objc.SEL("canReadObjectForClasses:options:"), classArray, options)
 	return rv
 }
 
 func (pc _PasteboardClass) TypesFilterableTo(type_ PasteboardType) []PasteboardType {
-	rv := objc.CallMethod[[]PasteboardType](pc, objc.GetSelector("typesFilterableTo:"), type_)
+	rv := objc.CallMethod[[]PasteboardType](pc, objc.SEL("typesFilterableTo:"), type_)
 	return rv
 }
 
 func (p_ Pasteboard) PrepareForNewContentsWithOptions(options PasteboardContentsOptions) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("prepareForNewContentsWithOptions:"), options)
+	rv := objc.CallMethod[int](p_, objc.SEL("prepareForNewContentsWithOptions:"), options)
 	return rv
 }
 
 func (p_ Pasteboard) DeclareTypes_Owner(newTypes []PasteboardType, newOwner objc.IObject) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("declareTypes:owner:"), newTypes, objc.ExtractPtr(newOwner))
+	rv := objc.CallMethod[int](p_, objc.SEL("declareTypes:owner:"), newTypes, objc.ExtractPtr(newOwner))
 	return rv
 }
 
 func (p_ Pasteboard) AddTypes_Owner(newTypes []PasteboardType, newOwner objc.IObject) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("addTypes:owner:"), newTypes, objc.ExtractPtr(newOwner))
+	rv := objc.CallMethod[int](p_, objc.SEL("addTypes:owner:"), newTypes, objc.ExtractPtr(newOwner))
 	return rv
 }
 
 func (p_ Pasteboard) WriteFileContents(filename string) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("writeFileContents:"), filename)
+	rv := objc.CallMethod[bool](p_, objc.SEL("writeFileContents:"), filename)
 	return rv
 }
 
 func (p_ Pasteboard) WriteFileWrapper(wrapper foundation.IFileWrapper) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("writeFileWrapper:"), objc.ExtractPtr(wrapper))
+	rv := objc.CallMethod[bool](p_, objc.SEL("writeFileWrapper:"), objc.ExtractPtr(wrapper))
 	return rv
 }
 
 func (p_ Pasteboard) ReadFileContentsType_ToFile(type_ PasteboardType, filename string) string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("readFileContentsType:toFile:"), type_, filename)
+	rv := objc.CallMethod[string](p_, objc.SEL("readFileContentsType:toFile:"), type_, filename)
 	return rv
 }
 
 func (p_ Pasteboard) ReadFileWrapper() foundation.FileWrapper {
-	rv := objc.CallMethod[foundation.FileWrapper](p_, objc.GetSelector("readFileWrapper"))
+	rv := objc.CallMethod[foundation.FileWrapper](p_, objc.SEL("readFileWrapper"))
 	return rv
 }
 
 func (pc _PasteboardClass) GeneralPasteboard() Pasteboard {
-	rv := objc.CallMethod[Pasteboard](pc, objc.GetSelector("generalPasteboard"))
+	rv := objc.CallMethod[Pasteboard](pc, objc.SEL("generalPasteboard"))
 	return rv
 }
 
 func (p_ Pasteboard) PasteboardItems() []PasteboardItem {
-	rv := objc.CallMethod[[]PasteboardItem](p_, objc.GetSelector("pasteboardItems"))
+	rv := objc.CallMethod[[]PasteboardItem](p_, objc.SEL("pasteboardItems"))
 	return rv
 }
 
 func (p_ Pasteboard) Types() []PasteboardType {
-	rv := objc.CallMethod[[]PasteboardType](p_, objc.GetSelector("types"))
+	rv := objc.CallMethod[[]PasteboardType](p_, objc.SEL("types"))
 	return rv
 }
 
 func (p_ Pasteboard) Name() PasteboardName {
-	rv := objc.CallMethod[PasteboardName](p_, objc.GetSelector("name"))
+	rv := objc.CallMethod[PasteboardName](p_, objc.SEL("name"))
 	return rv
 }
 
 func (p_ Pasteboard) ChangeCount() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("changeCount"))
+	rv := objc.CallMethod[int](p_, objc.SEL("changeCount"))
 	return rv
 }

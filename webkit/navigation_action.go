@@ -37,12 +37,12 @@ func MakeNavigationAction(ptr unsafe.Pointer) NavigationAction {
 }
 
 func (nc _NavigationActionClass) Alloc() NavigationAction {
-	rv := objc.CallMethod[NavigationAction](nc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[NavigationAction](nc, objc.SEL("alloc"))
 	return rv
 }
 
 func (nc _NavigationActionClass) New() NavigationAction {
-	rv := objc.CallMethod[NavigationAction](nc, objc.GetSelector("new"))
+	rv := objc.CallMethod[NavigationAction](nc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,41 +52,41 @@ func NewNavigationAction() NavigationAction {
 }
 
 func (n_ NavigationAction) Init() NavigationAction {
-	rv := objc.CallMethod[NavigationAction](n_, objc.GetSelector("init"))
+	rv := objc.CallMethod[NavigationAction](n_, objc.SEL("init"))
 	return rv
 }
 
 func (n_ NavigationAction) NavigationType() NavigationType {
-	rv := objc.CallMethod[NavigationType](n_, objc.GetSelector("navigationType"))
+	rv := objc.CallMethod[NavigationType](n_, objc.SEL("navigationType"))
 	return rv
 }
 
 func (n_ NavigationAction) Request() foundation.URLRequest {
-	rv := objc.CallMethod[foundation.URLRequest](n_, objc.GetSelector("request"))
+	rv := objc.CallMethod[foundation.URLRequest](n_, objc.SEL("request"))
 	return rv
 }
 
 func (n_ NavigationAction) SourceFrame() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](n_, objc.GetSelector("sourceFrame"))
+	rv := objc.CallMethod[FrameInfo](n_, objc.SEL("sourceFrame"))
 	return rv
 }
 
 func (n_ NavigationAction) TargetFrame() FrameInfo {
-	rv := objc.CallMethod[FrameInfo](n_, objc.GetSelector("targetFrame"))
+	rv := objc.CallMethod[FrameInfo](n_, objc.SEL("targetFrame"))
 	return rv
 }
 
 func (n_ NavigationAction) ButtonNumber() int {
-	rv := objc.CallMethod[int](n_, objc.GetSelector("buttonNumber"))
+	rv := objc.CallMethod[int](n_, objc.SEL("buttonNumber"))
 	return rv
 }
 
 func (n_ NavigationAction) ModifierFlags() appkit.EventModifierFlags {
-	rv := objc.CallMethod[appkit.EventModifierFlags](n_, objc.GetSelector("modifierFlags"))
+	rv := objc.CallMethod[appkit.EventModifierFlags](n_, objc.SEL("modifierFlags"))
 	return rv
 }
 
 func (n_ NavigationAction) ShouldPerformDownload() bool {
-	rv := objc.CallMethod[bool](n_, objc.GetSelector("shouldPerformDownload"))
+	rv := objc.CallMethod[bool](n_, objc.SEL("shouldPerformDownload"))
 	return rv
 }

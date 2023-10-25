@@ -30,22 +30,22 @@ func MakeHTTPURLResponse(ptr unsafe.Pointer) HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) InitWithURL_StatusCode_HTTPVersion_HeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("initWithURL:statusCode:HTTPVersion:headerFields:"), objc.ExtractPtr(url), statusCode, HTTPVersion, headerFields)
+	rv := objc.CallMethod[HTTPURLResponse](h_, objc.SEL("initWithURL:statusCode:HTTPVersion:headerFields:"), objc.ExtractPtr(url), statusCode, HTTPVersion, headerFields)
 	return rv
 }
 
 func (h_ HTTPURLResponse) InitWithURL_MIMEType_ExpectedContentLength_TextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), objc.ExtractPtr(URL), MIMEType, length, name)
+	rv := objc.CallMethod[HTTPURLResponse](h_, objc.SEL("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), objc.ExtractPtr(URL), MIMEType, length, name)
 	return rv
 }
 
 func (hc _HTTPURLResponseClass) Alloc() HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](hc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[HTTPURLResponse](hc, objc.SEL("alloc"))
 	return rv
 }
 
 func (hc _HTTPURLResponseClass) New() HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](hc, objc.GetSelector("new"))
+	rv := objc.CallMethod[HTTPURLResponse](hc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,21 +55,21 @@ func NewHTTPURLResponse() HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) Init() HTTPURLResponse {
-	rv := objc.CallMethod[HTTPURLResponse](h_, objc.GetSelector("init"))
+	rv := objc.CallMethod[HTTPURLResponse](h_, objc.SEL("init"))
 	return rv
 }
 
 func (h_ HTTPURLResponse) ValueForHTTPHeaderField(field string) string {
-	rv := objc.CallMethod[string](h_, objc.GetSelector("valueForHTTPHeaderField:"), field)
+	rv := objc.CallMethod[string](h_, objc.SEL("valueForHTTPHeaderField:"), field)
 	return rv
 }
 
 func (hc _HTTPURLResponseClass) LocalizedStringForStatusCode(statusCode int) string {
-	rv := objc.CallMethod[string](hc, objc.GetSelector("localizedStringForStatusCode:"), statusCode)
+	rv := objc.CallMethod[string](hc, objc.SEL("localizedStringForStatusCode:"), statusCode)
 	return rv
 }
 
 func (h_ HTTPURLResponse) StatusCode() int {
-	rv := objc.CallMethod[int](h_, objc.GetSelector("statusCode"))
+	rv := objc.CallMethod[int](h_, objc.SEL("statusCode"))
 	return rv
 }

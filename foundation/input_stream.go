@@ -29,42 +29,42 @@ func MakeInputStream(ptr unsafe.Pointer) InputStream {
 }
 
 func (ic _InputStreamClass) InputStreamWithData(data []byte) InputStream {
-	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("inputStreamWithData:"), data)
+	rv := objc.CallMethod[InputStream](ic, objc.SEL("inputStreamWithData:"), data)
 	return rv
 }
 
 func (ic _InputStreamClass) InputStreamWithFileAtPath(path string) InputStream {
-	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("inputStreamWithFileAtPath:"), path)
+	rv := objc.CallMethod[InputStream](ic, objc.SEL("inputStreamWithFileAtPath:"), path)
 	return rv
 }
 
 func (ic _InputStreamClass) InputStreamWithURL(url IURL) InputStream {
-	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("inputStreamWithURL:"), objc.ExtractPtr(url))
+	rv := objc.CallMethod[InputStream](ic, objc.SEL("inputStreamWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
 func (i_ InputStream) InitWithData(data []byte) InputStream {
-	rv := objc.CallMethod[InputStream](i_, objc.GetSelector("initWithData:"), data)
+	rv := objc.CallMethod[InputStream](i_, objc.SEL("initWithData:"), data)
 	return rv
 }
 
 func (i_ InputStream) InitWithFileAtPath(path string) InputStream {
-	rv := objc.CallMethod[InputStream](i_, objc.GetSelector("initWithFileAtPath:"), path)
+	rv := objc.CallMethod[InputStream](i_, objc.SEL("initWithFileAtPath:"), path)
 	return rv
 }
 
 func (i_ InputStream) InitWithURL(url IURL) InputStream {
-	rv := objc.CallMethod[InputStream](i_, objc.GetSelector("initWithURL:"), objc.ExtractPtr(url))
+	rv := objc.CallMethod[InputStream](i_, objc.SEL("initWithURL:"), objc.ExtractPtr(url))
 	return rv
 }
 
 func (ic _InputStreamClass) Alloc() InputStream {
-	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[InputStream](ic, objc.SEL("alloc"))
 	return rv
 }
 
 func (ic _InputStreamClass) New() InputStream {
-	rv := objc.CallMethod[InputStream](ic, objc.GetSelector("new"))
+	rv := objc.CallMethod[InputStream](ic, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -74,11 +74,11 @@ func NewInputStream() InputStream {
 }
 
 func (i_ InputStream) Init() InputStream {
-	rv := objc.CallMethod[InputStream](i_, objc.GetSelector("init"))
+	rv := objc.CallMethod[InputStream](i_, objc.SEL("init"))
 	return rv
 }
 
 func (i_ InputStream) HasBytesAvailable() bool {
-	rv := objc.CallMethod[bool](i_, objc.GetSelector("hasBytesAvailable"))
+	rv := objc.CallMethod[bool](i_, objc.SEL("hasBytesAvailable"))
 	return rv
 }

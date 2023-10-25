@@ -203,7 +203,7 @@ func (p *Protocol) writeProtocolCreator(w *CodeWriter) {
 			}
 			funcSign := "(o objc.Object, " + m.ProtocolGoFuncFieldType(p.Type.Module)[1:]
 			w.WriteLineF("func (%s *%s) Set%s(handle func %s) {", receiver, creatorName, m.ProtocolGoFuncName(), funcSign)
-			w.WriteLineF("\tobjc.AddMethod(c.class, objc.GetSelector(\"%s\"), handle)", m.Selector())
+			w.WriteLineF("\tobjc.AddMethod(c.class, objc.SEL(\"%s\"), handle)", m.Selector())
 			w.WriteLine("}")
 		}
 	}

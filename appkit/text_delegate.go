@@ -83,23 +83,23 @@ func NewTextDelegateCreator(name string) *TextDelegateCreator {
 }
 
 func (c *TextDelegateCreator) SetTextDidChange(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("textDidChange:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textDidChange:"), handle)
 }
 
 func (c *TextDelegateCreator) SetTextShouldBeginEditing(handle func(o objc.Object, textObject Text) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("textShouldBeginEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textShouldBeginEditing:"), handle)
 }
 
 func (c *TextDelegateCreator) SetTextDidBeginEditing(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("textDidBeginEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textDidBeginEditing:"), handle)
 }
 
 func (c *TextDelegateCreator) SetTextShouldEndEditing(handle func(o objc.Object, textObject Text) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("textShouldEndEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textShouldEndEditing:"), handle)
 }
 
 func (c *TextDelegateCreator) SetTextDidEndEditing(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("textDidEndEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("textDidEndEditing:"), handle)
 }
 
 func (c *TextDelegateCreator) Create() objc.Object {

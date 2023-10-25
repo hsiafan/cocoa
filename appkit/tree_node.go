@@ -36,22 +36,22 @@ func MakeTreeNode(ptr unsafe.Pointer) TreeNode {
 }
 
 func (tc _TreeNodeClass) TreeNodeWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("treeNodeWithRepresentedObject:"), objc.ExtractPtr(modelObject))
+	rv := objc.CallMethod[TreeNode](tc, objc.SEL("treeNodeWithRepresentedObject:"), objc.ExtractPtr(modelObject))
 	return rv
 }
 
 func (t_ TreeNode) InitWithRepresentedObject(modelObject objc.IObject) TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("initWithRepresentedObject:"), objc.ExtractPtr(modelObject))
+	rv := objc.CallMethod[TreeNode](t_, objc.SEL("initWithRepresentedObject:"), objc.ExtractPtr(modelObject))
 	return rv
 }
 
 func (tc _TreeNodeClass) Alloc() TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TreeNode](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TreeNodeClass) New() TreeNode {
-	rv := objc.CallMethod[TreeNode](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TreeNode](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,41 +61,41 @@ func NewTreeNode() TreeNode {
 }
 
 func (t_ TreeNode) Init() TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TreeNode](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("descendantNodeAtIndexPath:"), objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[TreeNode](t_, objc.SEL("descendantNodeAtIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (t_ TreeNode) SortWithSortDescriptors_Recursively(sortDescriptors []foundation.ISortDescriptor, recursively bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("sortWithSortDescriptors:recursively:"), sortDescriptors, recursively)
+	objc.CallMethod[objc.Void](t_, objc.SEL("sortWithSortDescriptors:recursively:"), sortDescriptors, recursively)
 }
 
 func (t_ TreeNode) RepresentedObject() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("representedObject"))
+	rv := objc.CallMethod[objc.Object](t_, objc.SEL("representedObject"))
 	return rv
 }
 
 func (t_ TreeNode) IndexPath() foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](t_, objc.GetSelector("indexPath"))
+	rv := objc.CallMethod[foundation.IndexPath](t_, objc.SEL("indexPath"))
 	return rv
 }
 
 func (t_ TreeNode) IsLeaf() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isLeaf"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isLeaf"))
 	return rv
 }
 
 func (t_ TreeNode) ChildNodes() []TreeNode {
-	rv := objc.CallMethod[[]TreeNode](t_, objc.GetSelector("childNodes"))
+	rv := objc.CallMethod[[]TreeNode](t_, objc.SEL("childNodes"))
 	return rv
 }
 
 // weak property
 func (t_ TreeNode) ParentNode() TreeNode {
-	rv := objc.CallMethod[TreeNode](t_, objc.GetSelector("parentNode"))
+	rv := objc.CallMethod[TreeNode](t_, objc.SEL("parentNode"))
 	return rv
 }

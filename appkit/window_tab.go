@@ -37,12 +37,12 @@ func MakeWindowTab(ptr unsafe.Pointer) WindowTab {
 }
 
 func (wc _WindowTabClass) Alloc() WindowTab {
-	rv := objc.CallMethod[WindowTab](wc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[WindowTab](wc, objc.SEL("alloc"))
 	return rv
 }
 
 func (wc _WindowTabClass) New() WindowTab {
-	rv := objc.CallMethod[WindowTab](wc, objc.GetSelector("new"))
+	rv := objc.CallMethod[WindowTab](wc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,42 +52,42 @@ func NewWindowTab() WindowTab {
 }
 
 func (w_ WindowTab) Init() WindowTab {
-	rv := objc.CallMethod[WindowTab](w_, objc.GetSelector("init"))
+	rv := objc.CallMethod[WindowTab](w_, objc.SEL("init"))
 	return rv
 }
 
 func (w_ WindowTab) Title() string {
-	rv := objc.CallMethod[string](w_, objc.GetSelector("title"))
+	rv := objc.CallMethod[string](w_, objc.SEL("title"))
 	return rv
 }
 
 func (w_ WindowTab) SetTitle(value string) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setTitle:"), value)
+	objc.CallMethod[objc.Void](w_, objc.SEL("setTitle:"), value)
 }
 
 func (w_ WindowTab) AttributedTitle() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](w_, objc.GetSelector("attributedTitle"))
+	rv := objc.CallMethod[foundation.AttributedString](w_, objc.SEL("attributedTitle"))
 	return rv
 }
 
 func (w_ WindowTab) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAttributedTitle:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](w_, objc.SEL("setAttributedTitle:"), objc.ExtractPtr(value))
 }
 
 func (w_ WindowTab) ToolTip() string {
-	rv := objc.CallMethod[string](w_, objc.GetSelector("toolTip"))
+	rv := objc.CallMethod[string](w_, objc.SEL("toolTip"))
 	return rv
 }
 
 func (w_ WindowTab) SetToolTip(value string) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setToolTip:"), value)
+	objc.CallMethod[objc.Void](w_, objc.SEL("setToolTip:"), value)
 }
 
 func (w_ WindowTab) AccessoryView() View {
-	rv := objc.CallMethod[View](w_, objc.GetSelector("accessoryView"))
+	rv := objc.CallMethod[View](w_, objc.SEL("accessoryView"))
 	return rv
 }
 
 func (w_ WindowTab) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](w_, objc.SEL("setAccessoryView:"), objc.ExtractPtr(value))
 }

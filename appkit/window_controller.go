@@ -54,37 +54,37 @@ func MakeWindowController(ptr unsafe.Pointer) WindowController {
 }
 
 func (w_ WindowController) InitWithWindow(window IWindow) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindow:"), objc.ExtractPtr(window))
+	rv := objc.CallMethod[WindowController](w_, objc.SEL("initWithWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibName(windowNibName NibName) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibName:"), windowNibName)
+	rv := objc.CallMethod[WindowController](w_, objc.SEL("initWithWindowNibName:"), windowNibName)
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibName_Owner(windowNibName NibName, owner objc.IObject) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibName:owner:"), windowNibName, objc.ExtractPtr(owner))
+	rv := objc.CallMethod[WindowController](w_, objc.SEL("initWithWindowNibName:owner:"), windowNibName, objc.ExtractPtr(owner))
 	return rv
 }
 
 func (w_ WindowController) InitWithWindowNibPath_Owner(windowNibPath string, owner objc.IObject) WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("initWithWindowNibPath:owner:"), windowNibPath, objc.ExtractPtr(owner))
+	rv := objc.CallMethod[WindowController](w_, objc.SEL("initWithWindowNibPath:owner:"), windowNibPath, objc.ExtractPtr(owner))
 	return rv
 }
 
 func (w_ WindowController) Init() WindowController {
-	rv := objc.CallMethod[WindowController](w_, objc.GetSelector("init"))
+	rv := objc.CallMethod[WindowController](w_, objc.SEL("init"))
 	return rv
 }
 
 func (wc _WindowControllerClass) Alloc() WindowController {
-	rv := objc.CallMethod[WindowController](wc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[WindowController](wc, objc.SEL("alloc"))
 	return rv
 }
 
 func (wc _WindowControllerClass) New() WindowController {
-	rv := objc.CallMethod[WindowController](wc, objc.GetSelector("new"))
+	rv := objc.CallMethod[WindowController](wc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -94,120 +94,120 @@ func NewWindowController() WindowController {
 }
 
 func (w_ WindowController) LoadWindow() {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("loadWindow"))
+	objc.CallMethod[objc.Void](w_, objc.SEL("loadWindow"))
 }
 
 func (w_ WindowController) ShowWindow(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("showWindow:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](w_, objc.SEL("showWindow:"), objc.ExtractPtr(sender))
 }
 
 func (w_ WindowController) WindowDidLoad() {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowDidLoad"))
+	objc.CallMethod[objc.Void](w_, objc.SEL("windowDidLoad"))
 }
 
 func (w_ WindowController) WindowWillLoad() {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("windowWillLoad"))
+	objc.CallMethod[objc.Void](w_, objc.SEL("windowWillLoad"))
 }
 
 func (w_ WindowController) SetDocumentEdited(dirtyFlag bool) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDocumentEdited:"), dirtyFlag)
+	objc.CallMethod[objc.Void](w_, objc.SEL("setDocumentEdited:"), dirtyFlag)
 }
 
 func (w_ WindowController) Close() {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("close"))
+	objc.CallMethod[objc.Void](w_, objc.SEL("close"))
 }
 
 func (w_ WindowController) SynchronizeWindowTitleWithDocumentName() {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("synchronizeWindowTitleWithDocumentName"))
+	objc.CallMethod[objc.Void](w_, objc.SEL("synchronizeWindowTitleWithDocumentName"))
 }
 
 func (w_ WindowController) WindowTitleForDocumentDisplayName(displayName string) string {
-	rv := objc.CallMethod[string](w_, objc.GetSelector("windowTitleForDocumentDisplayName:"), displayName)
+	rv := objc.CallMethod[string](w_, objc.SEL("windowTitleForDocumentDisplayName:"), displayName)
 	return rv
 }
 
 func (w_ WindowController) DismissController(sender objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("dismissController:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](w_, objc.SEL("dismissController:"), objc.ExtractPtr(sender))
 }
 
 func (w_ WindowController) IsWindowLoaded() bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("isWindowLoaded"))
+	rv := objc.CallMethod[bool](w_, objc.SEL("isWindowLoaded"))
 	return rv
 }
 
 func (w_ WindowController) Window() Window {
-	rv := objc.CallMethod[Window](w_, objc.GetSelector("window"))
+	rv := objc.CallMethod[Window](w_, objc.SEL("window"))
 	return rv
 }
 
 func (w_ WindowController) SetWindow(value IWindow) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindow:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](w_, objc.SEL("setWindow:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (w_ WindowController) Document() objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("document"))
+	rv := objc.CallMethod[objc.Object](w_, objc.SEL("document"))
 	return rv
 }
 
 // weak property
 func (w_ WindowController) SetDocument(value objc.IObject) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setDocument:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](w_, objc.SEL("setDocument:"), objc.ExtractPtr(value))
 }
 
 func (w_ WindowController) ShouldCloseDocument() bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("shouldCloseDocument"))
+	rv := objc.CallMethod[bool](w_, objc.SEL("shouldCloseDocument"))
 	return rv
 }
 
 func (w_ WindowController) SetShouldCloseDocument(value bool) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setShouldCloseDocument:"), value)
+	objc.CallMethod[objc.Void](w_, objc.SEL("setShouldCloseDocument:"), value)
 }
 
 // weak property
 func (w_ WindowController) Owner() objc.Object {
-	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("owner"))
+	rv := objc.CallMethod[objc.Object](w_, objc.SEL("owner"))
 	return rv
 }
 
 func (w_ WindowController) Storyboard() Storyboard {
-	rv := objc.CallMethod[Storyboard](w_, objc.GetSelector("storyboard"))
+	rv := objc.CallMethod[Storyboard](w_, objc.SEL("storyboard"))
 	return rv
 }
 
 func (w_ WindowController) WindowNibName() NibName {
-	rv := objc.CallMethod[NibName](w_, objc.GetSelector("windowNibName"))
+	rv := objc.CallMethod[NibName](w_, objc.SEL("windowNibName"))
 	return rv
 }
 
 func (w_ WindowController) WindowNibPath() string {
-	rv := objc.CallMethod[string](w_, objc.GetSelector("windowNibPath"))
+	rv := objc.CallMethod[string](w_, objc.SEL("windowNibPath"))
 	return rv
 }
 
 func (w_ WindowController) ShouldCascadeWindows() bool {
-	rv := objc.CallMethod[bool](w_, objc.GetSelector("shouldCascadeWindows"))
+	rv := objc.CallMethod[bool](w_, objc.SEL("shouldCascadeWindows"))
 	return rv
 }
 
 func (w_ WindowController) SetShouldCascadeWindows(value bool) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setShouldCascadeWindows:"), value)
+	objc.CallMethod[objc.Void](w_, objc.SEL("setShouldCascadeWindows:"), value)
 }
 
 func (w_ WindowController) WindowFrameAutosaveName() WindowFrameAutosaveName {
-	rv := objc.CallMethod[WindowFrameAutosaveName](w_, objc.GetSelector("windowFrameAutosaveName"))
+	rv := objc.CallMethod[WindowFrameAutosaveName](w_, objc.SEL("windowFrameAutosaveName"))
 	return rv
 }
 
 func (w_ WindowController) SetWindowFrameAutosaveName(value WindowFrameAutosaveName) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setWindowFrameAutosaveName:"), value)
+	objc.CallMethod[objc.Void](w_, objc.SEL("setWindowFrameAutosaveName:"), value)
 }
 
 func (w_ WindowController) ContentViewController() ViewController {
-	rv := objc.CallMethod[ViewController](w_, objc.GetSelector("contentViewController"))
+	rv := objc.CallMethod[ViewController](w_, objc.SEL("contentViewController"))
 	return rv
 }
 
 func (w_ WindowController) SetContentViewController(value IViewController) {
-	objc.CallMethod[objc.Void](w_, objc.GetSelector("setContentViewController:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](w_, objc.SEL("setContentViewController:"), objc.ExtractPtr(value))
 }

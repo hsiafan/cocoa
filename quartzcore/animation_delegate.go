@@ -49,11 +49,11 @@ func NewAnimationDelegateCreator(name string) *AnimationDelegateCreator {
 }
 
 func (c *AnimationDelegateCreator) SetAnimationDidStart(handle func(o objc.Object, anim Animation)) {
-	objc.AddMethod(c.class, objc.GetSelector("animationDidStart:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animationDidStart:"), handle)
 }
 
 func (c *AnimationDelegateCreator) SetAnimationDidStop_Finished(handle func(o objc.Object, anim Animation, flag bool)) {
-	objc.AddMethod(c.class, objc.GetSelector("animationDidStop:finished:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animationDidStop:finished:"), handle)
 }
 
 func (c *AnimationDelegateCreator) Create() objc.Object {

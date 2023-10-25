@@ -490,171 +490,171 @@ func NewApplicationDelegateCreator(name string) *ApplicationDelegateCreator {
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillFinishLaunching(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillFinishLaunching:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillFinishLaunching:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidFinishLaunching(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidFinishLaunching:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidFinishLaunching:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillBecomeActive(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillBecomeActive:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillBecomeActive:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidBecomeActive(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidBecomeActive:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidBecomeActive:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillResignActive(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillResignActive:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillResignActive:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidResignActive(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidResignActive:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidResignActive:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationShouldTerminate(handle func(o objc.Object, sender Application) ApplicationTerminateReply) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationShouldTerminate:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationShouldTerminate:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationShouldTerminateAfterLastWindowClosed(handle func(o objc.Object, sender Application) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationShouldTerminateAfterLastWindowClosed:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationShouldTerminateAfterLastWindowClosed:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillTerminate(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillTerminate:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillTerminate:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillHide(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillHide:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillHide:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidHide(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidHide:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidHide:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillUnhide(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillUnhide:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillUnhide:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidUnhide(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidUnhide:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidUnhide:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationWillUpdate(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationWillUpdate:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationWillUpdate:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidUpdate(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidUpdate:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidUpdate:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationShouldHandleReopen_HasVisibleWindows(handle func(o objc.Object, sender Application, flag bool) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationShouldHandleReopen:hasVisibleWindows:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationShouldHandleReopen:hasVisibleWindows:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDockMenu(handle func(o objc.Object, sender Application) IMenu) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDockMenu:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDockMenu:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationShouldAutomaticallyLocalizeKeyEquivalents(handle func(o objc.Object, application Application) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationShouldAutomaticallyLocalizeKeyEquivalents:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationShouldAutomaticallyLocalizeKeyEquivalents:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_WillPresentError(handle func(o objc.Object, application Application, error foundation.Error) foundation.IError) {
-	objc.AddMethod(c.class, objc.GetSelector("application:willPresentError:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:willPresentError:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidChangeScreenParameters(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidChangeScreenParameters:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidChangeScreenParameters:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_WillContinueUserActivityWithType(handle func(o objc.Object, application Application, userActivityType string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("application:willContinueUserActivityWithType:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:willContinueUserActivityWithType:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DidFailToContinueUserActivityWithType_Error(handle func(o objc.Object, application Application, userActivityType string, error foundation.Error)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:didFailToContinueUserActivityWithType:error:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:didFailToContinueUserActivityWithType:error:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DidUpdateUserActivity(handle func(o objc.Object, application Application, userActivity foundation.UserActivity)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:didUpdateUserActivity:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:didUpdateUserActivity:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DidRegisterForRemoteNotificationsWithDeviceToken(handle func(o objc.Object, application Application, deviceToken []byte)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:didRegisterForRemoteNotificationsWithDeviceToken:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:didRegisterForRemoteNotificationsWithDeviceToken:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DidFailToRegisterForRemoteNotificationsWithError(handle func(o objc.Object, application Application, error foundation.Error)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:didFailToRegisterForRemoteNotificationsWithError:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:didFailToRegisterForRemoteNotificationsWithError:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DidReceiveRemoteNotification(handle func(o objc.Object, application Application, userInfo map[string]objc.Object)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:didReceiveRemoteNotification:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:didReceiveRemoteNotification:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_OpenURLs(handle func(o objc.Object, application Application, urls []foundation.URL)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:openURLs:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:openURLs:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_OpenFile(handle func(o objc.Object, sender Application, filename string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("application:openFile:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:openFile:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_OpenFileWithoutUI(handle func(o objc.Object, sender objc.Object, filename string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("application:openFileWithoutUI:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:openFileWithoutUI:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_OpenTempFile(handle func(o objc.Object, sender Application, filename string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("application:openTempFile:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:openTempFile:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_OpenFiles(handle func(o objc.Object, sender Application, filenames []string)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:openFiles:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:openFiles:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationShouldOpenUntitledFile(handle func(o objc.Object, sender Application) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationShouldOpenUntitledFile:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationShouldOpenUntitledFile:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationOpenUntitledFile(handle func(o objc.Object, sender Application) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationOpenUntitledFile:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationOpenUntitledFile:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_PrintFile(handle func(o objc.Object, sender Application, filename string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("application:printFile:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:printFile:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_PrintFiles_WithSettings_ShowPrintPanels(handle func(o objc.Object, application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply) {
-	objc.AddMethod(c.class, objc.GetSelector("application:printFiles:withSettings:showPrintPanels:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:printFiles:withSettings:showPrintPanels:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationSupportsSecureRestorableState(handle func(o objc.Object, app Application) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationSupportsSecureRestorableState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationSupportsSecureRestorableState:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationProtectedDataDidBecomeAvailable(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationProtectedDataDidBecomeAvailable:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationProtectedDataDidBecomeAvailable:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationProtectedDataWillBecomeUnavailable(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationProtectedDataWillBecomeUnavailable:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationProtectedDataWillBecomeUnavailable:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_WillEncodeRestorableState(handle func(o objc.Object, app Application, coder foundation.Coder)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:willEncodeRestorableState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:willEncodeRestorableState:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DidDecodeRestorableState(handle func(o objc.Object, app Application, coder foundation.Coder)) {
-	objc.AddMethod(c.class, objc.GetSelector("application:didDecodeRestorableState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:didDecodeRestorableState:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplicationDidChangeOcclusionState(handle func(o objc.Object, notification foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("applicationDidChangeOcclusionState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("applicationDidChangeOcclusionState:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) SetApplication_DelegateHandlesKey(handle func(o objc.Object, sender Application, key string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("application:delegateHandlesKey:"), handle)
+	objc.AddMethod(c.class, objc.SEL("application:delegateHandlesKey:"), handle)
 }
 
 func (c *ApplicationDelegateCreator) Create() objc.Object {

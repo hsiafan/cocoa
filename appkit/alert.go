@@ -56,12 +56,12 @@ func MakeAlert(ptr unsafe.Pointer) Alert {
 }
 
 func (ac _AlertClass) Alloc() Alert {
-	rv := objc.CallMethod[Alert](ac, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Alert](ac, objc.SEL("alloc"))
 	return rv
 }
 
 func (ac _AlertClass) New() Alert {
-	rv := objc.CallMethod[Alert](ac, objc.GetSelector("new"))
+	rv := objc.CallMethod[Alert](ac, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -71,132 +71,132 @@ func NewAlert() Alert {
 }
 
 func (a_ Alert) Init() Alert {
-	rv := objc.CallMethod[Alert](a_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Alert](a_, objc.SEL("init"))
 	return rv
 }
 
 func (ac _AlertClass) AlertWithError(error foundation.IError) Alert {
-	rv := objc.CallMethod[Alert](ac, objc.GetSelector("alertWithError:"), objc.ExtractPtr(error))
+	rv := objc.CallMethod[Alert](ac, objc.SEL("alertWithError:"), objc.ExtractPtr(error))
 	return rv
 }
 
 func (a_ Alert) Layout() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("layout"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("layout"))
 }
 
 func (a_ Alert) RunModal() ModalResponse {
-	rv := objc.CallMethod[ModalResponse](a_, objc.GetSelector("runModal"))
+	rv := objc.CallMethod[ModalResponse](a_, objc.SEL("runModal"))
 	return rv
 }
 
 func (a_ Alert) BeginSheetModalForWindow_CompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheetModalForWindow:completionHandler:"), objc.ExtractPtr(sheetWindow), handler)
+	objc.CallMethod[objc.Void](a_, objc.SEL("beginSheetModalForWindow:completionHandler:"), objc.ExtractPtr(sheetWindow), handler)
 }
 
 // deprecated
 func (a_ Alert) BeginSheetModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(window IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:"), objc.ExtractPtr(window), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](a_, objc.SEL("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:"), objc.ExtractPtr(window), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
 }
 
 func (a_ Alert) AddButtonWithTitle(title string) Button {
-	rv := objc.CallMethod[Button](a_, objc.GetSelector("addButtonWithTitle:"), title)
+	rv := objc.CallMethod[Button](a_, objc.SEL("addButtonWithTitle:"), title)
 	return rv
 }
 
 func (a_ Alert) AlertStyle() AlertStyle {
-	rv := objc.CallMethod[AlertStyle](a_, objc.GetSelector("alertStyle"))
+	rv := objc.CallMethod[AlertStyle](a_, objc.SEL("alertStyle"))
 	return rv
 }
 
 func (a_ Alert) SetAlertStyle(value AlertStyle) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAlertStyle:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setAlertStyle:"), value)
 }
 
 func (a_ Alert) AccessoryView() View {
-	rv := objc.CallMethod[View](a_, objc.GetSelector("accessoryView"))
+	rv := objc.CallMethod[View](a_, objc.SEL("accessoryView"))
 	return rv
 }
 
 func (a_ Alert) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setAccessoryView:"), objc.ExtractPtr(value))
 }
 
 func (a_ Alert) ShowsHelp() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("showsHelp"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("showsHelp"))
 	return rv
 }
 
 func (a_ Alert) SetShowsHelp(value bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setShowsHelp:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setShowsHelp:"), value)
 }
 
 func (a_ Alert) HelpAnchor() HelpAnchorName {
-	rv := objc.CallMethod[HelpAnchorName](a_, objc.GetSelector("helpAnchor"))
+	rv := objc.CallMethod[HelpAnchorName](a_, objc.SEL("helpAnchor"))
 	return rv
 }
 
 func (a_ Alert) SetHelpAnchor(value HelpAnchorName) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setHelpAnchor:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setHelpAnchor:"), value)
 }
 
 // weak property
 func (a_ Alert) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](a_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (a_ Alert) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (a_ Alert) SuppressionButton() Button {
-	rv := objc.CallMethod[Button](a_, objc.GetSelector("suppressionButton"))
+	rv := objc.CallMethod[Button](a_, objc.SEL("suppressionButton"))
 	return rv
 }
 
 func (a_ Alert) ShowsSuppressionButton() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("showsSuppressionButton"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("showsSuppressionButton"))
 	return rv
 }
 
 func (a_ Alert) SetShowsSuppressionButton(value bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setShowsSuppressionButton:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setShowsSuppressionButton:"), value)
 }
 
 func (a_ Alert) InformativeText() string {
-	rv := objc.CallMethod[string](a_, objc.GetSelector("informativeText"))
+	rv := objc.CallMethod[string](a_, objc.SEL("informativeText"))
 	return rv
 }
 
 func (a_ Alert) SetInformativeText(value string) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setInformativeText:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setInformativeText:"), value)
 }
 
 func (a_ Alert) MessageText() string {
-	rv := objc.CallMethod[string](a_, objc.GetSelector("messageText"))
+	rv := objc.CallMethod[string](a_, objc.SEL("messageText"))
 	return rv
 }
 
 func (a_ Alert) SetMessageText(value string) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setMessageText:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setMessageText:"), value)
 }
 
 func (a_ Alert) Icon() Image {
-	rv := objc.CallMethod[Image](a_, objc.GetSelector("icon"))
+	rv := objc.CallMethod[Image](a_, objc.SEL("icon"))
 	return rv
 }
 
 func (a_ Alert) SetIcon(value IImage) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setIcon:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setIcon:"), objc.ExtractPtr(value))
 }
 
 func (a_ Alert) Buttons() []Button {
-	rv := objc.CallMethod[[]Button](a_, objc.GetSelector("buttons"))
+	rv := objc.CallMethod[[]Button](a_, objc.SEL("buttons"))
 	return rv
 }
 
 func (a_ Alert) Window() Window {
-	rv := objc.CallMethod[Window](a_, objc.GetSelector("window"))
+	rv := objc.CallMethod[Window](a_, objc.SEL("window"))
 	return rv
 }

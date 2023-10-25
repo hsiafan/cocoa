@@ -149,17 +149,17 @@ func MakeApplication(ptr unsafe.Pointer) Application {
 }
 
 func (a_ Application) Init() Application {
-	rv := objc.CallMethod[Application](a_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Application](a_, objc.SEL("init"))
 	return rv
 }
 
 func (ac _ApplicationClass) Alloc() Application {
-	rv := objc.CallMethod[Application](ac, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Application](ac, objc.SEL("alloc"))
 	return rv
 }
 
 func (ac _ApplicationClass) New() Application {
-	rv := objc.CallMethod[Application](ac, objc.GetSelector("new"))
+	rv := objc.CallMethod[Application](ac, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -169,514 +169,514 @@ func NewApplication() Application {
 }
 
 func (a_ Application) NextEventMatchingMask_UntilDate_InMode_Dequeue(mask EventMask, expiration foundation.IDate, mode foundation.RunLoopMode, deqFlag bool) Event {
-	rv := objc.CallMethod[Event](a_, objc.GetSelector("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, objc.ExtractPtr(expiration), mode, deqFlag)
+	rv := objc.CallMethod[Event](a_, objc.SEL("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, objc.ExtractPtr(expiration), mode, deqFlag)
 	return rv
 }
 
 func (a_ Application) DiscardEventsMatchingMask_BeforeEvent(mask EventMask, lastEvent IEvent) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("discardEventsMatchingMask:beforeEvent:"), mask, objc.ExtractPtr(lastEvent))
+	objc.CallMethod[objc.Void](a_, objc.SEL("discardEventsMatchingMask:beforeEvent:"), mask, objc.ExtractPtr(lastEvent))
 }
 
 func (a_ Application) Run() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("run"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("run"))
 }
 
 func (a_ Application) FinishLaunching() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("finishLaunching"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("finishLaunching"))
 }
 
 func (a_ Application) Stop(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("stop:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("stop:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) SendEvent(event IEvent) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("sendEvent:"), objc.ExtractPtr(event))
+	objc.CallMethod[objc.Void](a_, objc.SEL("sendEvent:"), objc.ExtractPtr(event))
 }
 
 func (a_ Application) PostEvent_AtStart(event IEvent, flag bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("postEvent:atStart:"), objc.ExtractPtr(event), flag)
+	objc.CallMethod[objc.Void](a_, objc.SEL("postEvent:atStart:"), objc.ExtractPtr(event), flag)
 }
 
 func (a_ Application) SendAction_To_From(action objc.Selector, target objc.IObject, sender objc.IObject) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("sendAction:to:from:"), action, objc.ExtractPtr(target), objc.ExtractPtr(sender))
+	rv := objc.CallMethod[bool](a_, objc.SEL("sendAction:to:from:"), action, objc.ExtractPtr(target), objc.ExtractPtr(sender))
 	return rv
 }
 
 func (a_ Application) TargetForAction(action objc.Selector) objc.Object {
-	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("targetForAction:"), action)
+	rv := objc.CallMethod[objc.Object](a_, objc.SEL("targetForAction:"), action)
 	return rv
 }
 
 func (a_ Application) TargetForAction_To_From(action objc.Selector, target objc.IObject, sender objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("targetForAction:to:from:"), action, objc.ExtractPtr(target), objc.ExtractPtr(sender))
+	rv := objc.CallMethod[objc.Object](a_, objc.SEL("targetForAction:to:from:"), action, objc.ExtractPtr(target), objc.ExtractPtr(sender))
 	return rv
 }
 
 func (a_ Application) Terminate(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("terminate:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("terminate:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) ReplyToApplicationShouldTerminate(shouldTerminate bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("replyToApplicationShouldTerminate:"), shouldTerminate)
+	objc.CallMethod[objc.Void](a_, objc.SEL("replyToApplicationShouldTerminate:"), shouldTerminate)
 }
 
 func (a_ Application) ActivateIgnoringOtherApps(flag bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("activateIgnoringOtherApps:"), flag)
+	objc.CallMethod[objc.Void](a_, objc.SEL("activateIgnoringOtherApps:"), flag)
 }
 
 func (a_ Application) Deactivate() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("deactivate"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("deactivate"))
 }
 
 func (a_ Application) DisableRelaunchOnLogin() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("disableRelaunchOnLogin"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("disableRelaunchOnLogin"))
 }
 
 func (a_ Application) EnableRelaunchOnLogin() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("enableRelaunchOnLogin"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("enableRelaunchOnLogin"))
 }
 
 func (a_ Application) RegisterForRemoteNotifications() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerForRemoteNotifications"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("registerForRemoteNotifications"))
 }
 
 func (a_ Application) UnregisterForRemoteNotifications() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("unregisterForRemoteNotifications"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("unregisterForRemoteNotifications"))
 }
 
 func (a_ Application) RegisterForRemoteNotificationTypes(types RemoteNotificationType) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerForRemoteNotificationTypes:"), types)
+	objc.CallMethod[objc.Void](a_, objc.SEL("registerForRemoteNotificationTypes:"), types)
 }
 
 func (a_ Application) ToggleTouchBarCustomizationPalette(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("toggleTouchBarCustomizationPalette:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("toggleTouchBarCustomizationPalette:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) RequestUserAttention(requestType RequestUserAttentionType) int {
-	rv := objc.CallMethod[int](a_, objc.GetSelector("requestUserAttention:"), requestType)
+	rv := objc.CallMethod[int](a_, objc.SEL("requestUserAttention:"), requestType)
 	return rv
 }
 
 func (a_ Application) CancelUserAttentionRequest(request int) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("cancelUserAttentionRequest:"), request)
+	objc.CallMethod[objc.Void](a_, objc.SEL("cancelUserAttentionRequest:"), request)
 }
 
 func (a_ Application) ReplyToOpenOrPrint(reply ApplicationDelegateReply) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("replyToOpenOrPrint:"), reply)
+	objc.CallMethod[objc.Void](a_, objc.SEL("replyToOpenOrPrint:"), reply)
 }
 
 func (a_ Application) RegisterUserInterfaceItemSearchHandler(handler objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerUserInterfaceItemSearchHandler:"), objc.ExtractPtr(handler))
+	objc.CallMethod[objc.Void](a_, objc.SEL("registerUserInterfaceItemSearchHandler:"), objc.ExtractPtr(handler))
 }
 
 func (a_ Application) SearchString_InUserInterfaceItemString_SearchRange_FoundRange(searchString string, stringToSearch string, searchRange foundation.Range, foundRange *foundation.Range) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("searchString:inUserInterfaceItemString:searchRange:foundRange:"), searchString, stringToSearch, searchRange, foundRange)
+	rv := objc.CallMethod[bool](a_, objc.SEL("searchString:inUserInterfaceItemString:searchRange:foundRange:"), searchString, stringToSearch, searchRange, foundRange)
 	return rv
 }
 
 func (a_ Application) UnregisterUserInterfaceItemSearchHandler(handler objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("unregisterUserInterfaceItemSearchHandler:"), objc.ExtractPtr(handler))
+	objc.CallMethod[objc.Void](a_, objc.SEL("unregisterUserInterfaceItemSearchHandler:"), objc.ExtractPtr(handler))
 }
 
 func (a_ Application) ShowHelp(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("showHelp:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("showHelp:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) ActivateContextHelpMode(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("activateContextHelpMode:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("activateContextHelpMode:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) HideOtherApplications(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("hideOtherApplications:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("hideOtherApplications:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) UnhideAllApplications(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("unhideAllApplications:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("unhideAllApplications:"), objc.ExtractPtr(sender))
 }
 
 func (ac _ApplicationClass) DetachDrawingThread_ToTarget_WithObject(selector objc.Selector, target objc.IObject, argument objc.IObject) {
-	objc.CallMethod[objc.Void](ac, objc.GetSelector("detachDrawingThread:toTarget:withObject:"), selector, objc.ExtractPtr(target), objc.ExtractPtr(argument))
+	objc.CallMethod[objc.Void](ac, objc.SEL("detachDrawingThread:toTarget:withObject:"), selector, objc.ExtractPtr(target), objc.ExtractPtr(argument))
 }
 
 func (a_ Application) ReportException(exception foundation.IException) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("reportException:"), objc.ExtractPtr(exception))
+	objc.CallMethod[objc.Void](a_, objc.SEL("reportException:"), objc.ExtractPtr(exception))
 }
 
 func (a_ Application) ActivationPolicy() ApplicationActivationPolicy {
-	rv := objc.CallMethod[ApplicationActivationPolicy](a_, objc.GetSelector("activationPolicy"))
+	rv := objc.CallMethod[ApplicationActivationPolicy](a_, objc.SEL("activationPolicy"))
 	return rv
 }
 
 func (a_ Application) SetActivationPolicy(activationPolicy ApplicationActivationPolicy) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("setActivationPolicy:"), activationPolicy)
+	rv := objc.CallMethod[bool](a_, objc.SEL("setActivationPolicy:"), activationPolicy)
 	return rv
 }
 
 func (a_ Application) WindowWithWindowNumber(windowNum int) Window {
-	rv := objc.CallMethod[Window](a_, objc.GetSelector("windowWithWindowNumber:"), windowNum)
+	rv := objc.CallMethod[Window](a_, objc.SEL("windowWithWindowNumber:"), windowNum)
 	return rv
 }
 
 // deprecated
 func (a_ Application) MakeWindowsPerform_InOrder(selector objc.Selector, flag bool) Window {
-	rv := objc.CallMethod[Window](a_, objc.GetSelector("makeWindowsPerform:inOrder:"), selector, flag)
+	rv := objc.CallMethod[Window](a_, objc.SEL("makeWindowsPerform:inOrder:"), selector, flag)
 	return rv
 }
 
 func (a_ Application) EnumerateWindowsWithOptions_UsingBlock(options WindowListOptions, block func(window Window, stop *bool)) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("enumerateWindowsWithOptions:usingBlock:"), options, block)
+	objc.CallMethod[objc.Void](a_, objc.SEL("enumerateWindowsWithOptions:usingBlock:"), options, block)
 }
 
 func (a_ Application) MiniaturizeAll(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("miniaturizeAll:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("miniaturizeAll:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) Hide(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("hide:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("hide:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) Unhide(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("unhide:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("unhide:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) UnhideWithoutActivation() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("unhideWithoutActivation"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("unhideWithoutActivation"))
 }
 
 func (a_ Application) UpdateWindows() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("updateWindows"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("updateWindows"))
 }
 
 func (a_ Application) SetWindowsNeedUpdate(needUpdate bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setWindowsNeedUpdate:"), needUpdate)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setWindowsNeedUpdate:"), needUpdate)
 }
 
 func (a_ Application) PreventWindowOrdering() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("preventWindowOrdering"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("preventWindowOrdering"))
 }
 
 func (a_ Application) ArrangeInFront(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("arrangeInFront:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("arrangeInFront:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) ExtendStateRestoration() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("extendStateRestoration"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("extendStateRestoration"))
 }
 
 func (a_ Application) CompleteStateRestoration() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("completeStateRestoration"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("completeStateRestoration"))
 }
 
 func (a_ Application) RestoreWindowWithIdentifier_State_CompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(param1 Window, param2 foundation.Error)) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("restoreWindowWithIdentifier:state:completionHandler:"), identifier, objc.ExtractPtr(state), completionHandler)
+	rv := objc.CallMethod[bool](a_, objc.SEL("restoreWindowWithIdentifier:state:completionHandler:"), identifier, objc.ExtractPtr(state), completionHandler)
 	return rv
 }
 
 func (a_ Application) RunModalForWindow(window IWindow) ModalResponse {
-	rv := objc.CallMethod[ModalResponse](a_, objc.GetSelector("runModalForWindow:"), objc.ExtractPtr(window))
+	rv := objc.CallMethod[ModalResponse](a_, objc.SEL("runModalForWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
 func (a_ Application) StopModal() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("stopModal"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("stopModal"))
 }
 
 func (a_ Application) StopModalWithCode(returnCode ModalResponse) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("stopModalWithCode:"), returnCode)
+	objc.CallMethod[objc.Void](a_, objc.SEL("stopModalWithCode:"), returnCode)
 }
 
 func (a_ Application) AbortModal() {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("abortModal"))
+	objc.CallMethod[objc.Void](a_, objc.SEL("abortModal"))
 }
 
 func (a_ Application) BeginModalSessionForWindow(window IWindow) ModalSession {
-	rv := objc.CallMethod[ModalSession](a_, objc.GetSelector("beginModalSessionForWindow:"), objc.ExtractPtr(window))
+	rv := objc.CallMethod[ModalSession](a_, objc.SEL("beginModalSessionForWindow:"), objc.ExtractPtr(window))
 	return rv
 }
 
 func (a_ Application) RunModalSession(session ModalSession) ModalResponse {
-	rv := objc.CallMethod[ModalResponse](a_, objc.GetSelector("runModalSession:"), session)
+	rv := objc.CallMethod[ModalResponse](a_, objc.SEL("runModalSession:"), session)
 	return rv
 }
 
 func (a_ Application) OrderFrontColorPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("orderFrontColorPanel:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("orderFrontColorPanel:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) OrderFrontStandardAboutPanel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("orderFrontStandardAboutPanel:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("orderFrontStandardAboutPanel:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) OrderFrontStandardAboutPanelWithOptions(optionsDictionary map[AboutPanelOptionKey]objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("orderFrontStandardAboutPanelWithOptions:"), optionsDictionary)
+	objc.CallMethod[objc.Void](a_, objc.SEL("orderFrontStandardAboutPanelWithOptions:"), optionsDictionary)
 }
 
 func (a_ Application) OrderFrontCharacterPalette(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("orderFrontCharacterPalette:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("orderFrontCharacterPalette:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) RunPageLayout(sender objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("runPageLayout:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](a_, objc.SEL("runPageLayout:"), objc.ExtractPtr(sender))
 }
 
 func (a_ Application) AddWindowsItem_Title_Filename(win IWindow, string_ string, isFilename bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("addWindowsItem:title:filename:"), objc.ExtractPtr(win), string_, isFilename)
+	objc.CallMethod[objc.Void](a_, objc.SEL("addWindowsItem:title:filename:"), objc.ExtractPtr(win), string_, isFilename)
 }
 
 func (a_ Application) ChangeWindowsItem_Title_Filename(win IWindow, string_ string, isFilename bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("changeWindowsItem:title:filename:"), objc.ExtractPtr(win), string_, isFilename)
+	objc.CallMethod[objc.Void](a_, objc.SEL("changeWindowsItem:title:filename:"), objc.ExtractPtr(win), string_, isFilename)
 }
 
 func (a_ Application) RemoveWindowsItem(win IWindow) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("removeWindowsItem:"), objc.ExtractPtr(win))
+	objc.CallMethod[objc.Void](a_, objc.SEL("removeWindowsItem:"), objc.ExtractPtr(win))
 }
 
 func (a_ Application) UpdateWindowsItem(win IWindow) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("updateWindowsItem:"), objc.ExtractPtr(win))
+	objc.CallMethod[objc.Void](a_, objc.SEL("updateWindowsItem:"), objc.ExtractPtr(win))
 }
 
 func (a_ Application) RegisterServicesMenuSendTypes_ReturnTypes(sendTypes []PasteboardType, returnTypes []PasteboardType) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("registerServicesMenuSendTypes:returnTypes:"), sendTypes, returnTypes)
+	objc.CallMethod[objc.Void](a_, objc.SEL("registerServicesMenuSendTypes:returnTypes:"), sendTypes, returnTypes)
 }
 
 // deprecated
 func (a_ Application) BeginModalSessionForWindow_RelativeToWindow(window IWindow, docWindow IWindow) ModalSession {
-	rv := objc.CallMethod[ModalSession](a_, objc.GetSelector("beginModalSessionForWindow:relativeToWindow:"), objc.ExtractPtr(window), objc.ExtractPtr(docWindow))
+	rv := objc.CallMethod[ModalSession](a_, objc.SEL("beginModalSessionForWindow:relativeToWindow:"), objc.ExtractPtr(window), objc.ExtractPtr(docWindow))
 	return rv
 }
 
 // deprecated
 func (a_ Application) RunModalForWindow_RelativeToWindow(window IWindow, docWindow IWindow) int {
-	rv := objc.CallMethod[int](a_, objc.GetSelector("runModalForWindow:relativeToWindow:"), objc.ExtractPtr(window), objc.ExtractPtr(docWindow))
+	rv := objc.CallMethod[int](a_, objc.SEL("runModalForWindow:relativeToWindow:"), objc.ExtractPtr(window), objc.ExtractPtr(docWindow))
 	return rv
 }
 
 func (a_ Application) EndModalSession(session ModalSession) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("endModalSession:"), session)
+	objc.CallMethod[objc.Void](a_, objc.SEL("endModalSession:"), session)
 }
 
 // deprecated
 func (a_ Application) BeginSheet_ModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(sheet IWindow, docWindow IWindow, modalDelegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), objc.ExtractPtr(sheet), objc.ExtractPtr(docWindow), objc.ExtractPtr(modalDelegate), didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](a_, objc.SEL("beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), objc.ExtractPtr(sheet), objc.ExtractPtr(docWindow), objc.ExtractPtr(modalDelegate), didEndSelector, contextInfo)
 }
 
 // deprecated
 func (a_ Application) EndSheet(sheet IWindow) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("endSheet:"), objc.ExtractPtr(sheet))
+	objc.CallMethod[objc.Void](a_, objc.SEL("endSheet:"), objc.ExtractPtr(sheet))
 }
 
 // deprecated
 func (a_ Application) EndSheet_ReturnCode(sheet IWindow, returnCode int) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("endSheet:returnCode:"), objc.ExtractPtr(sheet), returnCode)
+	objc.CallMethod[objc.Void](a_, objc.SEL("endSheet:returnCode:"), objc.ExtractPtr(sheet), returnCode)
 }
 
 // deprecated
 func (a_ Application) Application_PrintFiles(sender IApplication, filenames []string) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("application:printFiles:"), objc.ExtractPtr(sender), filenames)
+	objc.CallMethod[objc.Void](a_, objc.SEL("application:printFiles:"), objc.ExtractPtr(sender), filenames)
 }
 
 // deprecated
 func (a_ Application) Application_DelegateHandlesKey(sender IApplication, key string) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("application:delegateHandlesKey:"), objc.ExtractPtr(sender), key)
+	rv := objc.CallMethod[bool](a_, objc.SEL("application:delegateHandlesKey:"), objc.ExtractPtr(sender), key)
 	return rv
 }
 
 func (ac _ApplicationClass) SharedApplication() Application {
-	rv := objc.CallMethod[Application](ac, objc.GetSelector("sharedApplication"))
+	rv := objc.CallMethod[Application](ac, objc.SEL("sharedApplication"))
 	return rv
 }
 
 // weak property
 func (a_ Application) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](a_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (a_ Application) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) CurrentEvent() Event {
-	rv := objc.CallMethod[Event](a_, objc.GetSelector("currentEvent"))
+	rv := objc.CallMethod[Event](a_, objc.SEL("currentEvent"))
 	return rv
 }
 
 func (a_ Application) IsRunning() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isRunning"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isRunning"))
 	return rv
 }
 
 func (a_ Application) IsActive() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isActive"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isActive"))
 	return rv
 }
 
 func (a_ Application) EnabledRemoteNotificationTypes() RemoteNotificationType {
-	rv := objc.CallMethod[RemoteNotificationType](a_, objc.GetSelector("enabledRemoteNotificationTypes"))
+	rv := objc.CallMethod[RemoteNotificationType](a_, objc.SEL("enabledRemoteNotificationTypes"))
 	return rv
 }
 
 func (a_ Application) IsRegisteredForRemoteNotifications() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isRegisteredForRemoteNotifications"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isRegisteredForRemoteNotifications"))
 	return rv
 }
 
 func (a_ Application) Appearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("appearance"))
+	rv := objc.CallMethod[Appearance](a_, objc.SEL("appearance"))
 	return rv
 }
 
 func (a_ Application) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setAppearance:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) EffectiveAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("effectiveAppearance"))
+	rv := objc.CallMethod[Appearance](a_, objc.SEL("effectiveAppearance"))
 	return rv
 }
 
 func (a_ Application) CurrentSystemPresentationOptions() ApplicationPresentationOptions {
-	rv := objc.CallMethod[ApplicationPresentationOptions](a_, objc.GetSelector("currentSystemPresentationOptions"))
+	rv := objc.CallMethod[ApplicationPresentationOptions](a_, objc.SEL("currentSystemPresentationOptions"))
 	return rv
 }
 
 func (a_ Application) PresentationOptions() ApplicationPresentationOptions {
-	rv := objc.CallMethod[ApplicationPresentationOptions](a_, objc.GetSelector("presentationOptions"))
+	rv := objc.CallMethod[ApplicationPresentationOptions](a_, objc.SEL("presentationOptions"))
 	return rv
 }
 
 func (a_ Application) SetPresentationOptions(value ApplicationPresentationOptions) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setPresentationOptions:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setPresentationOptions:"), value)
 }
 
 func (a_ Application) UserInterfaceLayoutDirection() UserInterfaceLayoutDirection {
-	rv := objc.CallMethod[UserInterfaceLayoutDirection](a_, objc.GetSelector("userInterfaceLayoutDirection"))
+	rv := objc.CallMethod[UserInterfaceLayoutDirection](a_, objc.SEL("userInterfaceLayoutDirection"))
 	return rv
 }
 
 func (a_ Application) DockTile() DockTile {
-	rv := objc.CallMethod[DockTile](a_, objc.GetSelector("dockTile"))
+	rv := objc.CallMethod[DockTile](a_, objc.SEL("dockTile"))
 	return rv
 }
 
 func (a_ Application) ApplicationIconImage() Image {
-	rv := objc.CallMethod[Image](a_, objc.GetSelector("applicationIconImage"))
+	rv := objc.CallMethod[Image](a_, objc.SEL("applicationIconImage"))
 	return rv
 }
 
 func (a_ Application) SetApplicationIconImage(value IImage) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setApplicationIconImage:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setApplicationIconImage:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) HelpMenu() Menu {
-	rv := objc.CallMethod[Menu](a_, objc.GetSelector("helpMenu"))
+	rv := objc.CallMethod[Menu](a_, objc.SEL("helpMenu"))
 	return rv
 }
 
 func (a_ Application) SetHelpMenu(value IMenu) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setHelpMenu:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setHelpMenu:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) ServicesProvider() objc.Object {
-	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("servicesProvider"))
+	rv := objc.CallMethod[objc.Object](a_, objc.SEL("servicesProvider"))
 	return rv
 }
 
 func (a_ Application) SetServicesProvider(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setServicesProvider:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setServicesProvider:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) IsFullKeyboardAccessEnabled() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isFullKeyboardAccessEnabled"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isFullKeyboardAccessEnabled"))
 	return rv
 }
 
 func (a_ Application) OrderedDocuments() []Document {
-	rv := objc.CallMethod[[]Document](a_, objc.GetSelector("orderedDocuments"))
+	rv := objc.CallMethod[[]Document](a_, objc.SEL("orderedDocuments"))
 	return rv
 }
 
 func (a_ Application) OrderedWindows() []Window {
-	rv := objc.CallMethod[[]Window](a_, objc.GetSelector("orderedWindows"))
+	rv := objc.CallMethod[[]Window](a_, objc.SEL("orderedWindows"))
 	return rv
 }
 
 // weak property
 func (a_ Application) KeyWindow() Window {
-	rv := objc.CallMethod[Window](a_, objc.GetSelector("keyWindow"))
+	rv := objc.CallMethod[Window](a_, objc.SEL("keyWindow"))
 	return rv
 }
 
 // weak property
 func (a_ Application) MainWindow() Window {
-	rv := objc.CallMethod[Window](a_, objc.GetSelector("mainWindow"))
+	rv := objc.CallMethod[Window](a_, objc.SEL("mainWindow"))
 	return rv
 }
 
 func (a_ Application) Windows() []Window {
-	rv := objc.CallMethod[[]Window](a_, objc.GetSelector("windows"))
+	rv := objc.CallMethod[[]Window](a_, objc.SEL("windows"))
 	return rv
 }
 
 func (a_ Application) IsHidden() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isHidden"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isHidden"))
 	return rv
 }
 
 // deprecated
 func (a_ Application) Context() GraphicsContext {
-	rv := objc.CallMethod[GraphicsContext](a_, objc.GetSelector("context"))
+	rv := objc.CallMethod[GraphicsContext](a_, objc.SEL("context"))
 	return rv
 }
 
 func (a_ Application) OcclusionState() ApplicationOcclusionState {
-	rv := objc.CallMethod[ApplicationOcclusionState](a_, objc.GetSelector("occlusionState"))
+	rv := objc.CallMethod[ApplicationOcclusionState](a_, objc.SEL("occlusionState"))
 	return rv
 }
 
 func (a_ Application) IsProtectedDataAvailable() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isProtectedDataAvailable"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isProtectedDataAvailable"))
 	return rv
 }
 
 func (a_ Application) ModalWindow() Window {
-	rv := objc.CallMethod[Window](a_, objc.GetSelector("modalWindow"))
+	rv := objc.CallMethod[Window](a_, objc.SEL("modalWindow"))
 	return rv
 }
 
 func (a_ Application) MainMenu() Menu {
-	rv := objc.CallMethod[Menu](a_, objc.GetSelector("mainMenu"))
+	rv := objc.CallMethod[Menu](a_, objc.SEL("mainMenu"))
 	return rv
 }
 
 func (a_ Application) SetMainMenu(value IMenu) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setMainMenu:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setMainMenu:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) IsAutomaticCustomizeTouchBarMenuItemEnabled() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isAutomaticCustomizeTouchBarMenuItemEnabled"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isAutomaticCustomizeTouchBarMenuItemEnabled"))
 	return rv
 }
 
 func (a_ Application) SetAutomaticCustomizeTouchBarMenuItemEnabled(value bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAutomaticCustomizeTouchBarMenuItemEnabled:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setAutomaticCustomizeTouchBarMenuItemEnabled:"), value)
 }
 
 func (a_ Application) WindowsMenu() Menu {
-	rv := objc.CallMethod[Menu](a_, objc.GetSelector("windowsMenu"))
+	rv := objc.CallMethod[Menu](a_, objc.SEL("windowsMenu"))
 	return rv
 }
 
 func (a_ Application) SetWindowsMenu(value IMenu) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setWindowsMenu:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setWindowsMenu:"), objc.ExtractPtr(value))
 }
 
 func (a_ Application) ServicesMenu() Menu {
-	rv := objc.CallMethod[Menu](a_, objc.GetSelector("servicesMenu"))
+	rv := objc.CallMethod[Menu](a_, objc.SEL("servicesMenu"))
 	return rv
 }
 
 func (a_ Application) SetServicesMenu(value IMenu) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setServicesMenu:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setServicesMenu:"), objc.ExtractPtr(value))
 }

@@ -55,22 +55,22 @@ func MakeObjectController(ptr unsafe.Pointer) ObjectController {
 }
 
 func (o_ ObjectController) InitWithContent(content objc.IObject) ObjectController {
-	rv := objc.CallMethod[ObjectController](o_, objc.GetSelector("initWithContent:"), objc.ExtractPtr(content))
+	rv := objc.CallMethod[ObjectController](o_, objc.SEL("initWithContent:"), objc.ExtractPtr(content))
 	return rv
 }
 
 func (o_ ObjectController) Init() ObjectController {
-	rv := objc.CallMethod[ObjectController](o_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ObjectController](o_, objc.SEL("init"))
 	return rv
 }
 
 func (oc _ObjectControllerClass) Alloc() ObjectController {
-	rv := objc.CallMethod[ObjectController](oc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ObjectController](oc, objc.SEL("alloc"))
 	return rv
 }
 
 func (oc _ObjectControllerClass) New() ObjectController {
-	rv := objc.CallMethod[ObjectController](oc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ObjectController](oc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -80,121 +80,121 @@ func NewObjectController() ObjectController {
 }
 
 func (o_ ObjectController) PrepareContent() {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("prepareContent"))
+	objc.CallMethod[objc.Void](o_, objc.SEL("prepareContent"))
 }
 
 func (o_ ObjectController) NewObject() objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("newObject"))
+	rv := objc.CallMethod[objc.Object](o_, objc.SEL("newObject"))
 	rv.Autorelease()
 	return rv
 }
 
 func (o_ ObjectController) AddObject(object objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("addObject:"), objc.ExtractPtr(object))
+	objc.CallMethod[objc.Void](o_, objc.SEL("addObject:"), objc.ExtractPtr(object))
 }
 
 func (o_ ObjectController) RemoveObject(object objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("removeObject:"), objc.ExtractPtr(object))
+	objc.CallMethod[objc.Void](o_, objc.SEL("removeObject:"), objc.ExtractPtr(object))
 }
 
 func (o_ ObjectController) Add(sender objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("add:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](o_, objc.SEL("add:"), objc.ExtractPtr(sender))
 }
 
 func (o_ ObjectController) Remove(sender objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("remove:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](o_, objc.SEL("remove:"), objc.ExtractPtr(sender))
 }
 
 func (o_ ObjectController) Fetch(sender objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("fetch:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](o_, objc.SEL("fetch:"), objc.ExtractPtr(sender))
 }
 
 func (o_ ObjectController) ValidateUserInterfaceItem(item objc.IObject) bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("validateUserInterfaceItem:"), objc.ExtractPtr(item))
+	rv := objc.CallMethod[bool](o_, objc.SEL("validateUserInterfaceItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (o_ ObjectController) Content() objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("content"))
+	rv := objc.CallMethod[objc.Object](o_, objc.SEL("content"))
 	return rv
 }
 
 func (o_ ObjectController) SetContent(value objc.IObject) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setContent:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](o_, objc.SEL("setContent:"), objc.ExtractPtr(value))
 }
 
 func (o_ ObjectController) AutomaticallyPreparesContent() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("automaticallyPreparesContent"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("automaticallyPreparesContent"))
 	return rv
 }
 
 func (o_ ObjectController) SetAutomaticallyPreparesContent(value bool) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setAutomaticallyPreparesContent:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setAutomaticallyPreparesContent:"), value)
 }
 
 // weak property
 func (o_ ObjectController) ObjectClass() objc.Class {
-	rv := objc.CallMethod[objc.Class](o_, objc.GetSelector("objectClass"))
+	rv := objc.CallMethod[objc.Class](o_, objc.SEL("objectClass"))
 	return rv
 }
 
 // weak property
 func (o_ ObjectController) SetObjectClass(value objc.IClass) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setObjectClass:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](o_, objc.SEL("setObjectClass:"), objc.ExtractPtr(value))
 }
 
 func (o_ ObjectController) CanAdd() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("canAdd"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("canAdd"))
 	return rv
 }
 
 func (o_ ObjectController) CanRemove() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("canRemove"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("canRemove"))
 	return rv
 }
 
 func (o_ ObjectController) IsEditable() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("isEditable"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("isEditable"))
 	return rv
 }
 
 func (o_ ObjectController) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setEditable:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setEditable:"), value)
 }
 
 func (o_ ObjectController) EntityName() string {
-	rv := objc.CallMethod[string](o_, objc.GetSelector("entityName"))
+	rv := objc.CallMethod[string](o_, objc.SEL("entityName"))
 	return rv
 }
 
 func (o_ ObjectController) SetEntityName(value string) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setEntityName:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setEntityName:"), value)
 }
 
 func (o_ ObjectController) UsesLazyFetching() bool {
-	rv := objc.CallMethod[bool](o_, objc.GetSelector("usesLazyFetching"))
+	rv := objc.CallMethod[bool](o_, objc.SEL("usesLazyFetching"))
 	return rv
 }
 
 func (o_ ObjectController) SetUsesLazyFetching(value bool) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setUsesLazyFetching:"), value)
+	objc.CallMethod[objc.Void](o_, objc.SEL("setUsesLazyFetching:"), value)
 }
 
 func (o_ ObjectController) FetchPredicate() foundation.Predicate {
-	rv := objc.CallMethod[foundation.Predicate](o_, objc.GetSelector("fetchPredicate"))
+	rv := objc.CallMethod[foundation.Predicate](o_, objc.SEL("fetchPredicate"))
 	return rv
 }
 
 func (o_ ObjectController) SetFetchPredicate(value foundation.IPredicate) {
-	objc.CallMethod[objc.Void](o_, objc.GetSelector("setFetchPredicate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](o_, objc.SEL("setFetchPredicate:"), objc.ExtractPtr(value))
 }
 
 func (o_ ObjectController) SelectedObjects() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](o_, objc.GetSelector("selectedObjects"))
+	rv := objc.CallMethod[[]objc.Object](o_, objc.SEL("selectedObjects"))
 	return rv
 }
 
 func (o_ ObjectController) Selection() objc.Object {
-	rv := objc.CallMethod[objc.Object](o_, objc.GetSelector("selection"))
+	rv := objc.CallMethod[objc.Object](o_, objc.SEL("selection"))
 	return rv
 }

@@ -37,17 +37,17 @@ func MakeAnimation(ptr unsafe.Pointer) Animation {
 }
 
 func (ac _AnimationClass) Animation() Animation {
-	rv := objc.CallMethod[Animation](ac, objc.GetSelector("animation"))
+	rv := objc.CallMethod[Animation](ac, objc.SEL("animation"))
 	return rv
 }
 
 func (ac _AnimationClass) Alloc() Animation {
-	rv := objc.CallMethod[Animation](ac, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Animation](ac, objc.SEL("alloc"))
 	return rv
 }
 
 func (ac _AnimationClass) New() Animation {
-	rv := objc.CallMethod[Animation](ac, objc.GetSelector("new"))
+	rv := objc.CallMethod[Animation](ac, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -57,52 +57,52 @@ func NewAnimation() Animation {
 }
 
 func (a_ Animation) Init() Animation {
-	rv := objc.CallMethod[Animation](a_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Animation](a_, objc.SEL("init"))
 	return rv
 }
 
 func (ac _AnimationClass) DefaultValueForKey(key string) objc.Object {
-	rv := objc.CallMethod[objc.Object](ac, objc.GetSelector("defaultValueForKey:"), key)
+	rv := objc.CallMethod[objc.Object](ac, objc.SEL("defaultValueForKey:"), key)
 	return rv
 }
 
 func (a_ Animation) ShouldArchiveValueForKey(key string) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("shouldArchiveValueForKey:"), key)
+	rv := objc.CallMethod[bool](a_, objc.SEL("shouldArchiveValueForKey:"), key)
 	return rv
 }
 
 func (a_ Animation) IsRemovedOnCompletion() bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("isRemovedOnCompletion"))
+	rv := objc.CallMethod[bool](a_, objc.SEL("isRemovedOnCompletion"))
 	return rv
 }
 
 func (a_ Animation) SetRemovedOnCompletion(value bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setRemovedOnCompletion:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setRemovedOnCompletion:"), value)
 }
 
 func (a_ Animation) TimingFunction() MediaTimingFunction {
-	rv := objc.CallMethod[MediaTimingFunction](a_, objc.GetSelector("timingFunction"))
+	rv := objc.CallMethod[MediaTimingFunction](a_, objc.SEL("timingFunction"))
 	return rv
 }
 
 func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setTimingFunction:"), objc.ExtractPtr(value))
 }
 
 func (a_ Animation) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](a_, objc.SEL("delegate"))
 	return rv
 }
 
 func (a_ Animation) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](a_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (a_ Animation) PreferredFrameRateRange() FrameRateRange {
-	rv := objc.CallMethod[FrameRateRange](a_, objc.GetSelector("preferredFrameRateRange"))
+	rv := objc.CallMethod[FrameRateRange](a_, objc.SEL("preferredFrameRateRange"))
 	return rv
 }
 
 func (a_ Animation) SetPreferredFrameRateRange(value FrameRateRange) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setPreferredFrameRateRange:"), value)
+	objc.CallMethod[objc.Void](a_, objc.SEL("setPreferredFrameRateRange:"), value)
 }

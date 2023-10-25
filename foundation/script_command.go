@@ -51,17 +51,17 @@ func MakeScriptCommand(ptr unsafe.Pointer) ScriptCommand {
 }
 
 func (s_ ScriptCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](s_, objc.GetSelector("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
+	rv := objc.CallMethod[ScriptCommand](s_, objc.SEL("initWithCommandDescription:"), objc.ExtractPtr(commandDef))
 	return rv
 }
 
 func (sc _ScriptCommandClass) Alloc() ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ScriptCommand](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _ScriptCommandClass) New() ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ScriptCommand](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -71,117 +71,117 @@ func NewScriptCommand() ScriptCommand {
 }
 
 func (s_ ScriptCommand) Init() ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ScriptCommand](s_, objc.SEL("init"))
 	return rv
 }
 
 func (sc _ScriptCommandClass) CurrentCommand() ScriptCommand {
-	rv := objc.CallMethod[ScriptCommand](sc, objc.GetSelector("currentCommand"))
+	rv := objc.CallMethod[ScriptCommand](sc, objc.SEL("currentCommand"))
 	return rv
 }
 
 func (s_ ScriptCommand) ExecuteCommand() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("executeCommand"))
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("executeCommand"))
 	return rv
 }
 
 func (s_ ScriptCommand) PerformDefaultImplementation() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("performDefaultImplementation"))
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("performDefaultImplementation"))
 	return rv
 }
 
 func (s_ ScriptCommand) SuspendExecution() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("suspendExecution"))
+	objc.CallMethod[objc.Void](s_, objc.SEL("suspendExecution"))
 }
 
 func (s_ ScriptCommand) ResumeExecutionWithResult(result objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("resumeExecutionWithResult:"), objc.ExtractPtr(result))
+	objc.CallMethod[objc.Void](s_, objc.SEL("resumeExecutionWithResult:"), objc.ExtractPtr(result))
 }
 
 func (s_ ScriptCommand) AppleEvent() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](s_, objc.GetSelector("appleEvent"))
+	rv := objc.CallMethod[AppleEventDescriptor](s_, objc.SEL("appleEvent"))
 	return rv
 }
 
 func (s_ ScriptCommand) EvaluatedReceivers() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("evaluatedReceivers"))
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("evaluatedReceivers"))
 	return rv
 }
 
 func (s_ ScriptCommand) ReceiversSpecifier() ScriptObjectSpecifier {
-	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.GetSelector("receiversSpecifier"))
+	rv := objc.CallMethod[ScriptObjectSpecifier](s_, objc.SEL("receiversSpecifier"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetReceiversSpecifier(value IScriptObjectSpecifier) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setReceiversSpecifier:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setReceiversSpecifier:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) Arguments() map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](s_, objc.GetSelector("arguments"))
+	rv := objc.CallMethod[map[string]objc.Object](s_, objc.SEL("arguments"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetArguments(value map[string]objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setArguments:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setArguments:"), value)
 }
 
 func (s_ ScriptCommand) EvaluatedArguments() map[string]objc.Object {
-	rv := objc.CallMethod[map[string]objc.Object](s_, objc.GetSelector("evaluatedArguments"))
+	rv := objc.CallMethod[map[string]objc.Object](s_, objc.SEL("evaluatedArguments"))
 	return rv
 }
 
 func (s_ ScriptCommand) DirectParameter() objc.Object {
-	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("directParameter"))
+	rv := objc.CallMethod[objc.Object](s_, objc.SEL("directParameter"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetDirectParameter(value objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDirectParameter:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setDirectParameter:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) CommandDescription() ScriptCommandDescription {
-	rv := objc.CallMethod[ScriptCommandDescription](s_, objc.GetSelector("commandDescription"))
+	rv := objc.CallMethod[ScriptCommandDescription](s_, objc.SEL("commandDescription"))
 	return rv
 }
 
 func (s_ ScriptCommand) ScriptErrorExpectedTypeDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](s_, objc.GetSelector("scriptErrorExpectedTypeDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](s_, objc.SEL("scriptErrorExpectedTypeDescriptor"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetScriptErrorExpectedTypeDescriptor(value IAppleEventDescriptor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorExpectedTypeDescriptor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setScriptErrorExpectedTypeDescriptor:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) ScriptErrorNumber() int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("scriptErrorNumber"))
+	rv := objc.CallMethod[int](s_, objc.SEL("scriptErrorNumber"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetScriptErrorNumber(value int) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorNumber:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setScriptErrorNumber:"), value)
 }
 
 func (s_ ScriptCommand) ScriptErrorOffendingObjectDescriptor() AppleEventDescriptor {
-	rv := objc.CallMethod[AppleEventDescriptor](s_, objc.GetSelector("scriptErrorOffendingObjectDescriptor"))
+	rv := objc.CallMethod[AppleEventDescriptor](s_, objc.SEL("scriptErrorOffendingObjectDescriptor"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorOffendingObjectDescriptor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setScriptErrorOffendingObjectDescriptor:"), objc.ExtractPtr(value))
 }
 
 func (s_ ScriptCommand) ScriptErrorString() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("scriptErrorString"))
+	rv := objc.CallMethod[string](s_, objc.SEL("scriptErrorString"))
 	return rv
 }
 
 func (s_ ScriptCommand) SetScriptErrorString(value string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setScriptErrorString:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setScriptErrorString:"), value)
 }
 
 func (s_ ScriptCommand) IsWellFormed() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isWellFormed"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("isWellFormed"))
 	return rv
 }

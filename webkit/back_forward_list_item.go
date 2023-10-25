@@ -32,12 +32,12 @@ func MakeBackForwardListItem(ptr unsafe.Pointer) BackForwardListItem {
 }
 
 func (bc _BackForwardListItemClass) Alloc() BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](bc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[BackForwardListItem](bc, objc.SEL("alloc"))
 	return rv
 }
 
 func (bc _BackForwardListItemClass) New() BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](bc, objc.GetSelector("new"))
+	rv := objc.CallMethod[BackForwardListItem](bc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -47,21 +47,21 @@ func NewBackForwardListItem() BackForwardListItem {
 }
 
 func (b_ BackForwardListItem) Init() BackForwardListItem {
-	rv := objc.CallMethod[BackForwardListItem](b_, objc.GetSelector("init"))
+	rv := objc.CallMethod[BackForwardListItem](b_, objc.SEL("init"))
 	return rv
 }
 
 func (b_ BackForwardListItem) Title() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("title"))
+	rv := objc.CallMethod[string](b_, objc.SEL("title"))
 	return rv
 }
 
 func (b_ BackForwardListItem) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](b_, objc.GetSelector("URL"))
+	rv := objc.CallMethod[foundation.URL](b_, objc.SEL("URL"))
 	return rv
 }
 
 func (b_ BackForwardListItem) InitialURL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](b_, objc.GetSelector("initialURL"))
+	rv := objc.CallMethod[foundation.URL](b_, objc.SEL("initialURL"))
 	return rv
 }

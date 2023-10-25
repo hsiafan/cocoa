@@ -48,12 +48,12 @@ func MakeByteCountFormatter(ptr unsafe.Pointer) ByteCountFormatter {
 }
 
 func (bc _ByteCountFormatterClass) Alloc() ByteCountFormatter {
-	rv := objc.CallMethod[ByteCountFormatter](bc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ByteCountFormatter](bc, objc.SEL("alloc"))
 	return rv
 }
 
 func (bc _ByteCountFormatterClass) New() ByteCountFormatter {
-	rv := objc.CallMethod[ByteCountFormatter](bc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ByteCountFormatter](bc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -63,107 +63,107 @@ func NewByteCountFormatter() ByteCountFormatter {
 }
 
 func (b_ ByteCountFormatter) Init() ByteCountFormatter {
-	rv := objc.CallMethod[ByteCountFormatter](b_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ByteCountFormatter](b_, objc.SEL("init"))
 	return rv
 }
 
 func (bc _ByteCountFormatterClass) StringFromByteCount_CountStyle(byteCount int64, countStyle ByteCountFormatterCountStyle) string {
-	rv := objc.CallMethod[string](bc, objc.GetSelector("stringFromByteCount:countStyle:"), byteCount, countStyle)
+	rv := objc.CallMethod[string](bc, objc.SEL("stringFromByteCount:countStyle:"), byteCount, countStyle)
 	return rv
 }
 
 func (b_ ByteCountFormatter) StringFromByteCount(byteCount int64) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("stringFromByteCount:"), byteCount)
+	rv := objc.CallMethod[string](b_, objc.SEL("stringFromByteCount:"), byteCount)
 	return rv
 }
 
 func (b_ ByteCountFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("stringFromMeasurement:"), objc.ExtractPtr(measurement))
+	rv := objc.CallMethod[string](b_, objc.SEL("stringFromMeasurement:"), objc.ExtractPtr(measurement))
 	return rv
 }
 
 func (bc _ByteCountFormatterClass) StringFromMeasurement_CountStyle(measurement IMeasurement, countStyle ByteCountFormatterCountStyle) string {
-	rv := objc.CallMethod[string](bc, objc.GetSelector("stringFromMeasurement:countStyle:"), objc.ExtractPtr(measurement), countStyle)
+	rv := objc.CallMethod[string](bc, objc.SEL("stringFromMeasurement:countStyle:"), objc.ExtractPtr(measurement), countStyle)
 	return rv
 }
 
 func (b_ ByteCountFormatter) FormattingContext() FormattingContext {
-	rv := objc.CallMethod[FormattingContext](b_, objc.GetSelector("formattingContext"))
+	rv := objc.CallMethod[FormattingContext](b_, objc.SEL("formattingContext"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetFormattingContext(value FormattingContext) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFormattingContext:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setFormattingContext:"), value)
 }
 
 func (b_ ByteCountFormatter) CountStyle() ByteCountFormatterCountStyle {
-	rv := objc.CallMethod[ByteCountFormatterCountStyle](b_, objc.GetSelector("countStyle"))
+	rv := objc.CallMethod[ByteCountFormatterCountStyle](b_, objc.SEL("countStyle"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetCountStyle(value ByteCountFormatterCountStyle) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCountStyle:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setCountStyle:"), value)
 }
 
 func (b_ ByteCountFormatter) AllowsNonnumericFormatting() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("allowsNonnumericFormatting"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("allowsNonnumericFormatting"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetAllowsNonnumericFormatting(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowsNonnumericFormatting:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setAllowsNonnumericFormatting:"), value)
 }
 
 func (b_ ByteCountFormatter) IncludesActualByteCount() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("includesActualByteCount"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("includesActualByteCount"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetIncludesActualByteCount(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setIncludesActualByteCount:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setIncludesActualByteCount:"), value)
 }
 
 func (b_ ByteCountFormatter) IsAdaptive() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isAdaptive"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("isAdaptive"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetAdaptive(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAdaptive:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setAdaptive:"), value)
 }
 
 func (b_ ByteCountFormatter) AllowedUnits() ByteCountFormatterUnits {
-	rv := objc.CallMethod[ByteCountFormatterUnits](b_, objc.GetSelector("allowedUnits"))
+	rv := objc.CallMethod[ByteCountFormatterUnits](b_, objc.SEL("allowedUnits"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetAllowedUnits(value ByteCountFormatterUnits) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setAllowedUnits:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setAllowedUnits:"), value)
 }
 
 func (b_ ByteCountFormatter) IncludesCount() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("includesCount"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("includesCount"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetIncludesCount(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setIncludesCount:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setIncludesCount:"), value)
 }
 
 func (b_ ByteCountFormatter) IncludesUnit() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("includesUnit"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("includesUnit"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetIncludesUnit(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setIncludesUnit:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setIncludesUnit:"), value)
 }
 
 func (b_ ByteCountFormatter) ZeroPadsFractionDigits() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("zeroPadsFractionDigits"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("zeroPadsFractionDigits"))
 	return rv
 }
 
 func (b_ ByteCountFormatter) SetZeroPadsFractionDigits(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setZeroPadsFractionDigits:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setZeroPadsFractionDigits:"), value)
 }

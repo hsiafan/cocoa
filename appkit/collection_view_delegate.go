@@ -355,123 +355,123 @@ func NewCollectionViewDelegateCreator(name string) *CollectionViewDelegateCreato
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_ShouldSelectItemsAtIndexPaths(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set) foundation.ISet) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:shouldSelectItemsAtIndexPaths:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:shouldSelectItemsAtIndexPaths:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DidSelectItemsAtIndexPaths(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:didSelectItemsAtIndexPaths:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:didSelectItemsAtIndexPaths:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_ShouldDeselectItemsAtIndexPaths(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set) foundation.ISet) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:shouldDeselectItemsAtIndexPaths:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:shouldDeselectItemsAtIndexPaths:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DidDeselectItemsAtIndexPaths(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:didDeselectItemsAtIndexPaths:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:didDeselectItemsAtIndexPaths:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_ShouldChangeItemsAtIndexPaths_ToHighlightState(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState) foundation.ISet) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DidChangeItemsAtIndexPaths_ToHighlightState(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:didChangeItemsAtIndexPaths:toHighlightState:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:didChangeItemsAtIndexPaths:toHighlightState:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_WillDisplayItem_ForRepresentedObjectAtIndexPath(handle func(o objc.Object, collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DidEndDisplayingItem_ForRepresentedObjectAtIndexPath(handle func(o objc.Object, collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_WillDisplaySupplementaryView_ForElementKind_AtIndexPath(handle func(o objc.Object, collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DidEndDisplayingSupplementaryView_ForElementOfKind_AtIndexPath(handle func(o objc.Object, collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_TransitionLayoutForOldLayout_NewLayout(handle func(o objc.Object, collectionView CollectionView, fromLayout CollectionViewLayout, toLayout CollectionViewLayout) ICollectionViewTransitionLayout) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:transitionLayoutForOldLayout:newLayout:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:transitionLayoutForOldLayout:newLayout:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_CanDragItemsAtIndexPaths_WithEvent(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set, event Event) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:canDragItemsAtIndexPaths:withEvent:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:canDragItemsAtIndexPaths:withEvent:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_PasteboardWriterForItemAtIndexPath(handle func(o objc.Object, collectionView CollectionView, indexPath foundation.IndexPath) objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:pasteboardWriterForItemAtIndexPath:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:pasteboardWriterForItemAtIndexPath:"), handle)
 }
 
 // deprecated
 func (c *CollectionViewDelegateCreator) SetCollectionView_WriteItemsAtIndexPaths_ToPasteboard(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set, pasteboard Pasteboard) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:writeItemsAtIndexPaths:toPasteboard:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:writeItemsAtIndexPaths:toPasteboard:"), handle)
 }
 
 // deprecated
 func (c *CollectionViewDelegateCreator) SetCollectionView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItemsAtIndexPaths(handle func(o objc.Object, collectionView CollectionView, dropURL foundation.URL, indexPaths foundation.Set) []string) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexPaths:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexPaths:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DraggingImageForItemsAtIndexPaths_WithEvent_Offset(handle func(o objc.Object, collectionView CollectionView, indexPaths foundation.Set, event Event, dragImageOffset *foundation.Point) IImage) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DraggingSession_WillBeginAtPoint_ForItemsAtIndexPaths(handle func(o objc.Object, collectionView CollectionView, session DraggingSession, screenPoint foundation.Point, indexPaths foundation.Set)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DraggingSession_EndedAtPoint_DragOperation(handle func(o objc.Object, collectionView CollectionView, session DraggingSession, screenPoint foundation.Point, operation DragOperation)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:draggingSession:endedAtPoint:dragOperation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:draggingSession:endedAtPoint:dragOperation:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_UpdateDraggingItemsForDrag(handle func(o objc.Object, collectionView CollectionView, draggingInfo objc.Object)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:updateDraggingItemsForDrag:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:updateDraggingItemsForDrag:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_ValidateDrop_ProposedIndexPath_DropOperation(handle func(o objc.Object, collectionView CollectionView, draggingInfo objc.Object, proposedDropIndexPath *foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:validateDrop:proposedIndexPath:dropOperation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:validateDrop:proposedIndexPath:dropOperation:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_AcceptDrop_IndexPath_DropOperation(handle func(o objc.Object, collectionView CollectionView, draggingInfo objc.Object, indexPath foundation.IndexPath, dropOperation CollectionViewDropOperation) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:acceptDrop:indexPath:dropOperation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:acceptDrop:indexPath:dropOperation:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_CanDragItemsAtIndexes_WithEvent(handle func(o objc.Object, collectionView CollectionView, indexes foundation.IndexSet, event Event) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:canDragItemsAtIndexes:withEvent:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:canDragItemsAtIndexes:withEvent:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_PasteboardWriterForItemAtIndex(handle func(o objc.Object, collectionView CollectionView, index uint) objc.IObject) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:pasteboardWriterForItemAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:pasteboardWriterForItemAtIndex:"), handle)
 }
 
 // deprecated
 func (c *CollectionViewDelegateCreator) SetCollectionView_WriteItemsAtIndexes_ToPasteboard(handle func(o objc.Object, collectionView CollectionView, indexes foundation.IndexSet, pasteboard Pasteboard) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:writeItemsAtIndexes:toPasteboard:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:writeItemsAtIndexes:toPasteboard:"), handle)
 }
 
 // deprecated
 func (c *CollectionViewDelegateCreator) SetCollectionView_NamesOfPromisedFilesDroppedAtDestination_ForDraggedItemsAtIndexes(handle func(o objc.Object, collectionView CollectionView, dropURL foundation.URL, indexes foundation.IndexSet) []string) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DraggingImageForItemsAtIndexes_WithEvent_Offset(handle func(o objc.Object, collectionView CollectionView, indexes foundation.IndexSet, event Event, dragImageOffset *foundation.Point) IImage) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_DraggingSession_WillBeginAtPoint_ForItemsAtIndexes(handle func(o objc.Object, collectionView CollectionView, session DraggingSession, screenPoint foundation.Point, indexes foundation.IndexSet)) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_ValidateDrop_ProposedIndex_DropOperation(handle func(o objc.Object, collectionView CollectionView, draggingInfo objc.Object, proposedDropIndex *int, proposedDropOperation *CollectionViewDropOperation) DragOperation) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:validateDrop:proposedIndex:dropOperation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:validateDrop:proposedIndex:dropOperation:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) SetCollectionView_AcceptDrop_Index_DropOperation(handle func(o objc.Object, collectionView CollectionView, draggingInfo objc.Object, index int, dropOperation CollectionViewDropOperation) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("collectionView:acceptDrop:index:dropOperation:"), handle)
+	objc.AddMethod(c.class, objc.SEL("collectionView:acceptDrop:index:dropOperation:"), handle)
 }
 
 func (c *CollectionViewDelegateCreator) Create() objc.Object {

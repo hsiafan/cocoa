@@ -96,32 +96,32 @@ func MakeSavePanel(ptr unsafe.Pointer) SavePanel {
 }
 
 func (sc _SavePanelClass) WindowWithContentViewController(contentViewController IViewController) SavePanel {
-	rv := objc.CallMethod[SavePanel](sc, objc.GetSelector("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
+	rv := objc.CallMethod[SavePanel](sc, objc.SEL("windowWithContentViewController:"), objc.ExtractPtr(contentViewController))
 	return rv
 }
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool) SavePanel {
-	rv := objc.CallMethod[SavePanel](s_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
+	rv := objc.CallMethod[SavePanel](s_, objc.SEL("initWithContentRect:styleMask:backing:defer:"), contentRect, style, backingStoreType, flag)
 	return rv
 }
 
 func (s_ SavePanel) InitWithContentRect_StyleMask_Backing_Defer_Screen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) SavePanel {
-	rv := objc.CallMethod[SavePanel](s_, objc.GetSelector("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
+	rv := objc.CallMethod[SavePanel](s_, objc.SEL("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.ExtractPtr(screen))
 	return rv
 }
 
 func (s_ SavePanel) Init() SavePanel {
-	rv := objc.CallMethod[SavePanel](s_, objc.GetSelector("init"))
+	rv := objc.CallMethod[SavePanel](s_, objc.SEL("init"))
 	return rv
 }
 
 func (sc _SavePanelClass) Alloc() SavePanel {
-	rv := objc.CallMethod[SavePanel](sc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[SavePanel](sc, objc.SEL("alloc"))
 	return rv
 }
 
 func (sc _SavePanelClass) New() SavePanel {
-	rv := objc.CallMethod[SavePanel](sc, objc.GetSelector("new"))
+	rv := objc.CallMethod[SavePanel](sc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -131,254 +131,254 @@ func NewSavePanel() SavePanel {
 }
 
 func (sc _SavePanelClass) SavePanel() SavePanel {
-	rv := objc.CallMethod[SavePanel](sc, objc.GetSelector("savePanel"))
+	rv := objc.CallMethod[SavePanel](sc, objc.SEL("savePanel"))
 	return rv
 }
 
 func (s_ SavePanel) BeginSheetModalForWindow_CompletionHandler(window IWindow, handler func(result ModalResponse)) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("beginSheetModalForWindow:completionHandler:"), objc.ExtractPtr(window), handler)
+	objc.CallMethod[objc.Void](s_, objc.SEL("beginSheetModalForWindow:completionHandler:"), objc.ExtractPtr(window), handler)
 }
 
 func (s_ SavePanel) BeginWithCompletionHandler(handler func(result ModalResponse)) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("beginWithCompletionHandler:"), handler)
+	objc.CallMethod[objc.Void](s_, objc.SEL("beginWithCompletionHandler:"), handler)
 }
 
 func (s_ SavePanel) RunModal() ModalResponse {
-	rv := objc.CallMethod[ModalResponse](s_, objc.GetSelector("runModal"))
+	rv := objc.CallMethod[ModalResponse](s_, objc.SEL("runModal"))
 	return rv
 }
 
 func (s_ SavePanel) ValidateVisibleColumns() {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("validateVisibleColumns"))
+	objc.CallMethod[objc.Void](s_, objc.SEL("validateVisibleColumns"))
 }
 
 func (s_ SavePanel) Ok(sender objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("ok:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](s_, objc.SEL("ok:"), objc.ExtractPtr(sender))
 }
 
 func (s_ SavePanel) Cancel(sender objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("cancel:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](s_, objc.SEL("cancel:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
 func (s_ SavePanel) RequiredFileType() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("requiredFileType"))
+	rv := objc.CallMethod[string](s_, objc.SEL("requiredFileType"))
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) SetRequiredFileType(type_ string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setRequiredFileType:"), type_)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setRequiredFileType:"), type_)
 }
 
 // deprecated
 func (s_ SavePanel) SetDirectory(path string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDirectory:"), path)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setDirectory:"), path)
 }
 
 // deprecated
 func (s_ SavePanel) BeginSheetForDirectory_File_ModalForWindow_ModalDelegate_DidEndSelector_ContextInfo(path string, name string, docWindow IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), path, name, objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
+	objc.CallMethod[objc.Void](s_, objc.SEL("beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), path, name, objc.ExtractPtr(docWindow), objc.ExtractPtr(delegate), didEndSelector, contextInfo)
 }
 
 // deprecated
 func (s_ SavePanel) RunModalForDirectory_File(path string, name string) int {
-	rv := objc.CallMethod[int](s_, objc.GetSelector("runModalForDirectory:file:"), path, name)
+	rv := objc.CallMethod[int](s_, objc.SEL("runModalForDirectory:file:"), path, name)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_CompareFilename_With_CaseSensitive(sender objc.IObject, name1 string, name2 string, caseSensitive bool) foundation.ComparisonResult {
-	rv := objc.CallMethod[foundation.ComparisonResult](s_, objc.GetSelector("panel:compareFilename:with:caseSensitive:"), objc.ExtractPtr(sender), name1, name2, caseSensitive)
+	rv := objc.CallMethod[foundation.ComparisonResult](s_, objc.SEL("panel:compareFilename:with:caseSensitive:"), objc.ExtractPtr(sender), name1, name2, caseSensitive)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_IsValidFilename(sender objc.IObject, filename string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("panel:isValidFilename:"), objc.ExtractPtr(sender), filename)
+	rv := objc.CallMethod[bool](s_, objc.SEL("panel:isValidFilename:"), objc.ExtractPtr(sender), filename)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_ShouldShowFilename(sender objc.IObject, filename string) bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("panel:shouldShowFilename:"), objc.ExtractPtr(sender), filename)
+	rv := objc.CallMethod[bool](s_, objc.SEL("panel:shouldShowFilename:"), objc.ExtractPtr(sender), filename)
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Panel_DirectoryDidChange(sender objc.IObject, path string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("panel:directoryDidChange:"), objc.ExtractPtr(sender), path)
+	objc.CallMethod[objc.Void](s_, objc.SEL("panel:directoryDidChange:"), objc.ExtractPtr(sender), path)
 }
 
 // deprecated
 func (s_ SavePanel) Directory() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("directory"))
+	rv := objc.CallMethod[string](s_, objc.SEL("directory"))
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) Filename() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("filename"))
+	rv := objc.CallMethod[string](s_, objc.SEL("filename"))
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) SelectText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("selectText:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](s_, objc.SEL("selectText:"), objc.ExtractPtr(sender))
 }
 
 func (s_ SavePanel) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](s_, objc.GetSelector("URL"))
+	rv := objc.CallMethod[foundation.URL](s_, objc.SEL("URL"))
 	return rv
 }
 
 func (s_ SavePanel) Prompt() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("prompt"))
+	rv := objc.CallMethod[string](s_, objc.SEL("prompt"))
 	return rv
 }
 
 func (s_ SavePanel) SetPrompt(value string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setPrompt:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setPrompt:"), value)
 }
 
 func (s_ SavePanel) Message() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("message"))
+	rv := objc.CallMethod[string](s_, objc.SEL("message"))
 	return rv
 }
 
 func (s_ SavePanel) SetMessage(value string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setMessage:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setMessage:"), value)
 }
 
 func (s_ SavePanel) NameFieldLabel() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("nameFieldLabel"))
+	rv := objc.CallMethod[string](s_, objc.SEL("nameFieldLabel"))
 	return rv
 }
 
 func (s_ SavePanel) SetNameFieldLabel(value string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setNameFieldLabel:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setNameFieldLabel:"), value)
 }
 
 func (s_ SavePanel) NameFieldStringValue() string {
-	rv := objc.CallMethod[string](s_, objc.GetSelector("nameFieldStringValue"))
+	rv := objc.CallMethod[string](s_, objc.SEL("nameFieldStringValue"))
 	return rv
 }
 
 func (s_ SavePanel) SetNameFieldStringValue(value string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setNameFieldStringValue:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setNameFieldStringValue:"), value)
 }
 
 func (s_ SavePanel) DirectoryURL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](s_, objc.GetSelector("directoryURL"))
+	rv := objc.CallMethod[foundation.URL](s_, objc.SEL("directoryURL"))
 	return rv
 }
 
 func (s_ SavePanel) SetDirectoryURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setDirectoryURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setDirectoryURL:"), objc.ExtractPtr(value))
 }
 
 func (s_ SavePanel) AccessoryView() View {
-	rv := objc.CallMethod[View](s_, objc.GetSelector("accessoryView"))
+	rv := objc.CallMethod[View](s_, objc.SEL("accessoryView"))
 	return rv
 }
 
 func (s_ SavePanel) SetAccessoryView(value IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAccessoryView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](s_, objc.SEL("setAccessoryView:"), objc.ExtractPtr(value))
 }
 
 func (s_ SavePanel) ShowsTagField() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("showsTagField"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("showsTagField"))
 	return rv
 }
 
 func (s_ SavePanel) SetShowsTagField(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShowsTagField:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setShowsTagField:"), value)
 }
 
 func (s_ SavePanel) TagNames() []string {
-	rv := objc.CallMethod[[]string](s_, objc.GetSelector("tagNames"))
+	rv := objc.CallMethod[[]string](s_, objc.SEL("tagNames"))
 	return rv
 }
 
 func (s_ SavePanel) SetTagNames(value []string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTagNames:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setTagNames:"), value)
 }
 
 func (s_ SavePanel) CanCreateDirectories() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("canCreateDirectories"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("canCreateDirectories"))
 	return rv
 }
 
 func (s_ SavePanel) SetCanCreateDirectories(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCanCreateDirectories:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setCanCreateDirectories:"), value)
 }
 
 func (s_ SavePanel) CanSelectHiddenExtension() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("canSelectHiddenExtension"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("canSelectHiddenExtension"))
 	return rv
 }
 
 func (s_ SavePanel) SetCanSelectHiddenExtension(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setCanSelectHiddenExtension:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setCanSelectHiddenExtension:"), value)
 }
 
 func (s_ SavePanel) ShowsHiddenFiles() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("showsHiddenFiles"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("showsHiddenFiles"))
 	return rv
 }
 
 func (s_ SavePanel) SetShowsHiddenFiles(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setShowsHiddenFiles:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setShowsHiddenFiles:"), value)
 }
 
 func (s_ SavePanel) IsExtensionHidden() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isExtensionHidden"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("isExtensionHidden"))
 	return rv
 }
 
 func (s_ SavePanel) SetExtensionHidden(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setExtensionHidden:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setExtensionHidden:"), value)
 }
 
 func (s_ SavePanel) IsExpanded() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("isExpanded"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("isExpanded"))
 	return rv
 }
 
 func (s_ SavePanel) AllowedContentTypes() []uniformtypeidentifiers.Type {
-	rv := objc.CallMethod[[]uniformtypeidentifiers.Type](s_, objc.GetSelector("allowedContentTypes"))
+	rv := objc.CallMethod[[]uniformtypeidentifiers.Type](s_, objc.SEL("allowedContentTypes"))
 	return rv
 }
 
 func (s_ SavePanel) SetAllowedContentTypes(value []uniformtypeidentifiers.IType) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAllowedContentTypes:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setAllowedContentTypes:"), value)
 }
 
 func (s_ SavePanel) AllowsOtherFileTypes() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("allowsOtherFileTypes"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("allowsOtherFileTypes"))
 	return rv
 }
 
 func (s_ SavePanel) SetAllowsOtherFileTypes(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAllowsOtherFileTypes:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setAllowsOtherFileTypes:"), value)
 }
 
 func (s_ SavePanel) TreatsFilePackagesAsDirectories() bool {
-	rv := objc.CallMethod[bool](s_, objc.GetSelector("treatsFilePackagesAsDirectories"))
+	rv := objc.CallMethod[bool](s_, objc.SEL("treatsFilePackagesAsDirectories"))
 	return rv
 }
 
 func (s_ SavePanel) SetTreatsFilePackagesAsDirectories(value bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setTreatsFilePackagesAsDirectories:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setTreatsFilePackagesAsDirectories:"), value)
 }
 
 // deprecated
 func (s_ SavePanel) AllowedFileTypes() []string {
-	rv := objc.CallMethod[[]string](s_, objc.GetSelector("allowedFileTypes"))
+	rv := objc.CallMethod[[]string](s_, objc.SEL("allowedFileTypes"))
 	return rv
 }
 
 // deprecated
 func (s_ SavePanel) SetAllowedFileTypes(value []string) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("setAllowedFileTypes:"), value)
+	objc.CallMethod[objc.Void](s_, objc.SEL("setAllowedFileTypes:"), value)
 }

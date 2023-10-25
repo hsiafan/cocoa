@@ -75,42 +75,42 @@ func MakeTextField(ptr unsafe.Pointer) TextField {
 }
 
 func (tc _TextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
+	rv := objc.CallMethod[TextField](tc, objc.SEL("labelWithAttributedString:"), objc.ExtractPtr(attributedStringValue))
 	return rv
 }
 
 func (tc _TextFieldClass) LabelWithString(stringValue string) TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("labelWithString:"), stringValue)
+	rv := objc.CallMethod[TextField](tc, objc.SEL("labelWithString:"), stringValue)
 	return rv
 }
 
 func (tc _TextFieldClass) TextFieldWithString(stringValue string) TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("textFieldWithString:"), stringValue)
+	rv := objc.CallMethod[TextField](tc, objc.SEL("textFieldWithString:"), stringValue)
 	return rv
 }
 
 func (tc _TextFieldClass) WrappingLabelWithString(stringValue string) TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("wrappingLabelWithString:"), stringValue)
+	rv := objc.CallMethod[TextField](tc, objc.SEL("wrappingLabelWithString:"), stringValue)
 	return rv
 }
 
 func (t_ TextField) InitWithFrame(frameRect foundation.Rect) TextField {
-	rv := objc.CallMethod[TextField](t_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[TextField](t_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (t_ TextField) Init() TextField {
-	rv := objc.CallMethod[TextField](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TextField](t_, objc.SEL("init"))
 	return rv
 }
 
 func (tc _TextFieldClass) Alloc() TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TextField](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TextFieldClass) New() TextField {
-	rv := objc.CallMethod[TextField](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TextField](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -120,205 +120,205 @@ func NewTextField() TextField {
 }
 
 func (t_ TextField) SelectText(sender objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("selectText:"), objc.ExtractPtr(sender))
+	objc.CallMethod[objc.Void](t_, objc.SEL("selectText:"), objc.ExtractPtr(sender))
 }
 
 // deprecated
 func (t_ TextField) SetTitleWithMnemonic(stringWithAmpersand string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTitleWithMnemonic:"), stringWithAmpersand)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTitleWithMnemonic:"), stringWithAmpersand)
 }
 
 func (t_ TextField) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
+	rv := objc.CallMethod[bool](t_, objc.SEL("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), objc.ExtractPtr(notification))
+	objc.CallMethod[objc.Void](t_, objc.SEL("textDidBeginEditing:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TextField) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), objc.ExtractPtr(notification))
+	objc.CallMethod[objc.Void](t_, objc.SEL("textDidChange:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TextField) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), objc.ExtractPtr(textObject))
+	rv := objc.CallMethod[bool](t_, objc.SEL("textShouldEndEditing:"), objc.ExtractPtr(textObject))
 	return rv
 }
 
 func (t_ TextField) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
+	objc.CallMethod[objc.Void](t_, objc.SEL("textDidEndEditing:"), objc.ExtractPtr(notification))
 }
 
 func (t_ TextField) IsSelectable() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isSelectable"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isSelectable"))
 	return rv
 }
 
 func (t_ TextField) SetSelectable(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSelectable:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setSelectable:"), value)
 }
 
 func (t_ TextField) IsEditable() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEditable"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isEditable"))
 	return rv
 }
 
 func (t_ TextField) SetEditable(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setEditable:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setEditable:"), value)
 }
 
 func (t_ TextField) AllowsEditingTextAttributes() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("allowsEditingTextAttributes"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("allowsEditingTextAttributes"))
 	return rv
 }
 
 func (t_ TextField) SetAllowsEditingTextAttributes(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAllowsEditingTextAttributes:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAllowsEditingTextAttributes:"), value)
 }
 
 func (t_ TextField) ImportsGraphics() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("importsGraphics"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("importsGraphics"))
 	return rv
 }
 
 func (t_ TextField) SetImportsGraphics(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImportsGraphics:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setImportsGraphics:"), value)
 }
 
 func (t_ TextField) PlaceholderString() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("placeholderString"))
+	rv := objc.CallMethod[string](t_, objc.SEL("placeholderString"))
 	return rv
 }
 
 func (t_ TextField) SetPlaceholderString(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderString:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setPlaceholderString:"), value)
 }
 
 func (t_ TextField) PlaceholderAttributedString() foundation.AttributedString {
-	rv := objc.CallMethod[foundation.AttributedString](t_, objc.GetSelector("placeholderAttributedString"))
+	rv := objc.CallMethod[foundation.AttributedString](t_, objc.SEL("placeholderAttributedString"))
 	return rv
 }
 
 func (t_ TextField) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setPlaceholderAttributedString:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextField) LineBreakStrategy() LineBreakStrategy {
-	rv := objc.CallMethod[LineBreakStrategy](t_, objc.GetSelector("lineBreakStrategy"))
+	rv := objc.CallMethod[LineBreakStrategy](t_, objc.SEL("lineBreakStrategy"))
 	return rv
 }
 
 func (t_ TextField) SetLineBreakStrategy(value LineBreakStrategy) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLineBreakStrategy:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLineBreakStrategy:"), value)
 }
 
 func (t_ TextField) AllowsDefaultTighteningForTruncation() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("allowsDefaultTighteningForTruncation"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("allowsDefaultTighteningForTruncation"))
 	return rv
 }
 
 func (t_ TextField) SetAllowsDefaultTighteningForTruncation(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAllowsDefaultTighteningForTruncation:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAllowsDefaultTighteningForTruncation:"), value)
 }
 
 func (t_ TextField) MaximumNumberOfLines() int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("maximumNumberOfLines"))
+	rv := objc.CallMethod[int](t_, objc.SEL("maximumNumberOfLines"))
 	return rv
 }
 
 func (t_ TextField) SetMaximumNumberOfLines(value int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMaximumNumberOfLines:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMaximumNumberOfLines:"), value)
 }
 
 func (t_ TextField) PreferredMaxLayoutWidth() float64 {
-	rv := objc.CallMethod[float64](t_, objc.GetSelector("preferredMaxLayoutWidth"))
+	rv := objc.CallMethod[float64](t_, objc.SEL("preferredMaxLayoutWidth"))
 	return rv
 }
 
 func (t_ TextField) SetPreferredMaxLayoutWidth(value float64) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPreferredMaxLayoutWidth:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setPreferredMaxLayoutWidth:"), value)
 }
 
 func (t_ TextField) TextColor() Color {
-	rv := objc.CallMethod[Color](t_, objc.GetSelector("textColor"))
+	rv := objc.CallMethod[Color](t_, objc.SEL("textColor"))
 	return rv
 }
 
 func (t_ TextField) SetTextColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTextColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTextColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextField) BackgroundColor() Color {
-	rv := objc.CallMethod[Color](t_, objc.GetSelector("backgroundColor"))
+	rv := objc.CallMethod[Color](t_, objc.SEL("backgroundColor"))
 	return rv
 }
 
 func (t_ TextField) SetBackgroundColor(value IColor) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBackgroundColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBackgroundColor:"), objc.ExtractPtr(value))
 }
 
 func (t_ TextField) DrawsBackground() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("drawsBackground"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("drawsBackground"))
 	return rv
 }
 
 func (t_ TextField) SetDrawsBackground(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDrawsBackground:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setDrawsBackground:"), value)
 }
 
 func (t_ TextField) IsBezeled() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isBezeled"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isBezeled"))
 	return rv
 }
 
 func (t_ TextField) SetBezeled(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBezeled:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBezeled:"), value)
 }
 
 func (t_ TextField) BezelStyle() TextFieldBezelStyle {
-	rv := objc.CallMethod[TextFieldBezelStyle](t_, objc.GetSelector("bezelStyle"))
+	rv := objc.CallMethod[TextFieldBezelStyle](t_, objc.SEL("bezelStyle"))
 	return rv
 }
 
 func (t_ TextField) SetBezelStyle(value TextFieldBezelStyle) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBezelStyle:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBezelStyle:"), value)
 }
 
 func (t_ TextField) IsBordered() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isBordered"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isBordered"))
 	return rv
 }
 
 func (t_ TextField) SetBordered(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBordered:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBordered:"), value)
 }
 
 func (t_ TextField) AllowsCharacterPickerTouchBarItem() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("allowsCharacterPickerTouchBarItem"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("allowsCharacterPickerTouchBarItem"))
 	return rv
 }
 
 func (t_ TextField) SetAllowsCharacterPickerTouchBarItem(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAllowsCharacterPickerTouchBarItem:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAllowsCharacterPickerTouchBarItem:"), value)
 }
 
 func (t_ TextField) IsAutomaticTextCompletionEnabled() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isAutomaticTextCompletionEnabled"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isAutomaticTextCompletionEnabled"))
 	return rv
 }
 
 func (t_ TextField) SetAutomaticTextCompletionEnabled(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutomaticTextCompletionEnabled:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAutomaticTextCompletionEnabled:"), value)
 }
 
 // weak property
 func (t_ TextField) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](t_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (t_ TextField) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }

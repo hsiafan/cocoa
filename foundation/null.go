@@ -28,12 +28,12 @@ func MakeNull(ptr unsafe.Pointer) Null {
 }
 
 func (nc _NullClass) Alloc() Null {
-	rv := objc.CallMethod[Null](nc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Null](nc, objc.SEL("alloc"))
 	return rv
 }
 
 func (nc _NullClass) New() Null {
-	rv := objc.CallMethod[Null](nc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Null](nc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -43,11 +43,11 @@ func NewNull() Null {
 }
 
 func (n_ Null) Init() Null {
-	rv := objc.CallMethod[Null](n_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Null](n_, objc.SEL("init"))
 	return rv
 }
 
 func (nc _NullClass) Null() Null {
-	rv := objc.CallMethod[Null](nc, objc.GetSelector("null"))
+	rv := objc.CallMethod[Null](nc, objc.SEL("null"))
 	return rv
 }

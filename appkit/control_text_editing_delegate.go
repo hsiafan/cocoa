@@ -138,43 +138,43 @@ func NewControlTextEditingDelegateCreator(name string) *ControlTextEditingDelega
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_IsValidObject(handle func(o objc.Object, control Control, obj objc.Object) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("control:isValidObject:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:isValidObject:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_DidFailToValidatePartialString_ErrorDescription(handle func(o objc.Object, control Control, string_ string, error string)) {
-	objc.AddMethod(c.class, objc.GetSelector("control:didFailToValidatePartialString:errorDescription:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:didFailToValidatePartialString:errorDescription:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_DidFailToFormatString_ErrorDescription(handle func(o objc.Object, control Control, string_ string, error string) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("control:didFailToFormatString:errorDescription:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:didFailToFormatString:errorDescription:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_TextShouldBeginEditing(handle func(o objc.Object, control Control, fieldEditor Text) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("control:textShouldBeginEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:textShouldBeginEditing:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_TextShouldEndEditing(handle func(o objc.Object, control Control, fieldEditor Text) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("control:textShouldEndEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:textShouldEndEditing:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_TextView_Completions_ForPartialWordRange_IndexOfSelectedItem(handle func(o objc.Object, control Control, textView TextView, words []string, charRange foundation.Range, index *int) []string) {
-	objc.AddMethod(c.class, objc.GetSelector("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControl_TextView_DoCommandBySelector(handle func(o objc.Object, control Control, textView TextView, commandSelector objc.Selector) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("control:textView:doCommandBySelector:"), handle)
+	objc.AddMethod(c.class, objc.SEL("control:textView:doCommandBySelector:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControlTextDidBeginEditing(handle func(o objc.Object, obj foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("controlTextDidBeginEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("controlTextDidBeginEditing:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControlTextDidChange(handle func(o objc.Object, obj foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("controlTextDidChange:"), handle)
+	objc.AddMethod(c.class, objc.SEL("controlTextDidChange:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) SetControlTextDidEndEditing(handle func(o objc.Object, obj foundation.Notification)) {
-	objc.AddMethod(c.class, objc.GetSelector("controlTextDidEndEditing:"), handle)
+	objc.AddMethod(c.class, objc.SEL("controlTextDidEndEditing:"), handle)
 }
 
 func (c *ControlTextEditingDelegateCreator) Create() objc.Object {

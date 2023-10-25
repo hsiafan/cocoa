@@ -35,17 +35,17 @@ func MakeCollectionViewDiffableDataSource(ptr unsafe.Pointer) CollectionViewDiff
 }
 
 func (c_ CollectionViewDiffableDataSource) InitWithCollectionView_ItemProvider(collectionView ICollectionView, itemProvider func(param1 CollectionView, param2 foundation.IndexPath, param3 objc.Object) ICollectionViewItem) CollectionViewDiffableDataSource {
-	rv := objc.CallMethod[CollectionViewDiffableDataSource](c_, objc.GetSelector("initWithCollectionView:itemProvider:"), objc.ExtractPtr(collectionView), itemProvider)
+	rv := objc.CallMethod[CollectionViewDiffableDataSource](c_, objc.SEL("initWithCollectionView:itemProvider:"), objc.ExtractPtr(collectionView), itemProvider)
 	return rv
 }
 
 func (cc _CollectionViewDiffableDataSourceClass) Alloc() CollectionViewDiffableDataSource {
-	rv := objc.CallMethod[CollectionViewDiffableDataSource](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[CollectionViewDiffableDataSource](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CollectionViewDiffableDataSourceClass) New() CollectionViewDiffableDataSource {
-	rv := objc.CallMethod[CollectionViewDiffableDataSource](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[CollectionViewDiffableDataSource](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -55,34 +55,34 @@ func NewCollectionViewDiffableDataSource() CollectionViewDiffableDataSource {
 }
 
 func (c_ CollectionViewDiffableDataSource) Init() CollectionViewDiffableDataSource {
-	rv := objc.CallMethod[CollectionViewDiffableDataSource](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[CollectionViewDiffableDataSource](c_, objc.SEL("init"))
 	return rv
 }
 
 func (c_ CollectionViewDiffableDataSource) ItemIdentifierForIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("itemIdentifierForIndexPath:"), objc.ExtractPtr(indexPath))
+	rv := objc.CallMethod[objc.Object](c_, objc.SEL("itemIdentifierForIndexPath:"), objc.ExtractPtr(indexPath))
 	return rv
 }
 
 func (c_ CollectionViewDiffableDataSource) IndexPathForItemIdentifier(identifier objc.IObject) foundation.IndexPath {
-	rv := objc.CallMethod[foundation.IndexPath](c_, objc.GetSelector("indexPathForItemIdentifier:"), objc.ExtractPtr(identifier))
+	rv := objc.CallMethod[foundation.IndexPath](c_, objc.SEL("indexPathForItemIdentifier:"), objc.ExtractPtr(identifier))
 	return rv
 }
 
 func (c_ CollectionViewDiffableDataSource) Snapshot() DiffableDataSourceSnapshot {
-	rv := objc.CallMethod[DiffableDataSourceSnapshot](c_, objc.GetSelector("snapshot"))
+	rv := objc.CallMethod[DiffableDataSourceSnapshot](c_, objc.SEL("snapshot"))
 	return rv
 }
 
 func (c_ CollectionViewDiffableDataSource) ApplySnapshot_AnimatingDifferences(snapshot IDiffableDataSourceSnapshot, animatingDifferences bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("applySnapshot:animatingDifferences:"), objc.ExtractPtr(snapshot), animatingDifferences)
+	objc.CallMethod[objc.Void](c_, objc.SEL("applySnapshot:animatingDifferences:"), objc.ExtractPtr(snapshot), animatingDifferences)
 }
 
 func (c_ CollectionViewDiffableDataSource) SupplementaryViewProvider() func(param1 ICollectionView, param2 string, param3 foundation.IIndexPath) View {
-	rv := objc.CallMethod[func(param1 ICollectionView, param2 string, param3 foundation.IIndexPath) View](c_, objc.GetSelector("supplementaryViewProvider"))
+	rv := objc.CallMethod[func(param1 ICollectionView, param2 string, param3 foundation.IIndexPath) View](c_, objc.SEL("supplementaryViewProvider"))
 	return rv
 }
 
 func (c_ CollectionViewDiffableDataSource) SetSupplementaryViewProvider(value func(param1 CollectionView, param2 string, param3 foundation.IndexPath) IView) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setSupplementaryViewProvider:"), value)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setSupplementaryViewProvider:"), value)
 }

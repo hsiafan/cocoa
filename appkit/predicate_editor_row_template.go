@@ -40,22 +40,22 @@ func MakePredicateEditorRowTemplate(ptr unsafe.Pointer) PredicateEditorRowTempla
 }
 
 func (p_ PredicateEditorRowTemplate) InitWithLeftExpressions_RightExpressions_Modifier_Operators_Options(leftExpressions []foundation.IExpression, rightExpressions []foundation.IExpression, modifier foundation.ComparisonPredicateModifier, operators []foundation.INumber, options uint) PredicateEditorRowTemplate {
-	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, objc.GetSelector("initWithLeftExpressions:rightExpressions:modifier:operators:options:"), leftExpressions, rightExpressions, modifier, operators, options)
+	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, objc.SEL("initWithLeftExpressions:rightExpressions:modifier:operators:options:"), leftExpressions, rightExpressions, modifier, operators, options)
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) InitWithCompoundTypes(compoundTypes []foundation.INumber) PredicateEditorRowTemplate {
-	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, objc.GetSelector("initWithCompoundTypes:"), compoundTypes)
+	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, objc.SEL("initWithCompoundTypes:"), compoundTypes)
 	return rv
 }
 
 func (pc _PredicateEditorRowTemplateClass) Alloc() PredicateEditorRowTemplate {
-	rv := objc.CallMethod[PredicateEditorRowTemplate](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PredicateEditorRowTemplate](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PredicateEditorRowTemplateClass) New() PredicateEditorRowTemplate {
-	rv := objc.CallMethod[PredicateEditorRowTemplate](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PredicateEditorRowTemplate](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,60 +65,60 @@ func NewPredicateEditorRowTemplate() PredicateEditorRowTemplate {
 }
 
 func (p_ PredicateEditorRowTemplate) Init() PredicateEditorRowTemplate {
-	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PredicateEditorRowTemplate](p_, objc.SEL("init"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) MatchForPredicate(predicate foundation.IPredicate) float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("matchForPredicate:"), objc.ExtractPtr(predicate))
+	rv := objc.CallMethod[float64](p_, objc.SEL("matchForPredicate:"), objc.ExtractPtr(predicate))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) SetPredicate(predicate foundation.IPredicate) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPredicate:"), objc.ExtractPtr(predicate))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPredicate:"), objc.ExtractPtr(predicate))
 }
 
 func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate {
-	rv := objc.CallMethod[[]foundation.Predicate](p_, objc.GetSelector("displayableSubpredicatesOfPredicate:"), objc.ExtractPtr(predicate))
+	rv := objc.CallMethod[[]foundation.Predicate](p_, objc.SEL("displayableSubpredicatesOfPredicate:"), objc.ExtractPtr(predicate))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) PredicateWithSubpredicates(subpredicates []foundation.IPredicate) foundation.Predicate {
-	rv := objc.CallMethod[foundation.Predicate](p_, objc.GetSelector("predicateWithSubpredicates:"), subpredicates)
+	rv := objc.CallMethod[foundation.Predicate](p_, objc.SEL("predicateWithSubpredicates:"), subpredicates)
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) TemplateViews() []View {
-	rv := objc.CallMethod[[]View](p_, objc.GetSelector("templateViews"))
+	rv := objc.CallMethod[[]View](p_, objc.SEL("templateViews"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) LeftExpressions() []foundation.Expression {
-	rv := objc.CallMethod[[]foundation.Expression](p_, objc.GetSelector("leftExpressions"))
+	rv := objc.CallMethod[[]foundation.Expression](p_, objc.SEL("leftExpressions"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) RightExpressions() []foundation.Expression {
-	rv := objc.CallMethod[[]foundation.Expression](p_, objc.GetSelector("rightExpressions"))
+	rv := objc.CallMethod[[]foundation.Expression](p_, objc.SEL("rightExpressions"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) CompoundTypes() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](p_, objc.GetSelector("compoundTypes"))
+	rv := objc.CallMethod[[]foundation.Number](p_, objc.SEL("compoundTypes"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) Modifier() foundation.ComparisonPredicateModifier {
-	rv := objc.CallMethod[foundation.ComparisonPredicateModifier](p_, objc.GetSelector("modifier"))
+	rv := objc.CallMethod[foundation.ComparisonPredicateModifier](p_, objc.SEL("modifier"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) Operators() []foundation.Number {
-	rv := objc.CallMethod[[]foundation.Number](p_, objc.GetSelector("operators"))
+	rv := objc.CallMethod[[]foundation.Number](p_, objc.SEL("operators"))
 	return rv
 }
 
 func (p_ PredicateEditorRowTemplate) Options() uint {
-	rv := objc.CallMethod[uint](p_, objc.GetSelector("options"))
+	rv := objc.CallMethod[uint](p_, objc.SEL("options"))
 	return rv
 }

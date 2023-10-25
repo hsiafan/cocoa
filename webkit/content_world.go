@@ -29,12 +29,12 @@ func MakeContentWorld(ptr unsafe.Pointer) ContentWorld {
 }
 
 func (cc _ContentWorldClass) Alloc() ContentWorld {
-	rv := objc.CallMethod[ContentWorld](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ContentWorld](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _ContentWorldClass) New() ContentWorld {
-	rv := objc.CallMethod[ContentWorld](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ContentWorld](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -44,26 +44,26 @@ func NewContentWorld() ContentWorld {
 }
 
 func (c_ ContentWorld) Init() ContentWorld {
-	rv := objc.CallMethod[ContentWorld](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ContentWorld](c_, objc.SEL("init"))
 	return rv
 }
 
 func (cc _ContentWorldClass) WorldWithName(name string) ContentWorld {
-	rv := objc.CallMethod[ContentWorld](cc, objc.GetSelector("worldWithName:"), name)
+	rv := objc.CallMethod[ContentWorld](cc, objc.SEL("worldWithName:"), name)
 	return rv
 }
 
 func (cc _ContentWorldClass) DefaultClientWorld() ContentWorld {
-	rv := objc.CallMethod[ContentWorld](cc, objc.GetSelector("defaultClientWorld"))
+	rv := objc.CallMethod[ContentWorld](cc, objc.SEL("defaultClientWorld"))
 	return rv
 }
 
 func (cc _ContentWorldClass) PageWorld() ContentWorld {
-	rv := objc.CallMethod[ContentWorld](cc, objc.GetSelector("pageWorld"))
+	rv := objc.CallMethod[ContentWorld](cc, objc.SEL("pageWorld"))
 	return rv
 }
 
 func (c_ ContentWorld) Name() string {
-	rv := objc.CallMethod[string](c_, objc.GetSelector("name"))
+	rv := objc.CallMethod[string](c_, objc.SEL("name"))
 	return rv
 }

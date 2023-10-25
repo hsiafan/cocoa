@@ -60,15 +60,15 @@ func NewUserActivityDelegateCreator(name string) *UserActivityDelegateCreator {
 }
 
 func (c *UserActivityDelegateCreator) SetUserActivity_DidReceiveInputStream_OutputStream(handle func(o objc.Object, userActivity UserActivity, inputStream InputStream, outputStream OutputStream)) {
-	objc.AddMethod(c.class, objc.GetSelector("userActivity:didReceiveInputStream:outputStream:"), handle)
+	objc.AddMethod(c.class, objc.SEL("userActivity:didReceiveInputStream:outputStream:"), handle)
 }
 
 func (c *UserActivityDelegateCreator) SetUserActivityWasContinued(handle func(o objc.Object, userActivity UserActivity)) {
-	objc.AddMethod(c.class, objc.GetSelector("userActivityWasContinued:"), handle)
+	objc.AddMethod(c.class, objc.SEL("userActivityWasContinued:"), handle)
 }
 
 func (c *UserActivityDelegateCreator) SetUserActivityWillSave(handle func(o objc.Object, userActivity UserActivity)) {
-	objc.AddMethod(c.class, objc.GetSelector("userActivityWillSave:"), handle)
+	objc.AddMethod(c.class, objc.SEL("userActivityWillSave:"), handle)
 }
 
 func (c *UserActivityDelegateCreator) Create() objc.Object {

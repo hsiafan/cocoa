@@ -74,17 +74,17 @@ func MakeToolbarItem(ptr unsafe.Pointer) ToolbarItem {
 }
 
 func (t_ ToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) ToolbarItem {
-	rv := objc.CallMethod[ToolbarItem](t_, objc.GetSelector("initWithItemIdentifier:"), itemIdentifier)
+	rv := objc.CallMethod[ToolbarItem](t_, objc.SEL("initWithItemIdentifier:"), itemIdentifier)
 	return rv
 }
 
 func (tc _ToolbarItemClass) Alloc() ToolbarItem {
-	rv := objc.CallMethod[ToolbarItem](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ToolbarItem](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _ToolbarItemClass) New() ToolbarItem {
-	rv := objc.CallMethod[ToolbarItem](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ToolbarItem](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -94,199 +94,199 @@ func NewToolbarItem() ToolbarItem {
 }
 
 func (t_ ToolbarItem) Init() ToolbarItem {
-	rv := objc.CallMethod[ToolbarItem](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ToolbarItem](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ ToolbarItem) Validate() {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("validate"))
+	objc.CallMethod[objc.Void](t_, objc.SEL("validate"))
 }
 
 func (t_ ToolbarItem) ItemIdentifier() ToolbarItemIdentifier {
-	rv := objc.CallMethod[ToolbarItemIdentifier](t_, objc.GetSelector("itemIdentifier"))
+	rv := objc.CallMethod[ToolbarItemIdentifier](t_, objc.SEL("itemIdentifier"))
 	return rv
 }
 
 func (t_ ToolbarItem) PossibleLabels() foundation.Set {
-	rv := objc.CallMethod[foundation.Set](t_, objc.GetSelector("possibleLabels"))
+	rv := objc.CallMethod[foundation.Set](t_, objc.SEL("possibleLabels"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetPossibleLabels(value foundation.ISet) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPossibleLabels:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setPossibleLabels:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) Label() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("label"))
+	rv := objc.CallMethod[string](t_, objc.SEL("label"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetLabel(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setLabel:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setLabel:"), value)
 }
 
 func (t_ ToolbarItem) PaletteLabel() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("paletteLabel"))
+	rv := objc.CallMethod[string](t_, objc.SEL("paletteLabel"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetPaletteLabel(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setPaletteLabel:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setPaletteLabel:"), value)
 }
 
 func (t_ ToolbarItem) Title() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("title"))
+	rv := objc.CallMethod[string](t_, objc.SEL("title"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetTitle(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTitle:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTitle:"), value)
 }
 
 func (t_ ToolbarItem) ToolTip() string {
-	rv := objc.CallMethod[string](t_, objc.GetSelector("toolTip"))
+	rv := objc.CallMethod[string](t_, objc.SEL("toolTip"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetToolTip(value string) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setToolTip:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setToolTip:"), value)
 }
 
 func (t_ ToolbarItem) Image() Image {
-	rv := objc.CallMethod[Image](t_, objc.GetSelector("image"))
+	rv := objc.CallMethod[Image](t_, objc.SEL("image"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetImage(value IImage) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setImage:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setImage:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) View() View {
-	rv := objc.CallMethod[View](t_, objc.GetSelector("view"))
+	rv := objc.CallMethod[View](t_, objc.SEL("view"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetView(value IView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setView:"), objc.ExtractPtr(value))
 }
 
 // weak property
 func (t_ ToolbarItem) Target() objc.Object {
-	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("target"))
+	rv := objc.CallMethod[objc.Object](t_, objc.SEL("target"))
 	return rv
 }
 
 // weak property
 func (t_ ToolbarItem) SetTarget(value objc.IObject) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTarget:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTarget:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) Action() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](t_, objc.GetSelector("action"))
+	rv := objc.CallMethod[objc.Selector](t_, objc.SEL("action"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetAction(value objc.Selector) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAction:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAction:"), value)
 }
 
 func (t_ ToolbarItem) MenuFormRepresentation() MenuItem {
-	rv := objc.CallMethod[MenuItem](t_, objc.GetSelector("menuFormRepresentation"))
+	rv := objc.CallMethod[MenuItem](t_, objc.SEL("menuFormRepresentation"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetMenuFormRepresentation(value IMenuItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMenuFormRepresentation:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMenuFormRepresentation:"), objc.ExtractPtr(value))
 }
 
 func (t_ ToolbarItem) IsVisible() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isVisible"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isVisible"))
 	return rv
 }
 
 func (t_ ToolbarItem) IsBordered() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isBordered"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isBordered"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetBordered(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setBordered:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setBordered:"), value)
 }
 
 func (t_ ToolbarItem) IsNavigational() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isNavigational"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isNavigational"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetNavigational(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setNavigational:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setNavigational:"), value)
 }
 
 func (t_ ToolbarItem) IsEnabled() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("isEnabled"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("isEnabled"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetEnabled(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setEnabled:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setEnabled:"), value)
 }
 
 func (t_ ToolbarItem) AllowsDuplicatesInToolbar() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("allowsDuplicatesInToolbar"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("allowsDuplicatesInToolbar"))
 	return rv
 }
 
 func (t_ ToolbarItem) VisibilityPriority() ToolbarItemVisibilityPriority {
-	rv := objc.CallMethod[ToolbarItemVisibilityPriority](t_, objc.GetSelector("visibilityPriority"))
+	rv := objc.CallMethod[ToolbarItemVisibilityPriority](t_, objc.SEL("visibilityPriority"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetVisibilityPriority(value ToolbarItemVisibilityPriority) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setVisibilityPriority:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setVisibilityPriority:"), value)
 }
 
 func (t_ ToolbarItem) Tag() int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("tag"))
+	rv := objc.CallMethod[int](t_, objc.SEL("tag"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetTag(value int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setTag:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setTag:"), value)
 }
 
 // weak property
 func (t_ ToolbarItem) Toolbar() Toolbar {
-	rv := objc.CallMethod[Toolbar](t_, objc.GetSelector("toolbar"))
+	rv := objc.CallMethod[Toolbar](t_, objc.SEL("toolbar"))
 	return rv
 }
 
 func (t_ ToolbarItem) Autovalidates() bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("autovalidates"))
+	rv := objc.CallMethod[bool](t_, objc.SEL("autovalidates"))
 	return rv
 }
 
 func (t_ ToolbarItem) SetAutovalidates(value bool) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setAutovalidates:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setAutovalidates:"), value)
 }
 
 // deprecated
 func (t_ ToolbarItem) MinSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("minSize"))
+	rv := objc.CallMethod[foundation.Size](t_, objc.SEL("minSize"))
 	return rv
 }
 
 // deprecated
 func (t_ ToolbarItem) SetMinSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMinSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMinSize:"), value)
 }
 
 // deprecated
 func (t_ ToolbarItem) MaxSize() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](t_, objc.GetSelector("maxSize"))
+	rv := objc.CallMethod[foundation.Size](t_, objc.SEL("maxSize"))
 	return rv
 }
 
 // deprecated
 func (t_ ToolbarItem) SetMaxSize(value foundation.Size) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setMaxSize:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setMaxSize:"), value)
 }

@@ -71,19 +71,19 @@ func NewTabViewDelegateCreator(name string) *TabViewDelegateCreator {
 }
 
 func (c *TabViewDelegateCreator) SetTabViewDidChangeNumberOfTabViewItems(handle func(o objc.Object, tabView TabView)) {
-	objc.AddMethod(c.class, objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tabViewDidChangeNumberOfTabViewItems:"), handle)
 }
 
 func (c *TabViewDelegateCreator) SetTabView_ShouldSelectTabViewItem(handle func(o objc.Object, tabView TabView, tabViewItem TabViewItem) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("tabView:shouldSelectTabViewItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tabView:shouldSelectTabViewItem:"), handle)
 }
 
 func (c *TabViewDelegateCreator) SetTabView_WillSelectTabViewItem(handle func(o objc.Object, tabView TabView, tabViewItem TabViewItem)) {
-	objc.AddMethod(c.class, objc.GetSelector("tabView:willSelectTabViewItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tabView:willSelectTabViewItem:"), handle)
 }
 
 func (c *TabViewDelegateCreator) SetTabView_DidSelectTabViewItem(handle func(o objc.Object, tabView TabView, tabViewItem TabViewItem)) {
-	objc.AddMethod(c.class, objc.GetSelector("tabView:didSelectTabViewItem:"), handle)
+	objc.AddMethod(c.class, objc.SEL("tabView:didSelectTabViewItem:"), handle)
 }
 
 func (c *TabViewDelegateCreator) Create() objc.Object {

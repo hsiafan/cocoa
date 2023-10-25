@@ -38,7 +38,7 @@ func NewSoundDelegateCreator(name string) *SoundDelegateCreator {
 }
 
 func (c *SoundDelegateCreator) SetSound_DidFinishPlaying(handle func(o objc.Object, sound Sound, flag bool)) {
-	objc.AddMethod(c.class, objc.GetSelector("sound:didFinishPlaying:"), handle)
+	objc.AddMethod(c.class, objc.SEL("sound:didFinishPlaying:"), handle)
 }
 
 func (c *SoundDelegateCreator) Create() objc.Object {

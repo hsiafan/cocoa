@@ -61,52 +61,52 @@ func MakePopUpButton(ptr unsafe.Pointer) PopUpButton {
 }
 
 func (p_ PopUpButton) InitWithFrame_PullsDown(buttonFrame foundation.Rect, flag bool) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](p_, objc.GetSelector("initWithFrame:pullsDown:"), buttonFrame, flag)
+	rv := objc.CallMethod[PopUpButton](p_, objc.SEL("initWithFrame:pullsDown:"), buttonFrame, flag)
 	return rv
 }
 
 func (pc _PopUpButtonClass) CheckboxWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("checkboxWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("checkboxWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) ButtonWithImage_Target_Action(image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithImage:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("buttonWithImage:target:action:"), objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) RadioButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("radioButtonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("radioButtonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) ButtonWithTitle_Image_Target_Action(title string, image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithTitle:image:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("buttonWithTitle:image:target:action:"), title, objc.ExtractPtr(image), objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (pc _PopUpButtonClass) ButtonWithTitle_Target_Action(title string, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("buttonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("buttonWithTitle:target:action:"), title, objc.ExtractPtr(target), action)
 	return rv
 }
 
 func (p_ PopUpButton) InitWithFrame(frameRect foundation.Rect) PopUpButton {
-	rv := objc.CallMethod[PopUpButton](p_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[PopUpButton](p_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (p_ PopUpButton) Init() PopUpButton {
-	rv := objc.CallMethod[PopUpButton](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PopUpButton](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PopUpButtonClass) Alloc() PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PopUpButtonClass) New() PopUpButton {
-	rv := objc.CallMethod[PopUpButton](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PopUpButton](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -116,148 +116,148 @@ func NewPopUpButton() PopUpButton {
 }
 
 func (p_ PopUpButton) AddItemWithTitle(title string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("addItemWithTitle:"), title)
+	objc.CallMethod[objc.Void](p_, objc.SEL("addItemWithTitle:"), title)
 }
 
 func (p_ PopUpButton) AddItemsWithTitles(itemTitles []string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("addItemsWithTitles:"), itemTitles)
+	objc.CallMethod[objc.Void](p_, objc.SEL("addItemsWithTitles:"), itemTitles)
 }
 
 func (p_ PopUpButton) InsertItemWithTitle_AtIndex(title string, index int) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("insertItemWithTitle:atIndex:"), title, index)
+	objc.CallMethod[objc.Void](p_, objc.SEL("insertItemWithTitle:atIndex:"), title, index)
 }
 
 func (p_ PopUpButton) RemoveAllItems() {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeAllItems"))
+	objc.CallMethod[objc.Void](p_, objc.SEL("removeAllItems"))
 }
 
 func (p_ PopUpButton) RemoveItemWithTitle(title string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeItemWithTitle:"), title)
+	objc.CallMethod[objc.Void](p_, objc.SEL("removeItemWithTitle:"), title)
 }
 
 func (p_ PopUpButton) RemoveItemAtIndex(index int) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("removeItemAtIndex:"), index)
+	objc.CallMethod[objc.Void](p_, objc.SEL("removeItemAtIndex:"), index)
 }
 
 func (p_ PopUpButton) SelectItem(item IMenuItem) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("selectItem:"), objc.ExtractPtr(item))
+	objc.CallMethod[objc.Void](p_, objc.SEL("selectItem:"), objc.ExtractPtr(item))
 }
 
 func (p_ PopUpButton) SelectItemAtIndex(index int) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("selectItemAtIndex:"), index)
+	objc.CallMethod[objc.Void](p_, objc.SEL("selectItemAtIndex:"), index)
 }
 
 func (p_ PopUpButton) SelectItemWithTag(tag int) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("selectItemWithTag:"), tag)
+	rv := objc.CallMethod[bool](p_, objc.SEL("selectItemWithTag:"), tag)
 	return rv
 }
 
 func (p_ PopUpButton) SelectItemWithTitle(title string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("selectItemWithTitle:"), title)
+	objc.CallMethod[objc.Void](p_, objc.SEL("selectItemWithTitle:"), title)
 }
 
 func (p_ PopUpButton) ItemAtIndex(index int) MenuItem {
-	rv := objc.CallMethod[MenuItem](p_, objc.GetSelector("itemAtIndex:"), index)
+	rv := objc.CallMethod[MenuItem](p_, objc.SEL("itemAtIndex:"), index)
 	return rv
 }
 
 func (p_ PopUpButton) ItemTitleAtIndex(index int) string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("itemTitleAtIndex:"), index)
+	rv := objc.CallMethod[string](p_, objc.SEL("itemTitleAtIndex:"), index)
 	return rv
 }
 
 func (p_ PopUpButton) ItemWithTitle(title string) MenuItem {
-	rv := objc.CallMethod[MenuItem](p_, objc.GetSelector("itemWithTitle:"), title)
+	rv := objc.CallMethod[MenuItem](p_, objc.SEL("itemWithTitle:"), title)
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfItem(item IMenuItem) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItem:"), objc.ExtractPtr(item))
+	rv := objc.CallMethod[int](p_, objc.SEL("indexOfItem:"), objc.ExtractPtr(item))
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfItemWithTag(tag int) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithTag:"), tag)
+	rv := objc.CallMethod[int](p_, objc.SEL("indexOfItemWithTag:"), tag)
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfItemWithTitle(title string) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithTitle:"), title)
+	rv := objc.CallMethod[int](p_, objc.SEL("indexOfItemWithTitle:"), title)
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfItemWithRepresentedObject(obj objc.IObject) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithRepresentedObject:"), objc.ExtractPtr(obj))
+	rv := objc.CallMethod[int](p_, objc.SEL("indexOfItemWithRepresentedObject:"), objc.ExtractPtr(obj))
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfItemWithTarget_AndAction(target objc.IObject, actionSelector objc.Selector) int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfItemWithTarget:andAction:"), objc.ExtractPtr(target), actionSelector)
+	rv := objc.CallMethod[int](p_, objc.SEL("indexOfItemWithTarget:andAction:"), objc.ExtractPtr(target), actionSelector)
 	return rv
 }
 
 func (p_ PopUpButton) SynchronizeTitleAndSelectedItem() {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("synchronizeTitleAndSelectedItem"))
+	objc.CallMethod[objc.Void](p_, objc.SEL("synchronizeTitleAndSelectedItem"))
 }
 
 func (p_ PopUpButton) PullsDown() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("pullsDown"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("pullsDown"))
 	return rv
 }
 
 func (p_ PopUpButton) SetPullsDown(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPullsDown:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPullsDown:"), value)
 }
 
 func (p_ PopUpButton) AutoenablesItems() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("autoenablesItems"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("autoenablesItems"))
 	return rv
 }
 
 func (p_ PopUpButton) SetAutoenablesItems(value bool) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAutoenablesItems:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setAutoenablesItems:"), value)
 }
 
 func (p_ PopUpButton) SelectedItem() MenuItem {
-	rv := objc.CallMethod[MenuItem](p_, objc.GetSelector("selectedItem"))
+	rv := objc.CallMethod[MenuItem](p_, objc.SEL("selectedItem"))
 	return rv
 }
 
 func (p_ PopUpButton) TitleOfSelectedItem() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("titleOfSelectedItem"))
+	rv := objc.CallMethod[string](p_, objc.SEL("titleOfSelectedItem"))
 	return rv
 }
 
 func (p_ PopUpButton) IndexOfSelectedItem() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("indexOfSelectedItem"))
+	rv := objc.CallMethod[int](p_, objc.SEL("indexOfSelectedItem"))
 	return rv
 }
 
 func (p_ PopUpButton) NumberOfItems() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("numberOfItems"))
+	rv := objc.CallMethod[int](p_, objc.SEL("numberOfItems"))
 	return rv
 }
 
 func (p_ PopUpButton) ItemArray() []MenuItem {
-	rv := objc.CallMethod[[]MenuItem](p_, objc.GetSelector("itemArray"))
+	rv := objc.CallMethod[[]MenuItem](p_, objc.SEL("itemArray"))
 	return rv
 }
 
 func (p_ PopUpButton) ItemTitles() []string {
-	rv := objc.CallMethod[[]string](p_, objc.GetSelector("itemTitles"))
+	rv := objc.CallMethod[[]string](p_, objc.SEL("itemTitles"))
 	return rv
 }
 
 func (p_ PopUpButton) LastItem() MenuItem {
-	rv := objc.CallMethod[MenuItem](p_, objc.GetSelector("lastItem"))
+	rv := objc.CallMethod[MenuItem](p_, objc.SEL("lastItem"))
 	return rv
 }
 
 func (p_ PopUpButton) PreferredEdge() foundation.RectEdge {
-	rv := objc.CallMethod[foundation.RectEdge](p_, objc.GetSelector("preferredEdge"))
+	rv := objc.CallMethod[foundation.RectEdge](p_, objc.SEL("preferredEdge"))
 	return rv
 }
 
 func (p_ PopUpButton) SetPreferredEdge(value foundation.RectEdge) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setPreferredEdge:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setPreferredEdge:"), value)
 }

@@ -50,12 +50,12 @@ func MakeParagraphStyle(ptr unsafe.Pointer) ParagraphStyle {
 }
 
 func (pc _ParagraphStyleClass) Alloc() ParagraphStyle {
-	rv := objc.CallMethod[ParagraphStyle](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ParagraphStyle](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _ParagraphStyleClass) New() ParagraphStyle {
-	rv := objc.CallMethod[ParagraphStyle](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ParagraphStyle](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -65,126 +65,126 @@ func NewParagraphStyle() ParagraphStyle {
 }
 
 func (p_ ParagraphStyle) Init() ParagraphStyle {
-	rv := objc.CallMethod[ParagraphStyle](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ParagraphStyle](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _ParagraphStyleClass) DefaultWritingDirectionForLanguage(languageName string) WritingDirection {
-	rv := objc.CallMethod[WritingDirection](pc, objc.GetSelector("defaultWritingDirectionForLanguage:"), languageName)
+	rv := objc.CallMethod[WritingDirection](pc, objc.SEL("defaultWritingDirectionForLanguage:"), languageName)
 	return rv
 }
 
 func (pc _ParagraphStyleClass) DefaultParagraphStyle() ParagraphStyle {
-	rv := objc.CallMethod[ParagraphStyle](pc, objc.GetSelector("defaultParagraphStyle"))
+	rv := objc.CallMethod[ParagraphStyle](pc, objc.SEL("defaultParagraphStyle"))
 	return rv
 }
 
 func (p_ ParagraphStyle) Alignment() TextAlignment {
-	rv := objc.CallMethod[TextAlignment](p_, objc.GetSelector("alignment"))
+	rv := objc.CallMethod[TextAlignment](p_, objc.SEL("alignment"))
 	return rv
 }
 
 func (p_ ParagraphStyle) FirstLineHeadIndent() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("firstLineHeadIndent"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("firstLineHeadIndent"))
 	return rv
 }
 
 func (p_ ParagraphStyle) HeadIndent() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("headIndent"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("headIndent"))
 	return rv
 }
 
 func (p_ ParagraphStyle) TailIndent() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("tailIndent"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("tailIndent"))
 	return rv
 }
 
 func (p_ ParagraphStyle) LineHeightMultiple() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("lineHeightMultiple"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("lineHeightMultiple"))
 	return rv
 }
 
 func (p_ ParagraphStyle) MaximumLineHeight() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("maximumLineHeight"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("maximumLineHeight"))
 	return rv
 }
 
 func (p_ ParagraphStyle) MinimumLineHeight() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("minimumLineHeight"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("minimumLineHeight"))
 	return rv
 }
 
 func (p_ ParagraphStyle) LineSpacing() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("lineSpacing"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("lineSpacing"))
 	return rv
 }
 
 func (p_ ParagraphStyle) ParagraphSpacing() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("paragraphSpacing"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("paragraphSpacing"))
 	return rv
 }
 
 func (p_ ParagraphStyle) ParagraphSpacingBefore() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("paragraphSpacingBefore"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("paragraphSpacingBefore"))
 	return rv
 }
 
 func (p_ ParagraphStyle) TabStops() []TextTab {
-	rv := objc.CallMethod[[]TextTab](p_, objc.GetSelector("tabStops"))
+	rv := objc.CallMethod[[]TextTab](p_, objc.SEL("tabStops"))
 	return rv
 }
 
 func (p_ ParagraphStyle) DefaultTabInterval() float64 {
-	rv := objc.CallMethod[float64](p_, objc.GetSelector("defaultTabInterval"))
+	rv := objc.CallMethod[float64](p_, objc.SEL("defaultTabInterval"))
 	return rv
 }
 
 func (p_ ParagraphStyle) TextBlocks() []TextBlock {
-	rv := objc.CallMethod[[]TextBlock](p_, objc.GetSelector("textBlocks"))
+	rv := objc.CallMethod[[]TextBlock](p_, objc.SEL("textBlocks"))
 	return rv
 }
 
 func (p_ ParagraphStyle) TextLists() []TextList {
-	rv := objc.CallMethod[[]TextList](p_, objc.GetSelector("textLists"))
+	rv := objc.CallMethod[[]TextList](p_, objc.SEL("textLists"))
 	return rv
 }
 
 func (p_ ParagraphStyle) LineBreakMode() LineBreakMode {
-	rv := objc.CallMethod[LineBreakMode](p_, objc.GetSelector("lineBreakMode"))
+	rv := objc.CallMethod[LineBreakMode](p_, objc.SEL("lineBreakMode"))
 	return rv
 }
 
 func (p_ ParagraphStyle) LineBreakStrategy() LineBreakStrategy {
-	rv := objc.CallMethod[LineBreakStrategy](p_, objc.GetSelector("lineBreakStrategy"))
+	rv := objc.CallMethod[LineBreakStrategy](p_, objc.SEL("lineBreakStrategy"))
 	return rv
 }
 
 func (p_ ParagraphStyle) HyphenationFactor() float32 {
-	rv := objc.CallMethod[float32](p_, objc.GetSelector("hyphenationFactor"))
+	rv := objc.CallMethod[float32](p_, objc.SEL("hyphenationFactor"))
 	return rv
 }
 
 func (p_ ParagraphStyle) UsesDefaultHyphenation() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("usesDefaultHyphenation"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("usesDefaultHyphenation"))
 	return rv
 }
 
 func (p_ ParagraphStyle) TighteningFactorForTruncation() float32 {
-	rv := objc.CallMethod[float32](p_, objc.GetSelector("tighteningFactorForTruncation"))
+	rv := objc.CallMethod[float32](p_, objc.SEL("tighteningFactorForTruncation"))
 	return rv
 }
 
 func (p_ ParagraphStyle) AllowsDefaultTighteningForTruncation() bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("allowsDefaultTighteningForTruncation"))
+	rv := objc.CallMethod[bool](p_, objc.SEL("allowsDefaultTighteningForTruncation"))
 	return rv
 }
 
 func (p_ ParagraphStyle) HeaderLevel() int {
-	rv := objc.CallMethod[int](p_, objc.GetSelector("headerLevel"))
+	rv := objc.CallMethod[int](p_, objc.SEL("headerLevel"))
 	return rv
 }
 
 func (p_ ParagraphStyle) BaseWritingDirection() WritingDirection {
-	rv := objc.CallMethod[WritingDirection](p_, objc.GetSelector("baseWritingDirection"))
+	rv := objc.CallMethod[WritingDirection](p_, objc.SEL("baseWritingDirection"))
 	return rv
 }

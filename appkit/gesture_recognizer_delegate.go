@@ -93,27 +93,27 @@ func NewGestureRecognizerDelegateCreator(name string) *GestureRecognizerDelegate
 }
 
 func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldAttemptToRecognizeWithEvent(handle func(o objc.Object, gestureRecognizer GestureRecognizer, event Event) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), handle)
+	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), handle)
 }
 
 func (c *GestureRecognizerDelegateCreator) SetGestureRecognizerShouldBegin(handle func(o objc.Object, gestureRecognizer GestureRecognizer) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("gestureRecognizerShouldBegin:"), handle)
+	objc.AddMethod(c.class, objc.SEL("gestureRecognizerShouldBegin:"), handle)
 }
 
 func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(handle func(o objc.Object, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), handle)
+	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), handle)
 }
 
 func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldRequireFailureOfGestureRecognizer(handle func(o objc.Object, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), handle)
+	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), handle)
 }
 
 func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(handle func(o objc.Object, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), handle)
+	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), handle)
 }
 
 func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldReceiveTouch(handle func(o objc.Object, gestureRecognizer GestureRecognizer, touch Touch) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("gestureRecognizer:shouldReceiveTouch:"), handle)
+	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldReceiveTouch:"), handle)
 }
 
 func (c *GestureRecognizerDelegateCreator) Create() objc.Object {

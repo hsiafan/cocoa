@@ -62,22 +62,22 @@ func MakeBox(ptr unsafe.Pointer) Box {
 }
 
 func (b_ Box) InitWithFrame(frameRect foundation.Rect) Box {
-	rv := objc.CallMethod[Box](b_, objc.GetSelector("initWithFrame:"), frameRect)
+	rv := objc.CallMethod[Box](b_, objc.SEL("initWithFrame:"), frameRect)
 	return rv
 }
 
 func (b_ Box) Init() Box {
-	rv := objc.CallMethod[Box](b_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Box](b_, objc.SEL("init"))
 	return rv
 }
 
 func (bc _BoxClass) Alloc() Box {
-	rv := objc.CallMethod[Box](bc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Box](bc, objc.SEL("alloc"))
 	return rv
 }
 
 func (bc _BoxClass) New() Box {
-	rv := objc.CallMethod[Box](bc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Box](bc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -88,138 +88,138 @@ func NewBox() Box {
 
 // deprecated
 func (b_ Box) SetTitleWithMnemonic(stringWithAmpersand string) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitleWithMnemonic:"), stringWithAmpersand)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setTitleWithMnemonic:"), stringWithAmpersand)
 }
 
 func (b_ Box) SetFrameFromContentFrame(contentFrame foundation.Rect) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFrameFromContentFrame:"), contentFrame)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setFrameFromContentFrame:"), contentFrame)
 }
 
 func (b_ Box) SizeToFit() {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("sizeToFit"))
+	objc.CallMethod[objc.Void](b_, objc.SEL("sizeToFit"))
 }
 
 func (b_ Box) BorderRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("borderRect"))
+	rv := objc.CallMethod[foundation.Rect](b_, objc.SEL("borderRect"))
 	return rv
 }
 
 func (b_ Box) BoxType() BoxType {
-	rv := objc.CallMethod[BoxType](b_, objc.GetSelector("boxType"))
+	rv := objc.CallMethod[BoxType](b_, objc.SEL("boxType"))
 	return rv
 }
 
 func (b_ Box) SetBoxType(value BoxType) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBoxType:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setBoxType:"), value)
 }
 
 // deprecated
 func (b_ Box) BorderType() BorderType {
-	rv := objc.CallMethod[BorderType](b_, objc.GetSelector("borderType"))
+	rv := objc.CallMethod[BorderType](b_, objc.SEL("borderType"))
 	return rv
 }
 
 // deprecated
 func (b_ Box) SetBorderType(value BorderType) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderType:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setBorderType:"), value)
 }
 
 func (b_ Box) IsTransparent() bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("isTransparent"))
+	rv := objc.CallMethod[bool](b_, objc.SEL("isTransparent"))
 	return rv
 }
 
 func (b_ Box) SetTransparent(value bool) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTransparent:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setTransparent:"), value)
 }
 
 func (b_ Box) Title() string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("title"))
+	rv := objc.CallMethod[string](b_, objc.SEL("title"))
 	return rv
 }
 
 func (b_ Box) SetTitle(value string) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitle:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setTitle:"), value)
 }
 
 func (b_ Box) TitleFont() Font {
-	rv := objc.CallMethod[Font](b_, objc.GetSelector("titleFont"))
+	rv := objc.CallMethod[Font](b_, objc.SEL("titleFont"))
 	return rv
 }
 
 func (b_ Box) SetTitleFont(value IFont) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitleFont:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setTitleFont:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) TitlePosition() TitlePosition {
-	rv := objc.CallMethod[TitlePosition](b_, objc.GetSelector("titlePosition"))
+	rv := objc.CallMethod[TitlePosition](b_, objc.SEL("titlePosition"))
 	return rv
 }
 
 func (b_ Box) SetTitlePosition(value TitlePosition) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setTitlePosition:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setTitlePosition:"), value)
 }
 
 func (b_ Box) TitleCell() objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("titleCell"))
+	rv := objc.CallMethod[objc.Object](b_, objc.SEL("titleCell"))
 	return rv
 }
 
 func (b_ Box) TitleRect() foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](b_, objc.GetSelector("titleRect"))
+	rv := objc.CallMethod[foundation.Rect](b_, objc.SEL("titleRect"))
 	return rv
 }
 
 func (b_ Box) BorderColor() Color {
-	rv := objc.CallMethod[Color](b_, objc.GetSelector("borderColor"))
+	rv := objc.CallMethod[Color](b_, objc.SEL("borderColor"))
 	return rv
 }
 
 func (b_ Box) SetBorderColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setBorderColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) BorderWidth() float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("borderWidth"))
+	rv := objc.CallMethod[float64](b_, objc.SEL("borderWidth"))
 	return rv
 }
 
 func (b_ Box) SetBorderWidth(value float64) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setBorderWidth:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setBorderWidth:"), value)
 }
 
 func (b_ Box) CornerRadius() float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("cornerRadius"))
+	rv := objc.CallMethod[float64](b_, objc.SEL("cornerRadius"))
 	return rv
 }
 
 func (b_ Box) SetCornerRadius(value float64) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setCornerRadius:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setCornerRadius:"), value)
 }
 
 func (b_ Box) FillColor() Color {
-	rv := objc.CallMethod[Color](b_, objc.GetSelector("fillColor"))
+	rv := objc.CallMethod[Color](b_, objc.SEL("fillColor"))
 	return rv
 }
 
 func (b_ Box) SetFillColor(value IColor) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setFillColor:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setFillColor:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) ContentView() View {
-	rv := objc.CallMethod[View](b_, objc.GetSelector("contentView"))
+	rv := objc.CallMethod[View](b_, objc.SEL("contentView"))
 	return rv
 }
 
 func (b_ Box) SetContentView(value IView) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](b_, objc.SEL("setContentView:"), objc.ExtractPtr(value))
 }
 
 func (b_ Box) ContentViewMargins() foundation.Size {
-	rv := objc.CallMethod[foundation.Size](b_, objc.GetSelector("contentViewMargins"))
+	rv := objc.CallMethod[foundation.Size](b_, objc.SEL("contentViewMargins"))
 	return rv
 }
 
 func (b_ Box) SetContentViewMargins(value foundation.Size) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("setContentViewMargins:"), value)
+	objc.CallMethod[objc.Void](b_, objc.SEL("setContentViewMargins:"), value)
 }

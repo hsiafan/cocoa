@@ -248,7 +248,7 @@ func addProtocolMethod(class Class, md methodDescription, method reflect.Method)
 
 	fn, handle, status := ffi.CreateClosure(cif, func(cif *ffi.CIF, ret unsafe.Pointer, objcArgs []unsafe.Pointer) {
 		o := MakeObject(*(*unsafe.Pointer)(objcArgs[0]))
-		handle := CallMethod[uintptr](o, GetSelector("goID"))
+		handle := CallMethod[uintptr](o, SEL("goID"))
 		instance := cgo.Handle(handle).Value().(*instanceInfo)
 
 		var goArgs = make([]reflect.Value, len(objcArgs)-1)

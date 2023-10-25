@@ -45,22 +45,22 @@ func MakeCursor(ptr unsafe.Pointer) Cursor {
 }
 
 func (c_ Cursor) InitWithImage_HotSpot(newImage IImage, point foundation.Point) Cursor {
-	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("initWithImage:hotSpot:"), objc.ExtractPtr(newImage), point)
+	rv := objc.CallMethod[Cursor](c_, objc.SEL("initWithImage:hotSpot:"), objc.ExtractPtr(newImage), point)
 	return rv
 }
 
 func (c_ Cursor) InitWithImage_ForegroundColorHint_BackgroundColorHint_HotSpot(newImage IImage, fg IColor, bg IColor, hotSpot foundation.Point) Cursor {
-	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:"), objc.ExtractPtr(newImage), objc.ExtractPtr(fg), objc.ExtractPtr(bg), hotSpot)
+	rv := objc.CallMethod[Cursor](c_, objc.SEL("initWithImage:foregroundColorHint:backgroundColorHint:hotSpot:"), objc.ExtractPtr(newImage), objc.ExtractPtr(fg), objc.ExtractPtr(bg), hotSpot)
 	return rv
 }
 
 func (cc _CursorClass) Alloc() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _CursorClass) New() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -70,172 +70,172 @@ func NewCursor() Cursor {
 }
 
 func (c_ Cursor) Init() Cursor {
-	rv := objc.CallMethod[Cursor](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Cursor](c_, objc.SEL("init"))
 	return rv
 }
 
 func (cc _CursorClass) Hide() {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("hide"))
+	objc.CallMethod[objc.Void](cc, objc.SEL("hide"))
 }
 
 func (cc _CursorClass) Unhide() {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("unhide"))
+	objc.CallMethod[objc.Void](cc, objc.SEL("unhide"))
 }
 
 func (cc _CursorClass) SetHiddenUntilMouseMoves(flag bool) {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("setHiddenUntilMouseMoves:"), flag)
+	objc.CallMethod[objc.Void](cc, objc.SEL("setHiddenUntilMouseMoves:"), flag)
 }
 
 func (cc _CursorClass) Pop() {
-	objc.CallMethod[objc.Void](cc, objc.GetSelector("pop"))
+	objc.CallMethod[objc.Void](cc, objc.SEL("pop"))
 }
 
 func (c_ Cursor) Push() {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("push"))
+	objc.CallMethod[objc.Void](c_, objc.SEL("push"))
 }
 
 func (c_ Cursor) Set() {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("set"))
+	objc.CallMethod[objc.Void](c_, objc.SEL("set"))
 }
 
 // deprecated
 func (c_ Cursor) MouseEntered(event IEvent) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("mouseEntered:"), objc.ExtractPtr(event))
+	objc.CallMethod[objc.Void](c_, objc.SEL("mouseEntered:"), objc.ExtractPtr(event))
 }
 
 // deprecated
 func (c_ Cursor) SetOnMouseEntered(flag bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setOnMouseEntered:"), flag)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setOnMouseEntered:"), flag)
 }
 
 // deprecated
 func (c_ Cursor) MouseExited(event IEvent) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("mouseExited:"), objc.ExtractPtr(event))
+	objc.CallMethod[objc.Void](c_, objc.SEL("mouseExited:"), objc.ExtractPtr(event))
 }
 
 // deprecated
 func (c_ Cursor) SetOnMouseExited(flag bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("setOnMouseExited:"), flag)
+	objc.CallMethod[objc.Void](c_, objc.SEL("setOnMouseExited:"), flag)
 }
 
 func (c_ Cursor) Image() Image {
-	rv := objc.CallMethod[Image](c_, objc.GetSelector("image"))
+	rv := objc.CallMethod[Image](c_, objc.SEL("image"))
 	return rv
 }
 
 func (c_ Cursor) HotSpot() foundation.Point {
-	rv := objc.CallMethod[foundation.Point](c_, objc.GetSelector("hotSpot"))
+	rv := objc.CallMethod[foundation.Point](c_, objc.SEL("hotSpot"))
 	return rv
 }
 
 // deprecated
 func (c_ Cursor) IsSetOnMouseEntered() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isSetOnMouseEntered"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isSetOnMouseEntered"))
 	return rv
 }
 
 // deprecated
 func (c_ Cursor) IsSetOnMouseExited() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isSetOnMouseExited"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isSetOnMouseExited"))
 	return rv
 }
 
 func (cc _CursorClass) CurrentCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("currentCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("currentCursor"))
 	return rv
 }
 
 func (cc _CursorClass) CurrentSystemCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("currentSystemCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("currentSystemCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ArrowCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("arrowCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("arrowCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ContextualMenuCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("contextualMenuCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("contextualMenuCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ClosedHandCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("closedHandCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("closedHandCursor"))
 	return rv
 }
 
 func (cc _CursorClass) CrosshairCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("crosshairCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("crosshairCursor"))
 	return rv
 }
 
 func (cc _CursorClass) DisappearingItemCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("disappearingItemCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("disappearingItemCursor"))
 	return rv
 }
 
 func (cc _CursorClass) DragCopyCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("dragCopyCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("dragCopyCursor"))
 	return rv
 }
 
 func (cc _CursorClass) DragLinkCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("dragLinkCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("dragLinkCursor"))
 	return rv
 }
 
 func (cc _CursorClass) IBeamCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("IBeamCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("IBeamCursor"))
 	return rv
 }
 
 func (cc _CursorClass) OpenHandCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("openHandCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("openHandCursor"))
 	return rv
 }
 
 func (cc _CursorClass) OperationNotAllowedCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("operationNotAllowedCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("operationNotAllowedCursor"))
 	return rv
 }
 
 func (cc _CursorClass) PointingHandCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("pointingHandCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("pointingHandCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ResizeDownCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("resizeDownCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("resizeDownCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ResizeLeftCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("resizeLeftCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("resizeLeftCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ResizeLeftRightCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("resizeLeftRightCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("resizeLeftRightCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ResizeRightCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("resizeRightCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("resizeRightCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ResizeUpCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("resizeUpCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("resizeUpCursor"))
 	return rv
 }
 
 func (cc _CursorClass) ResizeUpDownCursor() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("resizeUpDownCursor"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("resizeUpDownCursor"))
 	return rv
 }
 
 func (cc _CursorClass) IBeamCursorForVerticalLayout() Cursor {
-	rv := objc.CallMethod[Cursor](cc, objc.GetSelector("IBeamCursorForVerticalLayout"))
+	rv := objc.CallMethod[Cursor](cc, objc.SEL("IBeamCursorForVerticalLayout"))
 	return rv
 }

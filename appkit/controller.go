@@ -34,17 +34,17 @@ func MakeController(ptr unsafe.Pointer) Controller {
 }
 
 func (c_ Controller) Init() Controller {
-	rv := objc.CallMethod[Controller](c_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Controller](c_, objc.SEL("init"))
 	return rv
 }
 
 func (cc _ControllerClass) Alloc() Controller {
-	rv := objc.CallMethod[Controller](cc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Controller](cc, objc.SEL("alloc"))
 	return rv
 }
 
 func (cc _ControllerClass) New() Controller {
-	rv := objc.CallMethod[Controller](cc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Controller](cc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -54,27 +54,27 @@ func NewController() Controller {
 }
 
 func (c_ Controller) ObjectDidBeginEditing(editor objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("objectDidBeginEditing:"), objc.ExtractPtr(editor))
+	objc.CallMethod[objc.Void](c_, objc.SEL("objectDidBeginEditing:"), objc.ExtractPtr(editor))
 }
 
 func (c_ Controller) ObjectDidEndEditing(editor objc.IObject) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("objectDidEndEditing:"), objc.ExtractPtr(editor))
+	objc.CallMethod[objc.Void](c_, objc.SEL("objectDidEndEditing:"), objc.ExtractPtr(editor))
 }
 
 func (c_ Controller) CommitEditing() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("commitEditing"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("commitEditing"))
 	return rv
 }
 
 func (c_ Controller) CommitEditingWithDelegate_DidCommitSelector_ContextInfo(delegate objc.IObject, didCommitSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("commitEditingWithDelegate:didCommitSelector:contextInfo:"), objc.ExtractPtr(delegate), didCommitSelector, contextInfo)
+	objc.CallMethod[objc.Void](c_, objc.SEL("commitEditingWithDelegate:didCommitSelector:contextInfo:"), objc.ExtractPtr(delegate), didCommitSelector, contextInfo)
 }
 
 func (c_ Controller) DiscardEditing() {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("discardEditing"))
+	objc.CallMethod[objc.Void](c_, objc.SEL("discardEditing"))
 }
 
 func (c_ Controller) IsEditing() bool {
-	rv := objc.CallMethod[bool](c_, objc.GetSelector("isEditing"))
+	rv := objc.CallMethod[bool](c_, objc.SEL("isEditing"))
 	return rv
 }

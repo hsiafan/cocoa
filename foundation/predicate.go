@@ -32,17 +32,17 @@ func MakePredicate(ptr unsafe.Pointer) Predicate {
 }
 
 func (p_ Predicate) PredicateWithSubstitutionVariables(variables map[string]objc.IObject) Predicate {
-	rv := objc.CallMethod[Predicate](p_, objc.GetSelector("predicateWithSubstitutionVariables:"), variables)
+	rv := objc.CallMethod[Predicate](p_, objc.SEL("predicateWithSubstitutionVariables:"), variables)
 	return rv
 }
 
 func (pc _PredicateClass) Alloc() Predicate {
-	rv := objc.CallMethod[Predicate](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Predicate](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PredicateClass) New() Predicate {
-	rv := objc.CallMethod[Predicate](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Predicate](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -52,40 +52,40 @@ func NewPredicate() Predicate {
 }
 
 func (p_ Predicate) Init() Predicate {
-	rv := objc.CallMethod[Predicate](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Predicate](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PredicateClass) PredicateWithFormat_ArgumentArray(predicateFormat string, arguments []objc.IObject) Predicate {
-	rv := objc.CallMethod[Predicate](pc, objc.GetSelector("predicateWithFormat:argumentArray:"), predicateFormat, arguments)
+	rv := objc.CallMethod[Predicate](pc, objc.SEL("predicateWithFormat:argumentArray:"), predicateFormat, arguments)
 	return rv
 }
 
 func (pc _PredicateClass) PredicateWithValue(value bool) Predicate {
-	rv := objc.CallMethod[Predicate](pc, objc.GetSelector("predicateWithValue:"), value)
+	rv := objc.CallMethod[Predicate](pc, objc.SEL("predicateWithValue:"), value)
 	return rv
 }
 
 func (pc _PredicateClass) PredicateFromMetadataQueryString(queryString string) Predicate {
-	rv := objc.CallMethod[Predicate](pc, objc.GetSelector("predicateFromMetadataQueryString:"), queryString)
+	rv := objc.CallMethod[Predicate](pc, objc.SEL("predicateFromMetadataQueryString:"), queryString)
 	return rv
 }
 
 func (p_ Predicate) EvaluateWithObject(object objc.IObject) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("evaluateWithObject:"), objc.ExtractPtr(object))
+	rv := objc.CallMethod[bool](p_, objc.SEL("evaluateWithObject:"), objc.ExtractPtr(object))
 	return rv
 }
 
 func (p_ Predicate) EvaluateWithObject_SubstitutionVariables(object objc.IObject, bindings map[string]objc.IObject) bool {
-	rv := objc.CallMethod[bool](p_, objc.GetSelector("evaluateWithObject:substitutionVariables:"), objc.ExtractPtr(object), bindings)
+	rv := objc.CallMethod[bool](p_, objc.SEL("evaluateWithObject:substitutionVariables:"), objc.ExtractPtr(object), bindings)
 	return rv
 }
 
 func (p_ Predicate) AllowEvaluation() {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("allowEvaluation"))
+	objc.CallMethod[objc.Void](p_, objc.SEL("allowEvaluation"))
 }
 
 func (p_ Predicate) PredicateFormat() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("predicateFormat"))
+	rv := objc.CallMethod[string](p_, objc.SEL("predicateFormat"))
 	return rv
 }

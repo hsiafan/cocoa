@@ -35,12 +35,12 @@ func MakePDFPanel(ptr unsafe.Pointer) PDFPanel {
 }
 
 func (pc _PDFPanelClass) Alloc() PDFPanel {
-	rv := objc.CallMethod[PDFPanel](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PDFPanel](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PDFPanelClass) New() PDFPanel {
-	rv := objc.CallMethod[PDFPanel](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PDFPanel](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -50,42 +50,42 @@ func NewPDFPanel() PDFPanel {
 }
 
 func (p_ PDFPanel) Init() PDFPanel {
-	rv := objc.CallMethod[PDFPanel](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PDFPanel](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PDFPanelClass) Panel() PDFPanel {
-	rv := objc.CallMethod[PDFPanel](pc, objc.GetSelector("panel"))
+	rv := objc.CallMethod[PDFPanel](pc, objc.SEL("panel"))
 	return rv
 }
 
 func (p_ PDFPanel) BeginSheetWithPDFInfo_ModalForWindow_CompletionHandler(pdfInfo IPDFInfo, docWindow IWindow, completionHandler func(param1 int)) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("beginSheetWithPDFInfo:modalForWindow:completionHandler:"), objc.ExtractPtr(pdfInfo), objc.ExtractPtr(docWindow), completionHandler)
+	objc.CallMethod[objc.Void](p_, objc.SEL("beginSheetWithPDFInfo:modalForWindow:completionHandler:"), objc.ExtractPtr(pdfInfo), objc.ExtractPtr(docWindow), completionHandler)
 }
 
 func (p_ PDFPanel) AccessoryController() ViewController {
-	rv := objc.CallMethod[ViewController](p_, objc.GetSelector("accessoryController"))
+	rv := objc.CallMethod[ViewController](p_, objc.SEL("accessoryController"))
 	return rv
 }
 
 func (p_ PDFPanel) SetAccessoryController(value IViewController) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setAccessoryController:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setAccessoryController:"), objc.ExtractPtr(value))
 }
 
 func (p_ PDFPanel) Options() PDFPanelOptions {
-	rv := objc.CallMethod[PDFPanelOptions](p_, objc.GetSelector("options"))
+	rv := objc.CallMethod[PDFPanelOptions](p_, objc.SEL("options"))
 	return rv
 }
 
 func (p_ PDFPanel) SetOptions(value PDFPanelOptions) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setOptions:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setOptions:"), value)
 }
 
 func (p_ PDFPanel) DefaultFileName() string {
-	rv := objc.CallMethod[string](p_, objc.GetSelector("defaultFileName"))
+	rv := objc.CallMethod[string](p_, objc.SEL("defaultFileName"))
 	return rv
 }
 
 func (p_ PDFPanel) SetDefaultFileName(value string) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDefaultFileName:"), value)
+	objc.CallMethod[objc.Void](p_, objc.SEL("setDefaultFileName:"), value)
 }

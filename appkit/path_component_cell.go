@@ -31,27 +31,27 @@ func MakePathComponentCell(ptr unsafe.Pointer) PathComponentCell {
 }
 
 func (p_ PathComponentCell) InitTextCell(string_ string) PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("initTextCell:"), string_)
+	rv := objc.CallMethod[PathComponentCell](p_, objc.SEL("initTextCell:"), string_)
 	return rv
 }
 
 func (p_ PathComponentCell) InitImageCell(image IImage) PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("initImageCell:"), objc.ExtractPtr(image))
+	rv := objc.CallMethod[PathComponentCell](p_, objc.SEL("initImageCell:"), objc.ExtractPtr(image))
 	return rv
 }
 
 func (p_ PathComponentCell) Init() PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](p_, objc.GetSelector("init"))
+	rv := objc.CallMethod[PathComponentCell](p_, objc.SEL("init"))
 	return rv
 }
 
 func (pc _PathComponentCellClass) Alloc() PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](pc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[PathComponentCell](pc, objc.SEL("alloc"))
 	return rv
 }
 
 func (pc _PathComponentCellClass) New() PathComponentCell {
-	rv := objc.CallMethod[PathComponentCell](pc, objc.GetSelector("new"))
+	rv := objc.CallMethod[PathComponentCell](pc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -61,10 +61,10 @@ func NewPathComponentCell() PathComponentCell {
 }
 
 func (p_ PathComponentCell) URL() foundation.URL {
-	rv := objc.CallMethod[foundation.URL](p_, objc.GetSelector("URL"))
+	rv := objc.CallMethod[foundation.URL](p_, objc.SEL("URL"))
 	return rv
 }
 
 func (p_ PathComponentCell) SetURL(value foundation.IURL) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("setURL:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](p_, objc.SEL("setURL:"), objc.ExtractPtr(value))
 }

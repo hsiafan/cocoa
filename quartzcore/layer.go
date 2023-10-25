@@ -175,37 +175,37 @@ func MakeLayer(ptr unsafe.Pointer) Layer {
 }
 
 func (lc _LayerClass) Layer() Layer {
-	rv := objc.CallMethod[Layer](lc, objc.GetSelector("layer"))
+	rv := objc.CallMethod[Layer](lc, objc.SEL("layer"))
 	return rv
 }
 
 func (l_ Layer) Init() Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("init"))
+	rv := objc.CallMethod[Layer](l_, objc.SEL("init"))
 	return rv
 }
 
 func (l_ Layer) InitWithLayer(layer objc.IObject) Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("initWithLayer:"), objc.ExtractPtr(layer))
+	rv := objc.CallMethod[Layer](l_, objc.SEL("initWithLayer:"), objc.ExtractPtr(layer))
 	return rv
 }
 
 func (l_ Layer) PresentationLayer() Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("presentationLayer"))
+	rv := objc.CallMethod[Layer](l_, objc.SEL("presentationLayer"))
 	return rv
 }
 
 func (l_ Layer) ModelLayer() Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("modelLayer"))
+	rv := objc.CallMethod[Layer](l_, objc.SEL("modelLayer"))
 	return rv
 }
 
 func (lc _LayerClass) Alloc() Layer {
-	rv := objc.CallMethod[Layer](lc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[Layer](lc, objc.SEL("alloc"))
 	return rv
 }
 
 func (lc _LayerClass) New() Layer {
-	rv := objc.CallMethod[Layer](lc, objc.GetSelector("new"))
+	rv := objc.CallMethod[Layer](lc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -215,677 +215,677 @@ func NewLayer() Layer {
 }
 
 func (lc _LayerClass) LayerWithRemoteClientId(client_id uint32) Layer {
-	rv := objc.CallMethod[Layer](lc, objc.GetSelector("layerWithRemoteClientId:"), client_id)
+	rv := objc.CallMethod[Layer](lc, objc.SEL("layerWithRemoteClientId:"), client_id)
 	return rv
 }
 
 func (l_ Layer) Display() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("display"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("display"))
 }
 
 func (l_ Layer) DrawInContext(ctx coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("drawInContext:"), ctx)
+	objc.CallMethod[objc.Void](l_, objc.SEL("drawInContext:"), ctx)
 }
 
 func (l_ Layer) ContentsAreFlipped() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("contentsAreFlipped"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("contentsAreFlipped"))
 	return rv
 }
 
 func (l_ Layer) RenderInContext(ctx coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("renderInContext:"), ctx)
+	objc.CallMethod[objc.Void](l_, objc.SEL("renderInContext:"), ctx)
 }
 
 func (l_ Layer) AffineTransform() coregraphics.AffineTransform {
-	rv := objc.CallMethod[coregraphics.AffineTransform](l_, objc.GetSelector("affineTransform"))
+	rv := objc.CallMethod[coregraphics.AffineTransform](l_, objc.SEL("affineTransform"))
 	return rv
 }
 
 func (l_ Layer) SetAffineTransform(m coregraphics.AffineTransform) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setAffineTransform:"), m)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setAffineTransform:"), m)
 }
 
 func (l_ Layer) AddSublayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addSublayer:"), objc.ExtractPtr(layer))
+	objc.CallMethod[objc.Void](l_, objc.SEL("addSublayer:"), objc.ExtractPtr(layer))
 }
 
 func (l_ Layer) RemoveFromSuperlayer() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("removeFromSuperlayer"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("removeFromSuperlayer"))
 }
 
 func (l_ Layer) InsertSublayer_AtIndex(layer ILayer, idx uint32) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:atIndex:"), objc.ExtractPtr(layer), idx)
+	objc.CallMethod[objc.Void](l_, objc.SEL("insertSublayer:atIndex:"), objc.ExtractPtr(layer), idx)
 }
 
 func (l_ Layer) InsertSublayer_Below(layer ILayer, sibling ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:below:"), objc.ExtractPtr(layer), objc.ExtractPtr(sibling))
+	objc.CallMethod[objc.Void](l_, objc.SEL("insertSublayer:below:"), objc.ExtractPtr(layer), objc.ExtractPtr(sibling))
 }
 
 func (l_ Layer) InsertSublayer_Above(layer ILayer, sibling ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("insertSublayer:above:"), objc.ExtractPtr(layer), objc.ExtractPtr(sibling))
+	objc.CallMethod[objc.Void](l_, objc.SEL("insertSublayer:above:"), objc.ExtractPtr(layer), objc.ExtractPtr(sibling))
 }
 
 func (l_ Layer) ReplaceSublayer_With(oldLayer ILayer, newLayer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("replaceSublayer:with:"), objc.ExtractPtr(oldLayer), objc.ExtractPtr(newLayer))
+	objc.CallMethod[objc.Void](l_, objc.SEL("replaceSublayer:with:"), objc.ExtractPtr(oldLayer), objc.ExtractPtr(newLayer))
 }
 
 func (l_ Layer) SetNeedsDisplay() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNeedsDisplay"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setNeedsDisplay"))
 }
 
 func (l_ Layer) SetNeedsDisplayInRect(r coregraphics.Rect) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNeedsDisplayInRect:"), r)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setNeedsDisplayInRect:"), r)
 }
 
 func (l_ Layer) DisplayIfNeeded() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("displayIfNeeded"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("displayIfNeeded"))
 }
 
 func (l_ Layer) NeedsDisplay() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("needsDisplay"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("needsDisplay"))
 	return rv
 }
 
 func (lc _LayerClass) NeedsDisplayForKey(key string) bool {
-	rv := objc.CallMethod[bool](lc, objc.GetSelector("needsDisplayForKey:"), key)
+	rv := objc.CallMethod[bool](lc, objc.SEL("needsDisplayForKey:"), key)
 	return rv
 }
 
 func (l_ Layer) AddAnimation_ForKey(anim IAnimation, key string) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addAnimation:forKey:"), objc.ExtractPtr(anim), key)
+	objc.CallMethod[objc.Void](l_, objc.SEL("addAnimation:forKey:"), objc.ExtractPtr(anim), key)
 }
 
 func (l_ Layer) AnimationForKey(key string) Animation {
-	rv := objc.CallMethod[Animation](l_, objc.GetSelector("animationForKey:"), key)
+	rv := objc.CallMethod[Animation](l_, objc.SEL("animationForKey:"), key)
 	return rv
 }
 
 func (l_ Layer) RemoveAllAnimations() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("removeAllAnimations"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("removeAllAnimations"))
 }
 
 func (l_ Layer) RemoveAnimationForKey(key string) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("removeAnimationForKey:"), key)
+	objc.CallMethod[objc.Void](l_, objc.SEL("removeAnimationForKey:"), key)
 }
 
 func (l_ Layer) AnimationKeys() []string {
-	rv := objc.CallMethod[[]string](l_, objc.GetSelector("animationKeys"))
+	rv := objc.CallMethod[[]string](l_, objc.SEL("animationKeys"))
 	return rv
 }
 
 func (l_ Layer) SetNeedsLayout() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNeedsLayout"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setNeedsLayout"))
 }
 
 func (l_ Layer) LayoutSublayers() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayers"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("layoutSublayers"))
 }
 
 func (l_ Layer) LayoutIfNeeded() {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutIfNeeded"))
+	objc.CallMethod[objc.Void](l_, objc.SEL("layoutIfNeeded"))
 }
 
 func (l_ Layer) NeedsLayout() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("needsLayout"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("needsLayout"))
 	return rv
 }
 
 func (l_ Layer) ResizeWithOldSuperlayerSize(size coregraphics.Size) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("resizeWithOldSuperlayerSize:"), size)
+	objc.CallMethod[objc.Void](l_, objc.SEL("resizeWithOldSuperlayerSize:"), size)
 }
 
 func (l_ Layer) ResizeSublayersWithOldSize(size coregraphics.Size) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("resizeSublayersWithOldSize:"), size)
+	objc.CallMethod[objc.Void](l_, objc.SEL("resizeSublayersWithOldSize:"), size)
 }
 
 func (l_ Layer) PreferredFrameSize() coregraphics.Size {
-	rv := objc.CallMethod[coregraphics.Size](l_, objc.GetSelector("preferredFrameSize"))
+	rv := objc.CallMethod[coregraphics.Size](l_, objc.SEL("preferredFrameSize"))
 	return rv
 }
 
 func (l_ Layer) AddConstraint(c IConstraint) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("addConstraint:"), objc.ExtractPtr(c))
+	objc.CallMethod[objc.Void](l_, objc.SEL("addConstraint:"), objc.ExtractPtr(c))
 }
 
 func (l_ Layer) ActionForKey(event string) objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("actionForKey:"), event)
+	rv := objc.CallMethod[objc.Object](l_, objc.SEL("actionForKey:"), event)
 	return rv
 }
 
 func (lc _LayerClass) DefaultActionForKey(event string) objc.Object {
-	rv := objc.CallMethod[objc.Object](lc, objc.GetSelector("defaultActionForKey:"), event)
+	rv := objc.CallMethod[objc.Object](lc, objc.SEL("defaultActionForKey:"), event)
 	return rv
 }
 
 func (l_ Layer) ConvertPoint_FromLayer(p coregraphics.Point, l ILayer) coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("convertPoint:fromLayer:"), p, objc.ExtractPtr(l))
+	rv := objc.CallMethod[coregraphics.Point](l_, objc.SEL("convertPoint:fromLayer:"), p, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) ConvertPoint_ToLayer(p coregraphics.Point, l ILayer) coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("convertPoint:toLayer:"), p, objc.ExtractPtr(l))
+	rv := objc.CallMethod[coregraphics.Point](l_, objc.SEL("convertPoint:toLayer:"), p, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) ConvertRect_FromLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("convertRect:fromLayer:"), r, objc.ExtractPtr(l))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("convertRect:fromLayer:"), r, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) ConvertRect_ToLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("convertRect:toLayer:"), r, objc.ExtractPtr(l))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("convertRect:toLayer:"), r, objc.ExtractPtr(l))
 	return rv
 }
 
 func (l_ Layer) HitTest(p coregraphics.Point) Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("hitTest:"), p)
+	rv := objc.CallMethod[Layer](l_, objc.SEL("hitTest:"), p)
 	return rv
 }
 
 func (l_ Layer) ContainsPoint(p coregraphics.Point) bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("containsPoint:"), p)
+	rv := objc.CallMethod[bool](l_, objc.SEL("containsPoint:"), p)
 	return rv
 }
 
 func (l_ Layer) ScrollPoint(p coregraphics.Point) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("scrollPoint:"), p)
+	objc.CallMethod[objc.Void](l_, objc.SEL("scrollPoint:"), p)
 }
 
 func (l_ Layer) ScrollRectToVisible(r coregraphics.Rect) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("scrollRectToVisible:"), r)
+	objc.CallMethod[objc.Void](l_, objc.SEL("scrollRectToVisible:"), r)
 }
 
 func (l_ Layer) ShouldArchiveValueForKey(key string) bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("shouldArchiveValueForKey:"), key)
+	rv := objc.CallMethod[bool](l_, objc.SEL("shouldArchiveValueForKey:"), key)
 	return rv
 }
 
 func (lc _LayerClass) DefaultValueForKey(key string) objc.Object {
-	rv := objc.CallMethod[objc.Object](lc, objc.GetSelector("defaultValueForKey:"), key)
+	rv := objc.CallMethod[objc.Object](lc, objc.SEL("defaultValueForKey:"), key)
 	return rv
 }
 
 func (lc _LayerClass) CornerCurveExpansionFactor(curve LayerCornerCurve) float64 {
-	rv := objc.CallMethod[float64](lc, objc.GetSelector("cornerCurveExpansionFactor:"), curve)
+	rv := objc.CallMethod[float64](lc, objc.SEL("cornerCurveExpansionFactor:"), curve)
 	return rv
 }
 
 // weak property
 func (l_ Layer) Delegate() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("delegate"))
+	rv := objc.CallMethod[objc.Object](l_, objc.SEL("delegate"))
 	return rv
 }
 
 // weak property
 func (l_ Layer) SetDelegate(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setDelegate:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) Contents() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("contents"))
+	rv := objc.CallMethod[objc.Object](l_, objc.SEL("contents"))
 	return rv
 }
 
 func (l_ Layer) SetContents(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContents:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setContents:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) ContentsRect() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("contentsRect"))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("contentsRect"))
 	return rv
 }
 
 func (l_ Layer) SetContentsRect(value coregraphics.Rect) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContentsRect:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setContentsRect:"), value)
 }
 
 func (l_ Layer) ContentsCenter() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("contentsCenter"))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("contentsCenter"))
 	return rv
 }
 
 func (l_ Layer) SetContentsCenter(value coregraphics.Rect) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContentsCenter:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setContentsCenter:"), value)
 }
 
 func (l_ Layer) ContentsGravity() LayerContentsGravity {
-	rv := objc.CallMethod[LayerContentsGravity](l_, objc.GetSelector("contentsGravity"))
+	rv := objc.CallMethod[LayerContentsGravity](l_, objc.SEL("contentsGravity"))
 	return rv
 }
 
 func (l_ Layer) SetContentsGravity(value LayerContentsGravity) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContentsGravity:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setContentsGravity:"), value)
 }
 
 func (l_ Layer) Opacity() float32 {
-	rv := objc.CallMethod[float32](l_, objc.GetSelector("opacity"))
+	rv := objc.CallMethod[float32](l_, objc.SEL("opacity"))
 	return rv
 }
 
 func (l_ Layer) SetOpacity(value float32) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setOpacity:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setOpacity:"), value)
 }
 
 func (l_ Layer) IsHidden() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("isHidden"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("isHidden"))
 	return rv
 }
 
 func (l_ Layer) SetHidden(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setHidden:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setHidden:"), value)
 }
 
 func (l_ Layer) MasksToBounds() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("masksToBounds"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("masksToBounds"))
 	return rv
 }
 
 func (l_ Layer) SetMasksToBounds(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMasksToBounds:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setMasksToBounds:"), value)
 }
 
 func (l_ Layer) Mask() Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("mask"))
+	rv := objc.CallMethod[Layer](l_, objc.SEL("mask"))
 	return rv
 }
 
 func (l_ Layer) SetMask(value ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMask:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setMask:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) IsDoubleSided() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("isDoubleSided"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("isDoubleSided"))
 	return rv
 }
 
 func (l_ Layer) SetDoubleSided(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDoubleSided:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setDoubleSided:"), value)
 }
 
 func (l_ Layer) CornerRadius() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("cornerRadius"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("cornerRadius"))
 	return rv
 }
 
 func (l_ Layer) SetCornerRadius(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCornerRadius:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setCornerRadius:"), value)
 }
 
 func (l_ Layer) MaskedCorners() CornerMask {
-	rv := objc.CallMethod[CornerMask](l_, objc.GetSelector("maskedCorners"))
+	rv := objc.CallMethod[CornerMask](l_, objc.SEL("maskedCorners"))
 	return rv
 }
 
 func (l_ Layer) SetMaskedCorners(value CornerMask) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMaskedCorners:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setMaskedCorners:"), value)
 }
 
 func (l_ Layer) BorderWidth() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("borderWidth"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("borderWidth"))
 	return rv
 }
 
 func (l_ Layer) SetBorderWidth(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBorderWidth:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setBorderWidth:"), value)
 }
 
 func (l_ Layer) BorderColor() coregraphics.ColorRef {
-	rv := objc.CallMethod[coregraphics.ColorRef](l_, objc.GetSelector("borderColor"))
+	rv := objc.CallMethod[coregraphics.ColorRef](l_, objc.SEL("borderColor"))
 	return rv
 }
 
 func (l_ Layer) SetBorderColor(value coregraphics.ColorRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBorderColor:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setBorderColor:"), value)
 }
 
 func (l_ Layer) BackgroundColor() coregraphics.ColorRef {
-	rv := objc.CallMethod[coregraphics.ColorRef](l_, objc.GetSelector("backgroundColor"))
+	rv := objc.CallMethod[coregraphics.ColorRef](l_, objc.SEL("backgroundColor"))
 	return rv
 }
 
 func (l_ Layer) SetBackgroundColor(value coregraphics.ColorRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBackgroundColor:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setBackgroundColor:"), value)
 }
 
 func (l_ Layer) ShadowOpacity() float32 {
-	rv := objc.CallMethod[float32](l_, objc.GetSelector("shadowOpacity"))
+	rv := objc.CallMethod[float32](l_, objc.SEL("shadowOpacity"))
 	return rv
 }
 
 func (l_ Layer) SetShadowOpacity(value float32) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShadowOpacity:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setShadowOpacity:"), value)
 }
 
 func (l_ Layer) ShadowRadius() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("shadowRadius"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("shadowRadius"))
 	return rv
 }
 
 func (l_ Layer) SetShadowRadius(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShadowRadius:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setShadowRadius:"), value)
 }
 
 func (l_ Layer) ShadowOffset() coregraphics.Size {
-	rv := objc.CallMethod[coregraphics.Size](l_, objc.GetSelector("shadowOffset"))
+	rv := objc.CallMethod[coregraphics.Size](l_, objc.SEL("shadowOffset"))
 	return rv
 }
 
 func (l_ Layer) SetShadowOffset(value coregraphics.Size) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShadowOffset:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setShadowOffset:"), value)
 }
 
 func (l_ Layer) ShadowColor() coregraphics.ColorRef {
-	rv := objc.CallMethod[coregraphics.ColorRef](l_, objc.GetSelector("shadowColor"))
+	rv := objc.CallMethod[coregraphics.ColorRef](l_, objc.SEL("shadowColor"))
 	return rv
 }
 
 func (l_ Layer) SetShadowColor(value coregraphics.ColorRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShadowColor:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setShadowColor:"), value)
 }
 
 func (l_ Layer) ShadowPath() coregraphics.PathRef {
-	rv := objc.CallMethod[coregraphics.PathRef](l_, objc.GetSelector("shadowPath"))
+	rv := objc.CallMethod[coregraphics.PathRef](l_, objc.SEL("shadowPath"))
 	return rv
 }
 
 func (l_ Layer) SetShadowPath(value coregraphics.PathRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShadowPath:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setShadowPath:"), value)
 }
 
 func (l_ Layer) AllowsEdgeAntialiasing() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("allowsEdgeAntialiasing"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("allowsEdgeAntialiasing"))
 	return rv
 }
 
 func (l_ Layer) SetAllowsEdgeAntialiasing(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setAllowsEdgeAntialiasing:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setAllowsEdgeAntialiasing:"), value)
 }
 
 func (l_ Layer) AllowsGroupOpacity() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("allowsGroupOpacity"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("allowsGroupOpacity"))
 	return rv
 }
 
 func (l_ Layer) SetAllowsGroupOpacity(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setAllowsGroupOpacity:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setAllowsGroupOpacity:"), value)
 }
 
 func (l_ Layer) Filters() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](l_, objc.GetSelector("filters"))
+	rv := objc.CallMethod[[]objc.Object](l_, objc.SEL("filters"))
 	return rv
 }
 
 func (l_ Layer) SetFilters(value []objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setFilters:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setFilters:"), value)
 }
 
 func (l_ Layer) CompositingFilter() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("compositingFilter"))
+	rv := objc.CallMethod[objc.Object](l_, objc.SEL("compositingFilter"))
 	return rv
 }
 
 func (l_ Layer) SetCompositingFilter(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCompositingFilter:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setCompositingFilter:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) BackgroundFilters() []objc.Object {
-	rv := objc.CallMethod[[]objc.Object](l_, objc.GetSelector("backgroundFilters"))
+	rv := objc.CallMethod[[]objc.Object](l_, objc.SEL("backgroundFilters"))
 	return rv
 }
 
 func (l_ Layer) SetBackgroundFilters(value []objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBackgroundFilters:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setBackgroundFilters:"), value)
 }
 
 func (l_ Layer) MinificationFilter() LayerContentsFilter {
-	rv := objc.CallMethod[LayerContentsFilter](l_, objc.GetSelector("minificationFilter"))
+	rv := objc.CallMethod[LayerContentsFilter](l_, objc.SEL("minificationFilter"))
 	return rv
 }
 
 func (l_ Layer) SetMinificationFilter(value LayerContentsFilter) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMinificationFilter:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setMinificationFilter:"), value)
 }
 
 func (l_ Layer) MinificationFilterBias() float32 {
-	rv := objc.CallMethod[float32](l_, objc.GetSelector("minificationFilterBias"))
+	rv := objc.CallMethod[float32](l_, objc.SEL("minificationFilterBias"))
 	return rv
 }
 
 func (l_ Layer) SetMinificationFilterBias(value float32) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMinificationFilterBias:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setMinificationFilterBias:"), value)
 }
 
 func (l_ Layer) MagnificationFilter() LayerContentsFilter {
-	rv := objc.CallMethod[LayerContentsFilter](l_, objc.GetSelector("magnificationFilter"))
+	rv := objc.CallMethod[LayerContentsFilter](l_, objc.SEL("magnificationFilter"))
 	return rv
 }
 
 func (l_ Layer) SetMagnificationFilter(value LayerContentsFilter) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setMagnificationFilter:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setMagnificationFilter:"), value)
 }
 
 func (l_ Layer) IsOpaque() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("isOpaque"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("isOpaque"))
 	return rv
 }
 
 func (l_ Layer) SetOpaque(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setOpaque:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setOpaque:"), value)
 }
 
 func (l_ Layer) EdgeAntialiasingMask() EdgeAntialiasingMask {
-	rv := objc.CallMethod[EdgeAntialiasingMask](l_, objc.GetSelector("edgeAntialiasingMask"))
+	rv := objc.CallMethod[EdgeAntialiasingMask](l_, objc.SEL("edgeAntialiasingMask"))
 	return rv
 }
 
 func (l_ Layer) SetEdgeAntialiasingMask(value EdgeAntialiasingMask) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setEdgeAntialiasingMask:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setEdgeAntialiasingMask:"), value)
 }
 
 func (l_ Layer) IsGeometryFlipped() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("isGeometryFlipped"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("isGeometryFlipped"))
 	return rv
 }
 
 func (l_ Layer) SetGeometryFlipped(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setGeometryFlipped:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setGeometryFlipped:"), value)
 }
 
 func (l_ Layer) DrawsAsynchronously() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("drawsAsynchronously"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("drawsAsynchronously"))
 	return rv
 }
 
 func (l_ Layer) SetDrawsAsynchronously(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setDrawsAsynchronously:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setDrawsAsynchronously:"), value)
 }
 
 func (l_ Layer) ShouldRasterize() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("shouldRasterize"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("shouldRasterize"))
 	return rv
 }
 
 func (l_ Layer) SetShouldRasterize(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setShouldRasterize:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setShouldRasterize:"), value)
 }
 
 func (l_ Layer) RasterizationScale() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("rasterizationScale"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("rasterizationScale"))
 	return rv
 }
 
 func (l_ Layer) SetRasterizationScale(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setRasterizationScale:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setRasterizationScale:"), value)
 }
 
 func (l_ Layer) ContentsFormat() LayerContentsFormat {
-	rv := objc.CallMethod[LayerContentsFormat](l_, objc.GetSelector("contentsFormat"))
+	rv := objc.CallMethod[LayerContentsFormat](l_, objc.SEL("contentsFormat"))
 	return rv
 }
 
 func (l_ Layer) SetContentsFormat(value LayerContentsFormat) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContentsFormat:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setContentsFormat:"), value)
 }
 
 func (l_ Layer) Frame() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("frame"))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("frame"))
 	return rv
 }
 
 func (l_ Layer) SetFrame(value coregraphics.Rect) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setFrame:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setFrame:"), value)
 }
 
 func (l_ Layer) Bounds() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("bounds"))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("bounds"))
 	return rv
 }
 
 func (l_ Layer) SetBounds(value coregraphics.Rect) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setBounds:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setBounds:"), value)
 }
 
 func (l_ Layer) Position() coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("position"))
+	rv := objc.CallMethod[coregraphics.Point](l_, objc.SEL("position"))
 	return rv
 }
 
 func (l_ Layer) SetPosition(value coregraphics.Point) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setPosition:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setPosition:"), value)
 }
 
 func (l_ Layer) ZPosition() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("zPosition"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("zPosition"))
 	return rv
 }
 
 func (l_ Layer) SetZPosition(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setZPosition:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setZPosition:"), value)
 }
 
 func (l_ Layer) AnchorPointZ() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("anchorPointZ"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("anchorPointZ"))
 	return rv
 }
 
 func (l_ Layer) SetAnchorPointZ(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setAnchorPointZ:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setAnchorPointZ:"), value)
 }
 
 func (l_ Layer) AnchorPoint() coregraphics.Point {
-	rv := objc.CallMethod[coregraphics.Point](l_, objc.GetSelector("anchorPoint"))
+	rv := objc.CallMethod[coregraphics.Point](l_, objc.SEL("anchorPoint"))
 	return rv
 }
 
 func (l_ Layer) SetAnchorPoint(value coregraphics.Point) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setAnchorPoint:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setAnchorPoint:"), value)
 }
 
 func (l_ Layer) ContentsScale() float64 {
-	rv := objc.CallMethod[float64](l_, objc.GetSelector("contentsScale"))
+	rv := objc.CallMethod[float64](l_, objc.SEL("contentsScale"))
 	return rv
 }
 
 func (l_ Layer) SetContentsScale(value float64) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setContentsScale:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setContentsScale:"), value)
 }
 
 func (l_ Layer) Transform() Transform3D {
-	rv := objc.CallMethod[Transform3D](l_, objc.GetSelector("transform"))
+	rv := objc.CallMethod[Transform3D](l_, objc.SEL("transform"))
 	return rv
 }
 
 func (l_ Layer) SetTransform(value Transform3D) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setTransform:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setTransform:"), value)
 }
 
 func (l_ Layer) SublayerTransform() Transform3D {
-	rv := objc.CallMethod[Transform3D](l_, objc.GetSelector("sublayerTransform"))
+	rv := objc.CallMethod[Transform3D](l_, objc.SEL("sublayerTransform"))
 	return rv
 }
 
 func (l_ Layer) SetSublayerTransform(value Transform3D) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setSublayerTransform:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setSublayerTransform:"), value)
 }
 
 func (l_ Layer) Sublayers() []Layer {
-	rv := objc.CallMethod[[]Layer](l_, objc.GetSelector("sublayers"))
+	rv := objc.CallMethod[[]Layer](l_, objc.SEL("sublayers"))
 	return rv
 }
 
 func (l_ Layer) SetSublayers(value []ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setSublayers:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setSublayers:"), value)
 }
 
 func (l_ Layer) Superlayer() Layer {
-	rv := objc.CallMethod[Layer](l_, objc.GetSelector("superlayer"))
+	rv := objc.CallMethod[Layer](l_, objc.SEL("superlayer"))
 	return rv
 }
 
 func (l_ Layer) NeedsDisplayOnBoundsChange() bool {
-	rv := objc.CallMethod[bool](l_, objc.GetSelector("needsDisplayOnBoundsChange"))
+	rv := objc.CallMethod[bool](l_, objc.SEL("needsDisplayOnBoundsChange"))
 	return rv
 }
 
 func (l_ Layer) SetNeedsDisplayOnBoundsChange(value bool) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNeedsDisplayOnBoundsChange:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setNeedsDisplayOnBoundsChange:"), value)
 }
 
 func (l_ Layer) LayoutManager() objc.Object {
-	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("layoutManager"))
+	rv := objc.CallMethod[objc.Object](l_, objc.SEL("layoutManager"))
 	return rv
 }
 
 func (l_ Layer) SetLayoutManager(value objc.IObject) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setLayoutManager:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](l_, objc.SEL("setLayoutManager:"), objc.ExtractPtr(value))
 }
 
 func (l_ Layer) AutoresizingMask() AutoresizingMask {
-	rv := objc.CallMethod[AutoresizingMask](l_, objc.GetSelector("autoresizingMask"))
+	rv := objc.CallMethod[AutoresizingMask](l_, objc.SEL("autoresizingMask"))
 	return rv
 }
 
 func (l_ Layer) SetAutoresizingMask(value AutoresizingMask) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setAutoresizingMask:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setAutoresizingMask:"), value)
 }
 
 func (l_ Layer) Constraints() []Constraint {
-	rv := objc.CallMethod[[]Constraint](l_, objc.GetSelector("constraints"))
+	rv := objc.CallMethod[[]Constraint](l_, objc.SEL("constraints"))
 	return rv
 }
 
 func (l_ Layer) SetConstraints(value []IConstraint) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setConstraints:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setConstraints:"), value)
 }
 
 func (l_ Layer) Actions() foundation.Dictionary {
-	rv := objc.CallMethod[foundation.Dictionary](l_, objc.GetSelector("actions"))
+	rv := objc.CallMethod[foundation.Dictionary](l_, objc.SEL("actions"))
 	return rv
 }
 
 func (l_ Layer) SetActions(value foundation.IDictionary) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setActions:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setActions:"), value)
 }
 
 func (l_ Layer) VisibleRect() coregraphics.Rect {
-	rv := objc.CallMethod[coregraphics.Rect](l_, objc.GetSelector("visibleRect"))
+	rv := objc.CallMethod[coregraphics.Rect](l_, objc.SEL("visibleRect"))
 	return rv
 }
 
 func (l_ Layer) Name() string {
-	rv := objc.CallMethod[string](l_, objc.GetSelector("name"))
+	rv := objc.CallMethod[string](l_, objc.SEL("name"))
 	return rv
 }
 
 func (l_ Layer) SetName(value string) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setName:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setName:"), value)
 }
 
 func (l_ Layer) CornerCurve() LayerCornerCurve {
-	rv := objc.CallMethod[LayerCornerCurve](l_, objc.GetSelector("cornerCurve"))
+	rv := objc.CallMethod[LayerCornerCurve](l_, objc.SEL("cornerCurve"))
 	return rv
 }
 
 func (l_ Layer) SetCornerCurve(value LayerCornerCurve) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("setCornerCurve:"), value)
+	objc.CallMethod[objc.Void](l_, objc.SEL("setCornerCurve:"), value)
 }

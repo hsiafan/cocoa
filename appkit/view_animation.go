@@ -31,22 +31,22 @@ func MakeViewAnimation(ptr unsafe.Pointer) ViewAnimation {
 }
 
 func (v_ ViewAnimation) InitWithViewAnimations(viewAnimations []map[ViewAnimationKey]objc.IObject) ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](v_, objc.GetSelector("initWithViewAnimations:"), viewAnimations)
+	rv := objc.CallMethod[ViewAnimation](v_, objc.SEL("initWithViewAnimations:"), viewAnimations)
 	return rv
 }
 
 func (v_ ViewAnimation) InitWithDuration_AnimationCurve(duration foundation.TimeInterval, animationCurve AnimationCurve) ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](v_, objc.GetSelector("initWithDuration:animationCurve:"), duration, animationCurve)
+	rv := objc.CallMethod[ViewAnimation](v_, objc.SEL("initWithDuration:animationCurve:"), duration, animationCurve)
 	return rv
 }
 
 func (vc _ViewAnimationClass) Alloc() ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](vc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[ViewAnimation](vc, objc.SEL("alloc"))
 	return rv
 }
 
 func (vc _ViewAnimationClass) New() ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](vc, objc.GetSelector("new"))
+	rv := objc.CallMethod[ViewAnimation](vc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -56,15 +56,15 @@ func NewViewAnimation() ViewAnimation {
 }
 
 func (v_ ViewAnimation) Init() ViewAnimation {
-	rv := objc.CallMethod[ViewAnimation](v_, objc.GetSelector("init"))
+	rv := objc.CallMethod[ViewAnimation](v_, objc.SEL("init"))
 	return rv
 }
 
 func (v_ ViewAnimation) ViewAnimations() []map[ViewAnimationKey]objc.Object {
-	rv := objc.CallMethod[[]map[ViewAnimationKey]objc.Object](v_, objc.GetSelector("viewAnimations"))
+	rv := objc.CallMethod[[]map[ViewAnimationKey]objc.Object](v_, objc.SEL("viewAnimations"))
 	return rv
 }
 
 func (v_ ViewAnimation) SetViewAnimations(value []map[ViewAnimationKey]objc.IObject) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("setViewAnimations:"), value)
+	objc.CallMethod[objc.Void](v_, objc.SEL("setViewAnimations:"), value)
 }

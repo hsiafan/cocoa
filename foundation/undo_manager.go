@@ -62,12 +62,12 @@ func MakeUndoManager(ptr unsafe.Pointer) UndoManager {
 }
 
 func (uc _UndoManagerClass) Alloc() UndoManager {
-	rv := objc.CallMethod[UndoManager](uc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[UndoManager](uc, objc.SEL("alloc"))
 	return rv
 }
 
 func (uc _UndoManagerClass) New() UndoManager {
-	rv := objc.CallMethod[UndoManager](uc, objc.GetSelector("new"))
+	rv := objc.CallMethod[UndoManager](uc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -77,160 +77,160 @@ func NewUndoManager() UndoManager {
 }
 
 func (u_ UndoManager) Init() UndoManager {
-	rv := objc.CallMethod[UndoManager](u_, objc.GetSelector("init"))
+	rv := objc.CallMethod[UndoManager](u_, objc.SEL("init"))
 	return rv
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Handler(target objc.IObject, undoHandler func(target objc.Object)) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("registerUndoWithTarget:handler:"), objc.ExtractPtr(target), undoHandler)
+	objc.CallMethod[objc.Void](u_, objc.SEL("registerUndoWithTarget:handler:"), objc.ExtractPtr(target), undoHandler)
 }
 
 func (u_ UndoManager) RegisterUndoWithTarget_Selector_Object(target objc.IObject, selector objc.Selector, anObject objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("registerUndoWithTarget:selector:object:"), objc.ExtractPtr(target), selector, objc.ExtractPtr(anObject))
+	objc.CallMethod[objc.Void](u_, objc.SEL("registerUndoWithTarget:selector:object:"), objc.ExtractPtr(target), selector, objc.ExtractPtr(anObject))
 }
 
 func (u_ UndoManager) PrepareWithInvocationTarget(target objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](u_, objc.GetSelector("prepareWithInvocationTarget:"), objc.ExtractPtr(target))
+	rv := objc.CallMethod[objc.Object](u_, objc.SEL("prepareWithInvocationTarget:"), objc.ExtractPtr(target))
 	return rv
 }
 
 func (u_ UndoManager) Undo() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("undo"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("undo"))
 }
 
 func (u_ UndoManager) UndoNestedGroup() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("undoNestedGroup"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("undoNestedGroup"))
 }
 
 func (u_ UndoManager) Redo() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("redo"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("redo"))
 }
 
 func (u_ UndoManager) BeginUndoGrouping() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("beginUndoGrouping"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("beginUndoGrouping"))
 }
 
 func (u_ UndoManager) EndUndoGrouping() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("endUndoGrouping"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("endUndoGrouping"))
 }
 
 func (u_ UndoManager) DisableUndoRegistration() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("disableUndoRegistration"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("disableUndoRegistration"))
 }
 
 func (u_ UndoManager) EnableUndoRegistration() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("enableUndoRegistration"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("enableUndoRegistration"))
 }
 
 func (u_ UndoManager) RemoveAllActions() {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllActions"))
+	objc.CallMethod[objc.Void](u_, objc.SEL("removeAllActions"))
 }
 
 func (u_ UndoManager) RemoveAllActionsWithTarget(target objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("removeAllActionsWithTarget:"), objc.ExtractPtr(target))
+	objc.CallMethod[objc.Void](u_, objc.SEL("removeAllActionsWithTarget:"), objc.ExtractPtr(target))
 }
 
 func (u_ UndoManager) SetActionName(actionName string) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setActionName:"), actionName)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setActionName:"), actionName)
 }
 
 func (u_ UndoManager) UndoMenuTitleForUndoActionName(actionName string) string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("undoMenuTitleForUndoActionName:"), actionName)
+	rv := objc.CallMethod[string](u_, objc.SEL("undoMenuTitleForUndoActionName:"), actionName)
 	return rv
 }
 
 func (u_ UndoManager) RedoMenuTitleForUndoActionName(actionName string) string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("redoMenuTitleForUndoActionName:"), actionName)
+	rv := objc.CallMethod[string](u_, objc.SEL("redoMenuTitleForUndoActionName:"), actionName)
 	return rv
 }
 
 func (u_ UndoManager) SetActionIsDiscardable(discardable bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setActionIsDiscardable:"), discardable)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setActionIsDiscardable:"), discardable)
 }
 
 func (u_ UndoManager) CanUndo() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("canUndo"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("canUndo"))
 	return rv
 }
 
 func (u_ UndoManager) CanRedo() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("canRedo"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("canRedo"))
 	return rv
 }
 
 func (u_ UndoManager) LevelsOfUndo() uint {
-	rv := objc.CallMethod[uint](u_, objc.GetSelector("levelsOfUndo"))
+	rv := objc.CallMethod[uint](u_, objc.SEL("levelsOfUndo"))
 	return rv
 }
 
 func (u_ UndoManager) SetLevelsOfUndo(value uint) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setLevelsOfUndo:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setLevelsOfUndo:"), value)
 }
 
 func (u_ UndoManager) GroupsByEvent() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("groupsByEvent"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("groupsByEvent"))
 	return rv
 }
 
 func (u_ UndoManager) SetGroupsByEvent(value bool) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setGroupsByEvent:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setGroupsByEvent:"), value)
 }
 
 func (u_ UndoManager) GroupingLevel() int {
-	rv := objc.CallMethod[int](u_, objc.GetSelector("groupingLevel"))
+	rv := objc.CallMethod[int](u_, objc.SEL("groupingLevel"))
 	return rv
 }
 
 func (u_ UndoManager) IsUndoRegistrationEnabled() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isUndoRegistrationEnabled"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("isUndoRegistrationEnabled"))
 	return rv
 }
 
 func (u_ UndoManager) IsUndoing() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isUndoing"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("isUndoing"))
 	return rv
 }
 
 func (u_ UndoManager) IsRedoing() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("isRedoing"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("isRedoing"))
 	return rv
 }
 
 func (u_ UndoManager) UndoActionName() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("undoActionName"))
+	rv := objc.CallMethod[string](u_, objc.SEL("undoActionName"))
 	return rv
 }
 
 func (u_ UndoManager) RedoActionName() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("redoActionName"))
+	rv := objc.CallMethod[string](u_, objc.SEL("redoActionName"))
 	return rv
 }
 
 func (u_ UndoManager) UndoMenuItemTitle() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("undoMenuItemTitle"))
+	rv := objc.CallMethod[string](u_, objc.SEL("undoMenuItemTitle"))
 	return rv
 }
 
 func (u_ UndoManager) RedoMenuItemTitle() string {
-	rv := objc.CallMethod[string](u_, objc.GetSelector("redoMenuItemTitle"))
+	rv := objc.CallMethod[string](u_, objc.SEL("redoMenuItemTitle"))
 	return rv
 }
 
 func (u_ UndoManager) RunLoopModes() []RunLoopMode {
-	rv := objc.CallMethod[[]RunLoopMode](u_, objc.GetSelector("runLoopModes"))
+	rv := objc.CallMethod[[]RunLoopMode](u_, objc.SEL("runLoopModes"))
 	return rv
 }
 
 func (u_ UndoManager) SetRunLoopModes(value []RunLoopMode) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("setRunLoopModes:"), value)
+	objc.CallMethod[objc.Void](u_, objc.SEL("setRunLoopModes:"), value)
 }
 
 func (u_ UndoManager) UndoActionIsDiscardable() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("undoActionIsDiscardable"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("undoActionIsDiscardable"))
 	return rv
 }
 
 func (u_ UndoManager) RedoActionIsDiscardable() bool {
-	rv := objc.CallMethod[bool](u_, objc.GetSelector("redoActionIsDiscardable"))
+	rv := objc.CallMethod[bool](u_, objc.SEL("redoActionIsDiscardable"))
 	return rv
 }

@@ -82,23 +82,23 @@ func NewAnimationDelegateCreator(name string) *AnimationDelegateCreator {
 }
 
 func (c *AnimationDelegateCreator) SetAnimationDidEnd(handle func(o objc.Object, animation Animation)) {
-	objc.AddMethod(c.class, objc.GetSelector("animationDidEnd:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animationDidEnd:"), handle)
 }
 
 func (c *AnimationDelegateCreator) SetAnimationDidStop(handle func(o objc.Object, animation Animation)) {
-	objc.AddMethod(c.class, objc.GetSelector("animationDidStop:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animationDidStop:"), handle)
 }
 
 func (c *AnimationDelegateCreator) SetAnimationShouldStart(handle func(o objc.Object, animation Animation) bool) {
-	objc.AddMethod(c.class, objc.GetSelector("animationShouldStart:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animationShouldStart:"), handle)
 }
 
 func (c *AnimationDelegateCreator) SetAnimation_ValueForProgress(handle func(o objc.Object, animation Animation, progress AnimationProgress) float32) {
-	objc.AddMethod(c.class, objc.GetSelector("animation:valueForProgress:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animation:valueForProgress:"), handle)
 }
 
 func (c *AnimationDelegateCreator) SetAnimation_DidReachProgressMark(handle func(o objc.Object, animation Animation, progress AnimationProgress)) {
-	objc.AddMethod(c.class, objc.GetSelector("animation:didReachProgressMark:"), handle)
+	objc.AddMethod(c.class, objc.SEL("animation:didReachProgressMark:"), handle)
 }
 
 func (c *AnimationDelegateCreator) Create() objc.Object {

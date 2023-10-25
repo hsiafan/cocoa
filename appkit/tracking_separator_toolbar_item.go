@@ -32,22 +32,22 @@ func MakeTrackingSeparatorToolbarItem(ptr unsafe.Pointer) TrackingSeparatorToolb
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) TrackingSeparatorToolbarItemWithIdentifier_SplitView_DividerIndex(identifier ToolbarItemIdentifier, splitView ISplitView, dividerIndex int) TrackingSeparatorToolbarItem {
-	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.GetSelector("trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:"), identifier, objc.ExtractPtr(splitView), dividerIndex)
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.SEL("trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:"), identifier, objc.ExtractPtr(splitView), dividerIndex)
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) InitWithItemIdentifier(itemIdentifier ToolbarItemIdentifier) TrackingSeparatorToolbarItem {
-	rv := objc.CallMethod[TrackingSeparatorToolbarItem](t_, objc.GetSelector("initWithItemIdentifier:"), itemIdentifier)
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](t_, objc.SEL("initWithItemIdentifier:"), itemIdentifier)
 	return rv
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) Alloc() TrackingSeparatorToolbarItem {
-	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.GetSelector("alloc"))
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.SEL("alloc"))
 	return rv
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) New() TrackingSeparatorToolbarItem {
-	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.GetSelector("new"))
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](tc, objc.SEL("new"))
 	rv.Autorelease()
 	return rv
 }
@@ -57,24 +57,24 @@ func NewTrackingSeparatorToolbarItem() TrackingSeparatorToolbarItem {
 }
 
 func (t_ TrackingSeparatorToolbarItem) Init() TrackingSeparatorToolbarItem {
-	rv := objc.CallMethod[TrackingSeparatorToolbarItem](t_, objc.GetSelector("init"))
+	rv := objc.CallMethod[TrackingSeparatorToolbarItem](t_, objc.SEL("init"))
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) DividerIndex() int {
-	rv := objc.CallMethod[int](t_, objc.GetSelector("dividerIndex"))
+	rv := objc.CallMethod[int](t_, objc.SEL("dividerIndex"))
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) SetDividerIndex(value int) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setDividerIndex:"), value)
+	objc.CallMethod[objc.Void](t_, objc.SEL("setDividerIndex:"), value)
 }
 
 func (t_ TrackingSeparatorToolbarItem) SplitView() SplitView {
-	rv := objc.CallMethod[SplitView](t_, objc.GetSelector("splitView"))
+	rv := objc.CallMethod[SplitView](t_, objc.SEL("splitView"))
 	return rv
 }
 
 func (t_ TrackingSeparatorToolbarItem) SetSplitView(value ISplitView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("setSplitView:"), objc.ExtractPtr(value))
+	objc.CallMethod[objc.Void](t_, objc.SEL("setSplitView:"), objc.ExtractPtr(value))
 }

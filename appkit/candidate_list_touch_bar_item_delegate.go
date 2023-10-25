@@ -71,19 +71,19 @@ func NewCandidateListTouchBarItemDelegateCreator(name string) *CandidateListTouc
 }
 
 func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_BeginSelectingCandidateAtIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, index int)) {
-	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), handle)
 }
 
 func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, previousIndex int, index int)) {
-	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), handle)
 }
 
 func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_EndSelectingCandidateAtIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, index int)) {
-	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), handle)
+	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), handle)
 }
 
 func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangedCandidateListVisibility(handle func(o objc.Object, anItem CandidateListTouchBarItem, isVisible bool)) {
-	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:changedCandidateListVisibility:"), handle)
+	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:changedCandidateListVisibility:"), handle)
 }
 
 func (c *CandidateListTouchBarItemDelegateCreator) Create() objc.Object {
