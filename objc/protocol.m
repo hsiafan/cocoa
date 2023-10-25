@@ -2,7 +2,7 @@
 #import <objc/runtime.h>
 #include "_cgo_export.h"
 
-
+// parent protocol for wrapping go interface to objc protocol
 @interface ProtocolImplBase : NSObject
 @property (assign) uintptr_t goID;
 @end
@@ -12,6 +12,19 @@
 - (BOOL)respondsToSelector:(SEL)aSelector {
 	return respondsTo([self goID], aSelector);
 }
+
+- (void)dealloc {
+	deleteHandle([self goID]);
+	[super dealloc];
+}
+@end
+
+// parent protocol for Protocol Creator
+@interface ProtocolBase : NSObject
+@property (assign) uintptr_t goID;
+@end
+
+@implementation ProtocolBase
 
 - (void)dealloc {
 	deleteHandle([self goID]);

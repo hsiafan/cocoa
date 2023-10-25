@@ -154,59 +154,59 @@ type NavigationDelegateCreator struct {
 }
 
 func NewNavigationDelegateCreator(name string) *NavigationDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &NavigationDelegateCreator{className: name, class: class}
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationAction_Preferences_DecisionHandler(handle func(o objc.Object, webView WebView, navigationAction NavigationAction, preferences WebpagePreferences, decisionHandler func(param1 NavigationActionPolicy, param2 IWebpagePreferences))) {
+func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationAction_Preferences_DecisionHandler(handle func(o objc.ProtocolBase, webView WebView, navigationAction NavigationAction, preferences WebpagePreferences, decisionHandler func(param1 NavigationActionPolicy, param2 IWebpagePreferences))) {
 	objc.AddMethod(c.class, objc.SEL("webView:decidePolicyForNavigationAction:preferences:decisionHandler:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationAction_DecisionHandler(handle func(o objc.Object, webView WebView, navigationAction NavigationAction, decisionHandler func(param1 NavigationActionPolicy))) {
+func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationAction_DecisionHandler(handle func(o objc.ProtocolBase, webView WebView, navigationAction NavigationAction, decisionHandler func(param1 NavigationActionPolicy))) {
 	objc.AddMethod(c.class, objc.SEL("webView:decidePolicyForNavigationAction:decisionHandler:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationResponse_DecisionHandler(handle func(o objc.Object, webView WebView, navigationResponse NavigationResponse, decisionHandler func(param1 NavigationResponsePolicy))) {
+func (c *NavigationDelegateCreator) SetWebView_DecidePolicyForNavigationResponse_DecisionHandler(handle func(o objc.ProtocolBase, webView WebView, navigationResponse NavigationResponse, decisionHandler func(param1 NavigationResponsePolicy))) {
 	objc.AddMethod(c.class, objc.SEL("webView:decidePolicyForNavigationResponse:decisionHandler:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DidStartProvisionalNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
+func (c *NavigationDelegateCreator) SetWebView_DidStartProvisionalNavigation(handle func(o objc.ProtocolBase, webView WebView, navigation Navigation)) {
 	objc.AddMethod(c.class, objc.SEL("webView:didStartProvisionalNavigation:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DidReceiveServerRedirectForProvisionalNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
+func (c *NavigationDelegateCreator) SetWebView_DidReceiveServerRedirectForProvisionalNavigation(handle func(o objc.ProtocolBase, webView WebView, navigation Navigation)) {
 	objc.AddMethod(c.class, objc.SEL("webView:didReceiveServerRedirectForProvisionalNavigation:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DidCommitNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
+func (c *NavigationDelegateCreator) SetWebView_DidCommitNavigation(handle func(o objc.ProtocolBase, webView WebView, navigation Navigation)) {
 	objc.AddMethod(c.class, objc.SEL("webView:didCommitNavigation:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DidFinishNavigation(handle func(o objc.Object, webView WebView, navigation Navigation)) {
+func (c *NavigationDelegateCreator) SetWebView_DidFinishNavigation(handle func(o objc.ProtocolBase, webView WebView, navigation Navigation)) {
 	objc.AddMethod(c.class, objc.SEL("webView:didFinishNavigation:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DidFailNavigation_WithError(handle func(o objc.Object, webView WebView, navigation Navigation, error foundation.Error)) {
+func (c *NavigationDelegateCreator) SetWebView_DidFailNavigation_WithError(handle func(o objc.ProtocolBase, webView WebView, navigation Navigation, error foundation.Error)) {
 	objc.AddMethod(c.class, objc.SEL("webView:didFailNavigation:withError:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_DidFailProvisionalNavigation_WithError(handle func(o objc.Object, webView WebView, navigation Navigation, error foundation.Error)) {
+func (c *NavigationDelegateCreator) SetWebView_DidFailProvisionalNavigation_WithError(handle func(o objc.ProtocolBase, webView WebView, navigation Navigation, error foundation.Error)) {
 	objc.AddMethod(c.class, objc.SEL("webView:didFailProvisionalNavigation:withError:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebViewWebContentProcessDidTerminate(handle func(o objc.Object, webView WebView)) {
+func (c *NavigationDelegateCreator) SetWebViewWebContentProcessDidTerminate(handle func(o objc.ProtocolBase, webView WebView)) {
 	objc.AddMethod(c.class, objc.SEL("webViewWebContentProcessDidTerminate:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_NavigationResponse_DidBecomeDownload(handle func(o objc.Object, webView WebView, navigationResponse NavigationResponse, download Download)) {
+func (c *NavigationDelegateCreator) SetWebView_NavigationResponse_DidBecomeDownload(handle func(o objc.ProtocolBase, webView WebView, navigationResponse NavigationResponse, download Download)) {
 	objc.AddMethod(c.class, objc.SEL("webView:navigationResponse:didBecomeDownload:"), handle)
 }
 
-func (c *NavigationDelegateCreator) SetWebView_NavigationAction_DidBecomeDownload(handle func(o objc.Object, webView WebView, navigationAction NavigationAction, download Download)) {
+func (c *NavigationDelegateCreator) SetWebView_NavigationAction_DidBecomeDownload(handle func(o objc.ProtocolBase, webView WebView, navigationAction NavigationAction, download Download)) {
 	objc.AddMethod(c.class, objc.SEL("webView:navigationAction:didBecomeDownload:"), handle)
 }
 
-func (c *NavigationDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *NavigationDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

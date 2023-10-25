@@ -32,15 +32,15 @@ type StreamDelegateCreator struct {
 }
 
 func NewStreamDelegateCreator(name string) *StreamDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &StreamDelegateCreator{className: name, class: class}
 }
 
-func (c *StreamDelegateCreator) SetStream_HandleEvent(handle func(o objc.Object, aStream Stream, eventCode StreamEvent)) {
+func (c *StreamDelegateCreator) SetStream_HandleEvent(handle func(o objc.ProtocolBase, aStream Stream, eventCode StreamEvent)) {
 	objc.AddMethod(c.class, objc.SEL("stream:handleEvent:"), handle)
 }
 
-func (c *StreamDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *StreamDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

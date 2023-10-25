@@ -87,35 +87,35 @@ type PathControlDelegateCreator struct {
 }
 
 func NewPathControlDelegateCreator(name string) *PathControlDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &PathControlDelegateCreator{className: name, class: class}
 }
 
-func (c *PathControlDelegateCreator) SetPathControl_ShouldDragPathComponentCell_WithPasteboard(handle func(o objc.Object, pathControl PathControl, pathComponentCell PathComponentCell, pasteboard Pasteboard) bool) {
+func (c *PathControlDelegateCreator) SetPathControl_ShouldDragPathComponentCell_WithPasteboard(handle func(o objc.ProtocolBase, pathControl PathControl, pathComponentCell PathComponentCell, pasteboard Pasteboard) bool) {
 	objc.AddMethod(c.class, objc.SEL("pathControl:shouldDragPathComponentCell:withPasteboard:"), handle)
 }
 
-func (c *PathControlDelegateCreator) SetPathControl_ValidateDrop(handle func(o objc.Object, pathControl PathControl, info objc.Object) DragOperation) {
+func (c *PathControlDelegateCreator) SetPathControl_ValidateDrop(handle func(o objc.ProtocolBase, pathControl PathControl, info objc.Object) DragOperation) {
 	objc.AddMethod(c.class, objc.SEL("pathControl:validateDrop:"), handle)
 }
 
-func (c *PathControlDelegateCreator) SetPathControl_AcceptDrop(handle func(o objc.Object, pathControl PathControl, info objc.Object) bool) {
+func (c *PathControlDelegateCreator) SetPathControl_AcceptDrop(handle func(o objc.ProtocolBase, pathControl PathControl, info objc.Object) bool) {
 	objc.AddMethod(c.class, objc.SEL("pathControl:acceptDrop:"), handle)
 }
 
-func (c *PathControlDelegateCreator) SetPathControl_WillDisplayOpenPanel(handle func(o objc.Object, pathControl PathControl, openPanel OpenPanel)) {
+func (c *PathControlDelegateCreator) SetPathControl_WillDisplayOpenPanel(handle func(o objc.ProtocolBase, pathControl PathControl, openPanel OpenPanel)) {
 	objc.AddMethod(c.class, objc.SEL("pathControl:willDisplayOpenPanel:"), handle)
 }
 
-func (c *PathControlDelegateCreator) SetPathControl_WillPopUpMenu(handle func(o objc.Object, pathControl PathControl, menu Menu)) {
+func (c *PathControlDelegateCreator) SetPathControl_WillPopUpMenu(handle func(o objc.ProtocolBase, pathControl PathControl, menu Menu)) {
 	objc.AddMethod(c.class, objc.SEL("pathControl:willPopUpMenu:"), handle)
 }
 
-func (c *PathControlDelegateCreator) SetPathControl_ShouldDragItem_WithPasteboard(handle func(o objc.Object, pathControl PathControl, pathItem PathControlItem, pasteboard Pasteboard) bool) {
+func (c *PathControlDelegateCreator) SetPathControl_ShouldDragItem_WithPasteboard(handle func(o objc.ProtocolBase, pathControl PathControl, pathItem PathControlItem, pasteboard Pasteboard) bool) {
 	objc.AddMethod(c.class, objc.SEL("pathControl:shouldDragItem:withPasteboard:"), handle)
 }
 
-func (c *PathControlDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *PathControlDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

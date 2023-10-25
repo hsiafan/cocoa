@@ -289,3 +289,28 @@ func selectorToGoName(sel string) string {
 	}
 	return sb.String()
 }
+
+// ProtocolBase is parent protocol for Protocol Creator, that can carry extra datas.
+type ProtocolBase struct {
+	Object
+}
+
+// SetExtra set extra data associate with the protocol object.
+func (p ProtocolBase) SetExtra(data any) {
+	h := CallMethod[cgo.Handle](p, SEL("goID"))
+	if h != 0 {
+		h.Delete()
+	}
+	nh := cgo.NewHandle(data)
+	CallMethod[Void](p, SEL("setGoID:"), nh)
+}
+
+// Extra gets and returns extra data associate with the protocol object.
+// If not extra data is set, return nil.
+func (p ProtocolBase) Extra() any {
+	h := CallMethod[cgo.Handle](p, SEL("goID"))
+	if h == 0 {
+		return nil
+	}
+	return h.Value()
+}

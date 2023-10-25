@@ -50,19 +50,19 @@ type RuleEditorDelegateCreator struct {
 }
 
 func NewRuleEditorDelegateCreator(name string) *RuleEditorDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &RuleEditorDelegateCreator{className: name, class: class}
 }
 
-func (c *RuleEditorDelegateCreator) SetRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(handle func(o objc.Object, editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject) {
+func (c *RuleEditorDelegateCreator) SetRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(handle func(o objc.ProtocolBase, editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), handle)
 }
 
-func (c *RuleEditorDelegateCreator) SetRuleEditorRowsDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *RuleEditorDelegateCreator) SetRuleEditorRowsDidChange(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("ruleEditorRowsDidChange:"), handle)
 }
 
-func (c *RuleEditorDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *RuleEditorDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

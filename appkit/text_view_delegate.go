@@ -279,104 +279,104 @@ type TextViewDelegateCreator struct {
 }
 
 func NewTextViewDelegateCreator(name string) *TextViewDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TextViewDelegateCreator{className: name, class: class}
 }
 
-func (c *TextViewDelegateCreator) SetUndoManagerForTextView(handle func(o objc.Object, view TextView) foundation.IUndoManager) {
+func (c *TextViewDelegateCreator) SetUndoManagerForTextView(handle func(o objc.ProtocolBase, view TextView) foundation.IUndoManager) {
 	objc.AddMethod(c.class, objc.SEL("undoManagerForTextView:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_WillDisplayToolTip_ForCharacterAtIndex(handle func(o objc.Object, textView TextView, tooltip string, characterIndex uint) string) {
+func (c *TextViewDelegateCreator) SetTextView_WillDisplayToolTip_ForCharacterAtIndex(handle func(o objc.ProtocolBase, textView TextView, tooltip string, characterIndex uint) string) {
 	objc.AddMethod(c.class, objc.SEL("textView:willDisplayToolTip:forCharacterAtIndex:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_URLForContentsOfTextAttachment_AtIndex(handle func(o objc.Object, textView TextView, textAttachment TextAttachment, charIndex uint) foundation.IURL) {
+func (c *TextViewDelegateCreator) SetTextView_URLForContentsOfTextAttachment_AtIndex(handle func(o objc.ProtocolBase, textView TextView, textAttachment TextAttachment, charIndex uint) foundation.IURL) {
 	objc.AddMethod(c.class, objc.SEL("textView:URLForContentsOfTextAttachment:atIndex:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_WillChangeSelectionFromCharacterRange_ToCharacterRange(handle func(o objc.Object, textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range) {
+func (c *TextViewDelegateCreator) SetTextView_WillChangeSelectionFromCharacterRange_ToCharacterRange(handle func(o objc.ProtocolBase, textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range) {
 	objc.AddMethod(c.class, objc.SEL("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_WillChangeSelectionFromCharacterRanges_ToCharacterRanges(handle func(o objc.Object, textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.IValue) {
+func (c *TextViewDelegateCreator) SetTextView_WillChangeSelectionFromCharacterRanges_ToCharacterRanges(handle func(o objc.ProtocolBase, textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.IValue) {
 	objc.AddMethod(c.class, objc.SEL("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextViewDidChangeSelection(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *TextViewDelegateCreator) SetTextViewDidChangeSelection(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("textViewDidChangeSelection:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_Candidates_ForSelectedRange(handle func(o objc.Object, textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.ITextCheckingResult) {
+func (c *TextViewDelegateCreator) SetTextView_Candidates_ForSelectedRange(handle func(o objc.ProtocolBase, textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.ITextCheckingResult) {
 	objc.AddMethod(c.class, objc.SEL("textView:candidates:forSelectedRange:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_CandidatesForSelectedRange(handle func(o objc.Object, textView TextView, selectedRange foundation.Range) []objc.IObject) {
+func (c *TextViewDelegateCreator) SetTextView_CandidatesForSelectedRange(handle func(o objc.ProtocolBase, textView TextView, selectedRange foundation.Range) []objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("textView:candidatesForSelectedRange:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ShouldSelectCandidateAtIndex(handle func(o objc.Object, textView TextView, index uint) bool) {
+func (c *TextViewDelegateCreator) SetTextView_ShouldSelectCandidateAtIndex(handle func(o objc.ProtocolBase, textView TextView, index uint) bool) {
 	objc.AddMethod(c.class, objc.SEL("textView:shouldSelectCandidateAtIndex:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ShouldUpdateTouchBarItemIdentifiers(handle func(o objc.Object, textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier) {
+func (c *TextViewDelegateCreator) SetTextView_ShouldUpdateTouchBarItemIdentifiers(handle func(o objc.ProtocolBase, textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier) {
 	objc.AddMethod(c.class, objc.SEL("textView:shouldUpdateTouchBarItemIdentifiers:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ShouldChangeTextInRange_ReplacementString(handle func(o objc.Object, textView TextView, affectedCharRange foundation.Range, replacementString string) bool) {
+func (c *TextViewDelegateCreator) SetTextView_ShouldChangeTextInRange_ReplacementString(handle func(o objc.ProtocolBase, textView TextView, affectedCharRange foundation.Range, replacementString string) bool) {
 	objc.AddMethod(c.class, objc.SEL("textView:shouldChangeTextInRange:replacementString:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ShouldChangeTextInRanges_ReplacementStrings(handle func(o objc.Object, textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool) {
+func (c *TextViewDelegateCreator) SetTextView_ShouldChangeTextInRanges_ReplacementStrings(handle func(o objc.ProtocolBase, textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool) {
 	objc.AddMethod(c.class, objc.SEL("textView:shouldChangeTextInRanges:replacementStrings:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ShouldChangeTypingAttributes_ToAttributes(handle func(o objc.Object, textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.IObject) {
+func (c *TextViewDelegateCreator) SetTextView_ShouldChangeTypingAttributes_ToAttributes(handle func(o objc.ProtocolBase, textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("textView:shouldChangeTypingAttributes:toAttributes:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextViewDidChangeTypingAttributes(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *TextViewDelegateCreator) SetTextViewDidChangeTypingAttributes(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("textViewDidChangeTypingAttributes:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ClickedOnLink_AtIndex(handle func(o objc.Object, textView TextView, link objc.Object, charIndex uint) bool) {
+func (c *TextViewDelegateCreator) SetTextView_ClickedOnLink_AtIndex(handle func(o objc.ProtocolBase, textView TextView, link objc.Object, charIndex uint) bool) {
 	objc.AddMethod(c.class, objc.SEL("textView:clickedOnLink:atIndex:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_ShouldSetSpellingState_Range(handle func(o objc.Object, textView TextView, value int, affectedCharRange foundation.Range) int) {
+func (c *TextViewDelegateCreator) SetTextView_ShouldSetSpellingState_Range(handle func(o objc.ProtocolBase, textView TextView, value int, affectedCharRange foundation.Range) int) {
 	objc.AddMethod(c.class, objc.SEL("textView:shouldSetSpellingState:range:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_WillCheckTextInRange_Options_Types(handle func(o objc.Object, view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.IObject) {
+func (c *TextViewDelegateCreator) SetTextView_WillCheckTextInRange_Options_Types(handle func(o objc.ProtocolBase, view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("textView:willCheckTextInRange:options:types:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_DidCheckTextInRange_Types_Options_Results_Orthography_WordCount(handle func(o objc.Object, view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.ITextCheckingResult) {
+func (c *TextViewDelegateCreator) SetTextView_DidCheckTextInRange_Types_Options_Results_Orthography_WordCount(handle func(o objc.ProtocolBase, view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.ITextCheckingResult) {
 	objc.AddMethod(c.class, objc.SEL("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_Completions_ForPartialWordRange_IndexOfSelectedItem(handle func(o objc.Object, textView TextView, words []string, charRange foundation.Range, index *int) []string) {
+func (c *TextViewDelegateCreator) SetTextView_Completions_ForPartialWordRange_IndexOfSelectedItem(handle func(o objc.ProtocolBase, textView TextView, words []string, charRange foundation.Range, index *int) []string) {
 	objc.AddMethod(c.class, objc.SEL("textView:completions:forPartialWordRange:indexOfSelectedItem:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_WillShowSharingServicePicker_ForItems(handle func(o objc.Object, textView TextView, servicePicker SharingServicePicker, items []objc.Object) ISharingServicePicker) {
+func (c *TextViewDelegateCreator) SetTextView_WillShowSharingServicePicker_ForItems(handle func(o objc.ProtocolBase, textView TextView, servicePicker SharingServicePicker, items []objc.Object) ISharingServicePicker) {
 	objc.AddMethod(c.class, objc.SEL("textView:willShowSharingServicePicker:forItems:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_DoCommandBySelector(handle func(o objc.Object, textView TextView, commandSelector objc.Selector) bool) {
+func (c *TextViewDelegateCreator) SetTextView_DoCommandBySelector(handle func(o objc.ProtocolBase, textView TextView, commandSelector objc.Selector) bool) {
 	objc.AddMethod(c.class, objc.SEL("textView:doCommandBySelector:"), handle)
 }
 
-func (c *TextViewDelegateCreator) SetTextView_Menu_ForEvent_AtIndex(handle func(o objc.Object, view TextView, menu Menu, event Event, charIndex uint) IMenu) {
+func (c *TextViewDelegateCreator) SetTextView_Menu_ForEvent_AtIndex(handle func(o objc.ProtocolBase, view TextView, menu Menu, event Event, charIndex uint) IMenu) {
 	objc.AddMethod(c.class, objc.SEL("textView:menu:forEvent:atIndex:"), handle)
 }
 
 // deprecated
-func (c *TextViewDelegateCreator) SetTextView_ClickedOnLink(handle func(o objc.Object, textView TextView, link objc.Object) bool) {
+func (c *TextViewDelegateCreator) SetTextView_ClickedOnLink(handle func(o objc.ProtocolBase, textView TextView, link objc.Object) bool) {
 	objc.AddMethod(c.class, objc.SEL("textView:clickedOnLink:"), handle)
 }
 
-func (c *TextViewDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TextViewDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

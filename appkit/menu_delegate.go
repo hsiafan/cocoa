@@ -99,39 +99,39 @@ type MenuDelegateCreator struct {
 }
 
 func NewMenuDelegateCreator(name string) *MenuDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &MenuDelegateCreator{className: name, class: class}
 }
 
-func (c *MenuDelegateCreator) SetMenu_UpdateItem_AtIndex_ShouldCancel(handle func(o objc.Object, menu Menu, item MenuItem, index int, shouldCancel bool) bool) {
+func (c *MenuDelegateCreator) SetMenu_UpdateItem_AtIndex_ShouldCancel(handle func(o objc.ProtocolBase, menu Menu, item MenuItem, index int, shouldCancel bool) bool) {
 	objc.AddMethod(c.class, objc.SEL("menu:updateItem:atIndex:shouldCancel:"), handle)
 }
 
-func (c *MenuDelegateCreator) SetConfinementRectForMenu_OnScreen(handle func(o objc.Object, menu Menu, screen Screen) foundation.Rect) {
+func (c *MenuDelegateCreator) SetConfinementRectForMenu_OnScreen(handle func(o objc.ProtocolBase, menu Menu, screen Screen) foundation.Rect) {
 	objc.AddMethod(c.class, objc.SEL("confinementRectForMenu:onScreen:"), handle)
 }
 
-func (c *MenuDelegateCreator) SetMenu_WillHighlightItem(handle func(o objc.Object, menu Menu, item MenuItem)) {
+func (c *MenuDelegateCreator) SetMenu_WillHighlightItem(handle func(o objc.ProtocolBase, menu Menu, item MenuItem)) {
 	objc.AddMethod(c.class, objc.SEL("menu:willHighlightItem:"), handle)
 }
 
-func (c *MenuDelegateCreator) SetMenuWillOpen(handle func(o objc.Object, menu Menu)) {
+func (c *MenuDelegateCreator) SetMenuWillOpen(handle func(o objc.ProtocolBase, menu Menu)) {
 	objc.AddMethod(c.class, objc.SEL("menuWillOpen:"), handle)
 }
 
-func (c *MenuDelegateCreator) SetMenuDidClose(handle func(o objc.Object, menu Menu)) {
+func (c *MenuDelegateCreator) SetMenuDidClose(handle func(o objc.ProtocolBase, menu Menu)) {
 	objc.AddMethod(c.class, objc.SEL("menuDidClose:"), handle)
 }
 
-func (c *MenuDelegateCreator) SetNumberOfItemsInMenu(handle func(o objc.Object, menu Menu) int) {
+func (c *MenuDelegateCreator) SetNumberOfItemsInMenu(handle func(o objc.ProtocolBase, menu Menu) int) {
 	objc.AddMethod(c.class, objc.SEL("numberOfItemsInMenu:"), handle)
 }
 
-func (c *MenuDelegateCreator) SetMenuNeedsUpdate(handle func(o objc.Object, menu Menu)) {
+func (c *MenuDelegateCreator) SetMenuNeedsUpdate(handle func(o objc.ProtocolBase, menu Menu)) {
 	objc.AddMethod(c.class, objc.SEL("menuNeedsUpdate:"), handle)
 }
 
-func (c *MenuDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *MenuDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

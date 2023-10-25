@@ -68,27 +68,27 @@ type ComboBoxDelegateCreator struct {
 }
 
 func NewComboBoxDelegateCreator(name string) *ComboBoxDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &ComboBoxDelegateCreator{className: name, class: class}
 }
 
-func (c *ComboBoxDelegateCreator) SetComboBoxSelectionDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *ComboBoxDelegateCreator) SetComboBoxSelectionDidChange(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("comboBoxSelectionDidChange:"), handle)
 }
 
-func (c *ComboBoxDelegateCreator) SetComboBoxSelectionIsChanging(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *ComboBoxDelegateCreator) SetComboBoxSelectionIsChanging(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("comboBoxSelectionIsChanging:"), handle)
 }
 
-func (c *ComboBoxDelegateCreator) SetComboBoxWillDismiss(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *ComboBoxDelegateCreator) SetComboBoxWillDismiss(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("comboBoxWillDismiss:"), handle)
 }
 
-func (c *ComboBoxDelegateCreator) SetComboBoxWillPopUp(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *ComboBoxDelegateCreator) SetComboBoxWillPopUp(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("comboBoxWillPopUp:"), handle)
 }
 
-func (c *ComboBoxDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *ComboBoxDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

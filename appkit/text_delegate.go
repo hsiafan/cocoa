@@ -77,31 +77,31 @@ type TextDelegateCreator struct {
 }
 
 func NewTextDelegateCreator(name string) *TextDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TextDelegateCreator{className: name, class: class}
 }
 
-func (c *TextDelegateCreator) SetTextDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *TextDelegateCreator) SetTextDidChange(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("textDidChange:"), handle)
 }
 
-func (c *TextDelegateCreator) SetTextShouldBeginEditing(handle func(o objc.Object, textObject Text) bool) {
+func (c *TextDelegateCreator) SetTextShouldBeginEditing(handle func(o objc.ProtocolBase, textObject Text) bool) {
 	objc.AddMethod(c.class, objc.SEL("textShouldBeginEditing:"), handle)
 }
 
-func (c *TextDelegateCreator) SetTextDidBeginEditing(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *TextDelegateCreator) SetTextDidBeginEditing(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("textDidBeginEditing:"), handle)
 }
 
-func (c *TextDelegateCreator) SetTextShouldEndEditing(handle func(o objc.Object, textObject Text) bool) {
+func (c *TextDelegateCreator) SetTextShouldEndEditing(handle func(o objc.ProtocolBase, textObject Text) bool) {
 	objc.AddMethod(c.class, objc.SEL("textShouldEndEditing:"), handle)
 }
 
-func (c *TextDelegateCreator) SetTextDidEndEditing(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *TextDelegateCreator) SetTextDidEndEditing(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("textDidEndEditing:"), handle)
 }
 
-func (c *TextDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TextDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

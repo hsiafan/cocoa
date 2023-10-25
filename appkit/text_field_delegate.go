@@ -57,23 +57,23 @@ type TextFieldDelegateCreator struct {
 }
 
 func NewTextFieldDelegateCreator(name string) *TextFieldDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TextFieldDelegateCreator{className: name, class: class}
 }
 
-func (c *TextFieldDelegateCreator) SetTextField_TextView_Candidates_ForSelectedRange(handle func(o objc.Object, textField TextField, textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.ITextCheckingResult) {
+func (c *TextFieldDelegateCreator) SetTextField_TextView_Candidates_ForSelectedRange(handle func(o objc.ProtocolBase, textField TextField, textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.ITextCheckingResult) {
 	objc.AddMethod(c.class, objc.SEL("textField:textView:candidates:forSelectedRange:"), handle)
 }
 
-func (c *TextFieldDelegateCreator) SetTextField_TextView_CandidatesForSelectedRange(handle func(o objc.Object, textField TextField, textView TextView, selectedRange foundation.Range) []objc.IObject) {
+func (c *TextFieldDelegateCreator) SetTextField_TextView_CandidatesForSelectedRange(handle func(o objc.ProtocolBase, textField TextField, textView TextView, selectedRange foundation.Range) []objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("textField:textView:candidatesForSelectedRange:"), handle)
 }
 
-func (c *TextFieldDelegateCreator) SetTextField_TextView_ShouldSelectCandidateAtIndex(handle func(o objc.Object, textField TextField, textView TextView, index uint) bool) {
+func (c *TextFieldDelegateCreator) SetTextField_TextView_ShouldSelectCandidateAtIndex(handle func(o objc.ProtocolBase, textField TextField, textView TextView, index uint) bool) {
 	objc.AddMethod(c.class, objc.SEL("textField:textView:shouldSelectCandidateAtIndex:"), handle)
 }
 
-func (c *TextFieldDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TextFieldDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

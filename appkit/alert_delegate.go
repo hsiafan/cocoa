@@ -32,15 +32,15 @@ type AlertDelegateCreator struct {
 }
 
 func NewAlertDelegateCreator(name string) *AlertDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &AlertDelegateCreator{className: name, class: class}
 }
 
-func (c *AlertDelegateCreator) SetAlertShowHelp(handle func(o objc.Object, alert Alert) bool) {
+func (c *AlertDelegateCreator) SetAlertShowHelp(handle func(o objc.ProtocolBase, alert Alert) bool) {
 	objc.AddMethod(c.class, objc.SEL("alertShowHelp:"), handle)
 }
 
-func (c *AlertDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *AlertDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

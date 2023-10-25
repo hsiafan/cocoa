@@ -43,19 +43,19 @@ type StackViewDelegateCreator struct {
 }
 
 func NewStackViewDelegateCreator(name string) *StackViewDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &StackViewDelegateCreator{className: name, class: class}
 }
 
-func (c *StackViewDelegateCreator) SetStackView_DidReattachViews(handle func(o objc.Object, stackView StackView, views []View)) {
+func (c *StackViewDelegateCreator) SetStackView_DidReattachViews(handle func(o objc.ProtocolBase, stackView StackView, views []View)) {
 	objc.AddMethod(c.class, objc.SEL("stackView:didReattachViews:"), handle)
 }
 
-func (c *StackViewDelegateCreator) SetStackView_WillDetachViews(handle func(o objc.Object, stackView StackView, views []View)) {
+func (c *StackViewDelegateCreator) SetStackView_WillDetachViews(handle func(o objc.ProtocolBase, stackView StackView, views []View)) {
 	objc.AddMethod(c.class, objc.SEL("stackView:willDetachViews:"), handle)
 }
 
-func (c *StackViewDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *StackViewDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

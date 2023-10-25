@@ -32,15 +32,15 @@ type TouchBarDelegateCreator struct {
 }
 
 func NewTouchBarDelegateCreator(name string) *TouchBarDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TouchBarDelegateCreator{className: name, class: class}
 }
 
-func (c *TouchBarDelegateCreator) SetTouchBar_MakeItemForIdentifier(handle func(o objc.Object, touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem) {
+func (c *TouchBarDelegateCreator) SetTouchBar_MakeItemForIdentifier(handle func(o objc.ProtocolBase, touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem) {
 	objc.AddMethod(c.class, objc.SEL("touchBar:makeItemForIdentifier:"), handle)
 }
 
-func (c *TouchBarDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TouchBarDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

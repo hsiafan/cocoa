@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"reflect"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func Test_stringConvert(t *testing.T) {
@@ -79,4 +81,12 @@ func Test_selectorToGoName(t *testing.T) {
 			}
 		})
 	}
+}
+
+func Test_ProtocolBase(t *testing.T) {
+	class := AllocateClassPair(GetClass("ProtocolBase"), "TestProtocolBase", 0)
+	o := class.CreateInstance(0)
+	p := ProtocolBase{Object: o}
+	p.SetExtra(908)
+	assert.Equal(t, 908, p.Extra().(int))
 }

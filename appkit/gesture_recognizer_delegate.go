@@ -87,35 +87,35 @@ type GestureRecognizerDelegateCreator struct {
 }
 
 func NewGestureRecognizerDelegateCreator(name string) *GestureRecognizerDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &GestureRecognizerDelegateCreator{className: name, class: class}
 }
 
-func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldAttemptToRecognizeWithEvent(handle func(o objc.Object, gestureRecognizer GestureRecognizer, event Event) bool) {
+func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldAttemptToRecognizeWithEvent(handle func(o objc.ProtocolBase, gestureRecognizer GestureRecognizer, event Event) bool) {
 	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), handle)
 }
 
-func (c *GestureRecognizerDelegateCreator) SetGestureRecognizerShouldBegin(handle func(o objc.Object, gestureRecognizer GestureRecognizer) bool) {
+func (c *GestureRecognizerDelegateCreator) SetGestureRecognizerShouldBegin(handle func(o objc.ProtocolBase, gestureRecognizer GestureRecognizer) bool) {
 	objc.AddMethod(c.class, objc.SEL("gestureRecognizerShouldBegin:"), handle)
 }
 
-func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(handle func(o objc.Object, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
+func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(handle func(o objc.ProtocolBase, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
 	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), handle)
 }
 
-func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldRequireFailureOfGestureRecognizer(handle func(o objc.Object, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
+func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldRequireFailureOfGestureRecognizer(handle func(o objc.ProtocolBase, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
 	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), handle)
 }
 
-func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(handle func(o objc.Object, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
+func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(handle func(o objc.ProtocolBase, gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool) {
 	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), handle)
 }
 
-func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldReceiveTouch(handle func(o objc.Object, gestureRecognizer GestureRecognizer, touch Touch) bool) {
+func (c *GestureRecognizerDelegateCreator) SetGestureRecognizer_ShouldReceiveTouch(handle func(o objc.ProtocolBase, gestureRecognizer GestureRecognizer, touch Touch) bool) {
 	objc.AddMethod(c.class, objc.SEL("gestureRecognizer:shouldReceiveTouch:"), handle)
 }
 
-func (c *GestureRecognizerDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *GestureRecognizerDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

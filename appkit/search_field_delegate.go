@@ -45,19 +45,19 @@ type SearchFieldDelegateCreator struct {
 }
 
 func NewSearchFieldDelegateCreator(name string) *SearchFieldDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &SearchFieldDelegateCreator{className: name, class: class}
 }
 
-func (c *SearchFieldDelegateCreator) SetSearchFieldDidStartSearching(handle func(o objc.Object, sender SearchField)) {
+func (c *SearchFieldDelegateCreator) SetSearchFieldDidStartSearching(handle func(o objc.ProtocolBase, sender SearchField)) {
 	objc.AddMethod(c.class, objc.SEL("searchFieldDidStartSearching:"), handle)
 }
 
-func (c *SearchFieldDelegateCreator) SetSearchFieldDidEndSearching(handle func(o objc.Object, sender SearchField)) {
+func (c *SearchFieldDelegateCreator) SetSearchFieldDidEndSearching(handle func(o objc.ProtocolBase, sender SearchField)) {
 	objc.AddMethod(c.class, objc.SEL("searchFieldDidEndSearching:"), handle)
 }
 
-func (c *SearchFieldDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *SearchFieldDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

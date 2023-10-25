@@ -65,27 +65,27 @@ type CandidateListTouchBarItemDelegateCreator struct {
 }
 
 func NewCandidateListTouchBarItemDelegateCreator(name string) *CandidateListTouchBarItemDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &CandidateListTouchBarItemDelegateCreator{className: name, class: class}
 }
 
-func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_BeginSelectingCandidateAtIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, index int)) {
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_BeginSelectingCandidateAtIndex(handle func(o objc.ProtocolBase, anItem CandidateListTouchBarItem, index int)) {
 	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), handle)
 }
 
-func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, previousIndex int, index int)) {
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(handle func(o objc.ProtocolBase, anItem CandidateListTouchBarItem, previousIndex int, index int)) {
 	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), handle)
 }
 
-func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_EndSelectingCandidateAtIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, index int)) {
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_EndSelectingCandidateAtIndex(handle func(o objc.ProtocolBase, anItem CandidateListTouchBarItem, index int)) {
 	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), handle)
 }
 
-func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangedCandidateListVisibility(handle func(o objc.Object, anItem CandidateListTouchBarItem, isVisible bool)) {
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangedCandidateListVisibility(handle func(o objc.ProtocolBase, anItem CandidateListTouchBarItem, isVisible bool)) {
 	objc.AddMethod(c.class, objc.SEL("candidateListTouchBarItem:changedCandidateListVisibility:"), handle)
 }
 
-func (c *CandidateListTouchBarItemDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *CandidateListTouchBarItemDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

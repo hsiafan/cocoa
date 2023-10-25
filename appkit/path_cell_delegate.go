@@ -43,19 +43,19 @@ type PathCellDelegateCreator struct {
 }
 
 func NewPathCellDelegateCreator(name string) *PathCellDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &PathCellDelegateCreator{className: name, class: class}
 }
 
-func (c *PathCellDelegateCreator) SetPathCell_WillDisplayOpenPanel(handle func(o objc.Object, pathCell PathCell, openPanel OpenPanel)) {
+func (c *PathCellDelegateCreator) SetPathCell_WillDisplayOpenPanel(handle func(o objc.ProtocolBase, pathCell PathCell, openPanel OpenPanel)) {
 	objc.AddMethod(c.class, objc.SEL("pathCell:willDisplayOpenPanel:"), handle)
 }
 
-func (c *PathCellDelegateCreator) SetPathCell_WillPopUpMenu(handle func(o objc.Object, pathCell PathCell, menu Menu)) {
+func (c *PathCellDelegateCreator) SetPathCell_WillPopUpMenu(handle func(o objc.ProtocolBase, pathCell PathCell, menu Menu)) {
 	objc.AddMethod(c.class, objc.SEL("pathCell:willPopUpMenu:"), handle)
 }
 
-func (c *PathCellDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *PathCellDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

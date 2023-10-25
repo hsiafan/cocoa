@@ -77,31 +77,31 @@ type LayerDelegateCreator struct {
 }
 
 func NewLayerDelegateCreator(name string) *LayerDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &LayerDelegateCreator{className: name, class: class}
 }
 
-func (c *LayerDelegateCreator) SetDisplayLayer(handle func(o objc.Object, layer Layer)) {
+func (c *LayerDelegateCreator) SetDisplayLayer(handle func(o objc.ProtocolBase, layer Layer)) {
 	objc.AddMethod(c.class, objc.SEL("displayLayer:"), handle)
 }
 
-func (c *LayerDelegateCreator) SetDrawLayer_InContext(handle func(o objc.Object, layer Layer, ctx coregraphics.ContextRef)) {
+func (c *LayerDelegateCreator) SetDrawLayer_InContext(handle func(o objc.ProtocolBase, layer Layer, ctx coregraphics.ContextRef)) {
 	objc.AddMethod(c.class, objc.SEL("drawLayer:inContext:"), handle)
 }
 
-func (c *LayerDelegateCreator) SetLayerWillDraw(handle func(o objc.Object, layer Layer)) {
+func (c *LayerDelegateCreator) SetLayerWillDraw(handle func(o objc.ProtocolBase, layer Layer)) {
 	objc.AddMethod(c.class, objc.SEL("layerWillDraw:"), handle)
 }
 
-func (c *LayerDelegateCreator) SetLayoutSublayersOfLayer(handle func(o objc.Object, layer Layer)) {
+func (c *LayerDelegateCreator) SetLayoutSublayersOfLayer(handle func(o objc.ProtocolBase, layer Layer)) {
 	objc.AddMethod(c.class, objc.SEL("layoutSublayersOfLayer:"), handle)
 }
 
-func (c *LayerDelegateCreator) SetActionForLayer_ForKey(handle func(o objc.Object, layer Layer, event string) objc.IObject) {
+func (c *LayerDelegateCreator) SetActionForLayer_ForKey(handle func(o objc.ProtocolBase, layer Layer, event string) objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("actionForLayer:forKey:"), handle)
 }
 
-func (c *LayerDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *LayerDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

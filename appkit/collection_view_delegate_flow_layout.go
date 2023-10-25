@@ -90,35 +90,35 @@ type CollectionViewDelegateFlowLayoutCreator struct {
 }
 
 func NewCollectionViewDelegateFlowLayoutCreator(name string) *CollectionViewDelegateFlowLayoutCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &CollectionViewDelegateFlowLayoutCreator{className: name, class: class}
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_SizeForItemAtIndexPath(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, indexPath foundation.IndexPath) foundation.Size) {
+func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_SizeForItemAtIndexPath(handle func(o objc.ProtocolBase, collectionView CollectionView, collectionViewLayout CollectionViewLayout, indexPath foundation.IndexPath) foundation.Size) {
 	objc.AddMethod(c.class, objc.SEL("collectionView:layout:sizeForItemAtIndexPath:"), handle)
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_InsetForSectionAtIndex(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.EdgeInsets) {
+func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_InsetForSectionAtIndex(handle func(o objc.ProtocolBase, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.EdgeInsets) {
 	objc.AddMethod(c.class, objc.SEL("collectionView:layout:insetForSectionAtIndex:"), handle)
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_MinimumLineSpacingForSectionAtIndex(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64) {
+func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_MinimumLineSpacingForSectionAtIndex(handle func(o objc.ProtocolBase, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64) {
 	objc.AddMethod(c.class, objc.SEL("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), handle)
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_MinimumInteritemSpacingForSectionAtIndex(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64) {
+func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_MinimumInteritemSpacingForSectionAtIndex(handle func(o objc.ProtocolBase, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64) {
 	objc.AddMethod(c.class, objc.SEL("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), handle)
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_ReferenceSizeForHeaderInSection(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size) {
+func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_ReferenceSizeForHeaderInSection(handle func(o objc.ProtocolBase, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size) {
 	objc.AddMethod(c.class, objc.SEL("collectionView:layout:referenceSizeForHeaderInSection:"), handle)
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_ReferenceSizeForFooterInSection(handle func(o objc.Object, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size) {
+func (c *CollectionViewDelegateFlowLayoutCreator) SetCollectionView_Layout_ReferenceSizeForFooterInSection(handle func(o objc.ProtocolBase, collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size) {
 	objc.AddMethod(c.class, objc.SEL("collectionView:layout:referenceSizeForFooterInSection:"), handle)
 }
 
-func (c *CollectionViewDelegateFlowLayoutCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *CollectionViewDelegateFlowLayoutCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

@@ -76,31 +76,31 @@ type AnimationDelegateCreator struct {
 }
 
 func NewAnimationDelegateCreator(name string) *AnimationDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &AnimationDelegateCreator{className: name, class: class}
 }
 
-func (c *AnimationDelegateCreator) SetAnimationDidEnd(handle func(o objc.Object, animation Animation)) {
+func (c *AnimationDelegateCreator) SetAnimationDidEnd(handle func(o objc.ProtocolBase, animation Animation)) {
 	objc.AddMethod(c.class, objc.SEL("animationDidEnd:"), handle)
 }
 
-func (c *AnimationDelegateCreator) SetAnimationDidStop(handle func(o objc.Object, animation Animation)) {
+func (c *AnimationDelegateCreator) SetAnimationDidStop(handle func(o objc.ProtocolBase, animation Animation)) {
 	objc.AddMethod(c.class, objc.SEL("animationDidStop:"), handle)
 }
 
-func (c *AnimationDelegateCreator) SetAnimationShouldStart(handle func(o objc.Object, animation Animation) bool) {
+func (c *AnimationDelegateCreator) SetAnimationShouldStart(handle func(o objc.ProtocolBase, animation Animation) bool) {
 	objc.AddMethod(c.class, objc.SEL("animationShouldStart:"), handle)
 }
 
-func (c *AnimationDelegateCreator) SetAnimation_ValueForProgress(handle func(o objc.Object, animation Animation, progress AnimationProgress) float32) {
+func (c *AnimationDelegateCreator) SetAnimation_ValueForProgress(handle func(o objc.ProtocolBase, animation Animation, progress AnimationProgress) float32) {
 	objc.AddMethod(c.class, objc.SEL("animation:valueForProgress:"), handle)
 }
 
-func (c *AnimationDelegateCreator) SetAnimation_DidReachProgressMark(handle func(o objc.Object, animation Animation, progress AnimationProgress)) {
+func (c *AnimationDelegateCreator) SetAnimation_DidReachProgressMark(handle func(o objc.ProtocolBase, animation Animation, progress AnimationProgress)) {
 	objc.AddMethod(c.class, objc.SEL("animation:didReachProgressMark:"), handle)
 }
 
-func (c *AnimationDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *AnimationDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

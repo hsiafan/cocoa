@@ -133,51 +133,51 @@ type TokenFieldDelegateCreator struct {
 }
 
 func NewTokenFieldDelegateCreator(name string) *TokenFieldDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TokenFieldDelegateCreator{className: name, class: class}
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_DisplayStringForRepresentedObject(handle func(o objc.Object, tokenField TokenField, representedObject objc.Object) string) {
+func (c *TokenFieldDelegateCreator) SetTokenField_DisplayStringForRepresentedObject(handle func(o objc.ProtocolBase, tokenField TokenField, representedObject objc.Object) string) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:displayStringForRepresentedObject:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_StyleForRepresentedObject(handle func(o objc.Object, tokenField TokenField, representedObject objc.Object) TokenStyle) {
+func (c *TokenFieldDelegateCreator) SetTokenField_StyleForRepresentedObject(handle func(o objc.ProtocolBase, tokenField TokenField, representedObject objc.Object) TokenStyle) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:styleForRepresentedObject:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_CompletionsForSubstring_IndexOfToken_IndexOfSelectedItem(handle func(o objc.Object, tokenField TokenField, substring string, tokenIndex int, selectedIndex *int) []objc.IObject) {
+func (c *TokenFieldDelegateCreator) SetTokenField_CompletionsForSubstring_IndexOfToken_IndexOfSelectedItem(handle func(o objc.ProtocolBase, tokenField TokenField, substring string, tokenIndex int, selectedIndex *int) []objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_EditingStringForRepresentedObject(handle func(o objc.Object, tokenField TokenField, representedObject objc.Object) string) {
+func (c *TokenFieldDelegateCreator) SetTokenField_EditingStringForRepresentedObject(handle func(o objc.ProtocolBase, tokenField TokenField, representedObject objc.Object) string) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:editingStringForRepresentedObject:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_RepresentedObjectForEditingString(handle func(o objc.Object, tokenField TokenField, editingString string) objc.IObject) {
+func (c *TokenFieldDelegateCreator) SetTokenField_RepresentedObjectForEditingString(handle func(o objc.ProtocolBase, tokenField TokenField, editingString string) objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:representedObjectForEditingString:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_ShouldAddObjects_AtIndex(handle func(o objc.Object, tokenField TokenField, tokens []objc.Object, index uint) []objc.IObject) {
+func (c *TokenFieldDelegateCreator) SetTokenField_ShouldAddObjects_AtIndex(handle func(o objc.ProtocolBase, tokenField TokenField, tokens []objc.Object, index uint) []objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:shouldAddObjects:atIndex:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_ReadFromPasteboard(handle func(o objc.Object, tokenField TokenField, pboard Pasteboard) []objc.IObject) {
+func (c *TokenFieldDelegateCreator) SetTokenField_ReadFromPasteboard(handle func(o objc.ProtocolBase, tokenField TokenField, pboard Pasteboard) []objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:readFromPasteboard:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_WriteRepresentedObjects_ToPasteboard(handle func(o objc.Object, tokenField TokenField, objects []objc.Object, pboard Pasteboard) bool) {
+func (c *TokenFieldDelegateCreator) SetTokenField_WriteRepresentedObjects_ToPasteboard(handle func(o objc.ProtocolBase, tokenField TokenField, objects []objc.Object, pboard Pasteboard) bool) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:writeRepresentedObjects:toPasteboard:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_HasMenuForRepresentedObject(handle func(o objc.Object, tokenField TokenField, representedObject objc.Object) bool) {
+func (c *TokenFieldDelegateCreator) SetTokenField_HasMenuForRepresentedObject(handle func(o objc.ProtocolBase, tokenField TokenField, representedObject objc.Object) bool) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:hasMenuForRepresentedObject:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) SetTokenField_MenuForRepresentedObject(handle func(o objc.Object, tokenField TokenField, representedObject objc.Object) IMenu) {
+func (c *TokenFieldDelegateCreator) SetTokenField_MenuForRepresentedObject(handle func(o objc.ProtocolBase, tokenField TokenField, representedObject objc.Object) IMenu) {
 	objc.AddMethod(c.class, objc.SEL("tokenField:menuForRepresentedObject:"), handle)
 }
 
-func (c *TokenFieldDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TokenFieldDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

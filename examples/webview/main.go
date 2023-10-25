@@ -38,12 +38,12 @@ func main() {
 	w.Center()
 
 	creator := appkit.NewApplicationDelegateCreator("MyApplicationDelegate")
-	creator.SetApplicationDidFinishLaunching(func(o objc.Object, notification foundation.Notification) {
+	creator.SetApplicationDidFinishLaunching(func(o objc.ProtocolBase, notification foundation.Notification) {
 		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
 		app.ActivateIgnoringOtherApps(true)
 		webkit.LoadURL(view, "gofs:/index.html")
 	})
-	creator.SetApplicationShouldTerminateAfterLastWindowClosed(func(o objc.Object, sender appkit.Application) bool {
+	creator.SetApplicationShouldTerminateAfterLastWindowClosed(func(o objc.ProtocolBase, sender appkit.Application) bool {
 		return true
 	})
 	app.SetDelegate(creator.Create())

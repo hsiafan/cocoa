@@ -77,31 +77,31 @@ type ImageDelegateCreator struct {
 }
 
 func NewImageDelegateCreator(name string) *ImageDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &ImageDelegateCreator{className: name, class: class}
 }
 
-func (c *ImageDelegateCreator) SetImageDidNotDraw_InRect(handle func(o objc.Object, sender Image, rect foundation.Rect) IImage) {
+func (c *ImageDelegateCreator) SetImageDidNotDraw_InRect(handle func(o objc.ProtocolBase, sender Image, rect foundation.Rect) IImage) {
 	objc.AddMethod(c.class, objc.SEL("imageDidNotDraw:inRect:"), handle)
 }
 
-func (c *ImageDelegateCreator) SetImage_DidLoadPartOfRepresentation_WithValidRows(handle func(o objc.Object, image Image, rep ImageRep, rows int)) {
+func (c *ImageDelegateCreator) SetImage_DidLoadPartOfRepresentation_WithValidRows(handle func(o objc.ProtocolBase, image Image, rep ImageRep, rows int)) {
 	objc.AddMethod(c.class, objc.SEL("image:didLoadPartOfRepresentation:withValidRows:"), handle)
 }
 
-func (c *ImageDelegateCreator) SetImage_DidLoadRepresentation_WithStatus(handle func(o objc.Object, image Image, rep ImageRep, status ImageLoadStatus)) {
+func (c *ImageDelegateCreator) SetImage_DidLoadRepresentation_WithStatus(handle func(o objc.ProtocolBase, image Image, rep ImageRep, status ImageLoadStatus)) {
 	objc.AddMethod(c.class, objc.SEL("image:didLoadRepresentation:withStatus:"), handle)
 }
 
-func (c *ImageDelegateCreator) SetImage_DidLoadRepresentationHeader(handle func(o objc.Object, image Image, rep ImageRep)) {
+func (c *ImageDelegateCreator) SetImage_DidLoadRepresentationHeader(handle func(o objc.ProtocolBase, image Image, rep ImageRep)) {
 	objc.AddMethod(c.class, objc.SEL("image:didLoadRepresentationHeader:"), handle)
 }
 
-func (c *ImageDelegateCreator) SetImage_WillLoadRepresentation(handle func(o objc.Object, image Image, rep ImageRep)) {
+func (c *ImageDelegateCreator) SetImage_WillLoadRepresentation(handle func(o objc.ProtocolBase, image Image, rep ImageRep)) {
 	objc.AddMethod(c.class, objc.SEL("image:willLoadRepresentation:"), handle)
 }
 
-func (c *ImageDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *ImageDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

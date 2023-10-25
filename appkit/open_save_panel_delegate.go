@@ -88,35 +88,35 @@ type OpenSavePanelDelegateCreator struct {
 }
 
 func NewOpenSavePanelDelegateCreator(name string) *OpenSavePanelDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &OpenSavePanelDelegateCreator{className: name, class: class}
 }
 
-func (c *OpenSavePanelDelegateCreator) SetPanel_UserEnteredFilename_Confirmed(handle func(o objc.Object, sender objc.Object, filename string, okFlag bool) string) {
+func (c *OpenSavePanelDelegateCreator) SetPanel_UserEnteredFilename_Confirmed(handle func(o objc.ProtocolBase, sender objc.Object, filename string, okFlag bool) string) {
 	objc.AddMethod(c.class, objc.SEL("panel:userEnteredFilename:confirmed:"), handle)
 }
 
-func (c *OpenSavePanelDelegateCreator) SetPanelSelectionDidChange(handle func(o objc.Object, sender objc.Object)) {
+func (c *OpenSavePanelDelegateCreator) SetPanelSelectionDidChange(handle func(o objc.ProtocolBase, sender objc.Object)) {
 	objc.AddMethod(c.class, objc.SEL("panelSelectionDidChange:"), handle)
 }
 
-func (c *OpenSavePanelDelegateCreator) SetPanel_DidChangeToDirectoryURL(handle func(o objc.Object, sender objc.Object, url foundation.URL)) {
+func (c *OpenSavePanelDelegateCreator) SetPanel_DidChangeToDirectoryURL(handle func(o objc.ProtocolBase, sender objc.Object, url foundation.URL)) {
 	objc.AddMethod(c.class, objc.SEL("panel:didChangeToDirectoryURL:"), handle)
 }
 
-func (c *OpenSavePanelDelegateCreator) SetPanel_WillExpand(handle func(o objc.Object, sender objc.Object, expanding bool)) {
+func (c *OpenSavePanelDelegateCreator) SetPanel_WillExpand(handle func(o objc.ProtocolBase, sender objc.Object, expanding bool)) {
 	objc.AddMethod(c.class, objc.SEL("panel:willExpand:"), handle)
 }
 
-func (c *OpenSavePanelDelegateCreator) SetPanel_ShouldEnableURL(handle func(o objc.Object, sender objc.Object, url foundation.URL) bool) {
+func (c *OpenSavePanelDelegateCreator) SetPanel_ShouldEnableURL(handle func(o objc.ProtocolBase, sender objc.Object, url foundation.URL) bool) {
 	objc.AddMethod(c.class, objc.SEL("panel:shouldEnableURL:"), handle)
 }
 
-func (c *OpenSavePanelDelegateCreator) SetPanel_ValidateURL_Error(handle func(o objc.Object, sender objc.Object, url foundation.URL, outError *foundation.Error) bool) {
+func (c *OpenSavePanelDelegateCreator) SetPanel_ValidateURL_Error(handle func(o objc.ProtocolBase, sender objc.Object, url foundation.URL, outError *foundation.Error) bool) {
 	objc.AddMethod(c.class, objc.SEL("panel:validateURL:error:"), handle)
 }
 
-func (c *OpenSavePanelDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *OpenSavePanelDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

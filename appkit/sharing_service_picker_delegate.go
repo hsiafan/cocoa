@@ -54,23 +54,23 @@ type SharingServicePickerDelegateCreator struct {
 }
 
 func NewSharingServicePickerDelegateCreator(name string) *SharingServicePickerDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &SharingServicePickerDelegateCreator{className: name, class: class}
 }
 
-func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_SharingServicesForItems_ProposedSharingServices(handle func(o objc.Object, sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService) {
+func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_SharingServicesForItems_ProposedSharingServices(handle func(o objc.ProtocolBase, sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []ISharingService) {
 	objc.AddMethod(c.class, objc.SEL("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), handle)
 }
 
-func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_DidChooseSharingService(handle func(o objc.Object, sharingServicePicker SharingServicePicker, service SharingService)) {
+func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_DidChooseSharingService(handle func(o objc.ProtocolBase, sharingServicePicker SharingServicePicker, service SharingService)) {
 	objc.AddMethod(c.class, objc.SEL("sharingServicePicker:didChooseSharingService:"), handle)
 }
 
-func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_DelegateForSharingService(handle func(o objc.Object, sharingServicePicker SharingServicePicker, sharingService SharingService) objc.IObject) {
+func (c *SharingServicePickerDelegateCreator) SetSharingServicePicker_DelegateForSharingService(handle func(o objc.ProtocolBase, sharingServicePicker SharingServicePicker, sharingService SharingService) objc.IObject) {
 	objc.AddMethod(c.class, objc.SEL("sharingServicePicker:delegateForSharingService:"), handle)
 }
 
-func (c *SharingServicePickerDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *SharingServicePickerDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

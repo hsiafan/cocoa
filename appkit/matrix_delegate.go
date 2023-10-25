@@ -22,11 +22,11 @@ type MatrixDelegateCreator struct {
 }
 
 func NewMatrixDelegateCreator(name string) *MatrixDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &MatrixDelegateCreator{className: name, class: class}
 }
 
-func (c *MatrixDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *MatrixDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

@@ -99,39 +99,39 @@ type SharingServiceDelegateCreator struct {
 }
 
 func NewSharingServiceDelegateCreator(name string) *SharingServiceDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &SharingServiceDelegateCreator{className: name, class: class}
 }
 
-func (c *SharingServiceDelegateCreator) SetSharingService_WillShareItems(handle func(o objc.Object, sharingService SharingService, items []objc.Object)) {
+func (c *SharingServiceDelegateCreator) SetSharingService_WillShareItems(handle func(o objc.ProtocolBase, sharingService SharingService, items []objc.Object)) {
 	objc.AddMethod(c.class, objc.SEL("sharingService:willShareItems:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) SetSharingService_DidShareItems(handle func(o objc.Object, sharingService SharingService, items []objc.Object)) {
+func (c *SharingServiceDelegateCreator) SetSharingService_DidShareItems(handle func(o objc.ProtocolBase, sharingService SharingService, items []objc.Object)) {
 	objc.AddMethod(c.class, objc.SEL("sharingService:didShareItems:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) SetSharingService_DidFailToShareItems_Error(handle func(o objc.Object, sharingService SharingService, items []objc.Object, error foundation.Error)) {
+func (c *SharingServiceDelegateCreator) SetSharingService_DidFailToShareItems_Error(handle func(o objc.ProtocolBase, sharingService SharingService, items []objc.Object, error foundation.Error)) {
 	objc.AddMethod(c.class, objc.SEL("sharingService:didFailToShareItems:error:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) SetSharingService_SourceFrameOnScreenForShareItem(handle func(o objc.Object, sharingService SharingService, item objc.Object) foundation.Rect) {
+func (c *SharingServiceDelegateCreator) SetSharingService_SourceFrameOnScreenForShareItem(handle func(o objc.ProtocolBase, sharingService SharingService, item objc.Object) foundation.Rect) {
 	objc.AddMethod(c.class, objc.SEL("sharingService:sourceFrameOnScreenForShareItem:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) SetSharingService_TransitionImageForShareItem_ContentRect(handle func(o objc.Object, sharingService SharingService, item objc.Object, contentRect *foundation.Rect) IImage) {
+func (c *SharingServiceDelegateCreator) SetSharingService_TransitionImageForShareItem_ContentRect(handle func(o objc.ProtocolBase, sharingService SharingService, item objc.Object, contentRect *foundation.Rect) IImage) {
 	objc.AddMethod(c.class, objc.SEL("sharingService:transitionImageForShareItem:contentRect:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) SetSharingService_SourceWindowForShareItems_SharingContentScope(handle func(o objc.Object, sharingService SharingService, items []objc.Object, sharingContentScope *SharingContentScope) IWindow) {
+func (c *SharingServiceDelegateCreator) SetSharingService_SourceWindowForShareItems_SharingContentScope(handle func(o objc.ProtocolBase, sharingService SharingService, items []objc.Object, sharingContentScope *SharingContentScope) IWindow) {
 	objc.AddMethod(c.class, objc.SEL("sharingService:sourceWindowForShareItems:sharingContentScope:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) SetAnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(handle func(o objc.Object, sharingService SharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) IView) {
+func (c *SharingServiceDelegateCreator) SetAnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(handle func(o objc.ProtocolBase, sharingService SharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) IView) {
 	objc.AddMethod(c.class, objc.SEL("anchoringViewForSharingService:showRelativeToRect:preferredEdge:"), handle)
 }
 
-func (c *SharingServiceDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *SharingServiceDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

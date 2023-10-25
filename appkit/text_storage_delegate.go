@@ -44,19 +44,19 @@ type TextStorageDelegateCreator struct {
 }
 
 func NewTextStorageDelegateCreator(name string) *TextStorageDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TextStorageDelegateCreator{className: name, class: class}
 }
 
-func (c *TextStorageDelegateCreator) SetTextStorage_WillProcessEditing_Range_ChangeInLength(handle func(o objc.Object, textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
+func (c *TextStorageDelegateCreator) SetTextStorage_WillProcessEditing_Range_ChangeInLength(handle func(o objc.ProtocolBase, textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
 	objc.AddMethod(c.class, objc.SEL("textStorage:willProcessEditing:range:changeInLength:"), handle)
 }
 
-func (c *TextStorageDelegateCreator) SetTextStorage_DidProcessEditing_Range_ChangeInLength(handle func(o objc.Object, textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
+func (c *TextStorageDelegateCreator) SetTextStorage_DidProcessEditing_Range_ChangeInLength(handle func(o objc.ProtocolBase, textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int)) {
 	objc.AddMethod(c.class, objc.SEL("textStorage:didProcessEditing:range:changeInLength:"), handle)
 }
 
-func (c *TextStorageDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TextStorageDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

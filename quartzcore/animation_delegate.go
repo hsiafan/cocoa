@@ -43,19 +43,19 @@ type AnimationDelegateCreator struct {
 }
 
 func NewAnimationDelegateCreator(name string) *AnimationDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &AnimationDelegateCreator{className: name, class: class}
 }
 
-func (c *AnimationDelegateCreator) SetAnimationDidStart(handle func(o objc.Object, anim Animation)) {
+func (c *AnimationDelegateCreator) SetAnimationDidStart(handle func(o objc.ProtocolBase, anim Animation)) {
 	objc.AddMethod(c.class, objc.SEL("animationDidStart:"), handle)
 }
 
-func (c *AnimationDelegateCreator) SetAnimationDidStop_Finished(handle func(o objc.Object, anim Animation, flag bool)) {
+func (c *AnimationDelegateCreator) SetAnimationDidStop_Finished(handle func(o objc.ProtocolBase, anim Animation, flag bool)) {
 	objc.AddMethod(c.class, objc.SEL("animationDidStop:finished:"), handle)
 }
 
-func (c *AnimationDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *AnimationDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

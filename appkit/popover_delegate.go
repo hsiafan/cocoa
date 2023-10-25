@@ -110,43 +110,43 @@ type PopoverDelegateCreator struct {
 }
 
 func NewPopoverDelegateCreator(name string) *PopoverDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &PopoverDelegateCreator{className: name, class: class}
 }
 
-func (c *PopoverDelegateCreator) SetDetachableWindowForPopover(handle func(o objc.Object, popover Popover) IWindow) {
+func (c *PopoverDelegateCreator) SetDetachableWindowForPopover(handle func(o objc.ProtocolBase, popover Popover) IWindow) {
 	objc.AddMethod(c.class, objc.SEL("detachableWindowForPopover:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverShouldClose(handle func(o objc.Object, popover Popover) bool) {
+func (c *PopoverDelegateCreator) SetPopoverShouldClose(handle func(o objc.ProtocolBase, popover Popover) bool) {
 	objc.AddMethod(c.class, objc.SEL("popoverShouldClose:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverWillShow(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *PopoverDelegateCreator) SetPopoverWillShow(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("popoverWillShow:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverDidShow(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *PopoverDelegateCreator) SetPopoverDidShow(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("popoverDidShow:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverWillClose(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *PopoverDelegateCreator) SetPopoverWillClose(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("popoverWillClose:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverDidClose(handle func(o objc.Object, notification foundation.Notification)) {
+func (c *PopoverDelegateCreator) SetPopoverDidClose(handle func(o objc.ProtocolBase, notification foundation.Notification)) {
 	objc.AddMethod(c.class, objc.SEL("popoverDidClose:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverDidDetach(handle func(o objc.Object, popover Popover)) {
+func (c *PopoverDelegateCreator) SetPopoverDidDetach(handle func(o objc.ProtocolBase, popover Popover)) {
 	objc.AddMethod(c.class, objc.SEL("popoverDidDetach:"), handle)
 }
 
-func (c *PopoverDelegateCreator) SetPopoverShouldDetach(handle func(o objc.Object, popover Popover) bool) {
+func (c *PopoverDelegateCreator) SetPopoverShouldDetach(handle func(o objc.ProtocolBase, popover Popover) bool) {
 	objc.AddMethod(c.class, objc.SEL("popoverShouldDetach:"), handle)
 }
 
-func (c *PopoverDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *PopoverDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

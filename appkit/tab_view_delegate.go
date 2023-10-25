@@ -65,27 +65,27 @@ type TabViewDelegateCreator struct {
 }
 
 func NewTabViewDelegateCreator(name string) *TabViewDelegateCreator {
-	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	class := objc.AllocateClassPair(objc.GetClass("ProtocolBase"), name, 0)
 	objc.RegisterClassPair(class)
 	return &TabViewDelegateCreator{className: name, class: class}
 }
 
-func (c *TabViewDelegateCreator) SetTabViewDidChangeNumberOfTabViewItems(handle func(o objc.Object, tabView TabView)) {
+func (c *TabViewDelegateCreator) SetTabViewDidChangeNumberOfTabViewItems(handle func(o objc.ProtocolBase, tabView TabView)) {
 	objc.AddMethod(c.class, objc.SEL("tabViewDidChangeNumberOfTabViewItems:"), handle)
 }
 
-func (c *TabViewDelegateCreator) SetTabView_ShouldSelectTabViewItem(handle func(o objc.Object, tabView TabView, tabViewItem TabViewItem) bool) {
+func (c *TabViewDelegateCreator) SetTabView_ShouldSelectTabViewItem(handle func(o objc.ProtocolBase, tabView TabView, tabViewItem TabViewItem) bool) {
 	objc.AddMethod(c.class, objc.SEL("tabView:shouldSelectTabViewItem:"), handle)
 }
 
-func (c *TabViewDelegateCreator) SetTabView_WillSelectTabViewItem(handle func(o objc.Object, tabView TabView, tabViewItem TabViewItem)) {
+func (c *TabViewDelegateCreator) SetTabView_WillSelectTabViewItem(handle func(o objc.ProtocolBase, tabView TabView, tabViewItem TabViewItem)) {
 	objc.AddMethod(c.class, objc.SEL("tabView:willSelectTabViewItem:"), handle)
 }
 
-func (c *TabViewDelegateCreator) SetTabView_DidSelectTabViewItem(handle func(o objc.Object, tabView TabView, tabViewItem TabViewItem)) {
+func (c *TabViewDelegateCreator) SetTabView_DidSelectTabViewItem(handle func(o objc.ProtocolBase, tabView TabView, tabViewItem TabViewItem)) {
 	objc.AddMethod(c.class, objc.SEL("tabView:didSelectTabViewItem:"), handle)
 }
 
-func (c *TabViewDelegateCreator) Create() objc.Object {
-	return c.class.CreateInstance(0)
+func (c *TabViewDelegateCreator) Create() objc.ProtocolBase {
+	return objc.ProtocolBase{Object: c.class.CreateInstance(0)}
 }

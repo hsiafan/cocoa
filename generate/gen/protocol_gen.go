@@ -188,7 +188,7 @@ func (p *Protocol) writeProtocolCreator(w *CodeWriter) {
 
 	w.WriteLineF("func New%s(name string) *%s {", creatorName, creatorName)
 	w.Indent()
-	w.WriteLineF("class := objc.AllocateClassPair(objc.GetClass(\"NSObject\"), name, 0)")
+	w.WriteLineF("class := objc.AllocateClassPair(objc.GetClass(\"ProtocolBase\"), name, 0)")
 	w.WriteLine("objc.RegisterClassPair(class)")
 	w.WriteLineF("return &%s{className: name, class: class}", creatorName)
 	w.UnIndent()
@@ -201,7 +201,7 @@ func (p *Protocol) writeProtocolCreator(w *CodeWriter) {
 			if m.Deprecated {
 				w.WriteLine("// deprecated")
 			}
-			funcSign := "(o objc.Object, " + m.ProtocolGoFuncFieldType(p.Type.Module)[1:]
+			funcSign := "(o objc.ProtocolBase, " + m.ProtocolGoFuncFieldType(p.Type.Module)[1:]
 			w.WriteLineF("func (%s *%s) Set%s(handle func %s) {", receiver, creatorName, m.ProtocolGoFuncName(), funcSign)
 			w.WriteLineF("\tobjc.AddMethod(c.class, objc.SEL(\"%s\"), handle)", m.Selector())
 			w.WriteLine("}")
@@ -209,8 +209,8 @@ func (p *Protocol) writeProtocolCreator(w *CodeWriter) {
 	}
 
 	w.WriteLine("")
-	w.WriteLineF("func (%s *%s) Create() objc.Object {", receiver, creatorName)
-	w.WriteLineF("\treturn %s.class.CreateInstance(0)", receiver)
+	w.WriteLineF("func (%s *%s) Create() objc.ProtocolBase {", receiver, creatorName)
+	w.WriteLineF("\treturn objc.ProtocolBase{Object: %s.class.CreateInstance(0)}", receiver)
 	w.WriteLine("}")
 }
 
