@@ -47,19 +47,3 @@ func (p *UserActivityDelegateBase) ImplementsUserActivityWillSave() bool {
 func (p *UserActivityDelegateBase) UserActivityWillSave(userActivity UserActivity) {
 	panic("unimpemented protocol method")
 }
-
-type UserActivityDelegateWrapper struct {
-	objc.Object
-}
-
-func (u_ UserActivityDelegateWrapper) UserActivity_DidReceiveInputStream_OutputStream(userActivity IUserActivity, inputStream IInputStream, outputStream IOutputStream) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("userActivity:didReceiveInputStream:outputStream:"), objc.ExtractPtr(userActivity), objc.ExtractPtr(inputStream), objc.ExtractPtr(outputStream))
-}
-
-func (u_ UserActivityDelegateWrapper) UserActivityWasContinued(userActivity IUserActivity) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("userActivityWasContinued:"), objc.ExtractPtr(userActivity))
-}
-
-func (u_ UserActivityDelegateWrapper) UserActivityWillSave(userActivity IUserActivity) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("userActivityWillSave:"), objc.ExtractPtr(userActivity))
-}

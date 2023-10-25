@@ -41,27 +41,3 @@ func (p *CollectionViewDataSourceBase) ImplementsCollectionView_ViewForSupplemen
 func (p *CollectionViewDataSourceBase) CollectionView_ViewForSupplementaryElementOfKind_AtIndexPath(collectionView CollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) IView {
 	panic("unimpemented protocol method")
 }
-
-type CollectionViewDataSourceWrapper struct {
-	objc.Object
-}
-
-func (c_ CollectionViewDataSourceWrapper) NumberOfSectionsInCollectionView(collectionView ICollectionView) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfSectionsInCollectionView:"), objc.ExtractPtr(collectionView))
-	return rv
-}
-
-func (c_ CollectionViewDataSourceWrapper) CollectionView_NumberOfItemsInSection(collectionView ICollectionView, section int) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("collectionView:numberOfItemsInSection:"), objc.ExtractPtr(collectionView), section)
-	return rv
-}
-
-func (c_ CollectionViewDataSourceWrapper) CollectionView_ItemForRepresentedObjectAtIndexPath(collectionView ICollectionView, indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := objc.CallMethod[CollectionViewItem](c_, objc.GetSelector("collectionView:itemForRepresentedObjectAtIndexPath:"), objc.ExtractPtr(collectionView), objc.ExtractPtr(indexPath))
-	return rv
-}
-
-func (c_ CollectionViewDataSourceWrapper) CollectionView_ViewForSupplementaryElementOfKind_AtIndexPath(collectionView ICollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) View {
-	rv := objc.CallMethod[View](c_, objc.GetSelector("collectionView:viewForSupplementaryElementOfKind:atIndexPath:"), objc.ExtractPtr(collectionView), kind, objc.ExtractPtr(indexPath))
-	return rv
-}

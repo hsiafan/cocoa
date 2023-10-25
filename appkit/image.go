@@ -77,7 +77,7 @@ type IImage interface {
 	// deprecated
 	IsFlipped() bool
 	SymbolConfiguration() ImageSymbolConfiguration
-	Delegate() ImageDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	Size() foundation.Size
 	SetSize(value foundation.Size)
@@ -434,8 +434,8 @@ func (i_ Image) SymbolConfiguration() ImageSymbolConfiguration {
 }
 
 // weak property
-func (i_ Image) Delegate() ImageDelegateWrapper {
-	rv := objc.CallMethod[ImageDelegateWrapper](i_, objc.GetSelector("delegate"))
+func (i_ Image) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](i_, objc.GetSelector("delegate"))
 	return rv
 }
 

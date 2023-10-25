@@ -25,12 +25,3 @@ func (p *TouchBarDelegateBase) ImplementsTouchBar_MakeItemForIdentifier() bool {
 func (p *TouchBarDelegateBase) TouchBar_MakeItemForIdentifier(touchBar TouchBar, identifier TouchBarItemIdentifier) ITouchBarItem {
 	panic("unimpemented protocol method")
 }
-
-type TouchBarDelegateWrapper struct {
-	objc.Object
-}
-
-func (t_ TouchBarDelegateWrapper) TouchBar_MakeItemForIdentifier(touchBar ITouchBar, identifier TouchBarItemIdentifier) TouchBarItem {
-	rv := objc.CallMethod[TouchBarItem](t_, objc.GetSelector("touchBar:makeItemForIdentifier:"), objc.ExtractPtr(touchBar), identifier)
-	return rv
-}

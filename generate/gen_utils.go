@@ -54,9 +54,10 @@ func getProtocolGen(pi *data.Protocol) *gen.Protocol {
 	}
 
 	type_ := &typing.ProtocolType{
-		Name:   pi.Name,
-		GName:  toGoSymbolName(pi.Name),
-		Module: typing.FindModule(pi.Module),
+		Name:    pi.Name,
+		OnlyUse: pi.OnlyUse,
+		GName:   toGoSymbolName(pi.Name),
+		Module:  typing.FindModule(pi.Module),
 	}
 	protocolGen := &gen.Protocol{
 		Type: type_,

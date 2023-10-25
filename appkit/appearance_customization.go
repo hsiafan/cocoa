@@ -47,21 +47,3 @@ func (p *AppearanceCustomizationBase) ImplementsEffectiveAppearance() bool {
 func (p *AppearanceCustomizationBase) EffectiveAppearance() IAppearance {
 	panic("unimpemented protocol method")
 }
-
-type AppearanceCustomizationWrapper struct {
-	objc.Object
-}
-
-func (a_ AppearanceCustomizationWrapper) SetAppearance(value IAppearance) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("setAppearance:"), objc.ExtractPtr(value))
-}
-
-func (a_ AppearanceCustomizationWrapper) Appearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("appearance"))
-	return rv
-}
-
-func (a_ AppearanceCustomizationWrapper) EffectiveAppearance() Appearance {
-	rv := objc.CallMethod[Appearance](a_, objc.GetSelector("effectiveAppearance"))
-	return rv
-}

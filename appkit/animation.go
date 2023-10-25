@@ -33,7 +33,7 @@ type IAnimation interface {
 	SetDuration(value foundation.TimeInterval)
 	FrameRate() float32
 	SetFrameRate(value float32)
-	Delegate() AnimationDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	IsAnimating() bool
 	CurrentProgress() AnimationProgress
@@ -152,8 +152,8 @@ func (a_ Animation) SetFrameRate(value float32) {
 }
 
 // weak property
-func (a_ Animation) Delegate() AnimationDelegateWrapper {
-	rv := objc.CallMethod[AnimationDelegateWrapper](a_, objc.GetSelector("delegate"))
+func (a_ Animation) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
 	return rv
 }
 

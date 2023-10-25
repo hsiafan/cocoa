@@ -95,7 +95,7 @@ type FileSystemURLSchemeHandler struct {
 }
 
 // WebView_StartURLSchemeTask implements URLSchemeHandler
-func (h *FileSystemURLSchemeHandler) WebView_StartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper) {
+func (h *FileSystemURLSchemeHandler) WebView_StartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTask) {
 	url := urlSchemeTask.Request().URL()
 	path := url.Path()
 	if len(path) > 0 && path[0] == '/' {
@@ -124,7 +124,7 @@ func (h *FileSystemURLSchemeHandler) WebView_StartURLSchemeTask(webView WebView,
 	urlSchemeTask.DidFinish()
 }
 
-func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTaskWrapper, err error) {
+func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTask, err error) {
 	url := urlSchemeTask.Request().URL()
 	var status = 500
 	if errors.Is(err, fs.ErrNotExist) {
@@ -142,7 +142,7 @@ func (h *FileSystemURLSchemeHandler) handleError(urlSchemeTask URLSchemeTaskWrap
 }
 
 // WebView_StopURLSchemeTask implements URLSchemeHandler
-func (h *FileSystemURLSchemeHandler) WebView_StopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper) {
+func (h *FileSystemURLSchemeHandler) WebView_StopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTask) {
 }
 
 func (h *FileSystemURLSchemeHandler) getMime(path string) string {

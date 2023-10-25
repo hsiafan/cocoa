@@ -31,7 +31,7 @@ type ITabView interface {
 	SelectTabViewItemWithIdentifier(identifier objc.IObject)
 	TakeSelectedTabViewItemFromSender(sender objc.IObject)
 	TabViewItemAtPoint(point foundation.Point) TabViewItem
-	Delegate() TabViewDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	NumberOfTabViewItems() int
 	TabViewItems() []TabViewItem
@@ -159,8 +159,8 @@ func (t_ TabView) TabViewItemAtPoint(point foundation.Point) TabViewItem {
 }
 
 // weak property
-func (t_ TabView) Delegate() TabViewDelegateWrapper {
-	rv := objc.CallMethod[TabViewDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ TabView) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

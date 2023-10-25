@@ -14,7 +14,3 @@ func WrapPortDelegate(v PortDelegate) objc.Object {
 
 type PortDelegateBase struct {
 }
-
-type PortDelegateWrapper struct {
-	objc.Object
-}

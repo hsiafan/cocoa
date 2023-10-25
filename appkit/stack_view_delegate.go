@@ -36,15 +36,3 @@ func (p *StackViewDelegateBase) ImplementsStackView_WillDetachViews() bool {
 func (p *StackViewDelegateBase) StackView_WillDetachViews(stackView StackView, views []View) {
 	panic("unimpemented protocol method")
 }
-
-type StackViewDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ StackViewDelegateWrapper) StackView_DidReattachViews(stackView IStackView, views []IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:didReattachViews:"), objc.ExtractPtr(stackView), views)
-}
-
-func (s_ StackViewDelegateWrapper) StackView_WillDetachViews(stackView IStackView, views []IView) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("stackView:willDetachViews:"), objc.ExtractPtr(stackView), views)
-}

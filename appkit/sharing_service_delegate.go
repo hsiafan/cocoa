@@ -92,39 +92,3 @@ func (p *SharingServiceDelegateBase) ImplementsAnchoringViewForSharingService_Sh
 func (p *SharingServiceDelegateBase) AnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(sharingService SharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) IView {
 	panic("unimpemented protocol method")
 }
-
-type SharingServiceDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ SharingServiceDelegateWrapper) SharingService_WillShareItems(sharingService ISharingService, items []objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingService:willShareItems:"), objc.ExtractPtr(sharingService), items)
-}
-
-func (s_ SharingServiceDelegateWrapper) SharingService_DidShareItems(sharingService ISharingService, items []objc.IObject) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingService:didShareItems:"), objc.ExtractPtr(sharingService), items)
-}
-
-func (s_ SharingServiceDelegateWrapper) SharingService_DidFailToShareItems_Error(sharingService ISharingService, items []objc.IObject, error foundation.IError) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingService:didFailToShareItems:error:"), objc.ExtractPtr(sharingService), items, objc.ExtractPtr(error))
-}
-
-func (s_ SharingServiceDelegateWrapper) SharingService_SourceFrameOnScreenForShareItem(sharingService ISharingService, item objc.IObject) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](s_, objc.GetSelector("sharingService:sourceFrameOnScreenForShareItem:"), objc.ExtractPtr(sharingService), objc.ExtractPtr(item))
-	return rv
-}
-
-func (s_ SharingServiceDelegateWrapper) SharingService_TransitionImageForShareItem_ContentRect(sharingService ISharingService, item objc.IObject, contentRect *foundation.Rect) Image {
-	rv := objc.CallMethod[Image](s_, objc.GetSelector("sharingService:transitionImageForShareItem:contentRect:"), objc.ExtractPtr(sharingService), objc.ExtractPtr(item), contentRect)
-	return rv
-}
-
-func (s_ SharingServiceDelegateWrapper) SharingService_SourceWindowForShareItems_SharingContentScope(sharingService ISharingService, items []objc.IObject, sharingContentScope *SharingContentScope) Window {
-	rv := objc.CallMethod[Window](s_, objc.GetSelector("sharingService:sourceWindowForShareItems:sharingContentScope:"), objc.ExtractPtr(sharingService), items, sharingContentScope)
-	return rv
-}
-
-func (s_ SharingServiceDelegateWrapper) AnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(sharingService ISharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) View {
-	rv := objc.CallMethod[View](s_, objc.GetSelector("anchoringViewForSharingService:showRelativeToRect:preferredEdge:"), objc.ExtractPtr(sharingService), positioningRect, preferredEdge)
-	return rv
-}

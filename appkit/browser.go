@@ -97,7 +97,7 @@ type IBrowser interface {
 	SetSeparatesColumns(value bool)
 	TakesTitleFromPreviousColumn() bool
 	SetTakesTitleFromPreviousColumn(value bool)
-	Delegate() BrowserDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	CellPrototype() objc.Object
 	SetCellPrototype(value objc.IObject)
@@ -514,8 +514,8 @@ func (b_ Browser) SetTakesTitleFromPreviousColumn(value bool) {
 }
 
 // weak property
-func (b_ Browser) Delegate() BrowserDelegateWrapper {
-	rv := objc.CallMethod[BrowserDelegateWrapper](b_, objc.GetSelector("delegate"))
+func (b_ Browser) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("delegate"))
 	return rv
 }
 

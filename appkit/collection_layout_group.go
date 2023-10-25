@@ -42,7 +42,7 @@ func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSize_Subitems(layou
 	return rv
 }
 
-func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSize_ItemProvider(layoutSize ICollectionLayoutSize, itemProvider func(layoutEnvironment CollectionLayoutEnvironmentWrapper) []ICollectionLayoutGroupCustomItem) CollectionLayoutGroup {
+func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSize_ItemProvider(layoutSize ICollectionLayoutSize, itemProvider func(layoutEnvironment objc.Object) []ICollectionLayoutGroupCustomItem) CollectionLayoutGroup {
 	rv := objc.CallMethod[CollectionLayoutGroup](cc, objc.GetSelector("customGroupWithLayoutSize:itemProvider:"), objc.ExtractPtr(layoutSize), itemProvider)
 	return rv
 }

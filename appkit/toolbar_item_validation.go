@@ -16,12 +16,3 @@ func WrapToolbarItemValidation(v ToolbarItemValidation) objc.Object {
 
 type ToolbarItemValidationBase struct {
 }
-
-type ToolbarItemValidationWrapper struct {
-	objc.Object
-}
-
-func (t_ ToolbarItemValidationWrapper) ValidateToolbarItem(item IToolbarItem) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("validateToolbarItem:"), objc.ExtractPtr(item))
-	return rv
-}

@@ -69,29 +69,3 @@ func (p *AnimationDelegateBase) ImplementsAnimation_DidReachProgressMark() bool 
 func (p *AnimationDelegateBase) Animation_DidReachProgressMark(animation Animation, progress AnimationProgress) {
 	panic("unimpemented protocol method")
 }
-
-type AnimationDelegateWrapper struct {
-	objc.Object
-}
-
-func (a_ AnimationDelegateWrapper) AnimationDidEnd(animation IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidEnd:"), objc.ExtractPtr(animation))
-}
-
-func (a_ AnimationDelegateWrapper) AnimationDidStop(animation IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:"), objc.ExtractPtr(animation))
-}
-
-func (a_ AnimationDelegateWrapper) AnimationShouldStart(animation IAnimation) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("animationShouldStart:"), objc.ExtractPtr(animation))
-	return rv
-}
-
-func (a_ AnimationDelegateWrapper) Animation_ValueForProgress(animation IAnimation, progress AnimationProgress) float32 {
-	rv := objc.CallMethod[float32](a_, objc.GetSelector("animation:valueForProgress:"), objc.ExtractPtr(animation), progress)
-	return rv
-}
-
-func (a_ AnimationDelegateWrapper) Animation_DidReachProgressMark(animation IAnimation, progress AnimationProgress) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animation:didReachProgressMark:"), objc.ExtractPtr(animation), progress)
-}

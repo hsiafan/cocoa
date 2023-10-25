@@ -48,20 +48,3 @@ func (p *LayoutManagerBase) ImplementsPreferredSizeOfLayer() bool {
 func (p *LayoutManagerBase) PreferredSizeOfLayer(layer Layer) coregraphics.Size {
 	panic("unimpemented protocol method")
 }
-
-type LayoutManagerWrapper struct {
-	objc.Object
-}
-
-func (l_ LayoutManagerWrapper) InvalidateLayoutOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("invalidateLayoutOfLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ LayoutManagerWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ LayoutManagerWrapper) PreferredSizeOfLayer(layer ILayer) coregraphics.Size {
-	rv := objc.CallMethod[coregraphics.Size](l_, objc.GetSelector("preferredSizeOfLayer:"), objc.ExtractPtr(layer))
-	return rv
-}

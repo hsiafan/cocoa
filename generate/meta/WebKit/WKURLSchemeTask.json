@@ -2,6 +2,7 @@
     "kind": "protocol",
     "name": "WKURLSchemeTask",
     "module": "WebKit",
+    "only_use": true,
     "parents": [
         "objectivec.NSObject"
     ],

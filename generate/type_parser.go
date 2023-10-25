@@ -223,9 +223,10 @@ func loadType(module, name string) typing.Type {
 		return ct
 	case *data.Protocol:
 		pt := &typing.ProtocolType{
-			Name:   tti.Name,
-			GName:  toGoSymbolName(tti.Name),
-			Module: typing.FindModule(tti.Module),
+			Name:    tti.Name,
+			OnlyUse: tti.OnlyUse,
+			GName:   toGoSymbolName(tti.Name),
+			Module:  typing.FindModule(tti.Module),
 		}
 
 		return pt

@@ -70,28 +70,3 @@ func (p *LayerDelegateBase) ImplementsActionForLayer_ForKey() bool {
 func (p *LayerDelegateBase) ActionForLayer_ForKey(layer Layer, event string) objc.IObject {
 	panic("unimpemented protocol method")
 }
-
-type LayerDelegateWrapper struct {
-	objc.Object
-}
-
-func (l_ LayerDelegateWrapper) DisplayLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("displayLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ LayerDelegateWrapper) DrawLayer_InContext(layer ILayer, ctx coregraphics.ContextRef) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("drawLayer:inContext:"), objc.ExtractPtr(layer), ctx)
-}
-
-func (l_ LayerDelegateWrapper) LayerWillDraw(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layerWillDraw:"), objc.ExtractPtr(layer))
-}
-
-func (l_ LayerDelegateWrapper) LayoutSublayersOfLayer(layer ILayer) {
-	objc.CallMethod[objc.Void](l_, objc.GetSelector("layoutSublayersOfLayer:"), objc.ExtractPtr(layer))
-}
-
-func (l_ LayerDelegateWrapper) ActionForLayer_ForKey(layer ILayer, event string) ActionWrapper {
-	rv := objc.CallMethod[ActionWrapper](l_, objc.GetSelector("actionForLayer:forKey:"), objc.ExtractPtr(layer), event)
-	return rv
-}

@@ -70,28 +70,3 @@ func (p *ImageDelegateBase) ImplementsImage_WillLoadRepresentation() bool {
 func (p *ImageDelegateBase) Image_WillLoadRepresentation(image Image, rep ImageRep) {
 	panic("unimpemented protocol method")
 }
-
-type ImageDelegateWrapper struct {
-	objc.Object
-}
-
-func (i_ ImageDelegateWrapper) ImageDidNotDraw_InRect(sender IImage, rect foundation.Rect) Image {
-	rv := objc.CallMethod[Image](i_, objc.GetSelector("imageDidNotDraw:inRect:"), objc.ExtractPtr(sender), rect)
-	return rv
-}
-
-func (i_ ImageDelegateWrapper) Image_DidLoadPartOfRepresentation_WithValidRows(image IImage, rep IImageRep, rows int) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:didLoadPartOfRepresentation:withValidRows:"), objc.ExtractPtr(image), objc.ExtractPtr(rep), rows)
-}
-
-func (i_ ImageDelegateWrapper) Image_DidLoadRepresentation_WithStatus(image IImage, rep IImageRep, status ImageLoadStatus) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:didLoadRepresentation:withStatus:"), objc.ExtractPtr(image), objc.ExtractPtr(rep), status)
-}
-
-func (i_ ImageDelegateWrapper) Image_DidLoadRepresentationHeader(image IImage, rep IImageRep) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:didLoadRepresentationHeader:"), objc.ExtractPtr(image), objc.ExtractPtr(rep))
-}
-
-func (i_ ImageDelegateWrapper) Image_WillLoadRepresentation(image IImage, rep IImageRep) {
-	objc.CallMethod[objc.Void](i_, objc.GetSelector("image:willLoadRepresentation:"), objc.ExtractPtr(image), objc.ExtractPtr(rep))
-}

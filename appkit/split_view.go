@@ -31,7 +31,7 @@ type ISplitView interface {
 	IsPaneSplitter() bool
 	// deprecated
 	SetIsPaneSplitter(flag bool)
-	Delegate() SplitViewDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	ArrangesAllSubviews() bool
 	SetArrangesAllSubviews(value bool)
@@ -141,8 +141,8 @@ func (s_ SplitView) SetIsPaneSplitter(flag bool) {
 }
 
 // weak property
-func (s_ SplitView) Delegate() SplitViewDelegateWrapper {
-	rv := objc.CallMethod[SplitViewDelegateWrapper](s_, objc.GetSelector("delegate"))
+func (s_ SplitView) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
 	return rv
 }
 

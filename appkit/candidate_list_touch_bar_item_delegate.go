@@ -58,23 +58,3 @@ func (p *CandidateListTouchBarItemDelegateBase) ImplementsCandidateListTouchBarI
 func (p *CandidateListTouchBarItemDelegateBase) CandidateListTouchBarItem_ChangedCandidateListVisibility(anItem CandidateListTouchBarItem, isVisible bool) {
 	panic("unimpemented protocol method")
 }
-
-type CandidateListTouchBarItemDelegateWrapper struct {
-	objc.Object
-}
-
-func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_BeginSelectingCandidateAtIndex(anItem ICandidateListTouchBarItem, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), objc.ExtractPtr(anItem), index)
-}
-
-func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(anItem ICandidateListTouchBarItem, previousIndex int, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), objc.ExtractPtr(anItem), previousIndex, index)
-}
-
-func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_EndSelectingCandidateAtIndex(anItem ICandidateListTouchBarItem, index int) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), objc.ExtractPtr(anItem), index)
-}
-
-func (c_ CandidateListTouchBarItemDelegateWrapper) CandidateListTouchBarItem_ChangedCandidateListVisibility(anItem ICandidateListTouchBarItem, isVisible bool) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("candidateListTouchBarItem:changedCandidateListVisibility:"), objc.ExtractPtr(anItem), isVisible)
-}

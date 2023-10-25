@@ -31,7 +31,7 @@ type IPathControl interface {
 	SetDoubleAction(value objc.Selector)
 	URL() foundation.URL
 	SetURL(value foundation.IURL)
-	Delegate() PathControlDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	AllowedTypes() []string
 	SetAllowedTypes(value []string)
@@ -139,8 +139,8 @@ func (p_ PathControl) SetURL(value foundation.IURL) {
 }
 
 // weak property
-func (p_ PathControl) Delegate() PathControlDelegateWrapper {
-	rv := objc.CallMethod[PathControlDelegateWrapper](p_, objc.GetSelector("delegate"))
+func (p_ PathControl) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("delegate"))
 	return rv
 }
 

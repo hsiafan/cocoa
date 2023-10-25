@@ -20,7 +20,7 @@ type IAnimation interface {
 	SetRemovedOnCompletion(value bool)
 	TimingFunction() MediaTimingFunction
 	SetTimingFunction(value IMediaTimingFunction)
-	Delegate() AnimationDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	PreferredFrameRateRange() FrameRateRange
 	SetPreferredFrameRateRange(value FrameRateRange)
@@ -89,8 +89,8 @@ func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
 	objc.CallMethod[objc.Void](a_, objc.GetSelector("setTimingFunction:"), objc.ExtractPtr(value))
 }
 
-func (a_ Animation) Delegate() AnimationDelegateWrapper {
-	rv := objc.CallMethod[AnimationDelegateWrapper](a_, objc.GetSelector("delegate"))
+func (a_ Animation) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
 	return rv
 }
 

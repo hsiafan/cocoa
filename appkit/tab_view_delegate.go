@@ -58,24 +58,3 @@ func (p *TabViewDelegateBase) ImplementsTabView_DidSelectTabViewItem() bool {
 func (p *TabViewDelegateBase) TabView_DidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
 	panic("unimpemented protocol method")
 }
-
-type TabViewDelegateWrapper struct {
-	objc.Object
-}
-
-func (t_ TabViewDelegateWrapper) TabViewDidChangeNumberOfTabViewItems(tabView ITabView) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabViewDidChangeNumberOfTabViewItems:"), objc.ExtractPtr(tabView))
-}
-
-func (t_ TabViewDelegateWrapper) TabView_ShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("tabView:shouldSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
-	return rv
-}
-
-func (t_ TabViewDelegateWrapper) TabView_WillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:willSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
-}
-
-func (t_ TabViewDelegateWrapper) TabView_DidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("tabView:didSelectTabViewItem:"), objc.ExtractPtr(tabView), objc.ExtractPtr(tabViewItem))
-}

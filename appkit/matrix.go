@@ -93,7 +93,7 @@ type IMatrix interface {
 	SetDrawsCellBackground(value bool)
 	TabKeyTraversesCells() bool
 	SetTabKeyTraversesCells(value bool)
-	Delegate() MatrixDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	AutosizesCells() bool
 	SetAutosizesCells(value bool)
@@ -489,8 +489,8 @@ func (m_ Matrix) SetTabKeyTraversesCells(value bool) {
 }
 
 // weak property
-func (m_ Matrix) Delegate() MatrixDelegateWrapper {
-	rv := objc.CallMethod[MatrixDelegateWrapper](m_, objc.GetSelector("delegate"))
+func (m_ Matrix) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](m_, objc.GetSelector("delegate"))
 	return rv
 }
 

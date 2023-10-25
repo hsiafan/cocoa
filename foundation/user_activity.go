@@ -40,7 +40,7 @@ type IUserActivity interface {
 	SetEligibleForPublicIndexing(value bool)
 	ExpirationDate() Date
 	SetExpirationDate(value IDate)
-	Delegate() UserActivityDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	SupportsContinuationStreams() bool
 	SetSupportsContinuationStreams(value bool)
@@ -207,8 +207,8 @@ func (u_ UserActivity) SetExpirationDate(value IDate) {
 }
 
 // weak property
-func (u_ UserActivity) Delegate() UserActivityDelegateWrapper {
-	rv := objc.CallMethod[UserActivityDelegateWrapper](u_, objc.GetSelector("delegate"))
+func (u_ UserActivity) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](u_, objc.GetSelector("delegate"))
 	return rv
 }
 

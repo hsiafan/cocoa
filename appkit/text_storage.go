@@ -22,7 +22,7 @@ type ITextStorage interface {
 	ProcessEditing()
 	InvalidateAttributesInRange(range_ foundation.Range)
 	EnsureAttributesAreFixedInRange(range_ foundation.Range)
-	Delegate() TextStorageDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	LayoutManagers() []LayoutManager
 	FixesAttributesLazily() bool
@@ -113,8 +113,8 @@ func (t_ TextStorage) EnsureAttributesAreFixedInRange(range_ foundation.Range) {
 }
 
 // weak property
-func (t_ TextStorage) Delegate() TextStorageDelegateWrapper {
-	rv := objc.CallMethod[TextStorageDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ TextStorage) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

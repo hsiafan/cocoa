@@ -37,7 +37,7 @@ type IPathCell interface {
 	SetDoubleAction(value objc.Selector)
 	URL() foundation.URL
 	SetURL(value foundation.IURL)
-	Delegate() PathCellDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -182,8 +182,8 @@ func (p_ PathCell) SetURL(value foundation.IURL) {
 }
 
 // weak property
-func (p_ PathCell) Delegate() PathCellDelegateWrapper {
-	rv := objc.CallMethod[PathCellDelegateWrapper](p_, objc.GetSelector("delegate"))
+func (p_ PathCell) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("delegate"))
 	return rv
 }
 

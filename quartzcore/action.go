@@ -14,7 +14,3 @@ func WrapAction(v Action) objc.Object {
 
 type ActionBase struct {
 }
-
-type ActionWrapper struct {
-	objc.Object
-}

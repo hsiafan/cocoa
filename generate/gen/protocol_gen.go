@@ -97,16 +97,17 @@ func (p *Protocol) GoImports() set.Set[string] {
 func (p *Protocol) WriteGoCode(w *CodeWriter) {
 	w.WriteLine("")
 
-	// Protocol Interface
-	p.writeProtocolInterface(w)
+	if p.Type.OnlyUse {
+		// Protocol Wrapper
+		p.writeProtocolWrapperStruct(w)
+	} else {
+		// Protocol Interface
+		p.writeProtocolInterface(w)
 
-	// Prototol base impl struct
-	w.WriteLine("")
-	p.writeProtocolBaseStruct(w)
-
-	// Protocol Wrapper
-	w.WriteLine("")
-	p.writeProtocolWrapperStruct(w)
+		// Prototol base impl struct
+		w.WriteLine("")
+		p.writeProtocolBaseStruct(w)
+	}
 }
 
 func (p *Protocol) writeProtocolInterface(w *CodeWriter) {
@@ -171,8 +172,9 @@ func (p *Protocol) writeProtocolBaseStruct(w *CodeWriter) {
 	}
 }
 
+// generate protocol instance wrapper, for protocol which passed from objc to go code.
 func (p *Protocol) writeProtocolWrapperStruct(w *CodeWriter) {
-	typeName := p.Type.GName + "Wrapper"
+	typeName := p.Type.GName
 	w.WriteLine("type " + typeName + " struct {")
 	w.Indent()
 	w.WriteLine("objc.Object")

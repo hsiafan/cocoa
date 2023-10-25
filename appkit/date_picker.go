@@ -30,7 +30,7 @@ type IDatePicker interface {
 	SetDatePickerStyle(value DatePickerStyle)
 	PresentsCalendarOverlay() bool
 	SetPresentsCalendarOverlay(value bool)
-	Delegate() DatePickerCellDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	DatePickerElements() DatePickerElementFlags
 	SetDatePickerElements(value DatePickerElementFlags)
@@ -151,8 +151,8 @@ func (d_ DatePicker) SetPresentsCalendarOverlay(value bool) {
 }
 
 // weak property
-func (d_ DatePicker) Delegate() DatePickerCellDelegateWrapper {
-	rv := objc.CallMethod[DatePickerCellDelegateWrapper](d_, objc.GetSelector("delegate"))
+func (d_ DatePicker) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("delegate"))
 	return rv
 }
 

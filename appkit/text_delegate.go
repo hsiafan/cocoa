@@ -70,29 +70,3 @@ func (p *TextDelegateBase) ImplementsTextDidEndEditing() bool {
 func (p *TextDelegateBase) TextDidEndEditing(notification foundation.Notification) {
 	panic("unimpemented protocol method")
 }
-
-type TextDelegateWrapper struct {
-	objc.Object
-}
-
-func (t_ TextDelegateWrapper) TextDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidChange:"), objc.ExtractPtr(notification))
-}
-
-func (t_ TextDelegateWrapper) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldBeginEditing:"), objc.ExtractPtr(textObject))
-	return rv
-}
-
-func (t_ TextDelegateWrapper) TextDidBeginEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidBeginEditing:"), objc.ExtractPtr(notification))
-}
-
-func (t_ TextDelegateWrapper) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.CallMethod[bool](t_, objc.GetSelector("textShouldEndEditing:"), objc.ExtractPtr(textObject))
-	return rv
-}
-
-func (t_ TextDelegateWrapper) TextDidEndEditing(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](t_, objc.GetSelector("textDidEndEditing:"), objc.ExtractPtr(notification))
-}

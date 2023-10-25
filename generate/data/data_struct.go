@@ -43,6 +43,7 @@ func (c *Class) FullName() string {
 type Protocol struct {
 	Kind       TypeKind    `json:"kind,omitempty"`
 	Name       string      `json:"name,omitempty"`       // the type name
+	OnlyUse    bool        `json:"only_use,omitempty"`   // if this protocol is just for use, no need to implement it
 	Module     string      `json:"module,omitempty"`     // module name
 	Parents    []string    `json:"parents,omitempty"`    // the parent protocols names
 	Methods    []*Method   `json:"methods,omitempty"`    // methods

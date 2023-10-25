@@ -46,7 +46,7 @@ type ILayer interface {
 	ResizeSublayersWithOldSize(size coregraphics.Size)
 	PreferredFrameSize() coregraphics.Size
 	AddConstraint(c IConstraint)
-	ActionForKey(event string) ActionWrapper
+	ActionForKey(event string) objc.Object
 	ConvertPoint_FromLayer(p coregraphics.Point, l ILayer) coregraphics.Point
 	ConvertPoint_ToLayer(p coregraphics.Point, l ILayer) coregraphics.Point
 	ConvertRect_FromLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect
@@ -56,7 +56,7 @@ type ILayer interface {
 	ScrollPoint(p coregraphics.Point)
 	ScrollRectToVisible(r coregraphics.Rect)
 	ShouldArchiveValueForKey(key string) bool
-	Delegate() LayerDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	Contents() objc.Object
 	SetContents(value objc.IObject)
@@ -149,7 +149,7 @@ type ILayer interface {
 	Superlayer() Layer
 	NeedsDisplayOnBoundsChange() bool
 	SetNeedsDisplayOnBoundsChange(value bool)
-	LayoutManager() LayoutManagerWrapper
+	LayoutManager() objc.Object
 	SetLayoutManager(value objc.IObject)
 	AutoresizingMask() AutoresizingMask
 	SetAutoresizingMask(value AutoresizingMask)
@@ -347,13 +347,13 @@ func (l_ Layer) AddConstraint(c IConstraint) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("addConstraint:"), objc.ExtractPtr(c))
 }
 
-func (l_ Layer) ActionForKey(event string) ActionWrapper {
-	rv := objc.CallMethod[ActionWrapper](l_, objc.GetSelector("actionForKey:"), event)
+func (l_ Layer) ActionForKey(event string) objc.Object {
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("actionForKey:"), event)
 	return rv
 }
 
-func (lc _LayerClass) DefaultActionForKey(event string) ActionWrapper {
-	rv := objc.CallMethod[ActionWrapper](lc, objc.GetSelector("defaultActionForKey:"), event)
+func (lc _LayerClass) DefaultActionForKey(event string) objc.Object {
+	rv := objc.CallMethod[objc.Object](lc, objc.GetSelector("defaultActionForKey:"), event)
 	return rv
 }
 
@@ -411,8 +411,8 @@ func (lc _LayerClass) CornerCurveExpansionFactor(curve LayerCornerCurve) float64
 }
 
 // weak property
-func (l_ Layer) Delegate() LayerDelegateWrapper {
-	rv := objc.CallMethod[LayerDelegateWrapper](l_, objc.GetSelector("delegate"))
+func (l_ Layer) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -831,8 +831,8 @@ func (l_ Layer) SetNeedsDisplayOnBoundsChange(value bool) {
 	objc.CallMethod[objc.Void](l_, objc.GetSelector("setNeedsDisplayOnBoundsChange:"), value)
 }
 
-func (l_ Layer) LayoutManager() LayoutManagerWrapper {
-	rv := objc.CallMethod[LayoutManagerWrapper](l_, objc.GetSelector("layoutManager"))
+func (l_ Layer) LayoutManager() objc.Object {
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("layoutManager"))
 	return rv
 }
 

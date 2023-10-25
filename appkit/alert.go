@@ -30,7 +30,7 @@ type IAlert interface {
 	SetShowsHelp(value bool)
 	HelpAnchor() HelpAnchorName
 	SetHelpAnchor(value HelpAnchorName)
-	Delegate() AlertDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	SuppressionButton() Button
 	ShowsSuppressionButton() bool
@@ -140,8 +140,8 @@ func (a_ Alert) SetHelpAnchor(value HelpAnchorName) {
 }
 
 // weak property
-func (a_ Alert) Delegate() AlertDelegateWrapper {
-	rv := objc.CallMethod[AlertDelegateWrapper](a_, objc.GetSelector("delegate"))
+func (a_ Alert) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
 	return rv
 }
 

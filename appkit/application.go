@@ -95,7 +95,7 @@ type IApplication interface {
 	Application_PrintFiles(sender IApplication, filenames []string)
 	// deprecated
 	Application_DelegateHandlesKey(sender IApplication, key string) bool
-	Delegate() ApplicationDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	CurrentEvent() Event
 	IsRunning() bool
@@ -487,8 +487,8 @@ func (ac _ApplicationClass) SharedApplication() Application {
 }
 
 // weak property
-func (a_ Application) Delegate() ApplicationDelegateWrapper {
-	rv := objc.CallMethod[ApplicationDelegateWrapper](a_, objc.GetSelector("delegate"))
+func (a_ Application) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](a_, objc.GetSelector("delegate"))
 	return rv
 }
 

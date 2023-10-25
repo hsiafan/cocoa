@@ -84,7 +84,7 @@ type IText interface {
 	SetVerticallyResizable(value bool)
 	IsHorizontallyResizable() bool
 	SetHorizontallyResizable(value bool)
-	Delegate() TextDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -419,8 +419,8 @@ func (t_ Text) SetHorizontallyResizable(value bool) {
 }
 
 // weak property
-func (t_ Text) Delegate() TextDelegateWrapper {
-	rv := objc.CallMethod[TextDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ Text) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

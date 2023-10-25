@@ -61,29 +61,3 @@ func (p *DraggingSourceBase) ImplementsIgnoreModifierKeysForDraggingSession() bo
 func (p *DraggingSourceBase) IgnoreModifierKeysForDraggingSession(session DraggingSession) bool {
 	panic("unimpemented protocol method")
 }
-
-type DraggingSourceWrapper struct {
-	objc.Object
-}
-
-func (d_ DraggingSourceWrapper) DraggingSession_SourceOperationMaskForDraggingContext(session IDraggingSession, context DraggingContext) DragOperation {
-	rv := objc.CallMethod[DragOperation](d_, objc.GetSelector("draggingSession:sourceOperationMaskForDraggingContext:"), objc.ExtractPtr(session), context)
-	return rv
-}
-
-func (d_ DraggingSourceWrapper) DraggingSession_EndedAtPoint_Operation(session IDraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingSession:endedAtPoint:operation:"), objc.ExtractPtr(session), screenPoint, operation)
-}
-
-func (d_ DraggingSourceWrapper) DraggingSession_MovedToPoint(session IDraggingSession, screenPoint foundation.Point) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingSession:movedToPoint:"), objc.ExtractPtr(session), screenPoint)
-}
-
-func (d_ DraggingSourceWrapper) DraggingSession_WillBeginAtPoint(session IDraggingSession, screenPoint foundation.Point) {
-	objc.CallMethod[objc.Void](d_, objc.GetSelector("draggingSession:willBeginAtPoint:"), objc.ExtractPtr(session), screenPoint)
-}
-
-func (d_ DraggingSourceWrapper) IgnoreModifierKeysForDraggingSession(session IDraggingSession) bool {
-	rv := objc.CallMethod[bool](d_, objc.GetSelector("ignoreModifierKeysForDraggingSession:"), objc.ExtractPtr(session))
-	return rv
-}

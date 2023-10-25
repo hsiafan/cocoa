@@ -25,11 +25,3 @@ func (p *StreamDelegateBase) ImplementsStream_HandleEvent() bool {
 func (p *StreamDelegateBase) Stream_HandleEvent(aStream Stream, eventCode StreamEvent) {
 	panic("unimpemented protocol method")
 }
-
-type StreamDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ StreamDelegateWrapper) Stream_HandleEvent(aStream IStream, eventCode StreamEvent) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("stream:handleEvent:"), objc.ExtractPtr(aStream), eventCode)
-}

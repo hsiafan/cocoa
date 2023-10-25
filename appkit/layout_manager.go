@@ -148,7 +148,7 @@ type ILayoutManager interface {
 	SubstituteFontForFont(originalFont IFont) Font
 	// deprecated
 	ShowPackedGlyphs_Length_GlyphRange_AtPoint_Font_Color_PrintingAdjustment(glyphs *byte, glyphLen uint, glyphRange foundation.Range, point foundation.Point, font IFont, color IColor, printingAdjustment foundation.Size)
-	Delegate() LayoutManagerDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	TextStorage() TextStorage
 	SetTextStorage(value ITextStorage)
@@ -739,8 +739,8 @@ func (l_ LayoutManager) ShowPackedGlyphs_Length_GlyphRange_AtPoint_Font_Color_Pr
 }
 
 // weak property
-func (l_ LayoutManager) Delegate() LayoutManagerDelegateWrapper {
-	rv := objc.CallMethod[LayoutManagerDelegateWrapper](l_, objc.GetSelector("delegate"))
+func (l_ LayoutManager) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](l_, objc.GetSelector("delegate"))
 	return rv
 }
 

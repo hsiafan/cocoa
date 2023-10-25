@@ -84,10 +84,10 @@ type BrowserDelegate interface {
 	Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset *foundation.Point) IImage
 	ImplementsBrowser_ValidateDrop_ProposedRow_Column_DropOperation() bool
 	// optional
-	Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation
+	Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser Browser, info objc.Object, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation
 	ImplementsBrowser_AcceptDrop_AtRow_Column_DropOperation() bool
 	// optional
-	Browser_AcceptDrop_AtRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row int, column int, dropOperation BrowserDropOperation) bool
+	Browser_AcceptDrop_AtRow_Column_DropOperation(browser Browser, info objc.Object, row int, column int, dropOperation BrowserDropOperation) bool
 	ImplementsBrowser_WriteRowsWithIndexes_InColumn_ToPasteboard() bool
 	// optional
 	Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool
@@ -323,7 +323,7 @@ func (p *BrowserDelegateBase) ImplementsBrowser_ValidateDrop_ProposedRow_Column_
 	return false
 }
 
-func (p *BrowserDelegateBase) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
+func (p *BrowserDelegateBase) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser Browser, info objc.Object, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
 	panic("unimpemented protocol method")
 }
 
@@ -331,7 +331,7 @@ func (p *BrowserDelegateBase) ImplementsBrowser_AcceptDrop_AtRow_Column_DropOper
 	return false
 }
 
-func (p *BrowserDelegateBase) Browser_AcceptDrop_AtRow_Column_DropOperation(browser Browser, info DraggingInfoWrapper, row int, column int, dropOperation BrowserDropOperation) bool {
+func (p *BrowserDelegateBase) Browser_AcceptDrop_AtRow_Column_DropOperation(browser Browser, info objc.Object, row int, column int, dropOperation BrowserDropOperation) bool {
 	panic("unimpemented protocol method")
 }
 
@@ -390,172 +390,4 @@ func (p *BrowserDelegateBase) ImplementsBrowser_ShouldShowCellExpansionForRow_Co
 
 func (p *BrowserDelegateBase) Browser_ShouldShowCellExpansionForRow_Column(browser Browser, row int, column int) bool {
 	panic("unimpemented protocol method")
-}
-
-type BrowserDelegateWrapper struct {
-	objc.Object
-}
-
-func (b_ BrowserDelegateWrapper) Browser_IsColumnValid(sender IBrowser, column int) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:isColumnValid:"), objc.ExtractPtr(sender), column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_NumberOfRowsInColumn(sender IBrowser, column int) int {
-	rv := objc.CallMethod[int](b_, objc.GetSelector("browser:numberOfRowsInColumn:"), objc.ExtractPtr(sender), column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_NumberOfChildrenOfItem(browser IBrowser, item objc.IObject) int {
-	rv := objc.CallMethod[int](b_, objc.GetSelector("browser:numberOfChildrenOfItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_TitleOfColumn(sender IBrowser, column int) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("browser:titleOfColumn:"), objc.ExtractPtr(sender), column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ShouldTypeSelectForEvent_WithCurrentSearchString(browser IBrowser, event IEvent, searchString string) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:shouldTypeSelectForEvent:withCurrentSearchString:"), objc.ExtractPtr(browser), objc.ExtractPtr(event), searchString)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_TypeSelectStringForRow_InColumn(browser IBrowser, row int, column int) string {
-	rv := objc.CallMethod[string](b_, objc.GetSelector("browser:typeSelectStringForRow:inColumn:"), objc.ExtractPtr(browser), row, column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(browser IBrowser, startRow int, endRow int, column int, searchString string) int {
-	rv := objc.CallMethod[int](b_, objc.GetSelector("browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:"), objc.ExtractPtr(browser), startRow, endRow, column, searchString)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_SelectCellWithString_InColumn(sender IBrowser, title string, column int) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:selectCellWithString:inColumn:"), objc.ExtractPtr(sender), title, column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_SelectRow_InColumn(sender IBrowser, row int, column int) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:selectRow:inColumn:"), objc.ExtractPtr(sender), row, column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_SelectionIndexesForProposedSelection_InColumn(browser IBrowser, proposedSelectionIndexes foundation.IIndexSet, column int) foundation.IndexSet {
-	rv := objc.CallMethod[foundation.IndexSet](b_, objc.GetSelector("browser:selectionIndexesForProposedSelection:inColumn:"), objc.ExtractPtr(browser), objc.ExtractPtr(proposedSelectionIndexes), column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_Child_OfItem(browser IBrowser, index int, item objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("browser:child:ofItem:"), objc.ExtractPtr(browser), index, objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_IsLeafItem(browser IBrowser, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:isLeafItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ShouldEditItem(browser IBrowser, item objc.IObject) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:shouldEditItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ObjectValueForItem(browser IBrowser, item objc.IObject) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("browser:objectValueForItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_SetObjectValue_ForItem(browser IBrowser, object objc.IObject, item objc.IObject) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:setObjectValue:forItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(object), objc.ExtractPtr(item))
-}
-
-func (b_ BrowserDelegateWrapper) RootItemForBrowser(browser IBrowser) objc.Object {
-	rv := objc.CallMethod[objc.Object](b_, objc.GetSelector("rootItemForBrowser:"), objc.ExtractPtr(browser))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_PreviewViewControllerForLeafItem(browser IBrowser, item objc.IObject) ViewController {
-	rv := objc.CallMethod[ViewController](b_, objc.GetSelector("browser:previewViewControllerForLeafItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_HeaderViewControllerForItem(browser IBrowser, item objc.IObject) ViewController {
-	rv := objc.CallMethod[ViewController](b_, objc.GetSelector("browser:headerViewControllerForItem:"), objc.ExtractPtr(browser), objc.ExtractPtr(item))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_CreateRowsForColumn_InMatrix(sender IBrowser, column int, matrix IMatrix) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:createRowsForColumn:inMatrix:"), objc.ExtractPtr(sender), column, objc.ExtractPtr(matrix))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_WillDisplayCell_AtRow_Column(sender IBrowser, cell objc.IObject, row int, column int) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:willDisplayCell:atRow:column:"), objc.ExtractPtr(sender), objc.ExtractPtr(cell), row, column)
-}
-
-func (b_ BrowserDelegateWrapper) Browser_DidChangeLastColumn_ToColumn(browser IBrowser, oldLastColumn int, column int) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browser:didChangeLastColumn:toColumn:"), objc.ExtractPtr(browser), oldLastColumn, column)
-}
-
-func (b_ BrowserDelegateWrapper) BrowserWillScroll(sender IBrowser) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browserWillScroll:"), objc.ExtractPtr(sender))
-}
-
-func (b_ BrowserDelegateWrapper) BrowserDidScroll(sender IBrowser) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browserDidScroll:"), objc.ExtractPtr(sender))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_CanDragRowsWithIndexes_InColumn_WithEvent(browser IBrowser, rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:canDragRowsWithIndexes:inColumn:withEvent:"), objc.ExtractPtr(browser), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(event))
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(browser IBrowser, rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset *foundation.Point) Image {
-	rv := objc.CallMethod[Image](b_, objc.GetSelector("browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), objc.ExtractPtr(browser), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(event), dragImageOffset)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ValidateDrop_ProposedRow_Column_DropOperation(browser IBrowser, info objc.IObject, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
-	rv := objc.CallMethod[DragOperation](b_, objc.GetSelector("browser:validateDrop:proposedRow:column:dropOperation:"), objc.ExtractPtr(browser), objc.ExtractPtr(info), row, column, dropOperation)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_AcceptDrop_AtRow_Column_DropOperation(browser IBrowser, info objc.IObject, row int, column int, dropOperation BrowserDropOperation) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:acceptDrop:atRow:column:dropOperation:"), objc.ExtractPtr(browser), objc.ExtractPtr(info), row, column, dropOperation)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_WriteRowsWithIndexes_InColumn_ToPasteboard(browser IBrowser, rowIndexes foundation.IIndexSet, column int, pasteboard IPasteboard) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:writeRowsWithIndexes:inColumn:toPasteboard:"), objc.ExtractPtr(browser), objc.ExtractPtr(rowIndexes), column, objc.ExtractPtr(pasteboard))
-	return rv
-}
-
-// deprecated
-func (b_ BrowserDelegateWrapper) Browser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(browser IBrowser, dropDestination foundation.IURL, rowIndexes foundation.IIndexSet, column int) []string {
-	rv := objc.CallMethod[[]string](b_, objc.GetSelector("browser:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:inColumn:"), objc.ExtractPtr(browser), objc.ExtractPtr(dropDestination), objc.ExtractPtr(rowIndexes), column)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ShouldSizeColumn_ForUserResize_ToWidth(browser IBrowser, columnIndex int, forUserResize bool, suggestedWidth float64) float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("browser:shouldSizeColumn:forUserResize:toWidth:"), objc.ExtractPtr(browser), columnIndex, forUserResize, suggestedWidth)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_SizeToFitWidthOfColumn(browser IBrowser, columnIndex int) float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("browser:sizeToFitWidthOfColumn:"), objc.ExtractPtr(browser), columnIndex)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) BrowserColumnConfigurationDidChange(notification foundation.INotification) {
-	objc.CallMethod[objc.Void](b_, objc.GetSelector("browserColumnConfigurationDidChange:"), objc.ExtractPtr(notification))
-}
-
-func (b_ BrowserDelegateWrapper) Browser_HeightOfRow_InColumn(browser IBrowser, row int, columnIndex int) float64 {
-	rv := objc.CallMethod[float64](b_, objc.GetSelector("browser:heightOfRow:inColumn:"), objc.ExtractPtr(browser), row, columnIndex)
-	return rv
-}
-
-func (b_ BrowserDelegateWrapper) Browser_ShouldShowCellExpansionForRow_Column(browser IBrowser, row int, column int) bool {
-	rv := objc.CallMethod[bool](b_, objc.GetSelector("browser:shouldShowCellExpansionForRow:column:"), objc.ExtractPtr(browser), row, column)
-	return rv
 }

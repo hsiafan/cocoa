@@ -36,15 +36,3 @@ func (p *PathCellDelegateBase) ImplementsPathCell_WillPopUpMenu() bool {
 func (p *PathCellDelegateBase) PathCell_WillPopUpMenu(pathCell PathCell, menu Menu) {
 	panic("unimpemented protocol method")
 }
-
-type PathCellDelegateWrapper struct {
-	objc.Object
-}
-
-func (p_ PathCellDelegateWrapper) PathCell_WillDisplayOpenPanel(pathCell IPathCell, openPanel IOpenPanel) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willDisplayOpenPanel:"), objc.ExtractPtr(pathCell), objc.ExtractPtr(openPanel))
-}
-
-func (p_ PathCellDelegateWrapper) PathCell_WillPopUpMenu(pathCell IPathCell, menu IMenu) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pathCell:willPopUpMenu:"), objc.ExtractPtr(pathCell), objc.ExtractPtr(menu))
-}

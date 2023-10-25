@@ -28,15 +28,3 @@ func (p *CollectionViewPrefetchingBase) ImplementsCollectionView_CancelPrefetchi
 func (p *CollectionViewPrefetchingBase) CollectionView_CancelPrefetchingForItemsAtIndexPaths(collectionView CollectionView, indexPaths []foundation.IndexPath) {
 	panic("unimpemented protocol method")
 }
-
-type CollectionViewPrefetchingWrapper struct {
-	objc.Object
-}
-
-func (c_ CollectionViewPrefetchingWrapper) CollectionView_CancelPrefetchingForItemsAtIndexPaths(collectionView ICollectionView, indexPaths []foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:cancelPrefetchingForItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), indexPaths)
-}
-
-func (c_ CollectionViewPrefetchingWrapper) CollectionView_PrefetchItemsAtIndexPaths(collectionView ICollectionView, indexPaths []foundation.IIndexPath) {
-	objc.CallMethod[objc.Void](c_, objc.GetSelector("collectionView:prefetchItemsAtIndexPaths:"), objc.ExtractPtr(collectionView), indexPaths)
-}

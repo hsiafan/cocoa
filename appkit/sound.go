@@ -26,7 +26,7 @@ type ISound interface {
 	ChannelMapping() []objc.Object
 	// deprecated
 	SetChannelMapping(channelMapping []objc.IObject)
-	Delegate() SoundDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	Name() SoundName
 	Volume() float32
@@ -154,8 +154,8 @@ func (sc _SoundClass) SoundUnfilteredPasteboardTypes() []objc.Object {
 }
 
 // weak property
-func (s_ Sound) Delegate() SoundDelegateWrapper {
-	rv := objc.CallMethod[SoundDelegateWrapper](s_, objc.GetSelector("delegate"))
+func (s_ Sound) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
 	return rv
 }
 

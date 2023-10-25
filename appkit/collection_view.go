@@ -57,9 +57,9 @@ type ICollectionView interface {
 	FrameForItemAtIndex_WithNumberOfItems(index uint, numberOfItems uint) foundation.Rect
 	DraggingImageForItemsAtIndexes_WithEvent_Offset(indexes foundation.IIndexSet, event IEvent, dragImageOffset *foundation.Point) Image
 	SetDraggingSourceOperationMask_ForLocal(dragOperationMask DragOperation, localDestination bool)
-	DataSource() CollectionViewDataSourceWrapper
+	DataSource() objc.Object
 	SetDataSource(value objc.IObject)
-	Delegate() CollectionViewDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	Content() []objc.Object
 	SetContent(value []objc.IObject)
@@ -71,7 +71,7 @@ type ICollectionView interface {
 	SetBackgroundViewScrollsWithContent(value bool)
 	CollectionViewLayout() CollectionViewLayout
 	SetCollectionViewLayout(value ICollectionViewLayout)
-	PrefetchDataSource() CollectionViewPrefetchingWrapper
+	PrefetchDataSource() objc.Object
 	SetPrefetchDataSource(value objc.IObject)
 	NumberOfSections() int
 	IsSelectable() bool
@@ -324,8 +324,8 @@ func (c_ CollectionView) SetDraggingSourceOperationMask_ForLocal(dragOperationMa
 }
 
 // weak property
-func (c_ CollectionView) DataSource() CollectionViewDataSourceWrapper {
-	rv := objc.CallMethod[CollectionViewDataSourceWrapper](c_, objc.GetSelector("dataSource"))
+func (c_ CollectionView) DataSource() objc.Object {
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("dataSource"))
 	return rv
 }
 
@@ -335,8 +335,8 @@ func (c_ CollectionView) SetDataSource(value objc.IObject) {
 }
 
 // weak property
-func (c_ CollectionView) Delegate() CollectionViewDelegateWrapper {
-	rv := objc.CallMethod[CollectionViewDelegateWrapper](c_, objc.GetSelector("delegate"))
+func (c_ CollectionView) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("delegate"))
 	return rv
 }
 
@@ -391,8 +391,8 @@ func (c_ CollectionView) SetCollectionViewLayout(value ICollectionViewLayout) {
 }
 
 // weak property
-func (c_ CollectionView) PrefetchDataSource() CollectionViewPrefetchingWrapper {
-	rv := objc.CallMethod[CollectionViewPrefetchingWrapper](c_, objc.GetSelector("prefetchDataSource"))
+func (c_ CollectionView) PrefetchDataSource() objc.Object {
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("prefetchDataSource"))
 	return rv
 }
 

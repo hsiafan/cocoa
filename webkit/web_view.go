@@ -69,9 +69,9 @@ type IWebView interface {
 	// deprecated
 	LoadSimulatedRequest_WithResponseHTMLString(request foundation.IURLRequest, string_ string) Navigation
 	Configuration() WebViewConfiguration
-	UIDelegate() UIDelegateWrapper
+	UIDelegate() objc.Object
 	SetUIDelegate(value objc.IObject)
-	NavigationDelegate() NavigationDelegateWrapper
+	NavigationDelegate() objc.Object
 	SetNavigationDelegate(value objc.IObject)
 	IsLoading() bool
 	EstimatedProgress() float64
@@ -354,8 +354,8 @@ func (w_ WebView) Configuration() WebViewConfiguration {
 }
 
 // weak property
-func (w_ WebView) UIDelegate() UIDelegateWrapper {
-	rv := objc.CallMethod[UIDelegateWrapper](w_, objc.GetSelector("UIDelegate"))
+func (w_ WebView) UIDelegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("UIDelegate"))
 	return rv
 }
 
@@ -365,8 +365,8 @@ func (w_ WebView) SetUIDelegate(value objc.IObject) {
 }
 
 // weak property
-func (w_ WebView) NavigationDelegate() NavigationDelegateWrapper {
-	rv := objc.CallMethod[NavigationDelegateWrapper](w_, objc.GetSelector("navigationDelegate"))
+func (w_ WebView) NavigationDelegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("navigationDelegate"))
 	return rv
 }
 

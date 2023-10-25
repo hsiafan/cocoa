@@ -8,16 +8,17 @@ var _ Type = (*ProtocolType)(nil)
 
 // ProtocolType objective-c protocol type
 type ProtocolType struct {
-	Name   string  // the objc type name
-	GName  string  // Go name, usually is objc type name without prefix 'NS'
-	Module *Module // object-c module name
+	Name    string  // the objc type name
+	GName   string  // Go name, usually is objc type name without prefix 'NS'
+	OnlyUse bool    // if this protocol is just for use, no need to implement it
+	Module  *Module // object-c module name
 }
 
 func (p *ProtocolType) GoName(currentModule *Module, receiveFromObjc bool) string {
-	name := FullGoName(*p.Module, p.GName, *currentModule)
 	if receiveFromObjc {
-		if p.GName != "Object" {
-			return name + "Wrapper"
+
+		if p.OnlyUse {
+			return FullGoName(*p.Module, p.GName, *currentModule)
 		}
 	}
 	return Object.GoName(currentModule, receiveFromObjc)

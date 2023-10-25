@@ -36,15 +36,3 @@ func (p *AnimationDelegateBase) ImplementsAnimationDidStop_Finished() bool {
 func (p *AnimationDelegateBase) AnimationDidStop_Finished(anim Animation, flag bool) {
 	panic("unimpemented protocol method")
 }
-
-type AnimationDelegateWrapper struct {
-	objc.Object
-}
-
-func (a_ AnimationDelegateWrapper) AnimationDidStart(anim IAnimation) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStart:"), objc.ExtractPtr(anim))
-}
-
-func (a_ AnimationDelegateWrapper) AnimationDidStop_Finished(anim IAnimation, flag bool) {
-	objc.CallMethod[objc.Void](a_, objc.GetSelector("animationDidStop:finished:"), objc.ExtractPtr(anim), flag)
-}

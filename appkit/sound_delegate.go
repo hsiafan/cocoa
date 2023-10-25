@@ -25,11 +25,3 @@ func (p *SoundDelegateBase) ImplementsSound_DidFinishPlaying() bool {
 func (p *SoundDelegateBase) Sound_DidFinishPlaying(sound Sound, flag bool) {
 	panic("unimpemented protocol method")
 }
-
-type SoundDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ SoundDelegateWrapper) Sound_DidFinishPlaying(sound ISound, flag bool) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("sound:didFinishPlaying:"), objc.ExtractPtr(sound), flag)
-}

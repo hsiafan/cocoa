@@ -58,27 +58,3 @@ func (p *ComboBoxDataSourceBase) ImplementsNumberOfItemsInComboBox() bool {
 func (p *ComboBoxDataSourceBase) NumberOfItemsInComboBox(comboBox ComboBox) int {
 	panic("unimpemented protocol method")
 }
-
-type ComboBoxDataSourceWrapper struct {
-	objc.Object
-}
-
-func (c_ ComboBoxDataSourceWrapper) ComboBox_CompletedString(comboBox IComboBox, string_ string) string {
-	rv := objc.CallMethod[string](c_, objc.GetSelector("comboBox:completedString:"), objc.ExtractPtr(comboBox), string_)
-	return rv
-}
-
-func (c_ ComboBoxDataSourceWrapper) ComboBox_IndexOfItemWithStringValue(comboBox IComboBox, string_ string) uint {
-	rv := objc.CallMethod[uint](c_, objc.GetSelector("comboBox:indexOfItemWithStringValue:"), objc.ExtractPtr(comboBox), string_)
-	return rv
-}
-
-func (c_ ComboBoxDataSourceWrapper) ComboBox_ObjectValueForItemAtIndex(comboBox IComboBox, index int) objc.Object {
-	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("comboBox:objectValueForItemAtIndex:"), objc.ExtractPtr(comboBox), index)
-	return rv
-}
-
-func (c_ ComboBoxDataSourceWrapper) NumberOfItemsInComboBox(comboBox IComboBox) int {
-	rv := objc.CallMethod[int](c_, objc.GetSelector("numberOfItemsInComboBox:"), objc.ExtractPtr(comboBox))
-	return rv
-}

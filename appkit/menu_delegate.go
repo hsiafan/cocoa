@@ -92,38 +92,3 @@ func (p *MenuDelegateBase) ImplementsMenuNeedsUpdate() bool {
 func (p *MenuDelegateBase) MenuNeedsUpdate(menu Menu) {
 	panic("unimpemented protocol method")
 }
-
-type MenuDelegateWrapper struct {
-	objc.Object
-}
-
-func (m_ MenuDelegateWrapper) Menu_UpdateItem_AtIndex_ShouldCancel(menu IMenu, item IMenuItem, index int, shouldCancel bool) bool {
-	rv := objc.CallMethod[bool](m_, objc.GetSelector("menu:updateItem:atIndex:shouldCancel:"), objc.ExtractPtr(menu), objc.ExtractPtr(item), index, shouldCancel)
-	return rv
-}
-
-func (m_ MenuDelegateWrapper) ConfinementRectForMenu_OnScreen(menu IMenu, screen IScreen) foundation.Rect {
-	rv := objc.CallMethod[foundation.Rect](m_, objc.GetSelector("confinementRectForMenu:onScreen:"), objc.ExtractPtr(menu), objc.ExtractPtr(screen))
-	return rv
-}
-
-func (m_ MenuDelegateWrapper) Menu_WillHighlightItem(menu IMenu, item IMenuItem) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("menu:willHighlightItem:"), objc.ExtractPtr(menu), objc.ExtractPtr(item))
-}
-
-func (m_ MenuDelegateWrapper) MenuWillOpen(menu IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("menuWillOpen:"), objc.ExtractPtr(menu))
-}
-
-func (m_ MenuDelegateWrapper) MenuDidClose(menu IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("menuDidClose:"), objc.ExtractPtr(menu))
-}
-
-func (m_ MenuDelegateWrapper) NumberOfItemsInMenu(menu IMenu) int {
-	rv := objc.CallMethod[int](m_, objc.GetSelector("numberOfItemsInMenu:"), objc.ExtractPtr(menu))
-	return rv
-}
-
-func (m_ MenuDelegateWrapper) MenuNeedsUpdate(menu IMenu) {
-	objc.CallMethod[objc.Void](m_, objc.GetSelector("menuNeedsUpdate:"), objc.ExtractPtr(menu))
-}

@@ -7,9 +7,9 @@ import (
 
 type URLSchemeHandler interface {
 	// required
-	WebView_StartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper)
+	WebView_StartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTask)
 	// required
-	WebView_StopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskWrapper)
+	WebView_StopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTask)
 }
 
 func WrapURLSchemeHandler(v URLSchemeHandler) objc.Object {
@@ -17,16 +17,4 @@ func WrapURLSchemeHandler(v URLSchemeHandler) objc.Object {
 }
 
 type URLSchemeHandlerBase struct {
-}
-
-type URLSchemeHandlerWrapper struct {
-	objc.Object
-}
-
-func (u_ URLSchemeHandlerWrapper) WebView_StartURLSchemeTask(webView IWebView, urlSchemeTask objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:startURLSchemeTask:"), objc.ExtractPtr(webView), objc.ExtractPtr(urlSchemeTask))
-}
-
-func (u_ URLSchemeHandlerWrapper) WebView_StopURLSchemeTask(webView IWebView, urlSchemeTask objc.IObject) {
-	objc.CallMethod[objc.Void](u_, objc.GetSelector("webView:stopURLSchemeTask:"), objc.ExtractPtr(webView), objc.ExtractPtr(urlSchemeTask))
 }

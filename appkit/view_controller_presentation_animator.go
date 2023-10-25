@@ -18,15 +18,3 @@ func WrapViewControllerPresentationAnimator(v ViewControllerPresentationAnimator
 
 type ViewControllerPresentationAnimatorBase struct {
 }
-
-type ViewControllerPresentationAnimatorWrapper struct {
-	objc.Object
-}
-
-func (v_ ViewControllerPresentationAnimatorWrapper) AnimatePresentationOfViewController_FromViewController(viewController IViewController, fromViewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("animatePresentationOfViewController:fromViewController:"), objc.ExtractPtr(viewController), objc.ExtractPtr(fromViewController))
-}
-
-func (v_ ViewControllerPresentationAnimatorWrapper) AnimateDismissalOfViewController_FromViewController(viewController IViewController, fromViewController IViewController) {
-	objc.CallMethod[objc.Void](v_, objc.GetSelector("animateDismissalOfViewController:fromViewController:"), objc.ExtractPtr(viewController), objc.ExtractPtr(fromViewController))
-}

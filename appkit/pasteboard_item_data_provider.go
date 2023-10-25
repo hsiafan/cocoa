@@ -27,15 +27,3 @@ func (p *PasteboardItemDataProviderBase) ImplementsPasteboardFinishedWithDataPro
 func (p *PasteboardItemDataProviderBase) PasteboardFinishedWithDataProvider(pasteboard Pasteboard) {
 	panic("unimpemented protocol method")
 }
-
-type PasteboardItemDataProviderWrapper struct {
-	objc.Object
-}
-
-func (p_ PasteboardItemDataProviderWrapper) Pasteboard_Item_ProvideDataForType(pasteboard IPasteboard, item IPasteboardItem, type_ PasteboardType) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pasteboard:item:provideDataForType:"), objc.ExtractPtr(pasteboard), objc.ExtractPtr(item), type_)
-}
-
-func (p_ PasteboardItemDataProviderWrapper) PasteboardFinishedWithDataProvider(pasteboard IPasteboard) {
-	objc.CallMethod[objc.Void](p_, objc.GetSelector("pasteboardFinishedWithDataProvider:"), objc.ExtractPtr(pasteboard))
-}

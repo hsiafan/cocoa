@@ -21,7 +21,7 @@ type IToolbar interface {
 	SetConfigurationFromDictionary(configDict map[string]objc.IObject)
 	RunCustomizationPalette(sender objc.IObject)
 	ValidateVisibleItems()
-	Delegate() ToolbarDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	Identifier() ToolbarIdentifier
 	IsVisible() bool
@@ -122,8 +122,8 @@ func (t_ Toolbar) ValidateVisibleItems() {
 }
 
 // weak property
-func (t_ Toolbar) Delegate() ToolbarDelegateWrapper {
-	rv := objc.CallMethod[ToolbarDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ Toolbar) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

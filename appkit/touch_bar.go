@@ -17,7 +17,7 @@ type _TouchBarClass struct {
 type ITouchBar interface {
 	objc.IObject
 	ItemForIdentifier(identifier TouchBarItemIdentifier) TouchBarItem
-	Delegate() TouchBarDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	TemplateItems() foundation.Set
 	SetTemplateItems(value foundation.ISet)
@@ -73,8 +73,8 @@ func (t_ TouchBar) ItemForIdentifier(identifier TouchBarItemIdentifier) TouchBar
 }
 
 // weak property
-func (t_ TouchBar) Delegate() TouchBarDelegateWrapper {
-	rv := objc.CallMethod[TouchBarDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ TouchBar) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

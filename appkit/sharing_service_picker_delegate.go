@@ -47,21 +47,3 @@ func (p *SharingServicePickerDelegateBase) ImplementsSharingServicePicker_Delega
 func (p *SharingServicePickerDelegateBase) SharingServicePicker_DelegateForSharingService(sharingServicePicker SharingServicePicker, sharingService SharingService) objc.IObject {
 	panic("unimpemented protocol method")
 }
-
-type SharingServicePickerDelegateWrapper struct {
-	objc.Object
-}
-
-func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_SharingServicesForItems_ProposedSharingServices(sharingServicePicker ISharingServicePicker, items []objc.IObject, proposedServices []ISharingService) []SharingService {
-	rv := objc.CallMethod[[]SharingService](s_, objc.GetSelector("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), objc.ExtractPtr(sharingServicePicker), items, proposedServices)
-	return rv
-}
-
-func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_DidChooseSharingService(sharingServicePicker ISharingServicePicker, service ISharingService) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("sharingServicePicker:didChooseSharingService:"), objc.ExtractPtr(sharingServicePicker), objc.ExtractPtr(service))
-}
-
-func (s_ SharingServicePickerDelegateWrapper) SharingServicePicker_DelegateForSharingService(sharingServicePicker ISharingServicePicker, sharingService ISharingService) SharingServiceDelegateWrapper {
-	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, objc.GetSelector("sharingServicePicker:delegateForSharingService:"), objc.ExtractPtr(sharingServicePicker), objc.ExtractPtr(sharingService))
-	return rv
-}

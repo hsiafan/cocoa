@@ -17,7 +17,7 @@ type _SharingServicePickerClass struct {
 type ISharingServicePicker interface {
 	objc.IObject
 	ShowRelativeToRect_OfView_PreferredEdge(rect foundation.Rect, view IView, preferredEdge foundation.RectEdge)
-	Delegate() SharingServicePickerDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	StandardShareMenuItem() MenuItem
 }
@@ -62,8 +62,8 @@ func (s_ SharingServicePicker) ShowRelativeToRect_OfView_PreferredEdge(rect foun
 }
 
 // weak property
-func (s_ SharingServicePicker) Delegate() SharingServicePickerDelegateWrapper {
-	rv := objc.CallMethod[SharingServicePickerDelegateWrapper](s_, objc.GetSelector("delegate"))
+func (s_ SharingServicePicker) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
 	return rv
 }
 

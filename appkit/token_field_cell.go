@@ -22,7 +22,7 @@ type ITokenFieldCell interface {
 	SetTokenizingCharacterSet(value foundation.ICharacterSet)
 	CompletionDelay() foundation.TimeInterval
 	SetCompletionDelay(value foundation.TimeInterval)
-	Delegate() TokenFieldCellDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -104,8 +104,8 @@ func (tc _TokenFieldCellClass) DefaultCompletionDelay() foundation.TimeInterval 
 }
 
 // weak property
-func (t_ TokenFieldCell) Delegate() TokenFieldCellDelegateWrapper {
-	rv := objc.CallMethod[TokenFieldCellDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ TokenFieldCell) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

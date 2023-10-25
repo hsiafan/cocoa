@@ -60,7 +60,7 @@ type ITextField interface {
 	SetAllowsCharacterPickerTouchBarItem(value bool)
 	IsAutomaticTextCompletionEnabled() bool
 	SetAutomaticTextCompletionEnabled(value bool)
-	Delegate() TextFieldDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -313,8 +313,8 @@ func (t_ TextField) SetAutomaticTextCompletionEnabled(value bool) {
 }
 
 // weak property
-func (t_ TextField) Delegate() TextFieldDelegateWrapper {
-	rv := objc.CallMethod[TextFieldDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ TextField) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

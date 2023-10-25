@@ -21,7 +21,7 @@ type IStream interface {
 	Close()
 	ScheduleInRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode)
 	RemoveFromRunLoop_ForMode(aRunLoop IRunLoop, mode RunLoopMode)
-	Delegate() StreamDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	StreamStatus() StreamStatus
 	StreamError() Error
@@ -93,8 +93,8 @@ func (sc _StreamClass) GetStreamsToHostWithName_Port_InputStream_OutputStream(ho
 }
 
 // weak property
-func (s_ Stream) Delegate() StreamDelegateWrapper {
-	rv := objc.CallMethod[StreamDelegateWrapper](s_, objc.GetSelector("delegate"))
+func (s_ Stream) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
 	return rv
 }
 

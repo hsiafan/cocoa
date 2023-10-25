@@ -39,12 +39,12 @@ func (c_ CollectionViewCompositionalLayout) InitWithSection_Configuration(sectio
 	return rv
 }
 
-func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection) CollectionViewCompositionalLayout {
+func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider(sectionProvider func(section int, param2 objc.Object) ICollectionLayoutSection) CollectionViewCompositionalLayout {
 	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSectionProvider:"), sectionProvider)
 	return rv
 }
 
-func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider_Configuration(sectionProvider func(section int, param2 CollectionLayoutEnvironmentWrapper) ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
+func (c_ CollectionViewCompositionalLayout) InitWithSectionProvider_Configuration(sectionProvider func(section int, param2 objc.Object) ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
 	rv := objc.CallMethod[CollectionViewCompositionalLayout](c_, objc.GetSelector("initWithSectionProvider:configuration:"), sectionProvider, objc.ExtractPtr(configuration))
 	return rv
 }

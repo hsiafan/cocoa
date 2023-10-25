@@ -92,7 +92,7 @@ type IMenu interface {
 	HighlightedItem() MenuItem
 	UserInterfaceLayoutDirection() UserInterfaceLayoutDirection
 	SetUserInterfaceLayoutDirection(value UserInterfaceLayoutDirection)
-	Delegate() MenuDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -448,8 +448,8 @@ func (m_ Menu) SetUserInterfaceLayoutDirection(value UserInterfaceLayoutDirectio
 }
 
 // weak property
-func (m_ Menu) Delegate() MenuDelegateWrapper {
-	rv := objc.CallMethod[MenuDelegateWrapper](m_, objc.GetSelector("delegate"))
+func (m_ Menu) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](m_, objc.GetSelector("delegate"))
 	return rv
 }
 

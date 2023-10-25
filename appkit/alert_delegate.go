@@ -25,12 +25,3 @@ func (p *AlertDelegateBase) ImplementsAlertShowHelp() bool {
 func (p *AlertDelegateBase) AlertShowHelp(alert Alert) bool {
 	panic("unimpemented protocol method")
 }
-
-type AlertDelegateWrapper struct {
-	objc.Object
-}
-
-func (a_ AlertDelegateWrapper) AlertShowHelp(alert IAlert) bool {
-	rv := objc.CallMethod[bool](a_, objc.GetSelector("alertShowHelp:"), objc.ExtractPtr(alert))
-	return rv
-}

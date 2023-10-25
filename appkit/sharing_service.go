@@ -18,7 +18,7 @@ type ISharingService interface {
 	objc.IObject
 	CanPerformWithItems(items []objc.IObject) bool
 	PerformWithItems(items []objc.IObject)
-	Delegate() SharingServiceDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	AccountName() string
 	AlternateImage() Image
@@ -91,8 +91,8 @@ func (s_ SharingService) PerformWithItems(items []objc.IObject) {
 }
 
 // weak property
-func (s_ SharingService) Delegate() SharingServiceDelegateWrapper {
-	rv := objc.CallMethod[SharingServiceDelegateWrapper](s_, objc.GetSelector("delegate"))
+func (s_ SharingService) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
 	return rv
 }
 

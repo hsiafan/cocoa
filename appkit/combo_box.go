@@ -41,7 +41,7 @@ type IComboBox interface {
 	SetItemHeight(value float64)
 	NumberOfVisibleItems() int
 	SetNumberOfVisibleItems(value int)
-	DataSource() ComboBoxDataSourceWrapper
+	DataSource() objc.Object
 	SetDataSource(value objc.IObject)
 	UsesDataSource() bool
 	SetUsesDataSource(value bool)
@@ -216,8 +216,8 @@ func (c_ ComboBox) SetNumberOfVisibleItems(value int) {
 }
 
 // weak property
-func (c_ ComboBox) DataSource() ComboBoxDataSourceWrapper {
-	rv := objc.CallMethod[ComboBoxDataSourceWrapper](c_, objc.GetSelector("dataSource"))
+func (c_ ComboBox) DataSource() objc.Object {
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("dataSource"))
 	return rv
 }
 

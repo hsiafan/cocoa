@@ -31,7 +31,7 @@ type IRuleEditor interface {
 	RemoveRowsAtIndexes_IncludeSubrows(rowIndexes foundation.IIndexSet, includeSubrows bool)
 	ReloadPredicate()
 	PredicateForRow(row int) foundation.Predicate
-	Delegate() RuleEditorDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	IsEditable() bool
 	SetEditable(value bool)
@@ -163,8 +163,8 @@ func (r_ RuleEditor) PredicateForRow(row int) foundation.Predicate {
 }
 
 // weak property
-func (r_ RuleEditor) Delegate() RuleEditorDelegateWrapper {
-	rv := objc.CallMethod[RuleEditorDelegateWrapper](r_, objc.GetSelector("delegate"))
+func (r_ RuleEditor) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](r_, objc.GetSelector("delegate"))
 	return rv
 }
 

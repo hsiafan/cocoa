@@ -17,11 +17,3 @@ func WrapScriptMessageHandlerWithReply(v ScriptMessageHandlerWithReply) objc.Obj
 
 type ScriptMessageHandlerWithReplyBase struct {
 }
-
-type ScriptMessageHandlerWithReplyWrapper struct {
-	objc.Object
-}
-
-func (s_ ScriptMessageHandlerWithReplyWrapper) UserContentController_DidReceiveScriptMessage_ReplyHandler(userContentController IUserContentController, message IScriptMessage, replyHandler func(reply objc.Object, errorMessage foundation.String)) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("userContentController:didReceiveScriptMessage:replyHandler:"), objc.ExtractPtr(userContentController), objc.ExtractPtr(message), replyHandler)
-}

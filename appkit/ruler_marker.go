@@ -31,7 +31,7 @@ type IRulerMarker interface {
 	SetRemovable(value bool)
 	MarkerLocation() float64
 	SetMarkerLocation(value float64)
-	RepresentedObject() CopyingWrapper
+	RepresentedObject() objc.Object
 	SetRepresentedObject(value objc.IObject)
 	IsDragging() bool
 }
@@ -141,8 +141,8 @@ func (r_ RulerMarker) SetMarkerLocation(value float64) {
 	objc.CallMethod[objc.Void](r_, objc.GetSelector("setMarkerLocation:"), value)
 }
 
-func (r_ RulerMarker) RepresentedObject() CopyingWrapper {
-	rv := objc.CallMethod[CopyingWrapper](r_, objc.GetSelector("representedObject"))
+func (r_ RulerMarker) RepresentedObject() objc.Object {
+	rv := objc.CallMethod[objc.Object](r_, objc.GetSelector("representedObject"))
 	return rv
 }
 

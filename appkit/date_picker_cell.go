@@ -42,7 +42,7 @@ type IDatePickerCell interface {
 	SetMinDate(value foundation.IDate)
 	MaxDate() foundation.Date
 	SetMaxDate(value foundation.IDate)
-	Delegate() DatePickerCellDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -204,8 +204,8 @@ func (d_ DatePickerCell) SetMaxDate(value foundation.IDate) {
 }
 
 // weak property
-func (d_ DatePickerCell) Delegate() DatePickerCellDelegateWrapper {
-	rv := objc.CallMethod[DatePickerCellDelegateWrapper](d_, objc.GetSelector("delegate"))
+func (d_ DatePickerCell) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("delegate"))
 	return rv
 }
 

@@ -80,37 +80,3 @@ func (p *GestureRecognizerDelegateBase) ImplementsGestureRecognizer_ShouldReceiv
 func (p *GestureRecognizerDelegateBase) GestureRecognizer_ShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
 	panic("unimpemented protocol method")
 }
-
-type GestureRecognizerDelegateWrapper struct {
-	objc.Object
-}
-
-func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldAttemptToRecognizeWithEvent(gestureRecognizer IGestureRecognizer, event IEvent) bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(event))
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateWrapper) GestureRecognizerShouldBegin(gestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizerShouldBegin:"), objc.ExtractPtr(gestureRecognizer))
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(otherGestureRecognizer))
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldRequireFailureOfGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(otherGestureRecognizer))
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer IGestureRecognizer, otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(otherGestureRecognizer))
-	return rv
-}
-
-func (g_ GestureRecognizerDelegateWrapper) GestureRecognizer_ShouldReceiveTouch(gestureRecognizer IGestureRecognizer, touch ITouch) bool {
-	rv := objc.CallMethod[bool](g_, objc.GetSelector("gestureRecognizer:shouldReceiveTouch:"), objc.ExtractPtr(gestureRecognizer), objc.ExtractPtr(touch))
-	return rv
-}

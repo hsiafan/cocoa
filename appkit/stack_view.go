@@ -32,7 +32,7 @@ type IStackView interface {
 	SetVisibilityPriority_ForView(priority StackViewVisibilityPriority, view IView)
 	SetClippingResistancePriority_ForOrientation(clippingResistancePriority LayoutPriority, orientation LayoutConstraintOrientation)
 	SetHuggingPriority_ForOrientation(huggingPriority LayoutPriority, orientation LayoutConstraintOrientation)
-	Delegate() StackViewDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	ArrangedSubviews() []View
 	Views() []View
@@ -165,8 +165,8 @@ func (s_ StackView) SetHuggingPriority_ForOrientation(huggingPriority LayoutPrio
 }
 
 // weak property
-func (s_ StackView) Delegate() StackViewDelegateWrapper {
-	rv := objc.CallMethod[StackViewDelegateWrapper](s_, objc.GetSelector("delegate"))
+func (s_ StackView) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](s_, objc.GetSelector("delegate"))
 	return rv
 }
 

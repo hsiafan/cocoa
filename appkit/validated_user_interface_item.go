@@ -36,17 +36,3 @@ func (p *ValidatedUserInterfaceItemBase) ImplementsTag() bool {
 func (p *ValidatedUserInterfaceItemBase) Tag() int {
 	panic("unimpemented protocol method")
 }
-
-type ValidatedUserInterfaceItemWrapper struct {
-	objc.Object
-}
-
-func (v_ ValidatedUserInterfaceItemWrapper) Action() objc.Selector {
-	rv := objc.CallMethod[objc.Selector](v_, objc.GetSelector("action"))
-	return rv
-}
-
-func (v_ ValidatedUserInterfaceItemWrapper) Tag() int {
-	rv := objc.CallMethod[int](v_, objc.GetSelector("tag"))
-	return rv
-}

@@ -18,7 +18,7 @@ type ICandidateListTouchBarItem interface {
 	UpdateWithInsertionPointVisibility(isVisible bool)
 	Client() View
 	SetClient(value IView)
-	Delegate() CandidateListTouchBarItemDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	AllowsTextInputContextCandidates() bool
 	SetAllowsTextInputContextCandidates(value bool)
@@ -81,8 +81,8 @@ func (c_ CandidateListTouchBarItem) SetClient(value IView) {
 }
 
 // weak property
-func (c_ CandidateListTouchBarItem) Delegate() CandidateListTouchBarItemDelegateWrapper {
-	rv := objc.CallMethod[CandidateListTouchBarItemDelegateWrapper](c_, objc.GetSelector("delegate"))
+func (c_ CandidateListTouchBarItem) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](c_, objc.GetSelector("delegate"))
 	return rv
 }
 

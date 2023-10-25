@@ -14,7 +14,3 @@ func WrapCopying(v Copying) objc.Object {
 
 type CopyingBase struct {
 }
-
-type CopyingWrapper struct {
-	objc.Object
-}

@@ -113,7 +113,7 @@ type ITableView interface {
 	TextShouldEndEditing(textObject IText) bool
 	// deprecated
 	TextDidEndEditing(notification foundation.INotification)
-	DataSource() TableViewDataSourceWrapper
+	DataSource() objc.Object
 	SetDataSource(value objc.IObject)
 	UsesStaticContents() bool
 	SetUsesStaticContents(value bool)
@@ -179,7 +179,7 @@ type ITableView interface {
 	SetAutosaveTableColumns(value bool)
 	AutosaveName() TableViewAutosaveName
 	SetAutosaveName(value TableViewAutosaveName)
-	Delegate() TableViewDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	HighlightedTableColumn() TableColumn
 	SetHighlightedTableColumn(value ITableColumn)
@@ -586,8 +586,8 @@ func (t_ TableView) TextDidEndEditing(notification foundation.INotification) {
 }
 
 // weak property
-func (t_ TableView) DataSource() TableViewDataSourceWrapper {
-	rv := objc.CallMethod[TableViewDataSourceWrapper](t_, objc.GetSelector("dataSource"))
+func (t_ TableView) DataSource() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("dataSource"))
 	return rv
 }
 
@@ -893,8 +893,8 @@ func (t_ TableView) SetAutosaveName(value TableViewAutosaveName) {
 }
 
 // weak property
-func (t_ TableView) Delegate() TableViewDelegateWrapper {
-	rv := objc.CallMethod[TableViewDelegateWrapper](t_, objc.GetSelector("delegate"))
+func (t_ TableView) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](t_, objc.GetSelector("delegate"))
 	return rv
 }
 

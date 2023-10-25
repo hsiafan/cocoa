@@ -16,11 +16,3 @@ func WrapScriptMessageHandler(v ScriptMessageHandler) objc.Object {
 
 type ScriptMessageHandlerBase struct {
 }
-
-type ScriptMessageHandlerWrapper struct {
-	objc.Object
-}
-
-func (s_ ScriptMessageHandlerWrapper) UserContentController_DidReceiveScriptMessage(userContentController IUserContentController, message IScriptMessage) {
-	objc.CallMethod[objc.Void](s_, objc.GetSelector("userContentController:didReceiveScriptMessage:"), objc.ExtractPtr(userContentController), objc.ExtractPtr(message))
-}

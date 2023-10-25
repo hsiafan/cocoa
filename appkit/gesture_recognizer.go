@@ -62,7 +62,7 @@ type IGestureRecognizer interface {
 	SetDelaysMagnificationEvents(value bool)
 	DelaysRotationEvents() bool
 	SetDelaysRotationEvents(value bool)
-	Delegate() GestureRecognizerDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	PressureConfiguration() PressureConfiguration
 	SetPressureConfiguration(value IPressureConfiguration)
@@ -308,8 +308,8 @@ func (g_ GestureRecognizer) SetDelaysRotationEvents(value bool) {
 }
 
 // weak property
-func (g_ GestureRecognizer) Delegate() GestureRecognizerDelegateWrapper {
-	rv := objc.CallMethod[GestureRecognizerDelegateWrapper](g_, objc.GetSelector("delegate"))
+func (g_ GestureRecognizer) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](g_, objc.GetSelector("delegate"))
 	return rv
 }
 

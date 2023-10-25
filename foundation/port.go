@@ -17,7 +17,7 @@ type IPort interface {
 	objc.IObject
 	Invalidate()
 	SetDelegate(anObject objc.IObject)
-	Delegate() PortDelegateWrapper
+	Delegate() objc.Object
 	RemoveFromRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
 	ScheduleInRunLoop_ForMode(runLoop IRunLoop, mode RunLoopMode)
 	IsValid() bool
@@ -67,8 +67,8 @@ func (p_ Port) SetDelegate(anObject objc.IObject) {
 	objc.CallMethod[objc.Void](p_, objc.GetSelector("setDelegate:"), objc.ExtractPtr(anObject))
 }
 
-func (p_ Port) Delegate() PortDelegateWrapper {
-	rv := objc.CallMethod[PortDelegateWrapper](p_, objc.GetSelector("delegate"))
+func (p_ Port) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("delegate"))
 	return rv
 }
 

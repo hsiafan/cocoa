@@ -160,7 +160,7 @@ type IWindow interface {
 	// deprecated
 	UserSpaceScaleFactor() float64
 	InitWithWindowRef(windowRef unsafe.Pointer) Window
-	Delegate() WindowDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 	ContentViewController() ViewController
 	SetContentViewController(value IViewController)
@@ -1019,8 +1019,8 @@ func (w_ Window) InitWithWindowRef(windowRef unsafe.Pointer) Window {
 }
 
 // weak property
-func (w_ Window) Delegate() WindowDelegateWrapper {
-	rv := objc.CallMethod[WindowDelegateWrapper](w_, objc.GetSelector("delegate"))
+func (w_ Window) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](w_, objc.GetSelector("delegate"))
 	return rv
 }
 

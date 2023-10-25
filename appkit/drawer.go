@@ -29,7 +29,7 @@ type IDrawer interface {
 	// deprecated
 	Toggle(sender objc.IObject)
 	// deprecated
-	Delegate() DrawerDelegateWrapper
+	Delegate() objc.Object
 	// deprecated
 	SetDelegate(value objc.IObject)
 	// deprecated
@@ -137,8 +137,8 @@ func (d_ Drawer) Toggle(sender objc.IObject) {
 
 // weak property
 // deprecated
-func (d_ Drawer) Delegate() DrawerDelegateWrapper {
-	rv := objc.CallMethod[DrawerDelegateWrapper](d_, objc.GetSelector("delegate"))
+func (d_ Drawer) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](d_, objc.GetSelector("delegate"))
 	return rv
 }
 

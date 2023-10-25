@@ -34,7 +34,7 @@ type IPopover interface {
 	SetContentSize(value foundation.Size)
 	IsShown() bool
 	IsDetached() bool
-	Delegate() PopoverDelegateWrapper
+	Delegate() objc.Object
 	SetDelegate(value objc.IObject)
 }
 
@@ -150,8 +150,8 @@ func (p_ Popover) IsDetached() bool {
 }
 
 // weak property
-func (p_ Popover) Delegate() PopoverDelegateWrapper {
-	rv := objc.CallMethod[PopoverDelegateWrapper](p_, objc.GetSelector("delegate"))
+func (p_ Popover) Delegate() objc.Object {
+	rv := objc.CallMethod[objc.Object](p_, objc.GetSelector("delegate"))
 	return rv
 }
 
