@@ -291,7 +291,7 @@ func directPointer(t reflect.Type) bool {
 }
 
 // AddMethod add a new objc instance method with a go function.
-// The first param of go function should be the object instance, the second param should be the method selector.
+// The first param of go function should be the object instance, other params are mapped from objc method params.
 func AddMethod(class Class, sel Selector, f any) bool {
 	rf := reflect.ValueOf(f)
 
@@ -306,7 +306,7 @@ func AddMethod(class Class, sel Selector, f any) bool {
 }
 
 // ReplaceMethod replace objc instance method with a go function.
-// The first param of go function should be the object instance, the second param should be the method selector.
+// The first param of go function should be the object instance, other params are mapped from objc method params.
 func ReplaceMethod(class Class, sel Selector, f any) {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), false)
@@ -320,7 +320,7 @@ func ReplaceMethod(class Class, sel Selector, f any) {
 }
 
 // AddClassMethod add a new objc class method with a go function.
-// The first param of go function should be the class, the second param should be the method selector.
+// The first param of go function should be the class, other params are mapped from objc method params.
 func AddClassMethod(class Class, sel Selector, f any) bool {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), true)
@@ -338,6 +338,7 @@ func AddClassMethod(class Class, sel Selector, f any) bool {
 }
 
 // ReplaceClassMethod replace objc class method with a go function.
+// The first param of go function should be the class, other params are mapped from objc method params.
 func ReplaceClassMethod(class Class, sel Selector, f any) {
 	rf := reflect.ValueOf(f)
 	typeEncoding := _getMethodTypeEncoding(rf.Type(), true)

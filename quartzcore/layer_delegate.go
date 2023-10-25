@@ -70,3 +70,38 @@ func (p *LayerDelegateBase) ImplementsActionForLayer_ForKey() bool {
 func (p *LayerDelegateBase) ActionForLayer_ForKey(layer Layer, event string) objc.IObject {
 	panic("unimpemented protocol method")
 }
+
+type LayerDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewLayerDelegateCreator(name string) *LayerDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &LayerDelegateCreator{className: name, class: class}
+}
+
+func (c *LayerDelegateCreator) SetDisplayLayer(handle func(o objc.Object, layer Layer)) {
+	objc.AddMethod(c.class, objc.GetSelector("displayLayer:"), handle)
+}
+
+func (c *LayerDelegateCreator) SetDrawLayer_InContext(handle func(o objc.Object, layer Layer, ctx coregraphics.ContextRef)) {
+	objc.AddMethod(c.class, objc.GetSelector("drawLayer:inContext:"), handle)
+}
+
+func (c *LayerDelegateCreator) SetLayerWillDraw(handle func(o objc.Object, layer Layer)) {
+	objc.AddMethod(c.class, objc.GetSelector("layerWillDraw:"), handle)
+}
+
+func (c *LayerDelegateCreator) SetLayoutSublayersOfLayer(handle func(o objc.Object, layer Layer)) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutSublayersOfLayer:"), handle)
+}
+
+func (c *LayerDelegateCreator) SetActionForLayer_ForKey(handle func(o objc.Object, layer Layer, event string) objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("actionForLayer:forKey:"), handle)
+}
+
+func (c *LayerDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

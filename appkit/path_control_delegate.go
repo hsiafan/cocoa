@@ -80,3 +80,42 @@ func (p *PathControlDelegateBase) ImplementsPathControl_ShouldDragItem_WithPaste
 func (p *PathControlDelegateBase) PathControl_ShouldDragItem_WithPasteboard(pathControl PathControl, pathItem PathControlItem, pasteboard Pasteboard) bool {
 	panic("unimpemented protocol method")
 }
+
+type PathControlDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewPathControlDelegateCreator(name string) *PathControlDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &PathControlDelegateCreator{className: name, class: class}
+}
+
+func (c *PathControlDelegateCreator) SetPathControl_ShouldDragPathComponentCell_WithPasteboard(handle func(o objc.Object, pathControl PathControl, pathComponentCell PathComponentCell, pasteboard Pasteboard) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("pathControl:shouldDragPathComponentCell:withPasteboard:"), handle)
+}
+
+func (c *PathControlDelegateCreator) SetPathControl_ValidateDrop(handle func(o objc.Object, pathControl PathControl, info objc.Object) DragOperation) {
+	objc.AddMethod(c.class, objc.GetSelector("pathControl:validateDrop:"), handle)
+}
+
+func (c *PathControlDelegateCreator) SetPathControl_AcceptDrop(handle func(o objc.Object, pathControl PathControl, info objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("pathControl:acceptDrop:"), handle)
+}
+
+func (c *PathControlDelegateCreator) SetPathControl_WillDisplayOpenPanel(handle func(o objc.Object, pathControl PathControl, openPanel OpenPanel)) {
+	objc.AddMethod(c.class, objc.GetSelector("pathControl:willDisplayOpenPanel:"), handle)
+}
+
+func (c *PathControlDelegateCreator) SetPathControl_WillPopUpMenu(handle func(o objc.Object, pathControl PathControl, menu Menu)) {
+	objc.AddMethod(c.class, objc.GetSelector("pathControl:willPopUpMenu:"), handle)
+}
+
+func (c *PathControlDelegateCreator) SetPathControl_ShouldDragItem_WithPasteboard(handle func(o objc.Object, pathControl PathControl, pathItem PathControlItem, pasteboard Pasteboard) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("pathControl:shouldDragItem:withPasteboard:"), handle)
+}
+
+func (c *PathControlDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

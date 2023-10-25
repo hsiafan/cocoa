@@ -16,3 +16,17 @@ func WrapMatrixDelegate(v MatrixDelegate) objc.Object {
 type MatrixDelegateBase struct {
 	ControlTextEditingDelegateBase
 }
+type MatrixDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewMatrixDelegateCreator(name string) *MatrixDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &MatrixDelegateCreator{className: name, class: class}
+}
+
+func (c *MatrixDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

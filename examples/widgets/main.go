@@ -155,11 +155,25 @@ func initAndRun() {
 	appkit.MakeTextView(sv2.DocumentView().Ptr()).SetAllowsUndo(true)
 	w.ContentView().AddSubview(sv2)
 
-	w.SetDelegate(appkit.WrapWindowDelegate(&myWindowDelegate{w: w}))
+	wdCreator := appkit.NewWindowDelegateCreator("MyWindowDelegate")
+	wdCreator.SetWindowDidMove(func(o objc.Object, notification foundation.Notification) {
+		frame := w.Frame()
+		origin := frame.Origin
+		fmt.Println("window move to ", origin.X, origin.Y)
+	})
+	w.SetDelegate(wdCreator.Create())
 	w.Center()
 	w.MakeKeyAndOrderFront(nil)
 
-	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app}))
+	creator := appkit.NewApplicationDelegateCreator("MyApplicationDelegate")
+	creator.SetApplicationDidFinishLaunching(func(o objc.Object, notification foundation.Notification) {
+		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+		app.ActivateIgnoringOtherApps(true)
+	})
+	creator.SetApplicationShouldTerminateAfterLastWindowClosed(func(o objc.Object, sender appkit.Application) bool {
+		return true
+	})
+	app.SetDelegate(creator.Create())
 
 	app.Run()
 }
@@ -178,43 +192,6 @@ func (p *myTextFieldDelegate) ControlTextDidChange(obj foundation.Notification) 
 	dispatch.GetMainQueue().DispatchAsync(func() {
 		p.label.SetStringValue(p.tf.StringValue())
 	})
-}
-
-type myWindowDelegate struct {
-	appkit.WindowDelegateBase
-	w appkit.Window
-}
-
-func (p *myWindowDelegate) ImplementsWindowDidMove() bool {
-	return true
-}
-
-func (p *myWindowDelegate) WindowDidMove(notification foundation.Notification) {
-	frame := p.w.Frame()
-	origin := frame.Origin
-	fmt.Println("window move to ", origin.X, origin.Y)
-}
-
-type myApplicationDelegate struct {
-	appkit.ApplicationDelegateBase
-	app appkit.Application
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-	p.app.ActivateIgnoringOtherApps(true)
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
-	return true
 }
 
 func main() {

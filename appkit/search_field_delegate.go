@@ -38,3 +38,26 @@ func (p *SearchFieldDelegateBase) ImplementsSearchFieldDidEndSearching() bool {
 func (p *SearchFieldDelegateBase) SearchFieldDidEndSearching(sender SearchField) {
 	panic("unimpemented protocol method")
 }
+
+type SearchFieldDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewSearchFieldDelegateCreator(name string) *SearchFieldDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &SearchFieldDelegateCreator{className: name, class: class}
+}
+
+func (c *SearchFieldDelegateCreator) SetSearchFieldDidStartSearching(handle func(o objc.Object, sender SearchField)) {
+	objc.AddMethod(c.class, objc.GetSelector("searchFieldDidStartSearching:"), handle)
+}
+
+func (c *SearchFieldDelegateCreator) SetSearchFieldDidEndSearching(handle func(o objc.Object, sender SearchField)) {
+	objc.AddMethod(c.class, objc.GetSelector("searchFieldDidEndSearching:"), handle)
+}
+
+func (c *SearchFieldDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

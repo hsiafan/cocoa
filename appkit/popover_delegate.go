@@ -103,3 +103,50 @@ func (p *PopoverDelegateBase) ImplementsPopoverShouldDetach() bool {
 func (p *PopoverDelegateBase) PopoverShouldDetach(popover Popover) bool {
 	panic("unimpemented protocol method")
 }
+
+type PopoverDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewPopoverDelegateCreator(name string) *PopoverDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &PopoverDelegateCreator{className: name, class: class}
+}
+
+func (c *PopoverDelegateCreator) SetDetachableWindowForPopover(handle func(o objc.Object, popover Popover) IWindow) {
+	objc.AddMethod(c.class, objc.GetSelector("detachableWindowForPopover:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverShouldClose(handle func(o objc.Object, popover Popover) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverShouldClose:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverWillShow(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverWillShow:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverDidShow(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverDidShow:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverWillClose(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverWillClose:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverDidClose(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverDidClose:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverDidDetach(handle func(o objc.Object, popover Popover)) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverDidDetach:"), handle)
+}
+
+func (c *PopoverDelegateCreator) SetPopoverShouldDetach(handle func(o objc.Object, popover Popover) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("popoverShouldDetach:"), handle)
+}
+
+func (c *PopoverDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

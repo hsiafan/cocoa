@@ -336,3 +336,134 @@ func (p *TableViewDelegateBase) ImplementsTableView_RowActionsForRow_Edge() bool
 func (p *TableViewDelegateBase) TableView_RowActionsForRow_Edge(tableView TableView, row int, edge TableRowActionEdge) []ITableViewRowAction {
 	panic("unimpemented protocol method")
 }
+
+type TableViewDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewTableViewDelegateCreator(name string) *TableViewDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &TableViewDelegateCreator{className: name, class: class}
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ViewForTableColumn_Row(handle func(o objc.Object, tableView TableView, tableColumn TableColumn, row int) IView) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:viewForTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_RowViewForRow(handle func(o objc.Object, tableView TableView, row int) ITableRowView) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:rowViewForRow:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_DidAddRowView_ForRow(handle func(o objc.Object, tableView TableView, rowView TableRowView, row int)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:didAddRowView:forRow:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_DidRemoveRowView_ForRow(handle func(o objc.Object, tableView TableView, rowView TableRowView, row int)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:didRemoveRowView:forRow:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_IsGroupRow(handle func(o objc.Object, tableView TableView, row int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:isGroupRow:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_WillDisplayCell_ForTableColumn_Row(handle func(o objc.Object, tableView TableView, cell objc.Object, tableColumn TableColumn, row int)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:willDisplayCell:forTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_DataCellForTableColumn_Row(handle func(o objc.Object, tableView TableView, tableColumn TableColumn, row int) ICell) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:dataCellForTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldShowCellExpansionForTableColumn_Row(handle func(o objc.Object, tableView TableView, tableColumn TableColumn, row int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldShowCellExpansionForTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ToolTipForCell_Rect_TableColumn_Row_MouseLocation(handle func(o objc.Object, tableView TableView, cell Cell, rect *foundation.Rect, tableColumn TableColumn, row int, mouseLocation foundation.Point) string) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldEditTableColumn_Row(handle func(o objc.Object, tableView TableView, tableColumn TableColumn, row int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldEditTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_HeightOfRow(handle func(o objc.Object, tableView TableView, row int) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:heightOfRow:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_SizeToFitWidthOfColumn(handle func(o objc.Object, tableView TableView, column int) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:sizeToFitWidthOfColumn:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetSelectionShouldChangeInTableView(handle func(o objc.Object, tableView TableView) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("selectionShouldChangeInTableView:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldSelectRow(handle func(o objc.Object, tableView TableView, row int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldSelectRow:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_SelectionIndexesForProposedSelection(handle func(o objc.Object, tableView TableView, proposedSelectionIndexes foundation.IndexSet) foundation.IIndexSet) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:selectionIndexesForProposedSelection:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldSelectTableColumn(handle func(o objc.Object, tableView TableView, tableColumn TableColumn) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldSelectTableColumn:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableViewSelectionIsChanging(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableViewSelectionIsChanging:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableViewSelectionDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableViewSelectionDidChange:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldTypeSelectForEvent_WithCurrentSearchString(handle func(o objc.Object, tableView TableView, event Event, searchString string) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldTypeSelectForEvent:withCurrentSearchString:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_TypeSelectStringForTableColumn_Row(handle func(o objc.Object, tableView TableView, tableColumn TableColumn, row int) string) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:typeSelectStringForTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_NextTypeSelectMatchFromRow_ToRow_ForString(handle func(o objc.Object, tableView TableView, startRow int, endRow int, searchString string) int) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:nextTypeSelectMatchFromRow:toRow:forString:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldReorderColumn_ToColumn(handle func(o objc.Object, tableView TableView, columnIndex int, newColumnIndex int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldReorderColumn:toColumn:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_DidDragTableColumn(handle func(o objc.Object, tableView TableView, tableColumn TableColumn)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:didDragTableColumn:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableViewColumnDidMove(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableViewColumnDidMove:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableViewColumnDidResize(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableViewColumnDidResize:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_DidClickTableColumn(handle func(o objc.Object, tableView TableView, tableColumn TableColumn)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:didClickTableColumn:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_MouseDownInHeaderOfTableColumn(handle func(o objc.Object, tableView TableView, tableColumn TableColumn)) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:mouseDownInHeaderOfTableColumn:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_ShouldTrackCell_ForTableColumn_Row(handle func(o objc.Object, tableView TableView, cell Cell, tableColumn TableColumn, row int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:shouldTrackCell:forTableColumn:row:"), handle)
+}
+
+func (c *TableViewDelegateCreator) SetTableView_RowActionsForRow_Edge(handle func(o objc.Object, tableView TableView, row int, edge TableRowActionEdge) []ITableViewRowAction) {
+	objc.AddMethod(c.class, objc.GetSelector("tableView:rowActionsForRow:edge:"), handle)
+}
+
+func (c *TableViewDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

@@ -2,6 +2,8 @@ package gen
 
 import "C"
 import (
+	"strings"
+
 	"github.com/hsiafan/cocoa/generate/internal/set"
 	"github.com/hsiafan/cocoa/generate/typing"
 )
@@ -107,6 +109,10 @@ func (p *Protocol) WriteGoCode(w *CodeWriter) {
 		// Prototol base impl struct
 		w.WriteLine("")
 		p.writeProtocolBaseStruct(w)
+
+		if strings.Contains(p.Type.Name, "Delegate") {
+			p.writeProtocolCreator(w)
+		}
 	}
 }
 
@@ -170,6 +176,42 @@ func (p *Protocol) writeProtocolBaseStruct(w *CodeWriter) {
 			w.WriteLine("}")
 		}
 	}
+}
+
+// A Helper for create protocol instance, no need to wrap a go interface
+func (p *Protocol) writeProtocolCreator(w *CodeWriter) {
+	creatorName := p.Type.GName + "Creator"
+	w.WriteLine("type " + creatorName + " struct {")
+	w.WriteLine("\tclassName string")
+	w.WriteLine("\tclass objc.Class")
+	w.WriteLine("}")
+
+	w.WriteLineF("func New%s(name string) *%s {", creatorName, creatorName)
+	w.Indent()
+	w.WriteLineF("class := objc.AllocateClassPair(objc.GetClass(\"NSObject\"), name, 0)")
+	w.WriteLine("objc.RegisterClassPair(class)")
+	w.WriteLineF("return &%s{className: name, class: class}", creatorName)
+	w.UnIndent()
+	w.WriteLine("}")
+
+	receiver := "c"
+	for _, m := range p.allMethods() {
+		if !m.Required {
+			w.WriteLine("")
+			if m.Deprecated {
+				w.WriteLine("// deprecated")
+			}
+			funcSign := "(o objc.Object, " + m.ProtocolGoFuncFieldType(p.Type.Module)[1:]
+			w.WriteLineF("func (%s *%s) Set%s(handle func %s) {", receiver, creatorName, m.ProtocolGoFuncName(), funcSign)
+			w.WriteLineF("\tobjc.AddMethod(c.class, objc.GetSelector(\"%s\"), handle)", m.Selector())
+			w.WriteLine("}")
+		}
+	}
+
+	w.WriteLine("")
+	w.WriteLineF("func (%s *%s) Create() objc.Object {", receiver, creatorName)
+	w.WriteLineF("\treturn %s.class.CreateInstance(0)", receiver)
+	w.WriteLine("}")
 }
 
 // generate protocol instance wrapper, for protocol which passed from objc to go code.

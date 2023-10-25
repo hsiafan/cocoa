@@ -25,3 +25,22 @@ func (p *SoundDelegateBase) ImplementsSound_DidFinishPlaying() bool {
 func (p *SoundDelegateBase) Sound_DidFinishPlaying(sound Sound, flag bool) {
 	panic("unimpemented protocol method")
 }
+
+type SoundDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewSoundDelegateCreator(name string) *SoundDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &SoundDelegateCreator{className: name, class: class}
+}
+
+func (c *SoundDelegateCreator) SetSound_DidFinishPlaying(handle func(o objc.Object, sound Sound, flag bool)) {
+	objc.AddMethod(c.class, objc.GetSelector("sound:didFinishPlaying:"), handle)
+}
+
+func (c *SoundDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

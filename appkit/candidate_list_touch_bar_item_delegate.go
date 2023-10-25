@@ -58,3 +58,34 @@ func (p *CandidateListTouchBarItemDelegateBase) ImplementsCandidateListTouchBarI
 func (p *CandidateListTouchBarItemDelegateBase) CandidateListTouchBarItem_ChangedCandidateListVisibility(anItem CandidateListTouchBarItem, isVisible bool) {
 	panic("unimpemented protocol method")
 }
+
+type CandidateListTouchBarItemDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewCandidateListTouchBarItemDelegateCreator(name string) *CandidateListTouchBarItemDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &CandidateListTouchBarItemDelegateCreator{className: name, class: class}
+}
+
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_BeginSelectingCandidateAtIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, index int)) {
+	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), handle)
+}
+
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangeSelectionFromCandidateAtIndex_ToIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, previousIndex int, index int)) {
+	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), handle)
+}
+
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_EndSelectingCandidateAtIndex(handle func(o objc.Object, anItem CandidateListTouchBarItem, index int)) {
+	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), handle)
+}
+
+func (c *CandidateListTouchBarItemDelegateCreator) SetCandidateListTouchBarItem_ChangedCandidateListVisibility(handle func(o objc.Object, anItem CandidateListTouchBarItem, isVisible bool)) {
+	objc.AddMethod(c.class, objc.GetSelector("candidateListTouchBarItem:changedCandidateListVisibility:"), handle)
+}
+
+func (c *CandidateListTouchBarItemDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

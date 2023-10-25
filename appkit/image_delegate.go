@@ -70,3 +70,38 @@ func (p *ImageDelegateBase) ImplementsImage_WillLoadRepresentation() bool {
 func (p *ImageDelegateBase) Image_WillLoadRepresentation(image Image, rep ImageRep) {
 	panic("unimpemented protocol method")
 }
+
+type ImageDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewImageDelegateCreator(name string) *ImageDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &ImageDelegateCreator{className: name, class: class}
+}
+
+func (c *ImageDelegateCreator) SetImageDidNotDraw_InRect(handle func(o objc.Object, sender Image, rect foundation.Rect) IImage) {
+	objc.AddMethod(c.class, objc.GetSelector("imageDidNotDraw:inRect:"), handle)
+}
+
+func (c *ImageDelegateCreator) SetImage_DidLoadPartOfRepresentation_WithValidRows(handle func(o objc.Object, image Image, rep ImageRep, rows int)) {
+	objc.AddMethod(c.class, objc.GetSelector("image:didLoadPartOfRepresentation:withValidRows:"), handle)
+}
+
+func (c *ImageDelegateCreator) SetImage_DidLoadRepresentation_WithStatus(handle func(o objc.Object, image Image, rep ImageRep, status ImageLoadStatus)) {
+	objc.AddMethod(c.class, objc.GetSelector("image:didLoadRepresentation:withStatus:"), handle)
+}
+
+func (c *ImageDelegateCreator) SetImage_DidLoadRepresentationHeader(handle func(o objc.Object, image Image, rep ImageRep)) {
+	objc.AddMethod(c.class, objc.GetSelector("image:didLoadRepresentationHeader:"), handle)
+}
+
+func (c *ImageDelegateCreator) SetImage_WillLoadRepresentation(handle func(o objc.Object, image Image, rep ImageRep)) {
+	objc.AddMethod(c.class, objc.GetSelector("image:willLoadRepresentation:"), handle)
+}
+
+func (c *ImageDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

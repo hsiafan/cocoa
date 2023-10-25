@@ -391,3 +391,155 @@ func (p *BrowserDelegateBase) ImplementsBrowser_ShouldShowCellExpansionForRow_Co
 func (p *BrowserDelegateBase) Browser_ShouldShowCellExpansionForRow_Column(browser Browser, row int, column int) bool {
 	panic("unimpemented protocol method")
 }
+
+type BrowserDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewBrowserDelegateCreator(name string) *BrowserDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &BrowserDelegateCreator{className: name, class: class}
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_IsColumnValid(handle func(o objc.Object, sender Browser, column int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:isColumnValid:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_NumberOfRowsInColumn(handle func(o objc.Object, sender Browser, column int) int) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:numberOfRowsInColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_NumberOfChildrenOfItem(handle func(o objc.Object, browser Browser, item objc.Object) int) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:numberOfChildrenOfItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_TitleOfColumn(handle func(o objc.Object, sender Browser, column int) string) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:titleOfColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_ShouldTypeSelectForEvent_WithCurrentSearchString(handle func(o objc.Object, browser Browser, event Event, searchString string) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:shouldTypeSelectForEvent:withCurrentSearchString:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_TypeSelectStringForRow_InColumn(handle func(o objc.Object, browser Browser, row int, column int) string) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:typeSelectStringForRow:inColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_NextTypeSelectMatchFromRow_ToRow_InColumn_ForString(handle func(o objc.Object, browser Browser, startRow int, endRow int, column int, searchString string) int) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_SelectCellWithString_InColumn(handle func(o objc.Object, sender Browser, title string, column int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:selectCellWithString:inColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_SelectRow_InColumn(handle func(o objc.Object, sender Browser, row int, column int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:selectRow:inColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_SelectionIndexesForProposedSelection_InColumn(handle func(o objc.Object, browser Browser, proposedSelectionIndexes foundation.IndexSet, column int) foundation.IIndexSet) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:selectionIndexesForProposedSelection:inColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_Child_OfItem(handle func(o objc.Object, browser Browser, index int, item objc.Object) objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:child:ofItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_IsLeafItem(handle func(o objc.Object, browser Browser, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:isLeafItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_ShouldEditItem(handle func(o objc.Object, browser Browser, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:shouldEditItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_ObjectValueForItem(handle func(o objc.Object, browser Browser, item objc.Object) objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:objectValueForItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_SetObjectValue_ForItem(handle func(o objc.Object, browser Browser, object objc.Object, item objc.Object)) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:setObjectValue:forItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetRootItemForBrowser(handle func(o objc.Object, browser Browser) objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("rootItemForBrowser:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_PreviewViewControllerForLeafItem(handle func(o objc.Object, browser Browser, item objc.Object) IViewController) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:previewViewControllerForLeafItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_HeaderViewControllerForItem(handle func(o objc.Object, browser Browser, item objc.Object) IViewController) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:headerViewControllerForItem:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_CreateRowsForColumn_InMatrix(handle func(o objc.Object, sender Browser, column int, matrix Matrix)) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:createRowsForColumn:inMatrix:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_WillDisplayCell_AtRow_Column(handle func(o objc.Object, sender Browser, cell objc.Object, row int, column int)) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:willDisplayCell:atRow:column:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_DidChangeLastColumn_ToColumn(handle func(o objc.Object, browser Browser, oldLastColumn int, column int)) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:didChangeLastColumn:toColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowserWillScroll(handle func(o objc.Object, sender Browser)) {
+	objc.AddMethod(c.class, objc.GetSelector("browserWillScroll:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowserDidScroll(handle func(o objc.Object, sender Browser)) {
+	objc.AddMethod(c.class, objc.GetSelector("browserDidScroll:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_CanDragRowsWithIndexes_InColumn_WithEvent(handle func(o objc.Object, browser Browser, rowIndexes foundation.IndexSet, column int, event Event) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:canDragRowsWithIndexes:inColumn:withEvent:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_DraggingImageForRowsWithIndexes_InColumn_WithEvent_Offset(handle func(o objc.Object, browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset *foundation.Point) IImage) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_ValidateDrop_ProposedRow_Column_DropOperation(handle func(o objc.Object, browser Browser, info objc.Object, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:validateDrop:proposedRow:column:dropOperation:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_AcceptDrop_AtRow_Column_DropOperation(handle func(o objc.Object, browser Browser, info objc.Object, row int, column int, dropOperation BrowserDropOperation) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:acceptDrop:atRow:column:dropOperation:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_WriteRowsWithIndexes_InColumn_ToPasteboard(handle func(o objc.Object, browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:writeRowsWithIndexes:inColumn:toPasteboard:"), handle)
+}
+
+// deprecated
+func (c *BrowserDelegateCreator) SetBrowser_NamesOfPromisedFilesDroppedAtDestination_ForDraggedRowsWithIndexes_InColumn(handle func(o objc.Object, browser Browser, dropDestination foundation.URL, rowIndexes foundation.IndexSet, column int) []string) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:inColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_ShouldSizeColumn_ForUserResize_ToWidth(handle func(o objc.Object, browser Browser, columnIndex int, forUserResize bool, suggestedWidth float64) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:shouldSizeColumn:forUserResize:toWidth:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_SizeToFitWidthOfColumn(handle func(o objc.Object, browser Browser, columnIndex int) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:sizeToFitWidthOfColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowserColumnConfigurationDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("browserColumnConfigurationDidChange:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_HeightOfRow_InColumn(handle func(o objc.Object, browser Browser, row int, columnIndex int) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:heightOfRow:inColumn:"), handle)
+}
+
+func (c *BrowserDelegateCreator) SetBrowser_ShouldShowCellExpansionForRow_Column(handle func(o objc.Object, browser Browser, row int, column int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("browser:shouldShowCellExpansionForRow:column:"), handle)
+}
+
+func (c *BrowserDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

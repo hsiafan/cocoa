@@ -92,3 +92,46 @@ func (p *MenuDelegateBase) ImplementsMenuNeedsUpdate() bool {
 func (p *MenuDelegateBase) MenuNeedsUpdate(menu Menu) {
 	panic("unimpemented protocol method")
 }
+
+type MenuDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewMenuDelegateCreator(name string) *MenuDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &MenuDelegateCreator{className: name, class: class}
+}
+
+func (c *MenuDelegateCreator) SetMenu_UpdateItem_AtIndex_ShouldCancel(handle func(o objc.Object, menu Menu, item MenuItem, index int, shouldCancel bool) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("menu:updateItem:atIndex:shouldCancel:"), handle)
+}
+
+func (c *MenuDelegateCreator) SetConfinementRectForMenu_OnScreen(handle func(o objc.Object, menu Menu, screen Screen) foundation.Rect) {
+	objc.AddMethod(c.class, objc.GetSelector("confinementRectForMenu:onScreen:"), handle)
+}
+
+func (c *MenuDelegateCreator) SetMenu_WillHighlightItem(handle func(o objc.Object, menu Menu, item MenuItem)) {
+	objc.AddMethod(c.class, objc.GetSelector("menu:willHighlightItem:"), handle)
+}
+
+func (c *MenuDelegateCreator) SetMenuWillOpen(handle func(o objc.Object, menu Menu)) {
+	objc.AddMethod(c.class, objc.GetSelector("menuWillOpen:"), handle)
+}
+
+func (c *MenuDelegateCreator) SetMenuDidClose(handle func(o objc.Object, menu Menu)) {
+	objc.AddMethod(c.class, objc.GetSelector("menuDidClose:"), handle)
+}
+
+func (c *MenuDelegateCreator) SetNumberOfItemsInMenu(handle func(o objc.Object, menu Menu) int) {
+	objc.AddMethod(c.class, objc.GetSelector("numberOfItemsInMenu:"), handle)
+}
+
+func (c *MenuDelegateCreator) SetMenuNeedsUpdate(handle func(o objc.Object, menu Menu)) {
+	objc.AddMethod(c.class, objc.GetSelector("menuNeedsUpdate:"), handle)
+}
+
+func (c *MenuDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

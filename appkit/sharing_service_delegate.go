@@ -92,3 +92,46 @@ func (p *SharingServiceDelegateBase) ImplementsAnchoringViewForSharingService_Sh
 func (p *SharingServiceDelegateBase) AnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(sharingService SharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) IView {
 	panic("unimpemented protocol method")
 }
+
+type SharingServiceDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewSharingServiceDelegateCreator(name string) *SharingServiceDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &SharingServiceDelegateCreator{className: name, class: class}
+}
+
+func (c *SharingServiceDelegateCreator) SetSharingService_WillShareItems(handle func(o objc.Object, sharingService SharingService, items []objc.Object)) {
+	objc.AddMethod(c.class, objc.GetSelector("sharingService:willShareItems:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) SetSharingService_DidShareItems(handle func(o objc.Object, sharingService SharingService, items []objc.Object)) {
+	objc.AddMethod(c.class, objc.GetSelector("sharingService:didShareItems:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) SetSharingService_DidFailToShareItems_Error(handle func(o objc.Object, sharingService SharingService, items []objc.Object, error foundation.Error)) {
+	objc.AddMethod(c.class, objc.GetSelector("sharingService:didFailToShareItems:error:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) SetSharingService_SourceFrameOnScreenForShareItem(handle func(o objc.Object, sharingService SharingService, item objc.Object) foundation.Rect) {
+	objc.AddMethod(c.class, objc.GetSelector("sharingService:sourceFrameOnScreenForShareItem:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) SetSharingService_TransitionImageForShareItem_ContentRect(handle func(o objc.Object, sharingService SharingService, item objc.Object, contentRect *foundation.Rect) IImage) {
+	objc.AddMethod(c.class, objc.GetSelector("sharingService:transitionImageForShareItem:contentRect:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) SetSharingService_SourceWindowForShareItems_SharingContentScope(handle func(o objc.Object, sharingService SharingService, items []objc.Object, sharingContentScope *SharingContentScope) IWindow) {
+	objc.AddMethod(c.class, objc.GetSelector("sharingService:sourceWindowForShareItems:sharingContentScope:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) SetAnchoringViewForSharingService_ShowRelativeToRect_PreferredEdge(handle func(o objc.Object, sharingService SharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) IView) {
+	objc.AddMethod(c.class, objc.GetSelector("anchoringViewForSharingService:showRelativeToRect:preferredEdge:"), handle)
+}
+
+func (c *SharingServiceDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

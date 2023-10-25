@@ -37,35 +37,20 @@ func main() {
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app, webView: view}))
+	creator := appkit.NewApplicationDelegateCreator("MyApplicationDelegate")
+	creator.SetApplicationDidFinishLaunching(func(o objc.Object, notification foundation.Notification) {
+		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+		app.ActivateIgnoringOtherApps(true)
+		webkit.LoadURL(view, "gofs:/index.html")
+	})
+	creator.SetApplicationShouldTerminateAfterLastWindowClosed(func(o objc.Object, sender appkit.Application) bool {
+		return true
+	})
+	app.SetDelegate(creator.Create())
 
 	go func() {
 		time.Sleep(time.Second * 1)
 		runtime.GC()
 	}()
 	app.Run()
-}
-
-type myApplicationDelegate struct {
-	appkit.ApplicationDelegateBase
-	app     appkit.Application
-	webView webkit.WebView
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-	p.app.ActivateIgnoringOtherApps(true)
-	webkit.LoadURL(p.webView, "gofs:/index.html")
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
-	return true
 }

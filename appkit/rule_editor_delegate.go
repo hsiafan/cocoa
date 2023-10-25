@@ -43,3 +43,26 @@ func (p *RuleEditorDelegateBase) ImplementsRuleEditorRowsDidChange() bool {
 func (p *RuleEditorDelegateBase) RuleEditorRowsDidChange(notification foundation.Notification) {
 	panic("unimpemented protocol method")
 }
+
+type RuleEditorDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewRuleEditorDelegateCreator(name string) *RuleEditorDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &RuleEditorDelegateCreator{className: name, class: class}
+}
+
+func (c *RuleEditorDelegateCreator) SetRuleEditor_PredicatePartsForCriterion_WithDisplayValue_InRow(handle func(o objc.Object, editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), handle)
+}
+
+func (c *RuleEditorDelegateCreator) SetRuleEditorRowsDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("ruleEditorRowsDidChange:"), handle)
+}
+
+func (c *RuleEditorDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

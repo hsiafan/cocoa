@@ -61,3 +61,34 @@ func (p *ComboBoxDelegateBase) ImplementsComboBoxWillPopUp() bool {
 func (p *ComboBoxDelegateBase) ComboBoxWillPopUp(notification foundation.Notification) {
 	panic("unimpemented protocol method")
 }
+
+type ComboBoxDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewComboBoxDelegateCreator(name string) *ComboBoxDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &ComboBoxDelegateCreator{className: name, class: class}
+}
+
+func (c *ComboBoxDelegateCreator) SetComboBoxSelectionDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("comboBoxSelectionDidChange:"), handle)
+}
+
+func (c *ComboBoxDelegateCreator) SetComboBoxSelectionIsChanging(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("comboBoxSelectionIsChanging:"), handle)
+}
+
+func (c *ComboBoxDelegateCreator) SetComboBoxWillDismiss(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("comboBoxWillDismiss:"), handle)
+}
+
+func (c *ComboBoxDelegateCreator) SetComboBoxWillPopUp(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("comboBoxWillPopUp:"), handle)
+}
+
+func (c *ComboBoxDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

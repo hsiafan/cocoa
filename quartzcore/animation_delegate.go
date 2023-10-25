@@ -36,3 +36,26 @@ func (p *AnimationDelegateBase) ImplementsAnimationDidStop_Finished() bool {
 func (p *AnimationDelegateBase) AnimationDidStop_Finished(anim Animation, flag bool) {
 	panic("unimpemented protocol method")
 }
+
+type AnimationDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewAnimationDelegateCreator(name string) *AnimationDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &AnimationDelegateCreator{className: name, class: class}
+}
+
+func (c *AnimationDelegateCreator) SetAnimationDidStart(handle func(o objc.Object, anim Animation)) {
+	objc.AddMethod(c.class, objc.GetSelector("animationDidStart:"), handle)
+}
+
+func (c *AnimationDelegateCreator) SetAnimationDidStop_Finished(handle func(o objc.Object, anim Animation, flag bool)) {
+	objc.AddMethod(c.class, objc.GetSelector("animationDidStop:finished:"), handle)
+}
+
+func (c *AnimationDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

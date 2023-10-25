@@ -47,3 +47,30 @@ func (p *UserActivityDelegateBase) ImplementsUserActivityWillSave() bool {
 func (p *UserActivityDelegateBase) UserActivityWillSave(userActivity UserActivity) {
 	panic("unimpemented protocol method")
 }
+
+type UserActivityDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewUserActivityDelegateCreator(name string) *UserActivityDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &UserActivityDelegateCreator{className: name, class: class}
+}
+
+func (c *UserActivityDelegateCreator) SetUserActivity_DidReceiveInputStream_OutputStream(handle func(o objc.Object, userActivity UserActivity, inputStream InputStream, outputStream OutputStream)) {
+	objc.AddMethod(c.class, objc.GetSelector("userActivity:didReceiveInputStream:outputStream:"), handle)
+}
+
+func (c *UserActivityDelegateCreator) SetUserActivityWasContinued(handle func(o objc.Object, userActivity UserActivity)) {
+	objc.AddMethod(c.class, objc.GetSelector("userActivityWasContinued:"), handle)
+}
+
+func (c *UserActivityDelegateCreator) SetUserActivityWillSave(handle func(o objc.Object, userActivity UserActivity)) {
+	objc.AddMethod(c.class, objc.GetSelector("userActivityWillSave:"), handle)
+}
+
+func (c *UserActivityDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

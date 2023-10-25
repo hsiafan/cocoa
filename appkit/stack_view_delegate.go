@@ -36,3 +36,26 @@ func (p *StackViewDelegateBase) ImplementsStackView_WillDetachViews() bool {
 func (p *StackViewDelegateBase) StackView_WillDetachViews(stackView StackView, views []View) {
 	panic("unimpemented protocol method")
 }
+
+type StackViewDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewStackViewDelegateCreator(name string) *StackViewDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &StackViewDelegateCreator{className: name, class: class}
+}
+
+func (c *StackViewDelegateCreator) SetStackView_DidReattachViews(handle func(o objc.Object, stackView StackView, views []View)) {
+	objc.AddMethod(c.class, objc.GetSelector("stackView:didReattachViews:"), handle)
+}
+
+func (c *StackViewDelegateCreator) SetStackView_WillDetachViews(handle func(o objc.Object, stackView StackView, views []View)) {
+	objc.AddMethod(c.class, objc.GetSelector("stackView:willDetachViews:"), handle)
+}
+
+func (c *StackViewDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

@@ -70,3 +70,38 @@ func (p *TextDelegateBase) ImplementsTextDidEndEditing() bool {
 func (p *TextDelegateBase) TextDidEndEditing(notification foundation.Notification) {
 	panic("unimpemented protocol method")
 }
+
+type TextDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewTextDelegateCreator(name string) *TextDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &TextDelegateCreator{className: name, class: class}
+}
+
+func (c *TextDelegateCreator) SetTextDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("textDidChange:"), handle)
+}
+
+func (c *TextDelegateCreator) SetTextShouldBeginEditing(handle func(o objc.Object, textObject Text) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("textShouldBeginEditing:"), handle)
+}
+
+func (c *TextDelegateCreator) SetTextDidBeginEditing(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("textDidBeginEditing:"), handle)
+}
+
+func (c *TextDelegateCreator) SetTextShouldEndEditing(handle func(o objc.Object, textObject Text) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("textShouldEndEditing:"), handle)
+}
+
+func (c *TextDelegateCreator) SetTextDidEndEditing(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("textDidEndEditing:"), handle)
+}
+
+func (c *TextDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

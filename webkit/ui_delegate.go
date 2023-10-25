@@ -80,3 +80,42 @@ func (p *UIDelegateBase) ImplementsWebView_RequestMediaCapturePermissionForOrigi
 func (p *UIDelegateBase) WebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision)) {
 	panic("unimpemented protocol method")
 }
+
+type UIDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewUIDelegateCreator(name string) *UIDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &UIDelegateCreator{className: name, class: class}
+}
+
+func (c *UIDelegateCreator) SetWebView_CreateWebViewWithConfiguration_ForNavigationAction_WindowFeatures(handle func(o objc.Object, webView WebView, configuration WebViewConfiguration, navigationAction NavigationAction, windowFeatures WindowFeatures) IWebView) {
+	objc.AddMethod(c.class, objc.GetSelector("webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:"), handle)
+}
+
+func (c *UIDelegateCreator) SetWebViewDidClose(handle func(o objc.Object, webView WebView)) {
+	objc.AddMethod(c.class, objc.GetSelector("webViewDidClose:"), handle)
+}
+
+func (c *UIDelegateCreator) SetWebView_RunJavaScriptAlertPanelWithMessage_InitiatedByFrame_CompletionHandler(handle func(o objc.Object, webView WebView, message string, frame FrameInfo, completionHandler func())) {
+	objc.AddMethod(c.class, objc.GetSelector("webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:completionHandler:"), handle)
+}
+
+func (c *UIDelegateCreator) SetWebView_RunJavaScriptConfirmPanelWithMessage_InitiatedByFrame_CompletionHandler(handle func(o objc.Object, webView WebView, message string, frame FrameInfo, completionHandler func(result bool))) {
+	objc.AddMethod(c.class, objc.GetSelector("webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:completionHandler:"), handle)
+}
+
+func (c *UIDelegateCreator) SetWebView_RunJavaScriptTextInputPanelWithPrompt_DefaultText_InitiatedByFrame_CompletionHandler(handle func(o objc.Object, webView WebView, prompt string, defaultText string, frame FrameInfo, completionHandler func(result string))) {
+	objc.AddMethod(c.class, objc.GetSelector("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:completionHandler:"), handle)
+}
+
+func (c *UIDelegateCreator) SetWebView_RequestMediaCapturePermissionForOrigin_InitiatedByFrame_Type_DecisionHandler(handle func(o objc.Object, webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision))) {
+	objc.AddMethod(c.class, objc.GetSelector("webView:requestMediaCapturePermissionForOrigin:initiatedByFrame:type:decisionHandler:"), handle)
+}
+
+func (c *UIDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

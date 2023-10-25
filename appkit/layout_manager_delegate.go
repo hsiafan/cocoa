@@ -148,3 +148,66 @@ func (p *LayoutManagerDelegateBase) ImplementsLayoutManager_ShouldUseTemporaryAt
 func (p *LayoutManagerDelegateBase) LayoutManager_ShouldUseTemporaryAttributes_ForDrawingToScreen_AtCharacterIndex_EffectiveRange(layoutManager LayoutManager, attrs map[foundation.AttributedStringKey]objc.Object, toScreen bool, charIndex uint, effectiveCharRange *foundation.Range) map[foundation.AttributedStringKey]objc.IObject {
 	panic("unimpemented protocol method")
 }
+
+type LayoutManagerDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewLayoutManagerDelegateCreator(name string) *LayoutManagerDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &LayoutManagerDelegateCreator{className: name, class: class}
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManagerDidInvalidateLayout(handle func(o objc.Object, sender LayoutManager)) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManagerDidInvalidateLayout:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ShouldGenerateGlyphs_Properties_CharacterIndexes_Font_ForGlyphRange(handle func(o objc.Object, layoutManager LayoutManager, glyphs *coregraphics.Glyph, props *GlyphProperty, charIndexes *uint, aFont Font, glyphRange foundation.Range) uint) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ShouldUseAction_ForControlCharacterAtIndex(handle func(o objc.Object, layoutManager LayoutManager, action ControlCharacterAction, charIndex uint) ControlCharacterAction) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:shouldUseAction:forControlCharacterAtIndex:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_DidCompleteLayoutForTextContainer_AtEnd(handle func(o objc.Object, layoutManager LayoutManager, textContainer TextContainer, layoutFinishedFlag bool)) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:didCompleteLayoutForTextContainer:atEnd:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_TextContainer_DidChangeGeometryFromSize(handle func(o objc.Object, layoutManager LayoutManager, textContainer TextContainer, oldSize foundation.Size)) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:textContainer:didChangeGeometryFromSize:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ShouldBreakLineByHyphenatingBeforeCharacterAtIndex(handle func(o objc.Object, layoutManager LayoutManager, charIndex uint) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:shouldBreakLineByHyphenatingBeforeCharacterAtIndex:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ShouldBreakLineByWordBeforeCharacterAtIndex(handle func(o objc.Object, layoutManager LayoutManager, charIndex uint) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:shouldBreakLineByWordBeforeCharacterAtIndex:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_LineSpacingAfterGlyphAtIndex_WithProposedLineFragmentRect(handle func(o objc.Object, layoutManager LayoutManager, glyphIndex uint, rect foundation.Rect) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:lineSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ParagraphSpacingAfterGlyphAtIndex_WithProposedLineFragmentRect(handle func(o objc.Object, layoutManager LayoutManager, glyphIndex uint, rect foundation.Rect) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:paragraphSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ParagraphSpacingBeforeGlyphAtIndex_WithProposedLineFragmentRect(handle func(o objc.Object, layoutManager LayoutManager, glyphIndex uint, rect foundation.Rect) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:paragraphSpacingBeforeGlyphAtIndex:withProposedLineFragmentRect:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_BoundingBoxForControlGlyphAtIndex_ForTextContainer_ProposedLineFragment_GlyphPosition_CharacterIndex(handle func(o objc.Object, layoutManager LayoutManager, glyphIndex uint, textContainer TextContainer, proposedRect foundation.Rect, glyphPosition foundation.Point, charIndex uint) foundation.Rect) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) SetLayoutManager_ShouldUseTemporaryAttributes_ForDrawingToScreen_AtCharacterIndex_EffectiveRange(handle func(o objc.Object, layoutManager LayoutManager, attrs map[foundation.AttributedStringKey]objc.Object, toScreen bool, charIndex uint, effectiveCharRange *foundation.Range) map[foundation.AttributedStringKey]objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("layoutManager:shouldUseTemporaryAttributes:forDrawingToScreen:atCharacterIndex:effectiveRange:"), handle)
+}
+
+func (c *LayoutManagerDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

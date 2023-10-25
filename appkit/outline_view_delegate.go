@@ -424,3 +424,166 @@ func (p *OutlineViewDelegateBase) ImplementsOutlineView_ViewForTableColumn_Item(
 func (p *OutlineViewDelegateBase) OutlineView_ViewForTableColumn_Item(outlineView OutlineView, tableColumn TableColumn, item objc.Object) IView {
 	panic("unimpemented protocol method")
 }
+
+type OutlineViewDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewOutlineViewDelegateCreator(name string) *OutlineViewDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &OutlineViewDelegateCreator{className: name, class: class}
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldExpandItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldExpandItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldCollapseItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldCollapseItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_TypeSelectStringForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn, item objc.Object) string) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:typeSelectStringForTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_NextTypeSelectMatchFromItem_ToItem_ForString(handle func(o objc.Object, outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.IObject) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:nextTypeSelectMatchFromItem:toItem:forString:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldTypeSelectForEvent_WithCurrentSearchString(handle func(o objc.Object, outlineView OutlineView, event Event, searchString string) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ToolTipForCell_Rect_TableColumn_Item_MouseLocation(handle func(o objc.Object, outlineView OutlineView, cell Cell, rect *foundation.Rect, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldSelectTableColumn(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldSelectTableColumn:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldSelectItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldSelectItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_SelectionIndexesForProposedSelection(handle func(o objc.Object, outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IIndexSet) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:selectionIndexesForProposedSelection:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetSelectionShouldChangeInOutlineView(handle func(o objc.Object, outlineView OutlineView) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("selectionShouldChangeInOutlineView:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewSelectionIsChanging(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewSelectionIsChanging:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewSelectionDidChange(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewSelectionDidChange:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_WillDisplayCell_ForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:willDisplayCell:forTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_WillDisplayOutlineCell_ForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:willDisplayOutlineCell:forTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_DataCellForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn, item objc.Object) ICell) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:dataCellForTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldShowOutlineCellForItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldShowOutlineCellForItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldShowCellExpansionForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldShowCellExpansionForTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldReorderColumn_ToColumn(handle func(o objc.Object, outlineView OutlineView, columnIndex int, newColumnIndex int) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldReorderColumn:toColumn:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewColumnDidMove(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewColumnDidMove:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewColumnDidResize(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewColumnDidResize:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewItemWillExpand(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewItemWillExpand:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewItemDidExpand(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewItemDidExpand:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewItemWillCollapse(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewItemWillCollapse:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineViewItemDidCollapse(handle func(o objc.Object, notification foundation.Notification)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineViewItemDidCollapse:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldEditTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldEditTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_MouseDownInHeaderOfTableColumn(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:mouseDownInHeaderOfTableColumn:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_DidClickTableColumn(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:didClickTableColumn:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_DidDragTableColumn(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:didDragTableColumn:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_HeightOfRowByItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:heightOfRowByItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_SizeToFitWidthOfColumn(handle func(o objc.Object, outlineView OutlineView, column int) float64) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:sizeToFitWidthOfColumn:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_TintConfigurationForItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) ITintConfiguration) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:tintConfigurationForItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ShouldTrackCell_ForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:shouldTrackCell:forTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_IsGroupItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:isGroupItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_DidAddRowView_ForRow(handle func(o objc.Object, outlineView OutlineView, rowView TableRowView, row int)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:didAddRowView:forRow:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_DidRemoveRowView_ForRow(handle func(o objc.Object, outlineView OutlineView, rowView TableRowView, row int)) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:didRemoveRowView:forRow:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_RowViewForItem(handle func(o objc.Object, outlineView OutlineView, item objc.Object) ITableRowView) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:rowViewForItem:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) SetOutlineView_ViewForTableColumn_Item(handle func(o objc.Object, outlineView OutlineView, tableColumn TableColumn, item objc.Object) IView) {
+	objc.AddMethod(c.class, objc.GetSelector("outlineView:viewForTableColumn:item:"), handle)
+}
+
+func (c *OutlineViewDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

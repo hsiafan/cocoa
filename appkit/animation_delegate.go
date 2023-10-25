@@ -69,3 +69,38 @@ func (p *AnimationDelegateBase) ImplementsAnimation_DidReachProgressMark() bool 
 func (p *AnimationDelegateBase) Animation_DidReachProgressMark(animation Animation, progress AnimationProgress) {
 	panic("unimpemented protocol method")
 }
+
+type AnimationDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewAnimationDelegateCreator(name string) *AnimationDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &AnimationDelegateCreator{className: name, class: class}
+}
+
+func (c *AnimationDelegateCreator) SetAnimationDidEnd(handle func(o objc.Object, animation Animation)) {
+	objc.AddMethod(c.class, objc.GetSelector("animationDidEnd:"), handle)
+}
+
+func (c *AnimationDelegateCreator) SetAnimationDidStop(handle func(o objc.Object, animation Animation)) {
+	objc.AddMethod(c.class, objc.GetSelector("animationDidStop:"), handle)
+}
+
+func (c *AnimationDelegateCreator) SetAnimationShouldStart(handle func(o objc.Object, animation Animation) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("animationShouldStart:"), handle)
+}
+
+func (c *AnimationDelegateCreator) SetAnimation_ValueForProgress(handle func(o objc.Object, animation Animation, progress AnimationProgress) float32) {
+	objc.AddMethod(c.class, objc.GetSelector("animation:valueForProgress:"), handle)
+}
+
+func (c *AnimationDelegateCreator) SetAnimation_DidReachProgressMark(handle func(o objc.Object, animation Animation, progress AnimationProgress)) {
+	objc.AddMethod(c.class, objc.GetSelector("animation:didReachProgressMark:"), handle)
+}
+
+func (c *AnimationDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

@@ -6,6 +6,7 @@ import (
 
 	"github.com/hsiafan/cocoa/appkit"
 	"github.com/hsiafan/cocoa/foundation"
+	"github.com/hsiafan/cocoa/objc"
 )
 
 // Arrange that main.main runs on main thread.
@@ -27,42 +28,22 @@ func initAndRun() {
 
 	w.SetContentView(tabView)
 
-	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app, w: w}))
+	creator := appkit.NewApplicationDelegateCreator("MyApplicationDelegate")
+	creator.SetApplicationDidFinishLaunching(func(o objc.Object, notification foundation.Notification) {
+		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+		app.ActivateIgnoringOtherApps(true)
+	})
+	creator.SetApplicationShouldTerminateAfterLastWindowClosed(func(o objc.Object, sender appkit.Application) bool {
+		return true
+	})
+	creator.SetApplicationWillFinishLaunching(func(o objc.Object, notification foundation.Notification) {
+		w.SetFrameAutosaveName("tab-test")
+	})
+	app.SetDelegate(creator.Create())
 
 	w.Center()
 	w.MakeKeyAndOrderFront(nil)
 	app.Run()
-}
-
-type myApplicationDelegate struct {
-	appkit.ApplicationDelegateBase
-	app appkit.Application
-	w   appkit.Window
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-	p.app.ActivateIgnoringOtherApps(true)
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationWillFinishLaunching() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationWillFinishLaunching(notification foundation.Notification) {
-	p.w.SetFrameAutosaveName("tab-test")
 }
 
 func createNewView(idx int) appkit.ITabViewItem {

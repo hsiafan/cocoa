@@ -25,3 +25,22 @@ func (p *AlertDelegateBase) ImplementsAlertShowHelp() bool {
 func (p *AlertDelegateBase) AlertShowHelp(alert Alert) bool {
 	panic("unimpemented protocol method")
 }
+
+type AlertDelegateCreator struct {
+	className string
+	class     objc.Class
+}
+
+func NewAlertDelegateCreator(name string) *AlertDelegateCreator {
+	class := objc.AllocateClassPair(objc.GetClass("NSObject"), name, 0)
+	objc.RegisterClassPair(class)
+	return &AlertDelegateCreator{className: name, class: class}
+}
+
+func (c *AlertDelegateCreator) SetAlertShowHelp(handle func(o objc.Object, alert Alert) bool) {
+	objc.AddMethod(c.class, objc.GetSelector("alertShowHelp:"), handle)
+}
+
+func (c *AlertDelegateCreator) Create() objc.Object {
+	return c.class.CreateInstance(0)
+}

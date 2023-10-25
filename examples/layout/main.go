@@ -71,31 +71,17 @@ func initAndRun() {
 	w.MakeKeyAndOrderFront(nil)
 	w.Center()
 
-	app.SetDelegate(appkit.WrapApplicationDelegate(&myApplicationDelegate{app: app}))
+	creator := appkit.NewApplicationDelegateCreator("MyApplicationDelegate")
+	creator.SetApplicationDidFinishLaunching(func(o objc.Object, notification foundation.Notification) {
+		app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
+		app.ActivateIgnoringOtherApps(true)
+	})
+	creator.SetApplicationShouldTerminateAfterLastWindowClosed(func(o objc.Object, sender appkit.Application) bool {
+		return true
+	})
+	app.SetDelegate(creator.Create())
 
 	app.Run()
-}
-
-type myApplicationDelegate struct {
-	appkit.ApplicationDelegateBase
-	app appkit.Application
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationDidFinishLaunching() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	p.app.SetActivationPolicy(appkit.ApplicationActivationPolicyRegular)
-	p.app.ActivateIgnoringOtherApps(true)
-}
-
-func (p *myApplicationDelegate) ImplementsApplicationShouldTerminateAfterLastWindowClosed() bool {
-	return true
-}
-
-func (p *myApplicationDelegate) ApplicationShouldTerminateAfterLastWindowClosed(sender appkit.Application) bool {
-	return true
 }
 
 func main() {
